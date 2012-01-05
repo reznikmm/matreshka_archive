@@ -51,7 +51,9 @@ with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
-with AMF.Internals.Tables.CMOF_String_Data;
+with AMF.Internals.Tables.CMOF_String_Data_00;
+with AMF.Internals.Tables.CMOF_String_Data_01;
+with AMF.Internals.Tables.CMOF_String_Data_02;
 
 package body AMF.Internals.Tables.CMOF_Metamodel is
 
@@ -2152,7 +2154,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
    procedure Initialize is
       Extent : constant AMF.Internals.AMF_Extent
         := AMF.Internals.Extents.Allocate_Extent
-            (AMF.Internals.Tables.CMOF_String_Data.MS_112'Access);
+            (AMF.Internals.Tables.CMOF_String_Data_00.MS_006F'Access);
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
@@ -4559,77 +4561,77 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 189,
-         AMF.Internals.Tables.CMOF_String_Data.MS_333'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 189,
-         AMF.Internals.Tables.CMOF_String_Data.MS_112'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 189, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 190,
-         AMF.Internals.Tables.CMOF_String_Data.MS_372'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0173'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 190, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 191,
-         AMF.Internals.Tables.CMOF_String_Data.MS_334'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 192,
-         AMF.Internals.Tables.CMOF_String_Data.MS_358'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0165'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 192, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 193,
-         AMF.Internals.Tables.CMOF_String_Data.MS_141'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 194,
-         AMF.Internals.Tables.CMOF_String_Data.MS_65'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0040'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 194, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 195,
-         AMF.Internals.Tables.CMOF_String_Data.MS_205'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 196,
-         AMF.Internals.Tables.CMOF_String_Data.MS_470'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 196, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 197,
-         AMF.Internals.Tables.CMOF_String_Data.MS_279'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0116'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 4, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
-         AMF.Internals.Tables.CMOF_String_Data.MS_312'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0137'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 4, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 198,
-         AMF.Internals.Tables.CMOF_String_Data.MS_155'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 199,
-         AMF.Internals.Tables.CMOF_String_Data.MS_512'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 199, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 200,
-         AMF.Internals.Tables.CMOF_String_Data.MS_393'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0188'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 201, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 202,
-         AMF.Internals.Tables.CMOF_String_Data.MS_257'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0100'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 202, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 203,
-         AMF.Internals.Tables.CMOF_String_Data.MS_471'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D6'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 204, (Is_Empty => True));
 
@@ -4639,13 +4641,13 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 43, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 43,
-         AMF.Internals.Tables.CMOF_String_Data.MS_313'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0138'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 43, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 43, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 205,
-         AMF.Internals.Tables.CMOF_String_Data.MS_493'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 44, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 44, True);
@@ -4653,63 +4655,63 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 44, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 44,
-         AMF.Internals.Tables.CMOF_String_Data.MS_164'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 44, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 44, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 206,
-         AMF.Internals.Tables.CMOF_String_Data.MS_306'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0131'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 45, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 45,
-         AMF.Internals.Tables.CMOF_String_Data.MS_150'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0095'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 45, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 45, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 207,
-         AMF.Internals.Tables.CMOF_String_Data.MS_25'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0018'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 46, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 46, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 46, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 46,
-         AMF.Internals.Tables.CMOF_String_Data.MS_163'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 46, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 46, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 208,
-         AMF.Internals.Tables.CMOF_String_Data.MS_59'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 81,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 81,
-         AMF.Internals.Tables.CMOF_String_Data.MS_185'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 81, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 209,
-         AMF.Internals.Tables.CMOF_String_Data.MS_315'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 210, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 210,
-         AMF.Internals.Tables.CMOF_String_Data.MS_332'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 210, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 211,
-         AMF.Internals.Tables.CMOF_String_Data.MS_505'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F8'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 212,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 212, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 213, (Is_Empty => True));
@@ -4720,22 +4722,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 215, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 215,
-         AMF.Internals.Tables.CMOF_String_Data.MS_275'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0112'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 215, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 216, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 216,
-         AMF.Internals.Tables.CMOF_String_Data.MS_221'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 216, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 217,
-         AMF.Internals.Tables.CMOF_String_Data.MS_113'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0070'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 218,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 218, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 219, (Is_Empty => True));
@@ -4748,16 +4750,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 221, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 221,
-         AMF.Internals.Tables.CMOF_String_Data.MS_150'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0095'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 221, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 222,
-         AMF.Internals.Tables.CMOF_String_Data.MS_6'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0005'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 223,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 223, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 224, (Is_Empty => True));
@@ -4770,16 +4772,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 226, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 226,
-         AMF.Internals.Tables.CMOF_String_Data.MS_484'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 226, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 227,
-         AMF.Internals.Tables.CMOF_String_Data.MS_215'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D6'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 228,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 228, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 229, (Is_Empty => True));
@@ -4792,16 +4794,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 231, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 231,
-         AMF.Internals.Tables.CMOF_String_Data.MS_163'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 231, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 232,
-         AMF.Internals.Tables.CMOF_String_Data.MS_428'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 233,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 233, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 234, (Is_Empty => True));
@@ -4814,16 +4816,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 236, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 236,
-         AMF.Internals.Tables.CMOF_String_Data.MS_375'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0176'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 236, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 237,
-         AMF.Internals.Tables.CMOF_String_Data.MS_138'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0089'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 238,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 238, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 239, (Is_Empty => True));
@@ -4836,12 +4838,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 241, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 241,
-         AMF.Internals.Tables.CMOF_String_Data.MS_145'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0090'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 241, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 242,
-         AMF.Internals.Tables.CMOF_String_Data.MS_125'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 243, (Is_Empty => True));
 
@@ -4849,7 +4851,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 245,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 245, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 246, (Is_Empty => True));
@@ -4862,18 +4864,18 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 248, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 248,
-         AMF.Internals.Tables.CMOF_String_Data.MS_286'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 248, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 249, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 249,
-         AMF.Internals.Tables.CMOF_String_Data.MS_148'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0093'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 249, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 250,
-         AMF.Internals.Tables.CMOF_String_Data.MS_353'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0160'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 251, (Is_Empty => True));
 
@@ -4881,7 +4883,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 253,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 253, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 254, (Is_Empty => True));
@@ -4892,22 +4894,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 256, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 256,
-         AMF.Internals.Tables.CMOF_String_Data.MS_31'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 256, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 257, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 257,
-         AMF.Internals.Tables.CMOF_String_Data.MS_335'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 257, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 258,
-         AMF.Internals.Tables.CMOF_String_Data.MS_367'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 259,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 259, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 260, (Is_Empty => True));
@@ -4921,23 +4923,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 262, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 262,
-         AMF.Internals.Tables.CMOF_String_Data.MS_459'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 262, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 262, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 263, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 263,
-         AMF.Internals.Tables.CMOF_String_Data.MS_321'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0140'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 263, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 264,
-         AMF.Internals.Tables.CMOF_String_Data.MS_386'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0181'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 265,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 265, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 266, (Is_Empty => True));
@@ -4948,74 +4950,74 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 268, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 268,
-         AMF.Internals.Tables.CMOF_String_Data.MS_286'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 268, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 8, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-         AMF.Internals.Tables.CMOF_String_Data.MS_301'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 8, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 269,
-         AMF.Internals.Tables.CMOF_String_Data.MS_314'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0139'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 51, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 51, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 51, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 51,
-         AMF.Internals.Tables.CMOF_String_Data.MS_432'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 51, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 51, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 270,
-         AMF.Internals.Tables.CMOF_String_Data.MS_322'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0141'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 52, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 52, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 52, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 52,
-         AMF.Internals.Tables.CMOF_String_Data.MS_231'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 52, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 52, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 271,
-         AMF.Internals.Tables.CMOF_String_Data.MS_140'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008B'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 9, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 9,
-         AMF.Internals.Tables.CMOF_String_Data.MS_217'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 9, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 272,
-         AMF.Internals.Tables.CMOF_String_Data.MS_218'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 273,
-         AMF.Internals.Tables.CMOF_String_Data.MS_250'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 273, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 274,
-         AMF.Internals.Tables.CMOF_String_Data.MS_457'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C8'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 275, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 276,
-         AMF.Internals.Tables.CMOF_String_Data.MS_132'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0083'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 276, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 277,
-         AMF.Internals.Tables.CMOF_String_Data.MS_436'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B3'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 278, (Is_Empty => True));
 
@@ -5026,13 +5028,13 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 54, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 54,
-         AMF.Internals.Tables.CMOF_String_Data.MS_422'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 54, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 54, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 279,
-         AMF.Internals.Tables.CMOF_String_Data.MS_340'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0153'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 85, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 85, True);
@@ -5040,38 +5042,38 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 85, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 85,
-         AMF.Internals.Tables.CMOF_String_Data.MS_341'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0154'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 85, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 280,
-         AMF.Internals.Tables.CMOF_String_Data.MS_57'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0038'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 53, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 53, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 53,
-         AMF.Internals.Tables.CMOF_String_Data.MS_450'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 53, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 53, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 281,
-         AMF.Internals.Tables.CMOF_String_Data.MS_444'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 282, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 282,
-         AMF.Internals.Tables.CMOF_String_Data.MS_89'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0058'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 282, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 283,
-         AMF.Internals.Tables.CMOF_String_Data.MS_123'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 284,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 284, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 285, (Is_Empty => True));
@@ -5084,16 +5086,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 287, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 287,
-         AMF.Internals.Tables.CMOF_String_Data.MS_61'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 287, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 288,
-         AMF.Internals.Tables.CMOF_String_Data.MS_20'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0013'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 289,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 289, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 290, (Is_Empty => True));
@@ -5104,12 +5106,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 14, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 14,
-         AMF.Internals.Tables.CMOF_String_Data.MS_455'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 14, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 292,
-         AMF.Internals.Tables.CMOF_String_Data.MS_416'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 57, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 57, True);
@@ -5117,105 +5119,105 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 57, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 57,
-         AMF.Internals.Tables.CMOF_String_Data.MS_443'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 57, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 57, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 293,
-         AMF.Internals.Tables.CMOF_String_Data.MS_174'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AD'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 15, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 15,
-         AMF.Internals.Tables.CMOF_String_Data.MS_339'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0152'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 15, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 294,
-         AMF.Internals.Tables.CMOF_String_Data.MS_266'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0109'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 295,
-         AMF.Internals.Tables.CMOF_String_Data.MS_278'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0115'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 295, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 296,
-         AMF.Internals.Tables.CMOF_String_Data.MS_29'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 297, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 298,
-         AMF.Internals.Tables.CMOF_String_Data.MS_67'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0042'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 298, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 299,
-         AMF.Internals.Tables.CMOF_String_Data.MS_216'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 300, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 91,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 91,
-         AMF.Internals.Tables.CMOF_String_Data.MS_276'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0113'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 91, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 301,
-         AMF.Internals.Tables.CMOF_String_Data.MS_293'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0124'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 92,
-         AMF.Internals.Tables.CMOF_String_Data.MS_159'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 92,
-         AMF.Internals.Tables.CMOF_String_Data.MS_377'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0178'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 92, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 302,
-         AMF.Internals.Tables.CMOF_String_Data.MS_234'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 93,
-         AMF.Internals.Tables.CMOF_String_Data.MS_346'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0159'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 93, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 93,
-         AMF.Internals.Tables.CMOF_String_Data.MS_16'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 93, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 303,
-         AMF.Internals.Tables.CMOF_String_Data.MS_63'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 94,
-         AMF.Internals.Tables.CMOF_String_Data.MS_346'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0159'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 94, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 94,
-         AMF.Internals.Tables.CMOF_String_Data.MS_242'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 94, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 304,
-         AMF.Internals.Tables.CMOF_String_Data.MS_382'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 305, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 305,
-         AMF.Internals.Tables.CMOF_String_Data.MS_258'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0101'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 305, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 306,
-         AMF.Internals.Tables.CMOF_String_Data.MS_18'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0011'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 307, (Is_Empty => True));
 
@@ -5223,7 +5225,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 309,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 309, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 310, (Is_Empty => True));
@@ -5234,12 +5236,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 312, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 312,
-         AMF.Internals.Tables.CMOF_String_Data.MS_3'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0002'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 312, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 313,
-         AMF.Internals.Tables.CMOF_String_Data.MS_498'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 314, (Is_Empty => True));
 
@@ -5247,7 +5249,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 316,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 316, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 317, (Is_Empty => True));
@@ -5258,18 +5260,18 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 319, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 319,
-         AMF.Internals.Tables.CMOF_String_Data.MS_438'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 319, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 320, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 320,
-         AMF.Internals.Tables.CMOF_String_Data.MS_295'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0126'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 320, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 321,
-         AMF.Internals.Tables.CMOF_String_Data.MS_343'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0156'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 322, (Is_Empty => True));
 
@@ -5277,7 +5279,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 324,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 324, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 325, (Is_Empty => True));
@@ -5288,22 +5290,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 327, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 327,
-         AMF.Internals.Tables.CMOF_String_Data.MS_201'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 327, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 328, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 328,
-         AMF.Internals.Tables.CMOF_String_Data.MS_244'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 328, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 329,
-         AMF.Internals.Tables.CMOF_String_Data.MS_192'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 330,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 330, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 331, (Is_Empty => True));
@@ -5314,16 +5316,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 333, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 333,
-         AMF.Internals.Tables.CMOF_String_Data.MS_311'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0136'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 333, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 334,
-         AMF.Internals.Tables.CMOF_String_Data.MS_189'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 335,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 335, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 336, (Is_Empty => True));
@@ -5334,21 +5336,21 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 17, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 17,
-         AMF.Internals.Tables.CMOF_String_Data.MS_395'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 17, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 338,
-         AMF.Internals.Tables.CMOF_String_Data.MS_298'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0129'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 339,
-         AMF.Internals.Tables.CMOF_String_Data.MS_394'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0189'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 339, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 340,
-         AMF.Internals.Tables.CMOF_String_Data.MS_331'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 341, (Is_Empty => True));
 
@@ -5357,37 +5359,37 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 59, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 59,
-         AMF.Internals.Tables.CMOF_String_Data.MS_473'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 59, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 59, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 342,
-         AMF.Internals.Tables.CMOF_String_Data.MS_260'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0103'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 58, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 58, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 58,
-         AMF.Internals.Tables.CMOF_String_Data.MS_209'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 58, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 58, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 343,
-         AMF.Internals.Tables.CMOF_String_Data.MS_318'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 63, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 63, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 63,
-         AMF.Internals.Tables.CMOF_String_Data.MS_362'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0169'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 63, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 63, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 344,
-         AMF.Internals.Tables.CMOF_String_Data.MS_247'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F6'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 61, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 61, True);
@@ -5396,13 +5398,13 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 61, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 61,
-         AMF.Internals.Tables.CMOF_String_Data.MS_329'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0148'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 61, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 61, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 345,
-         AMF.Internals.Tables.CMOF_String_Data.MS_241'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 60, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 60, True);
@@ -5410,35 +5412,35 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 60, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 60,
-         AMF.Internals.Tables.CMOF_String_Data.MS_420'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 60, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 60, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 346,
-         AMF.Internals.Tables.CMOF_String_Data.MS_383'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 62, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 62, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 62,
-         AMF.Internals.Tables.CMOF_String_Data.MS_328'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0147'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 62, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 62, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 347, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 347,
-         AMF.Internals.Tables.CMOF_String_Data.MS_473'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 347, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 348,
-         AMF.Internals.Tables.CMOF_String_Data.MS_433'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 349,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 349, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 350, (Is_Empty => True));
@@ -5451,16 +5453,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 352, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 352,
-         AMF.Internals.Tables.CMOF_String_Data.MS_349'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 352, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 353,
-         AMF.Internals.Tables.CMOF_String_Data.MS_486'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E5'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 354,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 354, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 355, (Is_Empty => True));
@@ -5473,22 +5475,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 357, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 357,
-         AMF.Internals.Tables.CMOF_String_Data.MS_261'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0104'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 357, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 358, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 358,
-         AMF.Internals.Tables.CMOF_String_Data.MS_360'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0167'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 358, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 359,
-         AMF.Internals.Tables.CMOF_String_Data.MS_151'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0096'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 360,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 360, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 361, (Is_Empty => True));
@@ -5502,23 +5504,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 363, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 363,
-         AMF.Internals.Tables.CMOF_String_Data.MS_299'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 363, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 363, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 364, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 364,
-         AMF.Internals.Tables.CMOF_String_Data.MS_288'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 364, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 365,
-         AMF.Internals.Tables.CMOF_String_Data.MS_482'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 366,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 366, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 367, (Is_Empty => True));
@@ -5532,23 +5534,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 369, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 369,
-         AMF.Internals.Tables.CMOF_String_Data.MS_299'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 369, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 369, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 370, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 370,
-         AMF.Internals.Tables.CMOF_String_Data.MS_487'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 370, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 371,
-         AMF.Internals.Tables.CMOF_String_Data.MS_419'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 372,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 372, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 373, (Is_Empty => True));
@@ -5559,53 +5561,53 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 23, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 23,
-         AMF.Internals.Tables.CMOF_String_Data.MS_310'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0135'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 23, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 375,
-         AMF.Internals.Tables.CMOF_String_Data.MS_88'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0057'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 27, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 27,
-         AMF.Internals.Tables.CMOF_String_Data.MS_396'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 27, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 376,
-         AMF.Internals.Tables.CMOF_String_Data.MS_338'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0151'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 377,
-         AMF.Internals.Tables.CMOF_String_Data.MS_92'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 377, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 378,
-         AMF.Internals.Tables.CMOF_String_Data.MS_270'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 379, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 380,
-         AMF.Internals.Tables.CMOF_String_Data.MS_127'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 380, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 381,
-         AMF.Internals.Tables.CMOF_String_Data.MS_442'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 382, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 383,
-         AMF.Internals.Tables.CMOF_String_Data.MS_351'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 383, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 384,
-         AMF.Internals.Tables.CMOF_String_Data.MS_213'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 385, (Is_Empty => True));
 
@@ -5615,13 +5617,13 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 76, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 76,
-         AMF.Internals.Tables.CMOF_String_Data.MS_214'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 76, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 76, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 386,
-         AMF.Internals.Tables.CMOF_String_Data.MS_91'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 75, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 75, True);
@@ -5629,39 +5631,39 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 75, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 75,
-         AMF.Internals.Tables.CMOF_String_Data.MS_479'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 75, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 75, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 387,
-         AMF.Internals.Tables.CMOF_String_Data.MS_281'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0118'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 130,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 130,
-         AMF.Internals.Tables.CMOF_String_Data.MS_161'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 130, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 388,
-         AMF.Internals.Tables.CMOF_String_Data.MS_309'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0134'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 389, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 389,
-         AMF.Internals.Tables.CMOF_String_Data.MS_27'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 389, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 390,
-         AMF.Internals.Tables.CMOF_String_Data.MS_452'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C3'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 391,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 391, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 392, (Is_Empty => True));
@@ -5676,22 +5678,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 396, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 396,
-         AMF.Internals.Tables.CMOF_String_Data.MS_15'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 396, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 397, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 397,
-         AMF.Internals.Tables.CMOF_String_Data.MS_446'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 397, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 398,
-         AMF.Internals.Tables.CMOF_String_Data.MS_441'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B8'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 399,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 399, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 400, (Is_Empty => True));
@@ -5702,85 +5704,85 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 402, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 402,
-         AMF.Internals.Tables.CMOF_String_Data.MS_154'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0099'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 402, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 28, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 28,
-         AMF.Internals.Tables.CMOF_String_Data.MS_44'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 28, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 403,
-         AMF.Internals.Tables.CMOF_String_Data.MS_451'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 77, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 77, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 77, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 77,
-         AMF.Internals.Tables.CMOF_String_Data.MS_73'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0048'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 77, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 77, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 404,
-         AMF.Internals.Tables.CMOF_String_Data.MS_103'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0066'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 29, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 29,
-         AMF.Internals.Tables.CMOF_String_Data.MS_390'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0185'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 29, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 405,
-         AMF.Internals.Tables.CMOF_String_Data.MS_304'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 32, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 32,
-         AMF.Internals.Tables.CMOF_String_Data.MS_345'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0158'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 32, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 406,
-         AMF.Internals.Tables.CMOF_String_Data.MS_399'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 135, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 135,
-         AMF.Internals.Tables.CMOF_String_Data.MS_407'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0196'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 135, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 407,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 33, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 33,
-         AMF.Internals.Tables.CMOF_String_Data.MS_506'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 33, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 408,
-         AMF.Internals.Tables.CMOF_String_Data.MS_121'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0078'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 409, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 409,
-         AMF.Internals.Tables.CMOF_String_Data.MS_181'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 409, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 410,
-         AMF.Internals.Tables.CMOF_String_Data.MS_196'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C3'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 411,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 411, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 412, (Is_Empty => True));
@@ -5791,16 +5793,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 414, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 414,
-         AMF.Internals.Tables.CMOF_String_Data.MS_326'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0145'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 414, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 415,
-         AMF.Internals.Tables.CMOF_String_Data.MS_101'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0064'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 416,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 416, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 417, (Is_Empty => True));
@@ -5811,16 +5813,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 419, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 419,
-         AMF.Internals.Tables.CMOF_String_Data.MS_147'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0092'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 419, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 420,
-         AMF.Internals.Tables.CMOF_String_Data.MS_319'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 421,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 421, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 422, (Is_Empty => True));
@@ -5831,16 +5833,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 424, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 424,
-         AMF.Internals.Tables.CMOF_String_Data.MS_183'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 424, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 425,
-         AMF.Internals.Tables.CMOF_String_Data.MS_94'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 426,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 426, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 427, (Is_Empty => True));
@@ -5851,16 +5853,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 429, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 429,
-         AMF.Internals.Tables.CMOF_String_Data.MS_49'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0030'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 429, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 430,
-         AMF.Internals.Tables.CMOF_String_Data.MS_68'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0043'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 431,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 431, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 432, (Is_Empty => True));
@@ -5871,16 +5873,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 434, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 434,
-         AMF.Internals.Tables.CMOF_String_Data.MS_389'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0184'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 434, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 435,
-         AMF.Internals.Tables.CMOF_String_Data.MS_149'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0094'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 436,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 436, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 437, (Is_Empty => True));
@@ -5890,130 +5892,130 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
-         AMF.Internals.Tables.CMOF_String_Data.MS_105'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0068'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 1, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 439,
-         AMF.Internals.Tables.CMOF_String_Data.MS_71'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0046'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 440,
-         AMF.Internals.Tables.CMOF_String_Data.MS_5'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0004'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 440, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 441,
-         AMF.Internals.Tables.CMOF_String_Data.MS_440'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 442, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 443,
-         AMF.Internals.Tables.CMOF_String_Data.MS_47'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 443, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 444,
-         AMF.Internals.Tables.CMOF_String_Data.MS_448'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 445, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 446,
-         AMF.Internals.Tables.CMOF_String_Data.MS_24'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0017'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 446, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 447,
-         AMF.Internals.Tables.CMOF_String_Data.MS_200'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 448, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 449,
-         AMF.Internals.Tables.CMOF_String_Data.MS_503'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 449, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 450,
-         AMF.Internals.Tables.CMOF_String_Data.MS_411'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 451, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 79,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 79,
-         AMF.Internals.Tables.CMOF_String_Data.MS_453'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 79, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 452,
-         AMF.Internals.Tables.CMOF_String_Data.MS_30'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 37, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 37, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 37, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 37,
-         AMF.Internals.Tables.CMOF_String_Data.MS_371'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0172'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 37, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 37, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 453,
-         AMF.Internals.Tables.CMOF_String_Data.MS_308'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0133'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 34, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 34, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 34,
-         AMF.Internals.Tables.CMOF_String_Data.MS_364'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 34, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 34, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 454,
-         AMF.Internals.Tables.CMOF_String_Data.MS_235'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00EA'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 35, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 35, (False, 2));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 35,
-         AMF.Internals.Tables.CMOF_String_Data.MS_108'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 35, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 35, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 455,
-         AMF.Internals.Tables.CMOF_String_Data.MS_499'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 36, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 36,
-         AMF.Internals.Tables.CMOF_String_Data.MS_87'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0056'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 36, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 36, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 456,
-         AMF.Internals.Tables.CMOF_String_Data.MS_368'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 457, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 457,
-         AMF.Internals.Tables.CMOF_String_Data.MS_364'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 457, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 458,
-         AMF.Internals.Tables.CMOF_String_Data.MS_404'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0193'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 459,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 459, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 460, (Is_Empty => True));
@@ -6026,75 +6028,75 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 3,
-         AMF.Internals.Tables.CMOF_String_Data.MS_496'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 3, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 462,
-         AMF.Internals.Tables.CMOF_String_Data.MS_431'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AE'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 80,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 80,
-         AMF.Internals.Tables.CMOF_String_Data.MS_186'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 80, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 463,
-         AMF.Internals.Tables.CMOF_String_Data.MS_69'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0044'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 40, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 40, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 40, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 40,
-         AMF.Internals.Tables.CMOF_String_Data.MS_83'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0052'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 40, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 40, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 464,
-         AMF.Internals.Tables.CMOF_String_Data.MS_412'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019B'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 41, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 41, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 41, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 41,
-         AMF.Internals.Tables.CMOF_String_Data.MS_182'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 41, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 41, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 465,
-         AMF.Internals.Tables.CMOF_String_Data.MS_475'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DA'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 42, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 42,
-         AMF.Internals.Tables.CMOF_String_Data.MS_379'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 42, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 42, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 466,
-         AMF.Internals.Tables.CMOF_String_Data.MS_116'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0073'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 467, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 467,
-         AMF.Internals.Tables.CMOF_String_Data.MS_335'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 467, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 468,
-         AMF.Internals.Tables.CMOF_String_Data.MS_367'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 469,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 469, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 470, (Is_Empty => True));
@@ -6108,240 +6110,240 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 472, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 472,
-         AMF.Internals.Tables.CMOF_String_Data.MS_459'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 472, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 472, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 26,
-         AMF.Internals.Tables.CMOF_String_Data.MS_119'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0076'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 26, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 473,
-         AMF.Internals.Tables.CMOF_String_Data.MS_106'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0069'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 474,
-         AMF.Internals.Tables.CMOF_String_Data.MS_297'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0128'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 474, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 475,
-         AMF.Internals.Tables.CMOF_String_Data.MS_327'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0146'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 476, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 477,
-         AMF.Internals.Tables.CMOF_String_Data.MS_165'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 477, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 478,
-         AMF.Internals.Tables.CMOF_String_Data.MS_38'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0025'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 479, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 480,
-         AMF.Internals.Tables.CMOF_String_Data.MS_111'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 480, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 481,
-         AMF.Internals.Tables.CMOF_String_Data.MS_240'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00EF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 482, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 483,
-         AMF.Internals.Tables.CMOF_String_Data.MS_237'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00EC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 483, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 484,
-         AMF.Internals.Tables.CMOF_String_Data.MS_36'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0023'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 485, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 486,
-         AMF.Internals.Tables.CMOF_String_Data.MS_173'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 486, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 487,
-         AMF.Internals.Tables.CMOF_String_Data.MS_429'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 488, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 489,
-         AMF.Internals.Tables.CMOF_String_Data.MS_109'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 489, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 490,
-         AMF.Internals.Tables.CMOF_String_Data.MS_294'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0125'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 491, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 492,
-         AMF.Internals.Tables.CMOF_String_Data.MS_156'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 492, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 493,
-         AMF.Internals.Tables.CMOF_String_Data.MS_146'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0091'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 494, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 127,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 127,
-         AMF.Internals.Tables.CMOF_String_Data.MS_97'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0060'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 127, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 495,
-         AMF.Internals.Tables.CMOF_String_Data.MS_344'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0157'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 123, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 123,
-         AMF.Internals.Tables.CMOF_String_Data.MS_468'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 123, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 496,
-         AMF.Internals.Tables.CMOF_String_Data.MS_13'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 124,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 124,
-         AMF.Internals.Tables.CMOF_String_Data.MS_274'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0111'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 124, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 497,
-         AMF.Internals.Tables.CMOF_String_Data.MS_222'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DD'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 125,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 125,
-         AMF.Internals.Tables.CMOF_String_Data.MS_453'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 125, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 498,
-         AMF.Internals.Tables.CMOF_String_Data.MS_179'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 126,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 126,
-         AMF.Internals.Tables.CMOF_String_Data.MS_262'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0105'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 126, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 499,
-         AMF.Internals.Tables.CMOF_String_Data.MS_93'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 121, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 121,
-         AMF.Internals.Tables.CMOF_String_Data.MS_42'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0029'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 121, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 500,
-         AMF.Internals.Tables.CMOF_String_Data.MS_243'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 129, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 129,
-         AMF.Internals.Tables.CMOF_String_Data.MS_373'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0174'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 129, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 501,
-         AMF.Internals.Tables.CMOF_String_Data.MS_492'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 73, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 73,
-         AMF.Internals.Tables.CMOF_String_Data.MS_357'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0164'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 73, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 73, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 502,
-         AMF.Internals.Tables.CMOF_String_Data.MS_177'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 74, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 74,
-         AMF.Internals.Tables.CMOF_String_Data.MS_424'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 74, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 74, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 503,
-         AMF.Internals.Tables.CMOF_String_Data.MS_391'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0186'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 128, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 128, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 128,
-         AMF.Internals.Tables.CMOF_String_Data.MS_160'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 128, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 504,
-         AMF.Internals.Tables.CMOF_String_Data.MS_497'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 122, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 122,
-         AMF.Internals.Tables.CMOF_String_Data.MS_464'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 122, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 505,
-         AMF.Internals.Tables.CMOF_String_Data.MS_202'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 120, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 120,
-         AMF.Internals.Tables.CMOF_String_Data.MS_513'Access);
+         AMF.Internals.Tables.CMOF_String_Data_02.MS_0200'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 120, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 506,
-         AMF.Internals.Tables.CMOF_String_Data.MS_483'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 507, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 507,
-         AMF.Internals.Tables.CMOF_String_Data.MS_160'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 507, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 508,
-         AMF.Internals.Tables.CMOF_String_Data.MS_21'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0014'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 509,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 509, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 510, (Is_Empty => True));
@@ -6352,12 +6354,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 512, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 512,
-         AMF.Internals.Tables.CMOF_String_Data.MS_27'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 512, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 513,
-         AMF.Internals.Tables.CMOF_String_Data.MS_282'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0119'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 514, (Is_Empty => True));
 
@@ -6365,7 +6367,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 516,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 516, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 517, (Is_Empty => True));
@@ -6376,22 +6378,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 519, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 519,
-         AMF.Internals.Tables.CMOF_String_Data.MS_15'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 519, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 520, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 520,
-         AMF.Internals.Tables.CMOF_String_Data.MS_363'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 520, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 521,
-         AMF.Internals.Tables.CMOF_String_Data.MS_350'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 522,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 522, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 523, (Is_Empty => True));
@@ -6404,16 +6406,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 525, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 525,
-         AMF.Internals.Tables.CMOF_String_Data.MS_292'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0123'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 525, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 526,
-         AMF.Internals.Tables.CMOF_String_Data.MS_79'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 527,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 527, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 528, (Is_Empty => True));
@@ -6424,16 +6426,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 530, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 530,
-         AMF.Internals.Tables.CMOF_String_Data.MS_324'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0143'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 530, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 531,
-         AMF.Internals.Tables.CMOF_String_Data.MS_264'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0107'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 532,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 532, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 533, (Is_Empty => True));
@@ -6444,57 +6446,57 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 535, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 535,
-         AMF.Internals.Tables.CMOF_String_Data.MS_77'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 535, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 7,
-         AMF.Internals.Tables.CMOF_String_Data.MS_303'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 7, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 536,
-         AMF.Internals.Tables.CMOF_String_Data.MS_62'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 49, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 49, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 49, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 49,
-         AMF.Internals.Tables.CMOF_String_Data.MS_83'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0052'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 49, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 49, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 537,
-         AMF.Internals.Tables.CMOF_String_Data.MS_23'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0016'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 50, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 50, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 50, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 50,
-         AMF.Internals.Tables.CMOF_String_Data.MS_182'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 50, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 50, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 538,
-         AMF.Internals.Tables.CMOF_String_Data.MS_58'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0039'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 539, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 539,
-         AMF.Internals.Tables.CMOF_String_Data.MS_335'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 539, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 540,
-         AMF.Internals.Tables.CMOF_String_Data.MS_367'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 541,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 541, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 542, (Is_Empty => True));
@@ -6508,88 +6510,88 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 544, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 544,
-         AMF.Internals.Tables.CMOF_String_Data.MS_459'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 544, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 544, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 11,
-         AMF.Internals.Tables.CMOF_String_Data.MS_33'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0020'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 11, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 545,
-         AMF.Internals.Tables.CMOF_String_Data.MS_458'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 55, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 55, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 55, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 55,
-         AMF.Internals.Tables.CMOF_String_Data.MS_225'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 55, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 55, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 546,
-         AMF.Internals.Tables.CMOF_String_Data.MS_135'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0086'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 12,
-         AMF.Internals.Tables.CMOF_String_Data.MS_99'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0062'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 12, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 547,
-         AMF.Internals.Tables.CMOF_String_Data.MS_248'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 90, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 90,
-         AMF.Internals.Tables.CMOF_String_Data.MS_223'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 90, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 548,
-         AMF.Internals.Tables.CMOF_String_Data.MS_402'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0191'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 25,
-         AMF.Internals.Tables.CMOF_String_Data.MS_378'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0179'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 25, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 549,
-         AMF.Internals.Tables.CMOF_String_Data.MS_80'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-         AMF.Internals.Tables.CMOF_String_Data.MS_502'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 6, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 550,
-         AMF.Internals.Tables.CMOF_String_Data.MS_129'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0080'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 551,
-         AMF.Internals.Tables.CMOF_String_Data.MS_204'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 551, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 552,
-         AMF.Internals.Tables.CMOF_String_Data.MS_296'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0127'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 553, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 554,
-         AMF.Internals.Tables.CMOF_String_Data.MS_28'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 554, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 555,
-         AMF.Internals.Tables.CMOF_String_Data.MS_494'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01ED'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 556, (Is_Empty => True));
 
@@ -6597,47 +6599,47 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 48, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 48,
-         AMF.Internals.Tables.CMOF_String_Data.MS_253'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 48, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 48, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 557,
-         AMF.Internals.Tables.CMOF_String_Data.MS_100'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0063'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 84, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 84,
-         AMF.Internals.Tables.CMOF_String_Data.MS_252'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 84, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 558,
-         AMF.Internals.Tables.CMOF_String_Data.MS_256'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 83, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 83,
-         AMF.Internals.Tables.CMOF_String_Data.MS_110'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 83, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 18,
-         AMF.Internals.Tables.CMOF_String_Data.MS_413'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 18, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 559,
-         AMF.Internals.Tables.CMOF_String_Data.MS_232'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 560,
-         AMF.Internals.Tables.CMOF_String_Data.MS_199'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 560, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 561,
-         AMF.Internals.Tables.CMOF_String_Data.MS_64'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 562, (Is_Empty => True));
 
@@ -6647,195 +6649,195 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 99, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 99,
-         AMF.Internals.Tables.CMOF_String_Data.MS_323'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0142'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 99, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 99, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 563,
-         AMF.Internals.Tables.CMOF_String_Data.MS_342'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0155'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 100, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 100, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 100, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 100,
-         AMF.Internals.Tables.CMOF_String_Data.MS_415'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 100, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 100, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 564,
-         AMF.Internals.Tables.CMOF_String_Data.MS_509'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 19,
-         AMF.Internals.Tables.CMOF_String_Data.MS_117'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0074'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 19, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 565,
-         AMF.Internals.Tables.CMOF_String_Data.MS_463'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CE'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 566,
-         AMF.Internals.Tables.CMOF_String_Data.MS_439'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 566, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 567,
-         AMF.Internals.Tables.CMOF_String_Data.MS_245'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 568, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 569,
-         AMF.Internals.Tables.CMOF_String_Data.MS_398'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 569, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 570,
-         AMF.Internals.Tables.CMOF_String_Data.MS_50'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0031'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 571, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 105,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 105,
-         AMF.Internals.Tables.CMOF_String_Data.MS_34'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0021'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 105, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 572,
-         AMF.Internals.Tables.CMOF_String_Data.MS_55'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0036'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 104,
-         AMF.Internals.Tables.CMOF_String_Data.MS_104'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 104, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 104,
-         AMF.Internals.Tables.CMOF_String_Data.MS_276'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0113'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 104, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 573,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 106,
-         AMF.Internals.Tables.CMOF_String_Data.MS_159'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 106, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 106,
-         AMF.Internals.Tables.CMOF_String_Data.MS_377'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0178'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 106, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 574,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 107,
-         AMF.Internals.Tables.CMOF_String_Data.MS_346'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0159'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 107, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 107, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 107,
-         AMF.Internals.Tables.CMOF_String_Data.MS_16'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 107, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 575,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 109,
-         AMF.Internals.Tables.CMOF_String_Data.MS_346'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0159'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 109, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 109, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 109,
-         AMF.Internals.Tables.CMOF_String_Data.MS_242'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 109, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 576,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 102, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 102,
-         AMF.Internals.Tables.CMOF_String_Data.MS_42'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0029'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 102, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 577,
-         AMF.Internals.Tables.CMOF_String_Data.MS_56'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0037'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 103, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 103,
-         AMF.Internals.Tables.CMOF_String_Data.MS_464'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 103, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 578,
-         AMF.Internals.Tables.CMOF_String_Data.MS_32'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 67, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 67,
-         AMF.Internals.Tables.CMOF_String_Data.MS_365'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 67, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 67, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 579,
-         AMF.Internals.Tables.CMOF_String_Data.MS_130'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0081'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 68, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 68,
-         AMF.Internals.Tables.CMOF_String_Data.MS_430'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 68, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 68, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 580,
-         AMF.Internals.Tables.CMOF_String_Data.MS_84'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0053'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 108, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 108, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 108,
-         AMF.Internals.Tables.CMOF_String_Data.MS_407'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0196'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 108, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 581,
-         AMF.Internals.Tables.CMOF_String_Data.MS_143'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 64, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 64, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 64, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 64,
-         AMF.Internals.Tables.CMOF_String_Data.MS_491'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 64, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 64, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 582,
-         AMF.Internals.Tables.CMOF_String_Data.MS_246'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F5'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 66, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 66, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 66,
-         AMF.Internals.Tables.CMOF_String_Data.MS_267'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 66, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 66, (Is_Empty => True));
 
@@ -6843,7 +6845,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 65, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 65,
-         AMF.Internals.Tables.CMOF_String_Data.MS_507'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 65, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 65, (Is_Empty => True));
 
@@ -6851,22 +6853,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 101, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 101,
-         AMF.Internals.Tables.CMOF_String_Data.MS_120'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0077'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 101, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 583, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 583,
-         AMF.Internals.Tables.CMOF_String_Data.MS_276'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0113'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 583, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 584,
-         AMF.Internals.Tables.CMOF_String_Data.MS_19'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0012'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 585,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 585, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 586, (Is_Empty => True));
@@ -6877,16 +6879,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 588, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 588,
-         AMF.Internals.Tables.CMOF_String_Data.MS_377'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0178'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 588, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 589,
-         AMF.Internals.Tables.CMOF_String_Data.MS_170'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 590,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 590, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 591, (Is_Empty => True));
@@ -6897,16 +6899,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 593, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 593,
-         AMF.Internals.Tables.CMOF_String_Data.MS_16'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 593, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 594,
-         AMF.Internals.Tables.CMOF_String_Data.MS_210'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 595,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 595, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 596, (Is_Empty => True));
@@ -6917,16 +6919,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 598, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 598,
-         AMF.Internals.Tables.CMOF_String_Data.MS_242'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 598, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 599,
-         AMF.Internals.Tables.CMOF_String_Data.MS_352'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 600,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 600, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 601, (Is_Empty => True));
@@ -6937,16 +6939,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 603, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 603,
-         AMF.Internals.Tables.CMOF_String_Data.MS_407'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0196'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 603, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 604,
-         AMF.Internals.Tables.CMOF_String_Data.MS_481'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 605,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 605, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 606, (Is_Empty => True));
@@ -6957,12 +6959,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 608, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 608,
-         AMF.Internals.Tables.CMOF_String_Data.MS_27'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 608, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 609,
-         AMF.Internals.Tables.CMOF_String_Data.MS_211'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 610, (Is_Empty => True));
 
@@ -6970,7 +6972,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 612,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 612, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 613, (Is_Empty => True));
@@ -6981,18 +6983,18 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 615, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 615,
-         AMF.Internals.Tables.CMOF_String_Data.MS_15'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 615, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 616, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 616,
-         AMF.Internals.Tables.CMOF_String_Data.MS_435'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 616, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 617,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 617, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 618, (Is_Empty => True));
@@ -7004,92 +7006,92 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 24,
-         AMF.Internals.Tables.CMOF_String_Data.MS_168'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 24, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 620,
-         AMF.Internals.Tables.CMOF_String_Data.MS_380'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017B'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 117, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 117,
-         AMF.Internals.Tables.CMOF_String_Data.MS_468'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 117, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 621,
-         AMF.Internals.Tables.CMOF_String_Data.MS_188'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 118,
-         AMF.Internals.Tables.CMOF_String_Data.MS_12'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 118,
-         AMF.Internals.Tables.CMOF_String_Data.MS_144'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 118, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 622,
-         AMF.Internals.Tables.CMOF_String_Data.MS_39'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0026'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 119, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 119,
-         AMF.Internals.Tables.CMOF_String_Data.MS_85'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 119, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 623,
-         AMF.Internals.Tables.CMOF_String_Data.MS_152'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0097'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 2, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
-         AMF.Internals.Tables.CMOF_String_Data.MS_35'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0022'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 2, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 624,
-         AMF.Internals.Tables.CMOF_String_Data.MS_178'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 38, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 38, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 38, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 38,
-         AMF.Internals.Tables.CMOF_String_Data.MS_491'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 38, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 38, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 625,
-         AMF.Internals.Tables.CMOF_String_Data.MS_246'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F5'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 39, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 39,
-         AMF.Internals.Tables.CMOF_String_Data.MS_365'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 39, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 39, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 626,
-         AMF.Internals.Tables.CMOF_String_Data.MS_485'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 627, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 627,
-         AMF.Internals.Tables.CMOF_String_Data.MS_43'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 627, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 628,
-         AMF.Internals.Tables.CMOF_String_Data.MS_37'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0024'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 629,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 629, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 630, (Is_Empty => True));
@@ -7100,99 +7102,99 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 632, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 632,
-         AMF.Internals.Tables.CMOF_String_Data.MS_31'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 632, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 633, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 633,
-         AMF.Internals.Tables.CMOF_String_Data.MS_78'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 633, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
-         AMF.Internals.Tables.CMOF_String_Data.MS_511'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 10, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 634,
-         AMF.Internals.Tables.CMOF_String_Data.MS_176'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 635,
-         AMF.Internals.Tables.CMOF_String_Data.MS_70'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0045'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 635, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 636,
-         AMF.Internals.Tables.CMOF_String_Data.MS_220'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 637, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 638,
-         AMF.Internals.Tables.CMOF_String_Data.MS_467'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 638, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 639,
-         AMF.Internals.Tables.CMOF_String_Data.MS_423'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A6'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 640, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 89,
-         AMF.Internals.Tables.CMOF_String_Data.MS_60'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 89,
-         AMF.Internals.Tables.CMOF_String_Data.MS_495'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 89, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 641,
-         AMF.Internals.Tables.CMOF_String_Data.MS_466'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 86, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 86,
-         AMF.Internals.Tables.CMOF_String_Data.MS_300'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 86, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 642,
-         AMF.Internals.Tables.CMOF_String_Data.MS_203'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CA'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 87,
-         AMF.Internals.Tables.CMOF_String_Data.MS_255'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 87, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 643,
-         AMF.Internals.Tables.CMOF_String_Data.MS_8'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0007'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 88,
-         AMF.Internals.Tables.CMOF_String_Data.MS_254'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 88, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 644,
-         AMF.Internals.Tables.CMOF_String_Data.MS_434'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 645, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 645,
-         AMF.Internals.Tables.CMOF_String_Data.MS_212'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 645, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 646,
-         AMF.Internals.Tables.CMOF_String_Data.MS_397'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 647,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 647, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 648, (Is_Empty => True));
@@ -7202,21 +7204,21 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 20,
-         AMF.Internals.Tables.CMOF_String_Data.MS_427'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01AA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 20, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 650,
-         AMF.Internals.Tables.CMOF_String_Data.MS_307'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0132'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 651,
-         AMF.Internals.Tables.CMOF_String_Data.MS_169'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 651, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 652,
-         AMF.Internals.Tables.CMOF_String_Data.MS_376'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0177'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 653, (Is_Empty => True));
 
@@ -7224,85 +7226,85 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 72, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 72,
-         AMF.Internals.Tables.CMOF_String_Data.MS_490'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 72, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 72, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 654,
-         AMF.Internals.Tables.CMOF_String_Data.MS_226'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 70, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 70, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 70, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 70,
-         AMF.Internals.Tables.CMOF_String_Data.MS_66'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0041'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 70, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 70, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 655,
-         AMF.Internals.Tables.CMOF_String_Data.MS_469'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 69, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 69, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 69, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 69,
-         AMF.Internals.Tables.CMOF_String_Data.MS_356'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0163'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 69, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 69, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 656,
-         AMF.Internals.Tables.CMOF_String_Data.MS_230'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E5'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 110, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 110,
-         AMF.Internals.Tables.CMOF_String_Data.MS_454'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 110, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 657,
-         AMF.Internals.Tables.CMOF_String_Data.MS_388'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0183'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 71, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 71, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 71,
-         AMF.Internals.Tables.CMOF_String_Data.MS_180'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 71, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 71, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 658,
-         AMF.Internals.Tables.CMOF_String_Data.MS_172'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 111, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 111,
-         AMF.Internals.Tables.CMOF_String_Data.MS_11'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 111, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 659,
-         AMF.Internals.Tables.CMOF_String_Data.MS_370'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0171'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 660, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 660,
-         AMF.Internals.Tables.CMOF_String_Data.MS_61'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 660, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 661,
-         AMF.Internals.Tables.CMOF_String_Data.MS_72'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0047'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 662,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 662, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 663, (Is_Empty => True));
@@ -7313,16 +7315,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 665, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 665,
-         AMF.Internals.Tables.CMOF_String_Data.MS_284'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 665, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 666,
-         AMF.Internals.Tables.CMOF_String_Data.MS_317'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 667,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 667, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 668, (Is_Empty => True));
@@ -7335,12 +7337,12 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 670, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 670,
-         AMF.Internals.Tables.CMOF_String_Data.MS_417'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 670, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 671,
-         AMF.Internals.Tables.CMOF_String_Data.MS_501'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 672, (Is_Empty => True));
 
@@ -7348,7 +7350,7 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 674,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 674, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 675, (Is_Empty => True));
@@ -7359,119 +7361,119 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 677, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 677,
-         AMF.Internals.Tables.CMOF_String_Data.MS_228'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 677, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 21,
-         AMF.Internals.Tables.CMOF_String_Data.MS_82'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0051'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 21, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 678,
-         AMF.Internals.Tables.CMOF_String_Data.MS_421'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 679,
-         AMF.Internals.Tables.CMOF_String_Data.MS_445'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 679, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 680,
-         AMF.Internals.Tables.CMOF_String_Data.MS_401'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0190'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 681, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 114,
-         AMF.Internals.Tables.CMOF_String_Data.MS_60'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 114,
-         AMF.Internals.Tables.CMOF_String_Data.MS_495'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 114, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 682,
-         AMF.Internals.Tables.CMOF_String_Data.MS_426'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 112,
-         AMF.Internals.Tables.CMOF_String_Data.MS_74'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0049'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 112, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 683,
-         AMF.Internals.Tables.CMOF_String_Data.MS_302'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_012D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 113,
-         AMF.Internals.Tables.CMOF_String_Data.MS_254'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 113, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 684,
-         AMF.Internals.Tables.CMOF_String_Data.MS_236'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00EB'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 22,
-         AMF.Internals.Tables.CMOF_String_Data.MS_477'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 22, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 685,
-         AMF.Internals.Tables.CMOF_String_Data.MS_175'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AE'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 116,
-         AMF.Internals.Tables.CMOF_String_Data.MS_280'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0117'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 116, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 686,
-         AMF.Internals.Tables.CMOF_String_Data.MS_193'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C0'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 115,
-         AMF.Internals.Tables.CMOF_String_Data.MS_500'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 115, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 687,
-         AMF.Internals.Tables.CMOF_String_Data.MS_478'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DD'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 31, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 31,
-         AMF.Internals.Tables.CMOF_String_Data.MS_76'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 31, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 688,
-         AMF.Internals.Tables.CMOF_String_Data.MS_425'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A8'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 134, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 134,
-         AMF.Internals.Tables.CMOF_String_Data.MS_249'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 134, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 689,
-         AMF.Internals.Tables.CMOF_String_Data.MS_290'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0121'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 690, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 690,
-         AMF.Internals.Tables.CMOF_String_Data.MS_332'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 690, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 691,
-         AMF.Internals.Tables.CMOF_String_Data.MS_158'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 692,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 692, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 693, (Is_Empty => True));
@@ -7482,71 +7484,71 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 695, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 695,
-         AMF.Internals.Tables.CMOF_String_Data.MS_275'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0112'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 695, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 16, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 16,
-         AMF.Internals.Tables.CMOF_String_Data.MS_348'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 16, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 696,
-         AMF.Internals.Tables.CMOF_String_Data.MS_122'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0079'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 697,
-         AMF.Internals.Tables.CMOF_String_Data.MS_291'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0122'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 697, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 698,
-         AMF.Internals.Tables.CMOF_String_Data.MS_283'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 699, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 700,
-         AMF.Internals.Tables.CMOF_String_Data.MS_233'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 700, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 701,
-         AMF.Internals.Tables.CMOF_String_Data.MS_128'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 702, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 703,
-         AMF.Internals.Tables.CMOF_String_Data.MS_465'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 703, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 704,
-         AMF.Internals.Tables.CMOF_String_Data.MS_287'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 705, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 95, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 95,
-         AMF.Internals.Tables.CMOF_String_Data.MS_139'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 95, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 706,
-         AMF.Internals.Tables.CMOF_String_Data.MS_410'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0199'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 98, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 98,
-         AMF.Internals.Tables.CMOF_String_Data.MS_495'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01EE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 98, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 707,
-         AMF.Internals.Tables.CMOF_String_Data.MS_95'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005E'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 96, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 96, True);
@@ -7554,38 +7556,38 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 96, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 96,
-         AMF.Internals.Tables.CMOF_String_Data.MS_489'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 96, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 708,
-         AMF.Internals.Tables.CMOF_String_Data.MS_406'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0195'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 97, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 97, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 97, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 97,
-         AMF.Internals.Tables.CMOF_String_Data.MS_1'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0000'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 97, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 709,
-         AMF.Internals.Tables.CMOF_String_Data.MS_381'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 710, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 710,
-         AMF.Internals.Tables.CMOF_String_Data.MS_508'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 710, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 711,
-         AMF.Internals.Tables.CMOF_String_Data.MS_75'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 712,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 712, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 713, (Is_Empty => True));
@@ -7599,16 +7601,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 715, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 715,
-         AMF.Internals.Tables.CMOF_String_Data.MS_43'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 715, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 716,
-         AMF.Internals.Tables.CMOF_String_Data.MS_461'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CC'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 717,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 717, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 718, (Is_Empty => True));
@@ -7619,28 +7621,28 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 720, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 720,
-         AMF.Internals.Tables.CMOF_String_Data.MS_31'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_001E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 720, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (Base + 721, AMF.CMOF.In_Parameter);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 721,
-         AMF.Internals.Tables.CMOF_String_Data.MS_78'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_004D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 721, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 722, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 722,
-         AMF.Internals.Tables.CMOF_String_Data.MS_133'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0084'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 722, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 723,
-         AMF.Internals.Tables.CMOF_String_Data.MS_107'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 724,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 724, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 725, (Is_Empty => True));
@@ -7651,16 +7653,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 727, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 727,
-         AMF.Internals.Tables.CMOF_String_Data.MS_1'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0000'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 727, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 728,
-         AMF.Internals.Tables.CMOF_String_Data.MS_128'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007F'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 729,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 729, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 730, (Is_Empty => True));
@@ -7670,123 +7672,123 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-         AMF.Internals.Tables.CMOF_String_Data.MS_409'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0198'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 13, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 732,
-         AMF.Internals.Tables.CMOF_String_Data.MS_289'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0120'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 56, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 56, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 56, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 56,
-         AMF.Internals.Tables.CMOF_String_Data.MS_405'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0194'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 56, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 56, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 733,
-         AMF.Internals.Tables.CMOF_String_Data.MS_269'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 5,
-         AMF.Internals.Tables.CMOF_String_Data.MS_449'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 5, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 734,
-         AMF.Internals.Tables.CMOF_String_Data.MS_40'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0027'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 82, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 82,
-         AMF.Internals.Tables.CMOF_String_Data.MS_323'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0142'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 82, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 735,
-         AMF.Internals.Tables.CMOF_String_Data.MS_480'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DF'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 47, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 47,
-         AMF.Internals.Tables.CMOF_String_Data.MS_369'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0170'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 47, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 47, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 736,
-         AMF.Internals.Tables.CMOF_String_Data.MS_136'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0087'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 737,
-         AMF.Internals.Tables.CMOF_String_Data.MS_22'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0015'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 737, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 738,
-         AMF.Internals.Tables.CMOF_String_Data.MS_330'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0149'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 739,
-         AMF.Internals.Tables.CMOF_String_Data.MS_12'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 739, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 740,
-         AMF.Internals.Tables.CMOF_String_Data.MS_26'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0019'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 741,
-         AMF.Internals.Tables.CMOF_String_Data.MS_224'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 741, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 742,
-         AMF.Internals.Tables.CMOF_String_Data.MS_157'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_009C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 743,
-         AMF.Internals.Tables.CMOF_String_Data.MS_198'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 743, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 744,
-         AMF.Internals.Tables.CMOF_String_Data.MS_239'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00EE'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 745,
-         AMF.Internals.Tables.CMOF_String_Data.MS_447'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01BE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 745, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 746,
-         AMF.Internals.Tables.CMOF_String_Data.MS_153'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0098'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 747,
-         AMF.Internals.Tables.CMOF_String_Data.MS_403'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0192'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 747, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 748,
-         AMF.Internals.Tables.CMOF_String_Data.MS_488'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Query (Base + 749, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 749,
-         AMF.Internals.Tables.CMOF_String_Data.MS_171'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00AA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 749, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 750,
-         AMF.Internals.Tables.CMOF_String_Data.MS_46'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 751,
-         AMF.Internals.Tables.CMOF_String_Data.MS_134'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0085'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 751, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 752, (Is_Empty => True));
@@ -7798,592 +7800,592 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 754, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 754,
-         AMF.Internals.Tables.CMOF_String_Data.MS_208'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 754, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 754, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 755,
-         AMF.Internals.Tables.CMOF_String_Data.MS_60'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_003B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 755, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 756,
-         AMF.Internals.Tables.CMOF_String_Data.MS_41'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0028'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 757,
-         AMF.Internals.Tables.CMOF_String_Data.MS_320'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 757, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 758,
-         AMF.Internals.Tables.CMOF_String_Data.MS_142'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008D'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 759,
-         AMF.Internals.Tables.CMOF_String_Data.MS_277'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0114'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 759, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 760,
-         AMF.Internals.Tables.CMOF_String_Data.MS_114'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0071'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 761,
-         AMF.Internals.Tables.CMOF_String_Data.MS_249'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00F8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 761, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 762,
-         AMF.Internals.Tables.CMOF_String_Data.MS_359'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0166'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 153,
-         AMF.Internals.Tables.CMOF_String_Data.MS_510'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01FD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 153, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 763, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 763,
-         AMF.Internals.Tables.CMOF_String_Data.MS_462'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 763, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 763, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 155,
-         AMF.Internals.Tables.CMOF_String_Data.MS_197'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 155, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 156,
-         AMF.Internals.Tables.CMOF_String_Data.MS_219'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00DA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 156, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 158,
-         AMF.Internals.Tables.CMOF_String_Data.MS_7'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0006'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 158, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 159,
-         AMF.Internals.Tables.CMOF_String_Data.MS_162'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 159, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 764, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 764,
-         AMF.Internals.Tables.CMOF_String_Data.MS_272'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 764, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 162,
-         AMF.Internals.Tables.CMOF_String_Data.MS_504'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01F7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 162, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 765, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 765,
-         AMF.Internals.Tables.CMOF_String_Data.MS_118'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0075'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 765, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 765, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 164,
-         AMF.Internals.Tables.CMOF_String_Data.MS_98'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0061'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 164, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 766, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 766,
-         AMF.Internals.Tables.CMOF_String_Data.MS_118'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0075'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 766, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 766, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 166,
-         AMF.Internals.Tables.CMOF_String_Data.MS_456'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01C7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 166, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 767, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 767,
-         AMF.Internals.Tables.CMOF_String_Data.MS_118'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0075'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 767, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 168,
-         AMF.Internals.Tables.CMOF_String_Data.MS_263'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0106'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 168, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 768, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 768,
-         AMF.Internals.Tables.CMOF_String_Data.MS_42'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0029'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 768, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 768, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 170,
-         AMF.Internals.Tables.CMOF_String_Data.MS_238'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00ED'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 170, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 769, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 769,
-         AMF.Internals.Tables.CMOF_String_Data.MS_513'Access);
+         AMF.Internals.Tables.CMOF_String_Data_02.MS_0200'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 769, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 769, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 172,
-         AMF.Internals.Tables.CMOF_String_Data.MS_354'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0161'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 172, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 174,
-         AMF.Internals.Tables.CMOF_String_Data.MS_476'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01DB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 174, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 175,
-         AMF.Internals.Tables.CMOF_String_Data.MS_167'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 175, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 177,
-         AMF.Internals.Tables.CMOF_String_Data.MS_460'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01CB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 177, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 770, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 770,
-         AMF.Internals.Tables.CMOF_String_Data.MS_85'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 770, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 770, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 179,
-         AMF.Internals.Tables.CMOF_String_Data.MS_251'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00FA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 179, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 771, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 771,
-         AMF.Internals.Tables.CMOF_String_Data.MS_85'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 771, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 771, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 181,
-         AMF.Internals.Tables.CMOF_String_Data.MS_194'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 181, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 772, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 772,
-         AMF.Internals.Tables.CMOF_String_Data.MS_190'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 772, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 183,
-         AMF.Internals.Tables.CMOF_String_Data.MS_96'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_005F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 183, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 773, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 773,
-         AMF.Internals.Tables.CMOF_String_Data.MS_206'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 773, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 773, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 185,
-         AMF.Internals.Tables.CMOF_String_Data.MS_305'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0130'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 185, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 774, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 774,
-         AMF.Internals.Tables.CMOF_String_Data.MS_489'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 774, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 774, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 187,
-         AMF.Internals.Tables.CMOF_String_Data.MS_54'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0035'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 187, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 775, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 775,
-         AMF.Internals.Tables.CMOF_String_Data.MS_362'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0169'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 775, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 775, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 136,
-         AMF.Internals.Tables.CMOF_String_Data.MS_384'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_017F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 136, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 776, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 776,
-         AMF.Internals.Tables.CMOF_String_Data.MS_209'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 776, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 776, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 137,
-         AMF.Internals.Tables.CMOF_String_Data.MS_336'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_014F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 137, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 138,
-         AMF.Internals.Tables.CMOF_String_Data.MS_268'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 138, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 139,
-         AMF.Internals.Tables.CMOF_String_Data.MS_408'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0197'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 139, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 777, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 777,
-         AMF.Internals.Tables.CMOF_String_Data.MS_316'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_013B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 777, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 141,
-         AMF.Internals.Tables.CMOF_String_Data.MS_472'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 141, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 143,
-         AMF.Internals.Tables.CMOF_String_Data.MS_115'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0072'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 143, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 144,
-         AMF.Internals.Tables.CMOF_String_Data.MS_14'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_000D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 144, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 145,
-         AMF.Internals.Tables.CMOF_String_Data.MS_184'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 145, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 778, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 778,
-         AMF.Internals.Tables.CMOF_String_Data.MS_85'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 778, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 778, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 146,
-         AMF.Internals.Tables.CMOF_String_Data.MS_437'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01B4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 146, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 147,
-         AMF.Internals.Tables.CMOF_String_Data.MS_374'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0175'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 147, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 779, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 779,
-         AMF.Internals.Tables.CMOF_String_Data.MS_180'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00B3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 779, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 779, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 148,
-         AMF.Internals.Tables.CMOF_String_Data.MS_325'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0144'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 148, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 149,
-         AMF.Internals.Tables.CMOF_String_Data.MS_126'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 149, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 780, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 780,
-         AMF.Internals.Tables.CMOF_String_Data.MS_366'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_016D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 780, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 780, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 150,
-         AMF.Internals.Tables.CMOF_String_Data.MS_166'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00A5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 150, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 781, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 781,
-         AMF.Internals.Tables.CMOF_String_Data.MS_229'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 781, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 781, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 151,
-         AMF.Internals.Tables.CMOF_String_Data.MS_400'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_018F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 151, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 782, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 782,
-         AMF.Internals.Tables.CMOF_String_Data.MS_2'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0001'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 782, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 782, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 152,
-         AMF.Internals.Tables.CMOF_String_Data.MS_195'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00C2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 152, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 783, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 783,
-         AMF.Internals.Tables.CMOF_String_Data.MS_2'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0001'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 783, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 783, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 154,
-         AMF.Internals.Tables.CMOF_String_Data.MS_347'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_015A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 154, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 784, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 784,
-         AMF.Internals.Tables.CMOF_String_Data.MS_259'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 784, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 784, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 157,
-         AMF.Internals.Tables.CMOF_String_Data.MS_265'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0108'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 157, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 785, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 785,
-         AMF.Internals.Tables.CMOF_String_Data.MS_259'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 785, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 785, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 160,
-         AMF.Internals.Tables.CMOF_String_Data.MS_227'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00E2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 160, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 161,
-         AMF.Internals.Tables.CMOF_String_Data.MS_474'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01D9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 161, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 786, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 786,
-         AMF.Internals.Tables.CMOF_String_Data.MS_414'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_019D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 786, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 786, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 163,
-         AMF.Internals.Tables.CMOF_String_Data.MS_271'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 163, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 787, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 787,
-         AMF.Internals.Tables.CMOF_String_Data.MS_10'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0009'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 787, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 165,
-         AMF.Internals.Tables.CMOF_String_Data.MS_45'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 165, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 788, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 788,
-         AMF.Internals.Tables.CMOF_String_Data.MS_272'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 788, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 788, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 167,
-         AMF.Internals.Tables.CMOF_String_Data.MS_86'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0055'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 167, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 169,
-         AMF.Internals.Tables.CMOF_String_Data.MS_52'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0033'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 169, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 789, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 789,
-         AMF.Internals.Tables.CMOF_String_Data.MS_489'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01E8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 789, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 789, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 171,
-         AMF.Internals.Tables.CMOF_String_Data.MS_4'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0003'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 171, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 790, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 790,
-         AMF.Internals.Tables.CMOF_String_Data.MS_131'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0082'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 790, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 173,
-         AMF.Internals.Tables.CMOF_String_Data.MS_48'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_002F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 173, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 791, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 791,
-         AMF.Internals.Tables.CMOF_String_Data.MS_513'Access);
+         AMF.Internals.Tables.CMOF_String_Data_02.MS_0200'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 791, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 176,
-         AMF.Internals.Tables.CMOF_String_Data.MS_191'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 176, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 178,
-         AMF.Internals.Tables.CMOF_String_Data.MS_102'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0065'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 178, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 792, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 792,
-         AMF.Internals.Tables.CMOF_String_Data.MS_285'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_011C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 792, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 180,
-         AMF.Internals.Tables.CMOF_String_Data.MS_53'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0034'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 180, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 793, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 793,
-         AMF.Internals.Tables.CMOF_String_Data.MS_272'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_010F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 793, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 793, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 182,
-         AMF.Internals.Tables.CMOF_String_Data.MS_9'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0008'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 182, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 794, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 794,
-         AMF.Internals.Tables.CMOF_String_Data.MS_385'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0180'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 794, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 184,
-         AMF.Internals.Tables.CMOF_String_Data.MS_124'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_007B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 184, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 795, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 795,
-         AMF.Internals.Tables.CMOF_String_Data.MS_361'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0168'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 795, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 186,
-         AMF.Internals.Tables.CMOF_String_Data.MS_387'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0182'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 186, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 796, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 796,
-         AMF.Internals.Tables.CMOF_String_Data.MS_392'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0187'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 796, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 188,
-         AMF.Internals.Tables.CMOF_String_Data.MS_187'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00BA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 188, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 30,
-         AMF.Internals.Tables.CMOF_String_Data.MS_418'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_01A1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 30, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 131,
-         AMF.Internals.Tables.CMOF_String_Data.MS_139'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_008A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 131, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 133,
-         AMF.Internals.Tables.CMOF_String_Data.MS_337'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0150'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 133, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 78, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 78,
-         AMF.Internals.Tables.CMOF_String_Data.MS_261'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0104'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 78, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 78, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 132, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 132,
-         AMF.Internals.Tables.CMOF_String_Data.MS_81'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0050'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 132, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 140,
-         AMF.Internals.Tables.CMOF_String_Data.MS_207'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_00CE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 140, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 797,
-         AMF.Internals.Tables.CMOF_String_Data.MS_51'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0032'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 797, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 142,
-         AMF.Internals.Tables.CMOF_String_Data.MS_90'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0059'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 142, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 798, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 798, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 798,
-         AMF.Internals.Tables.CMOF_String_Data.MS_137'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0088'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 798, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 798, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 799,
-        AMF.Internals.Tables.CMOF_String_Data.MS_273'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0110'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 799,
-        AMF.Internals.Tables.CMOF_String_Data.MS_355'Access);
+         AMF.Internals.Tables.CMOF_String_Data_01.MS_0162'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 800,
-        AMF.Internals.Tables.CMOF_String_Data.MS_17'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_0010'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 800,
-        AMF.Internals.Tables.CMOF_String_Data.MS_112'Access);
+         AMF.Internals.Tables.CMOF_String_Data_00.MS_006F'Access);
 
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
