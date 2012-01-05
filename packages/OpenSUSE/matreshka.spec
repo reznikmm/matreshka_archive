@@ -6,7 +6,7 @@
 ##                                                                          ##
 ##--------------------------------------------------------------------------##
 ##                                                                          ##
-## Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     ##
+## Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                ##
 ## All rights reserved.                                                     ##
 ##                                                                          ##
 ## Redistribution and use in source and binary forms, with or without       ##
@@ -140,6 +140,34 @@ Requires: libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 %description -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel
 SQLite3 driver for SQL database access library of Matreshka components.
 
+%package -n libmatreshka-amf%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework of Matreshka components for Ada programmers
+%description -n libmatreshka-amf%{PACKAGE_SUFFIX}
+Ada Modeling Framework of Matreshka components allows to construct libraries to
+manipulate by arbitrary models.
+
+%package -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework of Matreshka components for Ada programmers
+Requires: libmatreshka-amf%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel
+Ada Modeling Framework (AMF) of Matreshka components allows to construct
+libraries to manipulate by arbitrary models.
+
+%package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+Summary: UML module of Matreshka components for Ada programmers
+%description -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+Unified Modeling Language (UML) modile for Ada Modeling Framework (AMF) of
+Matreshka components allows to manipulate by UML models.
+
+%package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: UML module of Matreshka components for Ada programmers
+Requires: libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel
+Unified Modeling Language (UML) modile for Ada Modeling Framework (AMF) of
+Matreshka components allows to manipulate by UML models.
+
 %post -n libleague%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libleague%{PACKAGE_SUFFIX}
@@ -163,6 +191,16 @@ SQLite3 driver for SQL database access library of Matreshka components.
 %post -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
 %files -n libleague%{PACKAGE_SUFFIX} -f .objs/league-lib.files
@@ -199,5 +237,17 @@ SQLite3 driver for SQL database access library of Matreshka components.
 %files -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel -f .objs/sql_sqlite3-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/sql/sqlite3
+
+%files -n libmatreshka-amf%{PACKAGE_SUFFIX} -f .objs/amf-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel -f .objs/amf-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf
+
+%files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX} -f .objs/amf_uml-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel -f .objs/amf_uml-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/uml
 
 %changelog
