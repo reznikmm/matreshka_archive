@@ -62,20 +62,17 @@ gen-uml-stubs: gens
 	rm -r uml/generated/.new
 
 gen-uml: gens
-	rm -rf uml/generated/.new
-	mkdir uml/generated/.new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > uml/generated/.new/sources.ada
-	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
-	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
-	rm -rf uml/generated/.new
-	mkdir uml/generated/.new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > uml/generated/.new/sources.ada
-	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
-	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
-	rm -r uml/generated/.new
-	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-uml_string_data.ads
-	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-uml_metamodel.adb
-	gnatmake -p -Puml/uml.gpr
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
+	rm -r .new
 
 clean:
 	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj uml/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
