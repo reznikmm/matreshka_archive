@@ -3,11 +3,12 @@
 --                            Matreshka Project                             --
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -38,9 +39,8 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 2365 $ $Date: 2011-12-30 21:36:06 +0200 (Птн, 30 Дек 2011) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Ada.Wide_Wide_Text_IO;
 with Nodes;
 with Matreshka.Internals.Unicode.Ucd;

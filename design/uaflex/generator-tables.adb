@@ -3,6 +3,7 @@
 --                            Matreshka Project                             --
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
@@ -40,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Nodes;
 with Ada.Containers;
 with Ada.Containers.Ordered_Maps;

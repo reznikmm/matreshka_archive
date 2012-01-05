@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Vectors;
 with League.Character_Sets;

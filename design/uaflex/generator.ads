@@ -3,6 +3,7 @@
 --                            Matreshka Project                             --
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
@@ -42,5 +43,7 @@
 ------------------------------------------------------------------------------
 
 package Generator is
+
    pragma Pure;
+
 end Generator;

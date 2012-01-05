@@ -3,6 +3,7 @@
 --                            Matreshka Project                             --
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
@@ -40,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with League.String_Vectors;
 with League.Strings;
 with Ada.Containers.Ordered_Maps;
