@@ -44,7 +44,6 @@
 with "matreshka_common";
 with "matreshka_config";
 with "matreshka_league";
-with "matreshka_xml";
 with "matreshka_amf";
 
 library project Matreshka_AMF_UML is
@@ -69,16 +68,6 @@ library project Matreshka_AMF_UML is
    -- Compiler --
    --------------
 
-   package Compiler is
-      for Default_Switches ("Ada")
-        use Matreshka_Common.Common_Ada_Switches
-              & Matreshka_Common.Platform_Ada_Switches
-              & Matreshka_Common.Optimization_Ada_Switches
-              & Matreshka_Common.Debug_Ada_Switches;
-      for Switches ("amf-internals-tables-uml_string_data.ads")
-        use Matreshka_Common.Common_Ada_Switches
-              & Matreshka_Common.Platform_Ada_Switches
-              & Matreshka_Common.Debug_Ada_Switches;
-   end Compiler;
+   package Compiler renames Matreshka_Common.Compiler;
 
 end Matreshka_AMF_UML;
