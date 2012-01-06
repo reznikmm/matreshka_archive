@@ -627,21 +627,7 @@ begin
       end loop;
    end loop;
 
-   --  Generate data file
-
-   Put_File_Header
-    ("Localization, Internationalization, Globalization for Ada",
-     2009,
-     2011);
-   Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
-   Ada.Text_IO.Put_Line
-    ("--  GNAT: enforce generation of preinitialized data section instead of");
-   Ada.Text_IO.Put_Line ("--  generation of elaboration code.");
-   Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("package Matreshka.Internals.Unicode.Ucd.Core is");
-   Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("   pragma Preelaborate;");
+   --  Generate core properties data file
 
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
@@ -704,6 +690,25 @@ begin
                   end;
                end loop;
             end;
+
+            Put_File_Header
+             ("Localization, Internationalization, Globalization for Ada",
+              2012,
+              2012);
+            Ada.Text_IO.New_Line;
+            Ada.Text_IO.Put_Line
+             ("pragma Restrictions (No_Elaboration_Code);");
+            Ada.Text_IO.Put_Line
+             ("--  GNAT: enforce generation of preinitialized data section"
+                & " instead of");
+            Ada.Text_IO.Put_Line ("--  generation of elaboration code.");
+            Ada.Text_IO.New_Line;
+            Ada.Text_IO.Put_Line
+             ("package Matreshka.Internals.Unicode.Ucd.Core_"
+                & First_Stage_Image (Groups (J).Share)
+                & " is");
+            Ada.Text_IO.New_Line;
+            Ada.Text_IO.Put_Line ("   pragma Preelaborate;");
 
             Ada.Text_IO.New_Line;
             Ada.Text_IO.Put_Line
@@ -802,15 +807,56 @@ begin
             Ada.Text_IO.Set_Col (11);
             Put (Default);
             Ada.Text_IO.Put_Line (");");
+
+            Ada.Text_IO.New_Line;
+            Ada.Text_IO.Put_Line
+             ("end Matreshka.Internals.Unicode.Ucd.Core_"
+                & First_Stage_Image (Groups (J).Share)
+                & ";");
             
             Generated (J) := True;
          end;
       end if;
    end loop;
 
+   Put_File_Header
+    ("Localization, Internationalization, Globalization for Ada",
+     2009,
+     2012);
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
+   Ada.Text_IO.Put_Line
+    ("--  GNAT: enforce generation of preinitialized data section instead of");
+   Ada.Text_IO.Put_Line ("--  generation of elaboration code.");
+   Ada.Text_IO.New_Line;
+
+   for J in Groups'Range loop
+      if Groups (J).Share = J then
+         Ada.Text_IO.Put_Line
+          ("with Matreshka.Internals.Unicode.Ucd.Core_"
+             & First_Stage_Image (J)
+             & ";");
+      end if;
+   end loop;
+
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("package Matreshka.Internals.Unicode.Ucd.Core is");
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("   pragma Preelaborate;");
+   Ada.Text_IO.New_Line;
+
+   for J in Groups'Range loop
+      if Groups (J).Share = J then
+         Ada.Text_IO.Put_Line
+          ("   use Matreshka.Internals.Unicode.Ucd.Core_"
+             & First_Stage_Image (J)
+             & ";");
+      end if;
+   end loop;
+
    declare
-      Maximum : Natural           := 0;
-      N       : Natural           := 0;
+      Maximum : Natural := 0;
+      N       : Natural := 0;
 
    begin
       for J in Groups'Range loop
