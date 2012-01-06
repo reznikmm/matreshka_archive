@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -488,7 +488,8 @@ begin
 
    --  Initialize metamodel.
 
-   AMF.Internals.Tables.CMOF_Metamodel.Initialize;
+   AMF.Internals.Tables.CMOF_Metamodel.Initialize_Objects;
+   AMF.Internals.Tables.CMOF_Metamodel.Initialize_Links;
 
    --  Register factory.
 

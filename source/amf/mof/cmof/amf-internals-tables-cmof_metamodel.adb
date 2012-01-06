@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-
 with AMF.CMOF;
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
@@ -2147,11 +2145,11 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base;
    end MB_CMOF;
 
-   ----------------
-   -- Initialize --
-   ----------------
+   ------------------------
+   -- Initialize_Objects --
+   ------------------------
 
-   procedure Initialize is
+   procedure Initialize_Objects is
       Extent : constant AMF.Internals.AMF_Extent
         := AMF.Internals.Extents.Allocate_Extent
             (AMF.Internals.Tables.CMOF_String_Data_00.MS_006F'Access);
@@ -8386,7 +8384,14 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 800,
          AMF.Internals.Tables.CMOF_String_Data_00.MS_006F'Access);
+   end Initialize_Objects;
 
+   ----------------------
+   -- Initialize_Links --
+   ----------------------
+
+   procedure Initialize_Links is
+   begin
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 189,
@@ -18311,6 +18316,6 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 189,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
-   end Initialize;
+   end Initialize_Links;
 
 end AMF.Internals.Tables.CMOF_Metamodel;
