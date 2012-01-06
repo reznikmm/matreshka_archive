@@ -39,7 +39,7 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 527 $ $Date: 2010-06-16 13:22:28 +0300 (Срд, 16 Июн 2010) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
 pragma Restrictions (No_Elaboration_Code);
