@@ -907,7 +907,7 @@ package body Generator.Metamodel is
       end Generate_Package_Constant;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2012);
       Put_Line ("with AMF.CMOF;");
       Put_Line ("with AMF.Internals.Extents;");
       Put_Line ("with AMF.Internals.Links;");
@@ -1516,7 +1516,7 @@ package body Generator.Metamodel is
       end Generate_Package_Constant;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2012);
       New_Line;
       Put_Line
        ("package AMF.Internals.Tables."
@@ -1745,7 +1745,7 @@ package body Generator.Metamodel is
 
    begin
       for J in 0 .. Integer (Number_Strings.Length) / 16#100# loop
-         Put_Header;
+         Put_Header (2010, 2011);
          Put_Line ("with Matreshka.Internals.Strings;");
          New_Line;
          Put_Line

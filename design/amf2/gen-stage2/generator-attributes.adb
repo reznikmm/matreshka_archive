@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -721,7 +721,7 @@ package body Generator.Attributes is
       end Generate_Setter;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2011);
       Put_Line ("with AMF.Internals.Links;");
       Put_Line
        ("with AMF.Internals.Tables."
@@ -925,7 +925,7 @@ package body Generator.Attributes is
       end Generate_Slot;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2011);
       Put_Line ("with Interfaces;");
       New_Line;
       Put_Line
@@ -1080,7 +1080,7 @@ package body Generator.Attributes is
    begin
       Analyze;
 
-      Put_Header;
+      Put_Header (2010, 2011);
       Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -702,7 +702,7 @@ procedure Gen_API is
 
       Compute_With_For_Operations;
 
-      Put_Header (Year_2010 => False);
+      Put_Header (2011, 2011);
 
       --  Generate comment.
 
@@ -791,7 +791,7 @@ procedure Gen_API is
         := Ada_API_Type_Name (Class).To_Wide_Wide_String;
 
    begin
-      Put_Header (Year_2010 => False);
+      Put_Header (2011, 2011);
 
       Put_Line ("with AMF.Generic_Collections;");
       New_Line;
@@ -1458,7 +1458,7 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Put_Header (Year_2010 => False);
+      Put_Header (2011, 2011);
       Context.Instantiate (Package_Name);
       Context.Iterate (Generate_With_Clause'Access);
       New_Line;
@@ -1716,7 +1716,7 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Put_Header (Year_2010 => False);
+      Put_Header (2011, 2011);
       Context.Instantiate (Package_Name);
       Context.Iterate (Generate_With_Clause'Access);
       New_Line;
