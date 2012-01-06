@@ -106,7 +106,7 @@ begin
     ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    ("--                              Tools Component                        "
+    ("--                        Runtime Library Component                    "
        & "     --");
    Ada.Text_IO.Put_Line
     ("--                                                                     "
