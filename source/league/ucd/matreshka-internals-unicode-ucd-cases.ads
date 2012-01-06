@@ -4,7 +4,7 @@
 --                                                                          --
 --        Localization, Internationalization, Globalization for Ada         --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
