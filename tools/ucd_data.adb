@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -288,7 +288,8 @@ package body Ucd_Data is
 
    procedure Load (Unidata_Directory : String) is
    begin
-      Ada.Text_IO.Put_Line ("Initializing UCD ...");
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "Initializing UCD ...");
 
       --  Initialize data structures to default values.
 
@@ -317,7 +318,9 @@ package body Ucd_Data is
 
       --  Load UnicodeData.txt, PropList.txt.
 
-      Ada.Text_IO.Put_Line ("Loading UCD (" & Unidata_Directory & ") ...");
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error,
+        "Loading UCD (" & Unidata_Directory & ") ...");
 
       Load_UnicodeData (Unidata_Directory);
       Load_PropList (Unidata_Directory);
@@ -373,7 +376,8 @@ package body Ucd_Data is
       Status : Case_Folding_Status;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & CaseFolding_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & CaseFolding_Name);
 
       Ucd_Input.Open (File, Unidata_Directory & '/' & CaseFolding_Name);
 
@@ -400,7 +404,8 @@ package body Ucd_Data is
                Core (Code).B (Has_Case_Folding) := True;
 
             when T =>
-               Ada.Text_IO.Put_Line ("         Ignore mapping: T");
+               Ada.Text_IO.Put_Line
+                (Ada.Text_IO.Standard_Error, "         Ignore mapping: T");
          end case;
 
          Ucd_Input.Next_Record (File);
@@ -419,7 +424,8 @@ package body Ucd_Data is
       Last  : Code_Point;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & CompositionExclusions_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & CompositionExclusions_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & CompositionExclusions_Name);
@@ -449,7 +455,8 @@ package body Ucd_Data is
       Prop  : Derived_Core_Boolean_Properties;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & DerivedCoreProperties_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & DerivedCoreProperties_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & DerivedCoreProperties_Name);
@@ -498,7 +505,9 @@ package body Ucd_Data is
       NFKC_CF_Ignored : Boolean := False;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & DerivedNormalizationProps_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error,
+        "   ... " & DerivedNormalizationProps_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & DerivedNormalizationProps_Name);
@@ -513,7 +522,9 @@ package body Ucd_Data is
             case Prop is
                when FC_NFKC =>
                   if not FC_NFKC_Ignored then
-                     Ada.Text_IO.Put_Line ("         Ignore property: FC_NFKC");
+                     Ada.Text_IO.Put_Line
+                      (Ada.Text_IO.Standard_Error,
+                       "         Ignore property: FC_NFKC");
                      FC_NFKC_Ignored := True;
                   end if;
 
@@ -546,7 +557,9 @@ package body Ucd_Data is
 
                when NFKC_CF =>
                   if not NFKC_CF_Ignored then
-                     Ada.Text_IO.Put_Line ("         Ignore property: NFKC_CF");
+                     Ada.Text_IO.Put_Line
+                      (Ada.Text_IO.Standard_Error,
+                       "         Ignore property: NFKC_CF");
                      NFKC_CF_Ignored := True;
                   end if;
 
@@ -572,7 +585,9 @@ package body Ucd_Data is
       Prop  : Grapheme_Cluster_Break;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & GraphemeBreakProperty_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error,
+        "   ... " & GraphemeBreakProperty_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & GraphemeBreakProperty_Name);
@@ -603,7 +618,8 @@ package body Ucd_Data is
       Prop  : Line_Break;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & LineBreak_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & LineBreak_Name);
 
       Ucd_Input.Open (File, Unidata_Directory & '/' & LineBreak_Name);
 
@@ -633,7 +649,8 @@ package body Ucd_Data is
       Corrected : Code_Point_Sequence_Access;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & NormalizationCorrections_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & NormalizationCorrections_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & NormalizationCorrections_Name);
@@ -688,7 +705,8 @@ package body Ucd_Data is
       Prop  : Primary_Core_Boolean_Properties;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & PropList_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & PropList_Name);
 
       Ucd_Input.Open (File, Unidata_Directory & '/' & PropList_Name);
 
@@ -719,7 +737,8 @@ package body Ucd_Data is
       Prop  : Sentence_Break;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & SentenceBreakProperty_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & SentenceBreakProperty_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & SentenceBreakProperty_Name);
@@ -751,7 +770,8 @@ package body Ucd_Data is
       Title    : Code_Point_Sequence_Access;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & SpecialCasing_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & SpecialCasing_Name);
 
       Ucd_Input.Open
        (File, Unidata_Directory & '/' & SpecialCasing_Name);
@@ -837,7 +857,8 @@ package body Ucd_Data is
                --  XXX Ignore more complex contexts for now.
 
                Ada.Text_IO.Put_Line
-                ("         Ignore mapping: " & Ucd_Input.Field (File));
+                (Ada.Text_IO.Standard_Error,
+                 "         Ignore mapping: " & Ucd_Input.Field (File));
             end if;
          end;
 
@@ -942,7 +963,8 @@ package body Ucd_Data is
       DM         : Code_Point_Sequence_Access;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & UnicodeData_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & UnicodeData_Name);
 
       Ucd_Input.Open (File, Unidata_Directory & '/' & UnicodeData_Name);
 
@@ -1129,7 +1151,8 @@ package body Ucd_Data is
       Prop  : Word_Break;
 
    begin
-      Ada.Text_IO.Put_Line ("   ... " & WordBreakProperty_Name);
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & WordBreakProperty_Name);
 
       Ucd_Input.Open (File, Unidata_Directory & '/' & WordBreakProperty_Name);
 

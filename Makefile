@@ -23,9 +23,14 @@ all: Makefile.config
 check: all
 	${MAKE} -f Makefile.check SMP_MFLAGS="$(SMP_MFLAGS)" UNIDATA=$(UNIDATA) UCADATA=$(UCADATA)
 
-ucd:
+gen-ucd:
+	rm -rf .new
+	mkdir .new
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
-	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
+	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd > .new/sources.ada
+	gnatchop -gnat05 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ./tools/move-if-changed .new/{} source/league/ucd/{}
+	rm -rf .new
 #	.objs/tools/gen_segments $(CLDR)
 
 regexp: yy_tools .gens-regexp

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,15 +49,12 @@ with Put_File_Header;
 with Uca_Data;
 with Utils;
 
-procedure Gen_Colls (Source_Directory : String) is
+procedure Gen_Colls is
 
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Uca_Data;
    use Utils;
-
-   Generated_Name : constant String
-     := "matreshka-internals-unicode-ucd-colls.ads";
 
    Expansion      :
      Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence
@@ -188,13 +185,10 @@ procedure Gen_Colls (Source_Directory : String) is
    ---------
 
    procedure Put
-    (File : Ada.Text_IO.File_Type;
-     Item : Matreshka.Internals.Unicode.Ucd.Collation_Record)
-   is
+    (Item : Matreshka.Internals.Unicode.Ucd.Collation_Record) is
    begin
       Ada.Text_IO.Put
-       (File,
-        "("
+       ("("
           & Sequence_Count_Image (Item.Contractor_First)
           & ", "
           & Sequence_Count_Image (Item.Contractor_Last)
@@ -223,13 +217,12 @@ procedure Gen_Colls (Source_Directory : String) is
       Count : Natural;
    end record;
 
-   Groups        : array (First_Stage_Index) of Group_Info
+   Groups    : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
-   File          : Ada.Text_IO.File_Type;
-   Generated     : array (First_Stage_Index) of Boolean := (others => False);
+   Generated : array (First_Stage_Index) of Boolean := (others => False);
 
 begin
-   Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
+   Ada.Text_IO.Put_Line (Ada.Text_IO.Standard_Error, "   ... colls");
 
    --  Compute expansion and contraction data.
 
@@ -348,48 +341,41 @@ begin
 
    --  Generate source code.
 
-   Ada.Text_IO.Create
-    (File, Ada.Text_IO.Out_File, Source_Directory & '/' & Generated_Name);
    Put_File_Header
-    (File,
-     "Localization, Internationalization, Globalization for Ada",
+    ("Localization, Internationalization, Globalization for Ada",
      2009,
      2011);
-   Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "pragma Restrictions (No_Elaboration_Code);");
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
    Ada.Text_IO.Put_Line
-    (File,
-     "--  GNAT: enforce generation of preinitialized data section instead of");
-   Ada.Text_IO.Put_Line (File, "--  generation of elaboration code.");
-   Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line
-    (File, "package Matreshka.Internals.Unicode.Ucd.Colls is");
-   Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
+    ("--  GNAT: enforce generation of preinitialized data section instead of");
+   Ada.Text_IO.Put_Line ("--  generation of elaboration code.");
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("package Matreshka.Internals.Unicode.Ucd.Colls is");
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("   pragma Preelaborate;");
 
-   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line
-    (File,
-     "   Last_Variable : constant Collation_Weight := "
+    ("   Last_Variable : constant Collation_Weight := "
        & Collation_Weight_Ada_Image (Last_Variable)
        & ';');
 
-   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line
-    (File, "   Expansion_Data : aliased constant Collation_Element_Sequence");
+    ("   Expansion_Data : aliased constant Collation_Element_Sequence");
 
    for J in 1 .. Expansion_Last loop
       if J = 1 then
-         Ada.Text_IO.Put (File, "     := (");
+         Ada.Text_IO.Put ("     := (");
 
       else
-         Ada.Text_IO.Put_Line (File, ",");
-         Ada.Text_IO.Put (File, "         ");
+         Ada.Text_IO.Put_Line (",");
+         Ada.Text_IO.Put ("         ");
       end if;
 
       Ada.Text_IO.Put
-       (File,
-        Sequence_Count_Image (J)
+       (Sequence_Count_Image (J)
           & " => ("
           & Collation_Weight_Ada_Image (Expansion (J).Primary)
           & ", "
@@ -399,24 +385,23 @@ begin
           & ')');
    end loop;
 
-   Ada.Text_IO.Put_Line (File, ");");
+   Ada.Text_IO.Put_Line (");");
 
-   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line
-    (File, "   Contraction_Data : aliased constant Contractor_Array");
+    ("   Contraction_Data : aliased constant Contractor_Array");
 
    for J in 1 .. Contraction_Last loop
       if J = 1 then
-         Ada.Text_IO.Put (File, "     := (");
+         Ada.Text_IO.Put ("     := (");
 
       else
-         Ada.Text_IO.Put_Line (File, ",");
-         Ada.Text_IO.Put (File, "         ");
+         Ada.Text_IO.Put_Line (",");
+         Ada.Text_IO.Put ("         ");
       end if;
 
       Ada.Text_IO.Put
-       (File,
-        Sequence_Count_Image (J)
+       (Sequence_Count_Image (J)
           & " => ("
             & Code_Point_Ada_Image (Contraction (J).Code)
           & ", "
@@ -430,7 +415,7 @@ begin
           & ')');
    end loop;
 
-   Ada.Text_IO.Put_Line (File, ");");
+   Ada.Text_IO.Put_Line (");");
 
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
@@ -494,13 +479,12 @@ begin
                end loop;
             end;
 
-            Ada.Text_IO.New_Line (File);
+            Ada.Text_IO.New_Line;
             Ada.Text_IO.Put_Line
-             (File,
-              "   Group_" & First_Stage_Image (Groups (J).Share)
+             ("   Group_"
+                & First_Stage_Image (Groups (J).Share)
                 & " : aliased constant Collation_Second_Stage");
-            Ada.Text_IO.Put
-             (File, "     := (");
+            Ada.Text_IO.Put ("     := (");
 
             for K in Second_Stage_Index loop
                declare
@@ -523,8 +507,7 @@ begin
                      if Current /= Default then
                         if First /= Last then
                            Ada.Text_IO.Put_Line
-                            (File,
-                             "16#"
+                            ("16#"
                                & Second_Stage_Image (First)
                                & "# .. 16#"
                                & Second_Stage_Image (Last)
@@ -532,23 +515,23 @@ begin
                                & Code_Point_Image (First_Code)
                                & " .. "
                                & Code_Point_Image (Last_Code));
-                           Ada.Text_IO.Set_Col (File, 11);
-                           Put (File, Current);
-                           Ada.Text_IO.Put (File, ',');
+                           Ada.Text_IO.Set_Col (11);
+                           Put (Current);
+                           Ada.Text_IO.Put (',');
 
                         else
                            Ada.Text_IO.Put_Line
-                            (File, "16#"
+                            ("16#"
                                & Second_Stage_Image (First)
                                & "#           =>  --  "
                                & Code_Point_Image (First_Code));
-                           Ada.Text_IO.Set_Col (File, 11);
-                           Put (File, Current);
-                           Ada.Text_IO.Put (File, ',');
+                           Ada.Text_IO.Set_Col (11);
+                           Put (Current);
+                           Ada.Text_IO.Put (',');
                         end if;
 
-                        Ada.Text_IO.New_Line (File);
-                        Ada.Text_IO.Set_Col (File, 10);
+                        Ada.Text_IO.New_Line;
+                        Ada.Text_IO.Set_Col (10);
                      end if;
 
                      Current    := Collation (Code);
@@ -563,8 +546,7 @@ begin
             if Current /= Default then
                if First /= Last then
                   Ada.Text_IO.Put_Line
-                   (File,
-                    "16#"
+                   ("16#"
                       & Second_Stage_Image (First)
                       & "# .. 16#"
                       & Second_Stage_Image (Last)
@@ -572,29 +554,29 @@ begin
                       & Code_Point_Image (First_Code)
                       & " .. "
                       & Code_Point_Image (Last_Code));
-                  Ada.Text_IO.Set_Col (File, 11);
-                  Put (File, Current);
-                  Ada.Text_IO.Put (File, ',');
+                  Ada.Text_IO.Set_Col (11);
+                  Put (Current);
+                  Ada.Text_IO.Put (',');
 
                else
                   Ada.Text_IO.Put_Line
-                   (File, "16#"
+                   ("16#"
                       & Second_Stage_Image (First)
                       & "#           =>  --  "
                       & Code_Point_Image (First_Code));
-                  Ada.Text_IO.Set_Col (File, 11);
-                  Put (File, Current);
-                  Ada.Text_IO.Put (File, ',');
+                  Ada.Text_IO.Set_Col (11);
+                  Put (Current);
+                  Ada.Text_IO.Put (',');
                end if;
 
-               Ada.Text_IO.New_Line (File);
-               Ada.Text_IO.Set_Col (File, 10);
+               Ada.Text_IO.New_Line;
+               Ada.Text_IO.Set_Col (10);
             end if;
 
-            Ada.Text_IO.Put_Line (File, "others           =>");
-            Ada.Text_IO.Set_Col (File, 11);
-            Put (File, Default);
-            Ada.Text_IO.Put_Line (File, ");");
+            Ada.Text_IO.Put_Line ("others           =>");
+            Ada.Text_IO.Set_Col (11);
+            Put (Default);
+            Ada.Text_IO.Put_Line (");");
 
             Generated (J) := True;
          end;
@@ -614,16 +596,15 @@ begin
          end if;
       end loop;
 
-      Ada.Text_IO.New_Line (File);
+      Ada.Text_IO.New_Line;
       Ada.Text_IO.Put_Line
-       (File, "   Collation : aliased constant Collation_First_Stage");
-      Ada.Text_IO.Put (File, "     := (");
+       ("   Collation : aliased constant Collation_First_Stage");
+      Ada.Text_IO.Put ("     := (");
 
       for J in Groups'Range loop
          if Groups (J).Share /= Default then
             Ada.Text_IO.Put
-             (File,
-              "16#"
+             ("16#"
                 & First_Stage_Image (J)
                 & "# => Group_"
                 & First_Stage_Image (Groups (J).Share)
@@ -631,11 +612,11 @@ begin
 
             case N mod 2 is
                when 0 =>
-                  Ada.Text_IO.Set_Col (File, 41);
+                  Ada.Text_IO.Set_Col (41);
 
                when 1 =>
-                  Ada.Text_IO.New_Line (File);
-                  Ada.Text_IO.Set_Col (File, 10);
+                  Ada.Text_IO.New_Line;
+                  Ada.Text_IO.Set_Col (10);
 
                when others =>
                   raise Program_Error;
@@ -646,10 +627,9 @@ begin
       end loop;
 
       Ada.Text_IO.Put_Line
-       (File,
-        "others   => Group_" & First_Stage_Image (Default) & "'Access);");
+       ("others   => Group_" & First_Stage_Image (Default) & "'Access);");
    end;
 
-   Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Colls;");
+   Ada.Text_IO.New_Line;
+   Ada.Text_IO.Put_Line ("end Matreshka.Internals.Unicode.Ucd.Colls;");
 end Gen_Colls;
