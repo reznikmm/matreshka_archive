@@ -1351,6 +1351,8 @@ package AMF.Internals.Tables.UML_Metamodel is
 
    function MB_UML return AMF.Internals.AMF_Element;
 
-   procedure Initialize;
+   procedure Initialize_Objects;
+
+   procedure Initialize_Links;
 
 end AMF.Internals.Tables.UML_Metamodel;
