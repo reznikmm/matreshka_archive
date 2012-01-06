@@ -908,8 +908,6 @@ package body Generator.Metamodel is
 
    begin
       Put_Header;
-      Put_Line ("with League.Strings.Internals;");
-      New_Line;
       Put_Line ("with AMF.CMOF;");
       Put_Line ("with AMF.Internals.Extents;");
       Put_Line ("with AMF.Internals.Links;");
@@ -1007,9 +1005,9 @@ package body Generator.Metamodel is
       Position : Number_Element_Maps.Cursor;
 
    begin
-      Put_Header ("Initialize", 3);
+      Put_Header ("Initialize_Objects", 3);
       New_Line;
-      Put_Line ("   procedure Initialize is");
+      Put_Line ("   procedure Initialize_Objects is");
       Put_Line ("      Extent : constant AMF.Internals.AMF_Extent");
       Put_Line ("        := AMF.Internals.Extents.Allocate_Extent");
       Put_Line
@@ -1037,14 +1035,18 @@ package body Generator.Metamodel is
           (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
       end loop;
 
+      Put_Line ("   end Initialize_Objects;");
+      Put_Header ("Initialize_Links", 3);
       New_Line;
+      Put_Line ("   procedure Initialize_Links is");
+      Put_Line ("   begin");
 
       for J in 1 .. Elements.Length loop
          Generate_Link_Initialization
           (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
       end loop;
 
-      Put_Line ("   end Initialize;");
+      Put_Line ("   end Initialize_Links;");
    end Generate_Metamodel_Initialization;
 
    ----------------------------------------
@@ -1568,7 +1570,9 @@ package body Generator.Metamodel is
           & Metamodel_Name
           & " return AMF.Internals.AMF_Element;");
       New_Line;
-      Put_Line ("   procedure Initialize;");
+      Put_Line ("   procedure Initialize_Objects;");
+      New_Line;
+      Put_Line ("   procedure Initialize_Links;");
       New_Line;
       Put_Line ("end AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
    end Generate_Metamodel_Specification;
