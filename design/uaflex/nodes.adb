@@ -129,6 +129,8 @@ package body Nodes is
                   end if;
                end;
             end loop;
+            
+            Text.Slice (To + 1, Text.Length);
          end;
       else
          Conditions.Iterate (Each_Inclusive'Access);

@@ -54,17 +54,7 @@ ADA_STRING     \"([^"]+|\"\")*\"
 
 %%
 
-^{NAME} {
-   Enter (DEF);
-   return Name;
-}
-
-<DEF>[ \t]+ { null; }
-
-<DEF>[^ \t\n]+ {
-   Enter (INITIAL);
-   return Regexp;
-}
+"--"[^\n]* { null; }
 
 ^"%"[Ss](tart)? {
   Enter (NAMELIST);
@@ -76,6 +66,25 @@ ADA_STRING     \"([^"]+|\"\")*\"
   return Excl_Start;
 }
 
+^{NAME} {
+   Enter (DEF);
+   return Name;
+}
+
+^"%%".*\n   {
+  Enter (SECT2);
+  return Section_End; 
+}
+
+{SPACE}|\n {null;}
+
+<DEF>[ \t]+ { null; }
+
+<DEF>[^ \t\n][^\n]* {
+   Enter (INITIAL);
+   return Regexp;
+}
+
 <NAMELIST>\n {
   Enter (INITIAL);
   return Name_List_End;
@@ -85,29 +94,26 @@ ADA_STRING     \"([^"]+|\"\")*\"
   return Name;
 }
 
-<NAMELIST>{SPACE} {null;}
-
-^"%%".*\n   {
-  Enter (SECT2);
-  return Section_End; 
-}
+<NAMELIST>{SPACE} { null; }
 
 <SECT2>^({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+  {
    Enter (RULE);
    return Regexp;
 }
 
+<SECT2>\n { null; }
+
 <SECT2>^"%%".*\n   {
   Enter (INITIAL);
   return Section_End; 
 }
 
-{SPACE}|\n {null;}
-
 <RULE>\{([^}]+|{ADA_STRING})*\} {
    Enter (SECT2);
    return Action;
 }
+
+<RULE>{SPACE}+ { null; }
 
 --^[a-zA-Z]+  {ENTER (DEF); return Name;}
 --<DEF>[\t ]+ {}

@@ -9,4 +9,8 @@ project UAFLEX is
    package Compiler is
       for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
    end Compiler;
+
+   package Binder is
+      for Default_Switches ("Ada") use ("-E");
+   end Binder;
 end UAFLEX;

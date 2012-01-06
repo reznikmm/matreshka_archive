@@ -225,10 +225,7 @@ package body Expand is
                      
                      if Item = '\' then
                         State := Masked;
-                     elsif Item /= '{' and
-                       Item /= '}' and 
-                       Pattern_Set.Has (Item)
-                     then
+                     elsif Pattern_Set.Has (Item) then
                         Result.Append ('\');
                         Result.Append (Item);
                      else
