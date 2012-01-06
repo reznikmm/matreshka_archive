@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,8 +46,7 @@ with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
 procedure Put_File_Header
- (File   : in out Ada.Text_IO.File_Type;
-  Module : String;
+ (Module : String;
   First  : Positive;
   Last   : Positive)
 is
@@ -81,184 +80,143 @@ is
 
 begin
    Ada.Text_IO.Put_Line
-    (File,
-     "-----------------------------------------------------------------------"
+    ("-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                            Matreshka Project                        "
+    ("--                            Matreshka Project                        "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
 
    --  Format module identification string.
 
    Unused := 78 - Module'Length - 4;
    Half   := Unused / 2;
-   Ada.Text_IO.Put (File, "--");
-   Ada.Text_IO.Put (File, Half * ' ');
-   Ada.Text_IO.Put (File, Module);
-   Ada.Text_IO.Put (File, (Unused - Half) * ' ');
-   Ada.Text_IO.Put_Line (File, "--");
+   Ada.Text_IO.Put ("--");
+   Ada.Text_IO.Put (Half * ' ');
+   Ada.Text_IO.Put (Module);
+   Ada.Text_IO.Put ((Unused - Half) * ' ');
+   Ada.Text_IO.Put_Line ("--");
 
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                              Tools Component                        "
+    ("--                              Tools Component                        "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-----------------------------------------------------------------------"
+    ("-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
 
    --  Format copyright string.
 
-   Ada.Text_IO.Put (File, Copyright);
-   Ada.Text_IO.Put (File, (78 - 1 - Copyright'Length) * ' ');
-   Ada.Text_IO.Put_Line (File, "--");
+   Ada.Text_IO.Put (Copyright);
+   Ada.Text_IO.Put ((78 - 1 - Copyright'Length) * ' ');
+   Ada.Text_IO.Put_Line ("--");
 
    Ada.Text_IO.Put_Line
-    (File,
-     "-- All rights reserved.                                                "
+    ("-- All rights reserved.                                                "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- Redistribution and use in source and binary forms, with or without  "
+    ("-- Redistribution and use in source and binary forms, with or without  "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- modification, are permitted provided that the following conditions  "
+    ("-- modification, are permitted provided that the following conditions  "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- are met:                                                            "
+    ("-- are met:                                                            "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--  * Redistributions of source code must retain the above copyright   "
+    ("--  * Redistributions of source code must retain the above copyright   "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--    notice, this list of conditions and the following disclaimer.    "
+    ("--    notice, this list of conditions and the following disclaimer.    "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--  * Redistributions in binary form must reproduce the above copyright"
+    ("--  * Redistributions in binary form must reproduce the above copyright"
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--    notice, this list of conditions and the following disclaimer in t"
+    ("--    notice, this list of conditions and the following disclaimer in t"
        & "he   --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--    documentation and/or other materials provided with the distributi"
+    ("--    documentation and/or other materials provided with the distributi"
        & "on.  --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--  * Neither the name of the Vadim Godunko, IE nor the names of its   "
+    ("--  * Neither the name of the Vadim Godunko, IE nor the names of its   "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--    contributors may be used to endorse or promote products derived f"
+    ("--    contributors may be used to endorse or promote products derived f"
        & "rom  --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--    this software without specific prior written permission.         "
+    ("--    this software without specific prior written permission.         "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "
+    ("-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- ""AS IS"" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT "
+    ("-- ""AS IS"" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT "
        & "       --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FO"
+    ("-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FO"
        & "R    --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT"
+    ("-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT"
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTA"
+    ("-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTA"
        & "L,   --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIM"
+    ("-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIM"
        & "ITED --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, "
+    ("-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, "
        & "OR   --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY "
+    ("-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY "
        & "OF   --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING"
+    ("-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING"
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  "
+    ("-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.        "
+    ("-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.        "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "--                                                                     "
+    ("--                                                                     "
        & "     --");
    Ada.Text_IO.Put_Line
-    (File,
-     "-----------------------------------------------------------------------"
+    ("-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.Put_Line
-    (File,
-     "--  $Revision$ $Date$");
+    ("--  $Revision$ $Date$");
    Ada.Text_IO.Put_Line
-    (File,
-     "-----------------------------------------------------------------------"
+    ("-----------------------------------------------------------------------"
        & "-------");
 end Put_File_Header;

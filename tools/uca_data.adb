@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -117,13 +117,15 @@ package body Uca_Data is
    begin
       --  Initialize data structures.
 
-      Ada.Text_IO.Put_Line ("Initializing UCA ...");
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "Initializing UCA ...");
 
       Colls := new Collation_Data'(others => (null, null));
 
       --  Loading UCA data.
 
-      Ada.Text_IO.Put_Line ("Loading UCA (" & Uca_Directory & ") ...");
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "Loading UCA (" & Uca_Directory & ") ...");
 
       declare
          Parser : All_Keys_Parser;
