@@ -1,0 +1,13 @@
+with "source/awf.gpr";
+
+project Main is
+
+   for Main use ("main.adb");
+   for Object_Dir use ".objs";
+   for Exec_Dir use ".";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-O2");
+   end Compiler;
+
+end Main;
