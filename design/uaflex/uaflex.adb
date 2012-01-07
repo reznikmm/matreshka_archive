@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with yyparse;
+with Parser;
 with scanner_io;
 
 with Debug;
@@ -95,7 +95,7 @@ begin
    Nodes.Add_Start_Conditions (Initial, False);
    
    scanner_io.Open_Input ("test");
-   yyparse;
+   Parser.YYParse;
    Expand.RegExps;
    Debug.Print;
    

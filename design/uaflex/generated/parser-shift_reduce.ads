@@ -1,4 +1,4 @@
-package Parser_Shift_Reduce is
+package Parser.Shift_Reduce is
 
     type Small_Integer is range -32_000 .. 32_000;
 
@@ -81,9 +81,9 @@ package Parser_Shift_Reduce is
 ,(-1,-7)
 );
 --  The offset vector
-SHIFT_REDUCE_OFFSET : array (0.. 25) of Integer :=
+SHIFT_REDUCE_OFFSET : constant array (0.. 25) of Integer :=
 ( 0,
  1, 2, 7, 9, 12, 13, 15, 17, 19, 20,
  21, 22, 23, 25, 26, 27, 28, 29, 30, 33,
  36, 37, 38, 39, 40);
-end Parser_Shift_Reduce;
+end Parser.Shift_Reduce;

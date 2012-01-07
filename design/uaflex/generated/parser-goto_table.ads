@@ -1,4 +1,4 @@
-package Parser_Goto is
+package Parser.Goto_Table is
 
     type Small_Integer is range -32_000 .. 32_000;
 
@@ -73,7 +73,7 @@ package Parser_Goto is
 
 );
 --  The offset vector
-GOTO_OFFSET : array (0.. 25) of Integer :=
+GOTO_OFFSET : constant array (0.. 25) of Integer :=
 ( 0,
  3, 5, 7, 7, 9, 9, 10, 12, 14, 14,
  14, 14, 14, 15, 15, 15, 15, 15, 15, 16,
@@ -82,10 +82,10 @@ GOTO_OFFSET : array (0.. 25) of Integer :=
 subtype Rule        is Natural;
 subtype Nonterminal is Integer;
 
-   Rule_Length : array (Rule range  0 ..  16) of Natural := ( 2,
+   Rule_Length : constant array (Rule range  0 ..  16) of Natural := ( 2,
  2, 2, 0, 2, 2, 3, 3, 1,
  2, 2, 0, 2, 2, 1, 1, 1);
-   Get_LHS_Rule: array (Rule range  0 ..  16) of Nonterminal := (-1,
+   Get_LHS_Rule : constant array (Rule range  0 ..  16) of Nonterminal := (-1,
 -2,-3,-5,-5,-6,-6,-6,-9,
 -9,-4,-10,-10,-11,-7,-8,-12);
-end Parser_Goto;
+end Parser.Goto_Table;

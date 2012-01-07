@@ -2,11 +2,7 @@ uaflex: yyparse.adb yylex.adb
 	gprbuild -p -P uaflex.gpr
 
 yyparse.adb: parser.y
-	~/bin/ayacc parser.y
-	echo 'with Nodes;' > tokens.a
-	cat parser_tokens.ads >> tokens.a
-	gnatchop -w *.a
-	rm tokens.a
+	../../tools/ayacc/src/ayacc parser.y
 
 yylex.adb: scanner.l
 	~/bin/aflex -d scanner.l

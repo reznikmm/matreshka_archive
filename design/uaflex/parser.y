@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 
 %token Name Name_List_End Start Excl_Start Section_End Regexp Action
+%with Nodes;
 {
    subtype YYSType is Nodes.Node;
 }
@@ -115,21 +116,15 @@ Action_Token: Action
 ;
 
 %%
-
-
-with parser_goto;
-with parser_shift_reduce;
-with parser_tokens;
-with yylex;
-with Ada.Text_IO; use Ada;
-with yyerror;
-with scanner_dfa;
-with Nodes;
 ##
-with Ada.Text_IO;
-procedure yyerror (X : String) is
+   procedure YYParse;
+##
+with Ada.Wide_Wide_Text_IO;
+with YYLex;
+with Nodes;
+with scanner_dfa;
+##
+procedure yyerror (X : Wide_Wide_String) is
 begin
-  Ada.Text_IO.Put_Line (X);
+  Ada.Wide_Wide_Text_IO.Put_Line (X);
 end;
-
-

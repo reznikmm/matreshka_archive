@@ -1,20 +1,28 @@
-
-
-with parser_goto;
-with parser_shift_reduce;
-with parser_tokens;
-with yylex;
-with Ada.Text_IO; use Ada;
-with yyerror;
-with scanner_dfa;
+with Ada.Wide_Wide_Text_IO;
+with YYLex;
 with Nodes;
+with scanner_dfa;
+with Parser.Goto_Table;
+use  Parser.Goto_Table;
+with Parser_Tokens;
+use  Parser_Tokens;
+with Parser.Shift_Reduce;
+use  Parser.Shift_Reduce;
+
+package body Parser is
+   package Parser_Goto renames Parser.Goto_Table;
+   package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
+procedure yyerror (X : Wide_Wide_String) is
+begin
+  Ada.Wide_Wide_Text_IO.Put_Line (X);
+end;
 procedure YYParse is
 
    -- Rename User Defined Packages to Internal Names.
     package yy_goto_tables         renames
-      Parser_Goto;
+      Parser.Goto_Table;
     package yy_shift_reduce_tables renames
-      Parser_Shift_Reduce;
+      Parser.Shift_Reduce;
     package yy_tokens              renames
       Parser_Tokens;
 
@@ -110,12 +118,12 @@ procedure YYParse is
 
       if yy.error_flag = 3 then -- no shift yet, clobber input.
       if yy.debug then
-          text_io.put_line("Ayacc.YYParse: Error Recovery Clobbers " &
-                   yy_tokens.token'image(yy.input_symbol));
+          Ada.Wide_Wide_Text_Io.Put_Line ("Ayacc.YYParse: Error Recovery Clobbers " &
+                   yy_tokens.token'Wide_Wide_Image (yy.input_symbol));
       end if;
         if yy.input_symbol = yy_tokens.end_of_input then  -- don't discard,
         if yy.debug then
-            text_io.put_line("Ayacc.YYParse: Can't discard END_OF_INPUT, quiting...");
+            Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Can't discard END_OF_INPUT, quiting...");
         end if;
         raise yy_tokens.syntax_error;
         end if;
@@ -133,19 +141,19 @@ procedure YYParse is
     -- find state on stack where error is a valid shift --
 
     if yy.debug then
-        text_io.put_line("Ayacc.YYParse: Looking for state with error as valid shift");
+        Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Looking for state with error as valid shift");
     end if;
 
     loop
         if yy.debug then
-          text_io.put_line("Ayacc.YYParse: Examining State " &
-               yy.parse_state'image(yy.state_stack(yy.tos)));
+          Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Examining State " &
+               yy.parse_state'Wide_Wide_Image (yy.state_stack(yy.tos)));
         end if;
         temp_action := parse_action(yy.state_stack(yy.tos), error);
 
             if temp_action >= yy.first_shift_entry then
                 if yy.tos = yy.stack_size then
-                    text_io.put_line(" Stack size exceeded on state_stack");
+                    Ada.Wide_Wide_Text_IO.Put_Line (" Stack size exceeded on state_stack");
                     raise yy_Tokens.syntax_error;
                 end if;
                 yy.tos := yy.tos + 1;
@@ -163,15 +171,15 @@ procedure YYParse is
 
         if yy.tos = 0 then
           if yy.debug then
-            text_io.put_line("Ayacc.YYParse: Error recovery popped entire stack, aborting...");
+            Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Error recovery popped entire stack, aborting...");
           end if;
           raise yy_tokens.syntax_error;
         end if;
     end loop;
 
     if yy.debug then
-        text_io.put_line("Ayacc.YYParse: Shifted error token in state " &
-              yy.parse_state'image(yy.state_stack(yy.tos)));
+        Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Shifted error token in state " &
+              yy.parse_state'Wide_Wide_Image (yy.state_stack(yy.tos)));
     end if;
 
     end handle_error;
@@ -179,15 +187,15 @@ procedure YYParse is
    -- print debugging information for a shift operation
    procedure shift_debug(state_id: yy.parse_state; lexeme: yy_tokens.token) is
    begin
-       text_io.put_line("Ayacc.YYParse: Shift "& yy.parse_state'image(state_id)&" on input symbol "&
-               yy_tokens.token'image(lexeme) );
+       Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Shift "& yy.parse_state'Wide_Wide_Image (state_id)&" on input symbol "&
+               yy_tokens.token'Wide_Wide_Image (lexeme));
    end;
 
    -- print debugging information for a reduce operation
    procedure reduce_debug(rule_id: rule; state_id: yy.parse_state) is
    begin
-       text_io.put_line("Ayacc.YYParse: Reduce by rule "&rule'image(rule_id)&" goto state "&
-               yy.parse_state'image(state_id));
+       Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Reduce by rule "&rule'Wide_Wide_Image (rule_id)&" goto state "&
+               yy.parse_state'Wide_Wide_Image (state_id));
    end;
 
    -- make the parser believe that 3 valid shifts have occured.
@@ -234,7 +242,7 @@ begin
 
             -- Enter new state
             if yy.tos = yy.stack_size then
-                text_io.put_line(" Stack size exceeded on state_stack");
+                Ada.Wide_Wide_Text_IO.Put_Line (" Stack size exceeded on state_stack");
                 raise yy_Tokens.syntax_error;
             end if;
             yy.tos := yy.tos + 1;
@@ -254,7 +262,7 @@ begin
 
         elsif yy.action = yy.accept_code then
             if yy.debug then
-                text_io.put_line("Ayacc.YYParse: Accepting Grammar...");
+                Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Accepting Grammar...");
             end if;
             exit;
 
@@ -269,78 +277,59 @@ begin
 
                 case yy.rule_id is
 
-when  5 =>
---#line  63
+when 5 =>
+--# line 64 "parser.y"
 
-  Nodes.Macros.Insert (
-yy.value_stack(yy.tos-1).Value, 
-yy.value_stack(yy.tos).Value);
+  Nodes.Macros.Insert (YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS).Value);
 
 
-when  6 =>
---#line  67
+when 6 =>
+--# line 68 "parser.y"
 
-  Nodes.Add_Start_Conditions (
-yy.value_stack(yy.tos-1).List, False);
-
-
-when  7 =>
---#line  71
-
-  Nodes.Add_Start_Conditions (
-yy.value_stack(yy.tos-1).List, True);
+  Nodes.Add_Start_Conditions (YY.Value_Stack (YY.TOS -  1).List, False);
 
 
-when  8 =>
---#line  77
+when 7 =>
+--# line 72 "parser.y"
 
-  
-yyval := Nodes.Empty_Name_List;
-  
-yyval.List.Append (
-yy.value_stack(yy.tos).Value);
+  Nodes.Add_Start_Conditions (YY.Value_Stack (YY.TOS -  1).List, True);
 
 
-when  9 =>
---#line  83
+when 8 =>
+--# line 78 "parser.y"
 
-  
-yy.value_stack(yy.tos-1).List.Append (
-yy.value_stack(yy.tos).Value);
-  
-yyval := 
-yy.value_stack(yy.tos-1);
+  YYVal := Nodes.Empty_Name_List;
+  YYVal.List.Append (YY.Value_Stack (YY.TOS).Value);
 
 
-when  12 =>
---#line  95
+when 9 =>
+--# line 84 "parser.y"
 
-  Nodes.Add_Rule (
-yy.value_stack(yy.tos).Regexp, 
-yy.value_stack(yy.tos).Action);
+  YY.Value_Stack (YY.TOS -  1).List.Append (YY.Value_Stack (YY.TOS).Value);
+  YYVal := YY.Value_Stack (YY.TOS -  1);
 
 
-when  13 =>
---#line  102
- 
-yyval := (Nodes.Rule, 
-yy.value_stack(yy.tos-1).Value, 
-yy.value_stack(yy.tos).Value); 
+when 12 =>
+--# line 96 "parser.y"
 
-when  14 =>
---#line  106
- 
-yyval := Nodes.To_Node (scanner_dfa.YYText); 
+  Nodes.Add_Rule (YY.Value_Stack (YY.TOS).Regexp, YY.Value_Stack (YY.TOS).Action);
 
-when  15 =>
---#line  110
- 
-yyval := Nodes.To_Node (scanner_dfa.YYText); 
 
-when  16 =>
---#line  114
- 
-yyval := Nodes.To_Node (scanner_dfa.YYText); 
+when 13 =>
+--# line 103 "parser.y"
+ YYVal := (Nodes.Rule, YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS).Value); 
+
+when 14 =>
+--# line 107 "parser.y"
+ YYVal := Nodes.To_Node (scanner_dfa.YYText); 
+
+when 15 =>
+--# line 111 "parser.y"
+ YYVal := Nodes.To_Node (scanner_dfa.YYText); 
+
+when 16 =>
+--# line 115 "parser.y"
+ YYVal := Nodes.To_Node (scanner_dfa.YYText); 
 
                     when others => null;
                 end case;
@@ -349,7 +338,7 @@ yyval := Nodes.To_Node (scanner_dfa.YYText);
             -- Pop RHS states and goto next state
             yy.tos      := yy.tos - rule_length(yy.rule_id) + 1;
             if yy.tos > yy.stack_size then
-                text_io.put_line(" Stack size exceeded on state_stack");
+                Ada.Wide_Wide_Text_IO.Put_Line (" Stack size exceeded on state_stack");
                 raise yy_Tokens.syntax_error;
             end if;
             yy.state_stack(yy.tos) := goto_state(yy.state_stack(yy.tos-1) ,
@@ -370,3 +359,4 @@ yyval := Nodes.To_Node (scanner_dfa.YYText);
 
 
 end yyparse;
+end Parser;
