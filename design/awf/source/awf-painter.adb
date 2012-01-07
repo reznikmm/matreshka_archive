@@ -50,7 +50,7 @@ package body AWF.Painter is
    ----------
 
    function Draw
-    (Widget : not null AWF.Widgets.AWF_Widget_Access)
+    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access)
        return League.Strings.Universal_String
    is
       Writer : AWF.HTML_Writers.HTML_Writer;
@@ -61,8 +61,7 @@ package body AWF.Painter is
 --   W.Start_Title;
 --   W.Characters (League.Strings.To_Universal_String ("AWF Demo"));
 --   W.End_Title;
-      Widget.Render_Script (Writer);
-      Widget.Render_Style (Writer);
+      Widget.Render_Head (Writer);
       Writer.End_Head;
       Writer.Start_Body;
       Widget.Render_Body (Writer);

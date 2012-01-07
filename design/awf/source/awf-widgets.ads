@@ -41,39 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.HTML_Writers;
 
 package AWF.Widgets is
 
-   type AWF_Widget is abstract tagged limited private;
+   type AWF_Widget is limited interface;
 
    type AWF_Widget_Access is access all AWF_Widget'Class;
 
    function Id
-    (Self : not null access constant AWF_Widget'Class) return Natural;
-
-   not overriding procedure Render_Script
-    (Self    : not null access AWF_Widget;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is abstract;
-
-   not overriding procedure Render_Style
-    (Self    : not null access AWF_Widget;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is abstract;
-
-   not overriding procedure Render_Body
-    (Self    : not null access AWF_Widget;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is abstract;
-
-   package Constructors is
-
-      procedure Initialize (Self : not null access AWF_Widget'Class);
-
-   end Constructors;
-
-private
-
-   type AWF_Widget is abstract tagged limited record
-      Id : Natural;
-   end record;
+    (Self : not null access constant AWF_Widget) return Natural is abstract;
 
 end AWF.Widgets;

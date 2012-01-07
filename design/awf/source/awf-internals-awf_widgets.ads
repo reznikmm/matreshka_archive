@@ -41,40 +41,106 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Registry;
+with League.Strings;
 
-package body AWF.Widgets is
+with AWF.HTML_Writers;
+with AWF.Widgets;
 
-   ------------------
-   -- Constructors --
-   ------------------
+package AWF.Internals.AWF_Widgets is
 
-   package body Constructors is
+   type AWF_Widget_Proxy is
+     abstract limited new AWF.Widgets.AWF_Widget with private;
 
-      Last_Id : Natural := 0;
+   type AWF_Widget_Proxy_Access is
+     access all AWF_Widget_Proxy'Class;
 
-      ----------------
-      -- Initialize --
-      ----------------
+   overriding function Id
+    (Self : not null access constant AWF_Widget_Proxy) return Natural;
 
-      procedure Initialize (Self : not null access AWF_Widget'Class) is
-      begin
-         Last_Id := Last_Id + 1;
-         Self.Id := Last_Id;
+   not overriding procedure Render_Head
+    (Self    : not null access AWF_Widget_Proxy;
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
 
-         AWF.Registry.Register_Widget (Self);
-      end Initialize;
+   not overriding procedure Render_Body
+    (Self    : not null access AWF_Widget_Proxy;
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is abstract;
+
+   not overriding procedure Render_Response
+    (Self     : not null access AWF_Widget_Proxy;
+     Response : in out League.Strings.Universal_String) is null;
+
+   --  Events
+
+   not overriding procedure Key_Down_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Key_Press_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Key_Up_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Click_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Double_Click_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_End_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_Enter_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_Leave_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_Over_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drag_Start_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Drop_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Down_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Move_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Out_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Over_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Up_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Mouse_Wheel_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   not overriding procedure Scroll_Event
+    (Self : not null access AWF_Widget_Proxy) is null;
+
+   package Constructors is
+
+      procedure Initialize
+       (Self : not null access AWF_Widget_Proxy'Class);
 
    end Constructors;
 
-   --------
-   -- Id --
-   --------
+private
 
-   function Id
-    (Self : not null access constant AWF_Widget'Class) return Natural is
-   begin
-      return Self.Id;
-   end Id;
+   type AWF_Widget_Proxy is
+     abstract limited new AWF.Widgets.AWF_Widget with
+   record
+      Id : Natural;
+   end record;
 
-end AWF.Widgets;
+end AWF.Internals.AWF_Widgets;

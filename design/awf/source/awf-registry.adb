@@ -49,10 +49,11 @@ with League.Strings.Hash;
 
 package body AWF.Registry is
 
-   use type AWF.Widgets.AWF_Widget_Access;
+   use type AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access;
 
    package Id_Widget_Maps is
-     new Ada.Containers.Ordered_Maps (Natural, AWF.Widgets.AWF_Widget_Access);
+     new Ada.Containers.Ordered_Maps
+          (Natural, AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
 
    package String_Callback_Maps is
      new Ada.Containers.Hashed_Maps
@@ -71,7 +72,7 @@ package body AWF.Registry is
 
    Widget_Registry : Id_Widget_Maps.Map;
    Class_Registry  : Tag_Callback_Maps.Map;
-   R               : AWF.Widgets.AWF_Widget_Access;
+   R               : AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access;
 
    ----------
    -- Hash --
@@ -111,7 +112,7 @@ package body AWF.Registry is
    ---------------------
 
    procedure Register_Widget
-    (Widget : not null AWF.Widgets.AWF_Widget_Access) is
+    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access) is
    begin
       if R = null then
          R := Widget;
@@ -128,19 +129,42 @@ package body AWF.Registry is
     (Class : Ada.Tags.Tag;
      Id    : League.Strings.Universal_String) return Callback_Access
    is
-      Position : Tag_Callback_Maps.Cursor := Class_Registry.Find (Class);
-      Registry : String_Callback_Map_Access;
+      use type Ada.Tags.Tag;
+
+      Class_Position    : constant Tag_Callback_Maps.Cursor
+        := Class_Registry.Find (Class);
+      Registry          : String_Callback_Map_Access;
+      Callback_Position : String_Callback_Maps.Cursor;
+      Super_Class       : Ada.Tags.Tag;
 
    begin
-      if Tag_Callback_Maps.Has_Element (Position) then
-         Registry := Tag_Callback_Maps.Element (Position);
+      --  Looking for callback registry for specified class.
 
-      else
-         Registry := new String_Callback_Maps.Map;
-         Class_Registry.Insert (Class, Registry);
+      if Tag_Callback_Maps.Has_Element (Class_Position) then
+         Registry := Tag_Callback_Maps.Element (Class_Position);
+
+         --  Looking for callback in the registry and returns it when it is
+         --  found.
+
+         Callback_Position := Registry.Find (Id);
+
+         if String_Callback_Maps.Has_Element (Callback_Position) then
+            return String_Callback_Maps.Element (Callback_Position);
+         end if;
       end if;
 
-      return Registry.Element (Id);
+      --  Looking for callback in superclass.
+
+      Super_Class := Ada.Tags.Parent_Tag (Class);
+
+      if Super_Class /= Ada.Tags.No_Tag then
+         return Resolve (Super_Class, Id);
+
+      --  Returns null when callback is not found.
+
+      else
+         return null;
+      end if;
    end Resolve;
 
    -------------
@@ -149,7 +173,7 @@ package body AWF.Registry is
 
    function Resolve
     (Path : League.Strings.Universal_String)
-       return AWF.Widgets.AWF_Widget_Access
+       return AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access
    is
       Id : constant Natural
         := Integer'Wide_Wide_Value (Path.To_Wide_Wide_String);
@@ -162,7 +186,7 @@ package body AWF.Registry is
    -- Root --
    ----------
 
-   function Root return AWF.Widgets.AWF_Widget_Access is
+   function Root return AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access is
    begin
       return R;
    end Root;

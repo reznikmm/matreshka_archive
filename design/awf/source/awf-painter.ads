@@ -43,12 +43,12 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
-with AWF.Widgets;
+with AWF.Internals.AWF_Widgets;
 
 package AWF.Painter is
 
    function Draw
-    (Widget : not null AWF.Widgets.AWF_Widget_Access)
+    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access)
        return League.Strings.Universal_String;
 
 end AWF.Painter;

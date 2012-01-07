@@ -49,7 +49,7 @@ project AWF is
    for Object_Dir use ".objs";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-O2");
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-O2", "-gnatyo");
    end Compiler;
 
 end AWF;

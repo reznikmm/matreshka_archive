@@ -41,16 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Wide_Wide_Latin_1;
-
 with League.Strings;
 
-with AWF.Registry;
 with AWF.Utilities;
 
 package body AWF.Push_Buttons is
 
-   procedure On_Click (Widget : not null AWF.Widgets.AWF_Widget_Access);
+   -----------------
+   -- Click_Event --
+   -----------------
+
+   overriding procedure Click_Event (Self : not null access AWF_Push_Button) is
+   begin
+      Self.Counter := Self.Counter + 1;
+   end Click_Event;
 
    ------------
    -- Create --
@@ -60,19 +64,10 @@ package body AWF.Push_Buttons is
       Result : AWF_Push_Button_Access := new AWF_Push_Button;
 
    begin
-      AWF.Widgets.Constructors.Initialize (Result);
+      AWF.Internals.AWF_Widgets.Constructors.Initialize (Result);
 
       return Result;
    end Create;
-
-   --------------
-   -- On_Click --
-   --------------
-
-   procedure On_Click (Widget : not null AWF.Widgets.AWF_Widget_Access) is
-   begin
-      AWF_Push_Button'Class (Widget.all).On_Click_Event;
-   end On_Click;
 
    -----------------
    -- Render_Body --
@@ -85,56 +80,25 @@ package body AWF.Push_Buttons is
       Context.Start_Div
        (Id       => AWF.Utilities.Image (Self.Id),
         On_Click =>
-          League.Strings.To_Universal_String ("AWFPushButtonOnClick(this)"));
-      Context.Characters (League.Strings.To_Universal_String ("Push"));
+          League.Strings.To_Universal_String
+           ("AWFWidgetOnEvent(this,""onclick"")"));
+      Context.Characters (League.Strings.To_Universal_String ("Click me!"));
       Context.End_Div;
    end Render_Body;
 
-   -------------------
-   -- Render_Script --
-   -------------------
+   ---------------------
+   -- Render_Response --
+   ---------------------
 
-   overriding procedure Render_Script
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class)
-   is
-      use Ada.Characters.Wide_Wide_Latin_1;
-
+   overriding procedure Render_Response
+    (Self     : not null access AWF_Push_Button;
+     Response : in out League.Strings.Universal_String) is
    begin
-      Context.Start_Script;
-      Context.Characters
+      Response.Append
        (League.Strings.To_Universal_String
-         (LF
-            & "function AWFPushButtonOnClick(element)" & LF
-            & "{" & LF
-            & "   var request = new XMLHttpRequest();" & LF
-            & "   request.onreadystatechange=function()" & LF
-            & "   {" & LF
-            & "     if (request.readyState == 4 && request.status == 200)" & LF
-            & "     {" & LF
-            & "       element.innerHTML = request.responseText;" & LF
-            & "     }" & LF
-            & "   }" & LF
-            & "   request.open('GET', window.location + '/' + element.id + '/onClick', true);" & LF
-            & "   request.send();" & LF
-            & "}" & LF));
-      Context.End_Script;
-   end Render_Script;
+         ("document.getElementById('1').innerHTML = 'Clicked"
+            & Integer'Wide_Wide_Image (Self.Counter)
+            & " time(s), click me again!';"));
+   end Render_Response;
 
-   ------------------
-   -- Render_Style --
-   ------------------
-
-   overriding procedure Render_Style
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is
-   begin
-      null;
-   end Render_Style;
-
-begin
-   AWF.Registry.Register_Callback
-    (AWF_Push_Button'Tag,
-     League.Strings.To_Universal_String ("onClick"),
-     On_Click'Access);
 end AWF.Push_Buttons;

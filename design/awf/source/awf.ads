@@ -44,4 +44,6 @@
 
 package AWF is
 
+   pragma Pure;
+
 end AWF;

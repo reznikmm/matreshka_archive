@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--                               XML Processor                              --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,38 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Tags;
 
-with League.Strings;
+package AWF.Internals is
 
-with AWF.Internals.AWF_Widgets;
+   pragma Pure;
 
-package AWF.Registry is
-
-   procedure Register_Widget
-    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
-   --  Register widget.
-
-   function Resolve
-    (Path : League.Strings.Universal_String)
-       return AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access;
-   --  Resolve specified path and returns corresponding widget.
-
-   function Root return AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access;
-   --  Returns root widget.
-
-   type Callback_Access is
-     access procedure
-      (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
-
-   procedure Register_Callback
-    (Class    : Ada.Tags.Tag;
-     Id       : League.Strings.Universal_String;
-     Callback : not null Callback_Access);
-   --  Register callback handler.
-
-   function Resolve
-    (Class : Ada.Tags.Tag;
-     Id    : League.Strings.Universal_String) return Callback_Access;
-
-end AWF.Registry;
+end AWF.Internals;

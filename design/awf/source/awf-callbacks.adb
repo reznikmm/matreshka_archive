@@ -50,7 +50,7 @@ with League.Text_Codecs;
 
 with AWF.Painter;
 with AWF.Registry;
-with AWF.Widgets;
+with AWF.Internals.AWF_Widgets;
 
 package body AWF.Callbacks is
 
@@ -109,30 +109,28 @@ package body AWF.Callbacks is
             (Request.Raw_Header
               (Path_Info_Header)).Split ('/', League.Strings.Skip_Empty);
 
---         Reply.Set_Content_Type (Text_Mime_Type);
-
          if Path.Length /= 2 then
             Reply.Set_Content_Type (JSON_Mime_Type);
             String'Write (Reply.Stream, "No PATH_INFO");
 
          else
             declare
-               Widget : constant AWF.Widgets.AWF_Widget_Access
-                 := AWF.Registry.Resolve (Path.Element (1));
+               Widget   :
+                 constant AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access
+                   := AWF.Registry.Resolve (Path.Element (1));
+               Response : League.Strings.Universal_String;
 
             begin
                Reply.Set_Content_Type (JSON_Mime_Type);
                AWF.Registry.Resolve (Widget'Tag, Path.Element (2)) (Widget);
-               String'Write (Reply.Stream, "Success");
+               Widget.Render_Response (Response);
+               Ada.Streams.Stream_Element_Array'Write
+                (Reply.Stream,
+                 UTF8_Codec.Encode (Response).To_Stream_Element_Array);
             end;
          end if;
---           Request.Raw_Header (Path_Info_Header).To_Stream_Element_Array);
---
---      else
---         String'Write
---          (Reply.Stream, "No PATH_INFO");
       end if;
---
+
 --      String'Write
 --       (Reply.Stream, ASCII.LF & ASCII.LF);
 --      Ada.Streams.Stream_Element_Array'Write
