@@ -161,4 +161,9 @@ package body Nodes is
       return (Text, Unicode);
    end To_Node;
    
+   function To_Action (Value : String) return Node is
+   begin
+      return To_Node (Value (Value'First + 1 .. Value'Last - 1));
+   end To_Action;
+   
 end Nodes;

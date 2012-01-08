@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -39,13 +39,67 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
+--  $Revision: 2374 $ $Date: 2012-01-05 09:18:57 +0200 (Чтв, 05 Янв 2012) $
 ------------------------------------------------------------------------------
 
-package Generator is
+with Abstract_Sources;
+with Matreshka.Internals.Unicode;
+with League.Strings;
+with Aaa.Handlers;
+with Parser_Tokens;
 
-   pragma Pure;
+package Aaa.Scanners is
+
+   subtype Token is Parser_Tokens.Token;
+   type Scanner is tagged limited private;
+
+   procedure Set_Source
+     (Self : in out Scanner'Class;
+      Source : not null Abstract_Sources.Source_Access);
+
+--   procedure Set_Handler
+--     (Self : in out Scanner'Class; Handler : not null Handler_Access);
    
-   function Image (X : Natural) return Wide_Wide_String;
+   subtype Start_Condition is State;
    
-end Generator;
+   procedure Set_Start_Condition
+    (Self : in out Scanner'Class; Condition : Start_Condition);
+
+   function Get_Start_Condition
+     (Self : Scanner'Class) return Start_Condition;
+
+   procedure Get_Token (Self : access Scanner'Class; Result : out Token);
+   
+   procedure Move_Back (Self : in out Scanner'Class; Count : Positive) is null;
+
+   function Get_Text
+     (Self : Scanner'Class) return League.Strings.Universal_String;
+   
+private
+   
+   Buffer_Half_Size : constant := 512;
+   
+   subtype Buffer_Index is Positive range 1 .. 2 * Buffer_Half_Size;
+   
+   type Character_Class_Array is array (Buffer_Index) of Character_Class;
+   
+   Error_Character : constant Character_Class := 0;
+   Error_State : constant State := State'Last;
+   
+   type Scanner is tagged limited record
+      Handler : Handlers.Handler_Access;
+      Source  : Abstract_Sources.Source_Access;
+      Start   : State := Initial;
+      Next    : Buffer_Index := 1;
+      From    : Buffer_Index := 1;
+      To      : Natural := 0;
+      Rule    : Natural;
+      Buffer  : Wide_Wide_String (Buffer_Index) :=
+        (1 => Wide_Wide_Character'Val (Abstract_Sources.End_Of_Data),
+         others => <>);
+      Classes : Character_Class_Array := (1 => Error_Character, others => <>);
+   end record;
+   
+   procedure Read_Buffer (Self : in out Scanner'Class);
+   
+end Aaa.Scanners;

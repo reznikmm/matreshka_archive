@@ -47,6 +47,7 @@ with scanner_io;
 with Debug;
 with Expand;
 with Generator.Tables;
+with Generator.OOP_Handler;
 with Nodes;
 with League.String_Vectors;
 with League.Strings;
@@ -108,4 +109,6 @@ begin
       Matreshka.Internals.Finite_Automatons.Minimize (X);
       Generator.Tables.Go (X, "aaa", "Aaa");
    end;
+
+   Generator.OOP_Handler (Nodes.Actions, "aaa-handler", "Aaa");
 end UAFLEX;

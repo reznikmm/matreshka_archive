@@ -112,7 +112,7 @@ Regexp_Token: Regexp
 ;
 
 Action_Token: Action
-  { $$ := Nodes.To_Node (scanner_dfa.YYText); }
+  { $$ := Nodes.To_Action (scanner_dfa.YYText); }
 ;
 
 %%

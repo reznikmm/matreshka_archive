@@ -2,6 +2,6 @@
 %x DEF STOP
 DIGIT [0-9]
 %%
-"%%".*\n   { return Section_End; }
+"%%".*\n   {On_Token_1}
 %%
 

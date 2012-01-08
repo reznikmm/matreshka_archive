@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -39,13 +39,25 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
+--  $Revision: 2374 $ $Date: 2012-01-05 09:18:57 +0200 (Чтв, 05 Янв 2012) $
 ------------------------------------------------------------------------------
 
-package Generator is
+with Matreshka.Internals.Unicode;
 
-   pragma Pure;
+package Abstract_Sources is
    
-   function Image (X : Natural) return Wide_Wide_String;
+   subtype Code_Unit_32 is Matreshka.Internals.Unicode.Code_Unit_32;
    
-end Generator;
+   type Abstract_Source is limited interface;
+   
+   Error         : constant Code_Unit_32 := 16#7FFFFFFF#;
+   End_Of_Input  : constant Code_Unit_32 := 16#7FFFFFFE#;
+   End_Of_Data   : constant Code_Unit_32 := 16#7FFFFFFD#;
+   End_Of_Buffer : constant Code_Unit_32 := 16#7FFFFFFC#;
+
+   type Source_Access is access all Abstract_Source'Class;
+
+   not overriding function Get_Next
+    (Self : not null access Abstract_Source) return Code_Unit_32 is abstract;   
+   
+end Abstract_Sources;

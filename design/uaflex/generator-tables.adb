@@ -100,8 +100,6 @@ package body Generator.Tables is
         (Id    : Matreshka.Internals.Graphs.Edge_Identifier;
          Count : in out Natural);
       function Get_Second (X : First_Stage_Index) return Second_Stage_Array;
-      function Image (X : Natural) return Wide_Wide_String;
-
 
       Output  : Ada.Wide_Wide_Text_IO.File_Type;
       Classes : Char_Set_Vectors.Vector;
@@ -128,29 +126,23 @@ package body Generator.Tables is
          return Result;
       end Get_Second;
 
-      function Image (X : Natural) return Wide_Wide_String is
-         Text : constant Wide_Wide_String := Natural'Wide_Wide_Image (X);
-      begin
-         return Text (2 .. Text'Last);
-      end Image;
-
       procedure N (Text : Wide_Wide_String) is
       begin
-         Ada.Wide_Wide_Text_IO.Put (Text);
-         --  Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
+         --  Ada.Wide_Wide_Text_IO.Put (Text);
+         Ada.Wide_Wide_Text_IO.Put (Output, Text);
       end N;
 
       procedure P (Text : Wide_Wide_String) is
       begin
-         Ada.Wide_Wide_Text_IO.Put_Line (Text);
-         --  Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
+         --  Ada.Wide_Wide_Text_IO.Put_Line (Text);
+         Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
       end P;
 
       procedure Print_Char_Classes is
          use Second_Stage_Array_Maps;
          use type First_Stage_Index;
          use type Second_Stage_Index;
-         Known : Map;
+         Known  : Map;
          Pos    : Cursor;
          First  : First_Stage_Array;
          Second : Second_Stage_Array;
@@ -315,11 +307,18 @@ package body Generator.Tables is
                      N (",");
                   end if;
                end loop;
-
+               
                if Count /= Positive (Classes.Length) + 1 then
-                  N (", others =>" &
+                  if Count = 0 then
+                     N ("        (");
+                  else
+                     N (", ");
+                  end if;
+                    
+                  N ("others =>" &
                        State'Wide_Wide_Image (DFA.Graph.Node_Count));
                end if;
+
                N (")");
             end;
          end loop;
@@ -329,7 +328,7 @@ package body Generator.Tables is
       end Print_Switch;
 
    begin
-      Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
+      Ada.Wide_Wide_Text_IO.Create (Output, Name => File & ".ads");
       Split_To_Distinct (DFA.Edge_Char_Set, Classes);
 
       P ("with Matreshka.Internals.Unicode;");
@@ -368,6 +367,9 @@ package body Generator.Tables is
       P ("   pragma Inline (Rule);");
       P ("");
       P ("end " & Unit & ";");
+
+      Ada.Wide_Wide_Text_IO.Close (Output);
+      Ada.Wide_Wide_Text_IO.Create (Output, Name => File & ".adb");
 
       P ("with Matreshka.Internals.Unicode.Ucd;");
       P ("package body " & Unit & " is");

@@ -329,7 +329,7 @@ when 15 =>
 
 when 16 =>
 --# line 115 "parser.y"
- YYVal := Nodes.To_Node (scanner_dfa.YYText); 
+ YYVal := Nodes.To_Action (scanner_dfa.YYText); 
 
                     when others => null;
                 end case;
