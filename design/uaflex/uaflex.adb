@@ -110,5 +110,5 @@ begin
       Generator.Tables.Go (X, "aaa", "Aaa");
    end;
 
-   Generator.OOP_Handler (Nodes.Actions, "aaa-handler", "Aaa");
+   Generator.OOP_Handler (Nodes.Actions, "aaa-handlers", "Aaa");
 end UAFLEX;

@@ -93,7 +93,7 @@ private
       Next    : Buffer_Index := 1;
       From    : Buffer_Index := 1;
       To      : Natural := 0;
-      Rule    : Natural;
+      Rule    : Rule_Index;
       Buffer  : Wide_Wide_String (Buffer_Index) :=
         (1 => Wide_Wide_Character'Val (Abstract_Sources.End_Of_Data),
          others => <>);

@@ -92,7 +92,7 @@ package body Aaa.Scanners is
       
       Current_State : State := Self.Start;
       Char : Character_Class;
-      Next_Rule : Natural;
+      Next_Rule : Rule_Index;
       Done : Boolean;
    begin
       loop
@@ -109,7 +109,7 @@ package body Aaa.Scanners is
                
                exit when Current_State = Error_State;
                
-               Next_Rule := Natural (Rule (Current_State));
+               Next_Rule := Rule (Current_State);
                
                if Next_Rule /= 0 then
                   Self.Rule := Next_Rule;

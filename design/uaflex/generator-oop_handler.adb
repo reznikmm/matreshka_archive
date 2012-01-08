@@ -77,7 +77,7 @@ begin
    P ("         when others =>");
    P ("            raise Constraint_Error;");
    P ("      end case;");
-   P ("   end On_Accept");
+   P ("   end On_Accept;");
    P ("");
    P ("end Aaa.Handlers;");
    

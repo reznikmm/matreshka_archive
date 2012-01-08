@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-%x RULE SECT2 DEF NAMELIST
+%x INRULE SECT2 DEF NAMELIST
 
 NAME           [a-zA-Z][a-zA-Z0-9_]*
 SPACE          [\t ]+
@@ -54,35 +54,38 @@ ADA_STRING     \"([^"]+|\"\")*\"
 
 %%
 
-"--"[^\n]* { null; }
+{SPACE}?"--"[^\n]*\n { null; }
 
-^"%"[Ss](tart)? {
+"%"[Ss](tart)? {
   Enter (NAMELIST);
   return Start;
 }
 
-^"%"[Xx] {
+"%"[Xx] {
   Enter (NAMELIST);
   return Excl_Start;
 }
 
-^{NAME} {
+{NAME} {
    Enter (DEF);
    return Name;
 }
 
-^"%%".*\n   {
+"%%".*\n   {
   Enter (SECT2);
   return Section_End; 
 }
 
-{SPACE}|\n {null;}
+{SPACE}?\n {null;}
 
-<DEF>[ \t]+ { null; }
+<DEF>{SPACE} { null; }
 
 <DEF>[^ \t\n][^\n]* {
-   Enter (INITIAL);
    return Regexp;
+}
+
+<DEF>\n {
+   Enter (INITIAL);
 }
 
 <NAMELIST>\n {
@@ -96,29 +99,28 @@ ADA_STRING     \"([^"]+|\"\")*\"
 
 <NAMELIST>{SPACE} { null; }
 
-<SECT2>^({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+  {
-   Enter (RULE);
+<SECT2>({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+  {
+   Enter (INRULE);
    return Regexp;
 }
 
-<SECT2>\n { null; }
+<SECT2>{SPACE}?\n { null; }
 
-<SECT2>^"%%".*\n   {
+<SECT2>"%%".*\n   {
   Enter (INITIAL);
   return Section_End; 
 }
 
-<RULE>\{([^}]+|{ADA_STRING})*\} {
-   Enter (SECT2);
+<INRULE>\{([^}]+|{ADA_STRING})*\} {
    return Action;
 }
 
-<RULE>{SPACE}+ { null; }
+<INRULE>{SPACE} { null; }
 
---^[a-zA-Z]+  {ENTER (DEF); return Name;}
---<DEF>[\t ]+ {}
---<DEF>.+     {Enter (INITIAL); return Definition;}
---<DEF>\n     {return Error;}
+<INRULE>{SPACE}?\n {
+   Enter (SECT2);
+}
+
 %%
 with Parser_Tokens; use Parser_Tokens;
 with Ada.Text_IO;
