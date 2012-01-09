@@ -104,27 +104,34 @@ rule: Regexp_Token Action_Token
 ;
 
 Name_Token: Name
-  { $$ := Nodes.To_Node (scanner_dfa.YYText); }
+  { $$ := Nodes.To_Node (Scanner.Get_Text); }
 ;
 
 Regexp_Token: Regexp
-  { $$ := Nodes.To_Node (scanner_dfa.YYText); }
+  { $$ := Nodes.To_Node (Scanner.Get_Text); }
 ;
 
 Action_Token: Action
-  { $$ := Nodes.To_Action (scanner_dfa.YYText); }
+  { $$ := Nodes.To_Action (Scanner.Get_Text); }
 ;
 
 %%
+with Aaa.Scanners;
 ##
+   Scanner : aliased Aaa.Scanners.Scanner;
    procedure YYParse;
 ##
 with Ada.Wide_Wide_Text_IO;
-with YYLex;
 with Nodes;
-with scanner_dfa;
 ##
 procedure yyerror (X : Wide_Wide_String) is
 begin
   Ada.Wide_Wide_Text_IO.Put_Line (X);
 end;
+
+function YYLex return Token is
+   Result : Token;
+begin
+   Scanner.Get_Token (Result);
+   return Result;
+end YYLex;

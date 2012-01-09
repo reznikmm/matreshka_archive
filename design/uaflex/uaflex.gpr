@@ -2,7 +2,7 @@ with "../../gnat/matreshka_league.gpr";
 
 project UAFLEX is
    for Main use ("uaflex.adb");
-   for Source_Dirs use ("."); -- , "generated");
+   for Source_Dirs use (".", "lib", "generated");
    for Object_Dir use ".objs";
    for Exec_Dir use ".";
 

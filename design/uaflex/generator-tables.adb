@@ -49,6 +49,7 @@ with League.Character_Sets;
 
 with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Graphs;
+--  with Debug;
 
 package body Generator.Tables is
 
@@ -330,7 +331,9 @@ package body Generator.Tables is
    begin
       Ada.Wide_Wide_Text_IO.Create (Output, Name => File & ".ads");
       Split_To_Distinct (DFA.Edge_Char_Set, Classes);
-
+      
+      --  Debug.Print_Character_Classes (Classes);
+      
       P ("with Matreshka.Internals.Unicode;");
       P ("package " & Unit & " is");
 

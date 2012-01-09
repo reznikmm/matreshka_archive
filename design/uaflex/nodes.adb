@@ -152,18 +152,14 @@ package body Nodes is
       end loop;
    end Add_Start_Conditions;
    
-   function To_Node (Value : String) return Node is
-      Raw : Ada.Streams.Stream_Element_Array (1 .. Value'Length);
-      for Raw'Address use Value'Address;
-      Unicode : constant League.Strings.Universal_String :=
-        League.Text_Codecs.Codec_For_Application_Locale.Decode (Raw);
+   function To_Node (Value : League.Strings.Universal_String) return Node is
    begin
-      return (Text, Unicode);
+      return (Text, Value);
    end To_Node;
    
-   function To_Action (Value : String) return Node is
+   function To_Action (Value : League.Strings.Universal_String) return Node is
    begin
-      return To_Node (Value (Value'First + 1 .. Value'Last - 1));
+      return To_Node (Value.Slice (2, Value.Length - 1));
    end To_Action;
    
 end Nodes;

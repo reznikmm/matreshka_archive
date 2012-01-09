@@ -46,6 +46,7 @@
 
 NAME           [a-zA-Z][a-zA-Z0-9_]*
 SPACE          [\t ]+
+OPTSPACE       [\t ]*
 NO_SPACE       [^\n\t ]+
 CLASS          "["[^\n\]]+"]"
 STRING         \"[^"\n]*\"
@@ -54,12 +55,12 @@ ADA_STRING     \"([^"]+|\"\")*\"
 
 %%
 
-{SPACE}?"--"[^\n]*\n					{Skip_Comment}
+{OPTSPACE}"--"[^\n]*\n					{Skip_Comment}
 "%"[Ss](tart)?						{On_Start}
 "%"[Xx]							{On_Exclusive}
 {NAME}							{On_Name}
-"%%".*\n						{On_Section_End}
-{SPACE}?\n						{Skip_Empty_Line}
+"%%"[^\n]*\n						{On_Section_End}
+{OPTSPACE}\n						{Skip_Empty_Line}
 
 <DEF>{SPACE}						{Skip_Spaces}
 <DEF>[^ \t\n][^\n]*					{On_Regexp}
@@ -70,11 +71,11 @@ ADA_STRING     \"([^"]+|\"\")*\"
 <NAMELIST>{SPACE}					{Skip_Spaces_2}
 
 <SECT2>({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+	{On_Regexp_2}
-<SECT2>{SPACE}?\n					{Skip_Empty_Line_2}
-<SECT2>"%%".*\n						{On_Section_End_2}
+<SECT2>{OPTSPACE}\n					{Skip_Empty_Line_2}
+<SECT2>"%%"[^\n]*\n						{On_Section_End_2}
 
 <INRULE>\{([^}]+|{ADA_STRING})*\}			{On_Action}
 <INRULE>{SPACE}						{Skip_Spaces_3}
-<INRULE>{SPACE}?\n					{On_End_Of_Rule}
+<INRULE>{OPTSPACE}\n					{On_End_Of_Rule}
 
 %%

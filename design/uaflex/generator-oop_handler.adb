@@ -37,7 +37,7 @@ begin
    P ("      Scanner : not null access Scanners.Scanner'Class;");
    P ("      Rule    : Rule_Index;");
    P ("      Token   : out Parser_Tokens.Token;");
-   P ("      Skip    : out Boolean);");
+   P ("      Skip    : in out Boolean);");
    P ("");
    
    for J in 1 .. Actions.Length loop
@@ -45,7 +45,7 @@ begin
       P ("     (Self    : not null access Handler;");
       P ("      Scanner : not null access Scanners.Scanner'Class;");
       P ("      Token   : out Parser_Tokens.Token;");
-      P ("      Skip    : out Boolean) is abstract;");
+      P ("      Skip    : in out Boolean) is abstract;");
       P ("");
    end loop;
    
@@ -63,7 +63,7 @@ begin
    P ("      Scanner : not null access Scanners.Scanner'Class;");
    P ("      Rule    : Rule_Index;");
    P ("      Token   : out Parser_Tokens.Token;");
-   P ("      Skip    : out Boolean) is");
+   P ("      Skip    : in out Boolean) is");
    P ("   begin");
    P ("      case Rule is");
    

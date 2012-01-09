@@ -105,6 +105,75 @@ package body Matreshka.Internals.Finite_Automatons is
       List    : Shared_Pattern_Array;
       Actions : Rule_Index_Array);
    
+   procedure Check
+     (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+      Head : Positive);
+   
+   -----------
+   -- Check --
+   -----------
+   
+   procedure Check
+     (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+      Head : Positive)
+   is
+      procedure Walk (Root  : Positive);
+
+      procedure Walk_List (Head  : Positive);
+      
+      procedure Walk (Root  : Positive) is
+         Node : Matreshka.Internals.Regexps.Node renames AST.AST (Root);
+      begin
+         case Node.Kind is
+            when Matreshka.Internals.Regexps.N_None =>
+               raise Constraint_Error with "'None' unsupported";
+
+            when Matreshka.Internals.Regexps.N_Subexpression =>
+               Walk (Compiler.Get_Expression (AST, Root));
+
+            when Matreshka.Internals.Regexps.N_Match_Any |
+              Matreshka.Internals.Regexps.N_Match_Code |
+              Matreshka.Internals.Regexps.N_Match_Property |
+              Matreshka.Internals.Regexps.N_Character_Class |
+              Matreshka.Internals.Regexps.N_Member_Code |
+              Matreshka.Internals.Regexps.N_Member_Property |
+              Matreshka.Internals.Regexps.N_Member_Range =>
+               null;
+               
+            when Matreshka.Internals.Regexps.N_Anchor =>
+               raise Constraint_Error with "'Anchor' unsupported";
+
+            when Matreshka.Internals.Regexps.N_Multiplicity =>
+               if not Node.Greedy then
+                  raise Constraint_Error with "'Lazy' unsupported";
+               elsif Node.Lower not in 0 .. 1 then
+                  raise Constraint_Error with
+                    "'Lower not 0 or 1' unsupported";
+               elsif not (Node.Upper = Natural'Last or
+                            (Node.Upper = 1 and Node.Lower = 0))
+               then
+                  raise Constraint_Error with
+                    "'Upper not *' unsupported";
+               end if;
+
+            when Matreshka.Internals.Regexps.N_Alternation =>
+               Walk_List (Compiler.Get_Preferred (AST, Root));
+               Walk_List (Compiler.Get_Fallback (AST, Root));
+         end case;
+      end Walk;
+
+      procedure Walk_List (Head  : Positive) is
+         Pos    : Natural := Head;
+      begin
+         while Pos > 0 loop
+            Walk (Pos);
+            Pos := Compiler.Get_Next_Sibling (AST, Pos);
+         end loop;
+      end Walk_List;
+   begin
+      Walk_List (Head);
+   end Check;
+   
    -------------
    -- Compile --
    -------------
@@ -544,6 +613,7 @@ package body Matreshka.Internals.Finite_Automatons is
          Result_Last  : Position_Set;
       begin
          for J in List'Range loop
+            Check (List (J), Head (J));
             Result_First := Empty;
             Result_Last  := Empty;
             Walk_List

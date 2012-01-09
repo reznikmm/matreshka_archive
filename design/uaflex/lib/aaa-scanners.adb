@@ -85,6 +85,15 @@ package body Aaa.Scanners is
    ---------------
 
    procedure Get_Token (Self : access Scanner'Class; Result : out Token) is
+      procedure Next is
+      begin
+         if Self.Next = Self.Buffer'Last then
+            Self.Next := 1;
+         else
+            Self.Next := Self.Next + 1;
+         end if;
+      end Next;
+      
       EOF : constant Wide_Wide_Character :=
         Wide_Wide_Character'Val (Abstract_Sources.End_Of_Input);
       --  EOD : constant Wide_Wide_Character :=
@@ -93,8 +102,13 @@ package body Aaa.Scanners is
       Current_State : State := Self.Start;
       Char : Character_Class;
       Next_Rule : Rule_Index;
-      Done : Boolean;
+      Skip      : Boolean := True;
    begin
+      if Self.Buffer (Self.Next) = EOF then
+         Result := Parser_Tokens.End_Of_Input;
+         return;
+      end if;
+
       loop
          Current_State := Self.Start;
          Self.Rule := 0;
@@ -115,20 +129,22 @@ package body Aaa.Scanners is
                   Self.Rule := Next_Rule;
                   Self.To := Self.Next;
                end if;
+               
+               Next;
             elsif Self.Buffer (Self.Next) = End_Of_Buffer then
                Self.Read_Buffer;
-            elsif Self.Buffer (Self.Next) = EOF then
-               Result := Parser_Tokens.End_Of_Input;
-               return;
             else
                exit;
             end if;
          end loop;
          
+         Self.Next := Self.To;
+         Next;
+
          if Self.Rule /= 0 then
-            Self.Handler.On_Accept (Self, Self.Rule, Result, Done);
+            Self.Handler.On_Accept (Self, Self.Rule, Result, Skip);
             
-            if Done then
+            if not Skip then
                return;
             end if;
          end if;
@@ -142,7 +158,7 @@ package body Aaa.Scanners is
    procedure Read_Buffer (Self : in out Scanner'Class) is
       use Abstract_Sources;
       use type Code_Unit_32;
-
+      
       Next : Code_Unit_32;
       Pos  : Buffer_Index := Self.Next;
    begin
@@ -155,7 +171,12 @@ package body Aaa.Scanners is
             return;
          else
             Self.Classes (Pos) := To_Class (Next);
-            Pos := Pos + 1;
+            
+            if Pos = Self.Buffer'Last then
+               Pos := 1;
+            else
+               Pos := Pos + 1;
+            end if;
          
             if Pos = Buffer_Half_Size or Pos = Self.Buffer'Last then
               Self.Classes (Pos) := Error_Character;
@@ -165,6 +186,17 @@ package body Aaa.Scanners is
          end if;
       end loop;
    end Read_Buffer;
+   
+   -----------------
+   -- Set_Handler --
+   -----------------
+   
+   procedure Set_Handler
+     (Self    : in out Scanner'Class;
+      Handler : not null Aaa.Handlers.Handler_Access) is
+   begin
+      Self.Handler := Handler;
+   end Set_Handler;
    
    ----------------
    -- Set_Source --

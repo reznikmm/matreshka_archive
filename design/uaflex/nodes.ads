@@ -67,8 +67,8 @@ package Nodes is
    
    subtype Rule_Node is Node (Rule);
    
-   function To_Node (Value : String) return Node;
-   function To_Action (Value : String) return Node;
+   function To_Node (Value : League.Strings.Universal_String) return Node;
+   function To_Action (Value : League.Strings.Universal_String) return Node;
    
    Empty_Name_List : constant Node (Name_List) :=
      (Kind => Name_List, List => <>);

@@ -43,7 +43,8 @@
 ------------------------------------------------------------------------------
 
 with Ada.Wide_Wide_Text_IO;
-
+with League.Character_Sets;
+with Matreshka.Internals.Graphs;
 with Nodes;
 
 package body Debug is
@@ -86,5 +87,33 @@ package body Debug is
                      Nodes.Actions.Element (J).To_Wide_Wide_String);
       end loop;
    end Print;
+   
+   -----------------------------
+   -- Print_Character_Classes --
+   -----------------------------
+   
+   procedure Print_Character_Classes
+     (Vector : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
+   is
+      subtype Wide is Wide_Wide_Character range
+        Wide_Wide_Character'Val (0) .. Wide_Wide_Character'Val (16#10FFFF#);
+      use Ada.Wide_Wide_Text_IO;
+   begin
+      for J in Vector.First_Index .. Vector.Last_Index loop
+         Put_Line (Matreshka.Internals.Graphs.Edge_Identifier'Wide_Wide_Image
+                     (J));
+         declare
+            Item : constant League.Character_Sets.Universal_Character_Set :=
+              Vector.Element (J);
+         begin
+            for K in Wide loop
+               if Item.Has (K) then
+                  Put (K);
+               end if;
+            end loop;
+            New_Line;
+         end;
+      end loop;
+   end Print_Character_Classes;
    
 end Debug;

@@ -42,8 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Parser;
-with scanner_io;
 
+with Ada.Directories;
+with Ada.Streams.Stream_IO;
 with Debug;
 with Expand;
 with Generator.Tables;
@@ -51,7 +52,12 @@ with Generator.OOP_Handler;
 with Nodes;
 with League.String_Vectors;
 with League.Strings;
+with League.Text_Codecs;
 with Matreshka.Internals.Finite_Automatons;
+
+with UAFLEX_Handler;
+with Aaa.Scanners;
+with String_Sources;
 
 procedure UAFLEX is
    procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor);
@@ -59,6 +65,10 @@ procedure UAFLEX is
      (Name : League.Strings.Universal_String;
       Condition : Nodes.Start_Condition);
    
+   function Read_File
+     (File_Name : String)
+     return League.Strings.Universal_String;
+
    DFA : Matreshka.Internals.Finite_Automatons.DFA_Constructor;
    
    ----------
@@ -90,12 +100,42 @@ procedure UAFLEX is
       Nodes.Start_Condition_Maps.Query_Element (Cursor, Each'Access);
    end Each_Condition;
    
+   function Read_File
+     (File_Name : String)
+     return League.Strings.Universal_String
+   is
+      Decoder : League.Text_Codecs.Text_Codec :=
+        League.Text_Codecs.Codec_For_Application_Locale;
+
+      Size : constant Ada.Directories.File_Size :=
+        Ada.Directories.Size (File_Name);
+
+      Length : constant Ada.Streams.Stream_Element_Offset :=
+        Ada.Streams.Stream_Element_Count (Size);
+
+      File   : Ada.Streams.Stream_IO.File_Type;
+      Data   : Ada.Streams.Stream_Element_Array (1 .. Length);
+      Last   : Ada.Streams.Stream_Element_Offset;
+   begin
+      Ada.Streams.Stream_IO.Open
+        (File, Ada.Streams.Stream_IO.In_File, File_Name);
+      Ada.Streams.Stream_IO.Read (File, Data, Last);
+      Ada.Streams.Stream_IO.Close (File);
+
+      return Decoder.Decode (Data (1 .. Last));
+   end Read_File;
+   
    Initial : League.String_Vectors.Universal_String_Vector;
+   Source  : aliased String_Sources.String_Source;
+   Handler : aliased UAFLEX_Handler.Handler;
 begin
+   Source.Create (Read_File ("test"));
+   Parser.Scanner.Set_Source (Source'Unchecked_Access);
+   Parser.Scanner.Set_Handler (Handler'Unchecked_Access);
+   
    Initial.Append (League.Strings.To_Universal_String ("INITIAL"));
    Nodes.Add_Start_Conditions (Initial, False);
    
-   scanner_io.Open_Input ("test");
    Parser.YYParse;
    Expand.RegExps;
    Debug.Print;

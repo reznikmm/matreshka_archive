@@ -57,8 +57,9 @@ package Aaa.Scanners is
      (Self : in out Scanner'Class;
       Source : not null Abstract_Sources.Source_Access);
 
---   procedure Set_Handler
---     (Self : in out Scanner'Class; Handler : not null Handler_Access);
+   procedure Set_Handler
+     (Self    : in out Scanner'Class;
+      Handler : not null Aaa.Handlers.Handler_Access);
    
    subtype Start_Condition is State;
    
@@ -95,7 +96,7 @@ private
       To      : Natural := 0;
       Rule    : Rule_Index;
       Buffer  : Wide_Wide_String (Buffer_Index) :=
-        (1 => Wide_Wide_Character'Val (Abstract_Sources.End_Of_Data),
+        (1 => Wide_Wide_Character'Val (Abstract_Sources.End_Of_Buffer),
          others => <>);
       Classes : Character_Class_Array := (1 => Error_Character, others => <>);
    end record;
