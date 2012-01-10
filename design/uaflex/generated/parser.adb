@@ -1,7 +1,5 @@
 with Ada.Wide_Wide_Text_IO;
-with YYLex;
 with Nodes;
-with scanner_dfa;
 with Parser.Goto_Table;
 use  Parser.Goto_Table;
 with Parser_Tokens;
@@ -16,6 +14,13 @@ procedure yyerror (X : Wide_Wide_String) is
 begin
   Ada.Wide_Wide_Text_IO.Put_Line (X);
 end;
+
+function YYLex return Token is
+   Result : Token;
+begin
+   Scanner.Get_Token (Result);
+   return Result;
+end YYLex;
 procedure YYParse is
 
    -- Rename User Defined Packages to Internal Names.
@@ -321,15 +326,15 @@ when 13 =>
 
 when 14 =>
 --# line 107 "parser.y"
- YYVal := Nodes.To_Node (scanner_dfa.YYText); 
+ YYVal := Nodes.To_Node (Scanner.Get_Text); 
 
 when 15 =>
 --# line 111 "parser.y"
- YYVal := Nodes.To_Node (scanner_dfa.YYText); 
+ YYVal := Nodes.To_Node (Scanner.Get_Text); 
 
 when 16 =>
 --# line 115 "parser.y"
- YYVal := Nodes.To_Action (scanner_dfa.YYText); 
+ YYVal := Nodes.To_Action (Scanner.Get_Text); 
 
                     when others => null;
                 end case;
