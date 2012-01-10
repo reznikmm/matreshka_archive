@@ -50,6 +50,7 @@ with Expand;
 with Generator.Tables;
 with Generator.OOP_Handler;
 with Nodes;
+with League.Application;
 with League.String_Vectors;
 with League.Strings;
 with League.Text_Codecs;
@@ -68,9 +69,27 @@ procedure UAFLEX is
    function Read_File
      (File_Name : String)
      return League.Strings.Universal_String;
-
+   
+   procedure Read_Arguments;
+   
+   function To_String
+     (Item : League.Strings.Universal_String)
+     return String
+     renames League.Text_Codecs.To_Exception_Message;
+   
+   function "+"
+     (Item : Wide_Wide_String)
+     return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+   
    DFA : Matreshka.Internals.Finite_Automatons.DFA_Constructor;
    
+   Handler : League.Strings.Universal_String;
+   Input   : League.Strings.Universal_String;
+   Tokens  : League.Strings.Universal_String;
+   Types   : League.Strings.Universal_String;
+   Scanner : League.Strings.Universal_String;
+
    ----------
    -- Each --
    ----------
@@ -100,6 +119,46 @@ procedure UAFLEX is
       Nodes.Start_Condition_Maps.Query_Element (Cursor, Each'Access);
    end Each_Condition;
    
+   --------------------
+   -- Read_Arguments --
+   --------------------
+   
+   procedure Read_Arguments is
+      use League.Strings;
+      Is_Types   : constant Universal_String := +"--types";
+      Is_Scanner : constant Universal_String := +"--scanner";
+      Is_Tokens  : constant Universal_String := +"--tokens";
+      Is_Handler : constant Universal_String := +"--handler";
+      
+      Last  : constant Natural := League.Application.Arguments.Length;
+      Index : Positive := 1;
+   begin
+      while Index <= Last loop
+         declare
+            Next : constant League.Strings.Universal_String :=
+              League.Application.Arguments.Element (Index);
+         begin
+            if Index = Last then
+               Input := Next;
+            elsif Next = Is_Types then
+               Index := Index + 1;
+               Types := League.Application.Arguments.Element (Index);
+            elsif Next = Is_Scanner then
+               Index := Index + 1;
+               Scanner := League.Application.Arguments.Element (Index);
+            elsif Next = Is_Tokens then
+               Index := Index + 1;
+               Tokens := League.Application.Arguments.Element (Index);
+            elsif Next = Is_Handler then
+               Index := Index + 1;
+               Handler := League.Application.Arguments.Element (Index);
+            end if;
+            
+            Index := Index + 1;
+         end;
+      end loop;
+   end Read_Arguments;
+   
    function Read_File
      (File_Name : String)
      return League.Strings.Universal_String
@@ -125,13 +184,25 @@ procedure UAFLEX is
       return Decoder.Decode (Data (1 .. Last));
    end Read_File;
    
-   Initial : League.String_Vectors.Universal_String_Vector;
-   Source  : aliased String_Sources.String_Source;
-   Handler : aliased UAFLEX_Handler.Handler;
+   Initial  : League.String_Vectors.Universal_String_Vector;
+   Source   : aliased String_Sources.String_Source;
+   UHandler : aliased UAFLEX_Handler.Handler;
+   Classes  : Matreshka.Internals.Finite_Automatons.Vectors.Vector;
 begin
-   Source.Create (Read_File ("test"));
+   Read_Arguments;
+   
+   if Handler.Is_Empty or
+     Input.Is_Empty or
+     Tokens.Is_Empty or
+     Types.Is_Empty or
+     Scanner.Is_Empty
+   then
+      return;
+   end if;
+   
+   Source.Create (Read_File (To_String (Input)));
    Parser.Scanner.Set_Source (Source'Unchecked_Access);
-   Parser.Scanner.Set_Handler (Handler'Unchecked_Access);
+   Parser.Scanner.Set_Handler (UHandler'Unchecked_Access);
    
    Initial.Append (League.Strings.To_Universal_String ("INITIAL"));
    Nodes.Add_Start_Conditions (Initial, False);
@@ -147,8 +218,13 @@ begin
    begin
       DFA.Complete (Output => X);
       Matreshka.Internals.Finite_Automatons.Minimize (X);
-      Generator.Tables.Go (X, "aaa", "Aaa");
+      Generator.Tables.Types (X, Types, "aaa.ads", Classes);
+      Generator.Tables.Go
+        (X, +"Tables", "aaa-scanners-tables.adb", Scanner, Classes);
    end;
 
-   Generator.OOP_Handler (Nodes.Actions, "aaa-handlers", "Aaa");
+   Generator.OOP_Handler.Go
+     (Nodes.Actions, "aaa-handlers.ads", Handler, Scanner, Tokens);
+   Generator.OOP_Handler.On_Accept
+     (Nodes.Actions, "aaa-scanners-on_accept.adb", Handler, Scanner, Tokens);
 end UAFLEX;

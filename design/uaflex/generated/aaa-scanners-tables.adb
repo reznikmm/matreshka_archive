@@ -1,5 +1,7 @@
 with Matreshka.Internals.Unicode.Ucd;
-package body Aaa is
+
+separate (AAA.Scanners)
+package body Tables is
    subtype First_Stage_Index is
      Matreshka.Internals.Unicode.Ucd.First_Stage_Index;
 
@@ -1371,4 +1373,4 @@ package body Aaa is
       return Switch_Table (S, Class);
    end Switch;
 
-end Aaa;
+end Tables;

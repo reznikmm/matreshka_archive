@@ -1,7 +1,10 @@
 with Matreshka.Internals.Unicode;
-package Aaa is
+
+package AAA is
+
    type State is mod 68;
    subtype Valid_State is State range 0 .. State'Last - 1;
+
    DEF : constant State := 0;
    INITIAL : constant State := 4;
    INRULE : constant State := 18;
@@ -12,14 +15,4 @@ package Aaa is
 
    type Rule_Index is range 0 .. 18;
 
-   function To_Class (Value : Matreshka.Internals.Unicode.Code_Point)
-     return Character_Class;
-   pragma Inline (To_Class);
-
-   function Switch (S : State; Class : Character_Class) return State;
-   pragma Inline (Switch);
-
-   function Rule (S : State) return Rule_Index;
-   pragma Inline (Rule);
-
-end Aaa;
+end AAA;

@@ -44,9 +44,32 @@
 
 package body Aaa.Scanners is
 
+   package Tables is
+      function To_Class (Value : Matreshka.Internals.Unicode.Code_Point)
+        return Character_Class;
+      pragma Inline (To_Class);
+
+      function Switch (S : State; Class : Character_Class) return State;
+      pragma Inline (Switch);
+
+      function Rule (S : State) return Rule_Index;
+      pragma Inline (Rule);
+   end Tables;
+
+   package body Tables is separate;
+
+   use Tables;
+
+   procedure On_Accept
+     (Self    : not null access Aaa.Handlers.Handler'Class;
+      Scanner : not null access Aaa.Scanners.Scanner'Class;
+      Rule    : Rule_Index;
+      Token   : out Parser_Tokens.Token;
+      Skip    : in out Boolean) is separate;
+
    End_Of_Buffer : constant Wide_Wide_Character :=
      Wide_Wide_Character'Val (Abstract_Sources.End_Of_Buffer);
-   
+
    -------------------------
    -- Get_Start_Condition --
    -------------------------
@@ -142,7 +165,7 @@ package body Aaa.Scanners is
          Next;
 
          if Self.Rule /= 0 then
-            Self.Handler.On_Accept (Self, Self.Rule, Result, Skip);
+            On_Accept (Self.Handler, Self, Self.Rule, Result, Skip);
             
             if not Skip then
                return;

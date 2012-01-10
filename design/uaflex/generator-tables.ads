@@ -42,12 +42,21 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Finite_Automatons;
+with League.Strings;
 
 package Generator.Tables is
 
    procedure Go
-     (DFA  : Matreshka.Internals.Finite_Automatons.DFA;
-      File : String;
-      Unit : Wide_Wide_String);
-
+     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
+      Unit    : League.Strings.Universal_String;
+      File    : String;
+      Scanner : League.Strings.Universal_String;
+      Classes : Matreshka.Internals.Finite_Automatons.Vectors.Vector);
+   
+   procedure Types
+     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
+      Unit    : League.Strings.Universal_String;
+      File    : String;
+      Classes : out Matreshka.Internals.Finite_Automatons.Vectors.Vector);
+   
 end Generator.Tables;

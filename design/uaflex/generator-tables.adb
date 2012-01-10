@@ -86,14 +86,14 @@ package body Generator.Tables is
    --------
 
    procedure Go
-     (DFA  : Matreshka.Internals.Finite_Automatons.DFA;
-      File : String;
-      Unit : Wide_Wide_String)
+     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
+      Unit    : League.Strings.Universal_String;
+      File    : String;
+      Scanner : League.Strings.Universal_String;
+      Classes : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
    is
-      use type Ada.Containers.Count_Type;
       procedure P (Text : Wide_Wide_String);
       procedure N (Text : Wide_Wide_String);
-      procedure Print_Start (Cursor : Start_Maps.Cursor);
       procedure Print_Char_Classes;
       procedure Print_Switch;
       procedure Print_Rules;
@@ -103,7 +103,6 @@ package body Generator.Tables is
       function Get_Second (X : First_Stage_Index) return Second_Stage_Array;
 
       Output  : Ada.Wide_Wide_Text_IO.File_Type;
-      Classes : Char_Set_Vectors.Vector;
 
       ----------------
       -- Get_Second --
@@ -255,14 +254,6 @@ package body Generator.Tables is
          P ("");
       end Print_Rules;
 
-      procedure Print_Start (Cursor : Start_Maps.Cursor) is
-      begin
-         P ("   " & Start_Maps.Key (Cursor).To_Wide_Wide_String &
-              " : constant State :=" &
-              State'Wide_Wide_Image (Start_Maps.Element (Cursor) - 1) &
-              ";");
-      end Print_Start;
-
       procedure Print_Switch is
       begin
          P ("   Switch_Table : constant array " &
@@ -329,53 +320,12 @@ package body Generator.Tables is
       end Print_Switch;
 
    begin
-      Ada.Wide_Wide_Text_IO.Create (Output, Name => File & ".ads");
-      Split_To_Distinct (DFA.Edge_Char_Set, Classes);
-      
-      --  Debug.Print_Character_Classes (Classes);
-      
-      P ("with Matreshka.Internals.Unicode;");
-      P ("package " & Unit & " is");
-
-      P ("   type State is mod" &
-           State'Wide_Wide_Image (DFA.Graph.Node_Count + 1) &
-           ";");
-
-      P ("   subtype Valid_State is State range 0 .. State'Last - 1;");
-
-      DFA.Start.Iterate (Print_Start'Access);
-
-      P ("");
-      P ("   type Character_Class is mod" &
-           Ada.Containers.Count_Type'Wide_Wide_Image (Classes.Length + 1) &
-           ";");
-
-      P ("");
-      P ("   type Rule_Index is range 0 .." &
-           Natural'Wide_Wide_Image (Nodes.Actions.Length) &
-           ";");
-
-      P ("");
-      P ("   function To_Class" &
-           " (Value : Matreshka.Internals.Unicode.Code_Point)");
-      P ("     return Character_Class;");
-      P ("   pragma Inline (To_Class);");
-
-      P ("");
-      P ("   function Switch (S : State; Class : Character_Class)" &
-           " return State;");
-      P ("   pragma Inline (Switch);");
-      P ("");
-      P ("   function Rule (S : State) return Rule_Index;");
-      P ("   pragma Inline (Rule);");
-      P ("");
-      P ("end " & Unit & ";");
-
-      Ada.Wide_Wide_Text_IO.Close (Output);
-      Ada.Wide_Wide_Text_IO.Create (Output, Name => File & ".adb");
+      Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
 
       P ("with Matreshka.Internals.Unicode.Ucd;");
-      P ("package body " & Unit & " is");
+      P ("");
+      P ("separate (" & Scanner.To_Wide_Wide_String & ")");
+      P ("package body " & Unit.To_Wide_Wide_String & " is");
       P ("   subtype First_Stage_Index is");
       P ("     Matreshka.Internals.Unicode.Ucd.First_Stage_Index;");
       P ("");
@@ -417,7 +367,7 @@ package body Generator.Tables is
       P ("      return Switch_Table (S, Class);");
       P ("   end Switch;");
       P ("");
-      P ("end " & Unit & ";");
+      P ("end " & Unit.To_Wide_Wide_String & ";");
    end Go;
 
    -----------------------
@@ -464,5 +414,74 @@ package body Generator.Tables is
          end;
       end loop;
    end Split_To_Distinct;
+   
+   -----------
+   -- Types --
+   -----------
+   
+   procedure Types
+     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
+      Unit    : League.Strings.Universal_String;
+      File    : String;
+      Classes : out Char_Set_Vectors.Vector)
+   is
+      use type Ada.Containers.Count_Type;
+      
+      procedure P (Text : Wide_Wide_String);
+      procedure N (Text : Wide_Wide_String);
+      procedure Print_Start (Cursor : Start_Maps.Cursor);
+      
+      Output  : Ada.Wide_Wide_Text_IO.File_Type;
+      
+      procedure N (Text : Wide_Wide_String) is
+      begin
+         --  Ada.Wide_Wide_Text_IO.Put (Text);
+         Ada.Wide_Wide_Text_IO.Put (Output, Text);
+      end N;
 
+      procedure P (Text : Wide_Wide_String) is
+      begin
+         --  Ada.Wide_Wide_Text_IO.Put_Line (Text);
+         Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
+      end P;
+
+      procedure Print_Start (Cursor : Start_Maps.Cursor) is
+      begin
+         P ("   " & Start_Maps.Key (Cursor).To_Wide_Wide_String &
+              " : constant State :=" &
+              State'Wide_Wide_Image (Start_Maps.Element (Cursor) - 1) &
+              ";");
+      end Print_Start;
+
+   begin
+      Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
+      Split_To_Distinct (DFA.Edge_Char_Set, Classes);
+      
+      --  Debug.Print_Character_Classes (Classes);
+      
+      P ("with Matreshka.Internals.Unicode;");
+      P ("");
+      P ("package " & Unit.To_Wide_Wide_String & " is");
+      P ("");
+      P ("   type State is mod" &
+           State'Wide_Wide_Image (DFA.Graph.Node_Count + 1) &
+           ";");
+
+      P ("   subtype Valid_State is State range 0 .. State'Last - 1;");
+      P ("");
+      DFA.Start.Iterate (Print_Start'Access);
+
+      P ("");
+      P ("   type Character_Class is mod" &
+           Ada.Containers.Count_Type'Wide_Wide_Image (Classes.Length + 1) &
+           ";");
+
+      P ("");
+      P ("   type Rule_Index is range 0 .." &
+           Natural'Wide_Wide_Image (Nodes.Actions.Length) &
+           ";");
+      P ("");
+      P ("end " & Unit.To_Wide_Wide_String & ";");
+   end Types;
+   
 end Generator.Tables;
