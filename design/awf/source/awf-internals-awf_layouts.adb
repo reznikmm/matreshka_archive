@@ -75,18 +75,22 @@ package body AWF.Internals.AWF_Layouts is
         := Self.Parent.Children;
 
    begin
-      Context.Start_Div;
+      Context.Start_Table;
+      Context.Start_Tr;
 
       for J in Children'Range loop
          if Children (J).all
               in AWF.Internals.AWF_Widgets.AWF_Widget_Proxy'Class
          then
+            Context.Start_Td;
             AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access
              (Children (J)).Render_Body (Context);
+            Context.End_Td;
          end if;
       end loop;
 
-      Context.End_Div;
+      Context.End_Tr;
+      Context.End_Table;
    end Render_Body;
 
 end AWF.Internals.AWF_Layouts;

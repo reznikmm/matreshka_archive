@@ -58,8 +58,14 @@ package body AWF.HTML_Writers is
      := League.Strings.To_Universal_String ("html");
    Script_Element : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("script");
+   Table_Element  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("table");
+   Td_Element     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("td");
    Title_Element  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("title");
+   Tr_Element     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("tr");
 
    Id_Attribute       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
@@ -137,6 +143,26 @@ package body AWF.HTML_Writers is
    end End_Script;
 
    ---------------
+   -- End_Table --
+   ---------------
+
+   not overriding procedure End_Table (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.End_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Table_Element);
+   end End_Table;
+
+   ------------
+   -- End_Td --
+   ------------
+
+   not overriding procedure End_Td (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.End_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Td_Element);
+   end End_Td;
+
+   ---------------
    -- End_Title --
    ---------------
 
@@ -145,6 +171,16 @@ package body AWF.HTML_Writers is
       Self.Writer.End_Element
        (Namespace_URI => HTML_Namespace, Local_Name => Title_Element);
    end End_Title;
+
+   ------------
+   -- End_Tr --
+   ------------
+
+   not overriding procedure End_Tr (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.End_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Tr_Element);
+   end End_Tr;
 
    ----------------
    -- Start_Body --
@@ -235,6 +271,26 @@ package body AWF.HTML_Writers is
    end Start_Script;
 
    -----------------
+   -- Start_Table --
+   -----------------
+
+   not overriding procedure Start_Table (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.Start_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Table_Element);
+   end Start_Table;
+
+   --------------
+   -- Start_Td --
+   --------------
+
+   not overriding procedure Start_Td (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.Start_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Td_Element);
+   end Start_Td;
+
+   -----------------
    -- Start_Title --
    -----------------
 
@@ -243,6 +299,16 @@ package body AWF.HTML_Writers is
       Self.Writer.Start_Element
        (Namespace_URI => HTML_Namespace, Local_Name => Title_Element);
    end Start_Title;
+
+   --------------
+   -- Start_Tr --
+   --------------
+
+   not overriding procedure Start_Tr (Self : in out HTML_Writer) is
+   begin
+      Self.Writer.Start_Element
+       (Namespace_URI => HTML_Namespace, Local_Name => Tr_Element);
+   end Start_Tr;
 
    ----------
    -- Text --
