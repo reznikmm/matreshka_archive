@@ -41,38 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+with AWF.Internals.AWF_Objects;
+with AWF.Layouts;
 
-package AWF.Push_Buttons is
+package AWF.Internals.AWF_Layouts is
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   type AWF_Layout_Proxy is
+     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+       and AWF.Layouts.AWF_Layout with private;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   type AWF_Layout_Proxy_Access is access all AWF_Layout_Proxy'Class;
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+   not overriding procedure Render_Body
+    (Self    : not null access AWF_Layout_Proxy;
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
+
+   package Constructors is
+
+      procedure Initialize (Self : not null access AWF_Layout_Proxy'Class);
+
+   end Constructors;
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Counter : Natural := 0;
-   end record;
+   type AWF_Layout_Proxy is
+     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+       and AWF.Layouts.AWF_Layout with null record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end AWF.Internals.AWF_Layouts;

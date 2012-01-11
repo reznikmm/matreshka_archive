@@ -60,11 +60,14 @@ package body AWF.Push_Buttons is
    -- Create --
    ------------
 
-   function Create return not null AWF_Push_Button_Access is
+   function Create
+    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
+       return not null AWF_Push_Button_Access
+   is
       Result : AWF_Push_Button_Access := new AWF_Push_Button;
 
    begin
-      AWF.Internals.AWF_Widgets.Constructors.Initialize (Result);
+      AWF.Internals.AWF_Widgets.Constructors.Initialize (Result, Parent);
 
       return Result;
    end Create;
@@ -96,7 +99,9 @@ package body AWF.Push_Buttons is
    begin
       Response.Append
        (League.Strings.To_Universal_String
-         ("document.getElementById('1').innerHTML = 'Clicked"
+         ("document.getElementById('"
+            & AWF.Utilities.Image (Self.Id).To_Wide_Wide_String
+            & "').innerHTML = 'Clicked"
             & Integer'Wide_Wide_Image (Self.Counter)
             & " time(s), click me again!';"));
    end Render_Response;

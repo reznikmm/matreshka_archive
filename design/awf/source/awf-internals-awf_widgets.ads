@@ -44,12 +44,16 @@
 with League.Strings;
 
 with AWF.HTML_Writers;
+with AWF.Internals.AWF_Layouts;
+with AWF.Internals.AWF_Objects;
+with AWF.Layouts;
 with AWF.Widgets;
 
 package AWF.Internals.AWF_Widgets is
 
    type AWF_Widget_Proxy is
-     abstract limited new AWF.Widgets.AWF_Widget with private;
+     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+       and AWF.Widgets.AWF_Widget with private;
 
    type AWF_Widget_Proxy_Access is
      access all AWF_Widget_Proxy'Class;
@@ -57,13 +61,17 @@ package AWF.Internals.AWF_Widgets is
    overriding function Id
     (Self : not null access constant AWF_Widget_Proxy) return Natural;
 
+   overriding procedure Set_Layout
+    (Self   : not null access AWF_Widget_Proxy;
+     Layout : access AWF.Layouts.AWF_Layout'Class);
+
    not overriding procedure Render_Head
     (Self    : not null access AWF_Widget_Proxy;
      Context : in out AWF.HTML_Writers.HTML_Writer'Class);
 
    not overriding procedure Render_Body
     (Self    : not null access AWF_Widget_Proxy;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is abstract;
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
 
    not overriding procedure Render_Response
     (Self     : not null access AWF_Widget_Proxy;
@@ -131,16 +139,19 @@ package AWF.Internals.AWF_Widgets is
    package Constructors is
 
       procedure Initialize
-       (Self : not null access AWF_Widget_Proxy'Class);
+       (Self   : not null access AWF_Widget_Proxy'Class;
+        Parent : access AWF.Widgets.AWF_Widget'Class := null);
 
    end Constructors;
 
 private
 
    type AWF_Widget_Proxy is
-     abstract limited new AWF.Widgets.AWF_Widget with
+     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+       and AWF.Widgets.AWF_Widget with
    record
-      Id : Natural;
+      Id     : Natural;
+      Layout : AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access;
    end record;
 
 end AWF.Internals.AWF_Widgets;

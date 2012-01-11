@@ -50,6 +50,8 @@ pragma Elaborate (AWF.Registry);
 
 package body AWF.Internals.AWF_Widgets is
 
+   use type AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access;
+
    procedure onkeydown_Handler
     (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
 
@@ -119,8 +121,14 @@ package body AWF.Internals.AWF_Widgets is
       -- Initialize --
       ----------------
 
-      procedure Initialize (Self : not null access AWF_Widget_Proxy'Class) is
+      procedure Initialize
+       (Self   : not null access AWF_Widget_Proxy'Class;
+        Parent : access AWF.Widgets.AWF_Widget'Class := null) is
       begin
+         AWF.Internals.AWF_Objects.Constructors.Initialize (Self, Parent);
+
+         --  Allocate number and register widget.
+
          Last_Id := Last_Id + 1;
          Self.Id := Last_Id;
 
@@ -330,6 +338,19 @@ package body AWF.Internals.AWF_Widgets is
    end onscroll_Handler;
 
    -----------------
+   -- Render_Body --
+   -----------------
+
+   not overriding procedure Render_Body
+    (Self    : not null access AWF_Widget_Proxy;
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is
+   begin
+      if Self.Layout /= null then
+         Self.Layout.Render_Body (Context);
+      end if;
+   end Render_Body;
+
+   -----------------
    -- Render_Head --
    -----------------
 
@@ -359,6 +380,23 @@ package body AWF.Internals.AWF_Widgets is
             & "}" & LF));
       Context.End_Script;
    end Render_Head;
+
+   ----------------
+   -- Set_Layout --
+   ----------------
+
+   overriding procedure Set_Layout
+    (Self   : not null access AWF_Widget_Proxy;
+     Layout : access AWF.Layouts.AWF_Layout'Class) is
+   begin
+      if Self.Layout /= null then
+         raise Program_Error;
+      end if;
+
+      Self.Layout :=
+        AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access (Layout);
+      Layout.Set_Parent (Self);
+   end Set_Layout;
 
 begin
    --  Register callbacks

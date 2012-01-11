@@ -41,38 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package AWF.Objects is
 
-package AWF.Push_Buttons is
+   type AWF_Object is limited interface;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   type AWF_Object_Access is access all AWF_Object'Class;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   type AWF_Object_Access_Array is
+     array (Positive range <>) of AWF_Object_Access;
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+   not overriding function Children
+    (Self : not null access constant AWF_Object)
+       return AWF_Object_Access_Array is abstract;
 
-private
+   not overriding function Parent
+    (Self : not null access AWF_Object)
+       return AWF_Object_Access is abstract;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Counter : Natural := 0;
-   end record;
+   not overriding procedure Set_Parent
+    (Self   : not null access AWF_Object;
+     Parent : access AWF_Object'Class) is abstract;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end AWF.Objects;

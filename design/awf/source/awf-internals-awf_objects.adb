@@ -41,38 +41,97 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package body AWF.Internals.AWF_Objects is
 
-package AWF.Push_Buttons is
+   --------------
+   -- Children --
+   --------------
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   overriding function Children
+    (Self : not null access constant AWF_Object_Proxy)
+       return AWF.Objects.AWF_Object_Access_Array
+   is
+      Result  : AWF.Objects.AWF_Object_Access_Array (1 .. Self.Children_Count);
+      Last    : Natural := 0;
+      Current : AWF_Object_Proxy_Access := Self.First_Child;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   begin
+      while Current /= null loop
+         Last := Last + 1;
+         Result (Last) := AWF.Objects.AWF_Object_Access (Current);
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+         Current := Current.Next_Sibling;
+      end loop;
 
-private
+      return Result;
+   end Children;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Counter : Natural := 0;
-   end record;
+   ------------------
+   -- Constructors --
+   ------------------
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
+   package body Constructors is
 
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String);
+      ----------------
+      -- Initialize --
+      ----------------
 
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
+      procedure Initialize
+       (Self   : not null access AWF_Object_Proxy'Class;
+        Parent : access AWF.Objects.AWF_Object'Class := null) is
+      begin
+         --  Set object's parent.
 
-end AWF.Push_Buttons;
+         Self.Set_Parent (Parent);
+      end Initialize;
+
+   end Constructors;
+
+   ------------
+   -- Parent --
+   ------------
+
+   overriding function Parent
+    (Self : not null access AWF_Object_Proxy)
+       return AWF.Objects.AWF_Object_Access is
+   begin
+      return AWF.Objects.AWF_Object_Access (Self.Parent);
+   end Parent;
+
+   ----------------
+   -- Set_Parent --
+   ----------------
+
+   overriding procedure Set_Parent
+    (Self   : not null access AWF_Object_Proxy;
+     Parent : access AWF.Objects.AWF_Object'Class)
+   is
+      P_Self   : constant not null AWF_Object_Proxy_Access
+        := AWF_Object_Proxy_Access (Self);
+      P_Parent : constant AWF_Object_Proxy_Access
+        := AWF_Object_Proxy_Access (Parent);
+
+   begin
+      if Self.Parent /= null then
+         raise Program_Error;
+      end if;
+
+      if Parent /= null then
+         Self.Parent := P_Parent;
+
+         if P_Parent.First_Child = null then
+            P_Parent.First_Child := P_Self;
+            P_Parent.Last_Child := P_Self;
+            P_Parent.Children_Count := 1;
+
+         else
+            P_Self.Previous_Sibling := P_Parent.Last_Child;
+            P_Self.Previous_Sibling.Next_Sibling := P_Self;
+            P_Parent.Last_Child := P_Self;
+            P_Parent.Children_Count := P_Parent.Children_Count + 1;
+         end if;
+      end if;
+   end Set_Parent;
+
+end AWF.Internals.AWF_Objects;

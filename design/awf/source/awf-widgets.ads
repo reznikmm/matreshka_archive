@@ -41,14 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+limited with AWF.Layouts;
+with AWF.Objects;
 
 package AWF.Widgets is
 
-   type AWF_Widget is limited interface;
+   type AWF_Widget is limited interface and AWF.Objects.AWF_Object;
 
    type AWF_Widget_Access is access all AWF_Widget'Class;
 
-   function Id
+   not overriding function Id
     (Self : not null access constant AWF_Widget) return Natural is abstract;
+
+   not overriding procedure Set_Layout
+    (Self   : not null access AWF_Widget;
+     Layout : access AWF.Layouts.AWF_Layout'Class) is abstract;
+
+   function Create
+    (Parent : access AWF_Widget'Class := null)
+       return not null AWF_Widget_Access;
 
 end AWF.Widgets;

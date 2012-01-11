@@ -41,38 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with AWF.Objects;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package AWF.Internals.AWF_Objects is
 
-package AWF.Push_Buttons is
+   type AWF_Object_Proxy is
+     abstract limited new AWF.Objects.AWF_Object with private;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   type AWF_Object_Proxy_Access is
+     access all AWF_Object_Proxy'Class;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   overriding function Children
+    (Self : not null access constant AWF_Object_Proxy)
+       return AWF.Objects.AWF_Object_Access_Array;
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+   overriding function Parent
+    (Self : not null access AWF_Object_Proxy)
+       return AWF.Objects.AWF_Object_Access;
+
+   overriding procedure Set_Parent
+    (Self   : not null access AWF_Object_Proxy;
+     Parent : access AWF.Objects.AWF_Object'Class);
+
+   package Constructors is
+
+      procedure Initialize
+       (Self   : not null access AWF_Object_Proxy'Class;
+        Parent : access AWF.Objects.AWF_Object'Class := null);
+
+   end Constructors;
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Counter : Natural := 0;
+   type AWF_Object_Proxy is
+     abstract limited new AWF.Objects.AWF_Object with
+   record
+      Parent           : AWF_Object_Proxy_Access;
+      First_Child      : AWF_Object_Proxy_Access;
+      Last_Child       : AWF_Object_Proxy_Access;
+      Next_Sibling     : AWF_Object_Proxy_Access;
+      Previous_Sibling : AWF_Object_Proxy_Access;
+      Children_Count   : Natural := 0;
    end record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end AWF.Internals.AWF_Objects;
