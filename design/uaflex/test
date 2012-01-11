@@ -55,27 +55,27 @@ ADA_STRING     \"([^"]+|\"\")*\"
 
 %%
 
-{OPTSPACE}"--"[^\n]*\n					{Skip_Comment}
+{OPTSPACE}"--"[^\n]*\n					{Skip}
 "%"[Ss](tart)?						{On_Start}
 "%"[Xx]							{On_Exclusive}
 {NAME}							{On_Name}
 "%%"[^\n]*\n						{On_Section_End}
-{OPTSPACE}\n						{Skip_Empty_Line}
+{OPTSPACE}\n						{Skip}
 
-<DEF>{SPACE}						{Skip_Spaces}
+<DEF>{SPACE}						{Skip}
 <DEF>[^ \t\n][^\n]*					{On_Regexp}
 <DEF>\n							{End_Of_Macro}
 
 <NAMELIST>\n						{End_Of_Name_List}
 <NAMELIST>{NAME}					{On_Name_2}
-<NAMELIST>{SPACE}					{Skip_Spaces_2}
+<NAMELIST>{SPACE}					{Skip}
 
 <SECT2>({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+	{On_Regexp_2}
-<SECT2>{OPTSPACE}\n					{Skip_Empty_Line_2}
-<SECT2>"%%"[^\n]*\n						{On_Section_End_2}
+<SECT2>{OPTSPACE}\n					{Skip}
+<SECT2>"%%"[^\n]*\n					{On_Section_End_2}
 
 <INRULE>\{([^}]+|{ADA_STRING})*\}			{On_Action}
-<INRULE>{SPACE}						{Skip_Spaces_3}
+<INRULE>{SPACE}						{Skip}
 <INRULE>{OPTSPACE}\n					{On_End_Of_Rule}
 
 %%

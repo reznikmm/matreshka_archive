@@ -8,7 +8,7 @@ procedure On_Accept
 begin
    case Rule is
       when 1 =>
-         Self.Skip_Comment (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 2 =>
          Self.On_Start (Scanner, Token, Skip);
@@ -23,10 +23,10 @@ begin
          Self.On_Section_End (Scanner, Token, Skip);
 
       when 6 =>
-         Self.Skip_Empty_Line (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 7 =>
-         Self.Skip_Spaces (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 8 =>
          Self.On_Regexp (Scanner, Token, Skip);
@@ -41,13 +41,13 @@ begin
          Self.On_Name_2 (Scanner, Token, Skip);
 
       when 12 =>
-         Self.Skip_Spaces_2 (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 13 =>
          Self.On_Regexp_2 (Scanner, Token, Skip);
 
       when 14 =>
-         Self.Skip_Empty_Line_2 (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 15 =>
          Self.On_Section_End_2 (Scanner, Token, Skip);
@@ -56,7 +56,7 @@ begin
          Self.On_Action (Scanner, Token, Skip);
 
       when 17 =>
-         Self.Skip_Spaces_3 (Scanner, Token, Skip);
+         Self.Skip (Scanner, Token, Skip);
 
       when 18 =>
          Self.On_End_Of_Rule (Scanner, Token, Skip);

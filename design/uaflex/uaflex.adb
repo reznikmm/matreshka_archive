@@ -45,6 +45,7 @@ with Parser;
 
 with Ada.Directories;
 with Ada.Streams.Stream_IO;
+with Ada.Wide_Wide_Text_IO;
 with Debug;
 with Expand;
 with Generator.Tables;
@@ -65,25 +66,32 @@ procedure UAFLEX is
    procedure Each
      (Name : League.Strings.Universal_String;
       Condition : Nodes.Start_Condition);
-   
+
    function Read_File
      (File_Name : String)
      return League.Strings.Universal_String;
-   
+
    procedure Read_Arguments;
+
+   procedure Print_Usage;
    
    function To_String
      (Item : League.Strings.Universal_String)
      return String
      renames League.Text_Codecs.To_Exception_Message;
-   
+
+   function To_File_Name
+     (Item      : League.Strings.Universal_String;
+      Extension : String)
+     return String;
+
    function "+"
      (Item : Wide_Wide_String)
      return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
-   
+
    DFA : Matreshka.Internals.Finite_Automatons.DFA_Constructor;
-   
+
    Handler : League.Strings.Universal_String;
    Input   : League.Strings.Universal_String;
    Tokens  : League.Strings.Universal_String;
@@ -93,7 +101,7 @@ procedure UAFLEX is
    ----------
    -- Each --
    ----------
-   
+
    procedure Each
      (Name : League.Strings.Universal_String;
       Condition : Nodes.Start_Condition)
@@ -106,30 +114,53 @@ procedure UAFLEX is
          Actions (J) := Condition.Rules.Element (J);
          Reg_Exp_List.Append (Nodes.Rules.Element (Actions (J)));
       end loop;
-      
+
       DFA.Compile (Name, Reg_Exp_List, Actions);
    end Each;
-   
+
    --------------------
    -- Each_Condition --
    --------------------
-   
+
    procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor) is
    begin
       Nodes.Start_Condition_Maps.Query_Element (Cursor, Each'Access);
    end Each_Condition;
+
+   procedure Print_Usage is
+      use Ada.Wide_Wide_Text_IO;
+   begin
+      Put_Line
+        (Standard_Error,
+         "Usage: uaflex <unit-options> input_file"); 
+      Put_Line
+        (Standard_Error,
+         "  where <unit-options> contains:"); 
+      Put_Line
+        (Standard_Error,
+         "    --types Types_Unit - unit for type and condition declarations"); 
+      Put_Line
+        (Standard_Error,
+         "    --handler Handler_Unit - unit for abstract handler declaration"); 
+      Put_Line
+        (Standard_Error,
+         "    --scanner Scanner_Unit - unit where scanner is located"); 
+      Put_Line
+        (Standard_Error,
+         "    --tokens Tokens_Unit - unit where Token type is declared"); 
+   end Print_Usage;
    
    --------------------
    -- Read_Arguments --
    --------------------
-   
+
    procedure Read_Arguments is
       use League.Strings;
       Is_Types   : constant Universal_String := +"--types";
       Is_Scanner : constant Universal_String := +"--scanner";
       Is_Tokens  : constant Universal_String := +"--tokens";
       Is_Handler : constant Universal_String := +"--handler";
-      
+
       Last  : constant Natural := League.Application.Arguments.Length;
       Index : Positive := 1;
    begin
@@ -153,12 +184,12 @@ procedure UAFLEX is
                Index := Index + 1;
                Handler := League.Application.Arguments.Element (Index);
             end if;
-            
+
             Index := Index + 1;
          end;
       end loop;
    end Read_Arguments;
-   
+
    function Read_File
      (File_Name : String)
      return League.Strings.Universal_String
@@ -183,48 +214,90 @@ procedure UAFLEX is
 
       return Decoder.Decode (Data (1 .. Last));
    end Read_File;
-   
+
+   ------------------
+   -- To_File_Name --
+   ------------------
+
+   function To_File_Name
+     (Item      : League.Strings.Universal_String;
+      Extension : String)
+     return String
+   is
+      List : constant League.String_Vectors.Universal_String_Vector :=
+        Item.To_Lowercase.Split ('.');
+      Result : League.Strings.Universal_String := List.Element (1);
+   begin
+      for J in 2 .. List.Length loop
+         Result.Append ("-");
+         Result.Append (List.Element (J));
+      end loop;
+
+      return To_String (Result) & Extension;
+   end To_File_Name;
+
    Initial  : League.String_Vectors.Universal_String_Vector;
    Source   : aliased String_Sources.String_Source;
    UHandler : aliased UAFLEX_Handler.Handler;
    Classes  : Matreshka.Internals.Finite_Automatons.Vectors.Vector;
 begin
    Read_Arguments;
-   
+
    if Handler.Is_Empty or
      Input.Is_Empty or
      Tokens.Is_Empty or
      Types.Is_Empty or
      Scanner.Is_Empty
    then
+      Print_Usage;
       return;
    end if;
-   
+
    Source.Create (Read_File (To_String (Input)));
    Parser.Scanner.Set_Source (Source'Unchecked_Access);
    Parser.Scanner.Set_Handler (UHandler'Unchecked_Access);
-   
+
    Initial.Append (League.Strings.To_Universal_String ("INITIAL"));
    Nodes.Add_Start_Conditions (Initial, False);
-   
+
    Parser.YYParse;
    Expand.RegExps;
    Debug.Print;
-   
+
    Nodes.Conditions.Iterate (Each_Condition'Access);
-   
+
    declare
       X : Matreshka.Internals.Finite_Automatons.DFA;
    begin
       DFA.Complete (Output => X);
       Matreshka.Internals.Finite_Automatons.Minimize (X);
-      Generator.Tables.Types (X, Types, "aaa.ads", Classes);
+
+      Generator.Tables.Types
+        (X,
+         Types,
+         To_File_Name (Types, ".ads"),
+         Classes);
+
       Generator.Tables.Go
-        (X, +"Tables", "aaa-scanners-tables.adb", Scanner, Classes);
+        (X,
+         +"Tables",
+         To_File_Name (Scanner & ".Tables", ".adb"),
+         Scanner,
+         Classes);
    end;
 
    Generator.OOP_Handler.Go
-     (Nodes.Actions, "aaa-handlers.ads", Handler, Scanner, Tokens);
+     (Nodes.Actions,
+      To_File_Name (Handler, ".ads"),
+      Handler,
+      Scanner,
+      Tokens);
+
    Generator.OOP_Handler.On_Accept
-     (Nodes.Actions, "aaa-scanners-on_accept.adb", Handler, Scanner, Tokens);
+     (Nodes.Actions,
+      To_File_Name (Scanner & ".On_Accept", ".adb"),
+      Handler,
+      Scanner,
+      Tokens);
+
 end UAFLEX;

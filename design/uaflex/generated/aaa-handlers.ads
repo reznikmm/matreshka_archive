@@ -5,7 +5,7 @@ package Aaa.Handlers is
 
    type Handler is abstract tagged limited null record;
 
-   procedure Skip_Comment
+   procedure Skip
      (Self    : not null access Handler;
       Scanner : not null access AAA.Scanners.Scanner'Class;
       Token   : out Parser_Tokens.Token;
@@ -35,18 +35,6 @@ package Aaa.Handlers is
       Token   : out Parser_Tokens.Token;
       Skip    : in out Boolean) is abstract;
 
-   procedure Skip_Empty_Line
-     (Self    : not null access Handler;
-      Scanner : not null access AAA.Scanners.Scanner'Class;
-      Token   : out Parser_Tokens.Token;
-      Skip    : in out Boolean) is abstract;
-
-   procedure Skip_Spaces
-     (Self    : not null access Handler;
-      Scanner : not null access AAA.Scanners.Scanner'Class;
-      Token   : out Parser_Tokens.Token;
-      Skip    : in out Boolean) is abstract;
-
    procedure On_Regexp
      (Self    : not null access Handler;
       Scanner : not null access AAA.Scanners.Scanner'Class;
@@ -71,19 +59,7 @@ package Aaa.Handlers is
       Token   : out Parser_Tokens.Token;
       Skip    : in out Boolean) is abstract;
 
-   procedure Skip_Spaces_2
-     (Self    : not null access Handler;
-      Scanner : not null access AAA.Scanners.Scanner'Class;
-      Token   : out Parser_Tokens.Token;
-      Skip    : in out Boolean) is abstract;
-
    procedure On_Regexp_2
-     (Self    : not null access Handler;
-      Scanner : not null access AAA.Scanners.Scanner'Class;
-      Token   : out Parser_Tokens.Token;
-      Skip    : in out Boolean) is abstract;
-
-   procedure Skip_Empty_Line_2
      (Self    : not null access Handler;
       Scanner : not null access AAA.Scanners.Scanner'Class;
       Token   : out Parser_Tokens.Token;
@@ -96,12 +72,6 @@ package Aaa.Handlers is
       Skip    : in out Boolean) is abstract;
 
    procedure On_Action
-     (Self    : not null access Handler;
-      Scanner : not null access AAA.Scanners.Scanner'Class;
-      Token   : out Parser_Tokens.Token;
-      Skip    : in out Boolean) is abstract;
-
-   procedure Skip_Spaces_3
      (Self    : not null access Handler;
       Scanner : not null access AAA.Scanners.Scanner'Class;
       Token   : out Parser_Tokens.Token;
