@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,6 +50,7 @@
 private with Ada.Finalization;
 private with Ada.Streams;
 
+with League.Characters;
 with League.Strings;
 private with Matreshka.Internals.String_Vectors;
 
@@ -81,6 +82,26 @@ package League.String_Vectors is
     (Self : in out Universal_String_Vector'Class;
      Item : Universal_String_Vector'Class);
    --  Inserts strings from Item before first string of Self.
+
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : League.Strings.Universal_String'Class)
+       return League.Strings.Universal_String;
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : Wide_Wide_String)
+       return League.Strings.Universal_String;
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : League.Characters.Universal_Character'Class)
+       return League.Strings.Universal_String;
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : Wide_Wide_Character)
+       return League.Strings.Universal_String;
+   --  Joins all the string vector's strings into a single string with each
+   --  element separated by the given Separator. Separator can be an empty
+   --  string.
 
 private
 

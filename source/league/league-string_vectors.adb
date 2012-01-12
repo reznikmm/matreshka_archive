@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,63 +47,6 @@ with Matreshka.Internals.Strings;
 package body League.String_Vectors is
 
    use Matreshka.Internals.String_Vectors;
-
---   pragma Preelaborate;
---   pragma Remote_Types;
---
---   type Universal_String_Vector is tagged private;
---   pragma Preelaborable_Initialization (Universal_String_Vector);
---
---   Empty_Universal_String_Vector : constant Universal_String_Vector;
---
---   function Is_Empty (Self : Universal_String_Vector'Class) return Boolean;
---
---   function Length (Self : Universal_String_Vector'Class) return Natural;
---
---   function Element
---    (Self  : Universal_String_Vector'Class;
---     Index : Positive) return League.Strings.Universal_String;
---
---   procedure Clear (Self : in out Universal_String_Vector'Class);
---
---   procedure Append
---    (Self : in out Universal_String_Vector'Class;
---     Item : Universal_String'Class);
---
---private
---
---   procedure Read
---    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
---     Item   : out Universal_String_Vector);
---
---   procedure Write
---    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
---     Item   : Universal_String_Vector);
---
---   type Universal_String_Vector is new Ada.Finalization.Controlled with record
---      Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
---       := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
---   end record;
---   for Universal_String_Vector'Read use Read;
---   for Universal_String_Vector'Write use Write;
---
---   overriding procedure Adjust (Self : in out Universal_String_Vector);
---
---   overriding procedure Finalize (Self : in out Universal_String_Vector);
---
---   Empty_Universal_String_Vector : constant Universal_String_Vector
---     := (Ada.Finalization.Controlled with others => <>);
---
---   pragma Inline ("=");
---   pragma Inline ("<");
---   pragma Inline (">");
---   pragma Inline ("<=");
---   pragma Inline (">=");
---   pragma Inline (Adjust);
---   pragma Inline (Clear);
---   pragma Inline (Finalize);
---   pragma Inline (Is_Empty);
---   pragma Inline (Length);
 
    ------------
    -- Adjust --
@@ -176,6 +119,72 @@ package body League.String_Vectors is
    begin
       return Self.Data.Length = 0;
    end Is_Empty;
+
+   ----------
+   -- Join --
+   ----------
+
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : League.Strings.Universal_String'Class)
+       return League.Strings.Universal_String is
+   begin
+      return Result : League.Strings.Universal_String do
+         if not Self.Is_Empty then
+            Result.Append (Self.Element (1));
+         end if;
+
+         for J in 2 .. Self.Length loop
+            Result.Append (Separator);
+            Result.Append (Self.Element (J));
+         end loop;
+      end return;
+   end Join;
+
+   ----------
+   -- Join --
+   ----------
+
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : Wide_Wide_String)
+       return League.Strings.Universal_String is
+   begin
+      return Self.Join (League.Strings.To_Universal_String (Separator));
+   end Join;
+
+   ----------
+   -- Join --
+   ----------
+
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : League.Characters.Universal_Character'Class)
+       return League.Strings.Universal_String is
+   begin
+      return Result : League.Strings.Universal_String do
+         if not Self.Is_Empty then
+            Result.Append (Self.Element (1));
+         end if;
+
+         for J in 2 .. Self.Length loop
+            Result.Append (Separator);
+            Result.Append (Self.Element (J));
+         end loop;
+      end return;
+   end Join;
+
+   ----------
+   -- Join --
+   ----------
+
+   function Join
+    (Self      : Universal_String_Vector'Class;
+     Separator : Wide_Wide_Character)
+       return League.Strings.Universal_String is
+   begin
+      return Self.Join (League.Characters.To_Universal_Character (Separator));
+   end Join;
 
    ------------
    -- Length --
