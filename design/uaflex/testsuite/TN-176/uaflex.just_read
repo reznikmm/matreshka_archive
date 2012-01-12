@@ -1,0 +1,8 @@
+
+%%
+
+--  Open of XML declaration or text declaration, rules [23], [77].
+
+"<?xml" {On_Open_Of_XML_Or_Text_Declaration}
+
+%%

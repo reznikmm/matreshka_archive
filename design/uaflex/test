@@ -70,6 +70,7 @@ ADA_STRING     \"([^"]+|\"\")*\"
 <NAMELIST>{NAME}					{On_Name_2}
 <NAMELIST>{SPACE}					{Skip}
 
+<SECT2>{OPTSPACE}"--"[^\n]*\n				{Skip}
 <SECT2>({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+	{On_Regexp_2}
 <SECT2>{OPTSPACE}\n					{Skip}
 <SECT2>"%%"[^\n]*\n					{On_Section_End_2}

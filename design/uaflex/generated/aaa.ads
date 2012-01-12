@@ -2,7 +2,7 @@ with Matreshka.Internals.Unicode;
 
 package AAA is
 
-   type State is mod 68;
+   type State is mod 89;
    subtype Valid_State is State range 0 .. State'Last - 1;
 
    DEF : constant State := 0;
@@ -13,6 +13,6 @@ package AAA is
 
    type Character_Class is mod 18;
 
-   type Rule_Index is range 0 .. 18;
+   type Rule_Index is range 0 .. 19;
 
 end AAA;

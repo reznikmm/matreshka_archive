@@ -283,57 +283,57 @@ begin
                 case yy.rule_id is
 
 when 5 =>
---# line 64 "parser.y"
+--# line 64 "../parser.y"
 
   Nodes.Macros.Insert (YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS).Value);
 
 
 when 6 =>
---# line 68 "parser.y"
+--# line 68 "../parser.y"
 
   Nodes.Add_Start_Conditions (YY.Value_Stack (YY.TOS -  1).List, False);
 
 
 when 7 =>
---# line 72 "parser.y"
+--# line 72 "../parser.y"
 
   Nodes.Add_Start_Conditions (YY.Value_Stack (YY.TOS -  1).List, True);
 
 
 when 8 =>
---# line 78 "parser.y"
+--# line 78 "../parser.y"
 
   YYVal := Nodes.Empty_Name_List;
   YYVal.List.Append (YY.Value_Stack (YY.TOS).Value);
 
 
 when 9 =>
---# line 84 "parser.y"
+--# line 84 "../parser.y"
 
   YY.Value_Stack (YY.TOS -  1).List.Append (YY.Value_Stack (YY.TOS).Value);
   YYVal := YY.Value_Stack (YY.TOS -  1);
 
 
 when 12 =>
---# line 96 "parser.y"
+--# line 96 "../parser.y"
 
   Nodes.Add_Rule (YY.Value_Stack (YY.TOS).Regexp, YY.Value_Stack (YY.TOS).Action);
 
 
 when 13 =>
---# line 103 "parser.y"
+--# line 103 "../parser.y"
  YYVal := (Nodes.Rule, YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS).Value); 
 
 when 14 =>
---# line 107 "parser.y"
+--# line 107 "../parser.y"
  YYVal := Nodes.To_Node (Scanner.Get_Text); 
 
 when 15 =>
---# line 111 "parser.y"
+--# line 111 "../parser.y"
  YYVal := Nodes.To_Node (Scanner.Get_Text); 
 
 when 16 =>
---# line 115 "parser.y"
+--# line 115 "../parser.y"
  YYVal := Nodes.To_Action (Scanner.Get_Text); 
 
                     when others => null;
