@@ -23,6 +23,9 @@ all: $(ALL_TARGETS)
 league:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
+ifeq ($(OPERATING_SYSTEM), Windows)
+	COPY /Y .libs\*.DLL .objs
+endif
 	.objs/string_hash_test
 	.objs/string_operations_test
 	.objs/string_compare_test
