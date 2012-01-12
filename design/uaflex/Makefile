@@ -2,10 +2,12 @@ AYACC = ../../tools/ayacc/src/ayacc
 UAFLEX_GENERATED=generated/aaa*.ad[sb]
 AYACC_GENERATED=generated/parser*.ad[sb]
 
-uaflex: $(AYACC_GENERATED) $(UAFLEX_GENERATED)
+uaflex:
 	gprbuild -p -P uaflex.gpr
 
-$(AYACC_GENERATED): yy_tools parser.y
+gen: $(AYACC_GENERATED) $(UAFLEX_GENERATED)
+
+$(AYACC_GENERATED): parser.y
 	cd generated;../$(AYACC) ../parser.y
 
 $(UAFLEX_GENERATED): test
@@ -19,7 +21,7 @@ clean:
 	rm -rf .objs
 
 
-TESTS=$(wildcard testsuite/TN-*/uaflex.*)
+TESTS=$(wildcard testsuite/TN*/uaflex.*)
 RESULTS=$(patsubst %,%.result,$(TESTS))
 check: $(RESULTS)
 	echo "Test success"
