@@ -161,10 +161,14 @@ package body Aaa.Scanners is
             end if;
          end loop;
          
-         Self.Next := Self.To;
-         Next;
+         if Self.Rule = 0 then
+            Self.Next := Self.To + 1;
+            Result := Parser_Tokens.Error;
+            return;
+         else
+            Self.Next := Self.To;
+            Next;
 
-         if Self.Rule /= 0 then
             On_Accept (Self.Handler, Self, Self.Rule, Result, Skip);
             
             if not Skip then
