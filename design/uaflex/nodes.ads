@@ -94,6 +94,7 @@ package Nodes is
    
    Rules      : League.String_Vectors.Universal_String_Vector;
    Actions    : League.String_Vectors.Universal_String_Vector;
+   Indexes    : Rule_Index_Vectors.Vector;
    Conditions : Start_Condition_Maps.Map;
    Macros     : Macro_Maps.Map;
    

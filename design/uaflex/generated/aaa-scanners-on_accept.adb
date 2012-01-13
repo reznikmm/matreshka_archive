@@ -23,45 +23,27 @@ begin
          Self.On_Section_End (Scanner, Token, Skip);
 
       when 6 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 7 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 8 =>
          Self.On_Regexp (Scanner, Token, Skip);
 
-      when 9 =>
+      when 7 =>
          Self.End_Of_Macro (Scanner, Token, Skip);
 
-      when 10 =>
+      when 8 =>
          Self.End_Of_Name_List (Scanner, Token, Skip);
 
-      when 11 =>
+      when 9 =>
          Self.On_Name_2 (Scanner, Token, Skip);
 
-      when 12 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 13 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 14 =>
+      when 10 =>
          Self.On_Regexp_2 (Scanner, Token, Skip);
 
-      when 15 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 16 =>
+      when 11 =>
          Self.On_Section_End_2 (Scanner, Token, Skip);
 
-      when 17 =>
+      when 12 =>
          Self.On_Action (Scanner, Token, Skip);
 
-      when 18 =>
-         Self.Skip (Scanner, Token, Skip);
-
-      when 19 =>
+      when 13 =>
          Self.On_End_Of_Rule (Scanner, Token, Skip);
 
       when others =>

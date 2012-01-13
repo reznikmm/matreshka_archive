@@ -106,13 +106,15 @@ procedure UAFLEX is
      (Name : League.Strings.Universal_String;
       Condition : Nodes.Start_Condition)
    is
+      Rule    : Positive;
       Actions : Matreshka.Internals.Finite_Automatons.Rule_Index_Array
         (1 .. Condition.Rules.Last_Index);
       Reg_Exp_List : League.String_Vectors.Universal_String_Vector;
    begin
       for J in Actions'Range loop
-         Actions (J) := Condition.Rules.Element (J);
-         Reg_Exp_List.Append (Nodes.Rules.Element (Actions (J)));
+         Rule := Condition.Rules.Element (J);
+         Actions (J) := Nodes.Indexes.Element (Rule);
+         Reg_Exp_List.Append (Nodes.Rules.Element (Rule));
       end loop;
 
       DFA.Compile (Name, Reg_Exp_List, Actions);
@@ -262,7 +264,7 @@ begin
 
    Parser.YYParse;
    Expand.RegExps;
-   Debug.Print;
+   --  Debug.Print;
 
    Nodes.Conditions.Iterate (Each_Condition'Access);
 

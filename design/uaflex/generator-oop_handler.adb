@@ -1,6 +1,5 @@
 with Matreshka.Internals.Finite_Automatons;
 with Ada.Wide_Wide_Text_IO;
-with Ada.Containers.Ordered_Sets;
 
 package body Generator.OOP_Handler is
    procedure Go
@@ -25,13 +24,6 @@ package body Generator.OOP_Handler is
          Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
       end P;
       
-      package String_Sets is new Ada.Containers.Ordered_Sets
-        (League.Strings.Universal_String,
-         League.Strings."<",
-         League.Strings."=");
-      
-      Ready : String_Sets.Set;
-      
    begin
       Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
       
@@ -44,17 +36,13 @@ package body Generator.OOP_Handler is
       P ("");
       
       for J in 1 .. Actions.Length loop
-         if not Ready.Contains (Actions.Element (J)) then
-            P ("   procedure " & Actions.Element (J).To_Wide_Wide_String);
-            P ("     (Self    : not null access Handler;");
-            P ("      Scanner : not null access " &
-                 Scanner.To_Wide_Wide_String & ".Scanner'Class;");
-            P ("      Token   : out " & Tokens.To_Wide_Wide_String & ".Token;");
-            P ("      Skip    : in out Boolean) is abstract;");
-            P ("");
-            
-            Ready.Insert (Actions.Element (J));
-         end if;
+         P ("   procedure " & Actions.Element (J).To_Wide_Wide_String);
+         P ("     (Self    : not null access Handler;");
+         P ("      Scanner : not null access " &
+              Scanner.To_Wide_Wide_String & ".Scanner'Class;");
+         P ("      Token   : out " & Tokens.To_Wide_Wide_String & ".Token;");
+         P ("      Skip    : in out Boolean) is abstract;");
+         P ("");
       end loop;
       
       P ("   type Handler_Access is access all Handler'Class;");

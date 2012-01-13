@@ -66,6 +66,10 @@ package body Nodes is
       
       procedure Each_Inclusive (Cursor : Start_Condition_Maps.Cursor);
       
+      function Get_Action
+        (Text : League.Strings.Universal_String)
+        return Positive;
+      
       Text  : League.Strings.Universal_String := RegExp;
       To    : constant Natural := Text.Index ('>');
       Index : Positive;
@@ -102,9 +106,28 @@ package body Nodes is
       begin
          Conditions.Update_Element (Cursor, Add_Inclusive'Access);
       end Each_Inclusive;
+      
+      --------------------
+      -- Get_Action --
+      --------------------
+      
+      function Get_Action
+        (Text : League.Strings.Universal_String)
+        return Positive is
+      begin
+         for J in 1 .. Actions.Length loop
+            if Actions.Element (J) = Text then
+               return J;
+            end if;
+         end loop;
+         
+         Actions.Append (Action);
+         
+         return Actions.Length;
+      end Get_Action;
    begin
-      Actions.Append (Action);
-      Index := Actions.Length;
+      Indexes.Append (Get_Action (Action));
+      Index := Rules.Length + 1;
       
       if Text.Starts_With ("<") then
          declare
