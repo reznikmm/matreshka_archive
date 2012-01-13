@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -796,7 +796,7 @@ package body Generator.Reflection is
 
       Builder.Visit_Element (Metamodel_Package);
 
-      Put_Header;
+      Put_Header (2010, 2011);
       Builder.Context.Iterate (Generate_With_Clause'Access);
 
       if Metamodel_Name = League.Strings.To_Universal_String ("CMOF") then

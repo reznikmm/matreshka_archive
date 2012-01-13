@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -603,7 +603,7 @@ package body Generator.Constructors is
       end Generate_With;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2011);
       Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with AMF.Internals.Element_Collections;");
@@ -673,7 +673,7 @@ package body Generator.Constructors is
       end Generate_Create;
 
    begin
-      Put_Header;
+      Put_Header (2010, 2011);
 
       New_Line;
       Put_Line

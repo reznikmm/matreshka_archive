@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with Ada.Strings.Wide_Wide_Fixed;
 
 package body Generator.Wide_Wide_Text_IO is
 
+   use Ada.Strings;
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
 
@@ -63,7 +64,7 @@ package body Generator.Wide_Wide_Text_IO is
    -- Put_Header --
    ----------------
 
-   procedure Put_Header (Year_2010 : Boolean := True) is
+   procedure Put_Header (First_Year : Positive; Last_Year : Positive) is
    begin
       Put_Line
        ("--------------------------------------------------------------------"
@@ -96,15 +97,19 @@ package body Generator.Wide_Wide_Text_IO is
        ("--                                                                  "
           & "        --");
 
-      if Year_2010 then
+      if First_Year = Last_Year then
          Put_Line
-          ("-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>     "
-             & "           --");
+          ("-- Copyright © "
+             & Trim (Integer'Wide_Wide_Image (First_Year), Both)
+             & ", Vadim Godunko <vgodunko@gmail.com>                     --");
 
       else
          Put_Line
-          ("-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>          "
-             & "           --");
+          ("-- Copyright © "
+             & Trim (Integer'Wide_Wide_Image (First_Year), Both)
+             & "-"
+             & Trim (Integer'Wide_Wide_Image (Last_Year), Both)
+             & ", Vadim Godunko <vgodunko@gmail.com>                --");
       end if;
 
       Put_Line

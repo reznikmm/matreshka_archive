@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,7 +47,7 @@ with Ada.Wide_Wide_Text_IO;
 
 package Generator.Wide_Wide_Text_IO is
 
-   procedure Put_Header (Year_2010 : Boolean := True);
+   procedure Put_Header (First_Year : Positive; Last_Year : Positive);
 
    procedure Put_Header
     (Name   : Wide_Wide_String;
