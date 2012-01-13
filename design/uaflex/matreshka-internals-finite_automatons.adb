@@ -47,13 +47,13 @@ with League.Strings.Internals;
 with Matreshka.Internals.Regexps.Compiler;
 
 package body Matreshka.Internals.Finite_Automatons is
-   
+
    package Compiler renames Matreshka.Internals.Regexps.Compiler;
-   
+
    type Shared_Pattern_Array is array (Positive range <>) of
      Matreshka.Internals.Regexps.Shared_Pattern_Access;
    --  List of regexp
-   
+
    type Position is new Natural;
    --  Position is index of a literal element of regexp
    --  for example: (a|b)*abb
@@ -62,17 +62,17 @@ package body Matreshka.Internals.Finite_Automatons is
    --  Map each literal to corresponding character set
    type Character_Set_Map is array (Position range <>) of
      League.Character_Sets.Universal_Character_Set;
-   
+
    --  Just list of character sets
    type Character_Set_Array is array (Positive range <>) of
      League.Character_Sets.Universal_Character_Set;
-   
+
    function To_Character_Set
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Node : Positive) return League.Character_Sets.Universal_Character_Set;
    --  Return character set corresponding to given regexp element
    --  Raise Constraint_Error if element is not literal.
-   
+
    function Count_Positions
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Root : Positive)
@@ -88,7 +88,7 @@ package body Matreshka.Internals.Finite_Automatons is
    function Count_Positions_In_Array
      (List  : Shared_Pattern_Array)
      return Position;
-   
+
    function Nullable
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Root : Positive) return Boolean;
@@ -98,21 +98,21 @@ package body Matreshka.Internals.Finite_Automatons is
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive) return Boolean;
    --  Check if given regexp subexpression sequence can match empty string
-   
+
    procedure Compile
      (Self    : in out DFA_Constructor;
       Start   : League.Strings.Universal_String;
       List    : Shared_Pattern_Array;
       Actions : Rule_Index_Array);
-   
+
    procedure Check
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive);
-   
+
    -----------
    -- Check --
    -----------
-   
+
    procedure Check
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive)
@@ -120,7 +120,7 @@ package body Matreshka.Internals.Finite_Automatons is
       procedure Walk (Root  : Positive);
 
       procedure Walk_List (Head  : Positive);
-      
+
       procedure Walk (Root  : Positive) is
          Node : Matreshka.Internals.Regexps.Node renames AST.AST (Root);
       begin
@@ -139,7 +139,7 @@ package body Matreshka.Internals.Finite_Automatons is
               Matreshka.Internals.Regexps.N_Member_Property |
               Matreshka.Internals.Regexps.N_Member_Range =>
                null;
-               
+
             when Matreshka.Internals.Regexps.N_Anchor =>
                raise Constraint_Error with "'Anchor' unsupported";
 
@@ -173,7 +173,7 @@ package body Matreshka.Internals.Finite_Automatons is
    begin
       Walk_List (Head);
    end Check;
-   
+
    -------------
    -- Compile --
    -------------
@@ -194,10 +194,10 @@ package body Matreshka.Internals.Finite_Automatons is
          Data (J) := Compiler.Compile
            (League.Strings.Internals.Internal (List.Element (J)));
       end loop;
-      
+
       Compile (Self, Start, Data, Actions);
    end Compile;
-   
+
    -------------
    -- Compile --
    -------------
@@ -210,25 +210,25 @@ package body Matreshka.Internals.Finite_Automatons is
    is
       Max_Pos : constant Position := Count_Positions_In_Array (List);
       type Position_Set is array (1 .. Max_Pos) of Boolean;
-      pragma Pack (Position_Set);
+      --  pragma Pack (Position_Set);
 
       Empty  : constant Position_Set := (others => False);
-      
+
       subtype Finish_Position is Position range 1 .. List'Length;
-      
+
       type Position_Set_Array is array (1 .. Max_Pos) of Position_Set;
 
       Follow  : Position_Set_Array := (others => Empty);
       Chars   : Character_Set_Map (1 .. Max_Pos);
-      
+
       function Head (Index : Positive) return Positive;
       --  Return Head for List (Index)
-      
+
       procedure Add_To_Follow
         (First : in out Position_Set;
          Last  : in out Position_Set);
       --  Update Follow array according to First and Last position sets
-      
+
       procedure Walk
         (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
          Root  : Positive;
@@ -244,12 +244,12 @@ package body Matreshka.Internals.Finite_Automatons is
          First : in out Position_Set;
          Last  : in out Position_Set);
       --  Walk regexp subexpressions and update Follow array for each literal
-      
+
       procedure Walk_Array
         (List  : Shared_Pattern_Array;
          First : in out Position_Set);
       --  Walk regexp array and add fictive symbols in final positions
-      
+
       function Get_Follows
         (Set  : Position_Set;
          Map  : Character_Set_Map;
@@ -264,7 +264,7 @@ package body Matreshka.Internals.Finite_Automatons is
          Last : out Natural);
       --  Fill character set List with non-intersected subsets of
       --  characters in Map (Set)
-      
+
       procedure Make_DFA
         (Graph : in out Matreshka.Internals.Graphs.Constructor.Graph;
          Start : out State;
@@ -280,7 +280,7 @@ package body Matreshka.Internals.Finite_Automatons is
       -------------------
       -- Add_To_Follow --
       -------------------
-      
+
       procedure Add_To_Follow
         (First : in out Position_Set;
          Last  : in out Position_Set) is
@@ -291,11 +291,11 @@ package body Matreshka.Internals.Finite_Automatons is
             end if;
          end loop;
       end Add_To_Follow;
-      
+
       -----------------
       -- Get_Follows --
       -----------------
-      
+
       function Get_Follows
         (Set  : Position_Set;
          Map  : Character_Set_Map;
@@ -309,46 +309,46 @@ package body Matreshka.Internals.Finite_Automatons is
                Result := Result or Follow (J);
             end if;
          end loop;
-         
+
          return Result;
       end Get_Follows;
-      
+
       ----------
       -- Head --
       ----------
-      
+
       function Head (Index : Positive) return Positive is
       begin
          return List (Index).List (List (Index).Start).Head;
       end Head;
-      
+
       --------------
       -- Make_DFA --
       --------------
-      
+
       procedure Make_DFA
         (Graph : in out Matreshka.Internals.Graphs.Constructor.Graph;
          Start : out State;
          Edges : in out Vectors.Vector;
          Final : in out State_Maps.Map;
          First : Position_Set;
-         Map   : Character_Set_Map) 
+         Map   : Character_Set_Map)
       is
          use Matreshka.Internals.Graphs.Constructor;
-         
+
          function New_Node (Set : Position_Set) return Node;
          --  Allocate new state/node, add it to Final if needed
-         
+
          package Maps is new Ada.Containers.Ordered_Maps (Position_Set, Node);
          package Vectors is new Ada.Containers.Vectors
            (Index_Type   => Matreshka.Internals.Graphs.Edge_Identifier,
             Element_Type => League.Character_Sets.Universal_Character_Set,
             "="          => League.Character_Sets."=");
-         
+
          --------------
          -- New_Node --
          --------------
-         
+
          function New_Node (Set : Position_Set) return Node is
             Result : constant Node := Graph.New_Node;
             Index  : Rule_Index;
@@ -360,13 +360,13 @@ package body Matreshka.Internals.Finite_Automatons is
                      exit;
                   end if;
                end loop;
-               
+
                Final.Insert (Result.Index, Index);
             end if;
-            
+
             return Result;
          end New_Node;
-         
+
          Marked     : Maps.Map;
          Not_Marked : Maps.Map;
       begin
@@ -376,7 +376,7 @@ package body Matreshka.Internals.Finite_Automatons is
             Start := First_Node.Index;
             Not_Marked.Insert (First, First_Node);
          end;
-         
+
          while not Not_Marked.Is_Empty loop
             declare
                Source : Node := Not_Marked.First_Element;
@@ -388,7 +388,7 @@ package body Matreshka.Internals.Finite_Automatons is
                Not_Marked.Delete_First;
                Marked.Insert (Set, Source);
                Split_To_Distinct_Sets (Set, Map, List, Last);
-               
+
                for J in 1 .. Last loop
                   declare
                      use type Ada.Containers.Count_Type;
@@ -400,12 +400,12 @@ package body Matreshka.Internals.Finite_Automatons is
                   begin
                      if Next /= Empty then
                         Cursor := Marked.Find (Next);
-                     
+
                         if Maps.Has_Element (Cursor) then
                            Target := Maps.Element (Cursor);
                         else
                            Cursor := Not_Marked.Find (Next);
-                           
+
                            if Maps.Has_Element (Cursor) then
                               Target := Maps.Element (Cursor);
                            else
@@ -413,25 +413,25 @@ package body Matreshka.Internals.Finite_Automatons is
                               Not_Marked.Insert (Next, Target);
                            end if;
                         end if;
-                        
+
                         --  Let's suppose edge allocation in sequent order
                         Edges.Set_Length (Edges.Length + 1);
-                        
+
                         Edges.Replace_Element
                           (Index    => Source.New_Edge (Target),
                            New_Item => List (J));
-                        
+
                      end if;
                   end;
                end loop;
             end;
          end loop;
       end Make_DFA;
-      
+
       -----------------------
       -- Max_Distinct_Sets --
       -----------------------
-      
+
       function Max_Distinct_Sets (Set : Position_Set) return Natural is
          Result : Natural := 0;
       begin
@@ -440,14 +440,14 @@ package body Matreshka.Internals.Finite_Automatons is
                Result := Result * 2 + 1;
             end if;
          end loop;
-         
+
          return Result;
       end Max_Distinct_Sets;
-      
+
       ----------------------------
       -- Split_To_Distinct_Sets --
       ----------------------------
-      
+
       procedure Split_To_Distinct_Sets
         (Set  : Position_Set;
          Map  : Character_Set_Map;
@@ -455,7 +455,7 @@ package body Matreshka.Internals.Finite_Automatons is
          Last : out Natural) is
       begin
          Last := 0;
-         
+
          for J in Set'Range loop
             if Set (J) then
                declare
@@ -483,7 +483,7 @@ package body Matreshka.Internals.Finite_Automatons is
                         end if;
                      end;
                   end loop;
-                  
+
                   if not Rest.Is_Empty then
                      Last := Last + 1;
                      List (Last) := Rest;
@@ -492,11 +492,11 @@ package body Matreshka.Internals.Finite_Automatons is
             end if;
          end loop;
       end Split_To_Distinct_Sets;
-      
+
       ----------
       -- Walk --
       ----------
-      
+
       procedure Walk
         (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
          Root  : Positive;
@@ -564,11 +564,11 @@ package body Matreshka.Internals.Finite_Automatons is
                   Last);
          end case;
       end Walk;
-      
+
       ---------------
       -- Walk_List --
       ---------------
-      
+
       procedure Walk_List
         (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
          Head  : Positive;
@@ -593,17 +593,17 @@ package body Matreshka.Internals.Finite_Automatons is
                   First := First or Result_First;
                end if;
 
-               if Nullable (AST, Next) then
+               if Nullable_List (AST, Next) then
                   Last := Last or Result_Last;
                end if;
             end;
          end if;
       end Walk_List;
-      
+
       ----------------
       -- Walk_Array --
       ----------------
-      
+
       procedure Walk_Array
         (List  : Shared_Pattern_Array;
          First : in out Position_Set)
@@ -619,14 +619,14 @@ package body Matreshka.Internals.Finite_Automatons is
             Walk_List
               (List (J),
                Head (J),
-               Pos, 
+               Pos,
                First,
                Result_Last);
             --  Walk (Next, Pos, Result_First, Last);
             --  Fictive termination symbol:
             Result_First (Finish_Position (J)) := True;
             Add_To_Follow (Result_First, Result_Last);
-            
+
             if Nullable_List (List (J), Head (J)) then
                First := First or Result_First;
             end if;
@@ -638,22 +638,22 @@ package body Matreshka.Internals.Finite_Automatons is
       Result : State;
    begin
       Walk_Array (List, First);
-      
+
       Make_DFA
-        (Self.Graph, 
-         Result, 
+        (Self.Graph,
+         Result,
          Self.Edge_Char_Set,
          Self.Final,
          First,
          Chars);
-      
+
       Self.Start.Insert (Start, Result);
    end Compile;
-   
+
    --------------
    -- Complete --
    --------------
-   
+
    procedure Complete
      (Input  : in out DFA_Constructor;
       Output : out DFA) is
@@ -663,7 +663,7 @@ package body Matreshka.Internals.Finite_Automatons is
       Output.Edge_Char_Set := Input.Edge_Char_Set;
       Output.Final := Input.Final;
    end Complete;
-   
+
    ---------------------
    -- Count_Positions --
    ---------------------
@@ -706,11 +706,11 @@ package body Matreshka.Internals.Finite_Automatons is
             return 1;
       end case;
    end Count_Positions;
-   
+
    ------------------------------
    -- Count_Positions_In_Array --
    ------------------------------
-   
+
    function Count_Positions_In_Array
      (List  : Shared_Pattern_Array)
      return Position
@@ -722,14 +722,14 @@ package body Matreshka.Internals.Finite_Automatons is
          Result := Result + Count_Positions_In_List
            (List (J), List (J).List (List (J).Start).Head);
       end loop;
-      
+
       return Result;
    end Count_Positions_In_Array;
-   
+
    -----------------------------
    -- Count_Positions_In_List --
    -----------------------------
-   
+
    function Count_Positions_In_List
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive)
@@ -745,24 +745,24 @@ package body Matreshka.Internals.Finite_Automatons is
 
       return Result;
    end Count_Positions_In_List;
-   
+
    --------------
    -- Minimize --
    --------------
-   
+
    procedure Minimize (Self : in out DFA) is
-      
+
       package Graphs renames Matreshka.Internals.Graphs;
-      
+
       function Check_Equive_Class (X, Y : State) return Boolean;
-      
+
       type State_Pair is array (1 .. 2) of State;
-      
+
       use type Matreshka.Internals.Graphs.Edge_Identifier;
-      
+
       package State_Pair_Maps is new Ada.Containers.Ordered_Maps
         (State_Pair, Matreshka.Internals.Graphs.Edge_Identifier);
-      
+
       Last         : constant State := Self.Graph.Node_Count;
       Error_State  : constant State := Last + 1;
 
@@ -781,13 +781,13 @@ package body Matreshka.Internals.Finite_Automatons is
                Edge_X : constant Graphs.Edge := Self.Graph.Get_Edge (I);
                Jump_X : constant State := Edge_X.Target_Node.Index;
                Sym_X  : League.Character_Sets.Universal_Character_Set :=
-                 Self.Edge_Char_Set (Edge_X.Edge_Id);
+                 Self.Edge_Char_Set.Element (Edge_X.Edge_Id);
             begin
                for J in Node_Y.First_Edge_Index .. Node_Y.Last_Edge_Index loop
                   declare
                      Edge_Y : constant Graphs.Edge := Self.Graph.Get_Edge (J);
                      Sym_Y  : League.Character_Sets.Universal_Character_Set :=
-                       Self.Edge_Char_Set (Edge_Y.Edge_Id);
+                       Self.Edge_Char_Set.Element (Edge_Y.Edge_Id);
                      Jump_Y : constant State := Edge_Y.Target_Node.Index;
                   begin
                      if not
@@ -812,7 +812,7 @@ package body Matreshka.Internals.Finite_Automatons is
 
          return True;
       end Check_Equive_Class;
-      
+
       Current_Equive_Class : State'Base;
       Prev_Equive_Class    : State := 1;
       Found                : Boolean;
@@ -867,28 +867,28 @@ package body Matreshka.Internals.Finite_Automatons is
          end loop Try_Split_Equive_Classes;
 
       --  Create_DFA
-         
+
       declare
          procedure Each_Start (Cursor : Start_Maps.Cursor);
-      
+
          use Matreshka.Internals.Graphs.Constructor;
          Result : Graph;
          Edges  : Vectors.Vector;
          Map    : State_Pair_Maps.Map;
          Final  : State_Maps.Map;
          Nodes  : array (1 .. Current_Equive_Class - 1) of Node;
-         
+
          ----------------
          -- Each_Start --
          ----------------
-         
+
          procedure Each_Start (Cursor : Start_Maps.Cursor) is
             Old : constant State := Start_Maps.Element (Cursor);
          begin
             Self.Start.Replace_Element
               (Cursor, Nodes (Equive (Old)).Index);
          end Each_Start;
-         
+
       begin
          for K in Nodes'Range loop
             Nodes (K) := Result.New_Node;
@@ -897,16 +897,16 @@ package body Matreshka.Internals.Finite_Automatons is
          for I in 1 .. Last loop
             declare
                use type Ada.Containers.Count_Type;
-               
+
                procedure Append_Chars
                  (X : in out League.Character_Sets.Universal_Character_Set);
-               
+
                Edge_J : Graphs.Edge;
-               
+
                ------------------
                -- Append_Chars --
                ------------------
-               
+
                procedure Append_Chars
                  (X : in out League.Character_Sets.Universal_Character_Set)
                is
@@ -914,7 +914,7 @@ package body Matreshka.Internals.Finite_Automatons is
                begin
                   X := X or Self.Edge_Char_Set.Element (Edge_J.Edge_Id);
                end Append_Chars;
-               
+
                Node_X : Graphs.Node := Self.Graph.Get_Node (I);
                Edge   : Graphs.Edge_Identifier;
                Pair   : State_Pair;
@@ -925,7 +925,7 @@ package body Matreshka.Internals.Finite_Automatons is
                   Pair (1) := Equive (I);
                   Pair (2) := Equive (Edge_J.Target_Node.Index);
                   Cursor := Map.Find (Pair);
-                  
+
                   if State_Pair_Maps.Has_Element (Cursor) then
                      Edges.Update_Element
                        (State_Pair_Maps.Element (Cursor),
@@ -934,13 +934,13 @@ package body Matreshka.Internals.Finite_Automatons is
                      Edge := Nodes (Pair (1)).New_Edge (Nodes (Pair (2)));
                      Map.Insert (Pair, Edge);
                      Edges.Set_Length (Edges.Length + 1);
-                  
+
                      Edges.Replace_Element
                        (Edge,
                         Self.Edge_Char_Set.Element (Edge_J.Edge_Id));
                   end if;
                end loop;
-               
+
                if Self.Final.Contains (I) then
                   Final.Include
                     (Nodes (Equive (I)).Index,
@@ -948,7 +948,7 @@ package body Matreshka.Internals.Finite_Automatons is
                end if;
             end;
          end loop;
-         
+
          Self.Start.Iterate (Each_Start'Access);
          Self.Graph.Clear;
          Result.Complete (Output => Self.Graph);
@@ -956,11 +956,11 @@ package body Matreshka.Internals.Finite_Automatons is
          Self.Final := Final;
       end;
    end Minimize;
-   
+
    --------------
    -- Nullable --
    --------------
-   
+
    function Nullable
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Root : Positive) return Boolean
@@ -971,7 +971,7 @@ package body Matreshka.Internals.Finite_Automatons is
       case Node.Kind is
          when Matreshka.Internals.Regexps.N_None =>
             raise Constraint_Error;
-            
+
          when Matreshka.Internals.Regexps.N_Subexpression =>
             return Nullable (AST, Compiler.Get_Expression (AST, Root));
 
@@ -1002,7 +1002,7 @@ package body Matreshka.Internals.Finite_Automatons is
    -------------------
    -- Nullable_List --
    -------------------
-   
+
    function Nullable_List
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive)
@@ -1014,13 +1014,13 @@ package body Matreshka.Internals.Finite_Automatons is
          if not Nullable (AST, Pos) then
             return False;
          end if;
-         
+
          Pos := Compiler.Get_Next_Sibling (AST, Pos);
       end loop;
 
       return True;
    end Nullable_List;
-   
+
    ----------------------
    -- To_Character_Set --
    ----------------------
@@ -1034,7 +1034,7 @@ package body Matreshka.Internals.Finite_Automatons is
       case AST.AST (Node).Kind is
          when Matreshka.Internals.Regexps.N_None =>
             return League.Character_Sets.Empty_Universal_Character_Set;
-            
+
          when Matreshka.Internals.Regexps.N_Match_Any =>
             return not League.Character_Sets.Empty_Universal_Character_Set;
 
