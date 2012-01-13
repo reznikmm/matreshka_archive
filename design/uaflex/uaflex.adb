@@ -228,14 +228,8 @@ procedure UAFLEX is
    is
       List : constant League.String_Vectors.Universal_String_Vector :=
         Item.To_Lowercase.Split ('.');
-      Result : League.Strings.Universal_String := List.Element (1);
    begin
-      for J in 2 .. List.Length loop
-         Result.Append ("-");
-         Result.Append (List.Element (J));
-      end loop;
-
-      return To_String (Result) & Extension;
+      return To_String (List.Join ("-")) & Extension;
    end To_File_Name;
 
    Initial  : League.String_Vectors.Universal_String_Vector;
