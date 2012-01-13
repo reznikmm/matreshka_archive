@@ -75,7 +75,7 @@ ADA_STRING     \"([^"]+|\"\")*\"
 <SECT2>{OPTSPACE}\n					{Skip}
 <SECT2>"%%"[^\n]*\n					{On_Section_End_2}
 
-<INRULE>\{([^}]+|{ADA_STRING})*\}			{On_Action}
+<INRULE>\{([^}"]+|{ADA_STRING})*\}			{On_Action}
 <INRULE>{SPACE}						{Skip}
 <INRULE>{OPTSPACE}\n					{On_End_Of_Rule}
 

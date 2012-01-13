@@ -2,7 +2,7 @@ AYACC = ../../tools/ayacc/src/ayacc
 UAFLEX_GENERATED=generated/aaa*.ad[sb]
 AYACC_GENERATED=generated/parser*.ad[sb]
 
-uaflex:
+all:
 	gprbuild -p -P uaflex.gpr
 
 gen: $(AYACC_GENERATED) $(UAFLEX_GENERATED)
@@ -27,7 +27,8 @@ check: $(RESULTS)
 	echo "Test success"
 
 %.just_read.result: %.just_read
-	rm -rf tmp
-	mkdir tmp
-	cd tmp;	../uaflex  --types AAA --scanner AAA.Scanners \
+	rm -rf .tmp.$(notdir $?)
+	mkdir .tmp.$(notdir $?)
+	cd .tmp.$(notdir $?); ../uaflex  --types AAA --scanner AAA.Scanners \
 		--handler AAA.Handlers --tokens Parser_Tokens ../$?
+	rm -rf .tmp.$(notdir $?)

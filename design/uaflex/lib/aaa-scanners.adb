@@ -189,6 +189,10 @@ package body Aaa.Scanners is
       Next : Code_Unit_32;
       Pos  : Buffer_Index := Self.Next;
    begin
+      if Self.From <= Buffer_Half_Size xor Self.Next <= Buffer_Half_Size then
+         raise Constraint_Error with "Token too large";
+      end if;
+
       loop
          Next := Self.Source.Get_Next;
          Self.Buffer (Pos) := Wide_Wide_Character'Val (Next);

@@ -78,7 +78,7 @@ package Aaa.Scanners is
    
 private
    
-   Buffer_Half_Size : constant := 512;
+   Buffer_Half_Size : constant := 1024;
    
    subtype Buffer_Index is Positive range 1 .. 2 * Buffer_Half_Size;
    

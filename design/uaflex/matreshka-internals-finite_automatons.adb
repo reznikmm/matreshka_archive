@@ -260,8 +260,7 @@ package body Matreshka.Internals.Finite_Automatons is
       procedure Split_To_Distinct_Sets
         (Set  : Position_Set;
          Map  : Character_Set_Map;
-         List : out Character_Set_Array;
-         Last : out Natural);
+         List : out Vectors.Vector);
       --  Fill character set List with non-intersected subsets of
       --  characters in Map (Set)
 
@@ -340,10 +339,6 @@ package body Matreshka.Internals.Finite_Automatons is
          --  Allocate new state/node, add it to Final if needed
 
          package Maps is new Ada.Containers.Ordered_Maps (Position_Set, Node);
-         package Vectors is new Ada.Containers.Vectors
-           (Index_Type   => Matreshka.Internals.Graphs.Edge_Identifier,
-            Element_Type => League.Character_Sets.Universal_Character_Set,
-            "="          => League.Character_Sets."=");
 
          --------------
          -- New_Node --
@@ -382,21 +377,20 @@ package body Matreshka.Internals.Finite_Automatons is
                Source : Node := Not_Marked.First_Element;
                Set    : Position_Set := Not_Marked.First_Key;
                Max    : Positive := Max_Distinct_Sets (Set);
-               Last   : Natural;
-               List   : Character_Set_Array (1 .. Max);
+               List   : Vectors.Vector;
             begin
                Not_Marked.Delete_First;
                Marked.Insert (Set, Source);
-               Split_To_Distinct_Sets (Set, Map, List, Last);
+               Split_To_Distinct_Sets (Set, Map, List);
 
-               for J in 1 .. Last loop
+               for J in List.First_Index .. List.Last_Index loop
                   declare
                      use type Ada.Containers.Count_Type;
 
                      Target : Node;
                      Cursor : Maps.Cursor;
                      Next   : constant Position_Set :=
-                       Get_Follows (Set, Map, List (J));
+                       Get_Follows (Set, Map, List.Element (J));
                   begin
                      if Next /= Empty then
                         Cursor := Marked.Find (Next);
@@ -419,7 +413,7 @@ package body Matreshka.Internals.Finite_Automatons is
 
                         Edges.Replace_Element
                           (Index    => Source.New_Edge (Target),
-                           New_Item => List (J));
+                           New_Item => List.Element (J));
 
                      end if;
                   end;
@@ -451,42 +445,39 @@ package body Matreshka.Internals.Finite_Automatons is
       procedure Split_To_Distinct_Sets
         (Set  : Position_Set;
          Map  : Character_Set_Map;
-         List : out Character_Set_Array;
-         Last : out Natural) is
+         List : out Vectors.Vector) is
       begin
-         Last := 0;
-
          for J in Set'Range loop
             if Set (J) then
                declare
                   use League.Character_Sets;
                   Rest : Universal_Character_Set := Map (J);
                begin
-                  for K in 1 .. Last loop
+                  for K in List.First_Index .. List.Last_Index loop
                      declare
+                        Item : constant Universal_Character_Set :=
+                          List.Element (K);
                         Intersection : constant Universal_Character_Set :=
-                          List (K) and Rest;
+                          Item and Rest;
                      begin
                         if not Intersection.Is_Empty then
                            declare
                               Extra : constant Universal_Character_Set :=
-                                List (K) - Rest;
+                                Item - Rest;
                            begin
                               if not Extra.Is_Empty then
-                                 Last := Last + 1;
-                                 List (Last) := Extra;
+                                 List.Append (Extra);
                               end if;
 
-                              Rest := Rest - List (K);
-                              List (K) := Intersection;
+                              Rest := Rest - Item;
+                              List.Replace_Element (K, Intersection);
                            end;
                         end if;
                      end;
                   end loop;
 
                   if not Rest.Is_Empty then
-                     Last := Last + 1;
-                     List (Last) := Rest;
+                     List.Append (Rest);
                   end if;
                end;
             end if;
