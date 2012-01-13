@@ -3,7 +3,7 @@ include Makefile.config
 GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
-ALL_TARGETS = league fastcgi sql amf
+ALL_TARGETS = league xml fastcgi sql amf
 
 ifdef HAS_OCI
 ALL_TARGETS += oci
