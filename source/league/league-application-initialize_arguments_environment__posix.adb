@@ -57,11 +57,19 @@ procedure Initialize_Arguments_Environment is
 
    use type Interfaces.C.size_t;
 
+   type chars_ptr_array is
+     array (Interfaces.C.size_t range <>)
+       of aliased Interfaces.C.Strings.chars_ptr;
+   --  GNAT GCC 4.6: components of chars_ptr_array are not declared as
+   --  aliased, so declare own type.
+
    package chars_ptr_Pointers is
      new Interfaces.C.Pointers
           (Interfaces.C.size_t,
            Interfaces.C.Strings.chars_ptr,
-           Interfaces.C.Strings.chars_ptr_array,
+--           Interfaces.C.Strings.chars_ptr_array,
+--  GNAT GCC 4.6
+           chars_ptr_array,
            Interfaces.C.Strings.Null_Ptr);
 
    package chars_ptr_Conversions is
@@ -99,7 +107,9 @@ begin
    --  Convert arguments.
 
    declare
-      Argv : constant Interfaces.C.Strings.chars_ptr_array
+--      Argv : constant Interfaces.C.Strings.chars_ptr_array
+--  GNAT GCC 4.6
+      Argv : constant chars_ptr_array
         := chars_ptr_Pointers.Value
             (chars_ptr_Pointers.Pointer
               (chars_ptr_Conversions.To_Pointer (GNAT_Argv)),
@@ -116,7 +126,9 @@ begin
    --  Convert process environment.
 
    declare
-      Envp : constant Interfaces.C.Strings.chars_ptr_array
+--      Envp : constant Interfaces.C.Strings.chars_ptr_array
+--  GNAT GCC 4.6
+      Envp : constant chars_ptr_array
         := chars_ptr_Pointers.Value
             (chars_ptr_Pointers.Pointer
               (chars_ptr_Conversions.To_Pointer (GNAT_Envp)));
