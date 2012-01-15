@@ -284,7 +284,7 @@ begin
          Nodes.Regexp (J) := Matreshka.Internals.Regexps.Compiler.Compile
            (League.Strings.Internals.Internal (Nodes.Rules.Element (J)));
       exception
-         when E : Constraint_Error =>
+         when E : Constraint_Error | Program_Error =>
             Ada.Wide_Wide_Text_IO.Put_Line
               ("Line " & Natural'Wide_Wide_Image (Nodes.Lines.Element (J)) &
                  " error on compile regexp '" &

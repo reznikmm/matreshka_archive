@@ -262,10 +262,6 @@ package body Matreshka.Internals.Finite_Automatons is
          First : Position_Set;
          Map   : Character_Set_Map);
 
-      function Max_Distinct_Sets (Set : Position_Set) return Natural;
-      --  Return maximum length of non-intersected character sets
-      --  Return Count(Set) ** 2 - 1
-
       -------------------
       -- Add_To_Follow --
       -------------------
@@ -366,7 +362,6 @@ package body Matreshka.Internals.Finite_Automatons is
             declare
                Source : Node := Not_Marked.First_Element;
                Set    : Position_Set := Not_Marked.First_Key;
-               Max    : Positive := Max_Distinct_Sets (Set);
                List   : Vectors.Vector;
             begin
                Not_Marked.Delete_First;
@@ -411,22 +406,6 @@ package body Matreshka.Internals.Finite_Automatons is
             end;
          end loop;
       end Make_DFA;
-
-      -----------------------
-      -- Max_Distinct_Sets --
-      -----------------------
-
-      function Max_Distinct_Sets (Set : Position_Set) return Natural is
-         Result : Natural := 0;
-      begin
-         for J in Set'Range loop
-            if Set (J) then
-               Result := Result * 2 + 1;
-            end if;
-         end loop;
-
-         return Result;
-      end Max_Distinct_Sets;
 
       ----------------------------
       -- Split_To_Distinct_Sets --

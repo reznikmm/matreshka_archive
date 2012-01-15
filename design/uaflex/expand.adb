@@ -158,7 +158,7 @@ package body Expand is
    ---------------
 
    procedure To_Regexp (Text : in out League.Strings.Universal_String) is
-      type States is (Normal, In_Quote, Masked, Class);
+      type States is (Normal, In_Quote, Masked, Class, Category);
       --  [/First/ ^ /C1/ x /c2/ - /c3/ y ]
       type Class_States is (First, C1, C2, C3);
       Result   : League.Strings.Universal_String;
@@ -217,16 +217,31 @@ package body Expand is
 
                when Class =>
                   if Item = ']' then
+                     if In_Class = C3 then
+                        Result.Append ("\-");
+                     end if;
+
                      Result.Append (Item);
                      State := Normal;
+                  elsif Item = '[' then
+                     if In_Class = C3 then
+                        Result.Append ("\-");
+                     end if;
+
+                     Result.Append (Item);
+                     In_Class := C1;
+                     State := Category;
+                  elsif In_Class = First and Item = ':' then
+                     Result.Append (Item);
+                     State := Category;
                   elsif In_Class = First and Item = '^' then
                      Result.Append (Item);
                      In_Class := C1;
                   elsif In_Class = C2 and Item = '-' then
-                     Result.Append (Item);
                      In_Class := C3;
                   else
                      if In_Class = C3 then
+                        Result.Append ("-");
                         In_Class := C1;
                      else
                         In_Class := C2;
@@ -242,6 +257,16 @@ package body Expand is
                      end if;
                   end if;
 
+               when Category =>
+                  Result.Append (Item);
+
+                  if Item = ']' then
+                     if In_Class = First then
+                        State := Normal;
+                     else
+                        State := Class;
+                     end if;
+                  end if;
             end case;
          end;
       end loop;
