@@ -42,11 +42,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
-with Matreshka.Internals.Strings;
+with Matreshka.Internals.Strings.Configuration;
 
 package body League.String_Vectors is
 
    use Matreshka.Internals.String_Vectors;
+   use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.Configuration;
 
    ------------
    -- Adjust --
@@ -110,6 +112,41 @@ package body League.String_Vectors is
          Dereference (Self.Data);
       end if;
    end Finalize;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String_Vector'Class;
+     Pattern : League.Strings.Universal_String'Class) return Natural
+   is
+      V_D : constant not null
+        Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
+          := Self.Data;
+      P_D : constant not null Shared_String_Access
+        := League.Strings.Internals.Internal (Pattern);
+
+   begin
+      for J in 1 .. V_D.Length loop
+         if String_Handler.Is_Equal (V_D.Value (J), P_D) then
+            return J;
+         end if;
+      end loop;
+
+      return 0;
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String_Vector'Class;
+     Pattern : Wide_Wide_String) return Natural is
+   begin
+      return Self.Index (League.Strings.To_Universal_String (Pattern));
+   end Index;
 
    --------------
    -- Is_Empty --

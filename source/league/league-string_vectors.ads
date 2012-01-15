@@ -103,6 +103,15 @@ package League.String_Vectors is
    --  element separated by the given Separator. Separator can be an empty
    --  string.
 
+   function Index
+    (Self    : Universal_String_Vector'Class;
+     Pattern : League.Strings.Universal_String'Class) return Natural;
+   function Index
+    (Self : Universal_String_Vector'Class;
+     Pattern : Wide_Wide_String) return Natural;
+   --  Returns index of the first element which match to item, or zero
+   --  overwise.
+
 private
 
    procedure Read
