@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Parser;
 
+with Ada.Command_Line;
 with Ada.Directories;
 with Ada.Streams.Stream_IO;
 with Ada.Wide_Wide_Text_IO;
@@ -234,7 +235,6 @@ procedure UAFLEX is
 
    Initial  : League.String_Vectors.Universal_String_Vector;
    Source   : aliased String_Sources.String_Source;
-   UHandler : aliased UAFLEX_Handler.Handler;
    Classes  : Matreshka.Internals.Finite_Automatons.Vectors.Vector;
 begin
    Read_Arguments;
@@ -251,13 +251,25 @@ begin
 
    Source.Create (Read_File (To_String (Input)));
    Parser.Scanner.Set_Source (Source'Unchecked_Access);
-   Parser.Scanner.Set_Handler (UHandler'Unchecked_Access);
+   Parser.Scanner.Set_Handler (Parser.Handler'Unchecked_Access);
 
    Initial.Append (League.Strings.To_Universal_String ("INITIAL"));
    Nodes.Add_Start_Conditions (Initial, False);
 
    Parser.YYParse;
+   
+   if not Nodes.Success then
+      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
+      return;
+   end if;
+   
    Expand.RegExps;
+   
+   if not Nodes.Success then
+      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
+      return;
+   end if;
+   
    --  Debug.Print;
 
    Nodes.Conditions.Iterate (Each_Condition'Access);

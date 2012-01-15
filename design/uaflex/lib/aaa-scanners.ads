@@ -76,6 +76,8 @@ package Aaa.Scanners is
    function Get_Text
      (Self : Scanner'Class) return League.Strings.Universal_String;
    
+   function Get_Token_Length (Self : Scanner'Class) return Positive;
+   function Get_Token_Position (Self : Scanner'Class) return Positive;
 private
    
    Buffer_Half_Size : constant := 1024;
@@ -87,6 +89,10 @@ private
    Error_Character : constant Character_Class := 0;
    Error_State : constant State := State'Last;
    
+   type Buffer_Half is (Low, High);
+   
+   type Buffer_Offset is array (Buffer_Half) of Natural;
+   
    type Scanner is tagged limited record
       Handler : Handlers.Handler_Access;
       Source  : Abstract_Sources.Source_Access;
@@ -95,6 +101,7 @@ private
       From    : Buffer_Index := 1;
       To      : Natural := 0;
       Rule    : Rule_Index;
+      Offset  : Buffer_Offset := (0, 0);
       Buffer  : Wide_Wide_String (Buffer_Index) :=
         (1 => Wide_Wide_Character'Val (Abstract_Sources.End_Of_Buffer),
          others => <>);

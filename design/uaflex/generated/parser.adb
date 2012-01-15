@@ -12,7 +12,8 @@ package body Parser is
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
 procedure yyerror (X : Wide_Wide_String) is
 begin
-  Ada.Wide_Wide_Text_IO.Put_Line (X);
+  Ada.Wide_Wide_Text_IO.Put_Line
+   (X & " on line" & Positive'Wide_Wide_Image (Handler.Get_Line));
 end;
 
 function YYLex return Token is
@@ -21,6 +22,8 @@ begin
    Scanner.Get_Token (Result);
    return Result;
 end YYLex;
+
+Line : Positive;
 procedure YYParse is
 
    -- Rename User Defined Packages to Internal Names.
@@ -317,7 +320,7 @@ when 9 =>
 when 12 =>
 --# line 96 "../parser.y"
 
-  Nodes.Add_Rule (YY.Value_Stack (YY.TOS).Regexp, YY.Value_Stack (YY.TOS).Action);
+  Nodes.Add_Rule (YY.Value_Stack (YY.TOS).Regexp, YY.Value_Stack (YY.TOS).Action, Line);
 
 
 when 13 =>
@@ -330,7 +333,7 @@ when 14 =>
 
 when 15 =>
 --# line 111 "../parser.y"
- YYVal := Nodes.To_Node (Scanner.Get_Text); 
+ YYVal := Nodes.To_Node (Scanner.Get_Text); Line := Handler.Get_Line; 
 
 when 16 =>
 --# line 115 "../parser.y"

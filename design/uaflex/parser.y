@@ -94,7 +94,7 @@ rule_list:
   |
   rule_list rule
 {
-  Nodes.Add_Rule ($2.Regexp, $2.Action);
+  Nodes.Add_Rule ($2.Regexp, $2.Action, Line);
 }
 
 ;
@@ -108,7 +108,7 @@ Name_Token: Name
 ;
 
 Regexp_Token: Regexp
-  { $$ := Nodes.To_Node (Scanner.Get_Text); }
+  { $$ := Nodes.To_Node (Scanner.Get_Text); Line := Handler.Get_Line; }
 ;
 
 Action_Token: Action
@@ -117,8 +117,10 @@ Action_Token: Action
 
 %%
 with Aaa.Scanners;
+with UAFLEX_Handler;
 ##
    Scanner : aliased Aaa.Scanners.Scanner;
+   Handler : aliased UAFLEX_Handler.Handler;
    procedure YYParse;
 ##
 with Ada.Wide_Wide_Text_IO;
@@ -126,7 +128,8 @@ with Nodes;
 ##
 procedure yyerror (X : Wide_Wide_String) is
 begin
-  Ada.Wide_Wide_Text_IO.Put_Line (X);
+  Ada.Wide_Wide_Text_IO.Put_Line
+   (X & " on line" & Positive'Wide_Wide_Image (Handler.Get_Line));
 end;
 
 function YYLex return Token is
@@ -135,3 +138,5 @@ begin
    Scanner.Get_Token (Result);
    return Result;
 end YYLex;
+
+Line : Positive;

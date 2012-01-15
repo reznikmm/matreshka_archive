@@ -178,6 +178,30 @@ package body Aaa.Scanners is
       end loop;
    end Get_Token;
    
+   ----------------------
+   -- Get_Token_Length --
+   ----------------------
+   
+   function Get_Token_Length (Self : Scanner'Class) return Positive is
+   begin
+      if Self.From <= Self.To then
+         return Self.To - Self.From + 1;
+      else
+         return Buffer_Index'Last - Self.From + 1 + Self.To;
+      end if;
+   end Get_Token_Length;
+   
+   ------------------------
+   -- Get_Token_Position --
+   ------------------------
+   
+   function Get_Token_Position (Self : Scanner'Class) return Positive is
+      Half : constant Buffer_Half :=
+        Buffer_Half'Val (Boolean'Pos (Self.From >= Buffer_Half_Size));
+   begin
+      return Self.Offset (Half) + Self.From;
+   end Get_Token_Position;
+   
    -----------------
    -- Read_Buffer --
    -----------------
@@ -192,7 +216,13 @@ package body Aaa.Scanners is
       if Self.From <= Buffer_Half_Size xor Self.Next <= Buffer_Half_Size then
          raise Constraint_Error with "Token too large";
       end if;
-
+      
+      if Pos = Buffer_Half_Size then
+         Self.Offset (High) := Self.Offset (High) + Self.Buffer'Length;
+      elsif Pos = Self.Buffer'Last then
+         Self.Offset (Low) := Self.Offset (Low) + Self.Buffer'Length;
+      end if;
+      
       loop
          Next := Self.Source.Get_Next;
          Self.Buffer (Pos) := Wide_Wide_Character'Val (Next);

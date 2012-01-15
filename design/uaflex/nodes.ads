@@ -79,24 +79,33 @@ package Nodes is
      (League.Strings.Universal_String,   --  Macro name
       League.Strings.Universal_String);  --  Macro value
    
-   package Rule_Index_Vectors is new Ada.Containers.Vectors
+   package Positive_Vectors is new Ada.Containers.Vectors
      (Index_Type   => Positive,
       Element_Type => Positive);
    
    type Start_Condition is record
       Exclusive : Boolean;
-      Rules     : Rule_Index_Vectors.Vector;
+      Rules     : Positive_Vectors.Vector;
    end record;
    
    package Start_Condition_Maps is new Ada.Containers.Ordered_Maps
      (League.Strings.Universal_String,   --  Condition name
       Start_Condition);
    
+   --  List of regexp from input file
    Rules      : League.String_Vectors.Universal_String_Vector;
+   --  List of DISTINCT action from input file
    Actions    : League.String_Vectors.Universal_String_Vector;
-   Indexes    : Rule_Index_Vectors.Vector;
+   --  Map rule index to action index
+   Indexes    : Positive_Vectors.Vector;
+   --  Map rule index to input file line number
+   Lines      : Positive_Vectors.Vector;
+   --  Map condition name to Start_Condition
    Conditions : Start_Condition_Maps.Map;
+   --  Map macros name to macros value
    Macros     : Macro_Maps.Map;
+   
+   Success : Boolean := True;
    
    procedure Add_Start_Conditions
      (List      : League.String_Vectors.Universal_String_Vector;
@@ -104,6 +113,7 @@ package Nodes is
    
    procedure Add_Rule
      (RegExp : League.Strings.Universal_String;
-      Action : League.Strings.Universal_String);
+      Action : League.Strings.Universal_String;
+      Line   : Positive);
 
 end Nodes;

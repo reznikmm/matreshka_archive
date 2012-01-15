@@ -54,7 +54,8 @@ package body Nodes is
    
    procedure Add_Rule
      (RegExp : League.Strings.Universal_String;
-      Action : League.Strings.Universal_String)
+      Action : League.Strings.Universal_String;
+      Line   : Positive)
    is
       procedure Add
         (Name      : League.Strings.Universal_String;
@@ -147,8 +148,10 @@ package body Nodes is
                      Nodes.Conditions.Update_Element (Cursor, Add'Access);
                   else
                      Ada.Wide_Wide_Text_IO.Put_Line
-                       ("No such start condition: " &
+                       ("Line:" & Natural'Wide_Wide_Image (Line) & " " &
+                          "No such start condition: " &
                           Condition.To_Wide_Wide_String);
+                     Success := False;
                   end if;
                end;
             end loop;
@@ -160,6 +163,7 @@ package body Nodes is
       end if;
       
       Rules.Append (Text);
+      Lines.Append (Line);
    end Add_Rule;
    
    --------------------------

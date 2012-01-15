@@ -13,6 +13,6 @@ package AAA is
 
    type Character_Class is mod 18;
 
-   type Rule_Index is range 0 .. 13;
+   type Rule_Index is range 0 .. 14;
 
 end AAA;

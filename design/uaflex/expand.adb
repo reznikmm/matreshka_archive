@@ -52,7 +52,10 @@ with League.String_Vectors;
 
 package body Expand is
    
-   procedure Expand_Macro (Text : in out League.Strings.Universal_String);
+   procedure Expand_Macro
+     (Text : in out League.Strings.Universal_String;
+      Line : Positive);
+
    procedure To_Regexp (Text : in out League.Strings.Universal_String);
    
    Macro_1 : constant Wide_Wide_String := "^\{([a-zA-Z][a-zA-Z0-9_]*)\}";
@@ -88,7 +91,10 @@ package body Expand is
    -- Expand_Macro --
    ------------------
    
-   procedure Expand_Macro (Text : in out League.Strings.Universal_String) is
+   procedure Expand_Macro
+     (Text : in out League.Strings.Universal_String;
+      Line : Positive)
+   is
       Found : constant League.Regexps.Regexp_Match := Macro.Find_Match (Text);
       Index : Positive := 1;
    begin
@@ -114,12 +120,15 @@ package body Expand is
                Nodes.Macro_Maps.Element (Pos));
          else
             Ada.Wide_Wide_Text_IO.Put_Line
-              ("Macro's definition not found for: " &
+              ("Line " & Natural'Wide_Wide_Image (Line) &
+                 " Macro's definition not found for: " &
                  Name.To_Wide_Wide_String);
-            raise Program_Error;
+            Nodes.Success := False;
+            
+            return;
          end if;
          
-         Expand_Macro (Text);
+         Expand_Macro (Text, Line);
       end;
    end Expand_Macro;
    
@@ -135,7 +144,7 @@ package body Expand is
             Item : League.Strings.Universal_String :=
               Nodes.Rules.Element (J);
          begin
-            Expand_Macro (Item);
+            Expand_Macro (Item, Nodes.Lines.Element (J));
             To_Regexp (Item);
             Result.Append (Item);
          end;
