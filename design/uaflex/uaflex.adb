@@ -45,7 +45,9 @@ with Parser;
 
 with Ada.Command_Line;
 with Ada.Directories;
+with Ada.Exceptions;
 with Ada.Streams.Stream_IO;
+with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 with Debug;
 with Expand;
@@ -55,8 +57,10 @@ with Nodes;
 with League.Application;
 with League.String_Vectors;
 with League.Strings;
+with League.Strings.Internals;
 with League.Text_Codecs;
 with Matreshka.Internals.Finite_Automatons;
+with Matreshka.Internals.Regexps.Compiler;
 
 with UAFLEX_Handler;
 with Aaa.Scanners;
@@ -75,7 +79,7 @@ procedure UAFLEX is
    procedure Read_Arguments;
 
    procedure Print_Usage;
-   
+
    function To_String
      (Item : League.Strings.Universal_String)
      return String
@@ -110,12 +114,13 @@ procedure UAFLEX is
       Rule    : Positive;
       Actions : Matreshka.Internals.Finite_Automatons.Rule_Index_Array
         (1 .. Condition.Rules.Last_Index);
-      Reg_Exp_List : League.String_Vectors.Universal_String_Vector;
+      Reg_Exp_List : Matreshka.Internals.Finite_Automatons.Shared_Pattern_Array
+        (1 .. Condition.Rules.Last_Index);
    begin
       for J in Actions'Range loop
          Rule := Condition.Rules.Element (J);
          Actions (J) := Nodes.Indexes.Element (Rule);
-         Reg_Exp_List.Append (Nodes.Rules.Element (Rule));
+         Reg_Exp_List (J) := Nodes.Regexp (Rule);
       end loop;
 
       DFA.Compile (Name, Reg_Exp_List, Actions);
@@ -135,24 +140,24 @@ procedure UAFLEX is
    begin
       Put_Line
         (Standard_Error,
-         "Usage: uaflex <unit-options> input_file"); 
+         "Usage: uaflex <unit-options> input_file");
       Put_Line
         (Standard_Error,
-         "  where <unit-options> contains:"); 
+         "  where <unit-options> contains:");
       Put_Line
         (Standard_Error,
-         "    --types Types_Unit - unit for type and condition declarations"); 
+         "    --types Types_Unit - unit for type and condition declarations");
       Put_Line
         (Standard_Error,
-         "    --handler Handler_Unit - unit for abstract handler declaration"); 
+         "    --handler Handler_Unit - unit for abstract handler declaration");
       Put_Line
         (Standard_Error,
-         "    --scanner Scanner_Unit - unit where scanner is located"); 
+         "    --scanner Scanner_Unit - unit where scanner is located");
       Put_Line
         (Standard_Error,
-         "    --tokens Tokens_Unit - unit where Token type is declared"); 
+         "    --tokens Tokens_Unit - unit where Token type is declared");
    end Print_Usage;
-   
+
    --------------------
    -- Read_Arguments --
    --------------------
@@ -257,20 +262,42 @@ begin
    Nodes.Add_Start_Conditions (Initial, False);
 
    Parser.YYParse;
-   
+
    if not Nodes.Success then
       Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
       return;
    end if;
-   
+
    Expand.RegExps;
-   
+
    if not Nodes.Success then
       Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
       return;
    end if;
-   
-   --  Debug.Print;
+
+   Nodes.Regexp := new
+     Matreshka.Internals.Finite_Automatons.Shared_Pattern_Array
+       (1 .. Nodes.Rules.Length);
+
+   for J in 1 .. Nodes.Rules.Length loop
+      begin
+         Nodes.Regexp (J) := Matreshka.Internals.Regexps.Compiler.Compile
+           (League.Strings.Internals.Internal (Nodes.Rules.Element (J)));
+      exception
+         when E : Constraint_Error =>
+            Ada.Wide_Wide_Text_IO.Put_Line
+              ("Line " & Natural'Wide_Wide_Image (Nodes.Lines.Element (J)) &
+                 " error on compile regexp '" &
+                 Nodes.Rules.Element (J).To_Wide_Wide_String & "'");
+            Ada.Text_IO.Put_Line (Ada.Exceptions.Exception_Message (E));
+            Nodes.Success := False;
+      end;
+   end loop;
+
+   if not Nodes.Success then
+      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
+      return;
+   end if;
 
    Nodes.Conditions.Iterate (Each_Condition'Access);
 

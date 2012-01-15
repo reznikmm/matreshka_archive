@@ -51,46 +51,46 @@ with League.Strings;
 with League.String_Vectors;
 
 package body Expand is
-   
+
    procedure Expand_Macro
      (Text : in out League.Strings.Universal_String;
       Line : Positive);
 
    procedure To_Regexp (Text : in out League.Strings.Universal_String);
-   
+
    Macro_1 : constant Wide_Wide_String := "^\{([a-zA-Z][a-zA-Z0-9_]*)\}";
    Macro_2 : constant Wide_Wide_String := "[^pP]\{([a-zA-Z][a-zA-Z0-9_]*)\}";
    Macro_3 : constant Wide_Wide_String :=
      "[^\\][pP]\{([a-zA-Z][a-zA-Z0-9_]*)\}";
-   
+
    Macro_Pattern : constant Wide_Wide_String :=
      Macro_1 & '|' & Macro_2 & '|' & Macro_3;
-   
+
    Macro_Reference : constant League.Strings.Universal_String :=
      League.Strings.To_Universal_String (Macro_Pattern);
-   
+
    Macro : constant League.Regexps.Regexp_Pattern :=
      League.Regexps.Compile (Macro_Reference);
-   
+
    use type League.Character_Sets.Universal_Character_Set;
-   
+
    Pattern_Set : constant League.Character_Sets.Universal_Character_Set :=
      League.Character_Sets.Internals.To_Set
        (Matreshka.Internals.Unicode.Ucd.Pattern_Syntax)
      or
      League.Character_Sets.Internals.To_Set
        (Matreshka.Internals.Unicode.Ucd.Pattern_White_Space );
-   
+
    Operations : constant League.Character_Sets.Universal_Character_Set :=
      League.Character_Sets.To_Set ("\{}[]^$?.*+|()");
-   
+
    Escape : constant League.Character_Sets.Universal_Character_Set :=
      League.Character_Sets.To_Set ("aefnrtvcuUpP");
-   
+
    ------------------
    -- Expand_Macro --
    ------------------
-   
+
    procedure Expand_Macro
      (Text : in out League.Strings.Universal_String;
       Line : Positive)
@@ -101,13 +101,13 @@ package body Expand is
       if not Found.Is_Matched then
          return;
       end if;
-      
+
       for J in 1 .. 3 loop
          if Found.Last_Index (J) > Found.First_Index (J) then
             Index := J;
          end if;
       end loop;
-      
+
       declare
          Name : constant League.Strings.Universal_String :=
            Found.Capture (Index);
@@ -124,18 +124,18 @@ package body Expand is
                  " Macro's definition not found for: " &
                  Name.To_Wide_Wide_String);
             Nodes.Success := False;
-            
+
             return;
          end if;
-         
+
          Expand_Macro (Text, Line);
       end;
    end Expand_Macro;
-   
+
    -------------
    -- RegExps --
    -------------
-   
+
    procedure RegExps is
       Result : League.String_Vectors.Universal_String_Vector;
    begin
@@ -149,14 +149,14 @@ package body Expand is
             Result.Append (Item);
          end;
       end loop;
-      
+
       Nodes.Rules := Result;
    end RegExps;
-   
+
    ---------------
    -- To_Regexp --
    ---------------
-   
+
    procedure To_Regexp (Text : in out League.Strings.Universal_String) is
       type States is (Normal, In_Quote, Masked, Class);
       --  [/First/ ^ /C1/ x /c2/ - /c3/ y ]
@@ -192,7 +192,7 @@ package body Expand is
                   else
                      Result.Append (Item);
                   end if;
-                  
+
                when In_Quote =>
                   if Item = '"' then
                      Result.Append ("\E");
@@ -200,7 +200,7 @@ package body Expand is
                   else
                      Result.Append (Item);
                   end if;
-                  
+
                when Masked =>
                   if Pattern_Set.Has (Item) or Escape.Has (Item) then
                      Result.Append ('\');
@@ -208,13 +208,13 @@ package body Expand is
                   else
                      Result.Append (Item);
                   end if;
-                  
+
                   if In_Class = First then
                      State := Normal;
                   else
                      State := Class;
                   end if;
-                  
+
                when Class =>
                   if Item = ']' then
                      Result.Append (Item);
@@ -228,10 +228,10 @@ package body Expand is
                   else
                      if In_Class = C3 then
                         In_Class := C1;
-                     else 
+                     else
                         In_Class := C2;
                      end if;
-                     
+
                      if Item = '\' then
                         State := Masked;
                      elsif Pattern_Set.Has (Item) then
@@ -241,12 +241,12 @@ package body Expand is
                         Result.Append (Item);
                      end if;
                   end if;
-                  
+
             end case;
          end;
       end loop;
-      
+
       Text := Result;
    end To_Regexp;
-   
+
 end Expand;

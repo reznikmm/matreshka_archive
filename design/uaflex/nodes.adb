@@ -47,11 +47,11 @@ with Ada.Streams;
 with Ada.Wide_Wide_Text_IO;
 
 package body Nodes is
-   
+
    --------------
    -- Add_Rule --
    --------------
-   
+
    procedure Add_Rule
      (RegExp : League.Strings.Universal_String;
       Action : League.Strings.Universal_String;
@@ -60,36 +60,36 @@ package body Nodes is
       procedure Add
         (Name      : League.Strings.Universal_String;
          Condition : in out Start_Condition);
-      
+
       procedure Add_Inclusive
         (Name      : League.Strings.Universal_String;
          Condition : in out Start_Condition);
-      
+
       procedure Each_Inclusive (Cursor : Start_Condition_Maps.Cursor);
-      
+
       function Get_Action
         (Text : League.Strings.Universal_String)
         return Positive;
-      
+
       Text  : League.Strings.Universal_String := RegExp;
       To    : constant Natural := Text.Index ('>');
       Index : Positive;
-      
+
       ---------
       -- Add --
       ---------
-      
+
       procedure Add
         (Name      : League.Strings.Universal_String;
          Condition : in out Start_Condition) is
       begin
          Condition.Rules.Append (Index);
       end Add;
-      
+
       -------------------
       -- Add_Inclusive --
       -------------------
-      
+
       procedure Add_Inclusive
         (Name      : League.Strings.Universal_String;
          Condition : in out Start_Condition) is
@@ -98,20 +98,20 @@ package body Nodes is
             Add (Name, Condition);
          end if;
       end Add_Inclusive;
-      
+
       --------------------
       -- Each_Inclusive --
       --------------------
-      
+
       procedure Each_Inclusive (Cursor : Start_Condition_Maps.Cursor) is
       begin
          Conditions.Update_Element (Cursor, Add_Inclusive'Access);
       end Each_Inclusive;
-      
+
       --------------------
       -- Get_Action --
       --------------------
-      
+
       function Get_Action
         (Text : League.Strings.Universal_String)
         return Positive is
@@ -121,20 +121,20 @@ package body Nodes is
                return J;
             end if;
          end loop;
-         
+
          Actions.Append (Action);
-         
+
          return Actions.Length;
       end Get_Action;
    begin
       Indexes.Append (Get_Action (Action));
       Index := Rules.Length + 1;
-      
+
       if Text.Starts_With ("<") then
          declare
             Conditions : constant League.Strings.Universal_String :=
               Text.Slice (2, To - 1);
-            List : constant League.String_Vectors.Universal_String_Vector := 
+            List : constant League.String_Vectors.Universal_String_Vector :=
               Conditions.Split (',');
          begin
             for J in 1 .. List.Length loop
@@ -155,21 +155,21 @@ package body Nodes is
                   end if;
                end;
             end loop;
-            
+
             Text.Slice (To + 1, Text.Length);
          end;
       else
          Conditions.Iterate (Each_Inclusive'Access);
       end if;
-      
+
       Rules.Append (Text);
       Lines.Append (Line);
    end Add_Rule;
-   
+
    --------------------------
    -- Add_Start_Conditions --
    --------------------------
-   
+
    procedure Add_Start_Conditions
      (List      : League.String_Vectors.Universal_String_Vector;
       Exclusive : Boolean) is
@@ -178,15 +178,15 @@ package body Nodes is
          Conditions.Insert (List.Element (J), (Exclusive, others => <>));
       end loop;
    end Add_Start_Conditions;
-   
+
    function To_Node (Value : League.Strings.Universal_String) return Node is
    begin
       return (Text, Value);
    end To_Node;
-   
+
    function To_Action (Value : League.Strings.Universal_String) return Node is
    begin
       return To_Node (Value.Slice (2, Value.Length - 1));
    end To_Action;
-   
+
 end Nodes;

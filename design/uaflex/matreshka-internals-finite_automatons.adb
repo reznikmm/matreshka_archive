@@ -50,10 +50,6 @@ package body Matreshka.Internals.Finite_Automatons is
 
    package Compiler renames Matreshka.Internals.Regexps.Compiler;
 
-   type Shared_Pattern_Array is array (Positive range <>) of
-     Matreshka.Internals.Regexps.Shared_Pattern_Access;
-   --  List of regexp
-
    type Position is new Natural;
    --  Position is index of a literal element of regexp
    --  for example: (a|b)*abb
@@ -98,12 +94,6 @@ package body Matreshka.Internals.Finite_Automatons is
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive) return Boolean;
    --  Check if given regexp subexpression sequence can match empty string
-
-   procedure Compile
-     (Self    : in out DFA_Constructor;
-      Start   : League.Strings.Universal_String;
-      List    : Shared_Pattern_Array;
-      Actions : Rule_Index_Array);
 
    procedure Check
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;

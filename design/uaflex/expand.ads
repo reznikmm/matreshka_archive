@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 
 package Expand is
-   
+
    procedure RegExps;
    --  Expand macros inside regexp. Convert uaflex regexp to League.Regexps
-   
+
 end Expand;

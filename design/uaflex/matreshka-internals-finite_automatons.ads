@@ -81,6 +81,16 @@ package Matreshka.Internals.Finite_Automatons is
 
    type DFA_Constructor is tagged limited private;
 
+   type Shared_Pattern_Array is array (Positive range <>) of
+     Matreshka.Internals.Regexps.Shared_Pattern_Access;
+   --  List of regexp
+
+   procedure Compile
+     (Self    : in out DFA_Constructor;
+      Start   : League.Strings.Universal_String;
+      List    : Shared_Pattern_Array;
+      Actions : Rule_Index_Array);
+
    procedure Compile
      (Self    : in out DFA_Constructor;
       Start   : League.Strings.Universal_String;

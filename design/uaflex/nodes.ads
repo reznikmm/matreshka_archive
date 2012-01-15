@@ -45,11 +45,12 @@ with League.String_Vectors;
 with League.Strings;
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Vectors;
+with Matreshka.Internals.Finite_Automatons;
 
 package Nodes is
-   
+
    type Node_Kind is (Text, Rule, Macro, Name_List);
-   
+
    type Node (Kind : Node_Kind := Node_Kind'First) is record
       case Kind is
          when Text =>
@@ -64,34 +65,37 @@ package Nodes is
             List : League.String_Vectors.Universal_String_Vector;
       end case;
    end record;
-   
+
    subtype Rule_Node is Node (Rule);
-   
+
    function To_Node (Value : League.Strings.Universal_String) return Node;
    function To_Action (Value : League.Strings.Universal_String) return Node;
-   
+
    Empty_Name_List : constant Node (Name_List) :=
      (Kind => Name_List, List => <>);
-   
+
    use type League.Strings.Universal_String;
-   
+
    package Macro_Maps is new Ada.Containers.Ordered_Maps
      (League.Strings.Universal_String,   --  Macro name
       League.Strings.Universal_String);  --  Macro value
-   
+
    package Positive_Vectors is new Ada.Containers.Vectors
      (Index_Type   => Positive,
       Element_Type => Positive);
-   
+
    type Start_Condition is record
       Exclusive : Boolean;
       Rules     : Positive_Vectors.Vector;
    end record;
-   
+
    package Start_Condition_Maps is new Ada.Containers.Ordered_Maps
      (League.Strings.Universal_String,   --  Condition name
       Start_Condition);
-   
+
+   type Shared_Pattern_Array_Access is access all
+     Matreshka.Internals.Finite_Automatons.Shared_Pattern_Array;
+
    --  List of regexp from input file
    Rules      : League.String_Vectors.Universal_String_Vector;
    --  List of DISTINCT action from input file
@@ -104,13 +108,15 @@ package Nodes is
    Conditions : Start_Condition_Maps.Map;
    --  Map macros name to macros value
    Macros     : Macro_Maps.Map;
-   
+   --  Array of compiles regexp
+   Regexp     : Shared_Pattern_Array_Access;
+
    Success : Boolean := True;
-   
+
    procedure Add_Start_Conditions
      (List      : League.String_Vectors.Universal_String_Vector;
       Exclusive : Boolean);
-   
+
    procedure Add_Rule
      (RegExp : League.Strings.Universal_String;
       Action : League.Strings.Universal_String;
