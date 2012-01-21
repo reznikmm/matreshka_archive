@@ -123,7 +123,7 @@ package body AWF.Callbacks is
             begin
                Reply.Set_Content_Type (JSON_Mime_Type);
                AWF.Registry.Resolve (Widget'Tag, Path.Element (2)) (Widget);
-               Widget.Render_Response (Response);
+               Response := Widget.Get_Payload;
                Ada.Streams.Stream_Element_Array'Write
                 (Reply.Stream,
                  UTF8_Codec.Encode (Response).To_Stream_Element_Array);

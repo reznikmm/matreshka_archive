@@ -109,6 +109,17 @@ package body AWF.Internals.AWF_Widgets is
    procedure onscroll_Handler
     (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
 
+   --------------------
+   -- Append_Payload --
+   --------------------
+
+   not overriding procedure Append_Payload
+    (Self    : not null access AWF_Widget_Proxy;
+     Payload : League.Strings.Universal_String) is
+   begin
+      Self.Payload.Append (Payload);
+   end Append_Payload;
+
    ------------------
    -- Constructors --
    ------------------
@@ -136,6 +147,19 @@ package body AWF.Internals.AWF_Widgets is
       end Initialize;
 
    end Constructors;
+
+   -----------------
+   -- Get_Payload --
+   -----------------
+
+   not overriding function Get_Payload
+    (Self : not null access AWF_Widget_Proxy)
+       return League.Strings.Universal_String is
+   begin
+      return Payload : League.Strings.Universal_String := Self.Payload do
+         Self.Payload.Clear;
+      end return;
+   end Get_Payload;
 
    --------
    -- Id --

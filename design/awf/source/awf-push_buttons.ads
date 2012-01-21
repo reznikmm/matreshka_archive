@@ -69,10 +69,6 @@ private
     (Self    : not null access AWF_Push_Button;
      Context : in out AWF.HTML_Writers.HTML_Writer'Class);
 
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String);
-
    overriding procedure Click_Event (Self : not null access AWF_Push_Button);
 
 end AWF.Push_Buttons;

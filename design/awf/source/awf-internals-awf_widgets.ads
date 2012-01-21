@@ -73,9 +73,15 @@ package AWF.Internals.AWF_Widgets is
     (Self    : not null access AWF_Widget_Proxy;
      Context : in out AWF.HTML_Writers.HTML_Writer'Class);
 
-   not overriding procedure Render_Response
-    (Self     : not null access AWF_Widget_Proxy;
-     Response : in out League.Strings.Universal_String) is null;
+   -- Payload
+
+   not overriding procedure Append_Payload
+    (Self    : not null access AWF_Widget_Proxy;
+     Payload : League.Strings.Universal_String);
+
+   not overriding function Get_Payload
+    (Self : not null access AWF_Widget_Proxy)
+       return League.Strings.Universal_String;
 
    --  Events
 
@@ -150,8 +156,9 @@ private
      new AWF.Internals.AWF_Objects.AWF_Object_Proxy
        and AWF.Widgets.AWF_Widget with
    record
-      Id     : Natural;
-      Layout : AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access;
+      Id      : Natural;
+      Layout  : AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access;
+      Payload : League.Strings.Universal_String;
    end record;
 
 end AWF.Internals.AWF_Widgets;

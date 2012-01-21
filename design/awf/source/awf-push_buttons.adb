@@ -54,6 +54,14 @@ package body AWF.Push_Buttons is
    overriding procedure Click_Event (Self : not null access AWF_Push_Button) is
    begin
       Self.Counter := Self.Counter + 1;
+
+      Self.Append_Payload
+       (League.Strings.To_Universal_String
+         ("document.getElementById('"
+            & AWF.Utilities.Image (Self.Id).To_Wide_Wide_String
+            & "').innerHTML = 'Clicked"
+            & Integer'Wide_Wide_Image (Self.Counter)
+            & " time(s), click me again!';"));
    end Click_Event;
 
    ------------
@@ -88,22 +96,5 @@ package body AWF.Push_Buttons is
       Context.Characters (League.Strings.To_Universal_String ("Click me!"));
       Context.End_Div;
    end Render_Body;
-
-   ---------------------
-   -- Render_Response --
-   ---------------------
-
-   overriding procedure Render_Response
-    (Self     : not null access AWF_Push_Button;
-     Response : in out League.Strings.Universal_String) is
-   begin
-      Response.Append
-       (League.Strings.To_Universal_String
-         ("document.getElementById('"
-            & AWF.Utilities.Image (Self.Id).To_Wide_Wide_String
-            & "').innerHTML = 'Clicked"
-            & Integer'Wide_Wide_Image (Self.Counter)
-            & " time(s), click me again!';"));
-   end Render_Response;
 
 end AWF.Push_Buttons;
