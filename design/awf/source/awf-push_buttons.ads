@@ -71,8 +71,7 @@ private
    type AWF_Push_Button is
      new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
       Text    : League.Strings.Universal_String;
-      Clicked :
-        AWF.Signals.Emitters.Emitter (AWF_Push_Button'Unchecked_Access);
+      Clicked : AWF.Signals.Emitters.Emitter (AWF_Push_Button'Access);
    end record;
 
    overriding procedure Render_Body

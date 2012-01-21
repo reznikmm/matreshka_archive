@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Internals.AWF_Objects;
+limited with AWF.Internals.AWF_Objects;
 
 package AWF.Signals.Emitters is
 

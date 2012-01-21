@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+limited with AWF.Signals;
 
 package AWF.Objects is
 
@@ -62,5 +63,9 @@ package AWF.Objects is
    not overriding procedure Set_Parent
     (Self   : not null access AWF_Object;
      Parent : access AWF_Object'Class) is abstract;
+
+   not overriding function Destroyed
+    (Self : not null access AWF_Object)
+       return AWF.Signals.Connector is abstract;
 
 end AWF.Objects;

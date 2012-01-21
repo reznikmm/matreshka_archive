@@ -41,7 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
+
 with AWF.Objects;
+with AWF.Signals;
+private with AWF.Signals.Emitters;
 
 package AWF.Internals.AWF_Objects is
 
@@ -63,6 +67,9 @@ package AWF.Internals.AWF_Objects is
     (Self   : not null access AWF_Object_Proxy;
      Parent : access AWF.Objects.AWF_Object'Class);
 
+   overriding function Destroyed
+    (Self : not null access AWF_Object_Proxy) return AWF.Signals.Connector;
+
    package Constructors is
 
       procedure Initialize
@@ -74,7 +81,8 @@ package AWF.Internals.AWF_Objects is
 private
 
    type AWF_Object_Proxy is
-     abstract limited new AWF.Objects.AWF_Object with
+     abstract new Ada.Finalization.Limited_Controlled
+       and AWF.Objects.AWF_Object with
    record
       Parent           : AWF_Object_Proxy_Access;
       First_Child      : AWF_Object_Proxy_Access;
@@ -82,6 +90,10 @@ private
       Next_Sibling     : AWF_Object_Proxy_Access;
       Previous_Sibling : AWF_Object_Proxy_Access;
       Children_Count   : Natural := 0;
+      Destroyed        :
+        AWF.Signals.Emitters.Emitter (AWF_Object_Proxy'Access);
    end record;
+
+   overriding procedure Finalize (Self : in out AWF_Object_Proxy);
 
 end AWF.Internals.AWF_Objects;

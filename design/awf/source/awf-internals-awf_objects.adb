@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
 
 package body AWF.Internals.AWF_Objects is
 
@@ -87,6 +88,63 @@ package body AWF.Internals.AWF_Objects is
       end Initialize;
 
    end Constructors;
+
+   ---------------
+   -- Destroyed --
+   ---------------
+
+   overriding function Destroyed
+    (Self : not null access AWF_Object_Proxy) return AWF.Signals.Connector is
+   begin
+      return Self.Destroyed.Connector;
+   end Destroyed;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out AWF_Object_Proxy) is
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (AWF_Object_Proxy'Class, AWF_Object_Proxy_Access);
+
+      Child : AWF_Object_Proxy_Access;
+
+   begin
+      --  Notify about object destruction.
+
+      Self.Destroyed.Emit;
+
+      --  Destroy all children. Note, child removes itself from the parent's
+      --  list of children byself.
+
+      while Self.First_Child /= null loop
+         Child := Self.First_Child;
+         Free (Child);
+      end loop;
+
+      --  Remove object from parent's list of children.
+
+      if Self.Parent /= null then
+         if Self.Previous_Sibling /= null then
+            Self.Previous_Sibling.Next_Sibling := Self.Next_Sibling;
+
+         else
+            Self.Parent.First_Child := Self.Next_Sibling;
+         end if;
+
+         if Self.Next_Sibling /= null then
+            Self.Next_Sibling.Previous_Sibling := Self.Previous_Sibling;
+
+         else
+            Self.Parent.Last_Child := Self.Previous_Sibling;
+         end if;
+
+         Self.Next_Sibling := null;
+         Self.Previous_Sibling := null;
+      end if;
+   end Finalize;
 
    ------------
    -- Parent --
