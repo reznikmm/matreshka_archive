@@ -57,10 +57,10 @@ package body AWF.Signals is
       -------------
 
       procedure Connect
-       (Connector : Signal_Connector;
-        Object    : not null access Object_Type'Class) is
+       (Self   : Connector;
+        Object : not null access Object_Type'Class) is
       begin
-         Connector.Signal.Connections := (Object, Wrapper'Access);
+         Self.Emitter.Connections := (Object, Wrapper'Access);
       end Connect;
 
       -------------

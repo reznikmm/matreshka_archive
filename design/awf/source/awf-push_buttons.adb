@@ -61,8 +61,7 @@ package body AWF.Push_Buttons is
    -------------
 
    not overriding function Clicked
-    (Self : not null access AWF_Push_Button)
-       return AWF.Signals.Signal_Connector is
+    (Self : not null access AWF_Push_Button) return AWF.Signals.Connector is
    begin
       return Self.Clicked.Connector;
    end Clicked;

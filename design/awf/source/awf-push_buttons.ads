@@ -64,15 +64,15 @@ package AWF.Push_Buttons is
      Text : League.Strings.Universal_String);
 
    not overriding function Clicked
-    (Self : not null access AWF_Push_Button)
-       return AWF.Signals.Signal_Connector;
+    (Self : not null access AWF_Push_Button) return AWF.Signals.Connector;
 
 private
 
    type AWF_Push_Button is
      new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
       Text    : League.Strings.Universal_String;
-      Clicked : AWF.Signals.Emitters.Signal (AWF_Push_Button'Unchecked_Access);
+      Clicked :
+        AWF.Signals.Emitters.Emitter (AWF_Push_Button'Unchecked_Access);
    end record;
 
    overriding procedure Render_Body

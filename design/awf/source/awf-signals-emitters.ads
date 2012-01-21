@@ -45,19 +45,18 @@ with AWF.Internals.AWF_Objects;
 
 package AWF.Signals.Emitters is
 
-   type Signal
+   type Emitter
     (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
        is tagged limited private;
 
-   not overriding function Connector
-    (Self : in out Signal) return Signal_Connector;
+   not overriding function Connector (Self : in out Emitter) return Connector;
 
-   not overriding procedure Emit (Self : Signal);
+   not overriding procedure Emit (Self : Emitter);
 
 private
 
-   type Signal
+   type Emitter
     (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
-       is limited new Abstract_Signal with null record;
+       is limited new Abstract_Emitter with null record;
 
 end AWF.Signals.Emitters;

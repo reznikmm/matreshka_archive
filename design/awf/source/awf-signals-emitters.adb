@@ -49,16 +49,16 @@ package body AWF.Signals.Emitters is
    ---------------
 
    not overriding function Connector
-    (Self : in out Signal) return Signal_Connector is
+    (Self : in out Emitter) return Signals.Connector is
    begin
-      return Signal_Connector'(Signal => Self'Access);
+      return Signals.Connector'(Emitter => Self'Access);
    end Connector;
 
    ----------
    -- Emit --
    ----------
 
-   not overriding procedure Emit (Self : Signal) is
+   not overriding procedure Emit (Self : Emitter) is
    begin
       Self.Connections.Wrapper (Self.Connections.Object);
    end Emit;

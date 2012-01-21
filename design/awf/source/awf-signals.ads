@@ -47,7 +47,7 @@ with AWF.Objects;
 
 package AWF.Signals is
 
-   type Signal_Connector (<>) is limited private;
+   type Connector (<>) is limited private;
 
    generic
       type Object_Type is
@@ -57,8 +57,8 @@ package AWF.Signals is
    package Generic_Slot is
 
       procedure Connect
-       (Connector : Signal_Connector;
-        Object    : not null access Object_Type'Class);
+       (Self   : Connector;
+        Object : not null access Object_Type'Class);
 
    end Generic_Slot;
 
@@ -70,11 +70,11 @@ private
         access procedure (Object : not null AWF.Objects.AWF_Object_Access);
    end record;
 
-   type Abstract_Signal is tagged limited record
+   type Abstract_Emitter is tagged limited record
       Connections : Connection;
    end record;
 
-   type Signal_Connector (Signal : not null access Abstract_Signal'Class) is
+   type Connector (Emitter : not null access Abstract_Emitter'Class) is
      limited null record;
 
 end AWF.Signals;
