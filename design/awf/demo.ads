@@ -41,18 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Application;
 
-with Demo.Main_Windows;
+package Demo is
 
-procedure Main is
-   W : Demo.Main_Windows.Main_Window_Access;
+   pragma Pure;
 
-begin
-   AWF.Application.Initialize;
-
-   W := Demo.Main_Windows.Create;
-
-   AWF.Application.Execute;
-   AWF.Application.Finalize;
-end Main;
+end Demo;

@@ -41,18 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Application;
+with League.Strings;
 
-with Demo.Main_Windows;
+with AWF.Layouts;
+with AWF.Signals;
 
-procedure Main is
-   W : Demo.Main_Windows.Main_Window_Access;
+package body Demo.Main_Windows is
 
-begin
-   AWF.Application.Initialize;
+   ------------
+   -- Create --
+   ------------
 
-   W := Demo.Main_Windows.Create;
+   function Create return not null Main_Window_Access is
+      L : AWF.Layouts.AWF_Layout_Access;
 
-   AWF.Application.Execute;
-   AWF.Application.Finalize;
-end Main;
+      package Slot is new AWF.Signals.Generic_Slot (Main_Window, On_Click);
+
+   begin
+      return Self : not null Main_Window_Access := new Main_Window do
+         AWF.Internals.AWF_Widgets.Constructors.Initialize (Self);
+
+         L := AWF.Layouts.Create;
+         Self.Set_Layout (L);
+         Self.Button := AWF.Push_Buttons.Create (Self);
+         Self.Button.Set_Text
+          (League.Strings.To_Universal_String ("Click me!"));
+         Slot.Connect (Self.Button.Clicked, Self);
+      end return;
+   end Create;
+
+   --------------
+   -- On_Click --
+   --------------
+
+   not overriding procedure On_Click (Self : not null access Main_Window) is
+   begin
+      Self.Counter := Self.Counter + 1;
+      Self.Button.Set_Text
+       (League.Strings.To_Universal_String
+         ("Was clicked"
+            & Integer'Wide_Wide_Image (Self.Counter)
+            & " times. Click again!"));
+   end On_Click;
+
+end Demo.Main_Windows;

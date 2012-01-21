@@ -41,18 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Application;
+with AWF.Widgets;
+private with AWF.Internals.AWF_Widgets;
+private with AWF.Push_Buttons;
 
-with Demo.Main_Windows;
+package Demo.Main_Windows is
 
-procedure Main is
-   W : Demo.Main_Windows.Main_Window_Access;
+   type Main_Window is limited new AWF.Widgets.AWF_Widget with private;
 
-begin
-   AWF.Application.Initialize;
+   type Main_Window_Access is access all Main_Window'Class;
 
-   W := Demo.Main_Windows.Create;
+   function Create return not null Main_Window_Access;
 
-   AWF.Application.Execute;
-   AWF.Application.Finalize;
-end Main;
+private
+
+   type Main_Window is
+     limited new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
+      Button  : AWF.Push_Buttons.AWF_Push_Button_Access;
+      Counter : Natural := 0;
+   end record;
+
+   not overriding procedure On_Click (Self : not null access Main_Window);
+
+end Demo.Main_Windows;
