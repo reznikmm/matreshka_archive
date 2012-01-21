@@ -41,14 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with FastCGI.Requests;
-with FastCGI.Replies;
 
-package AWF.Callbacks is
+package AWF.Application is
 
-   procedure Handler
-    (Request : FastCGI.Requests.Request;
-     Reply   : out FastCGI.Replies.Reply;
-     Status  : out Integer);
+   procedure Initialize;
 
-end AWF.Callbacks;
+   procedure Execute;
+
+   procedure Finalize;
+
+end AWF.Application;

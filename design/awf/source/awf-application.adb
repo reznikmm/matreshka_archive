@@ -41,103 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
+with FastCGI.Application;
 
-with League.Stream_Element_Vectors;
-with League.String_Vectors;
-with League.Strings;
-with League.Text_Codecs;
+with AWF.Internals.Callbacks;
 
-with AWF.Painter;
-with AWF.Registry;
-with AWF.Internals.AWF_Widgets;
-
-package body AWF.Callbacks is
-
-   XHTML_Mime_Type : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("application/xhtml+xml");
-   JSON_Mime_Type  : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("application/json");
-   Text_Mime_Type  : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("text");
-   UTF8_Codec      : constant League.Text_Codecs.Text_Codec
-     := League.Text_Codecs.Codec
-         (League.Strings.To_Universal_String ("utf-8"));
-
-   Path_Info_Header :
-     constant League.Stream_Element_Vectors.Stream_Element_Vector
-       := UTF8_Codec.Encode
-           (League.Strings.To_Universal_String ("PATH_INFO"));
---   Query_String_Header :
---     constant League.Stream_Element_Vectors.Stream_Element_Vector
---       := UTF8_Codec.Encode
---           (League.Strings.To_Universal_String ("QUERY_STRING"));
---   Script_Name_Header :
---     constant League.Stream_Element_Vectors.Stream_Element_Vector
---       := UTF8_Codec.Encode
---           (League.Strings.To_Universal_String ("SCRIPT_NAME"));
+package body AWF.Application is
 
    -------------
-   -- Handler --
+   -- Execute --
    -------------
 
-   procedure Handler
-    (Request : FastCGI.Requests.Request;
-     Reply   : out FastCGI.Replies.Reply;
-     Status  : out Integer)
-   is
-      Path : League.String_Vectors.Universal_String_Vector;
-
+   procedure Execute is
    begin
+      FastCGI.Application.Execute (AWF.Internals.Callbacks.Handler'Access);
+   end Execute;
 
---      Ada.Streams.Stream_Element_Array'Write
---       (Reply.Stream,
---        Request.Raw_Header (Script_Name_Header).To_Stream_Element_Array);
---      String'Write
---       (Reply.Stream, ASCII.LF & ASCII.LF);
---
-      if not Request.Has_Raw_Header (Path_Info_Header) then
-         Reply.Set_Content_Type (XHTML_Mime_Type);
-         Ada.Streams.Stream_Element_Array'Write
-          (Reply.Stream,
-           UTF8_Codec.Encode
-            (AWF.Painter.Draw (AWF.Registry.Root)).To_Stream_Element_Array);
+   --------------
+   -- Finalize --
+   --------------
 
-      else
-         Path :=
-           UTF8_Codec.Decode
-            (Request.Raw_Header
-              (Path_Info_Header)).Split ('/', League.Strings.Skip_Empty);
+   procedure Finalize is
+   begin
+      FastCGI.Application.Finalize;
+   end Finalize;
 
-         if Path.Length /= 2 then
-            Reply.Set_Content_Type (JSON_Mime_Type);
-            String'Write (Reply.Stream, "No PATH_INFO");
+   ----------------
+   -- Initialize --
+   ----------------
 
-         else
-            declare
-               Widget   :
-                 constant AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access
-                   := AWF.Registry.Resolve (Path.Element (1));
-               Response : League.Strings.Universal_String;
+   procedure Initialize is
+   begin
+      FastCGI.Application.Initialize;
+   end Initialize;
 
-            begin
-               Reply.Set_Content_Type (JSON_Mime_Type);
-               AWF.Registry.Resolve (Widget'Tag, Path.Element (2)) (Widget);
-               Response := Widget.Get_Payload;
-               Ada.Streams.Stream_Element_Array'Write
-                (Reply.Stream,
-                 UTF8_Codec.Encode (Response).To_Stream_Element_Array);
-            end;
-         end if;
-      end if;
-
---      String'Write
---       (Reply.Stream, ASCII.LF & ASCII.LF);
---      Ada.Streams.Stream_Element_Array'Write
---       (Reply.Stream,
---        Request.Raw_Header (Query_String_Header).To_Stream_Element_Array);
-
-      Status := 0;
-   end Handler;
-
-end AWF.Callbacks;
+end AWF.Application;
