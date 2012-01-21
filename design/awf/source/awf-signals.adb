@@ -41,44 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
-with AWF.Signals.Emitters;
+package body AWF.Signals is
 
-package AWF.Push_Buttons is
+   ------------------
+   -- Generic_Slot --
+   ------------------
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   package body Generic_Slot is
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+      procedure Wrapper (Object : not null AWF.Objects.AWF_Object_Access);
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+      -------------
+      -- Connect --
+      -------------
 
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
+      procedure Connect
+       (Connector : Signal_Connector;
+        Object    : not null access Object_Type'Class) is
+      begin
+         Connector.Signal.Connections := (Object, Wrapper'Access);
+      end Connect;
 
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button)
-       return AWF.Signals.Signal_Connector;
+      -------------
+      -- Wrapper --
+      -------------
 
-private
+      procedure Wrapper (Object : not null AWF.Objects.AWF_Object_Access) is
+      begin
+         Slot (Object_Type'Class (Object.all)'Unchecked_Access);
+      end Wrapper;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : AWF.Signals.Emitters.Signal (AWF_Push_Button'Unchecked_Access);
-   end record;
+   end Generic_Slot;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end AWF.Signals;

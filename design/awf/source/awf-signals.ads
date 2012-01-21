@@ -41,44 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+--  This package provides parameterless signal-slot connector.
+------------------------------------------------------------------------------
+with AWF.Objects;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
-with AWF.Signals.Emitters;
+package AWF.Signals is
 
-package AWF.Push_Buttons is
+   type Signal_Connector (<>) is limited private;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   generic
+      type Object_Type is
+        abstract limited new AWF.Objects.AWF_Object with private;
+      with procedure Slot (Self : not null access Object_Type) is abstract;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   package Generic_Slot is
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+      procedure Connect
+       (Connector : Signal_Connector;
+        Object    : not null access Object_Type'Class);
 
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
-
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button)
-       return AWF.Signals.Signal_Connector;
+   end Generic_Slot;
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : AWF.Signals.Emitters.Signal (AWF_Push_Button'Unchecked_Access);
+   type Connection is record
+      Object  : AWF.Objects.AWF_Object_Access;
+      Wrapper :
+        access procedure (Object : not null AWF.Objects.AWF_Object_Access);
    end record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
+   type Abstract_Signal is tagged limited record
+      Connections : Connection;
+   end record;
 
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
+   type Signal_Connector (Signal : not null access Abstract_Signal'Class) is
+     limited null record;
 
-end AWF.Push_Buttons;
+end AWF.Signals;

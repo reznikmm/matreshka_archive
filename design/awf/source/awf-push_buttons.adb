@@ -53,16 +53,19 @@ package body AWF.Push_Buttons is
 
    overriding procedure Click_Event (Self : not null access AWF_Push_Button) is
    begin
-      Self.Counter := Self.Counter + 1;
-
-      Self.Append_Payload
-       (League.Strings.To_Universal_String
-         ("document.getElementById('"
-            & AWF.Utilities.Image (Self.Id).To_Wide_Wide_String
-            & "').innerHTML = 'Clicked"
-            & Integer'Wide_Wide_Image (Self.Counter)
-            & " time(s), click me again!';"));
+      Self.Clicked.Emit;
    end Click_Event;
+
+   -------------
+   -- Clicked --
+   -------------
+
+   not overriding function Clicked
+    (Self : not null access AWF_Push_Button)
+       return AWF.Signals.Signal_Connector is
+   begin
+      return Self.Clicked.Connector;
+   end Clicked;
 
    ------------
    -- Create --
@@ -93,8 +96,28 @@ package body AWF.Push_Buttons is
         On_Click =>
           League.Strings.To_Universal_String
            ("AWFWidgetOnEvent(this,""onclick"")"));
-      Context.Characters (League.Strings.To_Universal_String ("Click me!"));
+      Context.Characters (Self.Text);
       Context.End_Div;
    end Render_Body;
+
+   --------------
+   -- Set_Text --
+   --------------
+
+   not overriding procedure Set_Text
+    (Self : not null access AWF_Push_Button;
+     Text : League.Strings.Universal_String)
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      Self.Text := Text;
+      Self.Append_Payload
+       ("document.getElementById('"
+          & AWF.Utilities.Image (Self.Id)
+          & "').innerHTML = '"
+          & Self.Text
+          & "';");
+   end Set_Text;
 
 end AWF.Push_Buttons;

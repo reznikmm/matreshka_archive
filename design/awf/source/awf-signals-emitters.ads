@@ -41,44 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with AWF.Internals.AWF_Objects;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
-with AWF.Signals.Emitters;
+package AWF.Signals.Emitters is
 
-package AWF.Push_Buttons is
+   type Signal
+    (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
+       is tagged limited private;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   not overriding function Connector
+    (Self : in out Signal) return Signal_Connector;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
-
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
-
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
-
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button)
-       return AWF.Signals.Signal_Connector;
+   not overriding procedure Emit (Self : Signal);
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : AWF.Signals.Emitters.Signal (AWF_Push_Button'Unchecked_Access);
-   end record;
+   type Signal
+    (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
+       is limited new Abstract_Signal with null record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end AWF.Signals.Emitters;
