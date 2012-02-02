@@ -116,7 +116,7 @@ oci:
 	gnat ls -o -P gnat/matreshka_sql_oracle.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
 	cat sql_oci-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
 	cat sql_oci-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
-	$(INSTALL_project) gnat/install/sql_oci.gpr $(INSTALL_PROJECT_DIR)/sql_oci.gpr
+	$(INSTALL_project) gnat/install/sql_oracle.gpr $(INSTALL_PROJECT_DIR)/sql_oracle.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)
