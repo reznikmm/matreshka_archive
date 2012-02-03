@@ -57,9 +57,6 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Fields is
    procedure Free is new Ada.Unchecked_Deallocation
      (Sql_Data_Array, Sql_Data_Array_Access);
 
-   procedure Free is new Ada.Unchecked_Deallocation
-     (Isc_String, Isc_String_Access);
-
    package To_Isc_Date is
      new System.Address_To_Access_Conversions (Isc_Date);
 
@@ -85,9 +82,6 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Fields is
      new System.Address_To_Access_Conversions (Long_Float);
 
    Calendar : League.Calendars.ISO_8601.ISO_8601_Calendar;
-
-   UTF8_Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec (League.Strings.To_Universal_String ("UTF-8"));
 
    --------------------
    -- Adjust_Sqldata --
@@ -219,13 +213,15 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Fields is
       Isc_Decode_Timestamp
         (To_Isc_Timestamp.To_Pointer (Self.Sqlvar.Sqldata), C_Date'Access);
 
-      return Create
-        (Year_Number (C_Date.Tm_Year + 1900),
-         Month_Number (C_Date.Tm_Mon + 1),
-         Day_Number (C_Date.Tm_Mday),
-         Create (Hour_Number (C_Date.Tm_Hour),
-           Minute_Number (C_Date.Tm_Min),
-           Second_Number (C_Date.Tm_Sec)));
+      raise Program_Error with "Not Implemented";
+--        return Create
+--          (Year_Number (C_Date.Tm_Year + 1900),
+--           Month_Number (C_Date.Tm_Mon + 1),
+--           Day_Number (C_Date.Tm_Mday),
+--           Create (Hour_Number (C_Date.Tm_Hour),
+--             Minute_Number (C_Date.Tm_Min),
+--             Second_Number (C_Date.Tm_Sec)));
+      return League.Calendars.Clock;
    end As_Date_Time;
 
    ------------------
@@ -338,14 +334,19 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Fields is
       use League.Calendars.ISO_8601;
 
       C_Date : aliased C_Time;
+      Dummy  : League.Calendars.Time;
    begin
       Isc_Decode_Sql_Time
         (To_Isc_Time.To_Pointer (Self.Sqlvar.Sqldata), C_Date'Access);
 
-      return Create
-        (Hour_Number (C_Date.Tm_Hour),
-         Minute_Number (C_Date.Tm_Min),
-         Second_Number (C_Date.Tm_Sec));
+      raise Program_Error with "Not Implemented";
+
+--        return Create
+--          (Hour_Number (C_Date.Tm_Hour),
+--           Minute_Number (C_Date.Tm_Min),
+--           Second_Number (C_Date.Tm_Sec));
+
+      return Dummy;
    end As_Time;
 
    -------------

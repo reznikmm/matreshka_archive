@@ -4,11 +4,11 @@
 --                                                                          --
 --                           SQL Database Access                            --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
-
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -39,39 +39,24 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: $ $Date: $
+--  $Revision: 1566 $ $Date: 2011-03-02 13:00:48 +0200 (Ср, 02 мар 2011) $
 ------------------------------------------------------------------------------
+--  This procedure imports Isc_Sqlcode and calls it. Absense of fbclient or
+--  dependent libs produce linker error.
+------------------------------------------------------------------------------
+with Interfaces.C;
 
-with "matreshka_common";
-with "matreshka_config";
-with "matreshka_league";
-with "matreshka_sql";
+procedure Main is
 
-library project Matreshka_SQL_Firebird is
+   type Isc_Results is array (1 .. 20) of aliased Interfaces.C.long;
+   pragma Convention (C, Isc_Results);
 
-   Library_Name := "matreshka-sql-firebird"
-     & Matreshka_Config.RTL_Version_Suffix;
+   function Isc_Sqlcode (Status : Isc_Results) return Interfaces.C.long;
+   pragma Import (Stdcall, Isc_Sqlcode, Link_Name => "_isc_sqlcode");
 
-   for Source_Dirs use ("../design/sql/firebird");
-   for Object_Dir use "../.objs/sql/firebird";
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Library_Dir use "../.libs";
-   for Library_ALI_Dir use "../.libs/matreshka";
-   for Library_Version use "lib" & Library_Name & ".so."
-     & Matreshka_Config.Version;
-   for Library_Options use Matreshka_Config.Firebird_Library_Options;
+   Param : Isc_Results := (others => 0);
+   Aux   : Interfaces.C.long;
 
-   -------------
-   -- Builder --
-   -------------
-
-   package Builder renames Matreshka_Common.Builder;
-
-   --------------
-   -- Compiler --
-   --------------
-
-   package Compiler renames Matreshka_Common.Compiler;
-
-end Matreshka_SQL_Firebird;
+begin
+   Aux := Isc_Sqlcode (Param);
+end Main;

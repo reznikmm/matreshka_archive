@@ -55,6 +55,7 @@ with Configure.Tests.Installation_Directories;
 with Configure.Tests.OCI;
 with Configure.Tests.PostgreSQL;
 with Configure.Tests.SQLite3;
+with Configure.Tests.Firebird;
 with Configure.Tests.Valgrind;
 
 procedure Configure.Driver is
@@ -100,6 +101,7 @@ procedure Configure.Driver is
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
    SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
+   Firebird_Test   : Configure.Tests.Firebird.Firebird_Test;
    Valgrind_Test   : Configure.Tests.Valgrind.Valgrind_Test;
 
 begin
@@ -127,6 +129,7 @@ begin
       OCI_Test.Help.Iterate (Help_Output'Access);
       PostgreSQL_Test.Help.Iterate (Help_Output'Access);
       SQLite3_Test.Help.Iterate (Help_Output'Access);
+      Firebird_Test.Help.Iterate (Help_Output'Access);
 
       return;
    end if;
@@ -145,6 +148,7 @@ begin
    OCI_Test.Execute (Arguments);
    PostgreSQL_Test.Execute (Arguments);
    SQLite3_Test.Execute (Arguments);
+   Firebird_Test.Execute (Arguments);
    Valgrind_Test.Execute (Arguments);
 
    declare

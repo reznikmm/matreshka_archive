@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                           SQL Database Access                            --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
-
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -39,39 +39,44 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: $ $Date: $
+--  $Revision: 2359 $ $Date: 2011-12-27 10:20:56 +0200 (Вт, 27 дек 2011) $
 ------------------------------------------------------------------------------
+--  This test detects parameters to link with PostgreSQL client library.
+--
+--  It sets following substitutions variables:
+--   - HAS_FIREBIRD
+--   - FIREBIRD_LIBRARY_OPTIONS
+------------------------------------------------------------------------------
+with Configure.Abstract_Tests;
+private with Configure.Component_Switches;
 
-with "matreshka_common";
-with "matreshka_config";
-with "matreshka_league";
-with "matreshka_sql";
+package Configure.Tests.Firebird is
 
-library project Matreshka_SQL_Firebird is
+   type Firebird_Test is
+     new Configure.Abstract_Tests.Abstract_Test with private;
 
-   Library_Name := "matreshka-sql-firebird"
-     & Matreshka_Config.RTL_Version_Suffix;
+   overriding function Name (Self : Firebird_Test) return String;
+   --  Returns name of the test to be used in reports.
 
-   for Source_Dirs use ("../design/sql/firebird");
-   for Object_Dir use "../.objs/sql/firebird";
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Library_Dir use "../.libs";
-   for Library_ALI_Dir use "../.libs/matreshka";
-   for Library_Version use "lib" & Library_Name & ".so."
-     & Matreshka_Config.Version;
-   for Library_Options use Matreshka_Config.Firebird_Library_Options;
+   overriding function Help
+    (Self : Firebird_Test) return Unbounded_String_Vector;
+   --  Returns help information for test.
 
-   -------------
-   -- Builder --
-   -------------
+   overriding procedure Execute
+    (Self      : in out Firebird_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
-   package Builder renames Matreshka_Common.Builder;
+private
 
-   --------------
-   -- Compiler --
-   --------------
+   type Firebird_Test is
+     new Configure.Abstract_Tests.Abstract_Test with record
+      Switches : Configure.Component_Switches.Component_Switches
+        := Configure.Component_Switches.Create
+            (Name           => "firebird",
+             Description    => "Firebird support",
+             Libdir_Enabled => True);
+   end record;
 
-   package Compiler renames Matreshka_Common.Compiler;
-
-end Matreshka_SQL_Firebird;
+end Configure.Tests.Firebird;

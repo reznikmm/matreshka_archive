@@ -17,6 +17,10 @@ ifdef HAS_SQLITE3
 ALL_TARGETS += sqlite3
 endif
 
+ifdef HAS_FIREBIRD
+ALL_TARGETS += firebird
+endif
+
 all: $(ALL_TARGETS)
 
 league:
@@ -39,6 +43,9 @@ postgresql:
 
 oci:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oracle.gpr
+
+firebird:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_firebird.gpr
 
 amf:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr

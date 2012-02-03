@@ -72,4 +72,6 @@ abstract project Matreshka_Config is
 
    OCI_Library_Options := (@OCI_LIBRARY_OPTIONS@);
 
+   Firebird_Library_Options := (@FIREBIRD_LIBRARY_OPTIONS@);
+
 end Matreshka_Config;

@@ -34,6 +34,10 @@ ifdef HAS_SQLITE3
 INSTALL_TARGETS += sqlite3
 endif
 
+ifdef HAS_FIREBIRD
+INSTALL_TARGETS += firebird
+endif
+
 INSTALL_TARGETS += cleanup
 
 install: $(INSTALL_TARGETS)
@@ -171,6 +175,27 @@ endif
 	cat sql_sqlite3-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_sqlite3-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_sqlite3.gpr" >> .objs/sql_sqlite3-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_sqlite3-devel.files
+
+firebird:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/firebird
+	gnat ls -d -s -P gnat/matreshka_sql_firebird.gpr | sort | uniq | grep -v '^$$' > sql_firebird-src.aux
+	cat league-src.lst sql-src.aux | diff -u - sql_firebird-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_firebird-src.lst
+	gnat ls -o -P gnat/matreshka_sql_firebird.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_firebird-ali.lst
+	cat sql_firebird-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/firebird
+	cat sql_firebird-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/sql_firebird.gpr $(INSTALL_PROJECT_DIR)/sql_firebird.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql_firebird-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)" > .objs/sql_firebird-lib.files
+endif
+	cat sql_firebird-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/firebird/{}" > .objs/sql_firebird-devel.files
+	cat sql_firebird-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_firebird-devel.files
+	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_firebird.gpr" >> .objs/sql_firebird-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_firebird-devel.files
 
 xml:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/xml
