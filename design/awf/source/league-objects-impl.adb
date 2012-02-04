@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -43,24 +43,24 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-package body AWF.Internals.AWF_Objects is
+package body League.Objects.Impl is
 
    --------------
    -- Children --
    --------------
 
    overriding function Children
-    (Self : not null access constant AWF_Object_Proxy)
-       return AWF.Objects.AWF_Object_Access_Array
+    (Self : not null access constant Object_Impl)
+       return League.Objects.Object_Access_Array
    is
-      Result  : AWF.Objects.AWF_Object_Access_Array (1 .. Self.Children_Count);
+      Result  : League.Objects.Object_Access_Array (1 .. Self.Children_Count);
       Last    : Natural := 0;
-      Current : AWF_Object_Proxy_Access := Self.First_Child;
+      Current : Object_Impl_Access := Self.First_Child;
 
    begin
       while Current /= null loop
          Last := Last + 1;
-         Result (Last) := AWF.Objects.AWF_Object_Access (Current);
+         Result (Last) := League.Objects.Object_Access (Current);
 
          Current := Current.Next_Sibling;
       end loop;
@@ -79,8 +79,8 @@ package body AWF.Internals.AWF_Objects is
       ----------------
 
       procedure Initialize
-       (Self   : not null access AWF_Object_Proxy'Class;
-        Parent : access AWF.Objects.AWF_Object'Class := null) is
+       (Self   : not null access Object_Impl'Class;
+        Parent : access League.Objects.Object'Class := null) is
       begin
          --  Set object's parent.
 
@@ -94,27 +94,31 @@ package body AWF.Internals.AWF_Objects is
    ---------------
 
    overriding function Destroyed
-    (Self : not null access AWF_Object_Proxy) return AWF.Signals.Connector is
+    (Self : not null access Object_Impl) return League.Signals.Signal is
    begin
-      return Self.Destroyed.Connector;
+      return Self.Destroyed.Signal;
    end Destroyed;
 
    --------------
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out AWF_Object_Proxy) is
+   overriding procedure Finalize (Self : in out Object_Impl) is
 
       procedure Free is
         new Ada.Unchecked_Deallocation
-             (AWF_Object_Proxy'Class, AWF_Object_Proxy_Access);
+             (Object_Impl'Class, Object_Impl_Access);
 
-      Child : AWF_Object_Proxy_Access;
+      Child : Object_Impl_Access;
 
    begin
       --  Notify about object destruction.
 
       Self.Destroyed.Emit;
+
+      --  Disconnect signal-slot connections.
+
+      Matreshka.Internals.Signals.Disconnect (Self.Connections);
 
       --  Destroy all children. Note, child removes itself from the parent's
       --  list of children byself.
@@ -144,6 +148,10 @@ package body AWF.Internals.AWF_Objects is
          Self.Next_Sibling := null;
          Self.Previous_Sibling := null;
       end if;
+
+      --  Call user defined Finalize procedure.
+
+      Finalize (Object_Impl'Class (Self)'Access);
    end Finalize;
 
    ------------
@@ -151,10 +159,10 @@ package body AWF.Internals.AWF_Objects is
    ------------
 
    overriding function Parent
-    (Self : not null access AWF_Object_Proxy)
-       return AWF.Objects.AWF_Object_Access is
+    (Self : not null access Object_Impl)
+       return League.Objects.Object_Access is
    begin
-      return AWF.Objects.AWF_Object_Access (Self.Parent);
+      return League.Objects.Object_Access (Self.Parent);
    end Parent;
 
    ----------------
@@ -162,13 +170,12 @@ package body AWF.Internals.AWF_Objects is
    ----------------
 
    overriding procedure Set_Parent
-    (Self   : not null access AWF_Object_Proxy;
-     Parent : access AWF.Objects.AWF_Object'Class)
+    (Self   : not null access Object_Impl;
+     Parent : access League.Objects.Object'Class)
    is
-      P_Self   : constant not null AWF_Object_Proxy_Access
-        := AWF_Object_Proxy_Access (Self);
-      P_Parent : constant AWF_Object_Proxy_Access
-        := AWF_Object_Proxy_Access (Parent);
+      P_Self   : constant not null Object_Impl_Access
+        := Object_Impl_Access (Self);
+      P_Parent : constant Object_Impl_Access := Object_Impl_Access (Parent);
 
    begin
       if Self.Parent /= null then
@@ -192,4 +199,4 @@ package body AWF.Internals.AWF_Objects is
       end if;
    end Set_Parent;
 
-end AWF.Internals.AWF_Objects;
+end League.Objects.Impl;

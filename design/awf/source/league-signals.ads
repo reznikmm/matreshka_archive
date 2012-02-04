@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,22 +41,34 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-limited with AWF.Internals.AWF_Objects;
+--  This package provides parameterless signal-slot connector.
+------------------------------------------------------------------------------
+with League.Objects;
+private with Matreshka.Internals.Signals;
 
-package AWF.Signals.Emitters is
+package League.Signals is
 
-   type Emitter
-    (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
-       is tagged limited private;
+   type Signal (<>) is limited private;
 
-   not overriding function Connector (Self : in out Emitter) return Connector;
+   generic
+      type Object_Type is
+        abstract limited new League.Objects.Object with private;
+      with procedure Slot (Self : not null access Object_Type) is abstract;
 
-   not overriding procedure Emit (Self : Emitter);
+   package Generic_Slot is
+
+      procedure Connect
+       (Self   : Signal;
+        Object : not null access Object_Type'Class);
+
+   end Generic_Slot;
 
 private
 
-   type Emitter
-    (Object : not null access AWF.Internals.AWF_Objects.AWF_Object_Proxy'Class)
-       is limited new Abstract_Emitter with null record;
+   type Signal
+    (Emitter :
+       not null access Matreshka.Internals.Signals.Abstract_Emitter'Class)
+         is new Matreshka.Internals.Signals.Abstract_Signal (Emitter)
+           with null record;
 
-end AWF.Signals.Emitters;
+end League.Signals;

@@ -41,12 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.Objects;
+with League.Objects;
 
 package AWF.Layouts is
 
-   type AWF_Layout is limited interface
-     and AWF.Objects.AWF_Object;
+   type AWF_Layout is limited interface and League.Objects.Object;
 
    type AWF_Layout_Access is access all AWF_Layout'Class;
 

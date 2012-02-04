@@ -61,9 +61,9 @@ package body AWF.Push_Buttons is
    -------------
 
    not overriding function Clicked
-    (Self : not null access AWF_Push_Button) return AWF.Signals.Connector is
+    (Self : not null access AWF_Push_Button) return League.Signals.Signal is
    begin
-      return Self.Clicked.Connector;
+      return Self.Clicked.Signal;
    end Clicked;
 
    ------------

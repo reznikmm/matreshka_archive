@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,59 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
 
-with AWF.Objects;
-with AWF.Signals;
-private with AWF.Signals.Emitters;
+package body League.Signals.Emitters is
 
-package AWF.Internals.AWF_Objects is
+   ----------
+   -- Emit --
+   ----------
 
-   type AWF_Object_Proxy is
-     abstract limited new AWF.Objects.AWF_Object with private;
+   not overriding procedure Emit (Self : in out Emitter) is
+      Dummy : Matreshka.Internals.Signals.Holder_Array (1 .. 0);
 
-   type AWF_Object_Proxy_Access is
-     access all AWF_Object_Proxy'Class;
+   begin
+      Self.Emit (Dummy);
+   end Emit;
 
-   overriding function Children
-    (Self : not null access constant AWF_Object_Proxy)
-       return AWF.Objects.AWF_Object_Access_Array;
+   ------------
+   -- Signal --
+   ------------
 
-   overriding function Parent
-    (Self : not null access AWF_Object_Proxy)
-       return AWF.Objects.AWF_Object_Access;
+   not overriding function Signal
+    (Self : in out Emitter) return League.Signals.Signal is
+   begin
+      return League.Signals.Signal'(Emitter => Self'Access);
+   end Signal;
 
-   overriding procedure Set_Parent
-    (Self   : not null access AWF_Object_Proxy;
-     Parent : access AWF.Objects.AWF_Object'Class);
-
-   overriding function Destroyed
-    (Self : not null access AWF_Object_Proxy) return AWF.Signals.Connector;
-
-   package Constructors is
-
-      procedure Initialize
-       (Self   : not null access AWF_Object_Proxy'Class;
-        Parent : access AWF.Objects.AWF_Object'Class := null);
-
-   end Constructors;
-
-private
-
-   type AWF_Object_Proxy is
-     abstract new Ada.Finalization.Limited_Controlled
-       and AWF.Objects.AWF_Object with
-   record
-      Parent           : AWF_Object_Proxy_Access;
-      First_Child      : AWF_Object_Proxy_Access;
-      Last_Child       : AWF_Object_Proxy_Access;
-      Next_Sibling     : AWF_Object_Proxy_Access;
-      Previous_Sibling : AWF_Object_Proxy_Access;
-      Children_Count   : Natural := 0;
-      Destroyed        :
-        AWF.Signals.Emitters.Emitter (AWF_Object_Proxy'Access);
-   end record;
-
-   overriding procedure Finalize (Self : in out AWF_Object_Proxy);
-
-end AWF.Internals.AWF_Objects;
+end League.Signals.Emitters;

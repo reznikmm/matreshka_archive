@@ -42,11 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 limited with AWF.Layouts;
-with AWF.Objects;
+with League.Objects;
 
 package AWF.Widgets is
 
-   type AWF_Widget is limited interface and AWF.Objects.AWF_Object;
+   type AWF_Widget is limited interface and League.Objects.Object;
 
    type AWF_Widget_Access is access all AWF_Widget'Class;
 

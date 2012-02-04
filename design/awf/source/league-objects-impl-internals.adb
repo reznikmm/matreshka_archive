@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,44 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Signals;
-private with League.Signals.Emitters;
-with League.Strings;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package body League.Objects.Impl.Internals is
 
-package AWF.Push_Buttons is
+   ---------------------
+   -- Get_Connections --
+   ---------------------
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   function Get_Connections
+    (Self : in out Object'Class)
+       return not null Matreshka.Internals.Signals.Connections_Access is
+   begin
+      return Object_Impl'Class (Self).Connections'Access;
+   end Get_Connections;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
-
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
-
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
-
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button) return League.Signals.Signal;
-
-private
-
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : League.Signals.Emitters.Emitter (AWF_Push_Button'Access);
-   end record;
-
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end League.Objects.Impl.Internals;

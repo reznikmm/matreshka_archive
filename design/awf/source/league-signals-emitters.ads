@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,44 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Signals;
-private with League.Signals.Emitters;
-with League.Strings;
+limited with League.Objects.Impl;
+with Matreshka.Internals.Signals;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package League.Signals.Emitters is
 
-package AWF.Push_Buttons is
+   type Emitter
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is tagged limited private;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   not overriding function Signal (Self : in out Emitter) return Signal;
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
-
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
-
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
-
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button) return League.Signals.Signal;
+   not overriding procedure Emit (Self : in out Emitter);
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : League.Signals.Emitters.Emitter (AWF_Push_Button'Access);
-   end record;
+   type Emitter
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is limited new Matreshka.Internals.Signals.Abstract_Emitter (Object)
+         with null record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
-
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
-
-end AWF.Push_Buttons;
+end League.Signals.Emitters;

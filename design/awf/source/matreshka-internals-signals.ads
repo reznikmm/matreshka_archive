@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,44 +41,99 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Signals;
-private with League.Signals.Emitters;
-with League.Strings;
+--  This package contains base implementation of signal-slot mechanism.
+------------------------------------------------------------------------------
+with League.Holders;
+with League.Objects;
+limited with League.Objects.Impl;
 
-with AWF.HTML_Writers;
-with AWF.Internals.AWF_Widgets;
-with AWF.Widgets;
+package Matreshka.Internals.Signals is
 
-package AWF.Push_Buttons is
+   type Holder_Array is array (Positive range <>) of League.Holders.Holder;
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with private;
+   ----------------------
+   -- Abstract_Emitter --
+   ----------------------
 
-   type AWF_Push_Button_Access is access all AWF_Push_Button'Class;
+   type Abstract_Emitter
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is tagged limited private;
 
-   function Create
-    (Parent : access AWF.Widgets.AWF_Widget'Class := null)
-       return not null AWF_Push_Button_Access;
+   type Emitter_Access is access all Abstract_Emitter'Class;
 
-   not overriding procedure Set_Text
-    (Self : not null access AWF_Push_Button;
-     Text : League.Strings.Universal_String);
+   procedure Connect
+    (Self     : in out Abstract_Emitter'Class;
+     Receiver : not null League.Objects.Object_Access;
+     Handler  : not null access procedure
+      (Object    : not null League.Objects.Object_Access;
+       Arguments : Holder_Array));
 
-   not overriding function Clicked
-    (Self : not null access AWF_Push_Button) return League.Signals.Signal;
+   procedure Emit
+    (Self      : in out Abstract_Emitter'Class;
+     Arguments : Holder_Array);
+
+   ---------------------
+   -- Abstract_Signal --
+   ---------------------
+
+   type Abstract_Signal
+    (Emitter : not null access Abstract_Emitter'Class)
+       is tagged limited null record;
+
+   -----------------
+   -- Connections --
+   -----------------
+
+   type Connections
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is limited private;
+
+   type Connections_Access is access all Connections;
+
+   procedure Disconnect (Self : in out Connections);
 
 private
 
-   type AWF_Push_Button is
-     new AWF.Internals.AWF_Widgets.AWF_Widget_Proxy with record
-      Text    : League.Strings.Universal_String;
-      Clicked : League.Signals.Emitters.Emitter (AWF_Push_Button'Access);
+   type Connection;
+   type Connection_Access is access all Connection;
+
+   type Connection
+    (Emitter  : not null Emitter_Access;
+     Receiver : not null League.Objects.Object_Access;
+     Handler  : not null access procedure
+       (Object    : not null League.Objects.Object_Access;
+        Arguments : Holder_Array)) is limited
+   record
+      Previous_Emitter  : Connection_Access;
+      Next_Emitter      : Connection_Access;
+      --  References to previous and next connections in the signal emitter's
+      --  list of connections.
+
+      Previous_Sender   : Connection_Access;
+      Next_Sender       : Connection_Access;
+      --  References to previous and next connections in the list of sender's
+      --  connections.
+
+      Previous_Receiver : Connection_Access;
+      Next_Receiver     : Connection_Access;
+      --  References to previous and next connections in the list of receiver's
+      --  connections.
    end record;
 
-   overriding procedure Render_Body
-    (Self    : not null access AWF_Push_Button;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
+   type Abstract_Emitter
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is tagged limited
+   record
+      First : Connection_Access;
+      Last  : Connection_Access;
+   end record;
 
-   overriding procedure Click_Event (Self : not null access AWF_Push_Button);
+   type Connections
+    (Object : not null access League.Objects.Impl.Object_Impl'Class)
+       is limited
+   record
+      First : Connection_Access;
+      Last  : Connection_Access;
+   end record;
 
-end AWF.Push_Buttons;
+end Matreshka.Internals.Signals;

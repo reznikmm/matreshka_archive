@@ -136,7 +136,7 @@ package body AWF.Internals.AWF_Widgets is
        (Self   : not null access AWF_Widget_Proxy'Class;
         Parent : access AWF.Widgets.AWF_Widget'Class := null) is
       begin
-         AWF.Internals.AWF_Objects.Constructors.Initialize (Self, Parent);
+         League.Objects.Impl.Constructors.Initialize (Self, Parent);
 
          --  Allocate number and register widget.
 

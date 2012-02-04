@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,26 +41,95 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Objects.Impl.Internals;
 
-package body AWF.Signals.Emitters is
+package body Matreshka.Internals.Signals is
 
-   ---------------
-   -- Connector --
-   ---------------
+   -------------
+   -- Connect --
+   -------------
 
-   not overriding function Connector
-    (Self : in out Emitter) return Signals.Connector is
+   procedure Connect
+    (Self     : in out Abstract_Emitter'Class;
+     Receiver : not null League.Objects.Object_Access;
+     Handler  : not null access procedure
+       (Object    : not null League.Objects.Object_Access;
+        Arguments : Holder_Array))
+   is
+      C            : constant not null Connection_Access
+        := new Connection
+                (Self'Unchecked_Access,
+                 Receiver,
+                 Handler);
+      Sender_Set   : constant not null Connections_Access
+        := League.Objects.Impl.Internals.Get_Connections (Self.Object.all);
+--        := League.Objects.Impl.Internals.Get_Connections (League.Objects.Object_Access (Self.Object.all'Unchecked_Access));
+      Receiver_Set : constant not null Connections_Access
+        := League.Objects.Impl.Internals.Get_Connections (Receiver.all);
+--        := League.Objects.Impl.Internals.Get_Connections (Receiver);
+
    begin
-      return Signals.Connector'(Emitter => Self'Access);
-   end Connector;
+      --  Add connection to emitter.
+
+      if Self.First = null then
+         Self.First := C;
+         Self.Last  := C;
+
+      else
+         C.Previous_Emitter := Self.Last;
+         C.Previous_Emitter.Next_Emitter := C;
+         Self.Last := C;
+      end if;
+
+      --  Add connection to sender.
+
+      if Sender_Set.First = null then
+         Sender_Set.First := C;
+         Sender_Set.Last  := C;
+
+      else
+         C.Previous_Sender := Sender_Set.Last;
+         C.Previous_Sender.Next_Sender := C;
+         Sender_Set.Last := C;
+      end if;
+
+      --  Add connection to receiver.
+
+      if Receiver_Set.First = null then
+         Receiver_Set.First := C;
+         Receiver_Set.Last  := C;
+
+      else
+         C.Previous_Receiver := Receiver_Set.Last;
+         C.Previous_Receiver.Next_Receiver := C;
+         Receiver_Set.Last := C;
+      end if;
+   end Connect;
+
+   ----------------
+   -- Disconnect --
+   ----------------
+
+   procedure Disconnect (Self : in out Connections) is
+   begin
+      null;
+   end Disconnect;
 
    ----------
    -- Emit --
    ----------
 
-   not overriding procedure Emit (Self : Emitter) is
+   procedure Emit
+    (Self      : in out Abstract_Emitter'Class;
+     Arguments : Holder_Array)
+   is
+      Current : Connection_Access := Self.First;
+
    begin
-      Self.Connections.Wrapper (Self.Connections.Object);
+      while Current /= null loop
+         Current.Handler (Current.Receiver, Arguments);
+         Current := Current.Next_Emitter;
+      end loop;
    end Emit;
 
-end AWF.Signals.Emitters;
+end Matreshka.Internals.Signals;

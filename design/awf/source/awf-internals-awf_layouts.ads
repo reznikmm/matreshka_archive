@@ -41,14 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Objects.Impl;
+
 with AWF.HTML_Writers;
-with AWF.Internals.AWF_Objects;
 with AWF.Layouts;
 
 package AWF.Internals.AWF_Layouts is
 
    type AWF_Layout_Proxy is
-     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+     new League.Objects.Impl.Object_Impl
        and AWF.Layouts.AWF_Layout with private;
 
    type AWF_Layout_Proxy_Access is access all AWF_Layout_Proxy'Class;
@@ -66,7 +67,7 @@ package AWF.Internals.AWF_Layouts is
 private
 
    type AWF_Layout_Proxy is
-     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+     new League.Objects.Impl.Object_Impl
        and AWF.Layouts.AWF_Layout with null record;
 
 end AWF.Internals.AWF_Layouts;

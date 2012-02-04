@@ -41,18 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Objects.Impl;
 with League.Strings;
 
 with AWF.HTML_Writers;
 with AWF.Internals.AWF_Layouts;
-with AWF.Internals.AWF_Objects;
 with AWF.Layouts;
 with AWF.Widgets;
 
 package AWF.Internals.AWF_Widgets is
 
    type AWF_Widget_Proxy is
-     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+     new League.Objects.Impl.Object_Impl
        and AWF.Widgets.AWF_Widget with private;
 
    type AWF_Widget_Proxy_Access is
@@ -153,7 +153,7 @@ package AWF.Internals.AWF_Widgets is
 private
 
    type AWF_Widget_Proxy is
-     new AWF.Internals.AWF_Objects.AWF_Object_Proxy
+     new League.Objects.Impl.Object_Impl
        and AWF.Widgets.AWF_Widget with
    record
       Id      : Natural;

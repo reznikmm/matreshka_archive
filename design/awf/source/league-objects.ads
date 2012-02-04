@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,31 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-limited with AWF.Signals;
+limited with League.Signals;
 
-package AWF.Objects is
+package League.Objects is
 
-   type AWF_Object is limited interface;
+   type Object is limited interface;
 
-   type AWF_Object_Access is access all AWF_Object'Class;
+   type Object_Access is access all Object'Class;
 
-   type AWF_Object_Access_Array is
-     array (Positive range <>) of AWF_Object_Access;
+   type Object_Access_Array is array (Positive range <>) of Object_Access;
 
    not overriding function Children
-    (Self : not null access constant AWF_Object)
-       return AWF_Object_Access_Array is abstract;
+    (Self : not null access constant Object)
+       return Object_Access_Array is abstract;
 
    not overriding function Parent
-    (Self : not null access AWF_Object)
-       return AWF_Object_Access is abstract;
+    (Self : not null access Object) return Object_Access is abstract;
 
    not overriding procedure Set_Parent
-    (Self   : not null access AWF_Object;
-     Parent : access AWF_Object'Class) is abstract;
+    (Self   : not null access Object;
+     Parent : access Object'Class) is abstract;
 
    not overriding function Destroyed
-    (Self : not null access AWF_Object)
-       return AWF.Signals.Connector is abstract;
+    (Self : not null access Object)
+       return League.Signals.Signal is abstract;
 
-end AWF.Objects;
+end League.Objects;

@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,37 +41,63 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
 
-package body AWF.Signals is
+with League.Signals;
+private with League.Signals.Emitters;
+private with Matreshka.Internals.Signals;
 
-   ------------------
-   -- Generic_Slot --
-   ------------------
+package League.Objects.Impl is
 
-   package body Generic_Slot is
+   type Object_Impl is abstract limited new League.Objects.Object with private;
 
-      procedure Wrapper (Object : not null AWF.Objects.AWF_Object_Access);
+   type Object_Impl_Access is access all Object_Impl'Class;
 
-      -------------
-      -- Connect --
-      -------------
+   not overriding procedure Finalize
+    (Self : not null access Object_Impl) is null;
+   --  This procedure is called before dellocation of memory occupied by object
+   --  itself. It can be overridden by derived types to release own resources.
 
-      procedure Connect
-       (Self   : Connector;
-        Object : not null access Object_Type'Class) is
-      begin
-         Self.Emitter.Connections := (Object, Wrapper'Access);
-      end Connect;
+   overriding function Children
+    (Self : not null access constant Object_Impl)
+       return League.Objects.Object_Access_Array;
 
-      -------------
-      -- Wrapper --
-      -------------
+   overriding function Parent
+    (Self : not null access Object_Impl) return League.Objects.Object_Access;
 
-      procedure Wrapper (Object : not null AWF.Objects.AWF_Object_Access) is
-      begin
-         Slot (Object_Type'Class (Object.all)'Unchecked_Access);
-      end Wrapper;
+   overriding procedure Set_Parent
+    (Self   : not null access Object_Impl;
+     Parent : access League.Objects.Object'Class);
 
-   end Generic_Slot;
+   overriding function Destroyed
+    (Self : not null access Object_Impl) return League.Signals.Signal;
 
-end AWF.Signals;
+   package Constructors is
+
+      procedure Initialize
+       (Self   : not null access Object_Impl'Class;
+        Parent : access League.Objects.Object'Class := null);
+
+   end Constructors;
+
+private
+
+   type Object_Impl is
+     abstract new Ada.Finalization.Limited_Controlled
+       and League.Objects.Object with
+   record
+      Parent           : Object_Impl_Access;
+      First_Child      : Object_Impl_Access;
+      Last_Child       : Object_Impl_Access;
+      Next_Sibling     : Object_Impl_Access;
+      Previous_Sibling : Object_Impl_Access;
+      Children_Count   : Natural := 0;
+      Destroyed        : aliased
+        League.Signals.Emitters.Emitter (Object_Impl'Access);
+      Connections      : aliased
+        Matreshka.Internals.Signals.Connections (Object_Impl'Access);
+   end record;
+
+   overriding procedure Finalize (Self : in out Object_Impl);
+
+end League.Objects.Impl;

@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               Web Framework                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,40 +41,41 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides parameterless signal-slot connector.
-------------------------------------------------------------------------------
-with AWF.Objects;
 
-package AWF.Signals is
+package body League.Signals is
 
-   type Connector (<>) is limited private;
+   ------------------
+   -- Generic_Slot --
+   ------------------
 
-   generic
-      type Object_Type is
-        abstract limited new AWF.Objects.AWF_Object with private;
-      with procedure Slot (Self : not null access Object_Type) is abstract;
+   package body Generic_Slot is
 
-   package Generic_Slot is
+      procedure Handler
+       (Object    : not null League.Objects.Object_Access;
+        Arguments : Matreshka.Internals.Signals.Holder_Array);
+
+      -------------
+      -- Connect --
+      -------------
 
       procedure Connect
-       (Self   : Connector;
-        Object : not null access Object_Type'Class);
+       (Self   : Signal;
+        Object : not null access Object_Type'Class) is
+      begin
+         Self.Emitter.Connect (Object, Handler'Access);
+      end Connect;
+
+      -------------
+      -- Handler --
+      -------------
+
+      procedure Handler
+       (Object    : not null League.Objects.Object_Access;
+        Arguments : Matreshka.Internals.Signals.Holder_Array) is
+      begin
+         Slot (Object_Type'Class (Object.all)'Unchecked_Access);
+      end Handler;
 
    end Generic_Slot;
 
-private
-
-   type Connection is record
-      Object  : AWF.Objects.AWF_Object_Access;
-      Wrapper :
-        access procedure (Object : not null AWF.Objects.AWF_Object_Access);
-   end record;
-
-   type Abstract_Emitter is tagged limited record
-      Connections : Connection;
-   end record;
-
-   type Connector (Emitter : not null access Abstract_Emitter'Class) is
-     limited null record;
-
-end AWF.Signals;
+end League.Signals;

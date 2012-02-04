@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AWF.Internals.AWF_Widgets;
-with AWF.Objects;
 
 package body AWF.Internals.AWF_Layouts is
 
@@ -58,7 +57,7 @@ package body AWF.Internals.AWF_Layouts is
 
       procedure Initialize (Self : not null access AWF_Layout_Proxy'Class) is
       begin
-         AWF.Internals.AWF_Objects.Constructors.Initialize (Self);
+         League.Objects.Impl.Constructors.Initialize (Self);
       end Initialize;
 
    end Constructors;
@@ -71,7 +70,7 @@ package body AWF.Internals.AWF_Layouts is
     (Self    : not null access AWF_Layout_Proxy;
      Context : in out AWF.HTML_Writers.HTML_Writer'Class)
    is
-      Children : constant AWF.Objects.AWF_Object_Access_Array
+      Children : constant League.Objects.Object_Access_Array
         := Self.Parent.Children;
 
    begin
