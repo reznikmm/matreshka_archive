@@ -53,11 +53,20 @@ use League.Strings;
 
 procedure Simple_Test is
    Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
-   OK             : Boolean := False;
+   OK             : Boolean := True;
    Attrs          : XML.SAX.Attributes.SAX_Attributes;
    NS_URI         : Universal_String := To_Universal_String ("");
    Local_Name     : Universal_String := To_Universal_String ("");
    Qualified_Name : Universal_String := To_Universal_String ("A");
+
+   procedure Assert (OK : Boolean) is
+   begin
+      if not OK then
+         Ada.Wide_Wide_Text_IO.Put_Line
+           (Writer.Error_String.To_Wide_Wide_String);
+         raise Program_Error with "Assertion Failed";
+      end if;
+   end Assert;
 
 begin
    --  Setting attributes
@@ -67,80 +76,100 @@ begin
 
    --  Adding first tag
    Writer.Start_Document (OK);
+   Assert (OK);
 
    Writer.Start_Element (NS_URI,
                          Local_Name,
                          Qualified_Name,
                          Attrs,
                          OK);
+   Assert (OK);
 
    Writer.Characters
      (To_Universal_String (Wide_Wide_Character'Val (16#2#) & """test"""), OK);
+   Assert (OK);
+
    Writer.End_Element (NS_URI,
                        Local_Name,
                        Qualified_Name,
                        OK);
+   Assert (OK);
 
    --  Adding Second Tag
 
    Attrs.Set_Value (To_Universal_String ("org:simple:ns"),
                     To_Universal_String ("attr"),
                     To_Universal_String ("value"));
+   Assert (OK);
 
    Writer.Start_Prefix_Mapping
      (To_Universal_String (""),
       To_Universal_String ("org:xmi_prefix:xmi"),
       OK);
+   Assert (OK);
 
    Writer.Start_Prefix_Mapping
      (To_Universal_String ("ss"),
       To_Universal_String ("org:test:qwe"),
       OK);
+   Assert (OK);
 
    Writer.Start_Prefix_Mapping
      (To_Universal_String ("zz"),
       To_Universal_String ("org:simple:ns"),
       OK);
+   Assert (OK);
 
    Writer.Start_Element (To_Universal_String ("org:test:qwe"),
                          To_Universal_String ("XXX"),
                          To_Universal_String (""),
                          Attrs,
                          OK);
+   Assert (OK);
 
    Writer.Characters (To_Universal_String ("sdfsdf"), OK);
+   Assert (OK);
 
    Writer.End_Element (To_Universal_String ("org:test:qwe"),
                        To_Universal_String ("XXX"),
                        To_Universal_String (""),
                        OK);
-
+   Assert (OK);
 
    Writer.Start_Element (To_Universal_String ("org:test:qwe"),
                          To_Universal_String ("C"),
                          To_Universal_String (""),
                          Attrs,
                          OK);
+   Assert (OK);
 
    Writer.Start_Element (To_Universal_String ("org:test:qwe"),
                          To_Universal_String ("D"),
                          To_Universal_String (""),
                          Attrs,
                          OK);
+   Assert (OK);
 
    Writer.End_Element (To_Universal_String ("org:test:qwe"),
                        To_Universal_String ("D"),
                        To_Universal_String (""),
                        OK);
+   Assert (OK);
 
    Writer.End_Element (To_Universal_String ("org:test:qwe"),
                        To_Universal_String ("C"),
                        To_Universal_String (""),
                        OK);
+   Assert (OK);
 
    Writer.End_Prefix_Mapping (To_Universal_String ("zz"), OK);
+   Assert (OK);
+
    Writer.End_Prefix_Mapping (To_Universal_String ("ss"), OK);
+   Assert (OK);
+
    Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
+   Assert (OK);
 
    --  Checking for empty tag processing
 
@@ -149,13 +178,16 @@ begin
                          To_Universal_String ("B"),
                          Attrs,
                          OK);
+   Assert (OK);
 
    Writer.End_Element (To_Universal_String (""),
                        To_Universal_String (""),
                        To_Universal_String ("B"),
                        OK);
+   Assert (OK);
 
    Writer.End_Document (OK);
+   Assert (OK);
 
    Ada.Wide_Wide_Text_IO.Put_Line ("Result : "
                                      & Writer.Text.To_Wide_Wide_String);

@@ -37,6 +37,7 @@ endif
 	.objs/additional_normalization_test
 	.objs/collation_test $(UCADATA)
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
+	.objs/simple_test
 	.objs/test_35
 	.objs/test_104
 	.objs/test_106
