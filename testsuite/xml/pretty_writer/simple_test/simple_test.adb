@@ -127,15 +127,6 @@ begin
                          OK);
    Assert (OK);
 
-   Writer.Characters (To_Universal_String ("sdfsdf"), OK);
-   Assert (OK);
-
-   Writer.End_Element (To_Universal_String ("org:test:qwe"),
-                       To_Universal_String ("XXX"),
-                       To_Universal_String (""),
-                       OK);
-   Assert (OK);
-
    Writer.Start_Element (To_Universal_String ("org:test:qwe"),
                          To_Universal_String ("C"),
                          To_Universal_String (""),
@@ -150,6 +141,9 @@ begin
                          OK);
    Assert (OK);
 
+   Writer.Characters (To_Universal_String ("sdfsdf"), OK);
+   Assert (OK);
+
    Writer.End_Element (To_Universal_String ("org:test:qwe"),
                        To_Universal_String ("D"),
                        To_Universal_String (""),
@@ -162,6 +156,13 @@ begin
                        OK);
    Assert (OK);
 
+
+   Writer.End_Element (To_Universal_String ("org:test:qwe"),
+                       To_Universal_String ("XXX"),
+                       To_Universal_String (""),
+                       OK);
+   Assert (OK);
+
    Writer.End_Prefix_Mapping (To_Universal_String ("zz"), OK);
    Assert (OK);
 
@@ -169,21 +170,6 @@ begin
    Assert (OK);
 
    Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
-   Assert (OK);
-
-   --  Checking for empty tag processing
-
-   Writer.Start_Element (To_Universal_String (""),
-                         To_Universal_String (""),
-                         To_Universal_String ("B"),
-                         Attrs,
-                         OK);
-   Assert (OK);
-
-   Writer.End_Element (To_Universal_String (""),
-                       To_Universal_String (""),
-                       To_Universal_String ("B"),
-                       OK);
    Assert (OK);
 
    Writer.End_Document (OK);
