@@ -48,26 +48,29 @@ with Interfaces.C;
 
 package Matreshka.Internals.SQL_Drivers.Firebird is
 
+   -----------
    -- Types --
+   -----------
+
    type Isc_Database_Handle is new System.Address;
    type Isc_Database_Handle_Access is access constant Isc_Database_Handle;
    pragma Convention (C, Isc_Database_Handle_Access);
 
-   Null_Isc_Database_Handle : constant Isc_Database_Handle :=
-     Isc_Database_Handle (System.Null_Address);
+   Null_Isc_Database_Handle : constant Isc_Database_Handle
+     := Isc_Database_Handle (System.Null_Address);
 
    type Isc_Transaction_Handle is new System.Address;
    type Isc_Transaction_Handle_Access is
      access constant Isc_Transaction_Handle;
    pragma Convention (C, Isc_Transaction_Handle_Access);
 
-   Null_Isc_Transaction_Handle : constant Isc_Transaction_Handle :=
-     Isc_Transaction_Handle (System.Null_Address);
+   Null_Isc_Transaction_Handle : constant Isc_Transaction_Handle
+     := Isc_Transaction_Handle (System.Null_Address);
 
    type Isc_Stmt_Handle is new System.Address;
 
-   Null_Isc_Stmt_Handle : constant Isc_Stmt_Handle :=
-     Isc_Stmt_Handle (System.Null_Address);
+   Null_Isc_Stmt_Handle : constant Isc_Stmt_Handle
+     := Isc_Stmt_Handle (System.Null_Address);
 
    subtype Isc_Address is System.Address;
    Zero : constant Isc_Address := System.Null_Address;
@@ -96,7 +99,7 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
 
    type Isc_Teb is record
       Db_Handle  : access Isc_Database_Handle := null;
-      Tpb_Length :        Isc_Long            := 0;
+      Tpb_Length : Isc_Long                   := 0;
       Tpb        : access Isc_String          := null;
    end record;
    pragma Convention (C, Isc_Teb);
@@ -110,8 +113,8 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
    Current_Metanames_Length  : constant := 32;
 
    type Isc_Field_Index is new Isc_Short range 0 .. Isc_Short'Last;
-   subtype Isc_Valid_Field_Index is
-     Isc_Field_Index range 1 .. Isc_Field_Index'Last;
+   subtype Isc_Valid_Field_Index is Isc_Field_Index
+     range 1 .. Isc_Field_Index'Last;
 
    --  for allow XSQLVAR:sqltype bits manipulation
    subtype Isc_Num_Bits is Natural range 0 .. 15;
@@ -122,74 +125,74 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
 
    Isc_Sqlind_Flag : constant Isc_Num_Bits := 0;
 
-   Isc_Type_Text : constant Isc_Sqltype :=
-     (False, False, True, False, False, False, True, True, True,
-      others => False); --  452; 111000100
+   Isc_Type_Text : constant Isc_Sqltype
+     := (False, False, True, False, False, False, True, True, True,
+         others => False); --  452; 111000100
 
-   Isc_Type_Varying : constant Isc_Sqltype :=
-     (False, False, False, False, False, False, True, True, True,
-      others => False); --  448; 111000000
+   Isc_Type_Varying : constant Isc_Sqltype
+     := (False, False, False, False, False, False, True, True, True,
+         others => False); --  448; 111000000
 
-   Isc_Type_Short : constant Isc_Sqltype :=
-     (False, False, True, False, True, True, True, True, True,
-      others => False); --  500; 111110100
+   Isc_Type_Short : constant Isc_Sqltype
+     := (False, False, True, False, True, True, True, True, True,
+         others => False); --  500; 111110100
 
-   Isc_Type_Long : constant Isc_Sqltype :=
-     (False, False, False, False, True, True, True, True, True,
-      others => False); --  496; 111110000
+   Isc_Type_Long : constant Isc_Sqltype
+     := (False, False, False, False, True, True, True, True, True,
+         others => False); --  496; 111110000
 
-   Isc_Type_Float : constant Isc_Sqltype :=
-     (False, True, False, False, False, True, True, True, True,
-      others => False); --  482; 111100010
+   Isc_Type_Float : constant Isc_Sqltype
+     := (False, True, False, False, False, True, True, True, True,
+         others => False); --  482; 111100010
 
-   Isc_Type_Double : constant Isc_Sqltype :=
-     (False, False, False, False, False, True, True, True, True,
-      others => False); --  480; 111100000
+   Isc_Type_Double : constant Isc_Sqltype
+     := (False, False, False, False, False, True, True, True, True,
+         others => False); --  480; 111100000
 
-   Isc_Type_D_Float : constant Isc_Sqltype :=
-     (False, True,  False, False, True, False, False, False, False, True,
-      others => False); --  530; 1000010010
+   Isc_Type_D_Float : constant Isc_Sqltype
+     := (False, True,  False, False, True, False, False, False, False, True,
+         others => False); --  530; 1000010010
 
-   Isc_Type_Timestamp : constant Isc_Sqltype :=
-     (False, True, True, True, True, True, True, True, True,
-      others => False); --  510; 111111110
+   Isc_Type_Timestamp : constant Isc_Sqltype
+     := (False, True, True, True, True, True, True, True, True,
+         others => False); --  510; 111111110
 
-   Isc_Type_Blob : constant Isc_Sqltype :=
-     (False, False, False, True, False, False, False, False, False, True,
-      others => False); --  520; 1000001000
+   Isc_Type_Blob : constant Isc_Sqltype
+     := (False, False, False, True, False, False, False, False, False, True,
+         others => False); --  520; 1000001000
 
-   Isc_Type_Array : constant Isc_Sqltype :=
-     (False, False, True, True, True, False, False, False, False, True,
-      others => False); --  540; 1000011100
+   Isc_Type_Array : constant Isc_Sqltype
+     := (False, False, True, True, True, False, False, False, False, True,
+         others => False); --  540; 1000011100
 
-   Isc_Type_Quad : constant Isc_Sqltype :=
-     (False, True, True, False, False, True, False, False, False, True,
-      others => False); --  550; 1000100110
+   Isc_Type_Quad : constant Isc_Sqltype
+     := (False, True, True, False, False, True, False, False, False, True,
+         others => False); --  550; 1000100110
 
-   Isc_Type_Time : constant Isc_Sqltype :=
-     (False, False, False, False, True, True, False, False, False, True,
-      others => False); --  560; 1000110000
+   Isc_Type_Time : constant Isc_Sqltype
+     := (False, False, False, False, True, True, False, False, False, True,
+         others => False); --  560; 1000110000
 
-   Isc_Type_Date : constant Isc_Sqltype :=
-     (False, True, False, True, True, True, False, False, False, True,
-      others => False); --  570; 1000111010
+   Isc_Type_Date : constant Isc_Sqltype
+     := (False, True, False, True, True, True, False, False, False, True,
+         others => False); --  570; 1000111010
 
-   Isc_Type_Int64 : constant Isc_Sqltype :=
-     (False, False, True, False, False, False, True, False, False, True,
-      others => False); --  580; 1001000100
+   Isc_Type_Int64 : constant Isc_Sqltype
+     := (False, False, True, False, False, False, True, False, False, True,
+         others => False); --  580; 1001000100
 
-   Isc_Type_Boolean : constant Isc_Sqltype :=
-     (False, True, True, True, False, False, True, False, False, True,
-      others => False); --  590; 1001001110
+   Isc_Type_Boolean : constant Isc_Sqltype
+     := (False, True, True, True, False, False, True, False, False, True,
+         others => False); --  590; 1001001110
 
    Isc_Type_Empty  : constant Isc_Sqltype := (others => False);       --  0;
    Isc_Type_Empty1 : constant Isc_Sqltype := (True, others => False); --  1;
-   Isc_Type_Min    : constant Isc_Sqltype :=
-     (False, False, False, False, False, False, False, False, False,
-      False, False, False, False, False, False, True); --  -1;
+   Isc_Type_Min    : constant Isc_Sqltype
+     := (False, False, False, False, False, False, False, False, False,
+         False, False, False, False, False, False, True); --  -1;
 
-   Empty_Metanames_String : constant Isc_String
-     (1 .. Current_Metanames_Length) := (others => Interfaces.C.nul);
+   Empty_Metanames_String : constant Isc_String (1 .. Current_Metanames_Length)
+     := (others => Interfaces.C.nul);
 
    type Isc_Sqlvar is record
       Sqltype    : Isc_Sqltype      := Isc_Type_Empty; --  datatype of field
@@ -309,8 +312,8 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
    Isc_Dpb_Sec_Attach         : constant Isc_Dpb_Code := Isc_Dpb_Code'Val (55);
    Isc_Dpb_Disable_Wal        : constant Isc_Dpb_Code := Isc_Dpb_Code'Val (56);
    Isc_Dpb_Connect_Timeout    : constant Isc_Dpb_Code := Isc_Dpb_Code'Val (57);
-   Isc_Dpb_Dummy_Packet_Interval : constant Isc_Dpb_Code :=
-     Isc_Dpb_Code'Val (58);
+   Isc_Dpb_Dummy_Packet_Interval : constant Isc_Dpb_Code
+     := Isc_Dpb_Code'Val (58);
 
    Isc_Dpb_Gbak_Attach        : constant Isc_Dpb_Code := Isc_Dpb_Code'Val (59);
    Isc_Dpb_Sql_Role_Name      : constant Isc_Dpb_Code := Isc_Dpb_Code'Val (60);
@@ -374,22 +377,22 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
    Isc_Sql_Drop  : constant Isc_Stmt_Free_Code := 2;
 
    type Isc_Character_Set is
-     (UNKNOWN,    NONE,        OCTETS,
-      ASCII,      UNICODE_FSS, SJIS_0208,
-      EUCJ_0208,  DOS737,      DOS437,
-      DOS850,     DOS865,      DOS860,
-      DOS863,     DOS775,      DOS858,
-      DOS862,     DOS864,      NEXT,
-      ISO8859_1,  ISO8859_2,   ISO8859_3,
-      ISO8859_4,  ISO8859_5,   ISO8859_6,
-      ISO8859_7,  ISO8859_8,   ISO8859_9,
-      ISO8859_13, KSC_5601,    DOS852,
-      DOS857,     DOS861,      DOS866,
-      DOS869,     CYRL,        WIN1250,
-      WIN1251,    WIN1252,     WIN1253,
-      WIN1254,    BIG_5,       GB_2312,
-      WIN1255,    WIN1256,     WIN1257,
-      UFT8);
+    (UNKNOWN,    NONE,        OCTETS,
+     ASCII,      UNICODE_FSS, SJIS_0208,
+     EUCJ_0208,  DOS737,      DOS437,
+     DOS850,     DOS865,      DOS860,
+     DOS863,     DOS775,      DOS858,
+     DOS862,     DOS864,      NEXT,
+     ISO8859_1,  ISO8859_2,   ISO8859_3,
+     ISO8859_4,  ISO8859_5,   ISO8859_6,
+     ISO8859_7,  ISO8859_8,   ISO8859_9,
+     ISO8859_13, KSC_5601,    DOS852,
+     DOS857,     DOS861,      DOS866,
+     DOS869,     CYRL,        WIN1250,
+     WIN1251,    WIN1252,     WIN1253,
+     WIN1254,    BIG_5,       GB_2312,
+     WIN1255,    WIN1256,     WIN1257,
+     UFT8);
 
    Isc_Charsets_Count : constant Isc_Short := 60;
 
@@ -397,27 +400,27 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
      array (0 .. Isc_Charsets_Count) of Isc_Character_Set;
 
    Character_Set : constant Isc_Character_Sets :=
-     (NONE,        OCTETS,     ASCII,
-      UNICODE_FSS, UFT8,       SJIS_0208,
-      EUCJ_0208,   UNKNOWN,    UNKNOWN,
-      DOS737,      DOS437,     DOS850,
-      DOS865,      DOS860,     DOS863,
-      DOS775,      DOS858,     DOS862,
-      DOS864,      NEXT,       UNKNOWN,
-      ISO8859_1,   ISO8859_2,  ISO8859_3,
-      UNKNOWN,     UNKNOWN,    UNKNOWN,
-      UNKNOWN,     UNKNOWN,    UNKNOWN,
-      UNKNOWN,     UNKNOWN,    UNKNOWN,
-      UNKNOWN,     ISO8859_4,  ISO8859_5,
-      ISO8859_6,   ISO8859_7,  ISO8859_8,
-      ISO8859_9,   ISO8859_13, UNKNOWN,
-      UNKNOWN,     UNKNOWN,    KSC_5601,
-      DOS852,      DOS857,     DOS861,
-      DOS866,      DOS869,     CYRL,
-      WIN1250,     WIN1251,    WIN1252,
-      WIN1253,     WIN1254,    BIG_5,
-      GB_2312,     WIN1255,    WIN1256,
-      WIN1257);
+    (NONE,        OCTETS,     ASCII,
+     UNICODE_FSS, UFT8,       SJIS_0208,
+     EUCJ_0208,   UNKNOWN,    UNKNOWN,
+     DOS737,      DOS437,     DOS850,
+     DOS865,      DOS860,     DOS863,
+     DOS775,      DOS858,     DOS862,
+     DOS864,      NEXT,       UNKNOWN,
+     ISO8859_1,   ISO8859_2,  ISO8859_3,
+     UNKNOWN,     UNKNOWN,    UNKNOWN,
+     UNKNOWN,     UNKNOWN,    UNKNOWN,
+     UNKNOWN,     UNKNOWN,    UNKNOWN,
+     UNKNOWN,     ISO8859_4,  ISO8859_5,
+     ISO8859_6,   ISO8859_7,  ISO8859_8,
+     ISO8859_9,   ISO8859_13, UNKNOWN,
+     UNKNOWN,     UNKNOWN,    KSC_5601,
+     DOS852,      DOS857,     DOS861,
+     DOS866,      DOS869,     CYRL,
+     WIN1250,     WIN1251,    WIN1252,
+     WIN1253,     WIN1254,    BIG_5,
+     GB_2312,     WIN1255,    WIN1256,
+     WIN1257);
 
    -- Error codes --
 
@@ -437,159 +440,139 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
    -- methods --
 
    function Isc_Attach_Database
-     (Status         : access Isc_Results;
-      Db_Name_Length :        Isc_Short;
-      Db_Name        :        Isc_String;
-      Db_Handle      : access Isc_Database_Handle;
-      Parms_Length   :        Isc_Short;
-      Parms          :        Isc_String)
-      return Isc_Result_Code;
+    (Status         : access Isc_Results;
+     Db_Name_Length : Isc_Short;
+     Db_Name        : Isc_String;
+     Db_Handle      : access Isc_Database_Handle;
+     Parms_Length   : Isc_Short;
+     Parms          : Isc_String) return Isc_Result_Code;
 
    function Isc_Detach_Database
-     (Status : access Isc_Results;
-      Handle : access Isc_Database_Handle)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Handle : access Isc_Database_Handle) return Isc_Result_Code;
 
    function Isc_Sqlcode (Status : Isc_Results) return Isc_Long;
 
    procedure Isc_Sql_Interprete
-     (Sqlcode       :        Isc_Short;
-      Buffer        : access Isc_String;
-      Buffer_Length :        Isc_Short);
+    (Sqlcode       : Isc_Short;
+     Buffer        : access Isc_String;
+     Buffer_Length : Isc_Short);
 
    function Isc_Interprete
-     (Buffer : access Isc_String;
-      Status : access Isc_Results_Access)
-      return Isc_Result_Code;
+    (Buffer : access Isc_String;
+     Status : access Isc_Results_Access) return Isc_Result_Code;
 
    function Isc_Commit_Retaining
-     (Status : access Isc_Results;
-      Handle : access Isc_Transaction_Handle)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Handle : access Isc_Transaction_Handle) return Isc_Result_Code;
 
    function Isc_Start_Multiple
-     (Status     : access Isc_Results;
-      Handle     : access Isc_Transaction_Handle;
-      Tebs_Count :        Isc_Short;
-      Teb        : access Isc_Tebs)
-      return Isc_Result_Code;
+    (Status     : access Isc_Results;
+     Handle     : access Isc_Transaction_Handle;
+     Tebs_Count : Isc_Short;
+     Teb        : access Isc_Tebs) return Isc_Result_Code;
 
    function Isc_Rollback_Transaction
-     (Status : access Isc_Results;
-      Handle : access Isc_Transaction_Handle)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Handle : access Isc_Transaction_Handle) return Isc_Result_Code;
 
    function Isc_Dsql_Fetch
-     (Status  : access Isc_Results;
-      Handle  : access Isc_Stmt_Handle;
-      Version :        Isc_Db_Dialect;
-      Sqlda   : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status  : access Isc_Results;
+     Handle  : access Isc_Stmt_Handle;
+     Version : Isc_Db_Dialect;
+     Sqlda   : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Free_Statement
-     (Status : access Isc_Results;
-      Handle : access Isc_Stmt_Handle;
-      Code   :        Isc_Stmt_Free_Code)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Handle : access Isc_Stmt_Handle;
+     Code   : Isc_Stmt_Free_Code) return Isc_Result_Code;
 
    function Isc_Dsql_Alloc_Statement2
-     (Status : access Isc_Results;
-      Db     :        Isc_Database_Handle_Access;
-      Stmt   : access Isc_Stmt_Handle)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Db     : Isc_Database_Handle_Access;
+     Stmt   : access Isc_Stmt_Handle) return Isc_Result_Code;
 
    function Isc_Dsql_Prepare
-     (Status    : access Isc_Results;
-      Tr        :        Isc_Transaction_Handle_Access;
-      Stmt      : access Isc_Stmt_Handle;
-      Length    :        Isc_Ushort;
-      Statement :        Isc_String;
-      Dialect   :        Isc_Ushort;
-      Xsqlda    : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status    : access Isc_Results;
+     Tr        : Isc_Transaction_Handle_Access;
+     Stmt      : access Isc_Stmt_Handle;
+     Length    : Isc_Ushort;
+     Statement : Isc_String;
+     Dialect   : Isc_Ushort;
+     Xsqlda    : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Sql_Info
-     (Status        : access Isc_Results;
-      Stmt          : access Isc_Stmt_Handle;
-      Items_Length  :        Isc_Short;
-      Items         :        Isc_String;
-      Buffer_Length :        Isc_Short;
-      Buffer        : access Isc_String)
-      return Isc_Result_Code;
+    (Status        : access Isc_Results;
+     Stmt          : access Isc_Stmt_Handle;
+     Items_Length  : Isc_Short;
+     Items         : Isc_String;
+     Buffer_Length : Isc_Short;
+     Buffer        : access Isc_String) return Isc_Result_Code;
 
    function Isc_Vax_Integer
-     (Buffer : Isc_String;
-      Length : Isc_Short)
-      return Isc_Long;
+    (Buffer : Isc_String;
+     Length : Isc_Short) return Isc_Long;
 
    function Isc_Dsql_Set_Cursor_Name
-     (Status : access Isc_Results;
-      Stmt   : access Isc_Stmt_Handle;
-      Name   :        Isc_String;
-      Itype  :        Isc_Ushort)
-      return Isc_Result_Code;
+    (Status : access Isc_Results;
+     Stmt   : access Isc_Stmt_Handle;
+     Name   : Isc_String;
+     Itype  : Isc_Ushort) return Isc_Result_Code;
 
    function Isc_Dsql_Describe_Bind
-     (Status  : access Isc_Results;
-      Stmt    : access Isc_Stmt_Handle;
-      Version :        Isc_Ushort;
-      Params  : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status  : access Isc_Results;
+     Stmt    : access Isc_Stmt_Handle;
+     Version : Isc_Ushort;
+     Params  : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Describe
-     (Status  : access Isc_Results;
-      Stmt    : access Isc_Stmt_Handle;
-      Version :        Isc_Ushort;
-      Rec     : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status  : access Isc_Results;
+     Stmt    : access Isc_Stmt_Handle;
+     Version : Isc_Ushort;
+     Rec     : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Execute_Immediate
-     (Status    : access Isc_Results;
-      Db        :        Isc_Database_Handle_Access;
-      Tr        :        Isc_Transaction_Handle_Access;
-      Length    :        Isc_Short;
-      Statement :        Isc_String;
-      Version   :        Isc_Ushort;
-      Params    : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status    : access Isc_Results;
+     Db        : Isc_Database_Handle_Access;
+     Tr        : Isc_Transaction_Handle_Access;
+     Length    : Isc_Short;
+     Statement : Isc_String;
+     Version   : Isc_Ushort;
+     Params    : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Execute
-     (Status  : access Isc_Results;
-      Tr      :        Isc_Transaction_Handle_Access;
-      Stmt    : access Isc_Stmt_Handle;
-      Version :        Isc_Ushort;
-      Params  : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status  : access Isc_Results;
+     Tr      : Isc_Transaction_Handle_Access;
+     Stmt    : access Isc_Stmt_Handle;
+     Version : Isc_Ushort;
+     Params  : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Dsql_Execute2
-     (Status  : access Isc_Results;
-      Tr      :        Isc_Transaction_Handle_Access;
-      Stmt    : access Isc_Stmt_Handle;
-      Version :        Isc_Ushort;
-      Params  : access Isc_Sqlda;
-      Fields  : access Isc_Sqlda)
-      return Isc_Result_Code;
+    (Status  : access Isc_Results;
+     Tr      : Isc_Transaction_Handle_Access;
+     Stmt    : access Isc_Stmt_Handle;
+     Version : Isc_Ushort;
+     Params  : access Isc_Sqlda;
+     Fields  : access Isc_Sqlda) return Isc_Result_Code;
 
    function Isc_Database_Info
-     (Status     : access Isc_Results;
-      Handle     : access Isc_Database_Handle;
-      Length     :        Isc_Short;
-      Items      :        Isc_String;
-      Buf_Length :        Isc_Short;
-      Buf        : access Isc_String)
-      return Isc_Result_Code;
+    (Status     : access Isc_Results;
+     Handle     : access Isc_Database_Handle;
+     Length     : Isc_Short;
+     Items      : Isc_String;
+     Buf_Length : Isc_Short;
+     Buf        : access Isc_String) return Isc_Result_Code;
 
-
+   -----------
    -- Utils --
+   -----------
 
    function Get_Error
-     (Status : access Isc_Results)
-      return League.Strings.Universal_String;
+    (Status : access Isc_Results) return League.Strings.Universal_String;
 
    function Check_For_Error
-     (Status : access Isc_Results;
-      Codes  : Isc_Result_Codes)
-      return Boolean;
+    (Status : access Isc_Results;
+     Codes  : Isc_Result_Codes) return Boolean;
 
    function To_Isc_String
     (Item : League.Strings.Universal_String)
@@ -616,100 +599,81 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
    MSecs_Per_Sec : constant := 10**Isc_Time_Seconds_Precision_Scale;
 
    -- C_Time --
+
    type C_Time is record
-     Tm_Sec    : Interfaces.C.int := 0;
-     Tm_Min    : Interfaces.C.int := 0;
-     Tm_Hour   : Interfaces.C.int := 0;
-     Tm_Mday   : Interfaces.C.int := 0;
-     Tm_Mon    : Interfaces.C.int := 0;
-     Tm_Year   : Interfaces.C.int := 0;
-     Tm_Wday   : Interfaces.C.int := 0;
-     Tm_Yday   : Interfaces.C.int := 0;
-     Tm_Isdst  : Interfaces.C.int := 0;
-     Tm_Gmtoff : Interfaces.C.int := 0;
-     Tm_Zone   : System.Address := System.Null_Address;
+      Tm_Sec    : Interfaces.C.int := 0;
+      Tm_Min    : Interfaces.C.int := 0;
+      Tm_Hour   : Interfaces.C.int := 0;
+      Tm_Mday   : Interfaces.C.int := 0;
+      Tm_Mon    : Interfaces.C.int := 0;
+      Tm_Year   : Interfaces.C.int := 0;
+      Tm_Wday   : Interfaces.C.int := 0;
+      Tm_Yday   : Interfaces.C.int := 0;
+      Tm_Isdst  : Interfaces.C.int := 0;
+      Tm_Gmtoff : Interfaces.C.int := 0;
+      Tm_Zone   : System.Address := System.Null_Address;
    end record;
    pragma Convention (C, C_Time);
 
    procedure Isc_Encode_Sql_Time
-     (C_Date  : access C_Time;
-      Ib_Date : access Isc_Time);
+    (C_Date  : access C_Time;
+     Ib_Date : access Isc_Time);
 
    procedure Isc_Encode_Sql_Date
-     (C_Date  : access C_Time;
-      Ib_Date : access Isc_Date);
+    (C_Date  : access C_Time;
+     Ib_Date : access Isc_Date);
 
    procedure Isc_Encode_Timestamp
-     (C_Date  : access C_Time;
-      Ib_Date : access Isc_Timestamp);
+    (C_Date  : access C_Time;
+     Ib_Date : access Isc_Timestamp);
 
    procedure Isc_Decode_Timestamp
-     (Ib_Date : access Isc_Timestamp;
-      C_Date  : access C_Time);
+    (Ib_Date : access Isc_Timestamp;
+     C_Date  : access C_Time);
 
    procedure Isc_Decode_Sql_Date
-     (Ib_Date : access Isc_Date;
-      C_Date  : access C_Time);
+    (Ib_Date : access Isc_Date;
+     C_Date  : access C_Time);
 
    procedure Isc_Decode_Sql_Time
-     (Ib_Date : access Isc_Time;
-      C_Date  : access C_Time);
+    (Ib_Date : access Isc_Time;
+     C_Date  : access C_Time);
 
 private
 
-   pragma Import (Stdcall, Isc_Attach_Database,
-                  Link_Name => "_isc_attach_database");
-   pragma Import (Stdcall, Isc_Detach_Database,
-                  Link_Name => "_isc_detach_database");
-   pragma Import (Stdcall, Isc_Sqlcode,
-                  Link_Name => "_isc_sqlcode");
-   pragma Import (Stdcall, Isc_Sql_Interprete,
-                  Link_Name => "_isc_sql_interprete");
-   pragma Import (Stdcall, Isc_Interprete,
-                  Link_Name => "_isc_interprete");
-   pragma Import (Stdcall, Isc_Commit_Retaining,
-                  Link_Name => "_isc_commit_retaining");
-   pragma Import (Stdcall, Isc_Start_Multiple,
-                  Link_Name => "_isc_start_multiple");
-   pragma Import (Stdcall, Isc_Dsql_Fetch,
-                  Link_Name => "_isc_dsql_fetch");
-   pragma Import (Stdcall, Isc_Dsql_Free_Statement,
-                  Link_Name => "_isc_dsql_free_statement");
-   pragma Import (Stdcall, Isc_Dsql_Prepare,
-                  Link_Name => "_isc_dsql_prepare");
-   pragma Import (Stdcall, Isc_Dsql_Sql_Info,
-                  Link_Name => "_isc_dsql_sql_info");
-   pragma Import (Stdcall, Isc_Vax_Integer,
-                  Link_Name => "_isc_vax_integer");
-   pragma Import (Stdcall, Isc_Dsql_Describe_Bind,
-                  Link_Name => "_isc_dsql_describe_bind");
-   pragma Import (Stdcall, Isc_Dsql_Describe,
-                  Link_Name => "_isc_dsql_describe");
-   pragma Import (Stdcall, Isc_Dsql_Execute,
-                  Link_Name => "_isc_dsql_execute");
-   pragma Import (Stdcall, Isc_Dsql_Execute2,
-                  Link_Name => "_isc_dsql_execute2");
-   pragma Import (Stdcall, Isc_Encode_Sql_Time,
-                  Link_Name => "_isc_encode_sql_time");
-   pragma Import (Stdcall, Isc_Encode_Timestamp,
-                  Link_Name => "_isc_encode_timestamp");
-   pragma Import (Stdcall, Isc_Encode_Sql_Date,
-                  Link_Name => "_isc_encode_sql_date");
-   pragma Import (Stdcall, Isc_Decode_Timestamp,
-                  Link_Name => "_isc_decode_timestamp");
-   pragma Import (Stdcall, Isc_Decode_Sql_Date,
-                  Link_Name => "_isc_decode_sql_date");
-   pragma Import (Stdcall, Isc_Decode_Sql_Time,
-                  Link_Name => "_isc_decode_sql_time");
-   pragma Import (Stdcall, Isc_Database_Info,
-                  Link_Name => "_isc_database_info");
-   pragma Import (Stdcall, Isc_Rollback_Transaction,
-                  Link_Name => "_isc_rollback_transaction");
-   pragma Import (Stdcall, Isc_Dsql_Alloc_Statement2,
-                  Link_Name => "_isc_dsql_alloc_statement2");
-   pragma Import (Stdcall, Isc_Dsql_Set_Cursor_Name,
-                  Link_Name => "_isc_dsql_set_cursor_name");
-   pragma Import (Stdcall, Isc_Dsql_Execute_Immediate,
-                  Link_Name => "_isc_dsql_execute_immediate");
+   pragma Import (Stdcall, Isc_Attach_Database, "_isc_attach_database");
+   pragma Import (Stdcall, Isc_Detach_Database, "_isc_detach_database");
+   pragma Import (Stdcall, Isc_Sqlcode, "_isc_sqlcode");
+   pragma Import (Stdcall, Isc_Sql_Interprete, "_isc_sql_interprete");
+   pragma Import (Stdcall, Isc_Interprete, "_isc_interprete");
+   pragma Import (Stdcall, Isc_Commit_Retaining, "_isc_commit_retaining");
+   pragma Import (Stdcall, Isc_Start_Multiple, "_isc_start_multiple");
+   pragma Import (Stdcall, Isc_Dsql_Fetch, "_isc_dsql_fetch");
+   pragma Import
+           (Stdcall, Isc_Dsql_Free_Statement, "_isc_dsql_free_statement");
+   pragma Import (Stdcall, Isc_Dsql_Prepare, "_isc_dsql_prepare");
+   pragma Import (Stdcall, Isc_Dsql_Sql_Info, "_isc_dsql_sql_info");
+   pragma Import (Stdcall, Isc_Vax_Integer, "_isc_vax_integer");
+   pragma Import (Stdcall, Isc_Dsql_Describe_Bind, "_isc_dsql_describe_bind");
+   pragma Import (Stdcall, Isc_Dsql_Describe, "_isc_dsql_describe");
+   pragma Import (Stdcall, Isc_Dsql_Execute, "_isc_dsql_execute");
+   pragma Import (Stdcall, Isc_Dsql_Execute2, "_isc_dsql_execute2");
+   pragma Import (Stdcall, Isc_Encode_Sql_Time, "_isc_encode_sql_time");
+   pragma Import (Stdcall, Isc_Encode_Timestamp, "_isc_encode_timestamp");
+   pragma Import (Stdcall, Isc_Encode_Sql_Date, "_isc_encode_sql_date");
+   pragma Import (Stdcall, Isc_Decode_Timestamp, "_isc_decode_timestamp");
+   pragma Import (Stdcall, Isc_Decode_Sql_Date, "_isc_decode_sql_date");
+   pragma Import (Stdcall, Isc_Decode_Sql_Time, "_isc_decode_sql_time");
+   pragma Import (Stdcall, Isc_Database_Info, "_isc_database_info");
+   pragma Import
+           (Stdcall, Isc_Rollback_Transaction, "_isc_rollback_transaction");
+   pragma Import
+           (Stdcall, Isc_Dsql_Alloc_Statement2, "_isc_dsql_alloc_statement2");
+   pragma Import
+           (Stdcall, Isc_Dsql_Set_Cursor_Name, "_isc_dsql_set_cursor_name");
+   pragma Import
+           (Stdcall,
+            Isc_Dsql_Execute_Immediate,
+            "_isc_dsql_execute_immediate");
 
 end Matreshka.Internals.SQL_Drivers.Firebird;

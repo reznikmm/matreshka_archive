@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,7 +42,7 @@
 --  $Revision: 1562 $ $Date: 2011-03-02 11:40:23 +0200 (Ср, 02 мар 2011) $
 ------------------------------------------------------------------------------
 --  This package provides implementation of SQL statement parameter rewriter
---  for PostgreSQL: every :name parameter placeholder is replaced by $N
+--  for Firebird: every :name parameter placeholder is replaced by $N
 --  parameter placeholder. Duplicate names are replaced by the same parameter
 --  placeholder.
 ------------------------------------------------------------------------------

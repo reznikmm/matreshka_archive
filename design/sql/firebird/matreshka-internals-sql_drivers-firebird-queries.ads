@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,14 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision: 1793 $ $Date: 2011-06-11 10:40:44 +0300 (Сб, 11 июн 2011) $
 ------------------------------------------------------------------------------
---  This package provides implementation of Query abstraction for PostgreSQL.
+--  This package provides implementation of Query abstraction for Firebird.
 ------------------------------------------------------------------------------
-
-with Matreshka.Internals.SQL_Drivers.Firebird.Databases;
 with League.Text_Codecs;
-
-private with Matreshka.Internals.SQL_Parameter_Sets;
+with Matreshka.Internals.SQL_Drivers.Firebird.Databases;
 private with Matreshka.Internals.SQL_Drivers.Firebird.Records;
+private with Matreshka.Internals.SQL_Parameter_Sets;
 
 package Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
@@ -65,11 +63,11 @@ private
    type Query_State is (Active, Inactive);
 
    type Query_Sql_Type is
-     (Unknown,           Simple_Select, Insert,
-      Update,            Delete,        DDL,
-      Get_Segment,       Put_Segment,   Exec_Procedure,
-      Start_Transaction, Commit,        Rollback,
-      Select_For_Update, Set_Generator, Save_Point_Operation);
+    (Unknown,           Simple_Select, Insert,
+     Update,            Delete,        DDL,
+     Get_Segment,       Put_Segment,   Exec_Procedure,
+     Start_Transaction, Commit,        Rollback,
+     Select_For_Update, Set_Generator, Save_Point_Operation);
 
    type Firebird_Query is new Abstract_Query with record
       State       : Query_State    := Inactive;
@@ -93,8 +91,7 @@ private
 
    overriding function Bound_Value
     (Self : not null access Firebird_Query;
-     Name : League.Strings.Universal_String)
-       return League.Holders.Holder;
+     Name : League.Strings.Universal_String) return League.Holders.Holder;
 
    overriding function Error_Message
     (Self : not null access Firebird_Query)
@@ -124,7 +121,6 @@ private
    procedure Free_Handle (Self : not null access Firebird_Query);
 
    function Execute_Immediate
-     (Self : not null access Firebird_Query)
-      return Boolean;
+    (Self : not null access Firebird_Query) return Boolean;
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Queries;

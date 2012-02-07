@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,39 +41,35 @@
 ------------------------------------------------------------------------------
 --  $Revision: $ $Date: $
 ------------------------------------------------------------------------------
-
 with Ada.Streams;
 with League.Text_Codecs;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird is
 
-   ASCII_Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec
-       (League.Strings.To_Universal_String ("ISO-8859-1"));
+   ASCII_Codec : constant League.Text_Codecs.Text_Codec
+     := League.Text_Codecs.Codec
+         (League.Strings.To_Universal_String ("ISO-8859-1"));
    --  It is used everywhere to convert text data.
 
    function To_Universal_String
-     (Buffer : access Isc_String;
-      From   : Interfaces.C.size_t;
-      Last   : Interfaces.C.size_t)
-      return League.Strings.Universal_String;
+    (Buffer : access Isc_String;
+     From   : Interfaces.C.size_t;
+     Last   : Interfaces.C.size_t) return League.Strings.Universal_String;
 
    ---------------------
    -- Check_For_Error --
    ---------------------
 
    function Check_For_Error
-     (Status : access Isc_Results;
-      Codes  : Isc_Result_Codes)
-      return Boolean
+    (Status : access Isc_Results;
+     Codes  : Isc_Result_Codes) return Boolean
    is
       use type Interfaces.C.long;
 
       Idx : Integer := Status'First;
+
    begin
-      while Idx <= Status'Last
-        and then Status (Idx) /= 0
-      loop
+      while Idx <= Status'Last and then Status (Idx) /= 0 loop
          case Status (Idx) is
             when 3 =>
                Idx := Idx + 3;
@@ -102,19 +98,18 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
    ---------------
 
    function Get_Error
-     (Status : access Isc_Results)
-      return League.Strings.Universal_String
+    (Status : access Isc_Results) return League.Strings.Universal_String
    is
       use type Isc_Result_Code;
 
       sqlcode : Isc_Short;
 
-      Buffer : aliased Isc_String :=
-        (1 .. Huge_Buffer_Length => Interfaces.C.nul);
+      Buffer : aliased Isc_String
+        := (1 .. Huge_Buffer_Length => Interfaces.C.nul);
       pragma Warnings (Off, Buffer);
 
-      Pos : aliased Isc_Results_Access :=
-        Status (Status'First)'Unchecked_Access;
+      Pos : aliased Isc_Results_Access
+        := Status (Status'First)'Unchecked_Access;
 
       Result : League.Strings.Universal_String;
 
@@ -129,10 +124,12 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
          use type Interfaces.C.char;
 
          Last : Interfaces.C.size_t := Buffer'First;
+
       begin
          loop
             exit when Last + 1 > Buffer'Last
               or else Buffer (Last) = Interfaces.C.nul;
+
             Last := Last + 1;
          end loop;
 
@@ -186,15 +183,14 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
    -------------------
 
    function To_Isc_String
-    (Item : League.Strings.Universal_String)
-     return Isc_String
+    (Item : League.Strings.Universal_String) return Isc_String
    is
       --  XXX This subprogram can be optimized by direct access to
       --  Stream_Element_Vector internal storage. This storage can be renamed
       --  to S_Item object, thus there is no copy of data needed.
 
-      V_Item : constant Ada.Streams.Stream_Element_Array :=
-        ASCII_Codec.Encode (Item).To_Stream_Element_Array;
+      V_Item : constant Ada.Streams.Stream_Element_Array
+        := ASCII_Codec.Encode (Item).To_Stream_Element_Array;
       S_Item : String (1 .. V_Item'Length);
       for S_Item'Address use V_Item'Address;
       pragma Import (Ada, S_Item);
@@ -208,16 +204,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
    -------------------------
 
    function To_Universal_String
-     (Buffer : access Isc_String;
-      From   : Interfaces.C.size_t;
-      Last   : Interfaces.C.size_t)
-      return League.Strings.Universal_String
+    (Buffer : access Isc_String;
+     From   : Interfaces.C.size_t;
+     Last   : Interfaces.C.size_t) return League.Strings.Universal_String
    is
       Source  : Ada.Streams.Stream_Element_Array
-        (Ada.Streams.Stream_Element_Offset (From) ..
-           Ada.Streams.Stream_Element_Offset (Last));
+        (Ada.Streams.Stream_Element_Offset (From)
+           .. Ada.Streams.Stream_Element_Offset (Last));
       for Source'Address use Buffer (From)'Address;
       pragma Import (Ada, Source);
+
    begin
       return League.Text_Codecs.Decode (ASCII_Codec, Source);
    end To_Universal_String;

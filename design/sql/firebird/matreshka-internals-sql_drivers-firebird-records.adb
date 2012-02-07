@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,19 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision: 1793 $ $Date: 2011-06-11 10:40:44 +0300 (Сб, 11 июн 2011) $
 ------------------------------------------------------------------------------
---  This package provides implementation of Query abstraction for PostgreSQL.
-------------------------------------------------------------------------------
-
-with Ada.Unchecked_Deallocation;
 with Ada.Unchecked_Conversion;
+with Ada.Unchecked_Deallocation;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
 
-   procedure Free is new Ada.Unchecked_Deallocation
-     (Sqlda_Buffer, Sqlda_Buffer_Access);
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Sqlda_Buffer, Sqlda_Buffer_Access);
 
-   procedure Free is new Ada.Unchecked_Deallocation
-     (Fields.Field, Fields.Field_Access);
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Fields.Field, Fields.Field_Access);
 
    ------------------
    -- Clear_Values --
@@ -62,6 +59,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
    procedure Clear_Values (Self : in out Sql_Record) is
       Field    : Fields.Field_Access;
       Nullable : Boolean;
+
    begin
       for Idx in 1 .. Self.Cnt loop
          Field    := Self.Fields.Element (Idx);
@@ -77,14 +75,14 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
    -----------
 
    procedure Count (Self : in out Sql_Record; Value : Isc_Field_Index) is
+
       procedure Allocate_Sqlda;
 
       --------------------
       -- Allocate_Sqlda --
       --------------------
 
-      procedure Allocate_Sqlda
-      is
+      procedure Allocate_Sqlda is
          type Isc_Long_Access is access all Isc_Long;
 
          function Convert is
@@ -93,28 +91,28 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
          type Used_Sqlvars is array (1 .. Self.Cnt) of Isc_Sqlvar;
          pragma Convention (C, Used_Sqlvars);
 
-         Size : constant Positive :=
-           (Isc_Sqlda'Size - Isc_Sqlvars'Size + Used_Sqlvars'Size) /
-           Isc_Long'Size + 1;
+         Size : constant Positive
+           := (Isc_Sqlda'Size - Isc_Sqlvars'Size + Used_Sqlvars'Size)
+                 / Isc_Long'Size + 1;
 
-         Empty_Var : constant Isc_Sqlvar :=
-           (Sqltype          => Isc_Type_Empty,
-            Sqlscale         => 0,
-            Sqlsubtype       => 0,
-            Sqllen           => 0,
-            Sqldata          => Zero,
-            Sqlind           => null,
-            Sqlname_Length   => 0,
-            Sqlname          => (others => Interfaces.C.nul),
-            Relname_Length   => 0,
-            Relname          => (others => Interfaces.C.nul),
-            Ownname_Length   => 0,
-            Ownname          => (others => Interfaces.C.nul),
-            Aliasname_Length => 0,
-            Aliasname        => (others => Interfaces.C.nul));
+         Empty_Var : constant Isc_Sqlvar
+           := (Sqltype          => Isc_Type_Empty,
+               Sqlscale         => 0,
+               Sqlsubtype       => 0,
+               Sqllen           => 0,
+               Sqldata          => Zero,
+               Sqlind           => null,
+               Sqlname_Length   => 0,
+               Sqlname          => (others => Interfaces.C.nul),
+               Relname_Length   => 0,
+               Relname          => (others => Interfaces.C.nul),
+               Ownname_Length   => 0,
+               Ownname          => (others => Interfaces.C.nul),
+               Aliasname_Length => 0,
+               Aliasname        => (others => Interfaces.C.nul));
 
          Old   : Sqlda_Buffer_Access := Self.Sqlda_Buf;
-         Field : Fields.Field_Access    := null;
+         Field : Fields.Field_Access := null;
 
       begin
          Self.Sqlda_Buf := new Sqlda_Buffer (1 .. Size);
@@ -123,6 +121,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
          if Old /= null then
             Self.Sqlda_Buf (1 .. Old'Length) := Old (1 .. Old'Length);
             Free (Old);
+
          else
             Self.Sqlda.Version := Isc_Sqlda_Current_Version;
             Self.Sqlda.Sqldaid := (others => Interfaces.C.nul);
@@ -180,6 +179,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
 
    procedure Free_Fields (Self : in out Sql_Record) is
       Field : Fields.Field_Access;
+
    begin
       while not Self.Fields.Is_Empty loop
          Field := Self.Fields.First_Element;
@@ -192,11 +192,11 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
    -- Init --
    ----------
 
-   procedure Init (Self : in out Sql_Record)
-   is
+   procedure Init (Self : in out Sql_Record) is
       use type Isc_Short;
 
       Field : Fields.Field_Access;
+
    begin
       if Self.Sqlda = null then
          return;
@@ -213,6 +213,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Records is
          if Field.Srv_Sql_Type = Isc_Type_Text then
             if Field.Sqlvar.Sqllen = 0 then
                Field.Reserv_Sqldata (1);
+
             else
                Field.Adjust_Sqldata;
             end if;

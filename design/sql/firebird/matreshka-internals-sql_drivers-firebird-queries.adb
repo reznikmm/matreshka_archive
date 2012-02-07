@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,11 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision: 1803 $ $Date: 2011-06-19 22:56:58 +0300 (Вс, 19 июн 2011) $
 ------------------------------------------------------------------------------
-
 with Ada.Numerics.Discrete_Random;
 
-with Matreshka.Internals.SQL_Parameter_Rewriters.Firebird;
 with Matreshka.Internals.SQL_Drivers.Firebird.Fields;
+with Matreshka.Internals.SQL_Parameter_Rewriters.Firebird;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
@@ -66,6 +65,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
      Direction : SQL.Parameter_Directions)
    is
       pragma Unreferenced (Direction);
+
    begin
       Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
@@ -76,11 +76,11 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    overriding function Bound_Value
     (Self : not null access Firebird_Query;
-     Name : League.Strings.Universal_String)
-     return League.Holders.Holder
+     Name : League.Strings.Universal_String) return League.Holders.Holder
    is
       pragma Unreferenced (Self);
       pragma Unreferenced (Name);
+
    begin
       return League.Holders.Empty_Holder;
    end Bound_Value;
@@ -105,12 +105,14 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    is
       Value  : League.Holders.Holder;
       Result : Isc_Result_Code;
+
    begin
       --  Prepare parameter values.
+
       for Idx in 1 .. Self.Parameters.Number_Of_Positional loop
          Value := Self.Parameters.Value (Idx);
          Self.Sql_Params.Fields.Element
-           (Isc_Valid_Field_Index (Idx)).Value (Value);
+          (Isc_Valid_Field_Index (Idx)).Value (Value);
       end loop;
 
       Self.Sql_Record.Clear_Values;
@@ -168,9 +170,11 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
       end case;
 
       return True;
+
    exception
       when others =>
          Self.Free_Handle;
+
          return False;
    end Execute;
 
@@ -179,28 +183,32 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    -----------------------
 
    function Execute_Immediate
-     (Self : not null access Firebird_Query)
-      return Boolean
+    (Self : not null access Firebird_Query) return Boolean
    is
       Result : Isc_Result_Code;
+
    begin
       Self.Free_Handle;
 
       declare
          Statement : constant Isc_String := To_Isc_String (Self.Sql_Text);
+
       begin
-         Result := Isc_Dsql_Execute_Immediate
-           (Self.Status'Access,
-            Databases.Firebird_Database'Class
+         Result :=
+           Isc_Dsql_Execute_Immediate
+            (Self.Status'Access,
+             Databases.Firebird_Database'Class
               (Self.Database.all).Database_Handle,
-            Databases.Firebird_Database'Class
+             Databases.Firebird_Database'Class
               (Self.Database.all).Transaction_Handle,
-            Statement'Length, Statement,
-            Sql_Dialect, Self.Sql_Params.Sqlda);
+             Statement'Length, Statement,
+             Sql_Dialect,
+             Self.Sql_Params.Sqlda);
       end;
 
       if Result > 0 then
          Self.Error := Get_Error (Self.Status'Access);
+
          return False;
       end if;
 
@@ -214,17 +222,19 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    overriding procedure Finish (Self : not null access Firebird_Query) is
       use type Isc_Long;
 
-      EC : constant Isc_Result_Codes (1 .. 2) :=
-        (Isc_Bad_Stmt_Handle, Isc_Dsql_Cursor_Close_Err);
+      EC : constant Isc_Result_Codes (1 .. 2)
+        := (Isc_Bad_Stmt_Handle, Isc_Dsql_Cursor_Close_Err);
 
       Result : Isc_Result_Code;
       pragma Warnings (Off, Result);
+
    begin
       if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
          case Self.Sql_Type is
             when Simple_Select | Select_For_Update =>
-               Result := Isc_Dsql_Free_Statement
-                 (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Close);
+               Result :=
+                 Isc_Dsql_Free_Statement
+                  (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Close);
 
                if Self.Status (1) = 1
                  and then Self.Status (2) > 0
@@ -247,13 +257,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    procedure Free_Handle (Self : not null access Firebird_Query) is
       use type Isc_Long;
+
       Result : Isc_Result_Code;
+
    begin
       Self.Sql_Record.Count (0);
 
       if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
-         Result := Isc_Dsql_Free_Statement
-           (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Drop);
+         Result :=
+           Isc_Dsql_Free_Statement
+            (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Drop);
 
          Self.Stmt_Handle := Null_Isc_Stmt_Handle;
          Self.State       := Inactive;
@@ -275,8 +288,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
     (Self     : not null access Firebird_Query'Class;
      Database : not null access Databases.Firebird_Database'Class;
      Codec    : access League.Text_Codecs.Text_Codec;
-     Utf      : Boolean)
-   is
+     Utf      : Boolean) is
    begin
       Self.Sql_Record.Codec := Codec;
       Self.Sql_Params.Codec := Codec;
@@ -302,6 +314,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
       Self.Sql_Record.Finalize;
 
       --  Call Invalidate of parent tagged type.
+
       Abstract_Query (Self.all).Invalidate;
    end Invalidate;
 
@@ -320,32 +333,42 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    ----------
 
    overriding function Next
-     (Self : not null access Firebird_Query) return Boolean
+    (Self : not null access Firebird_Query) return Boolean
    is
       use type Isc_Long;
+
       Result : Isc_Result_Code;
+
    begin
-      Result := Isc_Dsql_Fetch
-        (Self.Status'Access, Self.Stmt_Handle'Access,
-         Sql_Dialect, Self.Sql_Record.Sqlda);
+      Result :=
+        Isc_Dsql_Fetch
+         (Self.Status'Access,
+          Self.Stmt_Handle'Access,
+          Sql_Dialect,
+          Self.Sql_Record.Sqlda);
 
       if Result > 0 then
          if Result = 100 then
             return False;
+
          else
             declare
-               EC : constant Isc_Result_Codes (1 .. 1) :=
-                 (others => Isc_Dsql_Cursor_Err);
+               EC : constant Isc_Result_Codes (1 .. 1)
+                 := (others => Isc_Dsql_Cursor_Err);
+
             begin
                if Check_For_Error (Self.Status'Access, EC) then
                   return False;
+
                else
                   Self.Error := Get_Error (Self.Status'Access);
                   Self.Finish;
+
                   return False;
                end if;
             end;
          end if;
+
       else
          return True;
       end if;
@@ -363,29 +386,34 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
       Result : Isc_Result_Code;
       Field  : Fields.Field_Access;
+
    begin
       Self.Finish;
 
       Rewriter.Rewrite (Query, Self.Sql_Text, Self.Parameters);
       Self.Sql_Params.Count
-        (Isc_Field_Index (Self.Parameters.Number_Of_Positional));
+       (Isc_Field_Index (Self.Parameters.Number_Of_Positional));
 
       --  add params
-      for Idx in 1 .. Isc_Field_Index
-        (Self.Parameters.Number_Of_Positional)
+
+      for Idx
+        in 1 .. Isc_Field_Index (Self.Parameters.Number_Of_Positional)
       loop
          Field := Self.Sql_Params.Fields.Element (Idx);
          Field.Set_Null (True);
          Field.Sqlvar.Sqltype := Isc_Type_Empty;
       end loop;
 
-      Result := Isc_Dsql_Alloc_Statement2
-        (Self.Status'Access,
-         Databases.Firebird_Database'Class (Self.Database.all).Database_Handle,
-         Self.Stmt_Handle'Access);
+      Result :=
+        Isc_Dsql_Alloc_Statement2
+         (Self.Status'Access,
+          Databases.Firebird_Database'Class
+           (Self.Database.all).Database_Handle,
+          Self.Stmt_Handle'Access);
 
       if Result > 0 then
          Self.Error := Get_Error (Self.Status'Access);
+
          return False;
       end if;
 
@@ -393,36 +421,48 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
       declare
          Statement : constant Isc_String := To_Isc_String (Self.Sql_Text);
+
       begin
-         Result := Isc_Dsql_Prepare
-           (Self.Status'Access,
-            Databases.Firebird_Database'Class
+         Result :=
+           Isc_Dsql_Prepare
+            (Self.Status'Access,
+             Databases.Firebird_Database'Class
               (Self.Database.all).Transaction_Handle,
-            Self.Stmt_Handle'Access, 0, Statement,
-            Sql_Dialect, Self.Sql_Record.Sqlda);
+             Self.Stmt_Handle'Access, 0, Statement,
+             Sql_Dialect,
+             Self.Sql_Record.Sqlda);
 
          if Result > 0 then
             Self.Error := Get_Error (Self.Status'Access);
+
             return False;
          end if;
       end;
 
       --  Get the type of the statement
+
       declare
          use type Interfaces.C.char;
 
          Len    : Isc_Long;
          Buffer : aliased Isc_String := (1 .. 9 => Interfaces.C.nul);
          Item   : Isc_String (1 .. 1);
+
       begin
          Item (1) := Isc_Info_Sql_Stmt_Type;
 
-         Result := Isc_Dsql_Sql_Info
-           (Self.Status'Access, Self.Stmt_Handle'Access,
-            1, Item, 8, Buffer'Access);
+         Result :=
+           Isc_Dsql_Sql_Info
+            (Self.Status'Access,
+             Self.Stmt_Handle'Access,
+             1,
+             Item,
+             8,
+             Buffer'Access);
 
          if Result > 0 then
             Self.Error := Get_Error (Self.Status'Access);
+
             return False;
          end if;
 
@@ -432,38 +472,51 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
          Len := Isc_Vax_Integer (Buffer (2 .. 4), 2);
 
-         Self.Sql_Type := Query_Sql_Type'Val
-             (Isc_Vax_Integer (Buffer (4 .. 9), Isc_Short (Len)));
+         Self.Sql_Type :=
+           Query_Sql_Type'Val
+            (Isc_Vax_Integer (Buffer (4 .. 9), Isc_Short (Len)));
       end;
 
       if Self.Sql_Type = Select_For_Update then
          Self.Cursor_Name := Random_String (10);
 
-         Result := Isc_Dsql_Set_Cursor_Name
-           (Self.Status'Access, Self.Stmt_Handle'Access, Self.Cursor_Name, 0);
+         Result :=
+           Isc_Dsql_Set_Cursor_Name
+            (Self.Status'Access, Self.Stmt_Handle'Access, Self.Cursor_Name, 0);
 
          if Result > 0 then
             Self.Error := Get_Error (Self.Status'Access);
+
             return False;
          end if;
       end if;
 
       --  Done getting the type
+
       case Self.Sql_Type is
          when Get_Segment | Put_Segment | Start_Transaction =>
             Self.Free_Handle;
+
             return False;
 
-         when Insert | Update | Delete | Simple_Select |
-              Select_For_Update | Exec_Procedure =>
-
+         when Insert
+                | Update
+                | Delete
+                | Simple_Select
+                | Select_For_Update
+                | Exec_Procedure
+         =>
             if Self.Sql_Params.Sqlda /= null then
-               Result := Isc_Dsql_Describe_Bind
-                 (Self.Status'Access, Self.Stmt_Handle'Access,
-                  Sql_Dialect, Self.Sql_Params.Sqlda);
+               Result :=
+                 Isc_Dsql_Describe_Bind
+                  (Self.Status'Access,
+                   Self.Stmt_Handle'Access,
+                   Sql_Dialect,
+                   Self.Sql_Params.Sqlda);
 
                if Result > 0 then
                   Self.Error := Get_Error (Self.Status'Access);
+
                   return False;
                end if;
             end if;
@@ -472,17 +525,21 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
             case Self.Sql_Type is
                when Simple_Select | Select_For_Update | Exec_Procedure =>
-                  if Self.Sql_Record.Sqlda.Sqld >
-                    Self.Sql_Record.Sqlda.Sqln
+                  if Self.Sql_Record.Sqlda.Sqld
+                       > Self.Sql_Record.Sqlda.Sqln
                   then
                      Self.Sql_Record.Count (Self.Sql_Record.Sqlda.Sqld);
 
-                     Result := Isc_Dsql_Describe
-                       (Self.Status'Access, Self.Stmt_Handle'Access,
-                        Sql_Dialect, Self.Sql_Record.Sqlda);
+                     Result :=
+                       Isc_Dsql_Describe
+                        (Self.Status'Access,
+                         Self.Stmt_Handle'Access,
+                         Sql_Dialect,
+                         Self.Sql_Record.Sqlda);
 
                      if Result > 0 then
                         Self.Error := Get_Error (Self.Status'Access);
+
                         return False;
                      end if;
                   else
@@ -493,25 +550,40 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
                   Self.Sql_Record.Init;
 
-               when Unknown     | Insert            | Update      |
-                    Delete      | DDL               | Get_Segment |
-                    Put_Segment | Start_Transaction | Commit      |
-                    Rollback    | Set_Generator     | Save_Point_Operation =>
-
+               when Unknown
+                      | Insert
+                      | Update
+                      | Delete
+                      | DDL
+                      | Get_Segment
+                      | Put_Segment
+                      | Start_Transaction
+                      | Commit
+                      | Rollback
+                      | Set_Generator
+                      | Save_Point_Operation
+               =>
                   Self.Sql_Record.Count (0);
             end case;
 
-         when Unknown | DDL | Commit | Rollback | Set_Generator |
-              Save_Point_Operation =>
+         when Unknown
+                | DDL
+                | Commit
+                | Rollback
+                | Set_Generator
+                | Save_Point_Operation
+         =>
             null;
       end case;
 
       return True;
+
    exception
       when others =>
          if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
             Self.Free_Handle;
          end if;
+
          return False;
    end Prepare;
 
@@ -519,8 +591,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    -- Random_String --
    -------------------
 
-   function Random_String (Length : Interfaces.C.size_t) return Isc_String
-   is
+   function Random_String (Length : Interfaces.C.size_t) return Isc_String is
       use type Interfaces.C.size_t;
       use type Interfaces.C.char;
 
@@ -531,21 +602,25 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
       Gen  : Rand.Generator;
       Str  : Isc_String (1 .. Length);
       Char : Interfaces.C.char;
+
    begin
       Rand.Reset (Gen);
+
       for Idx in 1 .. Length - 1 loop
          loop
             Char := Rand.Random (Gen);
+
             exit when
-              (Char >= '0' and then  Char <= '9')
-              or else (Char >= 'A' and then Char <= 'Z')
-              or else (Char >= 'a' and then Char <= 'z');
+             (Char >= '0' and then  Char <= '9')
+                or else (Char >= 'A' and then Char <= 'Z')
+                or else (Char >= 'a' and then Char <= 'z');
          end loop;
 
          Str (Idx) := Char;
       end loop;
 
       Str (Str'Last) := Interfaces.C.nul;
+
       return Str;
    end Random_String;
 
@@ -555,11 +630,10 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    overriding function Value
     (Self  : not null access Firebird_Query;
-     Index : Positive) return League.Holders.Holder
-   is
+     Index : Positive) return League.Holders.Holder is
    begin
-      return Self.Sql_Record.Fields.Element
-        (Isc_Valid_Field_Index (Index)).Value;
+      return
+        Self.Sql_Record.Fields.Element (Isc_Valid_Field_Index (Index)).Value;
    end Value;
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Queries;

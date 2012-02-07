@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,27 +41,27 @@
 ------------------------------------------------------------------------------
 --  $Revision: $ $Date: $
 ------------------------------------------------------------------------------
-
 with Ada.Unchecked_Deallocation;
+
 with Matreshka.Internals.SQL_Drivers.Firebird.Queries;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
-   ASCII_Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec
-       (League.Strings.To_Universal_String ("ISO-8859-1"));
+   ASCII_Codec : constant League.Text_Codecs.Text_Codec
+     := League.Text_Codecs.Codec
+         (League.Strings.To_Universal_String ("ISO-8859-1"));
 
-   procedure Free is new Ada.Unchecked_Deallocation
-     (League.Text_Codecs.Text_Codec, Text_Codec_Access);
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (League.Text_Codecs.Text_Codec, Text_Codec_Access);
 
    ------------------
    -- Check_Result --
    ------------------
 
    procedure Check_Result
-     (Self   : not null access Firebird_Database;
-      Result : Isc_Result_Code)
-   is
+    (Self   : not null access Firebird_Database;
+     Result : Isc_Result_Code) is
    begin
       Self.Error.Clear;
 
@@ -83,7 +83,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       end if;
 
       Self.Check_Result
-        (Isc_Detach_Database (Self.Status'Access, Self.DB_Handle'Access));
+       (Isc_Detach_Database (Self.Status'Access, Self.DB_Handle'Access));
 
       Self.DB_Handle := Null_Isc_Database_Handle;
    end Close;
@@ -96,11 +96,12 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    begin
       if Self.TR_Handle = Null_Isc_Transaction_Handle then
          Self.Set_Error ("No active transaction");
+
          return;
       end if;
 
       Self.Check_Result
-        (Isc_Commit_Retaining (Self.Status'Access, Self.TR_Handle'Access));
+       (Isc_Commit_Retaining (Self.Status'Access, Self.TR_Handle'Access));
 
       Self.TR_Handle := Null_Isc_Transaction_Handle;
    end Commit;
@@ -110,9 +111,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    ---------------------
 
    function Database_Handle
-     (Self : Firebird_Database)
-      return Isc_Database_Handle_Access
-   is
+    (Self : Firebird_Database) return Isc_Database_Handle_Access is
    begin
       return Self.DB_Handle'Unchecked_Access;
    end Database_Handle;
@@ -123,8 +122,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    overriding function Error_Message
     (Self : not null access Firebird_Database)
-     return League.Strings.Universal_String
-   is
+       return League.Strings.Universal_String is
    begin
       return Self.Error;
    end Error_Message;
@@ -144,7 +142,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    ------------------------------
 
    procedure Generate_DB_Params_Block
-     (Self : not null access Firebird_Database)
+    (Self : not null access Firebird_Database)
    is
       use Params_List;
       use League.Stream_Element_Vectors;
@@ -153,6 +151,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       Last    : constant Natural := Natural (Self.Params.Length);
       Current : Db_Param;
+
    begin
       Append (Self.DB_Params_Block, char'Pos (Isc_Dpb_Version1));
 
@@ -213,11 +212,11 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    ----------
 
    overriding function Open
-     (Self    : not null access Firebird_Database;
-      Options : League.Strings.Universal_String)
-      return Boolean
+    (Self    : not null access Firebird_Database;
+     Options : League.Strings.Universal_String) return Boolean
    is
       use type Isc_Result_Code;
+      use League.Strings;
 
       Result : Isc_Result_Code := 0;
 
@@ -240,46 +239,58 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
          Buffer  : aliased Isc_String := (1 .. 512 => Interfaces.C.nul);
          Len     : Isc_Short;
          Set     : Isc_Character_Set;
+
       begin
          Request (1) := Frb_Info_Att_Charset;
 
-         Result := Isc_Database_Info
-           (Self.Status'Access, Self.DB_Handle'Access,
-            1, Request, 512, Buffer'Access);
+         Result :=
+           Isc_Database_Info
+            (Self.Status'Access,
+             Self.DB_Handle'Access,
+             1,
+             Request,
+             512,
+             Buffer'Access);
 
          if Result > 0
            or else Buffer (1) /= Frb_Info_Att_Charset
          then
-            Self.Codec := new League.Text_Codecs.Text_Codec'
-              (League.Text_Codecs.Codec
-                 (League.Strings.To_Universal_String ("UTF-8")));
+            Self.Codec :=
+              new League.Text_Codecs.Text_Codec'
+                   (League.Text_Codecs.Codec
+                     (League.Strings.To_Universal_String ("UTF-8")));
             Self.Utf := True;
+
             return;
          end if;
 
          Len := Isc_Short (Isc_Vax_Integer (Buffer (2 .. 512), 2));
-         Set := Character_Set
-           (Isc_Short (Isc_Vax_Integer (Buffer (4 .. 512), Len)));
+         Set :=
+           Character_Set
+            (Isc_Short (Isc_Vax_Integer (Buffer (4 .. 512), Len)));
 
          case Set is
             when UNKNOWN | UNICODE_FSS | UFT8 =>
-               Self.Codec := new League.Text_Codecs.Text_Codec'
-                 (League.Text_Codecs.Codec
-                    (League.Strings.To_Universal_String ("UTF-8")));
+               Self.Codec :=
+                 new League.Text_Codecs.Text_Codec'
+                      (League.Text_Codecs.Codec
+                        (League.Strings.To_Universal_String ("UTF-8")));
                Self.Utf := True;
 
             when others =>
-               Self.Codec := new League.Text_Codecs.Text_Codec'
-                 (League.Text_Codecs.Codec
-                    (League.Strings.To_Universal_String
-                       (Isc_Character_Set'Wide_Wide_Image (Set))));
+               Self.Codec :=
+                 new League.Text_Codecs.Text_Codec'
+                      (League.Text_Codecs.Codec
+                        (League.Strings.To_Universal_String
+                          (Isc_Character_Set'Wide_Wide_Image (Set))));
          end case;
 
       exception
          when others =>
-            Self.Codec := new League.Text_Codecs.Text_Codec'
-              (League.Text_Codecs.Codec
-                 (League.Strings.To_Universal_String ("UTF-8")));
+            Self.Codec :=
+              new League.Text_Codecs.Text_Codec'
+                   (League.Text_Codecs.Codec
+                     (League.Strings.To_Universal_String ("UTF-8")));
             Self.Utf := True;
       end Create_Codec;
 
@@ -289,6 +300,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       function Get_Database return Isc_String is
          Empty : constant Isc_String (1 .. 0) := (others => Interfaces.C.nul);
+
       begin
          if DB_Separator /= 0 then
             declare
@@ -301,6 +313,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
                for S_Item'Address use V_Item'Address;
                pragma Import (Ada, S_Item);
+
             begin
                return Interfaces.C.To_C (S_Item);
             end;
@@ -346,8 +359,6 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
          end if;
       end Get_User;
 
-      use League.Strings;
-
       DB_Name : constant Isc_String := Get_Database;
 
    begin
@@ -357,6 +368,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       if DB_Name'Length = 0 then
          Self.Set_Error ("Empty database name");
+
          return False;
       end if;
 
@@ -371,22 +383,25 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
            Self.DB_Params_Block.To_Stream_Element_Array;
 
          S_Item : String (1 .. V_Item'Length);
-
          for S_Item'Address use V_Item'Address;
          pragma Import (Ada, S_Item);
+
       begin
-         Result := Isc_Attach_Database
-           (Status          => Self.Status'Access,
-            Db_Name_Length  => Interfaces.C.short (DB_Name'Length),
-            Db_Name         => DB_Name,
-            Db_Handle       => Self.DB_Handle'Access,
-            Parms_Length    => Interfaces.C.short (Self.DB_Params_Block.Length),
-            Parms           => Interfaces.C.To_C (S_Item));
+         Result :=
+           Isc_Attach_Database
+            (Status          => Self.Status'Access,
+             Db_Name_Length  => Interfaces.C.short (DB_Name'Length),
+             Db_Name         => DB_Name,
+             Db_Handle       => Self.DB_Handle'Access,
+             Parms_Length    =>
+               Interfaces.C.short (Self.DB_Params_Block.Length),
+             Parms           => Interfaces.C.To_C (S_Item));
       end;
 
       if Result > 0 then
          Self.DB_Handle := Null_Isc_Database_Handle;
          Self.Check_Result (Result);
+
          return False;
       end if;
 
@@ -400,10 +415,9 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    -----------------------
 
    function Start_Transaction
-     (Self : not null access Firebird_Database)
-      return Boolean
+    (Self : not null access Firebird_Database) return Boolean
    is
-      Result :         Isc_Result_code := 0;
+      Result : Isc_Result_code := 0;
       TPB    : aliased Isc_String :=  (1 .. 5 => (Interfaces.C.nul));
 
       procedure Generate_Tpb;
@@ -436,17 +450,19 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       Generate_Tpb;
 
       declare
-         Tebs : aliased Isc_Tebs :=
-           (1 .. 1 =>
-              (Self.DB_Handle'Access, TPB'Length, TPB'Unchecked_Access));
+         Tebs : aliased Isc_Tebs
+           := (1 .. 1 =>
+                (Self.DB_Handle'Access, TPB'Length, TPB'Unchecked_Access));
       begin
-         Result := Isc_Start_Multiple
-           (Self.Status'Access, Self.TR_Handle'Access, 1, Tebs'Access);
+         Result :=
+           Isc_Start_Multiple
+            (Self.Status'Access, Self.TR_Handle'Access, 1, Tebs'Access);
       end;
 
       if Result > 0 then
          Self.TR_Handle := Null_Isc_Transaction_Handle;
          Self.Check_Result (Result);
+
          return False;
       end if;
 
@@ -459,8 +475,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    procedure Set_Error
     (Self : not null access Firebird_Database;
-     Text : Wide_Wide_String)
-   is
+     Text : Wide_Wide_String) is
    begin
       Self.Error := League.Strings.To_Universal_String (Text);
    end Set_Error;
@@ -470,9 +485,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    ------------------------
 
    function Transaction_Handle
-     (Self : Firebird_Database)
-      return Isc_Transaction_Handle_Access
-   is
+    (Self : Firebird_Database) return Isc_Transaction_Handle_Access is
    begin
       return Self.TR_Handle'Unchecked_Access;
    end Transaction_Handle;
@@ -482,13 +495,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    -----------
 
    overriding function Query
-     (Self : not null access Firebird_Database) return not null Query_Access is
+    (Self : not null access Firebird_Database) return not null Query_Access is
    begin
-      return Aux : constant not null Query_Access := new Queries.Firebird_Query
+      return Aux : constant not null Query_Access
+               := new Queries.Firebird_Query
       do
          Queries.Initialize
-           (Queries.Firebird_Query'Class (Aux.all)'Access,
-            Self, Self.Codec, Self.Utf);
+          (Queries.Firebird_Query'Class (Aux.all)'Access,
+           Self,
+           Self.Codec,
+           Self.Utf);
       end return;
    end Query;
 
@@ -498,25 +514,26 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    procedure Rollback_Transaction (Self : not null access Firebird_Database) is
       Result : Isc_Result_Code;
+
    begin
       if Self.TR_Handle = Null_Isc_Transaction_Handle then
          return;
       end if;
 
-      Result := Isc_Rollback_Transaction
-        (Self.Status'Access, Self.TR_Handle'Access);
+      Result :=
+        Isc_Rollback_Transaction
+         (Self.Status'Access, Self.TR_Handle'Access);
 
       if Result > 0 then
          --  Force close transaction
          Self.Check_Result (Result);
 
          Self.Check_Result
-           (Isc_Rollback_Transaction
-              (Self.Status'Access, Self.TR_Handle'Access));
+          (Isc_Rollback_Transaction
+            (Self.Status'Access, Self.TR_Handle'Access));
       end if;
 
       Self.TR_Handle := Null_Isc_Transaction_Handle;
    end Rollback_Transaction;
-
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Databases;

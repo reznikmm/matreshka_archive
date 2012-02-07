@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 --  Implementation of Abstract_Database type for Firebird database.
 ------------------------------------------------------------------------------
-
 with Ada.Containers.Vectors;
+
 with League.Stream_Element_Vectors;
 with League.Text_Codecs;
 
@@ -57,13 +57,11 @@ package Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    type Firebird_Database is new Abstract_Database with private;
 
    function Database_Handle
-     (Self : Firebird_Database)
-      return Isc_Database_Handle_Access;
+    (Self : Firebird_Database) return Isc_Database_Handle_Access;
    pragma Inline (Database_Handle);
 
    function Transaction_Handle
-     (Self : Firebird_Database)
-      return Isc_Transaction_Handle_Access;
+    (Self : Firebird_Database) return Isc_Transaction_Handle_Access;
    pragma Inline (Transaction_Handle);
 
 private
@@ -81,8 +79,8 @@ private
 
    type Firebird_Database is new Abstract_Database with record
       DB_Handle : aliased Isc_Database_Handle    := Null_Isc_Database_Handle;
-      TR_Handle : aliased Isc_Transaction_Handle :=
-        Null_Isc_Transaction_Handle;
+      TR_Handle : aliased Isc_Transaction_Handle
+        := Null_Isc_Transaction_Handle;
 
       DB_Params_Block : League.Stream_Element_Vectors.Stream_Element_Vector;
 
@@ -98,8 +96,8 @@ private
    overriding procedure Commit (Self : not null access Firebird_Database);
 
    overriding function Error_Message
-     (Self : not null access Firebird_Database)
-      return League.Strings.Universal_String;
+    (Self : not null access Firebird_Database)
+       return League.Strings.Universal_String;
 
    overriding function Query
     (Self : not null access Firebird_Database) return not null Query_Access;
@@ -111,19 +109,18 @@ private
      Options : League.Strings.Universal_String) return Boolean;
 
    procedure Check_Result
-     (Self   : not null access Firebird_Database;
-      Result : Isc_Result_Code);
+    (Self   : not null access Firebird_Database;
+     Result : Isc_Result_Code);
 
    procedure Set_Error
     (Self : not null access Firebird_Database;
      Text : Wide_Wide_String);
 
    procedure Generate_DB_Params_Block
-     (Self : not null access Firebird_Database);
+    (Self : not null access Firebird_Database);
 
    function Start_Transaction
-     (Self : not null access Firebird_Database)
-      return Boolean;
+    (Self : not null access Firebird_Database) return Boolean;
 
    procedure Rollback_Transaction (Self : not null access Firebird_Database);
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 --  This package provides implementation of Query abstraction for PostgreSQL.
 ------------------------------------------------------------------------------
-
 with Ada.Finalization;
+
 with League.Calendars;
 with League.Text_Codecs;
 
@@ -81,105 +81,79 @@ package Matreshka.Internals.SQL_Drivers.Firebird.Fields is
    procedure Alloc_Sqlind (Self : not null access Field);
    function Is_Nullable (Self : not null access Field) return Boolean;
 
-   procedure Is_Nullable
-     (Self  : not null access Field;
-      Value : Boolean);
+   procedure Is_Nullable (Self : not null access Field; Value : Boolean);
 
-   procedure Reserv_Sqldata
-     (Self : not null access Field;
-      Size : Isc_Short);
+   procedure Reserv_Sqldata (Self : not null access Field; Size : Isc_Short);
 
-   procedure Alloc_Sqldata
-     (Self : not null access Field;
-      Size : Isc_Short);
+   procedure Alloc_Sqldata (Self : not null access Field; Size : Isc_Short);
 
-   procedure Set_Null
-     (Self  : not null access Field;
-      Value : Boolean);
+   procedure Set_Null (Self : not null access Field; Value : Boolean);
 
    function Value (Self : not null access Field) return League.Holders.Holder;
 
    procedure Value
-     (Self   : not null access Field;
-      Holder : League.Holders.Holder);
+    (Self : not null access Field; Holder : League.Holders.Holder);
 
    procedure As_String
-     (Self  : not null access Field;
-      Value : League.Strings.Universal_String);
+    (Self  : not null access Field;
+     Value : League.Strings.Universal_String);
 
    function As_String
-     (Self : not null access Field)
-      return League.Strings.Universal_String;
+    (Self : not null access Field) return League.Strings.Universal_String;
 
    function Server_Sql_Type (Self : not null access Field) return Isc_Sqltype;
 
    function As_Date
-     (Self : not null access Field)
-      return League.Calendars.Date;
+    (Self : not null access Field) return League.Calendars.Date;
 
    procedure As_Date
-     (Self  : not null access Field;
-      Value : League.Calendars.Date);
+    (Self  : not null access Field;
+     Value : League.Calendars.Date);
 
    function As_Time
-     (Self : not null access Field)
-      return League.Calendars.Time;
+    (Self : not null access Field) return League.Calendars.Time;
 
    procedure As_Time
-     (Self  : not null access Field;
-      Value : League.Calendars.Time);
+    (Self : not null access Field; Value : League.Calendars.Time);
 
    function As_Date_Time
-     (Self  : not null access Field)
-      return League.Calendars.Date_Time;
+    (Self : not null access Field) return League.Calendars.Date_Time;
 
    procedure As_Date_Time
-     (Self  : not null access Field;
-      Value : League.Calendars.Date_Time);
+    (Self  : not null access Field; Value : League.Calendars.Date_Time);
 
    function As_Universal_Integer
-     (Self : not null access Field)
-      return League.Holders.Universal_Integer;
+    (Self : not null access Field) return League.Holders.Universal_Integer;
 
    procedure As_Universal_Integer
-     (Self  : not null access Field;
-      Value : League.Holders.Universal_Integer);
+    (Self : not null access Field; Value : League.Holders.Universal_Integer);
 
    function As_Universal_Float
-     (Self  : not null access Field)
-      return League.Holders.Universal_Float;
+    (Self : not null access Field) return League.Holders.Universal_Float;
 
    procedure As_Universal_Float
-     (Self  : not null access Field;
-      Value : League.Holders.Universal_Float);
+    (Self : not null access Field; Value : League.Holders.Universal_Float);
 
-   function As_Short_Float
-     (Self : not null access Field)
-      return Short_Float;
+   function As_Short_Float (Self : not null access Field) return Short_Float;
 
-   function As_Long_Float
-     (Self : not null access Field)
-      return Long_Float;
+   function As_Long_Float (Self : not null access Field) return Long_Float;
 
    function As_Short_Integer
-     (Self : not null access Field)
-      return Short_Integer;
+    (Self : not null access Field) return Short_Integer;
 
    function As_Long_Integer
-     (Self : not null access Field)
-      return Long_Integer;
+    (Self : not null access Field) return Long_Integer;
 
-   function As_Boolean
-     (Self : not null access Field)
-      return Boolean;
+   function As_Boolean (Self : not null access Field) return Boolean;
 
    procedure Set_Value
-     (Self     : not null access Field;
-      Sql_Type : Isc_Sqltype;
-      Size     : Isc_Short;
-      Value    : Isc_Address);
+    (Self     : not null access Field;
+     Sql_Type : Isc_Sqltype;
+     Size     : Isc_Short;
+     Value    : Isc_Address);
 
    function Is_Null (Self : not null access Field) return Boolean;
+
    function Sql_Type (Self : not null access Field) return Isc_Sqltype;
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Fields;
