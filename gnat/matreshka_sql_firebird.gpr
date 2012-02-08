@@ -52,7 +52,7 @@ library project Matreshka_SQL_Firebird is
    Library_Name := "matreshka-sql-firebird"
      & Matreshka_Config.RTL_Version_Suffix;
 
-   for Source_Dirs use ("../design/sql/firebird");
+   for Source_Dirs use ("../source/sql/firebird");
    for Object_Dir use "../.objs/sql/firebird";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
