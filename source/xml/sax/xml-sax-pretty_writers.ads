@@ -241,8 +241,9 @@ private
    end record;
 
    function Escape
-    (Self : SAX_Pretty_Writer;
-     Text : League.Strings.Universal_String)
+    (Self       : SAX_Pretty_Writer;
+     Text       : League.Strings.Universal_String;
+     Escape_All : Boolean := False)
        return League.Strings.Universal_String;
    --  Replaces special characters by their entity references.
 

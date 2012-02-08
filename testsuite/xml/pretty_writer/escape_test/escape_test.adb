@@ -59,7 +59,10 @@ procedure Escape_Test is
    Local_Name     : Universal_String := To_Universal_String ("");
    Qualified_Name : Universal_String := To_Universal_String ("A");
    Reference      : Universal_String
-     := To_Universal_String ("<?xml version=""1.1""?><A>alert;</A>");
+     := To_Universal_String ("<?xml version=""1.1""?>"
+                               & "<A>some_text</A>"
+                               & "<A>alert('hello');</A>"
+                               & "<A>aa&amp;bb'cc&lt;dd>ee</A>");
 
    procedure Assert (OK : Boolean) is
    begin
@@ -111,6 +114,6 @@ begin
    Writer.End_Document (OK);
    Assert (OK);
 
-   --  Assert (Writer.Text = Reference);
-   Ada.Wide_Wide_Text_IO.Put_Line (Writer.Text.To_Wide_Wide_String);
+   Assert (Writer.Text = Reference);
+   --  Ada.Wide_Wide_Text_IO.Put_Line (Writer.Text.To_Wide_Wide_String);
 end Escape_Test;

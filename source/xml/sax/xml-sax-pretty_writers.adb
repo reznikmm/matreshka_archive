@@ -276,8 +276,9 @@ package body XML.SAX.Pretty_Writers is
    ------------
 
    function Escape
-    (Self : SAX_Pretty_Writer;
-     Text : League.Strings.Universal_String)
+    (Self       : SAX_Pretty_Writer;
+     Text       : League.Strings.Universal_String;
+     Escape_All : Boolean := False)
        return League.Strings.Universal_String
    is
       Code : Code_Point;
@@ -292,13 +293,25 @@ package body XML.SAX.Pretty_Writers is
                   Result.Append (Amp_Entity_Reference);
 
                when ''' =>
-                  Result.Append (Apos_Entity_Reference);
+                  if Escape_All then
+                     Result.Append (Apos_Entity_Reference);
+                  else
+                     Result.Append (Text.Element (J).To_Wide_Wide_Character);
+                  end if;
 
                when '"' =>
-                  Result.Append (Quot_Entity_Reference);
+                  if Escape_All then
+                     Result.Append (Quot_Entity_Reference);
+                  else
+                     Result.Append (Text.Element (J).To_Wide_Wide_Character);
+                  end if;
 
                when '>' =>
-                  Result.Append (Gt_Entity_Reference);
+                  if Escape_All then
+                     Result.Append (Gt_Entity_Reference);
+                  else
+                     Result.Append (Text.Element (J).To_Wide_Wide_Character);
+                  end if;
 
                when '<' =>
                   Result.Append (Lt_Entity_Reference);
@@ -687,7 +700,7 @@ package body XML.SAX.Pretty_Writers is
 
          Self.Text.Append ("=");
          Self.Text.Append (Self.Delimiter);
-         Self.Text.Append (Attributes.Value (J));
+         Self.Text.Append (Self.Escape (Attributes.Value (J), True));
          Self.Text.Append (Self.Delimiter);
       end loop;
 
