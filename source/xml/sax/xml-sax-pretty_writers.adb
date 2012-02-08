@@ -308,25 +308,23 @@ package body XML.SAX.Pretty_Writers is
                   --  or Digital representation of Character references
                   --  XML_1_1 2.2 Characters
 
-                  if Self.Version = XML_1_1 then
-                     if Code in 16#1#  .. 16#8#
-                       or Code in 16#B#  .. 16#C#
-                       or Code in 16#E#  .. 16#1F#
-                       or Code in 16#7F# .. 16#84#
-                       or Code in 16#86# .. 16#9F#
-                     then
-                        declare
-                           Image : constant Wide_Wide_String :=
-                             Code_Unit_32'Wide_Wide_Image (Code);
+                  if Self.Version = XML_1_1 and then
+                    (Code in 16#1#  .. 16#8#
+                       or else Code in 16#B#  .. 16#C#
+                       or else Code in 16#E#  .. 16#1F#
+                       or else Code in 16#7F# .. 16#84#
+                       or else Code in 16#86# .. 16#9F#)
+                  then
+                     declare
+                        Image : constant Wide_Wide_String :=
+                          Code_Unit_32'Wide_Wide_Image (Code);
 
-                        begin
-                           Result := Result
-                             & "&#"
-                             & Image (Image'First + 1 .. Image'Last)
-                             & ";";
-                        end;
-                     end if;
-
+                     begin
+                        Result := Result
+                          & "&#"
+                          & Image (Image'First + 1 .. Image'Last)
+                          & ";";
+                     end;
                   else
                      Result.Append (Text.Element (J).To_Wide_Wide_Character);
                   end if;

@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,37 +41,76 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_xml.gpr";
+with Ada.Wide_Wide_Text_IO;
 
-project Matreshka_XML_Tests is
+with League.Strings;
 
-   for Main use
-    ("xmlconf_test.adb",
-     "xmlcatconf-driver.adb",
-     "test_126.adb",
-     "test_20.adb",
-     "test_26.adb",
-     "test_99.adb",
-     "simple_test.adb",
-     "escape_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-126",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/TN-99",
-     "../testsuite/xml/pretty_writer/simple_test",
-     "../testsuite/xml/pretty_writer/escape_test");
+with XML.SAX.Attributes;
+with XML.SAX.Attributes.Internals;
+with XML.SAX.Pretty_Writers;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+use League.Strings;
 
-   package Builder is
-      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
-   end Builder;
+procedure Escape_Test is
+   Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+   OK             : Boolean := True;
+   Attrs          : XML.SAX.Attributes.SAX_Attributes;
+   NS_URI         : Universal_String := To_Universal_String ("");
+   Local_Name     : Universal_String := To_Universal_String ("");
+   Qualified_Name : Universal_String := To_Universal_String ("A");
+   Reference      : Universal_String
+     := To_Universal_String ("<?xml version=""1.1""?><A>alert;</A>");
 
-end Matreshka_XML_Tests;
+   procedure Assert (OK : Boolean) is
+   begin
+      if not OK then
+         Ada.Wide_Wide_Text_IO.Put_Line
+           (Writer.Error_String.To_Wide_Wide_String);
+         raise Program_Error with "Assertion Failed";
+      end if;
+   end Assert;
+
+begin
+   --  Setting attributes
+
+   --  Creating document
+   Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
+
+   --  Adding first tag
+   Writer.Start_Document (OK);
+   Assert (OK);
+
+   Writer.Start_Element (NS_URI, Local_Name, Qualified_Name, Attrs, OK);
+   Assert (OK);
+
+   Writer.Characters (To_Universal_String ("some_text"), OK);
+   Assert (OK);
+
+   Writer.End_Element (NS_URI, Local_Name, Qualified_Name, OK);
+   Assert (OK);
+
+   Writer.Start_Element (NS_URI, Local_Name, Qualified_Name, Attrs, OK);
+   Assert (OK);
+
+   Writer.Characters (To_Universal_String ("alert('hello');"), OK);
+   Assert (OK);
+
+   Writer.End_Element (NS_URI, Local_Name, Qualified_Name, OK);
+   Assert (OK);
+
+   Writer.Start_Element (NS_URI, Local_Name, Qualified_Name, Attrs, OK);
+   Assert (OK);
+
+   Writer.Characters (To_Universal_String ("aa&bb'cc<dd>ee"), OK);
+   Assert (OK);
+
+   Writer.End_Element (NS_URI, Local_Name, Qualified_Name, OK);
+   Assert (OK);
+
+
+   Writer.End_Document (OK);
+   Assert (OK);
+
+   --  Assert (Writer.Text = Reference);
+   Ada.Wide_Wide_Text_IO.Put_Line (Writer.Text.To_Wide_Wide_String);
+end Escape_Test;
