@@ -41,10 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Signals;
 with League.Strings;
 
 with AWF.Layouts;
-with AWF.Signals;
 
 package body Demo.Main_Windows is
 
@@ -55,7 +55,7 @@ package body Demo.Main_Windows is
    function Create return not null Main_Window_Access is
       L : AWF.Layouts.AWF_Layout_Access;
 
-      package Slot is new AWF.Signals.Generic_Slot (Main_Window, On_Click);
+      package Slot is new League.Signals.Generic_Slot (Main_Window, On_Click);
 
    begin
       return Self : not null Main_Window_Access := new Main_Window do
