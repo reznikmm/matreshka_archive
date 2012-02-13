@@ -112,6 +112,11 @@ package League.String_Vectors is
    --  Returns index of the first element which match to item, or zero
    --  overwise.
 
+   function "="
+    (Left  : Universal_String_Vector;
+     Right : Universal_String_Vector) return Boolean;
+   --  Returns True when both vectors has the same strings.
+
 private
 
    procedure Read

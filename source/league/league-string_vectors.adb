@@ -50,6 +50,45 @@ package body League.String_Vectors is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Configuration;
 
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Universal_String_Vector;
+     Right : Universal_String_Vector) return Boolean
+   is
+      LD : constant not null
+        Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
+          := Left.Data;
+      RD : constant not null
+        Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
+          := Right.Data;
+
+   begin
+      --  Both objects shared same shared object, they are equal.
+
+      if LD = RD then
+         return True;
+      end if;
+
+      --  Objects have different length, they are not equal.
+
+      if LD.Length /= RD.Length then
+         return False;
+      end if;
+
+      --  Check whether all strings are equal.
+
+      for J in 1 .. LD.Length loop
+         if not String_Handler.Is_Equal (LD.Value (J), RD.Value (J)) then
+            return False;
+         end if;
+      end loop;
+
+      return True;
+   end "=";
+
    ------------
    -- Adjust --
    ------------
