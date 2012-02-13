@@ -51,16 +51,21 @@ with League.Text_Codecs;
 with AWF.Painter;
 with AWF.Registry;
 with AWF.Internals.AWF_Widgets;
+with AWF.Internals.Java_Script_Registry;
 
 package body AWF.Internals.Callbacks is
 
-   XHTML_Mime_Type : constant League.Strings.Universal_String
+   use type League.String_Vectors.Universal_String_Vector;
+
+   XHTML_Mime_Type      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("application/xhtml+xml");
-   JSON_Mime_Type  : constant League.Strings.Universal_String
+   JSON_Mime_Type       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("application/json");
-   Text_Mime_Type  : constant League.Strings.Universal_String
+   JavaScript_Mime_Type : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("text/javascript");
+   Text_Mime_Type       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("text");
-   UTF8_Codec      : constant League.Text_Codecs.Text_Codec
+   UTF8_Codec           : constant League.Text_Codecs.Text_Codec
      := League.Text_Codecs.Codec
          (League.Strings.To_Universal_String ("utf-8"));
 
@@ -95,7 +100,7 @@ package body AWF.Internals.Callbacks is
 --        Request.Raw_Header (Script_Name_Header).To_Stream_Element_Array);
 --      String'Write
 --       (Reply.Stream, ASCII.LF & ASCII.LF);
---
+
       if not Request.Has_Raw_Header (Path_Info_Header) then
          Reply.Set_Content_Type (XHTML_Mime_Type);
          Ada.Streams.Stream_Element_Array'Write
@@ -109,7 +114,17 @@ package body AWF.Internals.Callbacks is
             (Request.Raw_Header
               (Path_Info_Header)).Split ('/', League.Strings.Skip_Empty);
 
-         if Path.Length /= 2 then
+         if Path
+              = AWF.Internals.Java_Script_Registry.Java_Script_Resource_Path
+         then
+            Reply.Set_Content_Type (JavaScript_Mime_Type);
+            Ada.Streams.Stream_Element_Array'Write
+             (Reply.Stream,
+              UTF8_Codec.Encode
+               (AWF.Internals.Java_Script_Registry.Java_Script_Code).
+                  To_Stream_Element_Array);
+
+         elsif Path.Length /= 2 then
             Reply.Set_Content_Type (JSON_Mime_Type);
             String'Write (Reply.Stream, "No PATH_INFO");
 

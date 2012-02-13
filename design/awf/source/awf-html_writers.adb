@@ -71,6 +71,8 @@ package body AWF.HTML_Writers is
      := League.Strings.To_Universal_String ("id");
    On_Click_Attribute : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("onclick");
+   Src_Attribute      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("src");
    Style_Attribute    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("style");
 
@@ -264,10 +266,22 @@ package body AWF.HTML_Writers is
    -- Start_Script --
    ------------------
 
-   not overriding procedure Start_Script (Self : in out HTML_Writer) is
+   not overriding procedure Start_Script
+    (Self : in out HTML_Writer;
+     Src  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+   is
+      Attributes : XML.SAX.Attributes.SAX_Attributes;
+
    begin
+      if not Src.Is_Empty then
+         Attributes.Set_Value (Src_Attribute, Src);
+      end if;
+
       Self.Writer.Start_Element
-       (Namespace_URI => HTML_Namespace, Local_Name => Script_Element);
+       (Namespace_URI => HTML_Namespace,
+        Local_Name    => Script_Element,
+        Attributes    => Attributes);
    end Start_Script;
 
    -----------------

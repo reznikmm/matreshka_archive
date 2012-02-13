@@ -105,7 +105,10 @@ package AWF.HTML_Writers is
    not overriding procedure Start_Head (Self : in out HTML_Writer);
    not overriding procedure End_Head (Self : in out HTML_Writer);
 
-   not overriding procedure Start_Script (Self : in out HTML_Writer);
+   not overriding procedure Start_Script
+    (Self : in out HTML_Writer;
+     Src  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String);
    not overriding procedure End_Script (Self : in out HTML_Writer);
 
    not overriding procedure Start_Table (Self : in out HTML_Writer);

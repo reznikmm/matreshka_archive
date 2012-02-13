@@ -41,46 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.HTML_Writers;
-with AWF.Internals.Java_Script_Registry;
+with League.Characters.Latin;
 
-package body AWF.Painter is
+package body AWF.Internals.Java_Script_Registry is
 
-   use type League.Strings.Universal_String;
+   Shared_Code : League.Strings.Universal_String;
 
-   ----------
-   -- Draw --
-   ----------
+   ----------------------
+   -- Java_Script_Code --
+   ----------------------
 
-   function Draw
-    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access)
-       return League.Strings.Universal_String
-   is
-      Writer : AWF.HTML_Writers.HTML_Writer;
-
+   function Java_Script_Code return League.Strings.Universal_String is
    begin
-      Writer.Start_HTML;
-      Writer.Start_Head;
-      Writer.Start_Script
-       ("demo.fcgi/"
-          & AWF.Internals.Java_Script_Registry.Java_Script_Resource_Path.Join
-             ('/'));
-      Writer.End_Script;
---   W.Start_Title;
---   W.Characters (League.Strings.To_Universal_String ("AWF Demo"));
---   W.End_Title;
-      Widget.Render_Head (Writer);
-      Writer.End_Head;
-      Writer.Start_Body;
-      Widget.Render_Body (Writer);
---   B.Draw (W);
-----   W.Start_Div;
-----   W.Characters (League.Strings.To_Universal_String ("Push"));
-----   W.End_Div;
-      Writer.End_Body;
-      Writer.End_HTML;
+      return Shared_Code;
+   end Java_Script_Code;
 
-      return Writer.Text;
-   end Draw;
+   -------------------------------
+   -- Java_Script_Resource_Path --
+   -------------------------------
 
-end AWF.Painter;
+   function Java_Script_Resource_Path
+     return League.String_Vectors.Universal_String_Vector is
+   begin
+      return Result : League.String_Vectors.Universal_String_Vector do
+         Result.Append (League.Strings.To_Universal_String ("javascript"));
+         Result.Append (League.Strings.To_Universal_String ("awf.js"));
+      end return;
+   end Java_Script_Resource_Path;
+
+   --------------
+   -- Register --
+   --------------
+
+   procedure Register (Code : League.Strings.Universal_String) is
+   begin
+      Shared_Code.Append (League.Characters.Latin.Line_Feed);
+      Shared_Code.Append (Code);
+   end Register;
+
+end AWF.Internals.Java_Script_Registry;

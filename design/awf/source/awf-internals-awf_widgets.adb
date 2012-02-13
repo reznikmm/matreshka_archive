@@ -45,12 +45,31 @@ with Ada.Characters.Wide_Wide_Latin_1;
 
 with League.Strings;
 
+with AWF.Internals.Java_Script_Registry;
 with AWF.Registry;
 pragma Elaborate (AWF.Registry);
 
 package body AWF.Internals.AWF_Widgets is
 
+   use Ada.Characters.Wide_Wide_Latin_1;
    use type AWF.Internals.AWF_Layouts.AWF_Layout_Proxy_Access;
+
+   Java_Script_Code : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         (LF
+            & "function AWFWidgetOnEvent(element,event)" & LF
+            & "{" & LF
+            & "   var request = new XMLHttpRequest();" & LF
+            & "   request.onreadystatechange=function()" & LF
+            & "   {" & LF
+            & "     if (request.readyState == 4 && request.status == 200)" & LF
+            & "     {" & LF
+            & "       eval(request.responseText);" & LF
+            & "     }" & LF
+            & "   }" & LF
+            & "   request.open('GET', window.location + '/' + element.id + '/' + event, true);" & LF
+            & "   request.send();" & LF
+            & "}" & LF);
 
    procedure onkeydown_Handler
     (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access);
@@ -374,37 +393,6 @@ package body AWF.Internals.AWF_Widgets is
       end if;
    end Render_Body;
 
-   -----------------
-   -- Render_Head --
-   -----------------
-
-   not overriding procedure Render_Head
-    (Self    : not null access AWF_Widget_Proxy;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class)
-   is
-      use Ada.Characters.Wide_Wide_Latin_1;
-
-   begin
-      Context.Start_Script;
-      Context.Characters
-       (League.Strings.To_Universal_String
-         (LF
-            & "function AWFWidgetOnEvent(element,event)" & LF
-            & "{" & LF
-            & "   var request = new XMLHttpRequest();" & LF
-            & "   request.onreadystatechange=function()" & LF
-            & "   {" & LF
-            & "     if (request.readyState == 4 && request.status == 200)" & LF
-            & "     {" & LF
-            & "       eval(request.responseText);" & LF
-            & "     }" & LF
-            & "   }" & LF
-            & "   request.open('GET', window.location + '/' + element.id + '/' + event, true);" & LF
-            & "   request.send();" & LF
-            & "}" & LF));
-      Context.End_Script;
-   end Render_Head;
-
    ----------------
    -- Set_Layout --
    ----------------
@@ -501,4 +489,8 @@ begin
     (AWF_Widget_Proxy'Tag,
      League.Strings.To_Universal_String ("onscroll"),
      onscroll_Handler'Access);
+
+   --  Register Java Script code.
+
+   AWF.Internals.Java_Script_Registry.Register (Java_Script_Code);
 end AWF.Internals.AWF_Widgets;

@@ -67,7 +67,7 @@ package AWF.Internals.AWF_Widgets is
 
    not overriding procedure Render_Head
     (Self    : not null access AWF_Widget_Proxy;
-     Context : in out AWF.HTML_Writers.HTML_Writer'Class);
+     Context : in out AWF.HTML_Writers.HTML_Writer'Class) is null;
 
    not overriding procedure Render_Body
     (Self    : not null access AWF_Widget_Proxy;

@@ -41,46 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AWF.HTML_Writers;
-with AWF.Internals.Java_Script_Registry;
+--  This is a global registry of JavaScript code, which is organized as
+--  separate resource to share JavaScript code between pages.
+------------------------------------------------------------------------------
+with League.Strings;
+with League.String_Vectors;
 
-package body AWF.Painter is
+package AWF.Internals.Java_Script_Registry is
 
-   use type League.Strings.Universal_String;
+   procedure Register (Code : League.Strings.Universal_String);
+   --  Register segment of JavaScript code.
 
-   ----------
-   -- Draw --
-   ----------
+   function Java_Script_Code return League.Strings.Universal_String;
+   --  Returns all registered JavaScript code.
 
-   function Draw
-    (Widget : not null AWF.Internals.AWF_Widgets.AWF_Widget_Proxy_Access)
-       return League.Strings.Universal_String
-   is
-      Writer : AWF.HTML_Writers.HTML_Writer;
+   function Java_Script_Resource_Path
+     return League.String_Vectors.Universal_String_Vector;
+   --  Returns path of resource which contains JavaScript code.
 
-   begin
-      Writer.Start_HTML;
-      Writer.Start_Head;
-      Writer.Start_Script
-       ("demo.fcgi/"
-          & AWF.Internals.Java_Script_Registry.Java_Script_Resource_Path.Join
-             ('/'));
-      Writer.End_Script;
---   W.Start_Title;
---   W.Characters (League.Strings.To_Universal_String ("AWF Demo"));
---   W.End_Title;
-      Widget.Render_Head (Writer);
-      Writer.End_Head;
-      Writer.Start_Body;
-      Widget.Render_Body (Writer);
---   B.Draw (W);
-----   W.Start_Div;
-----   W.Characters (League.Strings.To_Universal_String ("Push"));
-----   W.End_Div;
-      Writer.End_Body;
-      Writer.End_HTML;
-
-      return Writer.Text;
-   end Draw;
-
-end AWF.Painter;
+end AWF.Internals.Java_Script_Registry;
