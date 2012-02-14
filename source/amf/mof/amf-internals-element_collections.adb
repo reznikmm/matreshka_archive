@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -99,6 +99,15 @@ package body AMF.Internals.Element_Collections is
    begin
       AMF_Tables.Collections.Set_Last
        (First + AMF_Collection_Of_Element (Count));
+
+      --  Initialize first allocated collection.
+
+      AMF_Tables.Collections.Table (First) :=
+       (Kind     => AMF_Tables.C_None,
+        Owner    => 0,
+        Property => 0,
+        Head     => 0,
+        Tail     => 0);
 
       return First;
    end Allocate_Collections;
