@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
@@ -53,6 +55,12 @@ with AMF.Facility;
 with Generator.Names;
 
 package body Generator.Analyzer is
+
+   procedure Classify_Elements
+    (Info     : not null Metamodel_Information_Access;
+     Elements : AMF.Elements.Collections.Set_Of_Element);
+   --  Classify elements of the metamodel by classes and fill corresponding
+   --  members of information.
 
    procedure Compute_All_Properties
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
@@ -73,6 +81,8 @@ package body Generator.Analyzer is
         := Extent.Elements;
 
    begin
+      Classify_Elements (Metamodel_Info, Elements);
+
       --  Compute complete set of properties for each class.
 
       for J in 1 .. Elements.Length loop
@@ -123,6 +133,38 @@ package body Generator.Analyzer is
          end if;
       end loop;
    end Analyze_Model;
+
+   -----------------------
+   -- Classify_Elements --
+   -----------------------
+
+   procedure Classify_Elements
+    (Info     : not null Metamodel_Information_Access;
+     Elements : AMF.Elements.Collections.Set_Of_Element)
+   is
+      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+
+   begin
+      --  Classify elements and fills All_Classes and All_Associations sets.
+
+      for J in 1 .. Elements.Length loop
+         Element :=
+           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
+
+         if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
+            Metamodel_Info.Associations.Insert (Element);
+
+         elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            Metamodel_Info.Classes.Insert (Element);
+
+         elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+            Metamodel_Info.Data_Types.Insert (Element);
+
+         elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
+            Metamodel_Info.Packages.Insert (Element);
+         end if;
+      end loop;
+   end Classify_Elements;
 
    ----------------------------
    -- Compute_All_Properties --

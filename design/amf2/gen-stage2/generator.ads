@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,7 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Parameters;
 with AMF.CMOF.Properties;
 with AMF.CMOF.Packages;
+with AMF.Elements.Collections;
 
 package Generator is
 
@@ -80,6 +81,13 @@ package Generator is
           (AMF.CMOF.Elements.CMOF_Element_Access,
            Positive,
            AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=");
+
+   package Number_CMOF_Element_Maps is
+     new Ada.Containers.Ordered_Maps
+          (Positive,
+           AMF.CMOF.Elements.CMOF_Element_Access,
+           "<",
            AMF.CMOF.Elements."=");
 
    package CMOF_Element_Sets is
@@ -186,6 +194,34 @@ package Generator is
 ----   package CMOF_Property_Attribute_Homograph_Maps is
 ----     new Ada.Containers.
 
+   ---------------------------
+   -- Metamodel information --
+   ---------------------------
+
+   type Metamodel_Information is tagged limited record
+      Associations                 : CMOF_Element_Sets.Set;
+      Classes                      : CMOF_Element_Sets.Set;
+      Data_Types                   : CMOF_Element_Sets.Set;
+      Packages                     : CMOF_Element_Sets.Set;
+      --  All classes, associations, data types and packages of the model
+      --  correspondingly.
+
+      Number_Element               : Number_CMOF_Element_Maps.Map;
+      --  Mapping of the assigned number to corresponding element.
+
+      First_Class                  : Positive;
+      Last_Class                   : Natural;
+      First_Class_Property         : Positive;
+      Last_Class_Property          : Natural;
+      Last_Multiple_Class_Property : Natural;
+      --  First and last numbers are assigned to:
+      --   - classes
+      --   - properties owned by classes
+      --   - multiple properties of element type owned by classes
+   end record;
+
+   type Metamodel_Information_Access is access all Metamodel_Information;
+
    ------------------------
    -- Global information --
    ------------------------
@@ -208,11 +244,9 @@ package Generator is
    Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    --  Root package of metamodel.
 
-   First_Class_Property           : Positive;
-   Last_Class_Property            : Natural;
-   Last_Collection_Class_Property : Natural;
-   --  Offsets of first and last properties owned by classes and last property
-   --  of collection of element type owned by classes.
+   Metamodel_Info : Metamodel_Information_Access := new Metamodel_Information;
+   --  Metamodel information. This is temporal variable to assist code
+   --  refactoring.
 
    Generate_Attributes   : Boolean := True;
    Generate_Constructors : Boolean := True;

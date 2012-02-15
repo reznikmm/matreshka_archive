@@ -960,9 +960,10 @@ package body Generator.Attributes is
           & "_Types.Element_Kinds,");
       Put_Line
        ("            AMF.Internals.CMOF_Element range"
-          & Integer'Wide_Wide_Image (First_Class_Property)
+          & Integer'Wide_Wide_Image (Metamodel_Info.First_Class_Property)
           & " .."
-          & Integer'Wide_Wide_Image (Last_Collection_Class_Property)
+          & Integer'Wide_Wide_Image
+             (Metamodel_Info.Last_Multiple_Class_Property)
           & ")");
       Put_Line ("       of AMF.Internals.AMF_Collection_Of_Element :=");
       Put_Line ("        (E_None =>");
@@ -978,9 +979,10 @@ package body Generator.Attributes is
           & "_Types.Element_Kinds,");
       Put_Line
        ("            AMF.Internals.CMOF_Element range"
-          & Integer'Wide_Wide_Image (Last_Collection_Class_Property + 1)
+          & Integer'Wide_Wide_Image
+             (Metamodel_Info.Last_Multiple_Class_Property + 1)
           & " .."
-          & Integer'Wide_Wide_Image (Last_Class_Property)
+          & Integer'Wide_Wide_Image (Metamodel_Info.Last_Class_Property)
           & ") of Natural :=");
       Put_Line ("        (E_None =>");
       Put_Line ("          (others => 0),");

@@ -78,13 +78,6 @@ package body Generator.Metamodel is
    use type AMF.Optional_String;
    use type League.Strings.Universal_String;
 
-   package Number_Element_Maps is
-     new Ada.Containers.Ordered_Maps
-          (Natural,
-           AMF.CMOF.Elements.CMOF_Element_Access,
-           "<",
-           AMF.CMOF.Elements."=");
-
    package String_Sets is
      new Ada.Containers.Hashed_Sets
           (League.Strings.Universal_String,
@@ -103,19 +96,6 @@ package body Generator.Metamodel is
      new Ada.Containers.Ordered_Maps
           (Natural,
            League.Strings.Universal_String);
-
-   All_Associations : CMOF_Element_Sets.Set;
-   All_Classes      : CMOF_Element_Sets.Set;
-   All_Data_Types   : CMOF_Element_Sets.Set;
-   All_Packages     : CMOF_Element_Sets.Set;
-   --  All classes and associations in the model correspondingly.
-
-   First_Class : Positive;
-   Last_Class  : Natural;
-
-   Elements : AMF.Elements.Collections.Set_Of_Element;
-   --  XXX This collection need to be removed.
-   Ordered  : Number_Element_Maps.Map;
 
    Strings        : String_Sets.Set;
    String_Numbers : String_Number_Maps.Map;
@@ -218,6 +198,7 @@ package body Generator.Metamodel is
          if not Element_Numbers.Contains (Element) then
             Last := Last + 1;
             Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Ordered_Set;
 
@@ -290,6 +271,7 @@ package body Generator.Metamodel is
          if not Element_Numbers.Contains (Element) then
             Last := Last + 1;
             Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Set;
 
@@ -349,41 +331,22 @@ package body Generator.Metamodel is
       end Extract_String_Data;
 
    begin
-      --  Classify elements and fills All_Classes and All_Associations sets.
-
-      for J in 1 .. Elements.Length loop
-         Element :=
-           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
-
-         if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
-            All_Associations.Insert (Element);
-
-         elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            All_Classes.Insert (Element);
-
-         elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
-            All_Data_Types.Insert (Element);
-
-         elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
-            All_Packages.Insert (Element);
-         end if;
-      end loop;
-
       --  Assign numbers for classes and their owned properties.
 
-      First_Class := Last + 1;
-      Sort (All_Classes).Iterate (Assign_Ordered_Set'Access);
-      Last_Class := Last;
-      First_Class_Property := Last + 1;
-      Sort (All_Classes).Iterate
+      Metamodel_Info.First_Class := Last + 1;
+      Sort (Metamodel_Info.Classes).Iterate (Assign_Ordered_Set'Access);
+      Metamodel_Info.Last_Class := Last;
+      Metamodel_Info.First_Class_Property := Last + 1;
+      Sort (Metamodel_Info.Classes).Iterate
        (Assign_Collection_Of_Element_Property'Access);
-      Last_Collection_Class_Property := Last;
-      Sort (All_Classes).Iterate (Assign_Owned_By_Class_Property'Access);
-      Last_Class_Property := Last;
+      Metamodel_Info.Last_Multiple_Class_Property := Last;
+      Sort (Metamodel_Info.Classes).Iterate
+       (Assign_Owned_By_Class_Property'Access);
+      Metamodel_Info.Last_Class_Property := Last;
 
       --  Assign numbers for associations.
 
-      All_Associations.Iterate (Assign_Set'Access);
+      Metamodel_Info.Associations.Iterate (Assign_Set'Access);
 
       --  Assign numbers for other elements.
 
@@ -394,24 +357,14 @@ package body Generator.Metamodel is
          if not Element_Numbers.Contains (Element) then
             Last := Last + 1;
             Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end loop;
-
-      --  Sort elements by numbers.
-
-      for J in 1 .. Elements.Length loop
-         Ordered.Insert
-          (Element_Numbers.Element
-            (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J))),
-           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
-      end loop;
-
-      Generator.Metamodel.Elements := Elements;
 
       --  Disable generation of attributes and constructors when there are no
       --  classes in the metamodel.
 
-      if All_Classes.Is_Empty then
+      if Metamodel_Info.Classes.Is_Empty then
          Generate_Attributes := False;
          Generate_Constructors := False;
          Generate_Reflection := False;
@@ -938,20 +891,24 @@ package body Generator.Metamodel is
 
       --  Generate implementation of meta element query function.
 
-      Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
-      Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
-      Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
-      Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
+      Sort (Metamodel_Info.Packages).Iterate
+       (Generate_Package_Constant'Access);
+      Sort (Metamodel_Info.Data_Types).Iterate
+       (Generate_Data_Type_Constant'Access);
+      Sort (Metamodel_Info.Classes).Iterate (Generate_Class_Constant'Access);
+      Sort (Metamodel_Info.Classes).Iterate
+       (Generate_Class_Property_Constant'Access);
 
       if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
          --  Constants for properties owned by associations needed only to
          --  initialize CMOF model.
 
-         All_Associations.Iterate
-         (Generate_Association_Property_Constant'Access);
+         Metamodel_Info.Associations.Iterate
+          (Generate_Association_Property_Constant'Access);
       end if;
 
-      All_Associations.Iterate (Generate_Association_Constant'Access);
+      Metamodel_Info.Associations.Iterate
+       (Generate_Association_Constant'Access);
 
       Put_Header ("MB_" & Metamodel_Name.To_Wide_Wide_String, 3);
       New_Line;
@@ -1002,7 +959,7 @@ package body Generator.Metamodel is
    ---------------------------------------
 
    procedure Generate_Metamodel_Initialization is
-      Position : Number_Element_Maps.Cursor;
+      Position : Number_CMOF_Element_Maps.Cursor;
 
    begin
       Put_Header ("Initialize_Objects", 3);
@@ -1022,17 +979,20 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("   begin");
 
-      Position := Ordered.First;
+      Position := Metamodel_Info.Number_Element.First;
 
-      while Number_Element_Maps.Has_Element (Position) loop
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Metaclass_Initialization
-          (Number_Element_Maps.Element (Position));
-         Number_Element_Maps.Next (Position);
+          (Number_CMOF_Element_Maps.Element (Position));
+         Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
-      for J in 1 .. Elements.Length loop
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Properties_Initialization
-          (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
+          (Number_CMOF_Element_Maps.Element (Position));
+         Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
       Put_Line ("   end Initialize_Objects;");
@@ -1041,9 +1001,12 @@ package body Generator.Metamodel is
       Put_Line ("   procedure Initialize_Links is");
       Put_Line ("   begin");
 
-      for J in 1 .. Elements.Length loop
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Link_Initialization
-          (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
+          (Number_CMOF_Element_Maps.Element (Position));
+         Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
       Put_Line ("   end Initialize_Links;");
@@ -1525,28 +1488,33 @@ package body Generator.Metamodel is
 --      New_Line;
 --      Put_Line ("   pragma Preelaborate;");
       New_Line;
-      Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
+      Sort (Metamodel_Info.Packages).Iterate
+       (Generate_Package_Constant'Access);
       New_Line;
-      Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
+      Sort (Metamodel_Info.Data_Types).Iterate
+       (Generate_Data_Type_Constant'Access);
 
-      if not All_Classes.Is_Empty then
+      if not Metamodel_Info.Classes.Is_Empty then
          New_Line;
-         Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
+         Sort (Metamodel_Info.Classes).Iterate
+          (Generate_Class_Constant'Access);
          New_Line;
-         Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
+         Sort (Metamodel_Info.Classes).Iterate
+          (Generate_Class_Property_Constant'Access);
       end if;
 
       if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
          --  Constants for properties owned by associations needed only to
          --  initialize CMOF model.
 
-         All_Associations.Iterate
+         Metamodel_Info.Associations.Iterate
           (Generate_Association_Property_Constant'Access);
       end if;
 
-      if not All_Associations.Is_Empty then
+      if not Metamodel_Info.Associations.Is_Empty then
          New_Line;
-         All_Associations.Iterate (Generate_Association_Constant'Access);
+         Metamodel_Info.Associations.Iterate
+          (Generate_Association_Constant'Access);
       end if;
 
       if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
@@ -1557,9 +1525,9 @@ package body Generator.Metamodel is
          Put_Line ("   subtype CMOF_Meta_Class is");
          Put_Line
           ("     AMF.Internals.CMOF_Element range"
-             & Natural'Wide_Wide_Image (First_Class)
+             & Natural'Wide_Wide_Image (Metamodel_Info.First_Class)
              & " .."
-             & Natural'Wide_Wide_Image (Last_Class)
+             & Natural'Wide_Wide_Image (Metamodel_Info.Last_Class)
              & ";");
          New_Line;
       end if;
