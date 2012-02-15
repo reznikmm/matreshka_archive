@@ -445,7 +445,15 @@ package body AMF.Internals.XMI_Handlers is
             if Universal_String_Sets.Has_Element (Position) then
                URI := Universal_String_Sets.Element (Position);
                URI_Queue.Delete (Position);
-               Extent := XMI.Reader.Read_URI (URI);
+
+               --  Load document only when it is not loaded already. Some
+               --  documents with circular dependencies can register loading
+               --  of document when its loading was started but not completed
+               --  yet.
+
+               if not Documents.Contains (URI) then
+                  Extent := XMI.Reader.Read_URI (URI);
+               end if;
             end if;
          end;
 
