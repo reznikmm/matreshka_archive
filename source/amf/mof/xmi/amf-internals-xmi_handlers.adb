@@ -224,6 +224,8 @@ package body AMF.Internals.XMI_Handlers is
 
       Id          : constant League.Strings.Universal_String
         := Attributes.Value (Self.XMI_Namespace, Id_Name);
+      Has_Id      : constant Boolean
+        := Attributes.Is_Specified (Self.XMI_Namespace, Id_Name);
       Href_Index  : constant Natural := Attributes.Index (Href_Name);
       Idref_Index : constant Natural
         := Attributes.Index (Self.XMI_Namespace, Idref_Name);
@@ -293,11 +295,16 @@ package body AMF.Internals.XMI_Handlers is
 
          return;
 
-      else
-         --  Create new element.
+      elsif Has_Id then
+         --  Create new element, assign identifier and register it.
 
          Self.Current := Self.Extent.Create (Meta_Class, Id);
          Self.Mapping.Insert (Id, Self.Current);
+
+      else
+         --  Create new element without identifier.
+
+         Self.Current := Self.Extent.Create (Meta_Class);
       end if;
 
       --  Establish ownership link.
