@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,20 +61,29 @@ procedure Gen2 is
 
    use Ada.Wide_Wide_Text_IO;
 
-   Extent   : AMF.URI_Stores.URI_Store_Access;
-   Elements : AMF.Elements.Collections.Set_Of_Element;
+   Extent : AMF.URI_Stores.URI_Store_Access;
 
 begin
    Generator.Metamodel_Name := League.Application.Arguments.Element (3);
 
+   --  Initialize facility.
+
    AMF.Facility.Initialize;
+
+   --  Load metamodel.
+
+   Put_Line (Standard_Error, "Loading metamodels...");
    Extent :=
      XMI.Reader.Read_File
       (League.Application.Arguments.Element (1),
        League.Application.Arguments.Element (2));
-   Elements := Extent.Elements;
 
+   --  Load type mapping.
+
+   Put_Line (Standard_Error, "Loading type mapping...");
    Generator.Type_Mapping.Load_Mapping;
+
+   --  Analyze metamodels.
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);
