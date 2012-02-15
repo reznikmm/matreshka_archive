@@ -9,7 +9,9 @@
    - references are updated to link to elements of UML 2.4 metamodels
      (PrimitiveTypes and UML);
 
-   - type Real is replaced by PrimitiveTypes::Real.
+   - type Real is replaced by PrimitiveTypes::Real;
+
+   - AnyType has Classifier as superclass.
 -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="OCL" name="OCL">
@@ -178,7 +180,9 @@
         <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
       </ownedAttribute>
     </ownedType>
-    <ownedType xmi:id="AnyType" xmi:type="cmof:Class" name="AnyType"/>
+    <ownedType xmi:id="AnyType" xmi:type="cmof:Class" name="AnyType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    </ownedType>
     <ownedType xmi:id="MessageType" xmi:type="cmof:Class" name="MessageType">
       <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
       <ownedAttribute xmi:type="cmof:Property" name="referredSignal" lower="0">
