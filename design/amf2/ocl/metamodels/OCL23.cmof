@@ -7,7 +7,9 @@
      one flat package now;
 
    - references are updated to link to elements of UML 2.4 metamodels
-     (PrimitiveTypes and UML).
+     (PrimitiveTypes and UML);
+
+   - type Real is replaced by PrimitiveTypes::Real.
 -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="OCL" name="OCL">
@@ -90,7 +92,9 @@
       </ownedAttribute>
     </ownedType>
     <ownedType xmi:id="RealLiteralExp" xmi:type="cmof:Class" name="RealLiteralExp" superClass="NumericLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="realSymbol" type="Real"/>
+      <ownedAttribute xmi:type="cmof:Property" name="realSymbol">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Real"/>
+      </ownedAttribute>
     </ownedType>
     <ownedType xmi:id="LiteralExp" xmi:type="cmof:Class" isAbstract="true" name="LiteralExp" superClass="OclExpression"/>
     <ownedType xmi:id="IterateExp" xmi:type="cmof:Class" name="IterateExp" superClass="LoopExp">
@@ -175,7 +179,6 @@
       </ownedAttribute>
     </ownedType>
     <ownedType xmi:id="AnyType" xmi:type="cmof:Class" name="AnyType"/>
-    <ownedType xmi:id="Real" xmi:type="cmof:PrimitiveType" name="Real"/>
     <ownedType xmi:id="MessageType" xmi:type="cmof:Class" name="MessageType">
       <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
       <ownedAttribute xmi:type="cmof:Property" name="referredSignal" lower="0">
