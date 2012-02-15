@@ -59,4 +59,5 @@
 
   <!--  For internal purposes only  -->
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof" uri="../metamodels/PrimitiveTypes24.cmof"/>
+  <uri name="http://www.omg.org/spec/UML/20100901/UML.cmof" uri="../metamodels/UML24.cmof"/>
 </catalog>
