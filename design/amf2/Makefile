@@ -74,6 +74,19 @@ gen-uml: gens
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -r .new
 
+gen-ocl: gens
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api data/metamodels/OCL23.cmof 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
+	rm -rf .new
+#	mkdir .new
+#	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 data/metamodels/OCL23.cmof 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
+#	gnatchop -gnat12 -w .new/sources.ada .new
+#	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
+#	rm -r .new
+
 clean:
 	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj uml/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
 
