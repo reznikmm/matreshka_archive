@@ -9,7 +9,7 @@
    - references are updated to link to elements of UML 2.4 metamodels
      (PrimitiveTypes and UML).
 -->
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://www.omg.org/spec/MOF/200601/cmof">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="OCL" name="OCL">
     <ownedType xmi:id="BooleanLiteralExp" xmi:type="cmof:Class" name="BooleanLiteralExp" superClass="PrimitiveLiteralExp">
       <ownedAttribute xmi:type="cmof:Property" name="booleanSymbol">
