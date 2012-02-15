@@ -429,7 +429,7 @@ procedure Gen_API is
 
       if Proxy then
          Put_Line (";");
-         
+
       else
          Put_Line (" is abstract;");
       end if;
@@ -1861,7 +1861,7 @@ begin
       then
          Generate_Public_API := False;
          Generate_API_Stubs := True;
-      
+
       else
          raise Program_Error;
       end if;
