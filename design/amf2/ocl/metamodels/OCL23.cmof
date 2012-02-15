@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This is modified version of the official OCL 2.3 metamodel. Most significant
+  changes are:
+
+   - 'Expressions' and 'Types' nested packages are removed, all elements are in
+     one flat package now;
+
+   - references are updated to link to elements of UML 2.4 metamodels
+     (PrimitiveTypes and UML).
+-->
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://www.omg.org/spec/MOF/200601/cmof">
+  <cmof:Package xmi:id="OCL" name="OCL">
+    <ownedType xmi:id="BooleanLiteralExp" xmi:type="cmof:Class" name="BooleanLiteralExp" superClass="PrimitiveLiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="booleanSymbol">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="CallExp" xmi:type="cmof:Class" isAbstract="true" name="CallExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="source" lower="0" type="OclExpression"/>
+    </ownedType>
+    <ownedType xmi:id="CollectionKind" xmi:type="cmof:Enumeration" name="CollectionKind">
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Collection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Set"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="OrderedSet"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Bag"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Sequence"/>
+    </ownedType>
+    <ownedType xmi:id="OclExpression" xmi:type="cmof:Class" isAbstract="true" name="OclExpression">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
+    </ownedType>
+    <ownedType xmi:id="UnlimitedNaturalExp" xmi:type="cmof:Class" name="UnlimitedNaturalExp" superClass="NumericLiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="symbol">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#UnlimitedNatural"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="EnumLiteralExp" xmi:type="cmof:Class" name="EnumLiteralExp" superClass="LiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="referredEnumLiteral" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#EnumerationLiteral"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="IfExp" xmi:type="cmof:Class" name="IfExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="condition" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="thenExpression" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="elseExpression" type="OclExpression"/>
+    </ownedType>
+    <ownedType xmi:id="LetExp" xmi:type="cmof:Class" name="LetExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="in" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="variable" type="Variable"/>
+    </ownedType>
+    <ownedType xmi:id="Variable" xmi:type="cmof:Class" name="Variable">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="initExpression" lower="0" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" name="representedParameter" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Parameter"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="PropertyCallExp" xmi:type="cmof:Class" name="PropertyCallExp" superClass="NavigationCallExp">
+      <ownedAttribute xmi:type="cmof:Property" name="referredProperty" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="VariableExp" xmi:type="cmof:Class" name="VariableExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" name="referredVariable" lower="0" type="Variable"/>
+    </ownedType>
+    <ownedType xmi:id="TypeExp" xmi:type="cmof:Class" name="TypeExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" name="referredType" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="LoopExp" xmi:type="cmof:Class" isAbstract="true" name="LoopExp" superClass="CallExp">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="body" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="iterator" isOrdered="true" lower="0" upper="*" type="Variable"/>
+    </ownedType>
+    <ownedType xmi:id="IteratorExp" xmi:type="cmof:Class" name="IteratorExp" superClass="LoopExp"/>
+    <ownedType xmi:id="StringLiteralExp" xmi:type="cmof:Class" name="StringLiteralExp" superClass="PrimitiveLiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="stringSymbol">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="IntegerLiteralExp" xmi:type="cmof:Class" name="IntegerLiteralExp" superClass="NumericLiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="integerSymbol">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Integer"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="OperationCallExp" xmi:type="cmof:Class" name="OperationCallExp" superClass="FeatureCallExp">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="argument" isOrdered="true" lower="0" upper="*" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" name="referredOperation" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Operation"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="RealLiteralExp" xmi:type="cmof:Class" name="RealLiteralExp" superClass="NumericLiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="realSymbol" type="Real"/>
+    </ownedType>
+    <ownedType xmi:id="LiteralExp" xmi:type="cmof:Class" isAbstract="true" name="LiteralExp" superClass="OclExpression"/>
+    <ownedType xmi:id="IterateExp" xmi:type="cmof:Class" name="IterateExp" superClass="LoopExp">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="result" lower="0" type="Variable"/>
+    </ownedType>
+    <ownedType xmi:id="PrimitiveLiteralExp" xmi:type="cmof:Class" isAbstract="true" name="PrimitiveLiteralExp" superClass="LiteralExp"/>
+    <ownedType xmi:id="NumericLiteralExp" xmi:type="cmof:Class" isAbstract="true" name="NumericLiteralExp" superClass="PrimitiveLiteralExp"/>
+    <ownedType xmi:id="CollectionLiteralExp" xmi:type="cmof:Class" name="CollectionLiteralExp" superClass="LiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" name="kind" type="CollectionKind"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="part" isOrdered="true" lower="0" upper="*" type="CollectionLiteralPart"/>
+    </ownedType>
+    <ownedType xmi:id="CollectionLiteralPart" xmi:type="cmof:Class" isAbstract="true" name="CollectionLiteralPart">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
+    </ownedType>
+    <ownedType xmi:id="CollectionItem" xmi:type="cmof:Class" name="CollectionItem" superClass="CollectionLiteralPart">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="item" type="OclExpression"/>
+    </ownedType>
+    <ownedType xmi:id="CollectionRange" xmi:type="cmof:Class" name="CollectionRange" superClass="CollectionLiteralPart">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="first" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="last" type="OclExpression"/>
+    </ownedType>
+    <ownedType xmi:id="TupleLiteralExp" xmi:type="cmof:Class" name="TupleLiteralExp" superClass="LiteralExp">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="part" isOrdered="true" lower="0" upper="*" type="CollectionLiteralExp"/>
+    </ownedType>
+    <ownedType xmi:id="NullLiteralExp" xmi:type="cmof:Class" name="NullLiteralExp" superClass="PrimitiveLiteralExp"/>
+    <ownedType xmi:id="ExpressionInOcl" xmi:type="cmof:Class" name="ExpressionInOcl" superClass="OpaqueExpression">
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="bodyExpression" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="contextVariable" lower="0" type="Variable"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="resultVariable" lower="0" type="Variable"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="parameterVariable" isOrdered="true" lower="0" upper="*" type="Variable"/>
+    </ownedType>
+    <ownedType xmi:id="OpaqueExpression" xmi:type="cmof:Class" name="OpaqueExpression"/>
+    <ownedType xmi:id="InvalidLiteralExp" xmi:type="cmof:Class" name="InvalidLiteralExp" superClass="LiteralExp"/>
+    <ownedType xmi:id="FeatureCallExp" xmi:type="cmof:Class" isAbstract="true" name="FeatureCallExp" superClass="CallExp"/>
+    <ownedType xmi:id="TupleLiteralPart" xmi:type="cmof:Class" name="TupleLiteralPart">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
+      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="attribute" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="NavigationCallExp" xmi:type="cmof:Class" isAbstract="true" name="NavigationCallExp" superClass="FeatureCallExp">
+      <ownedAttribute xmi:type="cmof:Property" name="qualifier" isOrdered="true" lower="0" upper="*" type="OclExpression"/>
+      <ownedAttribute xmi:type="cmof:Property" name="navigationSource" isOrdered="true" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="AssociationClassCallExp" xmi:type="cmof:Class" name="AssociationClassCallExp" superClass="NavigationCallExp">
+      <ownedAttribute xmi:type="cmof:Property" name="referredAssociationClass" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#AssociationClass"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="MessageExp" xmi:type="cmof:Class" name="MessageExp" superClass="OclExpression"/>
+    <ownedType xmi:id="UnspecifiedValueExp" xmi:type="cmof:Class" name="UnspecifiedValueExp" superClass="OclExpression"/>
+    <ownedType xmi:id="StateExp" xmi:type="cmof:Class" name="StateExp" superClass="OclExpression">
+      <ownedAttribute xmi:type="cmof:Property" name="referredState" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#State"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="BagType" xmi:type="cmof:Class" name="BagType" superClass="CollectionType"/>
+    <ownedType xmi:id="CollectionType" xmi:type="cmof:Class" name="CollectionType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#DataType"/>
+      <ownedAttribute xmi:type="cmof:Property" name="elementType">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="VoidType" xmi:type="cmof:Class" name="VoidType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    </ownedType>
+    <ownedType xmi:id="TupleType" xmi:type="cmof:Class" name="TupleType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#DataType"/>
+    </ownedType>
+    <ownedType xmi:id="SetType" xmi:type="cmof:Class" name="SetType" superClass="CollectionType"/>
+    <ownedType xmi:id="SequenceType" xmi:type="cmof:Class" name="SequenceType" superClass="CollectionType"/>
+    <ownedType xmi:id="OrderedSetType" xmi:type="cmof:Class" name="OrderedSetType" superClass="CollectionType"/>
+    <ownedType xmi:id="InvalidType" xmi:type="cmof:Class" name="InvalidType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    </ownedType>
+    <ownedType xmi:id="TemplateParameterType" xmi:type="cmof:Class" name="TemplateParameterType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      <ownedAttribute xmi:type="cmof:Property" name="specification" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+      </ownedAttribute>
+    </ownedType>
+    <ownedType xmi:id="AnyType" xmi:type="cmof:Class" name="AnyType"/>
+    <ownedType xmi:id="Real" xmi:type="cmof:PrimitiveType" name="Real"/>
+    <ownedType xmi:id="MessageType" xmi:type="cmof:Class" name="MessageType">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      <ownedAttribute xmi:type="cmof:Property" name="referredSignal" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Signal"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" name="referredOperation" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Operation"/>
+      </ownedAttribute>
+    </ownedType>
+  </cmof:Package>
+</xmi:XMI>
