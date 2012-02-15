@@ -111,4 +111,10 @@
     <mapping representation="value" memberName="Visibility_Kind_Value" memberKindName="M_Visibility_Kind"/>
     <mapping representation="holder" memberName="Visibility_Kind_Holder" memberKindName="M_Visibility_Kind_Holder"/>
   </type>
+
+  <!--  Enumeration type from OCL specification  -->
+
+  <type uri="http://www.omg.org/spec/OCL/20090501/OCL.cmof#CollectionKind">
+    <mapping representation="value" memberName="Collection_Kind_Value" memberKindName="M_Collection_Kind"/>
+  </type>
 </mappings>
