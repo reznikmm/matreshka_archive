@@ -44,14 +44,14 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-with AMF.OCL.Primitive_Literal_Exps;
+with AMF.OCL.Literal_Exps;
 
 package AMF.OCL.Null_Literal_Exps is
 
    pragma Preelaborate;
 
    type OCL_Null_Literal_Exp is limited interface
-     and AMF.OCL.Primitive_Literal_Exps.OCL_Primitive_Literal_Exp;
+     and AMF.OCL.Literal_Exps.OCL_Literal_Exp;
 
    type OCL_Null_Literal_Exp_Access is
      access all OCL_Null_Literal_Exp'Class;

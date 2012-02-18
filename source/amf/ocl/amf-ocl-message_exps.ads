@@ -45,6 +45,9 @@
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 with AMF.OCL.Ocl_Expressions;
+limited with AMF.OCL.Ocl_Expressions.Collections;
+limited with AMF.UML.Call_Operation_Actions;
+limited with AMF.UML.Send_Signal_Actions;
 
 package AMF.OCL.Message_Exps is
 
@@ -56,5 +59,47 @@ package AMF.OCL.Message_Exps is
    type OCL_Message_Exp_Access is
      access all OCL_Message_Exp'Class;
    for OCL_Message_Exp_Access'Storage_Size use 0;
+
+   not overriding function Get_Target
+    (Self : not null access constant OCL_Message_Exp)
+       return AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access is abstract;
+   --  Getter of MessageExp::target.
+   --
+
+   not overriding procedure Set_Target
+    (Self : not null access OCL_Message_Exp;
+     To   : AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access) is abstract;
+   --  Setter of MessageExp::target.
+   --
+
+   not overriding function Get_Argument
+    (Self : not null access constant OCL_Message_Exp)
+       return AMF.OCL.Ocl_Expressions.Collections.Ordered_Set_Of_OCL_Ocl_Expression is abstract;
+   --  Getter of MessageExp::argument.
+   --
+
+   not overriding function Get_Called_Operation
+    (Self : not null access constant OCL_Message_Exp)
+       return AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access is abstract;
+   --  Getter of MessageExp::calledOperation.
+   --
+
+   not overriding procedure Set_Called_Operation
+    (Self : not null access OCL_Message_Exp;
+     To   : AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access) is abstract;
+   --  Setter of MessageExp::calledOperation.
+   --
+
+   not overriding function Get_Sent_Signal
+    (Self : not null access constant OCL_Message_Exp)
+       return AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access is abstract;
+   --  Getter of MessageExp::sentSignal.
+   --
+
+   not overriding procedure Set_Sent_Signal
+    (Self : not null access OCL_Message_Exp;
+     To   : AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access) is abstract;
+   --  Setter of MessageExp::sentSignal.
+   --
 
 end AMF.OCL.Message_Exps;

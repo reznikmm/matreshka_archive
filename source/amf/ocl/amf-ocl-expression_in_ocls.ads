@@ -45,15 +45,18 @@
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 limited with AMF.OCL.Ocl_Expressions;
-with AMF.OCL.Opaque_Expressions;
 limited with AMF.OCL.Variables.Collections;
+limited with AMF.UML.Classifiers;
+with AMF.UML.Opaque_Expressions;
 
 package AMF.OCL.Expression_In_Ocls is
 
    pragma Preelaborate;
 
    type OCL_Expression_In_Ocl is limited interface
-     and AMF.OCL.Opaque_Expressions.OCL_Opaque_Expression;
+     and AMF.UML.Opaque_Expressions.UML_Opaque_Expression
+     and AMF.UML.Opaque_Expressions.UML_Opaque_Expression
+     and AMF.UML.Opaque_Expressions.UML_Opaque_Expression;
 
    type OCL_Expression_In_Ocl_Access is
      access all OCL_Expression_In_Ocl'Class;
@@ -99,6 +102,18 @@ package AMF.OCL.Expression_In_Ocls is
     (Self : not null access constant OCL_Expression_In_Ocl)
        return AMF.OCL.Variables.Collections.Ordered_Set_Of_OCL_Variable is abstract;
    --  Getter of ExpressionInOcl::parameterVariable.
+   --
+
+   not overriding function Get_Generated_Type
+    (Self : not null access constant OCL_Expression_In_Ocl)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of ExpressionInOcl::generatedType.
+   --
+
+   not overriding procedure Set_Generated_Type
+    (Self : not null access OCL_Expression_In_Ocl;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of ExpressionInOcl::generatedType.
    --
 
 end AMF.OCL.Expression_In_Ocls;

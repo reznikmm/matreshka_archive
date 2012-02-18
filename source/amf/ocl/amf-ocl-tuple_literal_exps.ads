@@ -44,8 +44,8 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-limited with AMF.OCL.Collection_Literal_Exps.Collections;
 with AMF.OCL.Literal_Exps;
+limited with AMF.OCL.Tuple_Literal_Parts.Collections;
 
 package AMF.OCL.Tuple_Literal_Exps is
 
@@ -60,7 +60,7 @@ package AMF.OCL.Tuple_Literal_Exps is
 
    not overriding function Get_Part
     (Self : not null access constant OCL_Tuple_Literal_Exp)
-       return AMF.OCL.Collection_Literal_Exps.Collections.Ordered_Set_Of_OCL_Collection_Literal_Exp is abstract;
+       return AMF.OCL.Tuple_Literal_Parts.Collections.Ordered_Set_Of_OCL_Tuple_Literal_Part is abstract;
    --  Getter of TupleLiteralExp::part.
    --
 
