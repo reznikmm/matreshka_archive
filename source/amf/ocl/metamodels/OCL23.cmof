@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
-  <cmof:Package xmi:id='eee_1045467100313_135436_1' name='OCL' visibility='public'>
+  <cmof:Package xmi:id='eee_1045467100313_135436_1' name='OCL' visibility='public' uri='http://www.omg.org/spec/OCL/20090501'>
     <packagedElement xmi:type='cmof:Class' xmi:id='BooleanLiteralExp' name='BooleanLiteralExp' visibility='public' superClass='PrimitiveLiteralExp'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329328520627_339744_1907' name='booleanSymbol' visibility='public'>
         <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean'/>
