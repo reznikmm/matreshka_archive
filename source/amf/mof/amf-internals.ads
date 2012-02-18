@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,7 +55,8 @@ package AMF.Internals is
    CMOF_Metamodel            : constant AMF_Metamodel := 0;
    Primitive_Types_Metamodel : constant AMF_Metamodel := 1;
    UML_Metamodel             : constant AMF_Metamodel := 2;
-   IATS_Metamodel            : constant AMF_Metamodel := 3;
+   OCL_Metamodel             : constant AMF_Metamodel := 3;
+   IATS_Metamodel            : constant AMF_Metamodel := 4;
 
    --------------------------------------------------------------
    --  Element identifier and its subtypes for each metamodel  --
@@ -67,10 +68,12 @@ package AMF.Internals is
 
    subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
    subtype UML_Element   is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
-   subtype IATS_Element  is AMF_Element range 16#03000000# .. 16#03FFFFFF#;
+   subtype OCL_Element   is AMF_Element range 16#03000000# .. 16#03FFFFFF#;
+   subtype IATS_Element  is AMF_Element range 16#04000000# .. 16#04FFFFFF#;
 
    No_CMOF_Element : constant CMOF_Element := CMOF_Element'First;
    No_UML_Element  : constant UML_Element  := UML_Element'First;
+   No_OCL_Element  : constant OCL_Element  := OCL_Element'First;
    No_IATS_Element : constant IATS_Element := IATS_Element'First;
 
    -----------------------
