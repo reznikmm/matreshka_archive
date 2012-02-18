@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,6 +60,31 @@ package body Generator.Names is
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
        return Wide_Wide_String
    is
+      function Get_Ada_Name
+       (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+          return League.Strings.Universal_String;
+
+      ------------------
+      -- Get_Ada_Name --
+      ------------------
+
+      function Get_Ada_Name
+       (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+          return League.Strings.Universal_String
+      is
+         Name : constant AMF.Optional_String := Attribute.Get_Name;
+
+      begin
+         if Name.Is_Empty then
+            return League.Strings.Empty_Universal_String;
+
+         else
+            return
+              League.Strings.To_Universal_String
+               (To_Ada_Identifier (Name.Value));
+         end if;
+      end Get_Ada_Name;
+
       Member_End  : constant
         AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
           := Association.Get_Member_End;
@@ -68,11 +93,9 @@ package body Generator.Names is
       Second_End  : constant AMF.CMOF.Properties.CMOF_Property_Access
         := Member_End.Element (2);
       First_Name  : constant League.Strings.Universal_String
-        := League.Strings.To_Universal_String
-            (To_Ada_Identifier (First_End.Get_Name.Value));
+        := Get_Ada_Name (First_End);
       Second_Name : constant League.Strings.Universal_String
-        := League.Strings.To_Universal_String
-            (To_Ada_Identifier (Second_End.Get_Name.Value));
+        := Get_Ada_Name (Second_End);
       First_Type  : constant AMF.CMOF.Types.CMOF_Type_Access
         := First_End.Get_Type;
       Second_Type : constant AMF.CMOF.Types.CMOF_Type_Access
