@@ -289,7 +289,10 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        raise Program_Error;
+                        --  There is no default value specified, initialize to
+                        --  some valid value.
+
+                        Put (" (M_Boolean, False),");
 
                      else
                         if Boolean'Wide_Wide_Value
@@ -322,7 +325,10 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        raise Program_Error;
+                        --  There is no default value specified, initialize to
+                        --  some valid value.
+
+                        Put (" (M_Integer, 0),");
 
                      else
                         Put
@@ -461,7 +467,10 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        raise Program_Error;
+                        --  There is no default value specified, initialize to
+                        --  some valid value.
+
+                        Put (" (M_Unlimited_Natural, (False, 0)),");
 
                      else
                         Put
