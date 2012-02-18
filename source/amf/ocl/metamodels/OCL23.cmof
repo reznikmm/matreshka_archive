@@ -19,7 +19,7 @@
       <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329115626_92020_1936' name='appliedElement' visibility='public' type='CallExp' association='_17_0_1_bc902f8_1329329115626_890657_1934' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Enumeration' xmi:id='CollectionKind' name='CollectionKind' visibility='public'>
-      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329235659_149336_1974' name='Collection' visibility='public' enumeration='CollectionKind'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='CollectionKind-Collection' name='Collection' visibility='public' enumeration='CollectionKind'/>
       <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329239399_858074_1976' name='Set' visibility='public' enumeration='CollectionKind'/>
       <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329240721_825969_1978' name='OrderedSet' visibility='public' enumeration='CollectionKind'/>
       <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329243970_940206_1980' name='Bag' visibility='public' enumeration='CollectionKind'/>
