@@ -377,7 +377,15 @@ procedure Gen_API is
       elsif Attribute_Type.Get_Name = String_Name then
          case Representation (Attribute) is
             when Value =>
-               null;
+               Put_Line
+                ("      AMF.Internals.Tables."
+                   & Generator.Metamodel_Name
+                   & "_Attributes.Internal_Set_"
+                   & Attribute_Name);
+               Put_Line ("       (Self.Id,");
+               Put_Line
+                ("        League.Strings.Internals.Internal (To));");
+
 
             when Holder =>
                Put_Line ("      if To.Is_Empty then");
