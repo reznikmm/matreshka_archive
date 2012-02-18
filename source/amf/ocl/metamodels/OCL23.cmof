@@ -1,196 +1,389 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  This is modified version of the official OCL 2.3 metamodel. Most significant
-  changes are:
-
-   - 'Expressions' and 'Types' nested packages are removed, all elements are in
-     one flat package now;
-
-   - references are updated to link to elements of UML 2.4 metamodels
-     (PrimitiveTypes and UML);
-
-   - type Real is replaced by PrimitiveTypes::Real;
-
-   - AnyType has Classifier as superclass.
--->
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
-  <cmof:Package xmi:id="OCL" name="OCL">
-    <packagedElement xmi:id="BooleanLiteralExp" xmi:type="cmof:Class" name="BooleanLiteralExp" superClass="PrimitiveLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="booleanSymbol">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+<?xml version='1.0' encoding='UTF-8'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:id='eee_1045467100313_135436_1' name='OCL' visibility='public'>
+    <packagedElement xmi:type='cmof:Class' xmi:id='BooleanLiteralExp' name='BooleanLiteralExp' visibility='public' superClass='PrimitiveLiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329328520627_339744_1907' name='booleanSymbol' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="CallExp" xmi:type="cmof:Class" isAbstract="true" name="CallExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="source" lower="0" type="OclExpression"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='PrimitiveLiteralExp' name='PrimitiveLiteralExp' visibility='public' isAbstract='true' superClass='LiteralExp'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CallExp' name='CallExp' visibility='public' isAbstract='true' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329115626_819391_1935' name='source' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329329115626_890657_1934' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="CollectionKind" xmi:type="cmof:Enumeration" name="CollectionKind">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Collection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Set"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="OrderedSet"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Bag"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" name="Sequence"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='OclExpression' name='OclExpression' visibility='public' isAbstract='true'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement'/>
     </packagedElement>
-    <packagedElement xmi:id="OclExpression" xmi:type="cmof:Class" isAbstract="true" name="OclExpression">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329329115626_890657_1934' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329329115626_819391_1935'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329329115626_92020_1936'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329115626_92020_1936' name='appliedElement' visibility='public' type='CallExp' association='_17_0_1_bc902f8_1329329115626_890657_1934' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="UnlimitedNaturalExp" xmi:type="cmof:Class" name="UnlimitedNaturalExp" superClass="NumericLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="symbol">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#UnlimitedNatural"/>
+    <packagedElement xmi:type='cmof:Enumeration' xmi:id='CollectionKind' name='CollectionKind' visibility='public'>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329235659_149336_1974' name='Collection' visibility='public' enumeration='CollectionKind'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329239399_858074_1976' name='Set' visibility='public' enumeration='CollectionKind'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329240721_825969_1978' name='OrderedSet' visibility='public' enumeration='CollectionKind'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329243970_940206_1980' name='Bag' visibility='public' enumeration='CollectionKind'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='_17_0_1_bc902f8_1329329248191_944050_1982' name='Sequence' visibility='public' enumeration='CollectionKind'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='NumericLiteralExp' name='NumericLiteralExp' visibility='public' isAbstract='true' superClass='PrimitiveLiteralExp'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='UnlimitedNaturalLiteralExp' name='UnlimitedNaturalLiteralExp' visibility='public' superClass='NumericLiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329712466_117272_2050' name='unlimitedNaturalSymbol' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#UnlimitedNatural'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="EnumLiteralExp" xmi:type="cmof:Class" name="EnumLiteralExp" superClass="LiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="referredEnumLiteral" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#EnumerationLiteral"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='LiteralExp' name='LiteralExp' visibility='public' isAbstract='true' superClass='OclExpression'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='EnumLiteralExp' name='EnumLiteralExp' visibility='public' superClass='LiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329935559_960972_2120' name='referredEnumLiteral' visibility='public' association='_17_0_1_bc902f8_1329329935559_220832_2119' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#EnumerationLiteral'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="IfExp" xmi:type="cmof:Class" name="IfExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="condition" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="thenExpression" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="elseExpression" type="OclExpression"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329329935559_220832_2119' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329329935559_960972_2120'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329329935560_113401_2121'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329329935560_113401_2121' name='literalExp' visibility='public' type='EnumLiteralExp' association='_17_0_1_bc902f8_1329329935559_220832_2119' upper='*' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="LetExp" xmi:type="cmof:Class" name="LetExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="in" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="variable" type="Variable"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='IfExp' name='IfExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330082166_707523_2172' name='condition' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329330082165_387144_2171'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330268910_909767_2201' name='thenExpression' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329330268910_117669_2200'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330391137_717707_2226' name='elseExpression' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329330391137_468592_2225'/>
     </packagedElement>
-    <packagedElement xmi:id="Variable" xmi:type="cmof:Class" name="Variable">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="initExpression" lower="0" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" name="representedParameter" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Parameter"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330082165_387144_2171' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330082166_707523_2172'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330082166_165480_2173'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330082166_165480_2173' name='ifOwner' visibility='public' type='IfExp' association='_17_0_1_bc902f8_1329330082165_387144_2171' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330268910_117669_2200' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330268910_909767_2201'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330268911_739413_2202'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330268911_739413_2202' name='thenOwner' visibility='public' type='IfExp' association='_17_0_1_bc902f8_1329330268910_117669_2200' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330391137_468592_2225' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330391137_717707_2226'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330391137_228532_2227'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330391137_228532_2227' name='elseOwner' visibility='public' type='IfExp' association='_17_0_1_bc902f8_1329330391137_468592_2225' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='LetExp' name='LetExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330542092_663750_2274' name='in' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329330542091_939472_2273'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330628344_193783_2313' name='variable' visibility='public' isComposite='true' type='Variable' association='_17_0_1_bc902f8_1329330628344_778300_2312'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330542091_939472_2273' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330542092_663750_2274'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330542092_249743_2275'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330542092_249743_2275' visibility='public' type='LetExp' association='_17_0_1_bc902f8_1329330542091_939472_2273' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='Variable' name='Variable' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330755121_115084_2339' name='initExpression' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329330755121_385907_2338' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330975491_823948_2384' name='representedParameter' visibility='public' association='_17_0_1_bc902f8_1329330975491_898860_2383' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Parameter'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="PropertyCallExp" xmi:type="cmof:Class" name="PropertyCallExp" superClass="NavigationCallExp">
-      <ownedAttribute xmi:type="cmof:Property" name="referredProperty" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330628344_778300_2312' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330628344_193783_2313'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330628344_438276_2314'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330628344_438276_2314' visibility='public' type='LetExp' association='_17_0_1_bc902f8_1329330628344_778300_2312' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330755121_385907_2338' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330755121_115084_2339'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330755122_328344_2340'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330755122_328344_2340' name='initializedElement' visibility='public' type='Variable' association='_17_0_1_bc902f8_1329330755121_385907_2338' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330975491_898860_2383' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330975491_823948_2384'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329330975491_438979_2385'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330975491_438979_2385' name='variable' visibility='public' type='Variable' association='_17_0_1_bc902f8_1329330975491_898860_2383' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='NavigationCallExp' name='NavigationCallExp' visibility='public' isAbstract='true' superClass='FeatureCallExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387615018_88120_2770' name='qualifier' visibility='public' isOrdered='true' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329387615017_128823_2769' upper='*' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387751744_745437_2801' name='navigationSource' visibility='public' association='_17_0_1_bc902f8_1329387751743_52752_2800' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="VariableExp" xmi:type="cmof:Class" name="VariableExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" name="referredVariable" lower="0" type="Variable"/>
-    </packagedElement>
-    <packagedElement xmi:id="TypeExp" xmi:type="cmof:Class" name="TypeExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" name="referredType" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='PropertyCallExp' name='PropertyCallExp' visibility='public' superClass='NavigationCallExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331196165_960618_2470' name='referredProperty' visibility='public' association='_17_0_1_bc902f8_1329331196165_635846_2469' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="LoopExp" xmi:type="cmof:Class" isAbstract="true" name="LoopExp" superClass="CallExp">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="body" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="iterator" isOrdered="true" lower="0" upper="*" type="Variable"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331196165_635846_2469' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331196165_960618_2470'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331196166_703053_2471'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331196166_703053_2471' name='referingExp' visibility='public' type='PropertyCallExp' association='_17_0_1_bc902f8_1329331196165_635846_2469' upper='*' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="IteratorExp" xmi:type="cmof:Class" name="IteratorExp" superClass="LoopExp"/>
-    <packagedElement xmi:id="StringLiteralExp" xmi:type="cmof:Class" name="StringLiteralExp" superClass="PrimitiveLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="stringSymbol">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='VariableExp' name='VariableExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331331503_41452_2518' name='referredVariable' visibility='public' type='Variable' association='_17_0_1_bc902f8_1329331331503_754731_2517' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331331503_754731_2517' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331331503_41452_2518'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331331503_405182_2519'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331331503_405182_2519' name='referingExp' visibility='public' type='VariableExp' association='_17_0_1_bc902f8_1329331331503_754731_2517' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='TypeExp' name='TypeExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331473746_980760_2584' name='referredType' visibility='public' association='_17_0_1_bc902f8_1329331473746_233354_2583' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="IntegerLiteralExp" xmi:type="cmof:Class" name="IntegerLiteralExp" superClass="NumericLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="integerSymbol">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Integer"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331473746_233354_2583' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331473746_980760_2584'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331473746_403020_2585'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331473746_403020_2585' visibility='public' type='TypeExp' association='_17_0_1_bc902f8_1329331473746_233354_2583' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='LoopExp' name='LoopExp' visibility='public' isAbstract='true' superClass='CallExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331614788_414593_2630' name='body' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329331614788_971981_2629'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331692600_836216_2655' name='iterator' visibility='public' isComposite='true' isOrdered='true' type='Variable' association='_17_0_1_bc902f8_1329331692600_870259_2654' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331614788_971981_2629' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331614788_414593_2630'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331614788_535712_2631'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331614788_535712_2631' name='loopBodyOwner' visibility='public' type='LoopExp' association='_17_0_1_bc902f8_1329331614788_971981_2629' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331692600_870259_2654' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331692600_836216_2655'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329331692600_704000_2656'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331692600_704000_2656' name='loopExp' visibility='public' type='LoopExp' association='_17_0_1_bc902f8_1329331692600_870259_2654' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='IteratorExp' name='IteratorExp' visibility='public' superClass='LoopExp'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='StringLiteralExp' name='StringLiteralExp' visibility='public' superClass='PrimitiveLiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384161154_598215_1543' name='stringSymbol' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="OperationCallExp" xmi:type="cmof:Class" name="OperationCallExp" superClass="FeatureCallExp">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="argument" isOrdered="true" lower="0" upper="*" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" name="referredOperation" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Operation"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='IntegerLiteralExp' name='IntegerLiteralExp' visibility='public' superClass='NumericLiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384383387_933100_1928' name='integerSymbol' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Integer'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="RealLiteralExp" xmi:type="cmof:Class" name="RealLiteralExp" superClass="NumericLiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="realSymbol">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Real"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='FeatureCallExp' name='FeatureCallExp' visibility='public' isAbstract='true' superClass='CallExp'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='OperationCallExp' name='OperationCallExp' visibility='public' superClass='FeatureCallExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384515013_860358_1978' name='argument' visibility='public' isComposite='true' isOrdered='true' type='OclExpression' association='_17_0_1_bc902f8_1329384515013_84182_1977' upper='*' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384667303_308625_2023' name='referredOperation' visibility='public' association='_17_0_1_bc902f8_1329384667303_278905_2022' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Operation'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="LiteralExp" xmi:type="cmof:Class" isAbstract="true" name="LiteralExp" superClass="OclExpression"/>
-    <packagedElement xmi:id="IterateExp" xmi:type="cmof:Class" name="IterateExp" superClass="LoopExp">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="result" lower="0" type="Variable"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329384515013_84182_1977' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329384515013_860358_1978'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329384515013_613230_1979'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384515013_613230_1979' name='parentCall' visibility='public' type='OperationCallExp' association='_17_0_1_bc902f8_1329384515013_84182_1977' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="PrimitiveLiteralExp" xmi:type="cmof:Class" isAbstract="true" name="PrimitiveLiteralExp" superClass="LiteralExp"/>
-    <packagedElement xmi:id="NumericLiteralExp" xmi:type="cmof:Class" isAbstract="true" name="NumericLiteralExp" superClass="PrimitiveLiteralExp"/>
-    <packagedElement xmi:id="CollectionLiteralExp" xmi:type="cmof:Class" name="CollectionLiteralExp" superClass="LiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" name="kind" type="CollectionKind"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="part" isOrdered="true" lower="0" upper="*" type="CollectionLiteralPart"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329384667303_278905_2022' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329384667303_308625_2023'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329384667303_450281_2024'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384667303_450281_2024' name='referingExp' visibility='public' type='OperationCallExp' association='_17_0_1_bc902f8_1329384667303_278905_2022' upper='*' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="CollectionLiteralPart" xmi:type="cmof:Class" isAbstract="true" name="CollectionLiteralPart">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
-    </packagedElement>
-    <packagedElement xmi:id="CollectionItem" xmi:type="cmof:Class" name="CollectionItem" superClass="CollectionLiteralPart">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="item" type="OclExpression"/>
-    </packagedElement>
-    <packagedElement xmi:id="CollectionRange" xmi:type="cmof:Class" name="CollectionRange" superClass="CollectionLiteralPart">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="first" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="last" type="OclExpression"/>
-    </packagedElement>
-    <packagedElement xmi:id="TupleLiteralExp" xmi:type="cmof:Class" name="TupleLiteralExp" superClass="LiteralExp">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="part" isOrdered="true" lower="0" upper="*" type="CollectionLiteralExp"/>
-    </packagedElement>
-    <packagedElement xmi:id="NullLiteralExp" xmi:type="cmof:Class" name="NullLiteralExp" superClass="PrimitiveLiteralExp"/>
-    <packagedElement xmi:id="ExpressionInOcl" xmi:type="cmof:Class" name="ExpressionInOcl" superClass="OpaqueExpression">
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="bodyExpression" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="contextVariable" lower="0" type="Variable"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="resultVariable" lower="0" type="Variable"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="parameterVariable" isOrdered="true" lower="0" upper="*" type="Variable"/>
-    </packagedElement>
-    <packagedElement xmi:id="OpaqueExpression" xmi:type="cmof:Class" name="OpaqueExpression"/>
-    <packagedElement xmi:id="InvalidLiteralExp" xmi:type="cmof:Class" name="InvalidLiteralExp" superClass="LiteralExp"/>
-    <packagedElement xmi:id="FeatureCallExp" xmi:type="cmof:Class" isAbstract="true" name="FeatureCallExp" superClass="CallExp"/>
-    <packagedElement xmi:id="TupleLiteralPart" xmi:type="cmof:Class" name="TupleLiteralPart">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement"/>
-      <ownedAttribute xmi:type="cmof:Property" isComposite="true" name="attribute" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='RealLiteralExp' name='RealLiteralExp' visibility='public' superClass='NumericLiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329384867188_914784_2066' name='realSymbol' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Real'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="NavigationCallExp" xmi:type="cmof:Class" isAbstract="true" name="NavigationCallExp" superClass="FeatureCallExp">
-      <ownedAttribute xmi:type="cmof:Property" name="qualifier" isOrdered="true" lower="0" upper="*" type="OclExpression"/>
-      <ownedAttribute xmi:type="cmof:Property" name="navigationSource" isOrdered="true" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='IterateExp' name='IterateExp' visibility='public' superClass='LoopExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385136066_566107_2137' name='result' visibility='public' isComposite='true' type='Variable' association='_17_0_1_bc902f8_1329385136066_191241_2136' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385136066_191241_2136' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385136066_566107_2137'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385136067_76927_2138'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385136067_76927_2138' name='baseExp' visibility='public' type='IterateExp' association='_17_0_1_bc902f8_1329385136066_191241_2136' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CollectionLiteralExp' name='CollectionLiteralExp' visibility='public' superClass='LiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385441614_77042_2188' name='kind' visibility='public' type='CollectionKind'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385496594_104439_2215' name='part' visibility='public' isOrdered='true' isComposite='true' type='CollectionLiteralPart' association='_17_0_1_bc902f8_1329385496594_543748_2214' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CollectionLiteralPart' name='CollectionLiteralPart' visibility='public' isAbstract='true'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385496594_543748_2214' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385496594_104439_2215'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385496594_491995_2216'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385496594_491995_2216' visibility='public' type='CollectionLiteralExp' association='_17_0_1_bc902f8_1329385496594_543748_2214'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CollectionItem' name='CollectionItem' visibility='public' superClass='CollectionLiteralPart'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385702981_665538_2266' name='item' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329385702981_235667_2265'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385702981_235667_2265' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385702981_665538_2266'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385702981_627848_2267'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385702981_627848_2267' visibility='private' type='CollectionItem' association='_17_0_1_bc902f8_1329385702981_235667_2265' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CollectionRange' name='CollectionRange' visibility='public' superClass='CollectionLiteralPart'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385837497_11235_2312' name='first' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329385837497_392515_2311'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385883091_211058_2337' name='last' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329385883090_836485_2336'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385837497_392515_2311' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385837497_11235_2312'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385837497_37661_2313'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385837497_37661_2313' name='firstOwner' visibility='public' type='CollectionRange' association='_17_0_1_bc902f8_1329385837497_392515_2311' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385883090_836485_2336' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385883091_211058_2337'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329385883091_153548_2338'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385883091_153548_2338' name='lastOwner' visibility='public' type='CollectionRange' association='_17_0_1_bc902f8_1329385883090_836485_2336' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='TupleLiteralExp' name='TupleLiteralExp' visibility='public' superClass='LiteralExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386122987_393570_2405' name='part' visibility='public' isOrdered='true' isComposite='true' type='TupleLiteralPart' association='_17_0_1_bc902f8_1329386122987_104839_2404' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='TupleLiteralPart' name='TupleLiteralPart' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387378680_940179_2742' name='attribute' visibility='public' isComposite='true' association='_17_0_1_bc902f8_1329387378680_444101_2741'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="AssociationClassCallExp" xmi:type="cmof:Class" name="AssociationClassCallExp" superClass="NavigationCallExp">
-      <ownedAttribute xmi:type="cmof:Property" name="referredAssociationClass" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#AssociationClass"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329386122987_104839_2404' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386122987_393570_2405'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386122987_938273_2406'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386122987_938273_2406' visibility='public' type='TupleLiteralExp' association='_17_0_1_bc902f8_1329386122987_104839_2404' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='NullLiteralExp' name='NullLiteralExp' visibility='public' superClass='LiteralExp'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='ExpressionInOcl' name='ExpressionInOcl' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#OpaqueExpression'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386726328_564270_2544' name='bodyExpression' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329386726328_956354_2543'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386873039_280751_2591' name='contextVariable' visibility='public' isComposite='true' type='Variable' association='_17_0_1_bc902f8_1329386873039_767240_2590' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386939682_106045_2616' name='resultVariable' visibility='public' isComposite='true' type='Variable' association='_17_0_1_bc902f8_1329386939682_508224_2615' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387010468_215673_2641' name='parameterVariable' visibility='public' isOrdered='true' isComposite='true' type='Variable' association='_17_0_1_bc902f8_1329387010468_996304_2640' upper='*' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387107962_671062_2688' name='generatedType' visibility='public' isComposite='true' association='_17_0_1_bc902f8_1329387107962_450750_2687' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="MessageExp" xmi:type="cmof:Class" name="MessageExp" superClass="OclExpression"/>
-    <packagedElement xmi:id="UnspecifiedValueExp" xmi:type="cmof:Class" name="UnspecifiedValueExp" superClass="OclExpression"/>
-    <packagedElement xmi:id="StateExp" xmi:type="cmof:Class" name="StateExp" superClass="OclExpression">
-      <ownedAttribute xmi:type="cmof:Property" name="referredState" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#State"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329386726328_956354_2543' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386726328_564270_2544'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386726328_669398_2545'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386726328_669398_2545' name='topExpression' visibility='public' type='ExpressionInOcl' association='_17_0_1_bc902f8_1329386726328_956354_2543' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329386873039_767240_2590' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386873039_280751_2591'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386873039_365036_2592'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386873039_365036_2592' name='selfOwner' visibility='public' type='ExpressionInOcl' association='_17_0_1_bc902f8_1329386873039_767240_2590' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329386939682_508224_2615' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386939682_106045_2616'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329386939683_850690_2617'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386939683_850690_2617' name='resultOwner' visibility='public' type='ExpressionInOcl' association='_17_0_1_bc902f8_1329386939682_508224_2615' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387010468_996304_2640' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387010468_215673_2641'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387010468_776902_2642'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387010468_776902_2642' name='varOwner' visibility='public' type='ExpressionInOcl' association='_17_0_1_bc902f8_1329387010468_996304_2640' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387107962_450750_2687' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387107962_671062_2688'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387107962_925772_2689'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387107962_925772_2689' name='owningClassifier' visibility='public' type='ExpressionInOcl' association='_17_0_1_bc902f8_1329387107962_450750_2687' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='InvalidLiteralExp' name='InvalidLiteralExp' visibility='public' superClass='LiteralExp'/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387378680_444101_2741' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387378680_940179_2742'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387378681_456621_2743'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387378681_456621_2743' visibility='public' type='TupleLiteralPart' association='_17_0_1_bc902f8_1329387378680_444101_2741' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387615017_128823_2769' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387615018_88120_2770'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387615018_320157_2771'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387615018_320157_2771' name='parentNav' visibility='public' type='NavigationCallExp' association='_17_0_1_bc902f8_1329387615017_128823_2769' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387751743_52752_2800' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387751744_745437_2801'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329387751744_688137_2802'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387751744_688137_2802' visibility='public' type='NavigationCallExp' association='_17_0_1_bc902f8_1329387751743_52752_2800' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='AssociationClassCallExp' name='AssociationClassCallExp' visibility='public' superClass='NavigationCallExp'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388071523_168053_2867' name='referredAssociationClass' visibility='public' association='_17_0_1_bc902f8_1329388071523_71652_2866' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#AssociationClass'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="BagType" xmi:type="cmof:Class" name="BagType" superClass="CollectionType"/>
-    <packagedElement xmi:id="CollectionType" xmi:type="cmof:Class" name="CollectionType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#DataType"/>
-      <ownedAttribute xmi:type="cmof:Property" name="elementType">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388071523_71652_2866' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388071523_168053_2867'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388071524_425998_2868'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388071524_425998_2868' name='referringExp' visibility='public' type='AssociationClassCallExp' association='_17_0_1_bc902f8_1329388071523_71652_2866' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='MessageExp' name='MessageExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388507739_894523_3050' name='target' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329388507739_935880_3049'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388539651_539050_3073' name='argument' visibility='public' isOrdered='true' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329388539650_28787_3072' upper='*' lower='0'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388653495_596070_3134' name='calledOperation' visibility='public' isComposite='true' association='_17_0_1_bc902f8_1329388653495_136789_3133' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CallOperationAction'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388703293_419332_3159' name='sentSignal' visibility='public' isComposite='true' association='_17_0_1_bc902f8_1329388703292_3327_3158' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#SendSignalAction'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="VoidType" xmi:type="cmof:Class" name="VoidType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='UnspecifiedValueExp' name='UnspecifiedValueExp' visibility='public' superClass='OclExpression'/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388507739_935880_3049' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388507739_894523_3050'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388507740_303182_3051'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388507740_303182_3051' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388507739_935880_3049' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="TupleType" xmi:type="cmof:Class" name="TupleType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#DataType"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388539650_28787_3072' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388539651_539050_3073'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388539651_832618_3074'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388539651_832618_3074' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388539650_28787_3072' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="SetType" xmi:type="cmof:Class" name="SetType" superClass="CollectionType"/>
-    <packagedElement xmi:id="SequenceType" xmi:type="cmof:Class" name="SequenceType" superClass="CollectionType"/>
-    <packagedElement xmi:id="OrderedSetType" xmi:type="cmof:Class" name="OrderedSetType" superClass="CollectionType"/>
-    <packagedElement xmi:id="InvalidType" xmi:type="cmof:Class" name="InvalidType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388653495_136789_3133' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388653495_596070_3134'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388653495_420715_3135'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388653495_420715_3135' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388653495_136789_3133' upper='*' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="TemplateParameterType" xmi:type="cmof:Class" name="TemplateParameterType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
-      <ownedAttribute xmi:type="cmof:Property" name="specification" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388703292_3327_3158' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388703293_419332_3159'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388703293_513080_3160'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388703293_513080_3160' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388703292_3327_3158' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='StateExp' name='StateExp' visibility='public' superClass='OclExpression'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388870620_862808_3223' name='referredState' visibility='public' association='_17_0_1_bc902f8_1329388870620_847327_3222' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#State'/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:id="AnyType" xmi:type="cmof:Class" name="AnyType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388870620_847327_3222' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388870620_862808_3223'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329388870620_22402_3224'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388870620_22402_3224' visibility='public' type='StateExp' association='_17_0_1_bc902f8_1329388870620_847327_3222' upper='*' lower='0'/>
     </packagedElement>
-    <packagedElement xmi:id="MessageType" xmi:type="cmof:Class" name="MessageType">
-      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
-      <ownedAttribute xmi:type="cmof:Property" name="referredSignal" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Signal"/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='CollectionType' name='CollectionType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#DataType'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389014854_837761_3350' name='elementType' visibility='public' association='_17_0_1_bc902f8_1329389014853_720384_3349'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="cmof:Property" name="referredOperation" lower="0">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Operation"/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='BagType' name='BagType' visibility='public' superClass='CollectionType'/>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389014853_720384_3349' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389014854_837761_3350'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389014854_635929_3351'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389014854_635929_3351' visibility='public' type='CollectionType' association='_17_0_1_bc902f8_1329389014853_720384_3349' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='VoidType' name='VoidType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='TupleType' name='TupleType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#DataType'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='SetType' name='SetType' visibility='public' superClass='CollectionType'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='SequenceType' name='SequenceType' visibility='public' superClass='CollectionType'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='OrderedSetType' name='OrderedSetType' visibility='public' superClass='CollectionType'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='InvalidType' name='InvalidType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='TemplateParameterType' name='TemplateParameterType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389261118_672181_3529' name='specification' visibility='public' lower='0'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
       </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='AnyType' name='AnyType' visibility='public'>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='MessageType' name='MessageType' visibility='public'>
+      <general xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389513855_352728_3658' name='referredSignal' visibility='public' association='_17_0_1_bc902f8_1329389513855_801652_3657' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Signal'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389558396_920889_3681' name='referredOperation' visibility='public' association='_17_0_1_bc902f8_1329389558396_402182_3680' lower='0'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Operation'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389513855_801652_3657' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389513855_352728_3658'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389513855_890154_3659'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389513855_890154_3659' visibility='public' type='MessageType' association='_17_0_1_bc902f8_1329389513855_801652_3657' upper='*' lower='0'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389558396_402182_3680' visibility='public'>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389558396_920889_3681'/>
+      <memberEnd xmi:idref='_17_0_1_bc902f8_1329389558396_961979_3682'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389558396_961979_3682' visibility='public' type='MessageType' association='_17_0_1_bc902f8_1329389558396_402182_3680' upper='*' lower='0'/>
     </packagedElement>
   </cmof:Package>
 </xmi:XMI>
