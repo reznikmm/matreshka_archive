@@ -30,7 +30,7 @@ package body Generator.OOP_Handler is
       P ("limited with " & Scanner.To_Wide_Wide_String & ";");
       P ("with " & Tokens.To_Wide_Wide_String & ";");
       P ("");
-      P ("package Aaa.Handlers is");
+      P ("package " & Unit.To_Wide_Wide_String & " is");
       P ("");
       P ("   type Handler is abstract tagged limited null record;");
       P ("");
@@ -47,7 +47,7 @@ package body Generator.OOP_Handler is
       
       P ("   type Handler_Access is access all Handler'Class;");
       P ("");
-      P ("end Aaa.Handlers;");
+      P ("end " & Unit.To_Wide_Wide_String & ";");
       
       Ada.Wide_Wide_Text_IO.Close (Output);
    end Go;

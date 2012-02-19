@@ -1,7 +1,7 @@
 limited with AAA.Scanners;
 with Parser_Tokens;
 
-package Aaa.Handlers is
+package AAA.Handlers is
 
    type Handler is abstract tagged limited null record;
 
@@ -91,4 +91,4 @@ package Aaa.Handlers is
 
    type Handler_Access is access all Handler'Class;
 
-end Aaa.Handlers;
+end AAA.Handlers;
