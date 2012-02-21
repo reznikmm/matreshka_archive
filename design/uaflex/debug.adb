@@ -48,12 +48,12 @@ with Matreshka.Internals.Graphs;
 with Nodes;
 
 package body Debug is
-   
+
    procedure Print is
       use Ada.Wide_Wide_Text_IO;
-      
+
       procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor);
-      
+
       procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor) is
          Item : constant Nodes.Start_Condition :=
            Nodes.Start_Condition_Maps.Element (Cursor);
@@ -74,24 +74,24 @@ package body Debug is
          Put_Line (Nodes.Macro_Maps.Key (Position).To_Wide_Wide_String & " " &
                      Nodes.Macro_Maps.Element (Position).To_Wide_Wide_String);
       end Print_Macro;
-      
+
    begin
       Nodes.Conditions.Iterate (Each_Condition'Access);
-      
+
       Nodes.Macros.Iterate (Print_Macro'Access);
-      
+
       Put_Line ("%%");
-      
+
       for J in 1 .. Nodes.Rules.Length loop
          Put_Line (Nodes.Rules.Element (J).To_Wide_Wide_String & " " &
                      Nodes.Actions.Element (J).To_Wide_Wide_String);
       end loop;
    end Print;
-   
+
    -----------------------------
    -- Print_Character_Classes --
    -----------------------------
-   
+
    procedure Print_Character_Classes
      (Vector : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
    is
@@ -115,5 +115,5 @@ package body Debug is
          end;
       end loop;
    end Print_Character_Classes;
-   
+
 end Debug;

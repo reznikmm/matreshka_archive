@@ -4,7 +4,7 @@ limited with Aaa.Scanners;
 
 package UAFLEX_Handler is
    type Handler is new Aaa.Handlers.Handler with private;
-   
+
    procedure Skip
      (Self    : not null access Handler;
       Scanner : not null access Aaa.Scanners.Scanner'Class;
@@ -88,20 +88,20 @@ package UAFLEX_Handler is
       Scanner : not null access Aaa.Scanners.Scanner'Class;
       Token   : out Parser_Tokens.Token;
       Skip    : in out Boolean);
-   
+
    function Get_Line (Self : Handler) return Positive;
-   
+
 private
-   
+
    procedure New_Line
      (Self    : not null access Handler'Class;
       Scanner : not null access Aaa.Scanners.Scanner'Class);
-   
+
    procedure Check_New_Line (Self : not null access Handler'Class);
-   
+
    type Handler is new Aaa.Handlers.Handler with record
       Line      : Positive := 1;
       Line_Feed : Boolean := False;  --  The token is last in line
    end record;
-   
+
 end UAFLEX_Handler;

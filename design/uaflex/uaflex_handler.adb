@@ -2,11 +2,11 @@ with Aaa.Scanners;
 with Aaa;
 
 package body UAFLEX_Handler is
-   
+
    --------------------
    -- Check_New_Line --
    --------------------
-   
+
    procedure Check_New_Line (Self : not null access Handler'Class) is
    begin
       if Self.Line_Feed then
@@ -14,7 +14,7 @@ package body UAFLEX_Handler is
          Self.Line_Feed := False;
       end if;
    end Check_New_Line;
-   
+
    ------------------
    -- End_Of_Macro --
    ------------------
@@ -50,27 +50,27 @@ package body UAFLEX_Handler is
       Skip := False;
       Self.New_Line (Scanner);
    end End_Of_Name_List;
-   
+
    --------------
    -- Get_Line --
    --------------
-   
+
    function Get_Line (Self : Handler) return Positive is
    begin
       return Self.Line;
    end Get_Line;
-   
+
    --------------
    -- New_Line --
    --------------
-   
+
    procedure New_Line
      (Self    : not null access Handler'Class;
       Scanner : not null access Aaa.Scanners.Scanner'Class) is
    begin
       Self.Line_Feed := True;
    end New_Line;
-      
+
    ---------------
    -- On_Action --
    ---------------
@@ -244,11 +244,11 @@ package body UAFLEX_Handler is
       Token := Parser_Tokens.Start;
       Skip := False;
    end On_Start;
-   
+
    ----------------
    --  Skip_Line --
    ----------------
-   
+
    procedure Skip_Line
      (Self    : not null access Handler;
       Scanner : not null access Aaa.Scanners.Scanner'Class;

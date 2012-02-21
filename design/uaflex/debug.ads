@@ -47,8 +47,8 @@ with Matreshka.Internals.Finite_Automatons;
 package Debug is
 
    procedure Print;
-   
+
    procedure Print_Character_Classes
      (Vector : Matreshka.Internals.Finite_Automatons.Vectors.Vector);
-   
+
 end Debug;

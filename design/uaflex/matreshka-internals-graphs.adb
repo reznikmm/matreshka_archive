@@ -135,7 +135,7 @@ package body Matreshka.Internals.Graphs is
       begin
          null;
       end New_Edge;
-      
+
       --------------
       -- New_Edge --
       --------------
@@ -178,7 +178,7 @@ package body Matreshka.Internals.Graphs is
             Id     => Edge_Identifier (Self.Last_Edge),
             Source => From.Index,
             Target => To.Index);
-         
+
          return Edge_Identifier (Self.Last_Edge);
       end New_Edge;
 
@@ -246,16 +246,16 @@ package body Matreshka.Internals.Graphs is
    begin
       return Self.Last - Self.First + 1;
    end Edge_Count;
-   
+
    -------------
    -- Edge_Id --
    -------------
-   
+
    function Edge_Id (Self : Edge) return Edge_Identifier is
    begin
       return Self.Id;
    end Edge_Id;
-   
+
    ----------------------
    -- First_Edge_Index --
    ----------------------

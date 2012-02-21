@@ -49,5 +49,5 @@ package body Generator is
    begin
       return Text (2 .. Text'Last);
    end Image;
-   
+
 end Generator;

@@ -45,7 +45,7 @@
 package Generator is
 
    pragma Pure;
-   
+
    function Image (X : Natural) return Wide_Wide_String;
-   
+
 end Generator;

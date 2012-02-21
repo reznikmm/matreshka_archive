@@ -1,5 +1,3 @@
-with Matreshka.Internals.Unicode;
-
 package AAA is
 
    type State is mod 75;

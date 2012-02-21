@@ -299,14 +299,14 @@ package body Generator.Tables is
                      N (",");
                   end if;
                end loop;
-               
+
                if Count /= Positive (Classes.Length) + 1 then
                   if Count = 0 then
                      N ("        (");
                   else
                      N (", ");
                   end if;
-                    
+
                   N ("others =>" &
                        State'Wide_Wide_Image (DFA.Graph.Node_Count));
                end if;
@@ -414,11 +414,11 @@ package body Generator.Tables is
          end;
       end loop;
    end Split_To_Distinct;
-   
+
    -----------
    -- Types --
    -----------
-   
+
    procedure Types
      (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
       Unit    : League.Strings.Universal_String;
@@ -426,13 +426,13 @@ package body Generator.Tables is
       Classes : out Char_Set_Vectors.Vector)
    is
       use type Ada.Containers.Count_Type;
-      
+
       procedure P (Text : Wide_Wide_String);
       procedure N (Text : Wide_Wide_String);
       procedure Print_Start (Cursor : Start_Maps.Cursor);
-      
+
       Output  : Ada.Wide_Wide_Text_IO.File_Type;
-      
+
       procedure N (Text : Wide_Wide_String) is
       begin
          --  Ada.Wide_Wide_Text_IO.Put (Text);
@@ -456,11 +456,9 @@ package body Generator.Tables is
    begin
       Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
       Split_To_Distinct (DFA.Edge_Char_Set, Classes);
-      
+
       --  Debug.Print_Character_Classes (Classes);
-      
-      P ("with Matreshka.Internals.Unicode;");
-      P ("");
+
       P ("package " & Unit.To_Wide_Wide_String & " is");
       P ("");
       P ("   type State is mod" &
@@ -483,5 +481,5 @@ package body Generator.Tables is
       P ("");
       P ("end " & Unit.To_Wide_Wide_String & ";");
    end Types;
-   
+
 end Generator.Tables;
