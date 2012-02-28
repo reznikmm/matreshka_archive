@@ -111,8 +111,27 @@ package body Generator.Type_Mapping is
    function Public_Ada_Package_Name
     (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
      Representation : Representation_Kinds)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      Type_Element : constant AMF.CMOF.Elements.CMOF_Element_Access
+        := AMF.CMOF.Elements.CMOF_Element_Access (The_Type);
+
    begin
+      --  Use user specified mapping if any.
+
+      if Mapping.Contains (Type_Element)
+        and then Mapping.Element
+                  (Type_Element).Mapping (Representation) /= null
+        and then Mapping.Element
+                      (Type_Element).Mapping (Representation).Has_Ada_Package
+      then
+         return
+           Mapping.Element
+            (Type_Element).Mapping (Representation).Ada_Package;
+      end if;
+
+      --  Otherwise synthesize it.
+
       if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
          if Representation in Value .. Holder then
             return
@@ -266,6 +285,68 @@ package body Generator.Type_Mapping is
       end if;
    end Public_Ada_Type_Qualified_Name;
 
+   -------------------------------
+   -- Internal_Ada_Package_Name --
+   -------------------------------
+
+   function Internal_Ada_Package_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String
+   is
+      Type_Element : constant AMF.CMOF.Elements.CMOF_Element_Access
+        := AMF.CMOF.Elements.CMOF_Element_Access (The_Type);
+
+   begin
+      --  Use user specified mapping if any.
+
+      if Mapping.Contains (Type_Element)
+        and then Mapping.Element
+                  (Type_Element).Mapping (Representation) /= null
+        and then Mapping.Element
+                      (Type_Element).Mapping
+                        (Representation).Has_Internal_Ada_Package
+      then
+         return
+           Mapping.Element
+            (Type_Element).Mapping (Representation).Internal_Ada_Package;
+      end if;
+
+      --  Otherwise synthesize it.
+
+      if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         --  Classes are represented by internal data types.
+
+         return +"AMF.Internals";
+
+      elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
+         --  Enumeration types are declared in AMF.<metamodel> package.
+
+         return Public_Ada_Package_Name (The_Type, Representation);
+
+      elsif The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+         --  Data types are mapped according to specified mapping rules.
+
+         if not Mapping.Element
+                 (AMF.CMOF.Elements.CMOF_Element_Access
+                   (The_Type)).Mapping
+                     (Representation).Internal_Ada_Package.Is_Empty
+         then
+            return
+              Mapping.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access
+                 (The_Type)).Mapping (Representation).Internal_Ada_Package;
+
+
+         else
+            return Public_Ada_Package_Name (The_Type, Representation);
+         end if;
+
+      else
+         raise Program_Error;
+      end if;
+   end Internal_Ada_Package_Name;
+
    --------------------------------------
    -- Internal_Ada_Type_Qualified_Name --
    --------------------------------------
@@ -300,22 +381,29 @@ package body Generator.Type_Mapping is
       elsif The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
          --  Data types are mapped according to specified mapping rules.
 
-         --  XXX For enumeration types this can be computed.
-
-         if Mapping.Element
+         if not Mapping.Element
             (AMF.CMOF.Elements.CMOF_Element_Access
               (The_Type)).Mapping (Representation).Internal_Ada_Type.Is_Empty
          then
-            return
-              Mapping.Element
-               (AMF.CMOF.Elements.CMOF_Element_Access
-                 (The_Type)).Mapping (Representation).Ada_Type;
+            if not Internal_Ada_Package_Name
+                    (The_Type, Representation).Is_Empty
+            then
+               return
+                 Internal_Ada_Package_Name (The_Type, Representation)
+                   & "."
+                   & Mapping.Element
+                      (AMF.CMOF.Elements.CMOF_Element_Access
+                        (The_Type)).Mapping (Representation).Internal_Ada_Type;
+
+            else
+               return
+                 Mapping.Element
+                  (AMF.CMOF.Elements.CMOF_Element_Access
+                    (The_Type)).Mapping (Representation).Internal_Ada_Type;
+            end if;
 
          else
-            return
-              Mapping.Element
-               (AMF.CMOF.Elements.CMOF_Element_Access
-                 (The_Type)).Mapping (Representation).Internal_Ada_Type;
+            return Public_Ada_Type_Qualified_Name (The_Type, Representation);
          end if;
 
       else

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -74,6 +74,12 @@ package Generator.Type_Mapping is
    --  Returns fully qualified name of Ada type which is used to represent
    --  value of the specified type in the internal data structures.
 
+   function Internal_Ada_Package_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Constructs name of the package where user visible type is declared.
+
    function Member_Name
     (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
      Representation : Representation_Kinds)
@@ -92,11 +98,14 @@ package Generator.Type_Mapping is
 private
 
    type Representation_Mapping is record
-      Ada_Package       : League.Strings.Universal_String;
-      Ada_Type          : League.Strings.Universal_String;
-      Internal_Ada_Type : League.Strings.Universal_String;
-      Member_Name       : League.Strings.Universal_String;
-      Member_Kind_Name  : League.Strings.Universal_String;
+      Has_Ada_Package          : Boolean := False;
+      Ada_Package              : League.Strings.Universal_String;
+      Ada_Type                 : League.Strings.Universal_String;
+      Has_Internal_Ada_Package : Boolean := False;
+      Internal_Ada_Package     : League.Strings.Universal_String;
+      Internal_Ada_Type        : League.Strings.Universal_String;
+      Member_Name              : League.Strings.Universal_String;
+      Member_Kind_Name         : League.Strings.Universal_String;
    end record;
 
    type Representation_Mapping_Access is access all Representation_Mapping;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,6 +64,9 @@ package body Generator.Type_Mapping.Handlers is
      := League.Strings.To_Universal_String ("adaLiteral");
    Ada_Type_Attribute_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaType");
+   Internal_Ada_Package_Attribute_Name :
+     constant League.Strings.Universal_String
+       := League.Strings.To_Universal_String ("internalAdaPackage");
    Internal_Ada_Type_Attribute_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("internalAdaType");
    Member_Name_Attribute_Name       : constant League.Strings.Universal_String
@@ -177,10 +180,16 @@ package body Generator.Type_Mapping.Handlers is
                  new Representation_Mapping;
             end if;
 
+            Self.Mapping.Mapping (Representation).Has_Ada_Package :=
+              Attributes.Is_Specified (Ada_Package_Attribute_Name);
             Self.Mapping.Mapping (Representation).Ada_Package :=
               Attributes.Value (Ada_Package_Attribute_Name);
             Self.Mapping.Mapping (Representation).Ada_Type :=
               Attributes.Value (Ada_Type_Attribute_Name);
+            Self.Mapping.Mapping (Representation).Has_Internal_Ada_Package :=
+              Attributes.Is_Specified (Internal_Ada_Package_Attribute_Name);
+            Self.Mapping.Mapping (Representation).Internal_Ada_Package :=
+              Attributes.Value (Internal_Ada_Package_Attribute_Name);
             Self.Mapping.Mapping (Representation).Internal_Ada_Type :=
               Attributes.Value (Internal_Ada_Type_Attribute_Name);
             Self.Mapping.Mapping (Representation).Member_Name :=
