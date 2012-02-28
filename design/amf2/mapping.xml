@@ -10,11 +10,11 @@
     <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder_Value"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String">
-    <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
-    <mapping representation="holder" adaType="AMF.Optional_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
-    <mapping representation="set" adaType="Set_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
-    <mapping representation="ordered_set" adaType="Ordered_Set_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
-    <mapping representation="sequence" adaType="Sequence_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaPackage="Matreshka.Internals.Strings" internalAdaType="Shared_String_Access"/>
+    <mapping representation="holder" adaType="AMF.Optional_String" internalAdaPackage="Matreshka.Internals.Strings" internalAdaType="Shared_String_Access"/>
+    <mapping representation="set" adaType="Set_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
+    <mapping representation="ordered_set" adaType="Ordered_Set_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
+    <mapping representation="sequence" adaType="Sequence_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#UnlimitedNatural">
     <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>
@@ -33,27 +33,27 @@
   <!--  Primitive types of PrimitiveTypes package of UML specification  -->
 
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean">
-    <mapping representation="value" adaType="Boolean" memberName="Boolean_Value"/>
+    <mapping representation="value" adaType="Boolean" adaPackage="" memberName="Boolean_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Boolean" memberName="Boolean_Holder"/>
-    <mapping representation="set" adaType="Set_Of_Boolean" adaPackage="AMF.Boolean_Collections" memberName="Boolean_Collection" internalAdaType="AMF.Internals.AMF_Collection_Of_Boolean"/>
+    <mapping representation="set" adaType="Set_Of_Boolean" adaPackage="AMF.Boolean_Collections" memberName="Boolean_Collection" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_Boolean"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Integer">
-    <mapping representation="value" adaType="Integer" memberName="Integer_Value"/>
+    <mapping representation="value" adaType="Integer" adaPackage="" memberName="Integer_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Real">
-    <mapping representation="value" adaType="AMF.Real" memberName="Real_Value"/>
+    <mapping representation="value" adaType="Real" adaPackage="AMF" memberName="Real_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Real"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String">
-    <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
-    <mapping representation="holder" adaType="AMF.Optional_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
-    <mapping representation="set" adaType="Set_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
-    <mapping representation="ordered_set" adaType="Ordered_Set_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
-    <mapping representation="sequence" adaType="Sequence_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="value" adaType="League.Strings.Universal_String" adaPackage="" internalAdaPackage="Matreshka.Internals.Strings" internalAdaType="Shared_String_Access"/>
+    <mapping representation="holder" adaType="Optional_String" adaPackage="AMF" internalAdaPackage="Matreshka.Internals.Strings" internalAdaType="Shared_String_Access"/>
+    <mapping representation="set" adaType="Set_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
+    <mapping representation="ordered_set" adaType="Ordered_Set_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
+    <mapping representation="sequence" adaType="Sequence_Of_String" adaPackage="AMF.String_Collections" internalAdaPackage="AMF.Internals" internalAdaType="AMF_Collection_Of_String"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#UnlimitedNatural">
-    <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Unlimited_Natural_Value"/>
+    <mapping representation="value" adaType="Unlimited_Natural" adaPackage="AMF" memberName="Unlimited_Natural_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Unlimited_Natural_Holder"/>
   </type>
 
