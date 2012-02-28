@@ -57,6 +57,7 @@ with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
+with Generator.Units;
 
 package body Generator.Attributes is
 
@@ -1005,6 +1006,8 @@ package body Generator.Attributes is
 
       procedure Generate_Getter (Position : Homograph_Sets.Cursor);
 
+      Unit : Generator.Units.Unit;
+
       ---------------------
       -- Generate_Getter --
       ---------------------
@@ -1026,7 +1029,7 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            Put_Line
+            Unit.Add_Line
              ("   --  "
                 & Class.Get_Name.Value
                 & " => "
@@ -1041,10 +1044,10 @@ package body Generator.Attributes is
            := Getter.Pairs.First_Element.Attribute;
          Redefined : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
            := Attribute.Get_Redefined_Property;
-         Get_Name  : constant Wide_Wide_String
-           := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
-         Set_Name  : constant Wide_Wide_String
-           := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
+         Get_Name  : constant League.Strings.Universal_String
+           := +"Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
+         Set_Name  : constant League.Strings.Universal_String
+           := +"Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
          Type_Name : League.Strings.Universal_String;
 
       begin
@@ -1056,46 +1059,43 @@ package body Generator.Attributes is
          end loop;
 
          Type_Name :=
-           Type_Mapping.Internal_Ada_Type_Qualified_Name
-               (Attribute.Get_Type, Representation (Attribute));
+           Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+            (Attribute.Get_Type, Representation (Attribute));
 
-         New_Line;
-         Put_Line ("   function " & Get_Name);
-         Put_Line
-          ("    (Self : AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element)");
-         Put_Line ("       return " & Type_Name & ";");
+         Unit.Add_Line;
+         Unit.Add_Line ("   function " & Get_Name);
+         Unit.Context.Add
+          (Generator.Type_Mapping.Internal_Ada_Package_Name
+            (Attribute.Get_Type, Representation (Attribute)));
+         Unit.Add_Line
+          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element)");
+         Unit.Add_Line ("       return " & Type_Name & ";");
 
          if Has_Internal_Setter (Attribute) then
-            Put_Line ("   procedure " & Set_Name);
-            Put_Line
-             ("    (Self : AMF.Internals."
-                & Metamodel_Name.To_Wide_Wide_String
-                & "_Element;");
-            Put_Line ("     To   : " & Type_Name & ");");
+            Unit.Add_Line ("   procedure " & Set_Name);
+            Unit.Add_Line
+             ("    (Self : AMF.Internals." & Metamodel_Name & "_Element;");
+            Unit.Add_Line ("     To   : " & Type_Name & ");");
          end if;
 
          Getter.Pairs.Iterate (Generate_Usage'Access);
       end Generate_Getter;
 
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables." & Metamodel_Name & "_Attributes";
+
    begin
       Analyze;
 
-      Put_Header (2010, 2011);
-      Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
-      Put_Line ("with Matreshka.Internals.Strings;");
-      New_Line;
-      Put_Line
-       ("package AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes is");
+      Unit.Add_Unit_Header (2010, 2011);
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
       Getters.Iterate (Generate_Getter'Access);
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes;");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Attributes_Specification;
 
    ----------
