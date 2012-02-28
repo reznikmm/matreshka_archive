@@ -78,6 +78,10 @@ package League.String_Vectors is
     (Self : in out Universal_String_Vector'Class;
      Item : League.Strings.Universal_String'Class);
 
+   procedure Append
+    (Self : in out Universal_String_Vector'Class;
+     Item : Universal_String_Vector'Class);
+
    procedure Prepend
     (Self : in out Universal_String_Vector'Class;
      Item : Universal_String_Vector'Class);

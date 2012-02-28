@@ -111,6 +111,19 @@ package body League.String_Vectors is
        (League.Strings.Internals.Internal (Item));
    end Append;
 
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String_Vector'Class;
+     Item : Universal_String_Vector'Class) is
+   begin
+      for J in 1 .. Item.Length loop
+         Self.Append (Item.Element (J));
+      end loop;
+   end Append;
+
    -----------
    -- Clear --
    -----------
