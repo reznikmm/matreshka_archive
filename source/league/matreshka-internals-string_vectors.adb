@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -188,5 +188,26 @@ package body Matreshka.Internals.String_Vectors is
          Matreshka.Atomics.Counters.Increment (Item.Counter);
       end if;
    end Reference;
+
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (Self  : in out Shared_String_Vector_Access;
+     Index : Positive;
+     Item  : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   begin
+      Detach (Self, Self.Size);
+
+      if Self.Value (Index) /= Item then
+         Matreshka.Internals.Strings.Dereference (Self.Value (Index));
+         Self.Value (Index) := Item;
+         Matreshka.Internals.Strings.Reference (Self.Value (Index));
+      end if;
+   end Replace;
 
 end Matreshka.Internals.String_Vectors;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -108,5 +108,11 @@ package Matreshka.Internals.String_Vectors is
    --  Prepends strings from vector to the vector, reallocates vector then
    --  necessary. Both vectors are still valid after this operation, reference
    --  counters of all prepended strings are incremented.
+
+   procedure Replace
+    (Self  : in out Shared_String_Vector_Access;
+     Index : Positive;
+     Item  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Replace string at the specified position by another one.
 
 end Matreshka.Internals.String_Vectors;

@@ -304,6 +304,25 @@ package body League.String_Vectors is
       end loop;
    end Read;
 
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (Self  : in out Universal_String_Vector'Class;
+     Index : Positive;
+     Item  : League.Strings.Universal_String'Class) is
+   begin
+      if Index > Self.Data.Length then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      Matreshka.Internals.String_Vectors.Replace
+       (Self.Data,
+        Index,
+        League.Strings.Internals.Internal (Item));
+   end Replace;
+
    -----------
    -- Write --
    -----------

@@ -83,6 +83,12 @@ package League.String_Vectors is
      Item : Universal_String_Vector'Class);
    --  Inserts strings from Item before first string of Self.
 
+   procedure Replace
+    (Self  : in out Universal_String_Vector'Class;
+     Index : Positive;
+     Item  : League.Strings.Universal_String'Class);
+   --  Replace element at the specified position by new value.
+
    function Join
     (Self      : Universal_String_Vector'Class;
      Separator : League.Strings.Universal_String'Class)
