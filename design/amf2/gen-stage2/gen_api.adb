@@ -66,6 +66,7 @@ with Generator.Contexts;
 with Generator.Names;
 with Generator.Attribute_Mapping;
 with Generator.Type_Mapping;
+with Generator.Units;
 with Generator.Wide_Wide_Text_IO;
 
 procedure Gen_API is
@@ -793,42 +794,46 @@ procedure Gen_API is
    procedure Generate_Collections
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
-      Package_Name  : constant Wide_Wide_String
+      Package_Name : constant Wide_Wide_String
         := Ada_API_Package_Name (Class).To_Wide_Wide_String;
-      Type_Name     : constant Wide_Wide_String
+      Type_Name    : constant Wide_Wide_String
         := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+      Unit         : Generator.Units.Unit;
 
    begin
-      Put_Header (2011, 2011);
+      Unit.Add_Unit_Header (2011, 2011);
 
-      Put_Line ("with AMF.Generic_Collections;");
-      New_Line;
-      Put_Line ("package " & Package_Name & ".Collections is");
-      New_Line;
-      Put_Line ("   pragma Preelaborate;");
-      New_Line;
-      Put_Line ("   package " & Type_Name & "_Collections is");
-      Put_Line ("     new AMF.Generic_Collections");
-      Put_Line ("          (" & Type_Name & ",");
-      Put_Line ("           " & Type_Name & "_Access);");
-      New_Line;
-      Put_Line ("   type Set_Of_" & Type_Name & " is");
-      Put_Line
-       ("     new " & Type_Name & "_Collections.Set with null record;");
-      New_Line;
-      Put_Line ("   type Ordered_Set_Of_" & Type_Name & " is");
-      Put_Line
-       ("     new " & Type_Name & "_Collections.Ordered_Set with null record;");
-      New_Line;
-      Put_Line ("   type Bag_Of_" & Type_Name & " is");
-      Put_Line
-       ("     new " & Type_Name & "_Collections.Bag with null record;");
-      New_Line;
-      Put_Line ("   type Sequence_Of_" & Type_Name & " is");
-      Put_Line
-       ("     new " & Type_Name & "_Collections.Sequence with null record;");
-      New_Line;
-      Put_Line ("end " & Package_Name & ".Collections;");
+      Unit.Context.Add (+"AMF.Generic_Collections");
+      Unit.Add_Line;
+      Unit.Add_Line (+"package " & Package_Name & ".Collections is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   pragma Preelaborate;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   package " & Type_Name & "_Collections is");
+      Unit.Add_Line (+"     new AMF.Generic_Collections");
+      Unit.Add_Line (+"          (" & Type_Name & ",");
+      Unit.Add_Line (+"           " & Type_Name & "_Access);");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   type Set_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       (+"     new " & Type_Name & "_Collections.Set with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   type Ordered_Set_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       (+"     new "
+           & Type_Name
+           & "_Collections.Ordered_Set with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   type Bag_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       (+"     new " & Type_Name & "_Collections.Bag with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   type Sequence_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       (+"     new " & Type_Name & "_Collections.Sequence with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"end " & Package_Name & ".Collections;");
+      Unit.Put;
    end Generate_Collections;
 
    ---------------------------------------

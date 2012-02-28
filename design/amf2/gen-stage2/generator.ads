@@ -278,4 +278,8 @@ package Generator is
        return Boolean;
    --  Returns True when member slot is used for this attribute.
 
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
 end Generator;
