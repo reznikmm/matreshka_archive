@@ -52,7 +52,7 @@ with AMF.CMOF.Named_Elements;
 limited with AMF.CMOF.Named_Elements.Collections;
 limited with AMF.CMOF.Package_Imports.Collections;
 limited with AMF.CMOF.Packageable_Elements.Collections;
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 
 package AMF.CMOF.Namespaces is
 
