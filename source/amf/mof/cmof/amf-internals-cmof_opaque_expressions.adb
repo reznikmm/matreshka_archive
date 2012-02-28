@@ -258,7 +258,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
 
    overriding function Get_Language
     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-       return AMF.String_Collections.Set_Of_String is
+       return AMF.String_Collections.Ordered_Set_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Language unimplemented");

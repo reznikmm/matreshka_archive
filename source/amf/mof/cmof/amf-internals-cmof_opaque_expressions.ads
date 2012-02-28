@@ -110,7 +110,7 @@ package AMF.Internals.CMOF_Opaque_Expressions is
 
    overriding function Get_Language
     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-       return AMF.String_Collections.Set_Of_String;
+       return AMF.String_Collections.Ordered_Set_Of_String;
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Opaque_Expression_Proxy;

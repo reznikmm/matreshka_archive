@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,9 +51,9 @@ package AMF.String_Collections is
 
    type Collection_Of_String is tagged private;
 
-   subtype Set_Of_String is Collection_Of_String;
-   subtype Ordered_Set_Of_String is Collection_Of_String;
-   subtype Sequence_Of_String is Collection_Of_String;
+   type Set_Of_String is new Collection_Of_String with private;
+   type Ordered_Set_Of_String is new Collection_Of_String with private;
+   type Sequence_Of_String is new Collection_Of_String with private;
 
 private
 
@@ -61,5 +61,9 @@ private
       Collection :
         AMF.Internals.Collections.Strings.Shared_String_Collection_Access;
    end record;
+
+   type Set_Of_String is new Collection_Of_String with null record;
+   type Ordered_Set_Of_String is new Collection_Of_String with null record;
+   type Sequence_Of_String is new Collection_Of_String with null record;
 
 end AMF.String_Collections;

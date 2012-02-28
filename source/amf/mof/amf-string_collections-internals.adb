@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,7 +67,22 @@ package body AMF.String_Collections.Internals is
 
    function Wrap
     (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
+       return Sequence_Of_String is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          Collection =>
+            new AMF.Internals.Collections.Strings.Proxies.Shared_String_Collection_Proxy'
+                 (Collection => Collection));
+   end Wrap;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Collection : AMF.Internals.AMF_Collection_Of_String)
+       return Ordered_Set_Of_String is
    begin
       return
        (Ada.Finalization.Controlled with
