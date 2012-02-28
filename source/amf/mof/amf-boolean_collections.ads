@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,11 +49,19 @@ package AMF.Boolean_Collections is
 
    type Collection_Of_Boolean is tagged private;
 
-   subtype Set_Of_Boolean is Collection_Of_Boolean;
+   type Set_Of_Boolean is new Collection_Of_Boolean with private;
+   type Ordered_Set_Of_Boolean is new Collection_Of_Boolean with private;
+   type Bag_Of_Boolean is new Collection_Of_Boolean with private;
+   type Sequence_Of_Boolean is new Collection_Of_Boolean with private;
 
 private
 
    type Collection_Of_Boolean is
      new Ada.Finalization.Controlled with null record;
+
+   type Set_Of_Boolean is new Collection_Of_Boolean with null record;
+   type Ordered_Set_Of_Boolean is new Collection_Of_Boolean with null record;
+   type Bag_Of_Boolean is new Collection_Of_Boolean with null record;
+   type Sequence_Of_Boolean is new Collection_Of_Boolean with null record;
 
 end AMF.Boolean_Collections;
