@@ -76,6 +76,23 @@ package body Generator.Units is
       Self.Lines.Append (League.Strings.Empty_Universal_String);
    end Add_Line;
 
+   ----------------------
+   -- Add_Unit_Comment --
+   ----------------------
+
+   procedure Add_Unit_Comment
+    (Self    : in out Unit;
+     Comment : League.String_Vectors.Universal_String_Vector) is
+   begin
+      for J in 1 .. Comment.Length loop
+         Self.Header_Lines.Append ("--  " & Comment.Element (J));
+      end loop;
+
+      Self.Header_Lines.Append
+       (+"-------------------------------------------------------------------"
+           & "-----------");
+   end Add_Unit_Comment;
+
    ---------------------
    -- Add_Unit_Header --
    ---------------------

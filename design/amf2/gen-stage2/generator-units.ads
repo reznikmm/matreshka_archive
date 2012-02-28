@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with Ada.Wide_Wide_Text_IO;
 
-private with League.String_Vectors;
+with League.String_Vectors;
 
 with Generator.Contexts;
 
@@ -67,6 +67,14 @@ package Generator.Units is
      First_Year : Positive;
      Last_Year  : Positive);
    --  Adds unit header.
+
+   procedure Add_Unit_Comment
+    (Self    : in out Unit;
+     Comment : League.String_Vectors.Universal_String_Vector);
+   --  Adds unit comment to the unit header.
+   --
+   --  XXX It would be useful to have some kind of comment formatting here, to
+   --  remove comment formatting at caller side.
 
    function Context
     (Self : in out Unit)

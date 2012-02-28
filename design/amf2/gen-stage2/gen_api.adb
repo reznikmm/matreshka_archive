@@ -104,7 +104,8 @@ procedure Gen_API is
    --  Generates collections package.
 
    procedure Generate_Attribute_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
    --  Generates getter/setter specifications for attribute.
@@ -115,7 +116,8 @@ procedure Gen_API is
    --  Generate subprogram for the operation.
 
    procedure Generate_Operation_Specification
-    (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
    --  Generate subprogram for the operation.
@@ -130,14 +132,14 @@ procedure Gen_API is
        return League.String_Vectors.Universal_String_Vector;
 
    procedure Compute_Ada_Context_For_Attribute
-    (Context   : in out Generator.Contexts.Context;
+    (Context   : in out Generator.Contexts.Context'Class;
      Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Mode      : Subprogram_Kinds);
    --  Computes context clauses for getter/setter of the specified
    --  attribute.
 
    procedure Compute_Ada_Context_For_Parameter
-    (Context   : in out Generator.Contexts.Context;
+    (Context   : in out Generator.Contexts.Context'Class;
      Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
      Mode      : Subprogram_Kinds);
    --  Computes context clauses for the specified parameter.
@@ -149,12 +151,14 @@ procedure Gen_API is
    --  Returns True when specified operations is distingushable in Ada.
 
    procedure Generate_Attribute_Setter_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
 
    procedure Generate_Attribute_Getter_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
 
@@ -192,7 +196,7 @@ procedure Gen_API is
    ---------------------------------------
 
    procedure Compute_Ada_Context_For_Attribute
-    (Context   : in out Generator.Contexts.Context;
+    (Context   : in out Generator.Contexts.Context'Class;
      Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Mode      : Subprogram_Kinds)
    is
@@ -224,7 +228,7 @@ procedure Gen_API is
    ---------------------------------------
 
    procedure Compute_Ada_Context_For_Parameter
-    (Context   : in out Generator.Contexts.Context;
+    (Context   : in out Generator.Contexts.Context'Class;
      Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
      Mode      : Subprogram_Kinds)
    is
@@ -263,12 +267,13 @@ procedure Gen_API is
         := To_Ada_Identifier (Attribute.Get_Name.Value);
       Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
         := Attribute.Get_Type;
+      Unit           : Generator.Units.Unit;
 
    begin
       Put_Header ("Get_" & Attribute_Name, 3);
 
       Generate_Attribute_Getter_Specification
-       (Attribute, Class_Type_Name, True);
+       (Unit, Attribute, Class_Type_Name, True);
 
       Put_Line (" is");
       Put_Line ("   begin");
@@ -354,7 +359,7 @@ procedure Gen_API is
 
       Put_Header ("Set_" & Attribute_Name, 3);
       Generate_Attribute_Setter_Specification
-       (Attribute, Class_Type_Name, True);
+       (Unit, Attribute, Class_Type_Name, True);
 
       Put_Line (" is");
       Put_Line ("   begin");
@@ -429,18 +434,19 @@ procedure Gen_API is
    --------------------------------------
 
    procedure Generate_Attribute_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean) is
    begin
       Generate_Attribute_Getter_Specification
-       (Attribute, Class_Type_Name, Proxy);
+       (Unit, Attribute, Class_Type_Name, Proxy);
 
       if Proxy then
-         Put_Line (";");
+         Unit.Add_Line (+";");
 
       else
-         Put_Line (" is abstract;");
+         Unit.Add_Line (+" is abstract;");
       end if;
 
       --  Generate comment.
@@ -454,20 +460,21 @@ procedure Gen_API is
          Lines          : League.String_Vectors.Universal_String_Vector;
 
       begin
-         Put_Line
+         Unit.Add_Line
           ("   --  Getter of "
              & Class.Get_Name.Value
              & Attribute.Separator
              & Attribute.Get_Name.Value
              & ".");
-         Put_Line ("   --");
+         Unit.Add_Line (+"   --");
 
          for J in 1 .. Owned_Comments.Length loop
             Lines :=
               Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
 
             for J in 1 .. Lines.Length loop
-               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               Unit.Add_Line
+                (+"   --  " & Lines.Element (J).To_Wide_Wide_String);
             end loop;
          end loop;
       end;
@@ -481,13 +488,13 @@ procedure Gen_API is
       end if;
 
       Generate_Attribute_Setter_Specification
-       (Attribute, Class_Type_Name, Proxy);
+       (Unit, Attribute, Class_Type_Name, Proxy);
 
       if Proxy then
-         Put_Line (";");
+         Unit.Add_Line (+";");
 
       else
-         Put_Line (" is abstract;");
+         Unit.Add_Line (+" is abstract;");
       end if;
 
       --  Generate comment.
@@ -501,20 +508,21 @@ procedure Gen_API is
          Lines          : League.String_Vectors.Universal_String_Vector;
 
       begin
-         Put_Line
+         Unit.Add_Line
           ("   --  Setter of "
              & Class.Get_Name.Value
              & Attribute.Separator
              & Attribute.Get_Name.Value
              & ".");
-         Put_Line ("   --");
+         Unit.Add_Line (+"   --");
 
          for J in 1 .. Owned_Comments.Length loop
             Lines :=
               Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
 
             for J in 1 .. Lines.Length loop
-               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               Unit.Add_Line
+                (+"   --  " & Lines.Element (J).To_Wide_Wide_String);
             end loop;
          end loop;
       end;
@@ -525,33 +533,24 @@ procedure Gen_API is
    ---------------------------------------------
 
    procedure Generate_Attribute_Getter_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean)
    is
       Redefines       : constant
         AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
           := Attribute.Get_Redefined_Property;
-      Attribute_Name  : constant Wide_Wide_String
-        := To_Ada_Identifier (Attribute.Get_Name.Value);
-      Attribute_Type  : AMF.CMOF.Types.CMOF_Type_Access
+      Attribute_Name  : constant Universal_String
+        := +To_Ada_Identifier (Attribute.Get_Name.Value);
+      Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
         := Attribute.Get_Type;
       Ada_Overriding  : Boolean := False;
       Type_1          : AMF.CMOF.Types.CMOF_Type_Access;
 
-      -------------------------
-      -- Type_Qualified_Name --
-      -------------------------
-
-      function Type_Qualified_Name return Wide_Wide_String is
-      begin
-         return
-           Type_Mapping.Public_Ada_Type_Qualified_Name
-            (Attribute.Get_Type,
-             Representation (Attribute)).To_Wide_Wide_String;
-      end Type_Qualified_Name;
-
    begin
+      --  Checking which kind of 'overriding' should be used.
+
       for J in 1 .. Redefines.Length loop
          if Redefines.Element (J).Get_Name = Attribute.Get_Name then
             Type_1 := Redefines.Element (J).Get_Type;
@@ -567,18 +566,25 @@ procedure Gen_API is
          end if;
       end loop;
 
-      New_Line;
+      Unit.Add_Line;
 
       if Ada_Overriding or Proxy then
-         Put_Line ("   overriding function Get_" & Attribute_Name);
+         Unit.Add_Line ("   overriding function Get_" & Attribute_Name);
 
       else
-         Put_Line ("   not overriding function Get_" & Attribute_Name);
+         Unit.Add_Line ("   not overriding function Get_" & Attribute_Name);
       end if;
 
-      Put_Line
+      Unit.Add_Line
        ("    (Self : not null access constant " & Class_Type_Name & ")");
-      Put ("       return " & Type_Qualified_Name);
+      Unit.Context.Add
+       (Generator.Type_Mapping.Public_Ada_Package_Name
+         (Attribute_Type, Representation (Attribute)),
+        True);
+      Unit.Add
+       ("       return "
+          & Type_Mapping.Public_Ada_Type_Qualified_Name
+             (Attribute_Type, Representation (Attribute)));
    end Generate_Attribute_Getter_Specification;
 
    ---------------------------------------------
@@ -586,33 +592,24 @@ procedure Gen_API is
    ---------------------------------------------
 
    procedure Generate_Attribute_Setter_Specification
-    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean)
    is
       Redefines       : constant
         AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
           := Attribute.Get_Redefined_Property;
-      Attribute_Name  : constant Wide_Wide_String
-        := To_Ada_Identifier (Attribute.Get_Name.Value);
-      Attribute_Type  : AMF.CMOF.Types.CMOF_Type_Access
+      Attribute_Name  : constant Universal_String
+        := +To_Ada_Identifier (Attribute.Get_Name.Value);
+      Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
         := Attribute.Get_Type;
       Ada_Overriding  : Boolean := False;
       Type_1          : AMF.CMOF.Types.CMOF_Type_Access;
 
-      -------------------------
-      -- Type_Qualified_Name --
-      -------------------------
-
-      function Type_Qualified_Name return Wide_Wide_String is
-      begin
-         return
-           Type_Mapping.Public_Ada_Type_Qualified_Name
-            (Attribute.Get_Type,
-             Representation (Attribute)).To_Wide_Wide_String;
-      end Type_Qualified_Name;
-
    begin
+      --  Checking which kind of 'overriding' should be used.
+
       for J in 1 .. Redefines.Length loop
          if Redefines.Element (J).Get_Name = Attribute.Get_Name then
             Type_1 := Redefines.Element (J).Get_Type;
@@ -628,18 +625,26 @@ procedure Gen_API is
          end if;
       end loop;
 
-      New_Line;
+      Unit.Add_Line;
 
       if Ada_Overriding or Proxy then
-         Put_Line ("   overriding procedure Set_" & Attribute_Name);
+         Unit.Add_Line ("   overriding procedure Set_" & Attribute_Name);
 
       else
-         Put_Line ("   not overriding procedure Set_" & Attribute_Name);
+         Unit.Add_Line ("   not overriding procedure Set_" & Attribute_Name);
       end if;
 
-      Put_Line
+      Unit.Add_Line
        ("    (Self : not null access " & Class_Type_Name & ";");
-      Put ("     To   : " & Type_Qualified_Name & ")");
+      Unit.Context.Add
+       (Generator.Type_Mapping.Public_Ada_Package_Name
+         (Attribute.Get_Type, Representation (Attribute)),
+        True);
+      Unit.Add
+       ("     To   : "
+          & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+             (Attribute.Get_Type, Representation (Attribute))
+          & ")");
    end Generate_Attribute_Setter_Specification;
 
    --------------------
@@ -657,61 +662,13 @@ procedure Gen_API is
       Operations    : constant
         AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
           := Class.Get_Owned_Operation;
-      Context       : Contexts.Context;
+      Unit          : Generator.Units.Unit;
 
-      procedure Compute_With_For_Super_Classes;
-
-      procedure Compute_With_For_Operations;
-
-      ---------------------------------
-      -- Compute_With_For_Operations --
-      ---------------------------------
-
-      procedure Compute_With_For_Operations is
-         Parameters :
-           AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter;
-
-      begin
-         for J in 1 .. Operations.Length loop
-            Parameters := Operations.Element (J).Get_Owned_Parameter;
-
-            for J in 1 .. Parameters.Length loop
-               Compute_Ada_Context_For_Parameter
-                (Context, Parameters.Element (J), Public);
-            end loop;
-         end loop;
-      end Compute_With_For_Operations;
-
-      ------------------------------------
-      -- Compute_With_For_Super_Classes --
-      ------------------------------------
-
-      procedure Compute_With_For_Super_Classes is
-         Name : League.Strings.Universal_String;
-
-      begin
-         for J in 1 .. Super_Classes.Length loop
-            Name := Ada_API_Package_Name (Super_Classes.Element (J));
-            Context.Add (Name);
-         end loop;
-      end Compute_With_For_Super_Classes;
-
-      Package_Name  : constant Wide_Wide_String
-        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
-      Type_Name     : constant Wide_Wide_String
-        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+      Package_Name : constant Universal_String := Ada_API_Package_Name (Class);
+      Type_Name    : constant Universal_String := Ada_API_Type_Name (Class);
 
    begin
-      Compute_With_For_Super_Classes;
-
-      for J in 1 .. Attributes.Length loop
-         Compute_Ada_Context_For_Attribute
-          (Context, Attributes.Element (J), Public);
-      end loop;
-
-      Compute_With_For_Operations;
-
-      Put_Header (2011, 2011);
+      Unit.Add_Unit_Header (2011, 2011);
 
       --  Generate comment.
 
@@ -725,66 +682,61 @@ procedure Gen_API is
          for J in 1 .. Owned_Comments.Length loop
             Lines :=
               Split_Text (Owned_Comments.Element (J).Get_Body.Value, 74);
-
-            for J in 1 .. Lines.Length loop
-               Put_Line ("--  " & Lines.Element (J).To_Wide_Wide_String);
-            end loop;
+            Unit.Add_Unit_Comment (Lines);
          end loop;
-
-         Put_Line (78 * Wide_Wide_String'("-"));
       end;
 
-      Context.Instantiate (League.Strings.To_Universal_String (Package_Name));
-      Context.Iterate (Generate_With_Clause'Access);
-
-      New_Line;
-      Put_Line ("package " & Package_Name & " is");
-      New_Line;
-      Put_Line ("   pragma Preelaborate;");
-      New_Line;
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   pragma Preelaborate;");
+      Unit.Add_Line;
 
       --  Generate interface type.
 
-      Put ("   type " & Type_Name & " is limited interface");
+      Unit.Add ("   type " & Type_Name & " is limited interface");
 
       for J in 1 .. Super_Classes.Length loop
-         New_Line;
-         Put
+         Unit.Add_Line;
+         Unit.Context.Add (Ada_API_Package_Name (Super_Classes.Element (J)));
+         Unit.Add
           ("     and "
-             & Ada_API_Package_Name
-                (Super_Classes.Element (J)).To_Wide_Wide_String
+             & Ada_API_Package_Name (Super_Classes.Element (J))
              & "."
-             & Ada_API_Type_Name
-                (Super_Classes.Element (J)).To_Wide_Wide_String);
+             & Ada_API_Type_Name (Super_Classes.Element (J)));
       end loop;
 
-      Put_Line (";");
+      Unit.Add_Line (+";");
 
       --  Generate access type.
 
-      New_Line;
-      Put_Line ("   type " & Type_Name & "_Access is");
-      Put_Line ("     access all " & Type_Name & "'Class;");
-      Put_Line ("   for " & Type_Name & "_Access'Storage_Size use 0;");
+      Unit.Add_Line;
+      Unit.Add_Line ("   type " & Type_Name & "_Access is");
+      Unit.Add_Line ("     access all " & Type_Name & "'Class;");
+      Unit.Add_Line ("   for " & Type_Name & "_Access'Storage_Size use 0;");
 
       --  Generate setters and getters.
 
       for J in 1 .. Attributes.Length loop
          Generate_Attribute_Specification
-          (Attributes.Element (J), Ada_API_Type_Name (Class), False);
+          (Unit, Attributes.Element (J), Ada_API_Type_Name (Class), False);
       end loop;
 
       --  Generate operations.
 
       for J in 1 .. Operations.Length loop
          Generate_Operation_Specification
-          (Operations.Element (J),
+          (Unit,
+           Operations.Element (J),
            Ada_API_Type_Name (Operations.Element (J).Get_Class),
            False);
       end loop;
 
-      New_Line;
-      Put_Line ("end " & Package_Name & ";");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Class;
 
    --------------------------
@@ -1029,16 +981,12 @@ procedure Gen_API is
    --------------------------------------
 
    procedure Generate_Operation_Specification
-    (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
+    (Unit            : in out Generator.Units.Unit;
+     Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean)
    is
       use type AMF.CMOF.Parameters.CMOF_Parameter_Access;
-
-      function Type_Qualified_Name
-       (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
-          return Wide_Wide_String;
-      --  Returns full qualified name of the Ada type.
 
       function Is_Overriding return Boolean;
       --  Returns True when subprogram is overriding.
@@ -1090,23 +1038,10 @@ procedure Gen_API is
          return Result;
       end Is_Overriding;
 
-      -------------------------
-      -- Type_Qualified_Name --
-      -------------------------
-
-      function Type_Qualified_Name
-       (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
-          return Wide_Wide_String is
-      begin
-         return
-           Type_Mapping.Public_Ada_Type_Qualified_Name
-            (Parameter.Get_Type,
-             Representation (Parameter)).To_Wide_Wide_String;
-      end Type_Qualified_Name;
-
       Parameters : constant
         AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
           := Operation.Get_Owned_Parameter;
+      Parameter  : AMF.CMOF.Parameters.CMOF_Parameter_Access;
       Returns    : AMF.CMOF.Parameters.CMOF_Parameter_Access;
       Name       : League.Strings.Universal_String;
 
@@ -1138,54 +1073,69 @@ procedure Gen_API is
 
       end if;
 
-      New_Line;
+      Unit.Add_Line;
 
       if Is_Overriding or Proxy then
-         Put ("   overriding ");
+         Unit.Add (+"   overriding ");
 
       else
-         Put ("   not overriding ");
+         Unit.Add (+"   not overriding ");
       end if;
 
       if Returns /= null then
-         Put_Line ("function " & To_Ada_Identifier (Name));
+         Unit.Add_Line (+"function " & To_Ada_Identifier (Name));
 
       else
-         Put_Line ("procedure " & To_Ada_Identifier (Name));
+         Unit.Add_Line (+"procedure " & To_Ada_Identifier (Name));
       end if;
 
       if Operation.Get_Is_Query then
-         Put ("    (Self : not null access constant " & Class_Type_Name);
+         Unit.Add ("    (Self : not null access constant " & Class_Type_Name);
 
       else
-         Put ("    (Self : not null access " & Class_Type_Name);
+         Unit.Add ("    (Self : not null access " & Class_Type_Name);
       end if;
 
       for J in 1 .. Parameters.Length loop
-         if Parameters.Element (J).Get_Direction /= Return_Parameter then
-            if Parameters.Element (J).Get_Direction /= In_Parameter then
+         Parameter := Parameters.Element (J);
+
+         if Parameter.Get_Direction /= Return_Parameter then
+            if Parameter.Get_Direction /= In_Parameter then
                raise Program_Error;
             end if;
 
-            Put_Line (";");
-            Put
+            Unit.Add_Line (+";");
+            Unit.Context.Add
+             (Generator.Type_Mapping.Public_Ada_Package_Name
+               (Parameter.Get_Type, Representation (Parameter)),
+              True);
+            Unit.Add
              ("     "
                 & To_Ada_Identifier (Parameters.Element (J).Get_Name.Value)
                 & " : "
-                & Type_Qualified_Name (Parameters.Element (J)));
+                & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+                   (Parameter.Get_Type,
+                    Representation (Parameter)));
          end if;
       end loop;
 
-      Put_Line (")");
+      Unit.Add_Line (+")");
 
       if Returns /= null then
-         Put ("       return " & Type_Qualified_Name (Returns));
+         Unit.Context.Add
+          (Generator.Type_Mapping.Public_Ada_Package_Name
+            (Returns.Get_Type, Representation (Returns)),
+           True);
+         Unit.Add
+          ("       return "
+             & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+                (Returns.Get_Type, Representation (Returns)));
 
          if Proxy then
-            Put_Line (";");
+            Unit.Add_Line (+";");
 
          else
-            Put_Line (" is abstract;");
+            Unit.Add_Line (+" is abstract;");
          end if;
       end if;
 
@@ -1200,20 +1150,20 @@ procedure Gen_API is
          Lines          : League.String_Vectors.Universal_String_Vector;
 
       begin
-         Put_Line
+         Unit.Add_Line
           ("   --  Operation "
              & Class.Get_Name.Value
              & Operation.Separator
              & Operation.Get_Name.Value
              & ".");
-         Put_Line ("   --");
+         Unit.Add_Line (+"   --");
 
          for J in 1 .. Owned_Comments.Length loop
             Lines :=
               Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
 
             for J in 1 .. Lines.Length loop
-               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               Unit.Add_Line ("   --  " & Lines.Element (J));
             end loop;
          end loop;
       end;
@@ -1504,6 +1454,7 @@ procedure Gen_API is
       Context              : Contexts.Context;
       Generated_Attributes : CMOF_Element_Sets.Set;
       Generated_Operations : CMOF_Element_Sets.Set;
+      Unit                 : Generator.Units.Unit;
 
       procedure Generate_Attributes
        (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
@@ -1625,7 +1576,7 @@ procedure Gen_API is
             then
                if not Is_Generated then
                   Generate_Attribute_Specification
-                   (Attribute, Type_Name, True);
+                   (Unit, Attribute, Type_Name, True);
                end if;
 
                Generated_Attributes.Insert
@@ -1695,7 +1646,8 @@ procedure Gen_API is
                     (AMF.CMOF.Elements.CMOF_Element_Access (Operation))
             then
                if not Is_Generated then
-                  Generate_Operation_Specification (Operation, Type_Name, True);
+                  Generate_Operation_Specification
+                   (Unit, Operation, Type_Name, True);
                end if;
 
                Generated_Operations.Insert
