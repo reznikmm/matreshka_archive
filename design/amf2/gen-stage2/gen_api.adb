@@ -688,7 +688,9 @@ procedure Gen_API is
              (Split_Text (Owned_Comments.Element (J).Get_Body.Value, 74));
          end loop;
 
-         Unit.Add_Unit_Comment (Lines);
+         if not Lines.Is_Empty then
+            Unit.Add_Unit_Comment (Lines);
+         end if;
       end;
 
       Unit.Add_Line;
