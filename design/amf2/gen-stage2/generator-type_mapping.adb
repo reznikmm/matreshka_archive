@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -131,7 +131,7 @@ package body Generator.Type_Mapping is
          end if;
 
       elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
-         return "AMF." & Metamodel_Name;
+         return "AMF." & Owning_Metamodel_Name (The_Type);
 
       elsif The_Type.all
               in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
