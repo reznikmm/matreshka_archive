@@ -53,6 +53,7 @@ package AMF.String_Collections is
 
    type Set_Of_String is new Collection_Of_String with private;
    type Ordered_Set_Of_String is new Collection_Of_String with private;
+   type Bag_Of_String is new Collection_Of_String with private;
    type Sequence_Of_String is new Collection_Of_String with private;
 
 private
@@ -64,6 +65,7 @@ private
 
    type Set_Of_String is new Collection_Of_String with null record;
    type Ordered_Set_Of_String is new Collection_Of_String with null record;
+   type Bag_Of_String is new Collection_Of_String with null record;
    type Sequence_Of_String is new Collection_Of_String with null record;
 
 end AMF.String_Collections;
