@@ -47,7 +47,7 @@
 --  (possibly empty) set of values when evaluated in a context.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Value_Specifications;
-with AMF.String_Collections;
+limited with AMF.String_Collections;
 
 package AMF.CMOF.Opaque_Expressions is
 
