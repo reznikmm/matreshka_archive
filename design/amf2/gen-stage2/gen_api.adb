@@ -1043,12 +1043,14 @@ procedure Gen_API is
          return Result;
       end Is_Overriding;
 
-      Parameters : constant
+      Parameters     : constant
         AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
           := Operation.Get_Owned_Parameter;
-      Parameter  : AMF.CMOF.Parameters.CMOF_Parameter_Access;
-      Returns    : AMF.CMOF.Parameters.CMOF_Parameter_Access;
-      Name       : League.Strings.Universal_String;
+      Parameter      : AMF.CMOF.Parameters.CMOF_Parameter_Access;
+      Parameter_Type : AMF.CMOF.Types.CMOF_Type_Access;
+      Returns        : AMF.CMOF.Parameters.CMOF_Parameter_Access;
+      Returns_Type   : AMF.CMOF.Types.CMOF_Type_Access;
+      Name           : League.Strings.Universal_String;
 
    begin
       --  Look for 'return' parameter.
@@ -1109,32 +1111,34 @@ procedure Gen_API is
                raise Program_Error;
             end if;
 
+            Parameter_Type := Parameter.Get_Type;
+
             Unit.Add_Line (+";");
             Unit.Context.Add
              (Generator.Type_Mapping.Public_Ada_Package_Name
-               (Parameter.Get_Type, Representation (Parameter)),
-              True);
+               (Parameter_Type, Representation (Parameter)),
+              Parameter_Type.all in AMF.CMOF.Classes.CMOF_Class'Class);
             Unit.Add
              ("     "
                 & To_Ada_Identifier (Parameters.Element (J).Get_Name.Value)
                 & " : "
                 & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
-                   (Parameter.Get_Type,
-                    Representation (Parameter)));
+                   (Parameter_Type, Representation (Parameter)));
          end if;
       end loop;
 
       Unit.Add_Line (+")");
 
       if Returns /= null then
+         Returns_Type := Returns.Get_Type;
          Unit.Context.Add
           (Generator.Type_Mapping.Public_Ada_Package_Name
-            (Returns.Get_Type, Representation (Returns)),
-           True);
+            (Returns_Type, Representation (Returns)),
+           Returns_Type.all in AMF.CMOF.Classes.CMOF_Class'Class);
          Unit.Add
           ("       return "
              & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
-                (Returns.Get_Type, Representation (Returns)));
+                (Returns_Type, Representation (Returns)));
 
          if Proxy then
             Unit.Add_Line (+";");
