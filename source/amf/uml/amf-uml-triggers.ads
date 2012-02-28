@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A trigger relates an event to a behavior that may affect an instance of 
 --  the classifier.
+--  
 --  A trigger specification may be qualified by the port on which the event 
 --  occurred.
 ------------------------------------------------------------------------------

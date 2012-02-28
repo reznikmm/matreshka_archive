@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A component represents a modular part of a system that encapsulates its 
 --  contents and whose manifestation is replaceable within its environment.
+--  
 --  In the namespace of a component, all model elements that are involved in 
 --  or related to its definition are either owned or imported explicitly. This 
 --  may include, for example, use cases and dependencies (e.g. mappings), 

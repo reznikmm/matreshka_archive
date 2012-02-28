@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A packageable element indicates a named element that may be owned directly 
 --  by a package.
+--  
 --  Packageable elements are able to serve as a template parameter.
 ------------------------------------------------------------------------------
 with AMF.UML.Named_Elements;

@@ -51,6 +51,7 @@
 --  for handling. An assembly connector is a connector between two or more 
 --  parts or ports on parts that defines that one or more parts provide the 
 --  services that other parts use.
+--  
 --  Specifies a link that enables communication between two or more instances. 
 --  This link may be an instance of an association, or it may represent the 
 --  possibility of the instances being able to communicate because their 

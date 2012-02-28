@@ -55,6 +55,7 @@
 --  as a whole completes. Any concurrent actions that would result in 
 --  accessing such objects are required to have their execution deferred until 
 --  the completion of the node.
+--  
 --  A structured activity node is an executable activity node that may have an 
 --  expansion into subordinate nodes as an activity group. The subordinate 
 --  nodes must belong to only one structured activity node, although they may 

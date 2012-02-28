@@ -48,6 +48,7 @@
 --  behavior execution or emergent behavior, or a selective illustration of an 
 --  interesting subset of possible executions. The latter form is typically 
 --  used for capturing examples, such as a trace of a particular execution.
+--  
 --  A behavior owns zero or more parameter sets.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Behavioral_Features;

@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  A join node is a control node that synchronizes multiple flows.
+--  
 --  Join nodes have a Boolean value specification using the names of the 
 --  incoming edges to specify the conditions under which the join will emit a 
 --  token.

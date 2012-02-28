@@ -49,6 +49,7 @@
 --  source files, scripts, and binary executable files, a table in a database 
 --  system, a development deliverable, or a word-processing document, a mail 
 --  message.
+--  
 --  An artifact is the source of a deployment to a node.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Artifacts.Collections;

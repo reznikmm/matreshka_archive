@@ -48,6 +48,7 @@
 --  onwards on links deriving from attached connectors. Invocation actions may 
 --  also be sent to a target via a given port, either on the sending object or 
 --  on another object.
+--  
 --  InvocationAction is an abstract class for the various actions that invoke 
 --  behavior.
 ------------------------------------------------------------------------------

@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  A pin is an object node for inputs and outputs to actions.
+--  
 --  A pin is a typed element and multiplicity element that provides values to 
 --  actions and accept result values from them.
 ------------------------------------------------------------------------------

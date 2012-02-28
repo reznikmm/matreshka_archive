@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  An activity edge is an abstract class for directed connections between two 
 --  activity nodes.
+--  
 --  Activity edges can be contained in interruptible regions.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Activities;

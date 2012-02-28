@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A time event can be defined relative to entering the current state of the 
 --  executing state machine.
+--  
 --  A time event specifies a point in time. At the specified time, the event 
 --  occurs.
 ------------------------------------------------------------------------------

@@ -47,6 +47,7 @@
 --  This allows names of model elements to involve template parameters. The 
 --  actual name is evaluated from the string expression only when it is 
 --  sensible to do so (e.g., when a template is bound).
+--  
 --  A named element is an element in a model that may have a name.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Dependencies.Collections;

@@ -45,10 +45,13 @@
 ------------------------------------------------------------------------------
 --  A class describes a set of objects that share the same specifications of 
 --  features, constraints, and semantics.
+--  
 --  A class has the capability to have an internal structure and ports.
+--  
 --  Class has derived association that indicates how it may be extended 
 --  through one or more stereotypes. Stereotype is the only kind of metaclass 
 --  that cannot be extended by stereotypes.
+--  
 --  A class may be designated as active (i.e., each of its instances having 
 --  its own thread of control) or passive (i.e., each of its instances 
 --  executing within the context of some other object). A class may also 

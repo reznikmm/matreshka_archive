@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  A variable is considered a connectable element.
+--  
 --  Variables are elements for passing data between actions indirectly. A 
 --  local variable stores values shared by the actions within a structured 
 --  activity group but not accessible outside it. The output of an action may 

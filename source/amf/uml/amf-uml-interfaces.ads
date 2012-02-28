@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  Interfaces may include receptions (in addition to operations).
+--  
 --  An interface is a kind of classifier that represents a declaration of a 
 --  set of coherent public features and obligations. An interface specifies a 
 --  contract; any instance of a classifier that realizes the interface must 
@@ -51,6 +52,7 @@
 --  interface are in the form of various kinds of constraints (such as pre- 
 --  and post-conditions) or protocol specifications, which may impose ordering 
 --  restrictions on interactions through the interface.
+--  
 --  Since an interface specifies conformance characteristics, it does not own 
 --  detailed behavior specifications. Instead, interfaces may own a protocol 
 --  state machine that specifies event sequences and pre/post conditions for 

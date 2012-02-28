@@ -47,6 +47,7 @@
 --  instances that play roles of a classifier. Connectable elements may be 
 --  joined by attached connectors and specify configurations of linked 
 --  instances to be created within an instance of the containing classifier.
+--  
 --  A connectable element may be exposed as a connectable element template 
 --  parameter.
 ------------------------------------------------------------------------------

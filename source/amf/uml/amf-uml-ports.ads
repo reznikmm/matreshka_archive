@@ -50,6 +50,7 @@
 --  made to invoke the behavioral features of a classifier. A Port may specify 
 --  the services a classifier provides (offers) to its environment as well as 
 --  the services that a classifier expects (requires) of its environment.
+--  
 --  A port has an associated protocol state machine.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Interfaces.Collections;

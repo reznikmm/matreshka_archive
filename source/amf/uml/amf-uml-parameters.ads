@@ -45,7 +45,9 @@
 ------------------------------------------------------------------------------
 --  A parameter is a specification of an argument used to pass information 
 --  into or out of an invocation of a behavioral feature.
+--  
 --  Parameters have support for streaming, exceptions, and parameter sets.
+--  
 --  Parameters are allowed to be treated as connectable elements.
 ------------------------------------------------------------------------------
 with AMF.UML.Connectable_Elements;

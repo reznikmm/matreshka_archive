@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A type is a named element that is used as the type for a typed element. A 
 --  type can be contained in a package.
+--  
 --  A type constrains the values represented by a typed element.
 ------------------------------------------------------------------------------
 with AMF.UML.Packageable_Elements;

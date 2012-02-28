@@ -46,6 +46,7 @@
 --  Object nodes have support for token selection, limitation on the number of 
 --  tokens, specifying the state required for tokens, and carrying control 
 --  values.
+--  
 --  An object node is an abstract activity node that is part of defining 
 --  object flow in an activity.
 ------------------------------------------------------------------------------

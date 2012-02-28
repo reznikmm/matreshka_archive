@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  A behaviored classifier may have an interface realization.
+--  
 --  A classifier can have behavior specifications defined in its namespace. 
 --  One of these may specify the behavior of the classifier itself.
 ------------------------------------------------------------------------------

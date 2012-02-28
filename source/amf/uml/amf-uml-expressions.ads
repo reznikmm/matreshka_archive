@@ -46,6 +46,7 @@
 --  An expression represents a node in an expression tree, which may be 
 --  non-terminal or terminal. It defines a symbol, and has a possibly empty 
 --  sequence of operands which are value specifications.
+--  
 --  An expression is a structured tree of symbols that denotes a (possibly 
 --  empty) set of values when evaluated in a context.
 ------------------------------------------------------------------------------

@@ -44,9 +44,11 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  An action has pre- and post-conditions.
+--  
 --  An action is a named element that is the fundamental unit of executable 
 --  functionality. The execution of an action represents some transformation 
 --  or processing in the modeled system, be it a computer system or otherwise.
+--  
 --  An action represents a single step within an activity, that is, one that 
 --  is not further decomposed within the activity.
 ------------------------------------------------------------------------------

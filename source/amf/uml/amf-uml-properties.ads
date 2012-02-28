@@ -51,14 +51,18 @@
 --  instances at the other end(s) of the association. The range of valid 
 --  values represented by the property can be controlled by setting the 
 --  property's type.
+--  
 --  A property has the capability of being a deployment target in a deployment 
 --  relationship. This enables modeling the deployment to hierarchical nodes 
 --  that have properties functioning as internal parts.
+--  
 --  Property specializes ParameterableElement to specify that a property can 
 --  be exposed as a formal template parameter, and provided as an actual 
 --  parameter in a binding of a template.
+--  
 --  A property represents a set of instances that are owned by a containing 
 --  classifier instance.
+--  
 --  A property is a structural feature of a classifier that characterizes 
 --  instances of the classifier. A property related by ownedAttribute to a 
 --  classifier (other than an association) represents an attribute and might 

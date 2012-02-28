@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  An instance specification is a model element that represents an instance 
 --  in a modeled system.
+--  
 --  An instance specification has the capability of being a deployment target 
 --  in a deployment relationship, in the case that it is an instance of a 
 --  node. It is also has the capability of being a deployed artifact, if it is 

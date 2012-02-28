@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A state models a situation during which some (usually implicit) invariant 
 --  condition holds.
+--  
 --  The states of protocol state machines are exposed to the users of their 
 --  context classifiers. A protocol state represents an exposed stable 
 --  situation of its context classifier: when an instance of the classifier is 

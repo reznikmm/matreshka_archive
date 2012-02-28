@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 --  A typed element has a type.
+--  
 --  A typed element is a kind of named element that represents an element with 
 --  a type.
 ------------------------------------------------------------------------------

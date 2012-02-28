@@ -48,8 +48,10 @@
 --  specializes ParameterableElement to specify that an operation can be 
 --  exposed as a formal template parameter, and provided as an actual 
 --  parameter in a binding of a template.
+--  
 --  An operation may invoke both the execution of method behaviors as well as 
 --  other behavioral responses.
+--  
 --  An operation is a behavioral feature of a classifier that specifies the 
 --  name, type, parameters, and constraints for invoking an associated 
 --  behavior.

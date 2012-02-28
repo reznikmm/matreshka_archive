@@ -45,11 +45,12 @@
 ------------------------------------------------------------------------------
 --  An opaque expression is an uninterpreted textual statement that denotes a 
 --  (possibly empty) set of values when evaluated in a context.
+--  
 --  Provides a mechanism for precisely defining the behavior of an opaque 
 --  expression. An opaque expression is defined by a behavior restricted to 
 --  return one result.
 ------------------------------------------------------------------------------
-with AMF.String_Collections;
+limited with AMF.String_Collections;
 limited with AMF.UML.Behaviors;
 limited with AMF.UML.Parameters;
 with AMF.UML.Value_Specifications;

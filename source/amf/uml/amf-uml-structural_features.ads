@@ -46,6 +46,7 @@
 --  By specializing multiplicity element, it supports a multiplicity that 
 --  specifies valid cardinalities for the collection of values associated with 
 --  an instantiation of the structural feature.
+--  
 --  A structural feature is a typed feature of a classifier that specifies the 
 --  structure of instances of the classifier.
 ------------------------------------------------------------------------------

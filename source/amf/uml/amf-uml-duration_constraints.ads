@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 --  A duration constraint is a constraint that refers to a duration interval.
 ------------------------------------------------------------------------------
-with AMF.Boolean_Collections;
+limited with AMF.Boolean_Collections;
 limited with AMF.UML.Duration_Intervals;
 with AMF.UML.Interval_Constraints;
 

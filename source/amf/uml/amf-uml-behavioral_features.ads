@@ -45,7 +45,9 @@
 ------------------------------------------------------------------------------
 --  A behavioral feature is a feature of a classifier that specifies an aspect 
 --  of the behavior of its instances.
+--  
 --  A behavioral feature owns zero or more parameter sets.
+--  
 --  A behavioral feature is implemented (realized) by a behavior. A behavioral 
 --  feature specifies that a classifier will respond to a designated request 
 --  by invoking its implementing method.

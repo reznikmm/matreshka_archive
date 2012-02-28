@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  An object flow is an activity edge that can have objects or data passing 
 --  along it.
+--  
 --  Object flows have support for multicast/receive, token selection from 
 --  object nodes, and transformation of tokens.
 ------------------------------------------------------------------------------
