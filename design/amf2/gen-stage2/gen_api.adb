@@ -680,10 +680,15 @@ procedure Gen_API is
 
       begin
          for J in 1 .. Owned_Comments.Length loop
-            Lines :=
-              Split_Text (Owned_Comments.Element (J).Get_Body.Value, 74);
-            Unit.Add_Unit_Comment (Lines);
+            if Lines.Length /= 0 then
+               Lines.Append (Empty_Universal_String);
+            end if;
+
+            Lines.Append
+             (Split_Text (Owned_Comments.Element (J).Get_Body.Value, 74));
          end loop;
+
+         Unit.Add_Unit_Comment (Lines);
       end;
 
       Unit.Add_Line;
