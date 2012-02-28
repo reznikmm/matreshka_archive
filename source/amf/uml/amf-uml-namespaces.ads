@@ -46,7 +46,7 @@
 --  A namespace is an element in a model that contains a set of named elements 
 --  that can be identified by name.
 ------------------------------------------------------------------------------
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 limited with AMF.UML.Constraints.Collections;
 limited with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Named_Elements;
