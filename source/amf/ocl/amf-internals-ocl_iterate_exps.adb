@@ -41,24 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.OCL_Attributes;
-with AMF.OCL.Ocl_Expressions;
-with AMF.OCL.Variables.Collections;
-with AMF.UML.Comments.Collections;
-with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
-with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
-with AMF.UML.Packages.Collections;
-with AMF.UML.String_Expressions;
-with AMF.UML.Types;
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
 
 package body AMF.Internals.OCL_Iterate_Exps is
 
@@ -85,10 +74,11 @@ package body AMF.Internals.OCL_Iterate_Exps is
     (Self : not null access OCL_Iterate_Exp_Proxy;
      To   : AMF.OCL.Variables.OCL_Variable_Access) is
    begin
-      AMF.Internals.Tables.OCL_Attributes.Internal_Set_Result
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--      AMF.Internals.Tables.OCL_Attributes.Internal_Set_Result
+--       (Self.Id,
+--        AMF.Internals.Helpers.To_Element
+--         (AMF.Elements.Element_Access (To)));
    end Set_Result;
 
    --------------

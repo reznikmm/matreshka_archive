@@ -41,43 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.OCL_Attributes;
-with AMF.String_Collections;
-with AMF.UML.Classifier_Template_Parameters;
-with AMF.UML.Classifiers.Collections;
-with AMF.UML.Collaboration_Uses.Collections;
-with AMF.UML.Comments.Collections;
-with AMF.UML.Constraints.Collections;
-with AMF.UML.Dependencies.Collections;
-with AMF.UML.Element_Imports.Collections;
-with AMF.UML.Elements.Collections;
-with AMF.UML.Features.Collections;
-with AMF.UML.Generalization_Sets.Collections;
-with AMF.UML.Generalizations.Collections;
-with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces.Collections;
-with AMF.UML.Operations.Collections;
-with AMF.UML.Package_Imports.Collections;
-with AMF.UML.Packageable_Elements.Collections;
-with AMF.UML.Packages.Collections;
-with AMF.UML.Parameterable_Elements.Collections;
-with AMF.UML.Properties.Collections;
-with AMF.UML.Redefinable_Elements.Collections;
-with AMF.UML.Redefinable_Template_Signatures;
-with AMF.UML.String_Expressions;
-with AMF.UML.Substitutions.Collections;
-with AMF.UML.Template_Bindings.Collections;
-with AMF.UML.Template_Parameters;
-with AMF.UML.Template_Signatures;
-with AMF.UML.Types;
-with AMF.UML.Use_Cases.Collections;
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
 
 package body AMF.Internals.OCL_Sequence_Types is
 
@@ -767,7 +737,7 @@ package body AMF.Internals.OCL_Sequence_Types is
    begin
       return
         AMF.Internals.Tables.OCL_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Id).Value;
    end Get_Visibility;
 
    --------------------
@@ -779,7 +749,7 @@ package body AMF.Internals.OCL_Sequence_Types is
      To   : AMF.UML.UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Id, (False, To));
    end Set_Visibility;
 
    -----------------------------------

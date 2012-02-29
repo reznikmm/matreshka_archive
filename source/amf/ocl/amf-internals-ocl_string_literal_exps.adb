@@ -41,20 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.OCL_Attributes;
-with AMF.UML.Comments.Collections;
-with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
-with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
-with AMF.UML.Packages.Collections;
-with AMF.UML.String_Expressions;
-with AMF.UML.Types;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -68,7 +58,10 @@ package body AMF.Internals.OCL_String_Literal_Exps is
     (Self : not null access constant OCL_String_Literal_Exp_Proxy)
        return League.Strings.Universal_String is
    begin
-      null;
+      return
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.OCL_Attributes.Internal_Get_String_Symbol
+           (Self.Id));
    end Get_String_Symbol;
 
    -----------------------
