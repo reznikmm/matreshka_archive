@@ -63,6 +63,28 @@ package body Generator.Units is
       end if;
    end Add;
 
+   ----------------
+   -- Add_Header --
+   ----------------
+
+   procedure Add_Header
+    (Self   : in out Unit;
+     Name   : League.Strings.Universal_String;
+     Column : Positive)
+   is
+      use Ada.Strings.Wide_Wide_Fixed;
+
+      Indent    : constant Wide_Wide_String := Column * ' ';
+      Separator : constant Wide_Wide_String
+        := Indent & ((Name.Length + 6) * '-');
+
+   begin
+      Self.Add_Line;
+      Self.Add_Line (+Separator);
+      Self.Add_Line (Indent & "-- " & Name & " --");
+      Self.Add_Line (+Separator);
+   end Add_Header;
+
    --------------
    -- Add_Line --
    --------------

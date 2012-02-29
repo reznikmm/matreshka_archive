@@ -68,6 +68,12 @@ package Generator.Units is
      Last_Year  : Positive);
    --  Adds unit header.
 
+   procedure Add_Header
+    (Self   : in out Unit;
+     Name   : League.Strings.Universal_String;
+     Column : Positive);
+   --  Adds subprograms header.
+
    procedure Add_Unit_Comment
     (Self    : in out Unit;
      Comment : League.String_Vectors.Universal_String_Vector);
