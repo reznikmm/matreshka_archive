@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-------------------------------------------------------------------------------
 with AMF.OCL.Feature_Call_Exps;
 limited with AMF.OCL.Ocl_Expressions.Collections;
 limited with AMF.UML.Operations;
