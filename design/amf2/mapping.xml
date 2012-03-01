@@ -21,11 +21,11 @@
     <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Natural_Holder_Value"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind">
-    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-in" adaLiteral="AMF.CMOF.In_Parameter"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-in" adaLiteral="In_Parameter"/>
     <mapping representation="value" memberName="Parameter_Direction_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind">
-    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-public" adaLiteral="AMF.CMOF.Public_Visibility"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-public" adaLiteral="Public_Visibility"/>
     <mapping representation="value" memberName="Visibility_Value" memberKindName="M_Visibility_Kind"/>
     <mapping representation="holder" memberName="Visibility_Holder_Value" memberKindName="M_Visibility_Holder_Kind"/>
   </type>
@@ -60,54 +60,54 @@
   <!--  Enumeration types of UML package of UML specification  -->
 
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#AggregationKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#AggregationKind-none" adaLiteral="AMF.UML.None"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#AggregationKind-none" adaLiteral="None"/>
     <mapping representation="value" memberName="Aggregation_Kind_Value" memberKindName="M_Aggregation_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#CallConcurrencyKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#CallConcurrencyKind-sequential" adaLiteral="AMF.UML.Sequential"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#CallConcurrencyKind-sequential" adaLiteral="Sequential"/>
     <mapping representation="value" memberName="Call_Concurrency_Kind_Value" memberKindName="M_Call_Concurrency_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ConnectorKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ConnectorKind-assembly" adaLiteral="AMF.UML.Assembly"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ConnectorKind-assembly" adaLiteral="Assembly"/>
     <mapping representation="value" memberName="Connector_Kind_Value" memberKindName="M_Connector_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ExpansionKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ExpansionKind-iterative" adaLiteral="AMF.UML.Iterative"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ExpansionKind-iterative" adaLiteral="Iterative"/>
     <mapping representation="value" memberName="Expansion_Kind_Value" memberKindName="M_Expansion_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-seq" adaLiteral="AMF.UML.Seq_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-seq" adaLiteral="Seq_Operator"/>
     <mapping representation="value" memberName="Interaction_Operator_Kind_Value" memberKindName="M_Interaction_Operator_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageKind-unknown" adaLiteral="AMF.UML.Unknown"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageKind-unknown" adaLiteral="Unknown"/>
     <mapping representation="value" memberName="Message_Kind_Value" memberKindName="M_Message_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageSort">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageSort-synchCall" adaLiteral="AMF.UML.Synch_Call"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageSort-synchCall" adaLiteral="Synch_Call"/>
     <mapping representation="value" memberName="Message_Sort_Value" memberKindName="M_Message_Sort"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ObjectNodeOrderingKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ObjectNodeOrderingKind-FIFO" adaLiteral="AMF.UML.FIFO"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ObjectNodeOrderingKind-FIFO" adaLiteral="FIFO"/>
     <mapping representation="value" memberName="Object_Node_Ordering_Kind_Value" memberKindName="M_Object_Node_Ordering_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-in" adaLiteral="AMF.UML.In_Parameter"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-in" adaLiteral="In_Parameter"/>
     <mapping representation="value" memberName="Parameter_Direction_Kind_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterEffectKind">
     <mapping representation="holder" memberName="Parameter_Effect_Kind_Holder" memberKindName="M_Parameter_Effect_Kind_Holder"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-initial" adaLiteral="AMF.UML.Initial_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-initial" adaLiteral="Initial_Pseudostate"/>
     <mapping representation="value" memberName="Pseudostate_Kind_Value" memberKindName="M_Pseudostate_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#TransitionKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#TransitionKind-external" adaLiteral="AMF.UML.External"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#TransitionKind-external" adaLiteral="External"/>
     <mapping representation="value" memberName="Transition_Kind_Value" memberKindName="M_Transition_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-public" adaLiteral="AMF.UML.Public_Visibility"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-public" adaLiteral="Public_Visibility"/>
     <mapping representation="value" memberName="Visibility_Kind_Value" memberKindName="M_Visibility_Kind"/>
     <mapping representation="holder" memberName="Visibility_Kind_Holder" memberKindName="M_Visibility_Kind_Holder"/>
   </type>
@@ -115,7 +115,7 @@
   <!--  Enumeration type from OCL specification  -->
 
   <type uri="http://www.omg.org/spec/OCL/20090501/OCL.cmof#CollectionKind">
-    <literal uri="http://www.omg.org/spec/OCL/20090501/OCL.cmof#CollectionKind-Collection" adaLiteral="AMF.OCL.Collection"/>
+    <literal uri="http://www.omg.org/spec/OCL/20090501/OCL.cmof#CollectionKind-Collection" adaLiteral="Collection"/>
     <mapping representation="value" memberName="Collection_Kind_Value" memberKindName="M_Collection_Kind"/>
   </type>
 </mappings>
