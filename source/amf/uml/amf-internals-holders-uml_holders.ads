@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,10 +51,12 @@ with AMF.UML.Activities;
 with AMF.UML.Activity_Groups;
 with AMF.UML.Activity_Nodes;
 with AMF.UML.Activity_Partitions;
+with AMF.UML.Association_Classes;
 with AMF.UML.Associations;
 with AMF.UML.Behaviored_Classifiers;
 with AMF.UML.Behavioral_Features;
 with AMF.UML.Behaviors;
+with AMF.UML.Call_Operation_Actions;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers;
 with AMF.UML.Classes;
@@ -71,6 +73,7 @@ with AMF.UML.Deployments;
 with AMF.UML.Duration_Intervals;
 with AMF.UML.Durations;
 with AMF.UML.Elements;
+with AMF.UML.Enumeration_Literals;
 with AMF.UML.Enumerations;
 with AMF.UML.Events;
 with AMF.UML.Executable_Nodes;
@@ -108,6 +111,7 @@ with AMF.UML.Properties;
 with AMF.UML.Protocol_State_Machines;
 with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.Regions;
+with AMF.UML.Send_Signal_Actions;
 with AMF.UML.Signals;
 with AMF.UML.State_Machines;
 with AMF.UML.States;
@@ -152,6 +156,10 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Association_Classes.UML_Association_Class_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Associations.UML_Association_Access)
        return League.Holders.Holder;
 
@@ -165,6 +173,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Behaviors.UML_Behavior_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -229,6 +241,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Elements.UML_Element_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -377,6 +393,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Regions.UML_Region_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access)
        return League.Holders.Holder;
 
    function To_Holder

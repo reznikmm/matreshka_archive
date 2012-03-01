@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -123,6 +123,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Association_Classes.UML_Association_Class_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access)
        return League.Holders.Holder is
    begin
@@ -148,6 +160,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Behaviors.UML_Behavior_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access)
        return League.Holders.Holder is
    begin
       return
@@ -340,6 +364,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Elements.UML_Element_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access)
        return League.Holders.Holder is
    begin
       return
@@ -784,6 +820,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Regions.UML_Region_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access)
        return League.Holders.Holder is
    begin
       return
