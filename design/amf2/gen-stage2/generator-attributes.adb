@@ -797,7 +797,7 @@ package body Generator.Attributes is
    begin
       Unit.Add_Unit_Header
        (Integer'Max (2010, Generator.First_Year),
-        Integer'Max (2010, Generator.Last_Year));
+        Integer'Max (2012, Generator.Last_Year));
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
       Unit.Add_Line;
@@ -1145,7 +1145,9 @@ package body Generator.Attributes is
    begin
       Analyze;
 
-      Unit.Add_Unit_Header (2010, 2011);
+      Unit.Add_Unit_Header
+       (Integer'Max (2010, Generator.First_Year),
+        Integer'Max (2011, Generator.Last_Year));
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");
       Getters.Iterate (Generate_Getter'Access);

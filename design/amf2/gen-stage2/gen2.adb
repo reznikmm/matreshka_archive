@@ -64,7 +64,13 @@ procedure Gen2 is
    Extent : AMF.URI_Stores.URI_Store_Access;
 
 begin
-   Generator.Metamodel_Name := League.Application.Arguments.Element (3);
+   Generator.First_Year :=
+     Integer'Wide_Wide_Value
+      (League.Application.Arguments.Element (1).To_Wide_Wide_String);
+   Generator.Last_Year :=
+     Integer'Wide_Wide_Value
+      (League.Application.Arguments.Element (2).To_Wide_Wide_String);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (5);
 
    --  Initialize facility.
 
@@ -75,8 +81,8 @@ begin
    Put_Line (Standard_Error, "Loading metamodels...");
    Extent :=
      XMI.Reader.Read_File
-      (League.Application.Arguments.Element (1),
-       League.Application.Arguments.Element (2));
+      (League.Application.Arguments.Element (3),
+       League.Application.Arguments.Element (4));
 
    --  Load type mapping.
 

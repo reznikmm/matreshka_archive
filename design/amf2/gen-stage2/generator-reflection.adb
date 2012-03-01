@@ -855,7 +855,7 @@ package body Generator.Reflection is
    begin
       Unit.Add_Unit_Header
        (Integer'Max (2010, Generator.First_Year),
-        Integer'Max (2010, Generator.Last_Year));
+        Integer'Max (2012, Generator.Last_Year));
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
 
