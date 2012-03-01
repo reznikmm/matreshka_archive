@@ -47,11 +47,11 @@ with Ada.Wide_Wide_Text_IO;
 with AMF.CMOF.Enumeration_Literals.Collections;
 with AMF.CMOF.Enumerations;
 with AMF.CMOF.Types;
-with League.Strings;
 
 with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Type_Mapping;
+with Generator.Units;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Constructors is
@@ -62,7 +62,7 @@ package body Generator.Constructors is
    use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
-   use League.Strings;
+   use type League.Strings.Universal_String;
 
    Boolean_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
@@ -84,10 +84,9 @@ package body Generator.Constructors is
 
    procedure Generate_Constructors_Implementation is
 
-      procedure Generate_With (Position : Class_Information_Maps.Cursor);
-      --  Generates with clause for proxy package.
-
       procedure Generate_Create (Position : Class_Information_Maps.Cursor);
+
+      Unit : Generator.Units.Unit;
 
       ---------------------
       -- Generate_Create --
@@ -100,71 +99,86 @@ package body Generator.Constructors is
            := Class_Information_Maps.Element (Position);
          Class_Name     : constant League.Strings.Universal_String
            := Class.Class.Get_Name.Value;
-         Name           : constant Wide_Wide_String
-           := "Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
-         Element_Kind   : constant Wide_Wide_String
-           := "E_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Name           : constant League.Strings.Universal_String
+           := +"Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Types_Package  : constant League.Strings.Universal_String
+           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
+         Element_Kind   : constant League.Strings.Universal_String
+           := "AMF.Internals.Tables."
+                & Metamodel_Name
+                & "_Types.E_"
+                & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
          Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
          Default        : AMF.Optional_String;
+         Image          : League.Strings.Universal_String;
 
       begin
-         Put_Header (Name, 3);
-         New_Line;
-         Put_Line
+         Unit.Add_Header (Name, 3);
+         Unit.Context.Add (Types_Package);
+         Unit.Add_Line;
+         Unit.Add_Line
           ("   function "
              & Name
              & " return AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
+             & Metamodel_Name
              & "_Element is");
-         Put_Line
-          ("      Self : AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element;");
-         New_Line;
-         Put_Line ("   begin");
-         Put_Line
-          ("      "
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element_Table.Increment_Last;");
-         Put_Line
-          ("      Self := "
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element_Table.Last;");
-         New_Line;
-         Put_Line
-          ("      "
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element_Table.Table (Self) :=");
-         Put_Line ("       (Kind     => " & Element_Kind & ",");
-         Put_Line ("        Extent   => 0,");
-         Put_Line ("        Proxy    =>");
-         Put_Line
+         Unit.Add_Line
+          ("      Self : AMF.Internals." & Metamodel_Name & "_Element;");
+         Unit.Add_Line;
+         Unit.Add_Line (+"   begin");
+         Unit.Context.Add
+          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+         Unit.Add_Line
+          ("      " & Metamodel_Name & "_Element_Table.Increment_Last;");
+         Unit.Add_Line
+          ("      Self := " & Metamodel_Name & "_Element_Table.Last;");
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("      " & Metamodel_Name & "_Element_Table.Table (Self) :=");
+         Unit.Add_Line ("       (Kind     => " & Element_Kind & ",");
+         Unit.Add_Line (+"        Extent   => 0,");
+         Unit.Add_Line (+"        Proxy    =>");
+         Unit.Context.Add
+          ("AMF.Internals."
+             & Metamodel_Name
+             & "_"
+             & Plural (To_Ada_Identifier (Class_Name)));
+         Unit.Add_Line
           ("          new AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
+             & Metamodel_Name
              & "_"
              & Plural (To_Ada_Identifier (Class_Name))
              & "."
-             & Metamodel_Name.To_Wide_Wide_String
+             & Metamodel_Name
              & "_"
              & To_Ada_Identifier (Class_Name)
              & "_Proxy'(Id => Self),");
-         Put_Line ("        Member   => (0      => (Kind => M_None),");
+         Unit.Add_Line (+"        Member   =>");
+         Unit.Add_Line
+          ("         (0      => (Kind => "
+             & Types_Package
+             & ".M_None),");
 
          for J in 1 .. Natural (Class.Slot_Index.Length) loop
             Attribute := Class.Slot_Index.Element (J);
             Attribute_Type := Attribute.Get_Type;
             Default := Attribute.Get_Default;
 
-            Put ("                    " & Integer'Wide_Wide_Image (J));
-            Set_Col (29);
-            Put ("=>");
+            Image :=
+              League.Strings.To_Universal_String (Integer'Wide_Wide_Image (J));
+            Unit.Add
+             ("         "
+                & Image
+                & ((8 - Image.Length) * ' ')
+                & "=>");
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        Put (" (M_Element, No_AMF_Link),");
+                        Unit.Add
+                         (" (" & Types_Package & ".M_Element, No_AMF_Link),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
@@ -180,7 +194,8 @@ package body Generator.Constructors is
 
                   when Holder =>
                      if Default.Is_Empty then
-                        Put (" (M_Element, No_AMF_Link),");
+                        Unit.Add
+                         (" (" & Types_Package & ".M_Element, No_AMF_Link),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
@@ -212,11 +227,12 @@ package body Generator.Constructors is
             then
                --  Enumeration type
 
-               Put
+               Unit.Add
                 (" ("
+                   & Types_Package
+                   & '.'
                    & Generator.Type_Mapping.Member_Kind_Name
-                      (Attribute_Type,
-                       Representation (Attribute)).To_Wide_Wide_String);
+                      (Attribute_Type, Representation (Attribute)));
 
                case Representation (Attribute) is
                   when Value =>
@@ -224,12 +240,16 @@ package body Generator.Constructors is
                         --  There is no default value specified, initialize to
                         --  the value of first enumeration literal.
 
-                        Put
-                         (", "
+                        Unit.Context.Add
+                         ("AMF." & Owning_Metamodel_Name (Attribute_Type));
+                        Unit.Add
+                         (", AMF."
+                            & Owning_Metamodel_Name (Attribute_Type)
+                            & '.'
                             & Type_Mapping.Ada_Enumeration_Literal_Name
                                (AMF.CMOF.Enumerations.CMOF_Enumeration'Class
                                  (Attribute_Type.all).Get_Owned_Literal.Element
-                                   (1)).To_Wide_Wide_String
+                                   (1))
                             & "),");
 
                      else
@@ -256,17 +276,22 @@ package body Generator.Constructors is
                               raise Program_Error;
                            end if;
 
-                           Put
+                           Unit.Context.Add
+                            ("AMF." & Owning_Metamodel_Name (Literal));
+                           Unit.Add
                             (", "
+                               & "AMF."
+                               & Owning_Metamodel_Name (Literal)
+                               & "."
                                & Type_Mapping.Ada_Enumeration_Literal_Name
-                                  (Literal).To_Wide_Wide_String
+                                  (Literal)
                                & "),");
                         end;
                      end if;
 
                   when Holder =>
                      if Default.Is_Empty then
-                        Put (", (Is_Empty => True)),");
+                        Unit.Add (+", (Is_Empty => True)),");
 
                      else
                         raise Program_Error;
@@ -292,24 +317,31 @@ package body Generator.Constructors is
                         --  There is no default value specified, initialize to
                         --  some valid value.
 
-                        Put (" (M_Boolean, False),");
+                        Unit.Add
+                         (" (" & Types_Package & ".M_Boolean, False),");
 
                      else
                         if Boolean'Wide_Wide_Value
                             (Default.Value.To_Wide_Wide_String)
                         then
-                           Put (" (M_Boolean, True),");
+                           Unit.Add
+                            (" (" & Types_Package & ".M_Boolean, True),");
 
                         else
-                           Put (" (M_Boolean, False),");
+                           Unit.Add
+                            (" (" & Types_Package & ".M_Boolean, False),");
                         end if;
                      end if;
 
                   when Holder =>
-                     Put (" (M_Boolean_Holder, (Is_Empty => True)),");
+                     Unit.Add
+                      (" ("
+                         & Types_Package
+                         & ".M_Boolean_Holder, (Is_Empty => True)),");
 
                   when Set =>
-                     Put (" (M_Collection_Of_Boolean, 0),");
+                     Unit.Add
+                      (" (" & Types_Package & ".M_Collection_Of_Boolean, 0),");
 
                   when Ordered_Set =>
                      raise Program_Error;
@@ -328,11 +360,13 @@ package body Generator.Constructors is
                         --  There is no default value specified, initialize to
                         --  some valid value.
 
-                        Put (" (M_Integer, 0),");
+                        Unit.Add (" (" & Types_Package & ".M_Integer, 0),");
 
                      else
-                        Put
-                         (" (M_Integer,"
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Integer,"
                             & Integer'Wide_Wide_Image
                                (Integer'Wide_Wide_Value
                                  (Default.Value.To_Wide_Wide_String))
@@ -344,8 +378,10 @@ package body Generator.Constructors is
                         raise Program_Error;
 
                      else
-                        Put
-                         (" (M_Integer_Holder, (False,"
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Integer_Holder, (False,"
                             & Integer'Wide_Wide_Image
                                (Integer'Wide_Wide_Value
                                  (Default.Value.To_Wide_Wide_String))
@@ -369,7 +405,13 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        Put (" (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),");
+                        Unit.Context.Add (+"Matreshka.Internals.Strings");
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_String, "
+                            & "Matreshka.Internals.Strings.Shared_Empty"
+                            & "'Access),");
 
                      else
                         raise Program_Error;
@@ -385,7 +427,7 @@ package body Generator.Constructors is
 
                   when Holder =>
                      if Default.Is_Empty then
-                        Put (" (M_String, null),");
+                        Unit.Add (" (" & Types_Package & ".M_String, null),");
 
                      else
                         raise Program_Error;
@@ -399,24 +441,16 @@ package body Generator.Constructors is
 --                        end if;
                      end if;
 
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     Put (" (M_Collection_Of_String, 0),");
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     Put (" (M_Collection_Of_String, 0),");
+                  when Set | Ordered_Set | Bag | Sequence =>
+                     Unit.Add
+                      (+" (" & Types_Package & ".M_Collection_Of_String, 0),");
                end case;
 
             elsif Attribute_Type.Get_Name = Real_Name then
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        Put (" (M_Real, 0.0),");
+                        Unit.Add (" (" & Types_Package & ".M_Real, 0.0),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
@@ -470,15 +504,20 @@ package body Generator.Constructors is
                         --  There is no default value specified, initialize to
                         --  some valid value.
 
-                        Put (" (M_Unlimited_Natural, (False, 0)),");
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Unlimited_Natural, (False, 0)),");
 
                      else
-                        Put
-                         (" (M_Unlimited_Natural, (False,"
-                               & Integer'Wide_Wide_Image
-                                  (Integer'Wide_Wide_Value
-                                    (Default.Value.To_Wide_Wide_String))
-                               & ")),");
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Unlimited_Natural, (False,"
+                            & Integer'Wide_Wide_Image
+                               (Integer'Wide_Wide_Value
+                                 (Default.Value.To_Wide_Wide_String))
+                            & ")),");
                      end if;
 
                   when Holder =>
@@ -490,10 +529,10 @@ package body Generator.Constructors is
                            raise Program_Error;
 
                         else
-                           New_Line;
-                           Set_Col (22);
-                           Put
-                            (" (M_Unlimited_Natural_Holder, (False, (False,"
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Unlimited_Natural_Holder, (False, (False,"
                                & Integer'Wide_Wide_Image
                                   (Integer'Wide_Wide_Value
                                     (Default.Value.To_Wide_Wide_String))
@@ -518,33 +557,36 @@ package body Generator.Constructors is
                raise Program_Error;
             end if;
 
-            New_Line;
-            Put_Line
-             ("                       --  "
-                & Attribute.Get_Name.Value.To_Wide_Wide_String);
+            Unit.Add_Line;
+            Unit.Add_Line
+             ("                       --  " & Attribute.Get_Name.Value);
          end loop;
 
-         Put_Line ("                     others => (Kind => M_None)));");
-         Put_Line
+         Unit.Add_Line
+          ("          others => (Kind => "
+             & Types_Package
+             & ".M_None)));");
+         Unit.Add_Line
           ("      "
-             & Metamodel_Name.To_Wide_Wide_String
+             & Metamodel_Name
              & "_Element_Table.Table (Self).Member (0) :=");
-         Put_Line ("       (M_Collection_Of_Element,");
-         Put_Line
-          ("        AMF.Internals.Element_Collections.Allocate_Collections ("
-             & Trim
-                (Ada.Containers.Count_Type'Wide_Wide_Image
-                  (Class.Collection_Index.Length),
-                 Both)
-             & "));");
+         Unit.Add_Line
+          ("       (" & Types_Package & ".M_Collection_Of_Element,");
+         Unit.Context.Add (+"AMF.Internals.Element_Collections");
+         Unit.Add_Line
+          (+"        AMF.Internals.Element_Collections.Allocate_Collections ("
+              & Trim
+                 (Ada.Containers.Count_Type'Wide_Wide_Image
+                   (Class.Collection_Index.Length),
+                  Both)
+              & "));");
 
          for J in 1 .. Natural (Class.Collection_Index.Length) loop
             Attribute := Class.Collection_Index.Element (J);
 
-               New_Line;
-               Put_Line
-                ("      --  " & Attribute.Get_Name.Value.To_Wide_Wide_String);
-               New_Line;
+            Unit.Add_Line;
+            Unit.Add_Line ("      --  " & Attribute.Get_Name.Value);
+            Unit.Add_Line;
 
             case Representation (Attribute) is
                when Value =>
@@ -554,16 +596,16 @@ package body Generator.Constructors is
                   raise Program_Error;
 
                when Set =>
-                  Put_Line
-                   ("      "
-                      & "AMF.Internals.Element_Collections"
-                      & ".Initialize_Set_Collection");
+                  Unit.Add_Line
+                   (+"      "
+                       & "AMF.Internals.Element_Collections"
+                       & ".Initialize_Set_Collection");
 
                when Ordered_Set =>
-                  Put_Line
-                   ("      "
-                      & "AMF.Internals.Element_Collections"
-                      & ".Initialize_Ordered_Set_Collection");
+                  Unit.Add_Line
+                   (+"      "
+                       & "AMF.Internals.Element_Collections"
+                       & ".Initialize_Ordered_Set_Collection");
 
                when Bag =>
                   raise Program_Error;
@@ -572,85 +614,41 @@ package body Generator.Constructors is
                   raise Program_Error;
             end case;
 
-            Put_Line
-             ("       (Self,");
-            Put_Line
-             ("        " & Property_Constant_Name (Attribute) & ",");
-            Put_Line
+            Unit.Add_Line (+"       (Self,");
+            Unit.Context.Add (Property_Constant_Package_Name (Attribute));
+            Unit.Add_Line
+             ("        " & Property_Constant_Qualified_Name (Attribute) & ",");
+            Unit.Add_Line
              ("        "
-                & Metamodel_Name.To_Wide_Wide_String
+                & Metamodel_Name
                 & "_Element_Table.Table (Self).Member (0).Collection +"
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
-         New_Line;
-         Put_Line ("      return Self;");
-         Put_Line ("   end " & Name & ";");
+         Unit.Add_Line;
+         Unit.Add_Line (+"      return Self;");
+         Unit.Add_Line ("   end " & Name & ";");
       end Generate_Create;
 
-      -------------------
-      -- Generate_With --
-      -------------------
-
-      procedure Generate_With
-       (Position : Class_Information_Maps.Cursor)
-      is
-         Class          : constant Class_Information_Access
-           := Class_Information_Maps.Element (Position);
-         Class_Name     : constant League.Strings.Universal_String
-           := Class.Class.Get_Name.Value;
-
-      begin
-         if not Class.Class.Get_Is_Abstract then
-            Put_Line
-             ("with AMF.Internals."
-                & Metamodel_Name.To_Wide_Wide_String
-                & "_"
-                & Plural (To_Ada_Identifier (Class_Name))
-                & ";");
-         end if;
-      end Generate_With;
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables." & Metamodel_Name & "_Constructors";
 
    begin
-      Put_Header (2010, 2011);
-      Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
-      Class_Info.Iterate (Generate_With'Access);
-      Put_Line ("with AMF.Internals.Element_Collections;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Element_Table;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      Put_Line ("with Matreshka.Internals.Strings;");
-      New_Line;
-      Put_Line
-       ("package body AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Constructors is");
-      New_Line;
-      Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
+      Unit.Add_Unit_Header
+       (Integer'Max (2010, Generator.First_Year),
+        Integer'Max (2010, Generator.Last_Year));
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
+      Unit.Add_Line;
+      --  XXX Usage of 'use' clauses should be reviewed.
+      Unit.Add_Line (+"   use AMF.Internals.Tables;");
+      Unit.Add_Line (+"   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Constructors;");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Constructors_Implementation;
 
    -----------------------------------------
