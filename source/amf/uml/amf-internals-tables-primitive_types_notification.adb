@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Properties;
---with AMF.Holders.Elements;
 with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
@@ -72,24 +71,24 @@ package body AMF.Internals.Tables.Primitive_Types_Notification is
         League.Holders.Booleans.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
---   --------------------------
---   -- Notify_Attribute_Set --
---   --------------------------
---
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Boolean;
---     New_Value : AMF.Optional_Boolean) is
---   begin
---      AMF.Internals.Listener_Registry.Notify_Attribute_Set
---       (AMF.Internals.Helpers.To_Element (Element),
---        AMF.CMOF.Properties.CMOF_Property_Access
---         (AMF.Internals.Helpers.To_Element (Property)),
---        (Is_Empty => True),
---        AMF.Holders.To_Holder (Old_Value),
---        AMF.Holders.To_Holder (New_Value));
---   end Notify_Attribute_Set;
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Boolean;
+     New_Value : AMF.Optional_Boolean) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.Holders.To_Holder (Old_Value),
+        AMF.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
 
    --------------------------
    -- Notify_Attribute_Set --
@@ -149,24 +148,24 @@ package body AMF.Internals.Tables.Primitive_Types_Notification is
         League.Holders.Integers.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
---   --------------------------
---   -- Notify_Attribute_Set --
---   --------------------------
---
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Integer;
---     New_Value : AMF.Optional_Integer) is
---   begin
---      AMF.Internals.Listener_Registry.Notify_Attribute_Set
---       (AMF.Internals.Helpers.To_Element (Element),
---        AMF.CMOF.Properties.CMOF_Property_Access
---         (AMF.Internals.Helpers.To_Element (Property)),
---        (Is_Empty => True),
---        AMF.Holders.To_Holder (Old_Value),
---        AMF.Holders.To_Holder (New_Value));
---   end Notify_Attribute_Set;
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Integer;
+     New_Value : AMF.Optional_Integer) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.Holders.To_Holder (Old_Value),
+        AMF.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
 
    --------------------------
    -- Notify_Attribute_Set --
@@ -187,24 +186,24 @@ package body AMF.Internals.Tables.Primitive_Types_Notification is
         AMF.Holders.Unlimited_Naturals.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
---   --------------------------
---   -- Notify_Attribute_Set --
---   --------------------------
---
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Unlimited_Natural;
---     New_Value : AMF.Optional_Unlimited_Natural) is
---   begin
---      AMF.Internals.Listener_Registry.Notify_Attribute_Set
---       (AMF.Internals.Helpers.To_Element (Element),
---        AMF.CMOF.Properties.CMOF_Property_Access
---         (AMF.Internals.Helpers.To_Element (Property)),
---        (Is_Empty => True),
---        AMF.Holders.To_Holder (Old_Value),
---        AMF.Holders.To_Holder (New_Value));
---   end Notify_Attribute_Set;
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Unlimited_Natural;
+     New_Value : AMF.Optional_Unlimited_Natural) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.Holders.To_Holder (Old_Value),
+        AMF.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
 
    --------------------------
    -- Notify_Attribute_Set --
@@ -224,26 +223,5 @@ package body AMF.Internals.Tables.Primitive_Types_Notification is
         AMF.Holders.Reals.To_Holder (Old_Value),
         AMF.Holders.Reals.To_Holder (New_Value));
    end Notify_Attribute_Set;
-
---   --------------------------
---   -- Notify_Attribute_Set --
---   --------------------------
---
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Internals.UML_Element;
---     New_Value : AMF.Internals.UML_Element) is
---   begin
---      AMF.Internals.Listener_Registry.Notify_Attribute_Set
---       (AMF.Internals.Helpers.To_Element (Element),
---        AMF.CMOF.Properties.CMOF_Property_Access
---         (AMF.Internals.Helpers.To_Element (Property)),
---        (Is_Empty => True),
---        AMF.Holders.Elements.To_Holder
---         (AMF.Internals.Helpers.To_Element (Old_Value)),
---        AMF.Holders.Elements.To_Holder
---         (AMF.Internals.Helpers.To_Element (New_Value)));
---   end Notify_Attribute_Set;
 
 end AMF.Internals.Tables.Primitive_Types_Notification;

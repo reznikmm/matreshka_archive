@@ -53,11 +53,11 @@ package AMF.Internals.Tables.Primitive_Types_Notification is
      Old_Value : Boolean;
      New_Value : Boolean);
 
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Boolean;
---     New_Value : AMF.Optional_Boolean);
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Boolean;
+     New_Value : AMF.Optional_Boolean);
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
@@ -71,11 +71,11 @@ package AMF.Internals.Tables.Primitive_Types_Notification is
      Old_Value : Integer;
      New_Value : Integer);
 
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Integer;
---     New_Value : AMF.Optional_Integer);
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Integer;
+     New_Value : AMF.Optional_Integer);
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
@@ -83,22 +83,16 @@ package AMF.Internals.Tables.Primitive_Types_Notification is
      Old_Value : AMF.Unlimited_Natural;
      New_Value : AMF.Unlimited_Natural);
 
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Optional_Unlimited_Natural;
---     New_Value : AMF.Optional_Unlimited_Natural);
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Unlimited_Natural;
+     New_Value : AMF.Optional_Unlimited_Natural);
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Real;
      New_Value : AMF.Real);
-
---   procedure Notify_Attribute_Set
---    (Element   : AMF.Internals.UML_Element;
---     Property  : AMF.Internals.CMOF_Element;
---     Old_Value : AMF.Internals.UML_Element;
---     New_Value : AMF.Internals.UML_Element);
 
 end AMF.Internals.Tables.Primitive_Types_Notification;

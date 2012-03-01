@@ -43,59 +43,9 @@
 ------------------------------------------------------------------------------
 --  Helper subprograms for element modification notification.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-
 with AMF.UML;
 
 package AMF.Internals.Tables.UML_Notification is
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Boolean;
-     New_Value : Boolean);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Boolean;
-     New_Value : AMF.Optional_Boolean);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
-     New_Value : Matreshka.Internals.Strings.Shared_String_Access);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Integer;
-     New_Value : Integer);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Integer;
-     New_Value : AMF.Optional_Integer);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Unlimited_Natural;
-     New_Value : AMF.Unlimited_Natural);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Unlimited_Natural;
-     New_Value : AMF.Optional_Unlimited_Natural);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Real;
-     New_Value : AMF.Real);
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
