@@ -48,7 +48,6 @@ with AMF.Internals.Extents;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
-with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_String_Data_00;
 with AMF.Internals.Tables.CMOF_String_Data_01;
 with AMF.Internals.Tables.CMOF_String_Data_02;
