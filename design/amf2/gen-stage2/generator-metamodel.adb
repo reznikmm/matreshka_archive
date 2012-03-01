@@ -66,6 +66,7 @@ with AMF.Holders.Unlimited_Naturals;
 with AMF.Reflective_Collections;
 
 with Generator.Names;
+with Generator.Units;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Metamodel is
@@ -101,18 +102,22 @@ package body Generator.Metamodel is
    String_Numbers : String_Number_Maps.Map;
    Number_Strings : Number_String_Maps.Map;
 
-   procedure Generate_Metamodel_Initialization;
+   procedure Generate_Metamodel_Initialization
+    (Unit : in out Generator.Units.Unit);
 
    procedure Generate_Metaclass_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of metaclass element.
 
    procedure Generate_Properties_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of metaclass's properties.
 
    procedure Generate_Link_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of links.
 
    function Class_Properties_Except_Redefined
@@ -146,12 +151,12 @@ package body Generator.Metamodel is
        return Boolean;
 
    function String_Data_Package_Name
-    (Number : Natural) return Wide_Wide_String;
+    (Number : Natural) return League.Strings.Universal_String;
    --  Returns name of string data package where string with specified number
    --  is delcared.
 
    function String_Data_Constant_Name
-    (Number : Natural) return Wide_Wide_String;
+    (Number : Natural) return League.Strings.Universal_String;
    --  Returns name of string data constant for the string with specified
    --  number.
 
@@ -476,7 +481,8 @@ package body Generator.Metamodel is
    ----------------------------------
 
    procedure Generate_Link_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
@@ -536,34 +542,45 @@ package body Generator.Metamodel is
                --  property in the Association::membrEnd. This allows to
                --  suppress generation of duplicate links.
 
-               Put_Line ("      AMF.Internals.Links.Internal_Create_Link");
-               Put_Line
+               Unit.Context.Add (+"AMF.Internals.Links");
+               Unit.Add_Line
+                (+"      AMF.Internals.Links.Internal_Create_Link");
+               Unit.Context.Add
+                (Association_Constant_Package_Name (Association));
+               Unit.Add_Line
                 ("       ("
-                   & Association_Constant_Qualified_Name (Association) & ",");
-               Put ("        Base + ");
-               Put (Element_Numbers.Element (Element), Width => 0);
-               Put_Line (",");
-               Put_Line
+                   & Association_Constant_Qualified_Name (Association)
+                   & ",");
+               Unit.Add_Line
+                (+"        Base +"
+                    & Integer'Wide_Wide_Image
+                       (Element_Numbers.Element (Element))
+                    & ",");
+               Unit.Context.Add (Property_Constant_Package_Name (First_End));
+               Unit.Add_Line
                 ("        "
                    & Property_Constant_Qualified_Name (First_End)
                    & ",");
 
                if Element_Numbers.Contains (Other) then
-                  Put ("        Base + ");
-                  Put (Element_Numbers.Element (Other), Width => 0);
-                  Put_Line (",");
+                  Unit.Add_Line
+                   (+"        Base +"
+                       & Integer'Wide_Wide_Image
+                          (Element_Numbers.Element (Other))
+                       & ",");
 
                else
                   --  Cross metamodel link.
 
-                  Put_Line
+                  Unit.Context.Add (Element_Constant_Package_Name (Other));
+                  Unit.Add_Line
                    ("        "
-                      & Element_Constant_Qualified_Name
-                         (Other).To_Wide_Wide_String
+                      & Element_Constant_Qualified_Name (Other)
                       & ",");
                end if;
 
-               Put_Line
+               Unit.Context.Add (Property_Constant_Package_Name (Second_End));
+               Unit.Add_Line
                 ("        "
                    & Property_Constant_Qualified_Name (Second_End)
                    & ");");
@@ -617,6 +634,8 @@ package body Generator.Metamodel is
 
    procedure Generate_Metamodel_Implementation is
 
+      Unit : Generator.Units.Unit;
+
       procedure Generate_Class_Constant
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
 
@@ -647,20 +666,21 @@ package body Generator.Metamodel is
                (CMOF_Element_Sets.Element (Position));
 
       begin
-         Put_Header (Association_Constant_Name (Association), 3);
-         New_Line;
-         Put_Line
+         Unit.Add_Header (Association_Constant_Name (Association), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
           ("   function "
              & Association_Constant_Name (Association)
              & " return AMF.Internals.CMOF_Element is");
-         Put_Line ("   begin");
-         Put_Line
-          ("      return Base +"
-             & Integer'Wide_Wide_Image
-                (Element_Numbers.Element
-                  (AMF.CMOF.Elements.CMOF_Element_Access (Association)))
-             & ";");
-         Put_Line ("   end " & Association_Constant_Name (Association) & ";");
+         Unit.Add_Line (+"   begin");
+         Unit.Add_Line
+          (+"      return Base +"
+              & Integer'Wide_Wide_Image
+                 (Element_Numbers.Element
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Association)))
+              & ";");
+         Unit.Add_Line
+          ("   end " & Association_Constant_Name (Association) & ";");
       end Generate_Association_Constant;
 
       --------------------------------------------
@@ -687,20 +707,21 @@ package body Generator.Metamodel is
          procedure Generate_Property_Constant
           (Property : not null AMF.CMOF.Properties.CMOF_Property_Access) is
          begin
-            Put_Header (Property_Constant_Name (Property), 3);
-            New_Line;
-            Put_Line
+            Unit.Add_Header (Property_Constant_Name (Property), 3);
+            Unit.Add_Line;
+            Unit.Add_Line
              ("   function "
                 & Property_Constant_Name (Property)
                 & " return AMF.Internals.CMOF_Element is");
-            Put_Line ("   begin");
-            Put_Line
-             ("      return Base +"
-                & Integer'Wide_Wide_Image
-                   (Element_Numbers.Element
-                     (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
-                & ";");
-            Put_Line ("   end " & Property_Constant_Name (Property) & ";");
+            Unit.Add_Line (+"   begin");
+            Unit.Add_Line
+             (+"      return Base +"
+                 & Integer'Wide_Wide_Image
+                    (Element_Numbers.Element
+                      (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
+                 & ";");
+            Unit.Add_Line
+             ("   end " & Property_Constant_Name (Property) & ";");
          end Generate_Property_Constant;
 
       begin
@@ -734,20 +755,21 @@ package body Generator.Metamodel is
               := Property.Get_Type;
 
          begin
-            Put_Header (Property_Constant_Name (Property), 3);
-            New_Line;
-            Put_Line
+            Unit.Add_Header (Property_Constant_Name (Property), 3);
+            Unit.Add_Line;
+            Unit.Add_Line
              ("   function "
                 & Property_Constant_Name (Property)
                 & " return AMF.Internals.CMOF_Element is");
-            Put_Line ("   begin");
-            Put_Line
-             ("      return Base +"
-                & Integer'Wide_Wide_Image
-                   (Element_Numbers.Element
-                     (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
-                & ";");
-            Put_Line ("   end " & Property_Constant_Name (Property) & ";");
+            Unit.Add_Line (+"   begin");
+            Unit.Add_Line
+             (+"      return Base +"
+                 & Integer'Wide_Wide_Image
+                    (Element_Numbers.Element
+                      (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
+                 & ";");
+            Unit.Add_Line
+             ("   end " & Property_Constant_Name (Property) & ";");
          end Generate_Property_Constant;
 
          Class      : constant AMF.CMOF.Classes.CMOF_Class_Access
@@ -780,21 +802,20 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Type_Constant_Name (Class).To_Wide_Wide_String, 3);
-         New_Line;
-         Put_Line
+         Unit.Add_Header (Type_Constant_Name (Class), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
           ("   function "
-             & Type_Constant_Name (Class).To_Wide_Wide_String
+             & Type_Constant_Name (Class)
              & " return AMF.Internals.CMOF_Element is");
-         Put_Line ("   begin");
-         Put_Line
-          ("      return Base +"
-             & Integer'Wide_Wide_Image
-                (Element_Numbers.Element
-                  (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
-             & ";");
-         Put_Line
-          ("   end " & Type_Constant_Name (Class).To_Wide_Wide_String & ";");
+         Unit.Add_Line (+"   begin");
+         Unit.Add_Line
+          (+"      return Base +"
+              & Integer'Wide_Wide_Image
+                 (Element_Numbers.Element
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
+              & ";");
+         Unit.Add_Line ("   end " & Type_Constant_Name (Class) & ";");
       end Generate_Class_Constant;
 
       ---------------------------------
@@ -809,22 +830,22 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Type_Constant_Name (Data_Type).To_Wide_Wide_String, 3);
-         New_Line;
-         Put_Line
+         Unit.Add_Header (Type_Constant_Name (Data_Type), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
           ("   function "
-             & Type_Constant_Name (Data_Type).To_Wide_Wide_String
+             & Type_Constant_Name (Data_Type)
              & " return AMF.Internals.CMOF_Element is");
-         Put_Line ("   begin");
-         Put_Line
-          ("      return Base +"
-             & Integer'Wide_Wide_Image
-                (Element_Numbers.Element
-                  (AMF.CMOF.Elements.CMOF_Element_Access (Data_Type)))
-             & ";");
-         Put_Line
+         Unit.Add_Line (+"   begin");
+         Unit.Add_Line
+          (+"      return Base +"
+              & Integer'Wide_Wide_Image
+                 (Element_Numbers.Element
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Data_Type)))
+              & ";");
+         Unit.Add_Line
           ("   end "
-             & Type_Constant_Name (Data_Type).To_Wide_Wide_String
+             & Type_Constant_Name (Data_Type)
              & ";");
       end Generate_Data_Type_Constant;
 
@@ -840,54 +861,35 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Package_Constant_Name (Element).To_Wide_Wide_String, 3);
-         New_Line;
-         Put_Line
+         Unit.Add_Header (Package_Constant_Name (Element), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
           ("   function "
-             & Package_Constant_Name (Element).To_Wide_Wide_String
+             & Package_Constant_Name (Element)
              & " return AMF.Internals.CMOF_Element is");
-         Put_Line ("   begin");
-         Put_Line
-          ("      return Base +"
-             & Integer'Wide_Wide_Image
-                (Element_Numbers.Element
-                  (AMF.CMOF.Elements.CMOF_Element_Access (Element)))
-             & ";");
-         Put_Line
+         Unit.Add_Line (+"   begin");
+         Unit.Add_Line
+          (+"      return Base +"
+              & Integer'Wide_Wide_Image
+                 (Element_Numbers.Element
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Element)))
+              & ";");
+         Unit.Add_Line
           ("   end "
-             & Package_Constant_Name (Element).To_Wide_Wide_String
+             & Package_Constant_Name (Element)
              & ";");
       end Generate_Package_Constant;
 
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables." & Metamodel_Name & "_Metamodel";
+
    begin
-      Put_Header (2010, 2012);
-      Put_Line ("with AMF.CMOF;");
-      Put_Line ("with AMF.Internals.Extents;");
-      Put_Line ("with AMF.Internals.Links;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Attributes;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Constructors;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Metamodel;");
+      Unit.Add_Unit_Header (2010, 2012);
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
 
-      if Metamodel_Name.To_Wide_Wide_String = "UML" then
-         --  XXX All loaded metamodels should be added here.
-
-         Put_Line ("with AMF.Internals.Tables.Primitive_Types_Metamodel;");
-      end if;
-
-      --  Add context clauses for string data packages.
-
-      for J in 0 .. Integer (Number_Strings.Length) / 16#100# loop
-         Put_Line ("with " & String_Data_Package_Name (J * 16#100#) & ";");
-      end loop;
-
-      New_Line;
-      Put_Line
-       ("package body AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel is");
-
-      New_Line;
-      Put_Line ("   Base : AMF.Internals.CMOF_Element := 0;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   Base : AMF.Internals.CMOF_Element := 0;");
 
       --  Generate implementation of meta element query function.
 
@@ -910,22 +912,22 @@ package body Generator.Metamodel is
       Metamodel_Info.Associations.Iterate
        (Generate_Association_Constant'Access);
 
-      Put_Header ("MB_" & Metamodel_Name.To_Wide_Wide_String, 3);
-      New_Line;
-      Put_Line
+      Unit.Add_Header ("MB_" & Metamodel_Name, 3);
+      Unit.Add_Line;
+      Unit.Add_Line
        ("   function MB_"
           & Metamodel_Name
           & " return AMF.Internals.AMF_Element is");
-      Put_Line ("   begin");
-      Put_Line ("      return Base;");
-      Put_Line ("   end MB_" & Metamodel_Name & ";");
+      Unit.Add_Line (+"   begin");
+      Unit.Add_Line (+"      return Base;");
+      Unit.Add_Line ("   end MB_" & Metamodel_Name & ";");
 
-      Generate_Metamodel_Initialization;
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
+      Generate_Metamodel_Initialization (Unit);
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Metamodel_Implementation;
 
    ---------------------------------------
@@ -933,24 +935,28 @@ package body Generator.Metamodel is
    ---------------------------------------
 
    procedure Generate_Metaclass_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
    begin
       if Element_Numbers.Element (Element) /= 1 then
-         New_Line;
+         Unit.Add_Line;
       end if;
 
-      Put_Line
-       ("      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_"
-          & To_Ada_Identifier (Meta_Class.Get_Name.Value)
-          & ";");
-      Put_Line ("      AMF.Internals.Extents.Internal_Append (Extent, Aux);");
+      Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Constructors");
+      Unit.Context.Add (+"AMF.Internals.Extents");
+      Unit.Add_Line
+       (+"      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_"
+           & To_Ada_Identifier (Meta_Class.Get_Name.Value)
+           & ";");
+      Unit.Add_Line
+       (+"      AMF.Internals.Extents.Internal_Append (Extent, Aux);");
 
       if Element_Numbers.Element (Element) = 1 then
-         Put_Line ("      Base := Aux - 1;");
+         Unit.Add_Line (+"      Base := Aux - 1;");
       end if;
    end Generate_Metaclass_Initialization;
 
@@ -958,16 +964,19 @@ package body Generator.Metamodel is
    -- Generate_Metamodel_Initialization --
    ---------------------------------------
 
-   procedure Generate_Metamodel_Initialization is
+   procedure Generate_Metamodel_Initialization
+    (Unit : in out Generator.Units.Unit)
+   is
       Position : Number_CMOF_Element_Maps.Cursor;
 
    begin
-      Put_Header ("Initialize_Objects", 3);
-      New_Line;
-      Put_Line ("   procedure Initialize_Objects is");
-      Put_Line ("      Extent : constant AMF.Internals.AMF_Extent");
-      Put_Line ("        := AMF.Internals.Extents.Allocate_Extent");
-      Put_Line
+      Unit.Add_Header (+"Initialize_Objects", 3);
+      Unit.Add_Line;
+      Unit.Context.Add (+"AMF.Internals.Extents");
+      Unit.Add_Line (+"   procedure Initialize_Objects is");
+      Unit.Add_Line (+"      Extent : constant AMF.Internals.AMF_Extent");
+      Unit.Add_Line (+"        := AMF.Internals.Extents.Allocate_Extent");
+      Unit.Add_Line
        ("            ("
           & String_Data_Package_Name
              (String_Numbers.Element (Metamodel_Package.Get_Uri.Value))
@@ -975,15 +984,15 @@ package body Generator.Metamodel is
           & String_Data_Constant_Name
              (String_Numbers.Element (Metamodel_Package.Get_Uri.Value))
           & "'Access);");
-      Put_Line ("      Aux    : AMF.Internals.CMOF_Element;");
-      New_Line;
-      Put_Line ("   begin");
+      Unit.Add_Line (+"      Aux    : AMF.Internals.CMOF_Element;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   begin");
 
       Position := Metamodel_Info.Number_Element.First;
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Metaclass_Initialization
-          (Number_CMOF_Element_Maps.Element (Position));
+          (Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
@@ -991,25 +1000,25 @@ package body Generator.Metamodel is
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Properties_Initialization
-          (Number_CMOF_Element_Maps.Element (Position));
+          (Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
-      Put_Line ("   end Initialize_Objects;");
-      Put_Header ("Initialize_Links", 3);
-      New_Line;
-      Put_Line ("   procedure Initialize_Links is");
-      Put_Line ("   begin");
+      Unit.Add_Line (+"   end Initialize_Objects;");
+      Unit.Add_Header (+"Initialize_Links", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize_Links is");
+      Unit.Add_Line (+"   begin");
 
       Position := Metamodel_Info.Number_Element.First;
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Link_Initialization
-          (Number_CMOF_Element_Maps.Element (Position));
+          (Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
-      Put_Line ("   end Initialize_Links;");
+      Unit.Add_Line (+"   end Initialize_Links;");
    end Generate_Metamodel_Initialization;
 
    ----------------------------------------
@@ -1017,7 +1026,8 @@ package body Generator.Metamodel is
    ----------------------------------------
 
    procedure Generate_Properties_Initialization
-    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Unit    : in out Generator.Units.Unit;
+     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       use League.Holders;
 
@@ -1050,6 +1060,8 @@ package body Generator.Metamodel is
             Value :=
               AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
 
+            Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Attributes");
+
             if Is_Boolean_Type (Property_Type) then
                if not Default.Is_Empty then
                   if (Default.Value.To_Wide_Wide_String = "false"
@@ -1061,18 +1073,19 @@ package body Generator.Metamodel is
                   end if;
                end if;
 
-               Put
-                ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                   & To_Ada_Identifier (Property.Get_Name.Value)
-                   & " (Base + ");
-               Put (Element_Numbers.Element (Element), Width => 0);
-               Put (", ");
+               Unit.Add
+                (+"      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                    & To_Ada_Identifier (Property.Get_Name.Value)
+                    & " (Base +"
+                    & Integer'Wide_Wide_Image
+                       (Element_Numbers.Element (Element))
+                    & ", ");
 
                if League.Holders.Booleans.Element (Value) then
-                  Put_Line ("True);");
+                  Unit.Add_Line (+"True);");
 
                else
-                  Put_Line ("False);");
+                  Unit.Add_Line (+"False);");
                end if;
 
             elsif Is_Integer_Type (Property_Type) then
@@ -1086,16 +1099,18 @@ package body Generator.Metamodel is
                end if;
 
                if Property.Get_Lower = 0 then
-                  Put
-                   ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                      & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (Base + ");
-                  Put (Element_Numbers.Element (Element), Width => 0);
-                  Put_Line
-                   (", (False,"
-                      & Integer'Wide_Wide_Image
-                         (League.Holders.Integers.Element (Value))
-                      & "));");
+                  Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Attributes");
+                  Unit.Add
+                   (+"      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                       & To_Ada_Identifier (Property.Get_Name.Value)
+                       & " (Base +"
+                       & Integer'Wide_Wide_Image
+                          (Element_Numbers.Element (Element)));
+                  Unit.Add_Line
+                   (+", (False,"
+                       & Integer'Wide_Wide_Image
+                          (League.Holders.Integers.Element (Value))
+                       & "));");
 
                else
                   raise Program_Error;
@@ -1116,25 +1131,26 @@ package body Generator.Metamodel is
                end if;
 
                if Property.Get_Lower = 0 then
-                  Put
-                   ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                      & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (Base + ");
-                  Put (Element_Numbers.Element (Element), Width => 0);
-                  Put (", ");
+                  Unit.Add
+                   (+"      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                       & To_Ada_Identifier (Property.Get_Name.Value)
+                       & " (Base +"
+                       & Integer'Wide_Wide_Image
+                          (Element_Numbers.Element (Element))
+                       & ", ");
 
                   if AMF.Holders.Unlimited_Naturals.Element
                       (Value).Unlimited
                   then
-                     Put_Line ("(False, (Unlimited => True)));");
+                     Unit.Add_Line (+"(False, (Unlimited => True)));");
 
                   else
-                     Put_Line
-                      ("(False, (False,"
-                         & Integer'Wide_Wide_Image
-                            (AMF.Holders.Unlimited_Naturals.Element
-                              (Value).Value)
-                         & ")));");
+                     Unit.Add_Line
+                      (+"(False, (False,"
+                          & Integer'Wide_Wide_Image
+                             (AMF.Holders.Unlimited_Naturals.Element
+                               (Value).Value)
+                          & ")));");
                   end if;
 
                else
@@ -1148,15 +1164,22 @@ package body Generator.Metamodel is
                     Property.Get_Name.Value.To_Wide_Wide_String
                       & ": Multivalued string value");
 
-               elsif Property.Get_Lower = 0 then
+               else
                   if not Is_Empty (Value) then
-                     Put_Line
-                      ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                     Unit.Add_Line
+                      (+"      "
+                         & "AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
                          & To_Ada_Identifier (Property.Get_Name.Value));
-                     Put ("       (Base + ");
-                     Put (Element_Numbers.Element (Element), Width => 0);
-                     Put_Line (",");
-                     Put_Line
+                     Unit.Add_Line
+                      (+"       (Base +"
+                          & Integer'Wide_Wide_Image
+                             (Element_Numbers.Element (Element))
+                          & ",");
+                     Unit.Context.Add
+                      (String_Data_Package_Name
+                        (String_Numbers.Element
+                          (League.Holders.Element (Value))));
+                     Unit.Add_Line
                       ("         "
                          & String_Data_Package_Name
                             (String_Numbers.Element
@@ -1167,50 +1190,35 @@ package body Generator.Metamodel is
                               (League.Holders.Element (Value)))
                          & "'Access);");
                   end if;
-
-               else
-                  Put_Line
-                   ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                      & To_Ada_Identifier (Property.Get_Name.Value));
-                  Put ("       (Base + ");
-                  Put (Element_Numbers.Element (Element), Width => 0);
-                  Put_Line (",");
-                  Put_Line
-                   ("         "
-                      & String_Data_Package_Name
-                         (String_Numbers.Element
-                           (League.Holders.Element (Value)))
-                      & "."
-                      & String_Data_Constant_Name
-                         (String_Numbers.Element
-                           (League.Holders.Element (Value)))
-                      & "'Access);");
                end if;
 
             elsif Is_Parameter_Direction_Kind_Type (Property_Type) then
                --  XXX Check for default value is not implemented.
 
-               Put
-                ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                   & To_Ada_Identifier (Property.Get_Name.Value)
-                   & " (Base + ");
-               Put (Element_Numbers.Element (Element), Width => 0);
-               Put (", ");
+               Unit.Add
+                (+"      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                    & To_Ada_Identifier (Property.Get_Name.Value)
+                    & " (Base +"
+                    & Integer'Wide_Wide_Image
+                       (Element_Numbers.Element (Element))
+                    & ", ");
+
+               Unit.Context.Add (+"AMF.CMOF");
 
                case AMF.CMOF.Holders.Parameter_Direction_Kinds.Element
                      (Value)
                is
                   when AMF.CMOF.In_Parameter =>
-                     Put_Line ("AMF.CMOF.In_Parameter);");
+                     Unit.Add_Line (+"AMF.CMOF.In_Parameter);");
 
                   when AMF.CMOF.Out_Parameter =>
-                     Put_Line ("AMF.CMOF.Out_Direction);");
+                     Unit.Add_Line (+"AMF.CMOF.Out_Direction);");
 
                   when AMF.CMOF.In_Out_Parameter =>
-                     Put_Line ("AMF.CMOF.In_Out_Direction);");
+                     Unit.Add_Line (+"AMF.CMOF.In_Out_Direction);");
 
                   when AMF.CMOF.Return_Parameter =>
-                     Put_Line ("AMF.CMOF.Return_Parameter);");
+                     Unit.Add_Line (+"AMF.CMOF.Return_Parameter);");
                end case;
 
             elsif Is_Visibility_Kind_Type (Property_Type) then
@@ -1221,60 +1229,70 @@ package body Generator.Metamodel is
 
                elsif Property.Get_Lower = 0 then
                   if League.Holders.Is_Empty (Value) then
-                     Put
-                      ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                         & To_Ada_Identifier (Property.Get_Name.Value)
-                         & " (Base + ");
-                     Put (Element_Numbers.Element (Element), Width => 0);
-                     Put_Line (", (Is_Empty => True));");
+                     Unit.Add_Line
+                      (+"      "
+                          & "AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                          & To_Ada_Identifier (Property.Get_Name.Value)
+                          & " (Base +"
+                          & Integer'Wide_Wide_Image
+                             (Element_Numbers.Element (Element))
+                          & ", (Is_Empty => True));");
 
                   else
-                     Put
-                      ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                         & To_Ada_Identifier (Property.Get_Name.Value)
-                         & " (Base + ");
-                     Put (Element_Numbers.Element (Element), Width => 0);
-                     Put (", (False, ");
+                     Unit.Add
+                      (+"      "
+                          & "AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                          & To_Ada_Identifier (Property.Get_Name.Value)
+                          & " (Base +"
+                          & Integer'Wide_Wide_Image
+                             (Element_Numbers.Element (Element))
+                          & ", (False, ");
+
+                     Unit.Context.Add (+"AMF.CMOF");
 
                      case AMF.CMOF.Holders.Visibility_Kinds.Element
                            (Value)
                      is
                         when AMF.CMOF.Public_Visibility =>
-                           Put_Line ("AMF.CMOF.Public_Visibility));");
+                           Unit.Add_Line (+"AMF.CMOF.Public_Visibility));");
 
                         when AMF.CMOF.Private_Visibility =>
-                           Put_Line ("AMF.CMOF.Private_Visibility));");
+                           Unit.Add_Line (+"AMF.CMOF.Private_Visibility));");
 
                         when AMF.CMOF.Protected_Visibility =>
-                           Put_Line ("AMF.CMOF.Protected_Visibility));");
+                           Unit.Add_Line (+"AMF.CMOF.Protected_Visibility));");
 
                         when AMF.CMOF.Package_Visibility =>
-                           Put_Line ("AMF.CMOF.Package_Visibility));");
+                           Unit.Add_Line (+"AMF.CMOF.Package_Visibility));");
                      end case;
                   end if;
 
                else
-                  Put
-                   ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
-                      & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (Base + ");
-                  Put (Element_Numbers.Element (Element), Width => 0);
-                  Put (", ");
+                  Unit.Add
+                   (+"      "
+                       & "AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                       & To_Ada_Identifier (Property.Get_Name.Value)
+                       & " (Base +"
+                       & Integer'Wide_Wide_Image
+                          (Element_Numbers.Element (Element))
+                       & ", ");
+
+                  Unit.Context.Add (+"AMF.CMOF");
 
                   case AMF.CMOF.Holders.Visibility_Kinds.Element
                         (Value)
                   is
                      when AMF.CMOF.Public_Visibility =>
-                        Put_Line ("AMF.CMOF.Public_Visibility);");
+                        Unit.Add_Line (+"AMF.CMOF.Public_Visibility);");
 
                      when AMF.CMOF.Private_Visibility =>
-                        Put_Line ("AMF.CMOF.Private_Visibility);");
+                        Unit.Add_Line (+"AMF.CMOF.Private_Visibility);");
 
                      when AMF.CMOF.Protected_Visibility =>
-                        Put_Line ("AMF.CMOF.Protected_Visibility);");
+                        Unit.Add_Line (+"AMF.CMOF.Protected_Visibility);");
 
                      when AMF.CMOF.Package_Visibility =>
-                        Put_Line ("AMF.CMOF.Package_Visibility);");
+                        Unit.Add_Line (+"AMF.CMOF.Package_Visibility);");
                   end case;
                end if;
 
@@ -1291,7 +1309,7 @@ package body Generator.Metamodel is
       end Generate_Attribute_Initialization;
 
    begin
-      New_Line;
+      Unit.Add_Line;
       Sort
        (Class_Properties_Except_Redefined (Meta_Class)).Iterate
          (Generate_Attribute_Initialization'Access);
@@ -1811,7 +1829,7 @@ package body Generator.Metamodel is
    -------------------------------
 
    function String_Data_Constant_Name
-    (Number : Natural) return Wide_Wide_String
+    (Number : Natural) return League.Strings.Universal_String
    is
       Hex    : constant
         array (Integer range 0 .. 15)
@@ -1824,7 +1842,7 @@ package body Generator.Metamodel is
       Result (6) := Hex (Number / 16#10# mod 16#10#);
       Result (7) := Hex (Number mod 16#10#);
 
-      return Result;
+      return League.Strings.To_Universal_String (Result);
    end String_Data_Constant_Name;
 
    ------------------------------
@@ -1832,7 +1850,7 @@ package body Generator.Metamodel is
    ------------------------------
 
    function String_Data_Package_Name
-    (Number : Natural) return Wide_Wide_String
+    (Number : Natural) return League.Strings.Universal_String
    is
       Hex    : constant
         array (Integer range 0 .. 15)
@@ -1846,7 +1864,7 @@ package body Generator.Metamodel is
       Result (Result'Last - 1) := Hex (Number / 16#1000#);
       Result (Result'Last) := Hex (Number / 16#100# mod 16#10#);
 
-      return Result;
+      return League.Strings.To_Universal_String (Result);
    end String_Data_Package_Name;
 
 end Generator.Metamodel;

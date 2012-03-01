@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,13 +64,21 @@ package Generator.Names is
 
    function Association_Constant_Name
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
-       return Wide_Wide_String;
+       return League.Strings.Universal_String;
+
+   function Association_Constant_Package_Name
+    (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
+       return League.Strings.Universal_String;
 
    function Association_Constant_Qualified_Name
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
-       return Wide_Wide_String;
+       return League.Strings.Universal_String;
 
    function Type_Constant_Name
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return League.Strings.Universal_String;
+
+   function Type_Constant_Package_Name
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return League.Strings.Universal_String;
 
@@ -82,17 +90,29 @@ package Generator.Names is
     (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String;
 
+   function Package_Constant_Package_Name
+    (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
+       return League.Strings.Universal_String;
+
    function Package_Constant_Qualified_Name
     (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String;
 
    function Property_Constant_Name
     (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Wide_Wide_String;
+       return League.Strings.Universal_String;
+
+   function Property_Constant_Package_Name
+    (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Strings.Universal_String;
 
    function Property_Constant_Qualified_Name
     (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Wide_Wide_String;
+       return League.Strings.Universal_String;
+
+   function Element_Constant_Package_Name
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+       return League.Strings.Universal_String;
 
    function Element_Constant_Qualified_Name
     (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)

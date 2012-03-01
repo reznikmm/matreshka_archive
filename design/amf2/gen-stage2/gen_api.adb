@@ -626,7 +626,7 @@ procedure Gen_API is
         := Ada_API_Type_Name (Class);
 
    begin
-      Unit.Add_Unit_Header (2011, 2011);
+      Unit.Add_Unit_Header (2012, 2012);
 
       --  Generate comment.
 
@@ -718,7 +718,7 @@ procedure Gen_API is
       Unit         : Generator.Units.Unit;
 
    begin
-      Unit.Add_Unit_Header (2011, 2011);
+      Unit.Add_Unit_Header (2012, 2012);
 
       Unit.Context.Add (+"AMF.Generic_Collections");
       Unit.Add_Line;
@@ -1331,7 +1331,7 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header (2011, 2011);
+      Unit.Add_Unit_Header (2012, 2012);
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
 
@@ -1528,7 +1528,7 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header (2011, 2011);
+      Unit.Add_Unit_Header (2012, 2012);
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");
       Unit.Add_Line;
