@@ -45,6 +45,16 @@ with Ada.Unchecked_Deallocation;
 
 package body Matreshka.Internals.String_Vectors is
 
+   procedure Unsafe_Dereference (Item : in out Shared_String_Vector_Access);
+   --  Dereference specified object and release memory when necessary, but
+   --  doesn't dereference contained shared strings.
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Shared_String_Vector, Shared_String_Vector_Access);
+   --  Deallocate shared string vector. Should not be used anywhere except
+   --  Dereference and Unsafe_Dereference subprograms.
+
    --------------
    -- Allocate --
    --------------
@@ -78,11 +88,6 @@ package body Matreshka.Internals.String_Vectors is
    -----------------
 
    procedure Dereference (Item : in out Shared_String_Vector_Access) is
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (Shared_String_Vector, Shared_String_Vector_Access);
-
    begin
       if Item /= Empty_Shared_String_Vector'Access
         and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
@@ -128,7 +133,7 @@ package body Matreshka.Internals.String_Vectors is
       --  of items, or used somewhere; allocate new one and copy existing data.
 
       elsif Destination.Size < Size
-        or else Matreshka.Atomics.Counters.Is_One (Source.Counter)
+        or else not Matreshka.Atomics.Counters.Is_One (Source.Counter)
       then
          Destination := Allocate (Size);
 
@@ -136,16 +141,21 @@ package body Matreshka.Internals.String_Vectors is
            Source.Value (1 .. Source.Length);
          Destination.Length := Source.Length;
 
-         --  XXX Reference/Dereference of each shared string can be avoided
-         --  when shared string vector has counter equal to one. This hack
-         --  can be added here (note, Dereference of shared string vector
-         --  can't be used in this case.
+         if not Matreshka.Atomics.Counters.Is_One (Source.Counter) then
+            --  Increment reference counter for all copied shared strings.
 
-         for J in 1 .. Destination.Length loop
-            Matreshka.Internals.Strings.Reference (Destination.Value (J));
-         end loop;
+            for J in 1 .. Destination.Length loop
+               Matreshka.Internals.Strings.Reference (Destination.Value (J));
+            end loop;
 
-         Dereference (Source);
+            Dereference (Source);
+
+         else
+            --  There is only one reference to source object, change of
+            --  reference counter of shared strings can be avoided.
+
+            Unsafe_Dereference (Source);
+         end if;
       end if;
    end Detach;
 
@@ -209,5 +219,21 @@ package body Matreshka.Internals.String_Vectors is
          Matreshka.Internals.Strings.Reference (Self.Value (Index));
       end if;
    end Replace;
+
+   ------------------------
+   -- Unsafe_Dereference --
+   ------------------------
+
+   procedure Unsafe_Dereference (Item : in out Shared_String_Vector_Access) is
+   begin
+      if Item /= Empty_Shared_String_Vector'Access
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
+      then
+         Free (Item);
+
+      else
+         Item := null;
+      end if;
+   end Unsafe_Dereference;
 
 end Matreshka.Internals.String_Vectors;
