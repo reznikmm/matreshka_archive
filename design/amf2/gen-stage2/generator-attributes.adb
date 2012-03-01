@@ -227,6 +227,8 @@ package body Generator.Attributes is
 
       procedure Generate_Setter (Position : Homograph_Sets.Cursor);
 
+      Unit : Generator.Units.Unit;
+
       ----------------
       -- Dump_Class --
       ----------------
@@ -252,10 +254,11 @@ package body Generator.Attributes is
 
          begin
             if Class.Collection.Contains (Attribute) then
-               Put ("   --    ");
-               Put (Class.Collection.Element (Attribute), 2);
-               Put_Line
-                ("  "
+               Unit.Add_Line
+                ("   --    "
+                   & Integer'Wide_Wide_Image
+                       (Class.Collection.Element (Attribute))
+                   & "  "
                    & Attribute_Class.Get_Name.Value
                    & Attribute_Class.Separator
                    & Attribute.Get_Name.Value);
@@ -274,10 +277,10 @@ package body Generator.Attributes is
 
          begin
             if Class.Slot.Contains (Attribute) then
-               Put ("   --    ");
-               Put (Class.Slot.Element (Attribute), 2);
-               Put_Line
-                ("  "
+               Unit.Add_Line
+                ("   --    "
+                   & Integer'Wide_Wide_Image (Class.Slot.Element (Attribute))
+                   & "  "
                    & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
                    & Attribute_Class.Separator
                    & Attribute.Get_Name.Value.To_Wide_Wide_String);
@@ -291,11 +294,11 @@ package body Generator.Attributes is
             return;
          end if;
 
-         New_Line;
-         Put_Line ("   --  " & Class.Class.Get_Name.Value.To_Wide_Wide_String);
-         Put_Line ("   --");
+         Unit.Add_Line;
+         Unit.Add_Line ("   --  " & Class.Class.Get_Name.Value);
+         Unit.Add_Line (+"   --");
          Class.All_Attributes.Iterate (Dump_Slot'Access);
-         Put_Line ("   --");
+         Unit.Add_Line (+"   --");
          Class.All_Attributes.Iterate (Dump_Collection'Access);
       end Dump_Class;
 
@@ -322,8 +325,12 @@ package body Generator.Attributes is
               := Attribute.Get_Type;
 
          begin
-            Put_Line
-             ("         when E_"
+            Unit.Context.Add
+             ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
+            Unit.Add_Line
+             ("         when AMF.Internals.Tables."
+                & Metamodel_Name
+                & "_Types.E_"
                 & To_Ada_Identifier (Class.Get_Name.Value)
                 & " =>");
 
@@ -332,9 +339,14 @@ package body Generator.Attributes is
 
                case Representation (Attribute) is
                   when Value | Holder =>
-                     Put_Line ("            return");
-                     Put_Line ("              "
-                         & Metamodel_Name.To_Wide_Wide_String
+                     Unit.Add_Line (+"            return");
+                     Unit.Context.Add
+                      ("AMF.Internals.Tables."
+                         & Metamodel_Name
+                         & "_Element_Table");
+                     Unit.Add_Line
+                      ("              AMF.Internals.Tables."
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -345,9 +357,13 @@ package body Generator.Attributes is
                      raise Program_Error;
 
                   when Ordered_Set =>
-                     Put
-                      ("            return "
-                         & Metamodel_Name.To_Wide_Wide_String
+                     Unit.Context.Add
+                      ("AMF.Internals.Tables."
+                         & Metamodel_Name
+                         & "_Element_Table");
+                     Unit.Add
+                      ("            return AMF.Internals.Tables."
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -358,9 +374,13 @@ package body Generator.Attributes is
                      raise Program_Error;
 
                   when Sequence =>
-                     Put
-                      ("            return "
-                         & Metamodel_Name.To_Wide_Wide_String
+                     Unit.Context.Add
+                      ("AMF.Internals.Tables."
+                         & Metamodel_Name
+                         & "_Element_Table");
+                     Unit.Add
+                      ("            return AMF.Internals.Tables."
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -370,49 +390,61 @@ package body Generator.Attributes is
 
             elsif Info.Slot.Contains (Attribute) then
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-                  Put_Line ("            return");
-                  Put_Line ("              AMF.Internals.Links.Opposite_Element");
-                  Put
-                   ("               ("
-                      & Metamodel_Name.To_Wide_Wide_String
+                  Unit.Add_Line
+                   (+"            return");
+                  Unit.Context.Add (+"AMF.Internals.Links");
+                  Unit.Add_Line
+                   (+"              AMF.Internals.Links.Opposite_Element");
+                  Unit.Context.Add
+                   ("AMF.Internals.Tables."
+                      & Metamodel_Name
+                      & "_Element_Table");
+                  Unit.Add
+                   ("               (AMF.Internals.Tables."
+                      & Metamodel_Name
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
                            (Info.Slot.Element (Attribute)), Both)
                       & ").Link, Self, No_"
-                      & Metamodel_Name.To_Wide_Wide_String
+                      & Metamodel_Name
                       & "_Element)");
 
                else
-                  Put
-                   ("            return "
-                      & Metamodel_Name.To_Wide_Wide_String
+                  Unit.Context.Add
+                   ("AMF.Internals.Tables."
+                      & Metamodel_Name
+                      & "_Element_Table");
+                  Unit.Add
+                   ("            return AMF.Internals.Tables."
+                      & Metamodel_Name
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
                            (Info.Slot.Element (Attribute)), Both)
                       & ").");
-                  Put
+                  Unit.Add
                    (Generator.Type_Mapping.Member_Name
-                     (Attribute_Type,
-                      Representation (Attribute)).To_Wide_Wide_String);
+                     (Attribute_Type, Representation (Attribute)));
                end if;
 
-               Put_Line (";");
+               Unit.Add_Line (+";");
 
             else
                --  Collections are of type Element also.
 
-               Put_Line
-                ("            return "
-                   & Metamodel_Name.To_Wide_Wide_String
+               Unit.Context.Add
+                ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+               Unit.Add_Line
+                ("            return AMF.Internals.Tables."
+                   & Metamodel_Name
                    & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
                       (Info.Collection.Element (Attribute))
                    & ";");
             end if;
 
-            New_Line;
+            Unit.Add_Line;
          end Generate;
 
          Getter    : constant Homograph_Information_Access
@@ -421,8 +453,8 @@ package body Generator.Attributes is
            := Getter.Pairs.First_Element.Attribute;
          Redefined : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
            := Attribute.Get_Redefined_Property;
-         Name      : constant Wide_Wide_String
-           := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
+         Name      : constant League.Strings.Universal_String
+           := +"Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
          --  Unwind to original property definition.
@@ -432,29 +464,28 @@ package body Generator.Attributes is
             Redefined := Attribute.Get_Redefined_Property;
          end loop;
 
-         Put_Header (Name, 3);
-         New_Line;
-         Put_Line ("   function " & Name);
-         Put_Line
-          ("    (Self : AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element)");
-         Put_Line
+         Unit.Add_Header (Name, 3);
+         Unit.Add_Line;
+         Unit.Add_Line ("   function " & Name);
+         Unit.Add_Line
+          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element)");
+         Unit.Add_Line
           ("       return "
              & Type_Mapping.Internal_Ada_Type_Qualified_Name
-                (Attribute.Get_Type,
-                 Representation (Attribute)).To_Wide_Wide_String
+                (Attribute.Get_Type, Representation (Attribute))
              & " is");
-         Put_Line ("   begin");
-         Put_Line
-          ("      case "
-             & Metamodel_Name.To_Wide_Wide_String
+         Unit.Add_Line (+"   begin");
+         Unit.Context.Add
+          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+         Unit.Add_Line
+          ("      case AMF.Internals.Tables."
+             & Metamodel_Name
              & "_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
-         Put_Line ("         when others =>");
-         Put_Line ("            raise Program_Error;");
-         Put_Line ("      end case;");
-         Put_Line ("   end " & Name & ";");
+         Unit.Add_Line (+"         when others =>");
+         Unit.Add_Line (+"            raise Program_Error;");
+         Unit.Add_Line (+"      end case;");
+         Unit.Add_Line ("   end " & Name & ";");
       end Generate_Getter;
 
       ---------------------
@@ -503,111 +534,138 @@ package body Generator.Attributes is
             end Member_Name;
 
          begin
-            Put_Line
-             ("         when E_"
+            Unit.Context.Add
+             ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
+            Unit.Add_Line
+             ("         when AMF.Internals.Tables."
+                & Metamodel_Name
+                & "_Types.E_"
                 & To_Ada_Identifier (Class.Get_Name.Value)
                 & " =>");
 
             if Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put_Line ("            Old :=");
-                     Put_Line
-                      ("              "
-                         & Metamodel_Name.To_Wide_Wide_String
+                     Unit.Add_Line (+"            Old :=");
+                     Unit.Context.Add
+                      ("AMF.Internals.Tables."
+                         & Metamodel_Name
+                         & "_Element_Table");
+                     Unit.Add_Line
+                      ("              AMF.Internals.Tables."
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value;");
-                     New_Line;
-                     Put_Line
+                     Unit.Add_Line;
+                     Unit.Add_Line
                       ("            "
-                         & Metamodel_Name.To_Wide_Wide_String
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value := To;");
-                     Put_Line
-                      ("            "
-                         & "Matreshka.Internals.Strings.Reference");
-                     Put_Line
+                     Unit.Add_Line
+                      (+"            "
+                          & "Matreshka.Internals.Strings.Reference");
+                     Unit.Add_Line
                       ("             ("
-                         & Metamodel_Name.To_Wide_Wide_String
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value);");
-                     New_Line;
-                     Put_Line
-                      ("            "
-                         & Metamodel_Name
-                         & "_Notification.Notify_Attribute_Set");
-                     Put_Line
+                     Unit.Add_Line;
+                     Unit.Context.Add
+                      (+"AMF.Internals.Tables."
+                          & To_Ada_Identifier
+                             (Owning_Metamodel_Name (Attribute_Type))
+                          & "_Notification");
+                     Unit.Add_Line
+                      (+"            AMF.Internals.Tables."
+                          & To_Ada_Identifier
+                             (Owning_Metamodel_Name (Attribute_Type))
+                          & "_Notification.Notify_Attribute_Set");
+                     Unit.Context.Add
+                      (Property_Constant_Package_Name (Attribute));
+                     Unit.Add_Line
                       ("             (Self, "
-                         & Property_Constant_Name (Attribute)
+                         & Property_Constant_Qualified_Name (Attribute)
                          & ", Old, To);");
-                     Put_Line
-                      ("            "
-                         & "Matreshka.Internals.Strings.Dereference (Old);");
+                     Unit.Add_Line
+                      (+"            "
+                          & "Matreshka.Internals.Strings.Dereference (Old);");
 
                   when Holder =>
-                     Put_Line
-                      ("            Old := "
-                         & Metamodel_Name.To_Wide_Wide_String
+                     Unit.Context.Add
+                      ("AMF.Internals.Tables."
+                         & Metamodel_Name
+                         & "_Element_Table");
+                     Unit.Add_Line
+                      ("            Old := AMF.Internals.Tables."
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value;");
-                     New_Line;
-                     Put_Line
+                     Unit.Add_Line;
+                     Unit.Add_Line
                       ("            "
-                         & Metamodel_Name.To_Wide_Wide_String
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value := To;");
-                     New_Line;
-                     Put_Line
+                     Unit.Add_Line;
+                     Unit.Add_Line
                       ("            if "
-                         & Metamodel_Name.To_Wide_Wide_String
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value /= null then");
-                     Put_Line
-                      ("               "
-                         & "Matreshka.Internals.Strings.Reference");
-                     Put_Line
+                     Unit.Add_Line
+                      (+"               "
+                          & "Matreshka.Internals.Strings.Reference");
+                     Unit.Add_Line
                       ("                ("
-                         & Metamodel_Name.To_Wide_Wide_String
+                         & Metamodel_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value);");
-                     Put_Line ("            end if;");
-                     New_Line;
-                     Put_Line
-                      ("            "
-                         & Metamodel_Name
-                         & "_Notification.Notify_Attribute_Set");
-                     Put_Line
+                     Unit.Add_Line (+"            end if;");
+                     Unit.Add_Line;
+                     Unit.Context.Add
+                      (+"AMF.Internals.Tables."
+                          & To_Ada_Identifier
+                             (Owning_Metamodel_Name (Attribute_Type))
+                          & "_Notification");
+                     Unit.Add_Line
+                      (+"            AMF.Internals.Tables."
+                          & To_Ada_Identifier
+                             (Owning_Metamodel_Name (Attribute_Type))
+                          & "_Notification.Notify_Attribute_Set");
+                     Unit.Context.Add
+                      (Property_Constant_Package_Name (Attribute));
+                     Unit.Add_Line
                       ("             (Self, "
-                         & Property_Constant_Name (Attribute)
+                         & Property_Constant_Qualified_Name (Attribute)
                          & ", Old, To);");
-                     New_Line;
-                     Put_Line
-                      ("            if Old /= null then");
-                     Put_Line
-                      ("               "
-                         & "Matreshka.Internals.Strings.Reference (Old);");
-                     Put_Line ("            end if;");
+                     Unit.Add_Line;
+                     Unit.Add_Line (+"            if Old /= null then");
+                     Unit.Add_Line
+                      (+"               "
+                          & "Matreshka.Internals.Strings.Reference (Old);");
+                     Unit.Add_Line (+"            end if;");
 
                   when Set =>
                      raise Program_Error;
@@ -623,28 +681,33 @@ package body Generator.Attributes is
                end case;
 
             elsif Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-               Put_Line ("            AMF.Internals.Links.Create_Link");
-               Put_Line
+               Unit.Context.Add (+"AMF.Internals.Links");
+               Unit.Add_Line (+"            AMF.Internals.Links.Create_Link");
+               Unit.Context.Add
+                (Association_Constant_Package_Name (Association));
+               Unit.Add_Line
                 ("             ("
                    & Association_Constant_Qualified_Name (Association)
                    & ',');
 
                if Association.Get_Member_End.Element (1) = Attribute then
-                  Put_Line ("              Self,");
-                  Put_Line ("              To);");
+                  Unit.Add_Line (+"              Self,");
+                  Unit.Add_Line (+"              To);");
 
                elsif Association.Get_Member_End.Element (2) = Attribute then
-                  Put_Line ("              To,");
-                  Put_Line ("              Self);");
+                  Unit.Add_Line (+"              To,");
+                  Unit.Add_Line (+"              Self);");
 
                else
                   raise Program_Error;
                end if;
 
             else
-               Put_Line
-                ("            Old := "
-                   & Metamodel_Name.To_Wide_Wide_String
+               Unit.Context.Add
+                ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+               Unit.Add_Line
+                ("            Old := AMF.Internals.Tables."
+                   & Metamodel_Name
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
@@ -652,9 +715,9 @@ package body Generator.Attributes is
                    & ")."
                    & Member_Name
                    & ";" );
-               Put_Line
-                ("            "
-                   & Metamodel_Name.To_Wide_Wide_String
+               Unit.Add_Line
+                ("            AMF.Internals.Tables."
+                   & Metamodel_Name
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
@@ -662,18 +725,25 @@ package body Generator.Attributes is
                    & ")."
                    & Member_Name
                    & " := To;");
-               New_Line;
-               Put_Line
-                ("            "
-                   & Metamodel_Name
-                   & "_Notification.Notify_Attribute_Set");
-               Put_Line
+               Unit.Add_Line;
+               Unit.Context.Add
+                (+"AMF.Internals.Tables."
+                    & To_Ada_Identifier
+                       (Owning_Metamodel_Name (Attribute_Type))
+                    & "_Notification");
+               Unit.Add_Line
+                (+"            AMF.Internals.Tables."
+                    & To_Ada_Identifier
+                       (Owning_Metamodel_Name (Attribute_Type))
+                    & "_Notification.Notify_Attribute_Set");
+               Unit.Context.Add (Property_Constant_Package_Name (Attribute));
+               Unit.Add_Line
                 ("             (Self, "
-                   & Property_Constant_Name (Attribute)
+                   & Property_Constant_Qualified_Name (Attribute)
                    & ", Old, To);");
             end if;
 
-            New_Line;
+            Unit.Add_Line;
          end Generate;
 
          Getter         : constant Homograph_Information_Access
@@ -682,89 +752,65 @@ package body Generator.Attributes is
            := Getter.Pairs.First_Element.Attribute;
          Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Attribute.Get_Type;
-         Name           : constant Wide_Wide_String
-           := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
+         Name           : constant League.Strings.Universal_String
+           := +"Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
          if not Has_Internal_Setter (Attribute) then
             return;
          end if;
 
-         Put_Header (Name, 3);
-         New_Line;
-         Put_Line ("   procedure " & Name);
-         Put_Line
-          ("    (Self : AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element;");
-         Put_Line
+         Unit.Add_Header (Name, 3);
+         Unit.Add_Line;
+         Unit.Add_Line ("   procedure " & Name);
+         Unit.Add_Line
+          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element;");
+         Unit.Add_Line
           ("     To   : "
             & Type_Mapping.Internal_Ada_Type_Qualified_Name
-               (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String
+               (Attribute_Type, Representation (Attribute))
             & ")");
-         Put_Line ("   is");
-         Put_Line
+         Unit.Add_Line (+"   is");
+         Unit.Add_Line
           ("      Old : "
             & Type_Mapping.Internal_Ada_Type_Qualified_Name
-               (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String
+               (Attribute_Type, Representation (Attribute))
             & ";");
-         New_Line;
-         Put_Line ("   begin");
-         Put_Line
-          ("      case "
-             & Metamodel_Name.To_Wide_Wide_String
+         Unit.Add_Line;
+         Unit.Add_Line (+"   begin");
+         Unit.Context.Add
+          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+         Unit.Add_Line
+          ("      case AMF.Internals.Tables."
+             & Metamodel_Name
              & "_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
-         Put_Line ("         when others =>");
-         Put_Line ("            raise Program_Error;");
-         Put_Line ("      end case;");
-         Put_Line ("   end " & Name & ";");
+         Unit.Add_Line (+"         when others =>");
+         Unit.Add_Line (+"            raise Program_Error;");
+         Unit.Add_Line (+"      end case;");
+         Unit.Add_Line ("   end " & Name & ";");
       end Generate_Setter;
 
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables." & Metamodel_Name & "_Attributes";
+
    begin
-      Put_Header (2010, 2011);
-      Put_Line ("with AMF.Internals.Links;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Element_Table;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Notification;");
-      New_Line;
-      Put_Line
-       ("package body AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes is");
-      New_Line;
-      Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("   use type Matreshka.Internals.Strings.Shared_String_Access;");
+      Unit.Add_Unit_Header
+       (Integer'Max (2010, Generator.First_Year),
+        Integer'Max (2010, Generator.Last_Year));
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line
+       (+"   use type Matreshka.Internals.Strings.Shared_String_Access;");
       Class_Info.Iterate (Dump_Class'Access);
       Getters.Iterate (Generate_Getter'Access);
       Getters.Iterate (Generate_Setter'Access);
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes;");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Attributes_Implementation;
 
    -----------------------------------------------
@@ -847,8 +893,14 @@ package body Generator.Attributes is
             Put ("         ");
          end if;
 
+--         Unit.Context.Add
+--          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
          Put_Line
-          ("E_" & To_Ada_Identifier (Class.Class.Get_Name.Value) & " =>");
+          ("AMF.Internals.Tables."
+             & Metamodel_Name
+             & "_Types.E_"
+             & To_Ada_Identifier (Class.Class.Get_Name.Value)
+             & " =>");
          Class.All_Attributes.Iterate (Generate'Access);
          Put ("           others => 0)");
       end Generate_Collection;
@@ -919,8 +971,14 @@ package body Generator.Attributes is
             Put ("         ");
          end if;
 
+--         Unit.Context.Add
+--          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
          Put_Line
-          ("E_" & To_Ada_Identifier (Class.Class.Get_Name.Value) & " =>");
+          ("AMF.Internals.Tables."
+             & Metamodel_Name
+             & "_Types.E_"
+             & To_Ada_Identifier (Class.Class.Get_Name.Value)
+             & " =>");
          Class.All_Attributes.Iterate (Generate'Access);
          Put ("           others => 0)");
       end Generate_Slot;
