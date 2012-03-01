@@ -53,17 +53,14 @@ with AMF.CMOF.Types;
 with League.Strings;
 
 with Generator.Attribute_Mapping;
-with Generator.Contexts;
 with Generator.Names;
 with Generator.Type_Mapping;
-with Generator.Wide_Wide_Text_IO;
+with Generator.Units;
 
 package body Generator.Reflection is
 
-   use Ada.Wide_Wide_Text_IO;
    use Generator.Attribute_Mapping;
    use Generator.Names;
-   use Generator.Wide_Wide_Text_IO;
    use type League.Strings.Universal_String;
 
    Boolean_Name           : constant League.Strings.Universal_String
@@ -76,24 +73,6 @@ package body Generator.Reflection is
      := League.Strings.To_Universal_String ("String");
    Unlimited_Natural_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("UnlimitedNatural");
-
-   type Ada_Context_Builder is
-     new AMF.CMOF.Visitors.Abstract_CMOF_Visitor with record
-      Context : Contexts.Context;
-   end record;
-
-   overriding procedure Visit_Class
-    (Self    : in out Ada_Context_Builder;
-     Element : not null access AMF.CMOF.Classes.CMOF_Class'Class);
-
-   overriding procedure Visit_Property
-    (Self    : in out Ada_Context_Builder;
-     Element : not null access AMF.CMOF.Properties.CMOF_Property'Class);
-
-   procedure Generate_With_Clause
-    (Unit       : League.Strings.Universal_String;
-     Is_Limited : Boolean;
-     Is_Private : Boolean);
 
    ----------------------------------------
    -- Generate_Reflection_Implementation --
@@ -129,6 +108,8 @@ package body Generator.Reflection is
        (Position : Class_Information_Maps.Cursor);
       --  Generates call to class's setter subprogram.
 
+      Unit : Generator.Units.Unit;
+
       --------------------------
       -- Generate_Getter_Call --
       --------------------------
@@ -136,16 +117,20 @@ package body Generator.Reflection is
       procedure Generate_Getter_Call
        (Position : Class_Information_Maps.Cursor)
       is
-         Class      : constant not null Class_Information_Access
+         Class        : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Class_Name : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Class_Name   : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Package_Name : constant League.Strings.Universal_String
+           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
-            New_Line;
-            Put_Line ("         when E_" & Class_Name & " =>");
-            Put_Line ("            return " & Class_Name & "_Get;");
+            Unit.Add_Line;
+            Unit.Context.Add (Package_Name);
+            Unit.Add_Line
+             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
+            Unit.Add_Line ("            return " & Class_Name & "_Get;");
          end if;
       end Generate_Getter_Call;
 
@@ -162,8 +147,8 @@ package body Generator.Reflection is
 
          Class : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Name  : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Get";
+         Name  : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Get";
          First : Boolean := True;
 
          ------------------------
@@ -187,45 +172,58 @@ package body Generator.Reflection is
 
          begin
             if First then
-               Put ("         if");
+               Unit.Add (+"         if");
                First := False;
 
             else
-               New_Line;
-               Put ("         elsif");
+               Unit.Add_Line;
+               Unit.Add (+"         elsif");
             end if;
 
-            Put_Line
-             (" Property = " & Property_Constant_Name (Attribute) & " then");
+            Unit.Context.Add (Property_Constant_Package_Name (Attribute));
+            Unit.Add_Line
+             (" Property = "
+                & Property_Constant_Qualified_Name (Attribute)
+                & " then");
 
-            Put_Line
+            Unit.Add_Line
              ("            --  "
                 & Attribute_Class.Get_Name.Value
                 & "::"
                 & Attribute.Get_Name.Value
                 & " : "
                 & Attribute_Type.Get_Name.Value);
-            New_Line;
-            Put_Line ("            return");
-            Put ("              ");
+            Unit.Add_Line;
+            Unit.Add_Line (+"            return");
+            Unit.Add (+"              ");
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
+                  Unit.Context.Add
+                   ("AMF.Internals.Holders."
+                      & Owning_Metamodel_Name (Attribute_Type)
+                      & "_Holders");
                   Holder_Name :=
                     "AMF.Internals.Holders."
-                      & Metamodel_Name
+                      & Owning_Metamodel_Name (Attribute_Type)
                       & "_Holders.To_Holder";
+                  Unit.Context.Add
+                   (Generator.Type_Mapping.Public_Ada_Package_Name
+                     (Attribute_Type, Representation (Attribute)));
                   Convertor_Name :=
-                    Type_Mapping.Public_Ada_Type_Qualified_Name
+                    Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
                      (Attribute_Type, Value)
                       & "'";
 
                else
+                  Unit.Context.Add
+                   (Generator.Type_Mapping.Public_Ada_Package_Name
+                     (Attribute_Type, Representation (Attribute)));
                   Holder_Name :=
-                    Type_Mapping.Public_Ada_Package_Name
+                    Generator.Type_Mapping.Public_Ada_Package_Name
                      (Attribute_Type, Representation (Attribute))
                       & "."
-                      & Metamodel_Name
+                      & Owning_Metamodel_Name (Attribute_Type)
                       & "_"
                       & To_Ada_Identifier (Attribute_Type.Get_Name.Value)
                       & "_Collections.Internals.To_Holder";
@@ -234,16 +232,19 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
                   when Value =>
+                     Unit.Context.Add (+"League.Holders.Booleans");
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("League.Holders.Booleans.To_Holder");
 
                   when Holder =>
+                     Unit.Context.Add (+"AMF.Holders");
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.Holders.To_Holder");
 
                   when Set =>
+                     Unit.Context.Add (+"AMF.Boolean_Collections.Internals");
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.Boolean_Collections.Internals.To_Holder");
@@ -322,6 +323,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Ordered_Set =>
+                     Unit.Context.Add (+"AMF.String_Collections.Internals");
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.String_Collections.Internals.To_Holder");
@@ -330,6 +332,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Sequence =>
+                     Unit.Context.Add (+"AMF.String_Collections.Internals");
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.String_Collections.Internals.To_Holder");
@@ -365,17 +368,30 @@ package body Generator.Reflection is
             then
                case Representation (Attribute) is
                   when Value =>
+                     Unit.Context.Add
+                      ("AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders."
+                         & Plural
+                            (To_Ada_Identifier
+                              (Attribute_Type.Get_Name.Value)));
                      Holder_Name :=
                        "AMF."
-                         & Metamodel_Name
+                         & Owning_Metamodel_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
                          & ".To_Holder";
 
                   when Holder =>
+                     Unit.Context.Add
+                      ("AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders");
                      Holder_Name :=
-                       "AMF." & Metamodel_Name & ".Holders.To_Holder";
+                       "AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders.To_Holder";
 
                   when Set =>
                      raise Program_Error;
@@ -391,53 +407,55 @@ package body Generator.Reflection is
                end case;
 
             else
-               Put_Line
-                (Standard_Error,
+               Ada.Wide_Wide_Text_IO.Put_Line
+                (Ada.Wide_Wide_Text_IO.Standard_Error,
                  Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
 
                raise Program_Error;
             end if;
 
             if Convertor_Name.Is_Empty then
-               Put_Line (Holder_Name);
-               Put_Line
+               Unit.Add_Line (Holder_Name);
+               Unit.Add_Line
                 ("               ("
                    & Type_Mapping.Public_Ada_Type_Qualified_Name
                       (Class.Class, Value));
-               Put_Line
-                ("                 ("
-                   & "AMF.Internals.Helpers.To_Element (Self)).Get_"
-                   & To_Ada_Identifier (Attribute.Get_Name.Value)
-                   & ");");
+               Unit.Context.Add (+"AMF.Internals.Helpers");
+               Unit.Add_Line
+                (+"                 ("
+                    & "AMF.Internals.Helpers.To_Element (Self)).Get_"
+                    & To_Ada_Identifier (Attribute.Get_Name.Value)
+                    & ");");
 
             else
-               Put_Line (Holder_Name);
-               Put_Line ("               (" & Convertor_Name);
-               Put_Line
+               Unit.Add_Line (Holder_Name);
+               Unit.Add_Line ("               (" & Convertor_Name);
+               Unit.Add_Line
                 ("                 ("
                    & Type_Mapping.Public_Ada_Type_Qualified_Name
                       (Class.Class, Value));
-               Put_Line
-                ("                   ("
-                   & "AMF.Internals.Helpers.To_Element (Self)).Get_"
-                   & To_Ada_Identifier (Attribute.Get_Name.Value)
-                   & "));");
+               Unit.Context.Add (+"AMF.Internals.Helpers");
+               Unit.Add_Line
+                (+"                   ("
+                    & "AMF.Internals.Helpers.To_Element (Self)).Get_"
+                    & To_Ada_Identifier (Attribute.Get_Name.Value)
+                    & "));");
             end if;
          end Generate_Attribute;
 
       begin
          if not Class.Class.Get_Is_Abstract then
-            Put_Header (Name, 6);
-            New_Line;
-            Put_Line
+            Unit.Add_Header (Name, 6);
+            Unit.Add_Line;
+            Unit.Add_Line
              ("      function " & Name & " return League.Holders.Holder is");
-            Put_Line ("      begin");
+            Unit.Add_Line (+"      begin");
             Class.All_Attributes.Iterate (Generate_Attribute'Access);
-            New_Line;
-            Put_Line ("         else");
-            Put_Line ("            raise Program_Error;");
-            Put_Line ("         end if;");
-            Put_Line ("      end " & Name & ';');
+            Unit.Add_Line;
+            Unit.Add_Line (+"         else");
+            Unit.Add_Line (+"            raise Program_Error;");
+            Unit.Add_Line (+"         end if;");
+            Unit.Add_Line ("      end " & Name & ';');
          end if;
       end Generate_Getter_Implementation;
 
@@ -450,17 +468,17 @@ package body Generator.Reflection is
       is
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
-         Name  : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Get_Name.Value) & "_Get";
+         Name  : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Get_Name.Value) & "_Get";
 
       begin
          if not Class.Get_Is_Abstract then
-            New_Line;
-            Put_Line
+            Unit.Add_Line;
+            Unit.Add_Line
              ("      function " & Name & " return League.Holders.Holder;");
-            Put_Line
+            Unit.Add_Line
              ("      --  Returns attribute's value of instance of "
-                & Class.Get_Name.Value.To_Wide_Wide_String
+                & Class.Get_Name.Value
                 & " class.");
          end if;
       end Generate_Getter_Specification;
@@ -472,20 +490,23 @@ package body Generator.Reflection is
       procedure Generate_Meta
        (Position : Class_Information_Maps.Cursor)
       is
-         Class      : constant not null Class_Information_Access
+         Class        : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Class_Name : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Class_Name   : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Package_Name : constant League.Strings.Universal_String
+           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
-            New_Line;
-            Put_Line ("         when E_" & Class_Name & " =>");
-            Put_Line
+            Unit.Context.Add (Package_Name);
+            Unit.Add_Line;
+            Unit.Add_Line
+             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
+            Unit.Add_Line
              ("            return "
                 & Type_Constant_Qualified_Name
-                   (AMF.CMOF.Types.CMOF_Type_Access
-                     (Class.Class)).To_Wide_Wide_String
+                   (AMF.CMOF.Types.CMOF_Type_Access (Class.Class))
                 & ";");
          end if;
       end Generate_Meta;
@@ -497,16 +518,20 @@ package body Generator.Reflection is
       procedure Generate_Setter_Call
        (Position : Class_Information_Maps.Cursor)
       is
-         Class      : constant not null Class_Information_Access
+         Class        : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Class_Name : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Class_Name   : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Package_Name : constant League.Strings.Universal_String
+           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
-            New_Line;
-            Put_Line ("         when E_" & Class_Name & " =>");
-            Put_Line ("            " & Class_Name & "_Set;");
+            Unit.Context.Add (Package_Name);
+            Unit.Add_Line;
+            Unit.Add_Line
+             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
+            Unit.Add_Line ("            " & Class_Name & "_Set;");
          end if;
       end Generate_Setter_Call;
 
@@ -523,8 +548,8 @@ package body Generator.Reflection is
 
          Class : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Name  : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Set";
+         Name  : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Set";
          First : Boolean := True;
 
          ------------------------
@@ -545,8 +570,9 @@ package body Generator.Reflection is
             Attribute_Class    : constant
               not null AMF.CMOF.Classes.CMOF_Class_Access
                 := Attribute.Get_Class;
-            Attribute_Type     : constant not null AMF.CMOF.Types.CMOF_Type_Access
-              := Attribute.Get_Type;
+            Attribute_Type     : constant
+              not null AMF.CMOF.Types.CMOF_Type_Access
+                := Attribute.Get_Type;
 
          begin
             if Attribute.Get_Is_Read_Only
@@ -564,41 +590,51 @@ package body Generator.Reflection is
             end loop;
 
             if First then
-               Put ("         if");
+               Unit.Add (+"         if");
                First := False;
 
             else
-               New_Line;
-               Put ("         elsif");
+               Unit.Add_Line;
+               Unit.Add (+"         elsif");
             end if;
 
-            Put_Line
-             (" Property = " & Property_Constant_Name (Attribute) & " then");
+            Unit.Context.Add (Property_Constant_Package_Name (Attribute));
+            Unit.Add_Line
+             (" Property = "
+                & Property_Constant_Qualified_Name (Attribute)
+                & " then");
 
-            Put_Line
+            Unit.Add_Line
              ("            --  "
-                & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
+                & Attribute_Class.Get_Name.Value
                 & "::"
-                & Attribute.Get_Name.Value.To_Wide_Wide_String
+                & Attribute.Get_Name.Value
                 & " : "
-                & Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
-            New_Line;
-            Put_Line
+                & Attribute_Type.Get_Name.Value);
+            Unit.Add_Line;
+            Unit.Context.Add
+             (Generator.Type_Mapping.Public_Ada_Package_Name
+               (Class.Class, Value));
+            Unit.Add_Line
              ("            "
-                & Type_Mapping.Public_Ada_Type_Qualified_Name
+                & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
                    (Class.Class, Value));
-            Put_Line
-             ("             ("
-                & "AMF.Internals.Helpers.To_Element"
-                & " (Self)).Set_"
-                & To_Ada_Identifier (Attribute.Get_Name.Value));
-            Put
-             ("               (");
+            Unit.Context.Add (+"AMF.Internals.Helpers");
+            Unit.Add_Line
+             (+"             ("
+                 & "AMF.Internals.Helpers.To_Element"
+                 & " (Self)).Set_"
+                 & To_Ada_Identifier (Attribute.Get_Name.Value));
+            Unit.Add (+"               (");
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
-                  Put
-                   (Type_Mapping.Public_Ada_Type_Qualified_Name
+                  Unit.Context.Add (+"AMF.Holders.Elements");
+                  Unit.Context.Add
+                   (Generator.Type_Mapping.Public_Ada_Package_Name
+                     (Attribute_Type, Representation (Attribute)));
+                  Unit.Add
+                   (Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
                      (Attribute_Type, Representation (Attribute))
                       & " (AMF.Holders.Elements.Element (Value))");
 
@@ -612,10 +648,12 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("League.Holders.Booleans.Element (Value)");
+                     Unit.Context.Add (+"League.Holders.Booleans");
+                     Unit.Add (+"League.Holders.Booleans.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders");
+                     Unit.Add (+"AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -633,10 +671,12 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Integer_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("League.Holders.Integers.Element (Value)");
+                     Unit.Context.Add (+"League.Holders.Integers");
+                     Unit.Add (+"League.Holders.Integers.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders");
+                     Unit.Add (+"AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -654,10 +694,12 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Real_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("AMF.Holders.Reals.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders.Reals");
+                     Unit.Add (+"AMF.Holders.Reals.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders");
+                     Unit.Add (+"AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -675,31 +717,36 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("League.Holders.Element (Value)");
+                     Unit.Context.Add (+"League.Holders");
+                     Unit.Add (+"League.Holders.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders");
+                     Unit.Add (+"AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
 
                   when Ordered_Set =>
-                     Put ("Value.Collection_Of_String_Value");
+                     Unit.Add (+"Value.Collection_Of_String_Value");
 
                   when Bag =>
                      raise Program_Error;
 
                   when Sequence =>
-                     Put ("Value.Collection_Of_String_Value");
+                     Unit.Add (+"Value.Collection_Of_String_Value");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("AMF.Holders.Unlimited_Naturals.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders.Unlimited_Naturals");
+                     Unit.Add
+                      (+"AMF.Holders.Unlimited_Naturals.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                     Unit.Context.Add (+"AMF.Holders");
+                     Unit.Add (+"AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -719,17 +766,30 @@ package body Generator.Reflection is
             then
                case Representation (Redefined) is
                   when Value =>
-                     Put
+                     Unit.Context.Add
                       ("AMF."
-                         & Metamodel_Name
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders."
+                         & Plural
+                            (To_Ada_Identifier
+                              (Attribute_Type.Get_Name.Value)));
+                     Unit.Add
+                      ("AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
                          & ".Element (Value)");
 
                   when Holder =>
-                     Put
-                      ("AMF." & Metamodel_Name & ".Holders.Element (Value)");
+                     Unit.Context.Add
+                      ("AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders");
+                     Unit.Add
+                      ("AMF."
+                         & Owning_Metamodel_Name (Attribute_Type)
+                         & ".Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -748,21 +808,21 @@ package body Generator.Reflection is
                raise Program_Error;
             end if;
 
-            Put_Line (");");
+            Unit.Add_Line (+");");
          end Generate_Attribute;
 
       begin
          if not Class.Class.Get_Is_Abstract then
-            Put_Header (Name, 6);
-            New_Line;
-            Put_Line ("      procedure " & Name & " is");
-            Put_Line ("      begin");
+            Unit.Add_Header (Name, 6);
+            Unit.Add_Line;
+            Unit.Add_Line ("      procedure " & Name & " is");
+            Unit.Add_Line (+"      begin");
             Class.All_Attributes.Iterate (Generate_Attribute'Access);
-            New_Line;
-            Put_Line ("         else");
-            Put_Line ("            raise Program_Error;");
-            Put_Line ("         end if;");
-            Put_Line ("      end " & Name & ';');
+            Unit.Add_Line;
+            Unit.Add_Line (+"         else");
+            Unit.Add_Line (+"            raise Program_Error;");
+            Unit.Add_Line (+"         end if;");
+            Unit.Add_Line ("      end " & Name & ';');
          end if;
       end Generate_Setter_Implementation;
 
@@ -775,229 +835,110 @@ package body Generator.Reflection is
       is
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
-         Name  : constant Wide_Wide_String
-           := To_Ada_Identifier (Class.Get_Name.Value) & "_Set";
+         Name  : constant League.Strings.Universal_String
+           := +To_Ada_Identifier (Class.Get_Name.Value) & "_Set";
 
       begin
          if not Class.Get_Is_Abstract then
-            New_Line;
-            Put_Line ("      procedure " & Name & ";");
-            Put_Line
+            Unit.Add_Line;
+            Unit.Add_Line ("      procedure " & Name & ";");
+            Unit.Add_Line
              ("      --  Sets attribute's value of instance of "
-                & Class.Get_Name.Value.To_Wide_Wide_String
+                & Class.Get_Name.Value
                 & " class.");
          end if;
       end Generate_Setter_Specification;
 
-      Builder : Ada_Context_Builder;
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables." & Metamodel_Name & "_Reflection";
 
    begin
-      --  Compute Ada context.
-
-      Builder.Visit_Element (Metamodel_Package);
-
-      Put_Header (2010, 2011);
-      Builder.Context.Iterate (Generate_With_Clause'Access);
-
-      if Metamodel_Name = League.Strings.To_Universal_String ("CMOF") then
-         Put_Line ("with AMF.CMOF.Holders.Parameter_Direction_Kinds;");
-         Put_Line ("with AMF.CMOF.Holders.Visibility_Kinds;");
-
-      elsif Metamodel_Name = League.Strings.To_Universal_String ("UML") then
-         Put_Line ("with AMF.UML.Holders.Aggregation_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Call_Concurrency_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Connector_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Expansion_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Interaction_Operator_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Message_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Message_Sorts;");
-         Put_Line ("with AMF.UML.Holders.Object_Node_Ordering_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Parameter_Direction_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Pseudostate_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Transition_Kinds;");
-         Put_Line ("with AMF.UML.Holders.Visibility_Kinds;");
-         Put_Line ("with League.Holders.Integers;");
-         Put_Line ("with AMF.Boolean_Collections.Internals;");
-         Put_Line ("with AMF.Holders.Reals;");
-         Put_Line ("with AMF.Holders.Unlimited_Naturals;");
-      end if;
-
-      Put_Line ("with AMF.Elements;");
-      Put_Line ("with AMF.Holders.Elements;");
-      Put_Line ("with AMF.Internals." & Metamodel_Name & "_Elements;");
-      Put_Line ("with AMF.Internals.Helpers;");
-      Put_Line ("with AMF.Internals.Holders;");
-      Put_Line ("with AMF.Internals.Holders." & Metamodel_Name & "_Holders;");
-      Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
-      Put_Line
-       ("with AMF.Internals.Tables." & Metamodel_Name & "_Element_Table;");
-      Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Types;");
-      Put_Line ("with AMF.String_Collections.Internals;");
-      Put_Line ("with League.Holders.Booleans;");
-      New_Line;
-      Put_Line
-       ("package body AMF.Internals.Tables."
-          & Metamodel_Name
-          & "_Reflection is");
-      New_Line;
-      Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line
-       ("   use AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
-      Put_Line ("   use AMF.Internals.Tables." & Metamodel_Name & "_Types;");
-      Put_Line ("   use type AMF.Internals.AMF_Element;");
+      Unit.Add_Unit_Header
+       (Integer'Max (2010, Generator.First_Year),
+        Integer'Max (2010, Generator.Last_Year));
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
 
       --  Getter
 
-      Put_Header ("Get", 3);
-      New_Line;
-      Put_Line ("   function Get");
-      Put_Line
-       ("    (Self     : "
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Element;");
-      Put_Line ("     Property : CMOF_Element) return League.Holders.Holder");
-      Put_Line ("   is");
+      Unit.Add_Header (+"Get", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   function Get");
+      Unit.Add_Line ("    (Self     : " & Metamodel_Name & "_Element;");
+      Unit.Add_Line
+       (+"     Property : CMOF_Element) return League.Holders.Holder");
+      Unit.Add_Line (+"   is");
       Class_Info.Iterate (Generate_Getter_Specification'Access);
       Class_Info.Iterate (Generate_Getter_Implementation'Access);
-      New_Line;
-      Put_Line ("   begin");
-      Put_Line
-       ("      case "
+      Unit.Add_Line;
+      Unit.Add_Line (+"   begin");
+      Unit.Context.Add
+       ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+      Unit.Add_Line
+       ("      case AMF.Internals.Tables."
           & Metamodel_Name
           & "_Element_Table.Table (Self).Kind is");
-      Put_Line ("         when E_None =>");
-      Put_Line ("            raise Program_Error;");
+      Unit.Add_Line
+       ("         when AMF.Internals.Tables."
+          & Metamodel_Name
+          & "_Types.E_None =>");
+      Unit.Add_Line (+"            raise Program_Error;");
       Class_Info.Iterate (Generate_Getter_Call'Access);
-      Put_Line ("      end case;");
-      Put_Line ("   end Get;");
+      Unit.Add_Line (+"      end case;");
+      Unit.Add_Line (+"   end Get;");
 
       --  Get_Meta_Class
 
-      Put_Header ("Get_Meta_Class", 3);
-      New_Line;
-      Put_Line
-       ("   function Get_Meta_Class"
-          & " (Self : "
-          & Metamodel_Name.To_Wide_Wide_String
+      Unit.Add_Header (+"Get_Meta_Class", 3);
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   function Get_Meta_Class (Self : "
+          & Metamodel_Name
           & "_Element) return CMOF_Element is");
-      Put_Line ("   begin");
-      Put_Line
+      Unit.Add_Line (+"   begin");
+      Unit.Add_Line
        ("      case "
           & Metamodel_Name
           & "_Element_Table.Table (Self).Kind is");
-      Put_Line ("         when E_None =>");
-      Put_Line ("            return 0;");
+      Unit.Add_Line
+       ("         when AMF.Internals.Tables."
+          & Metamodel_Name
+          & "_Types.E_None =>");
+      Unit.Add_Line (+"            return 0;");
       Class_Info.Iterate (Generate_Meta'Access);
-      Put_Line ("      end case;");
-      Put_Line ("   end Get_Meta_Class;");
+      Unit.Add_Line (+"      end case;");
+      Unit.Add_Line (+"   end Get_Meta_Class;");
 
       --  Setter
 
-      Put_Header ("Set", 3);
-      New_Line;
-      Put_Line ("   procedure Set");
-      Put_Line
-       ("    (Self     : "
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Element;");
-      Put_Line ("     Property : CMOF_Element;");
-      Put_Line ("     Value    : League.Holders.Holder)");
-      Put_Line ("   is");
+      Unit.Add_Header (+"Set", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Set");
+      Unit.Add_Line ("    (Self     : " & Metamodel_Name & "_Element;");
+      Unit.Add_Line (+"     Property : CMOF_Element;");
+      Unit.Add_Line (+"     Value    : League.Holders.Holder)");
+      Unit.Add_Line (+"   is");
       Class_Info.Iterate (Generate_Setter_Specification'Access);
       Class_Info.Iterate (Generate_Setter_Implementation'Access);
-      Put_Line ("   begin");
-      Put_Line
+      Unit.Add_Line (+"   begin");
+      Unit.Add_Line
        ("      case "
           & Metamodel_Name
           & "_Element_Table.Table (Self).Kind is");
-      Put_Line ("         when E_None =>");
-      Put_Line ("            raise Program_Error;");
+      Unit.Add_Line
+       ("         when AMF.Internals.Tables."
+          & Metamodel_Name
+          & "_Types.E_None =>");
+      Unit.Add_Line (+"            raise Program_Error;");
       Class_Info.Iterate (Generate_Setter_Call'Access);
-      Put_Line ("      end case;");
-      Put_Line ("   end Set;");
+      Unit.Add_Line (+"      end case;");
+      Unit.Add_Line (+"   end Set;");
 
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Reflection;");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Reflection_Implementation;
-
-   --------------------------
-   -- Generate_With_Clause --
-   --------------------------
-
-   procedure Generate_With_Clause
-    (Unit       : League.Strings.Universal_String;
-     Is_Limited : Boolean;
-     Is_Private : Boolean) is
-   begin
-      if Is_Limited then
-         Put ("limited ");
-      end if;
-
-      Put_Line ("with " & Unit & ";");
-   end Generate_With_Clause;
-
-   -----------------
-   -- Visit_Class --
-   -----------------
-
-   overriding procedure Visit_Class
-    (Self    : in out Ada_Context_Builder;
-     Element : not null access AMF.CMOF.Classes.CMOF_Class'Class) is
-   begin
-      if not Element.Get_Is_Abstract then
-         Self.Context.Add
-          (Type_Mapping.Public_Ada_Package_Name (Element, Value));
-      end if;
-
-      Self.Visit_Children (Element);
-   end Visit_Class;
-
-   --------------------
-   -- Visit_Property --
-   --------------------
-
-   overriding procedure Visit_Property
-    (Self    : in out Ada_Context_Builder;
-     Element : not null access AMF.CMOF.Properties.CMOF_Property'Class)
-   is
-      use AMF.CMOF.Classes;
---      use type AMF.CMOF.Classes.CMOF_Class_Access;
-      Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
-
-   begin
-      if Element.Get_Class = null then
-         Put_Line
-          (Standard_Error,
-           "Ignoring " & Element.Get_Name.Value.To_Wide_Wide_String);
-
-      else
-         Attribute_Type := Element.Get_Type;
-
-         --  Add package where public type is declared.
-
-         Self.Context.Add
-          (Type_Mapping.Public_Ada_Package_Name
-            (Element.Get_Type,
-             Representation
-              (AMF.CMOF.Properties.CMOF_Property_Access (Element))));
-
-         --  For classes add internals holders utilities package.
-
-         if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            if Representation
-                (AMF.CMOF.Properties.CMOF_Property_Access (Element))
-                 in Value .. Holder
-            then
-               Self.Context.Add
-                ("AMF.Internals.Holders." & Metamodel_Name & "_Holders");
-            end if;
-         end if;
-      end if;
-
-      Self.Visit_Children (Element);
-   end Visit_Property;
 
 end Generator.Reflection;
