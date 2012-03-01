@@ -253,6 +253,9 @@ package Generator is
    Generate_Reflection   : Boolean := True;
    --  Control generation of specific packages.
 
+   First_Year : Natural;
+   Last_Year  : Natural;
+
    ---------------
    -- Utilities --
    ---------------

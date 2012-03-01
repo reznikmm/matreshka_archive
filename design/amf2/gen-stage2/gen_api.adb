@@ -626,7 +626,9 @@ procedure Gen_API is
         := Ada_API_Type_Name (Class);
 
    begin
-      Unit.Add_Unit_Header (2012, 2012);
+      Unit.Add_Unit_Header
+       (Integer'Max (2011, Generator.First_Year),
+        Integer'Max (2011, Generator.Last_Year));
 
       --  Generate comment.
 
@@ -718,7 +720,9 @@ procedure Gen_API is
       Unit         : Generator.Units.Unit;
 
    begin
-      Unit.Add_Unit_Header (2012, 2012);
+      Unit.Add_Unit_Header
+       (Integer'Max (2011, Generator.First_Year),
+        Integer'Max (2011, Generator.Last_Year));
 
       Unit.Context.Add (+"AMF.Generic_Collections");
       Unit.Add_Line;
@@ -1331,7 +1335,9 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header (2012, 2012);
+      Unit.Add_Unit_Header
+       (Integer'Max (2011, Generator.First_Year),
+        Integer'Max (2011, Generator.Last_Year));
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
 
@@ -1528,7 +1534,9 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header (2012, 2012);
+      Unit.Add_Unit_Header
+       (Integer'Max (2011, Generator.First_Year),
+        Integer'Max (2011, Generator.Last_Year));
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");
       Unit.Add_Line;
@@ -1661,10 +1669,16 @@ procedure Gen_API is
 
 begin
    AMF.Facility.Initialize;
-   Generator.Metamodel_Name := League.Application.Arguments.Element (3);
+   Generator.First_Year :=
+     Integer'Wide_Wide_Value
+      (League.Application.Arguments.Element (1).To_Wide_Wide_String);
+   Generator.Last_Year :=
+     Integer'Wide_Wide_Value
+      (League.Application.Arguments.Element (2).To_Wide_Wide_String);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (5);
 
-   if League.Application.Arguments.Length = 4 then
-      if League.Application.Arguments.Element (4).To_Wide_Wide_String
+   if League.Application.Arguments.Length = 6 then
+      if League.Application.Arguments.Element (6).To_Wide_Wide_String
            = "--stubs"
       then
          Generate_Public_API := False;
@@ -1677,8 +1691,8 @@ begin
 
    Extent :=
      XMI.Reader.Read_File
-      (League.Application.Arguments.Element (1),
-       League.Application.Arguments.Element (2));
+      (League.Application.Arguments.Element (3),
+       League.Application.Arguments.Element (4));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;
