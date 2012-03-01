@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -69,7 +69,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : Boolean;
      New_Value : Boolean) is
@@ -88,7 +88,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Boolean;
      New_Value : AMF.Optional_Boolean) is
@@ -107,7 +107,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
      New_Value : Matreshka.Internals.Strings.Shared_String_Access)
@@ -146,7 +146,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : Integer;
      New_Value : Integer) is
@@ -165,7 +165,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Integer;
      New_Value : AMF.Optional_Integer) is
@@ -184,7 +184,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Unlimited_Natural;
      New_Value : AMF.Unlimited_Natural) is
@@ -203,7 +203,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Unlimited_Natural;
      New_Value : AMF.Optional_Unlimited_Natural) is
@@ -222,7 +222,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Real;
      New_Value : AMF.Real) is
@@ -241,7 +241,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Internals.UML_Element;
      New_Value : AMF.Internals.UML_Element) is
@@ -262,7 +262,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Aggregation_Kind;
      New_Value : AMF.UML.UML_Aggregation_Kind) is
@@ -281,7 +281,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Call_Concurrency_Kind;
      New_Value : AMF.UML.UML_Call_Concurrency_Kind) is
@@ -300,7 +300,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Expansion_Kind;
      New_Value : AMF.UML.UML_Expansion_Kind) is
@@ -319,7 +319,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Interaction_Operator_Kind;
      New_Value : AMF.UML.UML_Interaction_Operator_Kind) is
@@ -338,7 +338,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Message_Sort;
      New_Value : AMF.UML.UML_Message_Sort) is
@@ -357,7 +357,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Object_Node_Ordering_Kind;
      New_Value : AMF.UML.UML_Object_Node_Ordering_Kind) is
@@ -376,7 +376,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.Optional_UML_Parameter_Effect_Kind;
      New_Value : AMF.UML.Optional_UML_Parameter_Effect_Kind) is
@@ -395,7 +395,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Parameter_Direction_Kind;
      New_Value : AMF.UML.UML_Parameter_Direction_Kind) is
@@ -414,7 +414,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Pseudostate_Kind;
      New_Value : AMF.UML.UML_Pseudostate_Kind) is
@@ -433,7 +433,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Transition_Kind;
      New_Value : AMF.UML.UML_Transition_Kind) is
@@ -452,7 +452,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.UML_Visibility_Kind;
      New_Value : AMF.UML.UML_Visibility_Kind) is
@@ -471,7 +471,7 @@ package body AMF.Internals.Tables.UML_Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.UML_Element;
+    (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.UML.Optional_UML_Visibility_Kind;
      New_Value : AMF.UML.Optional_UML_Visibility_Kind) is
