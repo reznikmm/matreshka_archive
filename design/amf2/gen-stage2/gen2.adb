@@ -110,8 +110,10 @@ begin
       Generator.Constructors.Generate_Constructors_Implementation;
    end if;
 
-   Put_Line (Standard_Error, "Generating metamodel initialization...");
+   Put_Line (Standard_Error, "Generating preinitialized string data...");
    Generator.String_Data.Generate_Metamodel_String_Data;
+
+   Put_Line (Standard_Error, "Generating metamodel initialization...");
    Generator.Metamodel.Generate_Metamodel_Specification;
    Generator.Metamodel.Generate_Metamodel_Implementation;
 
