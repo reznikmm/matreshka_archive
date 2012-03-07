@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,8 +48,6 @@ package Generator.Metamodel is
    procedure Assign_Numbers
     (Extent : not null AMF.URI_Stores.URI_Store_Access);
    --  Assigns numbers to each element and to each string.
-
-   procedure Generate_Metamodel_String_Data;
 
    procedure Generate_Metamodel_Specification;
 

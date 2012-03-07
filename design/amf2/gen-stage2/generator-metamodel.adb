@@ -41,66 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Holders.Booleans;
 with League.Holders.Integers;
-with League.Strings.Hash;
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
-with Matreshka.Internals.Utf16;
 
 with AMF.CMOF.Associations;
-with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Packages;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Elements.Collections;
 with AMF.Holders.Reflective_Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Reflective_Collections;
 
 with Generator.Names;
+with Generator.String_Data;
 with Generator.Units;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Metamodel is
 
-   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
    use Generator.Names;
+   use Generator.String_Data;
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_Integer;
    use type AMF.Optional_String;
    use type League.Strings.Universal_String;
-
-   package String_Sets is
-     new Ada.Containers.Hashed_Sets
-          (League.Strings.Universal_String,
-           League.Strings.Hash,
-           League.Strings."=",
-           League.Strings."=");
-
-   package String_Number_Maps is
-     new Ada.Containers.Hashed_Maps
-          (League.Strings.Universal_String,
-           Natural,
-           League.Strings.Hash,
-           League.Strings."=");
-
-   package Number_String_Maps is
-     new Ada.Containers.Ordered_Maps
-          (Natural,
-           League.Strings.Universal_String);
-
-   Strings        : String_Sets.Set;
-   String_Numbers : String_Number_Maps.Map;
-   Number_Strings : Number_String_Maps.Map;
 
    procedure Generate_Metamodel_Initialization
     (Unit : in out Generator.Units.Unit);
@@ -119,12 +89,6 @@ package body Generator.Metamodel is
     (Unit    : in out Generator.Units.Unit;
      Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of links.
-
-   function Class_Properties_Except_Redefined
-    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return CMOF_Element_Sets.Set;
-   --  Returns all properties of the specified class (including properties of
-   --  superclasses, but except redefined properties).
 
    function Is_Parameter_Direction_Kind_Type
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
@@ -150,16 +114,6 @@ package body Generator.Metamodel is
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return Boolean;
 
-   function String_Data_Package_Name
-    (Number : Natural) return League.Strings.Universal_String;
-   --  Returns name of string data package where string with specified number
-   --  is delcared.
-
-   function String_Data_Constant_Name
-    (Number : Natural) return League.Strings.Universal_String;
-   --  Returns name of string data constant for the string with specified
-   --  number.
-
    --------------------
    -- Assign_Numbers --
    --------------------
@@ -178,15 +132,8 @@ package body Generator.Metamodel is
 
       procedure Assign_Set (Position : CMOF_Element_Sets.Cursor);
 
-      procedure Extract_String_Data
-       (Position : CMOF_Element_Sets.Cursor);
-
-      procedure Assign_String (Position : String_Sets.Cursor);
-
-      Elements    : AMF.Elements.Collections.Set_Of_Element
-        := Extent.Elements;
-      Last        : Natural := 0;
-      Last_String : Natural := 0;
+      Elements : AMF.Elements.Collections.Set_Of_Element := Extent.Elements;
+      Last     : Natural := 0;
 
       ------------------------
       -- Assign_Ordered_Set --
@@ -280,60 +227,7 @@ package body Generator.Metamodel is
          end if;
       end Assign_Set;
 
-      -------------------
-      -- Assign_String --
-      -------------------
-
-      procedure Assign_String (Position : String_Sets.Cursor) is
-         Element : constant League.Strings.Universal_String
-           := String_Sets.Element (Position);
-
-      begin
-         String_Numbers.Insert (Element, Last_String);
-         Number_Strings.Insert (Last_String, Element);
-         Last_String := Last_String + 1;
-      end Assign_String;
-
       Element : AMF.CMOF.Elements.CMOF_Element_Access;
-
-      -------------------------
-      -- Extract_String_Data --
-      -------------------------
-
-      procedure Extract_String_Data
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
-           := AMF.CMOF.Properties.CMOF_Property_Access
-               (CMOF_Element_Sets.Element (Position));
-         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-           := Property.Get_Type;
-         Value         : League.Holders.Holder;
-         Collection    : AMF.Reflective_Collections.Reflective_Collection;
-
-      begin
-         if Is_String_Type (Property_Type)
-           and then not Property.Get_Is_Derived
-         then
-            Value :=
-              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
-
-            if Property.Is_Multivalued then
-               Collection :=
-                 AMF.Holders.Reflective_Collections.Element (Value);
-
-               for J in 1 .. Collection.Length loop
-                  Strings.Include
-                   (League.Holders.Element (Collection.Element (J)));
-               end loop;
-
-            else
-               if not League.Holders.Is_Empty (Value) then
-                  Strings.Include (League.Holders.Element (Value));
-               end if;
-            end if;
-         end if;
-      end Extract_String_Data;
 
    begin
       --  Assign numbers for classes and their owned properties.
@@ -374,107 +268,7 @@ package body Generator.Metamodel is
          Generate_Constructors := False;
          Generate_Reflection := False;
       end if;
-
-      --  Collect string data.
-
-      for J in 1 .. Elements.Length loop
-         Element :=
-           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
-         Class_Properties_Except_Redefined
-          (AMF.Elements.Abstract_Element'Class
-            (Element.all).Get_Meta_Class).Iterate
-              (Extract_String_Data'Access);
-      end loop;
-
-      --  Assign number for strings.
-
-      Strings.Iterate (Assign_String'Access);
    end Assign_Numbers;
-
-   ---------------------------------------
-   -- Class_Properties_Except_Redefined --
-   ---------------------------------------
-
-   function Class_Properties_Except_Redefined
-    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return CMOF_Element_Sets.Set
-   is
-      Result        : CMOF_Element_Sets.Set;
-      All_Redefined : CMOF_Element_Sets.Set;
-
-      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access);
-
-      -------------------
-      -- Process_Class --
-      -------------------
-
-      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access) is
-         Owned_Attribute : constant
-           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-             := Class.Get_Owned_Attribute;
-         Super_Class     : constant
-           AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
-             := Class.Get_Super_Class;
-
-      begin
-         --  Analyze owned properties.
-
-         for J in 1 .. Owned_Attribute.Length loop
-            declare
-               Attribute          : constant
-                 AMF.CMOF.Properties.CMOF_Property_Access
-                   := Owned_Attribute.Element (J);
-               Redefined_Property : constant
-                 AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
-                   := Attribute.Get_Redefined_Property;
-
-            begin
-               --  Add all redefined properties into the set of redefined
-               --  properties.
-
-               for J in 1 .. Redefined_Property.Length loop
-                  declare
-                     Redefined : constant
-                       AMF.CMOF.Properties.CMOF_Property_Access
-                         := Redefined_Property.Element (J);
-
-                  begin
-                     if not All_Redefined.Contains
-                             (AMF.CMOF.Elements.CMOF_Element_Access
-                               (Redefined))
-                     then
-                        All_Redefined.Insert
-                         (AMF.CMOF.Elements.CMOF_Element_Access (Redefined));
-                     end if;
-                  end;
-               end loop;
-
-               --  Add attribute into the result when it is not redefined and
-               --  not in the result set already.
-
-               if not All_Redefined.Contains
-                       (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
-                 and not Result.Contains
-                          (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
-               then
-                  Result.Insert
-                   (AMF.CMOF.Elements.CMOF_Element_Access (Attribute));
-               end if;
-            end;
-         end loop;
-
-         --  Analyze superclasses
-
-         for J in 1 .. Super_Class.Length loop
-            Process_Class (Super_Class.Element (J));
-         end loop;
-      end Process_Class;
-
-   begin
-      Process_Class (Self);
-
-      return Result;
-   end Class_Properties_Except_Redefined;
 
    ----------------------------------
    -- Generate_Link_Initialization --
@@ -730,6 +524,34 @@ package body Generator.Metamodel is
          end loop;
       end Generate_Association_Property_Constant;
 
+      -----------------------------
+      -- Generate_Class_Constant --
+      -----------------------------
+
+      procedure Generate_Class_Constant
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
+      is
+         Class : constant AMF.CMOF.Classes.CMOF_Class_Access
+           := AMF.CMOF.Classes.CMOF_Class_Access
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
+
+      begin
+         Unit.Add_Header (Type_Constant_Name (Class), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   function "
+             & Type_Constant_Name (Class)
+             & " return AMF.Internals.CMOF_Element is");
+         Unit.Add_Line (+"   begin");
+         Unit.Add_Line
+          (+"      return Base +"
+              & Integer'Wide_Wide_Image
+                 (Element_Numbers.Element
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
+              & ";");
+         Unit.Add_Line ("   end " & Type_Constant_Name (Class) & ";");
+      end Generate_Class_Constant;
+
       --------------------------------------
       -- Generate_Class_Property_Constant --
       --------------------------------------
@@ -789,34 +611,6 @@ package body Generator.Metamodel is
 
          Properties.Iterate (Generate_Property_Constant'Access);
       end Generate_Class_Property_Constant;
-
-      -----------------------------
-      -- Generate_Class_Constant --
-      -----------------------------
-
-      procedure Generate_Class_Constant
-       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
-      is
-         Class : constant AMF.CMOF.Classes.CMOF_Class_Access
-           := AMF.CMOF.Classes.CMOF_Class_Access
-               (CMOF_Named_Element_Ordered_Sets.Element (Position));
-
-      begin
-         Unit.Add_Header (Type_Constant_Name (Class), 3);
-         Unit.Add_Line;
-         Unit.Add_Line
-          ("   function "
-             & Type_Constant_Name (Class)
-             & " return AMF.Internals.CMOF_Element is");
-         Unit.Add_Line (+"   begin");
-         Unit.Add_Line
-          (+"      return Base +"
-              & Integer'Wide_Wide_Image
-                 (Element_Numbers.Element
-                   (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
-              & ";");
-         Unit.Add_Line ("   end " & Type_Constant_Name (Class) & ";");
-      end Generate_Class_Constant;
 
       ---------------------------------
       -- Generate_Data_Type_Constant --
@@ -980,11 +774,9 @@ package body Generator.Metamodel is
       Unit.Add_Line (+"        := AMF.Internals.Extents.Allocate_Extent");
       Unit.Add_Line
        ("            ("
-          & String_Data_Package_Name
-             (String_Numbers.Element (Metamodel_Package.Get_Uri.Value))
+          & String_Data_Package_Name (Metamodel_Package.Get_Uri.Value)
           & "."
-          & String_Data_Constant_Name
-             (String_Numbers.Element (Metamodel_Package.Get_Uri.Value))
+          & String_Data_Constant_Name (Metamodel_Package.Get_Uri.Value)
           & "'Access);");
       Unit.Add_Line (+"      Aux    : AMF.Internals.CMOF_Element;");
       Unit.Add_Line;
@@ -1179,17 +971,14 @@ package body Generator.Metamodel is
                           & ",");
                      Unit.Context.Add
                       (String_Data_Package_Name
-                        (String_Numbers.Element
-                          (League.Holders.Element (Value))));
+                        (League.Holders.Element (Value)));
                      Unit.Add_Line
                       ("         "
                          & String_Data_Package_Name
-                            (String_Numbers.Element
-                              (League.Holders.Element (Value)))
+                            (League.Holders.Element (Value))
                          & "."
                          & String_Data_Constant_Name
-                            (String_Numbers.Element
-                              (League.Holders.Element (Value)))
+                            (League.Holders.Element (Value))
                          & "'Access);");
                   end if;
                end if;
@@ -1565,195 +1354,6 @@ package body Generator.Metamodel is
       Put_Line ("end AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
    end Generate_Metamodel_Specification;
 
-   ------------------------------------
-   -- Generate_Metamodel_String_Data --
-   ------------------------------------
-
-   procedure Generate_Metamodel_String_Data is
-
-      procedure Generate_String_Constant (Number : Natural);
-      --  Generates object declaration and initialization for specified
-      --  string.
-
-      procedure Generate_String_Constant (Position : String_Sets.Cursor);
-      --  XXX obsolete
-
-      ------------------------------
-      -- Generate_String_Constant --
-      ------------------------------
-
-      procedure Generate_String_Constant (Position : String_Sets.Cursor) is
-         use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
-         Element  : constant League.Strings.Universal_String
-           := String_Sets.Element (Position);
-         Internal : constant Matreshka.Internals.Strings.Shared_String_Access
-           := League.Strings.Internals.Internal (Element);
-
-         procedure Put (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit);
-
-         ---------
-         -- Put --
-         ---------
-
-         procedure Put (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit) is
-            use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
-
-            Hex    : constant
-              array (Matreshka.Internals.Utf16.Utf16_Code_Unit range 0 .. 15)
-                of Wide_Wide_Character := "0123456789ABCDEF";
-            Result : Wide_Wide_String := "16#XXXX#";
-
-         begin
-            Result (4) := Hex (Item / 4096);
-            Result (5) := Hex ((Item / 256) mod 16);
-            Result (6) := Hex ((Item / 16) mod 16);
-            Result (7) := Hex (Item mod 16);
-
-            Put (Result);
-         end Put;
-
-      begin
-         New_Line;
-         Put_Line ("   --  """ & Element.To_Wide_Wide_String & """");
-         New_Line;
-         Put ("   MS_");
-         Put (String_Numbers.Element (Element), Width => 0);
-         Put_Line (" : aliased Matreshka.Internals.Strings.Shared_String");
-         Put ("     := (Size   => ");
-         Put (Integer (Internal.Size), Width => 0);
-         Put_Line (",");
-         Put ("         Unused => ");
-         Put (Integer (Internal.Unused), Width => 0);
-         Put_Line (",");
-         Put ("         Length => ");
-         Put (Internal.Length, Width => 0);
-         Put_Line (",");
-         Put_Line ("         Value  =>");
-         Put ("          (");
-
-         for J in 0 .. Internal.Unused - 1 loop
-            if J /= 0 and J mod 8 = 0 then
-               Put_Line (",");
-               Put ("           ");
-
-            elsif J /= 0 then
-               Put (", ");
-            end if;
-
-            Put (Internal.Value (J));
---            Put (",");
---            Put (Integer (Internal.Value (J)), Base => 16, Width => 8);
-         end loop;
-
-         Put_Line (",");
-         Put_Line ("           others => 16#0000#),");
-         Put_Line ("         others => <>);");
---         Put_Line (" : constant League.Strings.Universal_String");
---         Put_Line ("     := League.Strings.To_Universal_String");
---         Put_Line ("         (""" & Element.To_Wide_Wide_String & """);");
-      end Generate_String_Constant;
-
-      ------------------------------
-      -- Generate_String_Constant --
-      ------------------------------
-
-      procedure Generate_String_Constant (Number : Natural) is
-         use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
-         Element  : constant League.Strings.Universal_String
-           := Number_Strings.Element (Number);
-         Internal : constant Matreshka.Internals.Strings.Shared_String_Access
-           := League.Strings.Internals.Internal (Element);
-
-         procedure Put (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit);
-
-         ---------
-         -- Put --
-         ---------
-
-         procedure Put (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit) is
-            use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
-
-            Hex    : constant
-              array (Matreshka.Internals.Utf16.Utf16_Code_Unit range 0 .. 15)
-                of Wide_Wide_Character := "0123456789ABCDEF";
-            Result : Wide_Wide_String := "16#XXXX#";
-
-         begin
-            Result (4) := Hex (Item / 4096);
-            Result (5) := Hex ((Item / 256) mod 16);
-            Result (6) := Hex ((Item / 16) mod 16);
-            Result (7) := Hex (Item mod 16);
-
-            Put (Result);
-         end Put;
-
-      begin
-         New_Line;
-         Put_Line ("   --  """ & Element.To_Wide_Wide_String & """");
-         New_Line;
-         Put_Line
-          ("   "
-             & String_Data_Constant_Name (Number)
-             & " : aliased Matreshka.Internals.Strings.Shared_String");
-         Put ("     := (Size   => ");
-         Put (Integer (Internal.Size), Width => 0);
-         Put_Line (",");
-         Put ("         Unused => ");
-         Put (Integer (Internal.Unused), Width => 0);
-         Put_Line (",");
-         Put ("         Length => ");
-         Put (Internal.Length, Width => 0);
-         Put_Line (",");
-         Put_Line ("         Value  =>");
-         Put ("          (");
-
-         for J in 0 .. Internal.Unused - 1 loop
-            if J /= 0 and J mod 4 = 0 then
-               Put_Line (",");
-               Put ("           ");
-
-            elsif J /= 0 then
-               Put (", ");
-            end if;
-
-            Put (Internal.Value (J));
---            Put (",");
---            Put (Integer (Internal.Value (J)), Base => 16, Width => 8);
-         end loop;
-
-         Put_Line (",");
-         Put_Line ("           others => 16#0000#),");
-         Put_Line ("         others => <>);");
---         Put_Line (" : constant League.Strings.Universal_String");
---         Put_Line ("     := League.Strings.To_Universal_String");
---         Put_Line ("         (""" & Element.To_Wide_Wide_String & """);");
-      end Generate_String_Constant;
-
-   begin
-      for J in 0 .. Integer (Number_Strings.Length) / 16#100# loop
-         Put_Header (2010, 2011);
-         Put_Line ("with Matreshka.Internals.Strings;");
-         New_Line;
-         Put_Line
-          ("package " & String_Data_Package_Name (J * 16#100#) & " is");
-
-         --  Generate string constants.
-
-         for K in J * 16#100#
-                    .. Integer'Min
-                        (J * 16#100# + 16#FF#,
-                         Integer (Number_Strings.Length) - 1)
-         loop
-            Generate_String_Constant (K);
-         end loop;
-
-         New_Line;
-         Put_Line ("end " & String_Data_Package_Name (J * 16#100#) & ";");
-      end loop;
-   end Generate_Metamodel_String_Data;
-
    ---------------------
    -- Is_Boolean_Type --
    ---------------------
@@ -1825,48 +1425,5 @@ package body Generator.Metamodel is
    begin
       return Element.Get_Name = League.Strings.To_Universal_String ("String");
    end Is_String_Type;
-
-   -------------------------------
-   -- String_Data_Constant_Name --
-   -------------------------------
-
-   function String_Data_Constant_Name
-    (Number : Natural) return League.Strings.Universal_String
-   is
-      Hex    : constant
-        array (Integer range 0 .. 15)
-          of Wide_Wide_Character := "0123456789ABCDEF";
-      Result : Wide_Wide_String := "MS_XXXX";
-
-   begin
-      Result (4) := Hex (Number / 16#1000#);
-      Result (5) := Hex (Number / 16#100# mod 16#10#);
-      Result (6) := Hex (Number / 16#10# mod 16#10#);
-      Result (7) := Hex (Number mod 16#10#);
-
-      return League.Strings.To_Universal_String (Result);
-   end String_Data_Constant_Name;
-
-   ------------------------------
-   -- String_Data_Package_Name --
-   ------------------------------
-
-   function String_Data_Package_Name
-    (Number : Natural) return League.Strings.Universal_String
-   is
-      Hex    : constant
-        array (Integer range 0 .. 15)
-          of Wide_Wide_Character := "0123456789ABCDEF";
-      Result : Wide_Wide_String
-        := "AMF.Internals.Tables."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_String_Data_XX";
-
-   begin
-      Result (Result'Last - 1) := Hex (Number / 16#1000#);
-      Result (Result'Last) := Hex (Number / 16#100# mod 16#10#);
-
-      return League.Strings.To_Universal_String (Result);
-   end String_Data_Package_Name;
 
 end Generator.Metamodel;

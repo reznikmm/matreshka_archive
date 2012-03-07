@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,82 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
-
-with League.Application;
-
-with AMF.Elements.Collections;
-with AMF.Facility;
 with AMF.URI_Stores;
-with XMI.Reader;
 
-with Generator.Analyzer;
-with Generator.Attributes;
-with Generator.Constructors;
-with Generator.Metamodel;
-with Generator.Reflection;
-with Generator.String_Data;
-with Generator.Type_Mapping;
+package Generator.String_Data is
 
-procedure Gen2 is
+   procedure Extract_String_Data
+    (Extent : not null AMF.URI_Stores.URI_Store_Access);
+   --  Assigns numbers to each element and to each string.
 
-   use Ada.Wide_Wide_Text_IO;
+   procedure Generate_Metamodel_String_Data;
 
-   Extent : AMF.URI_Stores.URI_Store_Access;
+   function String_Data_Package_Name
+    (Item : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Returns name of string data package where string with specified number
+   --  is delcared.
 
-begin
-   Generator.First_Year :=
-     Integer'Wide_Wide_Value
-      (League.Application.Arguments.Element (1).To_Wide_Wide_String);
-   Generator.Last_Year :=
-     Integer'Wide_Wide_Value
-      (League.Application.Arguments.Element (2).To_Wide_Wide_String);
-   Generator.Metamodel_Name := League.Application.Arguments.Element (5);
+   function String_Data_Constant_Name
+    (Item : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Returns name of string data constant for the string with specified
+   --  number.
 
-   --  Initialize facility.
-
-   AMF.Facility.Initialize;
-
-   --  Load metamodel.
-
-   Put_Line (Standard_Error, "Loading metamodels...");
-   Extent :=
-     XMI.Reader.Read_File
-      (League.Application.Arguments.Element (3),
-       League.Application.Arguments.Element (4));
-
-   --  Load type mapping.
-
-   Put_Line (Standard_Error, "Loading type mapping...");
-   Generator.Type_Mapping.Load_Mapping;
-
-   --  Analyze metamodels.
-
-   Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model (Extent);
-   Generator.Metamodel.Assign_Numbers (Extent);
-   Generator.String_Data.Extract_String_Data (Extent);
-
-   if Generator.Generate_Attributes then
-      Put_Line (Standard_Error, "Generating attributes...");
-      Generator.Attributes.Generate_Attributes_Mapping_Specification;
-      Generator.Attributes.Generate_Attributes_Specification;
-      Generator.Attributes.Generate_Attributes_Implementation;
-   end if;
-
-   if Generator.Generate_Constructors then
-      Put_Line (Standard_Error, "Generating constructors...");
-      Generator.Constructors.Generate_Constructors_Specification;
-      Generator.Constructors.Generate_Constructors_Implementation;
-   end if;
-
-   Put_Line (Standard_Error, "Generating metamodel initialization...");
-   Generator.String_Data.Generate_Metamodel_String_Data;
-   Generator.Metamodel.Generate_Metamodel_Specification;
-   Generator.Metamodel.Generate_Metamodel_Implementation;
-
-   if Generator.Generate_Reflection then
-      Put_Line (Standard_Error, "Generating relfection...");
-      Generator.Reflection.Generate_Reflection_Implementation;
-   end if;
-end Gen2;
+end Generator.String_Data;

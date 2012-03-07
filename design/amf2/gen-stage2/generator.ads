@@ -285,4 +285,10 @@ package Generator is
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
 
+   function Class_Properties_Except_Redefined
+    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Element_Sets.Set;
+   --  Returns all properties of the specified class (including properties of
+   --  superclasses, but except redefined properties).
+
 end Generator;

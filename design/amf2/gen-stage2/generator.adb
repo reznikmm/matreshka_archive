@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Internals.Helpers;
@@ -49,6 +50,91 @@ package body Generator is
 
    use type AMF.Optional_String;
    use type AMF.Internals.AMF_Element;
+
+   ---------------------------------------
+   -- Class_Properties_Except_Redefined --
+   ---------------------------------------
+
+   function Class_Properties_Except_Redefined
+    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Element_Sets.Set
+   is
+      Result        : CMOF_Element_Sets.Set;
+      All_Redefined : CMOF_Element_Sets.Set;
+
+      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access);
+
+      -------------------
+      -- Process_Class --
+      -------------------
+
+      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access) is
+         Owned_Attribute : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Class.Get_Owned_Attribute;
+         Super_Class     : constant
+           AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+             := Class.Get_Super_Class;
+
+      begin
+         --  Analyze owned properties.
+
+         for J in 1 .. Owned_Attribute.Length loop
+            declare
+               Attribute          : constant
+                 AMF.CMOF.Properties.CMOF_Property_Access
+                   := Owned_Attribute.Element (J);
+               Redefined_Property : constant
+                 AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+                   := Attribute.Get_Redefined_Property;
+
+            begin
+               --  Add all redefined properties into the set of redefined
+               --  properties.
+
+               for J in 1 .. Redefined_Property.Length loop
+                  declare
+                     Redefined : constant
+                       AMF.CMOF.Properties.CMOF_Property_Access
+                         := Redefined_Property.Element (J);
+
+                  begin
+                     if not All_Redefined.Contains
+                             (AMF.CMOF.Elements.CMOF_Element_Access
+                               (Redefined))
+                     then
+                        All_Redefined.Insert
+                         (AMF.CMOF.Elements.CMOF_Element_Access (Redefined));
+                     end if;
+                  end;
+               end loop;
+
+               --  Add attribute into the result when it is not redefined and
+               --  not in the result set already.
+
+               if not All_Redefined.Contains
+                       (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
+                 and not Result.Contains
+                          (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
+               then
+                  Result.Insert
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Attribute));
+               end if;
+            end;
+         end loop;
+
+         --  Analyze superclasses
+
+         for J in 1 .. Super_Class.Length loop
+            Process_Class (Super_Class.Element (J));
+         end loop;
+      end Process_Class;
+
+   begin
+      Process_Class (Self);
+
+      return Result;
+   end Class_Properties_Except_Redefined;
 
    -------------------------
    -- Has_Internal_Setter --
