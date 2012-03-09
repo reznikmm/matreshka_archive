@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Named_Elements;
-with AMF.UML.Classifiers;
+with AMF.UML.Classifiers.Collections;
 
 package AMF.Internals.UML_Classifiers is
 
@@ -51,8 +51,30 @@ package AMF.Internals.UML_Classifiers is
        and AMF.UML.Classifiers.UML_Classifier
          with null record;
 
+   overriding function All_Parents
+    (Self : not null access constant UML_Classifier_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+   --  Operation Classifier::allParents.
+   --
+   --  The query allParents() gives all of the direct and indirect ancestors 
+   --  of a generalized Classifier.
+
+   overriding function Parents
+    (Self : not null access constant UML_Classifier_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+   --  Operation Classifier::parents.
+   --
+   --  The query parents() gives all of the immediate ancestors of a 
+   --  generalized Classifier.
+
    overriding procedure Set_Is_Abstract
     (Self : not null access UML_Classifier_Proxy;
      To   : Boolean);
+   --  Setter of Classifier::isAbstract.
+   --
+   --  If true, the Classifier does not provide a complete declaration and can 
+   --  typically not be instantiated. An abstract classifier is intended to be 
+   --  used by other classifiers e.g. as the target of general 
+   --  metarelationships or generalization relationships.
 
 end AMF.Internals.UML_Classifiers;

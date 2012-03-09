@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Opaque_Behaviors;
 with AMF.String_Collections;
 with AMF.UML.Behavioral_Features;
 with AMF.UML.Behaviored_Classifiers;
@@ -89,7 +89,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Function_Behaviors is
 
    type UML_Function_Behavior_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Opaque_Behaviors.UML_Opaque_Behavior_Proxy
        and AMF.UML.Function_Behaviors.UML_Function_Behavior with null record;
 
    overriding function Get_Body
@@ -220,17 +220,6 @@ package AMF.Internals.UML_Function_Behaviors is
     (Self : not null access constant UML_Function_Behavior_Proxy)
        return Boolean;
    --  Getter of Class::isAbstract.
-   --
-   --  True when a class is abstract.
-   --  If true, the Classifier does not provide a complete declaration and can 
-   --  typically not be instantiated. An abstract classifier is intended to be 
-   --  used by other classifiers e.g. as the target of general 
-   --  metarelationships or generalization relationships.
-
-   overriding procedure Set_Is_Abstract
-    (Self : not null access UML_Function_Behavior_Proxy;
-     To   : Boolean);
-   --  Setter of Class::isAbstract.
    --
    --  True when a class is abstract.
    --  If true, the Classifier does not provide a complete declaration and can 
@@ -810,14 +799,6 @@ package AMF.Internals.UML_Function_Behaviors is
    --  the classifier. In general, through mechanisms such as inheritance, 
    --  this will be a larger set than feature.
 
-   overriding function All_Parents
-    (Self : not null access constant UML_Function_Behavior_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
-   --  Operation Classifier::allParents.
-   --
-   --  The query allParents() gives all of the direct and indirect ancestors 
-   --  of a generalized Classifier.
-
    overriding function Conforms_To
     (Self : not null access constant UML_Function_Behavior_Proxy;
      Other : AMF.UML.Classifiers.UML_Classifier_Access)
@@ -885,14 +866,6 @@ package AMF.Internals.UML_Function_Behaviors is
    --  type. By default a classifier may specialize classifiers of the same or 
    --  a more general type. It is intended to be redefined by classifiers that 
    --  have different specialization constraints.
-
-   overriding function Parents
-    (Self : not null access constant UML_Function_Behavior_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
-   --  Operation Classifier::parents.
-   --
-   --  The query parents() gives all of the immediate ancestors of a 
-   --  generalized Classifier.
 
    overriding function Exclude_Collisions
     (Self : not null access constant UML_Function_Behavior_Proxy;

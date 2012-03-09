@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -305,18 +305,6 @@ package body AMF.Internals.UML_State_Machines is
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Abstract
          (Self.Id);
    end Get_Is_Abstract;
-
-   ---------------------
-   -- Set_Is_Abstract --
-   ---------------------
-
-   overriding procedure Set_Is_Abstract
-    (Self : not null access UML_State_Machine_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Abstract
-       (Self.Id, To);
-   end Set_Is_Abstract;
 
    -------------------
    -- Get_Is_Active --
@@ -1445,20 +1433,6 @@ package body AMF.Internals.UML_State_Machines is
    end All_Features;
 
    -----------------
-   -- All_Parents --
-   -----------------
-
-   overriding function All_Parents
-    (Self : not null access constant UML_State_Machine_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Parents unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_State_Machine_Proxy.All_Parents";
-      return All_Parents (Self);
-   end All_Parents;
-
-   -----------------
    -- Conforms_To --
    -----------------
 
@@ -1559,20 +1533,6 @@ package body AMF.Internals.UML_State_Machines is
       raise Program_Error with "Unimplemented procedure UML_State_Machine_Proxy.May_Specialize_Type";
       return May_Specialize_Type (Self, C);
    end May_Specialize_Type;
-
-   -------------
-   -- Parents --
-   -------------
-
-   overriding function Parents
-    (Self : not null access constant UML_State_Machine_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Parents unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_State_Machine_Proxy.Parents";
-      return Parents (Self);
-   end Parents;
 
    ------------------------
    -- Exclude_Collisions --
