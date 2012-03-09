@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.UML.Generalizations.Collections;
 
 package body AMF.Internals.UML_Classifiers is
 
@@ -51,12 +52,29 @@ package body AMF.Internals.UML_Classifiers is
 
    overriding function All_Parents
     (Self : not null access constant UML_Classifier_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
+   is
+      --  [UML241] 7.3.8 Classifier 
+      --
+      --  [3] The query allParents() gives all of the direct and indirect
+      --  ancestors of a generalized Classifier.
+      --
+      --  Classifier::allParents(): Set(Classifier);
+      --
+      --  allParents =
+      --    self.parents()->union(self.parents()->collect(p | p.allParents()))
+
+      P : constant AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
+        := Self.Parents;
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Parents unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Classifier_Proxy.All_Parents";
-      return All_Parents (Self);
+      return Result : AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
+        := P
+      do
+         for J in 1 .. P.Length loop
+            Result.Union (P.Element (J).All_Parents);
+         end loop;
+      end return;
    end All_Parents;
 
    -------------
@@ -65,12 +83,30 @@ package body AMF.Internals.UML_Classifiers is
 
    overriding function Parents
     (Self : not null access constant UML_Classifier_Proxy)
-       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
+   is
+      --  [UML241] 7.3.8 Classifier 
+      --
+      --  [2] The query parents() gives all of the immediate ancestors of a
+      --  generalized Classifier.
+      --
+      --  Classifier::parents(): Set(Classifier);
+      --
+      --  parents = generalization.general
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Parents unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Classifier_Proxy.Parents";
-      return Parents (Self);
+      return Result : AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier do
+         declare
+            G : constant
+              AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization
+                := UML_Classifier_Proxy'Class (Self.all).Get_Generalization;
+
+         begin
+            for J in 1 .. G.Length loop
+               Result.Add (G.Element (J).Get_General);
+            end loop;
+         end;
+      end return;
    end Parents;
 
    ---------------------
