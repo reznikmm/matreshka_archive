@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -182,6 +182,21 @@ package body AMF.Generic_Collections is
          return Self.Collection.Length;
       end if;
    end Length;
+
+   -----------
+   -- Union --
+   -----------
+
+   procedure Union
+    (Self       : in out Set'Class;
+     Collection : Set'Class) is
+   begin
+      for J in 1 .. Collection.Length loop
+         if not Self.Includes (Collection.Element (J)) then
+            Self.Add (Collection.Element (J));
+         end if;
+      end loop;
+   end Union;
 
    ----------
    -- Wrap --

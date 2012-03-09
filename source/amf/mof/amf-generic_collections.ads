@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -91,6 +91,11 @@ package AMF.Generic_Collections is
     (Self    : Collection'Class;
      Element : not null access constant Abstract_Element'Class) return Boolean;
    --  True if object is not an element of self, false otherwise.
+
+   procedure Union
+    (Self       : in out Set'Class;
+     Collection : Set'Class);
+   --  The union of self and set.
 
    --  XXX These subprograms must be removed after complete of the
    --  implementation.
