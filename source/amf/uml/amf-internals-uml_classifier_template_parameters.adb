@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,6 +71,18 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
    begin
       Visitor.Leave_Classifier_Template_Parameter (Self, Control);
    end Leave_UML_Element;
+
+   -----------------------
+   -- Visit_UML_Element --
+   -----------------------
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Classifier_Template_Parameter_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_Classifier_Template_Parameter (Self, Control);
+   end Visit_UML_Element;
 
    -----------------------------
    -- Get_Allow_Substitutable --

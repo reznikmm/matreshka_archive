@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -73,6 +73,18 @@ package body AMF.Internals.UML_String_Expressions is
    begin
       Visitor.Leave_String_Expression (Self, Control);
    end Leave_UML_Element;
+
+   -----------------------
+   -- Visit_UML_Element --
+   -----------------------
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_String_Expression_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_String_Expression (Self, Control);
+   end Visit_UML_Element;
 
    ---------------------------
    -- Get_Owning_Expression --

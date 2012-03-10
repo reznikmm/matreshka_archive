@@ -74,6 +74,18 @@ package body AMF.Internals.UML_Actors is
       Visitor.Leave_Actor (Self, Control);
    end Leave_UML_Element;
 
+   -----------------------
+   -- Visit_UML_Element --
+   -----------------------
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Actor_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_Actor (Self, Control);
+   end Visit_UML_Element;
+
    -----------------------------
    -- Get_Classifier_Behavior --
    -----------------------------

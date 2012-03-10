@@ -79,6 +79,7 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types;
 with AMF.UML.Use_Cases.Collections;
+with AMF.Visitors.UML_Iterators;
 with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Classes is
@@ -958,5 +959,11 @@ package AMF.Internals.UML_Classes is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Class_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.UML_Classes;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with AMF.UML.Elements.Collections;
 with AMF.UML.Packages;
 with AMF.UML.Profile_Applications;
 with AMF.UML.Profiles;
+with AMF.Visitors.UML_Iterators;
 with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Profile_Applications is
@@ -162,5 +163,11 @@ package AMF.Internals.UML_Profile_Applications is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Profile_Application_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.UML_Profile_Applications;

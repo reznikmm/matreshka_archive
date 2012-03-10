@@ -74,6 +74,18 @@ package body AMF.Internals.UML_Deployment_Specifications is
       Visitor.Leave_Deployment_Specification (Self, Control);
    end Leave_UML_Element;
 
+   -----------------------
+   -- Visit_UML_Element --
+   -----------------------
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Deployment_Specification_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_Deployment_Specification (Self, Control);
+   end Visit_UML_Element;
+
    --------------------
    -- Get_Deployment --
    --------------------

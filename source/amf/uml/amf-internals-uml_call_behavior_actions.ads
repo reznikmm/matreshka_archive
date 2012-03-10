@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -65,6 +65,7 @@ with AMF.UML.Ports;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
+with AMF.Visitors.UML_Iterators;
 with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Call_Behavior_Actions is
@@ -503,5 +504,11 @@ package AMF.Internals.UML_Call_Behavior_Actions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Call_Behavior_Action_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.UML_Call_Behavior_Actions;

@@ -74,6 +74,18 @@ package body AMF.Internals.UML_Execution_Environments is
       Visitor.Leave_Execution_Environment (Self, Control);
    end Leave_UML_Element;
 
+   -----------------------
+   -- Visit_UML_Element --
+   -----------------------
+
+   overriding procedure Visit_UML_Element
+    (Self     : not null access constant UML_Execution_Environment_Proxy;
+     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_Execution_Environment (Self, Control);
+   end Visit_UML_Element;
+
    ---------------------
    -- Get_Nested_Node --
    ---------------------
