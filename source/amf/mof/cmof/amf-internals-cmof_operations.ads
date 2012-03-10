@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,6 +56,7 @@ with AMF.Internals.CMOF_Namespaces;
 pragma Elaborate (AMF.Internals.CMOF_Namespaces);
 with AMF.Internals.CMOF_Features;
 with AMF.String_Collections;
+with AMF.Visitors.CMOF_Iterators;
 with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Operations is
@@ -270,5 +271,11 @@ package AMF.Internals.CMOF_Operations is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Visit_CMOF_Element
+    (Self     : not null access constant CMOF_Operation_Proxy;
+     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.CMOF_Operations;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -130,6 +130,18 @@ package body AMF.Internals.CMOF_Parameters is
    begin
       Internal_Set_Direction (Self.Id, To);
    end Set_Direction;
+
+   ------------------------
+   -- Visit_CMOF_Element --
+   ------------------------
+
+   overriding procedure Visit_CMOF_Element
+    (Self     : not null access constant CMOF_Parameter_Proxy;
+     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Iterator.Visit_Parameter (Self, Control);
+   end Visit_CMOF_Element;
 
 
 

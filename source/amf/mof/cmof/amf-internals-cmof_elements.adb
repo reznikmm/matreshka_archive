@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -212,5 +212,21 @@ package body AMF.Internals.CMOF_Elements is
       AMF.Internals.Tables.CMOF_Reflection.Set
        (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id, Value);
    end Set;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant CMOF_Element_Proxy;
+     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator.all in AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class then
+         CMOF_Element_Proxy'Class (Self.all).Visit_CMOF_Element
+          (AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class (Iterator.all)'Access,
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.CMOF_Elements;

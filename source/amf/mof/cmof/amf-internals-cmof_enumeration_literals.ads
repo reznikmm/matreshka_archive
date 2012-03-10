@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with AMF.CMOF.Enumerations;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.Internals.CMOF_Named_Elements;
+with AMF.Visitors.CMOF_Iterators;
 with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Enumeration_Literals is
@@ -99,5 +100,11 @@ package AMF.Internals.CMOF_Enumeration_Literals is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Visit_CMOF_Element
+    (Self     : not null access constant CMOF_Enumeration_Literal_Proxy;
+     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.CMOF_Enumeration_Literals;

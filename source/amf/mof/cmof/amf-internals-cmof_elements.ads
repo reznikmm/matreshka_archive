@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
+with AMF.Visitors.CMOF_Iterators;
 with AMF.Visitors.CMOF_Visitors;
 with League.Holders;
 
@@ -113,6 +114,12 @@ package AMF.Internals.CMOF_Elements is
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
+   overriding procedure Visit_Element
+    (Self     : not null access constant CMOF_Element_Proxy;
+     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
+
    not overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Element_Proxy;
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
@@ -124,5 +131,11 @@ package AMF.Internals.CMOF_Elements is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Visit_CMOF_Element
+    (Self     : not null access constant CMOF_Element_Proxy;
+     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.CMOF_Elements;
