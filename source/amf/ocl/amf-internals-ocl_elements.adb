@@ -175,4 +175,21 @@ package body AMF.Internals.OCL_Elements is
         Value);
    end Set;
 
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Element_Proxy;
+     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      raise Program_Error;
+--      if Iterator.all in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+--         OCL_Element_Proxy'Class (Self.all).Visit_OCL_Element
+--          (AMF.Visitors.OCL_Iterators.OCL_Iterator'Class (Iterator.all)'Access,
+--           Control);
+--      end if;
+   end Visit_Element;
+
 end AMF.Internals.OCL_Elements;

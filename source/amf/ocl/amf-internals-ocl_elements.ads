@@ -111,6 +111,12 @@ package AMF.Internals.OCL_Elements is
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Element_Proxy;
+     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of iterator interface.
+
 --   not overriding procedure Enter_CMOF_Element
 --    (Self    : not null access constant CMOF_Element_Proxy;
 --     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
@@ -122,5 +128,11 @@ package AMF.Internals.OCL_Elements is
 --     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
 --     Control : in out AMF.Visitors.Traverse_Control) is abstract;
 --   --  Dispatch call to corresponding subprogram of visitor interface.
+--
+--   not overriding procedure Visit_OCL_Element
+--    (Self     : not null access constant OCL_Element_Proxy;
+--     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+--     Control  : in out AMF.Visitors.Traverse_Control) is abstract;
+--   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.OCL_Elements;
