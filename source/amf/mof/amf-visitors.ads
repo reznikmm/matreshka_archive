@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Root package of visitor pattern implementation. It provides two interface
+--  types:
+--
+--   - Abstract_Visitor - root interface type for metamodel specific visitors.
+--     Derived types provides pair of operations for each non-abstract class of
+--     elements: Enter_<Class> and Leave_<Class>. They are called by iterator
+--     when it enter or leave element;
+--
+--   - Abstract_Iterator - root interface type for metamodel specific
+--     iterators. Derived types provides one operation for each non-abstract
+--     class of elements: Visit_<Class>. It is responsible to call
+--     Enter_<Class> and Leave_<Class> operations of visitor as well as to
+--     control iteration.
+------------------------------------------------------------------------------
 
 package AMF.Visitors is
 
@@ -53,6 +67,9 @@ package AMF.Visitors is
      Terminate_Immediately);
 
    type Abstract_Visitor is limited interface;
-   --  Root interface for all metamodel specific visitor interfaces.
+   --  Root interface type for metamodel specific visitors.
+
+   type Abstract_Iterator is limited interface;
+   --  Root interface type for metamodel specific iterators.
 
 end AMF.Visitors;
