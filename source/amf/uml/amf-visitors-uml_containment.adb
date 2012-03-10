@@ -377,6 +377,23 @@ package body AMF.Visitors.UML_Containment is
              (AMF.UML.Change_Events.UML_Change_Event_Access (Element), Control);
          end if;
 
+      elsif Element.all in AMF.UML.Stereotypes.UML_Stereotype'Class then
+         --  UML::Stereotype must be handled before UML::Class from which it is
+         --  derived.
+
+         Self.Enter_Stereotype
+          (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
+
+         if Control = Continue then
+            Self.Visit_Stereotype
+             (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
+         end if;
+
+         if Control /= Terminate_Immediately then
+            Self.Leave_Stereotype
+             (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
+         end if;
+
       elsif Element.all in AMF.UML.Classes.UML_Class'Class then
          Self.Enter_Class
           (AMF.UML.Classes.UML_Class_Access (Element), Control);
@@ -2449,20 +2466,6 @@ package body AMF.Visitors.UML_Containment is
          if Control /= Terminate_Immediately then
             Self.Leave_State_Machine
              (AMF.UML.State_Machines.UML_State_Machine_Access (Element), Control);
-         end if;
-
-      elsif Element.all in AMF.UML.Stereotypes.UML_Stereotype'Class then
-         Self.Enter_Stereotype
-          (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
-
-         if Control = Continue then
-            Self.Visit_Stereotype
-             (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
-         end if;
-
-         if Control /= Terminate_Immediately then
-            Self.Leave_Stereotype
-             (AMF.UML.Stereotypes.UML_Stereotype_Access (Element), Control);
          end if;
 
       elsif Element.all in AMF.UML.String_Expressions.UML_String_Expression'Class then
