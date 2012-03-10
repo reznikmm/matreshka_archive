@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -4460,9 +4460,32 @@ package body AMF.Visitors.UML_Containment is
    not overriding procedure Visit_Profile
     (Self    : in out UML_Containment_Visitor;
      Element : not null AMF.UML.Profiles.UML_Profile_Access;
-     Control : in out Traverse_Control) is
+     Control : in out Traverse_Control)
+   is
+      Packaged_Elements : constant
+        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
+          := Element.Get_Packaged_Element;
+
    begin
-      null;
+      for J in 1 .. Packaged_Elements.Length loop
+         Self.Visit (Packaged_Elements.Element (J), Control);
+
+         case Control is
+            when Continue =>
+               null;
+
+            when Abandon_Children =>
+               Control := Continue;
+
+            when Abandon_Sibling =>
+               Control := Continue;
+
+               exit;
+
+            when Terminate_Immediately =>
+               exit;
+         end case;
+      end loop;
    end Visit_Profile;
 
    -------------------------------
