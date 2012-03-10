@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -235,21 +235,6 @@ package body AMF.Internals.UML_Profiles is
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Merge
              (Self.Id)));
    end Get_Package_Merge;
-
-   --------------------------
-   -- Get_Packaged_Element --
-   --------------------------
-
-   overriding function Get_Packaged_Element
-    (Self : not null access constant UML_Profile_Proxy)
-       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
-   begin
-      return
-        AMF.UML.Packageable_Elements.Collections.Wrap
-         (AMF.Internals.Element_Collections.Wrap
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Packaged_Element
-             (Self.Id)));
-   end Get_Packaged_Element;
 
    -----------------------------
    -- Get_Profile_Application --

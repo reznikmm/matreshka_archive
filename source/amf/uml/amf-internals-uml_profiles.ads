@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Packages;
 with AMF.String_Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
@@ -68,7 +68,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Profiles is
 
    type UML_Profile_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Packages.UML_Package_Proxy
        and AMF.UML.Profiles.UML_Profile with null record;
 
    overriding function Get_Metaclass_Reference
@@ -149,13 +149,6 @@ package AMF.Internals.UML_Profiles is
    --  Getter of Package::packageMerge.
    --
    --  References the PackageMerges that are owned by this Package.
-
-   overriding function Get_Packaged_Element
-    (Self : not null access constant UML_Profile_Proxy)
-       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
-   --  Getter of Package::packagedElement.
-   --
-   --  Specifies the packageable elements that are owned by this Package.
 
    overriding function Get_Profile_Application
     (Self : not null access constant UML_Profile_Proxy)
