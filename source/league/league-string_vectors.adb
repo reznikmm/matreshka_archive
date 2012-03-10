@@ -74,13 +74,13 @@ package body League.String_Vectors is
 
       --  Objects have different length, they are not equal.
 
-      if LD.Length /= RD.Length then
+      if LD.Unused /= RD.Unused then
          return False;
       end if;
 
       --  Check whether all strings are equal.
 
-      for J in 1 .. LD.Length loop
+      for J in 0 .. LD.Unused - 1 loop
          if not String_Handler.Is_Equal (LD.Value (J), RD.Value (J)) then
             return False;
          end if;
@@ -141,13 +141,17 @@ package body League.String_Vectors is
 
    function Element
     (Self  : Universal_String_Vector'Class;
-     Index : Positive) return League.Strings.Universal_String is
+     Index : Positive) return League.Strings.Universal_String
+   is
+      Position : constant String_Vector_Index
+        := String_Vector_Index (Index - 1);
+
    begin
-      if Index > Self.Data.Length then
+      if Position >= Self.Data.Unused then
          raise Constraint_Error with "Index is out of range";
       end if;
 
-      return League.Strings.Internals.Create (Self.Data.Value (Index));
+      return League.Strings.Internals.Create (Self.Data.Value (Position));
    end Element;
 
    --------------
@@ -180,9 +184,9 @@ package body League.String_Vectors is
         := League.Strings.Internals.Internal (Pattern);
 
    begin
-      for J in 1 .. V_D.Length loop
+      for J in 0 .. V_D.Unused - 1 loop
          if String_Handler.Is_Equal (V_D.Value (J), P_D) then
-            return J;
+            return Positive (J + 1);
          end if;
       end loop;
 
@@ -206,7 +210,7 @@ package body League.String_Vectors is
 
    function Is_Empty (Self : Universal_String_Vector'Class) return Boolean is
    begin
-      return Self.Data.Length = 0;
+      return Self.Data.Unused = 0;
    end Is_Empty;
 
    ----------
@@ -281,7 +285,7 @@ package body League.String_Vectors is
 
    function Length (Self : Universal_String_Vector'Class) return Natural is
    begin
-      return Self.Data.Length;
+      return Natural (Self.Data.Unused);
    end Length;
 
    -------------
@@ -324,16 +328,18 @@ package body League.String_Vectors is
    procedure Replace
     (Self  : in out Universal_String_Vector'Class;
      Index : Positive;
-     Item  : League.Strings.Universal_String'Class) is
+     Item  : League.Strings.Universal_String'Class)
+   is
+      Position : constant String_Vector_Index
+        := String_Vector_Index (Index - 1);
+
    begin
-      if Index > Self.Data.Length then
+      if Position >= Self.Data.Unused then
          raise Constraint_Error with "Index is out of range";
       end if;
 
       Matreshka.Internals.String_Vectors.Replace
-       (Self.Data,
-        Index,
-        League.Strings.Internals.Internal (Item));
+       (Self.Data, Position, League.Strings.Internals.Internal (Item));
    end Replace;
 
    -----------
@@ -344,7 +350,7 @@ package body League.String_Vectors is
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String_Vector) is
    begin
-      Natural'Write (Stream, Item.Data.Length);
+      String_Vector_Index'Write (Stream, Item.Data.Unused);
 
       for J in 1 .. Item.Length loop
          League.Strings.Universal_String'Write (Stream, Item.Element (J));

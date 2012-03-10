@@ -45,6 +45,65 @@ with Ada.Unchecked_Deallocation;
 
 package body Matreshka.Internals.String_Vectors is
 
+   pragma Assert
+    (Standard'Address_Size
+       = Matreshka.Internals.Strings.Shared_String_Access'Size);
+   --  Size of System.Address must be equal to size of Shared_String_Access to
+   --  compite constants correctly.
+
+   Growth_Factor : constant := 32;
+   --  The growth factor controls how much extra space is allocated when we
+   --  have to increase the size of an allocated shared vector. By allocating
+   --  extra space, we avoid the need to reallocate on every append,
+   --  particularly important when a string is built up by repeated append
+   --  operations of small pieces. This is expressed as a factor so 32 means
+   --  add 1/32 of the length of the string as growth space.
+
+   Min_Mul_Alloc : constant
+     := Standard'Maximum_Alignment * Standard'Storage_Unit
+          / Standard'Address_Size;
+   --  Allocation will be done by a multiple of Min_Mul_Alloc. This causes no
+   --  memory loss as most (all?) malloc implementations are obliged to align
+   --  the returned memory on the maximum alignment as malloc does not know the
+   --  target alignment.
+
+   function Aligned_Size
+    (Size : String_Vector_Index) return String_Vector_Index;
+   pragma Inline (Aligned_Size);
+   --  Returns recommended size of the shared vector which is greater or equal
+   --  to specified. Calculation take in sense alignment of the allocated
+   --  memory segments to use memory effectively by Append/Insert/etc
+   --  operations.
+
+   ------------------
+   -- Aligned_Size --
+   ------------------
+
+   function Aligned_Size
+    (Size : String_Vector_Index) return String_Vector_Index
+   is
+      use Matreshka.Internals.Strings;
+
+      Static_Size : constant String_Vector_Index
+        := (Empty_Shared_String_Vector'Size
+              - Shared_String_Access'Size
+                  * (Empty_Shared_String_Vector.Last + 1))
+             / Shared_String_Access'Size;
+      --  Total size of all static components in Shared_String_Access'Size
+      --  units.
+
+      pragma Assert
+       ((Empty_Shared_String_Vector'Size
+           - Shared_String_Access'Size * (Empty_Shared_String_Vector.Last + 1))
+          mod Shared_String_Access'Size = 0);
+      --  Reminder must be zero to compute value correctly.
+
+   begin
+      return
+        ((Static_Size + Size + Size / Growth_Factor) / Min_Mul_Alloc + 1)
+           * Min_Mul_Alloc - Static_Size;
+   end Aligned_Size;
+
    procedure Unsafe_Dereference (Item : in out Shared_String_Vector_Access);
    --  Dereference specified object and release memory when necessary, but
    --  doesn't dereference contained shared strings.
@@ -60,14 +119,12 @@ package body Matreshka.Internals.String_Vectors is
    --------------
 
    function Allocate
-    (Size : Natural) return not null Shared_String_Vector_Access is
-   begin
-      if Size = 0 then
-         return Empty_Shared_String_Vector'Access;
+    (Size : String_Vector_Index) return not null Shared_String_Vector_Access
+   is
+      pragma Assert (Size /= 0);
 
-      else
-         return new Shared_String_Vector (Size);
-      end if;
+   begin
+      return new Shared_String_Vector (Aligned_Size (Size));
    end Allocate;
 
    ------------
@@ -78,9 +135,9 @@ package body Matreshka.Internals.String_Vectors is
     (Item   : in out Shared_String_Vector_Access;
      String : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
-      Detach (Item, Item.Length + 1);
-      Item.Length := Item.Length + 1;
-      Item.Value (Item.Length) := String;
+      Detach (Item, Item.Unused + 1);
+      Item.Value (Item.Unused) := String;
+      Item.Unused := Item.Unused + 1;
    end Append;
 
    -----------------
@@ -92,7 +149,7 @@ package body Matreshka.Internals.String_Vectors is
       if Item /= Empty_Shared_String_Vector'Access
         and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
       then
-         for J in 1 .. Item.Length loop
+         for J in 0 .. Item.Unused - 1 loop
             Matreshka.Internals.Strings.Dereference (Item.Value (J));
          end loop;
 
@@ -109,7 +166,7 @@ package body Matreshka.Internals.String_Vectors is
 
    procedure Detach
     (Item : in out Shared_String_Vector_Access;
-     Size : Natural)
+     Size : String_Vector_Index)
    is
       Source      : Shared_String_Vector_Access := Item;
       Destination : Shared_String_Vector_Access renames Item;
@@ -132,19 +189,19 @@ package body Matreshka.Internals.String_Vectors is
       --  Source shared string vector is not enought to store specified number
       --  of items, or used somewhere; allocate new one and copy existing data.
 
-      elsif Destination.Size < Size
+      elsif Destination.Last < Size
         or else not Matreshka.Atomics.Counters.Is_One (Source.Counter)
       then
          Destination := Allocate (Size);
 
-         Destination.Value (1 .. Source.Length) :=
-           Source.Value (1 .. Source.Length);
-         Destination.Length := Source.Length;
+         Destination.Value (0 .. Source.Unused - 1) :=
+           Source.Value (0 .. Source.Unused - 1);
+         Destination.Unused := Source.Unused;
 
          if not Matreshka.Atomics.Counters.Is_One (Source.Counter) then
             --  Increment reference counter for all copied shared strings.
 
-            for J in 1 .. Destination.Length loop
+            for J in 0 .. Destination.Unused - 1 loop
                Matreshka.Internals.Strings.Reference (Destination.Value (J));
             end loop;
 
@@ -167,25 +224,40 @@ package body Matreshka.Internals.String_Vectors is
     (Self   : in out Shared_String_Vector_Access;
      Vector : not null Shared_String_Vector_Access)
    is
-      New_Length : constant Natural := Self.Length + Vector.Length;
+      New_Length : constant String_Vector_Index
+        := Self.Unused + Vector.Unused;
 
    begin
-      --  Prepare object for modification.
+      if Vector = Empty_Shared_String_Vector'Access then
+         --  Empty vector is prepended, nothing to do.
 
-      Detach (Self, New_Length);
+         null;
 
-      --  Construct new value.
+      elsif Self = Empty_Shared_String_Vector'Access then
+         --  Self is empty vector, replace it by prepended vector.
 
-      Self.Value (Vector.Length + 1 .. New_Length) :=
-        Self.Value (1 .. Self.Length);
-      Self.Value (1 .. Vector.Length) := Vector.Value (1 .. Vector.Length);
-      Self.Length := New_Length;
+         Self := Vector;
+         Reference (Self);
 
-      --  Update string's reference counters.
+      else
+         --  Prepare object for modification.
 
-      for J in 1 .. Vector.Length loop
-         Matreshka.Internals.Strings.Reference (Self.Value (J));
-      end loop;
+         Detach (Self, New_Length);
+
+         --  Construct new value.
+
+         Self.Value (Vector.Unused .. New_Length - 1) :=
+           Self.Value (0 .. Self.Unused - 1);
+         Self.Value (0 .. Vector.Unused - 1) :=
+           Vector.Value (0 .. Vector.Unused - 1);
+         Self.Unused := New_Length;
+
+         --  Update string's reference counters.
+
+         for J in 0 .. Vector.Unused - 1 loop
+            Matreshka.Internals.Strings.Reference (Self.Value (J));
+         end loop;
+      end if;
    end Prepend;
 
    ---------------
@@ -205,13 +277,13 @@ package body Matreshka.Internals.String_Vectors is
 
    procedure Replace
     (Self  : in out Shared_String_Vector_Access;
-     Index : Positive;
+     Index : String_Vector_Index;
      Item  : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
       use type Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Detach (Self, Self.Size);
+      Detach (Self, Self.Unused);
 
       if Self.Value (Index) /= Item then
          Matreshka.Internals.Strings.Dereference (Self.Value (Index));

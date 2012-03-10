@@ -48,18 +48,21 @@ package Matreshka.Internals.String_Vectors is
 
    pragma Preelaborate;
 
+   type String_Vector_Index is mod 2 ** 32;
+   for String_Vector_Index'Size use 32;
+
    type Shared_String_Array is
-     array (Positive range <>)
+     array (String_Vector_Index range <>)
        of Matreshka.Internals.Strings.Shared_String_Access;
 
-   type Shared_String_Vector (Size : Natural) is limited record
+   type Shared_String_Vector (Last : String_Vector_Index) is limited record
       Counter : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Length  : Natural := 0;
+      Unused  : String_Vector_Index := 0;
       --  Length of the actual data.
 
-      Value   : Shared_String_Array (1 .. Size);
+      Value   : Shared_String_Array (0 .. Last);
    end record;
 
    type Shared_String_Vector_Access is access all Shared_String_Vector;
@@ -82,14 +85,14 @@ package Matreshka.Internals.String_Vectors is
    --  Preelaborateable_Initialization types.
 
    function Allocate
-    (Size : Natural) return not null Shared_String_Vector_Access;
+    (Size : String_Vector_Index) return not null Shared_String_Vector_Access;
    --  Allocates new instance of string with specified size. Actual size of the
-   --  allocated string can be greater. Returns reference to
-   --  Empty_Shared_String_Vector when Size is zero.
+   --  allocated string can be greater. This subprogram must not be called with
+   --  zero argument.
 
    procedure Detach
     (Item : in out Shared_String_Vector_Access;
-     Size : Natural);
+     Size : String_Vector_Index);
    --  Detach specified shared string vector. If reference counter equal to
    --  one, shared string vector is not an empty shared string vector object
    --  and its current size is sufficient to store specified number of strings
@@ -111,7 +114,7 @@ package Matreshka.Internals.String_Vectors is
 
    procedure Replace
     (Self  : in out Shared_String_Vector_Access;
-     Index : Positive;
+     Index : String_Vector_Index;
      Item  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Replace string at the specified position by another one.
 
