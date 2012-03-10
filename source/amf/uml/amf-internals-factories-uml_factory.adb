@@ -55,23 +55,11 @@ with AMF.UML.Holders.Interaction_Operator_Kinds;
 with AMF.UML.Holders.Message_Kinds;
 with AMF.UML.Holders.Message_Sorts;
 with AMF.UML.Holders.Object_Node_Ordering_Kinds;
-with AMF.UML.Holders.Parameter_Effect_Kinds;
 with AMF.UML.Holders.Parameter_Direction_Kinds;
+with AMF.UML.Holders.Parameter_Effect_Kinds;
 with AMF.UML.Holders.Pseudostate_Kinds;
 with AMF.UML.Holders.Transition_Kinds;
 with AMF.UML.Holders.Visibility_Kinds;
-
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
-pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
---  CMOF factory package and all its dependencies must be elaborated before
---  elaboration of this package.
-
-with AMF.Internals.Factories.Primitive_Types_Factory;
-pragma Unreferenced (AMF.Internals.Factories.Primitive_Types_Factory);
-pragma Elaborate_All (AMF.Internals.Factories.Primitive_Types_Factory);
---  PrimitiveTypes factory package and all its dependencies must be elaborated
---  before elaboration of this package.
 
 package body AMF.Internals.Factories.UML_Factory is
 
@@ -237,8 +225,6 @@ package body AMF.Internals.Factories.UML_Factory is
      := League.Strings.To_Universal_String ("protected");
    Package_Image   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
-
-   Factory : aliased UML_Factory;
 
    --------------------
    -- Connect_Extent --
@@ -1218,7 +1204,7 @@ package body AMF.Internals.Factories.UML_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return Factory.To_Element (Element);
+      return Self.To_Element (Element);
    end Create;
 
    ------------------------
@@ -1647,17 +1633,4 @@ package body AMF.Internals.Factories.UML_Factory is
       return AMF.Internals.Tables.UML_Element_Table.Table (Element).Proxy;
    end To_Element;
 
-begin
-   --  Initialize metamodel.
-
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Links;
-
-   --  Initialize element table.
-
-   AMF.Internals.Tables.UML_Element_Table.Increment_Last;
-
-   --  Register factory.
-
-   AMF.Internals.Factories.Register (Factory'Access);
 end AMF.Internals.Factories.UML_Factory;
