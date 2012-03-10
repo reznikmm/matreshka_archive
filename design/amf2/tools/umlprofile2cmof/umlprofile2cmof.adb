@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -75,8 +75,8 @@ with AMF.UML.Types;
 with XMI.Reader;
 with XMI.Writer;
 
-with AMF.Internals.Factories.UML_Factory;
-pragma Unreferenced (AMF.Internals.Factories.UML_Factory);
+with AMF.Internals.Modules.UML_Module;
+pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 --  Setup UML support.
 
 procedure UMLProfile2CMOF is
