@@ -246,7 +246,7 @@ generic
 package AMF.Visitors.Generic_UML_Containment is
 
    type UML_Containment_Iterator is
-     abstract limited new Base_Iterator
+     limited new Base_Iterator
        and AMF.Visitors.UML_Iterators.UML_Iterator
          with private;
 
@@ -1411,7 +1411,7 @@ package AMF.Visitors.Generic_UML_Containment is
 private
 
    type UML_Containment_Iterator is
-     abstract limited new Base_Iterator
+     limited new Base_Iterator
        and AMF.Visitors.UML_Iterators.UML_Iterator
          with null record;
 
