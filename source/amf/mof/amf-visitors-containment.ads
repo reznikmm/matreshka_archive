@@ -43,6 +43,10 @@
 ------------------------------------------------------------------------------
 --  Containment iterators starts from root elements and go through their
 --  children.
+--
+--  This iterator provides only capability to start traversal on each root
+--  element in the extent, another iterators are responsible to traverse
+--  elements of concrete metamodel.
 ------------------------------------------------------------------------------
 with AMF.Extents;
 
