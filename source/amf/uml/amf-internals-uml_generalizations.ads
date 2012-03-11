@@ -75,7 +75,7 @@ package AMF.Internals.UML_Generalizations is
        return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set;
    --  Getter of Generalization::generalizationSet.
    --
-   --  Designates a set in which instances of Generalization is considered 
+   --  Designates a set in which instances of Generalization is considered
    --  members.
 
    overriding function Get_Is_Substitutable
@@ -83,9 +83,9 @@ package AMF.Internals.UML_Generalizations is
        return AMF.Optional_Boolean;
    --  Getter of Generalization::isSubstitutable.
    --
-   --  Indicates whether the specific classifier can be used wherever the 
-   --  general classifier can be used. If true, the execution traces of the 
-   --  specific classifier will be a superset of the execution traces of the 
+   --  Indicates whether the specific classifier can be used wherever the
+   --  general classifier can be used. If true, the execution traces of the
+   --  specific classifier will be a superset of the execution traces of the
    --  general classifier.
 
    overriding procedure Set_Is_Substitutable
@@ -93,9 +93,9 @@ package AMF.Internals.UML_Generalizations is
      To   : AMF.Optional_Boolean);
    --  Setter of Generalization::isSubstitutable.
    --
-   --  Indicates whether the specific classifier can be used wherever the 
-   --  general classifier can be used. If true, the execution traces of the 
-   --  specific classifier will be a superset of the execution traces of the 
+   --  Indicates whether the specific classifier can be used wherever the
+   --  general classifier can be used. If true, the execution traces of the
+   --  specific classifier will be a superset of the execution traces of the
    --  general classifier.
 
    overriding function Get_Specific
@@ -103,7 +103,7 @@ package AMF.Internals.UML_Generalizations is
        return AMF.UML.Classifiers.UML_Classifier_Access;
    --  Getter of Generalization::specific.
    --
-   --  References the specializing classifier in the Generalization 
+   --  References the specializing classifier in the Generalization
    --  relationship.
 
    overriding procedure Set_Specific
@@ -111,7 +111,7 @@ package AMF.Internals.UML_Generalizations is
      To   : AMF.UML.Classifiers.UML_Classifier_Access);
    --  Setter of Generalization::specific.
    --
-   --  References the specializing classifier in the Generalization 
+   --  References the specializing classifier in the Generalization
    --  relationship.
 
    overriding function Get_Source
@@ -161,24 +161,25 @@ package AMF.Internals.UML_Generalizations is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Generalization_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Generalization_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Generalization_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

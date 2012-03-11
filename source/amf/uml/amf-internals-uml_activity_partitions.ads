@@ -89,7 +89,7 @@ package AMF.Internals.UML_Activity_Partitions is
        return Boolean;
    --  Getter of ActivityPartition::isExternal.
    --
-   --  Tells whether the partition represents an entity to which the 
+   --  Tells whether the partition represents an entity to which the
    --  partitioning structure does not apply.
 
    overriding procedure Set_Is_External
@@ -97,7 +97,7 @@ package AMF.Internals.UML_Activity_Partitions is
      To   : Boolean);
    --  Setter of ActivityPartition::isExternal.
    --
-   --  Tells whether the partition represents an entity to which the 
+   --  Tells whether the partition represents an entity to which the
    --  partitioning structure does not apply.
 
    overriding function Get_Node
@@ -231,9 +231,9 @@ package AMF.Internals.UML_Activity_Partitions is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -241,7 +241,7 @@ package AMF.Internals.UML_Activity_Partitions is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -249,7 +249,7 @@ package AMF.Internals.UML_Activity_Partitions is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -278,7 +278,7 @@ package AMF.Internals.UML_Activity_Partitions is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -286,7 +286,7 @@ package AMF.Internals.UML_Activity_Partitions is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -296,9 +296,9 @@ package AMF.Internals.UML_Activity_Partitions is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -313,8 +313,8 @@ package AMF.Internals.UML_Activity_Partitions is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -322,24 +322,25 @@ package AMF.Internals.UML_Activity_Partitions is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Activity_Partition_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Activity_Partition_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Activity_Partition_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

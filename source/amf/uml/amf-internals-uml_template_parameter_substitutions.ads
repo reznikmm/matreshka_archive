@@ -139,24 +139,25 @@ package AMF.Internals.UML_Template_Parameter_Substitutions is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Template_Parameter_Substitution_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Template_Parameter_Substitution_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Template_Parameter_Substitution_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

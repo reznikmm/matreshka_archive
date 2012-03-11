@@ -61,8 +61,8 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node;
    --  Getter of Clause::body.
    --
-   --  A nested activity fragment that is executed if the test evaluates to 
-   --  true and the clause is chosen over any concurrent clauses that also 
+   --  A nested activity fragment that is executed if the test evaluates to
+   --  true and the clause is chosen over any concurrent clauses that also
    --  evaluate to true.
 
    overriding function Get_Body_Output
@@ -70,8 +70,8 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin;
    --  Getter of Clause::bodyOutput.
    --
-   --  A list of output pins within the body fragment whose values are moved 
-   --  to the result pins of the containing conditional node after execution 
+   --  A list of output pins within the body fragment whose values are moved
+   --  to the result pins of the containing conditional node after execution
    --  of the clause body.
 
    overriding function Get_Decider
@@ -79,8 +79,8 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Output_Pins.UML_Output_Pin_Access;
    --  Getter of Clause::decider.
    --
-   --  An output pin within the test fragment the value of which is examined 
-   --  after execution of the test to determine whether the body should be 
+   --  An output pin within the test fragment the value of which is examined
+   --  after execution of the test to determine whether the body should be
    --  executed.
 
    overriding procedure Set_Decider
@@ -88,8 +88,8 @@ package AMF.Internals.UML_Clauses is
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access);
    --  Setter of Clause::decider.
    --
-   --  An output pin within the test fragment the value of which is examined 
-   --  after execution of the test to determine whether the body should be 
+   --  An output pin within the test fragment the value of which is examined
+   --  after execution of the test to determine whether the body should be
    --  executed.
 
    overriding function Get_Predecessor_Clause
@@ -97,7 +97,7 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Clauses.Collections.Set_Of_UML_Clause;
    --  Getter of Clause::predecessorClause.
    --
-   --  A set of clauses whose tests must all evaluate false before the current 
+   --  A set of clauses whose tests must all evaluate false before the current
    --  clause can be tested.
 
    overriding function Get_Successor_Clause
@@ -105,7 +105,7 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Clauses.Collections.Set_Of_UML_Clause;
    --  Getter of Clause::successorClause.
    --
-   --  A set of clauses which may not be tested unless the current clause 
+   --  A set of clauses which may not be tested unless the current clause
    --  tests false.
 
    overriding function Get_Test
@@ -113,7 +113,7 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node;
    --  Getter of Clause::test.
    --
-   --  A nested activity fragment with a designated output pin that specifies 
+   --  A nested activity fragment with a designated output pin that specifies
    --  the result of the test.
 
    overriding function Get_Owned_Comment
@@ -142,24 +142,25 @@ package AMF.Internals.UML_Clauses is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Clause_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Clause_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Clause_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

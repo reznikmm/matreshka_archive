@@ -67,11 +67,11 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access;
    --  Getter of Abstraction::mapping.
    --
-   --  An composition of an Expression that states the abstraction 
-   --  relationship between the supplier and the client. In some cases, such 
-   --  as Derivation, it is usually formal and unidirectional; in other cases, 
-   --  such as Trace, it is usually informal and bidirectional. The mapping 
-   --  expression is optional and may be omitted if the precise relationship 
+   --  An composition of an Expression that states the abstraction
+   --  relationship between the supplier and the client. In some cases, such
+   --  as Derivation, it is usually formal and unidirectional; in other cases,
+   --  such as Trace, it is usually informal and bidirectional. The mapping
+   --  expression is optional and may be omitted if the precise relationship
    --  between the elements is not specified.
 
    overriding procedure Set_Mapping
@@ -79,11 +79,11 @@ package AMF.Internals.UML_Realizations is
      To   : AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access);
    --  Setter of Abstraction::mapping.
    --
-   --  An composition of an Expression that states the abstraction 
-   --  relationship between the supplier and the client. In some cases, such 
-   --  as Derivation, it is usually formal and unidirectional; in other cases, 
-   --  such as Trace, it is usually informal and bidirectional. The mapping 
-   --  expression is optional and may be omitted if the precise relationship 
+   --  An composition of an Expression that states the abstraction
+   --  relationship between the supplier and the client. In some cases, such
+   --  as Derivation, it is usually formal and unidirectional; in other cases,
+   --  such as Trace, it is usually informal and bidirectional. The mapping
+   --  expression is optional and may be omitted if the precise relationship
    --  between the elements is not specified.
 
    overriding function Get_Client
@@ -91,9 +91,9 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Dependency::client.
    --
-   --  The element(s) dependent on the supplier element(s). In some cases 
-   --  (such as a Trace Abstraction) the assignment of direction (that is, the 
-   --  designation of the client element) is at the discretion of the modeler, 
+   --  The element(s) dependent on the supplier element(s). In some cases
+   --  (such as a Trace Abstraction) the assignment of direction (that is, the
+   --  designation of the client element) is at the discretion of the modeler,
    --  and is a stipulation.
 
    overriding function Get_Supplier
@@ -101,12 +101,12 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Dependency::supplier.
    --
-   --  The element(s) independent of the client element(s), in the same 
-   --  respect and the same dependency relationship. In some directed 
-   --  dependency relationships (such as Refinement Abstractions), a common 
-   --  convention in the domain of class-based OO software is to put the more 
-   --  abstract element in this role. Despite this convention, users of UML 
-   --  may stipulate a sense of dependency suitable for their domain, which 
+   --  The element(s) independent of the client element(s), in the same
+   --  respect and the same dependency relationship. In some directed
+   --  dependency relationships (such as Refinement Abstractions), a common
+   --  convention in the domain of class-based OO software is to put the more
+   --  abstract element in this role. Despite this convention, users of UML
+   --  may stipulate a sense of dependency suitable for their domain, which
    --  makes a more abstract element dependent on that which is more specific.
 
    overriding function Get_Source
@@ -156,7 +156,7 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.UML_Visibility_Kind;
    --  Getter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding procedure Set_Visibility
@@ -164,7 +164,7 @@ package AMF.Internals.UML_Realizations is
      To   : AMF.UML.UML_Visibility_Kind);
    --  Setter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding function Get_Client_Dependency
@@ -214,9 +214,9 @@ package AMF.Internals.UML_Realizations is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -224,7 +224,7 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -232,7 +232,7 @@ package AMF.Internals.UML_Realizations is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owning_Template_Parameter
@@ -268,7 +268,7 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function All_Namespaces
@@ -276,7 +276,7 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -284,7 +284,7 @@ package AMF.Internals.UML_Realizations is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -294,9 +294,9 @@ package AMF.Internals.UML_Realizations is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -311,8 +311,8 @@ package AMF.Internals.UML_Realizations is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function Is_Compatible_With
@@ -321,11 +321,11 @@ package AMF.Internals.UML_Realizations is
        return Boolean;
    --  Operation ParameterableElement::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
-   --  should override this operation to specify different compatibility 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses
+   --  should override this operation to specify different compatibility
    --  constraints.
 
    overriding function Is_Template_Parameter
@@ -333,24 +333,25 @@ package AMF.Internals.UML_Realizations is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Realization_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Realization_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Realization_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

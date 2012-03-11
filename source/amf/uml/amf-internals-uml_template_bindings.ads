@@ -83,7 +83,7 @@ package AMF.Internals.UML_Template_Bindings is
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
    --  Getter of TemplateBinding::signature.
    --
-   --  The template signature for the template that is the target of the 
+   --  The template signature for the template that is the target of the
    --  binding.
 
    overriding procedure Set_Signature
@@ -91,7 +91,7 @@ package AMF.Internals.UML_Template_Bindings is
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
    --  Setter of TemplateBinding::signature.
    --
-   --  The template signature for the template that is the target of the 
+   --  The template signature for the template that is the target of the
    --  binding.
 
    overriding function Get_Source
@@ -141,24 +141,25 @@ package AMF.Internals.UML_Template_Bindings is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Template_Binding_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Template_Binding_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Template_Binding_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

@@ -79,10 +79,10 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Connection_Point_References.Collections.Set_Of_UML_Connection_Point_Reference;
    --  Getter of State::connection.
    --
-   --  The entry and exit connection points used in conjunction with this 
-   --  (submachine) state, i.e. as targets and sources, respectively, in the 
-   --  region with the submachine state. A connection point reference 
-   --  references the corresponding definition of a connection point 
+   --  The entry and exit connection points used in conjunction with this
+   --  (submachine) state, i.e. as targets and sources, respectively, in the
+   --  region with the submachine state. A connection point reference
+   --  references the corresponding definition of a connection point
    --  pseudostate in the statemachine referenced by the submachinestate.
 
    overriding function Get_Connection_Point
@@ -90,8 +90,8 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate;
    --  Getter of State::connectionPoint.
    --
-   --  The entry and exit pseudostates of a composite state. These can only be 
-   --  entry or exit Pseudostates, and they must have different names. They 
+   --  The entry and exit pseudostates of a composite state. These can only be
+   --  entry or exit Pseudostates, and they must have different names. They
    --  can only be defined for composite states.
 
    overriding function Get_Deferrable_Trigger
@@ -99,9 +99,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger;
    --  Getter of State::deferrableTrigger.
    --
-   --  A list of triggers that are candidates to be retained by the state 
-   --  machine if they trigger no transitions out of the state (not consumed). 
-   --  A deferred trigger is retained until the state machine reaches a state 
+   --  A list of triggers that are candidates to be retained by the state
+   --  machine if they trigger no transitions out of the state (not consumed).
+   --  A deferred trigger is retained until the state machine reaches a state
    --  configuration where it is no longer deferred.
 
    overriding function Get_Do_Activity
@@ -109,8 +109,8 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Behaviors.UML_Behavior_Access;
    --  Getter of State::doActivity.
    --
-   --  An optional behavior that is executed while being in the state. The 
-   --  execution starts when this state is entered, and stops either by 
+   --  An optional behavior that is executed while being in the state. The
+   --  execution starts when this state is entered, and stops either by
    --  itself, or when the state is exited, whichever comes first.
 
    overriding procedure Set_Do_Activity
@@ -118,8 +118,8 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access);
    --  Setter of State::doActivity.
    --
-   --  An optional behavior that is executed while being in the state. The 
-   --  execution starts when this state is entered, and stops either by 
+   --  An optional behavior that is executed while being in the state. The
+   --  execution starts when this state is entered, and stops either by
    --  itself, or when the state is exited, whichever comes first.
 
    overriding function Get_Entry
@@ -127,9 +127,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Behaviors.UML_Behavior_Access;
    --  Getter of State::entry.
    --
-   --  An optional behavior that is executed whenever this state is entered 
-   --  regardless of the transition taken to reach the state. If defined, 
-   --  entry actions are always executed to completion prior to any internal 
+   --  An optional behavior that is executed whenever this state is entered
+   --  regardless of the transition taken to reach the state. If defined,
+   --  entry actions are always executed to completion prior to any internal
    --  behavior or transitions performed within the state.
 
    overriding procedure Set_Entry
@@ -137,9 +137,9 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access);
    --  Setter of State::entry.
    --
-   --  An optional behavior that is executed whenever this state is entered 
-   --  regardless of the transition taken to reach the state. If defined, 
-   --  entry actions are always executed to completion prior to any internal 
+   --  An optional behavior that is executed whenever this state is entered
+   --  regardless of the transition taken to reach the state. If defined,
+   --  entry actions are always executed to completion prior to any internal
    --  behavior or transitions performed within the state.
 
    overriding function Get_Exit
@@ -147,9 +147,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Behaviors.UML_Behavior_Access;
    --  Getter of State::exit.
    --
-   --  An optional behavior that is executed whenever this state is exited 
-   --  regardless of which transition was taken out of the state. If defined, 
-   --  exit actions are always executed to completion only after all internal 
+   --  An optional behavior that is executed whenever this state is exited
+   --  regardless of which transition was taken out of the state. If defined,
+   --  exit actions are always executed to completion only after all internal
    --  activities and transition actions have completed execution.
 
    overriding procedure Set_Exit
@@ -157,9 +157,9 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access);
    --  Setter of State::exit.
    --
-   --  An optional behavior that is executed whenever this state is exited 
-   --  regardless of which transition was taken out of the state. If defined, 
-   --  exit actions are always executed to completion only after all internal 
+   --  An optional behavior that is executed whenever this state is exited
+   --  regardless of which transition was taken out of the state. If defined,
+   --  exit actions are always executed to completion only after all internal
    --  activities and transition actions have completed execution.
 
    overriding function Get_Is_Composite
@@ -167,7 +167,7 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Getter of State::isComposite.
    --
-   --  A state with isComposite=true is said to be a composite state. A 
+   --  A state with isComposite=true is said to be a composite state. A
    --  composite state is a state that contains at least one region.
 
    overriding function Get_Is_Orthogonal
@@ -175,7 +175,7 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Getter of State::isOrthogonal.
    --
-   --  A state with isOrthogonal=true is said to be an orthogonal composite 
+   --  A state with isOrthogonal=true is said to be an orthogonal composite
    --  state. An orthogonal composite state contains two or more regions.
 
    overriding function Get_Is_Simple
@@ -183,8 +183,8 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Getter of State::isSimple.
    --
-   --  A state with isSimple=true is said to be a simple state. A simple state 
-   --  does not have any regions and it does not refer to any submachine state 
+   --  A state with isSimple=true is said to be a simple state. A simple state
+   --  does not have any regions and it does not refer to any submachine state
    --  machine.
 
    overriding function Get_Is_Submachine_State
@@ -192,7 +192,7 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Getter of State::isSubmachineState.
    --
-   --  A state with isSubmachineState=true is said to be a submachine state. 
+   --  A state with isSubmachineState=true is said to be a submachine state.
    --  Such a state refers to a state machine (submachine).
 
    overriding function Get_Redefined_State
@@ -214,7 +214,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Classifiers.UML_Classifier_Access;
    --  Getter of State::redefinitionContext.
    --
-   --  References the classifier in which context this element may be 
+   --  References the classifier in which context this element may be
    --  redefined.
 
    overriding function Get_Region
@@ -229,9 +229,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Constraints.UML_Constraint_Access;
    --  Getter of State::stateInvariant.
    --
-   --  Specifies conditions that are always true when this state is the 
-   --  current state. In protocol state machines, state invariants are 
-   --  additional conditions to the preconditions of the outgoing transitions, 
+   --  Specifies conditions that are always true when this state is the
+   --  current state. In protocol state machines, state invariants are
+   --  additional conditions to the preconditions of the outgoing transitions,
    --  and to the postcondition of the incoming transitions.
 
    overriding procedure Set_State_Invariant
@@ -239,9 +239,9 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.Constraints.UML_Constraint_Access);
    --  Setter of State::stateInvariant.
    --
-   --  Specifies conditions that are always true when this state is the 
-   --  current state. In protocol state machines, state invariants are 
-   --  additional conditions to the preconditions of the outgoing transitions, 
+   --  Specifies conditions that are always true when this state is the
+   --  current state. In protocol state machines, state invariants are
+   --  additional conditions to the preconditions of the outgoing transitions,
    --  and to the postcondition of the incoming transitions.
 
    overriding function Get_Submachine
@@ -249,7 +249,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.State_Machines.UML_State_Machine_Access;
    --  Getter of State::submachine.
    --
-   --  The state machine that is to be inserted in place of the (submachine) 
+   --  The state machine that is to be inserted in place of the (submachine)
    --  state.
 
    overriding procedure Set_Submachine
@@ -257,7 +257,7 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.State_Machines.UML_State_Machine_Access);
    --  Setter of State::submachine.
    --
-   --  The state machine that is to be inserted in place of the (submachine) 
+   --  The state machine that is to be inserted in place of the (submachine)
    --  state.
 
    overriding function Get_Is_Leaf
@@ -265,14 +265,14 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -280,14 +280,14 @@ package AMF.Internals.UML_Final_States is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -351,9 +351,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -361,7 +361,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -369,7 +369,7 @@ package AMF.Internals.UML_Final_States is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -405,7 +405,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Getter of Namespace::importedMember.
    --
-   --  References the PackageableElements that are members of this Namespace 
+   --  References the PackageableElements that are members of this Namespace
    --  as a result of either PackageImports or ElementImports.
 
    overriding function Get_Member
@@ -413,7 +413,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Namespace::member.
    --
-   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  A collection of NamedElements identifiable within the Namespace, either
    --  by being owned or by being introduced by importing or inheritance.
 
    overriding function Get_Owned_Member
@@ -470,7 +470,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.State_Machines.UML_State_Machine_Access;
    --  Operation State::containingStateMachine.
    --
-   --  The query containingStateMachine() returns the state machine that 
+   --  The query containingStateMachine() returns the state machine that
    --  contains the state either directly or transitively.
 
    overriding function Is_Composite
@@ -486,12 +486,12 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Operation State::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies that a redefining state is 
-   --  consistent with a redefined state provided that the redefining state is 
-   --  an extension of the redefined state: A simple state can be redefined 
-   --  (extended) to become a composite state (by adding a region) and a 
-   --  composite state can be redefined (extended) by adding regions and by 
-   --  adding vertices, states, and transitions to inherited regions. All 
+   --  The query isConsistentWith() specifies that a redefining state is
+   --  consistent with a redefined state provided that the redefining state is
+   --  an extension of the redefined state: A simple state can be redefined
+   --  (extended) to become a composite state (by adding a region) and a
+   --  composite state can be redefined (extended) by adding regions and by
+   --  adding vertices, states, and transitions to inherited regions. All
    --  states may add or replace entry, exit, and 'doActivity' actions.
 
    overriding function Is_Orthogonal
@@ -507,10 +507,10 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Operation State::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of a state are properly related to the 
-   --  redefinition contexts of the specified state to allow this element to 
-   --  redefine the other. The containing region of a redefining state must 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of a state are properly related to the
+   --  redefinition contexts of the specified state to allow this element to
+   --  redefine the other. The containing region of a redefining state must
    --  redefine the containing region of the redefined state.
 
    overriding function Is_Simple
@@ -532,7 +532,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Classifiers.UML_Classifier_Access;
    --  Operation State::redefinitionContext.
    --
-   --  The redefinition context of a state is the nearest containing 
+   --  The redefinition context of a state is the nearest containing
    --  statemachine.
 
    overriding function Is_Redefinition_Context_Valid
@@ -541,11 +541,11 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding function All_Namespaces
@@ -553,7 +553,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -561,7 +561,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -571,9 +571,9 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -588,8 +588,8 @@ package AMF.Internals.UML_Final_States is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -597,7 +597,7 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Exclude_Collisions
@@ -606,8 +606,8 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::excludeCollisions.
    --
-   --  The query excludeCollisions() excludes from a set of 
-   --  PackageableElements any that would not be distinguishable from each 
+   --  The query excludeCollisions() excludes from a set of
+   --  PackageableElements any that would not be distinguishable from each
    --  other in this namespace.
 
    overriding function Get_Names_Of_Member
@@ -616,16 +616,16 @@ package AMF.Internals.UML_Final_States is
        return AMF.String_Collections.Set_Of_String;
    --  Operation Namespace::getNamesOfMember.
    --
-   --  The query getNamesOfMember() takes importing into account. It gives 
-   --  back the set of names that an element would have in an importing 
-   --  namespace, either because it is owned, or if not owned then imported 
+   --  The query getNamesOfMember() takes importing into account. It gives
+   --  back the set of names that an element would have in an importing
+   --  namespace, either because it is owned, or if not owned then imported
    --  individually, or if not individually then from a package.
-   --  The query getNamesOfMember() gives a set of all of the names that a 
-   --  member would have in a Namespace. In general a member can have multiple 
-   --  names in a Namespace if it is imported more than once with different 
-   --  aliases. The query takes account of importing. It gives back the set of 
-   --  names that an element would have in an importing namespace, either 
-   --  because it is owned, or if not owned then imported individually, or if 
+   --  The query getNamesOfMember() gives a set of all of the names that a
+   --  member would have in a Namespace. In general a member can have multiple
+   --  names in a Namespace if it is imported more than once with different
+   --  aliases. The query takes account of importing. It gives back the set of
+   --  names that an element would have in an importing namespace, either
+   --  because it is owned, or if not owned then imported individually, or if
    --  not individually then from a package.
 
    overriding function Import_Members
@@ -634,9 +634,9 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importMembers.
    --
-   --  The query importMembers() defines which of a set of PackageableElements 
-   --  are actually imported into the namespace. This excludes hidden ones, 
-   --  i.e., those which have names that conflict with names of owned members, 
+   --  The query importMembers() defines which of a set of PackageableElements
+   --  are actually imported into the namespace. This excludes hidden ones,
+   --  i.e., those which have names that conflict with names of owned members,
    --  and also excludes elements which would have the same name when imported.
 
    overriding function Imported_Member
@@ -644,8 +644,8 @@ package AMF.Internals.UML_Final_States is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importedMember.
    --
-   --  The importedMember property is derived from the ElementImports and the 
-   --  PackageImports. References the PackageableElements that are members of 
+   --  The importedMember property is derived from the ElementImports and the
+   --  PackageImports. References the PackageableElements that are members of
    --  this Namespace as a result of either PackageImports or ElementImports.
 
    overriding function Members_Are_Distinguishable
@@ -653,7 +653,7 @@ package AMF.Internals.UML_Final_States is
        return Boolean;
    --  Operation Namespace::membersAreDistinguishable.
    --
-   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  The Boolean query membersAreDistinguishable() determines whether all of
    --  the namespace's members are distinguishable within it.
 
    overriding function Owned_Member
@@ -679,19 +679,20 @@ package AMF.Internals.UML_Final_States is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Final_State_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Final_State_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Final_State_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

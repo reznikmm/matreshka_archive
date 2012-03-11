@@ -60,7 +60,7 @@ package AMF.Internals.UML_Package_Merges is
        return AMF.UML.Packages.UML_Package_Access;
    --  Getter of PackageMerge::mergedPackage.
    --
-   --  References the Package that is to be merged with the receiving package 
+   --  References the Package that is to be merged with the receiving package
    --  of the PackageMerge.
 
    overriding procedure Set_Merged_Package
@@ -68,7 +68,7 @@ package AMF.Internals.UML_Package_Merges is
      To   : AMF.UML.Packages.UML_Package_Access);
    --  Setter of PackageMerge::mergedPackage.
    --
-   --  References the Package that is to be merged with the receiving package 
+   --  References the Package that is to be merged with the receiving package
    --  of the PackageMerge.
 
    overriding function Get_Receiving_Package
@@ -76,7 +76,7 @@ package AMF.Internals.UML_Package_Merges is
        return AMF.UML.Packages.UML_Package_Access;
    --  Getter of PackageMerge::receivingPackage.
    --
-   --  References the Package that is being extended with the contents of the 
+   --  References the Package that is being extended with the contents of the
    --  merged package of the PackageMerge.
 
    overriding procedure Set_Receiving_Package
@@ -84,7 +84,7 @@ package AMF.Internals.UML_Package_Merges is
      To   : AMF.UML.Packages.UML_Package_Access);
    --  Setter of PackageMerge::receivingPackage.
    --
-   --  References the Package that is being extended with the contents of the 
+   --  References the Package that is being extended with the contents of the
    --  merged package of the PackageMerge.
 
    overriding function Get_Source
@@ -134,24 +134,25 @@ package AMF.Internals.UML_Package_Merges is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Package_Merge_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Package_Merge_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Package_Merge_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

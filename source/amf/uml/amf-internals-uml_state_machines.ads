@@ -101,8 +101,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate;
    --  Getter of StateMachine::connectionPoint.
    --
-   --  The connection points defined for this state machine. They represent 
-   --  the interface of the state machine when used as part of submachine 
+   --  The connection points defined for this state machine. They represent
+   --  the interface of the state machine when used as part of submachine
    --  state.
 
    overriding function Get_Extended_State_Machine
@@ -124,7 +124,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.States.Collections.Set_Of_UML_State;
    --  Getter of StateMachine::submachineState.
    --
-   --  References the submachine(s) in case of a submachine state. Multiple 
+   --  References the submachine(s) in case of a submachine state. Multiple
    --  machines are referenced in case of a concurrent state.
 
    overriding function Get_Context
@@ -132,13 +132,13 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access;
    --  Getter of Behavior::context.
    --
-   --  The classifier that is the context for the execution of the behavior. 
-   --  If the behavior is owned by a BehavioredClassifier, that classifier is 
-   --  the context. Otherwise, the context is the first BehavioredClassifier 
-   --  reached by following the chain of owner relationships. For example, 
-   --  following this algorithm, the context of an entry action in a state 
-   --  machine is the classifier that owns the state machine. The features of 
-   --  the context classifier as well as the elements visible to the context 
+   --  The classifier that is the context for the execution of the behavior.
+   --  If the behavior is owned by a BehavioredClassifier, that classifier is
+   --  the context. Otherwise, the context is the first BehavioredClassifier
+   --  reached by following the chain of owner relationships. For example,
+   --  following this algorithm, the context of an entry action in a state
+   --  machine is the classifier that owns the state machine. The features of
+   --  the context classifier as well as the elements visible to the context
    --  classifier are visible to the behavior.
 
    overriding function Get_Is_Reentrant
@@ -146,7 +146,7 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Getter of Behavior::isReentrant.
    --
-   --  Tells whether the behavior can be invoked while it is still executing 
+   --  Tells whether the behavior can be invoked while it is still executing
    --  from a previous invocation.
 
    overriding procedure Set_Is_Reentrant
@@ -154,7 +154,7 @@ package AMF.Internals.UML_State_Machines is
      To   : Boolean);
    --  Setter of Behavior::isReentrant.
    --
-   --  Tells whether the behavior can be invoked while it is still executing 
+   --  Tells whether the behavior can be invoked while it is still executing
    --  from a previous invocation.
 
    overriding function Get_Owned_Parameter
@@ -162,9 +162,9 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter;
    --  Getter of Behavior::ownedParameter.
    --
-   --  References a list of parameters to the behavior which describes the 
-   --  order and type of arguments that can be given when the behavior is 
-   --  invoked and of the values which will be returned when the behavior 
+   --  References a list of parameters to the behavior which describes the
+   --  order and type of arguments that can be given when the behavior is
+   --  invoked and of the values which will be returned when the behavior
    --  completes its execution.
 
    overriding function Get_Owned_Parameter_Set
@@ -179,8 +179,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint;
    --  Getter of Behavior::postcondition.
    --
-   --  An optional set of Constraints specifying what is fulfilled after the 
-   --  execution of the behavior is completed, if its precondition was 
+   --  An optional set of Constraints specifying what is fulfilled after the
+   --  execution of the behavior is completed, if its precondition was
    --  fulfilled before its invocation.
 
    overriding function Get_Precondition
@@ -188,7 +188,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint;
    --  Getter of Behavior::precondition.
    --
-   --  An optional set of Constraints specifying what must be fulfilled when 
+   --  An optional set of Constraints specifying what must be fulfilled when
    --  the behavior is invoked.
 
    overriding function Get_Redefined_Behavior
@@ -196,10 +196,10 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior;
    --  Getter of Behavior::redefinedBehavior.
    --
-   --  References a behavior that this behavior redefines. A subtype of 
-   --  Behavior may redefine any other subtype of Behavior. If the behavior 
-   --  implements a behavioral feature, it replaces the redefined behavior. If 
-   --  the behavior is a classifier behavior, it extends the redefined 
+   --  References a behavior that this behavior redefines. A subtype of
+   --  Behavior may redefine any other subtype of Behavior. If the behavior
+   --  implements a behavioral feature, it replaces the redefined behavior. If
+   --  the behavior is a classifier behavior, it extends the redefined
    --  behavior.
 
    overriding function Get_Specification
@@ -207,12 +207,12 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access;
    --  Getter of Behavior::specification.
    --
-   --  Designates a behavioral feature that the behavior implements. The 
-   --  behavioral feature must be owned by the classifier that owns the 
-   --  behavior or be inherited by it. The parameters of the behavioral 
-   --  feature and the implementing behavior must match. A behavior does not 
-   --  need to have a specification, in which case it either is the classifer 
-   --  behavior of a BehavioredClassifier or it can only be invoked by another 
+   --  Designates a behavioral feature that the behavior implements. The
+   --  behavioral feature must be owned by the classifier that owns the
+   --  behavior or be inherited by it. The parameters of the behavioral
+   --  feature and the implementing behavior must match. A behavior does not
+   --  need to have a specification, in which case it either is the classifer
+   --  behavior of a BehavioredClassifier or it can only be invoked by another
    --  behavior of the classifier.
 
    overriding procedure Set_Specification
@@ -220,12 +220,12 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access);
    --  Setter of Behavior::specification.
    --
-   --  Designates a behavioral feature that the behavior implements. The 
-   --  behavioral feature must be owned by the classifier that owns the 
-   --  behavior or be inherited by it. The parameters of the behavioral 
-   --  feature and the implementing behavior must match. A behavior does not 
-   --  need to have a specification, in which case it either is the classifer 
-   --  behavior of a BehavioredClassifier or it can only be invoked by another 
+   --  Designates a behavioral feature that the behavior implements. The
+   --  behavioral feature must be owned by the classifier that owns the
+   --  behavior or be inherited by it. The parameters of the behavioral
+   --  feature and the implementing behavior must match. A behavior does not
+   --  need to have a specification, in which case it either is the classifer
+   --  behavior of a BehavioredClassifier or it can only be invoked by another
    --  behavior of the classifier.
 
    overriding function Get_Extension
@@ -233,8 +233,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Extensions.Collections.Set_Of_UML_Extension;
    --  Getter of Class::extension.
    --
-   --  References the Extensions that specify additional properties of the 
-   --  metaclass. The property is derived from the extensions whose memberEnds 
+   --  References the Extensions that specify additional properties of the
+   --  metaclass. The property is derived from the extensions whose memberEnds
    --  are typed by the Class.
 
    overriding function Get_Is_Abstract
@@ -243,9 +243,9 @@ package AMF.Internals.UML_State_Machines is
    --  Getter of Class::isAbstract.
    --
    --  True when a class is abstract.
-   --  If true, the Classifier does not provide a complete declaration and can 
-   --  typically not be instantiated. An abstract classifier is intended to be 
-   --  used by other classifiers e.g. as the target of general 
+   --  If true, the Classifier does not provide a complete declaration and can
+   --  typically not be instantiated. An abstract classifier is intended to be
+   --  used by other classifiers e.g. as the target of general
    --  metarelationships or generalization relationships.
 
    overriding function Get_Is_Active
@@ -253,8 +253,8 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Getter of Class::isActive.
    --
-   --  Determines whether an object specified by this class is active or not. 
-   --  If true, then the owning class is referred to as an active class. If 
+   --  Determines whether an object specified by this class is active or not.
+   --  If true, then the owning class is referred to as an active class. If
    --  false, then such a class is referred to as a passive class.
 
    overriding procedure Set_Is_Active
@@ -262,8 +262,8 @@ package AMF.Internals.UML_State_Machines is
      To   : Boolean);
    --  Setter of Class::isActive.
    --
-   --  Determines whether an object specified by this class is active or not. 
-   --  If true, then the owning class is referred to as an active class. If 
+   --  Determines whether an object specified by this class is active or not.
+   --  If true, then the owning class is referred to as an active class. If
    --  false, then such a class is referred to as a passive class.
 
    overriding function Get_Nested_Classifier
@@ -271,7 +271,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier;
    --  Getter of Class::nestedClassifier.
    --
-   --  References all the Classifiers that are defined (nested) within the 
+   --  References all the Classifiers that are defined (nested) within the
    --  Class.
 
    overriding function Get_Owned_Attribute
@@ -307,7 +307,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Behaviors.UML_Behavior_Access;
    --  Getter of BehavioredClassifier::classifierBehavior.
    --
-   --  A behavior specification that specifies the behavior of the classifier 
+   --  A behavior specification that specifies the behavior of the classifier
    --  itself.
 
    overriding procedure Set_Classifier_Behavior
@@ -315,7 +315,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Behaviors.UML_Behavior_Access);
    --  Setter of BehavioredClassifier::classifierBehavior.
    --
-   --  A behavior specification that specifies the behavior of the classifier 
+   --  A behavior specification that specifies the behavior of the classifier
    --  itself.
 
    overriding function Get_Interface_Realization
@@ -323,8 +323,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Interface_Realizations.Collections.Set_Of_UML_Interface_Realization;
    --  Getter of BehavioredClassifier::interfaceRealization.
    --
-   --  The set of InterfaceRealizations owned by the BehavioredClassifier. 
-   --  Interface realizations reference the Interfaces of which the 
+   --  The set of InterfaceRealizations owned by the BehavioredClassifier.
+   --  Interface realizations reference the Interfaces of which the
    --  BehavioredClassifier is an implementation.
 
    overriding function Get_Owned_Behavior
@@ -339,7 +339,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Properties.Collections.Set_Of_UML_Property;
    --  Getter of Classifier::attribute.
    --
-   --  Refers to all of the Properties that are direct (i.e. not inherited or 
+   --  Refers to all of the Properties that are direct (i.e. not inherited or
    --  imported) attributes of the classifier.
 
    overriding function Get_Collaboration_Use
@@ -355,8 +355,8 @@ package AMF.Internals.UML_State_Machines is
    --  Getter of Classifier::feature.
    --
    --  Specifies each feature defined in the classifier.
-   --  Note that there may be members of the Classifier that are of the type 
-   --  Feature but are not included in this association, e.g. inherited 
+   --  Note that there may be members of the Classifier that are of the type
+   --  Feature but are not included in this association, e.g. inherited
    --  features.
 
    overriding function Get_General
@@ -372,8 +372,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization;
    --  Getter of Classifier::generalization.
    --
-   --  Specifies the Generalization relationships for this Classifier. These 
-   --  Generalizations navigaten to more general classifiers in the 
+   --  Specifies the Generalization relationships for this Classifier. These
+   --  Generalizations navigaten to more general classifiers in the
    --  generalization hierarchy.
 
    overriding function Get_Inherited_Member
@@ -381,7 +381,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Classifier::inheritedMember.
    --
-   --  Specifies all elements inherited by this classifier from the general 
+   --  Specifies all elements inherited by this classifier from the general
    --  classifiers.
 
    overriding function Get_Is_Final_Specialization
@@ -389,13 +389,13 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Getter of Classifier::isFinalSpecialization.
    --
-   --  If true, the Classifier cannot be specialized by generalization. Note 
-   --  that this property is preserved through package merge operations; that 
-   --  is, the capability to specialize a Classifier (i.e., 
-   --  isFinalSpecialization =false) must be preserved in the resulting 
-   --  Classifier of a package merge operation where a Classifier with 
-   --  isFinalSpecialization =false is merged with a matching Classifier with 
-   --  isFinalSpecialization =true: the resulting Classifier will have 
+   --  If true, the Classifier cannot be specialized by generalization. Note
+   --  that this property is preserved through package merge operations; that
+   --  is, the capability to specialize a Classifier (i.e.,
+   --  isFinalSpecialization =false) must be preserved in the resulting
+   --  Classifier of a package merge operation where a Classifier with
+   --  isFinalSpecialization =false is merged with a matching Classifier with
+   --  isFinalSpecialization =true: the resulting Classifier will have
    --  isFinalSpecialization =false.
 
    overriding procedure Set_Is_Final_Specialization
@@ -403,13 +403,13 @@ package AMF.Internals.UML_State_Machines is
      To   : Boolean);
    --  Setter of Classifier::isFinalSpecialization.
    --
-   --  If true, the Classifier cannot be specialized by generalization. Note 
-   --  that this property is preserved through package merge operations; that 
-   --  is, the capability to specialize a Classifier (i.e., 
-   --  isFinalSpecialization =false) must be preserved in the resulting 
-   --  Classifier of a package merge operation where a Classifier with 
-   --  isFinalSpecialization =false is merged with a matching Classifier with 
-   --  isFinalSpecialization =true: the resulting Classifier will have 
+   --  If true, the Classifier cannot be specialized by generalization. Note
+   --  that this property is preserved through package merge operations; that
+   --  is, the capability to specialize a Classifier (i.e.,
+   --  isFinalSpecialization =false) must be preserved in the resulting
+   --  Classifier of a package merge operation where a Classifier with
+   --  isFinalSpecialization =false is merged with a matching Classifier with
+   --  isFinalSpecialization =true: the resulting Classifier will have
    --  isFinalSpecialization =false.
 
    overriding function Get_Owned_Template_Signature
@@ -417,7 +417,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access;
    --  Getter of Classifier::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding procedure Set_Owned_Template_Signature
@@ -425,7 +425,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access);
    --  Setter of Classifier::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding function Get_Owned_Use_Case
@@ -440,7 +440,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set;
    --  Getter of Classifier::powertypeExtent.
    --
-   --  Designates the GeneralizationSet of which the associated Classifier is 
+   --  Designates the GeneralizationSet of which the associated Classifier is
    --  a power type.
 
    overriding function Get_Redefined_Classifier
@@ -455,7 +455,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access;
    --  Getter of Classifier::representation.
    --
-   --  References a collaboration use which indicates the collaboration that 
+   --  References a collaboration use which indicates the collaboration that
    --  represents this classifier.
 
    overriding procedure Set_Representation
@@ -463,7 +463,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access);
    --  Setter of Classifier::representation.
    --
-   --  References a collaboration use which indicates the collaboration that 
+   --  References a collaboration use which indicates the collaboration that
    --  represents this classifier.
 
    overriding function Get_Substitution
@@ -506,7 +506,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Getter of Namespace::importedMember.
    --
-   --  References the PackageableElements that are members of this Namespace 
+   --  References the PackageableElements that are members of this Namespace
    --  as a result of either PackageImports or ElementImports.
 
    overriding function Get_Member
@@ -514,7 +514,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Namespace::member.
    --
-   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  A collection of NamedElements identifiable within the Namespace, either
    --  by being owned or by being introduced by importing or inheritance.
 
    overriding function Get_Owned_Member
@@ -585,9 +585,9 @@ package AMF.Internals.UML_State_Machines is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -595,7 +595,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -603,7 +603,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -646,7 +646,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.UML_Visibility_Kind;
    --  Getter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding procedure Set_Visibility
@@ -654,7 +654,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.UML_Visibility_Kind);
    --  Setter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding function Get_Owning_Template_Parameter
@@ -690,7 +690,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
    --  Getter of TemplateableElement::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding procedure Set_Owned_Template_Signature
@@ -698,7 +698,7 @@ package AMF.Internals.UML_State_Machines is
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
    --  Setter of TemplateableElement::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding function Get_Template_Binding
@@ -713,14 +713,14 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -728,14 +728,14 @@ package AMF.Internals.UML_State_Machines is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -771,8 +771,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Properties.Collections.Set_Of_UML_Property;
    --  Getter of StructuredClassifier::part.
    --
-   --  References the properties specifying instances that the classifier owns 
-   --  by composition. This association is derived, selecting those owned 
+   --  References the properties specifying instances that the classifier owns
+   --  by composition. This association is derived, selecting those owned
    --  properties where isComposite is true.
 
    overriding function Get_Role
@@ -789,8 +789,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Namespaces.UML_Namespace_Access;
    --  Operation StateMachine::LCA.
    --
-   --  The operation LCA(s1,s2) returns an orthogonal state or region which is 
-   --  the least common ancestor of states s1 and s2, based on the 
+   --  The operation LCA(s1,s2) returns an orthogonal state or region which is
+   --  the least common ancestor of states s1 and s2, based on the
    --  statemachine containment hierarchy.
 
    overriding function Ancestor
@@ -800,7 +800,7 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation StateMachine::ancestor.
    --
-   --  The query ancestor(s1, s2) checks whether s1 is an ancestor state of 
+   --  The query ancestor(s1, s2) checks whether s1 is an ancestor state of
    --  state s2.
 
    overriding function Is_Consistent_With
@@ -809,12 +809,12 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation StateMachine::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies that a redefining state machine 
-   --  is consistent with a redefined state machine provided that the 
-   --  redefining state machine is an extension of the redefined state 
-   --  machine: Regions are inherited and regions can be added, inherited 
-   --  regions can be redefined. In case of multiple redefining state 
-   --  machines, extension implies that the redefining state machine gets 
+   --  The query isConsistentWith() specifies that a redefining state machine
+   --  is consistent with a redefined state machine provided that the
+   --  redefining state machine is an extension of the redefined state
+   --  machine: Regions are inherited and regions can be added, inherited
+   --  regions can be redefined. In case of multiple redefining state
+   --  machines, extension implies that the redefining state machine gets
    --  orthogonal regions for each of the redefined state machines.
 
    overriding function Is_Redefinition_Context_Valid
@@ -823,11 +823,11 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation StateMachine::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of a statemachine are properly related to the 
-   --  redefinition contexts of the specified statemachine to allow this 
-   --  element to redefine the other. The containing classifier of a 
-   --  redefining statemachine must redefine the containing classifier of the 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of a statemachine are properly related to the
+   --  redefinition contexts of the specified statemachine to allow this
+   --  element to redefine the other. The containing classifier of a
+   --  redefining statemachine must redefine the containing classifier of the
    --  redefined statemachine.
 
    overriding function Context
@@ -864,8 +864,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Features.Collections.Set_Of_UML_Feature;
    --  Operation Classifier::allFeatures.
    --
-   --  The query allFeatures() gives all of the features in the namespace of 
-   --  the classifier. In general, through mechanisms such as inheritance, 
+   --  The query allFeatures() gives all of the features in the namespace of
+   --  the classifier. In general, through mechanisms such as inheritance,
    --  this will be a larger set than feature.
 
    overriding function Conforms_To
@@ -874,8 +874,8 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Classifier::conformsTo.
    --
-   --  The query conformsTo() gives true for a classifier that defines a type 
-   --  that conforms to another. This is used, for example, in the 
+   --  The query conformsTo() gives true for a classifier that defines a type
+   --  that conforms to another. This is used, for example, in the
    --  specification of signature conformance for operations.
 
    overriding function General
@@ -883,7 +883,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
    --  Operation Classifier::general.
    --
-   --  The general classifiers are the classifiers referenced by the 
+   --  The general classifiers are the classifiers referenced by the
    --  generalization relationships.
 
    overriding function Has_Visibility_Of
@@ -892,8 +892,8 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Classifier::hasVisibilityOf.
    --
-   --  The query hasVisibilityOf() determines whether a named element is 
-   --  visible in the classifier. By default all are visible. It is only 
+   --  The query hasVisibilityOf() determines whether a named element is
+   --  visible in the classifier. By default all are visible. It is only
    --  called when the argument is something owned by a parent.
 
    overriding function Inheritable_Members
@@ -902,8 +902,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Operation Classifier::inheritableMembers.
    --
-   --  The query inheritableMembers() gives all of the members of a classifier 
-   --  that may be inherited in one of its descendants, subject to whatever 
+   --  The query inheritableMembers() gives all of the members of a classifier
+   --  that may be inherited in one of its descendants, subject to whatever
    --  visibility restrictions apply.
 
    overriding function Inherited_Member
@@ -911,9 +911,9 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Operation Classifier::inheritedMember.
    --
-   --  The inheritedMember association is derived by inheriting the 
+   --  The inheritedMember association is derived by inheriting the
    --  inheritable members of the parents.
-   --  The inheritedMember association is derived by inheriting the 
+   --  The inheritedMember association is derived by inheriting the
    --  inheritable members of the parents.
 
    overriding function Is_Template
@@ -921,7 +921,7 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Classifier::isTemplate.
    --
-   --  The query isTemplate() returns whether this templateable element is 
+   --  The query isTemplate() returns whether this templateable element is
    --  actually a template.
 
    overriding function May_Specialize_Type
@@ -930,10 +930,10 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Classifier::maySpecializeType.
    --
-   --  The query maySpecializeType() determines whether this classifier may 
-   --  have a generalization relationship to classifiers of the specified 
-   --  type. By default a classifier may specialize classifiers of the same or 
-   --  a more general type. It is intended to be redefined by classifiers that 
+   --  The query maySpecializeType() determines whether this classifier may
+   --  have a generalization relationship to classifiers of the specified
+   --  type. By default a classifier may specialize classifiers of the same or
+   --  a more general type. It is intended to be redefined by classifiers that
    --  have different specialization constraints.
 
    overriding function Exclude_Collisions
@@ -942,8 +942,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::excludeCollisions.
    --
-   --  The query excludeCollisions() excludes from a set of 
-   --  PackageableElements any that would not be distinguishable from each 
+   --  The query excludeCollisions() excludes from a set of
+   --  PackageableElements any that would not be distinguishable from each
    --  other in this namespace.
 
    overriding function Get_Names_Of_Member
@@ -952,16 +952,16 @@ package AMF.Internals.UML_State_Machines is
        return AMF.String_Collections.Set_Of_String;
    --  Operation Namespace::getNamesOfMember.
    --
-   --  The query getNamesOfMember() takes importing into account. It gives 
-   --  back the set of names that an element would have in an importing 
-   --  namespace, either because it is owned, or if not owned then imported 
+   --  The query getNamesOfMember() takes importing into account. It gives
+   --  back the set of names that an element would have in an importing
+   --  namespace, either because it is owned, or if not owned then imported
    --  individually, or if not individually then from a package.
-   --  The query getNamesOfMember() gives a set of all of the names that a 
-   --  member would have in a Namespace. In general a member can have multiple 
-   --  names in a Namespace if it is imported more than once with different 
-   --  aliases. The query takes account of importing. It gives back the set of 
-   --  names that an element would have in an importing namespace, either 
-   --  because it is owned, or if not owned then imported individually, or if 
+   --  The query getNamesOfMember() gives a set of all of the names that a
+   --  member would have in a Namespace. In general a member can have multiple
+   --  names in a Namespace if it is imported more than once with different
+   --  aliases. The query takes account of importing. It gives back the set of
+   --  names that an element would have in an importing namespace, either
+   --  because it is owned, or if not owned then imported individually, or if
    --  not individually then from a package.
 
    overriding function Import_Members
@@ -970,9 +970,9 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importMembers.
    --
-   --  The query importMembers() defines which of a set of PackageableElements 
-   --  are actually imported into the namespace. This excludes hidden ones, 
-   --  i.e., those which have names that conflict with names of owned members, 
+   --  The query importMembers() defines which of a set of PackageableElements
+   --  are actually imported into the namespace. This excludes hidden ones,
+   --  i.e., those which have names that conflict with names of owned members,
    --  and also excludes elements which would have the same name when imported.
 
    overriding function Imported_Member
@@ -980,8 +980,8 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importedMember.
    --
-   --  The importedMember property is derived from the ElementImports and the 
-   --  PackageImports. References the PackageableElements that are members of 
+   --  The importedMember property is derived from the ElementImports and the
+   --  PackageImports. References the PackageableElements that are members of
    --  this Namespace as a result of either PackageImports or ElementImports.
 
    overriding function Members_Are_Distinguishable
@@ -989,7 +989,7 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Namespace::membersAreDistinguishable.
    --
-   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  The Boolean query membersAreDistinguishable() determines whether all of
    --  the namespace's members are distinguishable within it.
 
    overriding function Owned_Member
@@ -1004,7 +1004,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -1012,7 +1012,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -1022,9 +1022,9 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -1039,8 +1039,8 @@ package AMF.Internals.UML_State_Machines is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -1048,7 +1048,7 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Conforms_To
@@ -1057,8 +1057,8 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation Type::conformsTo.
    --
-   --  The query conformsTo() gives true for a type that conforms to another. 
-   --  By default, two types do not conform to each other. This query is 
+   --  The query conformsTo() gives true for a type that conforms to another.
+   --  By default, two types do not conform to each other. This query is
    --  intended to be redefined for specific conformance situations.
 
    overriding function Is_Compatible_With
@@ -1067,11 +1067,11 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation ParameterableElement::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
-   --  should override this operation to specify different compatibility 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses
+   --  should override this operation to specify different compatibility
    --  constraints.
 
    overriding function Is_Template_Parameter
@@ -1079,7 +1079,7 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding function Parameterable_Elements
@@ -1087,10 +1087,10 @@ package AMF.Internals.UML_State_Machines is
        return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element;
    --  Operation TemplateableElement::parameterableElements.
    --
-   --  The query parameterableElements() returns the set of elements that may 
-   --  be used as the parametered elements for a template parameter of this 
-   --  templateable element. By default, this set includes all the owned 
-   --  elements. Subclasses may override this operation if they choose to 
+   --  The query parameterableElements() returns the set of elements that may
+   --  be used as the parametered elements for a template parameter of this
+   --  templateable element. By default, this set includes all the owned
+   --  elements. Subclasses may override this operation if they choose to
    --  restrict the set of parameterable elements.
 
    overriding function Is_Redefinition_Context_Valid
@@ -1099,11 +1099,11 @@ package AMF.Internals.UML_State_Machines is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding function Owned_Port
@@ -1122,19 +1122,20 @@ package AMF.Internals.UML_State_Machines is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_State_Machine_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_State_Machine_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_State_Machine_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

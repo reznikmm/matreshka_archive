@@ -90,7 +90,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Behaviors.UML_Behavior_Access;
    --  Getter of Transition::effect.
    --
-   --  Specifies an optional behavior to be performed when the transition 
+   --  Specifies an optional behavior to be performed when the transition
    --  fires.
 
    overriding procedure Set_Effect
@@ -98,7 +98,7 @@ package AMF.Internals.UML_Transitions is
      To   : AMF.UML.Behaviors.UML_Behavior_Access);
    --  Setter of Transition::effect.
    --
-   --  Specifies an optional behavior to be performed when the transition 
+   --  Specifies an optional behavior to be performed when the transition
    --  fires.
 
    overriding function Get_Guard
@@ -106,11 +106,11 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Constraints.UML_Constraint_Access;
    --  Getter of Transition::guard.
    --
-   --  A guard is a constraint that provides a fine-grained control over the 
-   --  firing of the transition. The guard is evaluated when an event 
-   --  occurrence is dispatched by the state machine. If the guard is true at 
-   --  that time, the transition may be enabled, otherwise, it is disabled. 
-   --  Guards should be pure expressions without side effects. Guard 
+   --  A guard is a constraint that provides a fine-grained control over the
+   --  firing of the transition. The guard is evaluated when an event
+   --  occurrence is dispatched by the state machine. If the guard is true at
+   --  that time, the transition may be enabled, otherwise, it is disabled.
+   --  Guards should be pure expressions without side effects. Guard
    --  expressions with side effects are ill formed.
 
    overriding procedure Set_Guard
@@ -118,11 +118,11 @@ package AMF.Internals.UML_Transitions is
      To   : AMF.UML.Constraints.UML_Constraint_Access);
    --  Setter of Transition::guard.
    --
-   --  A guard is a constraint that provides a fine-grained control over the 
-   --  firing of the transition. The guard is evaluated when an event 
-   --  occurrence is dispatched by the state machine. If the guard is true at 
-   --  that time, the transition may be enabled, otherwise, it is disabled. 
-   --  Guards should be pure expressions without side effects. Guard 
+   --  A guard is a constraint that provides a fine-grained control over the
+   --  firing of the transition. The guard is evaluated when an event
+   --  occurrence is dispatched by the state machine. If the guard is true at
+   --  that time, the transition may be enabled, otherwise, it is disabled.
+   --  Guards should be pure expressions without side effects. Guard
    --  expressions with side effects are ill formed.
 
    overriding function Get_Kind
@@ -158,7 +158,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Classifiers.UML_Classifier_Access;
    --  Getter of Transition::redefinitionContext.
    --
-   --  References the classifier in which context this element may be 
+   --  References the classifier in which context this element may be
    --  redefined.
 
    overriding function Get_Source
@@ -166,7 +166,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Vertexs.UML_Vertex_Access;
    --  Getter of Transition::source.
    --
-   --  Designates the originating vertex (state or pseudostate) of the 
+   --  Designates the originating vertex (state or pseudostate) of the
    --  transition.
 
    overriding procedure Set_Source
@@ -174,7 +174,7 @@ package AMF.Internals.UML_Transitions is
      To   : AMF.UML.Vertexs.UML_Vertex_Access);
    --  Setter of Transition::source.
    --
-   --  Designates the originating vertex (state or pseudostate) of the 
+   --  Designates the originating vertex (state or pseudostate) of the
    --  transition.
 
    overriding function Get_Target
@@ -182,7 +182,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Vertexs.UML_Vertex_Access;
    --  Getter of Transition::target.
    --
-   --  Designates the target vertex that is reached when the transition is 
+   --  Designates the target vertex that is reached when the transition is
    --  taken.
 
    overriding procedure Set_Target
@@ -190,7 +190,7 @@ package AMF.Internals.UML_Transitions is
      To   : AMF.UML.Vertexs.UML_Vertex_Access);
    --  Setter of Transition::target.
    --
-   --  Designates the target vertex that is reached when the transition is 
+   --  Designates the target vertex that is reached when the transition is
    --  taken.
 
    overriding function Get_Trigger
@@ -212,7 +212,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Getter of Namespace::importedMember.
    --
-   --  References the PackageableElements that are members of this Namespace 
+   --  References the PackageableElements that are members of this Namespace
    --  as a result of either PackageImports or ElementImports.
 
    overriding function Get_Member
@@ -220,7 +220,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Namespace::member.
    --
-   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  A collection of NamedElements identifiable within the Namespace, either
    --  by being owned or by being introduced by importing or inheritance.
 
    overriding function Get_Owned_Member
@@ -291,9 +291,9 @@ package AMF.Internals.UML_Transitions is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -301,7 +301,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -309,7 +309,7 @@ package AMF.Internals.UML_Transitions is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -338,14 +338,14 @@ package AMF.Internals.UML_Transitions is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -353,14 +353,14 @@ package AMF.Internals.UML_Transitions is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -382,7 +382,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.State_Machines.UML_State_Machine_Access;
    --  Operation Transition::containingStateMachine.
    --
-   --  The query containingStateMachine() returns the state machine that 
+   --  The query containingStateMachine() returns the state machine that
    --  contains the transition either directly or transitively.
 
    overriding function Is_Consistent_With
@@ -391,10 +391,10 @@ package AMF.Internals.UML_Transitions is
        return Boolean;
    --  Operation Transition::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies that a redefining transition is 
-   --  consistent with a redefined transition provided that the redefining 
-   --  transition has the following relation to the redefined transition: A 
-   --  redefining transition redefines all properties of the corresponding 
+   --  The query isConsistentWith() specifies that a redefining transition is
+   --  consistent with a redefined transition provided that the redefining
+   --  transition has the following relation to the redefined transition: A
+   --  redefining transition redefines all properties of the corresponding
    --  redefined transition, except the source state and the trigger.
 
    overriding function Redefinition_Context
@@ -402,7 +402,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Classifiers.UML_Classifier_Access;
    --  Operation Transition::redefinitionContext.
    --
-   --  The redefinition context of a transition is the nearest containing 
+   --  The redefinition context of a transition is the nearest containing
    --  statemachine.
 
    overriding function Exclude_Collisions
@@ -411,8 +411,8 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::excludeCollisions.
    --
-   --  The query excludeCollisions() excludes from a set of 
-   --  PackageableElements any that would not be distinguishable from each 
+   --  The query excludeCollisions() excludes from a set of
+   --  PackageableElements any that would not be distinguishable from each
    --  other in this namespace.
 
    overriding function Get_Names_Of_Member
@@ -421,16 +421,16 @@ package AMF.Internals.UML_Transitions is
        return AMF.String_Collections.Set_Of_String;
    --  Operation Namespace::getNamesOfMember.
    --
-   --  The query getNamesOfMember() takes importing into account. It gives 
-   --  back the set of names that an element would have in an importing 
-   --  namespace, either because it is owned, or if not owned then imported 
+   --  The query getNamesOfMember() takes importing into account. It gives
+   --  back the set of names that an element would have in an importing
+   --  namespace, either because it is owned, or if not owned then imported
    --  individually, or if not individually then from a package.
-   --  The query getNamesOfMember() gives a set of all of the names that a 
-   --  member would have in a Namespace. In general a member can have multiple 
-   --  names in a Namespace if it is imported more than once with different 
-   --  aliases. The query takes account of importing. It gives back the set of 
-   --  names that an element would have in an importing namespace, either 
-   --  because it is owned, or if not owned then imported individually, or if 
+   --  The query getNamesOfMember() gives a set of all of the names that a
+   --  member would have in a Namespace. In general a member can have multiple
+   --  names in a Namespace if it is imported more than once with different
+   --  aliases. The query takes account of importing. It gives back the set of
+   --  names that an element would have in an importing namespace, either
+   --  because it is owned, or if not owned then imported individually, or if
    --  not individually then from a package.
 
    overriding function Import_Members
@@ -439,9 +439,9 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importMembers.
    --
-   --  The query importMembers() defines which of a set of PackageableElements 
-   --  are actually imported into the namespace. This excludes hidden ones, 
-   --  i.e., those which have names that conflict with names of owned members, 
+   --  The query importMembers() defines which of a set of PackageableElements
+   --  are actually imported into the namespace. This excludes hidden ones,
+   --  i.e., those which have names that conflict with names of owned members,
    --  and also excludes elements which would have the same name when imported.
 
    overriding function Imported_Member
@@ -449,8 +449,8 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importedMember.
    --
-   --  The importedMember property is derived from the ElementImports and the 
-   --  PackageImports. References the PackageableElements that are members of 
+   --  The importedMember property is derived from the ElementImports and the
+   --  PackageImports. References the PackageableElements that are members of
    --  this Namespace as a result of either PackageImports or ElementImports.
 
    overriding function Members_Are_Distinguishable
@@ -458,7 +458,7 @@ package AMF.Internals.UML_Transitions is
        return Boolean;
    --  Operation Namespace::membersAreDistinguishable.
    --
-   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  The Boolean query membersAreDistinguishable() determines whether all of
    --  the namespace's members are distinguishable within it.
 
    overriding function Owned_Member
@@ -473,7 +473,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -481,7 +481,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -491,9 +491,9 @@ package AMF.Internals.UML_Transitions is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -508,8 +508,8 @@ package AMF.Internals.UML_Transitions is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -517,7 +517,7 @@ package AMF.Internals.UML_Transitions is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Is_Redefinition_Context_Valid
@@ -526,28 +526,29 @@ package AMF.Internals.UML_Transitions is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Transition_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Transition_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Transition_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

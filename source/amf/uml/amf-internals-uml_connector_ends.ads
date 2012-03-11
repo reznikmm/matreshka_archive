@@ -63,9 +63,9 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.UML.Properties.UML_Property_Access;
    --  Getter of ConnectorEnd::definingEnd.
    --
-   --  A derived association referencing the corresponding association end on 
-   --  the association which types the connector owing this connector end. 
-   --  This association is derived by selecting the association end at the 
+   --  A derived association referencing the corresponding association end on
+   --  the association which types the connector owing this connector end.
+   --  This association is derived by selecting the association end at the
    --  same place in the ordering of association ends as this connector end.
 
    overriding function Get_Part_With_Port
@@ -73,7 +73,7 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.UML.Properties.UML_Property_Access;
    --  Getter of ConnectorEnd::partWithPort.
    --
-   --  Indicates the role of the internal structure of a classifier with the 
+   --  Indicates the role of the internal structure of a classifier with the
    --  port to which the connector end is attached.
 
    overriding procedure Set_Part_With_Port
@@ -81,7 +81,7 @@ package AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Properties.UML_Property_Access);
    --  Setter of ConnectorEnd::partWithPort.
    --
-   --  Indicates the role of the internal structure of a classifier with the 
+   --  Indicates the role of the internal structure of a classifier with the
    --  port to which the connector end is attached.
 
    overriding function Get_Role
@@ -89,9 +89,9 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access;
    --  Getter of ConnectorEnd::role.
    --
-   --  The connectable element attached at this connector end. When an 
-   --  instance of the containing classifier is created, a link may (depending 
-   --  on the multiplicities) be created to an instance of the classifier that 
+   --  The connectable element attached at this connector end. When an
+   --  instance of the containing classifier is created, a link may (depending
+   --  on the multiplicities) be created to an instance of the classifier that
    --  types this connectable element.
 
    overriding procedure Set_Role
@@ -99,9 +99,9 @@ package AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access);
    --  Setter of ConnectorEnd::role.
    --
-   --  The connectable element attached at this connector end. When an 
-   --  instance of the containing classifier is created, a link may (depending 
-   --  on the multiplicities) be created to an instance of the classifier that 
+   --  The connectable element attached at this connector end. When an
+   --  instance of the containing classifier is created, a link may (depending
+   --  on the multiplicities) be created to an instance of the classifier that
    --  types this connectable element.
 
    overriding function Get_Is_Ordered
@@ -109,7 +109,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Getter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding procedure Set_Is_Ordered
@@ -117,7 +117,7 @@ package AMF.Internals.UML_Connector_Ends is
      To   : Boolean);
    --  Setter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding function Get_Is_Unique
@@ -125,7 +125,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Getter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding procedure Set_Is_Unique
@@ -133,7 +133,7 @@ package AMF.Internals.UML_Connector_Ends is
      To   : Boolean);
    --  Setter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding function Get_Lower
@@ -226,7 +226,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Operation MultiplicityElement::compatibleWith.
    --
-   --  The operation compatibleWith takes another multiplicity as input. It 
+   --  The operation compatibleWith takes another multiplicity as input. It
    --  checks if one multiplicity is compatible with another.
 
    overriding function Includes_Cardinality
@@ -235,7 +235,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Operation MultiplicityElement::includesCardinality.
    --
-   --  The query includesCardinality() checks whether the specified 
+   --  The query includesCardinality() checks whether the specified
    --  cardinality is valid for this multiplicity.
 
    overriding function Includes_Multiplicity
@@ -244,7 +244,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Operation MultiplicityElement::includesMultiplicity.
    --
-   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  The query includesMultiplicity() checks whether this multiplicity
    --  includes all the cardinalities allowed by the specified multiplicity.
 
    overriding function Iss
@@ -254,7 +254,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Operation MultiplicityElement::is.
    --
-   --  The operation is determines if the upper and lower bound of the ranges 
+   --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
    overriding function Is_Multivalued
@@ -262,7 +262,7 @@ package AMF.Internals.UML_Connector_Ends is
        return Boolean;
    --  Operation MultiplicityElement::isMultivalued.
    --
-   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  The query isMultivalued() checks whether this multiplicity has an upper
    --  bound greater than one.
 
    overriding function Lower
@@ -277,7 +277,7 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.Optional_Integer;
    --  Operation MultiplicityElement::lowerBound.
    --
-   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  The query lowerBound() returns the lower bound of the multiplicity as
    --  an integer.
 
    overriding function Upper
@@ -292,7 +292,7 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.Optional_Unlimited_Natural;
    --  Operation MultiplicityElement::upperBound.
    --
-   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  The query upperBound() returns the upper bound of the multiplicity for
    --  a bounded multiplicity as an unlimited natural.
 
    overriding function All_Owned_Elements
@@ -300,24 +300,25 @@ package AMF.Internals.UML_Connector_Ends is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Connector_End_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Connector_End_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Connector_End_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

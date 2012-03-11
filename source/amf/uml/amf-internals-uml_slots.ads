@@ -62,7 +62,7 @@ package AMF.Internals.UML_Slots is
        return AMF.UML.Structural_Features.UML_Structural_Feature_Access;
    --  Getter of Slot::definingFeature.
    --
-   --  The structural feature that specifies the values that may be held by 
+   --  The structural feature that specifies the values that may be held by
    --  the slot.
 
    overriding procedure Set_Defining_Feature
@@ -70,7 +70,7 @@ package AMF.Internals.UML_Slots is
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access);
    --  Setter of Slot::definingFeature.
    --
-   --  The structural feature that specifies the values that may be held by 
+   --  The structural feature that specifies the values that may be held by
    --  the slot.
 
    overriding function Get_Owning_Instance
@@ -92,7 +92,7 @@ package AMF.Internals.UML_Slots is
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification;
    --  Getter of Slot::value.
    --
-   --  The value or values corresponding to the defining feature for the 
+   --  The value or values corresponding to the defining feature for the
    --  owning instance specification.
 
    overriding function Get_Owned_Comment
@@ -121,24 +121,25 @@ package AMF.Internals.UML_Slots is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Slot_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Slot_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Slot_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

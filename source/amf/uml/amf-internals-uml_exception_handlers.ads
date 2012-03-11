@@ -62,8 +62,8 @@ package AMF.Internals.UML_Exception_Handlers is
        return AMF.UML.Object_Nodes.UML_Object_Node_Access;
    --  Getter of ExceptionHandler::exceptionInput.
    --
-   --  An object node within the handler body. When the handler catches an 
-   --  exception, the exception token is placed in this node, causing the body 
+   --  An object node within the handler body. When the handler catches an
+   --  exception, the exception token is placed in this node, causing the body
    --  to execute.
 
    overriding procedure Set_Exception_Input
@@ -71,8 +71,8 @@ package AMF.Internals.UML_Exception_Handlers is
      To   : AMF.UML.Object_Nodes.UML_Object_Node_Access);
    --  Setter of ExceptionHandler::exceptionInput.
    --
-   --  An object node within the handler body. When the handler catches an 
-   --  exception, the exception token is placed in this node, causing the body 
+   --  An object node within the handler body. When the handler catches an
+   --  exception, the exception token is placed in this node, causing the body
    --  to execute.
 
    overriding function Get_Exception_Type
@@ -80,8 +80,8 @@ package AMF.Internals.UML_Exception_Handlers is
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
    --  Getter of ExceptionHandler::exceptionType.
    --
-   --  The kind of instances that the handler catches. If an exception occurs 
-   --  whose type is any of the classifiers in the set, the handler catches 
+   --  The kind of instances that the handler catches. If an exception occurs
+   --  whose type is any of the classifiers in the set, the handler catches
    --  the exception and executes its body.
 
    overriding function Get_Handler_Body
@@ -103,7 +103,7 @@ package AMF.Internals.UML_Exception_Handlers is
        return AMF.UML.Executable_Nodes.UML_Executable_Node_Access;
    --  Getter of ExceptionHandler::protectedNode.
    --
-   --  The node protected by the handler. The handler is examined if an 
+   --  The node protected by the handler. The handler is examined if an
    --  exception propagates to the outside of the node.
 
    overriding procedure Set_Protected_Node
@@ -111,7 +111,7 @@ package AMF.Internals.UML_Exception_Handlers is
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access);
    --  Setter of ExceptionHandler::protectedNode.
    --
-   --  The node protected by the handler. The handler is examined if an 
+   --  The node protected by the handler. The handler is examined if an
    --  exception propagates to the outside of the node.
 
    overriding function Get_Owned_Comment
@@ -140,24 +140,25 @@ package AMF.Internals.UML_Exception_Handlers is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Exception_Handler_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Exception_Handler_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Exception_Handler_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

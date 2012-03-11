@@ -61,7 +61,7 @@ package AMF.Internals.UML_Profile_Applications is
        return AMF.UML.Profiles.UML_Profile_Access;
    --  Getter of ProfileApplication::appliedProfile.
    --
-   --  References the Profiles that are applied to a Package through this 
+   --  References the Profiles that are applied to a Package through this
    --  ProfileApplication.
 
    overriding procedure Set_Applied_Profile
@@ -69,7 +69,7 @@ package AMF.Internals.UML_Profile_Applications is
      To   : AMF.UML.Profiles.UML_Profile_Access);
    --  Setter of ProfileApplication::appliedProfile.
    --
-   --  References the Profiles that are applied to a Package through this 
+   --  References the Profiles that are applied to a Package through this
    --  ProfileApplication.
 
    overriding function Get_Applying_Package
@@ -91,7 +91,7 @@ package AMF.Internals.UML_Profile_Applications is
        return Boolean;
    --  Getter of ProfileApplication::isStrict.
    --
-   --  Specifies that the Profile filtering rules for the metaclasses of the 
+   --  Specifies that the Profile filtering rules for the metaclasses of the
    --  referenced metamodel shall be strictly applied.
 
    overriding procedure Set_Is_Strict
@@ -99,7 +99,7 @@ package AMF.Internals.UML_Profile_Applications is
      To   : Boolean);
    --  Setter of ProfileApplication::isStrict.
    --
-   --  Specifies that the Profile filtering rules for the metaclasses of the 
+   --  Specifies that the Profile filtering rules for the metaclasses of the
    --  referenced metamodel shall be strictly applied.
 
    overriding function Get_Source
@@ -149,24 +149,25 @@ package AMF.Internals.UML_Profile_Applications is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Profile_Application_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Profile_Application_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Profile_Application_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

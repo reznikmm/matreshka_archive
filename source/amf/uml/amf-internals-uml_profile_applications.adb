@@ -54,7 +54,7 @@ package body AMF.Internals.UML_Profile_Applications is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Profile_Application_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Profile_Application
@@ -68,7 +68,7 @@ package body AMF.Internals.UML_Profile_Applications is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Profile_Application_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Profile_Application
@@ -82,11 +82,13 @@ package body AMF.Internals.UML_Profile_Applications is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Profile_Application_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Profile_Application
-       (AMF.UML.Profile_Applications.UML_Profile_Application_Access (Self),
+       (Visitor,
+        AMF.UML.Profile_Applications.UML_Profile_Application_Access (Self),
         Control);
    end Visit_UML_Element;
 

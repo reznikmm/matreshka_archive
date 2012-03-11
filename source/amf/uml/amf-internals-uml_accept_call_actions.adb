@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Accept_Call_Actions is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Accept_Call_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Accept_Call_Action
@@ -70,7 +70,7 @@ package body AMF.Internals.UML_Accept_Call_Actions is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Accept_Call_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Accept_Call_Action
@@ -84,11 +84,13 @@ package body AMF.Internals.UML_Accept_Call_Actions is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Accept_Call_Action_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Accept_Call_Action
-       (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access (Self),
+       (Visitor,
+        AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access (Self),
         Control);
    end Visit_UML_Element;
 

@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Consider_Ignore_Fragments is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Consider_Ignore_Fragment_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Consider_Ignore_Fragment
@@ -70,7 +70,7 @@ package body AMF.Internals.UML_Consider_Ignore_Fragments is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Consider_Ignore_Fragment_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Consider_Ignore_Fragment
@@ -84,11 +84,13 @@ package body AMF.Internals.UML_Consider_Ignore_Fragments is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Consider_Ignore_Fragment_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Consider_Ignore_Fragment
-       (AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access (Self),
+       (Visitor,
+        AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access (Self),
         Control);
    end Visit_UML_Element;
 

@@ -62,7 +62,7 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
        return Boolean;
    --  Getter of ClassifierTemplateParameter::allowSubstitutable.
    --
-   --  Constrains the required relationship between an actual parameter and 
+   --  Constrains the required relationship between an actual parameter and
    --  the parameteredElement for this formal parameter.
 
    overriding procedure Set_Allow_Substitutable
@@ -70,7 +70,7 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
      To   : Boolean);
    --  Setter of ClassifierTemplateParameter::allowSubstitutable.
    --
-   --  Constrains the required relationship between an actual parameter and 
+   --  Constrains the required relationship between an actual parameter and
    --  the parameteredElement for this formal parameter.
 
    overriding function Get_Constraining_Classifier
@@ -78,11 +78,11 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
    --  Getter of ClassifierTemplateParameter::constrainingClassifier.
    --
-   --  The classifiers that constrain the argument that can be used for the 
-   --  parameter. If the allowSubstitutable attribute is true, then any 
-   --  classifier that is compatible with this constraining classifier can be 
-   --  substituted; otherwise, it must be either this classifier or one of its 
-   --  subclasses. If this property is empty, there are no constraints on the 
+   --  The classifiers that constrain the argument that can be used for the
+   --  parameter. If the allowSubstitutable attribute is true, then any
+   --  classifier that is compatible with this constraining classifier can be
+   --  substituted; otherwise, it must be either this classifier or one of its
+   --  subclasses. If this property is empty, there are no constraints on the
    --  classifier that can be used as an argument.
 
    overriding function Get_Parametered_Element
@@ -118,7 +118,7 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
    --  Getter of TemplateParameter::ownedDefault.
    --
-   --  The element that is owned by this template parameter for the purpose of 
+   --  The element that is owned by this template parameter for the purpose of
    --  providing a default.
 
    overriding procedure Set_Owned_Default
@@ -126,7 +126,7 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
    --  Setter of TemplateParameter::ownedDefault.
    --
-   --  The element that is owned by this template parameter for the purpose of 
+   --  The element that is owned by this template parameter for the purpose of
    --  providing a default.
 
    overriding function Get_Owned_Parametered_Element
@@ -197,24 +197,25 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Classifier_Template_Parameter_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Classifier_Template_Parameter_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Classifier_Template_Parameter_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

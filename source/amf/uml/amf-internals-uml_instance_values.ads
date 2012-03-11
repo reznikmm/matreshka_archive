@@ -140,9 +140,9 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -150,7 +150,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -158,7 +158,7 @@ package AMF.Internals.UML_Instance_Values is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -187,7 +187,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.UML.UML_Visibility_Kind;
    --  Getter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding procedure Set_Visibility
@@ -195,7 +195,7 @@ package AMF.Internals.UML_Instance_Values is
      To   : AMF.UML.UML_Visibility_Kind);
    --  Setter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding function Get_Owning_Template_Parameter
@@ -231,7 +231,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_Boolean;
    --  Operation ValueSpecification::booleanValue.
    --
-   --  The query booleanValue() gives a single Boolean value when one can be 
+   --  The query booleanValue() gives a single Boolean value when one can be
    --  computed.
 
    overriding function Integer_Value
@@ -239,7 +239,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_Integer;
    --  Operation ValueSpecification::integerValue.
    --
-   --  The query integerValue() gives a single Integer value when one can be 
+   --  The query integerValue() gives a single Integer value when one can be
    --  computed.
 
    overriding function Is_Compatible_With
@@ -248,11 +248,11 @@ package AMF.Internals.UML_Instance_Values is
        return Boolean;
    --  Operation ValueSpecification::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. In addition, 
-   --  for ValueSpecification, the type must be conformant with the type of 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. In addition,
+   --  for ValueSpecification, the type must be conformant with the type of
    --  the specified parameterable element.
 
    overriding function Is_Computable
@@ -260,12 +260,12 @@ package AMF.Internals.UML_Instance_Values is
        return Boolean;
    --  Operation ValueSpecification::isComputable.
    --
-   --  The query isComputable() determines whether a value specification can 
-   --  be computed in a model. This operation cannot be fully defined in OCL. 
-   --  A conforming implementation is expected to deliver true for this 
-   --  operation for all value specifications that it can compute, and to 
-   --  compute all of those for which the operation is true. A conforming 
-   --  implementation is expected to be able to compute the value of all 
+   --  The query isComputable() determines whether a value specification can
+   --  be computed in a model. This operation cannot be fully defined in OCL.
+   --  A conforming implementation is expected to deliver true for this
+   --  operation for all value specifications that it can compute, and to
+   --  compute all of those for which the operation is true. A conforming
+   --  implementation is expected to be able to compute the value of all
    --  literals.
 
    overriding function Is_Null
@@ -273,7 +273,7 @@ package AMF.Internals.UML_Instance_Values is
        return Boolean;
    --  Operation ValueSpecification::isNull.
    --
-   --  The query isNull() returns true when it can be computed that the value 
+   --  The query isNull() returns true when it can be computed that the value
    --  is null.
 
    overriding function Real_Value
@@ -281,7 +281,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_Real;
    --  Operation ValueSpecification::realValue.
    --
-   --  The query realValue() gives a single Real value when one can be 
+   --  The query realValue() gives a single Real value when one can be
    --  computed.
 
    overriding function String_Value
@@ -289,7 +289,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_String;
    --  Operation ValueSpecification::stringValue.
    --
-   --  The query stringValue() gives a single String value when one can be 
+   --  The query stringValue() gives a single String value when one can be
    --  computed.
 
    overriding function Unlimited_Value
@@ -297,7 +297,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.Optional_Unlimited_Natural;
    --  Operation ValueSpecification::unlimitedValue.
    --
-   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
+   --  The query unlimitedValue() gives a single UnlimitedNatural value when
    --  one can be computed.
 
    overriding function All_Namespaces
@@ -305,7 +305,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -313,7 +313,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -323,9 +323,9 @@ package AMF.Internals.UML_Instance_Values is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -340,8 +340,8 @@ package AMF.Internals.UML_Instance_Values is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -349,7 +349,7 @@ package AMF.Internals.UML_Instance_Values is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Is_Template_Parameter
@@ -357,24 +357,25 @@ package AMF.Internals.UML_Instance_Values is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Instance_Value_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Instance_Value_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Instance_Value_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

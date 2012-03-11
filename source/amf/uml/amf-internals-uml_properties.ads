@@ -156,9 +156,9 @@ package AMF.Internals.UML_Properties is
        return AMF.Optional_String;
    --  Getter of Property::default.
    --
-   --  A String that is evaluated to give a default value for the Property 
+   --  A String that is evaluated to give a default value for the Property
    --  when an object of the owning Classifier is instantiated.
-   --  Specifies a String that represents a value to be used when no argument 
+   --  Specifies a String that represents a value to be used when no argument
    --  is supplied for the Property.
 
    overriding procedure Set_Default
@@ -166,9 +166,9 @@ package AMF.Internals.UML_Properties is
      To   : AMF.Optional_String);
    --  Setter of Property::default.
    --
-   --  A String that is evaluated to give a default value for the Property 
+   --  A String that is evaluated to give a default value for the Property
    --  when an object of the owning Classifier is instantiated.
-   --  Specifies a String that represents a value to be used when no argument 
+   --  Specifies a String that represents a value to be used when no argument
    --  is supplied for the Property.
 
    overriding function Get_Default_Value
@@ -176,7 +176,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
    --  Getter of Property::defaultValue.
    --
-   --  A ValueSpecification that is evaluated to give a default value for the 
+   --  A ValueSpecification that is evaluated to give a default value for the
    --  Property when an object of the owning Classifier is instantiated.
 
    overriding procedure Set_Default_Value
@@ -184,7 +184,7 @@ package AMF.Internals.UML_Properties is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
    --  Setter of Property::defaultValue.
    --
-   --  A ValueSpecification that is evaluated to give a default value for the 
+   --  A ValueSpecification that is evaluated to give a default value for the
    --  Property when an object of the owning Classifier is instantiated.
 
    overriding function Get_Interface
@@ -206,9 +206,9 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Property::isComposite.
    --
-   --  If isComposite is true, the object containing the attribute is a 
+   --  If isComposite is true, the object containing the attribute is a
    --  container for the object or value contained in the attribute.
-   --  This is a derived value, indicating whether the aggregation of the 
+   --  This is a derived value, indicating whether the aggregation of the
    --  Property is composite or not.
 
    overriding procedure Set_Is_Composite
@@ -216,9 +216,9 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Property::isComposite.
    --
-   --  If isComposite is true, the object containing the attribute is a 
+   --  If isComposite is true, the object containing the attribute is a
    --  container for the object or value contained in the attribute.
-   --  This is a derived value, indicating whether the aggregation of the 
+   --  This is a derived value, indicating whether the aggregation of the
    --  Property is composite or not.
 
    overriding function Get_Is_Derived
@@ -226,9 +226,9 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Property::isDerived.
    --
-   --  Specifies whether the Property is derived, i.e., whether its value or 
+   --  Specifies whether the Property is derived, i.e., whether its value or
    --  values can be computed from other information.
-   --  If isDerived is true, the value of the attribute is derived from 
+   --  If isDerived is true, the value of the attribute is derived from
    --  information elsewhere.
 
    overriding procedure Set_Is_Derived
@@ -236,9 +236,9 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Property::isDerived.
    --
-   --  Specifies whether the Property is derived, i.e., whether its value or 
+   --  Specifies whether the Property is derived, i.e., whether its value or
    --  values can be computed from other information.
-   --  If isDerived is true, the value of the attribute is derived from 
+   --  If isDerived is true, the value of the attribute is derived from
    --  information elsewhere.
 
    overriding function Get_Is_Derived_Union
@@ -246,7 +246,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Property::isDerivedUnion.
    --
-   --  Specifies whether the property is derived as the union of all of the 
+   --  Specifies whether the property is derived as the union of all of the
    --  properties that are constrained to subset it.
 
    overriding procedure Set_Is_Derived_Union
@@ -254,7 +254,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Property::isDerivedUnion.
    --
-   --  Specifies whether the property is derived as the union of all of the 
+   --  Specifies whether the property is derived as the union of all of the
    --  properties that are constrained to subset it.
 
    overriding function Get_Is_ID
@@ -262,7 +262,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Property::isID.
    --
-   --  True indicates this property can be used to uniquely identify an 
+   --  True indicates this property can be used to uniquely identify an
    --  instance of the containing Class.
 
    overriding procedure Set_Is_ID
@@ -270,7 +270,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Property::isID.
    --
-   --  True indicates this property can be used to uniquely identify an 
+   --  True indicates this property can be used to uniquely identify an
    --  instance of the containing Class.
 
    overriding function Get_Is_Read_Only
@@ -278,7 +278,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Property::isReadOnly.
    --
-   --  If isReadOnly is true, the attribute may not be written to after 
+   --  If isReadOnly is true, the attribute may not be written to after
    --  initialization.
    --  If true, the attribute may only be read, and not written.
 
@@ -287,7 +287,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Property::isReadOnly.
    --
-   --  If isReadOnly is true, the attribute may not be written to after 
+   --  If isReadOnly is true, the attribute may not be written to after
    --  initialization.
    --  If true, the attribute may only be read, and not written.
 
@@ -296,7 +296,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Properties.UML_Property_Access;
    --  Getter of Property::opposite.
    --
-   --  In the case where the property is one navigable end of a binary 
+   --  In the case where the property is one navigable end of a binary
    --  association with both ends navigable, this gives the other end.
 
    overriding procedure Set_Opposite
@@ -304,7 +304,7 @@ package AMF.Internals.UML_Properties is
      To   : AMF.UML.Properties.UML_Property_Access);
    --  Setter of Property::opposite.
    --
-   --  In the case where the property is one navigable end of a binary 
+   --  In the case where the property is one navigable end of a binary
    --  association with both ends navigable, this gives the other end.
 
    overriding function Get_Owning_Association
@@ -326,7 +326,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property;
    --  Getter of Property::qualifier.
    --
-   --  An optional list of ordered qualifier attributes for the end. If the 
+   --  An optional list of ordered qualifier attributes for the end. If the
    --  list is empty, then the Association is not qualified.
 
    overriding function Get_Redefined_Property
@@ -341,7 +341,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Properties.Collections.Set_Of_UML_Property;
    --  Getter of Property::subsettedProperty.
    --
-   --  References the properties of which this property is constrained to be a 
+   --  References the properties of which this property is constrained to be a
    --  subset.
 
    overriding function Get_End
@@ -349,7 +349,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End;
    --  Getter of ConnectableElement::end.
    --
-   --  Denotes a set of connector ends that attaches to this connectable 
+   --  Denotes a set of connector ends that attaches to this connectable
    --  element.
 
    overriding function Get_Template_Parameter
@@ -357,7 +357,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access;
    --  Getter of ConnectableElement::templateParameter.
    --
-   --  The ConnectableElementTemplateParameter for this ConnectableElement 
+   --  The ConnectableElementTemplateParameter for this ConnectableElement
    --  parameter.
 
    overriding procedure Set_Template_Parameter
@@ -365,7 +365,7 @@ package AMF.Internals.UML_Properties is
      To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access);
    --  Setter of ConnectableElement::templateParameter.
    --
-   --  The ConnectableElementTemplateParameter for this ConnectableElement 
+   --  The ConnectableElementTemplateParameter for this ConnectableElement
    --  parameter.
 
    overriding function Get_Type
@@ -431,9 +431,9 @@ package AMF.Internals.UML_Properties is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -441,7 +441,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -449,7 +449,7 @@ package AMF.Internals.UML_Properties is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -506,7 +506,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Getter of DeploymentTarget::deployedElement.
    --
-   --  The set of elements that are manifested in an Artifact that is involved 
+   --  The set of elements that are manifested in an Artifact that is involved
    --  in Deployment to a DeploymentTarget.
 
    overriding function Get_Deployment
@@ -521,7 +521,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding procedure Set_Is_Ordered
@@ -529,7 +529,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding function Get_Is_Unique
@@ -537,7 +537,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding procedure Set_Is_Unique
@@ -545,7 +545,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding function Get_Lower
@@ -616,7 +616,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of Feature::isStatic.
    --
-   --  Specifies whether this feature characterizes individual instances 
+   --  Specifies whether this feature characterizes individual instances
    --  classified by the classifier (false) or the classifier itself (true).
 
    overriding procedure Set_Is_Static
@@ -624,7 +624,7 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of Feature::isStatic.
    --
-   --  Specifies whether this feature characterizes individual instances 
+   --  Specifies whether this feature characterizes individual instances
    --  classified by the classifier (false) or the classifier itself (true).
 
    overriding function Get_Is_Leaf
@@ -632,14 +632,14 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -647,14 +647,14 @@ package AMF.Internals.UML_Properties is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -684,7 +684,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation Property::isAttribute.
    --
-   --  The query isAttribute() is true if the Property is defined as an 
+   --  The query isAttribute() is true if the Property is defined as an
    --  attribute of some classifier.
 
    overriding function Is_Compatible_With
@@ -693,11 +693,11 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation Property::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. In addition, 
-   --  for properties, the type must be conformant with the type of the 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. In addition,
+   --  for properties, the type must be conformant with the type of the
    --  specified parameterable element.
 
    overriding function Is_Composite
@@ -713,19 +713,19 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation Property::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies, for any two Properties in a 
-   --  context in which redefinition is possible, whether redefinition would 
-   --  be logically consistent. A redefining property is consistent with a 
-   --  redefined property if the type of the redefining property conforms to 
-   --  the type of the redefined property, the multiplicity of the redefining 
-   --  property (if specified) is contained in the multiplicity of the 
+   --  The query isConsistentWith() specifies, for any two Properties in a
+   --  context in which redefinition is possible, whether redefinition would
+   --  be logically consistent. A redefining property is consistent with a
+   --  redefined property if the type of the redefining property conforms to
+   --  the type of the redefined property, the multiplicity of the redefining
+   --  property (if specified) is contained in the multiplicity of the
    --  redefined property.
-   --  The query isConsistentWith() specifies, for any two Properties in a 
-   --  context in which redefinition is possible, whether redefinition would 
-   --  be logically consistent. A redefining property is consistent with a 
-   --  redefined property if the type of the redefining property conforms to 
-   --  the type of the redefined property, and the multiplicity of the 
-   --  redefining property (if specified) is contained in the multiplicity of 
+   --  The query isConsistentWith() specifies, for any two Properties in a
+   --  context in which redefinition is possible, whether redefinition would
+   --  be logically consistent. A redefining property is consistent with a
+   --  redefined property if the type of the redefining property conforms to
+   --  the type of the redefined property, and the multiplicity of the
+   --  redefining property (if specified) is contained in the multiplicity of
    --  the redefined property.
 
    overriding function Is_Navigable
@@ -733,7 +733,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation Property::isNavigable.
    --
-   --  The query isNavigable() indicates whether it is possible to navigate 
+   --  The query isNavigable() indicates whether it is possible to navigate
    --  across the property.
 
    overriding function Opposite
@@ -741,8 +741,8 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Properties.UML_Property_Access;
    --  Operation Property::opposite.
    --
-   --  If this property is owned by a class, associated with a binary 
-   --  association, and the other end of the association is also owned by a 
+   --  If this property is owned by a class, associated with a binary
+   --  association, and the other end of the association is also owned by a
    --  class, then opposite gives the other end.
 
    overriding function Subsetting_Context
@@ -750,9 +750,9 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Types.Collections.Set_Of_UML_Type;
    --  Operation Property::subsettingContext.
    --
-   --  The query subsettingContext() gives the context for subsetting a 
-   --  property. It consists, in the case of an attribute, of the 
-   --  corresponding classifier, and in the case of an association end, all of 
+   --  The query subsettingContext() gives the context for subsetting a
+   --  property. It consists, in the case of an attribute, of the
+   --  corresponding classifier, and in the case of an association end, all of
    --  the classifiers at the other ends.
 
    overriding function Ends
@@ -767,7 +767,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -775,7 +775,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -785,9 +785,9 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -802,8 +802,8 @@ package AMF.Internals.UML_Properties is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -811,7 +811,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Is_Template_Parameter
@@ -819,7 +819,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding function Deployed_Element
@@ -827,7 +827,7 @@ package AMF.Internals.UML_Properties is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation DeploymentTarget::deployedElement.
    --
-   --  Missing derivation for DeploymentTarget::/deployedElement : 
+   --  Missing derivation for DeploymentTarget::/deployedElement :
    --  PackageableElement
 
    overriding function Compatible_With
@@ -836,7 +836,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation MultiplicityElement::compatibleWith.
    --
-   --  The operation compatibleWith takes another multiplicity as input. It 
+   --  The operation compatibleWith takes another multiplicity as input. It
    --  checks if one multiplicity is compatible with another.
 
    overriding function Includes_Cardinality
@@ -845,7 +845,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation MultiplicityElement::includesCardinality.
    --
-   --  The query includesCardinality() checks whether the specified 
+   --  The query includesCardinality() checks whether the specified
    --  cardinality is valid for this multiplicity.
 
    overriding function Includes_Multiplicity
@@ -854,7 +854,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation MultiplicityElement::includesMultiplicity.
    --
-   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  The query includesMultiplicity() checks whether this multiplicity
    --  includes all the cardinalities allowed by the specified multiplicity.
 
    overriding function Iss
@@ -864,7 +864,7 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation MultiplicityElement::is.
    --
-   --  The operation is determines if the upper and lower bound of the ranges 
+   --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
    overriding function Lower
@@ -887,28 +887,29 @@ package AMF.Internals.UML_Properties is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Property_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Property_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Property_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

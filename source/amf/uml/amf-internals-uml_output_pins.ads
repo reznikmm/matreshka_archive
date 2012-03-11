@@ -78,7 +78,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Getter of Pin::isControl.
    --
-   --  Tells whether the pins provide data to the actions, or just controls 
+   --  Tells whether the pins provide data to the actions, or just controls
    --  when it executes it.
 
    overriding procedure Set_Is_Control
@@ -86,7 +86,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : Boolean);
    --  Setter of Pin::isControl.
    --
-   --  Tells whether the pins provide data to the actions, or just controls 
+   --  Tells whether the pins provide data to the actions, or just controls
    --  when it executes it.
 
    overriding function Get_In_State
@@ -94,7 +94,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.States.Collections.Set_Of_UML_State;
    --  Getter of ObjectNode::inState.
    --
-   --  The required states of the object available at this point in the 
+   --  The required states of the object available at this point in the
    --  activity.
 
    overriding function Get_Is_Control_Type
@@ -116,7 +116,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.UML_Object_Node_Ordering_Kind;
    --  Getter of ObjectNode::ordering.
    --
-   --  Tells whether and how the tokens in the object node are ordered for 
+   --  Tells whether and how the tokens in the object node are ordered for
    --  selection to traverse edges outgoing from the object node.
 
    overriding procedure Set_Ordering
@@ -124,7 +124,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : AMF.UML.UML_Object_Node_Ordering_Kind);
    --  Setter of ObjectNode::ordering.
    --
-   --  Tells whether and how the tokens in the object node are ordered for 
+   --  Tells whether and how the tokens in the object node are ordered for
    --  selection to traverse edges outgoing from the object node.
 
    overriding function Get_Selection
@@ -146,7 +146,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
    --  Getter of ObjectNode::upperBound.
    --
-   --  The maximum number of tokens allowed in the node. Objects cannot flow 
+   --  The maximum number of tokens allowed in the node. Objects cannot flow
    --  into the node if the upper bound is reached.
 
    overriding procedure Set_Upper_Bound
@@ -154,7 +154,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
    --  Setter of ObjectNode::upperBound.
    --
-   --  The maximum number of tokens allowed in the node. Objects cannot flow 
+   --  The maximum number of tokens allowed in the node. Objects cannot flow
    --  into the node if the upper bound is reached.
 
    overriding function Get_Activity
@@ -225,7 +225,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node;
    --  Getter of ActivityNode::redefinedNode.
    --
-   --  Inherited nodes replaced by this node in a specialization of the 
+   --  Inherited nodes replaced by this node in a specialization of the
    --  activity.
 
    overriding function Get_Is_Leaf
@@ -233,14 +233,14 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -248,14 +248,14 @@ package AMF.Internals.UML_Output_Pins is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -319,9 +319,9 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -329,7 +329,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -337,7 +337,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -382,7 +382,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Getter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding procedure Set_Is_Ordered
@@ -390,7 +390,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : Boolean);
    --  Setter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding function Get_Is_Unique
@@ -398,7 +398,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Getter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding procedure Set_Is_Unique
@@ -406,7 +406,7 @@ package AMF.Internals.UML_Output_Pins is
      To   : Boolean);
    --  Setter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding function Get_Lower
@@ -471,10 +471,10 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation RedefinableElement::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies, for any two RedefinableElements 
-   --  in a context in which redefinition is possible, whether redefinition 
-   --  would be logically consistent. By default, this is false; this 
-   --  operation must be overridden for subclasses of RedefinableElement to 
+   --  The query isConsistentWith() specifies, for any two RedefinableElements
+   --  in a context in which redefinition is possible, whether redefinition
+   --  would be logically consistent. By default, this is false; this
+   --  operation must be overridden for subclasses of RedefinableElement to
    --  define the consistency conditions.
 
    overriding function Is_Redefinition_Context_Valid
@@ -483,11 +483,11 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding function All_Namespaces
@@ -495,7 +495,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -503,7 +503,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -513,9 +513,9 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -530,8 +530,8 @@ package AMF.Internals.UML_Output_Pins is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -539,7 +539,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Compatible_With
@@ -548,7 +548,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation MultiplicityElement::compatibleWith.
    --
-   --  The operation compatibleWith takes another multiplicity as input. It 
+   --  The operation compatibleWith takes another multiplicity as input. It
    --  checks if one multiplicity is compatible with another.
 
    overriding function Includes_Cardinality
@@ -557,7 +557,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation MultiplicityElement::includesCardinality.
    --
-   --  The query includesCardinality() checks whether the specified 
+   --  The query includesCardinality() checks whether the specified
    --  cardinality is valid for this multiplicity.
 
    overriding function Includes_Multiplicity
@@ -566,7 +566,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation MultiplicityElement::includesMultiplicity.
    --
-   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  The query includesMultiplicity() checks whether this multiplicity
    --  includes all the cardinalities allowed by the specified multiplicity.
 
    overriding function Iss
@@ -576,7 +576,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation MultiplicityElement::is.
    --
-   --  The operation is determines if the upper and lower bound of the ranges 
+   --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
    overriding function Is_Multivalued
@@ -584,7 +584,7 @@ package AMF.Internals.UML_Output_Pins is
        return Boolean;
    --  Operation MultiplicityElement::isMultivalued.
    --
-   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  The query isMultivalued() checks whether this multiplicity has an upper
    --  bound greater than one.
 
    overriding function Lower
@@ -599,7 +599,7 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.Optional_Integer;
    --  Operation MultiplicityElement::lowerBound.
    --
-   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  The query lowerBound() returns the lower bound of the multiplicity as
    --  an integer.
 
    overriding function Upper
@@ -614,24 +614,25 @@ package AMF.Internals.UML_Output_Pins is
        return AMF.Optional_Unlimited_Natural;
    --  Operation MultiplicityElement::upperBound.
    --
-   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  The query upperBound() returns the upper bound of the multiplicity for
    --  a bounded multiplicity as an unlimited natural.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Output_Pin_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Output_Pin_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Output_Pin_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

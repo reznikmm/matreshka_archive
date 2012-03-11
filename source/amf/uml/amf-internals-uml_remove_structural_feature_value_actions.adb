@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Remove_Structural_Feature_Value_Actions is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Remove_Structural_Feature_Value_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Remove_Structural_Feature_Value_Action
@@ -70,7 +70,7 @@ package body AMF.Internals.UML_Remove_Structural_Feature_Value_Actions is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Remove_Structural_Feature_Value_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Remove_Structural_Feature_Value_Action
@@ -84,11 +84,13 @@ package body AMF.Internals.UML_Remove_Structural_Feature_Value_Actions is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Remove_Structural_Feature_Value_Action_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Remove_Structural_Feature_Value_Action
-       (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access (Self),
+       (Visitor,
+        AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access (Self),
         Control);
    end Visit_UML_Element;
 

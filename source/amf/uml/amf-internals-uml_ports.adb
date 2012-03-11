@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Ports is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Port_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Port (AMF.UML.Ports.UML_Port_Access (Self), Control);
@@ -68,7 +68,7 @@ package body AMF.Internals.UML_Ports is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Port_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Port (AMF.UML.Ports.UML_Port_Access (Self), Control);
@@ -80,10 +80,12 @@ package body AMF.Internals.UML_Ports is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Port_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Port (AMF.UML.Ports.UML_Port_Access (Self), Control);
+      Iterator.Visit_Port
+       (Visitor, AMF.UML.Ports.UML_Port_Access (Self), Control);
    end Visit_UML_Element;
 
    ---------------------

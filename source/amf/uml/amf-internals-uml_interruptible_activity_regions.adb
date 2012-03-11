@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Interruptible_Activity_Regions is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Interruptible_Activity_Region_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Interruptible_Activity_Region
@@ -70,7 +70,7 @@ package body AMF.Internals.UML_Interruptible_Activity_Regions is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Interruptible_Activity_Region_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Interruptible_Activity_Region
@@ -84,11 +84,13 @@ package body AMF.Internals.UML_Interruptible_Activity_Regions is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Interruptible_Activity_Region_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Interruptible_Activity_Region
-       (AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access (Self),
+       (Visitor,
+        AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access (Self),
         Control);
    end Visit_UML_Element;
 

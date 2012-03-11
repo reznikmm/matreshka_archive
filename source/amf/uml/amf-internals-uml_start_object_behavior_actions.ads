@@ -78,7 +78,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Input_Pins.UML_Input_Pin_Access;
    --  Getter of StartObjectBehaviorAction::object.
    --
-   --  Holds the object which is either a behavior to be started or has a 
+   --  Holds the object which is either a behavior to be started or has a
    --  classifier behavior to be started.
 
    overriding procedure Set_Object
@@ -86,7 +86,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
    --  Setter of StartObjectBehaviorAction::object.
    --
-   --  Holds the object which is either a behavior to be started or has a 
+   --  Holds the object which is either a behavior to be started or has a
    --  classifier behavior to be started.
 
    overriding function Get_Is_Synchronous
@@ -94,8 +94,8 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Getter of CallAction::isSynchronous.
    --
-   --  If true, the call is synchronous and the caller waits for completion of 
-   --  the invoked behavior. If false, the call is asynchronous and the caller 
+   --  If true, the call is synchronous and the caller waits for completion of
+   --  the invoked behavior. If false, the call is asynchronous and the caller
    --  proceeds immediately and does not expect a return values.
 
    overriding procedure Set_Is_Synchronous
@@ -103,8 +103,8 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : Boolean);
    --  Setter of CallAction::isSynchronous.
    --
-   --  If true, the call is synchronous and the caller waits for completion of 
-   --  the invoked behavior. If false, the call is asynchronous and the caller 
+   --  If true, the call is synchronous and the caller waits for completion of
+   --  the invoked behavior. If false, the call is asynchronous and the caller
    --  proceeds immediately and does not expect a return values.
 
    overriding function Get_Result
@@ -112,7 +112,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin;
    --  Getter of CallAction::result.
    --
-   --  A list of output pins where the results of performing the invocation 
+   --  A list of output pins where the results of performing the invocation
    --  are placed.
 
    overriding function Get_Argument
@@ -120,7 +120,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin;
    --  Getter of InvocationAction::argument.
    --
-   --  Specification of the ordered set of argument values that appears during 
+   --  Specification of the ordered set of argument values that appears during
    --  execution.
 
    overriding function Get_On_Port
@@ -128,7 +128,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Ports.UML_Port_Access;
    --  Getter of InvocationAction::onPort.
    --
-   --  A optional port of the receiver object on which the behavioral feature 
+   --  A optional port of the receiver object on which the behavioral feature
    --  is invoked.
 
    overriding procedure Set_On_Port
@@ -136,7 +136,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : AMF.UML.Ports.UML_Port_Access);
    --  Setter of InvocationAction::onPort.
    --
-   --  A optional port of the receiver object on which the behavioral feature 
+   --  A optional port of the receiver object on which the behavioral feature
    --  is invoked.
 
    overriding function Get_Context
@@ -151,7 +151,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin;
    --  Getter of Action::input.
    --
-   --  The ordered set of input pins connected to the Action. These are among 
+   --  The ordered set of input pins connected to the Action. These are among
    --  the total set of inputs.
 
    overriding function Get_Is_Locally_Reentrant
@@ -159,9 +159,9 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Getter of Action::isLocallyReentrant.
    --
-   --  If true, the action can begin a new, concurrent execution, even if 
-   --  there is already another execution of the action ongoing. If false, the 
-   --  action cannot begin a new execution until any previous execution has 
+   --  If true, the action can begin a new, concurrent execution, even if
+   --  there is already another execution of the action ongoing. If false, the
+   --  action cannot begin a new execution until any previous execution has
    --  completed.
 
    overriding procedure Set_Is_Locally_Reentrant
@@ -169,9 +169,9 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : Boolean);
    --  Setter of Action::isLocallyReentrant.
    --
-   --  If true, the action can begin a new, concurrent execution, even if 
-   --  there is already another execution of the action ongoing. If false, the 
-   --  action cannot begin a new execution until any previous execution has 
+   --  If true, the action can begin a new, concurrent execution, even if
+   --  there is already another execution of the action ongoing. If false, the
+   --  action cannot begin a new execution until any previous execution has
    --  completed.
 
    overriding function Get_Local_Postcondition
@@ -193,7 +193,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin;
    --  Getter of Action::output.
    --
-   --  The ordered set of output pins connected to the Action. The action 
+   --  The ordered set of output pins connected to the Action. The action
    --  places its results onto pins in this set.
 
    overriding function Get_Handler
@@ -201,7 +201,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Exception_Handlers.Collections.Set_Of_UML_Exception_Handler;
    --  Getter of ExecutableNode::handler.
    --
-   --  A set of exception handlers that are examined if an uncaught exception 
+   --  A set of exception handlers that are examined if an uncaught exception
    --  propagates to the outer level of the executable node.
 
    overriding function Get_Activity
@@ -272,7 +272,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node;
    --  Getter of ActivityNode::redefinedNode.
    --
-   --  Inherited nodes replaced by this node in a specialization of the 
+   --  Inherited nodes replaced by this node in a specialization of the
    --  activity.
 
    overriding function Get_Is_Leaf
@@ -280,14 +280,14 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Getter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding procedure Set_Is_Leaf
@@ -295,14 +295,14 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : Boolean);
    --  Setter of RedefinableElement::isLeaf.
    --
-   --  Indicates whether it is possible to further redefine a 
-   --  RedefinableElement. If the value is true, then it is not possible to 
-   --  further redefine the RedefinableElement. Note that this property is 
-   --  preserved through package merge operations; that is, the capability to 
-   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
-   --  the resulting RedefinableElement of a package merge operation where a 
-   --  RedefinableElement with isLeaf=false is merged with a matching 
-   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  Indicates whether it is possible to further redefine a
+   --  RedefinableElement. If the value is true, then it is not possible to
+   --  further redefine the RedefinableElement. Note that this property is
+   --  preserved through package merge operations; that is, the capability to
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in
+   --  the resulting RedefinableElement of a package merge operation where a
+   --  RedefinableElement with isLeaf=false is merged with a matching
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement
    --  will have isLeaf=false. Default value is false.
 
    overriding function Get_Redefined_Element
@@ -366,9 +366,9 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -376,7 +376,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -384,7 +384,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -421,10 +421,10 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Operation RedefinableElement::isConsistentWith.
    --
-   --  The query isConsistentWith() specifies, for any two RedefinableElements 
-   --  in a context in which redefinition is possible, whether redefinition 
-   --  would be logically consistent. By default, this is false; this 
-   --  operation must be overridden for subclasses of RedefinableElement to 
+   --  The query isConsistentWith() specifies, for any two RedefinableElements
+   --  in a context in which redefinition is possible, whether redefinition
+   --  would be logically consistent. By default, this is false; this
+   --  operation must be overridden for subclasses of RedefinableElement to
    --  define the consistency conditions.
 
    overriding function Is_Redefinition_Context_Valid
@@ -433,11 +433,11 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Operation RedefinableElement::isRedefinitionContextValid.
    --
-   --  The query isRedefinitionContextValid() specifies whether the 
-   --  redefinition contexts of this RedefinableElement are properly related 
-   --  to the redefinition contexts of the specified RedefinableElement to 
-   --  allow this element to redefine the other. By default at least one of 
-   --  the redefinition contexts of this element must be a specialization of 
+   --  The query isRedefinitionContextValid() specifies whether the
+   --  redefinition contexts of this RedefinableElement are properly related
+   --  to the redefinition contexts of the specified RedefinableElement to
+   --  allow this element to redefine the other. By default at least one of
+   --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
 
    overriding function All_Namespaces
@@ -445,7 +445,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -453,7 +453,7 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -463,9 +463,9 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -480,8 +480,8 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -489,24 +489,25 @@ package AMF.Internals.UML_Start_Object_Behavior_Actions is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Start_Object_Behavior_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Start_Object_Behavior_Action_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Start_Object_Behavior_Action_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

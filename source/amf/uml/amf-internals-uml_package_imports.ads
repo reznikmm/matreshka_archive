@@ -89,11 +89,11 @@ package AMF.Internals.UML_Package_Imports is
        return AMF.UML.UML_Visibility_Kind;
    --  Getter of PackageImport::visibility.
    --
-   --  Specifies the visibility of the imported PackageableElements within the 
-   --  importing Namespace, i.e., whether imported elements will in turn be 
-   --  visible to other packages that use that importingPackage as an 
-   --  importedPackage. If the PackageImport is public, the imported elements 
-   --  will be visible outside the package, while if it is private they will 
+   --  Specifies the visibility of the imported PackageableElements within the
+   --  importing Namespace, i.e., whether imported elements will in turn be
+   --  visible to other packages that use that importingPackage as an
+   --  importedPackage. If the PackageImport is public, the imported elements
+   --  will be visible outside the package, while if it is private they will
    --  not.
 
    overriding procedure Set_Visibility
@@ -101,11 +101,11 @@ package AMF.Internals.UML_Package_Imports is
      To   : AMF.UML.UML_Visibility_Kind);
    --  Setter of PackageImport::visibility.
    --
-   --  Specifies the visibility of the imported PackageableElements within the 
-   --  importing Namespace, i.e., whether imported elements will in turn be 
-   --  visible to other packages that use that importingPackage as an 
-   --  importedPackage. If the PackageImport is public, the imported elements 
-   --  will be visible outside the package, while if it is private they will 
+   --  Specifies the visibility of the imported PackageableElements within the
+   --  importing Namespace, i.e., whether imported elements will in turn be
+   --  visible to other packages that use that importingPackage as an
+   --  importedPackage. If the PackageImport is public, the imported elements
+   --  will be visible outside the package, while if it is private they will
    --  not.
 
    overriding function Get_Source
@@ -155,24 +155,25 @@ package AMF.Internals.UML_Package_Imports is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Package_Import_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Package_Import_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Package_Import_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

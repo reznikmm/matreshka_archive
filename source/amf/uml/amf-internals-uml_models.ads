@@ -78,7 +78,7 @@ package AMF.Internals.UML_Models is
        return AMF.Optional_String;
    --  Getter of Model::viewpoint.
    --
-   --  The name of the viewpoint that is expressed by a model (This name may 
+   --  The name of the viewpoint that is expressed by a model (This name may
    --  refer to a profile definition).
 
    overriding procedure Set_Viewpoint
@@ -86,7 +86,7 @@ package AMF.Internals.UML_Models is
      To   : AMF.Optional_String);
    --  Setter of Model::viewpoint.
    --
-   --  The name of the viewpoint that is expressed by a model (This name may 
+   --  The name of the viewpoint that is expressed by a model (This name may
    --  refer to a profile definition).
 
    overriding function Get_URI
@@ -94,10 +94,10 @@ package AMF.Internals.UML_Models is
        return AMF.Optional_String;
    --  Getter of Package::URI.
    --
-   --  Provides an identifier for the package that can be used for many 
-   --  purposes. A URI is the universally unique identification of the package 
-   --  following the IETF URI specification, RFC 2396 
-   --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those 
+   --  Provides an identifier for the package that can be used for many
+   --  purposes. A URI is the universally unique identification of the package
+   --  following the IETF URI specification, RFC 2396
+   --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those
    --  syntax rules.
 
    overriding procedure Set_URI
@@ -105,10 +105,10 @@ package AMF.Internals.UML_Models is
      To   : AMF.Optional_String);
    --  Setter of Package::URI.
    --
-   --  Provides an identifier for the package that can be used for many 
-   --  purposes. A URI is the universally unique identification of the package 
-   --  following the IETF URI specification, RFC 2396 
-   --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those 
+   --  Provides an identifier for the package that can be used for many
+   --  purposes. A URI is the universally unique identification of the package
+   --  following the IETF URI specification, RFC 2396
+   --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those
    --  syntax rules.
 
    overriding function Get_Nested_Package
@@ -165,7 +165,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Profile_Applications.Collections.Set_Of_UML_Profile_Application;
    --  Getter of Package::profileApplication.
    --
-   --  References the ProfileApplications that indicate which profiles have 
+   --  References the ProfileApplications that indicate which profiles have
    --  been applied to the Package.
 
    overriding function Get_Element_Import
@@ -180,7 +180,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Getter of Namespace::importedMember.
    --
-   --  References the PackageableElements that are members of this Namespace 
+   --  References the PackageableElements that are members of this Namespace
    --  as a result of either PackageImports or ElementImports.
 
    overriding function Get_Member
@@ -188,7 +188,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
    --  Getter of Namespace::member.
    --
-   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  A collection of NamedElements identifiable within the Namespace, either
    --  by being owned or by being introduced by importing or inheritance.
 
    overriding function Get_Owned_Member
@@ -259,9 +259,9 @@ package AMF.Internals.UML_Models is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -269,7 +269,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -277,7 +277,7 @@ package AMF.Internals.UML_Models is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -306,7 +306,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.UML_Visibility_Kind;
    --  Getter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding procedure Set_Visibility
@@ -314,7 +314,7 @@ package AMF.Internals.UML_Models is
      To   : AMF.UML.UML_Visibility_Kind);
    --  Setter of PackageableElement::visibility.
    --
-   --  Indicates that packageable elements must always have a visibility, 
+   --  Indicates that packageable elements must always have a visibility,
    --  i.e., visibility is not optional.
 
    overriding function Get_Owning_Template_Parameter
@@ -350,7 +350,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
    --  Getter of TemplateableElement::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding procedure Set_Owned_Template_Signature
@@ -358,7 +358,7 @@ package AMF.Internals.UML_Models is
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
    --  Setter of TemplateableElement::ownedTemplateSignature.
    --
-   --  The optional template signature specifying the formal template 
+   --  The optional template signature specifying the formal template
    --  parameters.
 
    overriding function Get_Template_Binding
@@ -373,8 +373,8 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Stereotypes.Collections.Set_Of_UML_Stereotype;
    --  Operation Package::allApplicableStereotypes.
    --
-   --  The query allApplicableStereotypes() returns all the directly or 
-   --  indirectly owned stereotypes, including stereotypes contained in 
+   --  The query allApplicableStereotypes() returns all the directly or
+   --  indirectly owned stereotypes, including stereotypes contained in
    --  sub-profiles.
 
    overriding function Containing_Profile
@@ -382,8 +382,8 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Profiles.UML_Profile_Access;
    --  Operation Package::containingProfile.
    --
-   --  The query containingProfile() returns the closest profile directly or 
-   --  indirectly containing this package (or this package itself, if it is a 
+   --  The query containingProfile() returns the closest profile directly or
+   --  indirectly containing this package (or this package itself, if it is a
    --  profile).
 
    overriding function Makes_Visible
@@ -392,8 +392,8 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation Package::makesVisible.
    --
-   --  The query makesVisible() defines whether a Package makes an element 
-   --  visible outside itself. Elements with no visibility and elements with 
+   --  The query makesVisible() defines whether a Package makes an element
+   --  visible outside itself. Elements with no visibility and elements with
    --  public visibility are made visible.
 
    overriding function Nested_Package
@@ -422,7 +422,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Package::visibleMembers.
    --
-   --  The query visibleMembers() defines which members of a Package can be 
+   --  The query visibleMembers() defines which members of a Package can be
    --  accessed outside it.
 
    overriding function Exclude_Collisions
@@ -431,8 +431,8 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::excludeCollisions.
    --
-   --  The query excludeCollisions() excludes from a set of 
-   --  PackageableElements any that would not be distinguishable from each 
+   --  The query excludeCollisions() excludes from a set of
+   --  PackageableElements any that would not be distinguishable from each
    --  other in this namespace.
 
    overriding function Get_Names_Of_Member
@@ -441,16 +441,16 @@ package AMF.Internals.UML_Models is
        return AMF.String_Collections.Set_Of_String;
    --  Operation Namespace::getNamesOfMember.
    --
-   --  The query getNamesOfMember() takes importing into account. It gives 
-   --  back the set of names that an element would have in an importing 
-   --  namespace, either because it is owned, or if not owned then imported 
+   --  The query getNamesOfMember() takes importing into account. It gives
+   --  back the set of names that an element would have in an importing
+   --  namespace, either because it is owned, or if not owned then imported
    --  individually, or if not individually then from a package.
-   --  The query getNamesOfMember() gives a set of all of the names that a 
-   --  member would have in a Namespace. In general a member can have multiple 
-   --  names in a Namespace if it is imported more than once with different 
-   --  aliases. The query takes account of importing. It gives back the set of 
-   --  names that an element would have in an importing namespace, either 
-   --  because it is owned, or if not owned then imported individually, or if 
+   --  The query getNamesOfMember() gives a set of all of the names that a
+   --  member would have in a Namespace. In general a member can have multiple
+   --  names in a Namespace if it is imported more than once with different
+   --  aliases. The query takes account of importing. It gives back the set of
+   --  names that an element would have in an importing namespace, either
+   --  because it is owned, or if not owned then imported individually, or if
    --  not individually then from a package.
 
    overriding function Import_Members
@@ -459,9 +459,9 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importMembers.
    --
-   --  The query importMembers() defines which of a set of PackageableElements 
-   --  are actually imported into the namespace. This excludes hidden ones, 
-   --  i.e., those which have names that conflict with names of owned members, 
+   --  The query importMembers() defines which of a set of PackageableElements
+   --  are actually imported into the namespace. This excludes hidden ones,
+   --  i.e., those which have names that conflict with names of owned members,
    --  and also excludes elements which would have the same name when imported.
 
    overriding function Imported_Member
@@ -469,8 +469,8 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
    --  Operation Namespace::importedMember.
    --
-   --  The importedMember property is derived from the ElementImports and the 
-   --  PackageImports. References the PackageableElements that are members of 
+   --  The importedMember property is derived from the ElementImports and the
+   --  PackageImports. References the PackageableElements that are members of
    --  this Namespace as a result of either PackageImports or ElementImports.
 
    overriding function Members_Are_Distinguishable
@@ -478,7 +478,7 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation Namespace::membersAreDistinguishable.
    --
-   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  The Boolean query membersAreDistinguishable() determines whether all of
    --  the namespace's members are distinguishable within it.
 
    overriding function Owned_Member
@@ -493,7 +493,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -501,7 +501,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -511,9 +511,9 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -528,8 +528,8 @@ package AMF.Internals.UML_Models is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -537,7 +537,7 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Is_Compatible_With
@@ -546,11 +546,11 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation ParameterableElement::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
-   --  should override this operation to specify different compatibility 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses
+   --  should override this operation to specify different compatibility
    --  constraints.
 
    overriding function Is_Template_Parameter
@@ -558,7 +558,7 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding function Is_Template
@@ -566,7 +566,7 @@ package AMF.Internals.UML_Models is
        return Boolean;
    --  Operation TemplateableElement::isTemplate.
    --
-   --  The query isTemplate() returns whether this templateable element is 
+   --  The query isTemplate() returns whether this templateable element is
    --  actually a template.
 
    overriding function Parameterable_Elements
@@ -574,27 +574,28 @@ package AMF.Internals.UML_Models is
        return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element;
    --  Operation TemplateableElement::parameterableElements.
    --
-   --  The query parameterableElements() returns the set of elements that may 
-   --  be used as the parametered elements for a template parameter of this 
-   --  templateable element. By default, this set includes all the owned 
-   --  elements. Subclasses may override this operation if they choose to 
+   --  The query parameterableElements() returns the set of elements that may
+   --  be used as the parametered elements for a template parameter of this
+   --  templateable element. By default, this set includes all the owned
+   --  elements. Subclasses may override this operation if they choose to
    --  restrict the set of parameterable elements.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Model_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Model_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Model_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

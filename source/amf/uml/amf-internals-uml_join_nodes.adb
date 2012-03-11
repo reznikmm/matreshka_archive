@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Join_Nodes is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Join_Node_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Join_Node
@@ -69,7 +69,7 @@ package body AMF.Internals.UML_Join_Nodes is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Join_Node_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Join_Node
@@ -82,11 +82,12 @@ package body AMF.Internals.UML_Join_Nodes is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Join_Node_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Join_Node
-       (AMF.UML.Join_Nodes.UML_Join_Node_Access (Self), Control);
+       (Visitor, AMF.UML.Join_Nodes.UML_Join_Node_Access (Self), Control);
    end Visit_UML_Element;
 
    ------------------------------

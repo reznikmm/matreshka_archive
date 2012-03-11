@@ -66,12 +66,12 @@ package body AMF.Internals.UML_Elements is
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
          UML_Element_Proxy'Class (Self.all).Enter_UML_Element
-          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
+          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor),
            Control);
       end if;
    end Enter_Element;
@@ -125,12 +125,12 @@ package body AMF.Internals.UML_Elements is
 
    overriding procedure Leave_Element
     (Self    : not null access constant UML_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
          UML_Element_Proxy'Class (Self.all).Leave_UML_Element
-          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
+          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor),
            Control);
       end if;
    end Leave_Element;
@@ -141,12 +141,14 @@ package body AMF.Internals.UML_Elements is
 
    overriding procedure Visit_Element
     (Self     : not null access constant UML_Element_Proxy;
-     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      if Iterator.all in AMF.Visitors.UML_Iterators.UML_Iterator'Class then
+      if Iterator in AMF.Visitors.UML_Iterators.UML_Iterator'Class then
          UML_Element_Proxy'Class (Self.all).Visit_UML_Element
-          (AMF.Visitors.UML_Iterators.UML_Iterator'Class (Iterator.all)'Access,
+          (AMF.Visitors.UML_Iterators.UML_Iterator'Class (Iterator),
+           Visitor,
            Control);
       end if;
    end Visit_Element;

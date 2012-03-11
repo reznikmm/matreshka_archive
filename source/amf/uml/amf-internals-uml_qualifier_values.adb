@@ -54,7 +54,7 @@ package body AMF.Internals.UML_Qualifier_Values is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Qualifier_Value_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Qualifier_Value
@@ -67,7 +67,7 @@ package body AMF.Internals.UML_Qualifier_Values is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Qualifier_Value_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Qualifier_Value
@@ -80,11 +80,14 @@ package body AMF.Internals.UML_Qualifier_Values is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Qualifier_Value_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Qualifier_Value
-       (AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access (Self), Control);
+       (Visitor,
+        AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    -------------------

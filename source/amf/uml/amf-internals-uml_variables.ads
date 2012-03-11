@@ -102,7 +102,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End;
    --  Getter of ConnectableElement::end.
    --
-   --  Denotes a set of connector ends that attaches to this connectable 
+   --  Denotes a set of connector ends that attaches to this connectable
    --  element.
 
    overriding function Get_Template_Parameter
@@ -110,7 +110,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access;
    --  Getter of ConnectableElement::templateParameter.
    --
-   --  The ConnectableElementTemplateParameter for this ConnectableElement 
+   --  The ConnectableElementTemplateParameter for this ConnectableElement
    --  parameter.
 
    overriding procedure Set_Template_Parameter
@@ -118,7 +118,7 @@ package AMF.Internals.UML_Variables is
      To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access);
    --  Setter of ConnectableElement::templateParameter.
    --
-   --  The ConnectableElementTemplateParameter for this ConnectableElement 
+   --  The ConnectableElementTemplateParameter for this ConnectableElement
    --  parameter.
 
    overriding function Get_Type
@@ -184,9 +184,9 @@ package AMF.Internals.UML_Variables is
        return AMF.Optional_String;
    --  Getter of NamedElement::qualifiedName.
    --
-   --  A name which allows the NamedElement to be identified within a 
-   --  hierarchy of nested Namespaces. It is constructed from the names of the 
-   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  A name which allows the NamedElement to be identified within a
+   --  hierarchy of nested Namespaces. It is constructed from the names of the
+   --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
@@ -194,7 +194,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Optional_UML_Visibility_Kind;
    --  Getter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
@@ -202,7 +202,7 @@ package AMF.Internals.UML_Variables is
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Setter of NamedElement::visibility.
    --
-   --  Determines where the NamedElement appears within different Namespaces 
+   --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
@@ -259,7 +259,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Getter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding procedure Set_Is_Ordered
@@ -267,7 +267,7 @@ package AMF.Internals.UML_Variables is
      To   : Boolean);
    --  Setter of MultiplicityElement::isOrdered.
    --
-   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
    overriding function Get_Is_Unique
@@ -275,7 +275,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Getter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding procedure Set_Is_Unique
@@ -283,7 +283,7 @@ package AMF.Internals.UML_Variables is
      To   : Boolean);
    --  Setter of MultiplicityElement::isUnique.
    --
-   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
 
    overriding function Get_Lower
@@ -348,8 +348,8 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation Variable::isAccessibleBy.
    --
-   --  The isAccessibleBy() operation is not defined in standard UML. 
-   --  Implementations should define it to specify which actions can access a 
+   --  The isAccessibleBy() operation is not defined in standard UML.
+   --  Implementations should define it to specify which actions can access a
    --  variable.
 
    overriding function Ends
@@ -364,7 +364,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
    --  Operation NamedElement::allNamespaces.
    --
-   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  The query allNamespaces() gives the sequence of namespaces in which the
    --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
@@ -372,7 +372,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
    --  Operation NamedElement::allOwningPackages.
    --
-   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  The query allOwningPackages() returns all the directly or indirectly
    --  owning packages.
 
    overriding function Is_Distinguishable_From
@@ -382,9 +382,9 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation NamedElement::isDistinguishableFrom.
    --
-   --  The query isDistinguishableFrom() determines whether two NamedElements 
-   --  may logically co-exist within a Namespace. By default, two named 
-   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  The query isDistinguishableFrom() determines whether two NamedElements
+   --  may logically co-exist within a Namespace. By default, two named
+   --  elements are distinguishable if (a) they have unrelated types or (b)
    --  they have related types but different names.
 
    overriding function Namespace
@@ -399,8 +399,8 @@ package AMF.Internals.UML_Variables is
        return League.Strings.Universal_String;
    --  Operation NamedElement::qualifiedName.
    --
-   --  When there is a name, and all of the containing namespaces have a name, 
-   --  the qualified name is constructed from the names of the containing 
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
    --  namespaces.
 
    overriding function All_Owned_Elements
@@ -408,7 +408,7 @@ package AMF.Internals.UML_Variables is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding function Is_Compatible_With
@@ -417,11 +417,11 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation ParameterableElement::isCompatibleWith.
    --
-   --  The query isCompatibleWith() determines if this parameterable element 
-   --  is compatible with the specified parameterable element. By default 
-   --  parameterable element P is compatible with parameterable element Q if 
-   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
-   --  should override this operation to specify different compatibility 
+   --  The query isCompatibleWith() determines if this parameterable element
+   --  is compatible with the specified parameterable element. By default
+   --  parameterable element P is compatible with parameterable element Q if
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses
+   --  should override this operation to specify different compatibility
    --  constraints.
 
    overriding function Is_Template_Parameter
@@ -429,7 +429,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation ParameterableElement::isTemplateParameter.
    --
-   --  The query isTemplateParameter() determines if this parameterable 
+   --  The query isTemplateParameter() determines if this parameterable
    --  element is exposed as a formal template parameter.
 
    overriding function Compatible_With
@@ -438,7 +438,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation MultiplicityElement::compatibleWith.
    --
-   --  The operation compatibleWith takes another multiplicity as input. It 
+   --  The operation compatibleWith takes another multiplicity as input. It
    --  checks if one multiplicity is compatible with another.
 
    overriding function Includes_Cardinality
@@ -447,7 +447,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation MultiplicityElement::includesCardinality.
    --
-   --  The query includesCardinality() checks whether the specified 
+   --  The query includesCardinality() checks whether the specified
    --  cardinality is valid for this multiplicity.
 
    overriding function Includes_Multiplicity
@@ -456,7 +456,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation MultiplicityElement::includesMultiplicity.
    --
-   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  The query includesMultiplicity() checks whether this multiplicity
    --  includes all the cardinalities allowed by the specified multiplicity.
 
    overriding function Iss
@@ -466,7 +466,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation MultiplicityElement::is.
    --
-   --  The operation is determines if the upper and lower bound of the ranges 
+   --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
    overriding function Is_Multivalued
@@ -474,7 +474,7 @@ package AMF.Internals.UML_Variables is
        return Boolean;
    --  Operation MultiplicityElement::isMultivalued.
    --
-   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  The query isMultivalued() checks whether this multiplicity has an upper
    --  bound greater than one.
 
    overriding function Lower
@@ -489,7 +489,7 @@ package AMF.Internals.UML_Variables is
        return AMF.Optional_Integer;
    --  Operation MultiplicityElement::lowerBound.
    --
-   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  The query lowerBound() returns the lower bound of the multiplicity as
    --  an integer.
 
    overriding function Upper
@@ -504,24 +504,25 @@ package AMF.Internals.UML_Variables is
        return AMF.Optional_Unlimited_Natural;
    --  Operation MultiplicityElement::upperBound.
    --
-   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  The query upperBound() returns the upper bound of the multiplicity for
    --  a bounded multiplicity as an unlimited natural.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Variable_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Variable_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Variable_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

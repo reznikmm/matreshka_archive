@@ -56,7 +56,7 @@ package body AMF.Internals.UML_Primitive_Types is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Primitive_Type_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Primitive_Type
@@ -69,7 +69,7 @@ package body AMF.Internals.UML_Primitive_Types is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Primitive_Type_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Primitive_Type
@@ -82,11 +82,14 @@ package body AMF.Internals.UML_Primitive_Types is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Primitive_Type_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Primitive_Type
-       (AMF.UML.Primitive_Types.UML_Primitive_Type_Access (Self), Control);
+       (Visitor,
+        AMF.UML.Primitive_Types.UML_Primitive_Type_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    -------------------------

@@ -62,9 +62,9 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
        return AMF.UML.Input_Pins.UML_Input_Pin_Access;
    --  Getter of LinkEndCreationData::insertAt.
    --
-   --  Specifies where the new link should be inserted for ordered association 
-   --  ends, or where an existing link should be moved to. The type of the 
-   --  input is UnlimitedNatural, but the input cannot be zero. This pin is 
+   --  Specifies where the new link should be inserted for ordered association
+   --  ends, or where an existing link should be moved to. The type of the
+   --  input is UnlimitedNatural, but the input cannot be zero. This pin is
    --  omitted for association ends that are not ordered.
 
    overriding procedure Set_Insert_At
@@ -72,9 +72,9 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
    --  Setter of LinkEndCreationData::insertAt.
    --
-   --  Specifies where the new link should be inserted for ordered association 
-   --  ends, or where an existing link should be moved to. The type of the 
-   --  input is UnlimitedNatural, but the input cannot be zero. This pin is 
+   --  Specifies where the new link should be inserted for ordered association
+   --  ends, or where an existing link should be moved to. The type of the
+   --  input is UnlimitedNatural, but the input cannot be zero. This pin is
    --  omitted for association ends that are not ordered.
 
    overriding function Get_Is_Replace_All
@@ -82,7 +82,7 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
        return Boolean;
    --  Getter of LinkEndCreationData::isReplaceAll.
    --
-   --  Specifies whether the existing links emanating from the object on this 
+   --  Specifies whether the existing links emanating from the object on this
    --  end should be destroyed before creating a new link.
 
    overriding procedure Set_Is_Replace_All
@@ -90,7 +90,7 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
      To   : Boolean);
    --  Setter of LinkEndCreationData::isReplaceAll.
    --
-   --  Specifies whether the existing links emanating from the object on this 
+   --  Specifies whether the existing links emanating from the object on this
    --  end should be destroyed before creating a new link.
 
    overriding function Get_End
@@ -119,7 +119,7 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
        return AMF.UML.Input_Pins.UML_Input_Pin_Access;
    --  Getter of LinkEndData::value.
    --
-   --  Input pin that provides the specified object for the given end. This 
+   --  Input pin that provides the specified object for the given end. This
    --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    overriding procedure Set_Value
@@ -127,7 +127,7 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
    --  Setter of LinkEndData::value.
    --
-   --  Input pin that provides the specified object for the given end. This 
+   --  Input pin that provides the specified object for the given end. This
    --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    overriding function Get_Owned_Comment
@@ -156,24 +156,25 @@ package AMF.Internals.UML_Link_End_Creation_Datas is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Link_End_Creation_Data_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Link_End_Creation_Data_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Link_End_Creation_Data_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

@@ -54,7 +54,7 @@ package body AMF.Internals.UML_Connector_Ends is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Connector_End_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Connector_End
@@ -67,7 +67,7 @@ package body AMF.Internals.UML_Connector_Ends is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Connector_End_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Connector_End
@@ -80,11 +80,14 @@ package body AMF.Internals.UML_Connector_Ends is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Connector_End_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Connector_End
-       (AMF.UML.Connector_Ends.UML_Connector_End_Access (Self), Control);
+       (Visitor,
+        AMF.UML.Connector_Ends.UML_Connector_End_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    ----------------------

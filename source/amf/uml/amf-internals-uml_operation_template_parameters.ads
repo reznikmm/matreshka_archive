@@ -90,7 +90,7 @@ package AMF.Internals.UML_Operation_Template_Parameters is
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
    --  Getter of TemplateParameter::ownedDefault.
    --
-   --  The element that is owned by this template parameter for the purpose of 
+   --  The element that is owned by this template parameter for the purpose of
    --  providing a default.
 
    overriding procedure Set_Owned_Default
@@ -98,7 +98,7 @@ package AMF.Internals.UML_Operation_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
    --  Setter of TemplateParameter::ownedDefault.
    --
-   --  The element that is owned by this template parameter for the purpose of 
+   --  The element that is owned by this template parameter for the purpose of
    --  providing a default.
 
    overriding function Get_Owned_Parametered_Element
@@ -169,24 +169,25 @@ package AMF.Internals.UML_Operation_Template_Parameters is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Operation_Template_Parameter_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Operation_Template_Parameter_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Operation_Template_Parameter_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

@@ -59,9 +59,9 @@ package AMF.Internals.UML_Images is
        return AMF.Optional_String;
    --  Getter of Image::content.
    --
-   --  This contains the serialization of the image according to the format. 
-   --  The value could represent a bitmap, image such as a GIF file, or 
-   --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
+   --  This contains the serialization of the image according to the format.
+   --  The value could represent a bitmap, image such as a GIF file, or
+   --  drawing 'instructions' using a standard such as Scalable Vector Graphic
    --  (SVG) (which is XML based).
 
    overriding procedure Set_Content
@@ -69,9 +69,9 @@ package AMF.Internals.UML_Images is
      To   : AMF.Optional_String);
    --  Setter of Image::content.
    --
-   --  This contains the serialization of the image according to the format. 
-   --  The value could represent a bitmap, image such as a GIF file, or 
-   --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
+   --  This contains the serialization of the image according to the format.
+   --  The value could represent a bitmap, image such as a GIF file, or
+   --  drawing 'instructions' using a standard such as Scalable Vector Graphic
    --  (SVG) (which is XML based).
 
    overriding function Get_Format
@@ -79,11 +79,11 @@ package AMF.Internals.UML_Images is
        return AMF.Optional_String;
    --  Getter of Image::format.
    --
-   --  This indicates the format of the content - which is how the string 
-   --  content should be interpreted. The following values are reserved: SVG, 
-   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
-   --  reserved. This option can be used as an alternative to express the 
-   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  This indicates the format of the content - which is how the string
+   --  content should be interpreted. The following values are reserved: SVG,
+   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also
+   --  reserved. This option can be used as an alternative to express the
+   --  reserved values above, for example 'SVG' could instead be expressed as
    --  'MIME: image/svg+xml'.
 
    overriding procedure Set_Format
@@ -91,11 +91,11 @@ package AMF.Internals.UML_Images is
      To   : AMF.Optional_String);
    --  Setter of Image::format.
    --
-   --  This indicates the format of the content - which is how the string 
-   --  content should be interpreted. The following values are reserved: SVG, 
-   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
-   --  reserved. This option can be used as an alternative to express the 
-   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  This indicates the format of the content - which is how the string
+   --  content should be interpreted. The following values are reserved: SVG,
+   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also
+   --  reserved. This option can be used as an alternative to express the
+   --  reserved values above, for example 'SVG' could instead be expressed as
    --  'MIME: image/svg+xml'.
 
    overriding function Get_Location
@@ -103,7 +103,7 @@ package AMF.Internals.UML_Images is
        return AMF.Optional_String;
    --  Getter of Image::location.
    --
-   --  This contains a location that can be used by a tool to locate the image 
+   --  This contains a location that can be used by a tool to locate the image
    --  as an alternative to embedding it in the stereotype.
 
    overriding procedure Set_Location
@@ -111,7 +111,7 @@ package AMF.Internals.UML_Images is
      To   : AMF.Optional_String);
    --  Setter of Image::location.
    --
-   --  This contains a location that can be used by a tool to locate the image 
+   --  This contains a location that can be used by a tool to locate the image
    --  as an alternative to embedding it in the stereotype.
 
    overriding function Get_Owned_Comment
@@ -140,24 +140,25 @@ package AMF.Internals.UML_Images is
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
    --  Operation Element::allOwnedElements.
    --
-   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Image_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_Image_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_Image_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

@@ -56,7 +56,7 @@ package body AMF.Internals.UML_State_Invariants is
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_State_Invariant_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_State_Invariant
@@ -69,7 +69,7 @@ package body AMF.Internals.UML_State_Invariants is
 
    overriding procedure Leave_UML_Element
     (Self    : not null access constant UML_State_Invariant_Proxy;
-     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_State_Invariant
@@ -82,11 +82,14 @@ package body AMF.Internals.UML_State_Invariants is
 
    overriding procedure Visit_UML_Element
     (Self     : not null access constant UML_State_Invariant_Proxy;
-     Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_State_Invariant
-       (AMF.UML.State_Invariants.UML_State_Invariant_Access (Self), Control);
+       (Visitor,
+        AMF.UML.State_Invariants.UML_State_Invariant_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    -----------------
