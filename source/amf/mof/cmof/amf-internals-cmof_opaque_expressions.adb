@@ -54,7 +54,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Opaque_Expression_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Opaque_Expression
@@ -68,7 +68,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
 
    overriding procedure Leave_CMOF_Element
     (Self    : not null access constant CMOF_Opaque_Expression_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Opaque_Expression
@@ -82,11 +82,13 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
 
    overriding procedure Visit_CMOF_Element
     (Self     : not null access constant CMOF_Opaque_Expression_Proxy;
-     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Opaque_Expression
-       (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access (Self),
+       (Visitor,
+        AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access (Self),
         Control);
    end Visit_CMOF_Element;
 

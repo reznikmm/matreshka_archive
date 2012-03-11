@@ -93,7 +93,7 @@ package AMF.Internals.CMOF_Constraints is
        return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access;
    --  Getter of Constraint::specification.
    --
-   --  A condition that must be true when evaluated in order for the 
+   --  A condition that must be true when evaluated in order for the
    --  constraint to be satisfied.
 
    overriding procedure Set_Specification
@@ -111,19 +111,20 @@ package AMF.Internals.CMOF_Constraints is
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Constraint_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_CMOF_Element
     (Self    : not null access constant CMOF_Constraint_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_CMOF_Element
     (Self     : not null access constant CMOF_Constraint_Proxy;
-     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

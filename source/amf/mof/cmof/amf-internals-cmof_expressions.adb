@@ -50,7 +50,7 @@ package body AMF.Internals.CMOF_Expressions is
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Expression_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Expression
@@ -63,7 +63,7 @@ package body AMF.Internals.CMOF_Expressions is
 
    overriding procedure Leave_CMOF_Element
     (Self    : not null access constant CMOF_Expression_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Expression
@@ -76,11 +76,12 @@ package body AMF.Internals.CMOF_Expressions is
 
    overriding procedure Visit_CMOF_Element
     (Self     : not null access constant CMOF_Expression_Proxy;
-     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Expression
-       (AMF.CMOF.Expressions.CMOF_Expression_Access (Self), Control);
+       (Visitor, AMF.CMOF.Expressions.CMOF_Expression_Access (Self), Control);
    end Visit_CMOF_Element;
 
    ------------------------

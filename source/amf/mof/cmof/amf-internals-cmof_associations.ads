@@ -178,7 +178,7 @@ package AMF.Internals.CMOF_Associations is
      To   : Boolean);
    --  Setter of Association::isDerived.
    --
-   --  Specifies whether the association is derived from other model elements 
+   --  Specifies whether the association is derived from other model elements
    --  such as other associations or constraints.
 
    overriding function Get_Owned_End
@@ -190,7 +190,7 @@ package AMF.Internals.CMOF_Associations is
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type;
    --  Getter of Association::endType.
    --
-   --  References the classifiers that are used as types of the ends of the 
+   --  References the classifiers that are used as types of the ends of the
    --  association.
 
    overriding function Get_Member_End
@@ -210,19 +210,20 @@ package AMF.Internals.CMOF_Associations is
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Association_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_CMOF_Element
     (Self    : not null access constant CMOF_Association_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_CMOF_Element
     (Self     : not null access constant CMOF_Association_Proxy;
-     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

@@ -54,7 +54,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding procedure Enter_CMOF_Element
     (Self    : not null access constant CMOF_Data_Type_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Enter_Data_Type
@@ -95,7 +95,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding procedure Leave_CMOF_Element
     (Self    : not null access constant CMOF_Data_Type_Proxy;
-     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       Visitor.Leave_Data_Type
@@ -108,11 +108,12 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding procedure Visit_CMOF_Element
     (Self     : not null access constant CMOF_Data_Type_Proxy;
-     Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       Iterator.Visit_Data_Type
-       (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (Self), Control);
+       (Visitor, AMF.CMOF.Data_Types.CMOF_Data_Type_Access (Self), Control);
    end Visit_CMOF_Element;
 
    ------------------------
