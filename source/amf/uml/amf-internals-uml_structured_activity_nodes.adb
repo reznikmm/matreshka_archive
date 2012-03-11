@@ -59,7 +59,9 @@ package body AMF.Internals.UML_Structured_Activity_Nodes is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Structured_Activity_Node (Self, Control);
+      Visitor.Enter_Structured_Activity_Node
+       (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +73,9 @@ package body AMF.Internals.UML_Structured_Activity_Nodes is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Structured_Activity_Node (Self, Control);
+      Visitor.Leave_Structured_Activity_Node
+       (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +87,9 @@ package body AMF.Internals.UML_Structured_Activity_Nodes is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Structured_Activity_Node (Self, Control);
+      Iterator.Visit_Structured_Activity_Node
+       (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    ------------------

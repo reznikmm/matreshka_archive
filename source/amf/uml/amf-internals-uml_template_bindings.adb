@@ -57,7 +57,8 @@ package body AMF.Internals.UML_Template_Bindings is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Template_Binding (Self, Control);
+      Visitor.Enter_Template_Binding
+       (AMF.UML.Template_Bindings.UML_Template_Binding_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -69,7 +70,8 @@ package body AMF.Internals.UML_Template_Bindings is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Template_Binding (Self, Control);
+      Visitor.Leave_Template_Binding
+       (AMF.UML.Template_Bindings.UML_Template_Binding_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +83,8 @@ package body AMF.Internals.UML_Template_Bindings is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Template_Binding (Self, Control);
+      Iterator.Visit_Template_Binding
+       (AMF.UML.Template_Bindings.UML_Template_Binding_Access (Self), Control);
    end Visit_UML_Element;
 
    -----------------------

@@ -59,7 +59,8 @@ package body AMF.Internals.UML_Final_States is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Final_State (Self, Control);
+      Visitor.Enter_Final_State
+       (AMF.UML.Final_States.UML_Final_State_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +72,8 @@ package body AMF.Internals.UML_Final_States is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Final_State (Self, Control);
+      Visitor.Leave_Final_State
+       (AMF.UML.Final_States.UML_Final_State_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +85,8 @@ package body AMF.Internals.UML_Final_States is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Final_State (Self, Control);
+      Iterator.Visit_Final_State
+       (AMF.UML.Final_States.UML_Final_State_Access (Self), Control);
    end Visit_UML_Element;
 
    --------------------

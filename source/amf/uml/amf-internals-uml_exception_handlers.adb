@@ -57,7 +57,9 @@ package body AMF.Internals.UML_Exception_Handlers is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Exception_Handler (Self, Control);
+      Visitor.Enter_Exception_Handler
+       (AMF.UML.Exception_Handlers.UML_Exception_Handler_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -69,7 +71,9 @@ package body AMF.Internals.UML_Exception_Handlers is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Exception_Handler (Self, Control);
+      Visitor.Leave_Exception_Handler
+       (AMF.UML.Exception_Handlers.UML_Exception_Handler_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +85,9 @@ package body AMF.Internals.UML_Exception_Handlers is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Exception_Handler (Self, Control);
+      Iterator.Visit_Exception_Handler
+       (AMF.UML.Exception_Handlers.UML_Exception_Handler_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    -------------------------

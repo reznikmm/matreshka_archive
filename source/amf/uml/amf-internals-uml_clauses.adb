@@ -57,7 +57,7 @@ package body AMF.Internals.UML_Clauses is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Clause (Self, Control);
+      Visitor.Enter_Clause (AMF.UML.Clauses.UML_Clause_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -69,7 +69,7 @@ package body AMF.Internals.UML_Clauses is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Clause (Self, Control);
+      Visitor.Leave_Clause (AMF.UML.Clauses.UML_Clause_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +81,7 @@ package body AMF.Internals.UML_Clauses is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Clause (Self, Control);
+      Iterator.Visit_Clause (AMF.UML.Clauses.UML_Clause_Access (Self), Control);
    end Visit_UML_Element;
 
    --------------

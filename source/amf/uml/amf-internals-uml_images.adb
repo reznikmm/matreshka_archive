@@ -58,7 +58,7 @@ package body AMF.Internals.UML_Images is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Image (Self, Control);
+      Visitor.Enter_Image (AMF.UML.Images.UML_Image_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -70,7 +70,7 @@ package body AMF.Internals.UML_Images is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Image (Self, Control);
+      Visitor.Leave_Image (AMF.UML.Images.UML_Image_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -82,7 +82,7 @@ package body AMF.Internals.UML_Images is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Image (Self, Control);
+      Iterator.Visit_Image (AMF.UML.Images.UML_Image_Access (Self), Control);
    end Visit_UML_Element;
 
    -----------------

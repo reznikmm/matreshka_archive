@@ -57,7 +57,8 @@ package body AMF.Internals.UML_Package_Merges is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Package_Merge (Self, Control);
+      Visitor.Enter_Package_Merge
+       (AMF.UML.Package_Merges.UML_Package_Merge_Access (Self), Control);
    end Enter_UML_Element;
 
    ------------------------
@@ -69,7 +70,8 @@ package body AMF.Internals.UML_Package_Merges is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Package_Merge (Self, Control);
+      Visitor.Leave_Package_Merge
+       (AMF.UML.Package_Merges.UML_Package_Merge_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +83,8 @@ package body AMF.Internals.UML_Package_Merges is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Package_Merge (Self, Control);
+      Iterator.Visit_Package_Merge
+       (AMF.UML.Package_Merges.UML_Package_Merge_Access (Self), Control);
    end Visit_UML_Element;
 
    ------------------------

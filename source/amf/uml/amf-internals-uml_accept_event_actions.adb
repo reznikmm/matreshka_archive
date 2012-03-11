@@ -59,7 +59,9 @@ package body AMF.Internals.UML_Accept_Event_Actions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Accept_Event_Action (Self, Control);
+      Visitor.Enter_Accept_Event_Action
+       (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    ------------------------
@@ -71,7 +73,9 @@ package body AMF.Internals.UML_Accept_Event_Actions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Accept_Event_Action (Self, Control);
+      Visitor.Leave_Accept_Event_Action
+       (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +87,9 @@ package body AMF.Internals.UML_Accept_Event_Actions is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Accept_Event_Action (Self, Control);
+      Iterator.Visit_Accept_Event_Action
+       (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    -----------------------

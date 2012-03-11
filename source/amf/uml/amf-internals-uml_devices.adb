@@ -59,7 +59,7 @@ package body AMF.Internals.UML_Devices is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Device (Self, Control);
+      Visitor.Enter_Device (AMF.UML.Devices.UML_Device_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +71,7 @@ package body AMF.Internals.UML_Devices is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Device (Self, Control);
+      Visitor.Leave_Device (AMF.UML.Devices.UML_Device_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +83,7 @@ package body AMF.Internals.UML_Devices is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Device (Self, Control);
+      Iterator.Visit_Device (AMF.UML.Devices.UML_Device_Access (Self), Control);
    end Visit_UML_Element;
 
    ---------------------

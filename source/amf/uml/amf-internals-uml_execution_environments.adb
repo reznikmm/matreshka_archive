@@ -59,7 +59,9 @@ package body AMF.Internals.UML_Execution_Environments is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Execution_Environment (Self, Control);
+      Visitor.Enter_Execution_Environment
+       (AMF.UML.Execution_Environments.UML_Execution_Environment_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +73,9 @@ package body AMF.Internals.UML_Execution_Environments is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Execution_Environment (Self, Control);
+      Visitor.Leave_Execution_Environment
+       (AMF.UML.Execution_Environments.UML_Execution_Environment_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +87,9 @@ package body AMF.Internals.UML_Execution_Environments is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Execution_Environment (Self, Control);
+      Iterator.Visit_Execution_Environment
+       (AMF.UML.Execution_Environments.UML_Execution_Environment_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    ---------------------

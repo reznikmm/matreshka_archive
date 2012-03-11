@@ -59,7 +59,8 @@ package body AMF.Internals.UML_Continuations is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Continuation (Self, Control);
+      Visitor.Enter_Continuation
+       (AMF.UML.Continuations.UML_Continuation_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +72,8 @@ package body AMF.Internals.UML_Continuations is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Continuation (Self, Control);
+      Visitor.Leave_Continuation
+       (AMF.UML.Continuations.UML_Continuation_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +85,8 @@ package body AMF.Internals.UML_Continuations is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Continuation (Self, Control);
+      Iterator.Visit_Continuation
+       (AMF.UML.Continuations.UML_Continuation_Access (Self), Control);
    end Visit_UML_Element;
 
    -----------------

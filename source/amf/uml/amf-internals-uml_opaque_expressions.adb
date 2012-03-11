@@ -60,7 +60,9 @@ package body AMF.Internals.UML_Opaque_Expressions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Opaque_Expression (Self, Control);
+      Visitor.Enter_Opaque_Expression
+       (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -72,7 +74,9 @@ package body AMF.Internals.UML_Opaque_Expressions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Opaque_Expression (Self, Control);
+      Visitor.Leave_Opaque_Expression
+       (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -84,7 +88,9 @@ package body AMF.Internals.UML_Opaque_Expressions is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Opaque_Expression (Self, Control);
+      Iterator.Visit_Opaque_Expression
+       (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    ------------------

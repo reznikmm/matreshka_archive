@@ -59,7 +59,8 @@ package body AMF.Internals.UML_State_Invariants is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_State_Invariant (Self, Control);
+      Visitor.Enter_State_Invariant
+       (AMF.UML.State_Invariants.UML_State_Invariant_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +72,8 @@ package body AMF.Internals.UML_State_Invariants is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_State_Invariant (Self, Control);
+      Visitor.Leave_State_Invariant
+       (AMF.UML.State_Invariants.UML_State_Invariant_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +85,8 @@ package body AMF.Internals.UML_State_Invariants is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_State_Invariant (Self, Control);
+      Iterator.Visit_State_Invariant
+       (AMF.UML.State_Invariants.UML_State_Invariant_Access (Self), Control);
    end Visit_UML_Element;
 
    -----------------

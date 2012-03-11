@@ -59,7 +59,8 @@ package body AMF.Internals.UML_Element_Imports is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Element_Import (Self, Control);
+      Visitor.Enter_Element_Import
+       (AMF.UML.Element_Imports.UML_Element_Import_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -71,7 +72,8 @@ package body AMF.Internals.UML_Element_Imports is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Element_Import (Self, Control);
+      Visitor.Leave_Element_Import
+       (AMF.UML.Element_Imports.UML_Element_Import_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +85,8 @@ package body AMF.Internals.UML_Element_Imports is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Element_Import (Self, Control);
+      Iterator.Visit_Element_Import
+       (AMF.UML.Element_Imports.UML_Element_Import_Access (Self), Control);
    end Visit_UML_Element;
 
    ---------------

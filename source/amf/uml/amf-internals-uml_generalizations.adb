@@ -57,7 +57,8 @@ package body AMF.Internals.UML_Generalizations is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Generalization (Self, Control);
+      Visitor.Enter_Generalization
+       (AMF.UML.Generalizations.UML_Generalization_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -69,7 +70,8 @@ package body AMF.Internals.UML_Generalizations is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Generalization (Self, Control);
+      Visitor.Leave_Generalization
+       (AMF.UML.Generalizations.UML_Generalization_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +83,8 @@ package body AMF.Internals.UML_Generalizations is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Generalization (Self, Control);
+      Iterator.Visit_Generalization
+       (AMF.UML.Generalizations.UML_Generalization_Access (Self), Control);
    end Visit_UML_Element;
 
    -----------------

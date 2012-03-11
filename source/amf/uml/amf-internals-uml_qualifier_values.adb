@@ -57,7 +57,8 @@ package body AMF.Internals.UML_Qualifier_Values is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Qualifier_Value (Self, Control);
+      Visitor.Enter_Qualifier_Value
+       (AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access (Self), Control);
    end Enter_UML_Element;
 
    ------------------------
@@ -69,7 +70,8 @@ package body AMF.Internals.UML_Qualifier_Values is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Qualifier_Value (Self, Control);
+      Visitor.Leave_Qualifier_Value
+       (AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +83,8 @@ package body AMF.Internals.UML_Qualifier_Values is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Qualifier_Value (Self, Control);
+      Iterator.Visit_Qualifier_Value
+       (AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access (Self), Control);
    end Visit_UML_Element;
 
    -------------------

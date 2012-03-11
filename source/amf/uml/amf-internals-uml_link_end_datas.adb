@@ -57,7 +57,8 @@ package body AMF.Internals.UML_Link_End_Datas is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Link_End_Data (Self, Control);
+      Visitor.Enter_Link_End_Data
+       (AMF.UML.Link_End_Datas.UML_Link_End_Data_Access (Self), Control);
    end Enter_UML_Element;
 
    -----------------------
@@ -69,7 +70,8 @@ package body AMF.Internals.UML_Link_End_Datas is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Link_End_Data (Self, Control);
+      Visitor.Leave_Link_End_Data
+       (AMF.UML.Link_End_Datas.UML_Link_End_Data_Access (Self), Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -81,7 +83,8 @@ package body AMF.Internals.UML_Link_End_Datas is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Link_End_Data (Self, Control);
+      Iterator.Visit_Link_End_Data
+       (AMF.UML.Link_End_Datas.UML_Link_End_Data_Access (Self), Control);
    end Visit_UML_Element;
 
    -------------

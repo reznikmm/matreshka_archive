@@ -59,7 +59,9 @@ package body AMF.Internals.UML_Value_Specification_Actions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Value_Specification_Action (Self, Control);
+      Visitor.Enter_Value_Specification_Action
+       (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access (Self),
+        Control);
    end Enter_UML_Element;
 
    ------------------------
@@ -71,7 +73,9 @@ package body AMF.Internals.UML_Value_Specification_Actions is
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Value_Specification_Action (Self, Control);
+      Visitor.Leave_Value_Specification_Action
+       (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access (Self),
+        Control);
    end Leave_UML_Element;
 
    -----------------------
@@ -83,7 +87,9 @@ package body AMF.Internals.UML_Value_Specification_Actions is
      Iterator : not null access AMF.Visitors.UML_Iterators.UML_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Value_Specification_Action (Self, Control);
+      Iterator.Visit_Value_Specification_Action
+       (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access (Self),
+        Control);
    end Visit_UML_Element;
 
    ----------------
