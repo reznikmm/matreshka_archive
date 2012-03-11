@@ -67,19 +67,20 @@ package AMF.Internals.Elements is
 
    not overriding procedure Enter_Element
     (Self    : not null access constant Element_Implementation;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    not overriding procedure Leave_Element
     (Self    : not null access constant Element_Implementation;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    not overriding procedure Visit_Element
     (Self     : not null access constant Element_Implementation;
-     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of iterator interface.
 
