@@ -95,25 +95,26 @@ package AMF.Internals.OCL_Elements is
 --    (Self : not null access constant OCL_Element_Proxy) return Boolean;
 --   --  Operation Element::mustBeOwned.
 --   --
---   --  The query mustBeOwned() indicates whether elements of this type must 
---   --  have an owner. Subclasses of Element that do not require an owner must 
+--   --  The query mustBeOwned() indicates whether elements of this type must
+--   --  have an owner. Subclasses of Element that do not require an owner must
 --   --  override this operation.
 
    overriding procedure Enter_Element
     (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Leave_Element
     (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    overriding procedure Visit_Element
     (Self     : not null access constant OCL_Element_Proxy;
-     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.
 

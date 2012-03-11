@@ -66,7 +66,7 @@ package body AMF.Internals.OCL_Elements is
 
    overriding procedure Enter_Element
     (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       raise Program_Error;
@@ -126,7 +126,7 @@ package body AMF.Internals.OCL_Elements is
 
    overriding procedure Leave_Element
     (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
       raise Program_Error;
@@ -181,7 +181,8 @@ package body AMF.Internals.OCL_Elements is
 
    overriding procedure Visit_Element
     (Self     : not null access constant OCL_Element_Proxy;
-     Iterator : not null access AMF.Visitors.Abstract_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
       raise Program_Error;
