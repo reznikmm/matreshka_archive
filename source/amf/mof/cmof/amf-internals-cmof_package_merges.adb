@@ -53,7 +53,8 @@ package body AMF.Internals.CMOF_Package_Merges is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Package_Merge (Self, Control);
+      Visitor.Enter_Package_Merge
+       (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access (Self), Control);
    end Enter_CMOF_Element;
 
    ------------------------
@@ -65,7 +66,8 @@ package body AMF.Internals.CMOF_Package_Merges is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Package_Merge (Self, Control);
+      Visitor.Leave_Package_Merge
+       (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access (Self), Control);
    end Leave_CMOF_Element;
 
    ------------------------
@@ -77,7 +79,8 @@ package body AMF.Internals.CMOF_Package_Merges is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Package_Merge (Self, Control);
+      Iterator.Visit_Package_Merge
+       (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access (Self), Control);
    end Visit_CMOF_Element;
 
    ------------------------

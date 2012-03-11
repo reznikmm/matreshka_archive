@@ -57,7 +57,8 @@ package body AMF.Internals.CMOF_Associations is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Association (Self, Control);
+      Visitor.Enter_Association
+       (AMF.CMOF.Associations.CMOF_Association_Access (Self), Control);
    end Enter_CMOF_Element;
 
    ------------------
@@ -135,7 +136,8 @@ package body AMF.Internals.CMOF_Associations is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Association (Self, Control);
+      Visitor.Leave_Association
+       (AMF.CMOF.Associations.CMOF_Association_Access (Self), Control);
    end Leave_CMOF_Element;
 
    --------------------
@@ -158,7 +160,8 @@ package body AMF.Internals.CMOF_Associations is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Association (Self, Control);
+      Iterator.Visit_Association
+       (AMF.CMOF.Associations.CMOF_Association_Access (Self), Control);
    end Visit_CMOF_Element;
 
 

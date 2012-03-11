@@ -58,7 +58,8 @@ package body AMF.Internals.CMOF_Operations is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Operation (Self, Control);
+      Visitor.Enter_Operation
+       (AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
    end Enter_CMOF_Element;
 
    ------------------------
@@ -208,7 +209,8 @@ package body AMF.Internals.CMOF_Operations is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Operation (Self, Control);
+      Visitor.Leave_Operation
+       (AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
    end Leave_CMOF_Element;
 
    ------------------
@@ -231,7 +233,8 @@ package body AMF.Internals.CMOF_Operations is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Operation (Self, Control);
+      Iterator.Visit_Operation
+       (AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
    end Visit_CMOF_Element;
 
 

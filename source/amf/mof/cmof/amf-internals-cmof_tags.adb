@@ -60,7 +60,7 @@ package body AMF.Internals.CMOF_Tags is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Tag (Self, Control);
+      Visitor.Enter_Tag (AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
    end Enter_CMOF_Element;
 
    ------------------------
@@ -72,7 +72,7 @@ package body AMF.Internals.CMOF_Tags is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Tag (Self, Control);
+      Visitor.Leave_Tag (AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
    end Leave_CMOF_Element;
 
    ------------------------
@@ -84,7 +84,7 @@ package body AMF.Internals.CMOF_Tags is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Tag (Self, Control);
+      Iterator.Visit_Tag (AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
    end Visit_CMOF_Element;
 
    -----------------

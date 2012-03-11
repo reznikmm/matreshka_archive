@@ -53,7 +53,8 @@ package body AMF.Internals.CMOF_Expressions is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Expression (Self, Control);
+      Visitor.Enter_Expression
+       (AMF.CMOF.Expressions.CMOF_Expression_Access (Self), Control);
    end Enter_CMOF_Element;
 
    ------------------------
@@ -65,7 +66,8 @@ package body AMF.Internals.CMOF_Expressions is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Expression (Self, Control);
+      Visitor.Leave_Expression
+       (AMF.CMOF.Expressions.CMOF_Expression_Access (Self), Control);
    end Leave_CMOF_Element;
 
    ------------------------
@@ -77,7 +79,8 @@ package body AMF.Internals.CMOF_Expressions is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Expression (Self, Control);
+      Iterator.Visit_Expression
+       (AMF.CMOF.Expressions.CMOF_Expression_Access (Self), Control);
    end Visit_CMOF_Element;
 
    ------------------------

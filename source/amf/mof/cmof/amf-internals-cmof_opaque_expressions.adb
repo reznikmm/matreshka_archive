@@ -57,7 +57,9 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Opaque_Expression (Self, Control);
+      Visitor.Enter_Opaque_Expression
+       (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access (Self),
+        Control);
    end Enter_CMOF_Element;
 
    ------------------------
@@ -69,7 +71,9 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
      Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Opaque_Expression (Self, Control);
+      Visitor.Leave_Opaque_Expression
+       (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access (Self),
+        Control);
    end Leave_CMOF_Element;
 
    ------------------------
@@ -81,7 +85,9 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
      Iterator : not null access AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Opaque_Expression (Self, Control);
+      Iterator.Visit_Opaque_Expression
+       (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access (Self),
+        Control);
    end Visit_CMOF_Element;
 
    ------------------------
