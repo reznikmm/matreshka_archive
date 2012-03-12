@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -1185,7 +1185,8 @@ package body League.Strings is
       Last_Index       : Natural;
       Code             : Code_Point;
       S                : Shared_String_Access;
-      R                : not null Shared_String_Vector_Access := Allocate (1);
+      R                : Shared_String_Vector_Access
+        := Empty_Shared_String_Vector'Access;
 
    begin
       if not Is_Valid (C) then
@@ -1193,7 +1194,12 @@ package body League.Strings is
       end if;
 
       if D.Length = 0 then
-         return League.String_Vectors.Empty_Universal_String_Vector;
+         return
+           League.String_Vectors.Internals.Wrap
+            (Empty_Shared_String_Vector'Access);
+         --  GNAT Pro 7.0: Empty_Universal_String_Vector can be returned here,
+         --  but this produce memory leaks, seems because of bug in GNAT
+         --  compiler.
       end if;
 
       while Current_Position < D.Unused loop
