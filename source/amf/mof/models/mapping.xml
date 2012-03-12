@@ -58,6 +58,8 @@
   <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="../metamodels/CMOF24.cmof"/>
 
   <!--  For internal purposes only  -->
+
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof" uri="../metamodels/PrimitiveTypes24.cmof"/>
   <uri name="http://www.omg.org/spec/UML/20100901/UML.cmof" uri="../metamodels/UML24.cmof"/>
+  <uri name="http://www.omg.org/spec/OCL/20090501/OCL.cmof" uri="../metamodels/OCL23.cmof"/>
 </catalog>
