@@ -56,6 +56,7 @@ endif
 
 league-valgrind:
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/library_level_test
+	$(VALGRIND) $(VALGRIND_FLAGS) --leak-check=full .objs/test_193
 
 sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
