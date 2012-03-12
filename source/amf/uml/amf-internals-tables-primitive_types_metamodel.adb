@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,15 +43,12 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-
-with AMF.CMOF;
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
-with AMF.Internals.Tables.Primitive_Types_String_Data;
+with AMF.Internals.Tables.Primitive_Types_String_Data_00;
 
 package body AMF.Internals.Tables.Primitive_Types_Metamodel is
 
@@ -120,14 +117,14 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       return Base;
    end MB_Primitive_Types;
 
-   ----------------
-   -- Initialize --
-   ----------------
+   ------------------------
+   -- Initialize_Objects --
+   ------------------------
 
-   procedure Initialize is
+   procedure Initialize_Objects is
       Extent : constant AMF.Internals.AMF_Extent
         := AMF.Internals.Extents.Allocate_Extent
-            (AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access);
+            (AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0001'Access);
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
@@ -179,85 +176,92 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_15'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 1,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0001'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 1, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_10'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0009'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 2, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 3,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_7'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0006'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_4'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0003'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 4, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 5,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_12'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000B'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_14'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 6, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 7,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_9'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0008'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_18'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0011'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 8, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 9,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_17'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0010'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_3'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0002'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 10, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 11,
-         AMF.Internals.Tables.Primitive_Types_String_Data.MS_11'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000A'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 12,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_16'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 12,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_1'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0000'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0004'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 13,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_6'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0005'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 14,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0004'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 14,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_13'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_000C'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 15,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0004'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 15,
-        AMF.Internals.Tables.Primitive_Types_String_Data.MS_8'Access);
+        AMF.Internals.Tables.Primitive_Types_String_Data_00.MS_0007'Access);
+   end Initialize_Objects;
 
+   ----------------------
+   -- Initialize_Links --
+   ----------------------
+
+   procedure Initialize_Links is
+   begin
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
@@ -372,6 +376,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 6,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
-   end Initialize;
+   end Initialize_Links;
 
 end AMF.Internals.Tables.Primitive_Types_Metamodel;

@@ -66,8 +66,10 @@ package body AMF.Internals.Modules.UML_Module is
 begin
    --  Initialize metamodels.
 
-   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize;
+   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Objects;
    AMF.Internals.Tables.UML_Metamodel.Initialize_Objects;
+
+   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Links;
    AMF.Internals.Tables.UML_Metamodel.Initialize_Links;
 
    --  Initialize element table of UML metamodel (there is no element table for
