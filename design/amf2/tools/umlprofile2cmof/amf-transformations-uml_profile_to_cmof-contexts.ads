@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,84 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
+private with Ada.Containers.Hashed_Maps;
 
-with AMF.Extents;
-with AMF.Facility;
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Elements;
+with AMF.CMOF.Packages;
+with AMF.CMOF.Properties;
+with AMF.UML.Elements;
+private with AMF.UML.Elements.Hash;
 with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+package AMF.Transformations.UML_Profile_To_CMOF.Contexts is
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   type Transformation_Context is tagged limited private;
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
+   procedure Initialize (Self : in out Transformation_Context);
 
-begin
-   --  Initialize facility.
+   function Destination
+    (Self : in out Transformation_Context)
+       return not null AMF.URI_Stores.URI_Store_Access;
+   --  Returns extent where result metamodel is created.
 
-   AMF.Facility.Initialize;
+   function Mapped_Element
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Elements.CMOF_Element_Access;
+   --  Returns element of CMOF metamodel associated with the specified element
+   --  of UML profile.
 
-   --  Load model.
+   function Create_CMOF_Association
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Associations.CMOF_Association_Access;
+   --  Creates element of CMOF::Association and associate it with specified UML
+   --  element.
 
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+   function Create_CMOF_Class
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Classes.CMOF_Class_Access;
+   --  Creates element of CMOF::Class and associate it with specified UML
+   --  element.
 
-   --  Do transformation.
+   function Create_CMOF_Package
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+   --  Creates element of CMOF::Package and associate it with specified UML
+   --  element.
 
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
+   function Create_CMOF_Property
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Properties.CMOF_Property_Access;
+   --  Creates element of CMOF::Property and associate it with specified UML
+   --  element.
 
-   --  Output result model.
+private
 
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+   package UML_Element_To_CMOF_Element_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.UML.Elements.UML_Element_Access,
+           AMF.CMOF.Elements.CMOF_Element_Access,
+           AMF.UML.Elements.Hash,
+           AMF.UML.Elements."=",
+           AMF.CMOF.Elements."=");
+
+   type Transformation_Context is tagged limited record
+      Destination                : AMF.URI_Stores.URI_Store_Access;
+
+      Element_Map                : UML_Element_To_CMOF_Element_Maps.Map;
+
+      CMOF_Association_Metaclass : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Class_Metaclass       : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Package_Metaclass     : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Property_Metaclass    : AMF.CMOF.Classes.CMOF_Class_Access;
+
+      UML_Metamodel              : AMF.CMOF.Packages.CMOF_Package_Access;
+   end record;
+
+end AMF.Transformations.UML_Profile_To_CMOF.Contexts;

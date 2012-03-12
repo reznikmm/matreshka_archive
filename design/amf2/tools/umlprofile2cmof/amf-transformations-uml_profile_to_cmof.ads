@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
-
 with AMF.Extents;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+package AMF.Transformations.UML_Profile_To_CMOF is
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   function Transform
+    (Source : not null AMF.Extents.Extent_Access)
+       return not null AMF.Extents.Extent_Access;
+   --  Transforms UML Profile model to equivalent CMOF metamodel.
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
-
-begin
-   --  Initialize facility.
-
-   AMF.Facility.Initialize;
-
-   --  Load model.
-
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
-
-   --  Do transformation.
-
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
-
-   --  Output result model.
-
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+end AMF.Transformations.UML_Profile_To_CMOF;

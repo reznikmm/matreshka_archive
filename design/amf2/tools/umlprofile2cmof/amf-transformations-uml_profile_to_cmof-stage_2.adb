@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,92 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
+with AMF.CMOF.Associations;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
+with AMF.UML.Properties.Collections;
+with AMF.UML.Stereotypes;
+with AMF.UML.Types;
 
-with AMF.Extents;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
+package body AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+   ---------------------
+   -- Enter_Extension --
+   ---------------------
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   overriding procedure Enter_Extension
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extensions.UML_Extension_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
+      The_Association : constant
+        not null AMF.CMOF.Associations.CMOF_Association_Access
+          := AMF.CMOF.Associations.CMOF_Association_Access
+              (Self.Context.Mapped_Element (Element));
+      Member_End      : constant
+        AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
+          := Element.Get_Member_End;
 
-begin
-   --  Initialize facility.
+   begin
+      --  Fill CMOF::Association::memberEnd attribute.
 
-   AMF.Facility.Initialize;
+      for J in 1 .. Member_End.Length loop
+         The_Association.Get_Member_End.Add
+          (AMF.CMOF.Properties.CMOF_Property_Access
+            (Self.Context.Mapped_Element (Member_End.Element (J))));
+      end loop;
+   end Enter_Extension;
 
-   --  Load model.
+   -------------------------
+   -- Enter_Extension_End --
+   -------------------------
 
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+   overriding procedure Enter_Extension_End
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extension_Ends.UML_Extension_End_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
 
-   --  Do transformation.
+      The_Property : constant
+        not null AMF.CMOF.Properties.CMOF_Property_Access
+          := AMF.CMOF.Properties.CMOF_Property_Access
+              (Self.Context.Mapped_Element (Element));
 
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
+   begin
+      --  Set type of attribute.
 
-   --  Output result model.
+      The_Property.Set_Type
+       (AMF.CMOF.Types.CMOF_Type_Access
+         (Self.Context.Mapped_Element
+           (AMF.UML.Stereotypes.UML_Stereotype_Access'(Element.Get_Type))));
+   end Enter_Extension_End;
 
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+   --------------------
+   -- Enter_Property --
+   --------------------
+
+   overriding procedure Enter_Property
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      The_Property : constant
+        not null AMF.CMOF.Properties.CMOF_Property_Access
+          := AMF.CMOF.Properties.CMOF_Property_Access
+              (Self.Context.Mapped_Element (Element));
+
+   begin
+      --  Set type of attribute.
+
+      The_Property.Set_Type
+       (AMF.CMOF.Types.CMOF_Type_Access
+         (Self.Context.Mapped_Element
+           (AMF.UML.Types.UML_Type_Access'(Element.Get_Type))));
+   end Enter_Property;
+
+end AMF.Transformations.UML_Profile_To_CMOF.Stage_2;

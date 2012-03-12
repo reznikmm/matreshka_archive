@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
+with AMF.UML.Extensions;
+with AMF.UML.Extension_Ends;
+with AMF.UML.Properties;
+with AMF.Visitors.UML_Visitors;
 
-with AMF.Extents;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
+with AMF.Transformations.UML_Profile_To_CMOF.Contexts;
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+private package AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   type Transformer
+    (Context : not null access Contexts.Transformation_Context) is
+       limited new AMF.Visitors.UML_Visitors.UML_Visitor with null record;
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
+   overriding procedure Enter_Extension
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extensions.UML_Extension_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-begin
-   --  Initialize facility.
+   overriding procedure Enter_Extension_End
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extension_Ends.UML_Extension_End_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   AMF.Facility.Initialize;
+   overriding procedure Enter_Property
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   --  Load model.
-
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
-
-   --  Do transformation.
-
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
-
-   --  Output result model.
-
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+end AMF.Transformations.UML_Profile_To_CMOF.Stage_2;

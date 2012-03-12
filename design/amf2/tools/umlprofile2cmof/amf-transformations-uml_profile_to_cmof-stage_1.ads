@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,67 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Packages;
+with AMF.UML.Extensions;
+with AMF.UML.Extension_Ends;
+with AMF.UML.Profiles;
+with AMF.UML.Properties;
+with AMF.UML.Stereotypes;
+with AMF.Visitors.UML_Visitors;
 
-with AMF.Extents;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
+with AMF.Transformations.UML_Profile_To_CMOF.Contexts;
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   type Transformer
+    (Context : not null access Contexts.Transformation_Context) is
+       limited new AMF.Visitors.UML_Visitors.UML_Visitor with
+   record
+      The_Association : AMF.CMOF.Associations.CMOF_Association_Access;
+      The_Class       : AMF.CMOF.Classes.CMOF_Class_Access;
+      The_Package     : AMF.CMOF.Packages.CMOF_Package_Access;
+   end record;
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
+   overriding procedure Enter_Extension
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extensions.UML_Extension_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-begin
-   --  Initialize facility.
+   overriding procedure Leave_Extension
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extensions.UML_Extension_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   AMF.Facility.Initialize;
+   overriding procedure Enter_Extension_End
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Extension_Ends.UML_Extension_End_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   --  Load model.
+   overriding procedure Enter_Profile
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Profiles.UML_Profile_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+   overriding procedure Leave_Profile
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Profiles.UML_Profile_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   --  Do transformation.
+   overriding procedure Enter_Property
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
+   overriding procedure Enter_Stereotype
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Stereotypes.UML_Stereotype_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   --  Output result model.
+   overriding procedure Leave_Stereotype
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Stereotypes.UML_Stereotype_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+end AMF.Transformations.UML_Profile_To_CMOF.Stage_1;

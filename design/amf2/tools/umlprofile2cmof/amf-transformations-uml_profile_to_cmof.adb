@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
+with AMF.Transformations.UML_Profile_To_CMOF.Contexts;
+with AMF.Transformations.UML_Profile_To_CMOF.Stage_1;
+with AMF.Transformations.UML_Profile_To_CMOF.Stage_2;
+with AMF.Visitors.UML_Containment;
 
-with AMF.Extents;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-with XMI.Writer;
+package body AMF.Transformations.UML_Profile_To_CMOF is
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+   ---------------
+   -- Transform --
+   ---------------
 
-with AMF.Transformations.UML_Profile_To_CMOF;
+   function Transform
+    (Source : not null AMF.Extents.Extent_Access)
+       return not null AMF.Extents.Extent_Access
+   is
+      Context       : aliased Contexts.Transformation_Context;
+      Iterator      : AMF.Visitors.UML_Containment.UML_Containment_Iterator;
+      Transformer_1 : Stage_1.Transformer (Context'Access);
+      Transformer_2 : Stage_2.Transformer (Context'Access);
 
-procedure UMLProfile2CMOF is
-   Source : AMF.URI_Stores.URI_Store_Access;
-   Target : AMF.Extents.Extent_Access;
+   begin
+      --  Initialize context.
 
-begin
-   --  Initialize facility.
+      Context.Initialize;
 
-   AMF.Facility.Initialize;
+      --  Do transformation.
 
-   --  Load model.
+      Iterator.Visit (Transformer_1, Source);
+      Iterator.Visit (Transformer_2, Source);
 
-   Source := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+      return AMF.Extents.Extent_Access (Context.Destination);
+   end Transform;
 
-   --  Do transformation.
-
-   Target :=
-     AMF.Transformations.UML_Profile_To_CMOF.Transform
-      (AMF.Extents.Extent_Access (Source));
-
-   --  Output result model.
-
-   XMI.Writer (AMF.URI_Stores.URI_Store_Access (Target));
-end UMLProfile2CMOF;
+end AMF.Transformations.UML_Profile_To_CMOF;
