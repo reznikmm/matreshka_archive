@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,6 +48,7 @@ with AMF.Holders.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with League.Holders.Booleans;
+with League.Holders.Integers;
 with League.Strings.Internals;
 
 package body AMF.Internals.Tables.CMOF_Notification is
@@ -107,6 +108,25 @@ package body AMF.Internals.Tables.CMOF_Notification is
         (Is_Empty => True),
         AMF.CMOF.Holders.To_Holder (Old_Value),
         AMF.CMOF.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : Integer;
+     New_Value : Integer) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        League.Holders.Integers.To_Holder (Old_Value),
+        League.Holders.Integers.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
    --------------------------
