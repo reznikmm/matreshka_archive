@@ -407,8 +407,17 @@ package body AMF.Internals.XMI_Handlers is
          if S = 0 then
             --  Local link.
 
-            Establish_Link
-             (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
+            if not Self.Mapping.Contains (L.Id) then
+               Ada.Wide_Wide_Text_IO.Put_Line
+                (Ada.Wide_Wide_Text_IO.Standard_Error,
+                 "Unable to establish link to element '"
+                   & L.Id.To_Wide_Wide_String
+                   & "' - unknown element");
+
+            else
+               Establish_Link
+                (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
+            end if;
 
          else
             --  Cross link.
@@ -424,46 +433,46 @@ package body AMF.Internals.XMI_Handlers is
       end Establish_Link;
 
    begin
-      if Self.Diagnosis.Is_Empty then
-         --  Resolve postponed local links.
+      --  Resolve postponed local links.
 
-         Self.Postponed.Iterate (Establish_Link'Access);
+      Self.Postponed.Iterate (Establish_Link'Access);
 
-         --  Register extent.
+      --  Register extent.
 
-         Documents.Insert (Self.Locator.System_Id, Self.Extent);
+      Documents.Insert (Self.Locator.System_Id, Self.Extent);
 
-         --  Load next document in queue.
+      --  Load next document in queue.
 
-         declare
-            Position : Universal_String_Sets.Cursor := URI_Queue.First;
-            URI      : League.Strings.Universal_String;
-            Extent   : AMF.URI_Stores.URI_Store_Access;
-            pragma Unreferenced (Extent);
+      declare
+         Position : Universal_String_Sets.Cursor := URI_Queue.First;
+         URI      : League.Strings.Universal_String;
+         Extent   : AMF.URI_Stores.URI_Store_Access;
+         pragma Unreferenced (Extent);
 
-         begin
-            if Universal_String_Sets.Has_Element (Position) then
-               URI := Universal_String_Sets.Element (Position);
-               URI_Queue.Delete (Position);
+      begin
+         if Universal_String_Sets.Has_Element (Position) then
+            URI := Universal_String_Sets.Element (Position);
+            URI_Queue.Delete (Position);
 
-               --  Load document only when it is not loaded already. Some
-               --  documents with circular dependencies can register loading
-               --  of document when its loading was started but not completed
-               --  yet.
+            --  Load document only when it is not loaded already. Some
+            --  documents with circular dependencies can register loading of
+            --  document when its loading was started but not completed yet.
 
-               if not Documents.Contains (URI) then
-                  Extent := XMI.Reader.Read_URI (URI);
-               end if;
+            if not Documents.Contains (URI) then
+               Extent := XMI.Reader.Read_URI (URI);
             end if;
-         end;
-
-         --  Resolve postponed cross links when all documents has been loaded.
-
-         if URI_Queue.Is_Empty then
-            Postponed_Cross_Links.Iterate (Establish_Link'Access);
          end if;
+      end;
 
-      else
+      --  Resolve postponed cross links when all documents has been loaded.
+
+      if URI_Queue.Is_Empty then
+         Postponed_Cross_Links.Iterate (Establish_Link'Access);
+      end if;
+
+      --  Output diagnosis if any.
+
+      if not Self.Diagnosis.Is_Empty then
          Put_Line (Standard_Error, Self.Diagnosis.To_Wide_Wide_String);
       end if;
    end End_Document;
