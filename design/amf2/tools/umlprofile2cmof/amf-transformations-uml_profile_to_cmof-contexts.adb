@@ -43,8 +43,10 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages.Collections;
+with AMF.Elements.Collections;
 with AMF.Facility;
 with AMF.UML.Named_Elements;
+with XMI.Reader;
 
 package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
 
@@ -62,9 +64,9 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
      := League.Strings.To_Universal_String ("Package");
    CMOF_Property_Class_Name    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Property");
-   UML_URI                     : constant League.Strings.Universal_String
+   Internal_UML_URI            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
-         ("http://www.omg.org/spec/UML/20100901");
+         ("http://www.omg.org/spec/UML/20100901/UML.cmof");
 
    -----------------------------
    -- Create_CMOF_Association --
@@ -179,11 +181,30 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
    ----------------
 
    procedure Initialize (Self : in out Transformation_Context) is
+      Store    : AMF.URI_Stores.URI_Store_Access;
+      Elements : AMF.Elements.Collections.Set_Of_Element;
+
    begin
       --  Create destination store.
 
       Self.Destination :=
         AMF.Facility.Create_URI_Store (League.Strings.Empty_Universal_String);
+
+      --  Load internal UML metamodel and lookup for root package of metamodel.
+
+      Store := XMI.Reader.Read_URI (Internal_UML_URI);
+      Elements := Store.Elements;
+
+      for J in 1 .. Elements.Length loop
+         if Elements.Element (J).all
+              in AMF.CMOF.Packages.CMOF_Package'Class
+         then
+            Self.UML_Metamodel :=
+              AMF.CMOF.Packages.CMOF_Package_Access (Elements.Element (J));
+
+            exit;
+         end if;
+      end loop;
 
       --  Lookup for CMOF metaclasses.
 
@@ -229,9 +250,6 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
                   end if;
                end if;
             end loop;
-
-         elsif Packages.Element (J).Get_Uri = UML_URI then
-            Self.UML_Metamodel := Packages.Element (J);
          end if;
       end loop;
    end Lookup_CMOF_Metaclasses;
@@ -259,7 +277,7 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
          return UML_Element_To_CMOF_Element_Maps.Element (Position);
       end if;
 
-      --  Lookup in UML package.
+      --  Lookup for element in UML metamodel package.
 
       Name     :=
         AMF.UML.Named_Elements.UML_Named_Element'Class (Element.all).Get_Name;
