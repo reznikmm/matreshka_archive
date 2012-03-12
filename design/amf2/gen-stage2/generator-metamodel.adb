@@ -973,7 +973,7 @@ package body Generator.Metamodel is
                       (String_Data_Package_Name
                         (League.Holders.Element (Value)));
                      Unit.Add_Line
-                      ("         "
+                      ("        "
                          & String_Data_Package_Name
                             (League.Holders.Element (Value))
                          & "."
