@@ -1675,10 +1675,10 @@ begin
    Generator.Last_Year :=
      Integer'Wide_Wide_Value
       (League.Application.Arguments.Element (2).To_Wide_Wide_String);
-   Generator.Metamodel_Name := League.Application.Arguments.Element (5);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (4);
 
-   if League.Application.Arguments.Length = 6 then
-      if League.Application.Arguments.Element (6).To_Wide_Wide_String
+   if League.Application.Arguments.Length = 5 then
+      if League.Application.Arguments.Element (5).To_Wide_Wide_String
            = "--stubs"
       then
          Generate_Public_API := False;
@@ -1689,10 +1689,7 @@ begin
       end if;
    end if;
 
-   Extent :=
-     XMI.Reader.Read_File
-      (League.Application.Arguments.Element (3),
-       League.Application.Arguments.Element (4));
+   Extent := XMI.Reader.Read_URI (League.Application.Arguments.Element (3));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;

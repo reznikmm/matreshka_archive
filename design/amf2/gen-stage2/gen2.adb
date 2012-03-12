@@ -71,7 +71,7 @@ begin
    Generator.Last_Year :=
      Integer'Wide_Wide_Value
       (League.Application.Arguments.Element (2).To_Wide_Wide_String);
-   Generator.Metamodel_Name := League.Application.Arguments.Element (5);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (4);
 
    --  Initialize facility.
 
@@ -80,10 +80,7 @@ begin
    --  Load metamodel.
 
    Put_Line (Standard_Error, "Loading metamodels...");
-   Extent :=
-     XMI.Reader.Read_File
-      (League.Application.Arguments.Element (3),
-       League.Application.Arguments.Element (4));
+   Extent := XMI.Reader.Read_URI (League.Application.Arguments.Element (3));
 
    --  Load type mapping.
 
