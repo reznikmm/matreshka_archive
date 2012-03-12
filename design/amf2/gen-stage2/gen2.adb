@@ -71,7 +71,6 @@ begin
    Generator.Last_Year :=
      Integer'Wide_Wide_Value
       (League.Application.Arguments.Element (2).To_Wide_Wide_String);
-   Generator.Metamodel_Name := League.Application.Arguments.Element (4);
 
    --  Initialize facility.
 

@@ -59,6 +59,7 @@ with League.String_Vectors;
 with League.Strings;
 with XMI.Reader;
 
+with Generator.Analyzer;
 with Generator.Names;
 with Generator.Attribute_Mapping;
 with Generator.Type_Mapping;
@@ -1675,10 +1676,9 @@ begin
    Generator.Last_Year :=
      Integer'Wide_Wide_Value
       (League.Application.Arguments.Element (2).To_Wide_Wide_String);
-   Generator.Metamodel_Name := League.Application.Arguments.Element (4);
 
-   if League.Application.Arguments.Length = 5 then
-      if League.Application.Arguments.Element (5).To_Wide_Wide_String
+   if League.Application.Arguments.Length = 4 then
+      if League.Application.Arguments.Element (4).To_Wide_Wide_String
            = "--stubs"
       then
          Generate_Public_API := False;
@@ -1690,9 +1690,14 @@ begin
    end if;
 
    Extent := XMI.Reader.Read_URI (League.Application.Arguments.Element (3));
-   Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;
+
+   --  Analyze model.
+
+   Generator.Analyzer.Analyze_Model (Extent);
+
+   Elements := Extent.Elements;
 
    for J in 1 .. Elements.Length loop
       if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then

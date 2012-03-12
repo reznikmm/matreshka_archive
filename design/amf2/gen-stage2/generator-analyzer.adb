@@ -66,7 +66,7 @@ package body Generator.Analyzer is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Computes all attributes of the class, assigns slot and collections.
 
-   procedure Compute_Metamodel_Names
+   procedure Compute_Metamodel_Name
     (Extent : not null AMF.URI_Stores.URI_Store_Access);
    --  Compute metamodel names for each element.
 
@@ -97,28 +97,9 @@ package body Generator.Analyzer is
          end if;
       end loop;
 
-      --  Compute and assign metamodel names for all elements.
+      --  Compute name of metamodel.
 
-      declare
-
-         procedure Process
-          (Position : AMF.Extents.Collections.Extent_Sets.Cursor);
-
-         -------------
-         -- Process --
-         -------------
-
-         procedure Process
-          (Position : AMF.Extents.Collections.Extent_Sets.Cursor) is
-         begin
-            Compute_Metamodel_Names
-             (AMF.URI_Stores.URI_Store_Access
-               (AMF.Extents.Collections.Extent_Sets.Element (Position)));
-         end Process;
-
-      begin
-         AMF.Facility.Extent.Iterate (Process'Access);
-      end;
+      Compute_Metamodel_Name (Extent);
 
       --  Looking for root package of the metamodel.
 
@@ -278,34 +259,35 @@ package body Generator.Analyzer is
       Class_Info.Insert (Class, Info);
    end Compute_All_Properties;
 
-   -----------------------------
-   -- Compute_Metamodel_Names --
-   -----------------------------
+   ----------------------------
+   -- Compute_Metamodel_Name --
+   ----------------------------
 
-   procedure Compute_Metamodel_Names
+   procedure Compute_Metamodel_Name
     (Extent : not null AMF.URI_Stores.URI_Store_Access)
    is
-      Elements       : constant AMF.Elements.Collections.Set_Of_Element
+      Elements : constant AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
-      Metamodel_Name : League.Strings.Universal_String;
 
    begin
-      --  Looking for first instance of CMOF::Package and use its name to
-      --  compute metamodel name of analyzed extent.
+      if Metamodel_Name.Is_Empty then
+         --  Looking for first instance of CMOF::Package and use its name to
+         --  compute metamodel name of analyzed extent.
 
-      for J in 1 .. Elements.Length loop
-         if Elements.Element (J).all
-              in AMF.CMOF.Packages.CMOF_Package'Class
-         then
-            Metamodel_Name :=
-              League.Strings.To_Universal_String
-               (Generator.Names.To_Ada_Identifier
-                 (AMF.CMOF.Packages.CMOF_Package'Class
-                   (Elements.Element (J).all).Get_Name.Value));
+         for J in 1 .. Elements.Length loop
+            if Elements.Element (J).all
+                 in AMF.CMOF.Packages.CMOF_Package'Class
+            then
+               Metamodel_Name :=
+                 League.Strings.To_Universal_String
+                  (Generator.Names.To_Ada_Identifier
+                    (AMF.CMOF.Packages.CMOF_Package'Class
+                      (Elements.Element (J).all).Get_Name.Value));
 
-            exit;
-         end if;
-      end loop;
-   end Compute_Metamodel_Names;
+               exit;
+            end if;
+         end loop;
+      end if;
+   end Compute_Metamodel_Name;
 
 end Generator.Analyzer;
