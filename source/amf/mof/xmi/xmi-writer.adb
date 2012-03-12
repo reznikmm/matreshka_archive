@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -467,7 +467,7 @@ is
 
                   Meta_Attributes.Insert (Meta_Attribute);
 
-               elsif Meta_Attribute.Get_Name.Value /= League.Strings.To_Universal_String ("visibility") then
+               else
                   --  Prefered serialization method for attributes of DataType
                   --  is 2i:XMIValueAttribute.
 
