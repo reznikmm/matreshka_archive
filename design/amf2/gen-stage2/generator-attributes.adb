@@ -583,12 +583,12 @@ package body Generator.Attributes is
                      Unit.Context.Add
                       (+"AMF.Internals.Tables."
                           & To_Ada_Identifier
-                             (Owning_Metamodel_Name (Attribute_Type))
+                             (Owning_Metamodel_Ada_Name (Attribute_Type))
                           & "_Notification");
                      Unit.Add_Line
                       (+"            AMF.Internals.Tables."
                           & To_Ada_Identifier
-                             (Owning_Metamodel_Name (Attribute_Type))
+                             (Owning_Metamodel_Ada_Name (Attribute_Type))
                           & "_Notification.Notify_Attribute_Set");
                      Unit.Context.Add
                       (Property_Constant_Package_Name (Attribute));
@@ -647,12 +647,12 @@ package body Generator.Attributes is
                      Unit.Context.Add
                       (+"AMF.Internals.Tables."
                           & To_Ada_Identifier
-                             (Owning_Metamodel_Name (Attribute_Type))
+                             (Owning_Metamodel_Ada_Name (Attribute_Type))
                           & "_Notification");
                      Unit.Add_Line
                       (+"            AMF.Internals.Tables."
                           & To_Ada_Identifier
-                             (Owning_Metamodel_Name (Attribute_Type))
+                             (Owning_Metamodel_Ada_Name (Attribute_Type))
                           & "_Notification.Notify_Attribute_Set");
                      Unit.Context.Add
                       (Property_Constant_Package_Name (Attribute));
@@ -729,12 +729,12 @@ package body Generator.Attributes is
                Unit.Context.Add
                 (+"AMF.Internals.Tables."
                     & To_Ada_Identifier
-                       (Owning_Metamodel_Name (Attribute_Type))
+                       (Owning_Metamodel_Ada_Name (Attribute_Type))
                     & "_Notification");
                Unit.Add_Line
                 (+"            AMF.Internals.Tables."
                     & To_Ada_Identifier
-                       (Owning_Metamodel_Name (Attribute_Type))
+                       (Owning_Metamodel_Ada_Name (Attribute_Type))
                     & "_Notification.Notify_Attribute_Set");
                Unit.Context.Add (Property_Constant_Package_Name (Attribute));
                Unit.Add_Line

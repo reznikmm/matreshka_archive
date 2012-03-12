@@ -241,10 +241,10 @@ package body Generator.Constructors is
                         --  the value of first enumeration literal.
 
                         Unit.Context.Add
-                         ("AMF." & Owning_Metamodel_Name (Attribute_Type));
+                         ("AMF." & Owning_Metamodel_Ada_Name (Attribute_Type));
                         Unit.Add
                          (", AMF."
-                            & Owning_Metamodel_Name (Attribute_Type)
+                            & Owning_Metamodel_Ada_Name (Attribute_Type)
                             & '.'
                             & Type_Mapping.Ada_Enumeration_Literal_Name
                                (AMF.CMOF.Enumerations.CMOF_Enumeration'Class
@@ -277,11 +277,11 @@ package body Generator.Constructors is
                            end if;
 
                            Unit.Context.Add
-                            ("AMF." & Owning_Metamodel_Name (Literal));
+                            ("AMF." & Owning_Metamodel_Ada_Name (Literal));
                            Unit.Add
                             (", "
                                & "AMF."
-                               & Owning_Metamodel_Name (Literal)
+                               & Owning_Metamodel_Ada_Name (Literal)
                                & "."
                                & Type_Mapping.Ada_Enumeration_Literal_Name
                                   (Literal)

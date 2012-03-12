@@ -101,9 +101,6 @@ package body Generator.Names is
       Second_Type : constant AMF.CMOF.Types.CMOF_Type_Access
         := Second_End.Get_Type;
       Ada_Name    : League.Strings.Universal_String;
-      Position    : constant CMOF_Element_String_Maps.Cursor
-        := Metamodel_Names.Find
-            (AMF.CMOF.Elements.CMOF_Element_Access (Association));
 
    begin
       Ada_Name.Append
@@ -126,18 +123,11 @@ package body Generator.Names is
          Ada_Name.Append (Second_Name);
       end if;
 
-      if CMOF_Element_String_Maps.Has_Element (Position) then
-         return
-           "MA_"
-             & CMOF_Element_String_Maps.Element (Position)
-             & "_"
-             & Ada_Name;
-
-      else
-         --  Elements of internal CMOF metamodel don't mapped.
-
-         return "MA_CMOF_" & Ada_Name;
-      end if;
+      return
+        "MA_"
+          & Owning_Metamodel_Ada_Name (Association)
+          & "_"
+          & Ada_Name;
    end Association_Constant_Name;
 
    ---------------------------------------
@@ -149,9 +139,9 @@ package body Generator.Names is
        return League.Strings.Universal_String is
    begin
       return
-        +"AMF.Internals.Tables."
-           & To_Ada_Identifier (Owning_Metamodel_Name (Association))
-           & "_Metamodel";
+        "AMF.Internals.Tables."
+          & Owning_Metamodel_Ada_Name (Association)
+          & "_Metamodel";
    end Association_Constant_Package_Name;
 
    -----------------------------------------
@@ -214,6 +204,17 @@ package body Generator.Names is
       end if;
    end Element_Constant_Qualified_Name;
 
+   -------------------------------
+   -- Owning_Metamodel_Ada_Name --
+   -------------------------------
+
+   function Owning_Metamodel_Ada_Name
+    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return League.Strings.Universal_String is
+   begin
+      return +To_Ada_Identifier (Owning_Metamodel_Name (Element));
+   end Owning_Metamodel_Ada_Name;
+
    ---------------------------
    -- Owning_Metamodel_Name --
    ---------------------------
@@ -247,27 +248,13 @@ package body Generator.Names is
 
    function Package_Constant_Name
     (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
-       return League.Strings.Universal_String
-   is
-      Position : constant CMOF_Element_String_Maps.Cursor
-        := Metamodel_Names.Find
-            (AMF.CMOF.Elements.CMOF_Element_Access (Element));
-
+       return League.Strings.Universal_String is
    begin
-      if CMOF_Element_String_Maps.Has_Element (Position) then
-         return
-           League.Strings.To_Universal_String
-            ("MM_"
-               & CMOF_Element_String_Maps.Element
-                  (Position).To_Wide_Wide_String
-               & "_"
-               & To_Ada_Identifier (Element.Get_Name.Value));
-
-      else
-         return
-           League.Strings.To_Universal_String
-            ("MM_CMOF_" & To_Ada_Identifier (Element.Get_Name.Value));
-      end if;
+      return
+        "MM_"
+          & Owning_Metamodel_Ada_Name (Element)
+          & "_"
+          & To_Ada_Identifier (Element.Get_Name.Value);
    end Package_Constant_Name;
 
    -----------------------------------
@@ -279,9 +266,9 @@ package body Generator.Names is
        return League.Strings.Universal_String is
    begin
       return
-        +"AMF.Internals.Tables."
-           & To_Ada_Identifier (Owning_Metamodel_Name (Element))
-           & "_Metamodel";
+        "AMF.Internals.Tables."
+          & Owning_Metamodel_Ada_Name (Element)
+          & "_Metamodel";
    end Package_Constant_Package_Name;
 
    -------------------------------------
@@ -328,9 +315,6 @@ package body Generator.Names is
       Association : constant AMF.CMOF.Associations.CMOF_Association_Access
         := Property.Get_Owning_Association;
       Ada_Name    : League.Strings.Universal_String;
-      Position    : constant CMOF_Element_String_Maps.Cursor
-        := Metamodel_Names.Find
-            (AMF.CMOF.Elements.CMOF_Element_Access (Property));
 
    begin
       if Association /= null then
@@ -391,18 +375,11 @@ package body Generator.Names is
          end;
       end if;
 
-      if CMOF_Element_String_Maps.Has_Element (Position) then
-         return
-           "MP_"
-             & CMOF_Element_String_Maps.Element (Position)
-             & "_"
-             & Ada_Name;
-
-      else
-         --  Elements of internal CMOF metamodel don't mapped.
-
-         return "MP_CMOF_" & Ada_Name;
-      end if;
+      return
+        "MP_"
+          & Owning_Metamodel_Ada_Name (Property)
+          & "_"
+          & Ada_Name;
    end Property_Constant_Name;
 
    ------------------------------------
@@ -414,9 +391,9 @@ package body Generator.Names is
        return League.Strings.Universal_String is
    begin
       return
-        +"AMF.Internals.Tables."
-           & To_Ada_Identifier (Owning_Metamodel_Name (Property))
-           & "_Metamodel";
+        "AMF.Internals.Tables."
+          & Owning_Metamodel_Ada_Name (Property)
+          & "_Metamodel";
    end Property_Constant_Package_Name;
 
    --------------------------------------
@@ -491,27 +468,13 @@ package body Generator.Names is
 
    function Type_Constant_Name
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return League.Strings.Universal_String
-   is
-      Position : constant CMOF_Element_String_Maps.Cursor
-        := Metamodel_Names.Find
-            (AMF.CMOF.Elements.CMOF_Element_Access (Element));
-
+       return League.Strings.Universal_String is
    begin
-      if CMOF_Element_String_Maps.Has_Element (Position) then
-         return
-           League.Strings.To_Universal_String
-            ("MC_"
-               & CMOF_Element_String_Maps.Element
-                  (Position).To_Wide_Wide_String
-               & "_"
-               & To_Ada_Identifier (Element.Get_Name.Value));
-
-      else
-         return
-           League.Strings.To_Universal_String
-            ("MC_CMOF_" & To_Ada_Identifier (Element.Get_Name.Value));
-      end if;
+      return
+        "MC_"
+          & Owning_Metamodel_Ada_Name (Element)
+          & "_"
+          & To_Ada_Identifier (Element.Get_Name.Value);
    end Type_Constant_Name;
 
    --------------------------------
@@ -523,9 +486,9 @@ package body Generator.Names is
        return League.Strings.Universal_String is
    begin
       return
-        +"AMF.Internals.Tables."
-           & To_Ada_Identifier (Owning_Metamodel_Name (Element))
-           & "_Metamodel";
+        "AMF.Internals.Tables."
+          & Owning_Metamodel_Ada_Name (Element)
+          & "_Metamodel";
    end Type_Constant_Package_Name;
 
    ----------------------------------

@@ -201,11 +201,11 @@ package body Generator.Reflection is
                if Representation (Attribute) in Value .. Holder then
                   Unit.Context.Add
                    ("AMF.Internals.Holders."
-                      & Owning_Metamodel_Name (Attribute_Type)
+                      & Owning_Metamodel_Ada_Name (Attribute_Type)
                       & "_Holders");
                   Holder_Name :=
                     "AMF.Internals.Holders."
-                      & Owning_Metamodel_Name (Attribute_Type)
+                      & Owning_Metamodel_Ada_Name (Attribute_Type)
                       & "_Holders.To_Holder";
                   Unit.Context.Add
                    (Generator.Type_Mapping.Public_Ada_Package_Name
@@ -223,7 +223,7 @@ package body Generator.Reflection is
                     Generator.Type_Mapping.Public_Ada_Package_Name
                      (Attribute_Type, Representation (Attribute))
                       & "."
-                      & Owning_Metamodel_Name (Attribute_Type)
+                      & Owning_Metamodel_Ada_Name (Attribute_Type)
                       & "_"
                       & To_Ada_Identifier (Attribute_Type.Get_Name.Value)
                       & "_Collections.Internals.To_Holder";
@@ -370,14 +370,14 @@ package body Generator.Reflection is
                   when Value =>
                      Unit.Context.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier
                               (Attribute_Type.Get_Name.Value)));
                      Holder_Name :=
                        "AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
@@ -386,11 +386,11 @@ package body Generator.Reflection is
                   when Holder =>
                      Unit.Context.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders");
                      Holder_Name :=
                        "AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders.To_Holder";
 
                   when Set =>
@@ -768,14 +768,14 @@ package body Generator.Reflection is
                   when Value =>
                      Unit.Context.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier
                               (Attribute_Type.Get_Name.Value)));
                      Unit.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders."
                          & Plural
                             (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
@@ -784,11 +784,11 @@ package body Generator.Reflection is
                   when Holder =>
                      Unit.Context.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders");
                      Unit.Add
                       ("AMF."
-                         & Owning_Metamodel_Name (Attribute_Type)
+                         & Owning_Metamodel_Ada_Name (Attribute_Type)
                          & ".Holders.Element (Value)");
 
                   when Set =>

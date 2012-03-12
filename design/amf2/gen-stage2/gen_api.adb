@@ -156,7 +156,7 @@ procedure Gen_API is
    begin
       return
         "AMF."
-          & Generator.Names.Owning_Metamodel_Name (Element)
+          & Generator.Names.Owning_Metamodel_Ada_Name (Element)
           & "."
           & Generator.Names.Plural
              (Generator.Names.To_Ada_Identifier (Element.Get_Name.Value));
@@ -171,7 +171,7 @@ procedure Gen_API is
        return League.Strings.Universal_String is
    begin
       return
-        Generator.Names.Owning_Metamodel_Name (Element)
+        Generator.Names.Owning_Metamodel_Ada_Name (Element)
           & "_"
           & Generator.Names.To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
@@ -1163,12 +1163,12 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Generator.Names.Owning_Metamodel_Name (Class)
+             & Generator.Names.Owning_Metamodel_Ada_Name (Class)
              & "_"
              & Generator.Names.Plural
                 (Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Generator.Names.Owning_Metamodel_Name (Class)
+        := Generator.Names.Owning_Metamodel_Ada_Name (Class)
              & "_"
              & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1360,12 +1360,12 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Generator.Names.Owning_Metamodel_Name (Class)
+             & Generator.Names.Owning_Metamodel_Ada_Name (Class)
              & "_"
              & Generator.Names.Plural
                 (Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Generator.Names.Owning_Metamodel_Name (Class)
+        := Generator.Names.Owning_Metamodel_Ada_Name (Class)
              & "_"
              & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1543,13 +1543,13 @@ procedure Gen_API is
       Unit.Add_Line ("   type " & Type_Name & " is");
       Unit.Context.Add
        ("AMF.Internals."
-          & Generator.Names.Owning_Metamodel_Name (Class)
+          & Generator.Names.Owning_Metamodel_Ada_Name (Class)
           & "_Elements");
       Unit.Add_Line
        ("     limited new AMF.Internals."
-          & Generator.Names.Owning_Metamodel_Name (Class)
+          & Generator.Names.Owning_Metamodel_Ada_Name (Class)
           & "_Elements."
-          & Generator.Names.Owning_Metamodel_Name (Class)
+          & Generator.Names.Owning_Metamodel_Ada_Name (Class)
           & "_Element_Proxy");
       Unit.Context.Add
        (Generator.Type_Mapping.Public_Ada_Package_Name

@@ -238,9 +238,6 @@ package Generator is
    Element_Numbers : CMOF_Element_Number_Maps.Map;
    --  Expansion information.
 
-   Metamodel_Names : CMOF_Element_String_Maps.Map;
-   --  Metamodel name for elements.
-
    Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    --  Root package of metamodel.
 

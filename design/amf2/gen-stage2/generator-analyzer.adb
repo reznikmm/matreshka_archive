@@ -306,14 +306,6 @@ package body Generator.Analyzer is
             exit;
          end if;
       end loop;
-
-      --  Go through all elements and register its metamodel names.
-
-      for J in 1 .. Elements.Length loop
-         Metamodel_Names.Insert
-          (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)),
-           Metamodel_Name);
-      end loop;
    end Compute_Metamodel_Names;
 
 end Generator.Analyzer;

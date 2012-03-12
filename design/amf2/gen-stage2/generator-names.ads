@@ -62,6 +62,12 @@ package Generator.Names is
    --  Returns name of the owning metamodel. It is computed as name of first
    --  enclosing package of the specified element.
 
+   function Owning_Metamodel_Ada_Name
+    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return League.Strings.Universal_String;
+   --  Returns Ada name of the owning metamodel. It is computed as name of
+   --  first enclosing package of the specified element.
+
    function Association_Constant_Name
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
        return League.Strings.Universal_String;
