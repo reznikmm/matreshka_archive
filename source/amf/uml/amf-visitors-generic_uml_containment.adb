@@ -42,8 +42,22 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.UML.Packageable_Elements.Collections;
+with AMF.UML.Properties.Collections;
 
 package body AMF.Visitors.Generic_UML_Containment is
+
+   not overriding procedure Visit_Element
+    (Self    : in out UML_Containment_Iterator;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Element : not null access AMF.UML.Elements.UML_Element'Class;
+     Control : in out Traverse_Control) is
+   begin
+      AMF.Visitors.Visit
+       (Self,
+        Visitor,
+        AMF.Elements.Element_Access (Element),
+        Control);
+   end Visit_Element;
 
    -----------------------
    -- Visit_Abstraction --
@@ -991,7 +1005,10 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Extensions.UML_Extension_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      --  Traverse element of UML::Extension::ownedEnd.
+
+      Self.Visit_Element
+       (Visitor, Element.Get_Owned_End.Element (1), Control);
    end Visit_Extension;
 
    -------------------------
@@ -1569,11 +1586,7 @@ package body AMF.Visitors.Generic_UML_Containment is
 
    begin
       for J in 1 .. Packaged_Elements.Length loop
-         AMF.Visitors.Visit
-          (Self,
-           Visitor,
-           AMF.Elements.Element_Access (Packaged_Elements.Element (J)),
-           Control);
+         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
 
          case Control is
             when Continue =>
@@ -1726,11 +1739,7 @@ package body AMF.Visitors.Generic_UML_Containment is
 
    begin
       for J in 1 .. Packaged_Elements.Length loop
-         AMF.Visitors.Visit
-          (Self,
-           Visitor,
-           AMF.Elements.Element_Access (Packaged_Elements.Element (J)),
-           Control);
+         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
 
          case Control is
             when Continue =>
@@ -1857,11 +1866,7 @@ package body AMF.Visitors.Generic_UML_Containment is
 
    begin
       for J in 1 .. Packaged_Elements.Length loop
-         AMF.Visitors.Visit
-          (Self,
-           Visitor,
-           AMF.Elements.Element_Access (Packaged_Elements.Element (J)),
-           Control);
+         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
 
          case Control is
             when Continue =>
@@ -2357,9 +2362,34 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Stereotypes.UML_Stereotype_Access;
-     Control : in out Traverse_Control) is
+     Control : in out Traverse_Control)
+   is
+      Owned_Attributes : constant
+        AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
+          := Element.Get_Owned_Attribute;
+
    begin
-      null;
+      --  Traversing elements of UML::Stereotype::ownedAttribute.
+
+      for J in 1 .. Owned_Attributes.Length loop
+         Self.Visit_Element (Visitor, Owned_Attributes.Element (J), Control);
+
+         case Control is
+            when Continue =>
+               null;
+
+            when Abandon_Children =>
+               Control := Continue;
+
+            when Abandon_Sibling =>
+               Control := Continue;
+
+               exit;
+
+            when Terminate_Immediately =>
+               exit;
+         end case;
+      end loop;
    end Visit_Stereotype;
 
    -----------------------------

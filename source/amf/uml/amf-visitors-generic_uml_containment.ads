@@ -108,6 +108,7 @@ with AMF.UML.Duration_Constraints;
 with AMF.UML.Duration_Intervals;
 with AMF.UML.Duration_Observations;
 with AMF.UML.Element_Imports;
+private with AMF.UML.Elements;
 with AMF.UML.Enumerations;
 with AMF.UML.Enumeration_Literals;
 with AMF.UML.Exception_Handlers;
@@ -1414,5 +1415,13 @@ private
      limited new Base_Iterator
        and AMF.Visitors.UML_Iterators.UML_Iterator
          with null record;
+
+   not overriding procedure Visit_Element
+    (Self    : in out UML_Containment_Iterator;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Element : not null access AMF.UML.Elements.UML_Element'Class;
+     Control : in out Traverse_Control);
+   --  Internal subprogram to simplify code, converts Element to
+   --  AMF.Elements.Element_Access and calls Visit subprogram of Iterator.
 
 end AMF.Visitors.Generic_UML_Containment;
