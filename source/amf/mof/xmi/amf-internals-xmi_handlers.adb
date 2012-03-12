@@ -42,6 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
+with Ada.Exceptions;
+with Ada.IO_Exceptions;
+with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with League.IRIs;
@@ -459,7 +462,15 @@ package body AMF.Internals.XMI_Handlers is
             --  document when its loading was started but not completed yet.
 
             if not Documents.Contains (URI) then
-               Extent := XMI.Reader.Read_URI (URI);
+               begin
+                  Extent := XMI.Reader.Read_URI (URI);
+
+               exception
+                  when X : Ada.IO_Exceptions.Name_Error =>
+                     Ada.Text_IO.Put_Line
+                      (Ada.Text_IO.Standard_Error,
+                       Ada.Exceptions.Exception_Information (X));
+               end;
             end if;
          end if;
       end;
