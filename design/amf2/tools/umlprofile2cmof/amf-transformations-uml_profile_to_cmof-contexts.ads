@@ -118,7 +118,8 @@ private
       CMOF_Package_Metaclass     : AMF.CMOF.Classes.CMOF_Class_Access;
       CMOF_Property_Metaclass    : AMF.CMOF.Classes.CMOF_Class_Access;
 
-      UML_Metamodel              : AMF.CMOF.Packages.CMOF_Package_Access;
+      UML_Package                : AMF.CMOF.Packages.CMOF_Package_Access;
+      Primitive_Types_Package    : AMF.CMOF.Packages.CMOF_Package_Access;
    end record;
 
 end AMF.Transformations.UML_Profile_To_CMOF.Contexts;

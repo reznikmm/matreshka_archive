@@ -53,20 +53,23 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
    procedure Lookup_CMOF_Metaclasses (Self : in out Transformation_Context);
    --  Lookup for CMOF metaclasses to be used to create elements.
 
-   CMOF_URI                    : constant League.Strings.Universal_String
+   CMOF_URI                     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/MOF/2.0/cmof.xml");
-   CMOF_Association_Class_Name : constant League.Strings.Universal_String
+   CMOF_Association_Class_Name  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Association");
-   CMOF_Class_Class_Name       : constant League.Strings.Universal_String
+   CMOF_Class_Class_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Class");
-   CMOF_Package_Class_Name     : constant League.Strings.Universal_String
+   CMOF_Package_Class_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Package");
-   CMOF_Property_Class_Name    : constant League.Strings.Universal_String
+   CMOF_Property_Class_Name     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Property");
-   Internal_UML_URI            : constant League.Strings.Universal_String
+   Internal_UML_URI             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/UML.cmof");
+   Internal_Primitive_Types_URI : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof");
 
    -----------------------------
    -- Create_CMOF_Association --
@@ -190,6 +193,23 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
       Self.Destination :=
         AMF.Facility.Create_URI_Store (League.Strings.Empty_Universal_String);
 
+      --  Load internal PrimitiveTypes metamodel and lookup for root package of
+      --  metamodel.
+
+      Store := XMI.Reader.Read_URI (Internal_Primitive_Types_URI);
+      Elements := Store.Elements;
+
+      for J in 1 .. Elements.Length loop
+         if Elements.Element (J).all
+              in AMF.CMOF.Packages.CMOF_Package'Class
+         then
+            Self.Primitive_Types_Package :=
+              AMF.CMOF.Packages.CMOF_Package_Access (Elements.Element (J));
+
+            exit;
+         end if;
+      end loop;
+
       --  Load internal UML metamodel and lookup for root package of metamodel.
 
       Store := XMI.Reader.Read_URI (Internal_UML_URI);
@@ -199,7 +219,7 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
          if Elements.Element (J).all
               in AMF.CMOF.Packages.CMOF_Package'Class
          then
-            Self.UML_Metamodel :=
+            Self.UML_Package :=
               AMF.CMOF.Packages.CMOF_Package_Access (Elements.Element (J));
 
             exit;
@@ -281,7 +301,25 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
 
       Name     :=
         AMF.UML.Named_Elements.UML_Named_Element'Class (Element.all).Get_Name;
-      Elements := Self.UML_Metamodel.Get_Packaged_Element;
+      Elements := Self.UML_Package.Get_Packaged_Element;
+
+      for J in 1 .. Elements.Length loop
+         Meta_Element := Elements.Element (J);
+
+         if Meta_Element.Get_Name = Name then
+            Self.Element_Map.Insert
+             (Element,
+              AMF.CMOF.Elements.CMOF_Element_Access (Meta_Element));
+
+            return AMF.CMOF.Elements.CMOF_Element_Access (Meta_Element);
+         end if;
+      end loop;
+
+      --  Lookup for element in PrimitiveTypes metamodel package.
+
+      Name     :=
+        AMF.UML.Named_Elements.UML_Named_Element'Class (Element.all).Get_Name;
+      Elements := Self.Primitive_Types_Package.Get_Packaged_Element;
 
       for J in 1 .. Elements.Length loop
          Meta_Element := Elements.Element (J);
