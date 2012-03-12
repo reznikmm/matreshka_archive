@@ -25,38 +25,35 @@ uml-all:
 gen-cmof: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2010 2011 data/metamodels/CMOF24.cmof 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2010 2011 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
+	rm -r .new
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2010 2011 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
 	gnatchop -gnat05 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
 	rm -r .new
 	gprbuild -p -Pgen-stage2/gens.gpr
 	rm -rf .new
 	test -d .new || mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2010 2011 data/metamodels/CMOF24.cmof 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2010 2011 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
 	gnatchop -gnat05 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
 	rm -r .new
 
-gen2-api: gens
+gen-pt: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2010 2011 data/metamodels/CMOF24.cmof 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' Primitive_Types > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
-	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -r .new
-
-gen-pt: gens
-	rm -rf uml/generated/.new
-	mkdir uml/generated/.new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 data/metamodels/PrimitiveTypes24.cmof 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' Primitive_Types > uml/generated/.new/sources.ada
-	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
-	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
-	rm -r uml/generated/.new
-	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-primitive_types_metamodel.adb
 
 gen-uml-stubs: gens
 	test -d uml/generated/.new || mkdir uml/generated/.new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2011 data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML --stubs > uml/generated/.new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2011 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML --stubs > uml/generated/.new/sources.ada
 	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
 	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/{}
 	rm -r uml/generated/.new
@@ -64,12 +61,12 @@ gen-uml-stubs: gens
 gen-uml: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2011 data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2011 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 data/metamodels/UML24.cmof 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 'http://www.omg.org/spec/UML/20100901/UML.cmof' UML > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -r .new
@@ -77,12 +74,12 @@ gen-uml: gens
 gen-ocl: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 data/metamodels/OCL23.cmof 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 data/metamodels/OCL23.cmof 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' OCL > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
 	rm -r .new
@@ -92,11 +89,11 @@ clean:
 
 
 gen-iats: gens
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS --stubs > iats/source.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS --stubs > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
 
 build-iats:
