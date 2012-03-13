@@ -90,7 +90,6 @@ begin
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);
-   Generator.Metamodel.Assign_Numbers (Extent);
    Generator.String_Data.Extract_String_Data (Extent);
 
    if Generator.Generate_Attributes then
