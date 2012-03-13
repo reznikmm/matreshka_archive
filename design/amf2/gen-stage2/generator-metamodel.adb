@@ -147,9 +147,9 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         if not Element_Numbers.Contains (Element) then
+         if not Metamodel_Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Element_Numbers.Insert (Element, Last);
             Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Ordered_Set;
@@ -220,9 +220,9 @@ package body Generator.Metamodel is
            := CMOF_Element_Sets.Element (Position);
 
       begin
-         if not Element_Numbers.Contains (Element) then
+         if not Metamodel_Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Element_Numbers.Insert (Element, Last);
             Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Set;
@@ -253,9 +253,9 @@ package body Generator.Metamodel is
          Element :=
            AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
 
-         if not Element_Numbers.Contains (Element) then
+         if not Metamodel_Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Element_Numbers.Insert (Element, Last);
+            Metamodel_Info.Element_Numbers.Insert (Element, Last);
             Metamodel_Info.Number_Element.Insert (Last, Element);
          end if;
       end loop;
@@ -348,7 +348,7 @@ package body Generator.Metamodel is
                Unit.Add_Line
                 (+"        Base +"
                     & Integer'Wide_Wide_Image
-                       (Element_Numbers.Element (Element))
+                       (Metamodel_Info.Element_Numbers.Element (Element))
                     & ",");
                Unit.Context.Add (Property_Constant_Package_Name (First_End));
                Unit.Add_Line
@@ -356,11 +356,11 @@ package body Generator.Metamodel is
                    & Property_Constant_Qualified_Name (First_End)
                    & ",");
 
-               if Element_Numbers.Contains (Other) then
+               if Metamodel_Info.Element_Numbers.Contains (Other) then
                   Unit.Add_Line
                    (+"        Base +"
                        & Integer'Wide_Wide_Image
-                          (Element_Numbers.Element (Other))
+                          (Metamodel_Info.Element_Numbers.Element (Other))
                        & ",");
 
                else
@@ -470,7 +470,7 @@ package body Generator.Metamodel is
          Unit.Add_Line
           (+"      return Base +"
               & Integer'Wide_Wide_Image
-                 (Element_Numbers.Element
+                 (Metamodel_Info.Element_Numbers.Element
                    (AMF.CMOF.Elements.CMOF_Element_Access (Association)))
               & ";");
          Unit.Add_Line
@@ -511,7 +511,7 @@ package body Generator.Metamodel is
             Unit.Add_Line
              (+"      return Base +"
                  & Integer'Wide_Wide_Image
-                    (Element_Numbers.Element
+                    (Metamodel_Info.Element_Numbers.Element
                       (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
                  & ";");
             Unit.Add_Line
@@ -546,7 +546,7 @@ package body Generator.Metamodel is
          Unit.Add_Line
           (+"      return Base +"
               & Integer'Wide_Wide_Image
-                 (Element_Numbers.Element
+                 (Metamodel_Info.Element_Numbers.Element
                    (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
               & ";");
          Unit.Add_Line ("   end " & Type_Constant_Name (Class) & ";");
@@ -587,7 +587,7 @@ package body Generator.Metamodel is
             Unit.Add_Line
              (+"      return Base +"
                  & Integer'Wide_Wide_Image
-                    (Element_Numbers.Element
+                    (Metamodel_Info.Element_Numbers.Element
                       (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
                  & ";");
             Unit.Add_Line
@@ -634,7 +634,7 @@ package body Generator.Metamodel is
          Unit.Add_Line
           (+"      return Base +"
               & Integer'Wide_Wide_Image
-                 (Element_Numbers.Element
+                 (Metamodel_Info.Element_Numbers.Element
                    (AMF.CMOF.Elements.CMOF_Element_Access (Data_Type)))
               & ";");
          Unit.Add_Line
@@ -665,7 +665,7 @@ package body Generator.Metamodel is
          Unit.Add_Line
           (+"      return Base +"
               & Integer'Wide_Wide_Image
-                 (Element_Numbers.Element
+                 (Metamodel_Info.Element_Numbers.Element
                    (AMF.CMOF.Elements.CMOF_Element_Access (Element)))
               & ";");
          Unit.Add_Line
@@ -738,7 +738,7 @@ package body Generator.Metamodel is
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
    begin
-      if Element_Numbers.Element (Element) /= 1 then
+      if Metamodel_Info.Element_Numbers.Element (Element) /= 1 then
          Unit.Add_Line;
       end if;
 
@@ -751,7 +751,7 @@ package body Generator.Metamodel is
       Unit.Add_Line
        (+"      AMF.Internals.Extents.Internal_Append (Extent, Aux);");
 
-      if Element_Numbers.Element (Element) = 1 then
+      if Metamodel_Info.Element_Numbers.Element (Element) = 1 then
          Unit.Add_Line (+"      Base := Aux - 1;");
       end if;
    end Generate_Metaclass_Initialization;
@@ -872,7 +872,7 @@ package body Generator.Metamodel is
                     & To_Ada_Identifier (Property.Get_Name.Value)
                     & " (Base +"
                     & Integer'Wide_Wide_Image
-                       (Element_Numbers.Element (Element))
+                       (Metamodel_Info.Element_Numbers.Element (Element))
                     & ", ");
 
                if League.Holders.Booleans.Element (Value) then
@@ -899,7 +899,7 @@ package body Generator.Metamodel is
                        & To_Ada_Identifier (Property.Get_Name.Value)
                        & " (Base +"
                        & Integer'Wide_Wide_Image
-                          (Element_Numbers.Element (Element)));
+                          (Metamodel_Info.Element_Numbers.Element (Element)));
                   Unit.Add_Line
                    (+", (False,"
                        & Integer'Wide_Wide_Image
@@ -930,7 +930,7 @@ package body Generator.Metamodel is
                        & To_Ada_Identifier (Property.Get_Name.Value)
                        & " (Base +"
                        & Integer'Wide_Wide_Image
-                          (Element_Numbers.Element (Element))
+                          (Metamodel_Info.Element_Numbers.Element (Element))
                        & ", ");
 
                   if AMF.Holders.Unlimited_Naturals.Element
@@ -967,7 +967,7 @@ package body Generator.Metamodel is
                      Unit.Add_Line
                       (+"       (Base +"
                           & Integer'Wide_Wide_Image
-                             (Element_Numbers.Element (Element))
+                             (Metamodel_Info.Element_Numbers.Element (Element))
                           & ",");
                      Unit.Context.Add
                       (String_Data_Package_Name
@@ -991,7 +991,7 @@ package body Generator.Metamodel is
                     & To_Ada_Identifier (Property.Get_Name.Value)
                     & " (Base +"
                     & Integer'Wide_Wide_Image
-                       (Element_Numbers.Element (Element))
+                       (Metamodel_Info.Element_Numbers.Element (Element))
                     & ", ");
 
                Unit.Context.Add (+"AMF.CMOF");
@@ -1026,7 +1026,7 @@ package body Generator.Metamodel is
                           & To_Ada_Identifier (Property.Get_Name.Value)
                           & " (Base +"
                           & Integer'Wide_Wide_Image
-                             (Element_Numbers.Element (Element))
+                             (Metamodel_Info.Element_Numbers.Element (Element))
                           & ", (Is_Empty => True));");
 
                   else
@@ -1036,7 +1036,7 @@ package body Generator.Metamodel is
                           & To_Ada_Identifier (Property.Get_Name.Value)
                           & " (Base +"
                           & Integer'Wide_Wide_Image
-                             (Element_Numbers.Element (Element))
+                             (Metamodel_Info.Element_Numbers.Element (Element))
                           & ", (False, ");
 
                      Unit.Context.Add (+"AMF.CMOF");
@@ -1065,7 +1065,7 @@ package body Generator.Metamodel is
                        & To_Ada_Identifier (Property.Get_Name.Value)
                        & " (Base +"
                        & Integer'Wide_Wide_Image
-                          (Element_Numbers.Element (Element))
+                          (Metamodel_Info.Element_Numbers.Element (Element))
                        & ", ");
 
                   Unit.Context.Add (+"AMF.CMOF");

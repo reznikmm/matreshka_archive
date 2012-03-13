@@ -207,7 +207,8 @@ package Generator is
       --  correspondingly.
 
       Number_Element               : Number_CMOF_Element_Maps.Map;
-      --  Mapping of the assigned number to corresponding element.
+      Element_Numbers              : CMOF_Element_Number_Maps.Map;
+      --  Mapping of the assigned number to corresponding element and back.
 
       First_Class                  : Positive;
       Last_Class                   : Natural;
@@ -234,9 +235,6 @@ package Generator is
 
    Metamodel_Name : League.Strings.Universal_String;
    --  Name of the generated metamodel.
-
-   Element_Numbers : CMOF_Element_Number_Maps.Map;
-   --  Expansion information.
 
    Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    --  Root package of metamodel.

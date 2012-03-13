@@ -850,7 +850,15 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if not Class.Collection.Contains (Attribute) then
+            if not Class.Collection.Contains (Attribute)
+              or else not Metamodel_Info.Element_Numbers.Contains
+                           (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
+            then
+               --  XXX First condition should be described.
+               --  ... or there is no mapping for this attribute in the
+               --  metamodel (thus, attributes is defined in another
+               --  metamodel).
+
                return;
             end if;
 
@@ -863,7 +871,7 @@ package body Generator.Attributes is
             end if;
 
             Put
-             (Element_Numbers.Element
+             (Metamodel_Info.Element_Numbers.Element
                (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
               Width => 0);
             Set_Col (18);
@@ -928,7 +936,15 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if not Class.Slot.Contains (Attribute) then
+            if not Class.Slot.Contains (Attribute)
+              or else not Metamodel_Info.Element_Numbers.Contains
+                           (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
+            then
+               --  XXX First condition should be described.
+               --  ... or there is no mapping for this attribute in the
+               --  metamodel (thus, attributes is defined in another
+               --  metamodel).
+
                return;
             end if;
 
@@ -941,7 +957,7 @@ package body Generator.Attributes is
             end if;
 
             Put
-             (Element_Numbers.Element
+             (Metamodel_Info.Element_Numbers.Element
                (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
               Width => 0);
             Set_Col (18);
