@@ -70,21 +70,24 @@ package body AMF.Internals.XMI_Handlers is
    use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type League.Strings.Universal_String;
 
-   XMI_2_1_Namespace : constant League.Strings.Universal_String
+   XMI_2_1_Namespace   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/XMI/2.1");
-   XMI_2_4_Namespace : constant League.Strings.Universal_String
+   XMI_2_4_Namespace   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/XMI/20100901");
-   XMI_Name          : constant League.Strings.Universal_String
+   XMI_2_4_1_Namespace : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/XMI/20110701");
+   XMI_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("XMI");
-   Id_Name           : constant League.Strings.Universal_String
+   Id_Name             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
-   Idref_Name        : constant League.Strings.Universal_String
+   Idref_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("idref");
-   Type_Name         : constant League.Strings.Universal_String
+   Type_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
-   Href_Name         : constant League.Strings.Universal_String
+   Href_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("href");
 
    function Resolve_Owned_Attribute
@@ -877,6 +880,7 @@ package body AMF.Internals.XMI_Handlers is
 
       elsif Namespace_URI = XMI_2_1_Namespace
         or Namespace_URI = XMI_2_4_Namespace
+        or Namespace_URI = XMI_2_4_1_Namespace
       then
          if Local_Name = XMI_Name then
             Self.XMI_Namespace := Namespace_URI;
@@ -952,6 +956,7 @@ package body AMF.Internals.XMI_Handlers is
    begin
       if Namespace_URI = XMI_2_1_Namespace
         or Namespace_URI = XMI_2_4_Namespace
+        or Namespace_URI = XMI_2_4_1_Namespace
       then
          --  Ignore all XMI namespaces.
 
