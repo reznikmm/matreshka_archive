@@ -55,8 +55,9 @@ package AMF.Internals is
    CMOF_Metamodel            : constant AMF_Metamodel := 0;
    Primitive_Types_Metamodel : constant AMF_Metamodel := 1;
    UML_Metamodel             : constant AMF_Metamodel := 2;
-   OCL_Metamodel             : constant AMF_Metamodel := 3;
-   IATS_Metamodel            : constant AMF_Metamodel := 4;
+   MOF_Metamodel             : constant AMF_Metamodel := 3;
+   OCL_Metamodel             : constant AMF_Metamodel := 4;
+   IATS_Metamodel            : constant AMF_Metamodel := 5;
 
    --------------------------------------------------------------
    --  Element identifier and its subtypes for each metamodel  --
@@ -68,11 +69,13 @@ package AMF.Internals is
 
    subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
    subtype UML_Element   is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
-   subtype OCL_Element   is AMF_Element range 16#03000000# .. 16#03FFFFFF#;
-   subtype IATS_Element  is AMF_Element range 16#04000000# .. 16#04FFFFFF#;
+   subtype MOF_Element   is AMF_Element range 16#03000000# .. 16#03FFFFFF#;
+   subtype OCL_Element   is AMF_Element range 16#04000000# .. 16#04FFFFFF#;
+   subtype IATS_Element  is AMF_Element range 16#05000000# .. 16#05FFFFFF#;
 
    No_CMOF_Element : constant CMOF_Element := CMOF_Element'First;
    No_UML_Element  : constant UML_Element  := UML_Element'First;
+   No_MOF_Element  : constant MOF_Element  := MOF_Element'First;
    No_OCL_Element  : constant OCL_Element  := OCL_Element'First;
    No_IATS_Element : constant IATS_Element := IATS_Element'First;
 
