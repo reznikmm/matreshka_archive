@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xmi:XMI xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml" xmlns:xmi="http://www.omg.org/spec/XMI/20100901">
+  <cmof:Package xmi:type="cmof:Package" xmi:id="_MOF" name="MOF" uri="http://www.omg.org/spec/MOF/20110701">
+    <packagedElement xmi:type="cmof:Association" name="A_element_tag" xmi:id="_MOF-Extension-A_element_tag">
+      <memberEnd xmi:idref="_MOF-Extension-Tag-element"/>
+      <memberEnd xmi:idref="_MOF-Extension-A_element_tag-tag"/>
+      <ownedEnd xmi:type="cmof:Property" name="tag" visibility="public" xmi:id="_MOF-Extension-A_element_tag-tag">
+        <type xmi:idref="_MOF-Extension-Tag"/>
+        <association xmi:idref="_MOF-Extension-A_element_tag"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" name="Tag" xmi:id="_MOF-Extension-Tag">
+      <superClass href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element"/>
+      <ownedAttribute xmi:type="cmof:Property" name="name" visibility="public" xmi:id="_MOF-Extension-Tag-name">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" name="value" visibility="public" xmi:id="_MOF-Extension-Tag-value">
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" name="element" visibility="public" xmi:id="_MOF-Extension-Tag-element" upper="*" lower="0">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element"/>
+        <association xmi:idref="_MOF-Extension-A_element_tag"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" name="tagOwner" visibility="public" xmi:id="_MOF-CMOFExtension-Tag-tagOwner" lower="0">
+        <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element"/>
+        <subsettedProperty href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element-owner"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" name="A_ownedTag_tagOwner" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner">
+      <memberEnd xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag"/>
+      <memberEnd xmi:idref="_MOF-CMOFExtension-Tag-tagOwner"/>
+      <ownedEnd xmi:type="cmof:Property" name="ownedTag" visibility="public" isComposite="true" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag" upper="*" lower="0">
+        <type xmi:idref="_MOF-Extension-Tag"/>
+        <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
+        <subsettedProperty href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element-ownedElement"/>
+      </ownedEnd>
+    </packagedElement>
+  </cmof:Package>
+  <cmof:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsPrefix::3" name="org.omg.xmi.nsPrefix" value="mofext">
+    <element xmi:idref="_MOF"/>
+  </cmof:Tag>
+</xmi:XMI>
