@@ -176,6 +176,11 @@ package body Generator.Names is
            Package_Constant_Package_Name
             (AMF.CMOF.Packages.CMOF_Package_Access (Element));
 
+      elsif Element.all in AMF.CMOF.Properties.CMOF_Property'Class then
+         return
+           Property_Constant_Package_Name
+            (AMF.CMOF.Properties.CMOF_Property_Access (Element));
+
       else
          raise Program_Error with Ada.Tags.External_Tag (Element'Tag);
       end if;
@@ -198,6 +203,11 @@ package body Generator.Names is
          return
            Package_Constant_Qualified_Name
             (AMF.CMOF.Packages.CMOF_Package_Access (Element));
+
+      elsif Element.all in AMF.CMOF.Properties.CMOF_Property'Class then
+         return
+           Property_Constant_Qualified_Name
+            (AMF.CMOF.Properties.CMOF_Property_Access (Element));
 
       else
          raise Program_Error with Ada.Tags.External_Tag (Element'Tag);
