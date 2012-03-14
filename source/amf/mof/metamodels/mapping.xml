@@ -51,6 +51,10 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
   <!--  Map UML 2.3 namespace URI to supported version  -->
   <uri name="http://www.omg.org/spec/UML/20090901" uri="http://www.omg.org/spec/UML/20100901"/>
+  <!--  Map UML 2.4.1 namespace URI to supported version  -->
+  <uri name="http://www.omg.org/spec/UML/20110701" uri="http://www.omg.org/spec/UML/20100901"/>
   <!--  Map UML 2.1 namespace URI to supported version  -->
   <uri name="http://schema.omg.org/spec/UML/2.1" uri="http://www.omg.org/spec/UML/20100901"/>
+  <!--  Map MOF 2.4 namespace URI to supported version  -->
+  <uri name="http://www.omg.org/spec/MOF/20100901" uri="http://www.omg.org/spec/MOF/20110701"/>
 </catalog>
