@@ -2144,6 +2144,15 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base;
    end MB_CMOF;
 
+   -------------
+   -- MB_CMOF --
+   -------------
+
+   function ML_CMOF return AMF.Internals.AMF_Element is
+   begin
+      return Base + 800;
+   end ML_CMOF;
+
    ------------------------
    -- Initialize_Objects --
    ------------------------

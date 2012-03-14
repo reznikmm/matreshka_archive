@@ -288,6 +288,8 @@ package AMF.Internals.Tables.CMOF_Metamodel is
 
    function MB_CMOF return AMF.Internals.AMF_Element;
 
+   function ML_CMOF return AMF.Internals.AMF_Element;
+
    procedure Initialize_Objects;
 
    procedure Initialize_Links;
