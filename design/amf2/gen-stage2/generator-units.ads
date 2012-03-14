@@ -62,6 +62,8 @@ package Generator.Units is
        := League.Strings.Empty_Universal_String);
    --  Adds text to the last line and moves to the new line.
 
+   procedure Set_Column (Self : in out Unit; Column : Positive);
+
    procedure Add_Unit_Header
     (Self       : in out Unit;
      First_Year : Positive;

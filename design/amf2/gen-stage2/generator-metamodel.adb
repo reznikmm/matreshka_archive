@@ -562,6 +562,19 @@ package body Generator.Metamodel is
       Unit.Add_Line (+"      return Base;");
       Unit.Add_Line ("   end MB_" & Metamodel_Name & ";");
 
+      Unit.Add_Header ("MB_" & Metamodel_Name, 3);
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   function ML_"
+          & Metamodel_Name
+          & " return AMF.Internals.AMF_Element is");
+      Unit.Add_Line (+"   begin");
+      Unit.Add_Line
+       (+"      return Base +"
+           & Integer'Wide_Wide_Image (Metamodel_Info.Last_Element)
+           & ";");
+      Unit.Add_Line ("   end ML_" & Metamodel_Name & ";");
+
       Generate_Metamodel_Initialization (Unit);
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ";");
@@ -1190,6 +1203,12 @@ package body Generator.Metamodel is
        ("   function MB_"
           & Metamodel_Name
           & " return AMF.Internals.AMF_Element;");
+      New_Line;
+      Put_Line
+       ("   function ML_"
+          & Metamodel_Name
+          & " return AMF.Internals.AMF_Element;");
+
       New_Line;
       Put_Line ("   procedure Initialize_Objects;");
       New_Line;

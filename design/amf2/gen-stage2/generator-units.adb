@@ -340,4 +340,39 @@ package body Generator.Units is
       end loop;
    end Put;
 
+   ----------------
+   -- Set_Column --
+   ----------------
+
+   procedure Set_Column (Self : in out Unit; Column : Positive) is
+      Aux : League.Strings.Universal_String;
+
+   begin
+      if not Self.Lines.Is_Empty then
+         Aux := Self.Lines.Element (Self.Lines.Length);
+      end if;
+
+      if Aux.Length < Column then
+         for J in Aux.Length + 1 .. Column - 1 loop
+            Aux.Append (' ');
+         end loop;
+
+         if Self.Lines.Is_Empty then
+            Self.Lines.Append (Aux);
+
+         else
+            Self.Lines.Replace (Self.Lines.Length, Aux);
+         end if;
+
+      else
+         Aux := League.Strings.Empty_Universal_String;
+
+         for J in 1 .. Column - 1 loop
+            Aux.Append (' ');
+         end loop;
+
+         Self.Lines.Append (Aux);
+      end if;
+   end Set_Column;
+
 end Generator.Units;

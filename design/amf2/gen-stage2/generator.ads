@@ -55,6 +55,7 @@ with AMF.CMOF.Parameters;
 with AMF.CMOF.Properties;
 with AMF.CMOF.Packages;
 with AMF.Elements.Collections;
+with AMF.Extents.Collections;
 
 package Generator is
 
@@ -210,11 +211,15 @@ package Generator is
       Element_Numbers              : CMOF_Element_Number_Maps.Map;
       --  Mapping of the assigned number to corresponding element and back.
 
+      Ada_Name                     : League.Strings.Universal_String;
+      --  Ada style name of the metamodel.
+
       First_Class                  : Positive;
       Last_Class                   : Natural;
       First_Class_Property         : Positive;
       Last_Class_Property          : Natural;
       Last_Multiple_Class_Property : Natural;
+      Last_Element                 : Positive;
       --  First and last numbers are assigned to:
       --   - classes
       --   - properties owned by classes
@@ -223,9 +228,19 @@ package Generator is
 
    type Metamodel_Information_Access is access all Metamodel_Information;
 
+   package Extent_Metamodel_Information_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.Extents.Extent_Access,
+           Metamodel_Information_Access,
+           AMF.Extents.Collections.Hash,
+           AMF.Extents."=");
+
    ------------------------
    -- Global information --
    ------------------------
+
+   Used_Extents    : AMF.Extents.Collections.Set_Of_Extent;
+   Metamodel_Infos : Extent_Metamodel_Information_Maps.Map;
 
    Class_Info : Class_Information_Maps.Map;
    --  Mapping from CMOF::Class to class information.

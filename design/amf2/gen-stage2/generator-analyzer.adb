@@ -63,15 +63,18 @@ package body Generator.Analyzer is
    --  members of information.
 
    procedure Compute_All_Properties
-    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
+    (Extents : in out AMF.Extents.Collections.Set_Of_Extent;
+     Class   : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Computes all attributes of the class, assigns slot and collections.
 
    procedure Compute_Metamodel_Name
-    (Extent : not null AMF.URI_Stores.URI_Store_Access);
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access);
    --  Compute metamodel names for each element.
 
    procedure Assign_Numbers
-    (Extent : not null AMF.URI_Stores.URI_Store_Access);
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access);
    --  Assigns numbers to each element and to each string.
 
    -------------------
@@ -83,9 +86,12 @@ package body Generator.Analyzer is
    is
       Elements : constant AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
+      Info     : Metamodel_Information_Access := Metamodel_Info;
 
    begin
-      Classify_Elements (Metamodel_Info, Elements);
+      Metamodel_Infos.Insert (AMF.Extents.Extent_Access (Extent), Info);
+
+      Classify_Elements (Info, Elements);
 
       --  Compute complete set of properties for each class.
 
@@ -96,14 +102,14 @@ package body Generator.Analyzer is
                  := AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J));
 
             begin
-               Compute_All_Properties (Class);
+               Compute_All_Properties (Used_Extents, Class);
             end;
          end if;
       end loop;
 
       --  Compute name of metamodel.
 
-      Compute_Metamodel_Name (Extent);
+      Compute_Metamodel_Name (Info, AMF.Extents.Extent_Access (Extent));
 
       --  Looking for root package of the metamodel.
 
@@ -120,7 +126,31 @@ package body Generator.Analyzer is
 
       --  Assign numbers for metamodel's elements.
 
-      Assign_Numbers (Extent);
+      Assign_Numbers (Info, AMF.Extents.Extent_Access (Extent));
+
+      --  Process all used extents.
+
+      declare
+         Position : AMF.Extents.Collections.Extent_Sets.Cursor
+           := Used_Extents.First;
+         Extent   : AMF.Extents.Extent_Access;
+
+      begin
+         while AMF.Extents.Collections.Extent_Sets.Has_Element (Position) loop
+            Extent := AMF.Extents.Collections.Extent_Sets.Element (Position);
+
+            if not Metamodel_Infos.Contains (Extent) then
+               Info := new Metamodel_Information;
+               Metamodel_Infos.Insert (Extent, Info);
+
+               Compute_Metamodel_Name (Info, Extent);
+               Classify_Elements (Info, Extent.Elements);
+               Assign_Numbers (Info, Extent);
+            end if;
+
+            AMF.Extents.Collections.Extent_Sets.Next (Position);
+         end loop;
+      end;
    end Analyze_Model;
 
    --------------------
@@ -128,7 +158,8 @@ package body Generator.Analyzer is
    --------------------
 
    procedure Assign_Numbers
-    (Extent : not null AMF.URI_Stores.URI_Store_Access)
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access)
    is
       procedure Assign_Ordered_Set
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
@@ -156,10 +187,10 @@ package body Generator.Analyzer is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         if not Metamodel_Info.Element_Numbers.Contains (Element) then
+         if not Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Metamodel_Info.Element_Numbers.Insert (Element, Last);
-            Metamodel_Info.Number_Element.Insert (Last, Element);
+            Info.Element_Numbers.Insert (Element, Last);
+            Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Ordered_Set;
 
@@ -229,10 +260,10 @@ package body Generator.Analyzer is
            := CMOF_Element_Sets.Element (Position);
 
       begin
-         if not Metamodel_Info.Element_Numbers.Contains (Element) then
+         if not Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Metamodel_Info.Element_Numbers.Insert (Element, Last);
-            Metamodel_Info.Number_Element.Insert (Last, Element);
+            Info.Element_Numbers.Insert (Element, Last);
+            Info.Number_Element.Insert (Last, Element);
          end if;
       end Assign_Set;
 
@@ -241,20 +272,20 @@ package body Generator.Analyzer is
    begin
       --  Assign numbers for classes and their owned properties.
 
-      Metamodel_Info.First_Class := Last + 1;
-      Sort (Metamodel_Info.Classes).Iterate (Assign_Ordered_Set'Access);
-      Metamodel_Info.Last_Class := Last;
-      Metamodel_Info.First_Class_Property := Last + 1;
-      Sort (Metamodel_Info.Classes).Iterate
+      Info.First_Class := Last + 1;
+      Sort (Info.Classes).Iterate (Assign_Ordered_Set'Access);
+      Info.Last_Class := Last;
+      Info.First_Class_Property := Last + 1;
+      Sort (Info.Classes).Iterate
        (Assign_Collection_Of_Element_Property'Access);
-      Metamodel_Info.Last_Multiple_Class_Property := Last;
-      Sort (Metamodel_Info.Classes).Iterate
+      Info.Last_Multiple_Class_Property := Last;
+      Sort (Info.Classes).Iterate
        (Assign_Owned_By_Class_Property'Access);
-      Metamodel_Info.Last_Class_Property := Last;
+      Info.Last_Class_Property := Last;
 
       --  Assign numbers for associations.
 
-      Metamodel_Info.Associations.Iterate (Assign_Set'Access);
+      Info.Associations.Iterate (Assign_Set'Access);
 
       --  Assign numbers for other elements.
 
@@ -262,17 +293,19 @@ package body Generator.Analyzer is
          Element :=
            AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
 
-         if not Metamodel_Info.Element_Numbers.Contains (Element) then
+         if not Info.Element_Numbers.Contains (Element) then
             Last := Last + 1;
-            Metamodel_Info.Element_Numbers.Insert (Element, Last);
-            Metamodel_Info.Number_Element.Insert (Last, Element);
+            Info.Element_Numbers.Insert (Element, Last);
+            Info.Number_Element.Insert (Last, Element);
          end if;
       end loop;
+
+      Info.Last_Element := Last;
 
       --  Disable generation of attributes and constructors when there are no
       --  classes in the metamodel.
 
-      if Metamodel_Info.Classes.Is_Empty then
+      if Info.Classes.Is_Empty then
          Generate_Attributes := False;
          Generate_Constructors := False;
          Generate_Reflection := False;
@@ -297,16 +330,16 @@ package body Generator.Analyzer is
            AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
 
          if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
-            Metamodel_Info.Associations.Insert (Element);
+            Info.Associations.Insert (Element);
 
          elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            Metamodel_Info.Classes.Insert (Element);
+            Info.Classes.Insert (Element);
 
          elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
-            Metamodel_Info.Data_Types.Insert (Element);
+            Info.Data_Types.Insert (Element);
 
          elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
-            Metamodel_Info.Packages.Insert (Element);
+            Info.Packages.Insert (Element);
          end if;
       end loop;
    end Classify_Elements;
@@ -316,7 +349,8 @@ package body Generator.Analyzer is
    ----------------------------
 
    procedure Compute_All_Properties
-    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+    (Extents : in out AMF.Extents.Collections.Set_Of_Extent;
+     Class   : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
       procedure Process_Class
        (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
@@ -354,13 +388,16 @@ package body Generator.Analyzer is
             Process_Class (Superclasses.Element (J));
          end loop;
 
+         --  Add class's extent into the set of used extents.
+
+         Extents.Include (AMF.Elements.Element_Access (Class).Extent);
+
          --  Process class's attributes
 
          for J in 1 .. Attributes.Length loop
             Attribute := Attributes.Element (J);
             Redefines := Attribute.Get_Redefined_Property;
             Attribute_Type := Attribute.Get_Type;
-
 
             --  Add property into set of all attributes.
 
@@ -428,30 +465,35 @@ package body Generator.Analyzer is
    ----------------------------
 
    procedure Compute_Metamodel_Name
-    (Extent : not null AMF.URI_Stores.URI_Store_Access)
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access)
    is
       Elements : constant AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
 
    begin
-      if Metamodel_Name.Is_Empty then
-         --  Looking for first instance of CMOF::Package and use its name to
-         --  compute metamodel name of analyzed extent.
+      --  Looking for first instance of CMOF::Package and use its name to
+      --  compute metamodel name of analyzed extent.
 
-         for J in 1 .. Elements.Length loop
-            if Elements.Element (J).all
-                 in AMF.CMOF.Packages.CMOF_Package'Class
-            then
-               Metamodel_Name :=
-                 League.Strings.To_Universal_String
-                  (Generator.Names.To_Ada_Identifier
-                    (AMF.CMOF.Packages.CMOF_Package'Class
-                      (Elements.Element (J).all).Get_Name.Value));
+      for J in 1 .. Elements.Length loop
+         if Elements.Element (J).all
+              in AMF.CMOF.Packages.CMOF_Package'Class
+         then
+            Info.Ada_Name :=
+              League.Strings.To_Universal_String
+               (Generator.Names.To_Ada_Identifier
+                 (AMF.CMOF.Packages.CMOF_Package'Class
+                   (Elements.Element (J).all).Get_Name.Value));
 
-               exit;
+            if Metamodel_Name.Is_Empty then
+               --  Set global name of the metamodel to be used by old code.
+
+               Metamodel_Name := Info.Ada_Name;
             end if;
-         end loop;
-      end if;
+
+            exit;
+         end if;
+      end loop;
    end Compute_Metamodel_Name;
 
 end Generator.Analyzer;

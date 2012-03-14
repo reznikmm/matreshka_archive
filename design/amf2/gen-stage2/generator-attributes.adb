@@ -42,32 +42,23 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Vectors;
-with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Wide_Wide_Fixed;
-with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Types;
-with AMF.Elements;
 with AMF.CMOF.Properties.Collections;
-with AMF.Internals.Helpers;
-with League.Strings;
 
 with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Type_Mapping;
-with Generator.Wide_Wide_Text_IO;
 with Generator.Units;
 
 package body Generator.Attributes is
 
-   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings;
    use Ada.Strings.Wide_Wide_Fixed;
-   use Ada.Wide_Wide_Text_IO;
    use Generator.Attribute_Mapping;
    use Generator.Names;
-   use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_String;
    use type League.Strings.Universal_String;
 
@@ -103,6 +94,12 @@ package body Generator.Attributes is
      Class     : AMF.CMOF.Classes.CMOF_Class_Access;
      Attribute : AMF.CMOF.Properties.CMOF_Property_Access);
    --  Adds attribute into set of attribute groups.
+
+   procedure Generate_Attributes_Mapping_Constants
+    (Unit : in out Generator.Units.Unit;
+     Info : not null Metamodel_Information_Access;
+     Used : not null Metamodel_Information_Access);
+   --  Generates attribute mapping constants.
 
    String_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
@@ -813,11 +810,15 @@ package body Generator.Attributes is
       Unit.Put;
    end Generate_Attributes_Implementation;
 
-   -----------------------------------------------
-   -- Generate_Attributes_Mapping_Specification --
-   -----------------------------------------------
+   -------------------------------------------
+   -- Generate_Attributes_Mapping_Constants --
+   -------------------------------------------
 
-   procedure Generate_Attributes_Mapping_Specification is
+   procedure Generate_Attributes_Mapping_Constants
+    (Unit : in out Generator.Units.Unit;
+     Info : not null Metamodel_Information_Access;
+     Used : not null Metamodel_Information_Access)
+   is
 
       procedure Generate_Collection (Position : Class_Information_Maps.Cursor);
 
@@ -835,9 +836,8 @@ package body Generator.Attributes is
 
          procedure Generate (Position : CMOF_Property_Sets.Cursor);
 
-         Class           : constant Class_Information_Access
+         Class : constant Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         First_Attribute : Boolean := True;
 
          --------------
          -- Generate --
@@ -851,7 +851,7 @@ package body Generator.Attributes is
 
          begin
             if not Class.Collection.Contains (Attribute)
-              or else not Metamodel_Info.Element_Numbers.Contains
+              or else not Used.Element_Numbers.Contains
                            (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
             then
                --  XXX First condition should be described.
@@ -862,30 +862,25 @@ package body Generator.Attributes is
                return;
             end if;
 
-            if First_Attribute then
-               Put ("          (");
-               First_Attribute := False;
-
-            else
-               Put ("           ");
-            end if;
-
-            Put
-             (Metamodel_Info.Element_Numbers.Element
-               (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
-              Width => 0);
-            Set_Col (18);
-            Put
-             (" =>"
-                & Integer'Wide_Wide_Image
-                   (Class.Collection.Element (Attribute))
-                & ",");
-            Set_Col (29);
-            Put_Line
+            Unit.Add
+             (+Trim
+                (Integer'Wide_Wide_Image 
+                  (Used.Element_Numbers.Element
+                    (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))),
+                 Both));
+            Unit.Set_Column (18);
+            Unit.Add
+             (+" =>"
+                 & Integer'Wide_Wide_Image
+                    (Class.Collection.Element (Attribute))
+                 & ",");
+            Unit.Set_Column (29);
+            Unit.Add_Line
              ("--  "
                 & Owner.Get_Name.Value
                 & Owner.Separator
                 & Attribute.Get_Name.Value);
+            Unit.Add (+"           ");
          end Generate;
 
       begin
@@ -897,20 +892,20 @@ package body Generator.Attributes is
             First_Class := False;
 
          else
-            Put_Line (",");
-            Put ("         ");
+            Unit.Add_Line (+",");
+            Unit.Add (+"         ");
          end if;
 
---         Unit.Context.Add
---          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
-         Put_Line
+         Unit.Context.Add ("AMF.Internals.Tables." & Info.Ada_Name & "_Types");
+         Unit.Add_Line
           ("AMF.Internals.Tables."
-             & Metamodel_Name
+             & Info.Ada_Name
              & "_Types.E_"
              & To_Ada_Identifier (Class.Class.Get_Name.Value)
              & " =>");
+         Unit.Add (+"          (");
          Class.All_Attributes.Iterate (Generate'Access);
-         Put ("           others => 0)");
+         Unit.Add (+"others => 0)");
       end Generate_Collection;
 
       -------------------
@@ -921,9 +916,8 @@ package body Generator.Attributes is
 
          procedure Generate (Position : CMOF_Property_Sets.Cursor);
 
-         Class           : constant Class_Information_Access
+         Class : constant Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         First_Attribute : Boolean := True;
 
          --------------
          -- Generate --
@@ -937,7 +931,7 @@ package body Generator.Attributes is
 
          begin
             if not Class.Slot.Contains (Attribute)
-              or else not Metamodel_Info.Element_Numbers.Contains
+              or else not Used.Element_Numbers.Contains
                            (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
             then
                --  XXX First condition should be described.
@@ -948,30 +942,24 @@ package body Generator.Attributes is
                return;
             end if;
 
-            if First_Attribute then
-               Put ("          (");
-               First_Attribute := False;
-
-            else
-               Put ("           ");
-            end if;
-
-            Put
-             (Metamodel_Info.Element_Numbers.Element
-               (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
-              Width => 0);
-            Set_Col (18);
-            Put
-             (" =>"
-                & Integer'Wide_Wide_Image
-                   (Class.Slot.Element (Attribute))
-                & ",");
-            Set_Col (29);
-            Put_Line
+            Unit.Add
+             (+Trim
+                (Integer'Wide_Wide_Image
+                  (Used.Element_Numbers.Element
+                    (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))),
+                 Both));
+            Unit.Set_Column (18);
+            Unit.Add
+             (+" =>"
+                 & Integer'Wide_Wide_Image (Class.Slot.Element (Attribute))
+                 & ",");
+            Unit.Set_Column (29);
+            Unit.Add_Line
              ("--  "
                 & Owner.Get_Name.Value
                 & Owner.Separator
                 & Attribute.Get_Name.Value);
+            Unit.Add (+"           ");
          end Generate;
 
       begin
@@ -983,93 +971,106 @@ package body Generator.Attributes is
             First_Class := False;
 
          else
-            Put_Line (",");
-            Put ("         ");
+            Unit.Add_Line (+",");
+            Unit.Add (+"         ");
          end if;
 
---         Unit.Context.Add
---          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
-         Put_Line
+         Unit.Context.Add
+          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
+         Unit.Add_Line
           ("AMF.Internals.Tables."
              & Metamodel_Name
              & "_Types.E_"
              & To_Ada_Identifier (Class.Class.Get_Name.Value)
              & " =>");
+         Unit.Add (+"          (");
          Class.All_Attributes.Iterate (Generate'Access);
-         Put ("           others => 0)");
+         Unit.Add (+"others => 0)");
       end Generate_Slot;
 
    begin
-      Put_Header (2010, 2011);
-      Put_Line ("with Interfaces;");
-      New_Line;
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      New_Line;
-      Put_Line
-       ("package AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attribute_Mappings is");
-      New_Line;
---      Put_Line ("   pragma Preelaborate;");
---      New_Line;
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
-      Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      New_Line;
-      Put_Line ("   Collection_Offset : constant");
-      Put_Line
+      Unit.Add_Line;
+      Unit.Add_Line ("   " & Used.Ada_Name & "_Collection_Offset : constant");
+      Unit.Add_Line
        ("     array (AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Info.Ada_Name
           & "_Types.Element_Kinds,");
-      Put_Line
-       ("            AMF.Internals.CMOF_Element range"
-          & Integer'Wide_Wide_Image (Metamodel_Info.First_Class_Property)
-          & " .."
-          & Integer'Wide_Wide_Image
-             (Metamodel_Info.Last_Multiple_Class_Property)
-          & ")");
-      Put_Line ("       of AMF.Internals.AMF_Collection_Of_Element :=");
-      Put_Line ("        (E_None =>");
-      Put_Line ("          (others => 0),");
-      Put ("         ");
+      Unit.Add_Line
+       (+"            AMF.Internals.CMOF_Element range"
+           & Integer'Wide_Wide_Image (Used.First_Class_Property)
+           & " .."
+           & Integer'Wide_Wide_Image (Used.Last_Multiple_Class_Property)
+           & ")");
+      Unit.Add_Line (+"       of AMF.Internals.AMF_Collection_Of_Element :=");
+      Unit.Add_Line
+       (+"        (AMF.Internals.Tables."
+           & Metamodel_Name
+           & "_Types.E_None =>");
+      Unit.Add_Line (+"          (others => 0),");
+      Unit.Add (+"         ");
       Class_Info.Iterate (Generate_Collection'Access);
-      Put_Line (");");
-      New_Line;
-      Put_Line ("   Member_Offset : constant");
-      Put_Line
+      Unit.Add_Line (+");");
+      Unit.Add_Line;
+      Unit.Add_Line ("   " & Used.Ada_Name & "_Member_Offset : constant");
+      Unit.Add_Line
        ("     array (AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Info.Ada_Name
           & "_Types.Element_Kinds,");
-      Put_Line
-       ("            AMF.Internals.CMOF_Element range"
-          & Integer'Wide_Wide_Image
-             (Metamodel_Info.Last_Multiple_Class_Property + 1)
-          & " .."
-          & Integer'Wide_Wide_Image (Metamodel_Info.Last_Class_Property)
-          & ") of Natural :=");
-      Put_Line ("        (E_None =>");
-      Put_Line ("          (others => 0),");
-      Put ("         ");
+      Unit.Add_Line
+       (+"            AMF.Internals.CMOF_Element range"
+           & Integer'Wide_Wide_Image (Used.Last_Multiple_Class_Property + 1)
+           & " .."
+           & Integer'Wide_Wide_Image (Used.Last_Class_Property)
+           & ") of Natural :=");
+      Unit.Add_Line
+       (+"        (AMF.Internals.Tables."
+           & Metamodel_Name
+           & "_Types.E_None =>");
+      Unit.Add_Line (+"          (others => 0),");
+      Unit.Add (+"         ");
       First_Class := True;
       Class_Info.Iterate (Generate_Slot'Access);
-      Put_Line (");");
-      New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attribute_Mappings;");
+      Unit.Add_Line (+");");
+   end Generate_Attributes_Mapping_Constants;
+
+   -----------------------------------------------
+   -- Generate_Attributes_Mapping_Specification --
+   -----------------------------------------------
+
+   procedure Generate_Attributes_Mapping_Specification is
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Attribute_Mappings";
+      Unit         : Generator.Units.Unit;
+      Position     : AMF.Extents.Collections.Extent_Sets.Cursor;
+
+   begin
+      Unit.Add_Unit_Header
+       (Integer'Max (2010, Generator.First_Year),
+        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   pragma Preelaborate;");
+
+      Position := Used_Extents.First;
+
+      while AMF.Extents.Collections.Extent_Sets.Has_Element (Position) loop
+         Generate_Attributes_Mapping_Constants
+          (Unit,
+           Metamodel_Info,
+           Metamodel_Infos.Element
+            (AMF.Extents.Collections.Extent_Sets.Element (Position)));
+
+         AMF.Extents.Collections.Extent_Sets.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
    end Generate_Attributes_Mapping_Specification;
 
    ---------------------------------------
