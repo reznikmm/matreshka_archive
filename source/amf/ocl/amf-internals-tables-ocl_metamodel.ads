@@ -187,6 +187,8 @@ package AMF.Internals.Tables.OCL_Metamodel is
 
    function MB_OCL return AMF.Internals.AMF_Element;
 
+   function ML_OCL return AMF.Internals.AMF_Element;
+
    procedure Initialize_Objects;
 
    procedure Initialize_Links;

@@ -1272,6 +1272,15 @@ package body AMF.Internals.Tables.OCL_Metamodel is
       return Base;
    end MB_OCL;
 
+   ------------
+   -- MB_OCL --
+   ------------
+
+   function ML_OCL return AMF.Internals.AMF_Element is
+   begin
+      return Base + 178;
+   end ML_OCL;
+
    ------------------------
    -- Initialize_Objects --
    ------------------------
