@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.Elements;
 
 function AMF.UML.Elements.Hash
  (Item : AMF.UML.Elements.UML_Element_Access)
@@ -53,6 +53,7 @@ begin
    else
       return
         Ada.Containers.Hash_Type
-         (AMF.Internals.UML_Elements.UML_Element_Proxy'Class (Item.all).Id);
+         (AMF.Internals.Elements.Element_Implementation'Class
+           (Item.all).Element);
    end if;
 end AMF.UML.Elements.Hash;
