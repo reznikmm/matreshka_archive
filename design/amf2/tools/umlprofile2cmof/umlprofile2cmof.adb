@@ -51,7 +51,9 @@ with XMI.Writer;
 
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
---  Setup UML support.
+with AMF.Internals.Modules.MOF_Module;
+pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
+--  Setup UML and MOF support.
 
 with AMF.Transformations.UML_Profile_To_CMOF;
 

@@ -44,11 +44,13 @@
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Packages;
+with AMF.MOF.Tags;
 with AMF.UML.Extensions;
 with AMF.UML.Extension_Ends;
 with AMF.UML.Profiles;
 with AMF.UML.Properties;
 with AMF.UML.Stereotypes;
+with AMF.Visitors.MOF_Visitors;
 with AMF.Visitors.UML_Visitors;
 
 with AMF.Transformations.UML_Profile_To_CMOF.Contexts;
@@ -57,7 +59,8 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
 
    type Transformer
     (Context : not null access Contexts.Transformation_Context) is
-       limited new AMF.Visitors.UML_Visitors.UML_Visitor with
+       limited new AMF.Visitors.MOF_Visitors.MOF_Visitor
+         and AMF.Visitors.UML_Visitors.UML_Visitor with
    record
       The_Association : AMF.CMOF.Associations.CMOF_Association_Access;
       The_Class       : AMF.CMOF.Classes.CMOF_Class_Access;
@@ -102,6 +105,11 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
    overriding procedure Leave_Stereotype
     (Self    : in out Transformer;
      Element : not null AMF.UML.Stereotypes.UML_Stereotype_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Tag
+    (Self    : in out Transformer;
+     Element : not null AMF.MOF.Tags.MOF_Tag_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
 end AMF.Transformations.UML_Profile_To_CMOF.Stage_1;

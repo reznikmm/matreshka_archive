@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Tags;
 
 package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
 
@@ -157,6 +158,27 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
 
       Self.The_Package.Get_Packaged_Element.Add (Self.The_Class);
    end Enter_Stereotype;
+
+   ---------------
+   -- Enter_Tag --
+   ---------------
+
+   overriding procedure Enter_Tag
+    (Self    : in out Transformer;
+     Element : not null AMF.MOF.Tags.MOF_Tag_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      The_Tag : AMF.CMOF.Tags.CMOF_Tag_Access;
+
+   begin
+      --  Create instance of CMOF::Tag and set its attributes.
+
+      The_Tag := Self.Context.Create_CMOF_Tag (Element);
+      The_Tag.Set_Name (Element.Get_Name);
+      The_Tag.Set_Value (Element.Get_Value);
+   end Enter_Tag;
 
    ---------------------
    -- Leave_Extension --

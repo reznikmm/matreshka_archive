@@ -42,8 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
+with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Tags;
 with AMF.CMOF.Types;
+with AMF.UML.Elements.Collections;
 with AMF.UML.Properties.Collections;
 with AMF.UML.Stereotypes;
 with AMF.UML.Types;
@@ -128,5 +131,30 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
          (Self.Context.Mapped_Element
            (AMF.UML.Types.UML_Type_Access'(Element.Get_Type))));
    end Enter_Property;
+
+   ---------------
+   -- Enter_Tag --
+   ---------------
+
+   overriding procedure Enter_Tag
+    (Self    : in out Transformer;
+     Element : not null AMF.MOF.Tags.MOF_Tag_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      The_Tag  : constant not null AMF.CMOF.Tags.CMOF_Tag_Access
+        := AMF.CMOF.Tags.CMOF_Tag_Access
+            (Self.Context.Mapped_Element (Element));
+      Elements : constant AMF.UML.Elements.Collections.Set_Of_UML_Element
+        := Element.Get_Element;
+
+   begin
+      for J in 1 .. Elements.Length loop
+         The_Tag.Get_Element.Add
+          (AMF.CMOF.Elements.CMOF_Element_Access
+            (Self.Context.Mapped_Element (Elements.Element (J))));
+      end loop;
+   end Enter_Tag;
 
 end AMF.Transformations.UML_Profile_To_CMOF.Stage_2;

@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.MOF.Tags;
 with AMF.UML.Extensions;
 with AMF.UML.Extension_Ends;
 with AMF.UML.Properties;
+with AMF.Visitors.MOF_Visitors;
 with AMF.Visitors.UML_Visitors;
 
 with AMF.Transformations.UML_Profile_To_CMOF.Contexts;
@@ -52,7 +54,8 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
 
    type Transformer
     (Context : not null access Contexts.Transformation_Context) is
-       limited new AMF.Visitors.UML_Visitors.UML_Visitor with null record;
+       limited new AMF.Visitors.MOF_Visitors.MOF_Visitor
+         and AMF.Visitors.UML_Visitors.UML_Visitor with null record;
 
    overriding procedure Enter_Extension
     (Self    : in out Transformer;
@@ -67,6 +70,11 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
    overriding procedure Enter_Property
     (Self    : in out Transformer;
      Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Tag
+    (Self    : in out Transformer;
+     Element : not null AMF.MOF.Tags.MOF_Tag_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
 end AMF.Transformations.UML_Profile_To_CMOF.Stage_2;

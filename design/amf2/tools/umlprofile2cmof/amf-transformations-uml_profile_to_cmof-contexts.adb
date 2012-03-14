@@ -64,6 +64,8 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
      := League.Strings.To_Universal_String ("Package");
    CMOF_Property_Class_Name     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Property");
+   CMOF_Tag_Class_Name          : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Tag");
    Internal_UML_URI             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/UML.cmof");
@@ -168,6 +170,27 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
       return The_Property;
    end Create_CMOF_Property;
 
+   ---------------------
+   -- Create_CMOF_Tag --
+   ---------------------
+
+   function Create_CMOF_Tag
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Tags.CMOF_Tag_Access
+   is
+      The_Tag : constant not null AMF.CMOF.Tags.CMOF_Tag_Access
+        := AMF.CMOF.Tags.CMOF_Tag_Access
+            (Self.Destination.Create (Self.CMOF_Tag_Metaclass));
+
+   begin
+      Self.Element_Map.Insert
+       (AMF.UML.Elements.UML_Element_Access (Element),
+        AMF.CMOF.Elements.CMOF_Element_Access (The_Tag));
+
+      return The_Tag;
+   end Create_CMOF_Tag;
+
    -----------------
    -- Destination --
    -----------------
@@ -267,6 +290,9 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
 
                   elsif Class.Get_Name = CMOF_Property_Class_Name then
                      Self.CMOF_Property_Metaclass := Class;
+
+                  elsif Class.Get_Name = CMOF_Tag_Class_Name then
+                     Self.CMOF_Tag_Metaclass := Class;
                   end if;
                end if;
             end loop;

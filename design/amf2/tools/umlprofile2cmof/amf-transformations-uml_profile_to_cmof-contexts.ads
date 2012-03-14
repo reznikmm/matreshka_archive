@@ -48,6 +48,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Elements;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties;
+with AMF.CMOF.Tags;
 with AMF.UML.Elements;
 private with AMF.UML.Elements.Hash;
 with AMF.URI_Stores;
@@ -98,6 +99,13 @@ package AMF.Transformations.UML_Profile_To_CMOF.Contexts is
    --  Creates element of CMOF::Property and associate it with specified UML
    --  element.
 
+   function Create_CMOF_Tag
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Tags.CMOF_Tag_Access;
+   --  Creates element of CMOF::Tag and associate it with specified MOF
+   --  element.
+
 private
 
    package UML_Element_To_CMOF_Element_Maps is
@@ -117,6 +125,7 @@ private
       CMOF_Class_Metaclass       : AMF.CMOF.Classes.CMOF_Class_Access;
       CMOF_Package_Metaclass     : AMF.CMOF.Classes.CMOF_Class_Access;
       CMOF_Property_Metaclass    : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Tag_Metaclass         : AMF.CMOF.Classes.CMOF_Class_Access;
 
       UML_Package                : AMF.CMOF.Packages.CMOF_Package_Access;
       Primitive_Types_Package    : AMF.CMOF.Packages.CMOF_Package_Access;
