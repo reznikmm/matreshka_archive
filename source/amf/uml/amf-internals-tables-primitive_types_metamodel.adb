@@ -118,6 +118,15 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
    end MB_Primitive_Types;
 
    ------------------------
+   -- MB_Primitive_Types --
+   ------------------------
+
+   function ML_Primitive_Types return AMF.Internals.AMF_Element is
+   begin
+      return Base + 15;
+   end ML_Primitive_Types;
+
+   ------------------------
    -- Initialize_Objects --
    ------------------------
 

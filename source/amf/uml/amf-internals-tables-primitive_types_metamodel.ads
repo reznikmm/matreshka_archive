@@ -56,6 +56,8 @@ package AMF.Internals.Tables.Primitive_Types_Metamodel is
 
    function MB_Primitive_Types return AMF.Internals.AMF_Element;
 
+   function ML_Primitive_Types return AMF.Internals.AMF_Element;
+
    procedure Initialize_Objects;
 
    procedure Initialize_Links;
