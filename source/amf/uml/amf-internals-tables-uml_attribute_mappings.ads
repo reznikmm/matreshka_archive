@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,21 +43,17 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with Interfaces;
-
-with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Types;
 
 package AMF.Internals.Tables.UML_Attribute_Mappings is
 
-   use AMF.Internals.Tables.UML_Types;
-   use AMF.Internals.Tables.UML_Metamodel;
+   pragma Preelaborate;
 
-   Collection_Offset : constant
+   UML_Collection_Offset : constant
      array (AMF.Internals.Tables.UML_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 243 .. 490)
        of AMF.Internals.AMF_Collection_Of_Element :=
-        (E_None =>
+        (AMF.Internals.Tables.UML_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.UML_Types.E_Abstraction =>
           (336    => 7,     --  Dependency::client
@@ -3016,10 +3012,10 @@ package AMF.Internals.Tables.UML_Attribute_Mappings is
            348    => 2,     --  Element::ownedElement
            others => 0));
 
-   Member_Offset : constant
+   UML_Member_Offset : constant
      array (AMF.Internals.Tables.UML_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 491 .. 866) of Natural :=
-        (E_None =>
+        (AMF.Internals.Tables.UML_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.UML_Types.E_Abstraction =>
           (491    => 9,     --  Abstraction::mapping

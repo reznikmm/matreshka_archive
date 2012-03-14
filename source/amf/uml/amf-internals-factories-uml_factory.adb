@@ -258,20 +258,20 @@ package body AMF.Internals.Factories.UML_Factory is
       PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
 
    begin
-      if PO in Collection_Offset'Range (2) then
+      if PO in UML_Collection_Offset'Range (2) then
          AMF.Internals.Element_Collections.Internal_Append
           (UML_Element_Table.Table (Element).Member (0).Collection
-             + Collection_Offset
+             + UML_Collection_Offset
                 (UML_Element_Table.Table (Element).Kind, PO),
            Other,
            Link);
 
-      elsif PO in Member_Offset'Range (2)
-        and then Member_Offset (UML_Element_Table.Table (Element).Kind, PO)
+      elsif PO in UML_Member_Offset'Range (2)
+        and then UML_Member_Offset (UML_Element_Table.Table (Element).Kind, PO)
                    /= 0
       then
          UML_Element_Table.Table (Element).Member
-          (Member_Offset
+          (UML_Member_Offset
             (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
       else
