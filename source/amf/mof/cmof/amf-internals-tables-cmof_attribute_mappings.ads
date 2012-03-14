@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,21 +43,17 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with Interfaces;
-
-with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Types;
 
 package AMF.Internals.Tables.CMOF_Attribute_Mappings is
 
-   use AMF.Internals.Tables.CMOF_Types;
-   use AMF.Internals.Tables.CMOF_Metamodel;
+   pragma Preelaborate;
 
-   Collection_Offset : constant
+   CMOF_Collection_Offset : constant
      array (AMF.Internals.Tables.CMOF_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 34 .. 78)
        of AMF.Internals.AMF_Collection_Of_Element :=
-        (E_None =>
+        (AMF.Internals.Tables.CMOF_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.CMOF_Types.E_Association =>
           (43     => 9,     --  Classifier::attribute
@@ -241,10 +237,10 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            54     => 1,     --  Element::ownedElement
            others => 0));
 
-   Member_Offset : constant
+   CMOF_Member_Offset : constant
      array (AMF.Internals.Tables.CMOF_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 79 .. 135) of Natural :=
-        (E_None =>
+        (AMF.Internals.Tables.CMOF_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.CMOF_Types.E_Association =>
           (79     => 8,     --  Association::isDerived
