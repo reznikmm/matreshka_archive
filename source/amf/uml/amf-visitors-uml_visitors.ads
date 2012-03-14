@@ -237,6 +237,8 @@ with AMF.UML.Variables;
 
 package AMF.Visitors.UML_Visitors is
 
+   pragma Preelaborate;
+
    type UML_Visitor is limited interface and AMF.Visitors.Abstract_Visitor;
 
    not overriding procedure Enter_Abstraction

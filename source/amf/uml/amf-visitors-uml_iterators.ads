@@ -237,6 +237,8 @@ with AMF.UML.Variables;
 
 package AMF.Visitors.UML_Iterators is
 
+   pragma Preelaborate;
+
    type UML_Iterator is limited interface and AMF.Visitors.Abstract_Iterator;
 
    not overriding procedure Visit_Abstraction
