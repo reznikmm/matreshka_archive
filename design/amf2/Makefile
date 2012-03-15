@@ -84,6 +84,20 @@ gen-ocl: gens
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
 	rm -r .new
 
+gen-mofext: gens
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' > .new/sources.ada
+#	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' --stubs >> .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mofext/{}
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mofext/{}
+	rm -r .new
+
 clean:
 	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj uml/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
 
