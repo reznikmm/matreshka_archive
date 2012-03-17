@@ -44,23 +44,29 @@
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
+with AMF.Visitors.CMOF_Iterators;
+with AMF.Visitors.CMOF_Visitors;
 
 package body AMF.Internals.CMOF_Operations is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
-   ------------------------
-   -- Enter_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Enter_Element --
+   -------------------
 
-   overriding procedure Enter_CMOF_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant CMOF_Operation_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Operation
-       (AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
-   end Enter_CMOF_Element;
+      if Visitor in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class
+          (Visitor).Enter_Operation
+            (AMF.CMOF.Operations.CMOF_Operation_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
 
    ------------------------
    -- Get_Body_Condition --
@@ -200,18 +206,22 @@ package body AMF.Internals.CMOF_Operations is
          (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
    end Get_Type;
 
-   ------------------------
-   -- Leave_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Leave_Element --
+   -------------------
 
-   overriding procedure Leave_CMOF_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant CMOF_Operation_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Operation
-       (AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
-   end Leave_CMOF_Element;
+      if Visitor in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class
+          (Visitor).Leave_Operation
+            (AMF.CMOF.Operations.CMOF_Operation_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
 
    ------------------
    -- Set_Is_Query --
@@ -224,22 +234,24 @@ package body AMF.Internals.CMOF_Operations is
       Internal_Set_Is_Query (Self.Id, To);
    end Set_Is_Query;
 
-   ------------------------
-   -- Visit_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Visit_Element --
+   -------------------
 
-   overriding procedure Visit_CMOF_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant CMOF_Operation_Proxy;
-     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Operation
-       (Visitor, AMF.CMOF.Operations.CMOF_Operation_Access (Self), Control);
-   end Visit_CMOF_Element;
-
-
-
+      if Iterator in AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class then
+         AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class
+          (Iterator).Visit_Operation
+            (Visitor,
+             AMF.CMOF.Operations.CMOF_Operation_Access (Self),
+             Control);
+      end if;
+   end Visit_Element;
 
    ------------------------
    -- All_Owned_Elements --

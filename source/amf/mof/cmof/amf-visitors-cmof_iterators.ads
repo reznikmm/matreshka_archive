@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Comments;
@@ -70,114 +72,108 @@ package AMF.Visitors.CMOF_Iterators is
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Associations.CMOF_Association_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Class
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Classes.CMOF_Class_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Comment
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Comments.CMOF_Comment_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Constraint
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Constraints.CMOF_Constraint_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Data_Type
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Element_Import
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element :
-       not null AMF.CMOF.Element_Imports.CMOF_Element_Import_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Element_Imports.CMOF_Element_Import_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Enumeration
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Enumeration_Literal
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element : not null
-       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Expression
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Expressions.CMOF_Expression_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Opaque_Expression
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element : not null
-       AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Operation
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Operations.CMOF_Operation_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Package
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Packages.CMOF_Package_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Package_Import
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element :
-       not null AMF.CMOF.Package_Imports.CMOF_Package_Import_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Package_Imports.CMOF_Package_Import_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Package_Merge
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element :
-       not null AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Parameter
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Primitive_Type
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element :
-       not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
-     Control : in out Traverse_Control) is null;
+     Element : not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Property
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Visit_Tag
     (Self    : in out CMOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.CMOF.Tags.CMOF_Tag_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
 end AMF.Visitors.CMOF_Iterators;

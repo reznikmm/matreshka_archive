@@ -56,8 +56,7 @@ with AMF.Internals.CMOF_Namespaces;
 pragma Elaborate (AMF.Internals.CMOF_Namespaces);
 with AMF.Internals.CMOF_Features;
 with AMF.String_Collections;
-with AMF.Visitors.CMOF_Iterators;
-with AMF.Visitors.CMOF_Visitors;
+with AMF.Visitors;
 
 package AMF.Internals.CMOF_Operations is
 
@@ -260,21 +259,21 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Types.CMOF_Type_Access;
 
-   overriding procedure Enter_CMOF_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant CMOF_Operation_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Leave_CMOF_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant CMOF_Operation_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Visit_CMOF_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant CMOF_Operation_Proxy;
-     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.

@@ -44,8 +44,7 @@
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Tags;
 with AMF.Internals.CMOF_Elements;
-with AMF.Visitors.CMOF_Iterators;
-with AMF.Visitors.CMOF_Visitors;
+with AMF.Visitors;
 
 package AMF.Internals.CMOF_Tags is
 
@@ -93,21 +92,21 @@ package AMF.Internals.CMOF_Tags is
     (Self : not null access CMOF_Tag_Proxy;
      To   : League.Strings.Universal_String);
 
-   overriding procedure Enter_CMOF_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant CMOF_Tag_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Leave_CMOF_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant CMOF_Tag_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Visit_CMOF_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant CMOF_Tag_Proxy;
-     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.

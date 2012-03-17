@@ -46,48 +46,65 @@ with League.Strings.Internals;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
+with AMF.Visitors.CMOF_Iterators;
+with AMF.Visitors.CMOF_Visitors;
 
 package body AMF.Internals.CMOF_Tags is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
-   ------------------------
-   -- Enter_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Enter_Element --
+   -------------------
 
-   overriding procedure Enter_CMOF_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant CMOF_Tag_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Tag (AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
-   end Enter_CMOF_Element;
+      if Visitor in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class
+          (Visitor).Enter_Tag
+            (AMF.CMOF.Tags.CMOF_Tag_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
 
-   ------------------------
-   -- Leave_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Leave_Element --
+   -------------------
 
-   overriding procedure Leave_CMOF_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant CMOF_Tag_Proxy;
-     Visitor : in out AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Tag (AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
-   end Leave_CMOF_Element;
+      if Visitor in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class
+          (Visitor).Leave_Tag
+            (AMF.CMOF.Tags.CMOF_Tag_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
 
-   ------------------------
-   -- Visit_CMOF_Element --
-   ------------------------
+   -------------------
+   -- Visit_Element --
+   -------------------
 
-   overriding procedure Visit_CMOF_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant CMOF_Tag_Proxy;
-     Iterator : in out AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Tag
-       (Visitor, AMF.CMOF.Tags.CMOF_Tag_Access (Self), Control);
-   end Visit_CMOF_Element;
+      if Iterator in AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class then
+         AMF.Visitors.CMOF_Iterators.CMOF_Iterator'Class
+          (Iterator).Visit_Tag
+            (Visitor,
+             AMF.CMOF.Tags.CMOF_Tag_Access (Self),
+             Control);
+      end if;
+   end Visit_Element;
 
    -----------------
    -- Get_Element --
