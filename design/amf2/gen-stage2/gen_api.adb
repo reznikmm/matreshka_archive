@@ -1345,6 +1345,136 @@ procedure Gen_API is
       Generate_Attributes (Class);
       Generate_Operations (Class);
 
+      --  Generate visitors and iterators support subprograms.
+
+      declare
+         Iterators_Package_Name : constant League.Strings.Universal_String
+           := "AMF.Visitors."
+                & Generator.Names.Owning_Metamodel_Ada_Name (Class)
+                & "_Iterators";
+         Iterators_Type_Name    : constant League.Strings.Universal_String
+           := Iterators_Package_Name
+                & '.'
+                & Generator.Names.Owning_Metamodel_Ada_Name (Class)
+                & "_Iterator";
+         Visitors_Package_Name  : constant League.Strings.Universal_String
+           := "AMF.Visitors."
+                & Generator.Names.Owning_Metamodel_Ada_Name (Class)
+                & "_Visitors";
+         Visitors_Type_Name     : constant League.Strings.Universal_String
+           := Visitors_Package_Name
+                & '.'
+                & Generator.Names.Owning_Metamodel_Ada_Name (Class)
+                & "_Visitor";
+
+      begin
+         Unit.Context.Add (Iterators_Package_Name);
+         Unit.Context.Add (Visitors_Package_Name);
+
+         --  Generate Enter_Element subprogram.
+
+         Unit.Add_Header (+"Enter_Element", 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          (+"   overriding procedure Enter_Element");
+         Unit.Add_Line
+          ("    (Self    : not null access constant " & Type_Name & ';');
+         Unit.Add_Line
+          (+"     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;");
+         Unit.Add_Line
+          (+"     Control : in out AMF.Visitors.Traverse_Control) is");
+         Unit.Add_Line
+          (+"   begin");
+         Unit.Add_Line
+          ("      if Visitor in " & Visitors_Type_Name & "'Class then");
+         Unit.Add_Line
+          ("         " & Visitors_Type_Name & "'Class");
+         Unit.Add_Line
+          (+"          (Visitor).Enter_"
+              & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
+         Unit.Add_Line
+          ("            ("
+             & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+                (Class, Generator.Value)
+             & " (Self),");
+         Unit.Add_Line
+          (+"           Control);");
+         Unit.Add_Line
+          (+"      end if;");
+         Unit.Add_Line
+          (+"   end Enter_Element;");
+
+         --  Generate Leave_Element subprogram.
+
+         Unit.Add_Header (+"Leave_Element", 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          (+"   overriding procedure Leave_Element");
+         Unit.Add_Line
+          ("    (Self    : not null access constant " & Type_Name & ';');
+         Unit.Add_Line
+          (+"     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;");
+         Unit.Add_Line
+          (+"     Control : in out AMF.Visitors.Traverse_Control) is");
+         Unit.Add_Line
+          (+"   begin");
+         Unit.Add_Line
+          ("      if Visitor in " & Visitors_Type_Name & "'Class then");
+         Unit.Add_Line
+          ("         " & Visitors_Type_Name & "'Class");
+         Unit.Add_Line
+          (+"          (Visitor).Leave_"
+              & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
+         Unit.Add_Line
+          ("            ("
+             & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+                (Class, Generator.Value)
+             & " (Self),");
+         Unit.Add_Line
+          (+"           Control);");
+         Unit.Add_Line
+          (+"      end if;");
+         Unit.Add_Line
+          (+"   end Leave_Element;");
+
+         --  Generate Visit_Element subprogram.
+
+         Unit.Add_Header (+"Visit_Element", 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          (+"   overriding procedure Visit_Element");
+         Unit.Add_Line
+          ("    (Self     : not null access constant " & Type_Name & ';');
+         Unit.Add_Line
+          (+"     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;");
+         Unit.Add_Line
+          (+"     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;");
+         Unit.Add_Line
+          (+"     Control  : in out AMF.Visitors.Traverse_Control) is");
+         Unit.Add_Line
+          (+"   begin");
+         Unit.Add_Line
+          ("      if Iterator in " & Iterators_Type_Name & "'Class then");
+         Unit.Add_Line
+          ("         " & Iterators_Type_Name & "'Class");
+         Unit.Add_Line
+          (+"          (Iterator).Visit_"
+              & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
+         Unit.Add_Line
+          (+"            (Visitor,");
+         Unit.Add_Line
+          ("             "
+             & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+                (Class, Generator.Value)
+             & " (Self),");
+         Unit.Add_Line
+          (+"           Control);");
+         Unit.Add_Line
+          (+"      end if;");
+         Unit.Add_Line
+          (+"   end Visit_Element;");
+      end;
+
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ";");
 
@@ -1567,6 +1697,48 @@ procedure Gen_API is
 
       Generate_Attributes (Class);
       Generate_Operations (Class);
+
+      --  Generate visitors and iterators support subprograms.
+
+      Unit.Context.Add (+"AMF.Visitors");
+
+      --  Generate Enter_Element subprogram.
+
+      Unit.Add_Line;
+      Unit.Add_Line
+       (+"   overriding procedure Enter_Element");
+      Unit.Add_Line
+       ("    (Self    : not null access constant " & Type_Name & ';');
+      Unit.Add_Line
+       (+"     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;");
+      Unit.Add_Line
+       (+"     Control : in out AMF.Visitors.Traverse_Control);");
+
+      --  Generate Leave_Element subprogram.
+
+      Unit.Add_Line;
+      Unit.Add_Line
+       (+"   overriding procedure Leave_Element");
+      Unit.Add_Line
+       ("    (Self    : not null access constant " & Type_Name & ';');
+      Unit.Add_Line
+       (+"     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;");
+      Unit.Add_Line
+       (+"     Control : in out AMF.Visitors.Traverse_Control);");
+
+      --  Generate Visit_Element subprogram.
+
+      Unit.Add_Line;
+      Unit.Add_Line
+       (+"   overriding procedure Visit_Element");
+      Unit.Add_Line
+       ("    (Self     : not null access constant " & Type_Name & ';');
+      Unit.Add_Line
+       (+"     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;");
+      Unit.Add_Line
+       (+"     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;");
+      Unit.Add_Line
+       (+"     Control  : in out AMF.Visitors.Traverse_Control);");
 
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ";");
