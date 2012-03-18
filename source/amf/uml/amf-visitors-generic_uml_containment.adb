@@ -41,10 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.UML.Comments.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Properties.Collections;
 
 package body AMF.Visitors.Generic_UML_Containment is
+
+   procedure Visit_Elements
+    (Self     : in out UML_Containment_Iterator;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Elements : AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+     Control  : in out Traverse_Control);
+
+   --------------------
+   -- Visit_Elements --
+   --------------------
+
+   procedure Visit_Elements
+    (Self     : in out UML_Containment_Iterator;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Elements : AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+     Control  : in out Traverse_Control) is
+   begin
+      --  Traversing elements of UML::Stereotype::ownedAttribute.
+
+      for J in 1 .. Elements.Length loop
+         Self.Visit_Element (Visitor, Elements.Element (J), Control);
+
+         case Control is
+            when Continue =>
+               null;
+
+            when Abandon_Children =>
+               Control := Continue;
+
+            when Abandon_Sibling =>
+               Control := Continue;
+
+               exit;
+
+            when Terminate_Immediately =>
+               exit;
+         end case;
+      end loop;
+   end Visit_Elements;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
 
    not overriding procedure Visit_Element
     (Self    : in out UML_Containment_Iterator;
@@ -1847,7 +1891,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Primitive_Types.UML_Primitive_Type_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Visit_Elements (Self, Visitor, Element.Get_Owned_Comment, Control);
    end Visit_Primitive_Type;
 
    -------------------
