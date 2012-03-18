@@ -90,7 +90,7 @@ package body AMF.Internals.Factories.MOF_Factory is
 
       if Property in MB_UML .. ML_UML then
          declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_MOF;
+            PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
 
          begin
             if PO in UML_Collection_Offset'Range (2) then
