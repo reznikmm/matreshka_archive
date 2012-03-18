@@ -56,6 +56,8 @@ package Generator.Names is
    function To_Ada_Identifier
     (Name : League.Strings.Universal_String) return Wide_Wide_String;
 
+   function Plural (Name : Wide_Wide_String) return Wide_Wide_String;
+
    function Owning_Metamodel_Name
     (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
        return League.Strings.Universal_String;
@@ -67,6 +69,10 @@ package Generator.Names is
        return League.Strings.Universal_String;
    --  Returns Ada name of the owning metamodel. It is computed as name of
    --  first enclosing package of the specified element.
+
+   ---------------------------------
+   -- Metamodel package constants --
+   ---------------------------------
 
    function Association_Constant_Name
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
@@ -123,7 +129,5 @@ package Generator.Names is
    function Element_Constant_Qualified_Name
     (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
        return League.Strings.Universal_String;
-
-   function Plural (Name : Wide_Wide_String) return Wide_Wide_String;
 
 end Generator.Names;
