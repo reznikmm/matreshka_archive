@@ -59,6 +59,8 @@ with AMF.Extents.Collections;
 
 package Generator is
 
+   use type League.Strings.Universal_String;
+
    function Less
     (Left  : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Right : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access) return Boolean;
