@@ -311,7 +311,7 @@ mofext:
 	gnat ls -o -P gnat/matreshka_amf_mofext.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf_mofext-ali.lst
 	cat amf_mofext-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/mofext
 	cat amf_mofext-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
-	$(INSTALL_data) source/amf/mofext/metamodels/OCL23.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/OCL23.cmof
+	$(INSTALL_data) source/amf/mofext/metamodels/MOFEXT241.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/MOFEXT241.cmof
 	$(INSTALL_project) gnat/install/amf_mofext.gpr $(INSTALL_PROJECT_DIR)/amf_mofext.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT).$(VERSION)
@@ -323,7 +323,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat amf_mofext-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/mofext/{}" > .objs/amf_mofext-devel.files
 	cat amf_mofext-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_mofext-devel.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/OCL23.cmof" >> .objs/amf_mofext-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/MOFEXT241.cmof" >> .objs/amf_mofext-lib.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_mofext.gpr" >> .objs/amf_mofext-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_mofext-devel.files
 
