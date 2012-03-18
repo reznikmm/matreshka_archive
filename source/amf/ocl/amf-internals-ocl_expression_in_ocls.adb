@@ -63,6 +63,8 @@ with AMF.UML.Parameters;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Types;
+with AMF.Visitors.OCL_Iterators;
+with AMF.Visitors.OCL_Visitors;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -883,5 +885,58 @@ package body AMF.Internals.OCL_Expression_In_Ocls is
       raise Program_Error with "Unimplemented procedure OCL_Expression_In_Ocl_Proxy.Is_Template_Parameter";
       return Is_Template_Parameter (Self);
    end Is_Template_Parameter;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Enter_Expression_In_Ocl
+            (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Leave_Expression_In_Ocl
+            (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+         AMF.Visitors.OCL_Iterators.OCL_Iterator'Class
+          (Iterator).Visit_Expression_In_Ocl
+            (Visitor,
+             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.OCL_Expression_In_Ocls;

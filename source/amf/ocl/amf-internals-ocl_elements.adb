@@ -60,23 +60,6 @@ package body AMF.Internals.OCL_Elements is
       return Self.Id;
    end Element;
 
-   -------------------
-   -- Enter_Element --
-   -------------------
-
-   overriding procedure Enter_Element
-    (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control) is
-   begin
-      raise Program_Error;
---      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
---         UML_Element_Proxy'Class (Self.all).Enter_UML_Element
---          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
---           Control);
---      end if;
-   end Enter_Element;
-
    ------------
    -- Extent --
    ------------
@@ -120,23 +103,6 @@ package body AMF.Internals.OCL_Elements is
            (AMF.Internals.Tables.OCL_Reflection.Get_Meta_Class (Self.Id)));
    end Get_Meta_Class;
 
-   -------------------
-   -- Leave_Element --
-   -------------------
-
-   overriding procedure Leave_Element
-    (Self    : not null access constant OCL_Element_Proxy;
-     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control) is
-   begin
-      raise Program_Error;
---      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
---         UML_Element_Proxy'Class (Self.all).Leave_UML_Element
---          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
---           Control);
---      end if;
-   end Leave_Element;
-
 --   -------------------
 --   -- Must_Be_Owned --
 --   -------------------
@@ -174,23 +140,5 @@ package body AMF.Internals.OCL_Elements is
          (AMF.Elements.Element_Access (Property)),
         Value);
    end Set;
-
-   -------------------
-   -- Visit_Element --
-   -------------------
-
-   overriding procedure Visit_Element
-    (Self     : not null access constant OCL_Element_Proxy;
-     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
-     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control  : in out AMF.Visitors.Traverse_Control) is
-   begin
-      raise Program_Error;
---      if Iterator.all in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
---         OCL_Element_Proxy'Class (Self.all).Visit_OCL_Element
---          (AMF.Visitors.OCL_Iterators.OCL_Iterator'Class (Iterator.all)'Access,
---           Control);
---      end if;
-   end Visit_Element;
 
 end AMF.Internals.OCL_Elements;

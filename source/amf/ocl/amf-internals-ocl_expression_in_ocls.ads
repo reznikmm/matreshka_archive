@@ -61,6 +61,7 @@ with AMF.UML.Parameters;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Types;
+with AMF.Visitors;
 
 package AMF.Internals.OCL_Expression_In_Ocls is
 
@@ -501,5 +502,21 @@ package AMF.Internals.OCL_Expression_In_Ocls is
    --
    --  The query isTemplateParameter() determines if this parameterable 
    --  element is exposed as a formal template parameter.
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Expression_In_Ocl_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
 
 end AMF.Internals.OCL_Expression_In_Ocls;

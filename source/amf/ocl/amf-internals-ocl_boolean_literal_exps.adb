@@ -55,6 +55,8 @@ with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Types;
+with AMF.Visitors.OCL_Iterators;
+with AMF.Visitors.OCL_Visitors;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -423,5 +425,58 @@ package body AMF.Internals.OCL_Boolean_Literal_Exps is
       raise Program_Error with "Unimplemented procedure OCL_Boolean_Literal_Exp_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Boolean_Literal_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Enter_Boolean_Literal_Exp
+            (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Boolean_Literal_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Leave_Boolean_Literal_Exp
+            (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Boolean_Literal_Exp_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+         AMF.Visitors.OCL_Iterators.OCL_Iterator'Class
+          (Iterator).Visit_Boolean_Literal_Exp
+            (Visitor,
+             AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.OCL_Boolean_Literal_Exps;

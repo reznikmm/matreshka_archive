@@ -58,6 +58,8 @@ with AMF.UML.Packages.Collections;
 with AMF.UML.Properties;
 with AMF.UML.String_Expressions;
 with AMF.UML.Types;
+with AMF.Visitors.OCL_Iterators;
+with AMF.Visitors.OCL_Visitors;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -503,5 +505,58 @@ package body AMF.Internals.OCL_Association_Class_Call_Exps is
       raise Program_Error with "Unimplemented procedure OCL_Association_Class_Call_Exp_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Association_Class_Call_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Enter_Association_Class_Call_Exp
+            (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Association_Class_Call_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Leave_Association_Class_Call_Exp
+            (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Association_Class_Call_Exp_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+         AMF.Visitors.OCL_Iterators.OCL_Iterator'Class
+          (Iterator).Visit_Association_Class_Call_Exp
+            (Visitor,
+             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.OCL_Association_Class_Call_Exps;

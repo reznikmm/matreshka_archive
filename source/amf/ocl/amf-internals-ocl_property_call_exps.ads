@@ -55,6 +55,7 @@ with AMF.UML.Packages.Collections;
 with AMF.UML.Properties;
 with AMF.UML.String_Expressions;
 with AMF.UML.Types;
+with AMF.Visitors;
 
 package AMF.Internals.OCL_Property_Call_Exps is
 
@@ -277,5 +278,21 @@ package AMF.Internals.OCL_Property_Call_Exps is
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner. Subclasses of Element that do not require an owner must 
    --  override this operation.
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Property_Call_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Property_Call_Exp_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Property_Call_Exp_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
 
 end AMF.Internals.OCL_Property_Call_Exps;

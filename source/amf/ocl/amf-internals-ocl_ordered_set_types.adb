@@ -76,6 +76,8 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types;
 with AMF.UML.Use_Cases.Collections;
+with AMF.Visitors.OCL_Iterators;
+with AMF.Visitors.OCL_Visitors;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -1386,5 +1388,58 @@ package body AMF.Internals.OCL_Ordered_Set_Types is
       raise Program_Error with "Unimplemented procedure OCL_Ordered_Set_Type_Proxy.Is_Redefinition_Context_Valid";
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Ordered_Set_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Enter_Ordered_Set_Type
+            (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Ordered_Set_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Leave_Ordered_Set_Type
+            (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Ordered_Set_Type_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+         AMF.Visitors.OCL_Iterators.OCL_Iterator'Class
+          (Iterator).Visit_Ordered_Set_Type
+            (Visitor,
+             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.OCL_Ordered_Set_Types;

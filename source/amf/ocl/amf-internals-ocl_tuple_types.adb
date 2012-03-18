@@ -41,13 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
-
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.OCL_Attributes;
+with AMF.String_Collections;
+with AMF.UML.Classifier_Template_Parameters;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Collaboration_Uses.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Constraints.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Element_Imports.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Features.Collections;
+with AMF.UML.Generalization_Sets.Collections;
+with AMF.UML.Generalizations.Collections;
+with AMF.UML.Named_Elements.Collections;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Operations.Collections;
+with AMF.UML.Package_Imports.Collections;
+with AMF.UML.Packageable_Elements.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Parameterable_Elements.Collections;
+with AMF.UML.Properties.Collections;
+with AMF.UML.Redefinable_Elements.Collections;
+with AMF.UML.Redefinable_Template_Signatures;
+with AMF.UML.String_Expressions;
+with AMF.UML.Substitutions.Collections;
+with AMF.UML.Template_Bindings.Collections;
+with AMF.UML.Template_Parameters;
+with AMF.UML.Template_Signatures;
+with AMF.UML.Types;
+with AMF.UML.Use_Cases.Collections;
+with AMF.Visitors.OCL_Iterators;
+with AMF.Visitors.OCL_Visitors;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
 
 package body AMF.Internals.OCL_Tuple_Types is
 
@@ -1327,5 +1359,58 @@ package body AMF.Internals.OCL_Tuple_Types is
       raise Program_Error with "Unimplemented procedure OCL_Tuple_Type_Proxy.Is_Redefinition_Context_Valid";
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Tuple_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Enter_Tuple_Type
+            (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Tuple_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.OCL_Visitors.OCL_Visitor'Class then
+         AMF.Visitors.OCL_Visitors.OCL_Visitor'Class
+          (Visitor).Leave_Tuple_Type
+            (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Tuple_Type_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.OCL_Iterators.OCL_Iterator'Class then
+         AMF.Visitors.OCL_Iterators.OCL_Iterator'Class
+          (Iterator).Visit_Tuple_Type
+            (Visitor,
+             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
 
 end AMF.Internals.OCL_Tuple_Types;

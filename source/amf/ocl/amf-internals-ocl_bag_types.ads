@@ -74,6 +74,7 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types;
 with AMF.UML.Use_Cases.Collections;
+with AMF.Visitors;
 
 package AMF.Internals.OCL_Bag_Types is
 
@@ -844,5 +845,21 @@ package AMF.Internals.OCL_Bag_Types is
    --  allow this element to redefine the other. By default at least one of 
    --  the redefinition contexts of this element must be a specialization of 
    --  at least one of the redefinition contexts of the specified element.
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant OCL_Bag_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant OCL_Bag_Type_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant OCL_Bag_Type_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
 
 end AMF.Internals.OCL_Bag_Types;
