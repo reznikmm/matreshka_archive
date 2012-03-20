@@ -63,8 +63,7 @@ with AMF.UML.Template_Bindings.Collections;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types.Collections;
-with AMF.Visitors.UML_Iterators;
-with AMF.Visitors.UML_Visitors;
+with AMF.Visitors;
 
 package AMF.Internals.UML_Profiles is
 
@@ -571,21 +570,21 @@ package AMF.Internals.UML_Profiles is
    --  elements. Subclasses may override this operation if they choose to
    --  restrict the set of parameterable elements.
 
-   overriding procedure Enter_UML_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant UML_Profile_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Leave_UML_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant UML_Profile_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Visit_UML_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant UML_Profile_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.

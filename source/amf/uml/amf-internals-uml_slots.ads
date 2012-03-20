@@ -48,8 +48,7 @@ with AMF.UML.Instance_Specifications;
 with AMF.UML.Slots;
 with AMF.UML.Structural_Features;
 with AMF.UML.Value_Specifications.Collections;
-with AMF.Visitors.UML_Iterators;
-with AMF.Visitors.UML_Visitors;
+with AMF.Visitors;
 
 package AMF.Internals.UML_Slots is
 
@@ -124,21 +123,21 @@ package AMF.Internals.UML_Slots is
    --  The query allOwnedElements() gives all of the direct and indirect owned
    --  elements of an element.
 
-   overriding procedure Enter_UML_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant UML_Slot_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Leave_UML_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant UML_Slot_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Visit_UML_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant UML_Slot_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.

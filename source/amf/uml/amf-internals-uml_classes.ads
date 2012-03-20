@@ -79,8 +79,7 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types;
 with AMF.UML.Use_Cases.Collections;
-with AMF.Visitors.UML_Iterators;
-with AMF.Visitors.UML_Visitors;
+with AMF.Visitors;
 
 package AMF.Internals.UML_Classes is
 
@@ -948,21 +947,21 @@ package AMF.Internals.UML_Classes is
    --
    --  Missing derivation for StructuredClassifier::/part : Property
 
-   overriding procedure Enter_UML_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant UML_Class_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Leave_UML_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant UML_Class_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of visitor interface.
 
-   overriding procedure Visit_UML_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant UML_Class_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control);
    --  Dispatch call to corresponding subprogram of iterator interface.

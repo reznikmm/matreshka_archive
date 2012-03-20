@@ -48,8 +48,6 @@ with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
 with AMF.UML.Elements;
-with AMF.Visitors.UML_Iterators;
-with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Elements is
 
@@ -89,43 +87,5 @@ package AMF.Internals.UML_Elements is
    --  The query mustBeOwned() indicates whether elements of this type must
    --  have an owner. Subclasses of Element that do not require an owner must
    --  override this operation.
-
-   overriding procedure Enter_Element
-    (Self    : not null access constant UML_Element_Proxy;
-     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control);
-   --  Dispatch call to corresponding subprogram of visitor interface.
-
-   overriding procedure Leave_Element
-    (Self    : not null access constant UML_Element_Proxy;
-     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control);
-   --  Dispatch call to corresponding subprogram of visitor interface.
-
-   overriding procedure Visit_Element
-    (Self     : not null access constant UML_Element_Proxy;
-     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
-     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control  : in out AMF.Visitors.Traverse_Control);
-   --  Dispatch call to corresponding subprogram of iterator interface.
-
-   not overriding procedure Enter_UML_Element
-    (Self    : not null access constant UML_Element_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control) is abstract;
-   --  Dispatch call to corresponding subprogram of visitor interface.
-
-   not overriding procedure Leave_UML_Element
-    (Self    : not null access constant UML_Element_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
-     Control : in out AMF.Visitors.Traverse_Control) is abstract;
-   --  Dispatch call to corresponding subprogram of visitor interface.
-
-   not overriding procedure Visit_UML_Element
-    (Self     : not null access constant UML_Element_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
-     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
-     Control  : in out AMF.Visitors.Traverse_Control) is abstract;
-   --  Dispatch call to corresponding subprogram of iterator interface.
 
 end AMF.Internals.UML_Elements;

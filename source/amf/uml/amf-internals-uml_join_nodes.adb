@@ -45,50 +45,65 @@ with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.Visitors.UML_Iterators;
+with AMF.Visitors.UML_Visitors;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Join_Nodes is
 
-   -----------------------
-   -- Enter_UML_Element --
-   -----------------------
+   -------------------
+   -- Enter_Element --
+   -------------------
 
-   overriding procedure Enter_UML_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant UML_Join_Node_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Join_Node
-       (AMF.UML.Join_Nodes.UML_Join_Node_Access (Self), Control);
-   end Enter_UML_Element;
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         AMF.Visitors.UML_Visitors.UML_Visitor'Class
+          (Visitor).Enter_Join_Node
+            (AMF.UML.Join_Nodes.UML_Join_Node_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
 
-   -----------------------
-   -- Leave_UML_Element --
-   -----------------------
+   -------------------
+   -- Leave_Element --
+   -------------------
 
-   overriding procedure Leave_UML_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant UML_Join_Node_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Join_Node
-       (AMF.UML.Join_Nodes.UML_Join_Node_Access (Self), Control);
-   end Leave_UML_Element;
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         AMF.Visitors.UML_Visitors.UML_Visitor'Class
+          (Visitor).Leave_Join_Node
+            (AMF.UML.Join_Nodes.UML_Join_Node_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
 
-   -----------------------
-   -- Visit_UML_Element --
-   -----------------------
+   -------------------
+   -- Visit_Element --
+   -------------------
 
-   overriding procedure Visit_UML_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant UML_Join_Node_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Join_Node
-       (Visitor, AMF.UML.Join_Nodes.UML_Join_Node_Access (Self), Control);
-   end Visit_UML_Element;
+      if Iterator in AMF.Visitors.UML_Iterators.UML_Iterator'Class then
+         AMF.Visitors.UML_Iterators.UML_Iterator'Class
+          (Iterator).Visit_Join_Node
+            (Visitor,
+             AMF.UML.Join_Nodes.UML_Join_Node_Access (Self),
+             Control);
+      end if;
+   end Visit_Element;
 
    ------------------------------
    -- Get_Is_Combine_Duplicate --

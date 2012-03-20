@@ -45,52 +45,63 @@ with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.Visitors.UML_Iterators;
+with AMF.Visitors.UML_Visitors;
 
 package body AMF.Internals.UML_Link_End_Destruction_Datas is
 
-   -----------------------
-   -- Enter_UML_Element --
-   -----------------------
+   -------------------
+   -- Enter_Element --
+   -------------------
 
-   overriding procedure Enter_UML_Element
+   overriding procedure Enter_Element
     (Self    : not null access constant UML_Link_End_Destruction_Data_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Enter_Link_End_Destruction_Data
-       (AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
-        Control);
-   end Enter_UML_Element;
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         AMF.Visitors.UML_Visitors.UML_Visitor'Class
+          (Visitor).Enter_Link_End_Destruction_Data
+            (AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
 
-   -----------------------
-   -- Leave_UML_Element --
-   -----------------------
+   -------------------
+   -- Leave_Element --
+   -------------------
 
-   overriding procedure Leave_UML_Element
+   overriding procedure Leave_Element
     (Self    : not null access constant UML_Link_End_Destruction_Data_Proxy;
-     Visitor : in out AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is
    begin
-      Visitor.Leave_Link_End_Destruction_Data
-       (AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
-        Control);
-   end Leave_UML_Element;
+      if Visitor in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         AMF.Visitors.UML_Visitors.UML_Visitor'Class
+          (Visitor).Leave_Link_End_Destruction_Data
+            (AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
 
-   -----------------------
-   -- Visit_UML_Element --
-   -----------------------
+   -------------------
+   -- Visit_Element --
+   -------------------
 
-   overriding procedure Visit_UML_Element
+   overriding procedure Visit_Element
     (Self     : not null access constant UML_Link_End_Destruction_Data_Proxy;
-     Iterator : in out AMF.Visitors.UML_Iterators.UML_Iterator'Class;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is
    begin
-      Iterator.Visit_Link_End_Destruction_Data
-       (Visitor,
-        AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
-        Control);
-   end Visit_UML_Element;
+      if Iterator in AMF.Visitors.UML_Iterators.UML_Iterator'Class then
+         AMF.Visitors.UML_Iterators.UML_Iterator'Class
+          (Iterator).Visit_Link_End_Destruction_Data
+            (Visitor,
+             AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access (Self),
+             Control);
+      end if;
+   end Visit_Element;
 
    --------------------
    -- Get_Destroy_At --
