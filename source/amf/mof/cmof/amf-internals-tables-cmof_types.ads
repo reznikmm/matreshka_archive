@@ -136,7 +136,7 @@ package AMF.Internals.Tables.CMOF_Types is
       end case;
    end record;
 
-   type Member_Array is array (Natural range 0 .. 21) of Member_Record;
+   type Member_Array is array (Natural range 0 .. 45) of Member_Record;
    --  XXX Size of this array must be generated.
 
    type Element_Record (Kind : Element_Kinds := E_None) is record
