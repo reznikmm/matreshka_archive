@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
 with Ada.Strings.Hash;
 with System.Address_Image;
 
@@ -334,8 +333,13 @@ package body Generator.Analyzer is
     (Info   : not null Metamodel_Information_Access;
      Extent : not null AMF.Extents.Extent_Access)
    is
-      type Attribute_Group_Information is record
+      type Boolean_Array is array (Positive range <>) of Boolean;
+
+      function Count (Item : Boolean_Array) return Natural;
+
+      type Attribute_Group_Information (Length : Natural) is record
          Index : Positive;
+         Mask  : Boolean_Array (1 .. Length);
       end record;
 
       type Attribute_Group_Access is access all Attribute_Group_Information;
@@ -353,6 +357,126 @@ package body Generator.Analyzer is
       package Attribute_Group_Sets is
         new Ada.Containers.Hashed_Sets
              (Attribute_Group_Access, Hash, "=");
+
+      ----------
+      -- Pack --
+      ----------
+
+      procedure Pack
+       (Map : in out Property_Attribute_Group_Maps.Map;
+        Set : in out Attribute_Group_Sets.Set)
+      is
+         Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
+         Position  : Attribute_Group_Sets.Cursor := Set.First;
+         Selected  : Attribute_Group_Access;
+         Merged    : Attribute_Group_Access;
+         Result    : Attribute_Group_Sets.Set;
+         Aux       : CMOF_Property_Sets.Set;
+
+      begin
+         while not Set.Is_Empty loop
+            Position := Set.First;
+
+            if Attribute_Group_Sets.Has_Element (Position) then
+               Selected := Attribute_Group_Sets.Element (Position);
+               Attribute_Group_Sets.Next (Position);
+            end if;
+
+            while Attribute_Group_Sets.Has_Element (Position) loop
+               if Count (Selected.Mask)
+                    < Count (Attribute_Group_Sets.Element (Position).Mask)
+               then
+                  Selected := Attribute_Group_Sets.Element (Position);
+               end if;
+
+               Attribute_Group_Sets.Next (Position);
+            end loop;
+
+            --  Remove selected group from source set and insert it into result
+            --  set.
+
+            Set.Delete (Selected);
+            Result.Insert (Selected);
+
+            --  Allocate new number for group.
+
+            Selected.Index := Natural (Result.Length);
+
+            --  Pack selected group with another when possible.
+
+            loop
+               Position := Set.First;
+               Merged   := null;
+
+               --  Lookup for another group witch can be packed with selected
+               --  one.
+
+               while Attribute_Group_Sets.Has_Element (Position) loop
+                  if Count
+                      (Selected.Mask
+                         and Attribute_Group_Sets.Element (Position).Mask) = 0
+                  then
+                     if Merged = null
+                       or else Count (Merged.Mask)
+                                 < Count
+                                    (Attribute_Group_Sets.Element
+                                      (Position).Mask)
+                     then
+                        Merged := Attribute_Group_Sets.Element (Position);
+                     end if;
+                  end if;
+
+                  Attribute_Group_Sets.Next (Position);
+               end loop;
+
+               exit when Merged = null;
+
+               --  Remove merged group from source set of groups.
+
+               Set.Delete (Merged);
+
+               --  Recompute new mask of group after pack.
+
+               Selected.Mask := Selected.Mask or Merged.Mask;
+
+               --  Fix attribute to group mapping.
+
+               declare
+                  Position : Property_Attribute_Group_Maps.Cursor := Map.First;
+
+               begin
+                  while
+                    Property_Attribute_Group_Maps.Has_Element (Position)
+                  loop
+                     if Property_Attribute_Group_Maps.Element (Position)
+                          = Merged
+                     then
+                        Aux.Insert
+                         (Property_Attribute_Group_Maps.Key (Position));
+                     end if;
+
+                     Property_Attribute_Group_Maps.Next (Position);
+                  end loop;
+               end;
+
+               declare
+                  Position : CMOF_Property_Sets.Cursor := Aux.First;
+
+               begin
+                  while CMOF_Property_Sets.Has_Element (Position) loop
+                     Attribute := CMOF_Property_Sets.Element (Position);
+                     Map.Delete (Attribute);
+                     Map.Insert (Attribute, Selected);
+                     CMOF_Property_Sets.Next (Position);
+                  end loop;
+               end;
+
+               Aux.Clear;
+            end loop;
+         end loop;
+
+         Set := Result;
+      end Pack;
 
       Attribute_Group   : Property_Attribute_Group_Maps.Map;
       Member_Groups     : Attribute_Group_Sets.Set;
@@ -436,30 +560,40 @@ package body Generator.Analyzer is
                   if Use_Member_Slot (Attribute) then
                      Attribute_Info :=
                        new Attribute_Group_Information'
-                            (Index => Natural (Member_Groups.Length) + 1);
+                            (Length => Natural (Metamodel_Info.Classes.Length),
+                             Index  => Natural (Member_Groups.Length) + 1,
+                             Mask   => (others => False));
                      Member_Groups.Insert (Attribute_Info);
 
                   else
                      Attribute_Info :=
                        new Attribute_Group_Information'
-                            (Index => Natural (Collection_Groups.Length) + 1);
+                            (Length => Natural (Metamodel_Info.Classes.Length),
+                             Index  => Natural (Collection_Groups.Length) + 1,
+                             Mask   => (others => False));
                      Collection_Groups.Insert (Attribute_Info);
                   end if;
                end if;
 
                Attribute_Group.Insert (Attribute, Attribute_Info);
-
-               if Use_Member_Slot (Attribute) then
-                  Info.Attribute_Member.Insert
-                   (Attribute, Attribute_Info.Index);
-
-               else
-                  Info.Attribute_Collection.Insert
-                   (Attribute, Attribute_Info.Index);
-               end if;
             end if;
          end loop;
       end Analyze_Class;
+
+      -----------
+      -- Count --
+      -----------
+
+      function Count (Item : Boolean_Array) return Natural is
+      begin
+         return Result : Natural := 0 do
+            for J in Item'Range loop
+               if Item (J) then
+                  Result := Result + 1;
+               end if;
+            end loop;
+         end return;
+      end Count;
 
       ----------
       -- Hash --
@@ -487,11 +621,69 @@ package body Generator.Analyzer is
          end loop;
       end;
 
-      Ada.Wide_Wide_Text_IO.Put_Line
-       (Ada.Wide_Wide_Text_IO.Standard_Error,
-        "  total number of groups:"
-          & Ada.Containers.Count_Type'Wide_Wide_Image (Member_Groups.Length)
-          & Ada.Containers.Count_Type'Wide_Wide_Image (Collection_Groups.Length));
+      --  Calculate masks.
+
+      declare
+         Class              : AMF.CMOF.Classes.CMOF_Class_Access;
+         Class_Position     : CMOF_Element_Sets.Cursor := Info.Classes.First;
+         Info               : Class_Information_Access;
+         Current            : Positive := 1;
+         Attribute_Position : CMOF_Property_Sets.Cursor;
+         Attribute          : AMF.CMOF.Properties.CMOF_Property_Access;
+
+      begin
+         while CMOF_Element_Sets.Has_Element (Class_Position) loop
+            Class
+              := AMF.CMOF.Classes.CMOF_Class_Access
+                  (CMOF_Element_Sets.Element (Class_Position));
+
+            if not Class.Get_Is_Abstract then
+               Info := Class_Info.Element (Class);
+
+               Attribute_Position := Info.All_Attributes.First;
+
+               while CMOF_Property_Sets.Has_Element (Attribute_Position) loop
+                  Attribute := CMOF_Property_Sets.Element (Attribute_Position);
+                  Attribute_Group.Element (Attribute).Mask (Current) := True;
+                  CMOF_Property_Sets.Next (Attribute_Position);
+               end loop;
+
+               Current := Current + 1;
+            end if;
+
+            CMOF_Element_Sets.Next (Class_Position);
+         end loop;
+      end;
+
+      --  Pack members.
+
+      Pack (Attribute_Group, Member_Groups);
+      Pack (Attribute_Group, Collection_Groups);
+
+      --  Store results.
+
+      declare
+         Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
+         Attribute_Info : Attribute_Group_Access;
+         Position       : Property_Attribute_Group_Maps.Cursor
+           := Attribute_Group.First;
+
+      begin
+         while Property_Attribute_Group_Maps.Has_Element (Position) loop
+            Attribute      := Property_Attribute_Group_Maps.Key (Position);
+            Attribute_Info := Property_Attribute_Group_Maps.Element (Position);
+
+            if Use_Member_Slot (Attribute) then
+               Info.Attribute_Member.Insert (Attribute, Attribute_Info.Index);
+
+            else
+               Info.Attribute_Collection.Insert
+                (Attribute, Attribute_Info.Index);
+            end if;
+
+            Property_Attribute_Group_Maps.Next (Position);
+         end loop;
+      end;
    end Assign_Member_Numbers;
 
    -----------------------
@@ -538,14 +730,8 @@ package body Generator.Analyzer is
        (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
       --  Process specified class and all its superclasses.
 
-      Info       : not null Class_Information_Access
+      Info : not null Class_Information_Access
         := new Class_Information'(Class, others => <>);
-      Slot       : Natural := 0;
-      --  Number of last used slot, slot number zero is used to store number of
-      --  first collection.
-      Collection : Natural := 0;
-      --  Number of last used collection, collection number zero is used to
-      --  manage element's links when association end is owned by association.
 
       -------------------
       -- Process_Class --
