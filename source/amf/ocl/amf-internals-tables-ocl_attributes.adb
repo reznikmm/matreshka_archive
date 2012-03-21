@@ -47,7 +47,6 @@ with AMF.Internals.Links;
 with AMF.Internals.Tables.OCL_Element_Table;
 with AMF.Internals.Tables.OCL_Metamodel;
 with AMF.Internals.Tables.OCL_Notification;
-with AMF.Internals.Tables.OCL_Types;
 with AMF.Internals.Tables.Primitive_Types_Notification;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
@@ -60,62 +59,62 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  AssociationClassCallExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
    --     9  NavigationCallExp::navigationSource
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     10  AssociationClassCallExp::referredAssociationClass
    --     8  CallExp::source
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
    --     4  NavigationCallExp::qualifier
 
    --  BagType
@@ -123,92 +122,92 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --     15  CollectionType::elementType
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  BooleanLiteralExp
    --
    --     8  BooleanLiteralExp::booleanSymbol
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  CollectionItem
    --
    --     8  CollectionItem::item
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  CollectionLiteralExp
    --
    --     8  CollectionLiteralExp::kind
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
    --     4  CollectionLiteralExp::part
 
    --  CollectionRange
@@ -216,103 +215,103 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --     8  CollectionRange::first
    --     9  CollectionRange::last
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  CollectionType
    --
    --     15  CollectionType::elementType
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  EnumLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  EnumLiteralExp::referredEnumLiteral
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  ExpressionInOcl
    --
-   --     10  OpaqueExpression::behavior
-   --     11  OpaqueExpression::body
-   --     14  ExpressionInOcl::bodyExpression
-   --     15  ExpressionInOcl::contextVariable
-   --     17  ExpressionInOcl::generatedType
-   --     12  OpaqueExpression::language
+   --     12  OpaqueExpression::behavior
+   --     15  OpaqueExpression::body
+   --     17  ExpressionInOcl::bodyExpression
+   --     13  ExpressionInOcl::contextVariable
+   --     16  ExpressionInOcl::generatedType
+   --     11  OpaqueExpression::language
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     8  ParameterableElement::owningTemplateParameter
-   --     5  NamedElement::qualifiedName
-   --     13  OpaqueExpression::result
-   --     16  ExpressionInOcl::resultVariable
-   --     9  ParameterableElement::templateParameter
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     3  NamedElement::qualifiedName
+   --     10  OpaqueExpression::result
+   --     14  ExpressionInOcl::resultVariable
+   --     8  ParameterableElement::templateParameter
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
    --     4  ExpressionInOcl::parameterVariable
 
    --  IfExp
@@ -320,455 +319,455 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --     8  IfExp::condition
    --     10  IfExp::elseExpression
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     9  IfExp::thenExpression
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  IntegerLiteralExp
    --
    --     8  IntegerLiteralExp::integerSymbol
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  InvalidLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  InvalidType
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  IterateExp
    --
    --     9  LoopExp::body
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     10  IterateExp::result
    --     8  CallExp::source
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     4  LoopExp::iterator
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  IteratorExp
    --
    --     9  LoopExp::body
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  CallExp::source
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     4  LoopExp::iterator
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  LetExp
    --
-   --     8  LetExp::in
+   --     9  LetExp::in
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     9  LetExp::variable
+   --     8  LetExp::variable
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  MessageExp
    --
    --     9  MessageExp::calledOperation
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
-   --     10  MessageExp::sentSignal
-   --     8  MessageExp::target
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
+   --     8  MessageExp::sentSignal
+   --     10  MessageExp::target
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
    --     4  MessageExp::argument
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  MessageType
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
-   --     16  MessageType::referredOperation
-   --     15  MessageType::referredSignal
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
+   --     15  MessageType::referredOperation
+   --     16  MessageType::referredSignal
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  NullLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  OperationCallExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
-   --     9  OperationCallExp::referredOperation
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
+   --     15  OperationCallExp::referredOperation
    --     8  CallExp::source
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
    --     4  OperationCallExp::argument
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  OrderedSetType
    --
    --     15  CollectionType::elementType
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  PropertyCallExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
    --     9  NavigationCallExp::navigationSource
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     10  PropertyCallExp::referredProperty
    --     8  CallExp::source
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
    --     4  NavigationCallExp::qualifier
 
    --  RealLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  RealLiteralExp::realSymbol
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  SequenceType
    --
    --     15  CollectionType::elementType
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  SetType
    --
    --     15  CollectionType::elementType
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  StateExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  StateExp::referredState
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  StringLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  StringLiteralExp::stringSymbol
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  TemplateParameterType
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     15  TemplateParameterType::specification
    --     8  Classifier::templateParameter
@@ -776,224 +775,224 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  TupleLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
    --     4  TupleLiteralExp::part
 
    --  TupleLiteralPart
    --
    --     8  TupleLiteralPart::attribute
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  TupleType
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     24  DataType::ownedAttribute
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
+   --     25  DataType::ownedAttribute
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     25  DataType::ownedOperation
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     24  DataType::ownedOperation
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    --  TypeExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  TypeExp::referredType
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  UnlimitedNaturalLiteralExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     8  UnlimitedNaturalLiteralExp::unlimitedNaturalSymbol
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  UnspecifiedValueExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  Variable
    --
    --     8  Variable::initExpression
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     9  Variable::representedParameter
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  VariableExp
    --
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     1  Element::owner
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     4  Element::owner
+   --     3  NamedElement::qualifiedName
    --     8  VariableExp::referredVariable
    --     7  TypedElement::type
    --     6  NamedElement::visibility
    --
-   --     3  NamedElement::clientDependency
+   --     2  NamedElement::clientDependency
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     3  Element::ownedElement
 
    --  VoidType
    --
    --     12  Classifier::isAbstract
    --     13  Classifier::isFinalSpecialization
-   --     11  RedefinableElement::isLeaf
+   --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     3  NamedElement::nameExpression
-   --     4  NamedElement::namespace
-   --     10  Classifier::ownedTemplateSignature
-   --     10  TemplateableElement::ownedTemplateSignature
-   --     1  Element::owner
-   --     7  ParameterableElement::owningTemplateParameter
-   --     9  Type::package
-   --     5  NamedElement::qualifiedName
+   --     1  NamedElement::nameExpression
+   --     5  NamedElement::namespace
+   --     11  Classifier::ownedTemplateSignature
+   --     11  TemplateableElement::ownedTemplateSignature
+   --     4  Element::owner
+   --     9  ParameterableElement::owningTemplateParameter
+   --     7  Type::package
+   --     3  NamedElement::qualifiedName
    --     14  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
    --     6  NamedElement::visibility
    --     6  PackageableElement::visibility
    --
-   --     13  Classifier::attribute
-   --     3  NamedElement::clientDependency
-   --     14  Classifier::collaborationUse
-   --     4  Namespace::elementImport
-   --     15  Classifier::feature
-   --     16  Classifier::general
+   --     18  Classifier::attribute
+   --     2  NamedElement::clientDependency
+   --     22  Classifier::collaborationUse
+   --     9  Namespace::elementImport
+   --     14  Classifier::feature
+   --     13  Classifier::general
    --     17  Classifier::generalization
-   --     5  Namespace::importedMember
-   --     18  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     10  Namespace::importedMember
+   --     6  Classifier::inheritedMember
+   --     21  Namespace::member
    --     1  Element::ownedComment
-   --     2  Element::ownedElement
-   --     7  Namespace::ownedMember
-   --     8  Namespace::ownedRule
-   --     19  Classifier::ownedUseCase
-   --     9  Namespace::packageImport
+   --     3  Element::ownedElement
+   --     16  Namespace::ownedMember
+   --     11  Namespace::ownedRule
+   --     4  Classifier::ownedUseCase
+   --     8  Namespace::packageImport
    --     20  Classifier::powertypeExtent
-   --     21  Classifier::redefinedClassifier
-   --     11  RedefinableElement::redefinedElement
-   --     12  RedefinableElement::redefinitionContext
-   --     22  Classifier::substitution
-   --     10  TemplateableElement::templateBinding
-   --     23  Classifier::useCase
+   --     5  Classifier::redefinedClassifier
+   --     23  RedefinableElement::redefinedElement
+   --     7  RedefinableElement::redefinitionContext
+   --     19  Classifier::substitution
+   --     15  TemplateableElement::templateBinding
+   --     12  Classifier::useCase
 
    ---------------------------
    -- Internal_Get_Argument --
@@ -1003,16 +1002,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Argument;
 
    ----------------------------
@@ -1023,15 +1013,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Attribute;
 
    ----------------------------
@@ -1042,43 +1026,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
    end Internal_Get_Attribute;
 
    ---------------------------
@@ -1089,15 +1037,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Link, Self, No_OCL_Element);
    end Internal_Get_Behavior;
 
    -----------------------
@@ -1108,20 +1050,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Body;
 
    -----------------------
@@ -1132,13 +1063,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).String_Collection_Value;
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Get_Body;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Collection_Value;   end Internal_Get_Body;
 
    ----------------------------------
    -- Internal_Get_Body_Expression --
@@ -1148,15 +1073,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self, No_OCL_Element);
    end Internal_Get_Body_Expression;
 
    ---------------------------------
@@ -1167,13 +1086,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value;
    end Internal_Get_Boolean_Symbol;
 
    -----------------------------------
@@ -1184,15 +1097,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Called_Operation;
 
    ------------------------------------
@@ -1203,124 +1110,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
    end Internal_Get_Client_Dependency;
 
    ------------------------------------
@@ -1331,43 +1121,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
    end Internal_Get_Collaboration_Use;
 
    ----------------------------
@@ -1378,15 +1132,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Condition;
 
    -----------------------------------
@@ -1397,15 +1145,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Link, Self, No_OCL_Element);
    end Internal_Get_Context_Variable;
 
    ---------------------------------
@@ -1416,43 +1158,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
    end Internal_Get_Element_Import;
 
    -------------------------------
@@ -1463,35 +1169,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
    end Internal_Get_Element_Type;
 
    ----------------------------------
@@ -1502,15 +1182,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Else_Expression;
 
    --------------------------
@@ -1521,43 +1195,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
    end Internal_Get_Feature;
 
    ------------------------
@@ -1568,15 +1206,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_First;
 
    --------------------------
@@ -1587,43 +1219,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
    end Internal_Get_General;
 
    ---------------------------------
@@ -1634,43 +1230,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
    end Internal_Get_Generalization;
 
    ---------------------------------
@@ -1681,15 +1241,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
    end Internal_Get_Generated_Type;
 
    ----------------------------------
@@ -1700,43 +1254,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
    end Internal_Get_Imported_Member;
 
    ---------------------
@@ -1747,15 +1265,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_In;
 
    -----------------------------------
@@ -1766,43 +1278,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
    end Internal_Get_Inherited_Member;
 
    ----------------------------------
@@ -1813,15 +1289,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Init_Expression;
 
    ---------------------------------
@@ -1832,13 +1302,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Integer is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value;
    end Internal_Get_Integer_Symbol;
 
    ------------------------------
@@ -1849,43 +1313,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
    end Internal_Get_Is_Abstract;
 
    ------------------------------------------
@@ -1896,43 +1324,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
    end Internal_Get_Is_Final_Specialization;
 
    --------------------------
@@ -1943,43 +1335,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Boolean_Value;
    end Internal_Get_Is_Leaf;
 
    -----------------------
@@ -1990,15 +1346,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Item;
 
    ---------------------------
@@ -2009,16 +1359,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Iterator;
 
    -----------------------
@@ -2029,13 +1370,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.OCL.OCL_Collection_Kind is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value;
    end Internal_Get_Kind;
 
    ---------------------------
@@ -2046,13 +1381,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).String_Collection_Value;
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Get_Language;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).String_Collection_Value;   end Internal_Get_Language;
 
    -----------------------
    -- Internal_Get_Last --
@@ -2062,15 +1391,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Last;
 
    -------------------------
@@ -2081,43 +1404,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
    end Internal_Get_Member;
 
    -----------------------
@@ -2128,162 +1415,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Name;
 
    ----------------------------------
@@ -2294,200 +1427,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
    end Internal_Get_Name_Expression;
 
    ----------------------------
@@ -2498,200 +1440,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).Link, Self, No_OCL_Element);
    end Internal_Get_Namespace;
 
    ------------------------------------
@@ -2702,20 +1453,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Navigation_Source;
 
    ----------------------------------
@@ -2726,28 +1466,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
    end Internal_Get_Owned_Attribute;
 
    --------------------------------
@@ -2758,124 +1477,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -2886,124 +1488,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
    end Internal_Get_Owned_Element;
 
    -------------------------------
@@ -3014,43 +1499,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
    end Internal_Get_Owned_Member;
 
    ----------------------------------
@@ -3061,28 +1510,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
    end Internal_Get_Owned_Operation;
 
    -----------------------------
@@ -3093,43 +1521,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
    end Internal_Get_Owned_Rule;
 
    -------------------------------------------
@@ -3140,65 +1532,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Link, Self, No_OCL_Element);
    end Internal_Get_Owned_Template_Signature;
 
    ---------------------------------
@@ -3209,43 +1545,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Owned_Use_Case;
 
    ------------------------
@@ -3256,200 +1556,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
    end Internal_Get_Owner;
 
    --------------------------------------------
@@ -3460,70 +1569,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Owning_Template_Parameter;
 
    --------------------------
@@ -3534,65 +1582,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
    end Internal_Get_Package;
 
    ---------------------------------
@@ -3603,43 +1595,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
    end Internal_Get_Package_Import;
 
    -------------------------------------
@@ -3650,13 +1606,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Parameter_Variable;
 
    -----------------------
@@ -3667,16 +1617,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Part;
 
    -----------------------------------
@@ -3687,43 +1628,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
    end Internal_Get_Powertype_Extent;
 
    ---------------------------------
@@ -3734,162 +1639,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).String_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Qualified_Name;
 
    ----------------------------
@@ -3900,16 +1651,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Qualifier;
 
    ------------------------------
@@ -3920,13 +1662,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Real is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value;
    end Internal_Get_Real_Symbol;
 
    ---------------------------------------
@@ -3937,43 +1673,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
    end Internal_Get_Redefined_Classifier;
 
    ------------------------------------
@@ -3984,43 +1684,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
    end Internal_Get_Redefined_Element;
 
    ---------------------------------------
@@ -4031,43 +1695,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
    end Internal_Get_Redefinition_Context;
 
    ---------------------------------------------
@@ -4078,15 +1706,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Association_Class;
 
    ----------------------------------------
@@ -4097,15 +1719,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Enum_Literal;
 
    -------------------------------------
@@ -4116,20 +1732,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Operation;
 
    ------------------------------------
@@ -4140,15 +1745,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Property;
 
    ----------------------------------
@@ -4159,15 +1758,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Signal;
 
    ---------------------------------
@@ -4178,15 +1771,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_State;
 
    --------------------------------
@@ -4197,15 +1784,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Type;
 
    ------------------------------------
@@ -4216,15 +1797,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Referred_Variable;
 
    ---------------------------------
@@ -4235,65 +1810,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
    end Internal_Get_Representation;
 
    ----------------------------------------
@@ -4304,15 +1823,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Represented_Parameter;
 
    -------------------------
@@ -4323,20 +1836,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Result;
 
    ----------------------------------
@@ -4347,15 +1849,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
    end Internal_Get_Result_Variable;
 
    ------------------------------
@@ -4366,15 +1862,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Sent_Signal;
 
    -------------------------
@@ -4385,35 +1875,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Source;
 
    --------------------------------
@@ -4424,14 +1888,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Value;
    end Internal_Get_Specification;
 
    --------------------------------
@@ -4442,14 +1900,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).String_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).String_Value;
    end Internal_Get_String_Symbol;
 
    -------------------------------
@@ -4460,43 +1912,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
    end Internal_Get_Substitution;
 
    -------------------------
@@ -4507,15 +1923,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Target;
 
    -----------------------------------
@@ -4526,43 +1936,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
    end Internal_Get_Template_Binding;
 
    -------------------------------------
@@ -4573,70 +1947,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Template_Parameter;
 
    ----------------------------------
@@ -4647,15 +1960,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
    end Internal_Get_Then_Expression;
 
    -----------------------
@@ -4666,145 +1973,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
    end Internal_Get_Type;
 
    -------------------------------------------
@@ -4815,13 +1986,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Unlimited_Natural is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value;
    end Internal_Get_Unlimited_Natural_Symbol;
 
    ---------------------------
@@ -4832,43 +1997,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
    end Internal_Get_Use_Case;
 
    ---------------------------
@@ -4879,15 +2008,9 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.OCL_Element is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return
-              AMF.Internals.Links.Opposite_Element
-               (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Variable;
 
    -----------------------------
@@ -4898,124 +2021,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
    end Internal_Get_Visibility;
 
    ----------------------------
@@ -5029,16 +2035,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Attribute_Tuple_Literal_Part,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Attribute_Tuple_Literal_Part,
+        Self,
+        To);
    end Internal_Set_Attribute;
 
    ---------------------------
@@ -5052,16 +2052,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Opaque_Expression,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Opaque_Expression,
+        Self,
+        To);
    end Internal_Set_Behavior;
 
    -----------------------
@@ -5075,22 +2069,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
+        Self,
+        To);
    end Internal_Set_Body;
 
    ----------------------------------
@@ -5104,16 +2086,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Expression_Top_Expression,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Expression_Top_Expression,
+        Self,
+        To);
    end Internal_Set_Body_Expression;
 
    ---------------------------------
@@ -5127,17 +2103,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Boolean_Literal_Exp_Boolean_Symbol, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Boolean_Literal_Exp_Boolean_Symbol, Old, To);
    end Internal_Set_Boolean_Symbol;
 
    -----------------------------------
@@ -5151,16 +2121,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp,
+        Self,
+        To);
    end Internal_Set_Called_Operation;
 
    ----------------------------
@@ -5174,16 +2138,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Condition_If_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Condition_If_Owner,
+        Self,
+        To);
    end Internal_Set_Condition;
 
    -----------------------------------
@@ -5197,16 +2155,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Context_Variable_Self_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Context_Variable_Self_Owner,
+        Self,
+        To);
    end Internal_Set_Context_Variable;
 
    -------------------------------
@@ -5220,40 +2172,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+        Self,
+        To);
    end Internal_Set_Element_Type;
 
    ----------------------------------
@@ -5267,16 +2189,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Else_Expression_Else_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Else_Expression_Else_Owner,
+        Self,
+        To);
    end Internal_Set_Else_Expression;
 
    ------------------------
@@ -5290,16 +2206,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_First_First_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_First_First_Owner,
+        Self,
+        To);
    end Internal_Set_First;
 
    ---------------------------------
@@ -5313,16 +2223,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Generated_Type_Owning_Classifier,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Generated_Type_Owning_Classifier,
+        Self,
+        To);
    end Internal_Set_Generated_Type;
 
    ---------------------
@@ -5336,16 +2240,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_In_Let_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_In_Let_Exp,
+        Self,
+        To);
    end Internal_Set_In;
 
    ----------------------------------
@@ -5359,16 +2257,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element,
+        Self,
+        To);
    end Internal_Set_Init_Expression;
 
    ---------------------------------
@@ -5382,17 +2274,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Integer;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Integer_Literal_Exp_Integer_Symbol, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Integer_Literal_Exp_Integer_Symbol, Old, To);
    end Internal_Set_Integer_Symbol;
 
    ------------------------------
@@ -5406,87 +2292,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
    end Internal_Set_Is_Abstract;
 
    ------------------------------------------
@@ -5500,87 +2310,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
    end Internal_Set_Is_Final_Specialization;
 
    --------------------------
@@ -5594,87 +2328,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value := To;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf, Old, To);
    end Internal_Set_Is_Leaf;
 
    -----------------------
@@ -5688,16 +2346,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Item_Collection_Item,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Item_Collection_Item,
+        Self,
+        To);
    end Internal_Set_Item;
 
    -----------------------
@@ -5711,17 +2363,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.OCL.OCL_Collection_Kind;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value := To;
 
-            AMF.Internals.Tables.OCL_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Literal_Exp_Kind, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.OCL_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Literal_Exp_Kind, Old, To);
    end Internal_Set_Kind;
 
    -----------------------
@@ -5735,16 +2381,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Last_Last_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Last_Last_Owner,
+        Self,
+        To);
    end Internal_Set_Last;
 
    -----------------------
@@ -5758,656 +2398,21 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
 
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
+      OCL_Element_Table.Table (Self).Member (2).String_Value := To;
 
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
+      if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
+         Matreshka.Internals.Strings.Reference
+          (OCL_Element_Table.Table (Self).Member (2).String_Value);
+      end if;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
 
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (2).String_Value;
-
-            OCL_Element_Table.Table (Self).Member (2).String_Value := To;
-
-            if OCL_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (2).String_Value);
-            end if;
-
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name, Old, To);
-
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      if Old /= null then
+         Matreshka.Internals.Strings.Reference (Old);
+      end if;
    end Internal_Set_Name;
 
    ----------------------------------
@@ -6421,238 +2426,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+        Self,
+        To);
    end Internal_Set_Name_Expression;
 
    ------------------------------------
@@ -6666,22 +2443,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
+        Self,
+        To);
    end Internal_Set_Navigation_Source;
 
    -------------------------------------------
@@ -6695,76 +2460,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+        Self,
+        To);
    end Internal_Set_Owned_Template_Signature;
 
    --------------------------------------------
@@ -6778,82 +2477,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-              To,
-              Self);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+        To,
+        Self);
    end Internal_Set_Owning_Template_Parameter;
 
    --------------------------
@@ -6867,76 +2494,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-              To,
-              Self);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+        To,
+        Self);
    end Internal_Set_Package;
 
    ------------------------------
@@ -6950,17 +2511,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Real;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Real_Literal_Exp_Real_Symbol, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Real_Literal_Exp_Real_Symbol, Old, To);
    end Internal_Set_Real_Symbol;
 
    ---------------------------------------------
@@ -6974,16 +2529,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_Association_Class;
 
    ----------------------------------------
@@ -6997,16 +2546,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_Enum_Literal;
 
    -------------------------------------
@@ -7020,22 +2563,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Message_Type,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Refering_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Message_Type,
+        Self,
+        To);
    end Internal_Set_Referred_Operation;
 
    ------------------------------------
@@ -7049,16 +2580,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Referred_Property_Refering_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Referred_Property_Refering_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_Property;
 
    ----------------------------------
@@ -7072,16 +2597,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Signal_Referred_Signal_Message_Type,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Signal_Referred_Signal_Message_Type,
+        Self,
+        To);
    end Internal_Set_Referred_Signal;
 
    ---------------------------------
@@ -7095,16 +2614,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Referred_State_State_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Referred_State_State_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_State;
 
    --------------------------------
@@ -7118,16 +2631,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Referred_Type_Type_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Referred_Type_Type_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_Type;
 
    ------------------------------------
@@ -7141,16 +2648,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Referred_Variable_Refering_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Referred_Variable_Refering_Exp,
+        Self,
+        To);
    end Internal_Set_Referred_Variable;
 
    ---------------------------------
@@ -7164,76 +2665,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+        Self,
+        To);
    end Internal_Set_Representation;
 
    ----------------------------------------
@@ -7247,16 +2682,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Parameter_Represented_Parameter_Variable,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Parameter_Represented_Parameter_Variable,
+        Self,
+        To);
    end Internal_Set_Represented_Parameter;
 
    ----------------------------------
@@ -7270,16 +2699,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Result_Variable_Result_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Result_Variable_Result_Owner,
+        Self,
+        To);
    end Internal_Set_Result_Variable;
 
    ------------------------------
@@ -7293,16 +2716,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp,
+        Self,
+        To);
    end Internal_Set_Sent_Signal;
 
    -------------------------
@@ -7316,40 +2733,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+        Self,
+        To);
    end Internal_Set_Source;
 
    --------------------------------
@@ -7363,27 +2750,21 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Value;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Value;
 
-            OCL_Element_Table.Table (Self).Member (15).String_Value := To;
+      OCL_Element_Table.Table (Self).Member (15).String_Value := To;
 
-            if OCL_Element_Table.Table (Self).Member (15).String_Value /= null then
-               Matreshka.Internals.Strings.Reference
-                (OCL_Element_Table.Table (Self).Member (15).String_Value);
-            end if;
+      if OCL_Element_Table.Table (Self).Member (15).String_Value /= null then
+         Matreshka.Internals.Strings.Reference
+          (OCL_Element_Table.Table (Self).Member (15).String_Value);
+      end if;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Template_Parameter_Type_Specification, Old, To);
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Template_Parameter_Type_Specification, Old, To);
 
-            if Old /= null then
-               Matreshka.Internals.Strings.Reference (Old);
-            end if;
-
-         when others =>
-            raise Program_Error;
-      end case;
+      if Old /= null then
+         Matreshka.Internals.Strings.Reference (Old);
+      end if;
    end Internal_Set_Specification;
 
    --------------------------------
@@ -7397,22 +2778,16 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            Old :=
-              AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).String_Value;
+      Old :=
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).String_Value;
 
-            OCL_Element_Table.Table (Self).Member (8).String_Value := To;
-            Matreshka.Internals.Strings.Reference
-             (OCL_Element_Table.Table (Self).Member (8).String_Value);
+      OCL_Element_Table.Table (Self).Member (8).String_Value := To;
+      Matreshka.Internals.Strings.Reference
+       (OCL_Element_Table.Table (Self).Member (8).String_Value);
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_String_Literal_Exp_String_Symbol, Old, To);
-            Matreshka.Internals.Strings.Dereference (Old);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_String_Literal_Exp_String_Symbol, Old, To);
+      Matreshka.Internals.Strings.Dereference (Old);
    end Internal_Set_String_Symbol;
 
    -------------------------
@@ -7426,16 +2801,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Target_Message_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Target_Message_Exp,
+        Self,
+        To);
    end Internal_Set_Target;
 
    -------------------------------------
@@ -7449,82 +2818,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
-              To,
-              Self);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+        Self,
+        To);
    end Internal_Set_Template_Parameter;
 
    ----------------------------------
@@ -7538,16 +2835,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Then_Expression_Then_Owner,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Then_Expression_Then_Owner,
+        Self,
+        To);
    end Internal_Set_Then_Expression;
 
    -----------------------
@@ -7561,172 +2852,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+        Self,
+        To);
    end Internal_Set_Type;
 
    -------------------------------------------
@@ -7740,17 +2869,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Unlimited_Natural;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value := To;
 
-            AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Unlimited_Natural_Literal_Exp_Unlimited_Natural_Symbol, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Unlimited_Natural_Literal_Exp_Unlimited_Natural_Symbol, Old, To);
    end Internal_Set_Unlimited_Natural_Symbol;
 
    ---------------------------
@@ -7764,16 +2887,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.Internals.OCL_Element;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Variable_Let_Exp,
-              Self,
-              To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Variable_Let_Exp,
+        Self,
+        To);
    end Internal_Set_Variable;
 
    -----------------------------
@@ -7787,276 +2904,11 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.UML.Optional_UML_Visibility_Kind;
 
    begin
-      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-            AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
-
-            AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
-             (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
+
+      AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
    end Internal_Set_Visibility;
 
 end AMF.Internals.Tables.OCL_Attributes;
