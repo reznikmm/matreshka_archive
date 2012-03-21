@@ -72,7 +72,7 @@ package body Generator.Analyzer is
      Extent : not null AMF.Extents.Extent_Access);
    --  Compute metamodel names for each element.
 
-   procedure Assign_Numbers
+   procedure Assign_Element_Numbers
     (Info   : not null Metamodel_Information_Access;
      Extent : not null AMF.Extents.Extent_Access);
    --  Assigns numbers to each element and to each string.
@@ -126,7 +126,7 @@ package body Generator.Analyzer is
 
       --  Assign numbers for metamodel's elements.
 
-      Assign_Numbers (Info, AMF.Extents.Extent_Access (Extent));
+      Assign_Element_Numbers (Info, AMF.Extents.Extent_Access (Extent));
 
       --  Process all used extents.
 
@@ -145,7 +145,7 @@ package body Generator.Analyzer is
 
                Compute_Metamodel_Name (Info, Extent);
                Classify_Elements (Info, Extent.Elements);
-               Assign_Numbers (Info, Extent);
+               Assign_Element_Numbers (Info, Extent);
             end if;
 
             AMF.Extents.Collections.Extent_Sets.Next (Position);
@@ -153,11 +153,11 @@ package body Generator.Analyzer is
       end;
    end Analyze_Model;
 
-   --------------------
-   -- Assign_Numbers --
-   --------------------
+   ----------------------------
+   -- Assign_Element_Numbers --
+   ----------------------------
 
-   procedure Assign_Numbers
+   procedure Assign_Element_Numbers
     (Info   : not null Metamodel_Information_Access;
      Extent : not null AMF.Extents.Extent_Access)
    is
@@ -310,7 +310,7 @@ package body Generator.Analyzer is
          Generate_Constructors := False;
          Generate_Reflection := False;
       end if;
-   end Assign_Numbers;
+   end Assign_Element_Numbers;
 
    -----------------------
    -- Classify_Elements --
