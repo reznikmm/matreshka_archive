@@ -100,10 +100,13 @@ package body AMF.Internals.UML_Classifiers is
             G : constant
               AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization
                 := UML_Classifier_Proxy'Class (Self.all).Get_Generalization;
+            X : AMF.UML.Classifiers.UML_Classifier_Access;
+            --  GNAT FSF 4.6: X is used to workaround crash of compiler.
 
          begin
             for J in 1 .. G.Length loop
-               Result.Add (G.Element (J).Get_General);
+               X := G.Element (J).Get_General;
+               Result.Add (X);
             end loop;
          end;
       end return;
