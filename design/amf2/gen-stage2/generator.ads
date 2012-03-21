@@ -161,14 +161,6 @@ package Generator is
       Class            : AMF.CMOF.Classes.CMOF_Class_Access;
       All_Attributes   : CMOF_Property_Sets.Set;
       --  Set of all attributes of the class.
-      Slot             : CMOF_Property_Natural_Maps.Map;
-      Slot_Index       : Natural_CMOF_Property_Maps.Map;
-      Collection       : CMOF_Property_Natural_Maps.Map;
-      Collection_Index : Natural_CMOF_Property_Maps.Map;
-      --  Mapping of attributes into slots and collections. Index to
-      --  slot/collection mapping map to first declaration of the attribute.
-      --  Attributes which redefine this attribute is out of the mapping, but
-      --  present in slot/collection to index mapping and share the same index.
    end record;
    --  Class information record contains extracted information for each class.
 
@@ -226,6 +218,10 @@ package Generator is
       --   - classes
       --   - properties owned by classes
       --   - multiple properties of element type owned by classes
+
+      Attribute_Member             : CMOF_Property_Natural_Maps.Map;
+      Attribute_Collection         : CMOF_Property_Natural_Maps.Map;
+      --  Attribute to member or collection mappings.
    end record;
 
    type Metamodel_Information_Access is access all Metamodel_Information;

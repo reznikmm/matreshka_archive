@@ -46,6 +46,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Enumeration_Literals.Collections;
 with AMF.CMOF.Enumerations;
+with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 
 with Generator.Attribute_Mapping;
@@ -94,6 +95,7 @@ package body Generator.Constructors is
 
       procedure Generate_Create (Position : Class_Information_Maps.Cursor) is
          use type AMF.Optional_String;
+         use type AMF.CMOF.Properties.CMOF_Property_Access;
 
          Class          : constant Class_Information_Access
            := Class_Information_Maps.Element (Position);
@@ -112,6 +114,11 @@ package body Generator.Constructors is
          Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
          Default        : AMF.Optional_String;
          Image          : League.Strings.Universal_String;
+         Attribute_Position : CMOF_Property_Sets.Cursor
+           := Class.All_Attributes.First;
+         Original_Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
+         Redefined          : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
+         Generated          : CMOF_Property_Sets.Set;
 
       begin
          Unit.Add_Header (Name, 3);
@@ -160,406 +167,436 @@ package body Generator.Constructors is
              & Types_Package
              & ".M_None),");
 
-         for J in 1 .. Natural (Class.Slot_Index.Length) loop
-            Attribute := Class.Slot_Index.Element (J);
-            Attribute_Type := Attribute.Get_Type;
-            Default := Attribute.Get_Default;
+         while CMOF_Property_Sets.Has_Element (Attribute_Position) loop
+            Attribute          :=
+              CMOF_Property_Sets.Element (Attribute_Position);
+            Attribute_Type     := Attribute.Get_Type;
+            Default            := Attribute.Get_Default;
+            Original_Attribute := Attribute;
+            Redefined          := Original_Attribute.Get_Redefined_Property;
 
-            Image :=
-              League.Strings.To_Universal_String (Integer'Wide_Wide_Image (J));
-            Unit.Add
-             ("         "
-                & Image
-                & ((8 - Image.Length) * ' ')
-                & "=>");
+            --  Unwind to original property definition.
 
-            if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        Unit.Add
-                         (" (" & Types_Package & ".M_Element, No_AMF_Link),");
+            while not Redefined.Is_Empty loop
+               Original_Attribute := Redefined.Element (1);
+               Redefined := Original_Attribute.Get_Redefined_Property;
+            end loop;
 
-                     else
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
-                        raise Program_Error;
-                     end if;
-
-                  when Holder =>
-                     if Default.Is_Empty then
-                        Unit.Add
-                         (" (" & Types_Package & ".M_Element, No_AMF_Link),");
-
-                     else
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
-                        raise Program_Error;
-                     end if;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.all
-                    in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+            if Attribute = Original_Attribute
+              and then Metamodel_Info.Attribute_Member.Contains (Attribute)
             then
-               --  Enumeration type
-
+               Image :=
+                 League.Strings.To_Universal_String
+                  (Integer'Wide_Wide_Image
+                    (Metamodel_Info.Attribute_Member.Element (Attribute)));
                Unit.Add
-                (" ("
-                   & Types_Package
-                   & '.'
-                   & Generator.Type_Mapping.Member_Kind_Name
-                      (Attribute_Type, Representation (Attribute)));
+                ("         "
+                   & Image
+                   & ((8 - Image.Length) * ' ')
+                   & "=>");
 
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        --  There is no default value specified, initialize to
-                        --  the value of first enumeration literal.
+               if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Element, No_AMF_Link),");
 
-                        Unit.Context.Add
-                         ("AMF." & Owning_Metamodel_Ada_Name (Attribute_Type));
-                        Unit.Add
-                         (", AMF."
-                            & Owning_Metamodel_Ada_Name (Attribute_Type)
-                            & '.'
-                            & Type_Mapping.Ada_Enumeration_Literal_Name
-                               (AMF.CMOF.Enumerations.CMOF_Enumeration'Class
-                                 (Attribute_Type.all).Get_Owned_Literal.Element
-                                   (1))
-                            & "),");
+                        else
+   --                        if Boolean'Wide_Wide_Value
+   --                            (Default.Value.To_Wide_Wide_String)
+   --                        then
+   --                           Put (" (M_Boolean, True),");
+   --
+   --                        else
+   --                           Put (" (M_Boolean, False),");
+   --                        end if;
+                           raise Program_Error;
+                        end if;
 
-                     else
-                        declare
-                           use type AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+                     when Holder =>
+                        if Default.Is_Empty then
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Element, No_AMF_Link),");
 
-                           Literals : constant
-                             AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
-                                 := AMF.CMOF.Enumerations.CMOF_Enumeration'Class
-                                     (Attribute_Type.all).Get_Owned_Literal;
-                           Literal  :
-                             AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+                        else
+   --                        if Boolean'Wide_Wide_Value
+   --                            (Default.Value.To_Wide_Wide_String)
+   --                        then
+   --                           Put (" (M_Boolean, True),");
+   --
+   --                        else
+   --                           Put (" (M_Boolean, False),");
+   --                        end if;
+                           raise Program_Error;
+                        end if;
 
-                        begin
-                           for J in 1 .. Literals.Length loop
-                              if Literals.Element (J).Get_Name = Default then
-                                 Literal := Literals.Element (J);
+                     when Set =>
+                        raise Program_Error;
 
-                                 exit;
-                              end if;
-                           end loop;
+                     when Ordered_Set =>
+                        raise Program_Error;
 
-                           if Literal = null then
-                              raise Program_Error;
-                           end if;
+                     when Bag =>
+                        raise Program_Error;
+
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
+
+               elsif Attribute_Type.all
+                       in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+               then
+                  --  Enumeration type
+
+                  Unit.Add
+                   (" ("
+                      & Types_Package
+                      & '.'
+                      & Generator.Type_Mapping.Member_Kind_Name
+                         (Attribute_Type, Representation (Attribute)));
+
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           --  There is no default value specified, initialize
+                           --  to the value of first enumeration literal.
 
                            Unit.Context.Add
-                            ("AMF." & Owning_Metamodel_Ada_Name (Literal));
+                            ("AMF."
+                               & Owning_Metamodel_Ada_Name (Attribute_Type));
                            Unit.Add
-                            (", "
-                               & "AMF."
-                               & Owning_Metamodel_Ada_Name (Literal)
-                               & "."
+                            (", AMF."
+                               & Owning_Metamodel_Ada_Name (Attribute_Type)
+                               & '.'
                                & Type_Mapping.Ada_Enumeration_Literal_Name
-                                  (Literal)
+                                  (AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+                                    (Attribute_Type.all).
+                                      Get_Owned_Literal.Element (1))
                                & "),");
-                        end;
-                     end if;
 
-                  when Holder =>
-                     if Default.Is_Empty then
-                        Unit.Add (+", (Is_Empty => True)),");
+                        else
+                           declare
+                              use type AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
 
-                     else
+                              Literals : constant
+                                AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
+                                    := AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+                                        (Attribute_Type.all).Get_Owned_Literal;
+                              Literal  :
+                                AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+                           begin
+                              for J in 1 .. Literals.Length loop
+                                 if Literals.Element (J).Get_Name = Default then
+                                    Literal := Literals.Element (J);
+
+                                    exit;
+                                 end if;
+                              end loop;
+
+                              if Literal = null then
+                                 raise Program_Error;
+                              end if;
+
+                              Unit.Context.Add
+                               ("AMF." & Owning_Metamodel_Ada_Name (Literal));
+                              Unit.Add
+                               (", "
+                                  & "AMF."
+                                  & Owning_Metamodel_Ada_Name (Literal)
+                                  & "."
+                                  & Type_Mapping.Ada_Enumeration_Literal_Name
+                                     (Literal)
+                                  & "),");
+                           end;
+                        end if;
+
+                     when Holder =>
+                        if Default.Is_Empty then
+                           Unit.Add (+", (Is_Empty => True)),");
+
+                        else
+                           raise Program_Error;
+                        end if;
+
+                     when Set =>
                         raise Program_Error;
-                     end if;
 
-                  when Set =>
-                     raise Program_Error;
+                     when Ordered_Set =>
+                        raise Program_Error;
 
-                  when Ordered_Set =>
-                     raise Program_Error;
+                     when Bag =>
+                        raise Program_Error;
 
-                  when Bag =>
-                     raise Program_Error;
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
 
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
+               elsif Attribute_Type.Get_Name = Boolean_Name then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           --  There is no default value specified, initialize
+                           --  to some valid value.
 
-            elsif Attribute_Type.Get_Name = Boolean_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        --  There is no default value specified, initialize to
-                        --  some valid value.
-
-                        Unit.Add
-                         (" (" & Types_Package & ".M_Boolean, False),");
-
-                     else
-                        if Boolean'Wide_Wide_Value
-                            (Default.Value.To_Wide_Wide_String)
-                        then
                            Unit.Add
-                            (" (" & Types_Package & ".M_Boolean, True),");
+                            (" (" & Types_Package & ".M_Boolean, False),");
+
+                        else
+                           if Boolean'Wide_Wide_Value
+                               (Default.Value.To_Wide_Wide_String)
+                           then
+                              Unit.Add
+                               (" (" & Types_Package & ".M_Boolean, True),");
+
+                           else
+                              Unit.Add
+                               (" (" & Types_Package & ".M_Boolean, False),");
+                           end if;
+                        end if;
+
+                     when Holder =>
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Boolean_Holder, (Is_Empty => True)),");
+
+                     when Set =>
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Collection_Of_Boolean, 0),");
+
+                     when Ordered_Set =>
+                        raise Program_Error;
+
+                     when Bag =>
+                        raise Program_Error;
+
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
+
+               elsif Attribute_Type.Get_Name = Integer_Name then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           --  There is no default value specified, initialize
+                           --  to some valid value.
+
+                           Unit.Add (" (" & Types_Package & ".M_Integer, 0),");
 
                         else
                            Unit.Add
-                            (" (" & Types_Package & ".M_Boolean, False),");
+                            (" ("
+                               & Types_Package
+                               & ".M_Integer,"
+                               & Integer'Wide_Wide_Image
+                                  (Integer'Wide_Wide_Value
+                                    (Default.Value.To_Wide_Wide_String))
+                               & "),");
                         end if;
-                     end if;
 
-                  when Holder =>
-                     Unit.Add
-                      (" ("
-                         & Types_Package
-                         & ".M_Boolean_Holder, (Is_Empty => True)),");
-
-                  when Set =>
-                     Unit.Add
-                      (" (" & Types_Package & ".M_Collection_Of_Boolean, 0),");
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = Integer_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        --  There is no default value specified, initialize to
-                        --  some valid value.
-
-                        Unit.Add (" (" & Types_Package & ".M_Integer, 0),");
-
-                     else
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_Integer,"
-                            & Integer'Wide_Wide_Image
-                               (Integer'Wide_Wide_Value
-                                 (Default.Value.To_Wide_Wide_String))
-                            & "),");
-                     end if;
-
-                  when Holder =>
-                     if Default.Is_Empty then
-                        raise Program_Error;
-
-                     else
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_Integer_Holder, (False,"
-                            & Integer'Wide_Wide_Image
-                               (Integer'Wide_Wide_Value
-                                 (Default.Value.To_Wide_Wide_String))
-                            & ")),");
-                     end if;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = String_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        Unit.Context.Add (+"Matreshka.Internals.Strings");
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_String, "
-                            & "Matreshka.Internals.Strings.Shared_Empty"
-                            & "'Access),");
-
-                     else
-                        raise Program_Error;
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
-                     end if;
-
-                  when Holder =>
-                     if Default.Is_Empty then
-                        Unit.Add (" (" & Types_Package & ".M_String, null),");
-
-                     else
-                        raise Program_Error;
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
-                     end if;
-
-                  when Set | Ordered_Set | Bag | Sequence =>
-                     Unit.Add
-                      (+" (" & Types_Package & ".M_Collection_Of_String, 0),");
-               end case;
-
-            elsif Attribute_Type.Get_Name = Real_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        Unit.Add (" (" & Types_Package & ".M_Real, 0.0),");
-
-                     else
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
-                        raise Program_Error;
-                     end if;
-
-                  when Holder =>
---                     if Default.Is_Empty then
-                        raise Program_Error;
---
---                     else
---                        if Default = Unlimited_Image then
---                           raise Program_Error;
---
---                        else
---                           New_Line;
---                           Set_Col (22);
---                           Put
---                            (" (M_Unlimited_Natural_Holder, (False, (False,"
---                               & Integer'Wide_Wide_Image
---                                  (Integer'Wide_Wide_Value
---                                    (Default.Value.To_Wide_Wide_String))
---                               & "))),");
---                        end if;
---                     end if;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        --  There is no default value specified, initialize to
-                        --  some valid value.
-
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_Unlimited_Natural, (False, 0)),");
-
-                     else
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_Unlimited_Natural, (False,"
-                            & Integer'Wide_Wide_Image
-                               (Integer'Wide_Wide_Value
-                                 (Default.Value.To_Wide_Wide_String))
-                            & ")),");
-                     end if;
-
-                  when Holder =>
-                     if Default.Is_Empty then
-                        raise Program_Error;
-
-                     else
-                        if Default = Unlimited_Image then
+                     when Holder =>
+                        if Default.Is_Empty then
                            raise Program_Error;
 
                         else
                            Unit.Add
                             (" ("
                                & Types_Package
-                               & ".M_Unlimited_Natural_Holder, (False, (False,"
+                               & ".M_Integer_Holder, (False,"
                                & Integer'Wide_Wide_Image
                                   (Integer'Wide_Wide_Value
                                     (Default.Value.To_Wide_Wide_String))
-                               & "))),");
+                               & ")),");
                         end if;
-                     end if;
 
-                  when Set =>
-                     raise Program_Error;
+                     when Set =>
+                        raise Program_Error;
 
-                  when Ordered_Set =>
-                     raise Program_Error;
+                     when Ordered_Set =>
+                        raise Program_Error;
 
-                  when Bag =>
-                     raise Program_Error;
+                     when Bag =>
+                        raise Program_Error;
 
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
 
-            else
-               raise Program_Error;
+               elsif Attribute_Type.Get_Name = String_Name then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           Unit.Context.Add (+"Matreshka.Internals.Strings");
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_String, "
+                               & "Matreshka.Internals.Strings.Shared_Empty"
+                               & "'Access),");
+
+                        else
+                           raise Program_Error;
+   --                        if Boolean'Wide_Wide_Value
+   --                            (Default.Value.To_Wide_Wide_String)
+   --                        then
+   --                           Put (" (M_Boolean, True),");
+   --
+   --                        else
+   --                           Put (" (M_Boolean, False),");
+   --                        end if;
+                        end if;
+
+                     when Holder =>
+                        if Default.Is_Empty then
+                           Unit.Add
+                            (" (" & Types_Package & ".M_String, null),");
+
+                        else
+                           raise Program_Error;
+   --                        if Boolean'Wide_Wide_Value
+   --                            (Default.Value.To_Wide_Wide_String)
+   --                        then
+   --                           Put (" (M_Boolean, True),");
+   --
+   --                        else
+   --                           Put (" (M_Boolean, False),");
+   --                        end if;
+                        end if;
+
+                     when Set | Ordered_Set | Bag | Sequence =>
+                        Unit.Add
+                         (" ("
+                            & Types_Package
+                            & ".M_Collection_Of_String, 0),");
+                  end case;
+
+               elsif Attribute_Type.Get_Name = Real_Name then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           Unit.Add (" (" & Types_Package & ".M_Real, 0.0),");
+
+                        else
+   --                        if Boolean'Wide_Wide_Value
+   --                            (Default.Value.To_Wide_Wide_String)
+   --                        then
+   --                           Put (" (M_Boolean, True),");
+   --
+   --                        else
+   --                           Put (" (M_Boolean, False),");
+   --                        end if;
+                           raise Program_Error;
+                        end if;
+
+                     when Holder =>
+   --                     if Default.Is_Empty then
+                           raise Program_Error;
+   --
+   --                     else
+   --                        if Default = Unlimited_Image then
+   --                           raise Program_Error;
+   --
+   --                        else
+   --                           New_Line;
+   --                           Set_Col (22);
+   --                           Put
+   --                            (" (M_Unlimited_Natural_Holder, (False, (False,"
+   --                               & Integer'Wide_Wide_Image
+   --                                  (Integer'Wide_Wide_Value
+   --                                    (Default.Value.To_Wide_Wide_String))
+   --                               & "))),");
+   --                        end if;
+   --                     end if;
+
+                     when Set =>
+                        raise Program_Error;
+
+                     when Ordered_Set =>
+                        raise Program_Error;
+
+                     when Bag =>
+                        raise Program_Error;
+
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
+
+               elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
+                  case Representation (Attribute) is
+                     when Value =>
+                        if Default.Is_Empty then
+                           --  There is no default value specified, initialize
+                           --  to some valid value.
+
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Unlimited_Natural, (False, 0)),");
+
+                        else
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Unlimited_Natural, (False,"
+                               & Integer'Wide_Wide_Image
+                                  (Integer'Wide_Wide_Value
+                                    (Default.Value.To_Wide_Wide_String))
+                               & ")),");
+                        end if;
+
+                     when Holder =>
+                        if Default.Is_Empty then
+                           raise Program_Error;
+
+                        else
+                           if Default = Unlimited_Image then
+                              raise Program_Error;
+
+                           else
+                              Unit.Add
+                               (" ("
+                                  & Types_Package
+                                  & ".M_Unlimited_Natural_Holder,"
+                                  & " (False, (False,"
+                                  & Integer'Wide_Wide_Image
+                                     (Integer'Wide_Wide_Value
+                                       (Default.Value.To_Wide_Wide_String))
+                                  & "))),");
+                           end if;
+                        end if;
+
+                     when Set =>
+                        raise Program_Error;
+
+                     when Ordered_Set =>
+                        raise Program_Error;
+
+                     when Bag =>
+                        raise Program_Error;
+
+                     when Sequence =>
+                        raise Program_Error;
+                  end case;
+
+               else
+                  raise Program_Error;
+               end if;
+
+               Unit.Add_Line;
+               Unit.Add_Line
+                ("                       --  " & Attribute.Get_Name.Value);
+
             end if;
 
-            Unit.Add_Line;
-            Unit.Add_Line
-             ("                       --  " & Attribute.Get_Name.Value);
+            CMOF_Property_Sets.Next (Attribute_Position);
          end loop;
 
          Unit.Add_Line
@@ -577,52 +614,74 @@ package body Generator.Constructors is
           (+"        AMF.Internals.Element_Collections.Allocate_Collections ("
               & Trim
                  (Ada.Containers.Count_Type'Wide_Wide_Image
-                   (Class.Collection_Index.Length),
+                   (Metamodel_Info.Attribute_Collection.Length),
                   Both)
               & "));");
 
-         for J in 1 .. Natural (Class.Collection_Index.Length) loop
-            Attribute := Class.Collection_Index.Element (J);
+         Attribute_Position := Class.All_Attributes.First;
 
-            Unit.Add_Line;
-            Unit.Add_Line ("      --  " & Attribute.Get_Name.Value);
-            Unit.Add_Line;
+         while CMOF_Property_Sets.Has_Element (Attribute_Position) loop
+            Attribute          :=
+              CMOF_Property_Sets.Element (Attribute_Position);
+            Original_Attribute := Attribute;
+            Redefined          := Original_Attribute.Get_Redefined_Property;
 
-            case Representation (Attribute) is
-               when Value =>
-                  raise Program_Error;
+            --  Unwind to original property definition.
 
-               when Holder =>
-                  raise Program_Error;
+            while not Redefined.Is_Empty loop
+               Original_Attribute := Redefined.Element (1);
+               Redefined := Original_Attribute.Get_Redefined_Property;
+            end loop;
 
-               when Set =>
-                  Unit.Add_Line
-                   (+"      "
-                       & "AMF.Internals.Element_Collections"
-                       & ".Initialize_Set_Collection");
+            if Attribute = Original_Attribute
+              and then Metamodel_Info.Attribute_Collection.Contains (Attribute)
+            then
+               Unit.Add_Line;
+               Unit.Add_Line ("      --  " & Attribute.Get_Name.Value);
+               Unit.Add_Line;
 
-               when Ordered_Set =>
-                  Unit.Add_Line
-                   (+"      "
-                       & "AMF.Internals.Element_Collections"
-                       & ".Initialize_Ordered_Set_Collection");
+               case Representation (Attribute) is
+                  when Value =>
+                     raise Program_Error;
 
-               when Bag =>
-                  raise Program_Error;
+                  when Holder =>
+                     raise Program_Error;
 
-               when Sequence =>
-                  raise Program_Error;
-            end case;
+                  when Set =>
+                     Unit.Add_Line
+                      (+"      "
+                          & "AMF.Internals.Element_Collections"
+                          & ".Initialize_Set_Collection");
 
-            Unit.Add_Line (+"       (Self,");
-            Unit.Context.Add (Property_Constant_Package_Name (Attribute));
-            Unit.Add_Line
-             ("        " & Property_Constant_Qualified_Name (Attribute) & ",");
-            Unit.Add_Line
-             ("        "
-                & Metamodel_Name
-                & "_Element_Table.Table (Self).Member (0).Collection +"
-                & Integer'Wide_Wide_Image (J) & ");");
+                  when Ordered_Set =>
+                     Unit.Add_Line
+                      (+"      "
+                          & "AMF.Internals.Element_Collections"
+                          & ".Initialize_Ordered_Set_Collection");
+
+                  when Bag =>
+                     raise Program_Error;
+
+                  when Sequence =>
+                     raise Program_Error;
+               end case;
+
+               Unit.Add_Line (+"       (Self,");
+               Unit.Context.Add (Property_Constant_Package_Name (Attribute));
+               Unit.Add_Line
+                ("        "
+                   & Property_Constant_Qualified_Name (Attribute)
+                   & ",");
+               Unit.Add_Line
+                ("        "
+                   & Metamodel_Name
+                   & "_Element_Table.Table (Self).Member (0).Collection +"
+                   & Integer'Wide_Wide_Image
+                      (Metamodel_Info.Attribute_Collection.Element (Attribute))
+                   & ");");
+            end if;
+
+            CMOF_Property_Sets.Next (Attribute_Position);
          end loop;
 
          Unit.Add_Line;

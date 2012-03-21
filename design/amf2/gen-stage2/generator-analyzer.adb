@@ -41,6 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+with Ada.Strings.Hash;
+with System.Address_Image;
+
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
@@ -52,6 +56,7 @@ with AMF.Elements.Collections;
 with AMF.Extents.Collections;
 with AMF.Facility;
 
+with Generator.Attribute_Mapping;
 with Generator.Names;
 
 package body Generator.Analyzer is
@@ -76,6 +81,11 @@ package body Generator.Analyzer is
     (Info   : not null Metamodel_Information_Access;
      Extent : not null AMF.Extents.Extent_Access);
    --  Assigns numbers to each element and to each string.
+
+   procedure Assign_Member_Numbers
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access);
+   --  Assign member numbers for attributes of elements.
 
    -------------------
    -- Analyze_Model --
@@ -127,6 +137,10 @@ package body Generator.Analyzer is
       --  Assign numbers for metamodel's elements.
 
       Assign_Element_Numbers (Info, AMF.Extents.Extent_Access (Extent));
+
+      --  Assign member's numbers for attributes.
+
+      Assign_Member_Numbers (Info, AMF.Extents.Extent_Access (Extent));
 
       --  Process all used extents.
 
@@ -312,6 +326,174 @@ package body Generator.Analyzer is
       end if;
    end Assign_Element_Numbers;
 
+   ---------------------------
+   -- Assign_Member_Numbers --
+   ---------------------------
+
+   procedure Assign_Member_Numbers
+    (Info   : not null Metamodel_Information_Access;
+     Extent : not null AMF.Extents.Extent_Access)
+   is
+      type Attribute_Group_Information is record
+         Index : Positive;
+      end record;
+
+      type Attribute_Group_Access is access all Attribute_Group_Information;
+
+      function Hash
+       (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type;
+
+      package Property_Attribute_Group_Maps is
+        new Ada.Containers.Hashed_Maps
+             (AMF.CMOF.Properties.CMOF_Property_Access,
+              Attribute_Group_Access,
+              Hash,
+              AMF.CMOF.Properties."=");
+
+      package Attribute_Group_Sets is
+        new Ada.Containers.Hashed_Sets
+             (Attribute_Group_Access, Hash, "=");
+
+      Attribute_Group   : Property_Attribute_Group_Maps.Map;
+      Member_Groups     : Attribute_Group_Sets.Set;
+      Collection_Groups : Attribute_Group_Sets.Set;
+
+      procedure Analyze_Class
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
+      --  Analyze superclasses and attributes of the specified class.
+
+      -------------------
+      -- Analyze_Class --
+      -------------------
+
+      procedure Analyze_Class
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+      is
+         Superclasses   : constant
+           AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+             := Class.Get_Super_Class;
+         Attributes     : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Class.Get_Owned_Attribute;
+         Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
+         Redefines      : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
+         Attribute_Info : Attribute_Group_Access;
+
+      begin
+         for J in 1 .. Superclasses.Length loop
+            Analyze_Class (Superclasses.Element (J));
+         end loop;
+
+         for J in 1 .. Attributes.Length loop
+            Attribute      := Attributes.Element (J);
+            Attribute_Info := null;
+
+            --  Attribute can be analyzed already, skip it then.
+
+            if not Attribute_Group.Contains (Attribute) then
+               Redefines := Attribute.Get_Redefined_Property;
+
+               if not Redefines.Is_Empty then
+                  --  Attribute redefines another one, use the same attribute
+                  --  information.
+
+                  Attribute_Info :=
+                    Attribute_Group.Element (Redefines.Element (1));
+
+               else
+                  --  Lookup for another analyzed attribute which is not
+                  --  distinguishable as Ada subprogram.
+
+                  declare
+                     Position        : Property_Attribute_Group_Maps.Cursor
+                       := Attribute_Group.First;
+                     Other_Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
+                     Other_Class     : AMF.CMOF.Classes.CMOF_Class_Access;
+
+                  begin
+                     while
+                       Property_Attribute_Group_Maps.Has_Element (Position)
+                     loop
+                        Other_Attribute :=
+                          Property_Attribute_Group_Maps.Key (Position);
+                        Other_Class := Other_Attribute.Get_Class;
+
+                        if not Attribute_Mapping.Is_Ada_Distinguishable
+                                (Attribute, Other_Attribute, Internal)
+                        then
+                           Attribute_Info :=
+                             Property_Attribute_Group_Maps.Element (Position);
+
+                           exit;
+                        end if;
+
+                        Property_Attribute_Group_Maps.Next (Position);
+                     end loop;
+                  end;
+               end if;
+
+               if Attribute_Info = null then
+                  if Use_Member_Slot (Attribute) then
+                     Attribute_Info :=
+                       new Attribute_Group_Information'
+                            (Index => Natural (Member_Groups.Length) + 1);
+                     Member_Groups.Insert (Attribute_Info);
+
+                  else
+                     Attribute_Info :=
+                       new Attribute_Group_Information'
+                            (Index => Natural (Collection_Groups.Length) + 1);
+                     Collection_Groups.Insert (Attribute_Info);
+                  end if;
+               end if;
+
+               Attribute_Group.Insert (Attribute, Attribute_Info);
+
+               if Use_Member_Slot (Attribute) then
+                  Info.Attribute_Member.Insert
+                   (Attribute, Attribute_Info.Index);
+
+               else
+                  Info.Attribute_Collection.Insert
+                   (Attribute, Attribute_Info.Index);
+               end if;
+            end if;
+         end loop;
+      end Analyze_Class;
+
+      ----------
+      -- Hash --
+      ----------
+
+      function Hash
+       (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type is
+      begin
+         return Ada.Strings.Hash (System.Address_Image (Item.all'Address));
+      end Hash;
+
+   begin
+      --  Group attributes by unique setter/getter subprogram.
+
+      declare
+         Position : CMOF_Element_Sets.Cursor := Info.Classes.First;
+
+      begin
+         while CMOF_Element_Sets.Has_Element (Position) loop
+            Analyze_Class
+             (AMF.CMOF.Classes.CMOF_Class_Access
+               (CMOF_Element_Sets.Element (Position)));
+
+            CMOF_Element_Sets.Next (Position);
+         end loop;
+      end;
+
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        "  total number of groups:"
+          & Ada.Containers.Count_Type'Wide_Wide_Image (Member_Groups.Length)
+          & Ada.Containers.Count_Type'Wide_Wide_Image (Collection_Groups.Length));
+   end Assign_Member_Numbers;
+
    -----------------------
    -- Classify_Elements --
    -----------------------
@@ -403,48 +585,6 @@ package body Generator.Analyzer is
 
             if not Info.All_Attributes.Contains (Attribute) then
                Info.All_Attributes.Insert (Attribute);
-
-               --  Assign slot or collection for attribute.
-
-               if Use_Member_Slot (Attribute) then
-                  --  Slot property.
-
-                  if Redefines.Is_Empty then
-                     --  Attribite doesn't redefine another attribute,
-                     --  assign slot for it.
-
-                     Slot := Slot + 1;
-                     Info.Slot.Insert (Attribute, Slot);
-                     Info.Slot_Index.Insert (Slot, Attribute);
-
-                  else
-                     --  Attribute redefines another attribute. use
-                     --  previously assigned slot for it.
-
-                     Info.Slot.Insert
-                      (Attribute, Info.Slot.Element (Redefines.Element (1)));
-                  end if;
-
-               else
-                  --  Collection of element property.
-
-                  if Redefines.Is_Empty then
-                     --  Attribute doesn't redefine another attribute,
-                     --  assign collection for it.
-
-                     Collection := Collection + 1;
-                     Info.Collection.Insert (Attribute, Collection);
-                     Info.Collection_Index.Insert (Collection, Attribute);
-
-                  else
-                     --  Attribute redefines another attribute. use
-                     --  previously assigned collection for it.
-
-                     Info.Collection.Insert
-                      (Attribute,
-                       Info.Collection.Element (Redefines.Element (1)));
-                  end if;
-               end if;
             end if;
          end loop;
       end Process_Class;
