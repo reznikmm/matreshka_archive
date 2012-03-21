@@ -56,7 +56,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.MOF_Types.E_Tag =>
-          (2      => 3,     --  Tag::element
+          (2      => 2,     --  Tag::element
            others => 0));
 
    MOF_Member_Offset : constant
@@ -65,9 +65,9 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.MOF_Types.E_Tag =>
-          (3      => 2,     --  Tag::name
+          (3      => 1,     --  Tag::name
            4      => 4,     --  Tag::tagOwner
-           5      => 3,     --  Tag::value
+           5      => 2,     --  Tag::value
            others => 0));
 
    UML_Collection_Offset : constant
@@ -78,7 +78,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
           (others => 0),
          AMF.Internals.Tables.MOF_Types.E_Tag =>
           (347    => 1,     --  Element::ownedComment
-           348    => 2,     --  Element::ownedElement
+           348    => 3,     --  Element::ownedElement
            others => 0));
 
    UML_Member_Offset : constant
@@ -87,7 +87,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.MOF_Types.E_Tag =>
-          (585    => 1,     --  Element::owner
+          (585    => 3,     --  Element::owner
            others => 0));
 
 end AMF.Internals.Tables.MOF_Attribute_Mappings;

@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.MOF.Tags;
 
 package AMF.Visitors.MOF_Iterators is
@@ -53,6 +55,6 @@ package AMF.Visitors.MOF_Iterators is
     (Self    : in out MOF_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.MOF.Tags.MOF_Tag_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
 end AMF.Visitors.MOF_Iterators;

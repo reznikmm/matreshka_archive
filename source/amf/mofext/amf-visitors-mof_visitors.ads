@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.MOF.Tags;
 
 package AMF.Visitors.MOF_Visitors is
@@ -52,11 +54,11 @@ package AMF.Visitors.MOF_Visitors is
    not overriding procedure Enter_Tag
     (Self    : in out MOF_Visitor;
      Element : not null AMF.MOF.Tags.MOF_Tag_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
    not overriding procedure Leave_Tag
     (Self    : in out MOF_Visitor;
      Element : not null AMF.MOF.Tags.MOF_Tag_Access;
-     Control : in out Traverse_Control) is null;
+     Control : in out AMF.Visitors.Traverse_Control) is null;
 
 end AMF.Visitors.MOF_Visitors;
