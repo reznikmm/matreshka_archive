@@ -57,13 +57,35 @@ package AMF.MOF.Tags.Collections is
    type Set_Of_MOF_Tag is
      new MOF_Tag_Collections.Set with null record;
 
+   Empty_Set_Of_MOF_Tag : constant Set_Of_MOF_Tag;
+
    type Ordered_Set_Of_MOF_Tag is
      new MOF_Tag_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_MOF_Tag : constant Ordered_Set_Of_MOF_Tag;
 
    type Bag_Of_MOF_Tag is
      new MOF_Tag_Collections.Bag with null record;
 
+   Empty_Bag_Of_MOF_Tag : constant Bag_Of_MOF_Tag;
+
    type Sequence_Of_MOF_Tag is
      new MOF_Tag_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_MOF_Tag : constant Sequence_Of_MOF_Tag;
+
+private
+
+   Empty_Set_Of_MOF_Tag : constant Set_Of_MOF_Tag
+     := (MOF_Tag_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_MOF_Tag : constant Ordered_Set_Of_MOF_Tag
+     := (MOF_Tag_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_MOF_Tag : constant Bag_Of_MOF_Tag
+     := (MOF_Tag_Collections.Bag with null record);
+
+   Empty_Sequence_Of_MOF_Tag : constant Sequence_Of_MOF_Tag
+     := (MOF_Tag_Collections.Sequence with null record);
 
 end AMF.MOF.Tags.Collections;
