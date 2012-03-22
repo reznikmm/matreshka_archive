@@ -45,5 +45,5 @@
 ------------------------------------------------------------------------------
 with AMF.Elements.Generic_Hash;
 
-function AMF.CMOF.Elements.Hash is
-  new AMF.Elements.Generic_Hash (CMOF_Element, CMOF_Element_Access);
+function AMF.CMOF.Value_Specifications.Hash is
+  new AMF.Elements.Generic_Hash (CMOF_Value_Specification, CMOF_Value_Specification_Access);

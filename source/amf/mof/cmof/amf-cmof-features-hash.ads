@@ -41,19 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.CMOF_Elements;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements.Generic_Hash;
 
-function AMF.CMOF.Elements.Hash
- (Item : AMF.CMOF.Elements.CMOF_Element_Access)
-    return Ada.Containers.Hash_Type is
-begin
-   if Item = null then
-      return 0;
-
-   else
-      return
-        Ada.Containers.Hash_Type
-         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-           (Item.all).Element);
-   end if;
-end AMF.CMOF.Elements.Hash;
+function AMF.CMOF.Features.Hash is
+  new AMF.Elements.Generic_Hash (CMOF_Feature, CMOF_Feature_Access);
