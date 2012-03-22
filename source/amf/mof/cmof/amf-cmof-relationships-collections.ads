@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.CMOF.Relationships.Collections is
    type Set_Of_CMOF_Relationship is
      new CMOF_Relationship_Collections.Set with null record;
 
+   Empty_Set_Of_CMOF_Relationship : constant Set_Of_CMOF_Relationship;
+
    type Ordered_Set_Of_CMOF_Relationship is
      new CMOF_Relationship_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_CMOF_Relationship : constant Ordered_Set_Of_CMOF_Relationship;
 
    type Bag_Of_CMOF_Relationship is
      new CMOF_Relationship_Collections.Bag with null record;
 
+   Empty_Bag_Of_CMOF_Relationship : constant Bag_Of_CMOF_Relationship;
+
    type Sequence_Of_CMOF_Relationship is
      new CMOF_Relationship_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_CMOF_Relationship : constant Sequence_Of_CMOF_Relationship;
+
+private
+
+   Empty_Set_Of_CMOF_Relationship : constant Set_Of_CMOF_Relationship
+     := (CMOF_Relationship_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_CMOF_Relationship : constant Ordered_Set_Of_CMOF_Relationship
+     := (CMOF_Relationship_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_CMOF_Relationship : constant Bag_Of_CMOF_Relationship
+     := (CMOF_Relationship_Collections.Bag with null record);
+
+   Empty_Sequence_Of_CMOF_Relationship : constant Sequence_Of_CMOF_Relationship
+     := (CMOF_Relationship_Collections.Sequence with null record);
 
 end AMF.CMOF.Relationships.Collections;

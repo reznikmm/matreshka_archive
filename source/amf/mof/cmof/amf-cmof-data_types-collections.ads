@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.CMOF.Data_Types.Collections is
    type Set_Of_CMOF_Data_Type is
      new CMOF_Data_Type_Collections.Set with null record;
 
+   Empty_Set_Of_CMOF_Data_Type : constant Set_Of_CMOF_Data_Type;
+
    type Ordered_Set_Of_CMOF_Data_Type is
      new CMOF_Data_Type_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_CMOF_Data_Type : constant Ordered_Set_Of_CMOF_Data_Type;
 
    type Bag_Of_CMOF_Data_Type is
      new CMOF_Data_Type_Collections.Bag with null record;
 
+   Empty_Bag_Of_CMOF_Data_Type : constant Bag_Of_CMOF_Data_Type;
+
    type Sequence_Of_CMOF_Data_Type is
      new CMOF_Data_Type_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_CMOF_Data_Type : constant Sequence_Of_CMOF_Data_Type;
+
+private
+
+   Empty_Set_Of_CMOF_Data_Type : constant Set_Of_CMOF_Data_Type
+     := (CMOF_Data_Type_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_CMOF_Data_Type : constant Ordered_Set_Of_CMOF_Data_Type
+     := (CMOF_Data_Type_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_CMOF_Data_Type : constant Bag_Of_CMOF_Data_Type
+     := (CMOF_Data_Type_Collections.Bag with null record);
+
+   Empty_Sequence_Of_CMOF_Data_Type : constant Sequence_Of_CMOF_Data_Type
+     := (CMOF_Data_Type_Collections.Sequence with null record);
 
 end AMF.CMOF.Data_Types.Collections;
