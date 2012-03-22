@@ -74,13 +74,13 @@ package body AMF.Internals.Tables.MOF_Constructors is
           new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.MOF_Types.M_None),
-          3      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          2      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  name
-          4      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
+          1      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
                        --  tagOwner
-          1      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          3      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  value
           others => (Kind => AMF.Internals.Tables.MOF_Types.M_None)));
       MOF_Element_Table.Table (Self).Member (0) :=
@@ -92,21 +92,21 @@ package body AMF.Internals.Tables.MOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 2);
+        MOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        MOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 1);
+        MOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Tag;
