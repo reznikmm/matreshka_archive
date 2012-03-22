@@ -44,6 +44,7 @@
 with Ada.Unchecked_Deallocation;
 
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
 
 package body AMF.Internals.Collections.Elements.Proxies is
@@ -57,7 +58,8 @@ package body AMF.Internals.Collections.Elements.Proxies is
      Item : not null AMF.Elements.Element_Access) is
    begin
       AMF.Internals.Element_Collections.Add
-       (Self.Collection, AMF.Internals.Helpers.To_Element (Item));
+       (Self.Collection,
+        AMF.Internals.Elements.Element_Base'Class (Item.all).Element);
    end Add;
 
    -----------
