@@ -97,6 +97,10 @@ procedure Gen_API is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Generates collections package.
 
+   procedure Generate_Hash
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
+   --  Generates hash function.
+
    procedure Generate_Attribute_Specification
     (Unit            : in out Generator.Units.Unit;
      Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
@@ -817,6 +821,36 @@ procedure Gen_API is
       Unit.Add_Line ("end " & Package_Name & ".Collections;");
       Unit.Put;
    end Generate_Collections;
+
+   -------------------
+   -- Generate_Hash --
+   -------------------
+
+   procedure Generate_Hash
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+   is
+      Package_Name  : constant League.Strings.Universal_String
+        := Ada_API_Package_Name (Class);
+      Type_Name     : constant League.Strings.Universal_String
+        := Ada_API_Type_Name (Class);
+      Unit          : Generator.Units.Unit;
+
+   begin
+      Unit.Add_Unit_Header
+       (Integer'Max (2011, Generator.First_Year),
+        Integer'Max (2012, Generator.Last_Year));
+
+      Unit.Context.Add (+"AMF.Elements.Generic_Hash");
+      Unit.Add_Line;
+      Unit.Add_Line ("function " & Package_Name & ".Hash is");
+      Unit.Add_Line
+       ("  new AMF.Elements.Generic_Hash ("
+          & Type_Name
+          & ", "
+          & Type_Name
+          & "_Access);");
+      Unit.Put;
+   end Generate_Hash;
 
    ---------------------------------------
    -- Generate_Operation_Implementation --
@@ -1937,6 +1971,8 @@ begin
             Generate_Class
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
             Generate_Collections
+             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
+            Generate_Hash
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
          end if;
 
