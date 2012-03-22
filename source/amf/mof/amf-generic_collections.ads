@@ -45,7 +45,7 @@ private with Ada.Finalization;
 
 with League.Holders;
 
-with AMF.Internals.Collections.Elements.Containers;
+with AMF.Internals.Collections.Elements;
 
 generic
    type Abstract_Element is limited interface;
@@ -56,14 +56,24 @@ package AMF.Generic_Collections is
    pragma Preelaborate;
 
    type Collection is abstract tagged private;
+   pragma Preelaborable_Initialization (Collection);
 
    type Set is new Collection with private;
+   pragma Preelaborable_Initialization (Set);
 
    type Ordered_Set is new Collection with private;
+   pragma Preelaborable_Initialization (Ordered_Set);
 
    type Bag is new Collection with private;
+   pragma Preelaborable_Initialization (Bag);
 
    type Sequence is new Collection with private;
+   pragma Preelaborable_Initialization (Sequence);
+
+   Empty_Set         : constant Set;
+   Empty_Ordered_Set : constant Ordered_Set;
+   Empty_Bag         : constant Bag;
+   Empty_Sequence    : constant Sequence;
 
    --  XXX These subprograms must be reviewed.
 
@@ -76,7 +86,8 @@ package AMF.Generic_Collections is
 
 --   procedure Add (Self : Collection'Class; Item : not null Element_Access);
    procedure Add
-    (Self : Collection'Class; Item : not null access Abstract_Element'Class);
+    (Self : in out Collection'Class;
+     Item : not null access Abstract_Element'Class);
 
    ----------------------
    --  OCL Operations  --
@@ -101,50 +112,87 @@ package AMF.Generic_Collections is
    --  implementation.
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Set;
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Set;
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Ordered_Set;
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Ordered_Set;
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Bag;
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Bag;
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Sequence;
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Sequence;
 
    function Internal
     (Self : Collection'Class)
-       return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
+       return
+         AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
 
    package Internals is
 
-      function To_Holder (Item : Collection'Class) return League.Holders.Holder;
-      --  Converts specified collection into holder of reflective collection type.
+      function To_Holder
+       (Item : Collection'Class) return League.Holders.Holder;
+      --  Converts specified collection into holder of reflective collection
+      --  type.
 
    end Internals;
 
 private
 
+   ----------------
+   -- Collection --
+   ----------------
+
    type Collection is
      abstract new Ada.Finalization.Controlled with record
-      Collection : AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
-        := new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
+      Collection :
+        AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
    end record;
 
    overriding procedure Adjust (Self : in out Collection);
 
    overriding procedure Finalize (Self : in out Collection);
 
+   ---------
+   -- Set --
+   ---------
+
    type Set is new Collection with null record;
+
+   Empty_Set : constant Set := (Ada.Finalization.Controlled with others => <>);
+
+   -----------------
+   -- Ordered_Set --
+   -----------------
 
    type Ordered_Set is new Collection with null record;
 
+   Empty_Ordered_Set : constant Ordered_Set
+     := (Ada.Finalization.Controlled with others => <>);
+
+   ---------
+   -- Bag --
+   ---------
+
    type Bag is new Collection with null record;
 
+   Empty_Bag : constant Bag := (Ada.Finalization.Controlled with others => <>);
+
+   --------------
+   -- Sequence --
+   --------------
+
    type Sequence is new Collection with null record;
+
+   Empty_Sequence : constant Sequence
+     := (Ada.Finalization.Controlled with others => <>);
 
 end AMF.Generic_Collections;

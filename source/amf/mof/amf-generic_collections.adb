@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Holders.Reflective_Collections;
+with AMF.Internals.Collections.Elements.Containers;
 with AMF.Reflective_Collections.Internals;
 
 package body AMF.Generic_Collections is
@@ -55,8 +56,14 @@ package body AMF.Generic_Collections is
 
 --   procedure Add (Self : Collection'Class; Item : not null Element_Access) is
    procedure Add
-    (Self : Collection'Class; Item : not null access Abstract_Element'Class) is
+    (Self : in out Collection'Class;
+     Item : not null access Abstract_Element'Class) is
    begin
+      if Self.Collection = null then
+         Self.Collection :=
+           new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
+      end if;
+
       Self.Collection.Add (AMF.Elements.Element_Access (Item));
    end Add;
 
@@ -66,7 +73,9 @@ package body AMF.Generic_Collections is
 
    overriding procedure Adjust (Self : in out Collection) is
    begin
-      Self.Collection.Reference;
+      if Self.Collection /= null then
+         Self.Collection.Reference;
+      end if;
    end Adjust;
 
    -------------
@@ -77,9 +86,14 @@ package body AMF.Generic_Collections is
     (Self  : Collection'Class;
      Index : Positive) return not null Element_Access is
    begin
-      return
-        Element_Access
-         (AMF.Elements.Element_Access'(Self.Collection.Element (Index)));
+      if Self.Collection = null then
+         raise Constraint_Error with "Index is out of range";
+
+      else
+         return
+           Element_Access
+            (AMF.Elements.Element_Access'(Self.Collection.Element (Index)));
+      end if;
    end Element;
 
    --------------
@@ -88,7 +102,8 @@ package body AMF.Generic_Collections is
 
    function Excludes
     (Self    : Collection'Class;
-     Element : not null access constant Abstract_Element'Class) return Boolean is
+     Element : not null access constant Abstract_Element'Class)
+       return Boolean is
    begin
       for J in 1 .. Self.Length loop
          if Self.Element (J) = Element then
@@ -117,7 +132,8 @@ package body AMF.Generic_Collections is
 
    function Includes
     (Self    : Collection'Class;
-     Element : not null access constant Abstract_Element'Class) return Boolean is
+     Element : not null access constant Abstract_Element'Class)
+       return Boolean is
    begin
       for J in 1 .. Self.Length loop
          if Self.Element (J) = Element then
@@ -134,7 +150,8 @@ package body AMF.Generic_Collections is
 
    function Internal
     (Self : Collection'Class)
-       return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access is
+       return
+         AMF.Internals.Collections.Elements.Shared_Element_Collection_Access is
    begin
       return Self.Collection;
    end Internal;
@@ -149,7 +166,8 @@ package body AMF.Generic_Collections is
       -- To_Holder --
       ---------------
 
-      function To_Holder (Item : Collection'Class) return League.Holders.Holder is
+      function To_Holder
+       (Item : Collection'Class) return League.Holders.Holder is
       begin
          return
            AMF.Holders.Reflective_Collections.To_Holder
@@ -203,8 +221,9 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Bag is
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Bag is
    begin
       return Bag'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;
@@ -214,8 +233,9 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Ordered_Set is
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Ordered_Set is
    begin
       return Ordered_Set'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;
@@ -225,8 +245,9 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Sequence is
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Sequence is
    begin
       return Sequence'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;
@@ -236,8 +257,9 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return Set is
+    (Item : not null
+       AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
+         return Set is
    begin
       return Set'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;
