@@ -714,47 +714,107 @@ procedure Gen_API is
    procedure Generate_Collections
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
-      Package_Name : constant Wide_Wide_String
-        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
-      Type_Name    : constant Wide_Wide_String
-        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
-      Unit         : Generator.Units.Unit;
+      Package_Name  : constant League.Strings.Universal_String
+        := Ada_API_Package_Name (Class);
+      Type_Name     : constant League.Strings.Universal_String
+        := Ada_API_Type_Name (Class);
+      Instance_Name : constant League.Strings.Universal_String
+        := Type_Name & "_Collections";
+      Unit          : Generator.Units.Unit;
 
    begin
       Unit.Add_Unit_Header
        (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2011, Generator.Last_Year));
+        Integer'Max (2012, Generator.Last_Year));
 
       Unit.Context.Add (+"AMF.Generic_Collections");
       Unit.Add_Line;
-      Unit.Add_Line (+"package " & Package_Name & ".Collections is");
+      Unit.Add_Line ("package " & Package_Name & ".Collections is");
       Unit.Add_Line;
       Unit.Add_Line (+"   pragma Preelaborate;");
       Unit.Add_Line;
-      Unit.Add_Line (+"   package " & Type_Name & "_Collections is");
+      Unit.Add_Line ("   package " & Instance_Name & " is");
       Unit.Add_Line (+"     new AMF.Generic_Collections");
-      Unit.Add_Line (+"          (" & Type_Name & ",");
-      Unit.Add_Line (+"           " & Type_Name & "_Access);");
+      Unit.Add_Line ("          (" & Type_Name & ",");
+      Unit.Add_Line ("           " & Type_Name & "_Access);");
       Unit.Add_Line;
-      Unit.Add_Line (+"   type Set_Of_" & Type_Name & " is");
+      Unit.Add_Line ("   type Set_Of_" & Type_Name & " is");
       Unit.Add_Line
-       (+"     new " & Type_Name & "_Collections.Set with null record;");
+       ("     new " & Instance_Name & ".Set with null record;");
       Unit.Add_Line;
-      Unit.Add_Line (+"   type Ordered_Set_Of_" & Type_Name & " is");
       Unit.Add_Line
-       (+"     new "
-           & Type_Name
-           & "_Collections.Ordered_Set with null record;");
+       ("   Empty_Set_Of_"
+          & Type_Name
+          & " : constant Set_Of_"
+          & Type_Name
+          & ';');
       Unit.Add_Line;
-      Unit.Add_Line (+"   type Bag_Of_" & Type_Name & " is");
+      Unit.Add_Line ("   type Ordered_Set_Of_" & Type_Name & " is");
       Unit.Add_Line
-       (+"     new " & Type_Name & "_Collections.Bag with null record;");
+       ("     new " & Instance_Name & ".Ordered_Set with null record;");
       Unit.Add_Line;
-      Unit.Add_Line (+"   type Sequence_Of_" & Type_Name & " is");
       Unit.Add_Line
-       (+"     new " & Type_Name & "_Collections.Sequence with null record;");
+       ("   Empty_Ordered_Set_Of_"
+          & Type_Name
+          & " : constant Ordered_Set_Of_"
+          & Type_Name
+          & ';');
       Unit.Add_Line;
-      Unit.Add_Line (+"end " & Package_Name & ".Collections;");
+      Unit.Add_Line ("   type Bag_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       ("     new " & Instance_Name & ".Bag with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Bag_Of_"
+          & Type_Name
+          & " : constant Bag_Of_"
+          & Type_Name
+          & ';');
+      Unit.Add_Line;
+      Unit.Add_Line ("   type Sequence_Of_" & Type_Name & " is");
+      Unit.Add_Line
+       ("     new " & Instance_Name & ".Sequence with null record;");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Sequence_Of_"
+          & Type_Name
+          & " : constant Sequence_Of_"
+          & Type_Name
+          & ';');
+      Unit.Add_Line;
+      Unit.Add_Line (+"private");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Set_Of_"
+          & Type_Name
+          & " : constant Set_Of_"
+          & Type_Name);
+      Unit.Add_Line ("     := (" & Instance_Name & ".Set with null record);");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Ordered_Set_Of_"
+          & Type_Name
+          & " : constant Ordered_Set_Of_"
+          & Type_Name);
+      Unit.Add_Line
+       ("     := (" & Instance_Name & ".Ordered_Set with null record);");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Bag_Of_"
+          & Type_Name
+          & " : constant Bag_Of_"
+          & Type_Name);
+      Unit.Add_Line ("     := (" & Instance_Name & ".Bag with null record);");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   Empty_Sequence_Of_"
+          & Type_Name
+          & " : constant Sequence_Of_"
+          & Type_Name);
+      Unit.Add_Line
+       ("     := (" & Instance_Name & ".Sequence with null record);");
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ".Collections;");
       Unit.Put;
    end Generate_Collections;
 
