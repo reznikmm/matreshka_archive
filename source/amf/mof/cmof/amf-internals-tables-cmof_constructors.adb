@@ -97,7 +97,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isFinalSpecialization
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -105,7 +105,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -117,70 +117,70 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  endType
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_End_Type,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 17);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  memberEnd
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Member_End,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  navigableOwnedEnd
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Navigable_Owned_End,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  ownedComment
 
@@ -201,28 +201,28 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Owned_End,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  relatedElement
 
@@ -258,7 +258,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isFinalSpecialization
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -266,7 +266,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -278,49 +278,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
@@ -348,7 +348,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
@@ -362,14 +362,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Class;
@@ -447,7 +447,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  context
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -455,7 +455,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  specification
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -508,7 +508,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isFinalSpecialization
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -516,7 +516,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -528,49 +528,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
@@ -598,7 +598,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
@@ -612,14 +612,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Data_Type;
@@ -642,15 +642,15 @@ package body AMF.Internals.Tables.CMOF_Constructors is
           new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'(Id => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
-          4      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
+          5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  alias
-          5      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  importedElement
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  importingNamespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Kind, AMF.CMOF.Public_Visibility),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -717,7 +717,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isFinalSpecialization
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -725,7 +725,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -737,49 +737,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
@@ -814,7 +814,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
@@ -828,14 +828,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Enumeration;
@@ -862,13 +862,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  enumeration
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -912,7 +912,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -920,7 +920,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -975,7 +975,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  language
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -983,7 +983,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1025,25 +1025,25 @@ package body AMF.Internals.Tables.CMOF_Constructors is
           new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'(Id => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
-          13     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          14     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  bodyCondition
-          12     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  class
           11     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  datatype
-          15     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          12     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isLeaf
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isOrdered
-          14     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          15     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isQuery
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          7      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -1051,9 +1051,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          8      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          7      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1065,7 +1065,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  featuringClassifier
 
@@ -1079,14 +1079,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
@@ -1107,49 +1107,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedParameter
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Owned_Parameter,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  postcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Postcondition,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  precondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Precondition,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  raisedException
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Raised_Exception,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  redefinedElement
 
@@ -1195,7 +1195,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           7      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  nestingPackage
@@ -1205,7 +1205,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  uri
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1217,21 +1217,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  nestedPackage
 
@@ -1259,14 +1259,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  ownedType
 
@@ -1280,21 +1280,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  packageMerge
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Package_Merge,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  packagedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       return Self;
    end Create_Package;
@@ -1319,11 +1319,11 @@ package body AMF.Internals.Tables.CMOF_Constructors is
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  importedPackage
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  importingNamespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Kind, AMF.CMOF.Public_Visibility),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1386,11 +1386,11 @@ package body AMF.Internals.Tables.CMOF_Constructors is
           new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'(Id => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  mergedPackage
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  receivingPackage
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1453,21 +1453,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
           new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'(Id => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
-          13     => (AMF.Internals.Tables.CMOF_Types.M_String, null),
+          15     => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  default
-          12     => (AMF.Internals.Tables.CMOF_Types.M_Parameter_Direction_Kind, AMF.CMOF.In_Parameter),
+          11     => (AMF.Internals.Tables.CMOF_Types.M_Parameter_Direction_Kind, AMF.CMOF.In_Parameter),
                        --  direction
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isOrdered
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          7      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
-          11     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  operation
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -1475,9 +1475,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          8      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          7      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1523,7 +1523,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isFinalSpecialization
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -1531,7 +1531,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1543,49 +1543,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
@@ -1613,7 +1613,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
@@ -1627,14 +1627,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
-        CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
+        CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Primitive_Type;
@@ -1659,33 +1659,33 @@ package body AMF.Internals.Tables.CMOF_Constructors is
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           17     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  association
-          12     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  class
           11     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  datatype
-          13     => (AMF.Internals.Tables.CMOF_Types.M_String, null),
+          15     => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  default
-          21     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isComposite
           14     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isDerived
           19     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isDerivedUnion
-          15     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          12     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isLeaf
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isOrdered
-          16     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
+          21     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
                        --  isReadOnly
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          7      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  namespace
-          20     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          16     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  opposite
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -1695,9 +1695,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          8      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          7      => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          4      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1778,9 +1778,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  name
           1      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  tagOwner
-          4      => (AMF.Internals.Tables.CMOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  value
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=

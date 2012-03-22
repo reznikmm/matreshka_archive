@@ -57,28 +57,28 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --     14  Association::isDerived
    --     6  Classifier::isFinalSpecialization
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     7  Type::package
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     11  Classifier::attribute
-   --     3  Namespace::elementImport
-   --     17  Association::endType
-   --     12  Classifier::feature
-   --     9  Classifier::general
-   --     8  Namespace::importedMember
-   --     10  Classifier::inheritedMember
-   --     6  Namespace::member
-   --     14  Association::memberEnd
-   --     15  Association::navigableOwnedEnd
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --     14  Association::endType
+   --     10  Classifier::feature
+   --     11  Classifier::general
+   --     3  Namespace::importedMember
+   --     12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --     15  Association::memberEnd
+   --     16  Association::navigableOwnedEnd
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     16  Association::ownedEnd
-   --     5  Namespace::ownedMember
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
+   --     17  Association::ownedEnd
+   --     6  Namespace::ownedMember
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
    --     13  Relationship::relatedElement
 
    --  Class
@@ -86,27 +86,27 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --     8  Class::isAbstract
    --     6  Classifier::isFinalSpecialization
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     7  Type::package
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     11  Classifier::attribute
-   --     3  Namespace::elementImport
-   --     12  Classifier::feature
-   --     9  Classifier::general
-   --     8  Namespace::importedMember
-   --     10  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --     10  Classifier::feature
+   --     11  Classifier::general
+   --     3  Namespace::importedMember
+   --     12  Classifier::inheritedMember
+   --     7  Namespace::member
    --     13  Class::ownedAttribute
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     5  Namespace::ownedMember
+   --     6  Namespace::ownedMember
    --     14  Class::ownedOperation
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
-   --     9  Class::superClass
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+   --     11  Class::superClass
 
    --  Comment
    --
@@ -121,11 +121,11 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --
    --     7  Constraint::context
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  Constraint::specification
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
    --     3  Constraint::constrainedElement
    --     1  Element::ownedComment
@@ -135,34 +135,34 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --
    --     6  Classifier::isFinalSpecialization
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     7  Type::package
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     11  Classifier::attribute
-   --     3  Namespace::elementImport
-   --     12  Classifier::feature
-   --     9  Classifier::general
-   --     8  Namespace::importedMember
-   --     10  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --     10  Classifier::feature
+   --     11  Classifier::general
+   --     3  Namespace::importedMember
+   --     12  Classifier::inheritedMember
+   --     7  Namespace::member
    --     13  DataType::ownedAttribute
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     5  Namespace::ownedMember
+   --     6  Namespace::ownedMember
    --     14  DataType::ownedOperation
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
 
    --  ElementImport
    --
-   --     4  ElementImport::alias
-   --     5  ElementImport::importedElement
-   --     3  ElementImport::importingNamespace
+   --     5  ElementImport::alias
+   --     4  ElementImport::importedElement
+   --     2  ElementImport::importingNamespace
    --     1  Element::owner
-   --     2  ElementImport::visibility
+   --     3  ElementImport::visibility
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
@@ -174,36 +174,36 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --
    --     6  Classifier::isFinalSpecialization
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     7  Type::package
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     11  Classifier::attribute
-   --     3  Namespace::elementImport
-   --     12  Classifier::feature
-   --     9  Classifier::general
-   --     8  Namespace::importedMember
-   --     10  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --     10  Classifier::feature
+   --     11  Classifier::general
+   --     3  Namespace::importedMember
+   --     12  Classifier::inheritedMember
+   --     7  Namespace::member
    --     13  DataType::ownedAttribute
    --     1  Element::ownedComment
    --     2  Element::ownedElement
    --     15  Enumeration::ownedLiteral
-   --     5  Namespace::ownedMember
+   --     6  Namespace::ownedMember
    --     14  DataType::ownedOperation
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
 
    --  EnumerationLiteral
    --
    --     6  EnumerationLiteral::enumeration
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
@@ -211,11 +211,11 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --  Expression
    --
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  TypedElement::type
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
    --     3  Expression::operand
    --     1  Element::ownedComment
@@ -226,48 +226,48 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --     8  OpaqueExpression::body
    --     7  OpaqueExpression::language
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  TypedElement::type
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
 
    --  Operation
    --
-   --     13  Operation::bodyCondition
-   --     12  Operation::class
+   --     14  Operation::bodyCondition
+   --     13  Operation::class
    --     11  Operation::datatype
-   --     15  RedefinableElement::isLeaf
-   --     9  Operation::isOrdered
-   --     14  Operation::isQuery
-   --     10  Operation::isUnique
-   --     7  Operation::lower
+   --     12  RedefinableElement::isLeaf
+   --     8  Operation::isOrdered
+   --     15  Operation::isQuery
+   --     9  Operation::isUnique
+   --     10  Operation::lower
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  Operation::type
-   --     8  Operation::upper
-   --     4  NamedElement::visibility
+   --     7  Operation::upper
+   --     3  NamedElement::visibility
    --
-   --     3  Namespace::elementImport
+   --     4  Namespace::elementImport
    --     11  Feature::featuringClassifier
-   --     8  Namespace::importedMember
-   --     6  Namespace::member
+   --     3  Namespace::importedMember
+   --     7  Namespace::member
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     5  Namespace::ownedMember
-   --     15  Operation::ownedParameter
-   --     15  BehavioralFeature::ownedParameter
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
-   --     14  Operation::postcondition
-   --     12  Operation::precondition
-   --     16  Operation::raisedException
-   --     16  BehavioralFeature::raisedException
+   --     6  Namespace::ownedMember
+   --     12  Operation::ownedParameter
+   --     12  BehavioralFeature::ownedParameter
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+   --     16  Operation::postcondition
+   --     14  Operation::precondition
+   --     15  Operation::raisedException
+   --     15  BehavioralFeature::raisedException
    --     10  RedefinableElement::redefinedElement
    --     13  Operation::redefinedOperation
    --     9  RedefinableElement::redefinitionContext
@@ -275,32 +275,32 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --  Package
    --
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     7  Package::nestingPackage
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  Package::uri
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     3  Namespace::elementImport
-   --     8  Namespace::importedMember
-   --     6  Namespace::member
+   --     4  Namespace::elementImport
+   --     3  Namespace::importedMember
+   --     7  Namespace::member
    --     12  Package::nestedPackage
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     5  Namespace::ownedMember
-   --     7  Namespace::ownedRule
+   --     6  Namespace::ownedMember
+   --     8  Namespace::ownedRule
    --     11  Package::ownedType
-   --     4  Namespace::packageImport
-   --     10  Package::packageMerge
-   --     9  Package::packagedElement
+   --     5  Namespace::packageImport
+   --     9  Package::packageMerge
+   --     10  Package::packagedElement
 
    --  PackageImport
    --
    --     4  PackageImport::importedPackage
-   --     3  PackageImport::importingNamespace
+   --     2  PackageImport::importingNamespace
    --     1  Element::owner
-   --     2  PackageImport::visibility
+   --     3  PackageImport::visibility
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
@@ -310,9 +310,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    --  PackageMerge
    --
-   --     3  PackageMerge::mergedPackage
+   --     2  PackageMerge::mergedPackage
    --     1  Element::owner
-   --     2  PackageMerge::receivingPackage
+   --     3  PackageMerge::receivingPackage
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
@@ -322,19 +322,19 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    --  Parameter
    --
-   --     13  Parameter::default
-   --     12  Parameter::direction
-   --     9  MultiplicityElement::isOrdered
-   --     10  MultiplicityElement::isUnique
-   --     7  MultiplicityElement::lower
+   --     15  Parameter::default
+   --     11  Parameter::direction
+   --     8  MultiplicityElement::isOrdered
+   --     9  MultiplicityElement::isUnique
+   --     10  MultiplicityElement::lower
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
-   --     11  Parameter::operation
+   --     4  NamedElement::namespace
+   --     12  Parameter::operation
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  TypedElement::type
-   --     8  MultiplicityElement::upper
-   --     4  NamedElement::visibility
+   --     7  MultiplicityElement::upper
+   --     3  NamedElement::visibility
    --
    --     1  Element::ownedComment
    --     2  Element::ownedElement
@@ -343,50 +343,50 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --
    --     6  Classifier::isFinalSpecialization
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
+   --     4  NamedElement::namespace
    --     1  Element::owner
    --     7  Type::package
    --     5  NamedElement::qualifiedName
-   --     4  NamedElement::visibility
+   --     3  NamedElement::visibility
    --
-   --     11  Classifier::attribute
-   --     3  Namespace::elementImport
-   --     12  Classifier::feature
-   --     9  Classifier::general
-   --     8  Namespace::importedMember
-   --     10  Classifier::inheritedMember
-   --     6  Namespace::member
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --     10  Classifier::feature
+   --     11  Classifier::general
+   --     3  Namespace::importedMember
+   --     12  Classifier::inheritedMember
+   --     7  Namespace::member
    --     13  DataType::ownedAttribute
    --     1  Element::ownedComment
    --     2  Element::ownedElement
-   --     5  Namespace::ownedMember
+   --     6  Namespace::ownedMember
    --     14  DataType::ownedOperation
-   --     7  Namespace::ownedRule
-   --     4  Namespace::packageImport
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
 
    --  Property
    --
    --     17  Property::association
-   --     12  Property::class
+   --     13  Property::class
    --     11  Property::datatype
-   --     13  Property::default
-   --     21  Property::isComposite
+   --     15  Property::default
+   --     20  Property::isComposite
    --     14  Property::isDerived
    --     19  Property::isDerivedUnion
-   --     15  RedefinableElement::isLeaf
-   --     9  MultiplicityElement::isOrdered
-   --     16  Property::isReadOnly
-   --     10  MultiplicityElement::isUnique
-   --     7  MultiplicityElement::lower
+   --     12  RedefinableElement::isLeaf
+   --     8  MultiplicityElement::isOrdered
+   --     21  Property::isReadOnly
+   --     9  MultiplicityElement::isUnique
+   --     10  MultiplicityElement::lower
    --     2  NamedElement::name
-   --     3  NamedElement::namespace
-   --     20  Property::opposite
+   --     4  NamedElement::namespace
+   --     16  Property::opposite
    --     1  Element::owner
    --     18  Property::owningAssociation
    --     5  NamedElement::qualifiedName
    --     6  TypedElement::type
-   --     8  MultiplicityElement::upper
-   --     4  NamedElement::visibility
+   --     7  MultiplicityElement::upper
+   --     3  NamedElement::visibility
    --
    --     11  Feature::featuringClassifier
    --     1  Element::ownedComment
@@ -400,8 +400,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --
    --     2  Tag::name
    --     1  Element::owner
-   --     3  Tag::tagOwner
-   --     4  Tag::value
+   --     4  Tag::tagOwner
+   --     3  Tag::value
    --
    --     3  Tag::element
    --     1  Element::ownedComment
@@ -416,7 +416,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Alias;
 
    ------------------------------------
@@ -451,7 +451,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
    end Internal_Get_Attribute;
 
    -----------------------
@@ -486,7 +486,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Link, Self, No_CMOF_Element);
    end Internal_Get_Body_Condition;
 
    ------------------------
@@ -499,7 +499,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self, No_CMOF_Element);
    end Internal_Get_Class;
 
    --------------------------------------
@@ -548,7 +548,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).String_Value;
+        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).String_Value;
    end Internal_Get_Default;
 
    ----------------------------
@@ -559,7 +559,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.CMOF.CMOF_Parameter_Direction_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Parameter_Direction_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value;
    end Internal_Get_Direction;
 
    --------------------------
@@ -581,7 +581,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Element_Import;
 
    ---------------------------
@@ -592,7 +592,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 17;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
    end Internal_Get_End_Type;
 
    ------------------------------
@@ -616,7 +616,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
    end Internal_Get_Feature;
 
    ---------------------------------------
@@ -638,7 +638,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
    end Internal_Get_General;
 
    -----------------------------------
@@ -651,7 +651,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (5).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
    end Internal_Get_Imported_Element;
 
    ----------------------------------
@@ -662,7 +662,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
    end Internal_Get_Imported_Member;
 
    -----------------------------------
@@ -688,7 +688,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Link, Self, No_CMOF_Element);
    end Internal_Get_Importing_Namespace;
 
    -----------------------------------
@@ -699,7 +699,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
    end Internal_Get_Inherited_Member;
 
    ------------------------------
@@ -721,7 +721,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Boolean_Value;
    end Internal_Get_Is_Composite;
 
    -----------------------------
@@ -765,7 +765,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value;
    end Internal_Get_Is_Leaf;
 
    -----------------------------
@@ -776,7 +776,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Boolean_Value;
    end Internal_Get_Is_Ordered;
 
    ---------------------------
@@ -787,7 +787,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
    end Internal_Get_Is_Query;
 
    -------------------------------
@@ -798,7 +798,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value;
    end Internal_Get_Is_Read_Only;
 
    ----------------------------
@@ -809,7 +809,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value;
    end Internal_Get_Is_Unique;
 
    ---------------------------
@@ -830,7 +830,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Optional_Integer is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Integer_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Integer_Holder_Value;
    end Internal_Get_Lower;
 
    -------------------------
@@ -841,7 +841,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
    end Internal_Get_Member;
 
    -----------------------------
@@ -852,7 +852,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
    end Internal_Get_Member_End;
 
    ---------------------------------
@@ -865,7 +865,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Link, Self, No_CMOF_Element);
    end Internal_Get_Merged_Package;
 
    -----------------------
@@ -890,7 +890,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
    end Internal_Get_Namespace;
 
    --------------------------------------
@@ -901,7 +901,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
    end Internal_Get_Navigable_Owned_End;
 
    ---------------------------------
@@ -949,7 +949,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Link, Self, No_CMOF_Element);
    end Internal_Get_Operation;
 
    ---------------------------
@@ -962,7 +962,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Link, Self, No_CMOF_Element);
    end Internal_Get_Opposite;
 
    ----------------------------------
@@ -1006,7 +1006,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 17;
    end Internal_Get_Owned_End;
 
    --------------------------------
@@ -1028,7 +1028,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
    end Internal_Get_Owned_Member;
 
    ----------------------------------
@@ -1050,7 +1050,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
    end Internal_Get_Owned_Parameter;
 
    -----------------------------
@@ -1061,7 +1061,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
    end Internal_Get_Owned_Rule;
 
    -----------------------------
@@ -1122,7 +1122,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
    end Internal_Get_Package_Import;
 
    --------------------------------
@@ -1133,7 +1133,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
    end Internal_Get_Package_Merge;
 
    -----------------------------------
@@ -1144,7 +1144,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
    end Internal_Get_Packaged_Element;
 
    --------------------------------
@@ -1155,7 +1155,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
    end Internal_Get_Postcondition;
 
    -------------------------------
@@ -1166,7 +1166,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
    end Internal_Get_Precondition;
 
    ---------------------------------
@@ -1189,7 +1189,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
    end Internal_Get_Raised_Exception;
 
    ------------------------------------
@@ -1202,7 +1202,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
    end Internal_Get_Receiving_Package;
 
    ------------------------------------
@@ -1303,7 +1303,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
    end Internal_Get_Super_Class;
 
    ----------------------------
@@ -1316,7 +1316,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
    end Internal_Get_Tag_Owner;
 
    -------------------------
@@ -1351,7 +1351,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Optional_Unlimited_Natural is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Natural_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Natural_Holder_Value;
    end Internal_Get_Upper;
 
    ----------------------
@@ -1375,7 +1375,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Value;
 
    -----------------------------
@@ -1386,7 +1386,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.CMOF.CMOF_Visibility_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Value;
    end Internal_Get_Visibility;
 
    -----------------------------
@@ -1397,7 +1397,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.CMOF_Element)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Visibility_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value;
    end Internal_Get_Visibility;
 
    ------------------------
@@ -1411,13 +1411,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
-      CMOF_Element_Table.Table (Self).Member (4).String_Value := To;
+      CMOF_Element_Table.Table (Self).Member (5).String_Value := To;
 
-      if CMOF_Element_Table.Table (Self).Member (4).String_Value /= null then
+      if CMOF_Element_Table.Table (Self).Member (5).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (CMOF_Element_Table.Table (Self).Member (4).String_Value);
+          (CMOF_Element_Table.Table (Self).Member (5).String_Value);
       end if;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
@@ -1552,13 +1552,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).String_Value;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).String_Value;
 
-      CMOF_Element_Table.Table (Self).Member (13).String_Value := To;
+      CMOF_Element_Table.Table (Self).Member (15).String_Value := To;
 
-      if CMOF_Element_Table.Table (Self).Member (13).String_Value /= null then
+      if CMOF_Element_Table.Table (Self).Member (15).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (CMOF_Element_Table.Table (Self).Member (13).String_Value);
+          (CMOF_Element_Table.Table (Self).Member (15).String_Value);
       end if;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
@@ -1580,8 +1580,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Parameter_Direction_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Parameter_Direction_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Parameter_Direction, Old, To);
@@ -1684,8 +1684,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Is_Composite, Old, To);
@@ -1756,8 +1756,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Is_Leaf, Old, To);
@@ -1774,8 +1774,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Is_Ordered, Old, To);
@@ -1792,8 +1792,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Is_Query, Old, To);
@@ -1810,8 +1810,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Is_Read_Only, Old, To);
@@ -1828,8 +1828,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Is_Unique, Old, To);
@@ -1846,8 +1846,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.Optional_Integer;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Integer_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Integer_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Integer_Holder_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Integer_Holder_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Lower, Old, To);
@@ -2062,8 +2062,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.Optional_Unlimited_Natural;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Natural_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).Natural_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Natural_Holder_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Natural_Holder_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Upper, Old, To);
@@ -2109,11 +2109,11 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).String_Value;
 
-      CMOF_Element_Table.Table (Self).Member (4).String_Value := To;
+      CMOF_Element_Table.Table (Self).Member (3).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (CMOF_Element_Table.Table (Self).Member (4).String_Value);
+       (CMOF_Element_Table.Table (Self).Member (3).String_Value);
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Value, Old, To);
@@ -2131,8 +2131,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.CMOF_Visibility_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Visibility, Old, To);
@@ -2149,8 +2149,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Visibility_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Visibility_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Visibility, Old, To);
