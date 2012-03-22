@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,7 +56,7 @@ package body AMF.Internals.Elements is
    ---------------
 
    overriding function Container
-    (Self : not null access constant Element_Implementation)
+    (Self : not null access constant Element_Base)
        return AMF.Elements.Element_Access
    is
       use type AMF.Elements.Element_Access;
@@ -64,7 +64,7 @@ package body AMF.Internals.Elements is
       Model_Extent       : constant AMF.Extents.Extent_Access
         := AMF.Elements.Element_Access (Self).Extent;
       Meta_Class         : constant AMF.CMOF.Classes.CMOF_Class_Access
-        := Element_Implementation'Class (Self.all).Get_Meta_Class;
+        := Element_Base'Class (Self.all).Get_Meta_Class;
       Metamodel_Extent   : constant AMF.Extents.Extent_Access
         := AMF.Elements.Element_Access (Meta_Class).Extent;
       Metamodel_Elements : constant AMF.Elements.Collections.Set_Of_Element

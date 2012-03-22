@@ -55,16 +55,16 @@ package body AMF.Visitors is
      Element : not null AMF.Elements.Element_Access;
      Control : in out Traverse_Control) is
    begin
-      AMF.Internals.Elements.Element_Implementation'Class
+      AMF.Internals.Elements.Element_Base'Class
        (Element.all).Enter_Element (Visitor, Control);
 
       if Control = Continue then
-         AMF.Internals.Elements.Element_Implementation'Class
+         AMF.Internals.Elements.Element_Base'Class
           (Element.all).Visit_Element (Self, Visitor, Control);
       end if;
 
       if Control /= Terminate_Immediately then
-         AMF.Internals.Elements.Element_Implementation'Class
+         AMF.Internals.Elements.Element_Base'Class
           (Element.all).Leave_Element (Visitor, Control);
       end if;
    end Visit;

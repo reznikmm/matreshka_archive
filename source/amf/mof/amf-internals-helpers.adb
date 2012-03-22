@@ -114,8 +114,7 @@ package body AMF.Internals.Helpers is
 
       else
          return
-           AMF.Internals.Elements.Element_Implementation'Class
-            (Element.all).Element;
+           AMF.Internals.Elements.Element_Base'Class (Element.all).Element;
       end if;
    end To_Element;
 

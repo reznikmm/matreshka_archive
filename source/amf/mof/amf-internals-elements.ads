@@ -48,13 +48,13 @@ package AMF.Internals.Elements is
 
    pragma Preelaborate;
 
-   type Element_Implementation is
+   type Element_Base is
      abstract limited new AMF.Elements.Abstract_Element with record
       Element : AMF_Element;
    end record;
 
    overriding function Container
-    (Self : not null access constant Element_Implementation)
+    (Self : not null access constant Element_Base)
        return AMF.Elements.Element_Access;
    --  Returns the parent container of this element if any. Return null if
    --  there is no containing element.
@@ -64,19 +64,19 @@ package AMF.Internals.Elements is
    --  provide more efficient implementation.
 
    not overriding procedure Enter_Element
-    (Self    : not null access constant Element_Implementation;
+    (Self    : not null access constant Element_Base;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    not overriding procedure Leave_Element
-    (Self    : not null access constant Element_Implementation;
+    (Self    : not null access constant Element_Base;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Control : in out AMF.Visitors.Traverse_Control) is abstract;
    --  Dispatch call to corresponding subprogram of visitor interface.
 
    not overriding procedure Visit_Element
-    (Self     : not null access constant Element_Implementation;
+    (Self     : not null access constant Element_Base;
      Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
      Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
      Control  : in out AMF.Visitors.Traverse_Control) is abstract;

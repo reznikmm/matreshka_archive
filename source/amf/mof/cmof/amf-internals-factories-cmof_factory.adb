@@ -171,10 +171,7 @@ package body AMF.Internals.Factories.CMOF_Factory is
      Value     : League.Holders.Holder) return League.Strings.Universal_String
    is
       DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Elements.Element_Implementation'Class
-            (Data_Type.all).Element;
---        := AMF.Internals.Helpers.To_Element
---            (AMF.Elements.Element_Access (Data_Type));
+        := AMF.Internals.Elements.Element_Base'Class (Data_Type.all).Element;
 
    begin
       if DT = MC_CMOF_Boolean then
@@ -265,10 +262,7 @@ package body AMF.Internals.Factories.CMOF_Factory is
        return not null AMF.Elements.Element_Access
    is
       MC      : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Elements.Element_Implementation'Class
-            (Meta_Class.all).Element;
---        := Factory.To_Element
---            (AMF.Elements.Element_Access (Meta_Class));
+        := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.CMOF_Element;
 
    begin
@@ -354,10 +348,7 @@ package body AMF.Internals.Factories.CMOF_Factory is
       use type League.Strings.Universal_String;
 
       DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Elements.Element_Implementation'Class
-            (Data_Type.all).Element;
---        := AMF.Internals.Helpers.To_Element
---            (AMF.Elements.Element_Access (Data_Type));
+        := AMF.Internals.Elements.Element_Base'Class (Data_Type.all).Element;
 
    begin
       if DT = MC_CMOF_Boolean then

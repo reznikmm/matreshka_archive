@@ -52,7 +52,7 @@ with League.Holders;
 package AMF.Internals.CMOF_Elements is
 
    type CMOF_Element_Proxy is
-     abstract limited new AMF.Internals.Elements.Element_Implementation
+     abstract limited new AMF.Internals.Elements.Element_Base
        and AMF.CMOF.Elements.CMOF_Element with null record;
 
    overriding function Get
