@@ -88,7 +88,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Association,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Associations.CMOF_Association_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Associations.CMOF_Association_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           14     => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
@@ -249,7 +249,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Class,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Classes.CMOF_Class_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Classes.CMOF_Class_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
@@ -389,7 +389,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Comment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Comments.CMOF_Comment_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Comments.CMOF_Comment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
@@ -440,7 +440,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Constraints.CMOF_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Constraints.CMOF_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           7      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -501,7 +501,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Data_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           6      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
@@ -639,7 +639,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Element_Import,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
@@ -710,7 +710,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Enumeration,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Enumerations.CMOF_Enumeration_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Enumerations.CMOF_Enumeration_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           6      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
@@ -855,7 +855,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Enumeration_Literals.CMOF_Enumeration_Literal_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Enumeration_Literals.CMOF_Enumeration_Literal_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -907,7 +907,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Expressions.CMOF_Expression_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Expressions.CMOF_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
@@ -966,7 +966,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Opaque_Expressions.CMOF_Opaque_Expression_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Opaque_Expressions.CMOF_Opaque_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           8      => (AMF.Internals.Tables.CMOF_Types.M_Collection_Of_String, 0),
@@ -1022,7 +1022,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Operation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           14     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -1190,7 +1190,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Packages.CMOF_Package_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Packages.CMOF_Package_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
@@ -1314,7 +1314,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package_Import,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Package_Imports.CMOF_Package_Import_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Package_Imports.CMOF_Package_Import_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           4      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -1383,7 +1383,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package_Merge,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -1450,7 +1450,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           15     => (AMF.Internals.Tables.CMOF_Types.M_String, null),
@@ -1516,7 +1516,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Primitive_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Primitive_Types.CMOF_Primitive_Type_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Primitive_Types.CMOF_Primitive_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           6      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, False),
@@ -1654,7 +1654,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Property,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Properties.CMOF_Property_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Properties.CMOF_Property_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           17     => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
@@ -1771,7 +1771,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_Tag,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Id => Self),
+          new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.CMOF_Types.M_None),
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
