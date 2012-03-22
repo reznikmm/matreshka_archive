@@ -110,7 +110,7 @@ package body AMF.Internals.MOF_Tags is
    begin
       return
         League.Strings.Internals.Create
-         (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Name (Self.Id));
+         (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Name (Self.Element));
    end Get_Name;
 
    --------------
@@ -122,7 +122,7 @@ package body AMF.Internals.MOF_Tags is
      To   : League.Strings.Universal_String) is
    begin
       AMF.Internals.Tables.MOF_Attributes.Internal_Set_Name
-       (Self.Id,
+       (Self.Element,
         League.Strings.Internals.Internal (To));
    end Set_Name;
 
@@ -136,7 +136,7 @@ package body AMF.Internals.MOF_Tags is
    begin
       return
         League.Strings.Internals.Create
-         (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Value (Self.Id));
+         (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Value (Self.Element));
    end Get_Value;
 
    ---------------
@@ -148,7 +148,7 @@ package body AMF.Internals.MOF_Tags is
      To   : League.Strings.Universal_String) is
    begin
       AMF.Internals.Tables.MOF_Attributes.Internal_Set_Value
-       (Self.Id,
+       (Self.Element,
         League.Strings.Internals.Internal (To));
    end Set_Value;
 
@@ -164,7 +164,7 @@ package body AMF.Internals.MOF_Tags is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Element;
 
    -------------------
@@ -179,7 +179,7 @@ package body AMF.Internals.MOF_Tags is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Tag_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Tag_Owner;
 
    -------------------
@@ -191,7 +191,7 @@ package body AMF.Internals.MOF_Tags is
      To   : AMF.UML.Elements.UML_Element_Access) is
    begin
       AMF.Internals.Tables.MOF_Attributes.Internal_Set_Tag_Owner
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Tag_Owner;
@@ -208,7 +208,7 @@ package body AMF.Internals.MOF_Tags is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -223,7 +223,7 @@ package body AMF.Internals.MOF_Tags is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -238,7 +238,7 @@ package body AMF.Internals.MOF_Tags is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.MOF_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

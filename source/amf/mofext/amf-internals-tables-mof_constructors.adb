@@ -71,7 +71,7 @@ package body AMF.Internals.Tables.MOF_Constructors is
        (Kind     => AMF.Internals.Tables.MOF_Types.E_Tag,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Id => Self),
+          new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.MOF_Types.M_None),
           3      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
