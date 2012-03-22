@@ -41,18 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Elements;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements.Generic_Hash;
 
-function AMF.UML.Elements.Hash
- (Item : AMF.UML.Elements.UML_Element_Access)
-    return Ada.Containers.Hash_Type is
-begin
-   if Item = null then
-      return 0;
-
-   else
-      return
-        Ada.Containers.Hash_Type
-         (AMF.Internals.Elements.Element_Base'Class (Item.all).Element);
-   end if;
-end AMF.UML.Elements.Hash;
+function AMF.UML.Features.Hash is
+  new AMF.Elements.Generic_Hash (UML_Feature, UML_Feature_Access);

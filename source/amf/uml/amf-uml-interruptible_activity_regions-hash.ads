@@ -45,5 +45,5 @@
 ------------------------------------------------------------------------------
 with AMF.Elements.Generic_Hash;
 
-function AMF.UML.Elements.Hash is
-  new AMF.Elements.Generic_Hash (UML_Element, UML_Element_Access);
+function AMF.UML.Interruptible_Activity_Regions.Hash is
+  new AMF.Elements.Generic_Hash (UML_Interruptible_Activity_Region, UML_Interruptible_Activity_Region_Access);

@@ -45,5 +45,5 @@
 ------------------------------------------------------------------------------
 with AMF.Elements.Generic_Hash;
 
-function AMF.UML.Elements.Hash is
-  new AMF.Elements.Generic_Hash (UML_Element, UML_Element_Access);
+function AMF.UML.Duration_Intervals.Hash is
+  new AMF.Elements.Generic_Hash (UML_Duration_Interval, UML_Duration_Interval_Access);

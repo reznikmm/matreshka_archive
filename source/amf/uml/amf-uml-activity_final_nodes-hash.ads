@@ -45,5 +45,5 @@
 ------------------------------------------------------------------------------
 with AMF.Elements.Generic_Hash;
 
-function AMF.UML.Elements.Hash is
-  new AMF.Elements.Generic_Hash (UML_Element, UML_Element_Access);
+function AMF.UML.Activity_Final_Nodes.Hash is
+  new AMF.Elements.Generic_Hash (UML_Activity_Final_Node, UML_Activity_Final_Node_Access);

@@ -45,5 +45,5 @@
 ------------------------------------------------------------------------------
 with AMF.Elements.Generic_Hash;
 
-function AMF.UML.Elements.Hash is
-  new AMF.Elements.Generic_Hash (UML_Element, UML_Element_Access);
+function AMF.UML.Opaque_Expressions.Hash is
+  new AMF.Elements.Generic_Hash (UML_Opaque_Expression, UML_Opaque_Expression_Access);
