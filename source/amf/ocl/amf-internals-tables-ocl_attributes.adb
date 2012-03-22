@@ -57,157 +57,157 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    --  AnyType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  AssociationClassCallExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     9  NavigationCallExp::navigationSource
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     10  AssociationClassCallExp::referredAssociationClass
    --     8  CallExp::source
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
    --     4  NavigationCallExp::qualifier
 
    --  BagType
    --
    --     15  CollectionType::elementType
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  BooleanLiteralExp
    --
    --     8  BooleanLiteralExp::booleanSymbol
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  CollectionItem
    --
    --     8  CollectionItem::item
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  CollectionLiteralExp
    --
    --     8  CollectionLiteralExp::kind
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
    --     4  CollectionLiteralExp::part
 
    --  CollectionRange
@@ -215,784 +215,784 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --     8  CollectionRange::first
    --     9  CollectionRange::last
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  CollectionType
    --
    --     15  CollectionType::elementType
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  EnumLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  EnumLiteralExp::referredEnumLiteral
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  ExpressionInOcl
    --
-   --     12  OpaqueExpression::behavior
-   --     15  OpaqueExpression::body
-   --     17  ExpressionInOcl::bodyExpression
-   --     13  ExpressionInOcl::contextVariable
-   --     16  ExpressionInOcl::generatedType
+   --     14  OpaqueExpression::behavior
+   --     12  OpaqueExpression::body
+   --     13  ExpressionInOcl::bodyExpression
+   --     17  ExpressionInOcl::contextVariable
+   --     15  ExpressionInOcl::generatedType
    --     11  OpaqueExpression::language
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     3  NamedElement::qualifiedName
+   --     1  NamedElement::qualifiedName
    --     10  OpaqueExpression::result
-   --     14  ExpressionInOcl::resultVariable
+   --     16  ExpressionInOcl::resultVariable
    --     8  ParameterableElement::templateParameter
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
    --     4  ExpressionInOcl::parameterVariable
 
    --  IfExp
    --
-   --     8  IfExp::condition
-   --     10  IfExp::elseExpression
+   --     10  IfExp::condition
+   --     8  IfExp::elseExpression
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     9  IfExp::thenExpression
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  IntegerLiteralExp
    --
    --     8  IntegerLiteralExp::integerSymbol
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  InvalidLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  InvalidType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  IterateExp
    --
    --     9  LoopExp::body
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     10  IterateExp::result
    --     8  CallExp::source
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
+   --     1  NamedElement::clientDependency
    --     4  LoopExp::iterator
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  IteratorExp
    --
    --     9  LoopExp::body
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  CallExp::source
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
+   --     1  NamedElement::clientDependency
    --     4  LoopExp::iterator
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  LetExp
    --
    --     9  LetExp::in
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     8  LetExp::variable
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  MessageExp
    --
    --     9  MessageExp::calledOperation
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
-   --     8  MessageExp::sentSignal
-   --     10  MessageExp::target
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
+   --     10  MessageExp::sentSignal
+   --     8  MessageExp::target
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
    --     4  MessageExp::argument
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  MessageType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
    --     15  MessageType::referredOperation
    --     16  MessageType::referredSignal
-   --     14  Classifier::representation
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  NullLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  OperationCallExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     15  OperationCallExp::referredOperation
    --     8  CallExp::source
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
    --     4  OperationCallExp::argument
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  OrderedSetType
    --
    --     15  CollectionType::elementType
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  PropertyCallExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     9  NavigationCallExp::navigationSource
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     10  PropertyCallExp::referredProperty
    --     8  CallExp::source
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
    --     4  NavigationCallExp::qualifier
 
    --  RealLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  RealLiteralExp::realSymbol
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  SequenceType
    --
    --     15  CollectionType::elementType
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  SetType
    --
    --     15  CollectionType::elementType
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  StateExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  StateExp::referredState
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  StringLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  StringLiteralExp::stringSymbol
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  TemplateParameterType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     15  TemplateParameterType::specification
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  TupleLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
    --     4  TupleLiteralExp::part
 
    --  TupleLiteralPart
    --
    --     8  TupleLiteralPart::attribute
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  TupleType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
    --     24  DataType::ownedOperation
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    --  TypeExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  TypeExp::referredType
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  UnlimitedNaturalLiteralExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
    --     8  UnlimitedNaturalLiteralExp::unlimitedNaturalSymbol
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  UnspecifiedValueExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  Variable
    --
    --     8  Variable::initExpression
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     9  Variable::representedParameter
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  VariableExp
    --
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
-   --     4  Element::owner
-   --     3  NamedElement::qualifiedName
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     3  Element::owner
+   --     1  NamedElement::qualifiedName
    --     8  VariableExp::referredVariable
    --     7  TypedElement::type
-   --     6  NamedElement::visibility
+   --     5  NamedElement::visibility
    --
-   --     2  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
+   --     1  NamedElement::clientDependency
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
 
    --  VoidType
    --
-   --     12  Classifier::isAbstract
-   --     13  Classifier::isFinalSpecialization
+   --     13  Classifier::isAbstract
+   --     12  Classifier::isFinalSpecialization
    --     10  RedefinableElement::isLeaf
    --     2  NamedElement::name
-   --     1  NamedElement::nameExpression
-   --     5  NamedElement::namespace
+   --     6  NamedElement::nameExpression
+   --     4  NamedElement::namespace
    --     11  Classifier::ownedTemplateSignature
    --     11  TemplateableElement::ownedTemplateSignature
-   --     4  Element::owner
+   --     3  Element::owner
    --     9  ParameterableElement::owningTemplateParameter
-   --     7  Type::package
-   --     3  NamedElement::qualifiedName
-   --     14  Classifier::representation
+   --     14  Type::package
+   --     1  NamedElement::qualifiedName
+   --     7  Classifier::representation
    --     8  Classifier::templateParameter
    --     8  ParameterableElement::templateParameter
-   --     6  NamedElement::visibility
-   --     6  PackageableElement::visibility
+   --     5  NamedElement::visibility
+   --     5  PackageableElement::visibility
    --
-   --     18  Classifier::attribute
-   --     2  NamedElement::clientDependency
-   --     22  Classifier::collaborationUse
+   --     19  Classifier::attribute
+   --     1  NamedElement::clientDependency
+   --     14  Classifier::collaborationUse
    --     9  Namespace::elementImport
-   --     14  Classifier::feature
+   --     12  Classifier::feature
    --     13  Classifier::general
-   --     17  Classifier::generalization
-   --     10  Namespace::importedMember
-   --     6  Classifier::inheritedMember
-   --     21  Namespace::member
-   --     1  Element::ownedComment
-   --     3  Element::ownedElement
-   --     16  Namespace::ownedMember
-   --     11  Namespace::ownedRule
-   --     4  Classifier::ownedUseCase
-   --     8  Namespace::packageImport
-   --     20  Classifier::powertypeExtent
-   --     5  Classifier::redefinedClassifier
-   --     23  RedefinableElement::redefinedElement
-   --     7  RedefinableElement::redefinitionContext
-   --     19  Classifier::substitution
-   --     15  TemplateableElement::templateBinding
-   --     12  Classifier::useCase
+   --     22  Classifier::generalization
+   --     18  Namespace::importedMember
+   --     5  Classifier::inheritedMember
+   --     20  Namespace::member
+   --     3  Element::ownedComment
+   --     2  Element::ownedElement
+   --     21  Namespace::ownedMember
+   --     16  Namespace::ownedRule
+   --     15  Classifier::ownedUseCase
+   --     17  Namespace::packageImport
+   --     11  Classifier::powertypeExtent
+   --     10  Classifier::redefinedClassifier
+   --     4  RedefinableElement::redefinedElement
+   --     8  RedefinableElement::redefinitionContext
+   --     7  Classifier::substitution
+   --     23  TemplateableElement::templateBinding
+   --     6  Classifier::useCase
 
    ---------------------------
    -- Internal_Get_Argument --
@@ -1026,7 +1026,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
    end Internal_Get_Attribute;
 
    ---------------------------
@@ -1039,7 +1039,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
    end Internal_Get_Behavior;
 
    -----------------------
@@ -1063,7 +1063,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).String_Collection_Value;   end Internal_Get_Body;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).String_Collection_Value;   end Internal_Get_Body;
 
    ----------------------------------
    -- Internal_Get_Body_Expression --
@@ -1075,7 +1075,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Link, Self, No_OCL_Element);
    end Internal_Get_Body_Expression;
 
    ---------------------------------
@@ -1110,7 +1110,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
    end Internal_Get_Client_Dependency;
 
    ------------------------------------
@@ -1121,7 +1121,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
    end Internal_Get_Collaboration_Use;
 
    ----------------------------
@@ -1134,7 +1134,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Condition;
 
    -----------------------------------
@@ -1147,7 +1147,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self, No_OCL_Element);
    end Internal_Get_Context_Variable;
 
    ---------------------------------
@@ -1184,7 +1184,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Else_Expression;
 
    --------------------------
@@ -1195,7 +1195,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
    end Internal_Get_Feature;
 
    ------------------------
@@ -1230,7 +1230,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
    end Internal_Get_Generalization;
 
    ---------------------------------
@@ -1243,7 +1243,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
    end Internal_Get_Generated_Type;
 
    ----------------------------------
@@ -1254,7 +1254,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
    end Internal_Get_Imported_Member;
 
    ---------------------
@@ -1278,7 +1278,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
    end Internal_Get_Inherited_Member;
 
    ----------------------------------
@@ -1313,7 +1313,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
    end Internal_Get_Is_Abstract;
 
    ------------------------------------------
@@ -1324,7 +1324,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
    end Internal_Get_Is_Final_Specialization;
 
    --------------------------
@@ -1404,7 +1404,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
    end Internal_Get_Member;
 
    -----------------------
@@ -1429,7 +1429,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Link, Self, No_OCL_Element);
    end Internal_Get_Name_Expression;
 
    ----------------------------
@@ -1442,7 +1442,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
    end Internal_Get_Namespace;
 
    ------------------------------------
@@ -1477,7 +1477,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -1488,7 +1488,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
    end Internal_Get_Owned_Element;
 
    -------------------------------
@@ -1499,7 +1499,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
    end Internal_Get_Owned_Member;
 
    ----------------------------------
@@ -1521,7 +1521,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
    end Internal_Get_Owned_Rule;
 
    -------------------------------------------
@@ -1545,7 +1545,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
    end Internal_Get_Owned_Use_Case;
 
    ------------------------
@@ -1558,7 +1558,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
    end Internal_Get_Owner;
 
    --------------------------------------------
@@ -1584,7 +1584,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
    end Internal_Get_Package;
 
    ---------------------------------
@@ -1595,7 +1595,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
    end Internal_Get_Package_Import;
 
    -------------------------------------
@@ -1628,7 +1628,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
    end Internal_Get_Powertype_Extent;
 
    ---------------------------------
@@ -1640,7 +1640,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).String_Value;
+        AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).String_Value;
    end Internal_Get_Qualified_Name;
 
    ----------------------------
@@ -1673,7 +1673,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
    end Internal_Get_Redefined_Classifier;
 
    ------------------------------------
@@ -1684,7 +1684,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
    end Internal_Get_Redefined_Element;
 
    ---------------------------------------
@@ -1695,7 +1695,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
    end Internal_Get_Redefinition_Context;
 
    ---------------------------------------------
@@ -1812,7 +1812,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
    end Internal_Get_Representation;
 
    ----------------------------------------
@@ -1851,7 +1851,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
    end Internal_Get_Result_Variable;
 
    ------------------------------
@@ -1864,7 +1864,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
    end Internal_Get_Sent_Signal;
 
    -------------------------
@@ -1912,7 +1912,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
    end Internal_Get_Substitution;
 
    -------------------------
@@ -1925,7 +1925,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
    end Internal_Get_Target;
 
    -----------------------------------
@@ -1936,7 +1936,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
    end Internal_Get_Template_Binding;
 
    -------------------------------------
@@ -1997,7 +1997,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
    end Internal_Get_Use_Case;
 
    ---------------------------
@@ -2021,7 +2021,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.OCL_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).Visibility_Kind_Holder;
    end Internal_Get_Visibility;
 
    ----------------------------
@@ -2292,8 +2292,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
-      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract, Old, To);
@@ -2310,8 +2310,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
-      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
@@ -2904,8 +2904,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
       Old : AMF.UML.Optional_UML_Visibility_Kind;
 
    begin
-      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder := To;
+      Old := AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).Visibility_Kind_Holder;
+      AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (5).Visibility_Kind_Holder := To;
 
       AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility, Old, To);
