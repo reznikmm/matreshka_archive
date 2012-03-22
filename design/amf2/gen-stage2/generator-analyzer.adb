@@ -41,9 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Strings.Hash;
-with System.Address_Image;
-
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
@@ -602,7 +599,7 @@ package body Generator.Analyzer is
       function Hash
        (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type is
       begin
-         return Ada.Strings.Hash (System.Address_Image (Item.all'Address));
+         return Ada.Containers.Hash_Type (Item.Index);
       end Hash;
 
    begin
