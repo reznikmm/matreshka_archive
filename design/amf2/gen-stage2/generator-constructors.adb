@@ -160,7 +160,7 @@ package body Generator.Constructors is
              & Metamodel_Name
              & "_"
              & To_Ada_Identifier (Class_Name)
-             & "_Proxy'(Id => Self),");
+             & "_Proxy'(Element => Self),");
          Unit.Add_Line (+"        Member   =>");
          Unit.Add_Line
           ("         (0      => (Kind => "
