@@ -57,13 +57,35 @@ package AMF.OCL.Iterate_Exps.Collections is
    type Set_Of_OCL_Iterate_Exp is
      new OCL_Iterate_Exp_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Iterate_Exp : constant Set_Of_OCL_Iterate_Exp;
+
    type Ordered_Set_Of_OCL_Iterate_Exp is
      new OCL_Iterate_Exp_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Iterate_Exp : constant Ordered_Set_Of_OCL_Iterate_Exp;
 
    type Bag_Of_OCL_Iterate_Exp is
      new OCL_Iterate_Exp_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Iterate_Exp : constant Bag_Of_OCL_Iterate_Exp;
+
    type Sequence_Of_OCL_Iterate_Exp is
      new OCL_Iterate_Exp_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Iterate_Exp : constant Sequence_Of_OCL_Iterate_Exp;
+
+private
+
+   Empty_Set_Of_OCL_Iterate_Exp : constant Set_Of_OCL_Iterate_Exp
+     := (OCL_Iterate_Exp_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Iterate_Exp : constant Ordered_Set_Of_OCL_Iterate_Exp
+     := (OCL_Iterate_Exp_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Iterate_Exp : constant Bag_Of_OCL_Iterate_Exp
+     := (OCL_Iterate_Exp_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Iterate_Exp : constant Sequence_Of_OCL_Iterate_Exp
+     := (OCL_Iterate_Exp_Collections.Sequence with null record);
 
 end AMF.OCL.Iterate_Exps.Collections;

@@ -57,13 +57,35 @@ package AMF.OCL.Collection_Ranges.Collections is
    type Set_Of_OCL_Collection_Range is
      new OCL_Collection_Range_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Collection_Range : constant Set_Of_OCL_Collection_Range;
+
    type Ordered_Set_Of_OCL_Collection_Range is
      new OCL_Collection_Range_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Collection_Range : constant Ordered_Set_Of_OCL_Collection_Range;
 
    type Bag_Of_OCL_Collection_Range is
      new OCL_Collection_Range_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Collection_Range : constant Bag_Of_OCL_Collection_Range;
+
    type Sequence_Of_OCL_Collection_Range is
      new OCL_Collection_Range_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Collection_Range : constant Sequence_Of_OCL_Collection_Range;
+
+private
+
+   Empty_Set_Of_OCL_Collection_Range : constant Set_Of_OCL_Collection_Range
+     := (OCL_Collection_Range_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Collection_Range : constant Ordered_Set_Of_OCL_Collection_Range
+     := (OCL_Collection_Range_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Collection_Range : constant Bag_Of_OCL_Collection_Range
+     := (OCL_Collection_Range_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Collection_Range : constant Sequence_Of_OCL_Collection_Range
+     := (OCL_Collection_Range_Collections.Sequence with null record);
 
 end AMF.OCL.Collection_Ranges.Collections;

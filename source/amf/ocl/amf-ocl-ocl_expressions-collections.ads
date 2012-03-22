@@ -57,13 +57,35 @@ package AMF.OCL.Ocl_Expressions.Collections is
    type Set_Of_OCL_Ocl_Expression is
      new OCL_Ocl_Expression_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Ocl_Expression : constant Set_Of_OCL_Ocl_Expression;
+
    type Ordered_Set_Of_OCL_Ocl_Expression is
      new OCL_Ocl_Expression_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Ocl_Expression : constant Ordered_Set_Of_OCL_Ocl_Expression;
 
    type Bag_Of_OCL_Ocl_Expression is
      new OCL_Ocl_Expression_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Ocl_Expression : constant Bag_Of_OCL_Ocl_Expression;
+
    type Sequence_Of_OCL_Ocl_Expression is
      new OCL_Ocl_Expression_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Ocl_Expression : constant Sequence_Of_OCL_Ocl_Expression;
+
+private
+
+   Empty_Set_Of_OCL_Ocl_Expression : constant Set_Of_OCL_Ocl_Expression
+     := (OCL_Ocl_Expression_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Ocl_Expression : constant Ordered_Set_Of_OCL_Ocl_Expression
+     := (OCL_Ocl_Expression_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Ocl_Expression : constant Bag_Of_OCL_Ocl_Expression
+     := (OCL_Ocl_Expression_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Ocl_Expression : constant Sequence_Of_OCL_Ocl_Expression
+     := (OCL_Ocl_Expression_Collections.Sequence with null record);
 
 end AMF.OCL.Ocl_Expressions.Collections;

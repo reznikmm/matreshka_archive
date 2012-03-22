@@ -57,13 +57,35 @@ package AMF.OCL.Variables.Collections is
    type Set_Of_OCL_Variable is
      new OCL_Variable_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Variable : constant Set_Of_OCL_Variable;
+
    type Ordered_Set_Of_OCL_Variable is
      new OCL_Variable_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Variable : constant Ordered_Set_Of_OCL_Variable;
 
    type Bag_Of_OCL_Variable is
      new OCL_Variable_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Variable : constant Bag_Of_OCL_Variable;
+
    type Sequence_Of_OCL_Variable is
      new OCL_Variable_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Variable : constant Sequence_Of_OCL_Variable;
+
+private
+
+   Empty_Set_Of_OCL_Variable : constant Set_Of_OCL_Variable
+     := (OCL_Variable_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Variable : constant Ordered_Set_Of_OCL_Variable
+     := (OCL_Variable_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Variable : constant Bag_Of_OCL_Variable
+     := (OCL_Variable_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Variable : constant Sequence_Of_OCL_Variable
+     := (OCL_Variable_Collections.Sequence with null record);
 
 end AMF.OCL.Variables.Collections;

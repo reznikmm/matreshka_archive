@@ -57,13 +57,35 @@ package AMF.OCL.Tuple_Literal_Parts.Collections is
    type Set_Of_OCL_Tuple_Literal_Part is
      new OCL_Tuple_Literal_Part_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Tuple_Literal_Part : constant Set_Of_OCL_Tuple_Literal_Part;
+
    type Ordered_Set_Of_OCL_Tuple_Literal_Part is
      new OCL_Tuple_Literal_Part_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Tuple_Literal_Part : constant Ordered_Set_Of_OCL_Tuple_Literal_Part;
 
    type Bag_Of_OCL_Tuple_Literal_Part is
      new OCL_Tuple_Literal_Part_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Tuple_Literal_Part : constant Bag_Of_OCL_Tuple_Literal_Part;
+
    type Sequence_Of_OCL_Tuple_Literal_Part is
      new OCL_Tuple_Literal_Part_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Tuple_Literal_Part : constant Sequence_Of_OCL_Tuple_Literal_Part;
+
+private
+
+   Empty_Set_Of_OCL_Tuple_Literal_Part : constant Set_Of_OCL_Tuple_Literal_Part
+     := (OCL_Tuple_Literal_Part_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Tuple_Literal_Part : constant Ordered_Set_Of_OCL_Tuple_Literal_Part
+     := (OCL_Tuple_Literal_Part_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Tuple_Literal_Part : constant Bag_Of_OCL_Tuple_Literal_Part
+     := (OCL_Tuple_Literal_Part_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Tuple_Literal_Part : constant Sequence_Of_OCL_Tuple_Literal_Part
+     := (OCL_Tuple_Literal_Part_Collections.Sequence with null record);
 
 end AMF.OCL.Tuple_Literal_Parts.Collections;

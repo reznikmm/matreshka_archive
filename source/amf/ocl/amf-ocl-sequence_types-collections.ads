@@ -57,13 +57,35 @@ package AMF.OCL.Sequence_Types.Collections is
    type Set_Of_OCL_Sequence_Type is
      new OCL_Sequence_Type_Collections.Set with null record;
 
+   Empty_Set_Of_OCL_Sequence_Type : constant Set_Of_OCL_Sequence_Type;
+
    type Ordered_Set_Of_OCL_Sequence_Type is
      new OCL_Sequence_Type_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_OCL_Sequence_Type : constant Ordered_Set_Of_OCL_Sequence_Type;
 
    type Bag_Of_OCL_Sequence_Type is
      new OCL_Sequence_Type_Collections.Bag with null record;
 
+   Empty_Bag_Of_OCL_Sequence_Type : constant Bag_Of_OCL_Sequence_Type;
+
    type Sequence_Of_OCL_Sequence_Type is
      new OCL_Sequence_Type_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_OCL_Sequence_Type : constant Sequence_Of_OCL_Sequence_Type;
+
+private
+
+   Empty_Set_Of_OCL_Sequence_Type : constant Set_Of_OCL_Sequence_Type
+     := (OCL_Sequence_Type_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_OCL_Sequence_Type : constant Ordered_Set_Of_OCL_Sequence_Type
+     := (OCL_Sequence_Type_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_OCL_Sequence_Type : constant Bag_Of_OCL_Sequence_Type
+     := (OCL_Sequence_Type_Collections.Bag with null record);
+
+   Empty_Sequence_Of_OCL_Sequence_Type : constant Sequence_Of_OCL_Sequence_Type
+     := (OCL_Sequence_Type_Collections.Sequence with null record);
 
 end AMF.OCL.Sequence_Types.Collections;
