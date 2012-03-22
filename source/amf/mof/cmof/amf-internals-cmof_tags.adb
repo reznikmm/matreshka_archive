@@ -117,7 +117,7 @@ package body AMF.Internals.CMOF_Tags is
       return
         AMF.CMOF.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Element (Self.Id)));
+           (Internal_Get_Element (Self.Element)));
    end Get_Element;
 
    --------------
@@ -128,7 +128,7 @@ package body AMF.Internals.CMOF_Tags is
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Internals.Create (Internal_Get_Name (Self.Id));
+      return League.Strings.Internals.Create (Internal_Get_Name (Self.Element));
    end Get_Name;
 
    -------------------
@@ -142,7 +142,7 @@ package body AMF.Internals.CMOF_Tags is
       return
         AMF.CMOF.Elements.CMOF_Element_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Tag_Owner (Self.Id)));
+           (Internal_Get_Tag_Owner (Self.Element)));
    end Get_Tag_Owner;
 
    ---------------
@@ -153,7 +153,7 @@ package body AMF.Internals.CMOF_Tags is
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Internals.Create (Internal_Get_Value (Self.Id));
+      return League.Strings.Internals.Create (Internal_Get_Value (Self.Element));
    end Get_Value;
 
    --------------
@@ -164,7 +164,7 @@ package body AMF.Internals.CMOF_Tags is
     (Self : not null access CMOF_Tag_Proxy;
      To   : League.Strings.Universal_String) is
    begin
-      Internal_Set_Name (Self.Id, League.Strings.Internals.Internal (To));
+      Internal_Set_Name (Self.Element, League.Strings.Internals.Internal (To));
    end Set_Name;
 
    ---------------
@@ -175,7 +175,7 @@ package body AMF.Internals.CMOF_Tags is
     (Self : not null access CMOF_Tag_Proxy;
      To   : League.Strings.Universal_String) is
    begin
-      Internal_Set_Value (Self.Id, League.Strings.Internals.Internal (To));
+      Internal_Set_Value (Self.Element, League.Strings.Internals.Internal (To));
    end Set_Value;
 
    -------------------

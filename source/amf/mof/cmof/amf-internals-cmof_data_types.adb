@@ -78,7 +78,7 @@ package body AMF.Internals.CMOF_Data_Types is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Attribute (Self.Id)));
+           (Internal_Get_Owned_Attribute (Self.Element)));
    end Get_Owned_Attribute;
 
    -------------------------
@@ -92,7 +92,7 @@ package body AMF.Internals.CMOF_Data_Types is
       return
         AMF.CMOF.Operations.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Operation (Self.Id)));
+           (Internal_Get_Owned_Operation (Self.Element)));
    end Get_Owned_Operation;
 
    -------------------

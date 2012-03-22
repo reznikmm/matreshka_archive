@@ -79,7 +79,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Constraints.CMOF_Constraint_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Body_Condition (Self.Id)));
+           (Internal_Get_Body_Condition (Self.Element)));
    end Get_Body_Condition;
 
    ---------------
@@ -92,7 +92,7 @@ package body AMF.Internals.CMOF_Operations is
    begin
       return
         AMF.CMOF.Classes.CMOF_Class_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Element)));
    end Get_Class;
 
    ------------------
@@ -105,7 +105,7 @@ package body AMF.Internals.CMOF_Operations is
    begin
       return
         AMF.CMOF.Data_Types.CMOF_Data_Type_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Element)));
    end Get_Datatype;
 
    ------------------
@@ -115,7 +115,7 @@ package body AMF.Internals.CMOF_Operations is
    overriding function Get_Is_Query
     (Self : not null access constant CMOF_Operation_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Query (Self.Id);
+      return Internal_Get_Is_Query (Self.Element);
    end Get_Is_Query;
 
    -------------------------
@@ -134,7 +134,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Parameters.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Parameter (Self.Id)));
+           (Internal_Get_Owned_Parameter (Self.Element)));
    end Get_Owned_Parameter;
 
    -----------------------
@@ -148,7 +148,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Postcondition (Self.Id)));
+           (Internal_Get_Postcondition (Self.Element)));
    end Get_Postcondition;
 
    ----------------------
@@ -162,7 +162,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Precondition (Self.Id)));
+           (Internal_Get_Precondition (Self.Element)));
    end Get_Precondition;
 
    --------------------------
@@ -176,7 +176,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Types.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Raised_Exception (Self.Id)));
+           (Internal_Get_Raised_Exception (Self.Element)));
    end Get_Raised_Exception;
 
    -----------------------------
@@ -190,7 +190,7 @@ package body AMF.Internals.CMOF_Operations is
       return
         AMF.CMOF.Operations.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Redefined_Operation (Self.Id)));
+           (Internal_Get_Redefined_Operation (Self.Element)));
    end Get_Redefined_Operation;
 
    --------------
@@ -203,7 +203,7 @@ package body AMF.Internals.CMOF_Operations is
    begin
       return
         AMF.CMOF.Types.CMOF_Type_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Element)));
    end Get_Type;
 
    -------------------
@@ -231,7 +231,7 @@ package body AMF.Internals.CMOF_Operations is
     (Self : not null access CMOF_Operation_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Query (Self.Id, To);
+      Internal_Set_Is_Query (Self.Element, To);
    end Set_Is_Query;
 
    -------------------

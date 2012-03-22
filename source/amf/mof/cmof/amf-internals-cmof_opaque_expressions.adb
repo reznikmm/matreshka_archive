@@ -280,7 +280,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Body unimplemented");
-      return AMF.String_Collections.Internals.Wrap (Internal_Get_Body (Self.Id));
+      return AMF.String_Collections.Internals.Wrap (Internal_Get_Body (Self.Element));
    end Get_Body;
 
    ------------------
@@ -293,7 +293,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Language unimplemented");
-      return AMF.String_Collections.Internals.Wrap (Internal_Get_Language (Self.Id));
+      return AMF.String_Collections.Internals.Wrap (Internal_Get_Language (Self.Element));
    end Get_Language;
 
 end AMF.Internals.CMOF_Opaque_Expressions;

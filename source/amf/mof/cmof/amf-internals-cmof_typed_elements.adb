@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -59,7 +59,7 @@ package body AMF.Internals.CMOF_Typed_Elements is
    begin
       return
         AMF.CMOF.Types.CMOF_Type_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Element)));
    end Get_Type;
 
    --------------
@@ -71,7 +71,7 @@ package body AMF.Internals.CMOF_Typed_Elements is
      To   : AMF.CMOF.Types.CMOF_Type_Access) is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Type
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element (AMF.Elements.Element_Access (To)));
    end Set_Type;
 

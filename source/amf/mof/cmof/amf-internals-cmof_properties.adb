@@ -120,7 +120,7 @@ package body AMF.Internals.CMOF_Properties is
       return
         AMF.CMOF.Associations.CMOF_Association_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Association (Self.Id)));
+           (Internal_Get_Association (Self.Element)));
    end Get_Association;
 
    ---------------
@@ -133,7 +133,7 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Classes.CMOF_Class_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Element)));
    end Get_Class;
 
    ------------------
@@ -146,7 +146,7 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Data_Types.CMOF_Data_Type_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Element)));
    end Get_Datatype;
 
    -----------------
@@ -158,7 +158,7 @@ package body AMF.Internals.CMOF_Properties is
        return Optional_String
    is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Default (Self.Id);
+        := Internal_Get_Default (Self.Element);
 
    begin
       if Aux = null then
@@ -176,7 +176,7 @@ package body AMF.Internals.CMOF_Properties is
    overriding function Get_Is_Composite
     (Self : not null access constant CMOF_Property_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Composite (Self.Id);
+      return Internal_Get_Is_Composite (Self.Element);
    end Get_Is_Composite;
 
    --------------------
@@ -186,7 +186,7 @@ package body AMF.Internals.CMOF_Properties is
    overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Property_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Derived (Self.Id);
+      return Internal_Get_Is_Derived (Self.Element);
    end Get_Is_Derived;
 
    --------------------------
@@ -197,7 +197,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access constant CMOF_Property_Proxy)
        return Boolean is
    begin
-      return Internal_Get_Is_Derived_Union (Self.Id);
+      return Internal_Get_Is_Derived_Union (Self.Element);
    end Get_Is_Derived_Union;
 
    ----------------------
@@ -207,7 +207,7 @@ package body AMF.Internals.CMOF_Properties is
    overriding function Get_Is_Read_Only
     (Self : not null access constant CMOF_Property_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Read_Only (Self.Id);
+      return Internal_Get_Is_Read_Only (Self.Element);
    end Get_Is_Read_Only;
 
    ------------------
@@ -221,7 +221,7 @@ package body AMF.Internals.CMOF_Properties is
       return
         AMF.CMOF.Properties.CMOF_Property_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Opposite (Self.Id)));
+           (Internal_Get_Opposite (Self.Element)));
    end Get_Opposite;
 
    ----------------------------
@@ -235,7 +235,7 @@ package body AMF.Internals.CMOF_Properties is
       return
         AMF.CMOF.Associations.CMOF_Association_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Owning_Association (Self.Id)));
+           (Internal_Get_Owning_Association (Self.Element)));
    end Get_Owning_Association;
 
    ----------------------------
@@ -249,7 +249,7 @@ package body AMF.Internals.CMOF_Properties is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Redefined_Property (Self.Id)));
+           (Internal_Get_Redefined_Property (Self.Element)));
    end Get_Redefined_Property;
 
    ----------------------------
@@ -263,7 +263,7 @@ package body AMF.Internals.CMOF_Properties is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Subsetted_Property (Self.Id)));
+           (Internal_Get_Subsetted_Property (Self.Element)));
    end Get_Subsetted_Property;
 
    ---------------------
@@ -290,11 +290,11 @@ package body AMF.Internals.CMOF_Properties is
      To   : Optional_String) is
    begin
       if To.Is_Empty then
-         Internal_Set_Default (Self.Id, null);
+         Internal_Set_Default (Self.Element, null);
 
       else
          Internal_Set_Default
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Element, League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Default;
 
@@ -306,7 +306,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Composite (Self.Id, To);
+      Internal_Set_Is_Composite (Self.Element, To);
    end Set_Is_Composite;
 
    --------------------
@@ -317,7 +317,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Derived (Self.Id, To);
+      Internal_Set_Is_Derived (Self.Element, To);
    end Set_Is_Derived;
 
    --------------------------
@@ -328,7 +328,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Derived_Union (Self.Id, To);
+      Internal_Set_Is_Derived_Union (Self.Element, To);
    end Set_Is_Derived_Union;
 
    ----------------------
@@ -339,7 +339,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Read_Only (Self.Id, To);
+      Internal_Set_Is_Read_Only (Self.Element, To);
    end Set_Is_Read_Only;
 
    ---------------
@@ -350,7 +350,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Optional_Integer) is
    begin
-      Internal_Set_Lower (Self.Id, To);
+      Internal_Set_Lower (Self.Element, To);
    end Set_Lower;
 
    ---------------
@@ -361,7 +361,7 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Optional_Unlimited_Natural) is
    begin
-      Internal_Set_Upper (Self.Id, To);
+      Internal_Set_Upper (Self.Element, To);
    end Set_Upper;
 
 

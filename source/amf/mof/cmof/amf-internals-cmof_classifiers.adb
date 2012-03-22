@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -108,7 +108,7 @@ package body AMF.Internals.CMOF_Classifiers is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Attribute (Self.Id)));
+           (Internal_Get_Attribute (Self.Element)));
    end Get_Attribute;
 
    -----------------
@@ -122,7 +122,7 @@ package body AMF.Internals.CMOF_Classifiers is
       return
         AMF.CMOF.Features.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Feature (Self.Id)));
+           (Internal_Get_Feature (Self.Element)));
    end Get_Feature;
 
    -----------------
@@ -136,7 +136,7 @@ package body AMF.Internals.CMOF_Classifiers is
       return
         AMF.CMOF.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_General (Self.Id)));
+           (Internal_Get_General (Self.Element)));
    end Get_General;
 
    --------------------------
@@ -150,7 +150,7 @@ package body AMF.Internals.CMOF_Classifiers is
       return
         AMF.CMOF.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Inherited_Member (Self.Id)));
+           (Internal_Get_Inherited_Member (Self.Element)));
    end Get_Inherited_Member;
 
    ---------------------------------
@@ -161,7 +161,7 @@ package body AMF.Internals.CMOF_Classifiers is
     (Self : not null access constant CMOF_Classifier_Proxy)
        return Boolean is
    begin
-      return Internal_Get_Is_Final_Specialization (Self.Id);
+      return Internal_Get_Is_Final_Specialization (Self.Element);
    end Get_Is_Final_Specialization;
 
    -----------------
@@ -174,7 +174,7 @@ package body AMF.Internals.CMOF_Classifiers is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Package (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Package (Self.Element)));
    end Get_Package;
 
 end AMF.Internals.CMOF_Classifiers;

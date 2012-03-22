@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -59,7 +59,7 @@ package body AMF.Internals.CMOF_Relationships is
       return
         AMF.CMOF.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Related_Element (Self.Id)));
+           (Internal_Get_Related_Element (Self.Element)));
    end Get_Related_Element;
 
 end AMF.Internals.CMOF_Relationships;

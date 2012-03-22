@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,7 +61,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  values in an instantiation of this element are sequentially ordered.
       --  Default is false.
 
-      return Internal_Get_Is_Ordered (Self.Id);
+      return Internal_Get_Is_Ordered (Self.Element);
    end Get_Is_Ordered;
 
    -------------------
@@ -78,7 +78,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  values in an instantiation of this element are unique. Default is
       --  true.
 
-      return Internal_Get_Is_Unique (Self.Id);
+      return Internal_Get_Is_Unique (Self.Element);
    end Get_Is_Unique;
 
    ---------------
@@ -94,7 +94,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  Specifies the lower bound of the multiplicity interval, if it is
       --  expressed as an integer.
 
-      return Internal_Get_Lower (Self.Id);
+      return Internal_Get_Lower (Self.Element);
    end Get_Lower;
 
    ---------------
@@ -110,7 +110,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  Specifies the upper bound of the multiplicity interval, if it is
       --  expressed as an unlimited natural.
 
-      return Internal_Get_Upper (Self.Id);
+      return Internal_Get_Upper (Self.Element);
    end Get_Upper;
 
    --------------------
@@ -167,7 +167,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
     (Self : not null access CMOF_Multiplicity_Element_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Ordered (Self.Id, To);
+      Internal_Set_Is_Ordered (Self.Element, To);
    end Set_Is_Ordered;
 
    -------------------
@@ -178,7 +178,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
     (Self : not null access CMOF_Multiplicity_Element_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Unique (Self.Id, To);
+      Internal_Set_Is_Unique (Self.Element, To);
    end Set_Is_Unique;
 
    ---------------
@@ -189,7 +189,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
     (Self : not null access CMOF_Multiplicity_Element_Proxy;
      To   : Optional_Integer) is
    begin
-      Internal_Set_Lower (Self.Id, To);
+      Internal_Set_Lower (Self.Element, To);
    end Set_Lower;
 
    ---------------
@@ -200,7 +200,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
     (Self : not null access CMOF_Multiplicity_Element_Proxy;
      To   : Optional_Unlimited_Natural) is
    begin
-      Internal_Set_Upper (Self.Id, To);
+      Internal_Set_Upper (Self.Element, To);
    end Set_Upper;
 
    -----------------

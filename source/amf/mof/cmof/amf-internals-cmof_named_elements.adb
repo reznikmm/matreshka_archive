@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,7 +61,7 @@ package body AMF.Internals.CMOF_Named_Elements is
        return Optional_String
    is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Name (Self.Id);
+        := Internal_Get_Name (Self.Element);
 
    begin
       if Aux = null then
@@ -83,7 +83,7 @@ package body AMF.Internals.CMOF_Named_Elements is
       return
         AMF.CMOF.Namespaces.CMOF_Namespace_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Namespace (Self.Id)));
+           (Internal_Get_Namespace (Self.Element)));
    end Get_Namespace;
 
    --------------------
@@ -94,7 +94,7 @@ package body AMF.Internals.CMOF_Named_Elements is
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind is
    begin
-      return Internal_Get_Visibility (Self.Id);
+      return Internal_Get_Visibility (Self.Element);
    end Get_Visibility;
 
    ---------------
@@ -117,11 +117,11 @@ package body AMF.Internals.CMOF_Named_Elements is
      To   : Optional_String) is
    begin
       if To.Is_Empty then
-         Internal_Set_Name (Self.Id, null);
+         Internal_Set_Name (Self.Element, null);
 
       else
          Internal_Set_Name
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Element, League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
 
@@ -133,7 +133,7 @@ package body AMF.Internals.CMOF_Named_Elements is
     (Self : not null access CMOF_Named_Element_Proxy;
      To   : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
    begin
-      Internal_Set_Visibility (Self.Id, To);
+      Internal_Set_Visibility (Self.Element, To);
    end Set_Visibility;
 
 end AMF.Internals.CMOF_Named_Elements;

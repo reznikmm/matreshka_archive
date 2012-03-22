@@ -83,7 +83,7 @@ package body AMF.Internals.CMOF_Packages is
       return
         AMF.CMOF.Packages.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Nested_Package (Self.Id)));
+           (Internal_Get_Nested_Package (Self.Element)));
    end Get_Nested_Package;
 
    -------------------------
@@ -97,7 +97,7 @@ package body AMF.Internals.CMOF_Packages is
       return
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Nesting_Package (Self.Id)));
+           (Internal_Get_Nesting_Package (Self.Element)));
    end Get_Nesting_Package;
 
    --------------------
@@ -111,7 +111,7 @@ package body AMF.Internals.CMOF_Packages is
       return
         AMF.CMOF.Types.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Type (Self.Id)));
+           (Internal_Get_Owned_Type (Self.Element)));
    end Get_Owned_Type;
 
    -----------------------
@@ -125,7 +125,7 @@ package body AMF.Internals.CMOF_Packages is
       return
         AMF.CMOF.Package_Merges.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Package_Merge (Self.Id)));
+           (Internal_Get_Package_Merge (Self.Element)));
    end Get_Package_Merge;
 
    --------------------------
@@ -141,7 +141,7 @@ package body AMF.Internals.CMOF_Packages is
       return
         AMF.CMOF.Packageable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Packaged_Element (Self.Id)));
+           (Internal_Get_Packaged_Element (Self.Element)));
    end Get_Packaged_Element;
 
    -------------
@@ -153,7 +153,7 @@ package body AMF.Internals.CMOF_Packages is
        return Optional_String
    is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Uri (Self.Id);
+        := Internal_Get_Uri (Self.Element);
 
    begin
       if Aux = null then
@@ -211,11 +211,11 @@ package body AMF.Internals.CMOF_Packages is
      To   : Optional_String) is
    begin
       if To.Is_Empty then
-         Internal_Set_Uri (Self.Id, null);
+         Internal_Set_Uri (Self.Element, null);
 
       else
          Internal_Set_Uri
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Element, League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Uri;
 

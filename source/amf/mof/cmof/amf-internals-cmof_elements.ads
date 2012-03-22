@@ -53,10 +53,7 @@ package AMF.Internals.CMOF_Elements is
 
    type CMOF_Element_Proxy is
      abstract limited new AMF.Internals.Elements.Element_Implementation
-       and AMF.CMOF.Elements.CMOF_Element with
-   record
-      Id : CMOF_Element;
-   end record;
+       and AMF.CMOF.Elements.CMOF_Element with null record;
 
    overriding function Get
     (Self     : not null access constant CMOF_Element_Proxy;
@@ -83,10 +80,6 @@ package AMF.Internals.CMOF_Elements is
     (Self     : not null access CMOF_Element_Proxy;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder);
-
-   overriding function Element
-    (Self : not null access constant CMOF_Element_Proxy)
-       return AMF_Element;
 
    overriding function Extent
     (Self : not null access constant CMOF_Element_Proxy)

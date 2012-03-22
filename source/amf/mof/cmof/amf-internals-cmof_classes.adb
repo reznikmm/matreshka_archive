@@ -114,7 +114,7 @@ package body AMF.Internals.CMOF_Classes is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Attribute (Self.Id)));
+           (Internal_Get_Owned_Attribute (Self.Element)));
    end Get_Owned_Attribute;
 
    -------------------------
@@ -128,7 +128,7 @@ package body AMF.Internals.CMOF_Classes is
       return
         AMF.CMOF.Operations.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Operation (Self.Id)));
+           (Internal_Get_Owned_Operation (Self.Element)));
    end Get_Owned_Operation;
 
    ---------------------
@@ -142,7 +142,7 @@ package body AMF.Internals.CMOF_Classes is
       return
         AMF.CMOF.Classes.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Super_Class (Self.Id)));
+           (Internal_Get_Super_Class (Self.Element)));
    end Get_Super_Class;
 
    ---------------------
@@ -153,7 +153,7 @@ package body AMF.Internals.CMOF_Classes is
     (Self : not null access CMOF_Class_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Abstract (Self.Id, To);
+      Internal_Set_Is_Abstract (Self.Element, To);
    end Set_Is_Abstract;
 
    ------------------------
@@ -500,7 +500,7 @@ package body AMF.Internals.CMOF_Classes is
    overriding function Get_Is_Abstract
     (Self : not null access constant CMOF_Class_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Abstract (Self.Id);
+      return Internal_Get_Is_Abstract (Self.Element);
    end Get_Is_Abstract;
 
 end AMF.Internals.CMOF_Classes;

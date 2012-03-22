@@ -78,7 +78,7 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
       return
         AMF.CMOF.Enumerations.CMOF_Enumeration_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Enumeration (Self.Id)));
+           (Internal_Get_Enumeration (Self.Element)));
    end Get_Enumeration;
 
    -------------------

@@ -52,17 +52,6 @@ package body AMF.Internals.CMOF_Elements is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
-   -------------
-   -- Element --
-   -------------
-
-   overriding function Element
-    (Self : not null access constant CMOF_Element_Proxy)
-       return AMF_Element is
-   begin
-      return Self.Id;
-   end Element;
-
    ------------
    -- Extent --
    ------------
@@ -73,7 +62,7 @@ package body AMF.Internals.CMOF_Elements is
    begin
       return
         AMF.Internals.Extents.Proxy
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self.Id).Extent);
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self.Element).Extent);
    end Extent;
 
    ---------
@@ -87,7 +76,7 @@ package body AMF.Internals.CMOF_Elements is
    begin
       return
         AMF.Internals.Tables.CMOF_Reflection.Get
-         (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id);
+         (Self.Element, CMOF_Element_Proxy'Class (Property.all).Element);
    end Get;
 
    --------------------
@@ -101,7 +90,8 @@ package body AMF.Internals.CMOF_Elements is
       return
         AMF.CMOF.Classes.CMOF_Class_Access
          (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.CMOF_Reflection.Get_Meta_Class (Self.Id)));
+           (AMF.Internals.Tables.CMOF_Reflection.Get_Meta_Class
+             (Self.Element)));
    end Get_Meta_Class;
 
    -----------------------
@@ -115,7 +105,7 @@ package body AMF.Internals.CMOF_Elements is
       return
         AMF.CMOF.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Comment (Self.Id)));
+           (Internal_Get_Owned_Comment (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -129,7 +119,7 @@ package body AMF.Internals.CMOF_Elements is
       return
         AMF.CMOF.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Element (Self.Id)));
+           (Internal_Get_Owned_Element (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -143,7 +133,7 @@ package body AMF.Internals.CMOF_Elements is
       return
         AMF.CMOF.Elements.CMOF_Element_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Owner (Self.Id)));
+           (Internal_Get_Owner (Self.Element)));
    end Get_Owner;
 
    -------------------
@@ -178,7 +168,7 @@ package body AMF.Internals.CMOF_Elements is
      Value    : League.Holders.Holder) is
    begin
       AMF.Internals.Tables.CMOF_Reflection.Set
-       (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id, Value);
+       (Self.Element, CMOF_Element_Proxy'Class (Property.all).Element, Value);
    end Set;
 
 end AMF.Internals.CMOF_Elements;

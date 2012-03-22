@@ -80,7 +80,7 @@ package body AMF.Internals.CMOF_Enumerations is
       return
         AMF.CMOF.Enumeration_Literals.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Literal (Self.Id)));
+           (Internal_Get_Owned_Literal (Self.Element)));
    end Get_Owned_Literal;
 
    -------------------

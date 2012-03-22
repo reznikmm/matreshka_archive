@@ -114,7 +114,7 @@ package body AMF.Internals.CMOF_Package_Imports is
       return
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Imported_Package (Self.Id)));
+           (Internal_Get_Imported_Package (Self.Element)));
    end Get_Imported_Package;
 
    -----------------------------
@@ -128,7 +128,7 @@ package body AMF.Internals.CMOF_Package_Imports is
       return
         AMF.CMOF.Namespaces.CMOF_Namespace_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Importing_Namespace (Self.Id)));
+           (Internal_Get_Importing_Namespace (Self.Element)));
    end Get_Importing_Namespace;
 
    --------------------
@@ -139,7 +139,7 @@ package body AMF.Internals.CMOF_Package_Imports is
     (Self : not null access constant CMOF_Package_Import_Proxy)
        return CMOF.CMOF_Visibility_Kind is
    begin
-      return Internal_Get_Visibility (Self.Id);
+      return Internal_Get_Visibility (Self.Element);
    end Get_Visibility;
 
    ------------------------

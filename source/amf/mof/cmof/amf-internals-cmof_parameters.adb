@@ -80,7 +80,7 @@ package body AMF.Internals.CMOF_Parameters is
        return Optional_String
    is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Default (Self.Id);
+        := Internal_Get_Default (Self.Element);
 
    begin
       if Aux = null then
@@ -99,7 +99,7 @@ package body AMF.Internals.CMOF_Parameters is
     (Self : not null access constant CMOF_Parameter_Proxy)
        return CMOF.CMOF_Parameter_Direction_Kind is
    begin
-      return Internal_Get_Direction (Self.Id);
+      return Internal_Get_Direction (Self.Element);
    end Get_Direction;
 
    -------------------
@@ -112,7 +112,7 @@ package body AMF.Internals.CMOF_Parameters is
    begin
       return
         AMF.CMOF.Operations.CMOF_Operation_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Operation (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Operation (Self.Element)));
    end Get_Operation;
 
    -------------------
@@ -140,7 +140,7 @@ package body AMF.Internals.CMOF_Parameters is
     (Self : not null access CMOF_Parameter_Proxy;
      To   : CMOF.CMOF_Parameter_Direction_Kind) is
    begin
-      Internal_Set_Direction (Self.Id, To);
+      Internal_Set_Direction (Self.Element, To);
    end Set_Direction;
 
    -------------------

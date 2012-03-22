@@ -79,7 +79,7 @@ package body AMF.Internals.CMOF_Constraints is
       return
         AMF.CMOF.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Constrained_Element (Self.Id)));
+           (Internal_Get_Constrained_Element (Self.Element)));
    end Get_Constrained_Element;
 
    -----------------
@@ -92,7 +92,7 @@ package body AMF.Internals.CMOF_Constraints is
    begin
       return
         AMF.CMOF.Namespaces.CMOF_Namespace_Access
-         (AMF.Internals.Helpers.To_Element (Internal_Get_Context (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Context (Self.Element)));
    end Get_Context;
 
    -----------------------
@@ -106,7 +106,7 @@ package body AMF.Internals.CMOF_Constraints is
       return
         AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
-           (Internal_Get_Specification (Self.Id)));
+           (Internal_Get_Specification (Self.Element)));
    end Get_Specification;
 
    -------------------

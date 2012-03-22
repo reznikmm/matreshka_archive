@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,7 +60,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Element_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Element_Import (Self.Id)));
+           (Internal_Get_Element_Import (Self.Element)));
    end Get_Element_Import;
 
    -------------------------
@@ -77,7 +77,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Packageable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Imported_Member (Self.Id)));
+           (Internal_Get_Imported_Member (Self.Element)));
    end Get_Imported_Member;
 
    ----------------
@@ -91,7 +91,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Member (Self.Id)));
+           (Internal_Get_Member (Self.Element)));
    end Get_Member;
 
    ----------------------
@@ -105,7 +105,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Member (Self.Id)));
+           (Internal_Get_Owned_Member (Self.Element)));
    end Get_Owned_Member;
 
    --------------------
@@ -119,7 +119,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Rule (Self.Id)));
+           (Internal_Get_Owned_Rule (Self.Element)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -133,7 +133,7 @@ package body AMF.Internals.CMOF_Namespaces is
       return
         AMF.CMOF.Package_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Package_Import (Self.Id)));
+           (Internal_Get_Package_Import (Self.Element)));
    end Get_Package_Import;
 
 end AMF.Internals.CMOF_Namespaces;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,7 +56,7 @@ package body AMF.Internals.CMOF_Redefinable_Elements is
     (Self : not null access constant CMOF_Redefinable_Element_Proxy)
        return Boolean is
    begin
-      return Internal_Get_Is_Leaf (Self.Id);
+      return Internal_Get_Is_Leaf (Self.Element);
    end Get_Is_Leaf;
 
    ---------------------------
@@ -70,7 +70,7 @@ package body AMF.Internals.CMOF_Redefinable_Elements is
       return
         AMF.CMOF.Redefinable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Redefined_Element (Self.Id)));
+           (Internal_Get_Redefined_Element (Self.Element)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -84,7 +84,7 @@ package body AMF.Internals.CMOF_Redefinable_Elements is
       return
         AMF.CMOF.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Redefinition_Context (Self.Id)));
+           (Internal_Get_Redefinition_Context (Self.Element)));
    end Get_Redefinition_Context;
 
 end AMF.Internals.CMOF_Redefinable_Elements;

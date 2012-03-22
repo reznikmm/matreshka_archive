@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,6 +53,7 @@ begin
    else
       return
         Ada.Containers.Hash_Type
-         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id);
+         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+           (Item.all).Element);
    end if;
 end AMF.CMOF.Elements.Hash;

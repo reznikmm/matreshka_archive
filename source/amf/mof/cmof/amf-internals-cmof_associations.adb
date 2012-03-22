@@ -78,7 +78,7 @@ package body AMF.Internals.CMOF_Associations is
       return
         AMF.CMOF.Types.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_End_Type (Self.Id)));
+           (Internal_Get_End_Type (Self.Element)));
    end Get_End_Type;
 
    --------------------
@@ -88,7 +88,7 @@ package body AMF.Internals.CMOF_Associations is
    overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Association_Proxy) return Boolean is
    begin
-      return Internal_Get_Is_Derived (Self.Id);
+      return Internal_Get_Is_Derived (Self.Element);
    end Get_Is_Derived;
 
    --------------------
@@ -102,7 +102,7 @@ package body AMF.Internals.CMOF_Associations is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Member_End (Self.Id)));
+           (Internal_Get_Member_End (Self.Element)));
    end Get_Member_End;
 
    -----------------------------
@@ -116,7 +116,7 @@ package body AMF.Internals.CMOF_Associations is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Navigable_Owned_End (Self.Id)));
+           (Internal_Get_Navigable_Owned_End (Self.Element)));
    end Get_Navigable_Owned_End;
 
    -------------------
@@ -130,7 +130,7 @@ package body AMF.Internals.CMOF_Associations is
       return
         AMF.CMOF.Properties.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_End (Self.Id)));
+           (Internal_Get_Owned_End (Self.Element)));
    end Get_Owned_End;
 
    -------------------
@@ -158,7 +158,7 @@ package body AMF.Internals.CMOF_Associations is
     (Self : not null access CMOF_Association_Proxy;
      To   : Boolean) is
    begin
-      Internal_Set_Is_Derived (Self.Id, To);
+      Internal_Set_Is_Derived (Self.Element, To);
    end Set_Is_Derived;
 
    -------------------

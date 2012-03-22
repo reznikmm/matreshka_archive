@@ -82,7 +82,7 @@ package body AMF.Internals.CMOF_Comments is
       return
         AMF.CMOF.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Annotated_Element (Self.Id)));
+           (Internal_Get_Annotated_Element (Self.Element)));
    end Get_Annotated_Element;
 
    --------------
@@ -94,7 +94,7 @@ package body AMF.Internals.CMOF_Comments is
        return Optional_String
    is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Body (Self.Id);
+        := Internal_Get_Body (Self.Element);
 
    begin
       if Aux = null then
@@ -131,11 +131,11 @@ package body AMF.Internals.CMOF_Comments is
      To   : Optional_String) is
    begin
       if To.Is_Empty then
-         Internal_Set_Body (Self.Id, null);
+         Internal_Set_Body (Self.Element, null);
 
       else
          Internal_Set_Body
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Element, League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Body;
 
