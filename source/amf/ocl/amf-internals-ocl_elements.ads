@@ -50,10 +50,7 @@ with League.Holders;
 package AMF.Internals.OCL_Elements is
 
    type OCL_Element_Proxy is
-     abstract limited new AMF.Internals.Elements.Element_Implementation with
-   record
-      Id : OCL_Element;
-   end record;
+     abstract limited new AMF.Internals.Elements.Element_Base with null record;
 
    overriding function Get
     (Self     : not null access constant OCL_Element_Proxy;
@@ -80,10 +77,6 @@ package AMF.Internals.OCL_Elements is
     (Self     : not null access OCL_Element_Proxy;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder);
-
-   overriding function Element
-    (Self : not null access constant OCL_Element_Proxy)
-       return AMF.Internals.AMF_Element;
 
    overriding function Extent
     (Self : not null access constant OCL_Element_Proxy)

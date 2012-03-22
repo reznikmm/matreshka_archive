@@ -49,17 +49,6 @@ with AMF.Internals.Tables.OCL_Reflection;
 
 package body AMF.Internals.OCL_Elements is
 
-   -------------
-   -- Element --
-   -------------
-
-   overriding function Element
-    (Self : not null access constant OCL_Element_Proxy)
-       return AMF.Internals.AMF_Element is
-   begin
-      return Self.Id;
-   end Element;
-
    ------------
    -- Extent --
    ------------
@@ -70,7 +59,7 @@ package body AMF.Internals.OCL_Elements is
    begin
       return
         AMF.Internals.Extents.Proxy
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self.Id).Extent);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self.Element).Extent);
    end Extent;
 
    ---------
@@ -84,7 +73,7 @@ package body AMF.Internals.OCL_Elements is
    begin
       return
         AMF.Internals.Tables.OCL_Reflection.Get
-         (Self.Id,
+         (Self.Element,
           AMF.Internals.Helpers.To_Element
            (AMF.Elements.Element_Access (Property)));
    end Get;
@@ -100,7 +89,7 @@ package body AMF.Internals.OCL_Elements is
       return
         AMF.CMOF.Classes.CMOF_Class_Access
          (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.OCL_Reflection.Get_Meta_Class (Self.Id)));
+           (AMF.Internals.Tables.OCL_Reflection.Get_Meta_Class (Self.Element)));
    end Get_Meta_Class;
 
 --   -------------------
@@ -135,7 +124,7 @@ package body AMF.Internals.OCL_Elements is
      Value    : League.Holders.Holder) is
    begin
       AMF.Internals.Tables.OCL_Reflection.Set
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (Property)),
         Value);

@@ -109,7 +109,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Any_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Any_Types.OCL_Any_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Any_Types.OCL_Any_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -324,7 +324,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -398,7 +398,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Bag_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Bag_Types.OCL_Bag_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Bag_Types.OCL_Bag_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -629,7 +629,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -692,7 +692,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Item,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Collection_Items.OCL_Collection_Item_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Collection_Items.OCL_Collection_Item_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -755,7 +755,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Collection_Literal_Exps.OCL_Collection_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Collection_Literal_Exps.OCL_Collection_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Collection_Kind, AMF.OCL.Collection),
@@ -825,7 +825,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Range,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Collection_Ranges.OCL_Collection_Range_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Collection_Ranges.OCL_Collection_Range_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -890,7 +890,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Collection_Types.OCL_Collection_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Collection_Types.OCL_Collection_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1121,7 +1121,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Enum_Literal_Exps.OCL_Enum_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Enum_Literal_Exps.OCL_Enum_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -1184,7 +1184,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Expression_In_Ocls.OCL_Expression_In_Ocl_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Expression_In_Ocls.OCL_Expression_In_Ocl_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1272,7 +1272,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_If_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_If_Exps.OCL_If_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_If_Exps.OCL_If_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1339,7 +1339,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Integer_Literal_Exps.OCL_Integer_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Integer_Literal_Exps.OCL_Integer_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Integer, 0),
@@ -1402,7 +1402,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -1463,7 +1463,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Invalid_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Invalid_Types.OCL_Invalid_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Invalid_Types.OCL_Invalid_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -1678,7 +1678,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Iterate_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Iterate_Exps.OCL_Iterate_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Iterate_Exps.OCL_Iterate_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1752,7 +1752,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Iterator_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Iterator_Exps.OCL_Iterator_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Iterator_Exps.OCL_Iterator_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1824,7 +1824,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Let_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Let_Exps.OCL_Let_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Let_Exps.OCL_Let_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1889,7 +1889,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Message_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Message_Exps.OCL_Message_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Message_Exps.OCL_Message_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1963,7 +1963,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Message_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Message_Types.OCL_Message_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Message_Types.OCL_Message_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -2182,7 +2182,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Null_Literal_Exps.OCL_Null_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Null_Literal_Exps.OCL_Null_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -2243,7 +2243,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Operation_Call_Exps.OCL_Operation_Call_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Operation_Call_Exps.OCL_Operation_Call_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -2315,7 +2315,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Ordered_Set_Types.OCL_Ordered_Set_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Ordered_Set_Types.OCL_Ordered_Set_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -2546,7 +2546,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Property_Call_Exps.OCL_Property_Call_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Property_Call_Exps.OCL_Property_Call_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -2620,7 +2620,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Real_Literal_Exps.OCL_Real_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Real_Literal_Exps.OCL_Real_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -2683,7 +2683,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Sequence_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Sequence_Types.OCL_Sequence_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Sequence_Types.OCL_Sequence_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -2914,7 +2914,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Set_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Set_Types.OCL_Set_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Set_Types.OCL_Set_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -3145,7 +3145,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_State_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_State_Exps.OCL_State_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_State_Exps.OCL_State_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -3208,7 +3208,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_String_Literal_Exps.OCL_String_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_String_Literal_Exps.OCL_String_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -3271,7 +3271,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Template_Parameter_Types.OCL_Template_Parameter_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Template_Parameter_Types.OCL_Template_Parameter_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -3488,7 +3488,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -3556,7 +3556,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -3619,7 +3619,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Tuple_Types.OCL_Tuple_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Tuple_Types.OCL_Tuple_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
@@ -3848,7 +3848,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Type_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Type_Exps.OCL_Type_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Type_Exps.OCL_Type_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -3911,7 +3911,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -3974,7 +3974,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -4035,7 +4035,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Variable,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Variables.OCL_Variable_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Variables.OCL_Variable_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           8      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -4100,7 +4100,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Variable_Exp,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Variable_Exps.OCL_Variable_Exp_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Variable_Exps.OCL_Variable_Exp_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
@@ -4163,7 +4163,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
        (Kind     => AMF.Internals.Tables.OCL_Types.E_Void_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.OCL_Void_Types.OCL_Void_Type_Proxy'(Id => Self),
+          new AMF.Internals.OCL_Void_Types.OCL_Void_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
           13     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),

@@ -75,7 +75,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_First
-             (Self.Id)));
+             (Self.Element)));
    end Get_First;
 
    ---------------
@@ -87,7 +87,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
      To   : AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_First
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_First;
@@ -104,7 +104,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Last
-             (Self.Id)));
+             (Self.Element)));
    end Get_Last;
 
    --------------
@@ -116,7 +116,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
      To   : AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_Last
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Last;
@@ -133,7 +133,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Types.UML_Type_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Type
-             (Self.Id)));
+             (Self.Element)));
    end Get_Type;
 
    --------------
@@ -145,7 +145,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
      To   : AMF.UML.Types.UML_Type_Access) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_Type
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Type;
@@ -162,7 +162,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -177,7 +177,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.OCL_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.OCL_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -199,11 +199,11 @@ package body AMF.Internals.OCL_Collection_Ranges is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.OCL_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.OCL_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -220,7 +220,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -232,7 +232,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -249,7 +249,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -264,7 +264,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.OCL_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.OCL_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -286,7 +286,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
    begin
       return
         AMF.Internals.Tables.OCL_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -298,7 +298,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.OCL_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -313,7 +313,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -328,7 +328,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -343,7 +343,7 @@ package body AMF.Internals.OCL_Collection_Ranges is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    --------------------
