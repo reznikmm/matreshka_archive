@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -116,7 +116,7 @@ package body AMF.Internals.UML_Multiplicity_Elements is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Ordered
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Ordered;
 
    -------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Multiplicity_Elements is
     (Self : not null access UML_Multiplicity_Element_Proxy;
      To   : Boolean) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique (Self.Id, To);
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique (Self.Element, To);
    end Set_Is_Unique;
 
    -----------------

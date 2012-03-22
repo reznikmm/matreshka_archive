@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Executable_Nodes.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Body
-             (Self.Id)));
+             (Self.Element)));
    end Get_Body;
 
    ---------------------
@@ -130,7 +130,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Output_Pins.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Body_Output
-             (Self.Id)));
+             (Self.Element)));
    end Get_Body_Output;
 
    -----------------
@@ -145,7 +145,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Output_Pins.UML_Output_Pin_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Decider
-             (Self.Id)));
+             (Self.Element)));
    end Get_Decider;
 
    -----------------
@@ -157,7 +157,7 @@ package body AMF.Internals.UML_Clauses is
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Decider
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Decider;
@@ -174,7 +174,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Clauses.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Predecessor_Clause
-             (Self.Id)));
+             (Self.Element)));
    end Get_Predecessor_Clause;
 
    --------------------------
@@ -189,7 +189,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Clauses.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Successor_Clause
-             (Self.Id)));
+             (Self.Element)));
    end Get_Successor_Clause;
 
    --------------
@@ -204,7 +204,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Executable_Nodes.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Test
-             (Self.Id)));
+             (Self.Element)));
    end Get_Test;
 
    -----------------------
@@ -219,7 +219,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -234,7 +234,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -249,7 +249,7 @@ package body AMF.Internals.UML_Clauses is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

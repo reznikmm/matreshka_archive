@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_General_Machine
-             (Self.Id)));
+             (Self.Element)));
    end Get_General_Machine;
 
    -------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_General_Machine
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_General_Machine;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Specific_Machine
-             (Self.Id)));
+             (Self.Element)));
    end Get_Specific_Machine;
 
    --------------------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific_Machine
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Specific_Machine;
@@ -173,7 +173,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
-             (Self.Id)));
+             (Self.Element)));
    end Get_Source;
 
    ----------------
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
-             (Self.Id)));
+             (Self.Element)));
    end Get_Target;
 
    -------------------------
@@ -203,7 +203,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Related_Element;
 
    -----------------------
@@ -218,7 +218,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -233,7 +233,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -248,7 +248,7 @@ package body AMF.Internals.UML_Protocol_Conformances is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

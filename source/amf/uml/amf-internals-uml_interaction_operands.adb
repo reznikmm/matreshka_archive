@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Interaction_Fragments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Fragment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Fragment;
 
    ---------------
@@ -132,7 +132,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Guard
-             (Self.Id)));
+             (Self.Element)));
    end Get_Guard;
 
    ---------------
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Interaction_Operands is
      To   : AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Guard
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Guard;
@@ -161,7 +161,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Lifelines.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Covered
-             (Self.Id)));
+             (Self.Element)));
    end Get_Covered;
 
    -------------------------------
@@ -176,7 +176,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Interactions.UML_Interaction_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Enclosing_Interaction
-             (Self.Id)));
+             (Self.Element)));
    end Get_Enclosing_Interaction;
 
    -------------------------------
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Interaction_Operands is
      To   : AMF.UML.Interactions.UML_Interaction_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Interaction
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Interaction;
@@ -205,7 +205,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Enclosing_Operand
-             (Self.Id)));
+             (Self.Element)));
    end Get_Enclosing_Operand;
 
    ---------------------------
@@ -217,7 +217,7 @@ package body AMF.Internals.UML_Interaction_Operands is
      To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Operand
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Operand;
@@ -234,7 +234,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.General_Orderings.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_General_Ordering
-             (Self.Id)));
+             (Self.Element)));
    end Get_General_Ordering;
 
    ---------------------------
@@ -249,7 +249,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -264,7 +264,7 @@ package body AMF.Internals.UML_Interaction_Operands is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -286,11 +286,11 @@ package body AMF.Internals.UML_Interaction_Operands is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -307,7 +307,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -319,7 +319,7 @@ package body AMF.Internals.UML_Interaction_Operands is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -336,7 +336,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -351,7 +351,7 @@ package body AMF.Internals.UML_Interaction_Operands is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -373,7 +373,7 @@ package body AMF.Internals.UML_Interaction_Operands is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -385,7 +385,7 @@ package body AMF.Internals.UML_Interaction_Operands is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -400,7 +400,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -415,7 +415,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -430,7 +430,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------
@@ -445,7 +445,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Element_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Element_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Element_Import;
 
    -------------------------
@@ -460,7 +460,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Packageable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Imported_Member;
 
    ----------------
@@ -475,7 +475,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Member;
 
    ----------------------
@@ -490,7 +490,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Member;
 
    --------------------
@@ -505,7 +505,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Rule
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -520,7 +520,7 @@ package body AMF.Internals.UML_Interaction_Operands is
         AMF.UML.Package_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Package_Import;
 
    --------------------

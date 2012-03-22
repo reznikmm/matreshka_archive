@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Element_Imports is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Alias (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Alias (Self.Element);
 
       begin
          if Aux = null then
@@ -139,11 +139,11 @@ package body AMF.Internals.UML_Element_Imports is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Alias
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Alias
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Alias;
@@ -160,7 +160,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Packageable_Elements.UML_Packageable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Imported_Element;
 
    --------------------------
@@ -172,7 +172,7 @@ package body AMF.Internals.UML_Element_Imports is
      To   : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Imported_Element
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Imported_Element;
@@ -189,7 +189,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Importing_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Importing_Namespace;
 
    -----------------------------
@@ -201,7 +201,7 @@ package body AMF.Internals.UML_Element_Imports is
      To   : AMF.UML.Namespaces.UML_Namespace_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Importing_Namespace
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Importing_Namespace;
@@ -216,7 +216,7 @@ package body AMF.Internals.UML_Element_Imports is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -228,7 +228,7 @@ package body AMF.Internals.UML_Element_Imports is
      To   : AMF.UML.UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    ----------------
@@ -243,7 +243,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
-             (Self.Id)));
+             (Self.Element)));
    end Get_Source;
 
    ----------------
@@ -258,7 +258,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
-             (Self.Id)));
+             (Self.Element)));
    end Get_Target;
 
    -------------------------
@@ -273,7 +273,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Related_Element;
 
    -----------------------
@@ -288,7 +288,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -303,7 +303,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -318,7 +318,7 @@ package body AMF.Internals.UML_Element_Imports is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    --------------

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -78,11 +78,11 @@ package body AMF.Internals.UML_Named_Elements is
      To   : AMF.Optional_String) is
    begin
       if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name (Self.Id, null);
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Element, League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
 
@@ -95,7 +95,7 @@ package body AMF.Internals.UML_Named_Elements is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
 end AMF.Internals.UML_Named_Elements;

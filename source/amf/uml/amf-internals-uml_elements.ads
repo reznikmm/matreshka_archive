@@ -52,11 +52,8 @@ with AMF.UML.Elements;
 package AMF.Internals.UML_Elements is
 
    type UML_Element_Proxy is
-     abstract limited new AMF.Internals.Elements.Element_Implementation
-       and AMF.UML.Elements.UML_Element with
-   record
-      Id : AMF.Internals.UML_Element;
-   end record;
+     abstract limited new AMF.Internals.Elements.Element_Base
+       and AMF.UML.Elements.UML_Element with null record;
 
    overriding function Get
     (Self     : not null access constant UML_Element_Proxy;
@@ -71,10 +68,6 @@ package AMF.Internals.UML_Elements is
     (Self     : not null access UML_Element_Proxy;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder);
-
-   overriding function Element
-    (Self : not null access constant UML_Element_Proxy)
-       return AMF.Internals.AMF_Element;
 
    overriding function Extent
     (Self : not null access constant UML_Element_Proxy)

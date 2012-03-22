@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Packages.UML_Package_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Merged_Package
-             (Self.Id)));
+             (Self.Element)));
    end Get_Merged_Package;
 
    ------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Package_Merges is
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Merged_Package
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Merged_Package;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Packages.UML_Package_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Receiving_Package
-             (Self.Id)));
+             (Self.Element)));
    end Get_Receiving_Package;
 
    ---------------------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Package_Merges is
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Receiving_Package
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Receiving_Package;
@@ -173,7 +173,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
-             (Self.Id)));
+             (Self.Element)));
    end Get_Source;
 
    ----------------
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
-             (Self.Id)));
+             (Self.Element)));
    end Get_Target;
 
    -------------------------
@@ -203,7 +203,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Related_Element;
 
    -----------------------
@@ -218,7 +218,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -233,7 +233,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -248,7 +248,7 @@ package body AMF.Internals.UML_Package_Merges is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Object_Nodes.UML_Object_Node_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Exception_Input
-             (Self.Id)));
+             (Self.Element)));
    end Get_Exception_Input;
 
    -------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Exception_Handlers is
      To   : AMF.UML.Object_Nodes.UML_Object_Node_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Exception_Input
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Exception_Input;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Exception_Type
-             (Self.Id)));
+             (Self.Element)));
    end Get_Exception_Type;
 
    ----------------------
@@ -159,7 +159,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Executable_Nodes.UML_Executable_Node_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Handler_Body
-             (Self.Id)));
+             (Self.Element)));
    end Get_Handler_Body;
 
    ----------------------
@@ -171,7 +171,7 @@ package body AMF.Internals.UML_Exception_Handlers is
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Handler_Body
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Handler_Body;
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Executable_Nodes.UML_Executable_Node_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Protected_Node
-             (Self.Id)));
+             (Self.Element)));
    end Get_Protected_Node;
 
    ------------------------
@@ -200,7 +200,7 @@ package body AMF.Internals.UML_Exception_Handlers is
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Protected_Node
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Protected_Node;
@@ -217,7 +217,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -232,7 +232,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -247,7 +247,7 @@ package body AMF.Internals.UML_Exception_Handlers is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

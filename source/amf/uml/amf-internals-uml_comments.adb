@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Comments is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Annotated_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Annotated_Element;
 
    --------------
@@ -132,7 +132,7 @@ package body AMF.Internals.UML_Comments is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Body (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Body (Self.Element);
 
       begin
          if Aux = null then
@@ -154,11 +154,11 @@ package body AMF.Internals.UML_Comments is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Body
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Body
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Body;
@@ -175,7 +175,7 @@ package body AMF.Internals.UML_Comments is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -190,7 +190,7 @@ package body AMF.Internals.UML_Comments is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -205,7 +205,7 @@ package body AMF.Internals.UML_Comments is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

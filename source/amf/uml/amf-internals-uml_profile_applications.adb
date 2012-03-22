@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Profiles.UML_Profile_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Applied_Profile
-             (Self.Id)));
+             (Self.Element)));
    end Get_Applied_Profile;
 
    -------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Profile_Applications is
      To   : AMF.UML.Profiles.UML_Profile_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Applied_Profile
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Applied_Profile;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Packages.UML_Package_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Applying_Package
-             (Self.Id)));
+             (Self.Element)));
    end Get_Applying_Package;
 
    --------------------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Profile_Applications is
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Applying_Package
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Applying_Package;
@@ -171,7 +171,7 @@ package body AMF.Internals.UML_Profile_Applications is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Strict
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Strict;
 
    -------------------
@@ -183,7 +183,7 @@ package body AMF.Internals.UML_Profile_Applications is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Strict
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Strict;
 
    ----------------
@@ -198,7 +198,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
-             (Self.Id)));
+             (Self.Element)));
    end Get_Source;
 
    ----------------
@@ -213,7 +213,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
-             (Self.Id)));
+             (Self.Element)));
    end Get_Target;
 
    -------------------------
@@ -228,7 +228,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Related_Element;
 
    -----------------------
@@ -243,7 +243,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -258,7 +258,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -273,7 +273,7 @@ package body AMF.Internals.UML_Profile_Applications is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

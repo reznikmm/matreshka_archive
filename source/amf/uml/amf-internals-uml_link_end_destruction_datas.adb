@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Input_Pins.UML_Input_Pin_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Destroy_At
-             (Self.Id)));
+             (Self.Element)));
    end Get_Destroy_At;
 
    --------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Destroy_At
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Destroy_At;
@@ -142,7 +142,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Destroy_Duplicates
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Destroy_Duplicates;
 
    -------------------------------
@@ -154,7 +154,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Destroy_Duplicates
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Destroy_Duplicates;
 
    -------------
@@ -169,7 +169,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Properties.UML_Property_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_End
-             (Self.Id)));
+             (Self.Element)));
    end Get_End;
 
    -------------
@@ -181,7 +181,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_End
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_End;
@@ -198,7 +198,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Qualifier_Values.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualifier
-             (Self.Id)));
+             (Self.Element)));
    end Get_Qualifier;
 
    ---------------
@@ -213,7 +213,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Input_Pins.UML_Input_Pin_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
-             (Self.Id)));
+             (Self.Element)));
    end Get_Value;
 
    ---------------
@@ -225,7 +225,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Value;
@@ -242,7 +242,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -257,7 +257,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -272,7 +272,7 @@ package body AMF.Internals.UML_Link_End_Destruction_Datas is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

@@ -116,7 +116,7 @@ package body AMF.Internals.UML_Images is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Content (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Content (Self.Element);
 
       begin
          if Aux = null then
@@ -138,11 +138,11 @@ package body AMF.Internals.UML_Images is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Content
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Content
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Content;
@@ -159,7 +159,7 @@ package body AMF.Internals.UML_Images is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Format (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Format (Self.Element);
 
       begin
          if Aux = null then
@@ -181,11 +181,11 @@ package body AMF.Internals.UML_Images is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Format
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Format
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Format;
@@ -202,7 +202,7 @@ package body AMF.Internals.UML_Images is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Location (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Location (Self.Element);
 
       begin
          if Aux = null then
@@ -224,11 +224,11 @@ package body AMF.Internals.UML_Images is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Location
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Location
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Location;
@@ -245,7 +245,7 @@ package body AMF.Internals.UML_Images is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -260,7 +260,7 @@ package body AMF.Internals.UML_Images is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -275,7 +275,7 @@ package body AMF.Internals.UML_Images is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

@@ -53,7 +53,6 @@ begin
    else
       return
         Ada.Containers.Hash_Type
-         (AMF.Internals.Elements.Element_Implementation'Class
-           (Item.all).Element);
+         (AMF.Internals.Elements.Element_Base'Class (Item.all).Element);
    end if;
 end AMF.UML.Elements.Hash;

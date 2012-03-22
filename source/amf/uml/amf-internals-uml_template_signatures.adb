@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Template_Parameters.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parameter
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Parameter;
 
    -------------------
@@ -130,7 +130,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Template_Parameters.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Parameter
-             (Self.Id)));
+             (Self.Element)));
    end Get_Parameter;
 
    ------------------
@@ -145,7 +145,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Templateable_Elements.UML_Templateable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template
-             (Self.Id)));
+             (Self.Element)));
    end Get_Template;
 
    ------------------
@@ -157,7 +157,7 @@ package body AMF.Internals.UML_Template_Signatures is
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Template
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Template;
@@ -174,7 +174,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -189,7 +189,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -204,7 +204,7 @@ package body AMF.Internals.UML_Template_Signatures is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

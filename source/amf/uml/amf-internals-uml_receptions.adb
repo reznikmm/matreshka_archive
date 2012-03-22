@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Signals.UML_Signal_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Signal
-             (Self.Id)));
+             (Self.Element)));
    end Get_Signal;
 
    ----------------
@@ -129,7 +129,7 @@ package body AMF.Internals.UML_Receptions is
      To   : AMF.UML.Signals.UML_Signal_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Signal
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Signal;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Receptions is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Concurrency
-         (Self.Id);
+         (Self.Element);
    end Get_Concurrency;
 
    ---------------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Receptions is
      To   : AMF.UML.UML_Call_Concurrency_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Concurrency
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Concurrency;
 
    ---------------------
@@ -169,7 +169,7 @@ package body AMF.Internals.UML_Receptions is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Abstract
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Abstract;
 
    ---------------------
@@ -181,7 +181,7 @@ package body AMF.Internals.UML_Receptions is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Abstract
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Abstract;
 
    ----------------
@@ -196,7 +196,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Behaviors.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Method
-             (Self.Id)));
+             (Self.Element)));
    end Get_Method;
 
    -------------------------
@@ -211,7 +211,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Parameters.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parameter
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Parameter;
 
    -----------------------------
@@ -226,7 +226,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Parameter_Sets.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parameter_Set
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Parameter_Set;
 
    --------------------------
@@ -241,7 +241,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Types.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Raised_Exception
-             (Self.Id)));
+             (Self.Element)));
    end Get_Raised_Exception;
 
    ------------------------------
@@ -256,7 +256,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Featuring_Classifier
-             (Self.Id)));
+             (Self.Element)));
    end Get_Featuring_Classifier;
 
    -------------------
@@ -269,7 +269,7 @@ package body AMF.Internals.UML_Receptions is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Static
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Static;
 
    -------------------
@@ -281,7 +281,7 @@ package body AMF.Internals.UML_Receptions is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Static
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Static;
 
    -----------------
@@ -294,7 +294,7 @@ package body AMF.Internals.UML_Receptions is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Leaf
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Leaf;
 
    -----------------
@@ -306,7 +306,7 @@ package body AMF.Internals.UML_Receptions is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Leaf
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Leaf;
 
    ---------------------------
@@ -321,7 +321,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Redefinable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -336,7 +336,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefinition_Context
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefinition_Context;
 
    ---------------------------
@@ -351,7 +351,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -366,7 +366,7 @@ package body AMF.Internals.UML_Receptions is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -388,11 +388,11 @@ package body AMF.Internals.UML_Receptions is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -409,7 +409,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -421,7 +421,7 @@ package body AMF.Internals.UML_Receptions is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -438,7 +438,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -453,7 +453,7 @@ package body AMF.Internals.UML_Receptions is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -475,7 +475,7 @@ package body AMF.Internals.UML_Receptions is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -487,7 +487,7 @@ package body AMF.Internals.UML_Receptions is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -502,7 +502,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -517,7 +517,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -532,7 +532,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------
@@ -547,7 +547,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Element_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Element_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Element_Import;
 
    -------------------------
@@ -562,7 +562,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Packageable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Imported_Member;
 
    ----------------
@@ -577,7 +577,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Member;
 
    ----------------------
@@ -592,7 +592,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Member;
 
    --------------------
@@ -607,7 +607,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Rule
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -622,7 +622,7 @@ package body AMF.Internals.UML_Receptions is
         AMF.UML.Package_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Package_Import;
 
    -----------------------------

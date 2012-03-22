@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Qualifier_Values is
         AMF.UML.Properties.UML_Property_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualifier
-             (Self.Id)));
+             (Self.Element)));
    end Get_Qualifier;
 
    -------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Qualifier_Values is
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Qualifier
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Qualifier;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Qualifier_Values is
         AMF.UML.Input_Pins.UML_Input_Pin_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
-             (Self.Id)));
+             (Self.Element)));
    end Get_Value;
 
    ---------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Qualifier_Values is
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Value;
@@ -173,7 +173,7 @@ package body AMF.Internals.UML_Qualifier_Values is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Qualifier_Values is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -203,7 +203,7 @@ package body AMF.Internals.UML_Qualifier_Values is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

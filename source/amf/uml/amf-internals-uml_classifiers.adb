@@ -54,7 +54,7 @@ package body AMF.Internals.UML_Classifiers is
     (Self : not null access constant UML_Classifier_Proxy)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
    is
-      --  [UML241] 7.3.8 Classifier 
+      --  [UML241] 7.3.8 Classifier
       --
       --  [3] The query allParents() gives all of the direct and indirect
       --  ancestors of a generalized Classifier.
@@ -85,7 +85,7 @@ package body AMF.Internals.UML_Classifiers is
     (Self : not null access constant UML_Classifier_Proxy)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
    is
-      --  [UML241] 7.3.8 Classifier 
+      --  [UML241] 7.3.8 Classifier
       --
       --  [2] The query parents() gives all of the immediate ancestors of a
       --  generalized Classifier.
@@ -121,7 +121,7 @@ package body AMF.Internals.UML_Classifiers is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Abstract
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Abstract;
 
 end AMF.Internals.UML_Classifiers;

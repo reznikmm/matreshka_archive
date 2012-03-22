@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Connection_Point_References.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Connection
-             (Self.Id)));
+             (Self.Element)));
    end Get_Connection;
 
    --------------------------
@@ -132,7 +132,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Pseudostates.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Connection_Point
-             (Self.Id)));
+             (Self.Element)));
    end Get_Connection_Point;
 
    ----------------------------
@@ -147,7 +147,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Triggers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Deferrable_Trigger
-             (Self.Id)));
+             (Self.Element)));
    end Get_Deferrable_Trigger;
 
    ---------------------
@@ -162,7 +162,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Behaviors.UML_Behavior_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Do_Activity
-             (Self.Id)));
+             (Self.Element)));
    end Get_Do_Activity;
 
    ---------------------
@@ -174,7 +174,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Do_Activity
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Do_Activity;
@@ -191,7 +191,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Behaviors.UML_Behavior_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Entry
-             (Self.Id)));
+             (Self.Element)));
    end Get_Entry;
 
    ---------------
@@ -203,7 +203,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Entry
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Entry;
@@ -220,7 +220,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Behaviors.UML_Behavior_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Exit
-             (Self.Id)));
+             (Self.Element)));
    end Get_Exit;
 
    --------------
@@ -232,7 +232,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Exit
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Exit;
@@ -247,7 +247,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Composite
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Composite;
 
    -----------------------
@@ -260,7 +260,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Orthogonal
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Orthogonal;
 
    -------------------
@@ -273,7 +273,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Simple
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Simple;
 
    -----------------------------
@@ -286,7 +286,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Submachine_State
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Submachine_State;
 
    -------------------------
@@ -301,7 +301,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.States.UML_State_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_State
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefined_State;
 
    -------------------------
@@ -313,7 +313,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.States.UML_State_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Redefined_State
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Redefined_State;
@@ -342,7 +342,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Regions.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Region
-             (Self.Id)));
+             (Self.Element)));
    end Get_Region;
 
    -------------------------
@@ -357,7 +357,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Constraints.UML_Constraint_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_State_Invariant
-             (Self.Id)));
+             (Self.Element)));
    end Get_State_Invariant;
 
    -------------------------
@@ -369,7 +369,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_State_Invariant
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_State_Invariant;
@@ -386,7 +386,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.State_Machines.UML_State_Machine_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Submachine
-             (Self.Id)));
+             (Self.Element)));
    end Get_Submachine;
 
    --------------------
@@ -398,7 +398,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Submachine
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Submachine;
@@ -413,7 +413,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Leaf
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Leaf;
 
    -----------------
@@ -425,7 +425,7 @@ package body AMF.Internals.UML_Final_States is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Leaf
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Leaf;
 
    ---------------------------
@@ -440,7 +440,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Redefinable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -455,7 +455,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefinition_Context
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefinition_Context;
 
    ---------------------------
@@ -470,7 +470,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -485,7 +485,7 @@ package body AMF.Internals.UML_Final_States is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -507,11 +507,11 @@ package body AMF.Internals.UML_Final_States is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -528,7 +528,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -540,7 +540,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -557,7 +557,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -572,7 +572,7 @@ package body AMF.Internals.UML_Final_States is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -594,7 +594,7 @@ package body AMF.Internals.UML_Final_States is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -606,7 +606,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -621,7 +621,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -636,7 +636,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -651,7 +651,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------
@@ -666,7 +666,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Element_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Element_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Element_Import;
 
    -------------------------
@@ -681,7 +681,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Packageable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Imported_Member;
 
    ----------------
@@ -696,7 +696,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Member;
 
    ----------------------
@@ -711,7 +711,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Named_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Member
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Member;
 
    --------------------
@@ -726,7 +726,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Constraints.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Rule
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -741,7 +741,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Package_Imports.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Import
-             (Self.Id)));
+             (Self.Element)));
    end Get_Package_Import;
 
    -------------------
@@ -756,7 +756,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Regions.UML_Region_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Container
-             (Self.Id)));
+             (Self.Element)));
    end Get_Container;
 
    -------------------
@@ -768,7 +768,7 @@ package body AMF.Internals.UML_Final_States is
      To   : AMF.UML.Regions.UML_Region_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Container
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Container;
@@ -785,7 +785,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Transitions.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Incoming
-             (Self.Id)));
+             (Self.Element)));
    end Get_Incoming;
 
    ------------------
@@ -800,7 +800,7 @@ package body AMF.Internals.UML_Final_States is
         AMF.UML.Transitions.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Outgoing
-             (Self.Id)));
+             (Self.Element)));
    end Get_Outgoing;
 
    ------------------------------

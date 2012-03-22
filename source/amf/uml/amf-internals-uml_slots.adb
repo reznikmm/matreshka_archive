@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Structural_Features.UML_Structural_Feature_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Defining_Feature
-             (Self.Id)));
+             (Self.Element)));
    end Get_Defining_Feature;
 
    --------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Slots is
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Defining_Feature
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Defining_Feature;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owning_Instance
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owning_Instance;
 
    -------------------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Slots is
      To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Instance
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Owning_Instance;
@@ -173,7 +173,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Value_Specifications.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
-             (Self.Id)));
+             (Self.Element)));
    end Get_Value;
 
    -----------------------
@@ -188,7 +188,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -203,7 +203,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -218,7 +218,7 @@ package body AMF.Internals.UML_Slots is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

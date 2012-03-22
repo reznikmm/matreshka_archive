@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Properties.UML_Property_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Defining_End
-             (Self.Id)));
+             (Self.Element)));
    end Get_Defining_End;
 
    ------------------------
@@ -130,7 +130,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Properties.UML_Property_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Part_With_Port
-             (Self.Id)));
+             (Self.Element)));
    end Get_Part_With_Port;
 
    ------------------------
@@ -142,7 +142,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Part_With_Port
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Part_With_Port;
@@ -159,7 +159,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Connectable_Elements.UML_Connectable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Role
-             (Self.Id)));
+             (Self.Element)));
    end Get_Role;
 
    --------------
@@ -171,7 +171,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Role
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Role;
@@ -186,7 +186,7 @@ package body AMF.Internals.UML_Connector_Ends is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Ordered
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Ordered;
 
    --------------------
@@ -198,7 +198,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Ordered
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Ordered;
 
    -------------------
@@ -211,7 +211,7 @@ package body AMF.Internals.UML_Connector_Ends is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Unique;
 
    -------------------
@@ -223,7 +223,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Unique;
 
    ---------------
@@ -236,7 +236,7 @@ package body AMF.Internals.UML_Connector_Ends is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower
-         (Self.Id);
+         (Self.Element);
    end Get_Lower;
 
    ---------------
@@ -248,7 +248,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.Optional_Integer) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Lower;
 
    ---------------------
@@ -263,7 +263,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower_Value
-             (Self.Id)));
+             (Self.Element)));
    end Get_Lower_Value;
 
    ---------------------
@@ -275,7 +275,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Lower_Value;
@@ -290,7 +290,7 @@ package body AMF.Internals.UML_Connector_Ends is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper
-         (Self.Id);
+         (Self.Element);
    end Get_Upper;
 
    ---------------
@@ -302,7 +302,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.Optional_Unlimited_Natural) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Upper;
 
    ---------------------
@@ -317,7 +317,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper_Value
-             (Self.Id)));
+             (Self.Element)));
    end Get_Upper_Value;
 
    ---------------------
@@ -329,7 +329,7 @@ package body AMF.Internals.UML_Connector_Ends is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Upper_Value;
@@ -346,7 +346,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -361,7 +361,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -376,7 +376,7 @@ package body AMF.Internals.UML_Connector_Ends is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------

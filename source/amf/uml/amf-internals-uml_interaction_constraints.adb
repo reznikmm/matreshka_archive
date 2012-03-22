@@ -117,7 +117,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Maxint
-             (Self.Id)));
+             (Self.Element)));
    end Get_Maxint;
 
    ----------------
@@ -129,7 +129,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Maxint
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Maxint;
@@ -146,7 +146,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Minint
-             (Self.Id)));
+             (Self.Element)));
    end Get_Minint;
 
    ----------------
@@ -158,7 +158,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Minint
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Minint;
@@ -175,7 +175,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Constrained_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Constrained_Element;
 
    -----------------
@@ -190,7 +190,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Context
-             (Self.Id)));
+             (Self.Element)));
    end Get_Context;
 
    -----------------
@@ -216,7 +216,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Specification
-             (Self.Id)));
+             (Self.Element)));
    end Get_Specification;
 
    -----------------------
@@ -228,7 +228,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Specification
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Specification;
@@ -243,7 +243,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -255,7 +255,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    ---------------------------
@@ -270,7 +270,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -285,7 +285,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -307,11 +307,11 @@ package body AMF.Internals.UML_Interaction_Constraints is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -328,7 +328,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -340,7 +340,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -357,7 +357,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -372,7 +372,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -394,7 +394,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -406,7 +406,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -421,7 +421,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -436,7 +436,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -451,7 +451,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    -----------------------------------
@@ -466,7 +466,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Template_Parameters.UML_Template_Parameter_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owning_Template_Parameter
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owning_Template_Parameter;
 
    -----------------------------------
@@ -478,7 +478,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
@@ -495,7 +495,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
         AMF.UML.Template_Parameters.UML_Template_Parameter_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Parameter
-             (Self.Id)));
+             (Self.Element)));
    end Get_Template_Parameter;
 
    ----------------------------
@@ -507,7 +507,7 @@ package body AMF.Internals.UML_Interaction_Constraints is
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;

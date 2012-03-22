@@ -113,7 +113,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Allow_Substitutable
-         (Self.Id);
+         (Self.Element);
    end Get_Allow_Substitutable;
 
    -----------------------------
@@ -125,7 +125,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Allow_Substitutable
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Allow_Substitutable;
 
    ---------------------------------
@@ -140,7 +140,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Constraining_Classifier
-             (Self.Id)));
+             (Self.Element)));
    end Get_Constraining_Classifier;
 
    -----------------------------
@@ -155,7 +155,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Classifiers.UML_Classifier_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Parametered_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Parametered_Element;
 
    -----------------------------
@@ -167,7 +167,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Parametered_Element;
@@ -184,7 +184,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Default
-             (Self.Id)));
+             (Self.Element)));
    end Get_Default;
 
    -----------------
@@ -196,7 +196,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Default
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Default;
@@ -213,7 +213,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Default
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Default;
 
    -----------------------
@@ -225,7 +225,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Default
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Owned_Default;
@@ -242,7 +242,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parametered_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Parametered_Element;
 
    -----------------------------------
@@ -254,7 +254,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Parametered_Element
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Owned_Parametered_Element;
@@ -271,7 +271,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Parametered_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Parametered_Element;
 
    -----------------------------
@@ -283,7 +283,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Parametered_Element;
@@ -300,7 +300,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Template_Signatures.UML_Template_Signature_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Signature
-             (Self.Id)));
+             (Self.Element)));
    end Get_Signature;
 
    -------------------
@@ -312,7 +312,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Signature;
@@ -329,7 +329,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -344,7 +344,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -359,7 +359,7 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

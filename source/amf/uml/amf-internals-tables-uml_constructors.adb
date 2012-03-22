@@ -262,26 +262,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Abstraction,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Abstractions.UML_Abstraction_Proxy'(Id => Self),
+          new AMF.Internals.UML_Abstractions.UML_Abstraction_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -307,14 +307,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -362,34 +362,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Accept_Call_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Accept_Call_Actions.UML_Accept_Call_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Accept_Call_Actions.UML_Accept_Call_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isUnmarshall
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  returnInformation
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -408,7 +408,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -443,21 +443,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -471,28 +471,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -506,7 +506,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -540,32 +540,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Accept_Event_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Accept_Event_Actions.UML_Accept_Event_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Accept_Event_Actions.UML_Accept_Event_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isUnmarshall
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -584,7 +584,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -619,21 +619,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -647,28 +647,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -682,7 +682,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -716,7 +716,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Action_Execution_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Action_Execution_Specifications.UML_Action_Execution_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Action_Execution_Specifications.UML_Action_Execution_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -725,21 +725,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  finish
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  start
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -772,14 +772,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Action_Execution_Specification;
@@ -799,14 +799,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Action_Input_Pin,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Action_Input_Pins.UML_Action_Input_Pin_Proxy'(Id => Self),
+          new AMF.Internals.UML_Action_Input_Pins.UML_Action_Input_Pin_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  fromAction
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           22     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControl
@@ -816,35 +816,35 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -905,21 +905,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -933,7 +933,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Action_Input_Pin;
@@ -953,7 +953,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Activity,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Activities.UML_Activity_Proxy'(Id => Self),
+          new AMF.Internals.UML_Activities.UML_Activity_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -962,7 +962,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -974,29 +974,29 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReentrant
           17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isSingleExecution
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1036,28 +1036,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -1078,7 +1078,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -1099,7 +1099,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -1134,7 +1134,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -1148,14 +1148,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -1183,7 +1183,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -1197,7 +1197,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -1211,7 +1211,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -1239,7 +1239,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -1267,14 +1267,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -1295,7 +1295,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -1309,7 +1309,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  variable
 
@@ -1336,26 +1336,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Final_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Activity_Final_Nodes.UML_Activity_Final_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Activity_Final_Nodes.UML_Activity_Final_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1409,21 +1409,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -1437,7 +1437,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Activity_Final_Node;
@@ -1457,38 +1457,38 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Parameter_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControlType
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  parameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1549,21 +1549,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -1577,7 +1577,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Activity_Parameter_Node;
@@ -1597,32 +1597,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Partition,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Activity_Partitions.UML_Activity_Partition_Proxy'(Id => Self),
+          new AMF.Internals.UML_Activity_Partitions.UML_Activity_Partition_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          9      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
-                       --  isDimension
           10     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+                       --  isDimension
+          8      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isExternal
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  represents
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superPartition
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1641,14 +1641,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -1669,21 +1669,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  subgroup
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  subpartition
 
@@ -1710,7 +1710,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Actor,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Actors.UML_Actor_Proxy'(Id => Self),
+          new AMF.Internals.UML_Actors.UML_Actor_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -1721,27 +1721,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1774,21 +1774,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -1802,7 +1802,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -1823,7 +1823,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedBehavior
 
@@ -1837,28 +1837,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -1872,14 +1872,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -1893,21 +1893,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -1921,7 +1921,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Actor;
@@ -1941,14 +1941,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Add_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  insertAt
@@ -1958,17 +1958,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isReplaceAll
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
@@ -1976,7 +1976,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  structuralFeature
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1995,7 +1995,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -2030,21 +2030,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -2058,28 +2058,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -2093,7 +2093,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Add_Structural_Feature_Value_Action;
@@ -2113,14 +2113,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Add_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  insertAt
@@ -2130,21 +2130,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isReplaceAll
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  value
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  variable
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2163,7 +2163,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -2198,21 +2198,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -2226,28 +2226,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -2261,7 +2261,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Add_Variable_Value_Action;
@@ -2281,24 +2281,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Any_Receive_Event,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Any_Receive_Events.UML_Any_Receive_Event_Proxy'(Id => Self),
+          new AMF.Internals.UML_Any_Receive_Events.UML_Any_Receive_Event_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2317,14 +2317,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Any_Receive_Event;
@@ -2344,7 +2344,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Artifact,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Artifacts.UML_Artifact_Proxy'(Id => Self),
+          new AMF.Internals.UML_Artifacts.UML_Artifact_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_String, null),
@@ -2355,27 +2355,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2408,21 +2408,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -2436,7 +2436,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -2457,7 +2457,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedArtifact
 
@@ -2478,21 +2478,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -2506,7 +2506,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -2520,14 +2520,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -2541,21 +2541,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -2569,7 +2569,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Artifact;
@@ -2589,7 +2589,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Association,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Associations.UML_Association_Proxy'(Id => Self),
+          new AMF.Internals.UML_Associations.UML_Association_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -2600,27 +2600,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2653,7 +2653,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  endType
 
@@ -2667,14 +2667,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -2688,7 +2688,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -2702,7 +2702,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  memberEnd
 
@@ -2723,14 +2723,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedEnd
 
@@ -2744,14 +2744,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -2765,14 +2765,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -2786,14 +2786,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  relatedElement
 
@@ -2807,7 +2807,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -2821,7 +2821,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Association;
@@ -2841,14 +2841,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Association_Class,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Association_Classes.UML_Association_Class_Proxy'(Id => Self),
+          new AMF.Internals.UML_Association_Classes.UML_Association_Class_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerived
@@ -2856,27 +2856,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2909,7 +2909,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  endType
 
@@ -2923,21 +2923,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -2951,7 +2951,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -2972,7 +2972,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  memberEnd
 
@@ -3014,7 +3014,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -3028,7 +3028,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedEnd
 
@@ -3042,7 +3042,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -3056,7 +3056,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -3070,7 +3070,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -3084,7 +3084,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -3098,7 +3098,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -3112,14 +3112,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  relatedElement
 
@@ -3140,7 +3140,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -3154,7 +3154,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Association_Class;
@@ -3174,7 +3174,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Behavior_Execution_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -3183,21 +3183,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  finish
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  start
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3230,14 +3230,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Behavior_Execution_Specification;
@@ -3257,34 +3257,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Broadcast_Signal_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  onPort
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signal
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3310,7 +3310,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -3345,21 +3345,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -3373,28 +3373,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -3408,7 +3408,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Broadcast_Signal_Action;
@@ -3428,16 +3428,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Behavior_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Call_Behavior_Actions.UML_Call_Behavior_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Call_Behavior_Actions.UML_Call_Behavior_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  behavior
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -3445,19 +3445,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isSynchronous
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  onPort
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3483,7 +3483,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -3518,21 +3518,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -3546,28 +3546,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -3581,7 +3581,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -3608,26 +3608,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Event,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Call_Events.UML_Call_Event_Proxy'(Id => Self),
+          new AMF.Internals.UML_Call_Events.UML_Call_Event_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  operation
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3646,14 +3646,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Call_Event;
@@ -3673,14 +3673,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Operation_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Call_Operation_Actions.UML_Call_Operation_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Call_Operation_Actions.UML_Call_Operation_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -3688,11 +3688,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isSynchronous
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  onPort
@@ -3700,11 +3700,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  operation
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3730,7 +3730,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -3765,21 +3765,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -3793,28 +3793,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -3828,7 +3828,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -3855,36 +3855,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Central_Buffer_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Central_Buffer_Nodes.UML_Central_Buffer_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Central_Buffer_Nodes.UML_Central_Buffer_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControlType
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3945,21 +3945,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -3973,7 +3973,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Central_Buffer_Node;
@@ -3993,26 +3993,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Change_Event,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Change_Events.UML_Change_Event_Proxy'(Id => Self),
+          new AMF.Internals.UML_Change_Events.UML_Change_Event_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  changeExpression
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4031,14 +4031,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Change_Event;
@@ -4058,40 +4058,40 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Class,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Classes.UML_Class_Proxy'(Id => Self),
+          new AMF.Internals.UML_Classes.UML_Class_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4124,28 +4124,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -4159,7 +4159,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -4180,7 +4180,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -4208,7 +4208,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -4222,14 +4222,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -4243,7 +4243,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -4257,7 +4257,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -4271,7 +4271,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -4285,7 +4285,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -4299,14 +4299,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -4320,7 +4320,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -4334,7 +4334,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Class;
@@ -4354,20 +4354,20 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Classifier_Template_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.UML_Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           6      => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  allowSubstitutable
-          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  default
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  default
+          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedDefault
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedParameteredElement
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  parameteredElement
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signature
@@ -4388,14 +4388,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Classifier_Template_Parameter;
@@ -4415,7 +4415,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Clause,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Clauses.UML_Clause_Proxy'(Id => Self),
+          new AMF.Internals.UML_Clauses.UML_Clause_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -4432,49 +4432,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Body,
-        UML_Element_Table.Table (Self).Member (0).Collection + 3);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  bodyOutput
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Body_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 29);
+        UML_Element_Table.Table (Self).Member (0).Collection + 30);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  predecessorClause
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Predecessor_Clause,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  successorClause
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Successor_Clause,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  test
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Test,
-        UML_Element_Table.Table (Self).Member (0).Collection + 30);
+        UML_Element_Table.Table (Self).Member (0).Collection + 29);
 
       return Self;
    end Create_Clause;
@@ -4494,34 +4494,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Association_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Clear_Association_Actions.UML_Clear_Association_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Clear_Association_Actions.UML_Clear_Association_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  association
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4540,7 +4540,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -4575,21 +4575,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -4603,28 +4603,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -4638,7 +4638,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Clear_Association_Action;
@@ -4658,36 +4658,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  structuralFeature
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4706,7 +4706,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -4741,21 +4741,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -4769,28 +4769,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -4804,7 +4804,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Clear_Structural_Feature_Action;
@@ -4824,32 +4824,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Variable_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Clear_Variable_Actions.UML_Clear_Variable_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Clear_Variable_Actions.UML_Clear_Variable_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  variable
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4868,7 +4868,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -4903,21 +4903,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -4931,28 +4931,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -4966,7 +4966,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Clear_Variable_Action;
@@ -4986,7 +4986,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Collaboration,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Collaborations.UML_Collaboration_Proxy'(Id => Self),
+          new AMF.Internals.UML_Collaborations.UML_Collaboration_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -4997,27 +4997,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5057,21 +5057,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -5085,7 +5085,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -5106,7 +5106,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedAttribute
 
@@ -5127,7 +5127,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -5141,21 +5141,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -5169,7 +5169,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -5183,7 +5183,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -5197,14 +5197,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -5218,7 +5218,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -5232,7 +5232,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Collaboration;
@@ -5252,22 +5252,22 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Collaboration_Use,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Collaboration_Uses.UML_Collaboration_Use_Proxy'(Id => Self),
+          new AMF.Internals.UML_Collaboration_Uses.UML_Collaboration_Use_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5286,14 +5286,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  roleBinding
 
@@ -5320,7 +5320,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Combined_Fragment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Combined_Fragments.UML_Combined_Fragment_Proxy'(Id => Self),
+          new AMF.Internals.UML_Combined_Fragments.UML_Combined_Fragment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -5329,17 +5329,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5386,14 +5386,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Combined_Fragment;
@@ -5413,7 +5413,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Comment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Comments.UML_Comment_Proxy'(Id => Self),
+          new AMF.Internals.UML_Comments.UML_Comment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_String, null),
@@ -5437,14 +5437,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Comment;
@@ -5464,7 +5464,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Communication_Path,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Communication_Paths.UML_Communication_Path_Proxy'(Id => Self),
+          new AMF.Internals.UML_Communication_Paths.UML_Communication_Path_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -5475,27 +5475,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5528,7 +5528,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  endType
 
@@ -5542,14 +5542,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -5563,7 +5563,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -5577,7 +5577,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  memberEnd
 
@@ -5598,14 +5598,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedEnd
 
@@ -5619,14 +5619,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -5640,14 +5640,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -5661,14 +5661,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  relatedElement
 
@@ -5682,7 +5682,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -5696,7 +5696,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Communication_Path;
@@ -5716,14 +5716,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Component,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Components.UML_Component_Proxy'(Id => Self),
+          new AMF.Internals.UML_Components.UML_Component_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -5731,27 +5731,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isIndirectlyInstantiated
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5784,28 +5784,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -5819,7 +5819,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -5840,7 +5840,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -5868,7 +5868,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -5882,14 +5882,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -5903,7 +5903,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -5917,7 +5917,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -5931,7 +5931,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  packagedElement
 
@@ -5952,7 +5952,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  provided
 
@@ -5980,14 +5980,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  required
 
@@ -6008,7 +6008,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -6022,7 +6022,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Component;
@@ -6042,28 +6042,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Component_Realization,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Component_Realizations.UML_Component_Realization_Proxy'(Id => Self),
+          new AMF.Internals.UML_Component_Realizations.UML_Component_Realization_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  abstraction
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6089,14 +6089,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  realizingClassifier
 
@@ -6151,16 +6151,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Conditional_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Conditional_Nodes.UML_Conditional_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Conditional_Nodes.UML_Conditional_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAssured
@@ -6172,19 +6172,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  mustIsolate
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6210,14 +6210,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -6231,21 +6231,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  handler
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inGroup
 
@@ -6280,28 +6280,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  node
 
@@ -6322,49 +6322,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -6378,7 +6378,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  structuredNodeInput
 
@@ -6399,7 +6399,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  variable
 
@@ -6426,18 +6426,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Connectable_Element_Template_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.UML_Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  default
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  default
+          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedDefault
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedParameteredElement
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  parameteredElement
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signature
@@ -6451,14 +6451,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Connectable_Element_Template_Parameter;
@@ -6478,24 +6478,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Connection_Point_Reference,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Connection_Point_References.UML_Connection_Point_Reference_Proxy'(Id => Self),
+          new AMF.Internals.UML_Connection_Point_References.UML_Connection_Point_Reference_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  container
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  state
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6542,14 +6542,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Connection_Point_Reference;
@@ -6569,7 +6569,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Connector,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Connectors.UML_Connector_Proxy'(Id => Self),
+          new AMF.Internals.UML_Connectors.UML_Connector_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -6578,19 +6578,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           8      => (AMF.Internals.Tables.UML_Types.M_Connector_Kind, AMF.UML.Assembly),
                        --  kind
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6609,7 +6609,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Connector_Contract,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  end
 
@@ -6623,42 +6623,42 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedConnector
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Connector_Redefined_Connector,
-        UML_Element_Table.Table (Self).Member (0).Collection + 9);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Connector;
@@ -6678,28 +6678,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Connector_End,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Connector_Ends.UML_Connector_End_Proxy'(Id => Self),
+          new AMF.Internals.UML_Connector_Ends.UML_Connector_End_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  definingEnd
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  partWithPort
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  role
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6711,14 +6711,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Connector_End;
@@ -6738,7 +6738,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Consider_Ignore_Fragment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Proxy'(Id => Self),
+          new AMF.Internals.UML_Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -6747,17 +6747,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6811,14 +6811,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Consider_Ignore_Fragment;
@@ -6838,28 +6838,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Constraints.UML_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.UML_Constraints.UML_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6885,14 +6885,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Constraint;
@@ -6912,26 +6912,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Continuation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Continuations.UML_Continuation_Proxy'(Id => Self),
+          new AMF.Internals.UML_Continuations.UML_Continuation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  setting
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6964,14 +6964,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Continuation;
@@ -6991,34 +6991,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Control_Flow,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Control_Flows.UML_Control_Flow_Proxy'(Id => Self),
+          new AMF.Internals.UML_Control_Flows.UML_Control_Flow_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  guard
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interrupts
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  source
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  weight
@@ -7053,14 +7053,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedEdge
 
@@ -7074,14 +7074,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Control_Flow;
@@ -7101,30 +7101,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Link_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Create_Link_Actions.UML_Create_Link_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Create_Link_Actions.UML_Create_Link_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7150,7 +7150,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -7185,7 +7185,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputValue
 
@@ -7199,14 +7199,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -7220,28 +7220,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -7255,7 +7255,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Create_Link_Action;
@@ -7275,32 +7275,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Link_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Create_Link_Object_Actions.UML_Create_Link_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Create_Link_Object_Actions.UML_Create_Link_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7326,7 +7326,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -7361,7 +7361,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputValue
 
@@ -7375,14 +7375,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -7396,28 +7396,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -7431,7 +7431,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Create_Link_Object_Action;
@@ -7451,34 +7451,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Create_Object_Actions.UML_Create_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Create_Object_Actions.UML_Create_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifier
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7497,7 +7497,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -7532,21 +7532,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -7560,28 +7560,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -7595,7 +7595,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Create_Object_Action;
@@ -7615,36 +7615,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Data_Store_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Data_Store_Nodes.UML_Data_Store_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Data_Store_Nodes.UML_Data_Store_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControlType
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7705,21 +7705,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -7733,7 +7733,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Data_Store_Node;
@@ -7753,7 +7753,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Data_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Data_Types.UML_Data_Type_Proxy'(Id => Self),
+          new AMF.Internals.UML_Data_Types.UML_Data_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -7762,27 +7762,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7815,21 +7815,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -7843,7 +7843,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -7857,7 +7857,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedAttribute
 
@@ -7871,21 +7871,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -7899,7 +7899,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -7913,14 +7913,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -7934,21 +7934,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -7962,7 +7962,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Data_Type;
@@ -7982,30 +7982,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Decision_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Decision_Nodes.UML_Decision_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Decision_Nodes.UML_Decision_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  decisionInput
-          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  decisionInputFlow
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  decisionInput
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  decisionInputFlow
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8059,21 +8059,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -8087,7 +8087,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Decision_Node;
@@ -8107,24 +8107,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Dependency,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Dependencies.UML_Dependency_Proxy'(Id => Self),
+          new AMF.Internals.UML_Dependencies.UML_Dependency_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8150,14 +8150,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -8205,26 +8205,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Deployment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Deployments.UML_Deployment_Proxy'(Id => Self),
+          new AMF.Internals.UML_Deployments.UML_Deployment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  location
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8250,28 +8250,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Configuration,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  deployedArtifact
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Deployed_Artifact,
-        UML_Element_Table.Table (Self).Member (0).Collection + 9);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -8319,14 +8319,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Deployment_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Deployment_Specifications.UML_Deployment_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Deployment_Specifications.UML_Deployment_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  deployment
-          17     => (AMF.Internals.Tables.UML_Types.M_String, null),
+          16     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  deploymentLocation
-          18     => (AMF.Internals.Tables.UML_Types.M_String, null),
+          17     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  executionLocation
           10     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  fileName
@@ -8336,27 +8336,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8389,21 +8389,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -8417,7 +8417,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -8438,7 +8438,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedArtifact
 
@@ -8459,21 +8459,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -8487,7 +8487,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -8501,14 +8501,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -8522,21 +8522,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -8550,7 +8550,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Deployment_Specification;
@@ -8570,30 +8570,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Destroy_Link_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Destroy_Link_Actions.UML_Destroy_Link_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Destroy_Link_Actions.UML_Destroy_Link_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8619,7 +8619,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -8654,7 +8654,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputValue
 
@@ -8668,14 +8668,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -8689,28 +8689,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -8724,7 +8724,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Destroy_Link_Action;
@@ -8744,36 +8744,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Destroy_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Destroy_Object_Actions.UML_Destroy_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Destroy_Object_Actions.UML_Destroy_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
-          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
-                       --  isDestroyLinks
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+                       --  isDestroyLinks
+          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDestroyOwnedObjects
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8792,7 +8792,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -8827,21 +8827,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -8855,28 +8855,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -8890,7 +8890,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Destroy_Object_Action;
@@ -8910,7 +8910,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Destruction_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -8919,17 +8919,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  message
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8962,14 +8962,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  toAfter
 
@@ -9003,40 +9003,40 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Device,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Devices.UML_Device_Proxy'(Id => Self),
+          new AMF.Internals.UML_Devices.UML_Device_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9069,42 +9069,42 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -9118,7 +9118,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -9139,7 +9139,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -9174,7 +9174,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -9188,14 +9188,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -9209,7 +9209,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -9223,7 +9223,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -9237,7 +9237,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -9251,7 +9251,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -9265,14 +9265,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -9286,7 +9286,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -9300,7 +9300,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Device;
@@ -9320,28 +9320,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Duration,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Durations.UML_Duration_Proxy'(Id => Self),
+          new AMF.Internals.UML_Durations.UML_Duration_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  expr
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9367,14 +9367,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Duration;
@@ -9394,30 +9394,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Duration_Constraints.UML_Duration_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.UML_Duration_Constraints.UML_Duration_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           7      => (AMF.Internals.Tables.UML_Types.M_Collection_Of_Boolean, 0),
                        --  firstEvent
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9443,14 +9443,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Duration_Constraint;
@@ -9470,30 +9470,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Interval,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Duration_Intervals.UML_Duration_Interval_Proxy'(Id => Self),
+          new AMF.Internals.UML_Duration_Intervals.UML_Duration_Interval_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  max
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  min
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9512,14 +9512,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Duration_Interval;
@@ -9539,26 +9539,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Observation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Duration_Observations.UML_Duration_Observation_Proxy'(Id => Self),
+          new AMF.Internals.UML_Duration_Observations.UML_Duration_Observation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Collection_Of_Boolean, 0),
                        --  firstEvent
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9584,14 +9584,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Duration_Observation;
@@ -9611,7 +9611,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Element_Import,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Element_Imports.UML_Element_Import_Proxy'(Id => Self),
+          new AMF.Internals.UML_Element_Imports.UML_Element_Import_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           4      => (AMF.Internals.Tables.UML_Types.M_String, null),
@@ -9634,14 +9634,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -9682,7 +9682,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Enumeration,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Enumerations.UML_Enumeration_Proxy'(Id => Self),
+          new AMF.Internals.UML_Enumerations.UML_Enumeration_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -9691,27 +9691,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9744,21 +9744,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -9772,7 +9772,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -9786,7 +9786,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedAttribute
 
@@ -9800,14 +9800,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedLiteral
 
@@ -9821,7 +9821,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -9835,7 +9835,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -9849,14 +9849,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -9870,21 +9870,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -9898,7 +9898,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Enumeration;
@@ -9918,28 +9918,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Enumeration_Literals.UML_Enumeration_Literal_Proxy'(Id => Self),
+          new AMF.Internals.UML_Enumeration_Literals.UML_Enumeration_Literal_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enumeration
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9951,7 +9951,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Specification_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  clientDependency
 
@@ -9965,35 +9965,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  slot
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Specification_Slot,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Enumeration_Literal;
@@ -10013,16 +10013,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Exception_Handler,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Exception_Handlers.UML_Exception_Handler_Proxy'(Id => Self),
+          new AMF.Internals.UML_Exception_Handlers.UML_Exception_Handler_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  exceptionInput
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  handlerBody
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  protectedNode
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10041,14 +10041,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Exception_Handler;
@@ -10068,40 +10068,40 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Execution_Environment,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Execution_Environments.UML_Execution_Environment_Proxy'(Id => Self),
+          new AMF.Internals.UML_Execution_Environments.UML_Execution_Environment_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10134,42 +10134,42 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -10183,7 +10183,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -10204,7 +10204,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -10239,7 +10239,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -10253,14 +10253,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -10274,7 +10274,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -10288,7 +10288,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -10302,7 +10302,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -10316,7 +10316,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -10330,14 +10330,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -10351,7 +10351,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -10365,7 +10365,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Execution_Environment;
@@ -10385,7 +10385,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Execution_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -10394,17 +10394,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  execution
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10437,14 +10437,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  toAfter
 
@@ -10478,28 +10478,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Expansion_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Expansion_Nodes.UML_Expansion_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Expansion_Nodes.UML_Expansion_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControlType
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  regionAsInput
@@ -10509,9 +10509,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10572,21 +10572,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -10600,7 +10600,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Expansion_Node;
@@ -10620,16 +10620,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Expansion_Region,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Expansion_Regions.UML_Expansion_Region_Proxy'(Id => Self),
+          new AMF.Internals.UML_Expansion_Regions.UML_Expansion_Region_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -10639,19 +10639,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  mode
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  mustIsolate
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10670,14 +10670,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -10691,21 +10691,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  handler
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inGroup
 
@@ -10740,7 +10740,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputElement
 
@@ -10754,21 +10754,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  node
 
@@ -10789,7 +10789,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  outputElement
 
@@ -10803,42 +10803,42 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -10852,7 +10852,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  structuredNodeInput
 
@@ -10873,7 +10873,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  variable
 
@@ -10900,28 +10900,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Expressions.UML_Expression_Proxy'(Id => Self),
+          new AMF.Internals.UML_Expressions.UML_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           7      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  symbol
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10947,14 +10947,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Expression;
@@ -10974,26 +10974,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Extend,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Extends.UML_Extend_Proxy'(Id => Self),
+          new AMF.Internals.UML_Extends.UML_Extend_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  condition
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  extendedCase
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  condition
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  extendedCase
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  extension
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11019,14 +11019,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -11067,7 +11067,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Extension,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Extensions.UML_Extension_Proxy'(Id => Self),
+          new AMF.Internals.UML_Extensions.UML_Extension_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -11082,27 +11082,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isRequired
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  metaclass
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11135,7 +11135,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  endType
 
@@ -11149,14 +11149,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -11170,7 +11170,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -11184,7 +11184,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  memberEnd
 
@@ -11205,14 +11205,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedEnd
 
@@ -11226,14 +11226,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -11247,14 +11247,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -11268,14 +11268,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  relatedElement
 
@@ -11289,7 +11289,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -11303,7 +11303,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Extension;
@@ -11323,30 +11323,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Extension_End,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Extension_Ends.UML_Extension_End_Proxy'(Id => Self),
+          new AMF.Internals.UML_Extension_Ends.UML_Extension_End_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          27     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
+          29     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  association
-          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  associationEnd
-          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  class
-          24     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  datatype
-          26     => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  default
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  defaultValue
+                       --  association
+          27     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  associationEnd
+          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  class
+          26     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  datatype
+          24     => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  default
           23     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  defaultValue
+          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interface
           19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isComposite
           17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerived
-          32     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          28     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerivedUnion
           30     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isID
@@ -11358,37 +11358,37 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReadOnly
           18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStatic
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          29     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  opposite
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          28     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          32     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningAssociation
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11407,14 +11407,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  end
 
@@ -11428,35 +11428,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  qualifier
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedProperty
 
@@ -11470,7 +11470,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  subsettedProperty
 
@@ -11497,24 +11497,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Extension_Point,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Extension_Points.UML_Extension_Point_Proxy'(Id => Self),
+          new AMF.Internals.UML_Extension_Points.UML_Extension_Point_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  useCase
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11533,28 +11533,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Extension_Point;
@@ -11574,44 +11574,44 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Final_State,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Final_States.UML_Final_State_Proxy'(Id => Self),
+          new AMF.Internals.UML_Final_States.UML_Final_State_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  container
-          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  doActivity
-          16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  entry
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  exit
           19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isComposite
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrthogonal
-          17     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isSimple
-          9      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isSubmachineState
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  redefinedState
-          15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  stateInvariant
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  submachine
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11651,14 +11651,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  incoming
 
@@ -11672,7 +11672,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  outgoing
 
@@ -11686,49 +11686,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  region
 
@@ -11755,26 +11755,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Flow_Final_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Flow_Final_Nodes.UML_Flow_Final_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Flow_Final_Nodes.UML_Flow_Final_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11828,21 +11828,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -11856,7 +11856,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Flow_Final_Node;
@@ -11876,26 +11876,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Fork_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Fork_Nodes.UML_Fork_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Fork_Nodes.UML_Fork_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11949,21 +11949,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -11977,7 +11977,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Fork_Node;
@@ -11997,10 +11997,10 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Function_Behavior,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Function_Behaviors.UML_Function_Behavior_Proxy'(Id => Self),
+          new AMF.Internals.UML_Function_Behaviors.UML_Function_Behavior_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  body
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
@@ -12008,7 +12008,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -12016,31 +12016,31 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isReentrant
-          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  language
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12073,28 +12073,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -12108,7 +12108,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -12129,7 +12129,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -12157,7 +12157,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -12171,14 +12171,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -12206,7 +12206,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -12220,7 +12220,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -12234,7 +12234,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -12255,7 +12255,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -12283,14 +12283,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -12304,7 +12304,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -12318,7 +12318,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Function_Behavior;
@@ -12338,22 +12338,22 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Gate,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Gates.UML_Gate_Proxy'(Id => Self),
+          new AMF.Internals.UML_Gates.UML_Gate_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  message
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12372,14 +12372,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Gate;
@@ -12399,24 +12399,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_General_Ordering,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_General_Orderings.UML_General_Ordering_Proxy'(Id => Self),
+          new AMF.Internals.UML_General_Orderings.UML_General_Ordering_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  after
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  after
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  before
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12435,14 +12435,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_General_Ordering;
@@ -12462,7 +12462,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Generalization,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Generalizations.UML_Generalization_Proxy'(Id => Self),
+          new AMF.Internals.UML_Generalizations.UML_Generalization_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -12490,14 +12490,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -12538,30 +12538,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Generalization_Set,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Generalization_Sets.UML_Generalization_Set_Proxy'(Id => Self),
+          new AMF.Internals.UML_Generalization_Sets.UML_Generalization_Set_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
-                       --  isCovering
           10     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+                       --  isCovering
+          11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDisjoint
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  powertype
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  powertype
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12587,14 +12587,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Generalization_Set;
@@ -12614,14 +12614,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Image,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Images.UML_Image_Proxy'(Id => Self),
+          new AMF.Internals.UML_Images.UML_Image_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  content
           4      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  format
+                       --  content
           3      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  format
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  location
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -12635,14 +12635,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Image;
@@ -12662,24 +12662,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Include,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Includes.UML_Include_Proxy'(Id => Self),
+          new AMF.Internals.UML_Includes.UML_Include_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  addition
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  addition
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  includingCase
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12698,14 +12698,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -12746,24 +12746,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Information_Flow,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Information_Flows.UML_Information_Flow_Proxy'(Id => Self),
+          new AMF.Internals.UML_Information_Flows.UML_Information_Flow_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12803,14 +12803,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  realization
 
@@ -12879,7 +12879,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Information_Item,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Information_Items.UML_Information_Item_Proxy'(Id => Self),
+          new AMF.Internals.UML_Information_Items.UML_Information_Item_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -12888,27 +12888,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12941,21 +12941,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -12969,7 +12969,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -12983,35 +12983,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -13025,14 +13025,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -13046,14 +13046,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  represented
 
@@ -13067,7 +13067,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -13081,7 +13081,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Information_Item;
@@ -13101,26 +13101,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Initial_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Initial_Nodes.UML_Initial_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Initial_Nodes.UML_Initial_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13174,21 +13174,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -13202,7 +13202,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Initial_Node;
@@ -13222,12 +13222,12 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Input_Pin,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Input_Pins.UML_Input_Pin_Proxy'(Id => Self),
+          new AMF.Internals.UML_Input_Pins.UML_Input_Pin_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           22     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControl
@@ -13237,35 +13237,35 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13326,21 +13326,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -13354,7 +13354,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Input_Pin;
@@ -13374,26 +13374,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Instance_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Instance_Specifications.UML_Instance_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Instance_Specifications.UML_Instance_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13405,7 +13405,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Specification_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  clientDependency
 
@@ -13419,35 +13419,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  slot
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Specification_Slot,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
    end Create_Instance_Specification;
@@ -13467,28 +13467,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Instance_Value,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Instance_Values.UML_Instance_Value_Proxy'(Id => Self),
+          new AMF.Internals.UML_Instance_Values.UML_Instance_Value_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  instance
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13507,14 +13507,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Instance_Value;
@@ -13534,7 +13534,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interactions.UML_Interaction_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interactions.UML_Interaction_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -13547,7 +13547,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -13555,29 +13555,29 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13589,7 +13589,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Action,
-        UML_Element_Table.Table (Self).Member (0).Collection + 46);
+        UML_Element_Table.Table (Self).Member (0).Collection + 45);
 
       --  attribute
 
@@ -13624,28 +13624,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  formalGate
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Formal_Gate,
-        UML_Element_Table.Table (Self).Member (0).Collection + 45);
+        UML_Element_Table.Table (Self).Member (0).Collection + 44);
 
       --  fragment
 
@@ -13659,7 +13659,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalOrdering
 
@@ -13680,7 +13680,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -13701,14 +13701,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Lifeline,
-        UML_Element_Table.Table (Self).Member (0).Collection + 44);
+        UML_Element_Table.Table (Self).Member (0).Collection + 46);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  message
 
@@ -13743,7 +13743,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -13757,14 +13757,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -13792,7 +13792,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -13806,7 +13806,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -13820,7 +13820,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -13841,7 +13841,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -13869,14 +13869,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -13890,7 +13890,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -13904,7 +13904,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Interaction;
@@ -13924,32 +13924,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interaction_Constraints.UML_Interaction_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interaction_Constraints.UML_Interaction_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  maxint
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  maxint
+          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  minint
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13975,14 +13975,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Interaction_Constraint;
@@ -14002,7 +14002,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Operand,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interaction_Operands.UML_Interaction_Operand_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interaction_Operands.UML_Interaction_Operand_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -14011,17 +14011,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  guard
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14047,7 +14047,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  fragment
 
@@ -14068,49 +14068,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       return Self;
    end Create_Interaction_Operand;
@@ -14130,30 +14130,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Use,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interaction_Uses.UML_Interaction_Use_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interaction_Uses.UML_Interaction_Use_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  refersTo
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  returnValue
+                       --  refersTo
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  returnValue
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  returnValueRecipient
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14200,14 +14200,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Interaction_Use;
@@ -14227,7 +14227,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interface,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interfaces.UML_Interface_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interfaces.UML_Interface_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -14236,29 +14236,29 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
           33     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  protocol
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14291,21 +14291,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -14319,7 +14319,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -14333,7 +14333,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -14354,21 +14354,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -14389,7 +14389,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -14403,14 +14403,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -14424,7 +14424,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedInterface
 
@@ -14438,14 +14438,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -14459,7 +14459,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Interface;
@@ -14479,7 +14479,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interface_Realization,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interface_Realizations.UML_Interface_Realization_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interface_Realizations.UML_Interface_Realization_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -14488,21 +14488,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  implementingClassifier
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14528,14 +14528,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -14583,24 +14583,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interruptible_Activity_Region,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14619,14 +14619,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  interruptingEdge
 
@@ -14647,21 +14647,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  subgroup
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       return Self;
    end Create_Interruptible_Activity_Region;
@@ -14681,30 +14681,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interval,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Intervals.UML_Interval_Proxy'(Id => Self),
+          new AMF.Internals.UML_Intervals.UML_Interval_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  max
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  min
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14723,14 +14723,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Interval;
@@ -14750,28 +14750,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Interval_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Interval_Constraints.UML_Interval_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.UML_Interval_Constraints.UML_Interval_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14797,14 +14797,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Interval_Constraint;
@@ -14824,12 +14824,12 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Join_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Join_Nodes.UML_Join_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Join_Nodes.UML_Join_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           10     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isCombineDuplicate
@@ -14837,17 +14837,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  joinSpec
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14901,21 +14901,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -14929,7 +14929,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Join_Node;
@@ -14949,28 +14949,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Lifeline,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Lifelines.UML_Lifeline_Proxy'(Id => Self),
+          new AMF.Internals.UML_Lifelines.UML_Lifeline_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  decomposedAs
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interaction
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  represents
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selector
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14996,14 +14996,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Lifeline;
@@ -15023,7 +15023,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Creation_Data,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Link_End_Creation_Datas.UML_Link_End_Creation_Data_Proxy'(Id => Self),
+          new AMF.Internals.UML_Link_End_Creation_Datas.UML_Link_End_Creation_Data_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -15046,21 +15046,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  qualifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
    end Create_Link_End_Creation_Data;
@@ -15080,7 +15080,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Data,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Link_End_Datas.UML_Link_End_Data_Proxy'(Id => Self),
+          new AMF.Internals.UML_Link_End_Datas.UML_Link_End_Data_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -15099,21 +15099,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  qualifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
    end Create_Link_End_Data;
@@ -15133,7 +15133,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Destruction_Data,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Proxy'(Id => Self),
+          new AMF.Internals.UML_Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -15156,21 +15156,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  qualifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
    end Create_Link_End_Destruction_Data;
@@ -15190,28 +15190,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Boolean,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Booleans.UML_Literal_Boolean_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Booleans.UML_Literal_Boolean_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15230,14 +15230,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_Boolean;
@@ -15257,28 +15257,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Integer,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Integers.UML_Literal_Integer_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Integers.UML_Literal_Integer_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Integer, 0),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15297,14 +15297,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_Integer;
@@ -15324,26 +15324,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Null,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Nulls.UML_Literal_Null_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Nulls.UML_Literal_Null_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15362,14 +15362,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_Null;
@@ -15389,28 +15389,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Real,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Reals.UML_Literal_Real_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Reals.UML_Literal_Real_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Real, 0.0),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15429,14 +15429,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_Real;
@@ -15456,28 +15456,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_String,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Strings.UML_Literal_String_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Strings.UML_Literal_String_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15496,14 +15496,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_String;
@@ -15523,28 +15523,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Unlimited_Natural,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Proxy'(Id => Self),
+          new AMF.Internals.UML_Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural, (False, 0)),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15563,14 +15563,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Literal_Unlimited_Natural;
@@ -15590,18 +15590,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Loop_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Loop_Nodes.UML_Loop_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Loop_Nodes.UML_Loop_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  decider
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -15611,19 +15611,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isTestedFirst
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  mustIsolate
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15635,14 +15635,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Body_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 29);
+        UML_Element_Table.Table (Self).Member (0).Collection + 30);
 
       --  bodyPart
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Body_Part,
-        UML_Element_Table.Table (Self).Member (0).Collection + 32);
+        UML_Element_Table.Table (Self).Member (0).Collection + 33);
 
       --  clientDependency
 
@@ -15656,14 +15656,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -15677,21 +15677,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  handler
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inGroup
 
@@ -15726,35 +15726,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  loopVariable
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Loop_Variable,
-        UML_Element_Table.Table (Self).Member (0).Collection + 33);
+        UML_Element_Table.Table (Self).Member (0).Collection + 32);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  node
 
@@ -15775,49 +15775,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -15831,7 +15831,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  setupPart
 
@@ -15859,14 +15859,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  test
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Test,
-        UML_Element_Table.Table (Self).Member (0).Collection + 30);
+        UML_Element_Table.Table (Self).Member (0).Collection + 29);
 
       --  variable
 
@@ -15893,28 +15893,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Manifestation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Manifestations.UML_Manifestation_Proxy'(Id => Self),
+          new AMF.Internals.UML_Manifestations.UML_Manifestation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  utilizedElement
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15940,14 +15940,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -15995,26 +15995,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Merge_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Merge_Nodes.UML_Merge_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Merge_Nodes.UML_Merge_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16068,21 +16068,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -16096,7 +16096,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Merge_Node;
@@ -16116,34 +16116,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Message,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Messages.UML_Message_Proxy'(Id => Self),
+          new AMF.Internals.UML_Messages.UML_Message_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  connector
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interaction
-          9      => (AMF.Internals.Tables.UML_Types.M_Message_Kind, AMF.UML.Unknown),
+          12     => (AMF.Internals.Tables.UML_Types.M_Message_Kind, AMF.UML.Unknown),
                        --  messageKind
-          12     => (AMF.Internals.Tables.UML_Types.M_Message_Sort, AMF.UML.Synch_Call),
+          10     => (AMF.Internals.Tables.UML_Types.M_Message_Sort, AMF.UML.Synch_Call),
                        --  messageSort
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  receiveEvent
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  receiveEvent
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  sendEvent
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signature
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16169,14 +16169,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Message;
@@ -16196,7 +16196,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Message_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -16205,17 +16205,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  message
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16248,14 +16248,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  toAfter
 
@@ -16289,16 +16289,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Model,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Models.UML_Model_Proxy'(Id => Self),
+          new AMF.Internals.UML_Models.UML_Model_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  URI
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nestingPackage
@@ -16306,15 +16306,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           12     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  viewpoint
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16333,21 +16333,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedPackage
 
@@ -16361,28 +16361,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedStereotype
 
@@ -16403,7 +16403,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  packageMerge
 
@@ -16451,40 +16451,40 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Nodes.UML_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Nodes.UML_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16517,42 +16517,42 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -16566,7 +16566,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -16587,7 +16587,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -16622,7 +16622,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -16636,14 +16636,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -16657,7 +16657,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -16671,7 +16671,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -16685,7 +16685,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -16699,7 +16699,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -16713,14 +16713,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -16734,7 +16734,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -16748,7 +16748,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Node;
@@ -16768,14 +16768,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Object_Flow,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Object_Flows.UML_Object_Flow_Proxy'(Id => Self),
+          new AMF.Internals.UML_Object_Flows.UML_Object_Flow_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  guard
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interrupts
@@ -16785,15 +16785,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isMulticast
           16     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isMultireceive
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
@@ -16803,7 +16803,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  target
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  transformation
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  weight
@@ -16838,14 +16838,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedEdge
 
@@ -16859,14 +16859,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Object_Flow;
@@ -16886,24 +16886,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Occurrence_Specifications.UML_Occurrence_Specification_Proxy'(Id => Self),
+          new AMF.Internals.UML_Occurrence_Specifications.UML_Occurrence_Specification_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16936,14 +16936,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  toAfter
 
@@ -16977,34 +16977,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Opaque_Actions.UML_Opaque_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Opaque_Actions.UML_Opaque_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
-          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  body
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  language
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17023,7 +17023,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -17058,7 +17058,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputValue
 
@@ -17072,14 +17072,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -17093,7 +17093,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  outputValue
 
@@ -17107,21 +17107,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -17135,7 +17135,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Opaque_Action;
@@ -17155,10 +17155,10 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Behavior,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Opaque_Behaviors.UML_Opaque_Behavior_Proxy'(Id => Self),
+          new AMF.Internals.UML_Opaque_Behaviors.UML_Opaque_Behavior_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  body
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
@@ -17166,7 +17166,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -17174,31 +17174,31 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isReentrant
-          17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  language
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17231,28 +17231,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -17266,7 +17266,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -17287,7 +17287,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -17315,7 +17315,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -17329,14 +17329,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -17364,7 +17364,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -17378,7 +17378,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -17392,7 +17392,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -17413,7 +17413,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -17441,14 +17441,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -17462,7 +17462,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -17476,7 +17476,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Opaque_Behavior;
@@ -17496,34 +17496,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Opaque_Expressions.UML_Opaque_Expression_Proxy'(Id => Self),
+          new AMF.Internals.UML_Opaque_Expressions.UML_Opaque_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  behavior
-          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
-                       --  body
           17     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
+                       --  body
+          18     => (AMF.Internals.Tables.UML_Types.M_Collection_Of_String, 0),
                        --  language
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17542,14 +17542,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Opaque_Expression;
@@ -17569,18 +17569,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Operation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Operations.UML_Operation_Proxy'(Id => Self),
+          new AMF.Internals.UML_Operations.UML_Operation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  bodyCondition
-          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  class
           17     => (AMF.Internals.Tables.UML_Types.M_Call_Concurrency_Kind, AMF.UML.Sequential),
                        --  concurrency
-          24     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          26     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  datatype
-          23     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interface
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
@@ -17592,31 +17592,31 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isQuery
           18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStatic
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17635,56 +17635,56 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  featuringClassifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  method
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavioral_Feature_Method,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedParameter
 
@@ -17705,14 +17705,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  postcondition
 
@@ -17740,7 +17740,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedOperation
 
@@ -17754,7 +17754,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  templateBinding
 
@@ -17781,18 +17781,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Operation_Template_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Operation_Template_Parameters.UML_Operation_Template_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.UML_Operation_Template_Parameters.UML_Operation_Template_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  default
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  default
+          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedDefault
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedParameteredElement
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  parameteredElement
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signature
@@ -17806,14 +17806,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Operation_Template_Parameter;
@@ -17833,12 +17833,12 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Output_Pin,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Output_Pins.UML_Output_Pin_Proxy'(Id => Self),
+          new AMF.Internals.UML_Output_Pins.UML_Output_Pin_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           22     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControl
@@ -17848,35 +17848,35 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17937,21 +17937,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -17965,7 +17965,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Output_Pin;
@@ -17985,16 +17985,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Package,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Packages.UML_Package_Proxy'(Id => Self),
+          new AMF.Internals.UML_Packages.UML_Package_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  URI
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nestingPackage
@@ -18002,13 +18002,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18027,21 +18027,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedPackage
 
@@ -18055,28 +18055,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedStereotype
 
@@ -18097,7 +18097,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  packageMerge
 
@@ -18145,7 +18145,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Package_Import,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Package_Imports.UML_Package_Import_Proxy'(Id => Self),
+          new AMF.Internals.UML_Package_Imports.UML_Package_Import_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -18166,14 +18166,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -18214,7 +18214,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Package_Merge,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Package_Merges.UML_Package_Merge_Proxy'(Id => Self),
+          new AMF.Internals.UML_Package_Merges.UML_Package_Merge_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -18233,14 +18233,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -18281,52 +18281,52 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Parameters.UML_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.UML_Parameters.UML_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          26     => (AMF.Internals.Tables.UML_Types.M_String, null),
+          24     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  default
-          21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          23     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  defaultValue
-          19     => (AMF.Internals.Tables.UML_Types.M_Parameter_Direction_Kind, AMF.UML.In_Parameter),
+          7      => (AMF.Internals.Tables.UML_Types.M_Parameter_Direction_Kind, AMF.UML.In_Parameter),
                        --  direction
-          18     => (AMF.Internals.Tables.UML_Types.M_Parameter_Effect_Kind_Holder, (Is_Empty => True)),
+          20     => (AMF.Internals.Tables.UML_Types.M_Parameter_Effect_Kind_Holder, (Is_Empty => True)),
                        --  effect
-          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isException
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStream
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  operation
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18352,14 +18352,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  parameterSet
 
@@ -18386,20 +18386,20 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Parameter_Set,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Parameter_Sets.UML_Parameter_Set_Proxy'(Id => Self),
+          new AMF.Internals.UML_Parameter_Sets.UML_Parameter_Set_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18425,14 +18425,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  parameter
 
@@ -18459,30 +18459,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Part_Decomposition,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Part_Decompositions.UML_Part_Decomposition_Proxy'(Id => Self),
+          new AMF.Internals.UML_Part_Decompositions.UML_Part_Decomposition_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingInteraction
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  enclosingOperand
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  refersTo
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  returnValue
+                       --  refersTo
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  returnValue
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  returnValueRecipient
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18529,14 +18529,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Part_Decomposition;
@@ -18556,34 +18556,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Port,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Ports.UML_Port_Proxy'(Id => Self),
+          new AMF.Internals.UML_Ports.UML_Port_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          27     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
+          29     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  association
-          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  associationEnd
-          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  class
-          24     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  datatype
-          26     => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  default
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  defaultValue
+                       --  association
+          27     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  associationEnd
+          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  class
+          26     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  datatype
+          24     => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  default
           23     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  defaultValue
+          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interface
-          34     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          35     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isBehavior
           19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isComposite
-          36     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          34     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isConjugated
           17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerived
-          32     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          28     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerivedUnion
           30     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isID
@@ -18593,43 +18593,43 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           22     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isReadOnly
-          35     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          36     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isService
           18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStatic
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          29     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  opposite
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          28     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          32     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningAssociation
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           33     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  protocol
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18648,14 +18648,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  end
 
@@ -18669,21 +18669,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  provided
 
@@ -18697,14 +18697,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedPort
 
@@ -18725,7 +18725,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  required
 
@@ -18759,7 +18759,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Primitive_Type,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Primitive_Types.UML_Primitive_Type_Proxy'(Id => Self),
+          new AMF.Internals.UML_Primitive_Types.UML_Primitive_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -18768,27 +18768,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18821,21 +18821,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -18849,7 +18849,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -18863,7 +18863,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedAttribute
 
@@ -18877,21 +18877,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -18905,7 +18905,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -18919,14 +18919,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -18940,21 +18940,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -18968,7 +18968,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Primitive_Type;
@@ -18988,16 +18988,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Profile,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Profiles.UML_Profile_Proxy'(Id => Self),
+          new AMF.Internals.UML_Profiles.UML_Profile_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  URI
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nestingPackage
@@ -19005,13 +19005,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19030,21 +19030,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  metaclassReference
 
@@ -19072,28 +19072,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedStereotype
 
@@ -19114,7 +19114,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  packageMerge
 
@@ -19162,14 +19162,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Profile_Application,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Profile_Applications.UML_Profile_Application_Proxy'(Id => Self),
+          new AMF.Internals.UML_Profile_Applications.UML_Profile_Application_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  appliedProfile
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  applyingPackage
-          3      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          4      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStrict
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -19183,14 +19183,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -19231,30 +19231,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Property,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Properties.UML_Property_Proxy'(Id => Self),
+          new AMF.Internals.UML_Properties.UML_Property_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          27     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
+          29     => (AMF.Internals.Tables.UML_Types.M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  association
-          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  associationEnd
-          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  class
-          24     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  datatype
-          26     => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  default
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  defaultValue
+                       --  association
+          27     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  associationEnd
+          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  class
+          26     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  datatype
+          24     => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  default
           23     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  defaultValue
+          25     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  interface
           19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isComposite
           17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerived
-          32     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          28     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDerivedUnion
           30     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isID
@@ -19266,37 +19266,37 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReadOnly
           18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStatic
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          29     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          31     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  opposite
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          28     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          32     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningAssociation
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19315,14 +19315,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployed_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 34);
+        UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       --  deployment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 24);
+        UML_Element_Table.Table (Self).Member (0).Collection + 34);
 
       --  end
 
@@ -19336,35 +19336,35 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  qualifier
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Qualifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedProperty
 
@@ -19378,7 +19378,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  subsettedProperty
 
@@ -19405,14 +19405,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_Conformance,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Protocol_Conformances.UML_Protocol_Conformance_Proxy'(Id => Self),
+          new AMF.Internals.UML_Protocol_Conformances.UML_Protocol_Conformance_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  generalMachine
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specificMachine
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19424,14 +19424,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -19472,7 +19472,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_State_Machine,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Protocol_State_Machines.UML_Protocol_State_Machine_Proxy'(Id => Self),
+          new AMF.Internals.UML_Protocol_State_Machines.UML_Protocol_State_Machine_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -19481,7 +19481,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -19489,29 +19489,29 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19558,28 +19558,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -19593,7 +19593,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -19614,7 +19614,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -19642,7 +19642,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -19656,14 +19656,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -19691,7 +19691,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -19705,7 +19705,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -19719,7 +19719,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -19740,7 +19740,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -19768,14 +19768,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  region
 
@@ -19803,7 +19803,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -19817,7 +19817,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Protocol_State_Machine;
@@ -19837,7 +19837,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_Transition,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Protocol_Transitions.UML_Protocol_Transition_Proxy'(Id => Self),
+          new AMF.Internals.UML_Protocol_Transitions.UML_Protocol_Transition_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -19850,11 +19850,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Transition_Kind, AMF.UML.External),
                        --  kind
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -19862,7 +19862,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  postCondition
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  preCondition
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  redefinedTransition
@@ -19870,7 +19870,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  source
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19889,70 +19889,70 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  referred
 
@@ -19986,28 +19986,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Pseudostate,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Pseudostates.UML_Pseudostate_Proxy'(Id => Self),
+          new AMF.Internals.UML_Pseudostates.UML_Pseudostate_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  container
           7      => (AMF.Internals.Tables.UML_Types.M_Pseudostate_Kind, AMF.UML.Initial_Pseudostate),
                        --  kind
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  state
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  stateMachine
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20040,14 +20040,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Pseudostate;
@@ -20067,7 +20067,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Qualifier_Value,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Qualifier_Values.UML_Qualifier_Value_Proxy'(Id => Self),
+          new AMF.Internals.UML_Qualifier_Values.UML_Qualifier_Value_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -20086,14 +20086,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Qualifier_Value;
@@ -20113,32 +20113,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Raise_Exception_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Raise_Exception_Actions.UML_Raise_Exception_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Raise_Exception_Actions.UML_Raise_Exception_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  exception
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20157,7 +20157,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -20192,21 +20192,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -20220,28 +20220,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -20255,7 +20255,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Raise_Exception_Action;
@@ -20275,34 +20275,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Extent_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Extent_Actions.UML_Read_Extent_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Extent_Actions.UML_Read_Extent_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifier
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20321,7 +20321,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -20356,21 +20356,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -20384,28 +20384,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -20419,7 +20419,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Extent_Action;
@@ -20439,16 +20439,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Is_Classified_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifier
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isDirect
@@ -20456,21 +20456,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20489,7 +20489,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -20524,21 +20524,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -20552,28 +20552,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -20587,7 +20587,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Is_Classified_Object_Action;
@@ -20607,32 +20607,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Link_Actions.UML_Read_Link_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Link_Actions.UML_Read_Link_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20658,7 +20658,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -20693,7 +20693,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  inputValue
 
@@ -20707,14 +20707,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -20728,28 +20728,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -20763,7 +20763,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Link_Action;
@@ -20783,36 +20783,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  end
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20831,7 +20831,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -20866,21 +20866,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -20894,28 +20894,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -20929,7 +20929,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Link_Object_End_Action;
@@ -20949,36 +20949,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Qualifier_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  qualifier
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20997,7 +20997,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -21032,21 +21032,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -21060,28 +21060,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -21095,7 +21095,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Link_Object_End_Qualifier_Action;
@@ -21115,32 +21115,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Self_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Self_Actions.UML_Read_Self_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Self_Actions.UML_Read_Self_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21159,7 +21159,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -21194,21 +21194,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -21222,28 +21222,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -21257,7 +21257,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Self_Action;
@@ -21277,36 +21277,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  structuralFeature
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21325,7 +21325,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -21360,21 +21360,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -21388,28 +21388,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -21423,7 +21423,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Structural_Feature_Action;
@@ -21443,34 +21443,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Variable_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Read_Variable_Actions.UML_Read_Variable_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Read_Variable_Actions.UML_Read_Variable_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  variable
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21489,7 +21489,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -21524,21 +21524,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -21552,28 +21552,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -21587,7 +21587,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Read_Variable_Action;
@@ -21607,26 +21607,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Realization,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Realizations.UML_Realization_Proxy'(Id => Self),
+          new AMF.Internals.UML_Realizations.UML_Realization_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21652,14 +21652,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -21707,7 +21707,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Reception,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Receptions.UML_Reception_Proxy'(Id => Self),
+          new AMF.Internals.UML_Receptions.UML_Reception_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Call_Concurrency_Kind, AMF.UML.Sequential),
@@ -21718,19 +21718,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           18     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isStatic
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signal
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21749,56 +21749,56 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  featuringClassifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Feature_Featuring_Classifier,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  method
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavioral_Feature_Method,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedParameter
 
@@ -21819,14 +21819,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  raisedException
 
@@ -21840,14 +21840,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Reception;
@@ -21867,14 +21867,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Reclassify_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Reclassify_Object_Actions.UML_Reclassify_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Reclassify_Object_Actions.UML_Reclassify_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -21882,19 +21882,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isReplaceAll
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21913,7 +21913,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -21948,21 +21948,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  newClassifier
 
@@ -21990,28 +21990,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -22025,7 +22025,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Reclassify_Object_Action;
@@ -22045,24 +22045,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Redefinable_Template_Signature,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Proxy'(Id => Self),
+          new AMF.Internals.UML_Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  template
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22081,28 +22081,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Extended_Signature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 7);
+        UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  inheritedParameter
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Inherited_Parameter,
-        UML_Element_Table.Table (Self).Member (0).Collection + 8);
+        UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedParameter
 
@@ -22123,14 +22123,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Redefinable_Template_Signature;
@@ -22150,16 +22150,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Reduce_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Reduce_Actions.UML_Reduce_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Reduce_Actions.UML_Reduce_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  collection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -22167,21 +22167,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  reducer
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22200,7 +22200,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -22235,21 +22235,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -22263,28 +22263,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -22298,7 +22298,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Reduce_Action;
@@ -22318,28 +22318,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Region,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Regions.UML_Region_Proxy'(Id => Self),
+          new AMF.Internals.UML_Regions.UML_Region_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  extendedRegion
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  state
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  stateMachine
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22358,70 +22358,70 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  subvertex
 
@@ -22455,14 +22455,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Remove_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -22470,17 +22470,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isRemoveDuplicates
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  removeAt
@@ -22490,7 +22490,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  structuralFeature
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22509,7 +22509,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -22544,21 +22544,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -22572,28 +22572,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -22607,7 +22607,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Remove_Structural_Feature_Value_Action;
@@ -22627,14 +22627,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Remove_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -22642,15 +22642,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isRemoveDuplicates
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  removeAt
@@ -22658,7 +22658,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  value
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  variable
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22677,7 +22677,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -22712,21 +22712,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -22740,28 +22740,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -22775,7 +22775,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Remove_Variable_Value_Action;
@@ -22795,34 +22795,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Reply_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Reply_Actions.UML_Reply_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Reply_Actions.UML_Reply_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  replyToCall
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  replyToCall
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  returnInformation
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22841,7 +22841,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -22876,21 +22876,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -22904,28 +22904,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -22939,7 +22939,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  replyValue
 
@@ -22966,34 +22966,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Send_Object_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Send_Object_Actions.UML_Send_Object_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Send_Object_Actions.UML_Send_Object_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  onPort
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23019,7 +23019,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -23054,21 +23054,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -23082,28 +23082,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -23117,7 +23117,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Send_Object_Action;
@@ -23137,36 +23137,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Send_Signal_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Send_Signal_Actions.UML_Send_Signal_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Send_Signal_Actions.UML_Send_Signal_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  onPort
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signal
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23192,7 +23192,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -23227,21 +23227,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -23255,28 +23255,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -23290,7 +23290,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Send_Signal_Action;
@@ -23310,16 +23310,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Sequence_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Sequence_Nodes.UML_Sequence_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Sequence_Nodes.UML_Sequence_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -23327,19 +23327,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  mustIsolate
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23358,14 +23358,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -23379,21 +23379,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  handler
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inGroup
 
@@ -23428,28 +23428,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  node
 
@@ -23470,49 +23470,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -23526,7 +23526,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  structuredNodeInput
 
@@ -23547,7 +23547,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  variable
 
@@ -23574,7 +23574,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Signal,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Signals.UML_Signal_Proxy'(Id => Self),
+          new AMF.Internals.UML_Signals.UML_Signal_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -23583,27 +23583,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23636,21 +23636,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -23664,7 +23664,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -23678,7 +23678,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedAttribute
 
@@ -23692,28 +23692,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -23727,14 +23727,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -23748,21 +23748,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  substitution
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -23776,7 +23776,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Signal;
@@ -23796,26 +23796,26 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Signal_Event,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Signal_Events.UML_Signal_Event_Proxy'(Id => Self),
+          new AMF.Internals.UML_Signal_Events.UML_Signal_Event_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signal
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23834,14 +23834,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Signal_Event;
@@ -23861,7 +23861,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Slot,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Slots.UML_Slot_Proxy'(Id => Self),
+          new AMF.Internals.UML_Slots.UML_Slot_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -23880,14 +23880,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  value
 
@@ -23914,32 +23914,32 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Start_Classifier_Behavior_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23958,7 +23958,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -23993,21 +23993,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -24021,28 +24021,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -24056,7 +24056,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Start_Classifier_Behavior_Action;
@@ -24076,14 +24076,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Start_Object_Behavior_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -24091,11 +24091,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isSynchronous
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
@@ -24103,9 +24103,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  onPort
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24131,7 +24131,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -24166,21 +24166,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -24194,28 +24194,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -24229,7 +24229,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -24256,44 +24256,44 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_State,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_States.UML_State_Proxy'(Id => Self),
+          new AMF.Internals.UML_States.UML_State_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  container
-          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  doActivity
-          16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  entry
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  exit
           19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isComposite
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          17     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrthogonal
-          17     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          12     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isSimple
-          9      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isSubmachineState
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  redefinedState
-          15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  stateInvariant
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  submachine
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24333,14 +24333,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  incoming
 
@@ -24354,7 +24354,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  outgoing
 
@@ -24368,49 +24368,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  region
 
@@ -24437,7 +24437,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_State_Invariant,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_State_Invariants.UML_State_Invariant_Proxy'(Id => Self),
+          new AMF.Internals.UML_State_Invariants.UML_State_Invariant_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -24446,17 +24446,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingOperand
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  invariant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24489,14 +24489,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_State_Invariant;
@@ -24516,7 +24516,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_State_Machine,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_State_Machines.UML_State_Machine_Proxy'(Id => Self),
+          new AMF.Internals.UML_State_Machines.UML_State_Machine_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -24525,7 +24525,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
@@ -24533,29 +24533,29 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           21     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  specification
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24595,28 +24595,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -24630,7 +24630,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -24651,7 +24651,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -24679,7 +24679,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -24693,14 +24693,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -24728,7 +24728,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -24742,7 +24742,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -24756,7 +24756,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -24777,7 +24777,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  precondition
 
@@ -24805,14 +24805,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  region
 
@@ -24840,7 +24840,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -24854,7 +24854,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_State_Machine;
@@ -24874,42 +24874,42 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Stereotype,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Stereotypes.UML_Stereotype_Proxy'(Id => Self),
+          new AMF.Internals.UML_Stereotypes.UML_Stereotype_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  classifierBehavior
           12     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isAbstract
-          19     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          20     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isActive
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  profile
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24942,28 +24942,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extension
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Extension,
-        UML_Element_Table.Table (Self).Member (0).Collection + 36);
+        UML_Element_Table.Table (Self).Member (0).Collection + 35);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -24984,7 +24984,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inheritedMember
 
@@ -25005,7 +25005,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  nestedClassifier
 
@@ -25033,7 +25033,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedConnector
 
@@ -25047,14 +25047,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedOperation
 
@@ -25068,7 +25068,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Encapsulated_Classifier_Owned_Port,
-        UML_Element_Table.Table (Self).Member (0).Collection + 35);
+        UML_Element_Table.Table (Self).Member (0).Collection + 36);
 
       --  ownedReception
 
@@ -25082,7 +25082,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -25096,7 +25096,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  part
 
@@ -25110,7 +25110,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -25124,14 +25124,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  role
 
@@ -25145,7 +25145,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -25159,7 +25159,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Stereotype;
@@ -25179,14 +25179,14 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_String_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_String_Expressions.UML_String_Expression_Proxy'(Id => Self),
+          new AMF.Internals.UML_String_Expressions.UML_String_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
@@ -25194,17 +25194,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owner
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningExpression
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           7      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  symbol
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25230,14 +25230,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  subExpression
 
@@ -25271,16 +25271,16 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Structured_Activity_Node,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Structured_Activity_Nodes.UML_Structured_Activity_Node_Proxy'(Id => Self),
+          new AMF.Internals.UML_Structured_Activity_Nodes.UML_Structured_Activity_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inActivity
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
@@ -25288,19 +25288,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  mustIsolate
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  superGroup
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25319,14 +25319,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Edge,
-        UML_Element_Table.Table (Self).Member (0).Collection + 25);
+        UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       --  containedNode
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Contained_Node,
-        UML_Element_Table.Table (Self).Member (0).Collection + 26);
+        UML_Element_Table.Table (Self).Member (0).Collection + 25);
 
       --  edge
 
@@ -25340,21 +25340,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  handler
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  inGroup
 
@@ -25389,28 +25389,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  node
 
@@ -25431,49 +25431,49 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -25487,7 +25487,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  structuredNodeInput
 
@@ -25508,7 +25508,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_Subgroup,
-        UML_Element_Table.Table (Self).Member (0).Collection + 27);
+        UML_Element_Table.Table (Self).Member (0).Collection + 26);
 
       --  variable
 
@@ -25535,30 +25535,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Substitution,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Substitutions.UML_Substitution_Proxy'(Id => Self),
+          new AMF.Internals.UML_Substitutions.UML_Substitution_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  contract
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  mapping
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  substitutingClassifier
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25584,14 +25584,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -25639,7 +25639,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Binding,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Template_Bindings.UML_Template_Binding_Proxy'(Id => Self),
+          new AMF.Internals.UML_Template_Bindings.UML_Template_Binding_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -25658,14 +25658,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  parameterSubstitution
 
@@ -25713,18 +25713,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Parameter,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Template_Parameters.UML_Template_Parameter_Proxy'(Id => Self),
+          new AMF.Internals.UML_Template_Parameters.UML_Template_Parameter_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  default
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  default
+          5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedDefault
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedParameteredElement
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  parameteredElement
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  signature
@@ -25738,14 +25738,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Template_Parameter;
@@ -25765,18 +25765,18 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Parameter_Substitution,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Template_Parameter_Substitutions.UML_Template_Parameter_Substitution_Proxy'(Id => Self),
+          new AMF.Internals.UML_Template_Parameter_Substitutions.UML_Template_Parameter_Substitution_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  actual
-          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  formal
           5      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  actual
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  formal
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedActual
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateBinding
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25788,14 +25788,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Template_Parameter_Substitution;
@@ -25815,7 +25815,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Signature,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Template_Signatures.UML_Template_Signature_Proxy'(Id => Self),
+          new AMF.Internals.UML_Template_Signatures.UML_Template_Signature_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -25832,14 +25832,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedParameter
 
@@ -25873,36 +25873,36 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Test_Identity_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Test_Identity_Actions.UML_Test_Identity_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Test_Identity_Actions.UML_Test_Identity_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  first
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
-          13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  second
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25921,7 +25921,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -25956,21 +25956,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -25984,28 +25984,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -26019,7 +26019,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Test_Identity_Action;
@@ -26039,30 +26039,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Constraint,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Time_Constraints.UML_Time_Constraint_Proxy'(Id => Self),
+          new AMF.Internals.UML_Time_Constraints.UML_Time_Constraint_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (Is_Empty => True)),
                        --  firstEvent
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  specification
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26088,14 +26088,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Time_Constraint;
@@ -26115,28 +26115,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Event,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Time_Events.UML_Time_Event_Proxy'(Id => Self),
+          new AMF.Internals.UML_Time_Events.UML_Time_Event_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          10     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
+          7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isRelative
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  when
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26155,14 +26155,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Time_Event;
@@ -26182,28 +26182,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Expression,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Time_Expressions.UML_Time_Expression_Proxy'(Id => Self),
+          new AMF.Internals.UML_Time_Expressions.UML_Time_Expression_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  expr
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26229,14 +26229,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Time_Expression;
@@ -26256,30 +26256,30 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Interval,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Time_Intervals.UML_Time_Interval_Proxy'(Id => Self),
+          new AMF.Internals.UML_Time_Intervals.UML_Time_Interval_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  max
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  min
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26298,14 +26298,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Time_Interval;
@@ -26325,28 +26325,28 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Observation,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Time_Observations.UML_Time_Observation_Proxy'(Id => Self),
+          new AMF.Internals.UML_Time_Observations.UML_Time_Observation_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  event
           10     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  firstEvent
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26365,14 +26365,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Time_Observation;
@@ -26392,7 +26392,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Transition,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Transitions.UML_Transition_Proxy'(Id => Self),
+          new AMF.Internals.UML_Transitions.UML_Transition_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -26405,15 +26405,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Transition_Kind, AMF.UML.External),
                        --  kind
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  redefinedTransition
@@ -26421,7 +26421,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  source
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  target
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26440,70 +26440,70 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  trigger
 
@@ -26530,22 +26530,22 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Trigger,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Triggers.UML_Trigger_Proxy'(Id => Self),
+          new AMF.Internals.UML_Triggers.UML_Trigger_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  event
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26564,14 +26564,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  port
 
@@ -26598,34 +26598,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Unmarshall_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Unmarshall_Actions.UML_Unmarshall_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Unmarshall_Actions.UML_Unmarshall_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  object
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  unmarshallType
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26644,7 +26644,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -26679,21 +26679,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -26707,28 +26707,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -26742,7 +26742,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  result
 
@@ -26769,24 +26769,24 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Usage,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Usages.UML_Usage_Proxy'(Id => Self),
+          new AMF.Internals.UML_Usages.UML_Usage_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26812,14 +26812,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  relatedElement
 
@@ -26867,7 +26867,7 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Use_Case,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Use_Cases.UML_Use_Case_Proxy'(Id => Self),
+          new AMF.Internals.UML_Use_Cases.UML_Use_Case_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           16     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
@@ -26878,27 +26878,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isFinalSpecialization
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owningTemplateParameter
           13     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  package
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           14     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  representation
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26931,7 +26931,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 13);
+        UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  extend
 
@@ -26952,14 +26952,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       --  generalization
 
@@ -26973,7 +26973,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 16);
+        UML_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  include
 
@@ -27001,7 +27001,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 12);
+        UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedBehavior
 
@@ -27015,28 +27015,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member,
-        UML_Element_Table.Table (Self).Member (0).Collection + 15);
+        UML_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule,
-        UML_Element_Table.Table (Self).Member (0).Collection + 14);
+        UML_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedUseCase
 
@@ -27050,14 +27050,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import,
-        UML_Element_Table.Table (Self).Member (0).Collection + 17);
+        UML_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  powertypeExtent
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent,
-        UML_Element_Table.Table (Self).Member (0).Collection + 23);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  redefinedClassifier
 
@@ -27071,14 +27071,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  subject
 
@@ -27092,7 +27092,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  templateBinding
 
@@ -27106,7 +27106,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       return Self;
    end Create_Use_Case;
@@ -27126,12 +27126,12 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Value_Pin,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Value_Pins.UML_Value_Pin_Proxy'(Id => Self),
+          new AMF.Internals.UML_Value_Pins.UML_Value_Pin_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  activity
           8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  activity
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           22     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isControl
@@ -27141,37 +27141,37 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
-          19     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
+          20     => (AMF.Internals.Tables.UML_Types.M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           18     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          20     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          19     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27232,21 +27232,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -27260,7 +27260,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Value_Pin;
@@ -27280,34 +27280,34 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Value_Specification_Action,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Value_Specification_Actions.UML_Value_Specification_Action_Proxy'(Id => Self),
+          new AMF.Internals.UML_Value_Specification_Actions.UML_Value_Specification_Action_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           11     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLocallyReentrant
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  result
           17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  value
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27326,7 +27326,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Executable_Node_Handler,
-        UML_Element_Table.Table (Self).Member (0).Collection + 21);
+        UML_Element_Table.Table (Self).Member (0).Collection + 18);
 
       --  inGroup
 
@@ -27361,21 +27361,21 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Input,
-        UML_Element_Table.Table (Self).Member (0).Collection + 19);
+        UML_Element_Table.Table (Self).Member (0).Collection + 21);
 
       --  localPostcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Postcondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 20);
+        UML_Element_Table.Table (Self).Member (0).Collection + 22);
 
       --  localPrecondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Local_Precondition,
-        UML_Element_Table.Table (Self).Member (0).Collection + 22);
+        UML_Element_Table.Table (Self).Member (0).Collection + 19);
 
       --  outgoing
 
@@ -27389,28 +27389,28 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Output,
-        UML_Element_Table.Table (Self).Member (0).Collection + 18);
+        UML_Element_Table.Table (Self).Member (0).Collection + 20);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 4);
+        UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  redefinedNode
 
@@ -27424,7 +27424,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context,
-        UML_Element_Table.Table (Self).Member (0).Collection + 5);
+        UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
    end Create_Value_Specification_Action;
@@ -27444,42 +27444,42 @@ package body AMF.Internals.Tables.UML_Constructors is
        (Kind     => AMF.Internals.Tables.UML_Types.E_Variable,
         Extent   => 0,
         Proxy    =>
-          new AMF.Internals.UML_Variables.UML_Variable_Proxy'(Id => Self),
+          new AMF.Internals.UML_Variables.UML_Variable_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activityScope
           13     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isOrdered
-          15     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
+          16     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          16     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          14     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
                        --  lower
-          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
-          4      => (AMF.Internals.Tables.UML_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
-          6      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  nameExpression
-          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  namespace
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  owningTemplateParameter
-          5      => (AMF.Internals.Tables.UML_Types.M_String, null),
-                       --  qualifiedName
-          17     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  scope
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  owningTemplateParameter
+          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+                       --  qualifiedName
+          7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  scope
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          14     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          15     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
-          3      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          5      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27505,14 +27505,14 @@ package body AMF.Internals.Tables.UML_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        UML_Element_Table.Table (Self).Member (0).Collection + 2);
+        UML_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        UML_Element_Table.Table (Self).Member (0).Collection + 1);
+        UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
    end Create_Variable;

@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Actual
-             (Self.Id)));
+             (Self.Element)));
    end Get_Actual;
 
    ----------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Actual
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Actual;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Template_Parameters.UML_Template_Parameter_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Formal
-             (Self.Id)));
+             (Self.Element)));
    end Get_Formal;
 
    ----------------
@@ -156,7 +156,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Formal
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Formal;
@@ -173,7 +173,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Actual
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Actual;
 
    ----------------------
@@ -185,7 +185,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Actual
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Owned_Actual;
@@ -202,7 +202,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Template_Bindings.UML_Template_Binding_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Binding
-             (Self.Id)));
+             (Self.Element)));
    end Get_Template_Binding;
 
    --------------------------
@@ -214,7 +214,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
      To   : AMF.UML.Template_Bindings.UML_Template_Binding_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Binding
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Template_Binding;
@@ -231,7 +231,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -246,7 +246,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -261,7 +261,7 @@ package body AMF.Internals.UML_Template_Parameter_Substitutions is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

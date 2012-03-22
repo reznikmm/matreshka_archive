@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Join_Nodes is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Combine_Duplicate
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Combine_Duplicate;
 
    ------------------------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Combine_Duplicate
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Combine_Duplicate;
 
    -------------------
@@ -142,7 +142,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Value_Specifications.UML_Value_Specification_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Join_Spec
-             (Self.Id)));
+             (Self.Element)));
    end Get_Join_Spec;
 
    -------------------
@@ -154,7 +154,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Join_Spec
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Join_Spec;
@@ -171,7 +171,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activities.UML_Activity_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Activity
-             (Self.Id)));
+             (Self.Element)));
    end Get_Activity;
 
    ------------------
@@ -183,7 +183,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Activity;
@@ -200,7 +200,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activity_Groups.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_In_Group
-             (Self.Id)));
+             (Self.Element)));
    end Get_In_Group;
 
    ---------------------------------
@@ -215,7 +215,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Interruptible_Activity_Regions.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_In_Interruptible_Region
-             (Self.Id)));
+             (Self.Element)));
    end Get_In_Interruptible_Region;
 
    ----------------------
@@ -230,7 +230,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activity_Partitions.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_In_Partition
-             (Self.Id)));
+             (Self.Element)));
    end Get_In_Partition;
 
    ----------------------------
@@ -245,7 +245,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_In_Structured_Node
-             (Self.Id)));
+             (Self.Element)));
    end Get_In_Structured_Node;
 
    ----------------------------
@@ -257,7 +257,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
@@ -274,7 +274,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activity_Edges.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Incoming
-             (Self.Id)));
+             (Self.Element)));
    end Get_Incoming;
 
    ------------------
@@ -289,7 +289,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activity_Edges.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Outgoing
-             (Self.Id)));
+             (Self.Element)));
    end Get_Outgoing;
 
    ------------------------
@@ -304,7 +304,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Activity_Nodes.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Node
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefined_Node;
 
    -----------------
@@ -317,7 +317,7 @@ package body AMF.Internals.UML_Join_Nodes is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Leaf
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Leaf;
 
    -----------------
@@ -329,7 +329,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Leaf
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Leaf;
 
    ---------------------------
@@ -344,7 +344,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Redefinable_Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -359,7 +359,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Classifiers.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefinition_Context
-             (Self.Id)));
+             (Self.Element)));
    end Get_Redefinition_Context;
 
    ---------------------------
@@ -374,7 +374,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Dependencies.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
-             (Self.Id)));
+             (Self.Element)));
    end Get_Client_Dependency;
 
    --------------
@@ -389,7 +389,7 @@ package body AMF.Internals.UML_Join_Nodes is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -411,11 +411,11 @@ package body AMF.Internals.UML_Join_Nodes is
    begin
       if To.Is_Empty then
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
+          (Self.Element,
            League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Name;
@@ -432,7 +432,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.String_Expressions.UML_String_Expression_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
-             (Self.Id)));
+             (Self.Element)));
    end Get_Name_Expression;
 
    -------------------------
@@ -444,7 +444,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
@@ -461,7 +461,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Namespaces.UML_Namespace_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
-             (Self.Id)));
+             (Self.Element)));
    end Get_Namespace;
 
    ------------------------
@@ -476,7 +476,7 @@ package body AMF.Internals.UML_Join_Nodes is
          use type Matreshka.Internals.Strings.Shared_String_Access;
 
          Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Element);
 
       begin
          if Aux = null then
@@ -498,7 +498,7 @@ package body AMF.Internals.UML_Join_Nodes is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
+         (Self.Element);
    end Get_Visibility;
 
    --------------------
@@ -510,7 +510,7 @@ package body AMF.Internals.UML_Join_Nodes is
      To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Visibility;
 
    -----------------------
@@ -525,7 +525,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -540,7 +540,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -555,7 +555,7 @@ package body AMF.Internals.UML_Join_Nodes is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------

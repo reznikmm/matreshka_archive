@@ -115,7 +115,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Classifiers.UML_Classifier_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_General
-             (Self.Id)));
+             (Self.Element)));
    end Get_General;
 
    -----------------
@@ -127,7 +127,7 @@ package body AMF.Internals.UML_Generalizations is
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_General
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_General;
@@ -144,7 +144,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Generalization_Sets.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Generalization_Set
-             (Self.Id)));
+             (Self.Element)));
    end Get_Generalization_Set;
 
    --------------------------
@@ -157,7 +157,7 @@ package body AMF.Internals.UML_Generalizations is
    begin
       return
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Substitutable
-         (Self.Id);
+         (Self.Element);
    end Get_Is_Substitutable;
 
    --------------------------
@@ -169,7 +169,7 @@ package body AMF.Internals.UML_Generalizations is
      To   : AMF.Optional_Boolean) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Substitutable
-       (Self.Id, To);
+       (Self.Element, To);
    end Set_Is_Substitutable;
 
    ------------------
@@ -184,7 +184,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Classifiers.UML_Classifier_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Specific
-             (Self.Id)));
+             (Self.Element)));
    end Get_Specific;
 
    ------------------
@@ -196,7 +196,7 @@ package body AMF.Internals.UML_Generalizations is
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific
-       (Self.Id,
+       (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Specific;
@@ -213,7 +213,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
-             (Self.Id)));
+             (Self.Element)));
    end Get_Source;
 
    ----------------
@@ -228,7 +228,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
-             (Self.Id)));
+             (Self.Element)));
    end Get_Target;
 
    -------------------------
@@ -243,7 +243,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Related_Element;
 
    -----------------------
@@ -258,7 +258,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Comments.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -273,7 +273,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Elements.Collections.Wrap
          (AMF.Internals.Element_Collections.Wrap
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owned_Element;
 
    ---------------
@@ -288,7 +288,7 @@ package body AMF.Internals.UML_Generalizations is
         AMF.UML.Elements.UML_Element_Access
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Id)));
+             (Self.Element)));
    end Get_Owner;
 
    ------------------------
