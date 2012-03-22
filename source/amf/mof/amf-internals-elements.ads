@@ -49,11 +49,9 @@ package AMF.Internals.Elements is
    pragma Preelaborate;
 
    type Element_Implementation is
-     abstract limited new AMF.Elements.Abstract_Element with null record;
-
-   not overriding function Element
-    (Self : not null access constant Element_Implementation)
-       return AMF_Element is abstract;
+     abstract limited new AMF.Elements.Abstract_Element with record
+      Element : AMF_Element;
+   end record;
 
    overriding function Container
     (Self : not null access constant Element_Implementation)
