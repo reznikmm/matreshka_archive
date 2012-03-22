@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Connectors.Collections is
    type Set_Of_UML_Connector is
      new UML_Connector_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Connector : constant Set_Of_UML_Connector;
+
    type Ordered_Set_Of_UML_Connector is
      new UML_Connector_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Connector : constant Ordered_Set_Of_UML_Connector;
 
    type Bag_Of_UML_Connector is
      new UML_Connector_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Connector : constant Bag_Of_UML_Connector;
+
    type Sequence_Of_UML_Connector is
      new UML_Connector_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Connector : constant Sequence_Of_UML_Connector;
+
+private
+
+   Empty_Set_Of_UML_Connector : constant Set_Of_UML_Connector
+     := (UML_Connector_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Connector : constant Ordered_Set_Of_UML_Connector
+     := (UML_Connector_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Connector : constant Bag_Of_UML_Connector
+     := (UML_Connector_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Connector : constant Sequence_Of_UML_Connector
+     := (UML_Connector_Collections.Sequence with null record);
 
 end AMF.UML.Connectors.Collections;

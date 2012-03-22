@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Components.Collections is
    type Set_Of_UML_Component is
      new UML_Component_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Component : constant Set_Of_UML_Component;
+
    type Ordered_Set_Of_UML_Component is
      new UML_Component_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Component : constant Ordered_Set_Of_UML_Component;
 
    type Bag_Of_UML_Component is
      new UML_Component_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Component : constant Bag_Of_UML_Component;
+
    type Sequence_Of_UML_Component is
      new UML_Component_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Component : constant Sequence_Of_UML_Component;
+
+private
+
+   Empty_Set_Of_UML_Component : constant Set_Of_UML_Component
+     := (UML_Component_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Component : constant Ordered_Set_Of_UML_Component
+     := (UML_Component_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Component : constant Bag_Of_UML_Component
+     := (UML_Component_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Component : constant Sequence_Of_UML_Component
+     := (UML_Component_Collections.Sequence with null record);
 
 end AMF.UML.Components.Collections;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Messages.Collections is
    type Set_Of_UML_Message is
      new UML_Message_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Message : constant Set_Of_UML_Message;
+
    type Ordered_Set_Of_UML_Message is
      new UML_Message_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Message : constant Ordered_Set_Of_UML_Message;
 
    type Bag_Of_UML_Message is
      new UML_Message_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Message : constant Bag_Of_UML_Message;
+
    type Sequence_Of_UML_Message is
      new UML_Message_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Message : constant Sequence_Of_UML_Message;
+
+private
+
+   Empty_Set_Of_UML_Message : constant Set_Of_UML_Message
+     := (UML_Message_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Message : constant Ordered_Set_Of_UML_Message
+     := (UML_Message_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Message : constant Bag_Of_UML_Message
+     := (UML_Message_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Message : constant Sequence_Of_UML_Message
+     := (UML_Message_Collections.Sequence with null record);
 
 end AMF.UML.Messages.Collections;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Collaborations.Collections is
    type Set_Of_UML_Collaboration is
      new UML_Collaboration_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Collaboration : constant Set_Of_UML_Collaboration;
+
    type Ordered_Set_Of_UML_Collaboration is
      new UML_Collaboration_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Collaboration : constant Ordered_Set_Of_UML_Collaboration;
 
    type Bag_Of_UML_Collaboration is
      new UML_Collaboration_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Collaboration : constant Bag_Of_UML_Collaboration;
+
    type Sequence_Of_UML_Collaboration is
      new UML_Collaboration_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Collaboration : constant Sequence_Of_UML_Collaboration;
+
+private
+
+   Empty_Set_Of_UML_Collaboration : constant Set_Of_UML_Collaboration
+     := (UML_Collaboration_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Collaboration : constant Ordered_Set_Of_UML_Collaboration
+     := (UML_Collaboration_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Collaboration : constant Bag_Of_UML_Collaboration
+     := (UML_Collaboration_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Collaboration : constant Sequence_Of_UML_Collaboration
+     := (UML_Collaboration_Collections.Sequence with null record);
 
 end AMF.UML.Collaborations.Collections;

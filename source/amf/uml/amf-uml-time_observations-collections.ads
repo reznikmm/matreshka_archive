@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Time_Observations.Collections is
    type Set_Of_UML_Time_Observation is
      new UML_Time_Observation_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Time_Observation : constant Set_Of_UML_Time_Observation;
+
    type Ordered_Set_Of_UML_Time_Observation is
      new UML_Time_Observation_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Time_Observation : constant Ordered_Set_Of_UML_Time_Observation;
 
    type Bag_Of_UML_Time_Observation is
      new UML_Time_Observation_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Time_Observation : constant Bag_Of_UML_Time_Observation;
+
    type Sequence_Of_UML_Time_Observation is
      new UML_Time_Observation_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Time_Observation : constant Sequence_Of_UML_Time_Observation;
+
+private
+
+   Empty_Set_Of_UML_Time_Observation : constant Set_Of_UML_Time_Observation
+     := (UML_Time_Observation_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Time_Observation : constant Ordered_Set_Of_UML_Time_Observation
+     := (UML_Time_Observation_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Time_Observation : constant Bag_Of_UML_Time_Observation
+     := (UML_Time_Observation_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Time_Observation : constant Sequence_Of_UML_Time_Observation
+     := (UML_Time_Observation_Collections.Sequence with null record);
 
 end AMF.UML.Time_Observations.Collections;

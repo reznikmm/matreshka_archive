@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Central_Buffer_Nodes.Collections is
    type Set_Of_UML_Central_Buffer_Node is
      new UML_Central_Buffer_Node_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Central_Buffer_Node : constant Set_Of_UML_Central_Buffer_Node;
+
    type Ordered_Set_Of_UML_Central_Buffer_Node is
      new UML_Central_Buffer_Node_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Central_Buffer_Node : constant Ordered_Set_Of_UML_Central_Buffer_Node;
 
    type Bag_Of_UML_Central_Buffer_Node is
      new UML_Central_Buffer_Node_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Central_Buffer_Node : constant Bag_Of_UML_Central_Buffer_Node;
+
    type Sequence_Of_UML_Central_Buffer_Node is
      new UML_Central_Buffer_Node_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Central_Buffer_Node : constant Sequence_Of_UML_Central_Buffer_Node;
+
+private
+
+   Empty_Set_Of_UML_Central_Buffer_Node : constant Set_Of_UML_Central_Buffer_Node
+     := (UML_Central_Buffer_Node_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Central_Buffer_Node : constant Ordered_Set_Of_UML_Central_Buffer_Node
+     := (UML_Central_Buffer_Node_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Central_Buffer_Node : constant Bag_Of_UML_Central_Buffer_Node
+     := (UML_Central_Buffer_Node_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Central_Buffer_Node : constant Sequence_Of_UML_Central_Buffer_Node
+     := (UML_Central_Buffer_Node_Collections.Sequence with null record);
 
 end AMF.UML.Central_Buffer_Nodes.Collections;

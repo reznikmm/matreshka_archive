@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Vertexs.Collections is
    type Set_Of_UML_Vertex is
      new UML_Vertex_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Vertex : constant Set_Of_UML_Vertex;
+
    type Ordered_Set_Of_UML_Vertex is
      new UML_Vertex_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Vertex : constant Ordered_Set_Of_UML_Vertex;
 
    type Bag_Of_UML_Vertex is
      new UML_Vertex_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Vertex : constant Bag_Of_UML_Vertex;
+
    type Sequence_Of_UML_Vertex is
      new UML_Vertex_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Vertex : constant Sequence_Of_UML_Vertex;
+
+private
+
+   Empty_Set_Of_UML_Vertex : constant Set_Of_UML_Vertex
+     := (UML_Vertex_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Vertex : constant Ordered_Set_Of_UML_Vertex
+     := (UML_Vertex_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Vertex : constant Bag_Of_UML_Vertex
+     := (UML_Vertex_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Vertex : constant Sequence_Of_UML_Vertex
+     := (UML_Vertex_Collections.Sequence with null record);
 
 end AMF.UML.Vertexs.Collections;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Interruptible_Activity_Regions.Collections is
    type Set_Of_UML_Interruptible_Activity_Region is
      new UML_Interruptible_Activity_Region_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Interruptible_Activity_Region : constant Set_Of_UML_Interruptible_Activity_Region;
+
    type Ordered_Set_Of_UML_Interruptible_Activity_Region is
      new UML_Interruptible_Activity_Region_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Interruptible_Activity_Region : constant Ordered_Set_Of_UML_Interruptible_Activity_Region;
 
    type Bag_Of_UML_Interruptible_Activity_Region is
      new UML_Interruptible_Activity_Region_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Interruptible_Activity_Region : constant Bag_Of_UML_Interruptible_Activity_Region;
+
    type Sequence_Of_UML_Interruptible_Activity_Region is
      new UML_Interruptible_Activity_Region_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Interruptible_Activity_Region : constant Sequence_Of_UML_Interruptible_Activity_Region;
+
+private
+
+   Empty_Set_Of_UML_Interruptible_Activity_Region : constant Set_Of_UML_Interruptible_Activity_Region
+     := (UML_Interruptible_Activity_Region_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Interruptible_Activity_Region : constant Ordered_Set_Of_UML_Interruptible_Activity_Region
+     := (UML_Interruptible_Activity_Region_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Interruptible_Activity_Region : constant Bag_Of_UML_Interruptible_Activity_Region
+     := (UML_Interruptible_Activity_Region_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Interruptible_Activity_Region : constant Sequence_Of_UML_Interruptible_Activity_Region
+     := (UML_Interruptible_Activity_Region_Collections.Sequence with null record);
 
 end AMF.UML.Interruptible_Activity_Regions.Collections;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Images.Collections is
    type Set_Of_UML_Image is
      new UML_Image_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Image : constant Set_Of_UML_Image;
+
    type Ordered_Set_Of_UML_Image is
      new UML_Image_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Image : constant Ordered_Set_Of_UML_Image;
 
    type Bag_Of_UML_Image is
      new UML_Image_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Image : constant Bag_Of_UML_Image;
+
    type Sequence_Of_UML_Image is
      new UML_Image_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Image : constant Sequence_Of_UML_Image;
+
+private
+
+   Empty_Set_Of_UML_Image : constant Set_Of_UML_Image
+     := (UML_Image_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Image : constant Ordered_Set_Of_UML_Image
+     := (UML_Image_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Image : constant Bag_Of_UML_Image
+     := (UML_Image_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Image : constant Sequence_Of_UML_Image
+     := (UML_Image_Collections.Sequence with null record);
 
 end AMF.UML.Images.Collections;

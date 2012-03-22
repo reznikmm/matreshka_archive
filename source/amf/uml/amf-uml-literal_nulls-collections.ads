@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Literal_Nulls.Collections is
    type Set_Of_UML_Literal_Null is
      new UML_Literal_Null_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Literal_Null : constant Set_Of_UML_Literal_Null;
+
    type Ordered_Set_Of_UML_Literal_Null is
      new UML_Literal_Null_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Literal_Null : constant Ordered_Set_Of_UML_Literal_Null;
 
    type Bag_Of_UML_Literal_Null is
      new UML_Literal_Null_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Literal_Null : constant Bag_Of_UML_Literal_Null;
+
    type Sequence_Of_UML_Literal_Null is
      new UML_Literal_Null_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Literal_Null : constant Sequence_Of_UML_Literal_Null;
+
+private
+
+   Empty_Set_Of_UML_Literal_Null : constant Set_Of_UML_Literal_Null
+     := (UML_Literal_Null_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Literal_Null : constant Ordered_Set_Of_UML_Literal_Null
+     := (UML_Literal_Null_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Literal_Null : constant Bag_Of_UML_Literal_Null
+     := (UML_Literal_Null_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Literal_Null : constant Sequence_Of_UML_Literal_Null
+     := (UML_Literal_Null_Collections.Sequence with null record);
 
 end AMF.UML.Literal_Nulls.Collections;

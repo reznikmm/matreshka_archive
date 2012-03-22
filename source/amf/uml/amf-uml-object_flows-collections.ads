@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Object_Flows.Collections is
    type Set_Of_UML_Object_Flow is
      new UML_Object_Flow_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Object_Flow : constant Set_Of_UML_Object_Flow;
+
    type Ordered_Set_Of_UML_Object_Flow is
      new UML_Object_Flow_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Object_Flow : constant Ordered_Set_Of_UML_Object_Flow;
 
    type Bag_Of_UML_Object_Flow is
      new UML_Object_Flow_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Object_Flow : constant Bag_Of_UML_Object_Flow;
+
    type Sequence_Of_UML_Object_Flow is
      new UML_Object_Flow_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Object_Flow : constant Sequence_Of_UML_Object_Flow;
+
+private
+
+   Empty_Set_Of_UML_Object_Flow : constant Set_Of_UML_Object_Flow
+     := (UML_Object_Flow_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Object_Flow : constant Ordered_Set_Of_UML_Object_Flow
+     := (UML_Object_Flow_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Object_Flow : constant Bag_Of_UML_Object_Flow
+     := (UML_Object_Flow_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Object_Flow : constant Sequence_Of_UML_Object_Flow
+     := (UML_Object_Flow_Collections.Sequence with null record);
 
 end AMF.UML.Object_Flows.Collections;

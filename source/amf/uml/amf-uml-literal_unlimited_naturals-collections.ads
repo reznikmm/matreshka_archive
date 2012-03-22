@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Literal_Unlimited_Naturals.Collections is
    type Set_Of_UML_Literal_Unlimited_Natural is
      new UML_Literal_Unlimited_Natural_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Literal_Unlimited_Natural : constant Set_Of_UML_Literal_Unlimited_Natural;
+
    type Ordered_Set_Of_UML_Literal_Unlimited_Natural is
      new UML_Literal_Unlimited_Natural_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Literal_Unlimited_Natural : constant Ordered_Set_Of_UML_Literal_Unlimited_Natural;
 
    type Bag_Of_UML_Literal_Unlimited_Natural is
      new UML_Literal_Unlimited_Natural_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Literal_Unlimited_Natural : constant Bag_Of_UML_Literal_Unlimited_Natural;
+
    type Sequence_Of_UML_Literal_Unlimited_Natural is
      new UML_Literal_Unlimited_Natural_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Literal_Unlimited_Natural : constant Sequence_Of_UML_Literal_Unlimited_Natural;
+
+private
+
+   Empty_Set_Of_UML_Literal_Unlimited_Natural : constant Set_Of_UML_Literal_Unlimited_Natural
+     := (UML_Literal_Unlimited_Natural_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Literal_Unlimited_Natural : constant Ordered_Set_Of_UML_Literal_Unlimited_Natural
+     := (UML_Literal_Unlimited_Natural_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Literal_Unlimited_Natural : constant Bag_Of_UML_Literal_Unlimited_Natural
+     := (UML_Literal_Unlimited_Natural_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Literal_Unlimited_Natural : constant Sequence_Of_UML_Literal_Unlimited_Natural
+     := (UML_Literal_Unlimited_Natural_Collections.Sequence with null record);
 
 end AMF.UML.Literal_Unlimited_Naturals.Collections;

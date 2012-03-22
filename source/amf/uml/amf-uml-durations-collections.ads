@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,13 +57,35 @@ package AMF.UML.Durations.Collections is
    type Set_Of_UML_Duration is
      new UML_Duration_Collections.Set with null record;
 
+   Empty_Set_Of_UML_Duration : constant Set_Of_UML_Duration;
+
    type Ordered_Set_Of_UML_Duration is
      new UML_Duration_Collections.Ordered_Set with null record;
+
+   Empty_Ordered_Set_Of_UML_Duration : constant Ordered_Set_Of_UML_Duration;
 
    type Bag_Of_UML_Duration is
      new UML_Duration_Collections.Bag with null record;
 
+   Empty_Bag_Of_UML_Duration : constant Bag_Of_UML_Duration;
+
    type Sequence_Of_UML_Duration is
      new UML_Duration_Collections.Sequence with null record;
+
+   Empty_Sequence_Of_UML_Duration : constant Sequence_Of_UML_Duration;
+
+private
+
+   Empty_Set_Of_UML_Duration : constant Set_Of_UML_Duration
+     := (UML_Duration_Collections.Set with null record);
+
+   Empty_Ordered_Set_Of_UML_Duration : constant Ordered_Set_Of_UML_Duration
+     := (UML_Duration_Collections.Ordered_Set with null record);
+
+   Empty_Bag_Of_UML_Duration : constant Bag_Of_UML_Duration
+     := (UML_Duration_Collections.Bag with null record);
+
+   Empty_Sequence_Of_UML_Duration : constant Sequence_Of_UML_Duration
+     := (UML_Duration_Collections.Sequence with null record);
 
 end AMF.UML.Durations.Collections;
