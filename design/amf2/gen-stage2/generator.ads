@@ -280,11 +280,6 @@ package Generator is
    Module_Info : Module_Information;
    --  Module information.
 
-   Generate_Attributes   : Boolean := True;
-   Generate_Constructors : Boolean := True;
-   Generate_Reflection   : Boolean := True;
-   --  Control generation of specific packages.
-
    First_Year : Natural;
    Last_Year  : Natural;
 

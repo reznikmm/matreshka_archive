@@ -52,6 +52,7 @@ with AMF.Elements.Collections;
 with AMF.Extents.Collections;
 with AMF.Facility;
 
+with Generator.Arguments;
 with Generator.Attribute_Mapping;
 with Generator.Names;
 
@@ -316,9 +317,9 @@ package body Generator.Analyzer is
       --  classes in the metamodel.
 
       if Info.Classes.Is_Empty then
-         Generate_Attributes := False;
-         Generate_Constructors := False;
-         Generate_Reflection := False;
+         Generator.Arguments.Generate_Attributes := False;
+         Generator.Arguments.Generate_Constructors := False;
+         Generator.Arguments.Generate_Reflection := False;
       end if;
    end Assign_Element_Numbers;
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,83 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
+with League.String_Vectors;
 
-with League.Application;
+package Generator.Arguments is
 
-with AMF.Elements.Collections;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
-
-with Generator.Analyzer;
-with Generator.Arguments;
-with Generator.Attributes;
-with Generator.Constructors;
-with Generator.Metamodel;
-with Generator.Reflection;
-with Generator.String_Data;
-with Generator.Type_Mapping;
-with Generator.Visitors;
-
-procedure Gen2 is
-
-   use Ada.Wide_Wide_Text_IO;
-
-   Extent : AMF.URI_Stores.URI_Store_Access;
-
-begin
+   procedure Parse_Command_Line_Arguments;
    --  Parse command line arguments.
 
-   Generator.Arguments.Parse_Command_Line_Arguments;
+   Generate_Attributes   : Boolean := True;
+   Generate_Constructors : Boolean := True;
+   Generate_Reflection   : Boolean := True;
+   Generate_Public_API   : Boolean := True;
+   Generate_API_Stubs    : Boolean := False;
+   --  Control generation of specific kinds of packages.
 
-   --  Initialize facility.
+   Metamodel_URIs : League.String_Vectors.Universal_String_Vector;
+   --  URIs of metamodels to be analyzed and generated as module.
 
-   AMF.Facility.Initialize;
-
-   --  Load metamodel.
-
-   Put_Line (Standard_Error, "Loading metamodels...");
-   Extent :=
-     XMI.Reader.Read_URI (Generator.Arguments.Metamodel_URIs.Element (1));
-
-   --  Load type mapping.
-
-   Put_Line (Standard_Error, "Loading type mapping...");
-   Generator.Type_Mapping.Load_Mapping;
-
-   --  Analyze metamodels.
-
-   Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model (Extent);
-   Generator.String_Data.Extract_String_Data (Extent);
-
-   if Generator.Arguments.Generate_Attributes then
-      Put_Line (Standard_Error, "Generating attributes...");
-      Generator.Attributes.Generate_Attributes_Mapping_Specification;
-      Generator.Attributes.Generate_Attributes_Specification;
-      Generator.Attributes.Generate_Attributes_Implementation;
-   end if;
-
-   if Generator.Arguments.Generate_Constructors then
-      Put_Line (Standard_Error, "Generating constructors...");
-      Generator.Constructors.Generate_Constructors_Specification;
-      Generator.Constructors.Generate_Constructors_Implementation;
-   end if;
-
-   Put_Line (Standard_Error, "Generating preinitialized string data...");
-   Generator.String_Data.Generate_Metamodel_String_Data;
-
-   Put_Line (Standard_Error, "Generating metamodel initialization...");
-   Generator.Metamodel.Generate_Metamodel_Specification;
-   Generator.Metamodel.Generate_Metamodel_Implementation;
-
-   if Generator.Arguments.Generate_Reflection then
-      Put_Line (Standard_Error, "Generating relfection...");
-      Generator.Reflection.Generate_Reflection_Implementation;
-   end if;
-
-   Put_Line (Standard_Error, "Generating iterator interface...");
-   Generator.Visitors.Generate_Visitors_Package (Generator.Metamodel_Info);
-   Generator.Visitors.Generate_Iterators_Package (Generator.Metamodel_Info);
-end Gen2;
+end Generator.Arguments;

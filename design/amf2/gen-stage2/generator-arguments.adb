@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,83 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
-
 with League.Application;
 
-with AMF.Elements.Collections;
-with AMF.Facility;
-with AMF.URI_Stores;
-with XMI.Reader;
+package body Generator.Arguments is
 
-with Generator.Analyzer;
-with Generator.Arguments;
-with Generator.Attributes;
-with Generator.Constructors;
-with Generator.Metamodel;
-with Generator.Reflection;
-with Generator.String_Data;
-with Generator.Type_Mapping;
-with Generator.Visitors;
+   ----------------------------------
+   -- Parse_Command_Line_Arguments --
+   ----------------------------------
 
-procedure Gen2 is
+   procedure Parse_Command_Line_Arguments is
+      Arguments : constant League.String_Vectors.Universal_String_Vector
+        := League.Application.Arguments;
+      Argument  : League.Strings.Universal_String;
 
-   use Ada.Wide_Wide_Text_IO;
+   begin
+      --  Parse first and last years for copyright statement.
 
-   Extent : AMF.URI_Stores.URI_Store_Access;
+      First_Year :=
+        Integer'Wide_Wide_Value (Arguments.Element (1).To_Wide_Wide_String);
+      Last_Year :=
+        Integer'Wide_Wide_Value (Arguments.Element (2).To_Wide_Wide_String);
 
-begin
-   --  Parse command line arguments.
+      for J in 3 .. Arguments.Length loop
+         Argument := Arguments.Element (J);
 
-   Generator.Arguments.Parse_Command_Line_Arguments;
+         if Argument = +"--stubs" then
+            --  In the implementation stubs mode only stubs code is generated.
 
-   --  Initialize facility.
+            Generate_Attributes   := True;
+            Generate_Constructors := True;
+            Generate_Reflection   := True;
+            Generate_Public_API   := False;
+            Generate_API_Stubs    := True;
 
-   AMF.Facility.Initialize;
+         else
+            --  Command line argument is not recognized, treat it as metamodel
+            --  URI.
 
-   --  Load metamodel.
+            Metamodel_URIs.Append (Argument);
+         end if;
+      end loop;
+   end Parse_Command_Line_Arguments;
 
-   Put_Line (Standard_Error, "Loading metamodels...");
-   Extent :=
-     XMI.Reader.Read_URI (Generator.Arguments.Metamodel_URIs.Element (1));
-
-   --  Load type mapping.
-
-   Put_Line (Standard_Error, "Loading type mapping...");
-   Generator.Type_Mapping.Load_Mapping;
-
-   --  Analyze metamodels.
-
-   Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model (Extent);
-   Generator.String_Data.Extract_String_Data (Extent);
-
-   if Generator.Arguments.Generate_Attributes then
-      Put_Line (Standard_Error, "Generating attributes...");
-      Generator.Attributes.Generate_Attributes_Mapping_Specification;
-      Generator.Attributes.Generate_Attributes_Specification;
-      Generator.Attributes.Generate_Attributes_Implementation;
-   end if;
-
-   if Generator.Arguments.Generate_Constructors then
-      Put_Line (Standard_Error, "Generating constructors...");
-      Generator.Constructors.Generate_Constructors_Specification;
-      Generator.Constructors.Generate_Constructors_Implementation;
-   end if;
-
-   Put_Line (Standard_Error, "Generating preinitialized string data...");
-   Generator.String_Data.Generate_Metamodel_String_Data;
-
-   Put_Line (Standard_Error, "Generating metamodel initialization...");
-   Generator.Metamodel.Generate_Metamodel_Specification;
-   Generator.Metamodel.Generate_Metamodel_Implementation;
-
-   if Generator.Arguments.Generate_Reflection then
-      Put_Line (Standard_Error, "Generating relfection...");
-      Generator.Reflection.Generate_Reflection_Implementation;
-   end if;
-
-   Put_Line (Standard_Error, "Generating iterator interface...");
-   Generator.Visitors.Generate_Visitors_Package (Generator.Metamodel_Info);
-   Generator.Visitors.Generate_Iterators_Package (Generator.Metamodel_Info);
-end Gen2;
+end Generator.Arguments;

@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  Generates public API of the model.
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements;
@@ -60,13 +62,15 @@ with League.Strings;
 with XMI.Reader;
 
 with Generator.Analyzer;
-with Generator.Names;
+with Generator.Arguments;
 with Generator.Attribute_Mapping;
+with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Units;
 
 procedure Gen_API is
 
+   use Ada.Wide_Wide_Text_IO;
    use type AMF.CMOF.CMOF_Parameter_Direction_Kind;
    use type AMF.CMOF.Types.CMOF_Type_Access;
    use type AMF.Optional_String;
@@ -1950,43 +1954,36 @@ procedure Gen_API is
    Extent   : AMF.URI_Stores.URI_Store_Access;
    Elements : AMF.Elements.Collections.Set_Of_Element;
 
-   Generate_Public_API : Boolean := True;
-   Generate_API_Stubs  : Boolean := False;
-
 begin
+   --  Parse command line arguments.
+
+   Generator.Arguments.Parse_Command_Line_Arguments;
+
+   --  Initialize facility.
+
    AMF.Facility.Initialize;
-   Generator.First_Year :=
-     Integer'Wide_Wide_Value
-      (League.Application.Arguments.Element (1).To_Wide_Wide_String);
-   Generator.Last_Year :=
-     Integer'Wide_Wide_Value
-      (League.Application.Arguments.Element (2).To_Wide_Wide_String);
 
-   if League.Application.Arguments.Length = 4 then
-      if League.Application.Arguments.Element (4).To_Wide_Wide_String
-           = "--stubs"
-      then
-         Generate_Public_API := False;
-         Generate_API_Stubs := True;
+   --  Load metamodel.
 
-      else
-         raise Program_Error;
-      end if;
-   end if;
+   Put_Line (Standard_Error, "Loading metamodels...");
+   Extent :=
+     XMI.Reader.Read_URI (Generator.Arguments.Metamodel_URIs.Element (1));
 
-   Extent := XMI.Reader.Read_URI (League.Application.Arguments.Element (3));
+   --  Load type mapping.
 
+   Put_Line (Standard_Error, "Loading type mapping...");
    Generator.Type_Mapping.Load_Mapping;
 
    --  Analyze model.
 
+   Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);
 
    Elements := Extent.Elements;
 
    for J in 1 .. Elements.Length loop
       if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
-         if Generate_Public_API then
+         if Generator.Arguments.Generate_Public_API then
             Generate_Class
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
             Generate_Collections
@@ -1995,7 +1992,7 @@ begin
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
          end if;
 
-         if Generate_API_Stubs then
+         if Generator.Arguments.Generate_API_Stubs then
             Generate_Proxy_Specification
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
             Generate_Proxy_Implementation
