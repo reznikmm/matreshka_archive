@@ -65,7 +65,8 @@ package body Generator.String_Data is
    use type League.Strings.Universal_String;
 
    function String_Data_Package_Name
-    (Number : Natural) return League.Strings.Universal_String;
+    (Metamodel_Info : Metamodel_Information;
+     Number         : Natural) return League.Strings.Universal_String;
    --  Returns name of string data package where string with specified number
    --  is delcared.
 
@@ -277,7 +278,9 @@ package body Generator.String_Data is
          Put_Line ("with Matreshka.Internals.Strings;");
          New_Line;
          Put_Line
-          ("package " & String_Data_Package_Name (J * 16#100#) & " is");
+          ("package "
+             & String_Data_Package_Name (Metamodel_Info.all, J * 16#100#)
+             & " is");
 
          --  Generate string constants.
 
@@ -290,7 +293,10 @@ package body Generator.String_Data is
          end loop;
 
          New_Line;
-         Put_Line ("end " & String_Data_Package_Name (J * 16#100#) & ";");
+         Put_Line
+          ("end "
+             & String_Data_Package_Name (Metamodel_Info.all, J * 16#100#)
+             & ";");
       end loop;
    end Generate_Metamodel_String_Data;
 
@@ -342,14 +348,15 @@ package body Generator.String_Data is
    ------------------------------
 
    function String_Data_Package_Name
-    (Number : Natural) return League.Strings.Universal_String
+    (Metamodel_Info : Metamodel_Information;
+     Number         : Natural) return League.Strings.Universal_String
    is
       Hex    : constant
         array (Integer range 0 .. 15)
           of Wide_Wide_Character := "0123456789ABCDEF";
       Result : Wide_Wide_String
         := "AMF.Internals.Tables."
-             & Metamodel_Name.To_Wide_Wide_String
+             & Metamodel_Info.Ada_Name.To_Wide_Wide_String
              & "_String_Data_XX";
 
    begin
@@ -364,10 +371,13 @@ package body Generator.String_Data is
    ------------------------------
 
    function String_Data_Package_Name
-    (Item : League.Strings.Universal_String)
+    (Metamodel_Info : Metamodel_Information;
+     Item           : League.Strings.Universal_String)
        return League.Strings.Universal_String is
    begin
-      return String_Data_Package_Name (String_Numbers.Element (Item));
+      return
+        String_Data_Package_Name
+         (Metamodel_Info, String_Numbers.Element (Item));
    end String_Data_Package_Name;
 
 end Generator.String_Data;

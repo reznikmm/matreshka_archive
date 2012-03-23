@@ -343,11 +343,11 @@ package body Generator.Attributes is
                      Unit.Add_Line (+"      return");
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table");
                      Unit.Add_Line
                       ("        AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -362,11 +362,11 @@ package body Generator.Attributes is
                   when Ordered_Set =>
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table");
                      Unit.Add
                       ("      return AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -381,11 +381,11 @@ package body Generator.Attributes is
                   when Sequence =>
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table");
                      Unit.Add
                       ("      return AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -404,11 +404,11 @@ package body Generator.Attributes is
                    (+"        AMF.Internals.Links.Opposite_Element");
                   Unit.Context.Add
                    ("AMF.Internals.Tables."
-                      & Metamodel_Name
+                      & Module_Info.Ada_Name
                       & "_Element_Table");
                   Unit.Add
                    ("         (AMF.Internals.Tables."
-                      & Metamodel_Name
+                      & Module_Info.Ada_Name
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
@@ -416,17 +416,17 @@ package body Generator.Attributes is
                              (Attribute)),
                           Both)
                       & ").Link, Self, No_"
-                      & Metamodel_Name
+                      & Module_Info.Ada_Name
                       & "_Element)");
 
                else
                   Unit.Context.Add
                    ("AMF.Internals.Tables."
-                      & Metamodel_Name
+                      & Module_Info.Ada_Name
                       & "_Element_Table");
                   Unit.Add
                    ("      return AMF.Internals.Tables."
-                      & Metamodel_Name
+                      & Module_Info.Ada_Name
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
@@ -445,10 +445,12 @@ package body Generator.Attributes is
                --  Collections are of type Element also.
 
                Unit.Context.Add
-                ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+                ("AMF.Internals.Tables."
+                   & Module_Info.Ada_Name
+                   & "_Element_Table");
                Unit.Add_Line
                 ("      return AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
                       (Metamodel_Info.Attribute_Collection.Element (Attribute))
@@ -477,7 +479,7 @@ package body Generator.Attributes is
          Unit.Add_Line;
          Unit.Add_Line ("   function " & Name);
          Unit.Add_Line
-          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element)");
+          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element)");
          Unit.Add_Line
           ("       return "
              & Type_Mapping.Internal_Ada_Type_Qualified_Name
@@ -485,7 +487,7 @@ package body Generator.Attributes is
              & " is");
          Unit.Add_Line (+"   begin");
          Unit.Context.Add
-          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+          ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Element_Table");
          Getter.Pairs.Iterate (Generate'Access);
          Unit.Add_Line ("   end " & Name & ";");
       end Generate_Getter;
@@ -551,11 +553,11 @@ package body Generator.Attributes is
                      Unit.Add_Line (+"      Old :=");
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table");
                      Unit.Add_Line
                       ("        AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -566,7 +568,7 @@ package body Generator.Attributes is
                      Unit.Add_Line;
                      Unit.Add_Line
                       ("      "
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -579,7 +581,7 @@ package body Generator.Attributes is
                           & "Matreshka.Internals.Strings.Reference");
                      Unit.Add_Line
                       ("       ("
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -611,11 +613,11 @@ package body Generator.Attributes is
                   when Holder =>
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table");
                      Unit.Add_Line
                       ("      Old := AMF.Internals.Tables."
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -626,7 +628,7 @@ package body Generator.Attributes is
                      Unit.Add_Line;
                      Unit.Add_Line
                       ("      "
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -637,7 +639,7 @@ package body Generator.Attributes is
                      Unit.Add_Line;
                      Unit.Add_Line
                       ("      if "
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -650,7 +652,7 @@ package body Generator.Attributes is
                           & "Matreshka.Internals.Strings.Reference");
                      Unit.Add_Line
                       ("          ("
-                         & Metamodel_Name
+                         & Module_Info.Ada_Name
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
@@ -720,10 +722,12 @@ package body Generator.Attributes is
 
             else
                Unit.Context.Add
-                ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+                ("AMF.Internals.Tables."
+                   & Module_Info.Ada_Name
+                   & "_Element_Table");
                Unit.Add_Line
                 ("      Old := AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
@@ -734,7 +738,7 @@ package body Generator.Attributes is
                    & ";" );
                Unit.Add_Line
                 ("      AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
@@ -780,7 +784,7 @@ package body Generator.Attributes is
          Unit.Add_Line;
          Unit.Add_Line ("   procedure " & Name);
          Unit.Add_Line
-          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element;");
+          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element;");
          Unit.Add_Line
           ("     To   : "
             & Type_Mapping.Internal_Ada_Type_Qualified_Name
@@ -795,13 +799,13 @@ package body Generator.Attributes is
          Unit.Add_Line;
          Unit.Add_Line (+"   begin");
          Unit.Context.Add
-          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+          ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Element_Table");
          Getter.Pairs.Iterate (Generate'Access);
          Unit.Add_Line ("   end " & Name & ";");
       end Generate_Setter;
 
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Internals.Tables." & Metamodel_Name & "_Attributes";
+        := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Attributes";
 
    begin
       Unit.Add_Unit_Header
@@ -989,10 +993,10 @@ package body Generator.Attributes is
          end if;
 
          Unit.Context.Add
-          ("AMF.Internals.Tables." & Metamodel_Name & "_Types");
+          ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types");
          Unit.Add_Line
           ("AMF.Internals.Tables."
-             & Metamodel_Name
+             & Module_Info.Ada_Name
              & "_Types.E_"
              & To_Ada_Identifier (Class.Class.Get_Name.Value)
              & " =>");
@@ -1017,7 +1021,7 @@ package body Generator.Attributes is
       Unit.Add_Line (+"       of AMF.Internals.AMF_Collection_Of_Element :=");
       Unit.Add_Line
        (+"        (AMF.Internals.Tables."
-           & Metamodel_Name
+           & Module_Info.Ada_Name
            & "_Types.E_None =>");
       Unit.Add_Line (+"          (others => 0),");
       Unit.Add (+"         ");
@@ -1037,7 +1041,7 @@ package body Generator.Attributes is
            & ") of Natural :=");
       Unit.Add_Line
        (+"        (AMF.Internals.Tables."
-           & Metamodel_Name
+           & Module_Info.Ada_Name
            & "_Types.E_None =>");
       Unit.Add_Line (+"          (others => 0),");
       Unit.Add (+"         ");
@@ -1156,13 +1160,15 @@ package body Generator.Attributes is
           (Generator.Type_Mapping.Internal_Ada_Package_Name
             (Attribute.Get_Type, Representation (Attribute)));
          Unit.Add_Line
-          ("    (Self : AMF.Internals." & Metamodel_Name & "_Element)");
+          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element)");
          Unit.Add_Line ("       return " & Type_Name & ";");
 
          if Has_Internal_Setter (Attribute) then
             Unit.Add_Line ("   procedure " & Set_Name);
             Unit.Add_Line
-             ("    (Self : AMF.Internals." & Metamodel_Name & "_Element;");
+             ("    (Self : AMF.Internals."
+                & Module_Info.Ada_Name
+                & "_Element;");
             Unit.Add_Line ("     To   : " & Type_Name & ");");
          end if;
 
@@ -1170,7 +1176,7 @@ package body Generator.Attributes is
       end Generate_Getter;
 
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Internals.Tables." & Metamodel_Name & "_Attributes";
+        := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Attributes";
 
    begin
       Analyze;

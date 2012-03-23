@@ -808,10 +808,10 @@ package body Generator.Analyzer is
                  (AMF.CMOF.Packages.CMOF_Package'Class
                    (Elements.Element (J).all).Get_Name.Value));
 
-            if Metamodel_Name.Is_Empty then
-               --  Set global name of the metamodel to be used by old code.
+            if Module_Info.Ada_Name.Is_Empty then
+               --  Set global name of the module to be used.
 
-               Metamodel_Name := Info.Ada_Name;
+               Module_Info.Ada_Name := Info.Ada_Name;
             end if;
 
             exit;

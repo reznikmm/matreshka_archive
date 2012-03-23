@@ -104,10 +104,10 @@ package body Generator.Constructors is
          Name           : constant League.Strings.Universal_String
            := +"Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Types_Package  : constant League.Strings.Universal_String
-           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
+           := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types";
          Element_Kind   : constant League.Strings.Universal_String
            := "AMF.Internals.Tables."
-                & Metamodel_Name
+                & Module_Info.Ada_Name
                 & "_Types.E_"
                 & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
@@ -127,37 +127,41 @@ package body Generator.Constructors is
          Unit.Add_Line
           ("   function "
              & Name
-             & " return AMF.Internals."
-             & Metamodel_Name
-             & "_Element is");
+             & " return "
+             & Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+                (Class.Class, Value)
+             & " is");
          Unit.Add_Line
-          ("      Self : AMF.Internals." & Metamodel_Name & "_Element;");
+          ("      Self : "
+             & Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+                (Class.Class, Value)
+             & ";");
          Unit.Add_Line;
          Unit.Add_Line (+"   begin");
          Unit.Context.Add
-          ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+          ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Element_Table");
          Unit.Add_Line
-          ("      " & Metamodel_Name & "_Element_Table.Increment_Last;");
+          ("      " & Module_Info.Ada_Name & "_Element_Table.Increment_Last;");
          Unit.Add_Line
-          ("      Self := " & Metamodel_Name & "_Element_Table.Last;");
+          ("      Self := " & Module_Info.Ada_Name & "_Element_Table.Last;");
          Unit.Add_Line;
          Unit.Add_Line
-          ("      " & Metamodel_Name & "_Element_Table.Table (Self) :=");
+          ("      " & Module_Info.Ada_Name & "_Element_Table.Table (Self) :=");
          Unit.Add_Line ("       (Kind     => " & Element_Kind & ",");
          Unit.Add_Line (+"        Extent   => 0,");
          Unit.Add_Line (+"        Proxy    =>");
          Unit.Context.Add
           ("AMF.Internals."
-             & Metamodel_Name
+             & Module_Info.Ada_Name
              & "_"
              & Plural (To_Ada_Identifier (Class_Name)));
          Unit.Add_Line
           ("          new AMF.Internals."
-             & Metamodel_Name
+             & Module_Info.Ada_Name
              & "_"
              & Plural (To_Ada_Identifier (Class_Name))
              & "."
-             & Metamodel_Name
+             & Module_Info.Ada_Name
              & "_"
              & To_Ada_Identifier (Class_Name)
              & "_Proxy'(Element => Self),");
@@ -605,7 +609,7 @@ package body Generator.Constructors is
              & ".M_None)));");
          Unit.Add_Line
           ("      "
-             & Metamodel_Name
+             & Module_Info.Ada_Name
              & "_Element_Table.Table (Self).Member (0) :=");
          Unit.Add_Line
           ("       (" & Types_Package & ".M_Collection_Of_Element,");
@@ -674,7 +678,7 @@ package body Generator.Constructors is
                    & ",");
                Unit.Add_Line
                 ("        "
-                   & Metamodel_Name
+                   & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
                       (Metamodel_Info.Attribute_Collection.Element (Attribute))
@@ -690,7 +694,7 @@ package body Generator.Constructors is
       end Generate_Create;
 
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Internals.Tables." & Metamodel_Name & "_Constructors";
+        := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Constructors";
 
    begin
       Unit.Add_Unit_Header
@@ -733,9 +737,10 @@ package body Generator.Constructors is
          Put_Line
           ("   function "
              & Name
-             & " return AMF.Internals."
-             & Metamodel_Name.To_Wide_Wide_String
-             & "_Element;");
+             & " return "
+             & Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+                (Class.Class, Value)
+             & ";");
       end Generate_Create;
 
    begin
@@ -744,13 +749,13 @@ package body Generator.Constructors is
       New_Line;
       Put_Line
        ("package AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Module_Info.Ada_Name
           & "_Constructors is");
       Class_Info.Iterate (Generate_Create'Access);
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Module_Info.Ada_Name
           & "_Constructors;");
    end Generate_Constructors_Specification;
 

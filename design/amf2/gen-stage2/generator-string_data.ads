@@ -52,7 +52,8 @@ package Generator.String_Data is
    procedure Generate_Metamodel_String_Data;
 
    function String_Data_Package_Name
-    (Item : League.Strings.Universal_String)
+    (Metamodel_Info : Metamodel_Information;
+     Item           : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Returns name of string data package where string with specified number
    --  is delcared.

@@ -218,7 +218,7 @@ procedure Gen_API is
                Unit.Add_Line (+"         (AMF.Internals.Helpers.To_Element");
                Unit.Add_Line
                 ("           (AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Unit.Add_Line (+"             (Self.Element)));");
@@ -236,11 +236,11 @@ procedure Gen_API is
                 (+"         (AMF.Internals.Element_Collections.Wrap");
                Unit.Context.Add
                 ("AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes");
                Unit.Add_Line
                 ("           (AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Unit.Add_Line (+"             (Self.Element)));");
@@ -258,11 +258,11 @@ procedure Gen_API is
                 (+"        League.Strings.Internals.Create");
                Unit.Context.Add
                 ("AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes");
                Unit.Add_Line
                 (+"         (AMF.Internals.Tables."
-                    & Generator.Metamodel_Name
+                    & Generator.Module_Info.Ada_Name
                     & "_Attributes.Internal_Get_"
                     & Attribute_Name
                     & " (Self.Element));");
@@ -279,11 +279,11 @@ procedure Gen_API is
                     & " Matreshka.Internals.Strings.Shared_String_Access");
                Unit.Context.Add
                 ("AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes");
                Unit.Add_Line
                 ("           := AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name
                    & " (Self.Element);");
@@ -308,10 +308,12 @@ procedure Gen_API is
          Unit.Add_Line
           (+"      return");
          Unit.Context.Add
-          ("AMF.Internals.Tables." & Generator.Metamodel_Name & "_Attributes");
+          ("AMF.Internals.Tables."
+             & Generator.Module_Info.Ada_Name
+             & "_Attributes");
          Unit.Add_Line
           ("        AMF.Internals.Tables."
-             & Generator.Metamodel_Name
+             & Generator.Module_Info.Ada_Name
              & "_Attributes.Internal_Get_"
              & Attribute_Name);
          Unit.Add_Line (+"         (Self.Element);");
@@ -339,7 +341,7 @@ procedure Gen_API is
             when Generator.Value | Generator.Holder =>
                Unit.Add_Line
                 ("      AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Unit.Add_Line (+"       (Self.Element,");
@@ -359,7 +361,7 @@ procedure Gen_API is
                Unit.Context.Add (+"League.Strings.Internals");
                Unit.Add_Line
                 ("      AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Unit.Add_Line (+"       (Self.Element,");
@@ -371,7 +373,7 @@ procedure Gen_API is
                Unit.Add_Line (+"      if To.Is_Empty then");
                Unit.Add_Line
                 ("         AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Unit.Add_Line (+"          (Self.Element, null);");
@@ -379,7 +381,7 @@ procedure Gen_API is
                Unit.Add_Line (+"      else");
                Unit.Add_Line
                 ("         AMF.Internals.Tables."
-                   & Generator.Metamodel_Name
+                   & Generator.Module_Info.Ada_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Unit.Add_Line (+"          (Self.Element,");
@@ -394,7 +396,7 @@ procedure Gen_API is
       else
          Unit.Add_Line
           ("      AMF.Internals.Tables."
-             & Generator.Metamodel_Name
+             & Generator.Module_Info.Ada_Name
              & "_Attributes.Internal_Set_"
              & Attribute_Name);
          Unit.Add_Line (+"       (Self.Element, To);");

@@ -234,6 +234,15 @@ package Generator is
            AMF.Extents."=");
 
    ------------------------
+   -- Module information --
+   ------------------------
+
+   type Module_Information is limited record
+      Ada_Name : League.Strings.Universal_String;
+      --  Ada style name of the generated module.
+   end record;
+
+   ------------------------
    -- Global information --
    ------------------------
 
@@ -246,15 +255,15 @@ package Generator is
 --   Attribute_Info : Property_
 --   Attribute_Groups : Attribute_Group_Sets.Set;
 
-   Metamodel_Name : League.Strings.Universal_String;
-   --  Name of the generated metamodel.
-
    Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    --  Root package of metamodel.
 
    Metamodel_Info : Metamodel_Information_Access := new Metamodel_Information;
    --  Metamodel information. This is temporal variable to assist code
    --  refactoring.
+
+   Module_Info : Module_Information;
+   --  Module information.
 
    Generate_Attributes   : Boolean := True;
    Generate_Constructors : Boolean := True;

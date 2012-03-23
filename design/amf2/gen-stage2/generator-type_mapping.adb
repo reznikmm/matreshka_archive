@@ -361,7 +361,7 @@ package body Generator.Type_Mapping is
 
          case Representation is
             when Value | Holder =>
-               return "AMF.Internals." & Metamodel_Name & "_Element";
+               return "AMF.Internals." & Module_Info.Ada_Name & "_Element";
 
             when Set | Ordered_Set | Bag | Sequence =>
                return

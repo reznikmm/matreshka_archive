@@ -122,7 +122,7 @@ package body Generator.Reflection is
          Class_Name   : constant League.Strings.Universal_String
            := +To_Ada_Identifier (Class.Class.Get_Name.Value);
          Package_Name : constant League.Strings.Universal_String
-           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
+           := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
@@ -495,7 +495,7 @@ package body Generator.Reflection is
          Class_Name   : constant League.Strings.Universal_String
            := +To_Ada_Identifier (Class.Class.Get_Name.Value);
          Package_Name : constant League.Strings.Universal_String
-           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
+           := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
@@ -523,7 +523,7 @@ package body Generator.Reflection is
          Class_Name   : constant League.Strings.Universal_String
            := +To_Ada_Identifier (Class.Class.Get_Name.Value);
          Package_Name : constant League.Strings.Universal_String
-           := "AMF.Internals.Tables." & Metamodel_Name & "_Types";
+           := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types";
 
       begin
          if not Class.Class.Get_Is_Abstract then
@@ -850,7 +850,7 @@ package body Generator.Reflection is
       end Generate_Setter_Specification;
 
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Internals.Tables." & Metamodel_Name & "_Reflection";
+        := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Reflection";
 
    begin
       Unit.Add_Unit_Header
@@ -864,7 +864,7 @@ package body Generator.Reflection is
       Unit.Add_Header (+"Get", 3);
       Unit.Add_Line;
       Unit.Add_Line (+"   function Get");
-      Unit.Add_Line ("    (Self     : " & Metamodel_Name & "_Element;");
+      Unit.Add_Line ("    (Self     : " & Module_Info.Ada_Name & "_Element;");
       Unit.Add_Line
        (+"     Property : CMOF_Element) return League.Holders.Holder");
       Unit.Add_Line (+"   is");
@@ -873,14 +873,14 @@ package body Generator.Reflection is
       Unit.Add_Line;
       Unit.Add_Line (+"   begin");
       Unit.Context.Add
-       ("AMF.Internals.Tables." & Metamodel_Name & "_Element_Table");
+       ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Element_Table");
       Unit.Add_Line
        ("      case AMF.Internals.Tables."
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Element_Table.Table (Self).Kind is");
       Unit.Add_Line
        ("         when AMF.Internals.Tables."
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Types.E_None =>");
       Unit.Add_Line (+"            raise Program_Error;");
       Class_Info.Iterate (Generate_Getter_Call'Access);
@@ -893,16 +893,16 @@ package body Generator.Reflection is
       Unit.Add_Line;
       Unit.Add_Line
        ("   function Get_Meta_Class (Self : "
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Element) return CMOF_Element is");
       Unit.Add_Line (+"   begin");
       Unit.Add_Line
        ("      case "
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Element_Table.Table (Self).Kind is");
       Unit.Add_Line
        ("         when AMF.Internals.Tables."
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Types.E_None =>");
       Unit.Add_Line (+"            return 0;");
       Class_Info.Iterate (Generate_Meta'Access);
@@ -914,7 +914,7 @@ package body Generator.Reflection is
       Unit.Add_Header (+"Set", 3);
       Unit.Add_Line;
       Unit.Add_Line (+"   procedure Set");
-      Unit.Add_Line ("    (Self     : " & Metamodel_Name & "_Element;");
+      Unit.Add_Line ("    (Self     : " & Module_Info.Ada_Name & "_Element;");
       Unit.Add_Line (+"     Property : CMOF_Element;");
       Unit.Add_Line (+"     Value    : League.Holders.Holder)");
       Unit.Add_Line (+"   is");
@@ -923,11 +923,11 @@ package body Generator.Reflection is
       Unit.Add_Line (+"   begin");
       Unit.Add_Line
        ("      case "
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Element_Table.Table (Self).Kind is");
       Unit.Add_Line
        ("         when AMF.Internals.Tables."
-          & Metamodel_Name
+          & Module_Info.Ada_Name
           & "_Types.E_None =>");
       Unit.Add_Line (+"            raise Program_Error;");
       Class_Info.Iterate (Generate_Setter_Call'Access);

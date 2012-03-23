@@ -519,7 +519,7 @@ package body Generator.Metamodel is
       end Generate_Package_Constant;
 
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Internals.Tables." & Metamodel_Name & "_Metamodel";
+        := "AMF.Internals.Tables." & Metamodel_Info.Ada_Name & "_Metamodel";
 
    begin
       Unit.Add_Unit_Header
@@ -541,7 +541,7 @@ package body Generator.Metamodel is
       Sort (Metamodel_Info.Classes).Iterate
        (Generate_Class_Property_Constant'Access);
 
-      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+      if Metamodel_Info.Ada_Name.To_Wide_Wide_String = "CMOF" then
          --  Constants for properties owned by associations needed only to
          --  initialize CMOF model.
 
@@ -552,28 +552,28 @@ package body Generator.Metamodel is
       Metamodel_Info.Associations.Iterate
        (Generate_Association_Constant'Access);
 
-      Unit.Add_Header ("MB_" & Metamodel_Name, 3);
+      Unit.Add_Header ("MB_" & Metamodel_Info.Ada_Name, 3);
       Unit.Add_Line;
       Unit.Add_Line
        ("   function MB_"
-          & Metamodel_Name
+          & Metamodel_Info.Ada_Name
           & " return AMF.Internals.AMF_Element is");
       Unit.Add_Line (+"   begin");
       Unit.Add_Line (+"      return Base;");
-      Unit.Add_Line ("   end MB_" & Metamodel_Name & ";");
+      Unit.Add_Line ("   end MB_" & Metamodel_Info.Ada_Name & ";");
 
-      Unit.Add_Header ("MB_" & Metamodel_Name, 3);
+      Unit.Add_Header ("MB_" & Metamodel_Info.Ada_Name, 3);
       Unit.Add_Line;
       Unit.Add_Line
        ("   function ML_"
-          & Metamodel_Name
+          & Metamodel_Info.Ada_Name
           & " return AMF.Internals.AMF_Element is");
       Unit.Add_Line (+"   begin");
       Unit.Add_Line
        (+"      return Base +"
            & Integer'Wide_Wide_Image (Metamodel_Info.Last_Element)
            & ";");
-      Unit.Add_Line ("   end ML_" & Metamodel_Name & ";");
+      Unit.Add_Line ("   end ML_" & Metamodel_Info.Ada_Name & ";");
 
       Generate_Metamodel_Initialization (Unit);
       Unit.Add_Line;
@@ -631,7 +631,8 @@ package body Generator.Metamodel is
       Unit.Add_Line (+"        := AMF.Internals.Extents.Allocate_Extent");
       Unit.Add_Line
        ("            ("
-          & String_Data_Package_Name (Metamodel_Package.Get_Uri.Value)
+          & String_Data_Package_Name
+             (Metamodel_Info.all, Metamodel_Package.Get_Uri.Value)
           & "."
           & String_Data_Constant_Name (Metamodel_Package.Get_Uri.Value)
           & "'Access);");
@@ -828,11 +829,11 @@ package body Generator.Metamodel is
                           & ",");
                      Unit.Context.Add
                       (String_Data_Package_Name
-                        (League.Holders.Element (Value)));
+                        (Metamodel_Info.all, League.Holders.Element (Value)));
                      Unit.Add_Line
                       ("        "
                          & String_Data_Package_Name
-                            (League.Holders.Element (Value))
+                            (Metamodel_Info.all, League.Holders.Element (Value))
                          & "."
                          & String_Data_Constant_Name
                             (League.Holders.Element (Value))
@@ -1149,7 +1150,7 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line
        ("package AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Metamodel_Info.Ada_Name
           & "_Metamodel is");
 --      New_Line;
 --      Put_Line ("   pragma Preelaborate;");
@@ -1169,7 +1170,7 @@ package body Generator.Metamodel is
           (Generate_Class_Property_Constant'Access);
       end if;
 
-      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+      if Metamodel_Info.Ada_Name.To_Wide_Wide_String = "CMOF" then
          --  Constants for properties owned by associations needed only to
          --  initialize CMOF model.
 
@@ -1183,7 +1184,7 @@ package body Generator.Metamodel is
           (Generate_Association_Constant'Access);
       end if;
 
-      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+      if Metamodel_Info.Ada_Name.To_Wide_Wide_String = "CMOF" then
          --  Several subtypes are used in CMOF to be able to bootstrap CMOF
          --  metamodel. Other metamodel uses already created CMOF metamodel.
 
@@ -1201,12 +1202,12 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line
        ("   function MB_"
-          & Metamodel_Name
+          & Metamodel_Info.Ada_Name
           & " return AMF.Internals.AMF_Element;");
       New_Line;
       Put_Line
        ("   function ML_"
-          & Metamodel_Name
+          & Metamodel_Info.Ada_Name
           & " return AMF.Internals.AMF_Element;");
 
       New_Line;
@@ -1214,7 +1215,8 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("   procedure Initialize_Links;");
       New_Line;
-      Put_Line ("end AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
+      Put_Line
+       ("end AMF.Internals.Tables." & Metamodel_Info.Ada_Name & "_Metamodel;");
    end Generate_Metamodel_Specification;
 
    ---------------------
