@@ -44,12 +44,10 @@
 
 package Generator.Visitors is
 
-   procedure Generate_Visitors_Package
-    (Info : not null Metamodel_Information_Access);
+   procedure Generate_Visitors_Packages;
    --  Generates visitor interface package
 
-   procedure Generate_Iterators_Package
-    (Info : not null Metamodel_Information_Access);
+   procedure Generate_Iterators_Packages;
    --  Generates iterator interface package
 
 end Generator.Visitors;

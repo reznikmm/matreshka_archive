@@ -49,6 +49,14 @@ with Generator.Units;
 
 package body Generator.Visitors is
 
+   procedure Generate_Visitors_Package
+    (Info : not null Metamodel_Information_Access);
+   --  Generates visitor interface package
+
+   procedure Generate_Iterators_Package
+    (Info : not null Metamodel_Information_Access);
+   --  Generates iterator interface package
+
    package CMOF_Class_Ordered_Sets is
      new Ada.Containers.Ordered_Sets
           (AMF.CMOF.Classes.CMOF_Class_Access, Less, AMF.CMOF.Classes."=");
@@ -136,6 +144,18 @@ package body Generator.Visitors is
       Unit.Put;
    end Generate_Iterators_Package;
 
+   ---------------------------------
+   -- Generate_Iterators_Packages --
+   ---------------------------------
+
+   procedure Generate_Iterators_Packages is
+   begin
+      for J in 1 .. Natural (Module_Info.Extents.Length) loop
+         Generate_Iterators_Package
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+      end loop;
+   end Generate_Iterators_Packages;
+
    -------------------------------
    -- Generate_Visitors_Package --
    -------------------------------
@@ -203,6 +223,18 @@ package body Generator.Visitors is
 
       Unit.Put;
    end Generate_Visitors_Package;
+
+   --------------------------------
+   -- Generate_Visitors_Packages --
+   --------------------------------
+
+   procedure Generate_Visitors_Packages is
+   begin
+      for J in 1 .. Natural (Module_Info.Extents.Length) loop
+         Generate_Visitors_Package
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+      end loop;
+   end Generate_Visitors_Packages;
 
    --------------------
    -- To_Ordered_Set --

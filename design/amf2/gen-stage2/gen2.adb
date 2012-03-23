@@ -114,6 +114,6 @@ begin
    end if;
 
    Put_Line (Standard_Error, "Generating iterator interface...");
-   Generator.Visitors.Generate_Visitors_Package (Generator.Metamodel_Info);
-   Generator.Visitors.Generate_Iterators_Package (Generator.Metamodel_Info);
+   Generator.Visitors.Generate_Visitors_Packages;
+   Generator.Visitors.Generate_Iterators_Packages;
 end Gen2;
