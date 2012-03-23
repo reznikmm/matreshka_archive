@@ -201,6 +201,9 @@ package Generator is
       --  All classes, associations, data types and packages of the model
       --  correspondingly.
 
+      Root_Package                 : AMF.CMOF.Packages.CMOF_Package_Access;
+      --  Root package of metamodel.
+
       Number_Element               : Number_CMOF_Element_Maps.Map;
       Element_Numbers              : CMOF_Element_Number_Maps.Map;
       --  Mapping of the assigned number to corresponding element and back.
@@ -254,9 +257,6 @@ package Generator is
 
 --   Attribute_Info : Property_
 --   Attribute_Groups : Attribute_Group_Sets.Set;
-
-   Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
-   --  Root package of metamodel.
 
    Metamodel_Info : Metamodel_Information_Access := new Metamodel_Information;
    --  Metamodel information. This is temporal variable to assist code

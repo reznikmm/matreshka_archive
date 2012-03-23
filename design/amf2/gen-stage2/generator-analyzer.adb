@@ -117,13 +117,13 @@ package body Generator.Analyzer is
 
       Compute_Metamodel_Name (Info, AMF.Extents.Extent_Access (Extent));
 
-      --  Looking for root package of the metamodel.
+      --  Looking up for root package of the metamodel.
 
       for J in 1 .. Elements.Length loop
          if Elements.Element (J).all
               in AMF.CMOF.Packages.CMOF_Package'Class
          then
-            Metamodel_Package :=
+            Metamodel_Info.Root_Package :=
               AMF.CMOF.Packages.CMOF_Package_Access (Elements.Element (J));
 
             exit;

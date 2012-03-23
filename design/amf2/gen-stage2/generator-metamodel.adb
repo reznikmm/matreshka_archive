@@ -632,9 +632,10 @@ package body Generator.Metamodel is
       Unit.Add_Line
        ("            ("
           & String_Data_Package_Name
-             (Metamodel_Info.all, Metamodel_Package.Get_Uri.Value)
+             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
           & "."
-          & String_Data_Constant_Name (Metamodel_Package.Get_Uri.Value)
+          & String_Data_Constant_Name
+             (Metamodel_Info.Root_Package.Get_Uri.Value)
           & "'Access);");
       Unit.Add_Line (+"      Aux    : AMF.Internals.CMOF_Element;");
       Unit.Add_Line;
