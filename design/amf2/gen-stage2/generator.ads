@@ -280,9 +280,6 @@ package Generator is
    Module_Info : Module_Information;
    --  Module information.
 
-   First_Year : Natural;
-   Last_Year  : Natural;
-
    ---------------
    -- Utilities --
    ---------------

@@ -697,9 +697,8 @@ package body Generator.Constructors is
         := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Constructors";
 
    begin
-      Unit.Add_Unit_Header
-       (Integer'Max (2010, Generator.First_Year),
-        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Unit_Header (2010, 2012);
+
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
       Unit.Add_Line;

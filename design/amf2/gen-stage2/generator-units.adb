@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Wide_Wide_Fixed;
 
+with Generator.Arguments;
+
 package body Generator.Units is
 
    use type League.Strings.Universal_String;
@@ -122,7 +124,13 @@ package body Generator.Units is
    procedure Add_Unit_Header
     (Self       : in out Unit;
      First_Year : Positive;
-     Last_Year  : Positive) is
+     Last_Year  : Positive)
+   is
+      First : constant Positive
+        := Integer'Max (First_Year, Generator.Arguments.First_Year);
+      Last  : constant Positive
+        := Integer'Max (Last_Year, Generator.Arguments.Last_Year);
+
    begin
       Self.Header_Lines.Append
        (+"--------------------------------------------------------------------"
@@ -155,21 +163,21 @@ package body Generator.Units is
        (+"--                                                                  "
            & "        --");
 
-      if First_Year = Last_Year then
+      if First = Last then
          Self.Header_Lines.Append
           (+"-- Copyright © "
               & Ada.Strings.Wide_Wide_Fixed.Trim
-                 (Integer'Wide_Wide_Image (First_Year), Ada.Strings.Both)
+                 (Integer'Wide_Wide_Image (First), Ada.Strings.Both)
               & ", Vadim Godunko <vgodunko@gmail.com>                     --");
 
       else
          Self.Header_Lines.Append
           (+"-- Copyright © "
               & Ada.Strings.Wide_Wide_Fixed.Trim
-                 (Integer'Wide_Wide_Image (First_Year), Ada.Strings.Both)
+                 (Integer'Wide_Wide_Image (First), Ada.Strings.Both)
               & "-"
               & Ada.Strings.Wide_Wide_Fixed.Trim
-                 (Integer'Wide_Wide_Image (Last_Year), Ada.Strings.Both)
+                 (Integer'Wide_Wide_Image (Last), Ada.Strings.Both)
               & ", Vadim Godunko <vgodunko@gmail.com>                --");
       end if;
 

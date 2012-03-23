@@ -654,9 +654,7 @@ procedure Gen_API is
         := Ada_API_Type_Name (Class);
 
    begin
-      Unit.Add_Unit_Header
-       (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2011, Generator.Last_Year));
+      Unit.Add_Unit_Header (2011, 2011);
 
       --  Generate comment.
 
@@ -750,9 +748,7 @@ procedure Gen_API is
       Unit          : Generator.Units.Unit;
 
    begin
-      Unit.Add_Unit_Header
-       (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Unit_Header (2011, 2011);
 
       Unit.Context.Add (+"AMF.Generic_Collections");
       Unit.Add_Line;
@@ -859,9 +855,7 @@ procedure Gen_API is
       Unit          : Generator.Units.Unit;
 
    begin
-      Unit.Add_Unit_Header
-       (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Unit_Header (2011, 2012);
 
       Unit.Context.Add (+"AMF.Elements.Generic_Hash");
       Unit.Add_Line;
@@ -1453,9 +1447,8 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header
-       (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2011, Generator.Last_Year));
+      Unit.Add_Unit_Header (2011, 2011);
+
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
 
@@ -1782,9 +1775,8 @@ procedure Gen_API is
 
       --  Generate package specification
 
-      Unit.Add_Unit_Header
-       (Integer'Max (2011, Generator.First_Year),
-        Integer'Max (2011, Generator.Last_Year));
+      Unit.Add_Unit_Header (2011, 2011);
+
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");
       Unit.Add_Line;

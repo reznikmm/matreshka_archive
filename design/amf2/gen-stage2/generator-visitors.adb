@@ -79,9 +79,7 @@ package body Generator.Visitors is
          return;
       end if;
 
-      Unit.Add_Unit_Header
-       (Integer'Max (2012, Generator.First_Year),
-        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Unit_Header (2012, 2012);
 
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");
@@ -161,9 +159,7 @@ package body Generator.Visitors is
          return;
       end if;
 
-      Unit.Add_Unit_Header
-       (Integer'Max (2012, Generator.First_Year),
-        Integer'Max (2012, Generator.Last_Year));
+      Unit.Add_Unit_Header (2012, 2012);
 
       Unit.Add_Line;
       Unit.Add_Line ("package " & Package_Name & " is");

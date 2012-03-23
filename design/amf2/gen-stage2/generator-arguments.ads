@@ -55,7 +55,11 @@ package Generator.Arguments is
    Generate_API_Stubs    : Boolean := False;
    --  Control generation of specific kinds of packages.
 
-   Metamodel_URIs : League.String_Vectors.Universal_String_Vector;
+   Metamodel_URIs        : League.String_Vectors.Universal_String_Vector;
    --  URIs of metamodels to be analyzed and generated as module.
+
+   First_Year            : Natural := 0;
+   Last_Year             : Natural := 0;
+   --  First and last years for copyright statement.
 
 end Generator.Arguments;
