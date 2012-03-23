@@ -749,7 +749,7 @@ procedure Gen_API is
       Unit          : Generator.Units.Unit;
 
    begin
-      Unit.Add_Unit_Header (2011, 2011);
+      Unit.Add_Unit_Header (2011, 2012);
 
       Unit.Context.Add (+"AMF.Generic_Collections");
       Unit.Add_Line;
