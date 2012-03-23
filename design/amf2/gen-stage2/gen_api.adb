@@ -196,6 +196,10 @@ procedure Gen_API is
                         (Attribute)));
                Unit.Context.Add (+"AMF.Internals.Helpers");
                Unit.Add_Line (+"         (AMF.Internals.Helpers.To_Element");
+               Unit.Context.Add
+                ("AMF.Internals.Tables."
+                   & Generator.Module_Info.Ada_Name
+                   & "_Attributes");
                Unit.Add_Line
                 ("           (AMF.Internals.Tables."
                    & Generator.Module_Info.Ada_Name
