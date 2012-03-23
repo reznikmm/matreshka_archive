@@ -256,6 +256,8 @@ uml:
 	cat amf_uml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/uml
 	cat amf_uml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_data) source/amf/uml/metamodels/PrimitiveTypes24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/PrimitiveTypes24.cmof
+	$(INSTALL_data) source/amf/uml/metamodels/StandardProfileL224.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/StandardProfileL224.cmof
+	$(INSTALL_data) source/amf/uml/metamodels/StandardProfileL324.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/StandardProfileL324.cmof
 	$(INSTALL_data) source/amf/uml/metamodels/UML24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/UML24.cmof
 	$(INSTALL_data) source/amf/uml/models/UML24/PrimitiveTypes.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/PrimitiveTypes.xmi
 	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL2.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL2.xmi
@@ -273,6 +275,8 @@ endif
 	cat amf_uml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/uml/{}" > .objs/amf_uml-devel.files
 	cat amf_uml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_uml-devel.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/PrimitiveTypes24.cmof" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/StandardProfileL224.cmof" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/StandardProfileL324.cmof" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UML24.cmof" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/PrimitiveTypes.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL2.xmi" >> .objs/amf_uml-lib.files
