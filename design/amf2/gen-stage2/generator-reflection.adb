@@ -129,8 +129,19 @@ package body Generator.Reflection is
             Unit.Add_Line;
             Unit.Context.Add (Package_Name);
             Unit.Add_Line
-             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
-            Unit.Add_Line ("            return " & Class_Name & "_Get;");
+             ("         when "
+                & Package_Name
+                & ".E_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & Class_Name
+                & " =>");
+            Unit.Add_Line
+             ("            return "
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & Class_Name
+                & "_Get;");
          end if;
       end Generate_Getter_Call;
 
@@ -148,7 +159,10 @@ package body Generator.Reflection is
          Class : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
          Name  : constant League.Strings.Universal_String
-           := +To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Get";
+           := Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & To_Ada_Identifier (Class.Class.Get_Name.Value)
+                & "_Get";
          First : Boolean := True;
 
          ------------------------
@@ -469,7 +483,10 @@ package body Generator.Reflection is
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
          Name  : constant League.Strings.Universal_String
-           := +To_Ada_Identifier (Class.Get_Name.Value) & "_Get";
+           := Owning_Metamodel_Ada_Name (Class)
+                & '_'
+                & To_Ada_Identifier (Class.Get_Name.Value)
+                & "_Get";
 
       begin
          if not Class.Get_Is_Abstract then
@@ -502,7 +519,13 @@ package body Generator.Reflection is
             Unit.Context.Add (Package_Name);
             Unit.Add_Line;
             Unit.Add_Line
-             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
+             ("         when "
+                & Package_Name
+                & ".E_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & Class_Name
+                & " =>");
             Unit.Add_Line
              ("            return "
                 & Type_Constant_Qualified_Name
@@ -530,8 +553,18 @@ package body Generator.Reflection is
             Unit.Context.Add (Package_Name);
             Unit.Add_Line;
             Unit.Add_Line
-             ("         when " & Package_Name & ".E_" & Class_Name & " =>");
-            Unit.Add_Line ("            " & Class_Name & "_Set;");
+             ("         when "
+                & Package_Name
+                & ".E_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & Class_Name
+                & " =>");
+            Unit.Add_Line
+             ("            "
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & Class_Name & "_Set;");
          end if;
       end Generate_Setter_Call;
 
@@ -549,7 +582,10 @@ package body Generator.Reflection is
          Class : constant not null Class_Information_Access
            := Class_Information_Maps.Element (Position);
          Name  : constant League.Strings.Universal_String
-           := +To_Ada_Identifier (Class.Class.Get_Name.Value) & "_Set";
+           := Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & To_Ada_Identifier (Class.Class.Get_Name.Value)
+                & "_Set";
          First : Boolean := True;
 
          ------------------------
@@ -836,7 +872,10 @@ package body Generator.Reflection is
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
          Name  : constant League.Strings.Universal_String
-           := +To_Ada_Identifier (Class.Get_Name.Value) & "_Set";
+           := Owning_Metamodel_Ada_Name (Class)
+                & '_'
+                & To_Ada_Identifier (Class.Get_Name.Value)
+                & "_Set";
 
       begin
          if not Class.Get_Is_Abstract then
