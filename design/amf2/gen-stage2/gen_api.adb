@@ -64,6 +64,7 @@ with XMI.Reader;
 with Generator.Analyzer;
 with Generator.Arguments;
 with Generator.Attribute_Mapping;
+with Generator.Loader;
 with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Units;
@@ -1943,7 +1944,6 @@ procedure Gen_API is
       return Result;
    end Split_Text;
 
-   Extent   : AMF.URI_Stores.URI_Store_Access;
    Elements : AMF.Elements.Collections.Set_Of_Element;
 
 begin
@@ -1958,8 +1958,7 @@ begin
    --  Load metamodel.
 
    Put_Line (Standard_Error, "Loading metamodels...");
-   Extent :=
-     XMI.Reader.Read_URI (Generator.Arguments.Metamodel_URIs.Element (1));
+   Generator.Loader.Load_Metamodels;
 
    --  Load type mapping.
 
@@ -1969,9 +1968,11 @@ begin
    --  Analyze model.
 
    Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model (Extent);
+   Generator.Analyzer.Analyze_Model
+    (AMF.URI_Stores.URI_Store_Access
+      (Generator.Module_Info.Extents.Element (1)));
 
-   Elements := Extent.Elements;
+   Elements := Generator.Module_Info.Extents.Element (1).Elements;
 
    for J in 1 .. Elements.Length loop
       if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then

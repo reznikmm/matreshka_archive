@@ -45,6 +45,7 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Containers.Hashed_Sets;
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Ordered_Sets;
+with Ada.Containers.Vectors;
 
 with League.Strings.Hash;
 
@@ -103,6 +104,12 @@ package Generator is
    function Sort
     (Set : CMOF_Element_Sets.Set)
        return CMOF_Named_Element_Ordered_Sets.Set;
+
+   package Extent_Vectors is
+     new Ada.Containers.Vectors
+          (Positive,
+           AMF.Extents.Extent_Access,
+           AMF.Extents."=");
 
    -------------------------------------------
    --  Second generation of internal data.  --
@@ -258,6 +265,9 @@ package Generator is
    type Module_Information is limited record
       Ada_Name : League.Strings.Universal_String;
       --  Ada style name of the generated module.
+
+      Extents  : Extent_Vectors.Vector;
+      --  All extents of module.
    end record;
 
    ------------------------
