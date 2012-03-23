@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:type="cmof:Package" xmi:id="_0" name="StandardProfileL3" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL3">
+    <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0">
+      <importedPackage href="http://www.omg.org/spec/UML/20100901/UML.cmof#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_BuildComponent" name="Component_BuildComponent" memberEnd="Component_BuildComponent-extension_BuildComponent BuildComponent-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_BuildComponent-extension_BuildComponent" name="extension_BuildComponent" visibility="public" type="BuildComponent" isComposite="true" association="Component_BuildComponent" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Model_Metamodel" name="Model_Metamodel" memberEnd="Model_Metamodel-extension_Metamodel Metamodel-base_Model">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Model_Metamodel-extension_Metamodel" name="extension_Metamodel" visibility="public" type="Metamodel" isComposite="true" association="Model_Metamodel" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Model_SystemModel" name="Model_SystemModel" memberEnd="Model_SystemModel-extension_SystemModel SystemModel-base_Model">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Model_SystemModel-extension_SystemModel" name="extension_SystemModel" visibility="public" type="SystemModel" isComposite="true" association="Model_SystemModel" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="BuildComponent" name="BuildComponent">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="BuildComponent-base_Component" name="base_Component" visibility="public" association="Component_BuildComponent">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Metamodel" name="Metamodel">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Metamodel-base_Model" name="base_Model" visibility="public" association="Model_Metamodel">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Model"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="SystemModel" name="SystemModel">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="SystemModel-base_Model" name="base_Model" visibility="public" association="Model_SystemModel">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Model"/>
+      </ownedAttribute>
+    </packagedElement>
+  </cmof:Package>
+  <cmof:Tag xmi:type="cmof:Tag" xmi:id="_2" name="org.omg.xmi.nsPrefix" value="StandardProfileL3" element="_0"/>
+</xmi:XMI>

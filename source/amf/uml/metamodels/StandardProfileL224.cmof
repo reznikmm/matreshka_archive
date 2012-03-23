@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:type="cmof:Package" xmi:id="_0" name="StandardProfileL2" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL2">
+    <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0">
+      <importedPackage href="http://www.omg.org/spec/UML/20100901/UML.cmof#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Abstraction_Derive" name="Abstraction_Derive" memberEnd="Abstraction_Derive-extension_Derive Derive-base_Abstraction">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Abstraction_Derive-extension_Derive" name="extension_Derive" visibility="public" type="Derive" isComposite="true" association="Abstraction_Derive" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Abstraction_Refine" name="Abstraction_Refine" memberEnd="Abstraction_Refine-extension_Refine Refine-base_Abstraction">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Abstraction_Refine-extension_Refine" name="extension_Refine" visibility="public" type="Refine" isComposite="true" association="Abstraction_Refine" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Abstraction_Trace" name="Abstraction_Trace" memberEnd="Abstraction_Trace-extension_Trace Trace-base_Abstraction">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Abstraction_Trace-extension_Trace" name="extension_Trace" visibility="public" type="Trace" isComposite="true" association="Abstraction_Trace" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_Document" name="Artifact_Document" memberEnd="Artifact_Document-extension_Document Document-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_Document-extension_Document" name="extension_Document" visibility="public" type="Document" isComposite="true" association="Artifact_Document" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_Executable" name="Artifact_Executable" memberEnd="Artifact_Executable-extension_Executable Executable-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_Executable-extension_Executable" name="extension_Executable" visibility="public" type="Executable" isComposite="true" association="Artifact_Executable" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_File" name="Artifact_File" memberEnd="Artifact_File-extension_File File-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_File-extension_File" name="extension_File" visibility="public" type="File" isComposite="true" association="Artifact_File" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_Library" name="Artifact_Library" memberEnd="Artifact_Library-extension_Library Library-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_Library-extension_Library" name="extension_Library" visibility="public" type="Library" isComposite="true" association="Artifact_Library" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_Script" name="Artifact_Script" memberEnd="Artifact_Script-extension_Script Script-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_Script-extension_Script" name="extension_Script" visibility="public" type="Script" isComposite="true" association="Artifact_Script" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Artifact_Source" name="Artifact_Source" memberEnd="Artifact_Source-extension_Source Source-base_Artifact">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Artifact_Source-extension_Source" name="extension_Source" visibility="public" type="Source" isComposite="true" association="Artifact_Source" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="BehavioralFeature_Create" name="BehavioralFeature_Create" memberEnd="BehavioralFeature_Create-extension_Create Create-base_BehavioralFeature">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="BehavioralFeature_Create-extension_Create" name="extension_Create" visibility="public" type="Create" isComposite="true" association="BehavioralFeature_Create" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="BehavioralFeature_Destroy" name="BehavioralFeature_Destroy" memberEnd="BehavioralFeature_Destroy-extension_Destroy Destroy-base_BehavioralFeature">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="BehavioralFeature_Destroy-extension_Destroy" name="extension_Destroy" visibility="public" type="Destroy" isComposite="true" association="BehavioralFeature_Destroy" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_Auxiliary" name="Class_Auxiliary" memberEnd="Class_Auxiliary-extension_Auxiliary Auxiliary-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_Auxiliary-extension_Auxiliary" name="extension_Auxiliary" visibility="public" type="Auxiliary" isComposite="true" association="Class_Auxiliary" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_Focus" name="Class_Focus" memberEnd="Class_Focus-extension_Focus Focus-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_Focus-extension_Focus" name="extension_Focus" visibility="public" type="Focus" isComposite="true" association="Class_Focus" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_ImplementationClass" name="Class_ImplementationClass" memberEnd="Class_ImplementationClass-extension_ImplementationClass ImplementationClass-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_ImplementationClass-extension_ImplementationClass" name="extension_ImplementationClass" visibility="public" type="ImplementationClass" isComposite="true" association="Class_ImplementationClass" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_Metaclass" name="Class_Metaclass" memberEnd="Class_Metaclass-extension_Metaclass Metaclass-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_Metaclass-extension_Metaclass" name="extension_Metaclass" visibility="public" type="Metaclass" isComposite="true" association="Class_Metaclass" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_Type" name="Class_Type" memberEnd="Class_Type-extension_Type Type-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_Type-extension_Type" name="extension_Type" visibility="public" type="Type" isComposite="true" association="Class_Type" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Class_Utility" name="Class_Utility" memberEnd="Class_Utility-extension_Utility Utility-base_Class">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Class_Utility-extension_Utility" name="extension_Utility" visibility="public" type="Utility" isComposite="true" association="Class_Utility" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Classifier_Realization" name="Classifier_Realization" memberEnd="Classifier_Realization-extension_Realization Realization-base_Classifier">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Classifier_Realization-extension_Realization" name="extension_Realization" visibility="public" type="Realization" isComposite="true" association="Classifier_Realization" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Classifier_Specification" name="Classifier_Specification" memberEnd="Classifier_Specification-extension_Specification Specification-base_Classifier">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Classifier_Specification-extension_Specification" name="extension_Specification" visibility="public" type="Specification" isComposite="true" association="Classifier_Specification" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_Entity" name="Component_Entity" memberEnd="Component_Entity-extension_Entity Entity-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_Entity-extension_Entity" name="extension_Entity" visibility="public" type="Entity" isComposite="true" association="Component_Entity" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_Implement" name="Component_Implement" memberEnd="Component_Implement-extension_Implement Implement-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_Implement-extension_Implement" name="extension_Implement" visibility="public" type="Implement" isComposite="true" association="Component_Implement" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_Process" name="Component_Process" memberEnd="Component_Process-extension_Process Process-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_Process-extension_Process" name="extension_Process" visibility="public" type="Process" isComposite="true" association="Component_Process" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_Service" name="Component_Service" memberEnd="Component_Service-extension_Service Service-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_Service-extension_Service" name="extension_Service" visibility="public" type="Service" isComposite="true" association="Component_Service" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Component_Subsystem" name="Component_Subsystem" memberEnd="Component_Subsystem-extension_Subsystem Subsystem-base_Component">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Component_Subsystem-extension_Subsystem" name="extension_Subsystem" visibility="public" type="Subsystem" isComposite="true" association="Component_Subsystem" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Package_Framework" name="Package_Framework" memberEnd="Package_Framework-extension_Framework Framework-base_Package">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Package_Framework-extension_Framework" name="extension_Framework" visibility="public" type="Framework" isComposite="true" association="Package_Framework" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Package_ModelLibrary" name="Package_ModelLibrary" memberEnd="Package_ModelLibrary-extension_ModelLibrary ModelLibrary-base_Package">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Package_ModelLibrary-extension_ModelLibrary" name="extension_ModelLibrary" visibility="public" type="ModelLibrary" isComposite="true" association="Package_ModelLibrary" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Call" name="Usage_Call" memberEnd="Usage_Call-extension_Call Call-base_Usage">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Call-extension_Call" name="extension_Call" visibility="public" type="Call" isComposite="true" association="Usage_Call" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Create" name="Usage_Create" memberEnd="Usage_Create-extension_Create Create-base_Usage">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Create-extension_Create" name="extension_Create" visibility="public" type="Create" isComposite="true" association="Usage_Create" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Instantiate" name="Usage_Instantiate" memberEnd="Usage_Instantiate-extension_Instantiate Instantiate-base_Usage">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Instantiate-extension_Instantiate" name="extension_Instantiate" visibility="public" type="Instantiate" isComposite="true" association="Usage_Instantiate" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Responsibility" name="Usage_Responsibility" memberEnd="Usage_Responsibility-extension_Responsibility Responsibility-base_Usage">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Responsibility-extension_Responsibility" name="extension_Responsibility" visibility="public" type="Responsibility" isComposite="true" association="Usage_Responsibility" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Send" name="Usage_Send" memberEnd="Usage_Send-extension_Send Send-base_Usage">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Send-extension_Send" name="extension_Send" visibility="public" type="Send" isComposite="true" association="Usage_Send" lower="0"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Auxiliary" name="Auxiliary">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Auxiliary-_ownedComment.0" annotatedElement="Auxiliary">
+        <body>A class that supports another more central or fundamental class, typically by implementing secondary logic or control flow. The class that the auxiliary supports may be defined explicitly using a Focus class or implicitly as the supplier of dependency relationship whose client is an auxiliary class. Auxiliary classes are typically used together with Focus classes, and are particularly useful for specifying the secondary business logic or control flow of components during design. See also: «Focus».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Auxiliary-base_Class" name="base_Class" visibility="public" association="Class_Auxiliary">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Call" name="Call">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Call-_ownedComment.0" annotatedElement="Call">
+        <body>A usage dependency whose source is an operation and whose target is an operation. The relationship may also be subsumed to the class containing an operation, with the meaning that there exists an operation in the class to which the dependency applies. A call dependency specifies that the source operation or an operation in the source class invokes the target operation or an operation in the target class. A call dependency may connect a source operation to any target operation that is within scope including, but not limited to, operations of the enclosing classifier and operations of other visible classifiers.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Call-client_and_supplier_are_operations" name="client_and_supplier_are_operations" constrainedElement="Call">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Call-client_and_supplier_are_operations-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Operation))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Call-base_Usage" name="base_Usage" visibility="public" association="Usage_Call">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Create" name="Create">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Create-_ownedComment.0" annotatedElement="Create">
+        <body>When applied to a usage dependency, it specifies that the client classifier creates instances of the supplier classifier. When applied to a BehavioralFeature, it specifies that the designated feature creates an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Create-client_and_supplier_are_classifiers" name="client_and_supplier_are_classifiers" constrainedElement="Create">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Create-client_and_supplier_are_classifiers-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage-&gt;notEmpty() implies (self.base_Usage.client-&gt;forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Classifier)))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Create-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Create">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#BehavioralFeature"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Create-base_Usage" name="base_Usage" visibility="public" association="Usage_Create">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Derive" name="Derive">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Derive-_ownedComment.0" annotatedElement="Derive">
+        <body>Specifies a derivation relationship among model elements that are usually, but not necessarily, of the same type. A derived dependency specifies that the client may be computed from the supplier. The mapping specifies the computation. The client may be implemented for design reasons, such as efficiency, even though it is logically redundant.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Derive-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Derive">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Abstraction"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Derive-computation" name="computation" visibility="public" isComposite="true" lower="1" upper="1">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Derive-computation-_ownedComment.0" annotatedElement="Derive-computation">
+          <body>The specification for computing the derived client element from the derivation supplier element.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#ValueSpecification"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Destroy" name="Destroy">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Destroy-_ownedComment.0" annotatedElement="Destroy">
+        <body>Specifies that the designated feature destroys an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Destroy-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Destroy">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#BehavioralFeature"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Document" name="Document" superClass="File">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Document-_ownedComment.0" annotatedElement="Document">
+        <body>A specific kind of file that is not an «Executable», «Library», «Script» or «Source». Subclass of «File».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Document-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Document">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Entity" name="Entity">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Entity-_ownedComment.0" annotatedElement="Entity">
+        <body>A persistent information component representing a business concept.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Entity-base_Component" name="base_Component" visibility="public" association="Component_Entity">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Executable" name="Executable" superClass="File">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Executable-_ownedComment.0" annotatedElement="Executable">
+        <body>A program file that can be executed on a computer system. Subclass of «File».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Executable-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Executable">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="File" name="File" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="File-_ownedComment.0" annotatedElement="File">
+        <body>A physical file in the context of the system developed.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="File-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_File">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Focus" name="Focus">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Focus-_ownedComment.0" annotatedElement="Focus">
+        <body>A class that defines the core logic or control flow for one or more auxiliary classes that support it. Support classes may be defined explicitly using Auxiliary classes or implicitly as clients of dependency relationships whose supplier is a focus class. Focus classes are typically used together with one or more Auxiliary classes, and are particularly useful for specifying the core business logic or control flow of components during design. See also: «Auxiliary».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Focus-base_Class" name="base_Class" visibility="public" association="Class_Focus">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Framework" name="Framework">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Framework-_ownedComment.0" annotatedElement="Framework">
+        <body>A package that contains model elements that specify a reusable architecture for all or part of a system. Frameworks typically include classes, patterns, or templates. When frameworks are specialized for an application domain they are sometimes referred to as application frameworks.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Framework-base_Package" name="base_Package" visibility="public" association="Package_Framework">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Implement" name="Implement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Implement-_ownedComment.0" annotatedElement="Implement">
+        <body>A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate «Specification» to which it has a Dependency.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Implement-implements_specification" name="implements_specification" constrainedElement="Implement">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Implement-implements_specification-_specification">
+          <language>OCL</language>
+          <body>self.base_Component.clientDependency.supplier-&gt;select(oclIsKindOf(Classifier)).oclAsType(Classifier).extension_Specificaiton-&gt;notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Implement-base_Component" name="base_Component" visibility="public" association="Component_Implement">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="ImplementationClass" name="ImplementationClass">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="ImplementationClass-_ownedComment.0" annotatedElement="ImplementationClass">
+        <body>The implementation of a class in some programming language (e.g., C++, Smalltalk, Java) in which an instance may not have more than one class. This is in contrast to Class, for which an instance may have multiple classes at one time and may gain or lose classes over time, and an object (a child of instance) may dynamically have multiple classes. An Implementation class is said to realize a Classifier if it provides all of the operations defined for the Classifier with the same behavior as specified for the Classifier's operations. An Implementation Class may realize a number of different Types. Note that the physical attributes and associations of the Implementation class do not have to be the same as those of any Classifier it realizes and that the Implementation Class may provide methods for its operations in terms of its physical attributes and associations. See also: «Type».</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="ImplementationClass-cannot_be_realization" name="cannot_be_realization" constrainedElement="ImplementationClass">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="ImplementationClass-cannot_be_realization-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Realization-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="ImplementationClass-base_Class" name="base_Class" visibility="public" association="Class_ImplementationClass">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Instantiate" name="Instantiate">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Instantiate-_ownedComment.0" annotatedElement="Instantiate">
+        <body>A usage dependency among classifiers indicating that operations on the client create instances of the supplier.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Instantiate-client_and_supplier_are_classifiers" name="client_and_supplier_are_classifiers" constrainedElement="Instantiate">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Instantiate-client_and_supplier_are_classifiers-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Classifier))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Instantiate-base_Usage" name="base_Usage" visibility="public" association="Usage_Instantiate">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Library" name="Library" superClass="File">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Library-_ownedComment.0" annotatedElement="Library">
+        <body>A static or dynamic library file. Subclass of «File».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Library-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Library">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Metaclass" name="Metaclass">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Metaclass-_ownedComment.0" annotatedElement="Metaclass">
+        <body>A class whose instances are also classes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Metaclass-base_Class" name="base_Class" visibility="public" association="Class_Metaclass">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="ModelLibrary" name="ModelLibrary">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="ModelLibrary-_ownedComment.0" annotatedElement="ModelLibrary">
+        <body>A package that contains model elements that are intended to be reused by other packages. Model libraries are frequently used in conjunction with applied profiles. This is expressed by defining a dependency between a profile and a model library package, or by defining a model library as contained in a profile package. The classes in a model library are not stereotypes and tagged definitions extending the metamodel. A model library is analogous to a class library in some programming languages. When a model library is defined as a part of a profile, it is imported or deleted with the application or removal of the profile. The profile is implicitly applied to its model library. In the other case, when the model library is defined as an external package imported by a profile, the profile requires that the model library be there in the model at the stage of the profile application. The application or the removal of the profile does not affect the presence of the model library elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="ModelLibrary-base_Package" name="base_Package" visibility="public" association="Package_ModelLibrary">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Process" name="Process">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Process-_ownedComment.0" annotatedElement="Process">
+        <body>A transaction based component.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-base_Component" name="base_Component" visibility="public" association="Component_Process">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Realization" name="Realization">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Realization-_ownedComment.0" annotatedElement="Realization">
+        <body>A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by «realization» will only have realizing Classifiers that implement behavior specified by a separate «Specification» Component. See «specification». This differs from «ImplementationClass» because an «ImplementationClass» is a realization of a Class that can have features such as attributes and methods that are useful to system designers.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Realization-cannot_be_implementationClass" name="cannot_be_implementationClass" constrainedElement="Realization">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Realization-cannot_be_implementationClass-_specification">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_ImplementationClass-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Realization-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Realization">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Refine" name="Refine">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Refine-_ownedComment.0" annotatedElement="Refine">
+        <body>Specifies a refinement relationship between model elements at different semantic levels, such as analysis and design. The mapping specifies the relationship between the two elements or sets of elements. The mapping may or may not be computable, and it may be unidirectional or bidirectional. Refinement can be used to model transformations from analysis to design and other such changes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Refine-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Refine">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Abstraction"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Responsibility" name="Responsibility">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Responsibility-_ownedComment.0" annotatedElement="Responsibility">
+        <body>A contract or an obligation of an element in its relationship to other elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Responsibility-base_Usage" name="base_Usage" visibility="public" association="Usage_Responsibility">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Script" name="Script" superClass="File">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Script-_ownedComment.0" annotatedElement="Script">
+        <body>A script file that can be interpreted by a computer system. Subclass of «File».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Script-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Script">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Send" name="Send">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Send-_ownedComment.0" annotatedElement="Send">
+        <body>A usage dependency whose client is an operation and whose supplier is a signal, specifying that the client sends the supplier signal.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Send-client_operation_sends_supplier_signal" name="client_operation_sends_supplier_signal" constrainedElement="Send">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Send-client_operation_sends_supplier_signal-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Signal))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Send-base_Usage" name="base_Usage" visibility="public" association="Usage_Send">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Service" name="Service">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Service-_ownedComment.0" annotatedElement="Service">
+        <body>A stateless, functional component (computes a value).</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Service-base_Component" name="base_Component" visibility="public" association="Component_Service">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Source" name="Source" superClass="File">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Source-_ownedComment.0" annotatedElement="Source">
+        <body>A source file that can be compiled into an executable file. Subclass of «File».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Source-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Source">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Specification" name="Specification">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Specification-_ownedComment.0" annotatedElement="Specification">
+        <body>A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass».</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Specification-cannot_be_type" name="cannot_be_type" constrainedElement="Specification">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Specification-cannot_be_type-_specification">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_Type-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Specification-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Specification">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Subsystem" name="Subsystem">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Subsystem-_ownedComment.0" annotatedElement="Subsystem">
+        <body>A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: «Specification» and «Realization».</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Subsystem-base_Component" name="base_Component" visibility="public" association="Component_Subsystem">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Trace" name="Trace">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Trace-_ownedComment.0" annotatedElement="Trace">
+        <body>Specifies a trace relationship between model elements or sets of model elements that represent the same concept in different models. Traces are mainly used for tracking requirements and changes across models. Since model changes can occur in both directions, the directionality of the dependency can often be ignored. The mapping specifies the relationship between the two, but it is rarely computable and is usually informal.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Trace-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Trace">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Abstraction"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Type" name="Type">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Type-_ownedComment.0" annotatedElement="Type">
+        <body>A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass».</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Type-cannot_be_specification" name="cannot_be_specification" constrainedElement="Type">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Type-cannot_be_specification-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Specification-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Type-base_Class" name="base_Class" visibility="public" association="Class_Type">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Utility" name="Utility">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Utility-_ownedComment.0" annotatedElement="Utility">
+        <body>A class that has no instances, but rather denotes a named collection of static attributes and static operations, all of which are class-scoped.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Utility-is_utility" name="is_utility" constrainedElement="Utility">
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Utility-is_utility-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.feature-&gt;forAll(isStatic)</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Utility-base_Class" name="base_Class" visibility="public" association="Class_Utility">
+        <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+  </cmof:Package>
+  <cmof:Tag xmi:type="cmof:Tag" xmi:id="_2" name="org.omg.xmi.nsPrefix" value="StandardProfileL2" element="_0"/>
+</xmi:XMI>
