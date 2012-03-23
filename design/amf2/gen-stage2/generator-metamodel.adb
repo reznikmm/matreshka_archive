@@ -72,22 +72,32 @@ package body Generator.Metamodel is
    use type AMF.Optional_String;
    use type League.Strings.Universal_String;
 
+   procedure Generate_Metamodel_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access);
+
+   procedure Generate_Metamodel_Implementation
+    (Metamodel_Info : not null Metamodel_Information_Access);
+
    procedure Generate_Metamodel_Initialization
-    (Unit : in out Generator.Units.Unit);
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit);
 
    procedure Generate_Metaclass_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of metaclass element.
 
    procedure Generate_Properties_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of metaclass's properties.
 
    procedure Generate_Link_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access);
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of links.
 
    function Is_Parameter_Direction_Kind_Type
@@ -119,8 +129,9 @@ package body Generator.Metamodel is
    ----------------------------------
 
    procedure Generate_Link_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
@@ -271,7 +282,20 @@ package body Generator.Metamodel is
    ---------------------------------------
 
    procedure Generate_Metamodel_Implementation is
+   begin
+      for J in 1 .. Natural (Module_Info.Extents.Length) loop
+         Generate_Metamodel_Implementation
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+      end loop;
+   end Generate_Metamodel_Implementation;
 
+   ---------------------------------------
+   -- Generate_Metamodel_Implementation --
+   ---------------------------------------
+
+   procedure Generate_Metamodel_Implementation
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
       Unit : Generator.Units.Unit;
 
       procedure Generate_Class_Constant
@@ -574,7 +598,7 @@ package body Generator.Metamodel is
            & ";");
       Unit.Add_Line ("   end ML_" & Metamodel_Info.Ada_Name & ";");
 
-      Generate_Metamodel_Initialization (Unit);
+      Generate_Metamodel_Initialization (Metamodel_Info, Unit);
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ";");
 
@@ -587,8 +611,9 @@ package body Generator.Metamodel is
    ---------------------------------------
 
    procedure Generate_Metaclass_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
@@ -617,7 +642,8 @@ package body Generator.Metamodel is
    ---------------------------------------
 
    procedure Generate_Metamodel_Initialization
-    (Unit : in out Generator.Units.Unit)
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit)
    is
       Position : Number_CMOF_Element_Maps.Cursor;
 
@@ -644,7 +670,7 @@ package body Generator.Metamodel is
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Metaclass_Initialization
-          (Unit, Number_CMOF_Element_Maps.Element (Position));
+          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
@@ -652,7 +678,7 @@ package body Generator.Metamodel is
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Properties_Initialization
-          (Unit, Number_CMOF_Element_Maps.Element (Position));
+          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
@@ -666,7 +692,7 @@ package body Generator.Metamodel is
 
       while Number_CMOF_Element_Maps.Has_Element (Position) loop
          Generate_Link_Initialization
-          (Unit, Number_CMOF_Element_Maps.Element (Position));
+          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
          Number_CMOF_Element_Maps.Next (Position);
       end loop;
 
@@ -678,8 +704,9 @@ package body Generator.Metamodel is
    ----------------------------------------
 
    procedure Generate_Properties_Initialization
-    (Unit    : in out Generator.Units.Unit;
-     Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+    (Metamodel_Info : not null Metamodel_Information_Access;
+     Unit           : in out Generator.Units.Unit;
+     Element        : not null AMF.CMOF.Elements.CMOF_Element_Access)
    is
       use League.Holders;
 
@@ -969,6 +996,20 @@ package body Generator.Metamodel is
    --------------------------------------
 
    procedure Generate_Metamodel_Specification is
+   begin
+      for J in 1 .. Natural (Module_Info.Extents.Length) loop
+         Generate_Metamodel_Specification
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+      end loop;
+   end Generate_Metamodel_Specification;
+
+   --------------------------------------
+   -- Generate_Metamodel_Specification --
+   --------------------------------------
+
+   procedure Generate_Metamodel_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
 
       procedure Generate_Class_Constant
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
