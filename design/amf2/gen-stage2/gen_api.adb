@@ -221,7 +221,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
-               Unit.Add_Line (+"             (Self.Id)));");
+               Unit.Add_Line (+"             (Self.Element)));");
 
             when others =>
                Unit.Add_Line (+"      return");
@@ -243,7 +243,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
-               Unit.Add_Line (+"             (Self.Id)));");
+               Unit.Add_Line (+"             (Self.Element)));");
          end case;
 
       elsif Attribute_Type.Get_Name = String_Name then
@@ -270,7 +270,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name
-                   & " (Self.Id);");
+                   & " (Self.Element);");
                Unit.Add_Line;
                Unit.Add_Line (+"      begin");
                Unit.Add_Line (+"         if Aux = null then");
@@ -298,7 +298,7 @@ procedure Gen_API is
              & Generator.Metamodel_Name
              & "_Attributes.Internal_Get_"
              & Attribute_Name);
-         Unit.Add_Line (+"         (Self.Id);");
+         Unit.Add_Line (+"         (Self.Element);");
       end if;
 
       Unit.Add_Line ("   end Get_" & Attribute_Name & ";");
@@ -326,7 +326,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
-               Unit.Add_Line (+"       (Self.Id,");
+               Unit.Add_Line (+"       (Self.Element,");
                Unit.Context.Add (+"AMF.Internals.Helpers");
                Unit.Add_Line (+"        AMF.Internals.Helpers.To_Element");
                Unit.Context.Add (+"AMF.Elements");
@@ -345,7 +345,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
-               Unit.Add_Line (+"       (Self.Id,");
+               Unit.Add_Line (+"       (Self.Element,");
                Unit.Add_Line
                 (+"        League.Strings.Internals.Internal (To));");
 
@@ -357,7 +357,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
-               Unit.Add_Line (+"          (Self.Id, null);");
+               Unit.Add_Line (+"          (Self.Element, null);");
                Unit.Add_Line;
                Unit.Add_Line (+"      else");
                Unit.Add_Line
@@ -365,7 +365,7 @@ procedure Gen_API is
                    & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
-               Unit.Add_Line (+"          (Self.Id,");
+               Unit.Add_Line (+"          (Self.Element,");
                Unit.Add_Line
                 (+"           League.Strings.Internals.Internal (To.Value));");
                Unit.Add_Line (+"      end if;");
@@ -380,7 +380,7 @@ procedure Gen_API is
              & Generator.Metamodel_Name
              & "_Attributes.Internal_Set_"
              & Attribute_Name);
-         Unit.Add_Line (+"       (Self.Id, To);");
+         Unit.Add_Line (+"       (Self.Element, To);");
       end if;
 
       Unit.Add_Line ("   end Set_" & Attribute_Name & ";");
