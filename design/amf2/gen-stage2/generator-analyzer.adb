@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
+
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
@@ -51,6 +53,8 @@ with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Extents.Collections;
 with AMF.Facility;
+with AMF.Holders.Reflective_Collections;
+with AMF.Reflective_Collections;
 
 with Generator.Arguments;
 with Generator.Attribute_Mapping;
@@ -83,6 +87,10 @@ package body Generator.Analyzer is
    procedure Assign_Member_Numbers
     (Metamodel_Info : not null Metamodel_Information_Access);
    --  Assign member numbers for attributes of elements.
+
+   procedure Extract_String_Data
+    (Metamodel_Info : not null Metamodel_Information_Access);
+   --  Assigns numbers to each element and to each string.
 
    -------------------
    -- Analyze_Model --
@@ -137,6 +145,10 @@ package body Generator.Analyzer is
       --  Assign member's numbers for attributes.
 
       Assign_Member_Numbers (Metamodel_Info);
+
+      --  Extracts string data.
+
+      Extract_String_Data (Metamodel_Info);
    end Analyze_Model;
 
    --------------------
@@ -845,5 +857,102 @@ package body Generator.Analyzer is
          end if;
       end loop;
    end Compute_Metamodel_Name;
+
+   --------------------
+   -- Assign_Numbers --
+   --------------------
+
+   procedure Extract_String_Data
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+
+      package String_Sets is
+        new Ada.Containers.Hashed_Sets
+             (League.Strings.Universal_String,
+              League.Strings.Hash,
+              League.Strings."=",
+              League.Strings."=");
+
+      procedure Extract_String_Data
+       (Position : CMOF_Element_Sets.Cursor);
+
+      procedure Assign_String (Position : String_Sets.Cursor);
+
+      Elements : AMF.Elements.Collections.Set_Of_Element
+        := Metamodel_Info.Extent.Elements;
+      Strings  : String_Sets.Set;
+      Last     : Natural := 0;
+
+      -------------------
+      -- Assign_String --
+      -------------------
+
+      procedure Assign_String (Position : String_Sets.Cursor) is
+         Element : constant League.Strings.Universal_String
+           := String_Sets.Element (Position);
+
+      begin
+         Metamodel_Info.String_Numbers.Insert (Element, Last);
+         Metamodel_Info.Number_Strings.Insert (Last, Element);
+         Last := Last + 1;
+      end Assign_String;
+
+      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+
+      -------------------------
+      -- Extract_String_Data --
+      -------------------------
+
+      procedure Extract_String_Data
+       (Position : CMOF_Element_Sets.Cursor)
+      is
+         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
+           := AMF.CMOF.Properties.CMOF_Property_Access
+               (CMOF_Element_Sets.Element (Position));
+         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Property.Get_Type;
+         Value         : League.Holders.Holder;
+         Collection    : AMF.Reflective_Collections.Reflective_Collection;
+
+      begin
+         if Property_Type.Get_Name.Value = +"String"
+           and then not Property.Get_Is_Derived
+         then
+            Value :=
+              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+
+            if Property.Is_Multivalued then
+               Collection :=
+                 AMF.Holders.Reflective_Collections.Element (Value);
+
+               for J in 1 .. Collection.Length loop
+                  Strings.Include
+                   (League.Holders.Element (Collection.Element (J)));
+               end loop;
+
+            else
+               if not League.Holders.Is_Empty (Value) then
+                  Strings.Include (League.Holders.Element (Value));
+               end if;
+            end if;
+         end if;
+      end Extract_String_Data;
+
+   begin
+      --  Collect string data.
+
+      for J in 1 .. Elements.Length loop
+         Element :=
+           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
+         Class_Properties_Except_Redefined
+          (AMF.Elements.Abstract_Element'Class
+            (Element.all).Get_Meta_Class).Iterate
+              (Extract_String_Data'Access);
+      end loop;
+
+      --  Assign number for strings.
+
+      Strings.Iterate (Assign_String'Access);
+   end Extract_String_Data;
 
 end Generator.Analyzer;

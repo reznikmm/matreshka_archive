@@ -44,14 +44,9 @@
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
-with League.Holders;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Utf16;
-
-with AMF.CMOF.Types;
-with AMF.Holders.Reflective_Collections;
-with AMF.Reflective_Collections;
 
 with Generator.Wide_Wide_Text_IO;
 
@@ -60,8 +55,6 @@ package body Generator.String_Data is
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
    use Generator.Wide_Wide_Text_IO;
-   use type AMF.Optional_String;
-   use type League.Strings.Universal_String;
 
    function String_Data_Package_Name
     (Metamodel_Info : Metamodel_Information;
@@ -74,112 +67,17 @@ package body Generator.String_Data is
    --  Returns name of string data constant for the string with specified
    --  number.
 
-   function Is_String_Type
-    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return Boolean;
-
-   package String_Sets is
-     new Ada.Containers.Hashed_Sets
-          (League.Strings.Universal_String,
-           League.Strings.Hash,
-           League.Strings."=",
-           League.Strings."=");
-
-   --------------------
-   -- Assign_Numbers --
-   --------------------
-
-   procedure Extract_String_Data
-    (Extent : not null AMF.URI_Stores.URI_Store_Access)
-   is
-
-      procedure Extract_String_Data
-       (Position : CMOF_Element_Sets.Cursor);
-
-      procedure Assign_String (Position : String_Sets.Cursor);
-
-      Elements : AMF.Elements.Collections.Set_Of_Element
-        := Extent.Elements;
-      Strings  : String_Sets.Set;
-      Last     : Natural := 0;
-
-      -------------------
-      -- Assign_String --
-      -------------------
-
-      procedure Assign_String (Position : String_Sets.Cursor) is
-         Element : constant League.Strings.Universal_String
-           := String_Sets.Element (Position);
-
-      begin
-         Metamodel_Info.String_Numbers.Insert (Element, Last);
-         Metamodel_Info.Number_Strings.Insert (Last, Element);
-         Last := Last + 1;
-      end Assign_String;
-
-      Element : AMF.CMOF.Elements.CMOF_Element_Access;
-
-      -------------------------
-      -- Extract_String_Data --
-      -------------------------
-
-      procedure Extract_String_Data
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
-           := AMF.CMOF.Properties.CMOF_Property_Access
-               (CMOF_Element_Sets.Element (Position));
-         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-           := Property.Get_Type;
-         Value         : League.Holders.Holder;
-         Collection    : AMF.Reflective_Collections.Reflective_Collection;
-
-      begin
-         if Is_String_Type (Property_Type)
-           and then not Property.Get_Is_Derived
-         then
-            Value :=
-              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
-
-            if Property.Is_Multivalued then
-               Collection :=
-                 AMF.Holders.Reflective_Collections.Element (Value);
-
-               for J in 1 .. Collection.Length loop
-                  Strings.Include
-                   (League.Holders.Element (Collection.Element (J)));
-               end loop;
-
-            else
-               if not League.Holders.Is_Empty (Value) then
-                  Strings.Include (League.Holders.Element (Value));
-               end if;
-            end if;
-         end if;
-      end Extract_String_Data;
-
-   begin
-      --  Collect string data.
-
-      for J in 1 .. Elements.Length loop
-         Element :=
-           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
-         Class_Properties_Except_Redefined
-          (AMF.Elements.Abstract_Element'Class
-            (Element.all).Get_Meta_Class).Iterate
-              (Extract_String_Data'Access);
-      end loop;
-
-      --  Assign number for strings.
-
-      Strings.Iterate (Assign_String'Access);
-   end Extract_String_Data;
+   procedure Generate_Metamodel_String_Data
+    (Metamodel_Info : not null Metamodel_Information_Access);
+   --  Generates string data packages for the specified metamodel.
 
    ------------------------------------
    -- Generate_Metamodel_String_Data --
    ------------------------------------
 
-   procedure Generate_Metamodel_String_Data is
+   procedure Generate_Metamodel_String_Data
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
 
       procedure Generate_String_Constant (Number : Natural);
       --  Generates object declaration and initialization for specified
@@ -287,16 +185,17 @@ package body Generator.String_Data is
       end loop;
    end Generate_Metamodel_String_Data;
 
-   --------------------
-   -- Is_String_Type --
-   --------------------
+   ---------------------------------
+   -- Generate_Module_String_Data --
+   ---------------------------------
 
-   function Is_String_Type
-    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return Boolean is
+   procedure Generate_Module_String_Data is
    begin
-      return Element.Get_Name = League.Strings.To_Universal_String ("String");
-   end Is_String_Type;
+      for J in 1 .. Natural (Module_Info.Extents.Length) loop
+         Generate_Metamodel_String_Data
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+      end loop;
+   end Generate_Module_String_Data;
 
    -------------------------------
    -- String_Data_Constant_Name --

@@ -48,11 +48,7 @@ with AMF.URI_Stores;
 
 package Generator.String_Data is
 
-   procedure Extract_String_Data
-    (Extent : not null AMF.URI_Stores.URI_Store_Access);
-   --  Assigns numbers to each element and to each string.
-
-   procedure Generate_Metamodel_String_Data;
+   procedure Generate_Module_String_Data;
 
    function String_Data_Package_Name
     (Metamodel_Info : Metamodel_Information;

@@ -87,9 +87,6 @@ begin
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Module;
-   Generator.String_Data.Extract_String_Data
-    (AMF.URI_Stores.URI_Store_Access
-      (Generator.Module_Info.Extents.Element (1)));
 
    if Generator.Arguments.Generate_Attributes then
       Put_Line (Standard_Error, "Generating attributes...");
@@ -105,7 +102,7 @@ begin
    end if;
 
    Put_Line (Standard_Error, "Generating preinitialized string data...");
-   Generator.String_Data.Generate_Metamodel_String_Data;
+   Generator.String_Data.Generate_Module_String_Data;
 
    Put_Line (Standard_Error, "Generating metamodel initialization...");
    Generator.Metamodel.Generate_Metamodel_Specification;
