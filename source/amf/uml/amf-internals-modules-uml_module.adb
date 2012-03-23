@@ -50,6 +50,8 @@ pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
 with AMF.Internals.Factories.Primitive_Types_Factory;
 with AMF.Internals.Factories.UML_Factory;
 with AMF.Internals.Tables.Primitive_Types_Metamodel;
+with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
+with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 
@@ -67,9 +69,13 @@ begin
    --  Initialize metamodels.
 
    AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Objects;
+   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Objects;
+   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Objects;
    AMF.Internals.Tables.UML_Metamodel.Initialize_Objects;
 
    AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Links;
    AMF.Internals.Tables.UML_Metamodel.Initialize_Links;
 
    --  Initialize element table of UML metamodel (there is no element table for
