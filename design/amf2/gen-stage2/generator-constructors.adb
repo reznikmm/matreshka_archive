@@ -112,6 +112,8 @@ package body Generator.Constructors is
            := "AMF.Internals.Tables."
                 & Module_Info.Ada_Name
                 & "_Types.E_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
                 & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
          Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
@@ -164,7 +166,7 @@ package body Generator.Constructors is
              & "_"
              & Plural (To_Ada_Identifier (Class_Name))
              & "."
-             & Module_Info.Ada_Name
+             & Owning_Metamodel_Ada_Name (Class.Class)
              & "_"
              & To_Ada_Identifier (Class_Name)
              & "_Proxy'(Element => Self),");

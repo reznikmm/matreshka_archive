@@ -911,8 +911,10 @@ package body Generator.Attributes is
          Unit.Context.Add ("AMF.Internals.Tables." & Info.Ada_Name & "_Types");
          Unit.Add_Line
           ("AMF.Internals.Tables."
-             & Info.Ada_Name
+             & Module_Info.Ada_Name
              & "_Types.E_"
+             & Owning_Metamodel_Ada_Name (Class.Class)
+             & '_'
              & To_Ada_Identifier (Class.Class.Get_Name.Value)
              & " =>");
          Unit.Add (+"          (");
@@ -994,6 +996,8 @@ package body Generator.Attributes is
           ("AMF.Internals.Tables."
              & Module_Info.Ada_Name
              & "_Types.E_"
+             & Owning_Metamodel_Ada_Name (Class.Class)
+             & '_'
              & To_Ada_Identifier (Class.Class.Get_Name.Value)
              & " =>");
          Unit.Add (+"          (");
