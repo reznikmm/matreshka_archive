@@ -49,7 +49,7 @@ with Ada.Containers.Vectors;
 
 with League.Strings.Hash;
 
-with AMF.CMOF.Classes;
+with AMF.CMOF.Classes.Hash;
 with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Parameters;
@@ -71,6 +71,13 @@ package Generator is
           (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access,
            Less,
            AMF.CMOF.Named_Elements."=");
+
+   package CMOF_Class_Sets is
+     new Ada.Containers.Hashed_Sets
+          (AMF.CMOF.Classes.CMOF_Class_Access,
+           AMF.CMOF.Classes.Hash,
+           AMF.CMOF.Classes."=",
+           AMF.CMOF.Classes."=");
 
    package CMOF_Element_String_Maps is
      new Ada.Containers.Hashed_Maps
@@ -268,6 +275,9 @@ package Generator is
    type Module_Information is limited record
       Ada_Name : League.Strings.Universal_String;
       --  Ada style name of the generated module.
+
+      Classes  : CMOF_Class_Sets.Set;
+      --  All classes from all metamodels of module.
 
       Extents  : Extent_Vectors.Vector;
       --  All extents of module.

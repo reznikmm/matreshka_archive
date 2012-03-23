@@ -746,6 +746,11 @@ package body Generator.Analyzer is
          elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
             Info.Classes.Insert (Element);
 
+            if Module_Info.Extents.Contains (Info.Extent) then
+               Module_Info.Classes.Insert
+                (AMF.CMOF.Classes.CMOF_Class_Access (Element));
+            end if;
+
          elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             Info.Data_Types.Insert (Element);
 

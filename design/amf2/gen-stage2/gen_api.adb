@@ -52,14 +52,10 @@ with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Elements.Collections;
 with AMF.Facility;
-with AMF.URI_Stores;
-with League.Application;
 with League.Characters;
 with League.String_Vectors;
 with League.Strings;
-with XMI.Reader;
 
 with Generator.Analyzer;
 with Generator.Arguments;
@@ -83,11 +79,6 @@ procedure Gen_API is
 
    String_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
-
-   function Ada_API_Package_Name
-    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return League.Strings.Universal_String;
-   --  Returns name of interface package.
 
    function Ada_API_Type_Name
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
@@ -155,22 +146,6 @@ procedure Gen_API is
     (Unit            : in out Generator.Units.Unit;
      Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String);
-
-   --------------------------
-   -- Ada_API_Package_Name --
-   --------------------------
-
-   function Ada_API_Package_Name
-    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return League.Strings.Universal_String is
-   begin
-      return
-        "AMF."
-          & Generator.Names.Owning_Metamodel_Ada_Name (Element)
-          & "."
-          & Generator.Names.Plural
-             (Generator.Names.To_Ada_Identifier (Element.Get_Name.Value));
-   end Ada_API_Package_Name;
 
    -----------------------
    -- Ada_API_Type_Name --
@@ -650,7 +625,8 @@ procedure Gen_API is
       Unit          : Generator.Units.Unit;
 
       Package_Name : constant League.Strings.Universal_String
-        := Ada_API_Package_Name (Class);
+        := Generator.Type_Mapping.Public_Ada_Package_Name
+            (Class, Generator.Value);
       Type_Name    : constant League.Strings.Universal_String
         := Ada_API_Type_Name (Class);
 
@@ -692,10 +668,13 @@ procedure Gen_API is
 
       for J in 1 .. Super_Classes.Length loop
          Unit.Add_Line;
-         Unit.Context.Add (Ada_API_Package_Name (Super_Classes.Element (J)));
+         Unit.Context.Add
+          (Generator.Type_Mapping.Public_Ada_Package_Name
+            (Super_Classes.Element (J), Generator.Value));
          Unit.Add
           ("     and "
-             & Ada_API_Package_Name (Super_Classes.Element (J))
+             & Generator.Type_Mapping.Public_Ada_Package_Name
+                (Super_Classes.Element (J), Generator.Value)
              & "."
              & Ada_API_Type_Name (Super_Classes.Element (J)));
       end loop;
@@ -741,7 +720,8 @@ procedure Gen_API is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
       Package_Name  : constant League.Strings.Universal_String
-        := Ada_API_Package_Name (Class);
+        := Generator.Type_Mapping.Public_Ada_Package_Name
+            (Class, Generator.Value);
       Type_Name     : constant League.Strings.Universal_String
         := Ada_API_Type_Name (Class);
       Instance_Name : constant League.Strings.Universal_String
@@ -850,7 +830,8 @@ procedure Gen_API is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
       Package_Name  : constant League.Strings.Universal_String
-        := Ada_API_Package_Name (Class);
+        := Generator.Type_Mapping.Public_Ada_Package_Name
+            (Class, Generator.Value);
       Type_Name     : constant League.Strings.Universal_String
         := Ada_API_Type_Name (Class);
       Unit          : Generator.Units.Unit;
@@ -1944,7 +1925,8 @@ procedure Gen_API is
       return Result;
    end Split_Text;
 
-   Elements : AMF.Elements.Collections.Set_Of_Element;
+   Position  : Generator.CMOF_Class_Sets.Cursor;
+   The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
 
 begin
    --  Parse command line arguments.
@@ -1970,25 +1952,24 @@ begin
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Module;
 
-   Elements := Generator.Module_Info.Extents.Element (1).Elements;
+   --  Generate code.
 
-   for J in 1 .. Elements.Length loop
-      if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
-         if Generator.Arguments.Generate_Public_API then
-            Generate_Class
-             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
-            Generate_Collections
-             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
-            Generate_Hash
-             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
-         end if;
+   Position := Generator.Module_Info.Classes.First;
 
-         if Generator.Arguments.Generate_API_Stubs then
-            Generate_Proxy_Specification
-             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
-            Generate_Proxy_Implementation
-             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
-         end if;
+   while Generator.CMOF_Class_Sets.Has_Element (Position) loop
+      The_Class := Generator.CMOF_Class_Sets.Element (Position);
+
+      if Generator.Arguments.Generate_Public_API then
+         Generate_Class (The_Class);
+         Generate_Collections (The_Class);
+         Generate_Hash (The_Class);
       end if;
+
+      if Generator.Arguments.Generate_API_Stubs then
+         Generate_Proxy_Specification (The_Class);
+         Generate_Proxy_Implementation (The_Class);
+      end if;
+
+      Generator.CMOF_Class_Sets.Next (Position);
    end loop;
 end Gen_API;

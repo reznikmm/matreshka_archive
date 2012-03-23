@@ -46,6 +46,8 @@ with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Internals.Helpers;
 
+with Generator.Names;
+
 package body Generator is
 
    use type AMF.Optional_String;
@@ -185,9 +187,16 @@ package body Generator is
    function Less
     (Left  : not null AMF.CMOF.Classes.CMOF_Class_Access;
      Right : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return Boolean is
+       return Boolean
+   is
+      L : constant League.Strings.Universal_String
+        := Generator.Names.Owning_Metamodel_Name (Left) & Left.Get_Name.Value;
+      R : constant League.Strings.Universal_String
+        := Generator.Names.Owning_Metamodel_Name (Right)
+             & Right.Get_Name.Value;
+
    begin
-      return Left.Get_Name < Right.Get_Name;
+      return L < R;
    end Less;
 
    ----------
