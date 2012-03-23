@@ -249,7 +249,23 @@ procedure Gen_API is
       elsif Attribute_Type.Get_Name = String_Name then
          case Generator.Attribute_Mapping.Representation (Attribute) is
             when Generator.Value =>
-               Unit.Add_Line (+"      null;");
+               Unit.Add_Line
+                (+"      null;");
+               Unit.Add_Line
+                (+"      return");
+               Unit.Context.Add (+"League.Strings.Internals");
+               Unit.Add_Line
+                (+"        League.Strings.Internals.Create");
+               Unit.Context.Add
+                ("AMF.Internals.Tables."
+                   & Generator.Metamodel_Name
+                   & "_Attributes");
+               Unit.Add_Line
+                (+"         (AMF.Internals.Tables."
+                    & Generator.Metamodel_Name
+                    & "_Attributes.Internal_Get_"
+                    & Attribute_Name
+                    & " (Self.Element));");
 
             when Generator.Holder =>
                Unit.Add_Line (+"      declare");
@@ -340,6 +356,7 @@ procedure Gen_API is
       elsif Attribute_Type.Get_Name = String_Name then
          case Generator.Attribute_Mapping.Representation (Attribute) is
             when Generator.Value =>
+               Unit.Context.Add (+"League.Strings.Internals");
                Unit.Add_Line
                 ("      AMF.Internals.Tables."
                    & Generator.Metamodel_Name
