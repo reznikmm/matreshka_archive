@@ -102,7 +102,10 @@ package body Generator.Constructors is
          Class_Name     : constant League.Strings.Universal_String
            := Class.Class.Get_Name.Value;
          Name           : constant League.Strings.Universal_String
-           := +"Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
+           := "Create_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Types_Package  : constant League.Strings.Universal_String
            := "AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types";
          Element_Kind   : constant League.Strings.Universal_String
@@ -152,12 +155,12 @@ package body Generator.Constructors is
          Unit.Add_Line (+"        Proxy    =>");
          Unit.Context.Add
           ("AMF.Internals."
-             & Module_Info.Ada_Name
+             & Owning_Metamodel_Ada_Name (Class.Class)
              & "_"
              & Plural (To_Ada_Identifier (Class_Name)));
          Unit.Add_Line
           ("          new AMF.Internals."
-             & Module_Info.Ada_Name
+             & Owning_Metamodel_Ada_Name (Class.Class)
              & "_"
              & Plural (To_Ada_Identifier (Class_Name))
              & "."
@@ -728,8 +731,11 @@ package body Generator.Constructors is
       procedure Generate_Create (Position : Class_Information_Maps.Cursor) is
          Class : constant Class_Information_Access
            := Class_Information_Maps.Element (Position);
-         Name  : constant Wide_Wide_String
-           := "Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
+         Name  : constant League.Strings.Universal_String
+           := "Create_"
+                & Owning_Metamodel_Ada_Name (Class.Class)
+                & '_'
+                & To_Ada_Identifier (Class.Class.Get_Name.Value);
 
       begin
          New_Line;
@@ -743,7 +749,7 @@ package body Generator.Constructors is
       end Generate_Create;
 
    begin
-      Put_Header (2010, 2011);
+      Put_Header (2010, 2012);
 
       New_Line;
       Put_Line
