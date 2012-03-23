@@ -1968,9 +1968,7 @@ begin
    --  Analyze model.
 
    Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model
-    (AMF.URI_Stores.URI_Store_Access
-      (Generator.Module_Info.Extents.Element (1)));
+   Generator.Analyzer.Analyze_Module;
 
    Elements := Generator.Module_Info.Extents.Element (1).Elements;
 

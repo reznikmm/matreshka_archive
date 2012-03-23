@@ -212,6 +212,9 @@ package Generator is
    ---------------------------
 
    type Metamodel_Information is tagged limited record
+      Extent                       : AMF.Extents.Extent_Access;
+      --  Extent which contains metamodel.
+
       Associations                 : CMOF_Element_Sets.Set;
       Classes                      : CMOF_Element_Sets.Set;
       Data_Types                   : CMOF_Element_Sets.Set;
@@ -283,7 +286,7 @@ package Generator is
 --   Attribute_Info : Property_
 --   Attribute_Groups : Attribute_Group_Sets.Set;
 
-   Metamodel_Info : Metamodel_Information_Access := new Metamodel_Information;
+   Metamodel_Info : Metamodel_Information_Access;
    --  Metamodel information. This is temporal variable to assist code
    --  refactoring.
 

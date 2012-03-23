@@ -45,6 +45,6 @@ with AMF.URI_Stores;
 
 package Generator.Analyzer is
 
-   procedure Analyze_Model (Extent : not null AMF.URI_Stores.URI_Store_Access);
+   procedure Analyze_Module;
 
 end Generator.Analyzer;

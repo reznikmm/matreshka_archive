@@ -86,9 +86,7 @@ begin
    --  Analyze metamodels.
 
    Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Model
-    (AMF.URI_Stores.URI_Store_Access
-      (Generator.Module_Info.Extents.Element (1)));
+   Generator.Analyzer.Analyze_Module;
    Generator.String_Data.Extract_String_Data
     (AMF.URI_Stores.URI_Store_Access
       (Generator.Module_Info.Extents.Element (1)));
