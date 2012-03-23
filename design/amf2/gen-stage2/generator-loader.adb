@@ -41,13 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Loader of metamodels to generate code.
-------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+
+with AMF.Facility;
+with AMF.URI_Extents;
 with XMI.Reader;
 
 with Generator.Arguments;
 
 package body Generator.Loader is
+
+   use Generator.Arguments;
 
    ---------------------
    -- Load_Metamodels --
@@ -55,10 +59,50 @@ package body Generator.Loader is
 
    procedure Load_Metamodels is
    begin
-      Module_Info.Extents.Append
-       (AMF.Extents.Extent_Access
-         (XMI.Reader.Read_URI
-           (Generator.Arguments.Metamodel_URIs.Element (1))));
+      for J in 1 .. Metamodel_URIs.Length loop
+         declare
+            Extents  : constant AMF.Extents.Collections.Set_Of_Extent
+              := AMF.Facility.Extent;
+            Position : AMF.Extents.Collections.Extent_Sets.Cursor
+              := Extents.First;
+            Found    : Boolean := False;
+
+         begin
+            Ada.Wide_Wide_Text_IO.Put_Line
+             (Ada.Wide_Wide_Text_IO.Standard_Error,
+              "  ... '"
+                & Metamodel_URIs.Element (J).To_Wide_Wide_String
+                & ''');
+
+            --  Try to locate URI in the list of loaded extents.
+
+            while
+              AMF.Extents.Collections.Extent_Sets.Has_Element (Position)
+            loop
+               if AMF.URI_Extents.URI_Extent_Access
+                   (AMF.Extents.Collections.Extent_Sets.Element
+                     (Position)).Context_URI = Metamodel_URIs.Element (J)
+               then
+                  Module_Info.Extents.Append
+                   (AMF.Extents.Collections.Extent_Sets.Element (Position));
+                  Found := True;
+
+                  exit;
+               end if;
+
+               AMF.Extents.Collections.Extent_Sets.Next (Position);
+            end loop;
+
+            --  Load metamodel when it is not found in the list of loaded
+            --  models.
+
+            if not Found then
+               Module_Info.Extents.Append
+                (AMF.Extents.Extent_Access
+                  (XMI.Reader.Read_URI (Metamodel_URIs.Element (J))));
+            end if;
+         end;
+      end loop;
    end Load_Metamodels;
 
 end Generator.Loader;
