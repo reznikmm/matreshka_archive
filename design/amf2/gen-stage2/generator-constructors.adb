@@ -190,12 +190,12 @@ package body Generator.Constructors is
             end loop;
 
             if Attribute = Original_Attribute
-              and then Metamodel_Info.Attribute_Member.Contains (Attribute)
+              and then Module_Info.Attribute_Member.Contains (Attribute)
             then
                Image :=
                  League.Strings.To_Universal_String
                   (Integer'Wide_Wide_Image
-                    (Metamodel_Info.Attribute_Member.Element (Attribute)));
+                    (Module_Info.Attribute_Member.Element (Attribute)));
                Unit.Add
                 ("         "
                    & Image
@@ -621,7 +621,7 @@ package body Generator.Constructors is
           (+"        AMF.Internals.Element_Collections.Allocate_Collections ("
               & Trim
                  (Ada.Containers.Count_Type'Wide_Wide_Image
-                   (Metamodel_Info.Attribute_Collection.Length),
+                   (Module_Info.Attribute_Collection.Length),
                   Both)
               & "));");
 
@@ -641,7 +641,7 @@ package body Generator.Constructors is
             end loop;
 
             if Attribute = Original_Attribute
-              and then Metamodel_Info.Attribute_Collection.Contains (Attribute)
+              and then Module_Info.Attribute_Collection.Contains (Attribute)
             then
                Unit.Add_Line;
                Unit.Add_Line ("      --  " & Attribute.Get_Name.Value);
@@ -684,7 +684,7 @@ package body Generator.Constructors is
                    & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
-                      (Metamodel_Info.Attribute_Collection.Element (Attribute))
+                      (Module_Info.Attribute_Collection.Element (Attribute))
                    & ");");
             end if;
 

@@ -84,13 +84,43 @@ package body Generator.Analyzer is
     (Metamodel_Info : not null Metamodel_Information_Access);
    --  Assigns numbers to each element and to each string.
 
-   procedure Assign_Member_Numbers
+   procedure Collect_Attributes
     (Metamodel_Info : not null Metamodel_Information_Access);
+   --  Collection information about attributes of classes.
+
+   procedure Assign_Member_Numbers;
    --  Assign member numbers for attributes of elements.
 
    procedure Extract_String_Data
     (Metamodel_Info : not null Metamodel_Information_Access);
    --  Assigns numbers to each element and to each string.
+
+   type Boolean_Array is array (Positive range <>) of Boolean;
+
+   type Attribute_Group_Information (Length : Natural) is record
+      Index : Positive;
+      Mask  : Boolean_Array (1 .. Length);
+   end record;
+
+   type Attribute_Group_Access is access all Attribute_Group_Information;
+
+   function Hash
+    (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type;
+
+   package Property_Attribute_Group_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Properties.CMOF_Property_Access,
+           Attribute_Group_Access,
+           Hash,
+           AMF.CMOF.Properties."=");
+
+   package Attribute_Group_Sets is
+     new Ada.Containers.Hashed_Sets
+          (Attribute_Group_Access, Hash, "=");
+
+   Attribute_Group   : Property_Attribute_Group_Maps.Map;
+   Member_Groups     : Attribute_Group_Sets.Set;
+   Collection_Groups : Attribute_Group_Sets.Set;
 
    -------------------
    -- Analyze_Model --
@@ -142,10 +172,6 @@ package body Generator.Analyzer is
 
       Assign_Element_Numbers (Metamodel_Info);
 
-      --  Assign member's numbers for attributes.
-
-      Assign_Member_Numbers (Metamodel_Info);
-
       --  Extracts string data.
 
       Extract_String_Data (Metamodel_Info);
@@ -170,8 +196,21 @@ package body Generator.Analyzer is
             Generator.Metamodel_Info := Metamodel_Info;
          end if;
 
-         Generator.Analyzer.Analyze_Model (Metamodel_Info);
+         Analyze_Model (Metamodel_Info);
       end loop;
+
+      --  Assign numbers for members and collections.
+
+      for J in 1 .. Integer (Module_Info.Extents.Length) loop
+         Metamodel_Info :=
+           Metamodel_Infos.Element (Module_Info.Extents.Element (J));
+
+         --  Prepare to assign member's numbers for attributes.
+
+         Collect_Attributes (Metamodel_Info);
+      end loop;
+
+      Assign_Member_Numbers;
 
       --  Process all used extents.
 
@@ -365,33 +404,13 @@ package body Generator.Analyzer is
    -- Assign_Member_Numbers --
    ---------------------------
 
-   procedure Assign_Member_Numbers
-    (Metamodel_Info : not null Metamodel_Information_Access)
-   is
-      type Boolean_Array is array (Positive range <>) of Boolean;
+   procedure Assign_Member_Numbers is
+
+      procedure Pack
+       (Map : in out Property_Attribute_Group_Maps.Map;
+        Set : in out Attribute_Group_Sets.Set);
 
       function Count (Item : Boolean_Array) return Natural;
-
-      type Attribute_Group_Information (Length : Natural) is record
-         Index : Positive;
-         Mask  : Boolean_Array (1 .. Length);
-      end record;
-
-      type Attribute_Group_Access is access all Attribute_Group_Information;
-
-      function Hash
-       (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type;
-
-      package Property_Attribute_Group_Maps is
-        new Ada.Containers.Hashed_Maps
-             (AMF.CMOF.Properties.CMOF_Property_Access,
-              Attribute_Group_Access,
-              Hash,
-              AMF.CMOF.Properties."=");
-
-      package Attribute_Group_Sets is
-        new Ada.Containers.Hashed_Sets
-             (Attribute_Group_Access, Hash, "=");
 
       ----------
       -- Pack --
@@ -513,9 +532,133 @@ package body Generator.Analyzer is
          Set := Result;
       end Pack;
 
-      Attribute_Group   : Property_Attribute_Group_Maps.Map;
-      Member_Groups     : Attribute_Group_Sets.Set;
-      Collection_Groups : Attribute_Group_Sets.Set;
+      -----------
+      -- Count --
+      -----------
+
+      function Count (Item : Boolean_Array) return Natural is
+      begin
+         return Result : Natural := 0 do
+            for J in Item'Range loop
+               if Item (J) then
+                  Result := Result + 1;
+               end if;
+            end loop;
+         end return;
+      end Count;
+
+   begin
+      --  Calculate masks.
+
+      declare
+         Class              : AMF.CMOF.Classes.CMOF_Class_Access;
+         Class_Position     : CMOF_Element_Sets.Cursor
+           := Metamodel_Info.Classes.First;
+         Info               : Class_Information_Access;
+         Current            : Positive := 1;
+         Attribute_Position : CMOF_Property_Sets.Cursor;
+         Attribute          : AMF.CMOF.Properties.CMOF_Property_Access;
+
+      begin
+         while CMOF_Element_Sets.Has_Element (Class_Position) loop
+            Class
+              := AMF.CMOF.Classes.CMOF_Class_Access
+                  (CMOF_Element_Sets.Element (Class_Position));
+
+            if not Class.Get_Is_Abstract then
+               Info := Class_Info.Element (Class);
+
+               Attribute_Position := Info.All_Attributes.First;
+
+               while CMOF_Property_Sets.Has_Element (Attribute_Position) loop
+                  Attribute := CMOF_Property_Sets.Element (Attribute_Position);
+                  Attribute_Group.Element (Attribute).Mask (Current) := True;
+                  CMOF_Property_Sets.Next (Attribute_Position);
+               end loop;
+
+               Current := Current + 1;
+            end if;
+
+            CMOF_Element_Sets.Next (Class_Position);
+         end loop;
+      end;
+
+      --  Pack members.
+
+      Pack (Attribute_Group, Member_Groups);
+      Pack (Attribute_Group, Collection_Groups);
+
+      --  Store results.
+
+      declare
+         Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
+         Attribute_Info : Attribute_Group_Access;
+         Position       : Property_Attribute_Group_Maps.Cursor
+           := Attribute_Group.First;
+
+      begin
+         while Property_Attribute_Group_Maps.Has_Element (Position) loop
+            Attribute      := Property_Attribute_Group_Maps.Key (Position);
+            Attribute_Info := Property_Attribute_Group_Maps.Element (Position);
+
+            if Use_Member_Slot (Attribute) then
+               Module_Info.Attribute_Member.Insert
+                (Attribute, Attribute_Info.Index);
+
+            else
+               Module_Info.Attribute_Collection.Insert
+                (Attribute, Attribute_Info.Index);
+            end if;
+
+            Property_Attribute_Group_Maps.Next (Position);
+         end loop;
+      end;
+   end Assign_Member_Numbers;
+
+   -----------------------
+   -- Classify_Elements --
+   -----------------------
+
+   procedure Classify_Elements
+    (Info     : not null Metamodel_Information_Access;
+     Elements : AMF.Elements.Collections.Set_Of_Element)
+   is
+      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+
+   begin
+      --  Classify elements and fills All_Classes and All_Associations sets.
+
+      for J in 1 .. Elements.Length loop
+         Element :=
+           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
+
+         if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
+            Info.Associations.Insert (Element);
+
+         elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            Info.Classes.Insert (Element);
+
+            if Module_Info.Extents.Contains (Info.Extent) then
+               Module_Info.Classes.Insert
+                (AMF.CMOF.Classes.CMOF_Class_Access (Element));
+            end if;
+
+         elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+            Info.Data_Types.Insert (Element);
+
+         elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
+            Info.Packages.Insert (Element);
+         end if;
+      end loop;
+   end Classify_Elements;
+
+   ------------------------
+   -- Collect_Attributes --
+   ------------------------
+
+   procedure Collect_Attributes
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
 
       procedure Analyze_Class
        (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
@@ -595,7 +738,7 @@ package body Generator.Analyzer is
                   if Use_Member_Slot (Attribute) then
                      Attribute_Info :=
                        new Attribute_Group_Information'
-                            (Length => Natural (Metamodel_Info.Classes.Length),
+                            (Length => Natural (Module_Info.Classes.Length),
                              Index  => Natural (Member_Groups.Length) + 1,
                              Mask   => (others => False));
                      Member_Groups.Insert (Attribute_Info);
@@ -603,7 +746,7 @@ package body Generator.Analyzer is
                   else
                      Attribute_Info :=
                        new Attribute_Group_Information'
-                            (Length => Natural (Metamodel_Info.Classes.Length),
+                            (Length => Natural (Module_Info.Classes.Length),
                              Index  => Natural (Collection_Groups.Length) + 1,
                              Mask   => (others => False));
                      Collection_Groups.Insert (Attribute_Info);
@@ -614,31 +757,6 @@ package body Generator.Analyzer is
             end if;
          end loop;
       end Analyze_Class;
-
-      -----------
-      -- Count --
-      -----------
-
-      function Count (Item : Boolean_Array) return Natural is
-      begin
-         return Result : Natural := 0 do
-            for J in Item'Range loop
-               if Item (J) then
-                  Result := Result + 1;
-               end if;
-            end loop;
-         end return;
-      end Count;
-
-      ----------
-      -- Hash --
-      ----------
-
-      function Hash
-       (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type is
-      begin
-         return Ada.Containers.Hash_Type (Item.Index);
-      end Hash;
 
    begin
       --  Group attributes by unique setter/getter subprogram.
@@ -655,110 +773,7 @@ package body Generator.Analyzer is
             CMOF_Element_Sets.Next (Position);
          end loop;
       end;
-
-      --  Calculate masks.
-
-      declare
-         Class              : AMF.CMOF.Classes.CMOF_Class_Access;
-         Class_Position     : CMOF_Element_Sets.Cursor
-           := Metamodel_Info.Classes.First;
-         Info               : Class_Information_Access;
-         Current            : Positive := 1;
-         Attribute_Position : CMOF_Property_Sets.Cursor;
-         Attribute          : AMF.CMOF.Properties.CMOF_Property_Access;
-
-      begin
-         while CMOF_Element_Sets.Has_Element (Class_Position) loop
-            Class
-              := AMF.CMOF.Classes.CMOF_Class_Access
-                  (CMOF_Element_Sets.Element (Class_Position));
-
-            if not Class.Get_Is_Abstract then
-               Info := Class_Info.Element (Class);
-
-               Attribute_Position := Info.All_Attributes.First;
-
-               while CMOF_Property_Sets.Has_Element (Attribute_Position) loop
-                  Attribute := CMOF_Property_Sets.Element (Attribute_Position);
-                  Attribute_Group.Element (Attribute).Mask (Current) := True;
-                  CMOF_Property_Sets.Next (Attribute_Position);
-               end loop;
-
-               Current := Current + 1;
-            end if;
-
-            CMOF_Element_Sets.Next (Class_Position);
-         end loop;
-      end;
-
-      --  Pack members.
-
-      Pack (Attribute_Group, Member_Groups);
-      Pack (Attribute_Group, Collection_Groups);
-
-      --  Store results.
-
-      declare
-         Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
-         Attribute_Info : Attribute_Group_Access;
-         Position       : Property_Attribute_Group_Maps.Cursor
-           := Attribute_Group.First;
-
-      begin
-         while Property_Attribute_Group_Maps.Has_Element (Position) loop
-            Attribute      := Property_Attribute_Group_Maps.Key (Position);
-            Attribute_Info := Property_Attribute_Group_Maps.Element (Position);
-
-            if Use_Member_Slot (Attribute) then
-               Metamodel_Info.Attribute_Member.Insert
-                (Attribute, Attribute_Info.Index);
-
-            else
-               Metamodel_Info.Attribute_Collection.Insert
-                (Attribute, Attribute_Info.Index);
-            end if;
-
-            Property_Attribute_Group_Maps.Next (Position);
-         end loop;
-      end;
-   end Assign_Member_Numbers;
-
-   -----------------------
-   -- Classify_Elements --
-   -----------------------
-
-   procedure Classify_Elements
-    (Info     : not null Metamodel_Information_Access;
-     Elements : AMF.Elements.Collections.Set_Of_Element)
-   is
-      Element : AMF.CMOF.Elements.CMOF_Element_Access;
-
-   begin
-      --  Classify elements and fills All_Classes and All_Associations sets.
-
-      for J in 1 .. Elements.Length loop
-         Element :=
-           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
-
-         if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
-            Info.Associations.Insert (Element);
-
-         elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            Info.Classes.Insert (Element);
-
-            if Module_Info.Extents.Contains (Info.Extent) then
-               Module_Info.Classes.Insert
-                (AMF.CMOF.Classes.CMOF_Class_Access (Element));
-            end if;
-
-         elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
-            Info.Data_Types.Insert (Element);
-
-         elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
-            Info.Packages.Insert (Element);
-         end if;
-      end loop;
-   end Classify_Elements;
+   end Collect_Attributes;
 
    ----------------------------
    -- Compute_All_Properties --
@@ -959,5 +974,15 @@ package body Generator.Analyzer is
 
       Strings.Iterate (Assign_String'Access);
    end Extract_String_Data;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : Attribute_Group_Access) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item.Index);
+   end Hash;
 
 end Generator.Analyzer;

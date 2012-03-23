@@ -250,12 +250,11 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if Metamodel_Info.Attribute_Collection.Contains (Attribute) then
+            if Module_Info.Attribute_Collection.Contains (Attribute) then
                Unit.Add_Line
                 ("   --    "
                    & Integer'Wide_Wide_Image
-                      (Metamodel_Info.Attribute_Collection.Element
-                        (Attribute))
+                      (Module_Info.Attribute_Collection.Element (Attribute))
                    & "  "
                    & Attribute_Class.Get_Name.Value
                    & Attribute_Class.Separator
@@ -274,11 +273,11 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if Metamodel_Info.Attribute_Member.Contains (Attribute) then
+            if Module_Info.Attribute_Member.Contains (Attribute) then
                Unit.Add_Line
                 ("   --    "
                    & Integer'Wide_Wide_Image
-                      (Metamodel_Info.Attribute_Member.Element (Attribute))
+                      (Module_Info.Attribute_Member.Element (Attribute))
                    & "  "
                    & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
                    & Attribute_Class.Separator
@@ -351,7 +350,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value;");
@@ -370,7 +369,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Collection_Value;");
@@ -389,13 +388,13 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Collection_Value;");
                end case;
 
-            elsif Metamodel_Info.Attribute_Member.Contains (Attribute) then
+            elsif Module_Info.Attribute_Member.Contains (Attribute) then
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                   Unit.Add_Line
                    (+"      return");
@@ -412,8 +411,7 @@ package body Generator.Attributes is
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
-                           (Metamodel_Info.Attribute_Member.Element
-                             (Attribute)),
+                           (Module_Info.Attribute_Member.Element (Attribute)),
                           Both)
                       & ").Link, Self, No_"
                       & Module_Info.Ada_Name
@@ -430,8 +428,7 @@ package body Generator.Attributes is
                       & "_Element_Table.Table (Self).Member ("
                       & Trim
                          (Integer'Wide_Wide_Image
-                           (Metamodel_Info.Attribute_Member.Element
-                             (Attribute)),
+                           (Module_Info.Attribute_Member.Element (Attribute)),
                           Both)
                       & ").");
                   Unit.Add
@@ -453,7 +450,7 @@ package body Generator.Attributes is
                    & Module_Info.Ada_Name
                    & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
-                      (Metamodel_Info.Attribute_Collection.Element (Attribute))
+                      (Module_Info.Attribute_Collection.Element (Attribute))
                    & ";");
             end if;
          end Generate;
@@ -561,7 +558,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value;");
@@ -572,7 +569,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value := To;");
@@ -585,7 +582,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value);");
@@ -621,7 +618,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value;");
@@ -632,7 +629,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value := To;");
@@ -643,7 +640,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value /= null then");
@@ -656,7 +653,7 @@ package body Generator.Attributes is
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
-                              (Metamodel_Info.Attribute_Member.Element
+                              (Module_Info.Attribute_Member.Element
                                 (Attribute)),
                              Both)
                          & ").String_Value);");
@@ -731,7 +728,7 @@ package body Generator.Attributes is
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
-                        (Metamodel_Info.Attribute_Member.Element (Attribute)),
+                        (Module_Info.Attribute_Member.Element (Attribute)),
                        Both)
                    & ")."
                    & Member_Name
@@ -742,7 +739,7 @@ package body Generator.Attributes is
                    & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
-                        (Metamodel_Info.Attribute_Member.Element (Attribute)),
+                        (Module_Info.Attribute_Member.Element (Attribute)),
                        Both)
                    & ")."
                    & Member_Name
@@ -865,7 +862,7 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if not Metamodel_Info.Attribute_Collection.Contains (Attribute)
+            if not Module_Info.Attribute_Collection.Contains (Attribute)
               or else not Used.Element_Numbers.Contains
                            (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
             then
@@ -887,7 +884,7 @@ package body Generator.Attributes is
             Unit.Add
              (+" =>"
                  & Integer'Wide_Wide_Image
-                    (Metamodel_Info.Attribute_Collection.Element (Attribute))
+                    (Module_Info.Attribute_Collection.Element (Attribute))
                  & ",");
             Unit.Set_Column (29);
             Unit.Add_Line
@@ -945,7 +942,7 @@ package body Generator.Attributes is
               := Attribute.Get_Class;
 
          begin
-            if not Metamodel_Info.Attribute_Member.Contains (Attribute)
+            if not Module_Info.Attribute_Member.Contains (Attribute)
               or else not Used.Element_Numbers.Contains
                            (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
             then
@@ -967,7 +964,7 @@ package body Generator.Attributes is
             Unit.Add
              (+" =>"
                  & Integer'Wide_Wide_Image
-                    (Metamodel_Info.Attribute_Member.Element (Attribute))
+                    (Module_Info.Attribute_Member.Element (Attribute))
                  & ",");
             Unit.Set_Column (29);
             Unit.Add_Line
