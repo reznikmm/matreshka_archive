@@ -45,7 +45,6 @@ with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Holders;
-with League.Strings.Hash;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Utf16;
@@ -75,31 +74,16 @@ package body Generator.String_Data is
    --  Returns name of string data constant for the string with specified
    --  number.
 
+   function Is_String_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
+
    package String_Sets is
      new Ada.Containers.Hashed_Sets
           (League.Strings.Universal_String,
            League.Strings.Hash,
            League.Strings."=",
            League.Strings."=");
-
-   package String_Number_Maps is
-     new Ada.Containers.Hashed_Maps
-          (League.Strings.Universal_String,
-           Natural,
-           League.Strings.Hash,
-           League.Strings."=");
-
-   package Number_String_Maps is
-     new Ada.Containers.Ordered_Maps
-          (Natural, League.Strings.Universal_String);
-
-   Strings        : String_Sets.Set;
-   String_Numbers : String_Number_Maps.Map;
-   Number_Strings : Number_String_Maps.Map;
-
-   function Is_String_Type
-    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return Boolean;
 
    --------------------
    -- Assign_Numbers --
@@ -116,6 +100,7 @@ package body Generator.String_Data is
 
       Elements : AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
+      Strings  : String_Sets.Set;
       Last     : Natural := 0;
 
       -------------------
@@ -127,8 +112,8 @@ package body Generator.String_Data is
            := String_Sets.Element (Position);
 
       begin
-         String_Numbers.Insert (Element, Last);
-         Number_Strings.Insert (Last, Element);
+         Metamodel_Info.String_Numbers.Insert (Element, Last);
+         Metamodel_Info.Number_Strings.Insert (Last, Element);
          Last := Last + 1;
       end Assign_String;
 
@@ -208,7 +193,7 @@ package body Generator.String_Data is
          use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
          Element  : constant League.Strings.Universal_String
-           := Number_Strings.Element (Number);
+           := Metamodel_Info.Number_Strings.Element (Number);
          Internal : constant Matreshka.Internals.Strings.Shared_String_Access
            := League.Strings.Internals.Internal (Element);
 
@@ -273,7 +258,9 @@ package body Generator.String_Data is
       end Generate_String_Constant;
 
    begin
-      for J in 0 .. Integer (Number_Strings.Length) / 16#100# loop
+      for J
+        in 0 .. Integer (Metamodel_Info.Number_Strings.Length) / 16#100#
+      loop
          Put_Header (2010, 2011);
          Put_Line ("with Matreshka.Internals.Strings;");
          New_Line;
@@ -287,7 +274,7 @@ package body Generator.String_Data is
          for K in J * 16#100#
                     .. Integer'Min
                         (J * 16#100# + 16#FF#,
-                         Integer (Number_Strings.Length) - 1)
+                         Integer (Metamodel_Info.Number_Strings.Length) - 1)
          loop
             Generate_String_Constant (K);
          end loop;
@@ -337,10 +324,13 @@ package body Generator.String_Data is
    -------------------------------
 
    function String_Data_Constant_Name
-    (Item : League.Strings.Universal_String)
+    (Metamodel_Info : Metamodel_Information;
+     Item           : League.Strings.Universal_String)
        return League.Strings.Universal_String is
    begin
-      return String_Data_Constant_Name (String_Numbers.Element (Item));
+      return
+        String_Data_Constant_Name
+         (Metamodel_Info.String_Numbers.Element (Item));
    end String_Data_Constant_Name;
 
    ------------------------------
@@ -377,7 +367,7 @@ package body Generator.String_Data is
    begin
       return
         String_Data_Package_Name
-         (Metamodel_Info, String_Numbers.Element (Item));
+         (Metamodel_Info, Metamodel_Info.String_Numbers.Element (Item));
    end String_Data_Package_Name;
 
 end Generator.String_Data;

@@ -635,7 +635,7 @@ package body Generator.Metamodel is
              (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
           & "."
           & String_Data_Constant_Name
-             (Metamodel_Info.Root_Package.Get_Uri.Value)
+             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
           & "'Access);");
       Unit.Add_Line (+"      Aux    : AMF.Internals.CMOF_Element;");
       Unit.Add_Line;
@@ -837,7 +837,7 @@ package body Generator.Metamodel is
                             (Metamodel_Info.all, League.Holders.Element (Value))
                          & "."
                          & String_Data_Constant_Name
-                            (League.Holders.Element (Value))
+                            (Metamodel_Info.all, League.Holders.Element (Value))
                          & "'Access);");
                   end if;
                end if;

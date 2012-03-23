@@ -46,7 +46,7 @@ with Ada.Containers.Hashed_Sets;
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Ordered_Sets;
 
-with League.Strings;
+with League.Strings.Hash;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements.Hash;
@@ -189,6 +189,17 @@ package Generator is
 ----   package CMOF_Property_Attribute_Homograph_Maps is
 ----     new Ada.Containers.
 
+   package String_Number_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           Natural,
+           League.Strings.Hash,
+           League.Strings."=");
+
+   package Number_String_Maps is
+     new Ada.Containers.Ordered_Maps
+          (Natural, League.Strings.Universal_String);
+
    ---------------------------
    -- Metamodel information --
    ---------------------------
@@ -225,6 +236,10 @@ package Generator is
       Attribute_Member             : CMOF_Property_Natural_Maps.Map;
       Attribute_Collection         : CMOF_Property_Natural_Maps.Map;
       --  Attribute to member or collection mappings.
+
+      String_Numbers               : String_Number_Maps.Map;
+      Number_Strings               : Number_String_Maps.Map;
+      --  Mappings from strings to allocated number and back.
    end record;
 
    type Metamodel_Information_Access is access all Metamodel_Information;

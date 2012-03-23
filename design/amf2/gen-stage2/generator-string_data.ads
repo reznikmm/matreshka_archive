@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Generates string data packages. Each metamodel has own set of string data
+--  packages.
+------------------------------------------------------------------------------
 with AMF.URI_Stores;
 
 package Generator.String_Data is
@@ -59,7 +62,8 @@ package Generator.String_Data is
    --  is delcared.
 
    function String_Data_Constant_Name
-    (Item : League.Strings.Universal_String)
+    (Metamodel_Info : Metamodel_Information;
+     Item           : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Returns name of string data constant for the string with specified
    --  number.
