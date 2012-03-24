@@ -61,7 +61,7 @@ gen-uml: gens
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data time ./gen-stage2/.obj/gen2 2011 2012 'http://www.omg.org/spec/UML/20100901/UML.cmof' 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL2.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL3.cmof' > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2012 'http://www.omg.org/spec/UML/20100901/UML.cmof' 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL2.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL3.cmof' > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -r .new
