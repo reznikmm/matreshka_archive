@@ -165,7 +165,7 @@
       <ownedComment xmi:type="cmof:Comment" xmi:id="Document-_ownedComment.0" annotatedElement="Document">
         <body>A specific kind of file that is not an «Executable», «Library», «Script» or «Source». Subclass of «File».</body>
       </ownedComment>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Document-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Document">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Document-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Document" redefinedProperty="File-base_Artifact">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
       </ownedAttribute>
     </packagedElement>
@@ -181,7 +181,7 @@
       <ownedComment xmi:type="cmof:Comment" xmi:id="Executable-_ownedComment.0" annotatedElement="Executable">
         <body>A program file that can be executed on a computer system. Subclass of «File».</body>
       </ownedComment>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Executable-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Executable">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Executable-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Executable" redefinedProperty="File-base_Artifact">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
       </ownedAttribute>
     </packagedElement>
@@ -255,7 +255,7 @@
       <ownedComment xmi:type="cmof:Comment" xmi:id="Library-_ownedComment.0" annotatedElement="Library">
         <body>A static or dynamic library file. Subclass of «File».</body>
       </ownedComment>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Library-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Library">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Library-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Library" redefinedProperty="File-base_Artifact">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
       </ownedAttribute>
     </packagedElement>
@@ -317,7 +317,7 @@
       <ownedComment xmi:type="cmof:Comment" xmi:id="Script-_ownedComment.0" annotatedElement="Script">
         <body>A script file that can be interpreted by a computer system. Subclass of «File».</body>
       </ownedComment>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Script-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Script">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Script-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Script" redefinedProperty="File-base_Artifact">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
       </ownedAttribute>
     </packagedElement>
@@ -347,7 +347,7 @@
       <ownedComment xmi:type="cmof:Comment" xmi:id="Source-_ownedComment.0" annotatedElement="Source">
         <body>A source file that can be compiled into an executable file. Subclass of «File».</body>
       </ownedComment>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Source-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Source">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Source-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Source" redefinedProperty="File-base_Artifact">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Artifact"/>
       </ownedAttribute>
     </packagedElement>
