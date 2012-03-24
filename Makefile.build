@@ -50,11 +50,11 @@ firebird: league sql
 amf: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr
 
-uml: league amf
+uml: league xml amf
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_uml.gpr
 
-mofext: league amf uml
+mofext: league xml amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_mofext.gpr
 
-ocl: league amf uml
+ocl: league xml amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_ocl.gpr
