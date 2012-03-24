@@ -44,6 +44,38 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Standard_Profile_L2_Auxiliaries;
+with AMF.Internals.Standard_Profile_L2_Calls;
+with AMF.Internals.Standard_Profile_L2_Creates;
+with AMF.Internals.Standard_Profile_L2_Derives;
+with AMF.Internals.Standard_Profile_L2_Destroies;
+with AMF.Internals.Standard_Profile_L2_Documents;
+with AMF.Internals.Standard_Profile_L2_Entities;
+with AMF.Internals.Standard_Profile_L2_Executables;
+with AMF.Internals.Standard_Profile_L2_Focuses;
+with AMF.Internals.Standard_Profile_L2_Frameworks;
+with AMF.Internals.Standard_Profile_L2_Implementation_Classes;
+with AMF.Internals.Standard_Profile_L2_Implements;
+with AMF.Internals.Standard_Profile_L2_Instantiates;
+with AMF.Internals.Standard_Profile_L2_Libraries;
+with AMF.Internals.Standard_Profile_L2_Metaclasses;
+with AMF.Internals.Standard_Profile_L2_Model_Libraries;
+with AMF.Internals.Standard_Profile_L2_Processes;
+with AMF.Internals.Standard_Profile_L2_Realizations;
+with AMF.Internals.Standard_Profile_L2_Refines;
+with AMF.Internals.Standard_Profile_L2_Responsibilities;
+with AMF.Internals.Standard_Profile_L2_Scripts;
+with AMF.Internals.Standard_Profile_L2_Sends;
+with AMF.Internals.Standard_Profile_L2_Services;
+with AMF.Internals.Standard_Profile_L2_Sources;
+with AMF.Internals.Standard_Profile_L2_Specifications;
+with AMF.Internals.Standard_Profile_L2_Subsystems;
+with AMF.Internals.Standard_Profile_L2_Traces;
+with AMF.Internals.Standard_Profile_L2_Types;
+with AMF.Internals.Standard_Profile_L2_Utilities;
+with AMF.Internals.Standard_Profile_L3_Build_Components;
+with AMF.Internals.Standard_Profile_L3_Metamodels;
+with AMF.Internals.Standard_Profile_L3_System_Models;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Types;
@@ -247,11 +279,11 @@ package body AMF.Internals.Tables.UML_Constructors is
    use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
-   ------------------------
-   -- Create_Abstraction --
-   ------------------------
+   ------------------------------------------
+   -- Create_Standard_Profile_L2_Auxiliary --
+   ------------------------------------------
 
-   function Create_Abstraction return AMF.Internals.UML_Element is
+   function Create_Standard_Profile_L2_Auxiliary return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -259,7 +291,907 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Abstraction,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Auxiliaries.Standard_Profile_L2_Auxiliary_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Auxiliary;
+
+   -------------------------------------
+   -- Create_Standard_Profile_L2_Call --
+   -------------------------------------
+
+   function Create_Standard_Profile_L2_Call return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Calls.Standard_Profile_L2_Call_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Usage
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Call;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Create --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Create return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Creates.Standard_Profile_L2_Create_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_BehavioralFeature
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Usage
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Create;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Derive --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Derive return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Derives.Standard_Profile_L2_Derive_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Abstraction
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  computation
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Derive;
+
+   ----------------------------------------
+   -- Create_Standard_Profile_L2_Destroy --
+   ----------------------------------------
+
+   function Create_Standard_Profile_L2_Destroy return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Destroies.Standard_Profile_L2_Destroy_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_BehavioralFeature
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Destroy;
+
+   -----------------------------------------
+   -- Create_Standard_Profile_L2_Document --
+   -----------------------------------------
+
+   function Create_Standard_Profile_L2_Document return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Documents.Standard_Profile_L2_Document_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Artifact
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Document;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Entity --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Entity return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Entities.Standard_Profile_L2_Entity_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Entity;
+
+   -------------------------------------------
+   -- Create_Standard_Profile_L2_Executable --
+   -------------------------------------------
+
+   function Create_Standard_Profile_L2_Executable return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Executables.Standard_Profile_L2_Executable_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Artifact
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Executable;
+
+   --------------------------------------
+   -- Create_Standard_Profile_L2_Focus --
+   --------------------------------------
+
+   function Create_Standard_Profile_L2_Focus return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Focuses.Standard_Profile_L2_Focus_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Focus;
+
+   ------------------------------------------
+   -- Create_Standard_Profile_L2_Framework --
+   ------------------------------------------
+
+   function Create_Standard_Profile_L2_Framework return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Frameworks.Standard_Profile_L2_Framework_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Package
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Framework;
+
+   ------------------------------------------
+   -- Create_Standard_Profile_L2_Implement --
+   ------------------------------------------
+
+   function Create_Standard_Profile_L2_Implement return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Implements.Standard_Profile_L2_Implement_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Implement;
+
+   -----------------------------------------------------
+   -- Create_Standard_Profile_L2_Implementation_Class --
+   -----------------------------------------------------
+
+   function Create_Standard_Profile_L2_Implementation_Class return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Implementation_Classes.Standard_Profile_L2_Implementation_Class_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Implementation_Class;
+
+   --------------------------------------------
+   -- Create_Standard_Profile_L2_Instantiate --
+   --------------------------------------------
+
+   function Create_Standard_Profile_L2_Instantiate return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Instantiates.Standard_Profile_L2_Instantiate_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Usage
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Instantiate;
+
+   ----------------------------------------
+   -- Create_Standard_Profile_L2_Library --
+   ----------------------------------------
+
+   function Create_Standard_Profile_L2_Library return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Libraries.Standard_Profile_L2_Library_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Artifact
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Library;
+
+   ------------------------------------------
+   -- Create_Standard_Profile_L2_Metaclass --
+   ------------------------------------------
+
+   function Create_Standard_Profile_L2_Metaclass return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Metaclasses.Standard_Profile_L2_Metaclass_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Metaclass;
+
+   ----------------------------------------------
+   -- Create_Standard_Profile_L2_Model_Library --
+   ----------------------------------------------
+
+   function Create_Standard_Profile_L2_Model_Library return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Model_Libraries.Standard_Profile_L2_Model_Library_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Package
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Model_Library;
+
+   ----------------------------------------
+   -- Create_Standard_Profile_L2_Process --
+   ----------------------------------------
+
+   function Create_Standard_Profile_L2_Process return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Processes.Standard_Profile_L2_Process_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Process;
+
+   --------------------------------------------
+   -- Create_Standard_Profile_L2_Realization --
+   --------------------------------------------
+
+   function Create_Standard_Profile_L2_Realization return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Realizations.Standard_Profile_L2_Realization_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Classifier
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Realization;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Refine --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Refine return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Refines.Standard_Profile_L2_Refine_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Abstraction
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Refine;
+
+   -----------------------------------------------
+   -- Create_Standard_Profile_L2_Responsibility --
+   -----------------------------------------------
+
+   function Create_Standard_Profile_L2_Responsibility return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Responsibilities.Standard_Profile_L2_Responsibility_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Usage
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Responsibility;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Script --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Script return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Scripts.Standard_Profile_L2_Script_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Artifact
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Script;
+
+   -------------------------------------
+   -- Create_Standard_Profile_L2_Send --
+   -------------------------------------
+
+   function Create_Standard_Profile_L2_Send return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Sends.Standard_Profile_L2_Send_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Usage
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Send;
+
+   ----------------------------------------
+   -- Create_Standard_Profile_L2_Service --
+   ----------------------------------------
+
+   function Create_Standard_Profile_L2_Service return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Services.Standard_Profile_L2_Service_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Service;
+
+   ---------------------------------------
+   -- Create_Standard_Profile_L2_Source --
+   ---------------------------------------
+
+   function Create_Standard_Profile_L2_Source return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Sources.Standard_Profile_L2_Source_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Artifact
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Source;
+
+   ----------------------------------------------
+   -- Create_Standard_Profile_L2_Specification --
+   ----------------------------------------------
+
+   function Create_Standard_Profile_L2_Specification return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Specifications.Standard_Profile_L2_Specification_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Classifier
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Specification;
+
+   ------------------------------------------
+   -- Create_Standard_Profile_L2_Subsystem --
+   ------------------------------------------
+
+   function Create_Standard_Profile_L2_Subsystem return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Subsystems.Standard_Profile_L2_Subsystem_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Subsystem;
+
+   --------------------------------------
+   -- Create_Standard_Profile_L2_Trace --
+   --------------------------------------
+
+   function Create_Standard_Profile_L2_Trace return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Traces.Standard_Profile_L2_Trace_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Abstraction
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Trace;
+
+   -------------------------------------
+   -- Create_Standard_Profile_L2_Type --
+   -------------------------------------
+
+   function Create_Standard_Profile_L2_Type return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Types.Standard_Profile_L2_Type_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Type;
+
+   ----------------------------------------
+   -- Create_Standard_Profile_L2_Utility --
+   ----------------------------------------
+
+   function Create_Standard_Profile_L2_Utility return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L2_Utilities.Standard_Profile_L2_Utility_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Class
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L2_Utility;
+
+   ------------------------------------------------
+   -- Create_Standard_Profile_L3_Build_Component --
+   ------------------------------------------------
+
+   function Create_Standard_Profile_L3_Build_Component return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L3_Build_Components.Standard_Profile_L3_Build_Component_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Component
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L3_Build_Component;
+
+   ------------------------------------------
+   -- Create_Standard_Profile_L3_Metamodel --
+   ------------------------------------------
+
+   function Create_Standard_Profile_L3_Metamodel return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L3_Metamodels.Standard_Profile_L3_Metamodel_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Model
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L3_Metamodel;
+
+   ---------------------------------------------
+   -- Create_Standard_Profile_L3_System_Model --
+   ---------------------------------------------
+
+   function Create_Standard_Profile_L3_System_Model return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.Standard_Profile_L3_System_Models.Standard_Profile_L3_System_Model_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
+          1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  base_Model
+          others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
+      UML_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UML_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (248));
+
+      return Self;
+   end Create_Standard_Profile_L3_System_Model;
+
+   ----------------------------
+   -- Create_UML_Abstraction --
+   ----------------------------
+
+   function Create_UML_Abstraction return AMF.Internals.UML_Element is
+      Self : AMF.Internals.UML_Element;
+
+   begin
+      UML_Element_Table.Increment_Last;
+      Self := UML_Element_Table.Last;
+
+      UML_Element_Table.Table (Self) :=
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Abstraction,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Abstractions.UML_Abstraction_Proxy'(Element => Self),
@@ -345,13 +1277,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Abstraction;
+   end Create_UML_Abstraction;
 
-   -------------------------------
-   -- Create_Accept_Call_Action --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Accept_Call_Action --
+   -----------------------------------
 
-   function Create_Accept_Call_Action return AMF.Internals.UML_Element is
+   function Create_UML_Accept_Call_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -359,7 +1291,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Accept_Call_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Accept_Call_Actions.UML_Accept_Call_Action_Proxy'(Element => Self),
@@ -523,13 +1455,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       return Self;
-   end Create_Accept_Call_Action;
+   end Create_UML_Accept_Call_Action;
 
-   --------------------------------
-   -- Create_Accept_Event_Action --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Accept_Event_Action --
+   ------------------------------------
 
-   function Create_Accept_Event_Action return AMF.Internals.UML_Element is
+   function Create_UML_Accept_Event_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -537,7 +1469,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Accept_Event_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Accept_Event_Actions.UML_Accept_Event_Action_Proxy'(Element => Self),
@@ -699,13 +1631,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       return Self;
-   end Create_Accept_Event_Action;
+   end Create_UML_Accept_Event_Action;
 
-   -------------------------------------------
-   -- Create_Action_Execution_Specification --
-   -------------------------------------------
+   -----------------------------------------------
+   -- Create_UML_Action_Execution_Specification --
+   -----------------------------------------------
 
-   function Create_Action_Execution_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Action_Execution_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -713,7 +1645,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Action_Execution_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Action_Execution_Specifications.UML_Action_Execution_Specification_Proxy'(Element => Self),
@@ -782,13 +1714,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Action_Execution_Specification;
+   end Create_UML_Action_Execution_Specification;
 
-   -----------------------------
-   -- Create_Action_Input_Pin --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Action_Input_Pin --
+   ---------------------------------
 
-   function Create_Action_Input_Pin return AMF.Internals.UML_Element is
+   function Create_UML_Action_Input_Pin return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -796,7 +1728,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Action_Input_Pin,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Action_Input_Pins.UML_Action_Input_Pin_Proxy'(Element => Self),
@@ -936,13 +1868,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Action_Input_Pin;
+   end Create_UML_Action_Input_Pin;
 
-   ---------------------
-   -- Create_Activity --
-   ---------------------
+   -------------------------
+   -- Create_UML_Activity --
+   -------------------------
 
-   function Create_Activity return AMF.Internals.UML_Element is
+   function Create_UML_Activity return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -950,7 +1882,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Activity,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Activities.UML_Activity_Proxy'(Element => Self),
@@ -1319,13 +2251,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Activity;
+   end Create_UML_Activity;
 
-   --------------------------------
-   -- Create_Activity_Final_Node --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Activity_Final_Node --
+   ------------------------------------
 
-   function Create_Activity_Final_Node return AMF.Internals.UML_Element is
+   function Create_UML_Activity_Final_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -1333,7 +2265,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Final_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Activity_Final_Nodes.UML_Activity_Final_Node_Proxy'(Element => Self),
@@ -1440,13 +2372,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Activity_Final_Node;
+   end Create_UML_Activity_Final_Node;
 
-   ------------------------------------
-   -- Create_Activity_Parameter_Node --
-   ------------------------------------
+   ----------------------------------------
+   -- Create_UML_Activity_Parameter_Node --
+   ----------------------------------------
 
-   function Create_Activity_Parameter_Node return AMF.Internals.UML_Element is
+   function Create_UML_Activity_Parameter_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -1454,7 +2386,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Parameter_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Proxy'(Element => Self),
@@ -1580,13 +2512,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Activity_Parameter_Node;
+   end Create_UML_Activity_Parameter_Node;
 
-   -------------------------------
-   -- Create_Activity_Partition --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Activity_Partition --
+   -----------------------------------
 
-   function Create_Activity_Partition return AMF.Internals.UML_Element is
+   function Create_UML_Activity_Partition return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -1594,7 +2526,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Activity_Partition,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Activity_Partitions.UML_Activity_Partition_Proxy'(Element => Self),
@@ -1693,13 +2625,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Activity_Partition;
+   end Create_UML_Activity_Partition;
 
-   ------------------
-   -- Create_Actor --
-   ------------------
+   ----------------------
+   -- Create_UML_Actor --
+   ----------------------
 
-   function Create_Actor return AMF.Internals.UML_Element is
+   function Create_UML_Actor return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -1707,7 +2639,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Actor,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Actor,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Actors.UML_Actor_Proxy'(Element => Self),
@@ -1924,13 +2856,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Actor;
+   end Create_UML_Actor;
 
-   ------------------------------------------------
-   -- Create_Add_Structural_Feature_Value_Action --
-   ------------------------------------------------
+   ----------------------------------------------------
+   -- Create_UML_Add_Structural_Feature_Value_Action --
+   ----------------------------------------------------
 
-   function Create_Add_Structural_Feature_Value_Action return AMF.Internals.UML_Element is
+   function Create_UML_Add_Structural_Feature_Value_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -1938,7 +2870,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Add_Structural_Feature_Value_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Proxy'(Element => Self),
@@ -2096,13 +3028,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Add_Structural_Feature_Value_Action;
+   end Create_UML_Add_Structural_Feature_Value_Action;
 
-   --------------------------------------
-   -- Create_Add_Variable_Value_Action --
-   --------------------------------------
+   ------------------------------------------
+   -- Create_UML_Add_Variable_Value_Action --
+   ------------------------------------------
 
-   function Create_Add_Variable_Value_Action return AMF.Internals.UML_Element is
+   function Create_UML_Add_Variable_Value_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -2110,7 +3042,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Add_Variable_Value_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Proxy'(Element => Self),
@@ -2264,13 +3196,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Add_Variable_Value_Action;
+   end Create_UML_Add_Variable_Value_Action;
 
-   ------------------------------
-   -- Create_Any_Receive_Event --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Any_Receive_Event --
+   ----------------------------------
 
-   function Create_Any_Receive_Event return AMF.Internals.UML_Element is
+   function Create_UML_Any_Receive_Event return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -2278,7 +3210,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Any_Receive_Event,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Any_Receive_Events.UML_Any_Receive_Event_Proxy'(Element => Self),
@@ -2327,13 +3259,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Any_Receive_Event;
+   end Create_UML_Any_Receive_Event;
 
-   ---------------------
-   -- Create_Artifact --
-   ---------------------
+   -------------------------
+   -- Create_UML_Artifact --
+   -------------------------
 
-   function Create_Artifact return AMF.Internals.UML_Element is
+   function Create_UML_Artifact return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -2341,7 +3273,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Artifact,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Artifact,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Artifacts.UML_Artifact_Proxy'(Element => Self),
@@ -2572,13 +3504,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Artifact;
+   end Create_UML_Artifact;
 
-   ------------------------
-   -- Create_Association --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Association --
+   ----------------------------
 
-   function Create_Association return AMF.Internals.UML_Element is
+   function Create_UML_Association return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -2586,7 +3518,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Association,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Association,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Associations.UML_Association_Proxy'(Element => Self),
@@ -2824,13 +3756,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Association;
+   end Create_UML_Association;
 
-   ------------------------------
-   -- Create_Association_Class --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Association_Class --
+   ----------------------------------
 
-   function Create_Association_Class return AMF.Internals.UML_Element is
+   function Create_UML_Association_Class return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -2838,7 +3770,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Association_Class,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Association_Class,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Association_Classes.UML_Association_Class_Proxy'(Element => Self),
@@ -3157,13 +4089,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Association_Class;
+   end Create_UML_Association_Class;
 
-   ---------------------------------------------
-   -- Create_Behavior_Execution_Specification --
-   ---------------------------------------------
+   -------------------------------------------------
+   -- Create_UML_Behavior_Execution_Specification --
+   -------------------------------------------------
 
-   function Create_Behavior_Execution_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Behavior_Execution_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3171,7 +4103,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Behavior_Execution_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Proxy'(Element => Self),
@@ -3240,13 +4172,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Behavior_Execution_Specification;
+   end Create_UML_Behavior_Execution_Specification;
 
-   ------------------------------------
-   -- Create_Broadcast_Signal_Action --
-   ------------------------------------
+   ----------------------------------------
+   -- Create_UML_Broadcast_Signal_Action --
+   ----------------------------------------
 
-   function Create_Broadcast_Signal_Action return AMF.Internals.UML_Element is
+   function Create_UML_Broadcast_Signal_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3254,7 +4186,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Broadcast_Signal_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Proxy'(Element => Self),
@@ -3411,13 +4343,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Broadcast_Signal_Action;
+   end Create_UML_Broadcast_Signal_Action;
 
-   ---------------------------------
-   -- Create_Call_Behavior_Action --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Call_Behavior_Action --
+   -------------------------------------
 
-   function Create_Call_Behavior_Action return AMF.Internals.UML_Element is
+   function Create_UML_Call_Behavior_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3425,7 +4357,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Behavior_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Call_Behavior_Actions.UML_Call_Behavior_Action_Proxy'(Element => Self),
@@ -3591,13 +4523,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Call_Behavior_Action;
+   end Create_UML_Call_Behavior_Action;
 
-   -----------------------
-   -- Create_Call_Event --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Call_Event --
+   ---------------------------
 
-   function Create_Call_Event return AMF.Internals.UML_Element is
+   function Create_UML_Call_Event return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3605,7 +4537,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Event,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Event,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Call_Events.UML_Call_Event_Proxy'(Element => Self),
@@ -3656,13 +4588,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Call_Event;
+   end Create_UML_Call_Event;
 
-   ----------------------------------
-   -- Create_Call_Operation_Action --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Call_Operation_Action --
+   --------------------------------------
 
-   function Create_Call_Operation_Action return AMF.Internals.UML_Element is
+   function Create_UML_Call_Operation_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3670,7 +4602,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Call_Operation_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Call_Operation_Actions.UML_Call_Operation_Action_Proxy'(Element => Self),
@@ -3838,13 +4770,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Call_Operation_Action;
+   end Create_UML_Call_Operation_Action;
 
-   --------------------------------
-   -- Create_Central_Buffer_Node --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Central_Buffer_Node --
+   ------------------------------------
 
-   function Create_Central_Buffer_Node return AMF.Internals.UML_Element is
+   function Create_UML_Central_Buffer_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3852,7 +4784,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Central_Buffer_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Central_Buffer_Nodes.UML_Central_Buffer_Node_Proxy'(Element => Self),
@@ -3976,13 +4908,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Central_Buffer_Node;
+   end Create_UML_Central_Buffer_Node;
 
-   -------------------------
-   -- Create_Change_Event --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Change_Event --
+   -----------------------------
 
-   function Create_Change_Event return AMF.Internals.UML_Element is
+   function Create_UML_Change_Event return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -3990,7 +4922,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Change_Event,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Change_Event,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Change_Events.UML_Change_Event_Proxy'(Element => Self),
@@ -4041,13 +4973,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Change_Event;
+   end Create_UML_Change_Event;
 
-   ------------------
-   -- Create_Class --
-   ------------------
+   ----------------------
+   -- Create_UML_Class --
+   ----------------------
 
-   function Create_Class return AMF.Internals.UML_Element is
+   function Create_UML_Class return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4055,7 +4987,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Class,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Class,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Classes.UML_Class_Proxy'(Element => Self),
@@ -4337,13 +5269,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Class;
+   end Create_UML_Class;
 
-   ------------------------------------------
-   -- Create_Classifier_Template_Parameter --
-   ------------------------------------------
+   ----------------------------------------------
+   -- Create_UML_Classifier_Template_Parameter --
+   ----------------------------------------------
 
-   function Create_Classifier_Template_Parameter return AMF.Internals.UML_Element is
+   function Create_UML_Classifier_Template_Parameter return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4351,7 +5283,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Classifier_Template_Parameter,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Proxy'(Element => Self),
@@ -4398,13 +5330,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Classifier_Template_Parameter;
+   end Create_UML_Classifier_Template_Parameter;
 
-   -------------------
-   -- Create_Clause --
-   -------------------
+   -----------------------
+   -- Create_UML_Clause --
+   -----------------------
 
-   function Create_Clause return AMF.Internals.UML_Element is
+   function Create_UML_Clause return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4412,7 +5344,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Clause,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clause,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Clauses.UML_Clause_Proxy'(Element => Self),
@@ -4477,13 +5409,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 31);
 
       return Self;
-   end Create_Clause;
+   end Create_UML_Clause;
 
-   -------------------------------------
-   -- Create_Clear_Association_Action --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Clear_Association_Action --
+   -----------------------------------------
 
-   function Create_Clear_Association_Action return AMF.Internals.UML_Element is
+   function Create_UML_Clear_Association_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4491,7 +5423,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Association_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Clear_Association_Actions.UML_Clear_Association_Action_Proxy'(Element => Self),
@@ -4641,13 +5573,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Clear_Association_Action;
+   end Create_UML_Clear_Association_Action;
 
-   --------------------------------------------
-   -- Create_Clear_Structural_Feature_Action --
-   --------------------------------------------
+   ------------------------------------------------
+   -- Create_UML_Clear_Structural_Feature_Action --
+   ------------------------------------------------
 
-   function Create_Clear_Structural_Feature_Action return AMF.Internals.UML_Element is
+   function Create_UML_Clear_Structural_Feature_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4655,7 +5587,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Structural_Feature_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Proxy'(Element => Self),
@@ -4807,13 +5739,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Clear_Structural_Feature_Action;
+   end Create_UML_Clear_Structural_Feature_Action;
 
-   ----------------------------------
-   -- Create_Clear_Variable_Action --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Clear_Variable_Action --
+   --------------------------------------
 
-   function Create_Clear_Variable_Action return AMF.Internals.UML_Element is
+   function Create_UML_Clear_Variable_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4821,7 +5753,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Clear_Variable_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Clear_Variable_Actions.UML_Clear_Variable_Action_Proxy'(Element => Self),
@@ -4969,13 +5901,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Clear_Variable_Action;
+   end Create_UML_Clear_Variable_Action;
 
-   --------------------------
-   -- Create_Collaboration --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Collaboration --
+   ------------------------------
 
-   function Create_Collaboration return AMF.Internals.UML_Element is
+   function Create_UML_Collaboration return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -4983,7 +5915,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Collaboration,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Collaboration,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Collaborations.UML_Collaboration_Proxy'(Element => Self),
@@ -5235,13 +6167,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Collaboration;
+   end Create_UML_Collaboration;
 
-   ------------------------------
-   -- Create_Collaboration_Use --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Collaboration_Use --
+   ----------------------------------
 
-   function Create_Collaboration_Use return AMF.Internals.UML_Element is
+   function Create_UML_Collaboration_Use return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -5249,7 +6181,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Collaboration_Use,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Collaboration_Uses.UML_Collaboration_Use_Proxy'(Element => Self),
@@ -5303,13 +6235,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Collaboration_Use;
+   end Create_UML_Collaboration_Use;
 
-   ------------------------------
-   -- Create_Combined_Fragment --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Combined_Fragment --
+   ----------------------------------
 
-   function Create_Combined_Fragment return AMF.Internals.UML_Element is
+   function Create_UML_Combined_Fragment return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -5317,7 +6249,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Combined_Fragment,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Combined_Fragments.UML_Combined_Fragment_Proxy'(Element => Self),
@@ -5396,13 +6328,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Combined_Fragment;
+   end Create_UML_Combined_Fragment;
 
-   --------------------
-   -- Create_Comment --
-   --------------------
+   ------------------------
+   -- Create_UML_Comment --
+   ------------------------
 
-   function Create_Comment return AMF.Internals.UML_Element is
+   function Create_UML_Comment return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -5410,7 +6342,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Comment,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Comment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Comments.UML_Comment_Proxy'(Element => Self),
@@ -5447,13 +6379,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Comment;
+   end Create_UML_Comment;
 
-   -------------------------------
-   -- Create_Communication_Path --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Communication_Path --
+   -----------------------------------
 
-   function Create_Communication_Path return AMF.Internals.UML_Element is
+   function Create_UML_Communication_Path return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -5461,7 +6393,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Communication_Path,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Communication_Path,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Communication_Paths.UML_Communication_Path_Proxy'(Element => Self),
@@ -5699,13 +6631,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Communication_Path;
+   end Create_UML_Communication_Path;
 
-   ----------------------
-   -- Create_Component --
-   ----------------------
+   --------------------------
+   -- Create_UML_Component --
+   --------------------------
 
-   function Create_Component return AMF.Internals.UML_Element is
+   function Create_UML_Component return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -5713,7 +6645,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Component,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Component,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Components.UML_Component_Proxy'(Element => Self),
@@ -6025,13 +6957,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Component;
+   end Create_UML_Component;
 
-   ----------------------------------
-   -- Create_Component_Realization --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Component_Realization --
+   --------------------------------------
 
-   function Create_Component_Realization return AMF.Internals.UML_Element is
+   function Create_UML_Component_Realization return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6039,7 +6971,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Component_Realization,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Component_Realization,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Component_Realizations.UML_Component_Realization_Proxy'(Element => Self),
@@ -6134,13 +7066,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Component_Realization;
+   end Create_UML_Component_Realization;
 
-   -----------------------------
-   -- Create_Conditional_Node --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Conditional_Node --
+   ---------------------------------
 
-   function Create_Conditional_Node return AMF.Internals.UML_Element is
+   function Create_UML_Conditional_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6148,7 +7080,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Conditional_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Conditional_Nodes.UML_Conditional_Node_Proxy'(Element => Self),
@@ -6409,13 +7341,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Conditional_Node;
+   end Create_UML_Conditional_Node;
 
-   ---------------------------------------------------
-   -- Create_Connectable_Element_Template_Parameter --
-   ---------------------------------------------------
+   -------------------------------------------------------
+   -- Create_UML_Connectable_Element_Template_Parameter --
+   -------------------------------------------------------
 
-   function Create_Connectable_Element_Template_Parameter return AMF.Internals.UML_Element is
+   function Create_UML_Connectable_Element_Template_Parameter return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6423,7 +7355,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Connectable_Element_Template_Parameter,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Proxy'(Element => Self),
@@ -6461,13 +7393,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Connectable_Element_Template_Parameter;
+   end Create_UML_Connectable_Element_Template_Parameter;
 
-   ---------------------------------------
-   -- Create_Connection_Point_Reference --
-   ---------------------------------------
+   -------------------------------------------
+   -- Create_UML_Connection_Point_Reference --
+   -------------------------------------------
 
-   function Create_Connection_Point_Reference return AMF.Internals.UML_Element is
+   function Create_UML_Connection_Point_Reference return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6475,7 +7407,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Connection_Point_Reference,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Connection_Point_References.UML_Connection_Point_Reference_Proxy'(Element => Self),
@@ -6552,13 +7484,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Connection_Point_Reference;
+   end Create_UML_Connection_Point_Reference;
 
-   ----------------------
-   -- Create_Connector --
-   ----------------------
+   --------------------------
+   -- Create_UML_Connector --
+   --------------------------
 
-   function Create_Connector return AMF.Internals.UML_Element is
+   function Create_UML_Connector return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6566,7 +7498,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Connector,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connector,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Connectors.UML_Connector_Proxy'(Element => Self),
@@ -6661,13 +7593,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Connector;
+   end Create_UML_Connector;
 
-   --------------------------
-   -- Create_Connector_End --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Connector_End --
+   ------------------------------
 
-   function Create_Connector_End return AMF.Internals.UML_Element is
+   function Create_UML_Connector_End return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6675,7 +7607,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Connector_End,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connector_End,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Connector_Ends.UML_Connector_End_Proxy'(Element => Self),
@@ -6721,13 +7653,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Connector_End;
+   end Create_UML_Connector_End;
 
-   -------------------------------------
-   -- Create_Consider_Ignore_Fragment --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Consider_Ignore_Fragment --
+   -----------------------------------------
 
-   function Create_Consider_Ignore_Fragment return AMF.Internals.UML_Element is
+   function Create_UML_Consider_Ignore_Fragment return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6735,7 +7667,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Consider_Ignore_Fragment,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Proxy'(Element => Self),
@@ -6821,13 +7753,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Consider_Ignore_Fragment;
+   end Create_UML_Consider_Ignore_Fragment;
 
-   -----------------------
-   -- Create_Constraint --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Constraint --
+   ---------------------------
 
-   function Create_Constraint return AMF.Internals.UML_Element is
+   function Create_UML_Constraint return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6835,7 +7767,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Constraint,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Constraints.UML_Constraint_Proxy'(Element => Self),
@@ -6895,13 +7827,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Constraint;
+   end Create_UML_Constraint;
 
-   -------------------------
-   -- Create_Continuation --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Continuation --
+   -----------------------------
 
-   function Create_Continuation return AMF.Internals.UML_Element is
+   function Create_UML_Continuation return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6909,7 +7841,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Continuation,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Continuation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Continuations.UML_Continuation_Proxy'(Element => Self),
@@ -6974,13 +7906,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Continuation;
+   end Create_UML_Continuation;
 
-   -------------------------
-   -- Create_Control_Flow --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Control_Flow --
+   -----------------------------
 
-   function Create_Control_Flow return AMF.Internals.UML_Element is
+   function Create_UML_Control_Flow return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -6988,7 +7920,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Control_Flow,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Control_Flow,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Control_Flows.UML_Control_Flow_Proxy'(Element => Self),
@@ -7084,13 +8016,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Control_Flow;
+   end Create_UML_Control_Flow;
 
-   -------------------------------
-   -- Create_Create_Link_Action --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Create_Link_Action --
+   -----------------------------------
 
-   function Create_Create_Link_Action return AMF.Internals.UML_Element is
+   function Create_UML_Create_Link_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7098,7 +8030,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Link_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Create_Link_Actions.UML_Create_Link_Action_Proxy'(Element => Self),
@@ -7258,13 +8190,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Create_Link_Action;
+   end Create_UML_Create_Link_Action;
 
-   --------------------------------------
-   -- Create_Create_Link_Object_Action --
-   --------------------------------------
+   ------------------------------------------
+   -- Create_UML_Create_Link_Object_Action --
+   ------------------------------------------
 
-   function Create_Create_Link_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Create_Link_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7272,7 +8204,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Link_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Create_Link_Object_Actions.UML_Create_Link_Object_Action_Proxy'(Element => Self),
@@ -7434,13 +8366,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Create_Link_Object_Action;
+   end Create_UML_Create_Link_Object_Action;
 
-   ---------------------------------
-   -- Create_Create_Object_Action --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Create_Object_Action --
+   -------------------------------------
 
-   function Create_Create_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Create_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7448,7 +8380,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Create_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Create_Object_Actions.UML_Create_Object_Action_Proxy'(Element => Self),
@@ -7598,13 +8530,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Create_Object_Action;
+   end Create_UML_Create_Object_Action;
 
-   ----------------------------
-   -- Create_Data_Store_Node --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Data_Store_Node --
+   --------------------------------
 
-   function Create_Data_Store_Node return AMF.Internals.UML_Element is
+   function Create_UML_Data_Store_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7612,7 +8544,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Data_Store_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Data_Store_Nodes.UML_Data_Store_Node_Proxy'(Element => Self),
@@ -7736,13 +8668,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Data_Store_Node;
+   end Create_UML_Data_Store_Node;
 
-   ----------------------
-   -- Create_Data_Type --
-   ----------------------
+   --------------------------
+   -- Create_UML_Data_Type --
+   --------------------------
 
-   function Create_Data_Type return AMF.Internals.UML_Element is
+   function Create_UML_Data_Type return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7750,7 +8682,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Data_Type,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Data_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Data_Types.UML_Data_Type_Proxy'(Element => Self),
@@ -7965,13 +8897,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Data_Type;
+   end Create_UML_Data_Type;
 
-   --------------------------
-   -- Create_Decision_Node --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Decision_Node --
+   ------------------------------
 
-   function Create_Decision_Node return AMF.Internals.UML_Element is
+   function Create_UML_Decision_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -7979,7 +8911,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Decision_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Decision_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Decision_Nodes.UML_Decision_Node_Proxy'(Element => Self),
@@ -8090,13 +9022,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Decision_Node;
+   end Create_UML_Decision_Node;
 
-   -----------------------
-   -- Create_Dependency --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Dependency --
+   ---------------------------
 
-   function Create_Dependency return AMF.Internals.UML_Element is
+   function Create_UML_Dependency return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8104,7 +9036,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Dependency,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Dependency,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Dependencies.UML_Dependency_Proxy'(Element => Self),
@@ -8188,13 +9120,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Dependency;
+   end Create_UML_Dependency;
 
-   -----------------------
-   -- Create_Deployment --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Deployment --
+   ---------------------------
 
-   function Create_Deployment return AMF.Internals.UML_Element is
+   function Create_UML_Deployment return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8202,7 +9134,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Deployment,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Deployment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Deployments.UML_Deployment_Proxy'(Element => Self),
@@ -8302,13 +9234,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Deployment;
+   end Create_UML_Deployment;
 
-   -------------------------------------
-   -- Create_Deployment_Specification --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Deployment_Specification --
+   -----------------------------------------
 
-   function Create_Deployment_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Deployment_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8316,7 +9248,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Deployment_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Deployment_Specifications.UML_Deployment_Specification_Proxy'(Element => Self),
@@ -8553,13 +9485,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Deployment_Specification;
+   end Create_UML_Deployment_Specification;
 
-   --------------------------------
-   -- Create_Destroy_Link_Action --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Destroy_Link_Action --
+   ------------------------------------
 
-   function Create_Destroy_Link_Action return AMF.Internals.UML_Element is
+   function Create_UML_Destroy_Link_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8567,7 +9499,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Destroy_Link_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Destroy_Link_Actions.UML_Destroy_Link_Action_Proxy'(Element => Self),
@@ -8727,13 +9659,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Destroy_Link_Action;
+   end Create_UML_Destroy_Link_Action;
 
-   ----------------------------------
-   -- Create_Destroy_Object_Action --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Destroy_Object_Action --
+   --------------------------------------
 
-   function Create_Destroy_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Destroy_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8741,7 +9673,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Destroy_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Destroy_Object_Actions.UML_Destroy_Object_Action_Proxy'(Element => Self),
@@ -8893,13 +9825,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Destroy_Object_Action;
+   end Create_UML_Destroy_Object_Action;
 
-   -------------------------------------------------
-   -- Create_Destruction_Occurrence_Specification --
-   -------------------------------------------------
+   -----------------------------------------------------
+   -- Create_UML_Destruction_Occurrence_Specification --
+   -----------------------------------------------------
 
-   function Create_Destruction_Occurrence_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Destruction_Occurrence_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -8907,7 +9839,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Destruction_Occurrence_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Proxy'(Element => Self),
@@ -8986,13 +9918,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Destruction_Occurrence_Specification;
+   end Create_UML_Destruction_Occurrence_Specification;
 
-   -------------------
-   -- Create_Device --
-   -------------------
+   -----------------------
+   -- Create_UML_Device --
+   -----------------------
 
-   function Create_Device return AMF.Internals.UML_Element is
+   function Create_UML_Device return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9000,7 +9932,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Device,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Device,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Devices.UML_Device_Proxy'(Element => Self),
@@ -9303,13 +10235,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Device;
+   end Create_UML_Device;
 
-   ---------------------
-   -- Create_Duration --
-   ---------------------
+   -------------------------
+   -- Create_UML_Duration --
+   -------------------------
 
-   function Create_Duration return AMF.Internals.UML_Element is
+   function Create_UML_Duration return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9317,7 +10249,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Duration,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Durations.UML_Duration_Proxy'(Element => Self),
@@ -9377,13 +10309,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Duration;
+   end Create_UML_Duration;
 
-   --------------------------------
-   -- Create_Duration_Constraint --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Duration_Constraint --
+   ------------------------------------
 
-   function Create_Duration_Constraint return AMF.Internals.UML_Element is
+   function Create_UML_Duration_Constraint return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9391,7 +10323,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Constraint,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Duration_Constraints.UML_Duration_Constraint_Proxy'(Element => Self),
@@ -9453,13 +10385,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Duration_Constraint;
+   end Create_UML_Duration_Constraint;
 
-   ------------------------------
-   -- Create_Duration_Interval --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Duration_Interval --
+   ----------------------------------
 
-   function Create_Duration_Interval return AMF.Internals.UML_Element is
+   function Create_UML_Duration_Interval return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9467,7 +10399,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Interval,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Duration_Intervals.UML_Duration_Interval_Proxy'(Element => Self),
@@ -9522,13 +10454,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Duration_Interval;
+   end Create_UML_Duration_Interval;
 
-   ---------------------------------
-   -- Create_Duration_Observation --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Duration_Observation --
+   -------------------------------------
 
-   function Create_Duration_Observation return AMF.Internals.UML_Element is
+   function Create_UML_Duration_Observation return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9536,7 +10468,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Duration_Observation,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Duration_Observations.UML_Duration_Observation_Proxy'(Element => Self),
@@ -9594,13 +10526,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Duration_Observation;
+   end Create_UML_Duration_Observation;
 
-   ---------------------------
-   -- Create_Element_Import --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Element_Import --
+   -------------------------------
 
-   function Create_Element_Import return AMF.Internals.UML_Element is
+   function Create_UML_Element_Import return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9608,7 +10540,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Element_Import,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Element_Import,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Element_Imports.UML_Element_Import_Proxy'(Element => Self),
@@ -9665,13 +10597,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Element_Import;
+   end Create_UML_Element_Import;
 
-   ------------------------
-   -- Create_Enumeration --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Enumeration --
+   ----------------------------
 
-   function Create_Enumeration return AMF.Internals.UML_Element is
+   function Create_UML_Enumeration return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9679,7 +10611,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Enumeration,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Enumeration,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Enumerations.UML_Enumeration_Proxy'(Element => Self),
@@ -9901,13 +10833,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Enumeration;
+   end Create_UML_Enumeration;
 
-   --------------------------------
-   -- Create_Enumeration_Literal --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Enumeration_Literal --
+   ------------------------------------
 
-   function Create_Enumeration_Literal return AMF.Internals.UML_Element is
+   function Create_UML_Enumeration_Literal return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -9915,7 +10847,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Enumeration_Literal,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Enumeration_Literals.UML_Enumeration_Literal_Proxy'(Element => Self),
@@ -9996,13 +10928,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Enumeration_Literal;
+   end Create_UML_Enumeration_Literal;
 
-   ------------------------------
-   -- Create_Exception_Handler --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Exception_Handler --
+   ----------------------------------
 
-   function Create_Exception_Handler return AMF.Internals.UML_Element is
+   function Create_UML_Exception_Handler return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10010,7 +10942,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Exception_Handler,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Exception_Handlers.UML_Exception_Handler_Proxy'(Element => Self),
@@ -10051,13 +10983,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Exception_Handler;
+   end Create_UML_Exception_Handler;
 
-   ----------------------------------
-   -- Create_Execution_Environment --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Execution_Environment --
+   --------------------------------------
 
-   function Create_Execution_Environment return AMF.Internals.UML_Element is
+   function Create_UML_Execution_Environment return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10065,7 +10997,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Execution_Environment,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Execution_Environments.UML_Execution_Environment_Proxy'(Element => Self),
@@ -10368,13 +11300,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Execution_Environment;
+   end Create_UML_Execution_Environment;
 
-   -----------------------------------------------
-   -- Create_Execution_Occurrence_Specification --
-   -----------------------------------------------
+   ---------------------------------------------------
+   -- Create_UML_Execution_Occurrence_Specification --
+   ---------------------------------------------------
 
-   function Create_Execution_Occurrence_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Execution_Occurrence_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10382,7 +11314,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Execution_Occurrence_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Proxy'(Element => Self),
@@ -10461,13 +11393,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Execution_Occurrence_Specification;
+   end Create_UML_Execution_Occurrence_Specification;
 
-   ---------------------------
-   -- Create_Expansion_Node --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Expansion_Node --
+   -------------------------------
 
-   function Create_Expansion_Node return AMF.Internals.UML_Element is
+   function Create_UML_Expansion_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10475,7 +11407,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Expansion_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Expansion_Nodes.UML_Expansion_Node_Proxy'(Element => Self),
@@ -10603,13 +11535,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Expansion_Node;
+   end Create_UML_Expansion_Node;
 
-   -----------------------------
-   -- Create_Expansion_Region --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Expansion_Region --
+   ---------------------------------
 
-   function Create_Expansion_Region return AMF.Internals.UML_Element is
+   function Create_UML_Expansion_Region return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10617,7 +11549,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Expansion_Region,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Expansion_Regions.UML_Expansion_Region_Proxy'(Element => Self),
@@ -10883,13 +11815,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Expansion_Region;
+   end Create_UML_Expansion_Region;
 
-   -----------------------
-   -- Create_Expression --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Expression --
+   ---------------------------
 
-   function Create_Expression return AMF.Internals.UML_Element is
+   function Create_UML_Expression return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10897,7 +11829,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Expression,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Expressions.UML_Expression_Proxy'(Element => Self),
@@ -10957,13 +11889,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Expression;
+   end Create_UML_Expression;
 
-   -------------------
-   -- Create_Extend --
-   -------------------
+   -----------------------
+   -- Create_UML_Extend --
+   -----------------------
 
-   function Create_Extend return AMF.Internals.UML_Element is
+   function Create_UML_Extend return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -10971,7 +11903,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Extend,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extend,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Extends.UML_Extend_Proxy'(Element => Self),
@@ -11050,13 +11982,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Extend;
+   end Create_UML_Extend;
 
-   ----------------------
-   -- Create_Extension --
-   ----------------------
+   --------------------------
+   -- Create_UML_Extension --
+   --------------------------
 
-   function Create_Extension return AMF.Internals.UML_Element is
+   function Create_UML_Extension return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11064,7 +11996,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Extension,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Extensions.UML_Extension_Proxy'(Element => Self),
@@ -11306,13 +12238,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Extension;
+   end Create_UML_Extension;
 
-   --------------------------
-   -- Create_Extension_End --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Extension_End --
+   ------------------------------
 
-   function Create_Extension_End return AMF.Internals.UML_Element is
+   function Create_UML_Extension_End return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11320,7 +12252,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Extension_End,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension_End,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Extension_Ends.UML_Extension_End_Proxy'(Element => Self),
@@ -11480,13 +12412,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 10);
 
       return Self;
-   end Create_Extension_End;
+   end Create_UML_Extension_End;
 
-   ----------------------------
-   -- Create_Extension_Point --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Extension_Point --
+   --------------------------------
 
-   function Create_Extension_Point return AMF.Internals.UML_Element is
+   function Create_UML_Extension_Point return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11494,7 +12426,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Extension_Point,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension_Point,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Extension_Points.UML_Extension_Point_Proxy'(Element => Self),
@@ -11557,13 +12489,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Extension_Point;
+   end Create_UML_Extension_Point;
 
-   ------------------------
-   -- Create_Final_State --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Final_State --
+   ----------------------------
 
-   function Create_Final_State return AMF.Internals.UML_Element is
+   function Create_UML_Final_State return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11571,7 +12503,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Final_State,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Final_State,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Final_States.UML_Final_State_Proxy'(Element => Self),
@@ -11738,13 +12670,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 29);
 
       return Self;
-   end Create_Final_State;
+   end Create_UML_Final_State;
 
-   ----------------------------
-   -- Create_Flow_Final_Node --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Flow_Final_Node --
+   --------------------------------
 
-   function Create_Flow_Final_Node return AMF.Internals.UML_Element is
+   function Create_UML_Flow_Final_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11752,7 +12684,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Flow_Final_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Flow_Final_Nodes.UML_Flow_Final_Node_Proxy'(Element => Self),
@@ -11859,13 +12791,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Flow_Final_Node;
+   end Create_UML_Flow_Final_Node;
 
-   ----------------------
-   -- Create_Fork_Node --
-   ----------------------
+   --------------------------
+   -- Create_UML_Fork_Node --
+   --------------------------
 
-   function Create_Fork_Node return AMF.Internals.UML_Element is
+   function Create_UML_Fork_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11873,7 +12805,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Fork_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Fork_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Fork_Nodes.UML_Fork_Node_Proxy'(Element => Self),
@@ -11980,13 +12912,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Fork_Node;
+   end Create_UML_Fork_Node;
 
-   ------------------------------
-   -- Create_Function_Behavior --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Function_Behavior --
+   ----------------------------------
 
-   function Create_Function_Behavior return AMF.Internals.UML_Element is
+   function Create_UML_Function_Behavior return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -11994,7 +12926,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Function_Behavior,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Function_Behaviors.UML_Function_Behavior_Proxy'(Element => Self),
@@ -12321,13 +13253,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Function_Behavior;
+   end Create_UML_Function_Behavior;
 
-   -----------------
-   -- Create_Gate --
-   -----------------
+   ---------------------
+   -- Create_UML_Gate --
+   ---------------------
 
-   function Create_Gate return AMF.Internals.UML_Element is
+   function Create_UML_Gate return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12335,7 +13267,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Gate,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Gate,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Gates.UML_Gate_Proxy'(Element => Self),
@@ -12382,13 +13314,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Gate;
+   end Create_UML_Gate;
 
-   -----------------------------
-   -- Create_General_Ordering --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_General_Ordering --
+   ---------------------------------
 
-   function Create_General_Ordering return AMF.Internals.UML_Element is
+   function Create_UML_General_Ordering return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12396,7 +13328,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_General_Ordering,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_General_Ordering,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_General_Orderings.UML_General_Ordering_Proxy'(Element => Self),
@@ -12445,13 +13377,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_General_Ordering;
+   end Create_UML_General_Ordering;
 
-   ---------------------------
-   -- Create_Generalization --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Generalization --
+   -------------------------------
 
-   function Create_Generalization return AMF.Internals.UML_Element is
+   function Create_UML_Generalization return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12459,7 +13391,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Generalization,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Generalization,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Generalizations.UML_Generalization_Proxy'(Element => Self),
@@ -12521,13 +13453,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Generalization;
+   end Create_UML_Generalization;
 
-   -------------------------------
-   -- Create_Generalization_Set --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Generalization_Set --
+   -----------------------------------
 
-   function Create_Generalization_Set return AMF.Internals.UML_Element is
+   function Create_UML_Generalization_Set return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12535,7 +13467,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Generalization_Set,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Generalization_Sets.UML_Generalization_Set_Proxy'(Element => Self),
@@ -12597,13 +13529,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Generalization_Set;
+   end Create_UML_Generalization_Set;
 
-   ------------------
-   -- Create_Image --
-   ------------------
+   ----------------------
+   -- Create_UML_Image --
+   ----------------------
 
-   function Create_Image return AMF.Internals.UML_Element is
+   function Create_UML_Image return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12611,7 +13543,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Image,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Image,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Images.UML_Image_Proxy'(Element => Self),
@@ -12645,13 +13577,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Image;
+   end Create_UML_Image;
 
-   --------------------
-   -- Create_Include --
-   --------------------
+   ------------------------
+   -- Create_UML_Include --
+   ------------------------
 
-   function Create_Include return AMF.Internals.UML_Element is
+   function Create_UML_Include return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12659,7 +13591,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Include,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Include,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Includes.UML_Include_Proxy'(Element => Self),
@@ -12729,13 +13661,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Include;
+   end Create_UML_Include;
 
-   -----------------------------
-   -- Create_Information_Flow --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Information_Flow --
+   ---------------------------------
 
-   function Create_Information_Flow return AMF.Internals.UML_Element is
+   function Create_UML_Information_Flow return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12743,7 +13675,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Information_Flow,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Information_Flow,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Information_Flows.UML_Information_Flow_Proxy'(Element => Self),
@@ -12862,13 +13794,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Information_Flow;
+   end Create_UML_Information_Flow;
 
-   -----------------------------
-   -- Create_Information_Item --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Information_Item --
+   ---------------------------------
 
-   function Create_Information_Item return AMF.Internals.UML_Element is
+   function Create_UML_Information_Item return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -12876,7 +13808,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Information_Item,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Information_Item,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Information_Items.UML_Information_Item_Proxy'(Element => Self),
@@ -13084,13 +14016,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Information_Item;
+   end Create_UML_Information_Item;
 
-   -------------------------
-   -- Create_Initial_Node --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Initial_Node --
+   -----------------------------
 
-   function Create_Initial_Node return AMF.Internals.UML_Element is
+   function Create_UML_Initial_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13098,7 +14030,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Initial_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Initial_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Initial_Nodes.UML_Initial_Node_Proxy'(Element => Self),
@@ -13205,13 +14137,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Initial_Node;
+   end Create_UML_Initial_Node;
 
-   ----------------------
-   -- Create_Input_Pin --
-   ----------------------
+   --------------------------
+   -- Create_UML_Input_Pin --
+   --------------------------
 
-   function Create_Input_Pin return AMF.Internals.UML_Element is
+   function Create_UML_Input_Pin return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13219,7 +14151,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Input_Pin,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Input_Pin,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Input_Pins.UML_Input_Pin_Proxy'(Element => Self),
@@ -13357,13 +14289,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Input_Pin;
+   end Create_UML_Input_Pin;
 
-   -----------------------------------
-   -- Create_Instance_Specification --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_UML_Instance_Specification --
+   ---------------------------------------
 
-   function Create_Instance_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Instance_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13371,7 +14303,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Instance_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Instance_Specifications.UML_Instance_Specification_Proxy'(Element => Self),
@@ -13450,13 +14382,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Instance_Specification;
+   end Create_UML_Instance_Specification;
 
-   ---------------------------
-   -- Create_Instance_Value --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Instance_Value --
+   -------------------------------
 
-   function Create_Instance_Value return AMF.Internals.UML_Element is
+   function Create_UML_Instance_Value return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13464,7 +14396,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Instance_Value,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Instance_Value,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Instance_Values.UML_Instance_Value_Proxy'(Element => Self),
@@ -13517,13 +14449,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Instance_Value;
+   end Create_UML_Instance_Value;
 
-   ------------------------
-   -- Create_Interaction --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Interaction --
+   ----------------------------
 
-   function Create_Interaction return AMF.Internals.UML_Element is
+   function Create_UML_Interaction return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13531,7 +14463,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interactions.UML_Interaction_Proxy'(Element => Self),
@@ -13907,13 +14839,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Interaction;
+   end Create_UML_Interaction;
 
-   -----------------------------------
-   -- Create_Interaction_Constraint --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_UML_Interaction_Constraint --
+   ---------------------------------------
 
-   function Create_Interaction_Constraint return AMF.Internals.UML_Element is
+   function Create_UML_Interaction_Constraint return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13921,7 +14853,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Constraint,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interaction_Constraints.UML_Interaction_Constraint_Proxy'(Element => Self),
@@ -13985,13 +14917,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Interaction_Constraint;
+   end Create_UML_Interaction_Constraint;
 
-   --------------------------------
-   -- Create_Interaction_Operand --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Interaction_Operand --
+   ------------------------------------
 
-   function Create_Interaction_Operand return AMF.Internals.UML_Element is
+   function Create_UML_Interaction_Operand return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -13999,7 +14931,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Operand,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interaction_Operands.UML_Interaction_Operand_Proxy'(Element => Self),
@@ -14113,13 +15045,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 17);
 
       return Self;
-   end Create_Interaction_Operand;
+   end Create_UML_Interaction_Operand;
 
-   ----------------------------
-   -- Create_Interaction_Use --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Interaction_Use --
+   --------------------------------
 
-   function Create_Interaction_Use return AMF.Internals.UML_Element is
+   function Create_UML_Interaction_Use return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14127,7 +15059,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interaction_Use,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interaction_Uses.UML_Interaction_Use_Proxy'(Element => Self),
@@ -14210,13 +15142,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Interaction_Use;
+   end Create_UML_Interaction_Use;
 
-   ----------------------
-   -- Create_Interface --
-   ----------------------
+   --------------------------
+   -- Create_UML_Interface --
+   --------------------------
 
-   function Create_Interface return AMF.Internals.UML_Element is
+   function Create_UML_Interface return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14224,7 +15156,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interface,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interface,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interfaces.UML_Interface_Proxy'(Element => Self),
@@ -14462,13 +15394,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Interface;
+   end Create_UML_Interface;
 
-   ----------------------------------
-   -- Create_Interface_Realization --
-   ----------------------------------
+   --------------------------------------
+   -- Create_UML_Interface_Realization --
+   --------------------------------------
 
-   function Create_Interface_Realization return AMF.Internals.UML_Element is
+   function Create_UML_Interface_Realization return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14476,7 +15408,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interface_Realization,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interface_Realizations.UML_Interface_Realization_Proxy'(Element => Self),
@@ -14566,13 +15498,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Interface_Realization;
+   end Create_UML_Interface_Realization;
 
-   ------------------------------------------
-   -- Create_Interruptible_Activity_Region --
-   ------------------------------------------
+   ----------------------------------------------
+   -- Create_UML_Interruptible_Activity_Region --
+   ----------------------------------------------
 
-   function Create_Interruptible_Activity_Region return AMF.Internals.UML_Element is
+   function Create_UML_Interruptible_Activity_Region return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14580,7 +15512,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interruptible_Activity_Region,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Proxy'(Element => Self),
@@ -14664,13 +15596,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 27);
 
       return Self;
-   end Create_Interruptible_Activity_Region;
+   end Create_UML_Interruptible_Activity_Region;
 
-   ---------------------
-   -- Create_Interval --
-   ---------------------
+   -------------------------
+   -- Create_UML_Interval --
+   -------------------------
 
-   function Create_Interval return AMF.Internals.UML_Element is
+   function Create_UML_Interval return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14678,7 +15610,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interval,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interval,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Intervals.UML_Interval_Proxy'(Element => Self),
@@ -14733,13 +15665,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Interval;
+   end Create_UML_Interval;
 
-   --------------------------------
-   -- Create_Interval_Constraint --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Interval_Constraint --
+   ------------------------------------
 
-   function Create_Interval_Constraint return AMF.Internals.UML_Element is
+   function Create_UML_Interval_Constraint return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14747,7 +15679,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Interval_Constraint,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Interval_Constraints.UML_Interval_Constraint_Proxy'(Element => Self),
@@ -14807,13 +15739,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Interval_Constraint;
+   end Create_UML_Interval_Constraint;
 
-   ----------------------
-   -- Create_Join_Node --
-   ----------------------
+   --------------------------
+   -- Create_UML_Join_Node --
+   --------------------------
 
-   function Create_Join_Node return AMF.Internals.UML_Element is
+   function Create_UML_Join_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14821,7 +15753,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Join_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Join_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Join_Nodes.UML_Join_Node_Proxy'(Element => Self),
@@ -14932,13 +15864,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Join_Node;
+   end Create_UML_Join_Node;
 
-   ---------------------
-   -- Create_Lifeline --
-   ---------------------
+   -------------------------
+   -- Create_UML_Lifeline --
+   -------------------------
 
-   function Create_Lifeline return AMF.Internals.UML_Element is
+   function Create_UML_Lifeline return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -14946,7 +15878,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Lifeline,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Lifeline,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Lifelines.UML_Lifeline_Proxy'(Element => Self),
@@ -15006,13 +15938,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Lifeline;
+   end Create_UML_Lifeline;
 
-   -----------------------------------
-   -- Create_Link_End_Creation_Data --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_UML_Link_End_Creation_Data --
+   ---------------------------------------
 
-   function Create_Link_End_Creation_Data return AMF.Internals.UML_Element is
+   function Create_UML_Link_End_Creation_Data return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15020,7 +15952,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Creation_Data,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Link_End_Creation_Datas.UML_Link_End_Creation_Data_Proxy'(Element => Self),
@@ -15063,13 +15995,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
-   end Create_Link_End_Creation_Data;
+   end Create_UML_Link_End_Creation_Data;
 
-   --------------------------
-   -- Create_Link_End_Data --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Link_End_Data --
+   ------------------------------
 
-   function Create_Link_End_Data return AMF.Internals.UML_Element is
+   function Create_UML_Link_End_Data return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15077,7 +16009,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Data,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Link_End_Datas.UML_Link_End_Data_Proxy'(Element => Self),
@@ -15116,13 +16048,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
-   end Create_Link_End_Data;
+   end Create_UML_Link_End_Data;
 
-   --------------------------------------
-   -- Create_Link_End_Destruction_Data --
-   --------------------------------------
+   ------------------------------------------
+   -- Create_UML_Link_End_Destruction_Data --
+   ------------------------------------------
 
-   function Create_Link_End_Destruction_Data return AMF.Internals.UML_Element is
+   function Create_UML_Link_End_Destruction_Data return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15130,7 +16062,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Link_End_Destruction_Data,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Proxy'(Element => Self),
@@ -15173,13 +16105,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 8);
 
       return Self;
-   end Create_Link_End_Destruction_Data;
+   end Create_UML_Link_End_Destruction_Data;
 
-   ----------------------------
-   -- Create_Literal_Boolean --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Literal_Boolean --
+   --------------------------------
 
-   function Create_Literal_Boolean return AMF.Internals.UML_Element is
+   function Create_UML_Literal_Boolean return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15187,7 +16119,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Boolean,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Booleans.UML_Literal_Boolean_Proxy'(Element => Self),
@@ -15240,13 +16172,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_Boolean;
+   end Create_UML_Literal_Boolean;
 
-   ----------------------------
-   -- Create_Literal_Integer --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Literal_Integer --
+   --------------------------------
 
-   function Create_Literal_Integer return AMF.Internals.UML_Element is
+   function Create_UML_Literal_Integer return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15254,7 +16186,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Integer,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Integers.UML_Literal_Integer_Proxy'(Element => Self),
@@ -15307,13 +16239,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_Integer;
+   end Create_UML_Literal_Integer;
 
-   -------------------------
-   -- Create_Literal_Null --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Literal_Null --
+   -----------------------------
 
-   function Create_Literal_Null return AMF.Internals.UML_Element is
+   function Create_UML_Literal_Null return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15321,7 +16253,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Null,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Null,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Nulls.UML_Literal_Null_Proxy'(Element => Self),
@@ -15372,13 +16304,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_Null;
+   end Create_UML_Literal_Null;
 
-   -------------------------
-   -- Create_Literal_Real --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Literal_Real --
+   -----------------------------
 
-   function Create_Literal_Real return AMF.Internals.UML_Element is
+   function Create_UML_Literal_Real return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15386,7 +16318,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Real,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Real,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Reals.UML_Literal_Real_Proxy'(Element => Self),
@@ -15439,13 +16371,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_Real;
+   end Create_UML_Literal_Real;
 
-   ---------------------------
-   -- Create_Literal_String --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Literal_String --
+   -------------------------------
 
-   function Create_Literal_String return AMF.Internals.UML_Element is
+   function Create_UML_Literal_String return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15453,7 +16385,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_String,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_String,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Strings.UML_Literal_String_Proxy'(Element => Self),
@@ -15506,13 +16438,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_String;
+   end Create_UML_Literal_String;
 
-   --------------------------------------
-   -- Create_Literal_Unlimited_Natural --
-   --------------------------------------
+   ------------------------------------------
+   -- Create_UML_Literal_Unlimited_Natural --
+   ------------------------------------------
 
-   function Create_Literal_Unlimited_Natural return AMF.Internals.UML_Element is
+   function Create_UML_Literal_Unlimited_Natural return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15520,7 +16452,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Literal_Unlimited_Natural,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Proxy'(Element => Self),
@@ -15573,13 +16505,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Literal_Unlimited_Natural;
+   end Create_UML_Literal_Unlimited_Natural;
 
-   ----------------------
-   -- Create_Loop_Node --
-   ----------------------
+   --------------------------
+   -- Create_UML_Loop_Node --
+   --------------------------
 
-   function Create_Loop_Node return AMF.Internals.UML_Element is
+   function Create_UML_Loop_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15587,7 +16519,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Loop_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Loop_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Loop_Nodes.UML_Loop_Node_Proxy'(Element => Self),
@@ -15876,13 +16808,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Loop_Node;
+   end Create_UML_Loop_Node;
 
-   --------------------------
-   -- Create_Manifestation --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Manifestation --
+   ------------------------------
 
-   function Create_Manifestation return AMF.Internals.UML_Element is
+   function Create_UML_Manifestation return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15890,7 +16822,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Manifestation,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Manifestation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Manifestations.UML_Manifestation_Proxy'(Element => Self),
@@ -15978,13 +16910,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Manifestation;
+   end Create_UML_Manifestation;
 
-   -----------------------
-   -- Create_Merge_Node --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Merge_Node --
+   ---------------------------
 
-   function Create_Merge_Node return AMF.Internals.UML_Element is
+   function Create_UML_Merge_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -15992,7 +16924,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Merge_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Merge_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Merge_Nodes.UML_Merge_Node_Proxy'(Element => Self),
@@ -16099,13 +17031,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Merge_Node;
+   end Create_UML_Merge_Node;
 
-   --------------------
-   -- Create_Message --
-   --------------------
+   ------------------------
+   -- Create_UML_Message --
+   ------------------------
 
-   function Create_Message return AMF.Internals.UML_Element is
+   function Create_UML_Message return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16113,7 +17045,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Message,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Message,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Messages.UML_Message_Proxy'(Element => Self),
@@ -16179,13 +17111,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Message;
+   end Create_UML_Message;
 
-   ---------------------------------------------
-   -- Create_Message_Occurrence_Specification --
-   ---------------------------------------------
+   -------------------------------------------------
+   -- Create_UML_Message_Occurrence_Specification --
+   -------------------------------------------------
 
-   function Create_Message_Occurrence_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Message_Occurrence_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16193,7 +17125,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Message_Occurrence_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Proxy'(Element => Self),
@@ -16272,13 +17204,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Message_Occurrence_Specification;
+   end Create_UML_Message_Occurrence_Specification;
 
-   ------------------
-   -- Create_Model --
-   ------------------
+   ----------------------
+   -- Create_UML_Model --
+   ----------------------
 
-   function Create_Model return AMF.Internals.UML_Element is
+   function Create_UML_Model return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16286,7 +17218,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Model,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Model,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Models.UML_Model_Proxy'(Element => Self),
@@ -16434,13 +17366,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Model;
+   end Create_UML_Model;
 
-   -----------------
-   -- Create_Node --
-   -----------------
+   ---------------------
+   -- Create_UML_Node --
+   ---------------------
 
-   function Create_Node return AMF.Internals.UML_Element is
+   function Create_UML_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16448,7 +17380,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Nodes.UML_Node_Proxy'(Element => Self),
@@ -16751,13 +17683,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Node;
+   end Create_UML_Node;
 
-   ------------------------
-   -- Create_Object_Flow --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Object_Flow --
+   ----------------------------
 
-   function Create_Object_Flow return AMF.Internals.UML_Element is
+   function Create_UML_Object_Flow return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16765,7 +17697,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Object_Flow,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Object_Flow,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Object_Flows.UML_Object_Flow_Proxy'(Element => Self),
@@ -16869,13 +17801,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Object_Flow;
+   end Create_UML_Object_Flow;
 
-   -------------------------------------
-   -- Create_Occurrence_Specification --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Occurrence_Specification --
+   -----------------------------------------
 
-   function Create_Occurrence_Specification return AMF.Internals.UML_Element is
+   function Create_UML_Occurrence_Specification return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16883,7 +17815,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Occurrence_Specification,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Occurrence_Specifications.UML_Occurrence_Specification_Proxy'(Element => Self),
@@ -16960,13 +17892,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Occurrence_Specification;
+   end Create_UML_Occurrence_Specification;
 
-   --------------------------
-   -- Create_Opaque_Action --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Opaque_Action --
+   ------------------------------
 
-   function Create_Opaque_Action return AMF.Internals.UML_Element is
+   function Create_UML_Opaque_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -16974,7 +17906,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Opaque_Actions.UML_Opaque_Action_Proxy'(Element => Self),
@@ -17138,13 +18070,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Opaque_Action;
+   end Create_UML_Opaque_Action;
 
-   ----------------------------
-   -- Create_Opaque_Behavior --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Opaque_Behavior --
+   --------------------------------
 
-   function Create_Opaque_Behavior return AMF.Internals.UML_Element is
+   function Create_UML_Opaque_Behavior return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17152,7 +18084,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Behavior,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Opaque_Behaviors.UML_Opaque_Behavior_Proxy'(Element => Self),
@@ -17479,13 +18411,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Opaque_Behavior;
+   end Create_UML_Opaque_Behavior;
 
-   ------------------------------
-   -- Create_Opaque_Expression --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Opaque_Expression --
+   ----------------------------------
 
-   function Create_Opaque_Expression return AMF.Internals.UML_Element is
+   function Create_UML_Opaque_Expression return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17493,7 +18425,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Opaque_Expression,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Opaque_Expressions.UML_Opaque_Expression_Proxy'(Element => Self),
@@ -17552,13 +18484,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Opaque_Expression;
+   end Create_UML_Opaque_Expression;
 
-   ----------------------
-   -- Create_Operation --
-   ----------------------
+   --------------------------
+   -- Create_UML_Operation --
+   --------------------------
 
-   function Create_Operation return AMF.Internals.UML_Element is
+   function Create_UML_Operation return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17566,7 +18498,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Operation,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Operation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Operations.UML_Operation_Proxy'(Element => Self),
@@ -17764,13 +18696,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Operation;
+   end Create_UML_Operation;
 
-   -----------------------------------------
-   -- Create_Operation_Template_Parameter --
-   -----------------------------------------
+   ---------------------------------------------
+   -- Create_UML_Operation_Template_Parameter --
+   ---------------------------------------------
 
-   function Create_Operation_Template_Parameter return AMF.Internals.UML_Element is
+   function Create_UML_Operation_Template_Parameter return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17778,7 +18710,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Operation_Template_Parameter,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Operation_Template_Parameters.UML_Operation_Template_Parameter_Proxy'(Element => Self),
@@ -17816,13 +18748,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Operation_Template_Parameter;
+   end Create_UML_Operation_Template_Parameter;
 
-   -----------------------
-   -- Create_Output_Pin --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Output_Pin --
+   ---------------------------
 
-   function Create_Output_Pin return AMF.Internals.UML_Element is
+   function Create_UML_Output_Pin return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17830,7 +18762,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Output_Pin,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Output_Pin,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Output_Pins.UML_Output_Pin_Proxy'(Element => Self),
@@ -17968,13 +18900,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Output_Pin;
+   end Create_UML_Output_Pin;
 
-   --------------------
-   -- Create_Package --
-   --------------------
+   ------------------------
+   -- Create_UML_Package --
+   ------------------------
 
-   function Create_Package return AMF.Internals.UML_Element is
+   function Create_UML_Package return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -17982,7 +18914,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Package,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Packages.UML_Package_Proxy'(Element => Self),
@@ -18128,13 +19060,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Package;
+   end Create_UML_Package;
 
-   ---------------------------
-   -- Create_Package_Import --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Package_Import --
+   -------------------------------
 
-   function Create_Package_Import return AMF.Internals.UML_Element is
+   function Create_UML_Package_Import return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18142,7 +19074,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Package_Import,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package_Import,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Package_Imports.UML_Package_Import_Proxy'(Element => Self),
@@ -18197,13 +19129,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Package_Import;
+   end Create_UML_Package_Import;
 
-   --------------------------
-   -- Create_Package_Merge --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Package_Merge --
+   ------------------------------
 
-   function Create_Package_Merge return AMF.Internals.UML_Element is
+   function Create_UML_Package_Merge return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18211,7 +19143,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Package_Merge,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package_Merge,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Package_Merges.UML_Package_Merge_Proxy'(Element => Self),
@@ -18264,13 +19196,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Package_Merge;
+   end Create_UML_Package_Merge;
 
-   ----------------------
-   -- Create_Parameter --
-   ----------------------
+   --------------------------
+   -- Create_UML_Parameter --
+   --------------------------
 
-   function Create_Parameter return AMF.Internals.UML_Element is
+   function Create_UML_Parameter return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18278,7 +19210,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Parameter,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Parameters.UML_Parameter_Proxy'(Element => Self),
@@ -18369,13 +19301,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Parameter;
+   end Create_UML_Parameter;
 
-   --------------------------
-   -- Create_Parameter_Set --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Parameter_Set --
+   ------------------------------
 
-   function Create_Parameter_Set return AMF.Internals.UML_Element is
+   function Create_UML_Parameter_Set return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18383,7 +19315,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Parameter_Set,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Parameter_Sets.UML_Parameter_Set_Proxy'(Element => Self),
@@ -18442,13 +19374,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Parameter_Set;
+   end Create_UML_Parameter_Set;
 
-   -------------------------------
-   -- Create_Part_Decomposition --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Part_Decomposition --
+   -----------------------------------
 
-   function Create_Part_Decomposition return AMF.Internals.UML_Element is
+   function Create_UML_Part_Decomposition return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18456,7 +19388,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Part_Decomposition,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Part_Decompositions.UML_Part_Decomposition_Proxy'(Element => Self),
@@ -18539,13 +19471,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Part_Decomposition;
+   end Create_UML_Part_Decomposition;
 
-   -----------------
-   -- Create_Port --
-   -----------------
+   ---------------------
+   -- Create_UML_Port --
+   ---------------------
 
-   function Create_Port return AMF.Internals.UML_Element is
+   function Create_UML_Port return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18553,7 +19485,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Port,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Port,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Ports.UML_Port_Proxy'(Element => Self),
@@ -18742,13 +19674,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 10);
 
       return Self;
-   end Create_Port;
+   end Create_UML_Port;
 
-   ---------------------------
-   -- Create_Primitive_Type --
-   ---------------------------
+   -------------------------------
+   -- Create_UML_Primitive_Type --
+   -------------------------------
 
-   function Create_Primitive_Type return AMF.Internals.UML_Element is
+   function Create_UML_Primitive_Type return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18756,7 +19688,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Primitive_Type,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Primitive_Types.UML_Primitive_Type_Proxy'(Element => Self),
@@ -18971,13 +19903,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Primitive_Type;
+   end Create_UML_Primitive_Type;
 
-   --------------------
-   -- Create_Profile --
-   --------------------
+   ------------------------
+   -- Create_UML_Profile --
+   ------------------------
 
-   function Create_Profile return AMF.Internals.UML_Element is
+   function Create_UML_Profile return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -18985,7 +19917,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Profile,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Profile,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Profiles.UML_Profile_Proxy'(Element => Self),
@@ -19145,13 +20077,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Profile;
+   end Create_UML_Profile;
 
-   --------------------------------
-   -- Create_Profile_Application --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Profile_Application --
+   ------------------------------------
 
-   function Create_Profile_Application return AMF.Internals.UML_Element is
+   function Create_UML_Profile_Application return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19159,7 +20091,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Profile_Application,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Profile_Application,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Profile_Applications.UML_Profile_Application_Proxy'(Element => Self),
@@ -19214,13 +20146,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Profile_Application;
+   end Create_UML_Profile_Application;
 
-   ---------------------
-   -- Create_Property --
-   ---------------------
+   -------------------------
+   -- Create_UML_Property --
+   -------------------------
 
-   function Create_Property return AMF.Internals.UML_Element is
+   function Create_UML_Property return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19228,7 +20160,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Property,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Property,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Properties.UML_Property_Proxy'(Element => Self),
@@ -19388,13 +20320,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 10);
 
       return Self;
-   end Create_Property;
+   end Create_UML_Property;
 
-   ---------------------------------
-   -- Create_Protocol_Conformance --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Protocol_Conformance --
+   -------------------------------------
 
-   function Create_Protocol_Conformance return AMF.Internals.UML_Element is
+   function Create_UML_Protocol_Conformance return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19402,7 +20334,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_Conformance,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Protocol_Conformances.UML_Protocol_Conformance_Proxy'(Element => Self),
@@ -19455,13 +20387,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Protocol_Conformance;
+   end Create_UML_Protocol_Conformance;
 
-   -----------------------------------
-   -- Create_Protocol_State_Machine --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_UML_Protocol_State_Machine --
+   ---------------------------------------
 
-   function Create_Protocol_State_Machine return AMF.Internals.UML_Element is
+   function Create_UML_Protocol_State_Machine return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19469,7 +20401,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_State_Machine,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Protocol_State_Machines.UML_Protocol_State_Machine_Proxy'(Element => Self),
@@ -19820,13 +20752,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Protocol_State_Machine;
+   end Create_UML_Protocol_State_Machine;
 
-   --------------------------------
-   -- Create_Protocol_Transition --
-   --------------------------------
+   ------------------------------------
+   -- Create_UML_Protocol_Transition --
+   ------------------------------------
 
-   function Create_Protocol_Transition return AMF.Internals.UML_Element is
+   function Create_UML_Protocol_Transition return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19834,7 +20766,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Protocol_Transition,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Protocol_Transitions.UML_Protocol_Transition_Proxy'(Element => Self),
@@ -19969,13 +20901,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       return Self;
-   end Create_Protocol_Transition;
+   end Create_UML_Protocol_Transition;
 
-   ------------------------
-   -- Create_Pseudostate --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Pseudostate --
+   ----------------------------
 
-   function Create_Pseudostate return AMF.Internals.UML_Element is
+   function Create_UML_Pseudostate return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -19983,7 +20915,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Pseudostate,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Pseudostate,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Pseudostates.UML_Pseudostate_Proxy'(Element => Self),
@@ -20050,13 +20982,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Pseudostate;
+   end Create_UML_Pseudostate;
 
-   ----------------------------
-   -- Create_Qualifier_Value --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Qualifier_Value --
+   --------------------------------
 
-   function Create_Qualifier_Value return AMF.Internals.UML_Element is
+   function Create_UML_Qualifier_Value return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20064,7 +20996,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Qualifier_Value,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Qualifier_Values.UML_Qualifier_Value_Proxy'(Element => Self),
@@ -20096,13 +21028,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Qualifier_Value;
+   end Create_UML_Qualifier_Value;
 
-   -----------------------------------
-   -- Create_Raise_Exception_Action --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_UML_Raise_Exception_Action --
+   ---------------------------------------
 
-   function Create_Raise_Exception_Action return AMF.Internals.UML_Element is
+   function Create_UML_Raise_Exception_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20110,7 +21042,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Raise_Exception_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Raise_Exception_Actions.UML_Raise_Exception_Action_Proxy'(Element => Self),
@@ -20258,13 +21190,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Raise_Exception_Action;
+   end Create_UML_Raise_Exception_Action;
 
-   -------------------------------
-   -- Create_Read_Extent_Action --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Read_Extent_Action --
+   -----------------------------------
 
-   function Create_Read_Extent_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Extent_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20272,7 +21204,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Extent_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Extent_Actions.UML_Read_Extent_Action_Proxy'(Element => Self),
@@ -20422,13 +21354,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Extent_Action;
+   end Create_UML_Read_Extent_Action;
 
-   ---------------------------------------------
-   -- Create_Read_Is_Classified_Object_Action --
-   ---------------------------------------------
+   -------------------------------------------------
+   -- Create_UML_Read_Is_Classified_Object_Action --
+   -------------------------------------------------
 
-   function Create_Read_Is_Classified_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Is_Classified_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20436,7 +21368,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Is_Classified_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Proxy'(Element => Self),
@@ -20590,13 +21522,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Is_Classified_Object_Action;
+   end Create_UML_Read_Is_Classified_Object_Action;
 
-   -----------------------------
-   -- Create_Read_Link_Action --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Read_Link_Action --
+   ---------------------------------
 
-   function Create_Read_Link_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Link_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20604,7 +21536,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Actions.UML_Read_Link_Action_Proxy'(Element => Self),
@@ -20766,13 +21698,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Link_Action;
+   end Create_UML_Read_Link_Action;
 
-   ----------------------------------------
-   -- Create_Read_Link_Object_End_Action --
-   ----------------------------------------
+   --------------------------------------------
+   -- Create_UML_Read_Link_Object_End_Action --
+   --------------------------------------------
 
-   function Create_Read_Link_Object_End_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Link_Object_End_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20780,7 +21712,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Proxy'(Element => Self),
@@ -20932,13 +21864,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Link_Object_End_Action;
+   end Create_UML_Read_Link_Object_End_Action;
 
-   --------------------------------------------------
-   -- Create_Read_Link_Object_End_Qualifier_Action --
-   --------------------------------------------------
+   ------------------------------------------------------
+   -- Create_UML_Read_Link_Object_End_Qualifier_Action --
+   ------------------------------------------------------
 
-   function Create_Read_Link_Object_End_Qualifier_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Link_Object_End_Qualifier_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -20946,7 +21878,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Qualifier_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Proxy'(Element => Self),
@@ -21098,13 +22030,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Link_Object_End_Qualifier_Action;
+   end Create_UML_Read_Link_Object_End_Qualifier_Action;
 
-   -----------------------------
-   -- Create_Read_Self_Action --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Read_Self_Action --
+   ---------------------------------
 
-   function Create_Read_Self_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Self_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21112,7 +22044,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Self_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Self_Actions.UML_Read_Self_Action_Proxy'(Element => Self),
@@ -21260,13 +22192,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Self_Action;
+   end Create_UML_Read_Self_Action;
 
-   -------------------------------------------
-   -- Create_Read_Structural_Feature_Action --
-   -------------------------------------------
+   -----------------------------------------------
+   -- Create_UML_Read_Structural_Feature_Action --
+   -----------------------------------------------
 
-   function Create_Read_Structural_Feature_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Structural_Feature_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21274,7 +22206,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Structural_Feature_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Proxy'(Element => Self),
@@ -21426,13 +22358,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Structural_Feature_Action;
+   end Create_UML_Read_Structural_Feature_Action;
 
-   ---------------------------------
-   -- Create_Read_Variable_Action --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Read_Variable_Action --
+   -------------------------------------
 
-   function Create_Read_Variable_Action return AMF.Internals.UML_Element is
+   function Create_UML_Read_Variable_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21440,7 +22372,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Read_Variable_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Read_Variable_Actions.UML_Read_Variable_Action_Proxy'(Element => Self),
@@ -21590,13 +22522,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Read_Variable_Action;
+   end Create_UML_Read_Variable_Action;
 
-   ------------------------
-   -- Create_Realization --
-   ------------------------
+   ----------------------------
+   -- Create_UML_Realization --
+   ----------------------------
 
-   function Create_Realization return AMF.Internals.UML_Element is
+   function Create_UML_Realization return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21604,7 +22536,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Realization,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Realization,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Realizations.UML_Realization_Proxy'(Element => Self),
@@ -21690,13 +22622,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Realization;
+   end Create_UML_Realization;
 
-   ----------------------
-   -- Create_Reception --
-   ----------------------
+   --------------------------
+   -- Create_UML_Reception --
+   --------------------------
 
-   function Create_Reception return AMF.Internals.UML_Element is
+   function Create_UML_Reception return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21704,7 +22636,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Reception,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reception,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Receptions.UML_Reception_Proxy'(Element => Self),
@@ -21850,13 +22782,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Reception;
+   end Create_UML_Reception;
 
-   -------------------------------------
-   -- Create_Reclassify_Object_Action --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Reclassify_Object_Action --
+   -----------------------------------------
 
-   function Create_Reclassify_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Reclassify_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -21864,7 +22796,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Reclassify_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Reclassify_Object_Actions.UML_Reclassify_Object_Action_Proxy'(Element => Self),
@@ -22028,13 +22960,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Reclassify_Object_Action;
+   end Create_UML_Reclassify_Object_Action;
 
-   -------------------------------------------
-   -- Create_Redefinable_Template_Signature --
-   -------------------------------------------
+   -----------------------------------------------
+   -- Create_UML_Redefinable_Template_Signature --
+   -----------------------------------------------
 
-   function Create_Redefinable_Template_Signature return AMF.Internals.UML_Element is
+   function Create_UML_Redefinable_Template_Signature return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22042,7 +22974,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Redefinable_Template_Signature,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Proxy'(Element => Self),
@@ -22133,13 +23065,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Redefinable_Template_Signature;
+   end Create_UML_Redefinable_Template_Signature;
 
-   --------------------------
-   -- Create_Reduce_Action --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Reduce_Action --
+   ------------------------------
 
-   function Create_Reduce_Action return AMF.Internals.UML_Element is
+   function Create_UML_Reduce_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22147,7 +23079,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Reduce_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Reduce_Actions.UML_Reduce_Action_Proxy'(Element => Self),
@@ -22301,13 +23233,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Reduce_Action;
+   end Create_UML_Reduce_Action;
 
-   -------------------
-   -- Create_Region --
-   -------------------
+   -----------------------
+   -- Create_UML_Region --
+   -----------------------
 
-   function Create_Region return AMF.Internals.UML_Element is
+   function Create_UML_Region return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22315,7 +23247,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Region,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Region,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Regions.UML_Region_Proxy'(Element => Self),
@@ -22438,13 +23370,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 7);
 
       return Self;
-   end Create_Region;
+   end Create_UML_Region;
 
-   ---------------------------------------------------
-   -- Create_Remove_Structural_Feature_Value_Action --
-   ---------------------------------------------------
+   -------------------------------------------------------
+   -- Create_UML_Remove_Structural_Feature_Value_Action --
+   -------------------------------------------------------
 
-   function Create_Remove_Structural_Feature_Value_Action return AMF.Internals.UML_Element is
+   function Create_UML_Remove_Structural_Feature_Value_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22452,7 +23384,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Remove_Structural_Feature_Value_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Proxy'(Element => Self),
@@ -22610,13 +23542,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Remove_Structural_Feature_Value_Action;
+   end Create_UML_Remove_Structural_Feature_Value_Action;
 
-   -----------------------------------------
-   -- Create_Remove_Variable_Value_Action --
-   -----------------------------------------
+   ---------------------------------------------
+   -- Create_UML_Remove_Variable_Value_Action --
+   ---------------------------------------------
 
-   function Create_Remove_Variable_Value_Action return AMF.Internals.UML_Element is
+   function Create_UML_Remove_Variable_Value_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22624,7 +23556,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Remove_Variable_Value_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Proxy'(Element => Self),
@@ -22778,13 +23710,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Remove_Variable_Value_Action;
+   end Create_UML_Remove_Variable_Value_Action;
 
-   -------------------------
-   -- Create_Reply_Action --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Reply_Action --
+   -----------------------------
 
-   function Create_Reply_Action return AMF.Internals.UML_Element is
+   function Create_UML_Reply_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22792,7 +23724,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Reply_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reply_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Reply_Actions.UML_Reply_Action_Proxy'(Element => Self),
@@ -22949,13 +23881,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 12);
 
       return Self;
-   end Create_Reply_Action;
+   end Create_UML_Reply_Action;
 
-   -------------------------------
-   -- Create_Send_Object_Action --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Send_Object_Action --
+   -----------------------------------
 
-   function Create_Send_Object_Action return AMF.Internals.UML_Element is
+   function Create_UML_Send_Object_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -22963,7 +23895,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Send_Object_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Send_Object_Actions.UML_Send_Object_Action_Proxy'(Element => Self),
@@ -23120,13 +24052,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Send_Object_Action;
+   end Create_UML_Send_Object_Action;
 
-   -------------------------------
-   -- Create_Send_Signal_Action --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Send_Signal_Action --
+   -----------------------------------
 
-   function Create_Send_Signal_Action return AMF.Internals.UML_Element is
+   function Create_UML_Send_Signal_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23134,7 +24066,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Send_Signal_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Send_Signal_Actions.UML_Send_Signal_Action_Proxy'(Element => Self),
@@ -23293,13 +24225,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Send_Signal_Action;
+   end Create_UML_Send_Signal_Action;
 
-   --------------------------
-   -- Create_Sequence_Node --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Sequence_Node --
+   ------------------------------
 
-   function Create_Sequence_Node return AMF.Internals.UML_Element is
+   function Create_UML_Sequence_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23307,7 +24239,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Sequence_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Sequence_Nodes.UML_Sequence_Node_Proxy'(Element => Self),
@@ -23557,13 +24489,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Sequence_Node;
+   end Create_UML_Sequence_Node;
 
-   -------------------
-   -- Create_Signal --
-   -------------------
+   -----------------------
+   -- Create_UML_Signal --
+   -----------------------
 
-   function Create_Signal return AMF.Internals.UML_Element is
+   function Create_UML_Signal return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23571,7 +24503,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Signal,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Signal,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Signals.UML_Signal_Proxy'(Element => Self),
@@ -23779,13 +24711,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Signal;
+   end Create_UML_Signal;
 
-   -------------------------
-   -- Create_Signal_Event --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Signal_Event --
+   -----------------------------
 
-   function Create_Signal_Event return AMF.Internals.UML_Element is
+   function Create_UML_Signal_Event return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23793,7 +24725,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Signal_Event,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Signal_Event,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Signal_Events.UML_Signal_Event_Proxy'(Element => Self),
@@ -23844,13 +24776,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Signal_Event;
+   end Create_UML_Signal_Event;
 
-   -----------------
-   -- Create_Slot --
-   -----------------
+   ---------------------
+   -- Create_UML_Slot --
+   ---------------------
 
-   function Create_Slot return AMF.Internals.UML_Element is
+   function Create_UML_Slot return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23858,7 +24790,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Slot,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Slot,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Slots.UML_Slot_Proxy'(Element => Self),
@@ -23897,13 +24829,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 3);
 
       return Self;
-   end Create_Slot;
+   end Create_UML_Slot;
 
-   ---------------------------------------------
-   -- Create_Start_Classifier_Behavior_Action --
-   ---------------------------------------------
+   -------------------------------------------------
+   -- Create_UML_Start_Classifier_Behavior_Action --
+   -------------------------------------------------
 
-   function Create_Start_Classifier_Behavior_Action return AMF.Internals.UML_Element is
+   function Create_UML_Start_Classifier_Behavior_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -23911,7 +24843,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Start_Classifier_Behavior_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Proxy'(Element => Self),
@@ -24059,13 +24991,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Start_Classifier_Behavior_Action;
+   end Create_UML_Start_Classifier_Behavior_Action;
 
-   -----------------------------------------
-   -- Create_Start_Object_Behavior_Action --
-   -----------------------------------------
+   ---------------------------------------------
+   -- Create_UML_Start_Object_Behavior_Action --
+   ---------------------------------------------
 
-   function Create_Start_Object_Behavior_Action return AMF.Internals.UML_Element is
+   function Create_UML_Start_Object_Behavior_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -24073,7 +25005,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Start_Object_Behavior_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Proxy'(Element => Self),
@@ -24239,13 +25171,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Start_Object_Behavior_Action;
+   end Create_UML_Start_Object_Behavior_Action;
 
-   ------------------
-   -- Create_State --
-   ------------------
+   ----------------------
+   -- Create_UML_State --
+   ----------------------
 
-   function Create_State return AMF.Internals.UML_Element is
+   function Create_UML_State return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -24253,7 +25185,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_State,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_States.UML_State_Proxy'(Element => Self),
@@ -24420,13 +25352,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 29);
 
       return Self;
-   end Create_State;
+   end Create_UML_State;
 
-   ----------------------------
-   -- Create_State_Invariant --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_State_Invariant --
+   --------------------------------
 
-   function Create_State_Invariant return AMF.Internals.UML_Element is
+   function Create_UML_State_Invariant return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -24434,7 +25366,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_State_Invariant,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State_Invariant,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_State_Invariants.UML_State_Invariant_Proxy'(Element => Self),
@@ -24499,13 +25431,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_State_Invariant;
+   end Create_UML_State_Invariant;
 
-   --------------------------
-   -- Create_State_Machine --
-   --------------------------
+   ------------------------------
+   -- Create_UML_State_Machine --
+   ------------------------------
 
-   function Create_State_Machine return AMF.Internals.UML_Element is
+   function Create_UML_State_Machine return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -24513,7 +25445,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_State_Machine,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State_Machine,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_State_Machines.UML_State_Machine_Proxy'(Element => Self),
@@ -24857,13 +25789,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_State_Machine;
+   end Create_UML_State_Machine;
 
-   -----------------------
-   -- Create_Stereotype --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Stereotype --
+   ---------------------------
 
-   function Create_Stereotype return AMF.Internals.UML_Element is
+   function Create_UML_Stereotype return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -24871,7 +25803,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Stereotype,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Stereotype,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Stereotypes.UML_Stereotype_Proxy'(Element => Self),
@@ -25162,13 +26094,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Stereotype;
+   end Create_UML_Stereotype;
 
-   ------------------------------
-   -- Create_String_Expression --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_String_Expression --
+   ----------------------------------
 
-   function Create_String_Expression return AMF.Internals.UML_Element is
+   function Create_UML_String_Expression return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25176,7 +26108,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_String_Expression,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_String_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_String_Expressions.UML_String_Expression_Proxy'(Element => Self),
@@ -25254,13 +26186,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_String_Expression;
+   end Create_UML_String_Expression;
 
-   -------------------------------------
-   -- Create_Structured_Activity_Node --
-   -------------------------------------
+   -----------------------------------------
+   -- Create_UML_Structured_Activity_Node --
+   -----------------------------------------
 
-   function Create_Structured_Activity_Node return AMF.Internals.UML_Element is
+   function Create_UML_Structured_Activity_Node return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25268,7 +26200,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Structured_Activity_Node,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Structured_Activity_Nodes.UML_Structured_Activity_Node_Proxy'(Element => Self),
@@ -25518,13 +26450,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 41);
 
       return Self;
-   end Create_Structured_Activity_Node;
+   end Create_UML_Structured_Activity_Node;
 
-   -------------------------
-   -- Create_Substitution --
-   -------------------------
+   -----------------------------
+   -- Create_UML_Substitution --
+   -----------------------------
 
-   function Create_Substitution return AMF.Internals.UML_Element is
+   function Create_UML_Substitution return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25532,7 +26464,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Substitution,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Substitution,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Substitutions.UML_Substitution_Proxy'(Element => Self),
@@ -25622,13 +26554,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Substitution;
+   end Create_UML_Substitution;
 
-   -----------------------------
-   -- Create_Template_Binding --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Template_Binding --
+   ---------------------------------
 
-   function Create_Template_Binding return AMF.Internals.UML_Element is
+   function Create_UML_Template_Binding return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25636,7 +26568,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Binding,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Binding,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Template_Bindings.UML_Template_Binding_Proxy'(Element => Self),
@@ -25696,13 +26628,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Template_Binding;
+   end Create_UML_Template_Binding;
 
-   -------------------------------
-   -- Create_Template_Parameter --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Template_Parameter --
+   -----------------------------------
 
-   function Create_Template_Parameter return AMF.Internals.UML_Element is
+   function Create_UML_Template_Parameter return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25710,7 +26642,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Parameter,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Template_Parameters.UML_Template_Parameter_Proxy'(Element => Self),
@@ -25748,13 +26680,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Template_Parameter;
+   end Create_UML_Template_Parameter;
 
-   --------------------------------------------
-   -- Create_Template_Parameter_Substitution --
-   --------------------------------------------
+   ------------------------------------------------
+   -- Create_UML_Template_Parameter_Substitution --
+   ------------------------------------------------
 
-   function Create_Template_Parameter_Substitution return AMF.Internals.UML_Element is
+   function Create_UML_Template_Parameter_Substitution return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25762,7 +26694,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Parameter_Substitution,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Template_Parameter_Substitutions.UML_Template_Parameter_Substitution_Proxy'(Element => Self),
@@ -25798,13 +26730,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Template_Parameter_Substitution;
+   end Create_UML_Template_Parameter_Substitution;
 
-   -------------------------------
-   -- Create_Template_Signature --
-   -------------------------------
+   -----------------------------------
+   -- Create_UML_Template_Signature --
+   -----------------------------------
 
-   function Create_Template_Signature return AMF.Internals.UML_Element is
+   function Create_UML_Template_Signature return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25812,7 +26744,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Template_Signature,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Signature,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Template_Signatures.UML_Template_Signature_Proxy'(Element => Self),
@@ -25856,13 +26788,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 6);
 
       return Self;
-   end Create_Template_Signature;
+   end Create_UML_Template_Signature;
 
-   ---------------------------------
-   -- Create_Test_Identity_Action --
-   ---------------------------------
+   -------------------------------------
+   -- Create_UML_Test_Identity_Action --
+   -------------------------------------
 
-   function Create_Test_Identity_Action return AMF.Internals.UML_Element is
+   function Create_UML_Test_Identity_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -25870,7 +26802,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Test_Identity_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Test_Identity_Actions.UML_Test_Identity_Action_Proxy'(Element => Self),
@@ -26022,13 +26954,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Test_Identity_Action;
+   end Create_UML_Test_Identity_Action;
 
-   ----------------------------
-   -- Create_Time_Constraint --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Time_Constraint --
+   --------------------------------
 
-   function Create_Time_Constraint return AMF.Internals.UML_Element is
+   function Create_UML_Time_Constraint return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26036,7 +26968,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Constraint,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Time_Constraints.UML_Time_Constraint_Proxy'(Element => Self),
@@ -26098,13 +27030,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Time_Constraint;
+   end Create_UML_Time_Constraint;
 
-   -----------------------
-   -- Create_Time_Event --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Time_Event --
+   ---------------------------
 
-   function Create_Time_Event return AMF.Internals.UML_Element is
+   function Create_UML_Time_Event return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26112,7 +27044,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Event,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Event,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Time_Events.UML_Time_Event_Proxy'(Element => Self),
@@ -26165,13 +27097,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Time_Event;
+   end Create_UML_Time_Event;
 
-   ----------------------------
-   -- Create_Time_Expression --
-   ----------------------------
+   --------------------------------
+   -- Create_UML_Time_Expression --
+   --------------------------------
 
-   function Create_Time_Expression return AMF.Internals.UML_Element is
+   function Create_UML_Time_Expression return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26179,7 +27111,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Expression,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Time_Expressions.UML_Time_Expression_Proxy'(Element => Self),
@@ -26239,13 +27171,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Time_Expression;
+   end Create_UML_Time_Expression;
 
-   --------------------------
-   -- Create_Time_Interval --
-   --------------------------
+   ------------------------------
+   -- Create_UML_Time_Interval --
+   ------------------------------
 
-   function Create_Time_Interval return AMF.Internals.UML_Element is
+   function Create_UML_Time_Interval return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26253,7 +27185,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Interval,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Interval,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Time_Intervals.UML_Time_Interval_Proxy'(Element => Self),
@@ -26308,13 +27240,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Time_Interval;
+   end Create_UML_Time_Interval;
 
-   -----------------------------
-   -- Create_Time_Observation --
-   -----------------------------
+   ---------------------------------
+   -- Create_UML_Time_Observation --
+   ---------------------------------
 
-   function Create_Time_Observation return AMF.Internals.UML_Element is
+   function Create_UML_Time_Observation return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26322,7 +27254,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Time_Observation,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Observation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Time_Observations.UML_Time_Observation_Proxy'(Element => Self),
@@ -26375,13 +27307,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Time_Observation;
+   end Create_UML_Time_Observation;
 
-   -----------------------
-   -- Create_Transition --
-   -----------------------
+   ---------------------------
+   -- Create_UML_Transition --
+   ---------------------------
 
-   function Create_Transition return AMF.Internals.UML_Element is
+   function Create_UML_Transition return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26389,7 +27321,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Transition,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Transition,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Transitions.UML_Transition_Proxy'(Element => Self),
@@ -26513,13 +27445,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 24);
 
       return Self;
-   end Create_Transition;
+   end Create_UML_Transition;
 
-   --------------------
-   -- Create_Trigger --
-   --------------------
+   ------------------------
+   -- Create_UML_Trigger --
+   ------------------------
 
-   function Create_Trigger return AMF.Internals.UML_Element is
+   function Create_UML_Trigger return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26527,7 +27459,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Trigger,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Trigger,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Triggers.UML_Trigger_Proxy'(Element => Self),
@@ -26581,13 +27513,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Trigger;
+   end Create_UML_Trigger;
 
-   ------------------------------
-   -- Create_Unmarshall_Action --
-   ------------------------------
+   ----------------------------------
+   -- Create_UML_Unmarshall_Action --
+   ----------------------------------
 
-   function Create_Unmarshall_Action return AMF.Internals.UML_Element is
+   function Create_UML_Unmarshall_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26595,7 +27527,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Unmarshall_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Unmarshall_Actions.UML_Unmarshall_Action_Proxy'(Element => Self),
@@ -26752,13 +27684,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Unmarshall_Action;
+   end Create_UML_Unmarshall_Action;
 
-   ------------------
-   -- Create_Usage --
-   ------------------
+   ----------------------
+   -- Create_UML_Usage --
+   ----------------------
 
-   function Create_Usage return AMF.Internals.UML_Element is
+   function Create_UML_Usage return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26766,7 +27698,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Usage,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Usage,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Usages.UML_Usage_Proxy'(Element => Self),
@@ -26850,13 +27782,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Usage;
+   end Create_UML_Usage;
 
-   ---------------------
-   -- Create_Use_Case --
-   ---------------------
+   -------------------------
+   -- Create_UML_Use_Case --
+   -------------------------
 
-   function Create_Use_Case return AMF.Internals.UML_Element is
+   function Create_UML_Use_Case return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -26864,7 +27796,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Use_Case,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Use_Case,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Use_Cases.UML_Use_Case_Proxy'(Element => Self),
@@ -27109,13 +28041,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Use_Case;
+   end Create_UML_Use_Case;
 
-   ----------------------
-   -- Create_Value_Pin --
-   ----------------------
+   --------------------------
+   -- Create_UML_Value_Pin --
+   --------------------------
 
-   function Create_Value_Pin return AMF.Internals.UML_Element is
+   function Create_UML_Value_Pin return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -27123,7 +28055,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Value_Pin,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Value_Pin,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Value_Pins.UML_Value_Pin_Proxy'(Element => Self),
@@ -27263,13 +28195,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Value_Pin;
+   end Create_UML_Value_Pin;
 
-   ---------------------------------------
-   -- Create_Value_Specification_Action --
-   ---------------------------------------
+   -------------------------------------------
+   -- Create_UML_Value_Specification_Action --
+   -------------------------------------------
 
-   function Create_Value_Specification_Action return AMF.Internals.UML_Element is
+   function Create_UML_Value_Specification_Action return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -27277,7 +28209,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Value_Specification_Action,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Value_Specification_Actions.UML_Value_Specification_Action_Proxy'(Element => Self),
@@ -27427,13 +28359,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Value_Specification_Action;
+   end Create_UML_Value_Specification_Action;
 
-   ---------------------
-   -- Create_Variable --
-   ---------------------
+   -------------------------
+   -- Create_UML_Variable --
+   -------------------------
 
-   function Create_Variable return AMF.Internals.UML_Element is
+   function Create_UML_Variable return AMF.Internals.UML_Element is
       Self : AMF.Internals.UML_Element;
 
    begin
@@ -27441,7 +28373,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       Self := UML_Element_Table.Last;
 
       UML_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.UML_Types.E_Variable,
+       (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Variable,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.UML_Variables.UML_Variable_Proxy'(Element => Self),
@@ -27515,6 +28447,6 @@ package body AMF.Internals.Tables.UML_Constructors is
         UML_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Variable;
+   end Create_UML_Variable;
 
 end AMF.Internals.Tables.UML_Constructors;

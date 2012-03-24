@@ -49,9 +49,43 @@ with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders.UML_Holders;
+with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
+with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Types;
+with AMF.Standard_Profile_L2.Auxiliaries;
+with AMF.Standard_Profile_L2.Calls;
+with AMF.Standard_Profile_L2.Creates;
+with AMF.Standard_Profile_L2.Derives;
+with AMF.Standard_Profile_L2.Destroies;
+with AMF.Standard_Profile_L2.Documents;
+with AMF.Standard_Profile_L2.Entities;
+with AMF.Standard_Profile_L2.Executables;
+with AMF.Standard_Profile_L2.Focuses;
+with AMF.Standard_Profile_L2.Frameworks;
+with AMF.Standard_Profile_L2.Implementation_Classes;
+with AMF.Standard_Profile_L2.Implements;
+with AMF.Standard_Profile_L2.Instantiates;
+with AMF.Standard_Profile_L2.Libraries;
+with AMF.Standard_Profile_L2.Metaclasses;
+with AMF.Standard_Profile_L2.Model_Libraries;
+with AMF.Standard_Profile_L2.Processes;
+with AMF.Standard_Profile_L2.Realizations;
+with AMF.Standard_Profile_L2.Refines;
+with AMF.Standard_Profile_L2.Responsibilities;
+with AMF.Standard_Profile_L2.Scripts;
+with AMF.Standard_Profile_L2.Sends;
+with AMF.Standard_Profile_L2.Services;
+with AMF.Standard_Profile_L2.Sources;
+with AMF.Standard_Profile_L2.Specifications;
+with AMF.Standard_Profile_L2.Subsystems;
+with AMF.Standard_Profile_L2.Traces;
+with AMF.Standard_Profile_L2.Types;
+with AMF.Standard_Profile_L2.Utilities;
+with AMF.Standard_Profile_L3.Build_Components;
+with AMF.Standard_Profile_L3.Metamodels;
+with AMF.Standard_Profile_L3.System_Models;
 with AMF.String_Collections.Internals;
 with AMF.UML.Abstractions;
 with AMF.UML.Accept_Call_Actions;
@@ -303,590 +337,1389 @@ package body AMF.Internals.Tables.UML_Reflection is
      Property : CMOF_Element) return League.Holders.Holder
    is
 
-      function Abstraction_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Abstraction class.
+      function Standard_Profile_L2_Auxiliary_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Auxiliary class.
 
-      function Accept_Call_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AcceptCallAction class.
+      function Standard_Profile_L2_Call_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Call class.
 
-      function Accept_Event_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AcceptEventAction class.
+      function Standard_Profile_L2_Create_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Create class.
 
-      function Action_Execution_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ActionExecutionSpecification class.
+      function Standard_Profile_L2_Derive_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Derive class.
 
-      function Action_Input_Pin_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ActionInputPin class.
+      function Standard_Profile_L2_Destroy_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Destroy class.
 
-      function Activity_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Activity class.
+      function Standard_Profile_L2_Document_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Document class.
 
-      function Activity_Final_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ActivityFinalNode class.
+      function Standard_Profile_L2_Entity_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Entity class.
 
-      function Activity_Parameter_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ActivityParameterNode class.
+      function Standard_Profile_L2_Executable_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Executable class.
 
-      function Activity_Partition_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ActivityPartition class.
+      function Standard_Profile_L2_Focus_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Focus class.
 
-      function Actor_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Actor class.
+      function Standard_Profile_L2_Framework_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Framework class.
 
-      function Add_Structural_Feature_Value_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AddStructuralFeatureValueAction class.
+      function Standard_Profile_L2_Implement_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Implement class.
 
-      function Add_Variable_Value_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AddVariableValueAction class.
+      function Standard_Profile_L2_Implementation_Class_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ImplementationClass class.
 
-      function Any_Receive_Event_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AnyReceiveEvent class.
+      function Standard_Profile_L2_Instantiate_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Instantiate class.
 
-      function Artifact_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Artifact class.
+      function Standard_Profile_L2_Library_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Library class.
 
-      function Association_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Association class.
+      function Standard_Profile_L2_Metaclass_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Metaclass class.
 
-      function Association_Class_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of AssociationClass class.
+      function Standard_Profile_L2_Model_Library_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ModelLibrary class.
 
-      function Behavior_Execution_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of BehaviorExecutionSpecification class.
+      function Standard_Profile_L2_Process_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Process class.
 
-      function Broadcast_Signal_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of BroadcastSignalAction class.
-
-      function Call_Behavior_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CallBehaviorAction class.
-
-      function Call_Event_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CallEvent class.
-
-      function Call_Operation_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CallOperationAction class.
-
-      function Central_Buffer_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CentralBufferNode class.
-
-      function Change_Event_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ChangeEvent class.
-
-      function Class_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Class class.
-
-      function Classifier_Template_Parameter_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ClassifierTemplateParameter class.
-
-      function Clause_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Clause class.
-
-      function Clear_Association_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ClearAssociationAction class.
-
-      function Clear_Structural_Feature_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ClearStructuralFeatureAction class.
-
-      function Clear_Variable_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ClearVariableAction class.
-
-      function Collaboration_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Collaboration class.
-
-      function Collaboration_Use_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CollaborationUse class.
-
-      function Combined_Fragment_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CombinedFragment class.
-
-      function Comment_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Comment class.
-
-      function Communication_Path_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CommunicationPath class.
-
-      function Component_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Component class.
-
-      function Component_Realization_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ComponentRealization class.
-
-      function Conditional_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ConditionalNode class.
-
-      function Connectable_Element_Template_Parameter_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ConnectableElementTemplateParameter class.
-
-      function Connection_Point_Reference_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ConnectionPointReference class.
-
-      function Connector_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Connector class.
-
-      function Connector_End_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ConnectorEnd class.
-
-      function Consider_Ignore_Fragment_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ConsiderIgnoreFragment class.
-
-      function Constraint_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Constraint class.
-
-      function Continuation_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Continuation class.
-
-      function Control_Flow_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ControlFlow class.
-
-      function Create_Link_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CreateLinkAction class.
-
-      function Create_Link_Object_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CreateLinkObjectAction class.
-
-      function Create_Object_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of CreateObjectAction class.
-
-      function Data_Store_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DataStoreNode class.
-
-      function Data_Type_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DataType class.
-
-      function Decision_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DecisionNode class.
-
-      function Dependency_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Dependency class.
-
-      function Deployment_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Deployment class.
-
-      function Deployment_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DeploymentSpecification class.
-
-      function Destroy_Link_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DestroyLinkAction class.
-
-      function Destroy_Object_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DestroyObjectAction class.
-
-      function Destruction_Occurrence_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DestructionOccurrenceSpecification class.
-
-      function Device_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Device class.
-
-      function Duration_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Duration class.
-
-      function Duration_Constraint_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DurationConstraint class.
-
-      function Duration_Interval_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DurationInterval class.
-
-      function Duration_Observation_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of DurationObservation class.
-
-      function Element_Import_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ElementImport class.
-
-      function Enumeration_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Enumeration class.
-
-      function Enumeration_Literal_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of EnumerationLiteral class.
-
-      function Exception_Handler_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExceptionHandler class.
-
-      function Execution_Environment_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExecutionEnvironment class.
-
-      function Execution_Occurrence_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExecutionOccurrenceSpecification class.
-
-      function Expansion_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExpansionNode class.
-
-      function Expansion_Region_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExpansionRegion class.
-
-      function Expression_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Expression class.
-
-      function Extend_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Extend class.
-
-      function Extension_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Extension class.
-
-      function Extension_End_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExtensionEnd class.
-
-      function Extension_Point_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ExtensionPoint class.
-
-      function Final_State_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of FinalState class.
-
-      function Flow_Final_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of FlowFinalNode class.
-
-      function Fork_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ForkNode class.
-
-      function Function_Behavior_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of FunctionBehavior class.
-
-      function Gate_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Gate class.
-
-      function General_Ordering_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of GeneralOrdering class.
-
-      function Generalization_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Generalization class.
-
-      function Generalization_Set_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of GeneralizationSet class.
-
-      function Image_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Image class.
-
-      function Include_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Include class.
-
-      function Information_Flow_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InformationFlow class.
-
-      function Information_Item_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InformationItem class.
-
-      function Initial_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InitialNode class.
-
-      function Input_Pin_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InputPin class.
-
-      function Instance_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InstanceSpecification class.
-
-      function Instance_Value_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InstanceValue class.
-
-      function Interaction_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Interaction class.
-
-      function Interaction_Constraint_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InteractionConstraint class.
-
-      function Interaction_Operand_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InteractionOperand class.
-
-      function Interaction_Use_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InteractionUse class.
-
-      function Interface_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Interface class.
-
-      function Interface_Realization_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InterfaceRealization class.
-
-      function Interruptible_Activity_Region_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of InterruptibleActivityRegion class.
-
-      function Interval_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Interval class.
-
-      function Interval_Constraint_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of IntervalConstraint class.
-
-      function Join_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of JoinNode class.
-
-      function Lifeline_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Lifeline class.
-
-      function Link_End_Creation_Data_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LinkEndCreationData class.
-
-      function Link_End_Data_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LinkEndData class.
-
-      function Link_End_Destruction_Data_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LinkEndDestructionData class.
-
-      function Literal_Boolean_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralBoolean class.
-
-      function Literal_Integer_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralInteger class.
-
-      function Literal_Null_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralNull class.
-
-      function Literal_Real_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralReal class.
-
-      function Literal_String_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralString class.
-
-      function Literal_Unlimited_Natural_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LiteralUnlimitedNatural class.
-
-      function Loop_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of LoopNode class.
-
-      function Manifestation_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Manifestation class.
-
-      function Merge_Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of MergeNode class.
-
-      function Message_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Message class.
-
-      function Message_Occurrence_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of MessageOccurrenceSpecification class.
-
-      function Model_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Model class.
-
-      function Node_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Node class.
-
-      function Object_Flow_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ObjectFlow class.
-
-      function Occurrence_Specification_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OccurrenceSpecification class.
-
-      function Opaque_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OpaqueAction class.
-
-      function Opaque_Behavior_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OpaqueBehavior class.
-
-      function Opaque_Expression_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OpaqueExpression class.
-
-      function Operation_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Operation class.
-
-      function Operation_Template_Parameter_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OperationTemplateParameter class.
-
-      function Output_Pin_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of OutputPin class.
-
-      function Package_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Package class.
-
-      function Package_Import_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of PackageImport class.
-
-      function Package_Merge_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of PackageMerge class.
-
-      function Parameter_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Parameter class.
-
-      function Parameter_Set_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ParameterSet class.
-
-      function Part_Decomposition_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of PartDecomposition class.
-
-      function Port_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Port class.
-
-      function Primitive_Type_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of PrimitiveType class.
-
-      function Profile_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Profile class.
-
-      function Profile_Application_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ProfileApplication class.
-
-      function Property_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Property class.
-
-      function Protocol_Conformance_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ProtocolConformance class.
-
-      function Protocol_State_Machine_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ProtocolStateMachine class.
-
-      function Protocol_Transition_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ProtocolTransition class.
-
-      function Pseudostate_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of Pseudostate class.
-
-      function Qualifier_Value_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of QualifierValue class.
-
-      function Raise_Exception_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of RaiseExceptionAction class.
-
-      function Read_Extent_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadExtentAction class.
-
-      function Read_Is_Classified_Object_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadIsClassifiedObjectAction class.
-
-      function Read_Link_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadLinkAction class.
-
-      function Read_Link_Object_End_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadLinkObjectEndAction class.
-
-      function Read_Link_Object_End_Qualifier_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadLinkObjectEndQualifierAction class.
-
-      function Read_Self_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadSelfAction class.
-
-      function Read_Structural_Feature_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadStructuralFeatureAction class.
-
-      function Read_Variable_Action_Get return League.Holders.Holder;
-      --  Returns attribute's value of instance of ReadVariableAction class.
-
-      function Realization_Get return League.Holders.Holder;
+      function Standard_Profile_L2_Realization_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Realization class.
 
-      function Reception_Get return League.Holders.Holder;
+      function Standard_Profile_L2_Refine_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Refine class.
+
+      function Standard_Profile_L2_Responsibility_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Responsibility class.
+
+      function Standard_Profile_L2_Script_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Script class.
+
+      function Standard_Profile_L2_Send_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Send class.
+
+      function Standard_Profile_L2_Service_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Service class.
+
+      function Standard_Profile_L2_Source_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Source class.
+
+      function Standard_Profile_L2_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Specification class.
+
+      function Standard_Profile_L2_Subsystem_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Subsystem class.
+
+      function Standard_Profile_L2_Trace_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Trace class.
+
+      function Standard_Profile_L2_Type_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Type class.
+
+      function Standard_Profile_L2_Utility_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Utility class.
+
+      function Standard_Profile_L3_Build_Component_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of BuildComponent class.
+
+      function Standard_Profile_L3_Metamodel_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Metamodel class.
+
+      function Standard_Profile_L3_System_Model_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of SystemModel class.
+
+      function UML_Abstraction_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Abstraction class.
+
+      function UML_Accept_Call_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AcceptCallAction class.
+
+      function UML_Accept_Event_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AcceptEventAction class.
+
+      function UML_Action_Execution_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ActionExecutionSpecification class.
+
+      function UML_Action_Input_Pin_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ActionInputPin class.
+
+      function UML_Activity_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Activity class.
+
+      function UML_Activity_Final_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ActivityFinalNode class.
+
+      function UML_Activity_Parameter_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ActivityParameterNode class.
+
+      function UML_Activity_Partition_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ActivityPartition class.
+
+      function UML_Actor_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Actor class.
+
+      function UML_Add_Structural_Feature_Value_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AddStructuralFeatureValueAction class.
+
+      function UML_Add_Variable_Value_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AddVariableValueAction class.
+
+      function UML_Any_Receive_Event_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AnyReceiveEvent class.
+
+      function UML_Artifact_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Artifact class.
+
+      function UML_Association_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Association class.
+
+      function UML_Association_Class_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of AssociationClass class.
+
+      function UML_Behavior_Execution_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of BehaviorExecutionSpecification class.
+
+      function UML_Broadcast_Signal_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of BroadcastSignalAction class.
+
+      function UML_Call_Behavior_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CallBehaviorAction class.
+
+      function UML_Call_Event_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CallEvent class.
+
+      function UML_Call_Operation_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CallOperationAction class.
+
+      function UML_Central_Buffer_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CentralBufferNode class.
+
+      function UML_Change_Event_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ChangeEvent class.
+
+      function UML_Class_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Class class.
+
+      function UML_Classifier_Template_Parameter_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ClassifierTemplateParameter class.
+
+      function UML_Clause_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Clause class.
+
+      function UML_Clear_Association_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ClearAssociationAction class.
+
+      function UML_Clear_Structural_Feature_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ClearStructuralFeatureAction class.
+
+      function UML_Clear_Variable_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ClearVariableAction class.
+
+      function UML_Collaboration_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Collaboration class.
+
+      function UML_Collaboration_Use_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CollaborationUse class.
+
+      function UML_Combined_Fragment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CombinedFragment class.
+
+      function UML_Comment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Comment class.
+
+      function UML_Communication_Path_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CommunicationPath class.
+
+      function UML_Component_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Component class.
+
+      function UML_Component_Realization_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ComponentRealization class.
+
+      function UML_Conditional_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ConditionalNode class.
+
+      function UML_Connectable_Element_Template_Parameter_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ConnectableElementTemplateParameter class.
+
+      function UML_Connection_Point_Reference_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ConnectionPointReference class.
+
+      function UML_Connector_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Connector class.
+
+      function UML_Connector_End_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ConnectorEnd class.
+
+      function UML_Consider_Ignore_Fragment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ConsiderIgnoreFragment class.
+
+      function UML_Constraint_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Constraint class.
+
+      function UML_Continuation_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Continuation class.
+
+      function UML_Control_Flow_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ControlFlow class.
+
+      function UML_Create_Link_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CreateLinkAction class.
+
+      function UML_Create_Link_Object_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CreateLinkObjectAction class.
+
+      function UML_Create_Object_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of CreateObjectAction class.
+
+      function UML_Data_Store_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DataStoreNode class.
+
+      function UML_Data_Type_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DataType class.
+
+      function UML_Decision_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DecisionNode class.
+
+      function UML_Dependency_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Dependency class.
+
+      function UML_Deployment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Deployment class.
+
+      function UML_Deployment_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DeploymentSpecification class.
+
+      function UML_Destroy_Link_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DestroyLinkAction class.
+
+      function UML_Destroy_Object_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DestroyObjectAction class.
+
+      function UML_Destruction_Occurrence_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DestructionOccurrenceSpecification class.
+
+      function UML_Device_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Device class.
+
+      function UML_Duration_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Duration class.
+
+      function UML_Duration_Constraint_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DurationConstraint class.
+
+      function UML_Duration_Interval_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DurationInterval class.
+
+      function UML_Duration_Observation_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of DurationObservation class.
+
+      function UML_Element_Import_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ElementImport class.
+
+      function UML_Enumeration_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Enumeration class.
+
+      function UML_Enumeration_Literal_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of EnumerationLiteral class.
+
+      function UML_Exception_Handler_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExceptionHandler class.
+
+      function UML_Execution_Environment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExecutionEnvironment class.
+
+      function UML_Execution_Occurrence_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExecutionOccurrenceSpecification class.
+
+      function UML_Expansion_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExpansionNode class.
+
+      function UML_Expansion_Region_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExpansionRegion class.
+
+      function UML_Expression_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Expression class.
+
+      function UML_Extend_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Extend class.
+
+      function UML_Extension_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Extension class.
+
+      function UML_Extension_End_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExtensionEnd class.
+
+      function UML_Extension_Point_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ExtensionPoint class.
+
+      function UML_Final_State_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of FinalState class.
+
+      function UML_Flow_Final_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of FlowFinalNode class.
+
+      function UML_Fork_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ForkNode class.
+
+      function UML_Function_Behavior_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of FunctionBehavior class.
+
+      function UML_Gate_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Gate class.
+
+      function UML_General_Ordering_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of GeneralOrdering class.
+
+      function UML_Generalization_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Generalization class.
+
+      function UML_Generalization_Set_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of GeneralizationSet class.
+
+      function UML_Image_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Image class.
+
+      function UML_Include_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Include class.
+
+      function UML_Information_Flow_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InformationFlow class.
+
+      function UML_Information_Item_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InformationItem class.
+
+      function UML_Initial_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InitialNode class.
+
+      function UML_Input_Pin_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InputPin class.
+
+      function UML_Instance_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InstanceSpecification class.
+
+      function UML_Instance_Value_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InstanceValue class.
+
+      function UML_Interaction_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Interaction class.
+
+      function UML_Interaction_Constraint_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InteractionConstraint class.
+
+      function UML_Interaction_Operand_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InteractionOperand class.
+
+      function UML_Interaction_Use_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InteractionUse class.
+
+      function UML_Interface_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Interface class.
+
+      function UML_Interface_Realization_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InterfaceRealization class.
+
+      function UML_Interruptible_Activity_Region_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of InterruptibleActivityRegion class.
+
+      function UML_Interval_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Interval class.
+
+      function UML_Interval_Constraint_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of IntervalConstraint class.
+
+      function UML_Join_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of JoinNode class.
+
+      function UML_Lifeline_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Lifeline class.
+
+      function UML_Link_End_Creation_Data_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LinkEndCreationData class.
+
+      function UML_Link_End_Data_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LinkEndData class.
+
+      function UML_Link_End_Destruction_Data_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LinkEndDestructionData class.
+
+      function UML_Literal_Boolean_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralBoolean class.
+
+      function UML_Literal_Integer_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralInteger class.
+
+      function UML_Literal_Null_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralNull class.
+
+      function UML_Literal_Real_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralReal class.
+
+      function UML_Literal_String_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralString class.
+
+      function UML_Literal_Unlimited_Natural_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LiteralUnlimitedNatural class.
+
+      function UML_Loop_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of LoopNode class.
+
+      function UML_Manifestation_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Manifestation class.
+
+      function UML_Merge_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of MergeNode class.
+
+      function UML_Message_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Message class.
+
+      function UML_Message_Occurrence_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of MessageOccurrenceSpecification class.
+
+      function UML_Model_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Model class.
+
+      function UML_Node_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Node class.
+
+      function UML_Object_Flow_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ObjectFlow class.
+
+      function UML_Occurrence_Specification_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OccurrenceSpecification class.
+
+      function UML_Opaque_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OpaqueAction class.
+
+      function UML_Opaque_Behavior_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OpaqueBehavior class.
+
+      function UML_Opaque_Expression_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OpaqueExpression class.
+
+      function UML_Operation_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Operation class.
+
+      function UML_Operation_Template_Parameter_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OperationTemplateParameter class.
+
+      function UML_Output_Pin_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of OutputPin class.
+
+      function UML_Package_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Package class.
+
+      function UML_Package_Import_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of PackageImport class.
+
+      function UML_Package_Merge_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of PackageMerge class.
+
+      function UML_Parameter_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Parameter class.
+
+      function UML_Parameter_Set_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ParameterSet class.
+
+      function UML_Part_Decomposition_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of PartDecomposition class.
+
+      function UML_Port_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Port class.
+
+      function UML_Primitive_Type_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of PrimitiveType class.
+
+      function UML_Profile_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Profile class.
+
+      function UML_Profile_Application_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ProfileApplication class.
+
+      function UML_Property_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Property class.
+
+      function UML_Protocol_Conformance_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ProtocolConformance class.
+
+      function UML_Protocol_State_Machine_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ProtocolStateMachine class.
+
+      function UML_Protocol_Transition_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ProtocolTransition class.
+
+      function UML_Pseudostate_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Pseudostate class.
+
+      function UML_Qualifier_Value_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of QualifierValue class.
+
+      function UML_Raise_Exception_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of RaiseExceptionAction class.
+
+      function UML_Read_Extent_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadExtentAction class.
+
+      function UML_Read_Is_Classified_Object_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadIsClassifiedObjectAction class.
+
+      function UML_Read_Link_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadLinkAction class.
+
+      function UML_Read_Link_Object_End_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadLinkObjectEndAction class.
+
+      function UML_Read_Link_Object_End_Qualifier_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadLinkObjectEndQualifierAction class.
+
+      function UML_Read_Self_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadSelfAction class.
+
+      function UML_Read_Structural_Feature_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadStructuralFeatureAction class.
+
+      function UML_Read_Variable_Action_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of ReadVariableAction class.
+
+      function UML_Realization_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Realization class.
+
+      function UML_Reception_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Reception class.
 
-      function Reclassify_Object_Action_Get return League.Holders.Holder;
+      function UML_Reclassify_Object_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ReclassifyObjectAction class.
 
-      function Redefinable_Template_Signature_Get return League.Holders.Holder;
+      function UML_Redefinable_Template_Signature_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of RedefinableTemplateSignature class.
 
-      function Reduce_Action_Get return League.Holders.Holder;
+      function UML_Reduce_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ReduceAction class.
 
-      function Region_Get return League.Holders.Holder;
+      function UML_Region_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Region class.
 
-      function Remove_Structural_Feature_Value_Action_Get return League.Holders.Holder;
+      function UML_Remove_Structural_Feature_Value_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of RemoveStructuralFeatureValueAction class.
 
-      function Remove_Variable_Value_Action_Get return League.Holders.Holder;
+      function UML_Remove_Variable_Value_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of RemoveVariableValueAction class.
 
-      function Reply_Action_Get return League.Holders.Holder;
+      function UML_Reply_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ReplyAction class.
 
-      function Send_Object_Action_Get return League.Holders.Holder;
+      function UML_Send_Object_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SendObjectAction class.
 
-      function Send_Signal_Action_Get return League.Holders.Holder;
+      function UML_Send_Signal_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SendSignalAction class.
 
-      function Sequence_Node_Get return League.Holders.Holder;
+      function UML_Sequence_Node_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SequenceNode class.
 
-      function Signal_Get return League.Holders.Holder;
+      function UML_Signal_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Signal class.
 
-      function Signal_Event_Get return League.Holders.Holder;
+      function UML_Signal_Event_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SignalEvent class.
 
-      function Slot_Get return League.Holders.Holder;
+      function UML_Slot_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Slot class.
 
-      function Start_Classifier_Behavior_Action_Get return League.Holders.Holder;
+      function UML_Start_Classifier_Behavior_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StartClassifierBehaviorAction class.
 
-      function Start_Object_Behavior_Action_Get return League.Holders.Holder;
+      function UML_Start_Object_Behavior_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StartObjectBehaviorAction class.
 
-      function State_Get return League.Holders.Holder;
+      function UML_State_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of State class.
 
-      function State_Invariant_Get return League.Holders.Holder;
+      function UML_State_Invariant_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StateInvariant class.
 
-      function State_Machine_Get return League.Holders.Holder;
+      function UML_State_Machine_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StateMachine class.
 
-      function Stereotype_Get return League.Holders.Holder;
+      function UML_Stereotype_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Stereotype class.
 
-      function String_Expression_Get return League.Holders.Holder;
+      function UML_String_Expression_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StringExpression class.
 
-      function Structured_Activity_Node_Get return League.Holders.Holder;
+      function UML_Structured_Activity_Node_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StructuredActivityNode class.
 
-      function Substitution_Get return League.Holders.Holder;
+      function UML_Substitution_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Substitution class.
 
-      function Template_Binding_Get return League.Holders.Holder;
+      function UML_Template_Binding_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TemplateBinding class.
 
-      function Template_Parameter_Get return League.Holders.Holder;
+      function UML_Template_Parameter_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TemplateParameter class.
 
-      function Template_Parameter_Substitution_Get return League.Holders.Holder;
+      function UML_Template_Parameter_Substitution_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TemplateParameterSubstitution class.
 
-      function Template_Signature_Get return League.Holders.Holder;
+      function UML_Template_Signature_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TemplateSignature class.
 
-      function Test_Identity_Action_Get return League.Holders.Holder;
+      function UML_Test_Identity_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TestIdentityAction class.
 
-      function Time_Constraint_Get return League.Holders.Holder;
+      function UML_Time_Constraint_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TimeConstraint class.
 
-      function Time_Event_Get return League.Holders.Holder;
+      function UML_Time_Event_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TimeEvent class.
 
-      function Time_Expression_Get return League.Holders.Holder;
+      function UML_Time_Expression_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TimeExpression class.
 
-      function Time_Interval_Get return League.Holders.Holder;
+      function UML_Time_Interval_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TimeInterval class.
 
-      function Time_Observation_Get return League.Holders.Holder;
+      function UML_Time_Observation_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TimeObservation class.
 
-      function Transition_Get return League.Holders.Holder;
+      function UML_Transition_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Transition class.
 
-      function Trigger_Get return League.Holders.Holder;
+      function UML_Trigger_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Trigger class.
 
-      function Unmarshall_Action_Get return League.Holders.Holder;
+      function UML_Unmarshall_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of UnmarshallAction class.
 
-      function Usage_Get return League.Holders.Holder;
+      function UML_Usage_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Usage class.
 
-      function Use_Case_Get return League.Holders.Holder;
+      function UML_Use_Case_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of UseCase class.
 
-      function Value_Pin_Get return League.Holders.Holder;
+      function UML_Value_Pin_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ValuePin class.
 
-      function Value_Specification_Action_Get return League.Holders.Holder;
+      function UML_Value_Specification_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ValueSpecificationAction class.
 
-      function Variable_Get return League.Holders.Holder;
+      function UML_Variable_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Variable class.
 
-      ---------------------
-      -- Abstraction_Get --
-      ---------------------
+      ---------------------------------------
+      -- Standard_Profile_L2_Auxiliary_Get --
+      ---------------------------------------
 
-      function Abstraction_Get return League.Holders.Holder is
+      function Standard_Profile_L2_Auxiliary_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Auxiliary_Base_Class then
+            --  Auxiliary::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Auxiliaries.Standard_Profile_L2_Auxiliary_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Auxiliary_Get;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Call_Get --
+      ----------------------------------
+
+      function Standard_Profile_L2_Call_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Call_Base_Usage then
+            --  Call::base_Usage : Usage
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access'
+                 (AMF.Standard_Profile_L2.Calls.Standard_Profile_L2_Call_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Usage));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Call_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Create_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Create_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Create_Base_Behavioral_Feature then
+            --  Create::base_BehavioralFeature : BehavioralFeature
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access'
+                 (AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Behavioral_Feature));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Create_Base_Usage then
+            --  Create::base_Usage : Usage
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access'
+                 (AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Usage));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Create_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Derive_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Derive_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Derive_Base_Abstraction then
+            --  Derive::base_Abstraction : Abstraction
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Abstractions.UML_Abstraction_Access'
+                 (AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Abstraction));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Derive_Computation then
+            --  Derive::computation : ValueSpecification
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Value_Specifications.UML_Value_Specification_Access'
+                 (AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Computation));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Derive_Get;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Destroy_Get --
+      -------------------------------------
+
+      function Standard_Profile_L2_Destroy_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature then
+            --  Destroy::base_BehavioralFeature : BehavioralFeature
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access'
+                 (AMF.Standard_Profile_L2.Destroies.Standard_Profile_L2_Destroy_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Behavioral_Feature));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Destroy_Get;
+
+      --------------------------------------
+      -- Standard_Profile_L2_Document_Get --
+      --------------------------------------
+
+      function Standard_Profile_L2_Document_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Document_Base_Artifact then
+            --  Document::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Document_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Entity_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Entity_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Entity_Base_Component then
+            --  Entity::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L2.Entities.Standard_Profile_L2_Entity_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Entity_Get;
+
+      ----------------------------------------
+      -- Standard_Profile_L2_Executable_Get --
+      ----------------------------------------
+
+      function Standard_Profile_L2_Executable_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Executable_Base_Artifact then
+            --  Executable::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Executable_Get;
+
+      -----------------------------------
+      -- Standard_Profile_L2_Focus_Get --
+      -----------------------------------
+
+      function Standard_Profile_L2_Focus_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Focus_Base_Class then
+            --  Focus::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Focuses.Standard_Profile_L2_Focus_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Focus_Get;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Framework_Get --
+      ---------------------------------------
+
+      function Standard_Profile_L2_Framework_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Framework_Base_Package then
+            --  Framework::base_Package : Package
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Packages.UML_Package_Access'
+                 (AMF.Standard_Profile_L2.Frameworks.Standard_Profile_L2_Framework_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Package));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Framework_Get;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Implement_Get --
+      ---------------------------------------
+
+      function Standard_Profile_L2_Implement_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Implement_Base_Component then
+            --  Implement::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L2.Implements.Standard_Profile_L2_Implement_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Implement_Get;
+
+      --------------------------------------------------
+      -- Standard_Profile_L2_Implementation_Class_Get --
+      --------------------------------------------------
+
+      function Standard_Profile_L2_Implementation_Class_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Implementation_Class_Base_Class then
+            --  ImplementationClass::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Implementation_Classes.Standard_Profile_L2_Implementation_Class_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Implementation_Class_Get;
+
+      -----------------------------------------
+      -- Standard_Profile_L2_Instantiate_Get --
+      -----------------------------------------
+
+      function Standard_Profile_L2_Instantiate_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Instantiate_Base_Usage then
+            --  Instantiate::base_Usage : Usage
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access'
+                 (AMF.Standard_Profile_L2.Instantiates.Standard_Profile_L2_Instantiate_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Usage));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Instantiate_Get;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Library_Get --
+      -------------------------------------
+
+      function Standard_Profile_L2_Library_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Library_Base_Artifact then
+            --  Library::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Library_Get;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Metaclass_Get --
+      ---------------------------------------
+
+      function Standard_Profile_L2_Metaclass_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Metaclass_Base_Class then
+            --  Metaclass::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Metaclasses.Standard_Profile_L2_Metaclass_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Metaclass_Get;
+
+      -------------------------------------------
+      -- Standard_Profile_L2_Model_Library_Get --
+      -------------------------------------------
+
+      function Standard_Profile_L2_Model_Library_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Model_Library_Base_Package then
+            --  ModelLibrary::base_Package : Package
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Packages.UML_Package_Access'
+                 (AMF.Standard_Profile_L2.Model_Libraries.Standard_Profile_L2_Model_Library_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Package));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Model_Library_Get;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Process_Get --
+      -------------------------------------
+
+      function Standard_Profile_L2_Process_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Process_Base_Component then
+            --  Process::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L2.Processes.Standard_Profile_L2_Process_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Process_Get;
+
+      -----------------------------------------
+      -- Standard_Profile_L2_Realization_Get --
+      -----------------------------------------
+
+      function Standard_Profile_L2_Realization_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Realization_Base_Classifier then
+            --  Realization::base_Classifier : Classifier
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classifiers.UML_Classifier_Access'
+                 (AMF.Standard_Profile_L2.Realizations.Standard_Profile_L2_Realization_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Classifier));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Realization_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Refine_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Refine_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Refine_Base_Abstraction then
+            --  Refine::base_Abstraction : Abstraction
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Abstractions.UML_Abstraction_Access'
+                 (AMF.Standard_Profile_L2.Refines.Standard_Profile_L2_Refine_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Abstraction));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Refine_Get;
+
+      --------------------------------------------
+      -- Standard_Profile_L2_Responsibility_Get --
+      --------------------------------------------
+
+      function Standard_Profile_L2_Responsibility_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Responsibility_Base_Usage then
+            --  Responsibility::base_Usage : Usage
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access'
+                 (AMF.Standard_Profile_L2.Responsibilities.Standard_Profile_L2_Responsibility_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Usage));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Responsibility_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Script_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Script_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Script_Base_Artifact then
+            --  Script::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Script_Get;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Send_Get --
+      ----------------------------------
+
+      function Standard_Profile_L2_Send_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Send_Base_Usage then
+            --  Send::base_Usage : Usage
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access'
+                 (AMF.Standard_Profile_L2.Sends.Standard_Profile_L2_Send_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Usage));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Send_Get;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Service_Get --
+      -------------------------------------
+
+      function Standard_Profile_L2_Service_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Service_Base_Component then
+            --  Service::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L2.Services.Standard_Profile_L2_Service_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Service_Get;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Source_Get --
+      ------------------------------------
+
+      function Standard_Profile_L2_Source_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Source_Base_Artifact then
+            --  Source::base_Artifact : Artifact
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access'
+                 (AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Artifact));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Source_Get;
+
+      -------------------------------------------
+      -- Standard_Profile_L2_Specification_Get --
+      -------------------------------------------
+
+      function Standard_Profile_L2_Specification_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Specification_Base_Classifier then
+            --  Specification::base_Classifier : Classifier
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classifiers.UML_Classifier_Access'
+                 (AMF.Standard_Profile_L2.Specifications.Standard_Profile_L2_Specification_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Classifier));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Specification_Get;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Subsystem_Get --
+      ---------------------------------------
+
+      function Standard_Profile_L2_Subsystem_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Subsystem_Base_Component then
+            --  Subsystem::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L2.Subsystems.Standard_Profile_L2_Subsystem_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Subsystem_Get;
+
+      -----------------------------------
+      -- Standard_Profile_L2_Trace_Get --
+      -----------------------------------
+
+      function Standard_Profile_L2_Trace_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Trace_Base_Abstraction then
+            --  Trace::base_Abstraction : Abstraction
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Abstractions.UML_Abstraction_Access'
+                 (AMF.Standard_Profile_L2.Traces.Standard_Profile_L2_Trace_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Abstraction));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Trace_Get;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Type_Get --
+      ----------------------------------
+
+      function Standard_Profile_L2_Type_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Type_Base_Class then
+            --  Type::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Types.Standard_Profile_L2_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Type_Get;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Utility_Get --
+      -------------------------------------
+
+      function Standard_Profile_L2_Utility_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Utility_Base_Class then
+            --  Utility::base_Class : Class
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access'
+                 (AMF.Standard_Profile_L2.Utilities.Standard_Profile_L2_Utility_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Class));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Utility_Get;
+
+      ---------------------------------------------
+      -- Standard_Profile_L3_Build_Component_Get --
+      ---------------------------------------------
+
+      function Standard_Profile_L3_Build_Component_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_Build_Component_Base_Component then
+            --  BuildComponent::base_Component : Component
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access'
+                 (AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Component));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_Build_Component_Get;
+
+      ---------------------------------------
+      -- Standard_Profile_L3_Metamodel_Get --
+      ---------------------------------------
+
+      function Standard_Profile_L3_Metamodel_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_Metamodel_Base_Model then
+            --  Metamodel::base_Model : Model
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access'
+                 (AMF.Standard_Profile_L3.Metamodels.Standard_Profile_L3_Metamodel_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Model));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_Metamodel_Get;
+
+      ------------------------------------------
+      -- Standard_Profile_L3_System_Model_Get --
+      ------------------------------------------
+
+      function Standard_Profile_L3_System_Model_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_System_Model_Base_Model then
+            --  SystemModel::base_Model : Model
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access'
+                 (AMF.Standard_Profile_L3.System_Models.Standard_Profile_L3_System_Model_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Model));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_System_Model_Get;
+
+      -------------------------
+      -- UML_Abstraction_Get --
+      -------------------------
+
+      function UML_Abstraction_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -1041,13 +1874,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Abstraction_Get;
+      end UML_Abstraction_Get;
 
-      ----------------------------
-      -- Accept_Call_Action_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Accept_Call_Action_Get --
+      --------------------------------
 
-      function Accept_Call_Action_Get return League.Holders.Holder is
+      function UML_Accept_Call_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -1307,13 +2140,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Accept_Call_Action_Get;
+      end UML_Accept_Call_Action_Get;
 
-      -----------------------------
-      -- Accept_Event_Action_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Accept_Event_Action_Get --
+      ---------------------------------
 
-      function Accept_Event_Action_Get return League.Holders.Holder is
+      function UML_Accept_Event_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -1564,13 +2397,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Accept_Event_Action_Get;
+      end UML_Accept_Event_Action_Get;
 
-      ----------------------------------------
-      -- Action_Execution_Specification_Get --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Action_Execution_Specification_Get --
+      --------------------------------------------
 
-      function Action_Execution_Specification_Get return League.Holders.Holder is
+      function UML_Action_Execution_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Execution_Specification_Action then
             --  ActionExecutionSpecification::action : Action
@@ -1711,13 +2544,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Action_Execution_Specification_Get;
+      end UML_Action_Execution_Specification_Get;
 
-      --------------------------
-      -- Action_Input_Pin_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Action_Input_Pin_Get --
+      ------------------------------
 
-      function Action_Input_Pin_Get return League.Holders.Holder is
+      function UML_Action_Input_Pin_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -2005,13 +2838,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Action_Input_Pin_Get;
+      end UML_Action_Input_Pin_Get;
 
-      ------------------
-      -- Activity_Get --
-      ------------------
+      ----------------------
+      -- UML_Activity_Get --
+      ----------------------
 
-      function Activity_Get return League.Holders.Holder is
+      function UML_Activity_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -2605,13 +3438,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Get;
+      end UML_Activity_Get;
 
-      -----------------------------
-      -- Activity_Final_Node_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Activity_Final_Node_Get --
+      ---------------------------------
 
-      function Activity_Final_Node_Get return League.Holders.Holder is
+      function UML_Activity_Final_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -2781,13 +3614,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Final_Node_Get;
+      end UML_Activity_Final_Node_Get;
 
-      ---------------------------------
-      -- Activity_Parameter_Node_Get --
-      ---------------------------------
+      -------------------------------------
+      -- UML_Activity_Parameter_Node_Get --
+      -------------------------------------
 
-      function Activity_Parameter_Node_Get return League.Holders.Holder is
+      function UML_Activity_Parameter_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -3017,13 +3850,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Parameter_Node_Get;
+      end UML_Activity_Parameter_Node_Get;
 
-      ----------------------------
-      -- Activity_Partition_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Activity_Partition_Get --
+      --------------------------------
 
-      function Activity_Partition_Get return League.Holders.Holder is
+      function UML_Activity_Partition_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -3203,13 +4036,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Partition_Get;
+      end UML_Activity_Partition_Get;
 
-      ---------------
-      -- Actor_Get --
-      ---------------
+      -------------------
+      -- UML_Actor_Get --
+      -------------------
 
-      function Actor_Get return League.Holders.Holder is
+      function UML_Actor_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -3569,13 +4402,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Actor_Get;
+      end UML_Actor_Get;
 
-      ---------------------------------------------
-      -- Add_Structural_Feature_Value_Action_Get --
-      ---------------------------------------------
+      -------------------------------------------------
+      -- UML_Add_Structural_Feature_Value_Action_Get --
+      -------------------------------------------------
 
-      function Add_Structural_Feature_Value_Action_Get return League.Holders.Holder is
+      function UML_Add_Structural_Feature_Value_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -3855,13 +4688,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Add_Structural_Feature_Value_Action_Get;
+      end UML_Add_Structural_Feature_Value_Action_Get;
 
-      -----------------------------------
-      -- Add_Variable_Value_Action_Get --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Add_Variable_Value_Action_Get --
+      ---------------------------------------
 
-      function Add_Variable_Value_Action_Get return League.Holders.Holder is
+      function UML_Add_Variable_Value_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -4123,13 +4956,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Add_Variable_Value_Action_Get;
+      end UML_Add_Variable_Value_Action_Get;
 
-      ---------------------------
-      -- Any_Receive_Event_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Any_Receive_Event_Get --
+      -------------------------------
 
-      function Any_Receive_Event_Get return League.Holders.Holder is
+      function UML_Any_Receive_Event_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -4235,13 +5068,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Any_Receive_Event_Get;
+      end UML_Any_Receive_Event_Get;
 
-      ------------------
-      -- Artifact_Get --
-      ------------------
+      ----------------------
+      -- UML_Artifact_Get --
+      ----------------------
 
-      function Artifact_Get return League.Holders.Holder is
+      function UML_Artifact_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -4616,13 +5449,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Artifact_Get;
+      end UML_Artifact_Get;
 
-      ---------------------
-      -- Association_Get --
-      ---------------------
+      -------------------------
+      -- UML_Association_Get --
+      -------------------------
 
-      function Association_Get return League.Holders.Holder is
+      function UML_Association_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -5005,13 +5838,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Get;
+      end UML_Association_Get;
 
-      ---------------------------
-      -- Association_Class_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Association_Class_Get --
+      -------------------------------
 
-      function Association_Class_Get return League.Holders.Holder is
+      function UML_Association_Class_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -5523,13 +6356,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Class_Get;
+      end UML_Association_Class_Get;
 
-      ------------------------------------------
-      -- Behavior_Execution_Specification_Get --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Behavior_Execution_Specification_Get --
+      ----------------------------------------------
 
-      function Behavior_Execution_Specification_Get return League.Holders.Holder is
+      function UML_Behavior_Execution_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavior_Execution_Specification_Behavior then
             --  BehaviorExecutionSpecification::behavior : Behavior
@@ -5670,13 +6503,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Behavior_Execution_Specification_Get;
+      end UML_Behavior_Execution_Specification_Get;
 
-      ---------------------------------
-      -- Broadcast_Signal_Action_Get --
-      ---------------------------------
+      -------------------------------------
+      -- UML_Broadcast_Signal_Action_Get --
+      -------------------------------------
 
-      function Broadcast_Signal_Action_Get return League.Holders.Holder is
+      function UML_Broadcast_Signal_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -5929,13 +6762,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Broadcast_Signal_Action_Get;
+      end UML_Broadcast_Signal_Action_Get;
 
-      ------------------------------
-      -- Call_Behavior_Action_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Call_Behavior_Action_Get --
+      ----------------------------------
 
-      function Call_Behavior_Action_Get return League.Holders.Holder is
+      function UML_Call_Behavior_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -6204,13 +7037,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Behavior_Action_Get;
+      end UML_Call_Behavior_Action_Get;
 
-      --------------------
-      -- Call_Event_Get --
-      --------------------
+      ------------------------
+      -- UML_Call_Event_Get --
+      ------------------------
 
-      function Call_Event_Get return League.Holders.Holder is
+      function UML_Call_Event_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6325,13 +7158,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Event_Get;
+      end UML_Call_Event_Get;
 
-      -------------------------------
-      -- Call_Operation_Action_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Call_Operation_Action_Get --
+      -----------------------------------
 
-      function Call_Operation_Action_Get return League.Holders.Holder is
+      function UML_Call_Operation_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -6609,13 +7442,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Operation_Action_Get;
+      end UML_Call_Operation_Action_Get;
 
-      -----------------------------
-      -- Central_Buffer_Node_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Central_Buffer_Node_Get --
+      ---------------------------------
 
-      function Central_Buffer_Node_Get return League.Holders.Holder is
+      function UML_Central_Buffer_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -6836,13 +7669,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Central_Buffer_Node_Get;
+      end UML_Central_Buffer_Node_Get;
 
-      ----------------------
-      -- Change_Event_Get --
-      ----------------------
+      --------------------------
+      -- UML_Change_Event_Get --
+      --------------------------
 
-      function Change_Event_Get return League.Holders.Holder is
+      function UML_Change_Event_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Change_Event_Change_Expression then
             --  ChangeEvent::changeExpression : ValueSpecification
@@ -6957,13 +7790,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Change_Event_Get;
+      end UML_Change_Event_Get;
 
-      ---------------
-      -- Class_Get --
-      ---------------
+      -------------------
+      -- UML_Class_Get --
+      -------------------
 
-      function Class_Get return League.Holders.Holder is
+      function UML_Class_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -7427,13 +8260,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Class_Get;
+      end UML_Class_Get;
 
-      ---------------------------------------
-      -- Classifier_Template_Parameter_Get --
-      ---------------------------------------
+      -------------------------------------------
+      -- UML_Classifier_Template_Parameter_Get --
+      -------------------------------------------
 
-      function Classifier_Template_Parameter_Get return League.Holders.Holder is
+      function UML_Classifier_Template_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Allow_Substitutable then
             --  ClassifierTemplateParameter::allowSubstitutable : Boolean
@@ -7533,13 +8366,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Classifier_Template_Parameter_Get;
+      end UML_Classifier_Template_Parameter_Get;
 
-      ----------------
-      -- Clause_Get --
-      ----------------
+      --------------------
+      -- UML_Clause_Get --
+      --------------------
 
-      function Clause_Get return League.Holders.Holder is
+      function UML_Clause_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Body then
             --  Clause::body : ExecutableNode
@@ -7618,13 +8451,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clause_Get;
+      end UML_Clause_Get;
 
-      ----------------------------------
-      -- Clear_Association_Action_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Clear_Association_Action_Get --
+      --------------------------------------
 
-      function Clear_Association_Action_Get return League.Holders.Holder is
+      function UML_Clear_Association_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -7869,13 +8702,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Association_Action_Get;
+      end UML_Clear_Association_Action_Get;
 
-      -----------------------------------------
-      -- Clear_Structural_Feature_Action_Get --
-      -----------------------------------------
+      ---------------------------------------------
+      -- UML_Clear_Structural_Feature_Action_Get --
+      ---------------------------------------------
 
-      function Clear_Structural_Feature_Action_Get return League.Holders.Holder is
+      function UML_Clear_Structural_Feature_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -8129,13 +8962,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Structural_Feature_Action_Get;
+      end UML_Clear_Structural_Feature_Action_Get;
 
-      -------------------------------
-      -- Clear_Variable_Action_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Clear_Variable_Action_Get --
+      -----------------------------------
 
-      function Clear_Variable_Action_Get return League.Holders.Holder is
+      function UML_Clear_Variable_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -8371,13 +9204,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Variable_Action_Get;
+      end UML_Clear_Variable_Action_Get;
 
-      -----------------------
-      -- Collaboration_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Collaboration_Get --
+      ---------------------------
 
-      function Collaboration_Get return League.Holders.Holder is
+      function UML_Collaboration_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -8777,13 +9610,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collaboration_Get;
+      end UML_Collaboration_Get;
 
-      ---------------------------
-      -- Collaboration_Use_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Collaboration_Use_Get --
+      -------------------------------
 
-      function Collaboration_Use_Get return League.Holders.Holder is
+      function UML_Collaboration_Use_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -8880,13 +9713,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collaboration_Use_Get;
+      end UML_Collaboration_Use_Get;
 
-      ---------------------------
-      -- Combined_Fragment_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Combined_Fragment_Get --
+      -------------------------------
 
-      function Combined_Fragment_Get return League.Holders.Holder is
+      function UML_Combined_Fragment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Combined_Fragment_Cfragment_Gate then
             --  CombinedFragment::cfragmentGate : Gate
@@ -9024,13 +9857,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Combined_Fragment_Get;
+      end UML_Combined_Fragment_Get;
 
-      -----------------
-      -- Comment_Get --
-      -----------------
+      ---------------------
+      -- UML_Comment_Get --
+      ---------------------
 
-      function Comment_Get return League.Holders.Holder is
+      function UML_Comment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Comment_Annotated_Element then
             --  Comment::annotatedElement : Element
@@ -9076,13 +9909,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Comment_Get;
+      end UML_Comment_Get;
 
-      ----------------------------
-      -- Communication_Path_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Communication_Path_Get --
+      --------------------------------
 
-      function Communication_Path_Get return League.Holders.Holder is
+      function UML_Communication_Path_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -9465,13 +10298,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Communication_Path_Get;
+      end UML_Communication_Path_Get;
 
-      -------------------
-      -- Component_Get --
-      -------------------
+      -----------------------
+      -- UML_Component_Get --
+      -----------------------
 
-      function Component_Get return League.Holders.Holder is
+      function UML_Component_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -9975,13 +10808,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Component_Get;
+      end UML_Component_Get;
 
-      -------------------------------
-      -- Component_Realization_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Component_Realization_Get --
+      -----------------------------------
 
-      function Component_Realization_Get return League.Holders.Holder is
+      function UML_Component_Realization_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Component_Realization_Abstraction then
             --  ComponentRealization::abstraction : Component
@@ -10153,13 +10986,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Component_Realization_Get;
+      end UML_Component_Realization_Get;
 
-      --------------------------
-      -- Conditional_Node_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Conditional_Node_Get --
+      ------------------------------
 
-      function Conditional_Node_Get return League.Holders.Holder is
+      function UML_Conditional_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -10565,13 +11398,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Conditional_Node_Get;
+      end UML_Conditional_Node_Get;
 
-      ------------------------------------------------
-      -- Connectable_Element_Template_Parameter_Get --
-      ------------------------------------------------
+      ----------------------------------------------------
+      -- UML_Connectable_Element_Template_Parameter_Get --
+      ----------------------------------------------------
 
-      function Connectable_Element_Template_Parameter_Get return League.Holders.Holder is
+      function UML_Connectable_Element_Template_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -10655,13 +11488,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connectable_Element_Template_Parameter_Get;
+      end UML_Connectable_Element_Template_Parameter_Get;
 
-      ------------------------------------
-      -- Connection_Point_Reference_Get --
-      ------------------------------------
+      ----------------------------------------
+      -- UML_Connection_Point_Reference_Get --
+      ----------------------------------------
 
-      function Connection_Point_Reference_Get return League.Holders.Holder is
+      function UML_Connection_Point_Reference_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -10791,13 +11624,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connection_Point_Reference_Get;
+      end UML_Connection_Point_Reference_Get;
 
-      -------------------
-      -- Connector_Get --
-      -------------------
+      -----------------------
+      -- UML_Connector_Get --
+      -----------------------
 
-      function Connector_Get return League.Holders.Holder is
+      function UML_Connector_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -10958,13 +11791,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connector_Get;
+      end UML_Connector_Get;
 
-      -----------------------
-      -- Connector_End_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Connector_End_Get --
+      ---------------------------
 
-      function Connector_End_Get return League.Holders.Holder is
+      function UML_Connector_End_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connector_End_Defining_End then
             --  ConnectorEnd::definingEnd : Property
@@ -11071,13 +11904,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connector_End_Get;
+      end UML_Connector_End_Get;
 
-      ----------------------------------
-      -- Consider_Ignore_Fragment_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Consider_Ignore_Fragment_Get --
+      --------------------------------------
 
-      function Consider_Ignore_Fragment_Get return League.Holders.Holder is
+      function UML_Consider_Ignore_Fragment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Combined_Fragment_Cfragment_Gate then
             --  CombinedFragment::cfragmentGate : Gate
@@ -11223,13 +12056,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Consider_Ignore_Fragment_Get;
+      end UML_Consider_Ignore_Fragment_Get;
 
-      --------------------
-      -- Constraint_Get --
-      --------------------
+      ------------------------
+      -- UML_Constraint_Get --
+      ------------------------
 
-      function Constraint_Get return League.Holders.Holder is
+      function UML_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -11361,13 +12194,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Constraint_Get;
+      end UML_Constraint_Get;
 
-      ----------------------
-      -- Continuation_Get --
-      ----------------------
+      --------------------------
+      -- UML_Continuation_Get --
+      --------------------------
 
-      function Continuation_Get return League.Holders.Holder is
+      function UML_Continuation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -11489,13 +12322,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Continuation_Get;
+      end UML_Continuation_Get;
 
-      ----------------------
-      -- Control_Flow_Get --
-      ----------------------
+      --------------------------
+      -- UML_Control_Flow_Get --
+      --------------------------
 
-      function Control_Flow_Get return League.Holders.Holder is
+      function UML_Control_Flow_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Edge_Activity then
             --  ActivityEdge::activity : Activity
@@ -11686,13 +12519,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Control_Flow_Get;
+      end UML_Control_Flow_Get;
 
-      ----------------------------
-      -- Create_Link_Action_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Create_Link_Action_Get --
+      --------------------------------
 
-      function Create_Link_Action_Get return League.Holders.Holder is
+      function UML_Create_Link_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -11943,13 +12776,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Link_Action_Get;
+      end UML_Create_Link_Action_Get;
 
-      -----------------------------------
-      -- Create_Link_Object_Action_Get --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Create_Link_Object_Action_Get --
+      ---------------------------------------
 
-      function Create_Link_Object_Action_Get return League.Holders.Holder is
+      function UML_Create_Link_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -12209,13 +13042,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Link_Object_Action_Get;
+      end UML_Create_Link_Object_Action_Get;
 
-      ------------------------------
-      -- Create_Object_Action_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Create_Object_Action_Get --
+      ----------------------------------
 
-      function Create_Object_Action_Get return League.Holders.Holder is
+      function UML_Create_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -12460,13 +13293,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Object_Action_Get;
+      end UML_Create_Object_Action_Get;
 
-      -------------------------
-      -- Data_Store_Node_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Data_Store_Node_Get --
+      -----------------------------
 
-      function Data_Store_Node_Get return League.Holders.Holder is
+      function UML_Data_Store_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -12687,13 +13520,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Store_Node_Get;
+      end UML_Data_Store_Node_Get;
 
-      -------------------
-      -- Data_Type_Get --
-      -------------------
+      -----------------------
+      -- UML_Data_Type_Get --
+      -----------------------
 
-      function Data_Type_Get return League.Holders.Holder is
+      function UML_Data_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -13044,13 +13877,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Type_Get;
+      end UML_Data_Type_Get;
 
-      -----------------------
-      -- Decision_Node_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Decision_Node_Get --
+      ---------------------------
 
-      function Decision_Node_Get return League.Holders.Holder is
+      function UML_Decision_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -13238,13 +14071,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Decision_Node_Get;
+      end UML_Decision_Node_Get;
 
-      --------------------
-      -- Dependency_Get --
-      --------------------
+      ------------------------
+      -- UML_Dependency_Get --
+      ------------------------
 
-      function Dependency_Get return League.Holders.Holder is
+      function UML_Dependency_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -13390,13 +14223,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Dependency_Get;
+      end UML_Dependency_Get;
 
-      --------------------
-      -- Deployment_Get --
-      --------------------
+      ------------------------
+      -- UML_Deployment_Get --
+      ------------------------
 
-      function Deployment_Get return League.Holders.Holder is
+      function UML_Deployment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -13567,13 +14400,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Deployment_Get;
+      end UML_Deployment_Get;
 
-      ----------------------------------
-      -- Deployment_Specification_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Deployment_Specification_Get --
+      --------------------------------------
 
-      function Deployment_Specification_Get return League.Holders.Holder is
+      function UML_Deployment_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -13973,13 +14806,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Deployment_Specification_Get;
+      end UML_Deployment_Specification_Get;
 
-      -----------------------------
-      -- Destroy_Link_Action_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Destroy_Link_Action_Get --
+      ---------------------------------
 
-      function Destroy_Link_Action_Get return League.Holders.Holder is
+      function UML_Destroy_Link_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -14230,13 +15063,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destroy_Link_Action_Get;
+      end UML_Destroy_Link_Action_Get;
 
-      -------------------------------
-      -- Destroy_Object_Action_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Destroy_Object_Action_Get --
+      -----------------------------------
 
-      function Destroy_Object_Action_Get return League.Holders.Holder is
+      function UML_Destroy_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -14488,13 +15321,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destroy_Object_Action_Get;
+      end UML_Destroy_Object_Action_Get;
 
-      ----------------------------------------------
-      -- Destruction_Occurrence_Specification_Get --
-      ----------------------------------------------
+      --------------------------------------------------
+      -- UML_Destruction_Occurrence_Specification_Get --
+      --------------------------------------------------
 
-      function Destruction_Occurrence_Specification_Get return League.Holders.Holder is
+      function UML_Destruction_Occurrence_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -14642,13 +15475,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destruction_Occurrence_Specification_Get;
+      end UML_Destruction_Occurrence_Specification_Get;
 
-      ----------------
-      -- Device_Get --
-      ----------------
+      --------------------
+      -- UML_Device_Get --
+      --------------------
 
-      function Device_Get return League.Holders.Holder is
+      function UML_Device_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -15136,13 +15969,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Device_Get;
+      end UML_Device_Get;
 
-      ------------------
-      -- Duration_Get --
-      ------------------
+      ----------------------
+      -- UML_Duration_Get --
+      ----------------------
 
-      function Duration_Get return League.Holders.Holder is
+      function UML_Duration_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -15274,13 +16107,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Get;
+      end UML_Duration_Get;
 
-      -----------------------------
-      -- Duration_Constraint_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Duration_Constraint_Get --
+      ---------------------------------
 
-      function Duration_Constraint_Get return League.Holders.Holder is
+      function UML_Duration_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -15438,13 +16271,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Constraint_Get;
+      end UML_Duration_Constraint_Get;
 
-      ---------------------------
-      -- Duration_Interval_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Duration_Interval_Get --
+      -------------------------------
 
-      function Duration_Interval_Get return League.Holders.Holder is
+      function UML_Duration_Interval_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -15595,13 +16428,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Interval_Get;
+      end UML_Duration_Interval_Get;
 
-      ------------------------------
-      -- Duration_Observation_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Duration_Observation_Get --
+      ----------------------------------
 
-      function Duration_Observation_Get return League.Holders.Holder is
+      function UML_Duration_Observation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -15723,13 +16556,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Observation_Get;
+      end UML_Duration_Observation_Get;
 
-      ------------------------
-      -- Element_Import_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Element_Import_Get --
+      ----------------------------
 
-      function Element_Import_Get return League.Holders.Holder is
+      function UML_Element_Import_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Import_Alias then
             --  ElementImport::alias : String
@@ -15817,13 +16650,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Element_Import_Get;
+      end UML_Element_Import_Get;
 
-      ---------------------
-      -- Enumeration_Get --
-      ---------------------
+      -------------------------
+      -- UML_Enumeration_Get --
+      -------------------------
 
-      function Enumeration_Get return League.Holders.Holder is
+      function UML_Enumeration_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -16182,13 +17015,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Get;
+      end UML_Enumeration_Get;
 
-      -----------------------------
-      -- Enumeration_Literal_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Enumeration_Literal_Get --
+      ---------------------------------
 
-      function Enumeration_Literal_Get return League.Holders.Holder is
+      function UML_Enumeration_Literal_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Enumeration_Literal_Classifier then
             --  EnumerationLiteral::classifier : Enumeration
@@ -16353,13 +17186,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Literal_Get;
+      end UML_Enumeration_Literal_Get;
 
-      ---------------------------
-      -- Exception_Handler_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Exception_Handler_Get --
+      -------------------------------
 
-      function Exception_Handler_Get return League.Holders.Holder is
+      function UML_Exception_Handler_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Exception_Handler_Exception_Input then
             --  ExceptionHandler::exceptionInput : ObjectNode
@@ -16424,13 +17257,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Exception_Handler_Get;
+      end UML_Exception_Handler_Get;
 
-      -------------------------------
-      -- Execution_Environment_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Execution_Environment_Get --
+      -----------------------------------
 
-      function Execution_Environment_Get return League.Holders.Holder is
+      function UML_Execution_Environment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -16918,13 +17751,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Execution_Environment_Get;
+      end UML_Execution_Environment_Get;
 
-      --------------------------------------------
-      -- Execution_Occurrence_Specification_Get --
-      --------------------------------------------
+      ------------------------------------------------
+      -- UML_Execution_Occurrence_Specification_Get --
+      ------------------------------------------------
 
-      function Execution_Occurrence_Specification_Get return League.Holders.Holder is
+      function UML_Execution_Occurrence_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -17072,13 +17905,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Execution_Occurrence_Specification_Get;
+      end UML_Execution_Occurrence_Specification_Get;
 
-      ------------------------
-      -- Expansion_Node_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Expansion_Node_Get --
+      ----------------------------
 
-      function Expansion_Node_Get return League.Holders.Holder is
+      function UML_Expansion_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -17317,13 +18150,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expansion_Node_Get;
+      end UML_Expansion_Node_Get;
 
-      --------------------------
-      -- Expansion_Region_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Expansion_Region_Get --
+      ------------------------------
 
-      function Expansion_Region_Get return League.Holders.Holder is
+      function UML_Expansion_Region_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -17721,13 +18554,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expansion_Region_Get;
+      end UML_Expansion_Region_Get;
 
-      --------------------
-      -- Expression_Get --
-      --------------------
+      ------------------------
+      -- UML_Expression_Get --
+      ------------------------
 
-      function Expression_Get return League.Holders.Holder is
+      function UML_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -17858,13 +18691,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_Get;
+      end UML_Expression_Get;
 
-      ----------------
-      -- Extend_Get --
-      ----------------
+      --------------------
+      -- UML_Extend_Get --
+      --------------------
 
-      function Extend_Get return League.Holders.Holder is
+      function UML_Extend_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -18003,13 +18836,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extend_Get;
+      end UML_Extend_Get;
 
-      -------------------
-      -- Extension_Get --
-      -------------------
+      -----------------------
+      -- UML_Extension_Get --
+      -----------------------
 
-      function Extension_Get return League.Holders.Holder is
+      function UML_Extension_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -18418,13 +19251,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_Get;
+      end UML_Extension_Get;
 
-      -----------------------
-      -- Extension_End_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Extension_End_Get --
+      ---------------------------
 
-      function Extension_End_Get return League.Holders.Holder is
+      function UML_Extension_End_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -18831,13 +19664,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_End_Get;
+      end UML_Extension_End_Get;
 
-      -------------------------
-      -- Extension_Point_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Extension_Point_Get --
+      -----------------------------
 
-      function Extension_Point_Get return League.Holders.Holder is
+      function UML_Extension_Point_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -18950,13 +19783,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_Point_Get;
+      end UML_Extension_Point_Get;
 
-      ---------------------
-      -- Final_State_Get --
-      ---------------------
+      -------------------------
+      -- UML_Final_State_Get --
+      -------------------------
 
-      function Final_State_Get return League.Holders.Holder is
+      function UML_Final_State_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -19260,13 +20093,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Final_State_Get;
+      end UML_Final_State_Get;
 
-      -------------------------
-      -- Flow_Final_Node_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Flow_Final_Node_Get --
+      -----------------------------
 
-      function Flow_Final_Node_Get return League.Holders.Holder is
+      function UML_Flow_Final_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -19436,13 +20269,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Flow_Final_Node_Get;
+      end UML_Flow_Final_Node_Get;
 
-      -------------------
-      -- Fork_Node_Get --
-      -------------------
+      -----------------------
+      -- UML_Fork_Node_Get --
+      -----------------------
 
-      function Fork_Node_Get return League.Holders.Holder is
+      function UML_Fork_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -19612,13 +20445,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Fork_Node_Get;
+      end UML_Fork_Node_Get;
 
-      ---------------------------
-      -- Function_Behavior_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Function_Behavior_Get --
+      -------------------------------
 
-      function Function_Behavior_Get return League.Holders.Holder is
+      function UML_Function_Behavior_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -20164,13 +20997,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Function_Behavior_Get;
+      end UML_Function_Behavior_Get;
 
-      --------------
-      -- Gate_Get --
-      --------------
+      ------------------
+      -- UML_Gate_Get --
+      ------------------
 
-      function Gate_Get return League.Holders.Holder is
+      function UML_Gate_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -20259,13 +21092,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Gate_Get;
+      end UML_Gate_Get;
 
-      --------------------------
-      -- General_Ordering_Get --
-      --------------------------
+      ------------------------------
+      -- UML_General_Ordering_Get --
+      ------------------------------
 
-      function General_Ordering_Get return League.Holders.Holder is
+      function UML_General_Ordering_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_General_Ordering_After then
             --  GeneralOrdering::after : OccurrenceSpecification
@@ -20363,13 +21196,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end General_Ordering_Get;
+      end UML_General_Ordering_Get;
 
-      ------------------------
-      -- Generalization_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Generalization_Get --
+      ----------------------------
 
-      function Generalization_Get return League.Holders.Holder is
+      function UML_Generalization_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Generalization_General then
             --  Generalization::general : Classifier
@@ -20457,13 +21290,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Generalization_Get;
+      end UML_Generalization_Get;
 
-      ----------------------------
-      -- Generalization_Set_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Generalization_Set_Get --
+      --------------------------------
 
-      function Generalization_Set_Get return League.Holders.Holder is
+      function UML_Generalization_Set_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -20602,13 +21435,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Generalization_Set_Get;
+      end UML_Generalization_Set_Get;
 
-      ---------------
-      -- Image_Get --
-      ---------------
+      -------------------
+      -- UML_Image_Get --
+      -------------------
 
-      function Image_Get return League.Holders.Holder is
+      function UML_Image_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Image_Content then
             --  Image::content : String
@@ -20662,13 +21495,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Image_Get;
+      end UML_Image_Get;
 
-      -----------------
-      -- Include_Get --
-      -----------------
+      ---------------------
+      -- UML_Include_Get --
+      ---------------------
 
-      function Include_Get return League.Holders.Holder is
+      function UML_Include_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Include_Addition then
             --  Include::addition : UseCase
@@ -20790,13 +21623,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Include_Get;
+      end UML_Include_Get;
 
-      --------------------------
-      -- Information_Flow_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Information_Flow_Get --
+      ------------------------------
 
-      function Information_Flow_Get return League.Holders.Holder is
+      function UML_Information_Flow_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -20982,13 +21815,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Information_Flow_Get;
+      end UML_Information_Flow_Get;
 
-      --------------------------
-      -- Information_Item_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Information_Item_Get --
+      ------------------------------
 
-      function Information_Item_Get return League.Holders.Holder is
+      function UML_Information_Item_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -21331,13 +22164,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Information_Item_Get;
+      end UML_Information_Item_Get;
 
-      ----------------------
-      -- Initial_Node_Get --
-      ----------------------
+      --------------------------
+      -- UML_Initial_Node_Get --
+      --------------------------
 
-      function Initial_Node_Get return League.Holders.Holder is
+      function UML_Initial_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -21507,13 +22340,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Initial_Node_Get;
+      end UML_Initial_Node_Get;
 
-      -------------------
-      -- Input_Pin_Get --
-      -------------------
+      -----------------------
+      -- UML_Input_Pin_Get --
+      -----------------------
 
-      function Input_Pin_Get return League.Holders.Holder is
+      function UML_Input_Pin_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -21792,13 +22625,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Input_Pin_Get;
+      end UML_Input_Pin_Get;
 
-      --------------------------------
-      -- Instance_Specification_Get --
-      --------------------------------
+      ------------------------------------
+      -- UML_Instance_Specification_Get --
+      ------------------------------------
 
-      function Instance_Specification_Get return League.Holders.Holder is
+      function UML_Instance_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Specification_Classifier then
             --  InstanceSpecification::classifier : Classifier
@@ -21945,13 +22778,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Instance_Specification_Get;
+      end UML_Instance_Specification_Get;
 
-      ------------------------
-      -- Instance_Value_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Instance_Value_Get --
+      ----------------------------
 
-      function Instance_Value_Get return League.Holders.Holder is
+      function UML_Instance_Value_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -22075,13 +22908,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Instance_Value_Get;
+      end UML_Instance_Value_Get;
 
-      ---------------------
-      -- Interaction_Get --
-      ---------------------
+      -------------------------
+      -- UML_Interaction_Get --
+      -------------------------
 
-      function Interaction_Get return League.Holders.Holder is
+      function UML_Interaction_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Action then
             --  Interaction::action : Action
@@ -22685,13 +23518,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Get;
+      end UML_Interaction_Get;
 
-      --------------------------------
-      -- Interaction_Constraint_Get --
-      --------------------------------
+      ------------------------------------
+      -- UML_Interaction_Constraint_Get --
+      ------------------------------------
 
-      function Interaction_Constraint_Get return League.Holders.Holder is
+      function UML_Interaction_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -22841,13 +23674,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Constraint_Get;
+      end UML_Interaction_Constraint_Get;
 
-      -----------------------------
-      -- Interaction_Operand_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Interaction_Operand_Get --
+      ---------------------------------
 
-      function Interaction_Operand_Get return League.Holders.Holder is
+      function UML_Interaction_Operand_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -23026,13 +23859,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Operand_Get;
+      end UML_Interaction_Operand_Get;
 
-      -------------------------
-      -- Interaction_Use_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Interaction_Use_Get --
+      -----------------------------
 
-      function Interaction_Use_Get return League.Holders.Holder is
+      function UML_Interaction_Use_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Use_Actual_Gate then
             --  InteractionUse::actualGate : Gate
@@ -23189,13 +24022,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Use_Get;
+      end UML_Interaction_Use_Get;
 
-      -------------------
-      -- Interface_Get --
-      -------------------
+      -----------------------
+      -- UML_Interface_Get --
+      -----------------------
 
-      function Interface_Get return League.Holders.Holder is
+      function UML_Interface_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -23579,13 +24412,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interface_Get;
+      end UML_Interface_Get;
 
-      -------------------------------
-      -- Interface_Realization_Get --
-      -------------------------------
+      -----------------------------------
+      -- UML_Interface_Realization_Get --
+      -----------------------------------
 
-      function Interface_Realization_Get return League.Holders.Holder is
+      function UML_Interface_Realization_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -23758,13 +24591,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interface_Realization_Get;
+      end UML_Interface_Realization_Get;
 
-      ---------------------------------------
-      -- Interruptible_Activity_Region_Get --
-      ---------------------------------------
+      -------------------------------------------
+      -- UML_Interruptible_Activity_Region_Get --
+      -------------------------------------------
 
-      function Interruptible_Activity_Region_Get return League.Holders.Holder is
+      function UML_Interruptible_Activity_Region_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -23902,13 +24735,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interruptible_Activity_Region_Get;
+      end UML_Interruptible_Activity_Region_Get;
 
-      ------------------
-      -- Interval_Get --
-      ------------------
+      ----------------------
+      -- UML_Interval_Get --
+      ----------------------
 
-      function Interval_Get return League.Holders.Holder is
+      function UML_Interval_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24041,13 +24874,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interval_Get;
+      end UML_Interval_Get;
 
-      -----------------------------
-      -- Interval_Constraint_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Interval_Constraint_Get --
+      ---------------------------------
 
-      function Interval_Constraint_Get return League.Holders.Holder is
+      function UML_Interval_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24188,13 +25021,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interval_Constraint_Get;
+      end UML_Interval_Constraint_Get;
 
-      -------------------
-      -- Join_Node_Get --
-      -------------------
+      -----------------------
+      -- UML_Join_Node_Get --
+      -----------------------
 
-      function Join_Node_Get return League.Holders.Holder is
+      function UML_Join_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -24381,13 +25214,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Join_Node_Get;
+      end UML_Join_Node_Get;
 
-      ------------------
-      -- Lifeline_Get --
-      ------------------
+      ----------------------
+      -- UML_Lifeline_Get --
+      ----------------------
 
-      function Lifeline_Get return League.Holders.Holder is
+      function UML_Lifeline_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24511,13 +25344,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Lifeline_Get;
+      end UML_Lifeline_Get;
 
-      --------------------------------
-      -- Link_End_Creation_Data_Get --
-      --------------------------------
+      ------------------------------------
+      -- UML_Link_End_Creation_Data_Get --
+      ------------------------------------
 
-      function Link_End_Creation_Data_Get return League.Holders.Holder is
+      function UML_Link_End_Creation_Data_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_End then
             --  LinkEndData::end : Property
@@ -24590,13 +25423,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Creation_Data_Get;
+      end UML_Link_End_Creation_Data_Get;
 
-      -----------------------
-      -- Link_End_Data_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Link_End_Data_Get --
+      ---------------------------
 
-      function Link_End_Data_Get return League.Holders.Holder is
+      function UML_Link_End_Data_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_End then
             --  LinkEndData::end : Property
@@ -24652,13 +25485,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Data_Get;
+      end UML_Link_End_Data_Get;
 
-      -----------------------------------
-      -- Link_End_Destruction_Data_Get --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Link_End_Destruction_Data_Get --
+      ---------------------------------------
 
-      function Link_End_Destruction_Data_Get return League.Holders.Holder is
+      function UML_Link_End_Destruction_Data_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Destruction_Data_Destroy_At then
             --  LinkEndDestructionData::destroyAt : InputPin
@@ -24731,13 +25564,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Destruction_Data_Get;
+      end UML_Link_End_Destruction_Data_Get;
 
-      -------------------------
-      -- Literal_Boolean_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Literal_Boolean_Get --
+      -----------------------------
 
-      function Literal_Boolean_Get return League.Holders.Holder is
+      function UML_Literal_Boolean_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24860,13 +25693,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Boolean_Get;
+      end UML_Literal_Boolean_Get;
 
-      -------------------------
-      -- Literal_Integer_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Literal_Integer_Get --
+      -----------------------------
 
-      function Literal_Integer_Get return League.Holders.Holder is
+      function UML_Literal_Integer_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24989,13 +25822,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Integer_Get;
+      end UML_Literal_Integer_Get;
 
-      ----------------------
-      -- Literal_Null_Get --
-      ----------------------
+      --------------------------
+      -- UML_Literal_Null_Get --
+      --------------------------
 
-      function Literal_Null_Get return League.Holders.Holder is
+      function UML_Literal_Null_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -25110,13 +25943,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Null_Get;
+      end UML_Literal_Null_Get;
 
-      ----------------------
-      -- Literal_Real_Get --
-      ----------------------
+      --------------------------
+      -- UML_Literal_Real_Get --
+      --------------------------
 
-      function Literal_Real_Get return League.Holders.Holder is
+      function UML_Literal_Real_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -25239,13 +26072,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Real_Get;
+      end UML_Literal_Real_Get;
 
-      ------------------------
-      -- Literal_String_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Literal_String_Get --
+      ----------------------------
 
-      function Literal_String_Get return League.Holders.Holder is
+      function UML_Literal_String_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -25368,13 +26201,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_String_Get;
+      end UML_Literal_String_Get;
 
-      -----------------------------------
-      -- Literal_Unlimited_Natural_Get --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Literal_Unlimited_Natural_Get --
+      ---------------------------------------
 
-      function Literal_Unlimited_Natural_Get return League.Holders.Holder is
+      function UML_Literal_Unlimited_Natural_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -25497,13 +26330,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Unlimited_Natural_Get;
+      end UML_Literal_Unlimited_Natural_Get;
 
-      -------------------
-      -- Loop_Node_Get --
-      -------------------
+      -----------------------
+      -- UML_Loop_Node_Get --
+      -----------------------
 
-      function Loop_Node_Get return League.Holders.Holder is
+      function UML_Loop_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -25950,13 +26783,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Loop_Node_Get;
+      end UML_Loop_Node_Get;
 
-      -----------------------
-      -- Manifestation_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Manifestation_Get --
+      ---------------------------
 
-      function Manifestation_Get return League.Holders.Holder is
+      function UML_Manifestation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -26120,13 +26953,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Manifestation_Get;
+      end UML_Manifestation_Get;
 
-      --------------------
-      -- Merge_Node_Get --
-      --------------------
+      ------------------------
+      -- UML_Merge_Node_Get --
+      ------------------------
 
-      function Merge_Node_Get return League.Holders.Holder is
+      function UML_Merge_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -26296,13 +27129,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Merge_Node_Get;
+      end UML_Merge_Node_Get;
 
-      -----------------
-      -- Message_Get --
-      -----------------
+      ---------------------
+      -- UML_Message_Get --
+      ---------------------
 
-      function Message_Get return League.Holders.Holder is
+      function UML_Message_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Message_Argument then
             --  Message::argument : ValueSpecification
@@ -26451,13 +27284,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Get;
+      end UML_Message_Get;
 
-      ------------------------------------------
-      -- Message_Occurrence_Specification_Get --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Message_Occurrence_Specification_Get --
+      ----------------------------------------------
 
-      function Message_Occurrence_Specification_Get return League.Holders.Holder is
+      function UML_Message_Occurrence_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -26605,13 +27438,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Occurrence_Specification_Get;
+      end UML_Message_Occurrence_Specification_Get;
 
-      ---------------
-      -- Model_Get --
-      ---------------
+      -------------------
+      -- UML_Model_Get --
+      -------------------
 
-      function Model_Get return League.Holders.Holder is
+      function UML_Model_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -26855,13 +27688,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Model_Get;
+      end UML_Model_Get;
 
-      --------------
-      -- Node_Get --
-      --------------
+      ------------------
+      -- UML_Node_Get --
+      ------------------
 
-      function Node_Get return League.Holders.Holder is
+      function UML_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -27349,13 +28182,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Node_Get;
+      end UML_Node_Get;
 
-      ---------------------
-      -- Object_Flow_Get --
-      ---------------------
+      -------------------------
+      -- UML_Object_Flow_Get --
+      -------------------------
 
-      function Object_Flow_Get return League.Holders.Holder is
+      function UML_Object_Flow_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Edge_Activity then
             --  ActivityEdge::activity : Activity
@@ -27580,13 +28413,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Object_Flow_Get;
+      end UML_Object_Flow_Get;
 
-      ----------------------------------
-      -- Occurrence_Specification_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Occurrence_Specification_Get --
+      --------------------------------------
 
-      function Occurrence_Specification_Get return League.Holders.Holder is
+      function UML_Occurrence_Specification_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -27725,13 +28558,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Occurrence_Specification_Get;
+      end UML_Occurrence_Specification_Get;
 
-      -----------------------
-      -- Opaque_Action_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Opaque_Action_Get --
+      ---------------------------
 
-      function Opaque_Action_Get return League.Holders.Holder is
+      function UML_Opaque_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -27990,13 +28823,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Action_Get;
+      end UML_Opaque_Action_Get;
 
-      -------------------------
-      -- Opaque_Behavior_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Opaque_Behavior_Get --
+      -----------------------------
 
-      function Opaque_Behavior_Get return League.Holders.Holder is
+      function UML_Opaque_Behavior_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -28542,13 +29375,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Behavior_Get;
+      end UML_Opaque_Behavior_Get;
 
-      ---------------------------
-      -- Opaque_Expression_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Opaque_Expression_Get --
+      -------------------------------
 
-      function Opaque_Expression_Get return League.Holders.Holder is
+      function UML_Opaque_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
             --  OpaqueExpression::behavior : Behavior
@@ -28697,13 +29530,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Expression_Get;
+      end UML_Opaque_Expression_Get;
 
-      -------------------
-      -- Operation_Get --
-      -------------------
+      -----------------------
+      -- UML_Operation_Get --
+      -----------------------
 
-      function Operation_Get return League.Holders.Holder is
+      function UML_Operation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Body_Condition then
             --  Operation::bodyCondition : Constraint
@@ -29088,13 +29921,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Get;
+      end UML_Operation_Get;
 
-      --------------------------------------
-      -- Operation_Template_Parameter_Get --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Operation_Template_Parameter_Get --
+      ------------------------------------------
 
-      function Operation_Template_Parameter_Get return League.Holders.Holder is
+      function UML_Operation_Template_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -29178,13 +30011,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Template_Parameter_Get;
+      end UML_Operation_Template_Parameter_Get;
 
-      --------------------
-      -- Output_Pin_Get --
-      --------------------
+      ------------------------
+      -- UML_Output_Pin_Get --
+      ------------------------
 
-      function Output_Pin_Get return League.Holders.Holder is
+      function UML_Output_Pin_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -29463,13 +30296,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Output_Pin_Get;
+      end UML_Output_Pin_Get;
 
-      -----------------
-      -- Package_Get --
-      -----------------
+      ---------------------
+      -- UML_Package_Get --
+      ---------------------
 
-      function Package_Get return League.Holders.Holder is
+      function UML_Package_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -29705,13 +30538,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Get;
+      end UML_Package_Get;
 
-      ------------------------
-      -- Package_Import_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Package_Import_Get --
+      ----------------------------
 
-      function Package_Import_Get return League.Holders.Holder is
+      function UML_Package_Import_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_Import_Imported_Package then
             --  PackageImport::importedPackage : Package
@@ -29791,13 +30624,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Import_Get;
+      end UML_Package_Import_Get;
 
-      -----------------------
-      -- Package_Merge_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Package_Merge_Get --
+      ---------------------------
 
-      function Package_Merge_Get return League.Holders.Holder is
+      function UML_Package_Merge_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_Merge_Merged_Package then
             --  PackageMerge::mergedPackage : Package
@@ -29869,13 +30702,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Merge_Get;
+      end UML_Package_Merge_Get;
 
-      -------------------
-      -- Parameter_Get --
-      -------------------
+      -----------------------
+      -- UML_Parameter_Get --
+      -----------------------
 
-      function Parameter_Get return League.Holders.Holder is
+      function UML_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -30115,13 +30948,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Get;
+      end UML_Parameter_Get;
 
-      -----------------------
-      -- Parameter_Set_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Parameter_Set_Get --
+      ---------------------------
 
-      function Parameter_Set_Get return League.Holders.Holder is
+      function UML_Parameter_Set_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -30217,13 +31050,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Set_Get;
+      end UML_Parameter_Set_Get;
 
-      ----------------------------
-      -- Part_Decomposition_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Part_Decomposition_Get --
+      --------------------------------
 
-      function Part_Decomposition_Get return League.Holders.Holder is
+      function UML_Part_Decomposition_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Use_Actual_Gate then
             --  InteractionUse::actualGate : Gate
@@ -30380,13 +31213,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Part_Decomposition_Get;
+      end UML_Part_Decomposition_Get;
 
-      --------------
-      -- Port_Get --
-      --------------
+      ------------------
+      -- UML_Port_Get --
+      ------------------
 
-      function Port_Get return League.Holders.Holder is
+      function UML_Port_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -30833,13 +31666,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Port_Get;
+      end UML_Port_Get;
 
-      ------------------------
-      -- Primitive_Type_Get --
-      ------------------------
+      ----------------------------
+      -- UML_Primitive_Type_Get --
+      ----------------------------
 
-      function Primitive_Type_Get return League.Holders.Holder is
+      function UML_Primitive_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -31190,13 +32023,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Primitive_Type_Get;
+      end UML_Primitive_Type_Get;
 
-      -----------------
-      -- Profile_Get --
-      -----------------
+      ---------------------
+      -- UML_Profile_Get --
+      ---------------------
 
-      function Profile_Get return League.Holders.Holder is
+      function UML_Profile_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -31448,13 +32281,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Profile_Get;
+      end UML_Profile_Get;
 
-      -----------------------------
-      -- Profile_Application_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Profile_Application_Get --
+      ---------------------------------
 
-      function Profile_Application_Get return League.Holders.Holder is
+      function UML_Profile_Application_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Profile_Application_Applied_Profile then
             --  ProfileApplication::appliedProfile : Profile
@@ -31534,13 +32367,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Profile_Application_Get;
+      end UML_Profile_Application_Get;
 
-      ------------------
-      -- Property_Get --
-      ------------------
+      ----------------------
+      -- UML_Property_Get --
+      ----------------------
 
-      function Property_Get return League.Holders.Holder is
+      function UML_Property_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -31930,13 +32763,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Get;
+      end UML_Property_Get;
 
-      ------------------------------
-      -- Protocol_Conformance_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Protocol_Conformance_Get --
+      ----------------------------------
 
-      function Protocol_Conformance_Get return League.Holders.Holder is
+      function UML_Protocol_Conformance_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Protocol_Conformance_General_Machine then
             --  ProtocolConformance::generalMachine : ProtocolStateMachine
@@ -32008,13 +32841,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_Conformance_Get;
+      end UML_Protocol_Conformance_Get;
 
-      --------------------------------
-      -- Protocol_State_Machine_Get --
-      --------------------------------
+      ------------------------------------
+      -- UML_Protocol_State_Machine_Get --
+      ------------------------------------
 
-      function Protocol_State_Machine_Get return League.Holders.Holder is
+      function UML_Protocol_State_Machine_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -32584,13 +33417,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_State_Machine_Get;
+      end UML_Protocol_State_Machine_Get;
 
-      -----------------------------
-      -- Protocol_Transition_Get --
-      -----------------------------
+      ---------------------------------
+      -- UML_Protocol_Transition_Get --
+      ---------------------------------
 
-      function Protocol_Transition_Get return League.Holders.Holder is
+      function UML_Protocol_Transition_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -32847,13 +33680,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_Transition_Get;
+      end UML_Protocol_Transition_Get;
 
-      ---------------------
-      -- Pseudostate_Get --
-      ---------------------
+      -------------------------
+      -- UML_Pseudostate_Get --
+      -------------------------
 
-      function Pseudostate_Get return League.Holders.Holder is
+      function UML_Pseudostate_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -32984,13 +33817,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Pseudostate_Get;
+      end UML_Pseudostate_Get;
 
-      -------------------------
-      -- Qualifier_Value_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Qualifier_Value_Get --
+      -----------------------------
 
-      function Qualifier_Value_Get return League.Holders.Holder is
+      function UML_Qualifier_Value_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -33038,13 +33871,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Qualifier_Value_Get;
+      end UML_Qualifier_Value_Get;
 
-      --------------------------------
-      -- Raise_Exception_Action_Get --
-      --------------------------------
+      ------------------------------------
+      -- UML_Raise_Exception_Action_Get --
+      ------------------------------------
 
-      function Raise_Exception_Action_Get return League.Holders.Holder is
+      function UML_Raise_Exception_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -33280,13 +34113,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Raise_Exception_Action_Get;
+      end UML_Raise_Exception_Action_Get;
 
-      ----------------------------
-      -- Read_Extent_Action_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Read_Extent_Action_Get --
+      --------------------------------
 
-      function Read_Extent_Action_Get return League.Holders.Holder is
+      function UML_Read_Extent_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -33531,13 +34364,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Extent_Action_Get;
+      end UML_Read_Extent_Action_Get;
 
-      ------------------------------------------
-      -- Read_Is_Classified_Object_Action_Get --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Read_Is_Classified_Object_Action_Get --
+      ----------------------------------------------
 
-      function Read_Is_Classified_Object_Action_Get return League.Holders.Holder is
+      function UML_Read_Is_Classified_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -33799,13 +34632,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Is_Classified_Object_Action_Get;
+      end UML_Read_Is_Classified_Object_Action_Get;
 
-      --------------------------
-      -- Read_Link_Action_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Read_Link_Action_Get --
+      ------------------------------
 
-      function Read_Link_Action_Get return League.Holders.Holder is
+      function UML_Read_Link_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -34057,13 +34890,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Action_Get;
+      end UML_Read_Link_Action_Get;
 
-      -------------------------------------
-      -- Read_Link_Object_End_Action_Get --
-      -------------------------------------
+      -----------------------------------------
+      -- UML_Read_Link_Object_End_Action_Get --
+      -----------------------------------------
 
-      function Read_Link_Object_End_Action_Get return League.Holders.Holder is
+      function UML_Read_Link_Object_End_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -34317,13 +35150,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Object_End_Action_Get;
+      end UML_Read_Link_Object_End_Action_Get;
 
-      -----------------------------------------------
-      -- Read_Link_Object_End_Qualifier_Action_Get --
-      -----------------------------------------------
+      ---------------------------------------------------
+      -- UML_Read_Link_Object_End_Qualifier_Action_Get --
+      ---------------------------------------------------
 
-      function Read_Link_Object_End_Qualifier_Action_Get return League.Holders.Holder is
+      function UML_Read_Link_Object_End_Qualifier_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -34577,13 +35410,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Object_End_Qualifier_Action_Get;
+      end UML_Read_Link_Object_End_Qualifier_Action_Get;
 
-      --------------------------
-      -- Read_Self_Action_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Read_Self_Action_Get --
+      ------------------------------
 
-      function Read_Self_Action_Get return League.Holders.Holder is
+      function UML_Read_Self_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -34819,13 +35652,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Self_Action_Get;
+      end UML_Read_Self_Action_Get;
 
-      ----------------------------------------
-      -- Read_Structural_Feature_Action_Get --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Read_Structural_Feature_Action_Get --
+      --------------------------------------------
 
-      function Read_Structural_Feature_Action_Get return League.Holders.Holder is
+      function UML_Read_Structural_Feature_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -35079,13 +35912,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Structural_Feature_Action_Get;
+      end UML_Read_Structural_Feature_Action_Get;
 
-      ------------------------------
-      -- Read_Variable_Action_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Read_Variable_Action_Get --
+      ----------------------------------
 
-      function Read_Variable_Action_Get return League.Holders.Holder is
+      function UML_Read_Variable_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -35330,13 +36163,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Variable_Action_Get;
+      end UML_Read_Variable_Action_Get;
 
-      ---------------------
-      -- Realization_Get --
-      ---------------------
+      -------------------------
+      -- UML_Realization_Get --
+      -------------------------
 
-      function Realization_Get return League.Holders.Holder is
+      function UML_Realization_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -35491,13 +36324,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Realization_Get;
+      end UML_Realization_Get;
 
-      -------------------
-      -- Reception_Get --
-      -------------------
+      -----------------------
+      -- UML_Reception_Get --
+      -----------------------
 
-      function Reception_Get return League.Holders.Holder is
+      function UML_Reception_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -35722,13 +36555,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reception_Get;
+      end UML_Reception_Get;
 
-      ----------------------------------
-      -- Reclassify_Object_Action_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Reclassify_Object_Action_Get --
+      --------------------------------------
 
-      function Reclassify_Object_Action_Get return League.Holders.Holder is
+      function UML_Reclassify_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -35988,13 +36821,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reclassify_Object_Action_Get;
+      end UML_Reclassify_Object_Action_Get;
 
-      ----------------------------------------
-      -- Redefinable_Template_Signature_Get --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Redefinable_Template_Signature_Get --
+      --------------------------------------------
 
-      function Redefinable_Template_Signature_Get return League.Holders.Holder is
+      function UML_Redefinable_Template_Signature_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Classifier then
             --  RedefinableTemplateSignature::classifier : Classifier
@@ -36148,13 +36981,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Redefinable_Template_Signature_Get;
+      end UML_Redefinable_Template_Signature_Get;
 
-      -----------------------
-      -- Reduce_Action_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Reduce_Action_Get --
+      ---------------------------
 
-      function Reduce_Action_Get return League.Holders.Holder is
+      function UML_Reduce_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -36416,13 +37249,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reduce_Action_Get;
+      end UML_Reduce_Action_Get;
 
-      ----------------
-      -- Region_Get --
-      ----------------
+      --------------------
+      -- UML_Region_Get --
+      --------------------
 
-      function Region_Get return League.Holders.Holder is
+      function UML_Region_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -36626,13 +37459,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Region_Get;
+      end UML_Region_Get;
 
-      ------------------------------------------------
-      -- Remove_Structural_Feature_Value_Action_Get --
-      ------------------------------------------------
+      ----------------------------------------------------
+      -- UML_Remove_Structural_Feature_Value_Action_Get --
+      ----------------------------------------------------
 
-      function Remove_Structural_Feature_Value_Action_Get return League.Holders.Holder is
+      function UML_Remove_Structural_Feature_Value_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -36912,13 +37745,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Remove_Structural_Feature_Value_Action_Get;
+      end UML_Remove_Structural_Feature_Value_Action_Get;
 
-      --------------------------------------
-      -- Remove_Variable_Value_Action_Get --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Remove_Variable_Value_Action_Get --
+      ------------------------------------------
 
-      function Remove_Variable_Value_Action_Get return League.Holders.Holder is
+      function UML_Remove_Variable_Value_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -37180,13 +38013,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Remove_Variable_Value_Action_Get;
+      end UML_Remove_Variable_Value_Action_Get;
 
-      ----------------------
-      -- Reply_Action_Get --
-      ----------------------
+      --------------------------
+      -- UML_Reply_Action_Get --
+      --------------------------
 
-      function Reply_Action_Get return League.Holders.Holder is
+      function UML_Reply_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -37439,13 +38272,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reply_Action_Get;
+      end UML_Reply_Action_Get;
 
-      ----------------------------
-      -- Send_Object_Action_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Send_Object_Action_Get --
+      --------------------------------
 
-      function Send_Object_Action_Get return League.Holders.Holder is
+      function UML_Send_Object_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -37707,13 +38540,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Send_Object_Action_Get;
+      end UML_Send_Object_Action_Get;
 
-      ----------------------------
-      -- Send_Signal_Action_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Send_Signal_Action_Get --
+      --------------------------------
 
-      function Send_Signal_Action_Get return League.Holders.Holder is
+      function UML_Send_Signal_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -37975,13 +38808,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Send_Signal_Action_Get;
+      end UML_Send_Signal_Action_Get;
 
-      -----------------------
-      -- Sequence_Node_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Sequence_Node_Get --
+      ---------------------------
 
-      function Sequence_Node_Get return League.Holders.Holder is
+      function UML_Sequence_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -38363,13 +39196,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Sequence_Node_Get;
+      end UML_Sequence_Node_Get;
 
-      ----------------
-      -- Signal_Get --
-      ----------------
+      --------------------
+      -- UML_Signal_Get --
+      --------------------
 
-      function Signal_Get return League.Holders.Holder is
+      function UML_Signal_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -38712,13 +39545,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Signal_Get;
+      end UML_Signal_Get;
 
-      ----------------------
-      -- Signal_Event_Get --
-      ----------------------
+      --------------------------
+      -- UML_Signal_Event_Get --
+      --------------------------
 
-      function Signal_Event_Get return League.Holders.Holder is
+      function UML_Signal_Event_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -38833,13 +39666,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Signal_Event_Get;
+      end UML_Signal_Event_Get;
 
-      --------------
-      -- Slot_Get --
-      --------------
+      ------------------
+      -- UML_Slot_Get --
+      ------------------
 
-      function Slot_Get return League.Holders.Holder is
+      function UML_Slot_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Slot_Defining_Feature then
             --  Slot::definingFeature : StructuralFeature
@@ -38895,13 +39728,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Slot_Get;
+      end UML_Slot_Get;
 
-      ------------------------------------------
-      -- Start_Classifier_Behavior_Action_Get --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Start_Classifier_Behavior_Action_Get --
+      ----------------------------------------------
 
-      function Start_Classifier_Behavior_Action_Get return League.Holders.Holder is
+      function UML_Start_Classifier_Behavior_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -39137,13 +39970,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Start_Classifier_Behavior_Action_Get;
+      end UML_Start_Classifier_Behavior_Action_Get;
 
-      --------------------------------------
-      -- Start_Object_Behavior_Action_Get --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Start_Object_Behavior_Action_Get --
+      ------------------------------------------
 
-      function Start_Object_Behavior_Action_Get return League.Holders.Holder is
+      function UML_Start_Object_Behavior_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -39412,13 +40245,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Start_Object_Behavior_Action_Get;
+      end UML_Start_Object_Behavior_Action_Get;
 
-      ---------------
-      -- State_Get --
-      ---------------
+      -------------------
+      -- UML_State_Get --
+      -------------------
 
-      function State_Get return League.Holders.Holder is
+      function UML_State_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -39722,13 +40555,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Get;
+      end UML_State_Get;
 
-      -------------------------
-      -- State_Invariant_Get --
-      -------------------------
+      -----------------------------
+      -- UML_State_Invariant_Get --
+      -----------------------------
 
-      function State_Invariant_Get return League.Holders.Holder is
+      function UML_State_Invariant_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -39860,13 +40693,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Invariant_Get;
+      end UML_State_Invariant_Get;
 
-      -----------------------
-      -- State_Machine_Get --
-      -----------------------
+      ---------------------------
+      -- UML_State_Machine_Get --
+      ---------------------------
 
-      function State_Machine_Get return League.Holders.Holder is
+      function UML_State_Machine_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -40428,13 +41261,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Machine_Get;
+      end UML_State_Machine_Get;
 
-      --------------------
-      -- Stereotype_Get --
-      --------------------
+      ------------------------
+      -- UML_Stereotype_Get --
+      ------------------------
 
-      function Stereotype_Get return League.Holders.Holder is
+      function UML_Stereotype_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -40915,13 +41748,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Stereotype_Get;
+      end UML_Stereotype_Get;
 
-      ---------------------------
-      -- String_Expression_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_String_Expression_Get --
+      -------------------------------
 
-      function String_Expression_Get return League.Holders.Holder is
+      function UML_String_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -41086,13 +41919,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end String_Expression_Get;
+      end UML_String_Expression_Get;
 
-      ----------------------------------
-      -- Structured_Activity_Node_Get --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Structured_Activity_Node_Get --
+      --------------------------------------
 
-      function Structured_Activity_Node_Get return League.Holders.Holder is
+      function UML_Structured_Activity_Node_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -41466,13 +42299,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Structured_Activity_Node_Get;
+      end UML_Structured_Activity_Node_Get;
 
-      ----------------------
-      -- Substitution_Get --
-      ----------------------
+      --------------------------
+      -- UML_Substitution_Get --
+      --------------------------
 
-      function Substitution_Get return League.Holders.Holder is
+      function UML_Substitution_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -41645,13 +42478,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Substitution_Get;
+      end UML_Substitution_Get;
 
-      --------------------------
-      -- Template_Binding_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Template_Binding_Get --
+      ------------------------------
 
-      function Template_Binding_Get return League.Holders.Holder is
+      function UML_Template_Binding_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Binding_Bound_Element then
             --  TemplateBinding::boundElement : TemplateableElement
@@ -41731,13 +42564,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Binding_Get;
+      end UML_Template_Binding_Get;
 
-      ----------------------------
-      -- Template_Parameter_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Template_Parameter_Get --
+      --------------------------------
 
-      function Template_Parameter_Get return League.Holders.Holder is
+      function UML_Template_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -41812,13 +42645,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Get;
+      end UML_Template_Parameter_Get;
 
-      -----------------------------------------
-      -- Template_Parameter_Substitution_Get --
-      -----------------------------------------
+      ---------------------------------------------
+      -- UML_Template_Parameter_Substitution_Get --
+      ---------------------------------------------
 
-      function Template_Parameter_Substitution_Get return League.Holders.Holder is
+      function UML_Template_Parameter_Substitution_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Substitution_Actual then
             --  TemplateParameterSubstitution::actual : ParameterableElement
@@ -41884,13 +42717,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Substitution_Get;
+      end UML_Template_Parameter_Substitution_Get;
 
-      ----------------------------
-      -- Template_Signature_Get --
-      ----------------------------
+      --------------------------------
+      -- UML_Template_Signature_Get --
+      --------------------------------
 
-      function Template_Signature_Get return League.Holders.Holder is
+      function UML_Template_Signature_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -41945,13 +42778,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Signature_Get;
+      end UML_Template_Signature_Get;
 
-      ------------------------------
-      -- Test_Identity_Action_Get --
-      ------------------------------
+      ----------------------------------
+      -- UML_Test_Identity_Action_Get --
+      ----------------------------------
 
-      function Test_Identity_Action_Get return League.Holders.Holder is
+      function UML_Test_Identity_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -42205,13 +43038,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Test_Identity_Action_Get;
+      end UML_Test_Identity_Action_Get;
 
-      -------------------------
-      -- Time_Constraint_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Time_Constraint_Get --
+      -----------------------------
 
-      function Time_Constraint_Get return League.Holders.Holder is
+      function UML_Time_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -42369,13 +43202,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Constraint_Get;
+      end UML_Time_Constraint_Get;
 
-      --------------------
-      -- Time_Event_Get --
-      --------------------
+      ------------------------
+      -- UML_Time_Event_Get --
+      ------------------------
 
-      function Time_Event_Get return League.Holders.Holder is
+      function UML_Time_Event_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -42498,13 +43331,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Event_Get;
+      end UML_Time_Event_Get;
 
-      -------------------------
-      -- Time_Expression_Get --
-      -------------------------
+      -----------------------------
+      -- UML_Time_Expression_Get --
+      -----------------------------
 
-      function Time_Expression_Get return League.Holders.Holder is
+      function UML_Time_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -42636,13 +43469,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Expression_Get;
+      end UML_Time_Expression_Get;
 
-      -----------------------
-      -- Time_Interval_Get --
-      -----------------------
+      ---------------------------
+      -- UML_Time_Interval_Get --
+      ---------------------------
 
-      function Time_Interval_Get return League.Holders.Holder is
+      function UML_Time_Interval_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -42793,13 +43626,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Interval_Get;
+      end UML_Time_Interval_Get;
 
-      --------------------------
-      -- Time_Observation_Get --
-      --------------------------
+      ------------------------------
+      -- UML_Time_Observation_Get --
+      ------------------------------
 
-      function Time_Observation_Get return League.Holders.Holder is
+      function UML_Time_Observation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -42922,13 +43755,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Observation_Get;
+      end UML_Time_Observation_Get;
 
-      --------------------
-      -- Transition_Get --
-      --------------------
+      ------------------------
+      -- UML_Transition_Get --
+      ------------------------
 
-      function Transition_Get return League.Holders.Holder is
+      function UML_Transition_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -43159,13 +43992,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Transition_Get;
+      end UML_Transition_Get;
 
-      -----------------
-      -- Trigger_Get --
-      -----------------
+      ---------------------
+      -- UML_Trigger_Get --
+      ---------------------
 
-      function Trigger_Get return League.Holders.Holder is
+      function UML_Trigger_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -43262,13 +44095,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Trigger_Get;
+      end UML_Trigger_Get;
 
-      ---------------------------
-      -- Unmarshall_Action_Get --
-      ---------------------------
+      -------------------------------
+      -- UML_Unmarshall_Action_Get --
+      -------------------------------
 
-      function Unmarshall_Action_Get return League.Holders.Holder is
+      function UML_Unmarshall_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -43521,13 +44354,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unmarshall_Action_Get;
+      end UML_Unmarshall_Action_Get;
 
-      ---------------
-      -- Usage_Get --
-      ---------------
+      -------------------
+      -- UML_Usage_Get --
+      -------------------
 
-      function Usage_Get return League.Holders.Holder is
+      function UML_Usage_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Dependency_Client then
             --  Dependency::client : NamedElement
@@ -43673,13 +44506,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Usage_Get;
+      end UML_Usage_Get;
 
-      ------------------
-      -- Use_Case_Get --
-      ------------------
+      ----------------------
+      -- UML_Use_Case_Get --
+      ----------------------
 
-      function Use_Case_Get return League.Holders.Holder is
+      function UML_Use_Case_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -44071,13 +44904,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Use_Case_Get;
+      end UML_Use_Case_Get;
 
-      -------------------
-      -- Value_Pin_Get --
-      -------------------
+      -----------------------
+      -- UML_Value_Pin_Get --
+      -----------------------
 
-      function Value_Pin_Get return League.Holders.Holder is
+      function UML_Value_Pin_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -44365,13 +45198,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Value_Pin_Get;
+      end UML_Value_Pin_Get;
 
-      ------------------------------------
-      -- Value_Specification_Action_Get --
-      ------------------------------------
+      ----------------------------------------
+      -- UML_Value_Specification_Action_Get --
+      ----------------------------------------
 
-      function Value_Specification_Action_Get return League.Holders.Holder is
+      function UML_Value_Specification_Action_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -44616,13 +45449,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Value_Specification_Action_Get;
+      end UML_Value_Specification_Action_Get;
 
-      ------------------
-      -- Variable_Get --
-      ------------------
+      ----------------------
+      -- UML_Variable_Get --
+      ----------------------
 
-      function Variable_Get return League.Holders.Holder is
+      function UML_Variable_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Variable_Activity_Scope then
             --  Variable::activityScope : Activity
@@ -44814,591 +45647,687 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Get;
+      end UML_Variable_Get;
 
    begin
       case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UML_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.UML_Types.E_Abstraction =>
-            return Abstraction_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary =>
+            return Standard_Profile_L2_Auxiliary_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Call_Action =>
-            return Accept_Call_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call =>
+            return Standard_Profile_L2_Call_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Event_Action =>
-            return Accept_Event_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create =>
+            return Standard_Profile_L2_Create_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Execution_Specification =>
-            return Action_Execution_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive =>
+            return Standard_Profile_L2_Derive_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Input_Pin =>
-            return Action_Input_Pin_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy =>
+            return Standard_Profile_L2_Destroy_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity =>
-            return Activity_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document =>
+            return Standard_Profile_L2_Document_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Final_Node =>
-            return Activity_Final_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity =>
+            return Standard_Profile_L2_Entity_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Parameter_Node =>
-            return Activity_Parameter_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable =>
+            return Standard_Profile_L2_Executable_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Partition =>
-            return Activity_Partition_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus =>
+            return Standard_Profile_L2_Focus_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Actor =>
-            return Actor_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework =>
+            return Standard_Profile_L2_Framework_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Structural_Feature_Value_Action =>
-            return Add_Structural_Feature_Value_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement =>
+            return Standard_Profile_L2_Implement_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Variable_Value_Action =>
-            return Add_Variable_Value_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class =>
+            return Standard_Profile_L2_Implementation_Class_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Any_Receive_Event =>
-            return Any_Receive_Event_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate =>
+            return Standard_Profile_L2_Instantiate_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Artifact =>
-            return Artifact_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library =>
+            return Standard_Profile_L2_Library_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Association =>
-            return Association_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass =>
+            return Standard_Profile_L2_Metaclass_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Association_Class =>
-            return Association_Class_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library =>
+            return Standard_Profile_L2_Model_Library_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Behavior_Execution_Specification =>
-            return Behavior_Execution_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process =>
+            return Standard_Profile_L2_Process_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Broadcast_Signal_Action =>
-            return Broadcast_Signal_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization =>
+            return Standard_Profile_L2_Realization_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Behavior_Action =>
-            return Call_Behavior_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine =>
+            return Standard_Profile_L2_Refine_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Event =>
-            return Call_Event_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility =>
+            return Standard_Profile_L2_Responsibility_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Operation_Action =>
-            return Call_Operation_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script =>
+            return Standard_Profile_L2_Script_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Central_Buffer_Node =>
-            return Central_Buffer_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send =>
+            return Standard_Profile_L2_Send_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Change_Event =>
-            return Change_Event_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service =>
+            return Standard_Profile_L2_Service_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Class =>
-            return Class_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source =>
+            return Standard_Profile_L2_Source_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Classifier_Template_Parameter =>
-            return Classifier_Template_Parameter_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification =>
+            return Standard_Profile_L2_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Clause =>
-            return Clause_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem =>
+            return Standard_Profile_L2_Subsystem_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Association_Action =>
-            return Clear_Association_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace =>
+            return Standard_Profile_L2_Trace_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Structural_Feature_Action =>
-            return Clear_Structural_Feature_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type =>
+            return Standard_Profile_L2_Type_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Variable_Action =>
-            return Clear_Variable_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility =>
+            return Standard_Profile_L2_Utility_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration =>
-            return Collaboration_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component =>
+            return Standard_Profile_L3_Build_Component_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration_Use =>
-            return Collaboration_Use_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel =>
+            return Standard_Profile_L3_Metamodel_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Combined_Fragment =>
-            return Combined_Fragment_Get;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model =>
+            return Standard_Profile_L3_System_Model_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Comment =>
-            return Comment_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            return UML_Abstraction_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Communication_Path =>
-            return Communication_Path_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            return UML_Accept_Call_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Component =>
-            return Component_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
+            return UML_Accept_Event_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Component_Realization =>
-            return Component_Realization_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            return UML_Action_Execution_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Conditional_Node =>
-            return Conditional_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            return UML_Action_Input_Pin_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Connectable_Element_Template_Parameter =>
-            return Connectable_Element_Template_Parameter_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            return UML_Activity_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Connection_Point_Reference =>
-            return Connection_Point_Reference_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
+            return UML_Activity_Final_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector =>
-            return Connector_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            return UML_Activity_Parameter_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector_End =>
-            return Connector_End_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            return UML_Activity_Partition_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Consider_Ignore_Fragment =>
-            return Consider_Ignore_Fragment_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            return UML_Actor_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Constraint =>
-            return Constraint_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            return UML_Add_Structural_Feature_Value_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Continuation =>
-            return Continuation_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            return UML_Add_Variable_Value_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Control_Flow =>
-            return Control_Flow_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
+            return UML_Any_Receive_Event_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Action =>
-            return Create_Link_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            return UML_Artifact_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Object_Action =>
-            return Create_Link_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            return UML_Association_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Object_Action =>
-            return Create_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            return UML_Association_Class_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Store_Node =>
-            return Data_Store_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            return UML_Behavior_Execution_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Type =>
-            return Data_Type_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            return UML_Broadcast_Signal_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Decision_Node =>
-            return Decision_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            return UML_Call_Behavior_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Dependency =>
-            return Dependency_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            return UML_Call_Event_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment =>
-            return Deployment_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            return UML_Call_Operation_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment_Specification =>
-            return Deployment_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            return UML_Central_Buffer_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Link_Action =>
-            return Destroy_Link_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            return UML_Change_Event_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Object_Action =>
-            return Destroy_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            return UML_Class_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Destruction_Occurrence_Specification =>
-            return Destruction_Occurrence_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            return UML_Classifier_Template_Parameter_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Device =>
-            return Device_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clause =>
+            return UML_Clause_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration =>
-            return Duration_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            return UML_Clear_Association_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Constraint =>
-            return Duration_Constraint_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            return UML_Clear_Structural_Feature_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Interval =>
-            return Duration_Interval_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            return UML_Clear_Variable_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Observation =>
-            return Duration_Observation_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            return UML_Collaboration_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Element_Import =>
-            return Element_Import_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use =>
+            return UML_Collaboration_Use_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration =>
-            return Enumeration_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
+            return UML_Combined_Fragment_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration_Literal =>
-            return Enumeration_Literal_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Comment =>
+            return UML_Comment_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Exception_Handler =>
-            return Exception_Handler_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            return UML_Communication_Path_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Environment =>
-            return Execution_Environment_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            return UML_Component_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Occurrence_Specification =>
-            return Execution_Occurrence_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            return UML_Component_Realization_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Node =>
-            return Expansion_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            return UML_Conditional_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Region =>
-            return Expansion_Region_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            return UML_Connectable_Element_Template_Parameter_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Expression =>
-            return Expression_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
+            return UML_Connection_Point_Reference_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Extend =>
-            return Extend_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector =>
+            return UML_Connector_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension =>
-            return Extension_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            return UML_Connector_End_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_End =>
-            return Extension_End_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
+            return UML_Consider_Ignore_Fragment_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_Point =>
-            return Extension_Point_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            return UML_Constraint_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Final_State =>
-            return Final_State_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
+            return UML_Continuation_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Flow_Final_Node =>
-            return Flow_Final_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            return UML_Control_Flow_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Fork_Node =>
-            return Fork_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
+            return UML_Create_Link_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Function_Behavior =>
-            return Function_Behavior_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            return UML_Create_Link_Object_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Gate =>
-            return Gate_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            return UML_Create_Object_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_General_Ordering =>
-            return General_Ordering_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            return UML_Data_Store_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization =>
-            return Generalization_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            return UML_Data_Type_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization_Set =>
-            return Generalization_Set_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            return UML_Decision_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Image =>
-            return Image_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
+            return UML_Dependency_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Include =>
-            return Include_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            return UML_Deployment_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Flow =>
-            return Information_Flow_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            return UML_Deployment_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Item =>
-            return Information_Item_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
+            return UML_Destroy_Link_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Initial_Node =>
-            return Initial_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            return UML_Destroy_Object_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Input_Pin =>
-            return Input_Pin_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            return UML_Destruction_Occurrence_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Specification =>
-            return Instance_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            return UML_Device_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Value =>
-            return Instance_Value_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            return UML_Duration_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction =>
-            return Interaction_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            return UML_Duration_Constraint_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Constraint =>
-            return Interaction_Constraint_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            return UML_Duration_Interval_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Operand =>
-            return Interaction_Operand_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
+            return UML_Duration_Observation_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Use =>
-            return Interaction_Use_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Element_Import =>
+            return UML_Element_Import_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface =>
-            return Interface_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            return UML_Enumeration_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface_Realization =>
-            return Interface_Realization_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            return UML_Enumeration_Literal_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interruptible_Activity_Region =>
-            return Interruptible_Activity_Region_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
+            return UML_Exception_Handler_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval =>
-            return Interval_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            return UML_Execution_Environment_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval_Constraint =>
-            return Interval_Constraint_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            return UML_Execution_Occurrence_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Join_Node =>
-            return Join_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            return UML_Expansion_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Lifeline =>
-            return Lifeline_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            return UML_Expansion_Region_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Creation_Data =>
-            return Link_End_Creation_Data_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            return UML_Expression_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Data =>
-            return Link_End_Data_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            return UML_Extend_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Destruction_Data =>
-            return Link_End_Destruction_Data_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            return UML_Extension_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Boolean =>
-            return Literal_Boolean_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            return UML_Extension_End_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Integer =>
-            return Literal_Integer_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_Point =>
+            return UML_Extension_Point_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Null =>
-            return Literal_Null_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            return UML_Final_State_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Real =>
-            return Literal_Real_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
+            return UML_Flow_Final_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_String =>
-            return Literal_String_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
+            return UML_Fork_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Unlimited_Natural =>
-            return Literal_Unlimited_Natural_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            return UML_Function_Behavior_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Loop_Node =>
-            return Loop_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Gate =>
+            return UML_Gate_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Manifestation =>
-            return Manifestation_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
+            return UML_General_Ordering_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Merge_Node =>
-            return Merge_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization =>
+            return UML_Generalization_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Message =>
-            return Message_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            return UML_Generalization_Set_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Message_Occurrence_Specification =>
-            return Message_Occurrence_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Image =>
+            return UML_Image_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Model =>
-            return Model_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
+            return UML_Include_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Node =>
-            return Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
+            return UML_Information_Flow_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Object_Flow =>
-            return Object_Flow_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            return UML_Information_Item_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Occurrence_Specification =>
-            return Occurrence_Specification_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
+            return UML_Initial_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Action =>
-            return Opaque_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            return UML_Input_Pin_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Behavior =>
-            return Opaque_Behavior_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            return UML_Instance_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Expression =>
-            return Opaque_Expression_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            return UML_Instance_Value_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation =>
-            return Operation_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            return UML_Interaction_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation_Template_Parameter =>
-            return Operation_Template_Parameter_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            return UML_Interaction_Constraint_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Output_Pin =>
-            return Output_Pin_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            return UML_Interaction_Operand_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Package =>
-            return Package_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            return UML_Interaction_Use_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Import =>
-            return Package_Import_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            return UML_Interface_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Merge =>
-            return Package_Merge_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            return UML_Interface_Realization_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter =>
-            return Parameter_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region =>
+            return UML_Interruptible_Activity_Region_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter_Set =>
-            return Parameter_Set_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            return UML_Interval_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Part_Decomposition =>
-            return Part_Decomposition_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            return UML_Interval_Constraint_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Port =>
-            return Port_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            return UML_Join_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Primitive_Type =>
-            return Primitive_Type_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            return UML_Lifeline_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile =>
-            return Profile_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
+            return UML_Link_End_Creation_Data_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile_Application =>
-            return Profile_Application_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data =>
+            return UML_Link_End_Data_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Property =>
-            return Property_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
+            return UML_Link_End_Destruction_Data_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Conformance =>
-            return Protocol_Conformance_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            return UML_Literal_Boolean_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_State_Machine =>
-            return Protocol_State_Machine_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            return UML_Literal_Integer_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Transition =>
-            return Protocol_Transition_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            return UML_Literal_Null_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Pseudostate =>
-            return Pseudostate_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            return UML_Literal_Real_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Qualifier_Value =>
-            return Qualifier_Value_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            return UML_Literal_String_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Raise_Exception_Action =>
-            return Raise_Exception_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            return UML_Literal_Unlimited_Natural_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Extent_Action =>
-            return Read_Extent_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            return UML_Loop_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Is_Classified_Object_Action =>
-            return Read_Is_Classified_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            return UML_Manifestation_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Action =>
-            return Read_Link_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
+            return UML_Merge_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Action =>
-            return Read_Link_Object_End_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            return UML_Message_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Qualifier_Action =>
-            return Read_Link_Object_End_Qualifier_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            return UML_Message_Occurrence_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Self_Action =>
-            return Read_Self_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            return UML_Model_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Structural_Feature_Action =>
-            return Read_Structural_Feature_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            return UML_Node_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Variable_Action =>
-            return Read_Variable_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            return UML_Object_Flow_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Realization =>
-            return Realization_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
+            return UML_Occurrence_Specification_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Reception =>
-            return Reception_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
+            return UML_Opaque_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Reclassify_Object_Action =>
-            return Reclassify_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            return UML_Opaque_Behavior_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Redefinable_Template_Signature =>
-            return Redefinable_Template_Signature_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            return UML_Opaque_Expression_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Reduce_Action =>
-            return Reduce_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            return UML_Operation_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Region =>
-            return Region_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            return UML_Operation_Template_Parameter_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Structural_Feature_Value_Action =>
-            return Remove_Structural_Feature_Value_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            return UML_Output_Pin_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Variable_Value_Action =>
-            return Remove_Variable_Value_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            return UML_Package_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Reply_Action =>
-            return Reply_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Import =>
+            return UML_Package_Import_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Object_Action =>
-            return Send_Object_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Merge =>
+            return UML_Package_Merge_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Signal_Action =>
-            return Send_Signal_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            return UML_Parameter_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Sequence_Node =>
-            return Sequence_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set =>
+            return UML_Parameter_Set_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal =>
-            return Signal_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            return UML_Part_Decomposition_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal_Event =>
-            return Signal_Event_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            return UML_Port_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Slot =>
-            return Slot_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            return UML_Primitive_Type_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Classifier_Behavior_Action =>
-            return Start_Classifier_Behavior_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            return UML_Profile_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Object_Behavior_Action =>
-            return Start_Object_Behavior_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile_Application =>
+            return UML_Profile_Application_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_State =>
-            return State_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            return UML_Property_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Invariant =>
-            return State_Invariant_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance =>
+            return UML_Protocol_Conformance_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Machine =>
-            return State_Machine_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            return UML_Protocol_State_Machine_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Stereotype =>
-            return Stereotype_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            return UML_Protocol_Transition_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_String_Expression =>
-            return String_Expression_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            return UML_Pseudostate_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Structured_Activity_Node =>
-            return Structured_Activity_Node_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value =>
+            return UML_Qualifier_Value_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Substitution =>
-            return Substitution_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            return UML_Raise_Exception_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Binding =>
-            return Template_Binding_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            return UML_Read_Extent_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter =>
-            return Template_Parameter_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            return UML_Read_Is_Classified_Object_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter_Substitution =>
-            return Template_Parameter_Substitution_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            return UML_Read_Link_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Signature =>
-            return Template_Signature_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            return UML_Read_Link_Object_End_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Test_Identity_Action =>
-            return Test_Identity_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            return UML_Read_Link_Object_End_Qualifier_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Constraint =>
-            return Time_Constraint_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            return UML_Read_Self_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Event =>
-            return Time_Event_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            return UML_Read_Structural_Feature_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Expression =>
-            return Time_Expression_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            return UML_Read_Variable_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Interval =>
-            return Time_Interval_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            return UML_Realization_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Observation =>
-            return Time_Observation_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
+            return UML_Reception_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Transition =>
-            return Transition_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            return UML_Reclassify_Object_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Trigger =>
-            return Trigger_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
+            return UML_Redefinable_Template_Signature_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Unmarshall_Action =>
-            return Unmarshall_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            return UML_Reduce_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Usage =>
-            return Usage_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            return UML_Region_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Use_Case =>
-            return Use_Case_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            return UML_Remove_Structural_Feature_Value_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Pin =>
-            return Value_Pin_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            return UML_Remove_Variable_Value_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Specification_Action =>
-            return Value_Specification_Action_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            return UML_Reply_Action_Get;
 
-         when AMF.Internals.Tables.UML_Types.E_Variable =>
-            return Variable_Get;
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            return UML_Send_Object_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            return UML_Send_Signal_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            return UML_Sequence_Node_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            return UML_Signal_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            return UML_Signal_Event_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Slot =>
+            return UML_Slot_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            return UML_Start_Classifier_Behavior_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            return UML_Start_Object_Behavior_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            return UML_State_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            return UML_State_Invariant_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            return UML_State_Machine_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            return UML_Stereotype_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            return UML_String_Expression_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            return UML_Structured_Activity_Node_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            return UML_Substitution_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Binding =>
+            return UML_Template_Binding_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            return UML_Template_Parameter_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            return UML_Template_Parameter_Substitution_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Signature =>
+            return UML_Template_Signature_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            return UML_Test_Identity_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            return UML_Time_Constraint_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            return UML_Time_Event_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            return UML_Time_Expression_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            return UML_Time_Interval_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            return UML_Time_Observation_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            return UML_Transition_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Trigger =>
+            return UML_Trigger_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            return UML_Unmarshall_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
+            return UML_Usage_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            return UML_Use_Case_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            return UML_Value_Pin_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            return UML_Value_Specification_Action_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            return UML_Variable_Get;
       end case;
    end Get;
 
@@ -45412,583 +46341,679 @@ package body AMF.Internals.Tables.UML_Reflection is
          when AMF.Internals.Tables.UML_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.UML_Types.E_Abstraction =>
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Auxiliary;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Call;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Create;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Derive;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Destroy;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Document;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Entity;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Executable;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Focus;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Framework;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implement;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implementation_Class;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Instantiate;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Library;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Metaclass;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Model_Library;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Process;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Realization;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Refine;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Responsibility;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Script;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Send;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Service;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Source;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Specification;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Subsystem;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Trace;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Type;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility =>
+            return AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Utility;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component =>
+            return AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Build_Component;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel =>
+            return AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Metamodel;
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model =>
+            return AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_System_Model;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Abstraction;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Call_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Accept_Call_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Event_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Accept_Event_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Execution_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Action_Execution_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Input_Pin =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Action_Input_Pin;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Final_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Final_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Parameter_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Parameter_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Partition =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Partition;
 
-         when AMF.Internals.Tables.UML_Types.E_Actor =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Actor;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Structural_Feature_Value_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Add_Structural_Feature_Value_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Variable_Value_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Add_Variable_Value_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Any_Receive_Event =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Any_Receive_Event;
 
-         when AMF.Internals.Tables.UML_Types.E_Artifact =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Artifact;
 
-         when AMF.Internals.Tables.UML_Types.E_Association =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Association;
 
-         when AMF.Internals.Tables.UML_Types.E_Association_Class =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Association_Class;
 
-         when AMF.Internals.Tables.UML_Types.E_Behavior_Execution_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Behavior_Execution_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Broadcast_Signal_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Broadcast_Signal_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Behavior_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Behavior_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Event =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Event;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Operation_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Operation_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Central_Buffer_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Central_Buffer_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Change_Event =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Change_Event;
 
-         when AMF.Internals.Tables.UML_Types.E_Class =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Class;
 
-         when AMF.Internals.Tables.UML_Types.E_Classifier_Template_Parameter =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Classifier_Template_Parameter;
 
-         when AMF.Internals.Tables.UML_Types.E_Clause =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Clause =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Clause;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Association_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Association_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Structural_Feature_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Structural_Feature_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Variable_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Variable_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Collaboration;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration_Use =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Collaboration_Use;
 
-         when AMF.Internals.Tables.UML_Types.E_Combined_Fragment =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Combined_Fragment;
 
-         when AMF.Internals.Tables.UML_Types.E_Comment =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Comment =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Comment;
 
-         when AMF.Internals.Tables.UML_Types.E_Communication_Path =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Communication_Path;
 
-         when AMF.Internals.Tables.UML_Types.E_Component =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Component;
 
-         when AMF.Internals.Tables.UML_Types.E_Component_Realization =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Component_Realization;
 
-         when AMF.Internals.Tables.UML_Types.E_Conditional_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Conditional_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Connectable_Element_Template_Parameter =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Connectable_Element_Template_Parameter;
 
-         when AMF.Internals.Tables.UML_Types.E_Connection_Point_Reference =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Connection_Point_Reference;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Connector;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector_End =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Connector_End;
 
-         when AMF.Internals.Tables.UML_Types.E_Consider_Ignore_Fragment =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Consider_Ignore_Fragment;
 
-         when AMF.Internals.Tables.UML_Types.E_Constraint =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Constraint;
 
-         when AMF.Internals.Tables.UML_Types.E_Continuation =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Continuation;
 
-         when AMF.Internals.Tables.UML_Types.E_Control_Flow =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Control_Flow;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Link_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Link_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Store_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Data_Store_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Type =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Data_Type;
 
-         when AMF.Internals.Tables.UML_Types.E_Decision_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Decision_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Dependency =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Dependency;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Deployment;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Deployment_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Link_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Destroy_Link_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Destroy_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Destruction_Occurrence_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Destruction_Occurrence_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Device =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Device;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Constraint =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Constraint;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Interval =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Interval;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Observation =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Observation;
 
-         when AMF.Internals.Tables.UML_Types.E_Element_Import =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Element_Import =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Element_Import;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Enumeration;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration_Literal =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Enumeration_Literal;
 
-         when AMF.Internals.Tables.UML_Types.E_Exception_Handler =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Exception_Handler;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Environment =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Execution_Environment;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Occurrence_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Execution_Occurrence_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Expansion_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Region =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Expansion_Region;
 
-         when AMF.Internals.Tables.UML_Types.E_Expression =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Expression;
 
-         when AMF.Internals.Tables.UML_Types.E_Extend =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Extend;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_End =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension_End;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_Point =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_Point =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension_Point;
 
-         when AMF.Internals.Tables.UML_Types.E_Final_State =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Final_State;
 
-         when AMF.Internals.Tables.UML_Types.E_Flow_Final_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Flow_Final_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Fork_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Fork_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Function_Behavior =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Function_Behavior;
 
-         when AMF.Internals.Tables.UML_Types.E_Gate =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Gate =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Gate;
 
-         when AMF.Internals.Tables.UML_Types.E_General_Ordering =>
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_General_Ordering;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Generalization;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization_Set =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Generalization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Image =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Image =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Image;
 
-         when AMF.Internals.Tables.UML_Types.E_Include =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Include;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Flow =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Information_Flow;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Item =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Information_Item;
 
-         when AMF.Internals.Tables.UML_Types.E_Initial_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Initial_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Input_Pin =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Input_Pin;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Instance_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Value =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Instance_Value;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Constraint =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Constraint;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Operand =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Operand;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Use =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Use;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interface;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface_Realization =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interface_Realization;
 
-         when AMF.Internals.Tables.UML_Types.E_Interruptible_Activity_Region =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interruptible_Activity_Region;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interval;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval_Constraint =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Interval_Constraint;
 
-         when AMF.Internals.Tables.UML_Types.E_Join_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Join_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Lifeline =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Lifeline;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Creation_Data =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Creation_Data;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Data =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Data;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Destruction_Data =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Destruction_Data;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Boolean =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Boolean;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Integer =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Integer;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Null =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Null;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Real =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Real;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_String =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_String;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Unlimited_Natural =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Unlimited_Natural;
 
-         when AMF.Internals.Tables.UML_Types.E_Loop_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Loop_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Manifestation =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Manifestation;
 
-         when AMF.Internals.Tables.UML_Types.E_Merge_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Merge_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Message =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Message;
 
-         when AMF.Internals.Tables.UML_Types.E_Message_Occurrence_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Message_Occurrence_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Model =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Model;
 
-         when AMF.Internals.Tables.UML_Types.E_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Object_Flow =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Object_Flow;
 
-         when AMF.Internals.Tables.UML_Types.E_Occurrence_Specification =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Occurrence_Specification;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Behavior =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Behavior;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Expression =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Expression;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Operation;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation_Template_Parameter =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Operation_Template_Parameter;
 
-         when AMF.Internals.Tables.UML_Types.E_Output_Pin =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Output_Pin;
 
-         when AMF.Internals.Tables.UML_Types.E_Package =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Package;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Import =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Import =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Package_Import;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Merge =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Merge =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Package_Merge;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter_Set =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Part_Decomposition =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Part_Decomposition;
 
-         when AMF.Internals.Tables.UML_Types.E_Port =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Port;
 
-         when AMF.Internals.Tables.UML_Types.E_Primitive_Type =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Primitive_Type;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Profile;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile_Application =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile_Application =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Profile_Application;
 
-         when AMF.Internals.Tables.UML_Types.E_Property =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Property;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Conformance =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_Conformance;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_State_Machine =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_State_Machine;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Transition =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_Transition;
 
-         when AMF.Internals.Tables.UML_Types.E_Pseudostate =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Pseudostate;
 
-         when AMF.Internals.Tables.UML_Types.E_Qualifier_Value =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Qualifier_Value;
 
-         when AMF.Internals.Tables.UML_Types.E_Raise_Exception_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Raise_Exception_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Extent_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Extent_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Is_Classified_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Is_Classified_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Object_End_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Qualifier_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Object_End_Qualifier_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Self_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Self_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Structural_Feature_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Structural_Feature_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Variable_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Variable_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Realization =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Realization;
 
-         when AMF.Internals.Tables.UML_Types.E_Reception =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Reception;
 
-         when AMF.Internals.Tables.UML_Types.E_Reclassify_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Reclassify_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Redefinable_Template_Signature =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Redefinable_Template_Signature;
 
-         when AMF.Internals.Tables.UML_Types.E_Reduce_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Reduce_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Region =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Region;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Structural_Feature_Value_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Remove_Structural_Feature_Value_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Variable_Value_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Remove_Variable_Value_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Reply_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Reply_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Object_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Send_Object_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Signal_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Send_Signal_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Sequence_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Sequence_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Signal;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal_Event =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Signal_Event;
 
-         when AMF.Internals.Tables.UML_Types.E_Slot =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Slot =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Slot;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Classifier_Behavior_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Start_Classifier_Behavior_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Object_Behavior_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Start_Object_Behavior_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_State =>
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_State;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Invariant =>
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_State_Invariant;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Machine =>
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_State_Machine;
 
-         when AMF.Internals.Tables.UML_Types.E_Stereotype =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Stereotype;
 
-         when AMF.Internals.Tables.UML_Types.E_String_Expression =>
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_String_Expression;
 
-         when AMF.Internals.Tables.UML_Types.E_Structured_Activity_Node =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Structured_Activity_Node;
 
-         when AMF.Internals.Tables.UML_Types.E_Substitution =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Substitution;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Binding =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Binding =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Binding;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Parameter;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter_Substitution =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Parameter_Substitution;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Signature =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Signature =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Signature;
 
-         when AMF.Internals.Tables.UML_Types.E_Test_Identity_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Test_Identity_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Constraint =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Constraint;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Event =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Event;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Expression =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Expression;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Interval =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Interval;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Observation =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Observation;
 
-         when AMF.Internals.Tables.UML_Types.E_Transition =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Transition;
 
-         when AMF.Internals.Tables.UML_Types.E_Trigger =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Trigger =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Trigger;
 
-         when AMF.Internals.Tables.UML_Types.E_Unmarshall_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Unmarshall_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Usage =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Usage;
 
-         when AMF.Internals.Tables.UML_Types.E_Use_Case =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Use_Case;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Pin =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Value_Pin;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Specification_Action =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Value_Specification_Action;
 
-         when AMF.Internals.Tables.UML_Types.E_Variable =>
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Variable;
       end case;
    end Get_Meta_Class;
@@ -46003,590 +47028,1311 @@ package body AMF.Internals.Tables.UML_Reflection is
      Value    : League.Holders.Holder)
    is
 
-      procedure Abstraction_Set;
-      --  Sets attribute's value of instance of Abstraction class.
+      procedure Standard_Profile_L2_Auxiliary_Set;
+      --  Sets attribute's value of instance of Auxiliary class.
 
-      procedure Accept_Call_Action_Set;
-      --  Sets attribute's value of instance of AcceptCallAction class.
+      procedure Standard_Profile_L2_Call_Set;
+      --  Sets attribute's value of instance of Call class.
 
-      procedure Accept_Event_Action_Set;
-      --  Sets attribute's value of instance of AcceptEventAction class.
+      procedure Standard_Profile_L2_Create_Set;
+      --  Sets attribute's value of instance of Create class.
 
-      procedure Action_Execution_Specification_Set;
-      --  Sets attribute's value of instance of ActionExecutionSpecification class.
+      procedure Standard_Profile_L2_Derive_Set;
+      --  Sets attribute's value of instance of Derive class.
 
-      procedure Action_Input_Pin_Set;
-      --  Sets attribute's value of instance of ActionInputPin class.
+      procedure Standard_Profile_L2_Destroy_Set;
+      --  Sets attribute's value of instance of Destroy class.
 
-      procedure Activity_Set;
-      --  Sets attribute's value of instance of Activity class.
+      procedure Standard_Profile_L2_Document_Set;
+      --  Sets attribute's value of instance of Document class.
 
-      procedure Activity_Final_Node_Set;
-      --  Sets attribute's value of instance of ActivityFinalNode class.
+      procedure Standard_Profile_L2_Entity_Set;
+      --  Sets attribute's value of instance of Entity class.
 
-      procedure Activity_Parameter_Node_Set;
-      --  Sets attribute's value of instance of ActivityParameterNode class.
+      procedure Standard_Profile_L2_Executable_Set;
+      --  Sets attribute's value of instance of Executable class.
 
-      procedure Activity_Partition_Set;
-      --  Sets attribute's value of instance of ActivityPartition class.
+      procedure Standard_Profile_L2_Focus_Set;
+      --  Sets attribute's value of instance of Focus class.
 
-      procedure Actor_Set;
-      --  Sets attribute's value of instance of Actor class.
+      procedure Standard_Profile_L2_Framework_Set;
+      --  Sets attribute's value of instance of Framework class.
 
-      procedure Add_Structural_Feature_Value_Action_Set;
-      --  Sets attribute's value of instance of AddStructuralFeatureValueAction class.
+      procedure Standard_Profile_L2_Implement_Set;
+      --  Sets attribute's value of instance of Implement class.
 
-      procedure Add_Variable_Value_Action_Set;
-      --  Sets attribute's value of instance of AddVariableValueAction class.
+      procedure Standard_Profile_L2_Implementation_Class_Set;
+      --  Sets attribute's value of instance of ImplementationClass class.
 
-      procedure Any_Receive_Event_Set;
-      --  Sets attribute's value of instance of AnyReceiveEvent class.
+      procedure Standard_Profile_L2_Instantiate_Set;
+      --  Sets attribute's value of instance of Instantiate class.
 
-      procedure Artifact_Set;
-      --  Sets attribute's value of instance of Artifact class.
+      procedure Standard_Profile_L2_Library_Set;
+      --  Sets attribute's value of instance of Library class.
 
-      procedure Association_Set;
-      --  Sets attribute's value of instance of Association class.
+      procedure Standard_Profile_L2_Metaclass_Set;
+      --  Sets attribute's value of instance of Metaclass class.
 
-      procedure Association_Class_Set;
-      --  Sets attribute's value of instance of AssociationClass class.
+      procedure Standard_Profile_L2_Model_Library_Set;
+      --  Sets attribute's value of instance of ModelLibrary class.
 
-      procedure Behavior_Execution_Specification_Set;
-      --  Sets attribute's value of instance of BehaviorExecutionSpecification class.
+      procedure Standard_Profile_L2_Process_Set;
+      --  Sets attribute's value of instance of Process class.
 
-      procedure Broadcast_Signal_Action_Set;
-      --  Sets attribute's value of instance of BroadcastSignalAction class.
-
-      procedure Call_Behavior_Action_Set;
-      --  Sets attribute's value of instance of CallBehaviorAction class.
-
-      procedure Call_Event_Set;
-      --  Sets attribute's value of instance of CallEvent class.
-
-      procedure Call_Operation_Action_Set;
-      --  Sets attribute's value of instance of CallOperationAction class.
-
-      procedure Central_Buffer_Node_Set;
-      --  Sets attribute's value of instance of CentralBufferNode class.
-
-      procedure Change_Event_Set;
-      --  Sets attribute's value of instance of ChangeEvent class.
-
-      procedure Class_Set;
-      --  Sets attribute's value of instance of Class class.
-
-      procedure Classifier_Template_Parameter_Set;
-      --  Sets attribute's value of instance of ClassifierTemplateParameter class.
-
-      procedure Clause_Set;
-      --  Sets attribute's value of instance of Clause class.
-
-      procedure Clear_Association_Action_Set;
-      --  Sets attribute's value of instance of ClearAssociationAction class.
-
-      procedure Clear_Structural_Feature_Action_Set;
-      --  Sets attribute's value of instance of ClearStructuralFeatureAction class.
-
-      procedure Clear_Variable_Action_Set;
-      --  Sets attribute's value of instance of ClearVariableAction class.
-
-      procedure Collaboration_Set;
-      --  Sets attribute's value of instance of Collaboration class.
-
-      procedure Collaboration_Use_Set;
-      --  Sets attribute's value of instance of CollaborationUse class.
-
-      procedure Combined_Fragment_Set;
-      --  Sets attribute's value of instance of CombinedFragment class.
-
-      procedure Comment_Set;
-      --  Sets attribute's value of instance of Comment class.
-
-      procedure Communication_Path_Set;
-      --  Sets attribute's value of instance of CommunicationPath class.
-
-      procedure Component_Set;
-      --  Sets attribute's value of instance of Component class.
-
-      procedure Component_Realization_Set;
-      --  Sets attribute's value of instance of ComponentRealization class.
-
-      procedure Conditional_Node_Set;
-      --  Sets attribute's value of instance of ConditionalNode class.
-
-      procedure Connectable_Element_Template_Parameter_Set;
-      --  Sets attribute's value of instance of ConnectableElementTemplateParameter class.
-
-      procedure Connection_Point_Reference_Set;
-      --  Sets attribute's value of instance of ConnectionPointReference class.
-
-      procedure Connector_Set;
-      --  Sets attribute's value of instance of Connector class.
-
-      procedure Connector_End_Set;
-      --  Sets attribute's value of instance of ConnectorEnd class.
-
-      procedure Consider_Ignore_Fragment_Set;
-      --  Sets attribute's value of instance of ConsiderIgnoreFragment class.
-
-      procedure Constraint_Set;
-      --  Sets attribute's value of instance of Constraint class.
-
-      procedure Continuation_Set;
-      --  Sets attribute's value of instance of Continuation class.
-
-      procedure Control_Flow_Set;
-      --  Sets attribute's value of instance of ControlFlow class.
-
-      procedure Create_Link_Action_Set;
-      --  Sets attribute's value of instance of CreateLinkAction class.
-
-      procedure Create_Link_Object_Action_Set;
-      --  Sets attribute's value of instance of CreateLinkObjectAction class.
-
-      procedure Create_Object_Action_Set;
-      --  Sets attribute's value of instance of CreateObjectAction class.
-
-      procedure Data_Store_Node_Set;
-      --  Sets attribute's value of instance of DataStoreNode class.
-
-      procedure Data_Type_Set;
-      --  Sets attribute's value of instance of DataType class.
-
-      procedure Decision_Node_Set;
-      --  Sets attribute's value of instance of DecisionNode class.
-
-      procedure Dependency_Set;
-      --  Sets attribute's value of instance of Dependency class.
-
-      procedure Deployment_Set;
-      --  Sets attribute's value of instance of Deployment class.
-
-      procedure Deployment_Specification_Set;
-      --  Sets attribute's value of instance of DeploymentSpecification class.
-
-      procedure Destroy_Link_Action_Set;
-      --  Sets attribute's value of instance of DestroyLinkAction class.
-
-      procedure Destroy_Object_Action_Set;
-      --  Sets attribute's value of instance of DestroyObjectAction class.
-
-      procedure Destruction_Occurrence_Specification_Set;
-      --  Sets attribute's value of instance of DestructionOccurrenceSpecification class.
-
-      procedure Device_Set;
-      --  Sets attribute's value of instance of Device class.
-
-      procedure Duration_Set;
-      --  Sets attribute's value of instance of Duration class.
-
-      procedure Duration_Constraint_Set;
-      --  Sets attribute's value of instance of DurationConstraint class.
-
-      procedure Duration_Interval_Set;
-      --  Sets attribute's value of instance of DurationInterval class.
-
-      procedure Duration_Observation_Set;
-      --  Sets attribute's value of instance of DurationObservation class.
-
-      procedure Element_Import_Set;
-      --  Sets attribute's value of instance of ElementImport class.
-
-      procedure Enumeration_Set;
-      --  Sets attribute's value of instance of Enumeration class.
-
-      procedure Enumeration_Literal_Set;
-      --  Sets attribute's value of instance of EnumerationLiteral class.
-
-      procedure Exception_Handler_Set;
-      --  Sets attribute's value of instance of ExceptionHandler class.
-
-      procedure Execution_Environment_Set;
-      --  Sets attribute's value of instance of ExecutionEnvironment class.
-
-      procedure Execution_Occurrence_Specification_Set;
-      --  Sets attribute's value of instance of ExecutionOccurrenceSpecification class.
-
-      procedure Expansion_Node_Set;
-      --  Sets attribute's value of instance of ExpansionNode class.
-
-      procedure Expansion_Region_Set;
-      --  Sets attribute's value of instance of ExpansionRegion class.
-
-      procedure Expression_Set;
-      --  Sets attribute's value of instance of Expression class.
-
-      procedure Extend_Set;
-      --  Sets attribute's value of instance of Extend class.
-
-      procedure Extension_Set;
-      --  Sets attribute's value of instance of Extension class.
-
-      procedure Extension_End_Set;
-      --  Sets attribute's value of instance of ExtensionEnd class.
-
-      procedure Extension_Point_Set;
-      --  Sets attribute's value of instance of ExtensionPoint class.
-
-      procedure Final_State_Set;
-      --  Sets attribute's value of instance of FinalState class.
-
-      procedure Flow_Final_Node_Set;
-      --  Sets attribute's value of instance of FlowFinalNode class.
-
-      procedure Fork_Node_Set;
-      --  Sets attribute's value of instance of ForkNode class.
-
-      procedure Function_Behavior_Set;
-      --  Sets attribute's value of instance of FunctionBehavior class.
-
-      procedure Gate_Set;
-      --  Sets attribute's value of instance of Gate class.
-
-      procedure General_Ordering_Set;
-      --  Sets attribute's value of instance of GeneralOrdering class.
-
-      procedure Generalization_Set;
-      --  Sets attribute's value of instance of Generalization class.
-
-      procedure Generalization_Set_Set;
-      --  Sets attribute's value of instance of GeneralizationSet class.
-
-      procedure Image_Set;
-      --  Sets attribute's value of instance of Image class.
-
-      procedure Include_Set;
-      --  Sets attribute's value of instance of Include class.
-
-      procedure Information_Flow_Set;
-      --  Sets attribute's value of instance of InformationFlow class.
-
-      procedure Information_Item_Set;
-      --  Sets attribute's value of instance of InformationItem class.
-
-      procedure Initial_Node_Set;
-      --  Sets attribute's value of instance of InitialNode class.
-
-      procedure Input_Pin_Set;
-      --  Sets attribute's value of instance of InputPin class.
-
-      procedure Instance_Specification_Set;
-      --  Sets attribute's value of instance of InstanceSpecification class.
-
-      procedure Instance_Value_Set;
-      --  Sets attribute's value of instance of InstanceValue class.
-
-      procedure Interaction_Set;
-      --  Sets attribute's value of instance of Interaction class.
-
-      procedure Interaction_Constraint_Set;
-      --  Sets attribute's value of instance of InteractionConstraint class.
-
-      procedure Interaction_Operand_Set;
-      --  Sets attribute's value of instance of InteractionOperand class.
-
-      procedure Interaction_Use_Set;
-      --  Sets attribute's value of instance of InteractionUse class.
-
-      procedure Interface_Set;
-      --  Sets attribute's value of instance of Interface class.
-
-      procedure Interface_Realization_Set;
-      --  Sets attribute's value of instance of InterfaceRealization class.
-
-      procedure Interruptible_Activity_Region_Set;
-      --  Sets attribute's value of instance of InterruptibleActivityRegion class.
-
-      procedure Interval_Set;
-      --  Sets attribute's value of instance of Interval class.
-
-      procedure Interval_Constraint_Set;
-      --  Sets attribute's value of instance of IntervalConstraint class.
-
-      procedure Join_Node_Set;
-      --  Sets attribute's value of instance of JoinNode class.
-
-      procedure Lifeline_Set;
-      --  Sets attribute's value of instance of Lifeline class.
-
-      procedure Link_End_Creation_Data_Set;
-      --  Sets attribute's value of instance of LinkEndCreationData class.
-
-      procedure Link_End_Data_Set;
-      --  Sets attribute's value of instance of LinkEndData class.
-
-      procedure Link_End_Destruction_Data_Set;
-      --  Sets attribute's value of instance of LinkEndDestructionData class.
-
-      procedure Literal_Boolean_Set;
-      --  Sets attribute's value of instance of LiteralBoolean class.
-
-      procedure Literal_Integer_Set;
-      --  Sets attribute's value of instance of LiteralInteger class.
-
-      procedure Literal_Null_Set;
-      --  Sets attribute's value of instance of LiteralNull class.
-
-      procedure Literal_Real_Set;
-      --  Sets attribute's value of instance of LiteralReal class.
-
-      procedure Literal_String_Set;
-      --  Sets attribute's value of instance of LiteralString class.
-
-      procedure Literal_Unlimited_Natural_Set;
-      --  Sets attribute's value of instance of LiteralUnlimitedNatural class.
-
-      procedure Loop_Node_Set;
-      --  Sets attribute's value of instance of LoopNode class.
-
-      procedure Manifestation_Set;
-      --  Sets attribute's value of instance of Manifestation class.
-
-      procedure Merge_Node_Set;
-      --  Sets attribute's value of instance of MergeNode class.
-
-      procedure Message_Set;
-      --  Sets attribute's value of instance of Message class.
-
-      procedure Message_Occurrence_Specification_Set;
-      --  Sets attribute's value of instance of MessageOccurrenceSpecification class.
-
-      procedure Model_Set;
-      --  Sets attribute's value of instance of Model class.
-
-      procedure Node_Set;
-      --  Sets attribute's value of instance of Node class.
-
-      procedure Object_Flow_Set;
-      --  Sets attribute's value of instance of ObjectFlow class.
-
-      procedure Occurrence_Specification_Set;
-      --  Sets attribute's value of instance of OccurrenceSpecification class.
-
-      procedure Opaque_Action_Set;
-      --  Sets attribute's value of instance of OpaqueAction class.
-
-      procedure Opaque_Behavior_Set;
-      --  Sets attribute's value of instance of OpaqueBehavior class.
-
-      procedure Opaque_Expression_Set;
-      --  Sets attribute's value of instance of OpaqueExpression class.
-
-      procedure Operation_Set;
-      --  Sets attribute's value of instance of Operation class.
-
-      procedure Operation_Template_Parameter_Set;
-      --  Sets attribute's value of instance of OperationTemplateParameter class.
-
-      procedure Output_Pin_Set;
-      --  Sets attribute's value of instance of OutputPin class.
-
-      procedure Package_Set;
-      --  Sets attribute's value of instance of Package class.
-
-      procedure Package_Import_Set;
-      --  Sets attribute's value of instance of PackageImport class.
-
-      procedure Package_Merge_Set;
-      --  Sets attribute's value of instance of PackageMerge class.
-
-      procedure Parameter_Set;
-      --  Sets attribute's value of instance of Parameter class.
-
-      procedure Parameter_Set_Set;
-      --  Sets attribute's value of instance of ParameterSet class.
-
-      procedure Part_Decomposition_Set;
-      --  Sets attribute's value of instance of PartDecomposition class.
-
-      procedure Port_Set;
-      --  Sets attribute's value of instance of Port class.
-
-      procedure Primitive_Type_Set;
-      --  Sets attribute's value of instance of PrimitiveType class.
-
-      procedure Profile_Set;
-      --  Sets attribute's value of instance of Profile class.
-
-      procedure Profile_Application_Set;
-      --  Sets attribute's value of instance of ProfileApplication class.
-
-      procedure Property_Set;
-      --  Sets attribute's value of instance of Property class.
-
-      procedure Protocol_Conformance_Set;
-      --  Sets attribute's value of instance of ProtocolConformance class.
-
-      procedure Protocol_State_Machine_Set;
-      --  Sets attribute's value of instance of ProtocolStateMachine class.
-
-      procedure Protocol_Transition_Set;
-      --  Sets attribute's value of instance of ProtocolTransition class.
-
-      procedure Pseudostate_Set;
-      --  Sets attribute's value of instance of Pseudostate class.
-
-      procedure Qualifier_Value_Set;
-      --  Sets attribute's value of instance of QualifierValue class.
-
-      procedure Raise_Exception_Action_Set;
-      --  Sets attribute's value of instance of RaiseExceptionAction class.
-
-      procedure Read_Extent_Action_Set;
-      --  Sets attribute's value of instance of ReadExtentAction class.
-
-      procedure Read_Is_Classified_Object_Action_Set;
-      --  Sets attribute's value of instance of ReadIsClassifiedObjectAction class.
-
-      procedure Read_Link_Action_Set;
-      --  Sets attribute's value of instance of ReadLinkAction class.
-
-      procedure Read_Link_Object_End_Action_Set;
-      --  Sets attribute's value of instance of ReadLinkObjectEndAction class.
-
-      procedure Read_Link_Object_End_Qualifier_Action_Set;
-      --  Sets attribute's value of instance of ReadLinkObjectEndQualifierAction class.
-
-      procedure Read_Self_Action_Set;
-      --  Sets attribute's value of instance of ReadSelfAction class.
-
-      procedure Read_Structural_Feature_Action_Set;
-      --  Sets attribute's value of instance of ReadStructuralFeatureAction class.
-
-      procedure Read_Variable_Action_Set;
-      --  Sets attribute's value of instance of ReadVariableAction class.
-
-      procedure Realization_Set;
+      procedure Standard_Profile_L2_Realization_Set;
       --  Sets attribute's value of instance of Realization class.
 
-      procedure Reception_Set;
+      procedure Standard_Profile_L2_Refine_Set;
+      --  Sets attribute's value of instance of Refine class.
+
+      procedure Standard_Profile_L2_Responsibility_Set;
+      --  Sets attribute's value of instance of Responsibility class.
+
+      procedure Standard_Profile_L2_Script_Set;
+      --  Sets attribute's value of instance of Script class.
+
+      procedure Standard_Profile_L2_Send_Set;
+      --  Sets attribute's value of instance of Send class.
+
+      procedure Standard_Profile_L2_Service_Set;
+      --  Sets attribute's value of instance of Service class.
+
+      procedure Standard_Profile_L2_Source_Set;
+      --  Sets attribute's value of instance of Source class.
+
+      procedure Standard_Profile_L2_Specification_Set;
+      --  Sets attribute's value of instance of Specification class.
+
+      procedure Standard_Profile_L2_Subsystem_Set;
+      --  Sets attribute's value of instance of Subsystem class.
+
+      procedure Standard_Profile_L2_Trace_Set;
+      --  Sets attribute's value of instance of Trace class.
+
+      procedure Standard_Profile_L2_Type_Set;
+      --  Sets attribute's value of instance of Type class.
+
+      procedure Standard_Profile_L2_Utility_Set;
+      --  Sets attribute's value of instance of Utility class.
+
+      procedure Standard_Profile_L3_Build_Component_Set;
+      --  Sets attribute's value of instance of BuildComponent class.
+
+      procedure Standard_Profile_L3_Metamodel_Set;
+      --  Sets attribute's value of instance of Metamodel class.
+
+      procedure Standard_Profile_L3_System_Model_Set;
+      --  Sets attribute's value of instance of SystemModel class.
+
+      procedure UML_Abstraction_Set;
+      --  Sets attribute's value of instance of Abstraction class.
+
+      procedure UML_Accept_Call_Action_Set;
+      --  Sets attribute's value of instance of AcceptCallAction class.
+
+      procedure UML_Accept_Event_Action_Set;
+      --  Sets attribute's value of instance of AcceptEventAction class.
+
+      procedure UML_Action_Execution_Specification_Set;
+      --  Sets attribute's value of instance of ActionExecutionSpecification class.
+
+      procedure UML_Action_Input_Pin_Set;
+      --  Sets attribute's value of instance of ActionInputPin class.
+
+      procedure UML_Activity_Set;
+      --  Sets attribute's value of instance of Activity class.
+
+      procedure UML_Activity_Final_Node_Set;
+      --  Sets attribute's value of instance of ActivityFinalNode class.
+
+      procedure UML_Activity_Parameter_Node_Set;
+      --  Sets attribute's value of instance of ActivityParameterNode class.
+
+      procedure UML_Activity_Partition_Set;
+      --  Sets attribute's value of instance of ActivityPartition class.
+
+      procedure UML_Actor_Set;
+      --  Sets attribute's value of instance of Actor class.
+
+      procedure UML_Add_Structural_Feature_Value_Action_Set;
+      --  Sets attribute's value of instance of AddStructuralFeatureValueAction class.
+
+      procedure UML_Add_Variable_Value_Action_Set;
+      --  Sets attribute's value of instance of AddVariableValueAction class.
+
+      procedure UML_Any_Receive_Event_Set;
+      --  Sets attribute's value of instance of AnyReceiveEvent class.
+
+      procedure UML_Artifact_Set;
+      --  Sets attribute's value of instance of Artifact class.
+
+      procedure UML_Association_Set;
+      --  Sets attribute's value of instance of Association class.
+
+      procedure UML_Association_Class_Set;
+      --  Sets attribute's value of instance of AssociationClass class.
+
+      procedure UML_Behavior_Execution_Specification_Set;
+      --  Sets attribute's value of instance of BehaviorExecutionSpecification class.
+
+      procedure UML_Broadcast_Signal_Action_Set;
+      --  Sets attribute's value of instance of BroadcastSignalAction class.
+
+      procedure UML_Call_Behavior_Action_Set;
+      --  Sets attribute's value of instance of CallBehaviorAction class.
+
+      procedure UML_Call_Event_Set;
+      --  Sets attribute's value of instance of CallEvent class.
+
+      procedure UML_Call_Operation_Action_Set;
+      --  Sets attribute's value of instance of CallOperationAction class.
+
+      procedure UML_Central_Buffer_Node_Set;
+      --  Sets attribute's value of instance of CentralBufferNode class.
+
+      procedure UML_Change_Event_Set;
+      --  Sets attribute's value of instance of ChangeEvent class.
+
+      procedure UML_Class_Set;
+      --  Sets attribute's value of instance of Class class.
+
+      procedure UML_Classifier_Template_Parameter_Set;
+      --  Sets attribute's value of instance of ClassifierTemplateParameter class.
+
+      procedure UML_Clause_Set;
+      --  Sets attribute's value of instance of Clause class.
+
+      procedure UML_Clear_Association_Action_Set;
+      --  Sets attribute's value of instance of ClearAssociationAction class.
+
+      procedure UML_Clear_Structural_Feature_Action_Set;
+      --  Sets attribute's value of instance of ClearStructuralFeatureAction class.
+
+      procedure UML_Clear_Variable_Action_Set;
+      --  Sets attribute's value of instance of ClearVariableAction class.
+
+      procedure UML_Collaboration_Set;
+      --  Sets attribute's value of instance of Collaboration class.
+
+      procedure UML_Collaboration_Use_Set;
+      --  Sets attribute's value of instance of CollaborationUse class.
+
+      procedure UML_Combined_Fragment_Set;
+      --  Sets attribute's value of instance of CombinedFragment class.
+
+      procedure UML_Comment_Set;
+      --  Sets attribute's value of instance of Comment class.
+
+      procedure UML_Communication_Path_Set;
+      --  Sets attribute's value of instance of CommunicationPath class.
+
+      procedure UML_Component_Set;
+      --  Sets attribute's value of instance of Component class.
+
+      procedure UML_Component_Realization_Set;
+      --  Sets attribute's value of instance of ComponentRealization class.
+
+      procedure UML_Conditional_Node_Set;
+      --  Sets attribute's value of instance of ConditionalNode class.
+
+      procedure UML_Connectable_Element_Template_Parameter_Set;
+      --  Sets attribute's value of instance of ConnectableElementTemplateParameter class.
+
+      procedure UML_Connection_Point_Reference_Set;
+      --  Sets attribute's value of instance of ConnectionPointReference class.
+
+      procedure UML_Connector_Set;
+      --  Sets attribute's value of instance of Connector class.
+
+      procedure UML_Connector_End_Set;
+      --  Sets attribute's value of instance of ConnectorEnd class.
+
+      procedure UML_Consider_Ignore_Fragment_Set;
+      --  Sets attribute's value of instance of ConsiderIgnoreFragment class.
+
+      procedure UML_Constraint_Set;
+      --  Sets attribute's value of instance of Constraint class.
+
+      procedure UML_Continuation_Set;
+      --  Sets attribute's value of instance of Continuation class.
+
+      procedure UML_Control_Flow_Set;
+      --  Sets attribute's value of instance of ControlFlow class.
+
+      procedure UML_Create_Link_Action_Set;
+      --  Sets attribute's value of instance of CreateLinkAction class.
+
+      procedure UML_Create_Link_Object_Action_Set;
+      --  Sets attribute's value of instance of CreateLinkObjectAction class.
+
+      procedure UML_Create_Object_Action_Set;
+      --  Sets attribute's value of instance of CreateObjectAction class.
+
+      procedure UML_Data_Store_Node_Set;
+      --  Sets attribute's value of instance of DataStoreNode class.
+
+      procedure UML_Data_Type_Set;
+      --  Sets attribute's value of instance of DataType class.
+
+      procedure UML_Decision_Node_Set;
+      --  Sets attribute's value of instance of DecisionNode class.
+
+      procedure UML_Dependency_Set;
+      --  Sets attribute's value of instance of Dependency class.
+
+      procedure UML_Deployment_Set;
+      --  Sets attribute's value of instance of Deployment class.
+
+      procedure UML_Deployment_Specification_Set;
+      --  Sets attribute's value of instance of DeploymentSpecification class.
+
+      procedure UML_Destroy_Link_Action_Set;
+      --  Sets attribute's value of instance of DestroyLinkAction class.
+
+      procedure UML_Destroy_Object_Action_Set;
+      --  Sets attribute's value of instance of DestroyObjectAction class.
+
+      procedure UML_Destruction_Occurrence_Specification_Set;
+      --  Sets attribute's value of instance of DestructionOccurrenceSpecification class.
+
+      procedure UML_Device_Set;
+      --  Sets attribute's value of instance of Device class.
+
+      procedure UML_Duration_Set;
+      --  Sets attribute's value of instance of Duration class.
+
+      procedure UML_Duration_Constraint_Set;
+      --  Sets attribute's value of instance of DurationConstraint class.
+
+      procedure UML_Duration_Interval_Set;
+      --  Sets attribute's value of instance of DurationInterval class.
+
+      procedure UML_Duration_Observation_Set;
+      --  Sets attribute's value of instance of DurationObservation class.
+
+      procedure UML_Element_Import_Set;
+      --  Sets attribute's value of instance of ElementImport class.
+
+      procedure UML_Enumeration_Set;
+      --  Sets attribute's value of instance of Enumeration class.
+
+      procedure UML_Enumeration_Literal_Set;
+      --  Sets attribute's value of instance of EnumerationLiteral class.
+
+      procedure UML_Exception_Handler_Set;
+      --  Sets attribute's value of instance of ExceptionHandler class.
+
+      procedure UML_Execution_Environment_Set;
+      --  Sets attribute's value of instance of ExecutionEnvironment class.
+
+      procedure UML_Execution_Occurrence_Specification_Set;
+      --  Sets attribute's value of instance of ExecutionOccurrenceSpecification class.
+
+      procedure UML_Expansion_Node_Set;
+      --  Sets attribute's value of instance of ExpansionNode class.
+
+      procedure UML_Expansion_Region_Set;
+      --  Sets attribute's value of instance of ExpansionRegion class.
+
+      procedure UML_Expression_Set;
+      --  Sets attribute's value of instance of Expression class.
+
+      procedure UML_Extend_Set;
+      --  Sets attribute's value of instance of Extend class.
+
+      procedure UML_Extension_Set;
+      --  Sets attribute's value of instance of Extension class.
+
+      procedure UML_Extension_End_Set;
+      --  Sets attribute's value of instance of ExtensionEnd class.
+
+      procedure UML_Extension_Point_Set;
+      --  Sets attribute's value of instance of ExtensionPoint class.
+
+      procedure UML_Final_State_Set;
+      --  Sets attribute's value of instance of FinalState class.
+
+      procedure UML_Flow_Final_Node_Set;
+      --  Sets attribute's value of instance of FlowFinalNode class.
+
+      procedure UML_Fork_Node_Set;
+      --  Sets attribute's value of instance of ForkNode class.
+
+      procedure UML_Function_Behavior_Set;
+      --  Sets attribute's value of instance of FunctionBehavior class.
+
+      procedure UML_Gate_Set;
+      --  Sets attribute's value of instance of Gate class.
+
+      procedure UML_General_Ordering_Set;
+      --  Sets attribute's value of instance of GeneralOrdering class.
+
+      procedure UML_Generalization_Set;
+      --  Sets attribute's value of instance of Generalization class.
+
+      procedure UML_Generalization_Set_Set;
+      --  Sets attribute's value of instance of GeneralizationSet class.
+
+      procedure UML_Image_Set;
+      --  Sets attribute's value of instance of Image class.
+
+      procedure UML_Include_Set;
+      --  Sets attribute's value of instance of Include class.
+
+      procedure UML_Information_Flow_Set;
+      --  Sets attribute's value of instance of InformationFlow class.
+
+      procedure UML_Information_Item_Set;
+      --  Sets attribute's value of instance of InformationItem class.
+
+      procedure UML_Initial_Node_Set;
+      --  Sets attribute's value of instance of InitialNode class.
+
+      procedure UML_Input_Pin_Set;
+      --  Sets attribute's value of instance of InputPin class.
+
+      procedure UML_Instance_Specification_Set;
+      --  Sets attribute's value of instance of InstanceSpecification class.
+
+      procedure UML_Instance_Value_Set;
+      --  Sets attribute's value of instance of InstanceValue class.
+
+      procedure UML_Interaction_Set;
+      --  Sets attribute's value of instance of Interaction class.
+
+      procedure UML_Interaction_Constraint_Set;
+      --  Sets attribute's value of instance of InteractionConstraint class.
+
+      procedure UML_Interaction_Operand_Set;
+      --  Sets attribute's value of instance of InteractionOperand class.
+
+      procedure UML_Interaction_Use_Set;
+      --  Sets attribute's value of instance of InteractionUse class.
+
+      procedure UML_Interface_Set;
+      --  Sets attribute's value of instance of Interface class.
+
+      procedure UML_Interface_Realization_Set;
+      --  Sets attribute's value of instance of InterfaceRealization class.
+
+      procedure UML_Interruptible_Activity_Region_Set;
+      --  Sets attribute's value of instance of InterruptibleActivityRegion class.
+
+      procedure UML_Interval_Set;
+      --  Sets attribute's value of instance of Interval class.
+
+      procedure UML_Interval_Constraint_Set;
+      --  Sets attribute's value of instance of IntervalConstraint class.
+
+      procedure UML_Join_Node_Set;
+      --  Sets attribute's value of instance of JoinNode class.
+
+      procedure UML_Lifeline_Set;
+      --  Sets attribute's value of instance of Lifeline class.
+
+      procedure UML_Link_End_Creation_Data_Set;
+      --  Sets attribute's value of instance of LinkEndCreationData class.
+
+      procedure UML_Link_End_Data_Set;
+      --  Sets attribute's value of instance of LinkEndData class.
+
+      procedure UML_Link_End_Destruction_Data_Set;
+      --  Sets attribute's value of instance of LinkEndDestructionData class.
+
+      procedure UML_Literal_Boolean_Set;
+      --  Sets attribute's value of instance of LiteralBoolean class.
+
+      procedure UML_Literal_Integer_Set;
+      --  Sets attribute's value of instance of LiteralInteger class.
+
+      procedure UML_Literal_Null_Set;
+      --  Sets attribute's value of instance of LiteralNull class.
+
+      procedure UML_Literal_Real_Set;
+      --  Sets attribute's value of instance of LiteralReal class.
+
+      procedure UML_Literal_String_Set;
+      --  Sets attribute's value of instance of LiteralString class.
+
+      procedure UML_Literal_Unlimited_Natural_Set;
+      --  Sets attribute's value of instance of LiteralUnlimitedNatural class.
+
+      procedure UML_Loop_Node_Set;
+      --  Sets attribute's value of instance of LoopNode class.
+
+      procedure UML_Manifestation_Set;
+      --  Sets attribute's value of instance of Manifestation class.
+
+      procedure UML_Merge_Node_Set;
+      --  Sets attribute's value of instance of MergeNode class.
+
+      procedure UML_Message_Set;
+      --  Sets attribute's value of instance of Message class.
+
+      procedure UML_Message_Occurrence_Specification_Set;
+      --  Sets attribute's value of instance of MessageOccurrenceSpecification class.
+
+      procedure UML_Model_Set;
+      --  Sets attribute's value of instance of Model class.
+
+      procedure UML_Node_Set;
+      --  Sets attribute's value of instance of Node class.
+
+      procedure UML_Object_Flow_Set;
+      --  Sets attribute's value of instance of ObjectFlow class.
+
+      procedure UML_Occurrence_Specification_Set;
+      --  Sets attribute's value of instance of OccurrenceSpecification class.
+
+      procedure UML_Opaque_Action_Set;
+      --  Sets attribute's value of instance of OpaqueAction class.
+
+      procedure UML_Opaque_Behavior_Set;
+      --  Sets attribute's value of instance of OpaqueBehavior class.
+
+      procedure UML_Opaque_Expression_Set;
+      --  Sets attribute's value of instance of OpaqueExpression class.
+
+      procedure UML_Operation_Set;
+      --  Sets attribute's value of instance of Operation class.
+
+      procedure UML_Operation_Template_Parameter_Set;
+      --  Sets attribute's value of instance of OperationTemplateParameter class.
+
+      procedure UML_Output_Pin_Set;
+      --  Sets attribute's value of instance of OutputPin class.
+
+      procedure UML_Package_Set;
+      --  Sets attribute's value of instance of Package class.
+
+      procedure UML_Package_Import_Set;
+      --  Sets attribute's value of instance of PackageImport class.
+
+      procedure UML_Package_Merge_Set;
+      --  Sets attribute's value of instance of PackageMerge class.
+
+      procedure UML_Parameter_Set;
+      --  Sets attribute's value of instance of Parameter class.
+
+      procedure UML_Parameter_Set_Set;
+      --  Sets attribute's value of instance of ParameterSet class.
+
+      procedure UML_Part_Decomposition_Set;
+      --  Sets attribute's value of instance of PartDecomposition class.
+
+      procedure UML_Port_Set;
+      --  Sets attribute's value of instance of Port class.
+
+      procedure UML_Primitive_Type_Set;
+      --  Sets attribute's value of instance of PrimitiveType class.
+
+      procedure UML_Profile_Set;
+      --  Sets attribute's value of instance of Profile class.
+
+      procedure UML_Profile_Application_Set;
+      --  Sets attribute's value of instance of ProfileApplication class.
+
+      procedure UML_Property_Set;
+      --  Sets attribute's value of instance of Property class.
+
+      procedure UML_Protocol_Conformance_Set;
+      --  Sets attribute's value of instance of ProtocolConformance class.
+
+      procedure UML_Protocol_State_Machine_Set;
+      --  Sets attribute's value of instance of ProtocolStateMachine class.
+
+      procedure UML_Protocol_Transition_Set;
+      --  Sets attribute's value of instance of ProtocolTransition class.
+
+      procedure UML_Pseudostate_Set;
+      --  Sets attribute's value of instance of Pseudostate class.
+
+      procedure UML_Qualifier_Value_Set;
+      --  Sets attribute's value of instance of QualifierValue class.
+
+      procedure UML_Raise_Exception_Action_Set;
+      --  Sets attribute's value of instance of RaiseExceptionAction class.
+
+      procedure UML_Read_Extent_Action_Set;
+      --  Sets attribute's value of instance of ReadExtentAction class.
+
+      procedure UML_Read_Is_Classified_Object_Action_Set;
+      --  Sets attribute's value of instance of ReadIsClassifiedObjectAction class.
+
+      procedure UML_Read_Link_Action_Set;
+      --  Sets attribute's value of instance of ReadLinkAction class.
+
+      procedure UML_Read_Link_Object_End_Action_Set;
+      --  Sets attribute's value of instance of ReadLinkObjectEndAction class.
+
+      procedure UML_Read_Link_Object_End_Qualifier_Action_Set;
+      --  Sets attribute's value of instance of ReadLinkObjectEndQualifierAction class.
+
+      procedure UML_Read_Self_Action_Set;
+      --  Sets attribute's value of instance of ReadSelfAction class.
+
+      procedure UML_Read_Structural_Feature_Action_Set;
+      --  Sets attribute's value of instance of ReadStructuralFeatureAction class.
+
+      procedure UML_Read_Variable_Action_Set;
+      --  Sets attribute's value of instance of ReadVariableAction class.
+
+      procedure UML_Realization_Set;
+      --  Sets attribute's value of instance of Realization class.
+
+      procedure UML_Reception_Set;
       --  Sets attribute's value of instance of Reception class.
 
-      procedure Reclassify_Object_Action_Set;
+      procedure UML_Reclassify_Object_Action_Set;
       --  Sets attribute's value of instance of ReclassifyObjectAction class.
 
-      procedure Redefinable_Template_Signature_Set;
+      procedure UML_Redefinable_Template_Signature_Set;
       --  Sets attribute's value of instance of RedefinableTemplateSignature class.
 
-      procedure Reduce_Action_Set;
+      procedure UML_Reduce_Action_Set;
       --  Sets attribute's value of instance of ReduceAction class.
 
-      procedure Region_Set;
+      procedure UML_Region_Set;
       --  Sets attribute's value of instance of Region class.
 
-      procedure Remove_Structural_Feature_Value_Action_Set;
+      procedure UML_Remove_Structural_Feature_Value_Action_Set;
       --  Sets attribute's value of instance of RemoveStructuralFeatureValueAction class.
 
-      procedure Remove_Variable_Value_Action_Set;
+      procedure UML_Remove_Variable_Value_Action_Set;
       --  Sets attribute's value of instance of RemoveVariableValueAction class.
 
-      procedure Reply_Action_Set;
+      procedure UML_Reply_Action_Set;
       --  Sets attribute's value of instance of ReplyAction class.
 
-      procedure Send_Object_Action_Set;
+      procedure UML_Send_Object_Action_Set;
       --  Sets attribute's value of instance of SendObjectAction class.
 
-      procedure Send_Signal_Action_Set;
+      procedure UML_Send_Signal_Action_Set;
       --  Sets attribute's value of instance of SendSignalAction class.
 
-      procedure Sequence_Node_Set;
+      procedure UML_Sequence_Node_Set;
       --  Sets attribute's value of instance of SequenceNode class.
 
-      procedure Signal_Set;
+      procedure UML_Signal_Set;
       --  Sets attribute's value of instance of Signal class.
 
-      procedure Signal_Event_Set;
+      procedure UML_Signal_Event_Set;
       --  Sets attribute's value of instance of SignalEvent class.
 
-      procedure Slot_Set;
+      procedure UML_Slot_Set;
       --  Sets attribute's value of instance of Slot class.
 
-      procedure Start_Classifier_Behavior_Action_Set;
+      procedure UML_Start_Classifier_Behavior_Action_Set;
       --  Sets attribute's value of instance of StartClassifierBehaviorAction class.
 
-      procedure Start_Object_Behavior_Action_Set;
+      procedure UML_Start_Object_Behavior_Action_Set;
       --  Sets attribute's value of instance of StartObjectBehaviorAction class.
 
-      procedure State_Set;
+      procedure UML_State_Set;
       --  Sets attribute's value of instance of State class.
 
-      procedure State_Invariant_Set;
+      procedure UML_State_Invariant_Set;
       --  Sets attribute's value of instance of StateInvariant class.
 
-      procedure State_Machine_Set;
+      procedure UML_State_Machine_Set;
       --  Sets attribute's value of instance of StateMachine class.
 
-      procedure Stereotype_Set;
+      procedure UML_Stereotype_Set;
       --  Sets attribute's value of instance of Stereotype class.
 
-      procedure String_Expression_Set;
+      procedure UML_String_Expression_Set;
       --  Sets attribute's value of instance of StringExpression class.
 
-      procedure Structured_Activity_Node_Set;
+      procedure UML_Structured_Activity_Node_Set;
       --  Sets attribute's value of instance of StructuredActivityNode class.
 
-      procedure Substitution_Set;
+      procedure UML_Substitution_Set;
       --  Sets attribute's value of instance of Substitution class.
 
-      procedure Template_Binding_Set;
+      procedure UML_Template_Binding_Set;
       --  Sets attribute's value of instance of TemplateBinding class.
 
-      procedure Template_Parameter_Set;
+      procedure UML_Template_Parameter_Set;
       --  Sets attribute's value of instance of TemplateParameter class.
 
-      procedure Template_Parameter_Substitution_Set;
+      procedure UML_Template_Parameter_Substitution_Set;
       --  Sets attribute's value of instance of TemplateParameterSubstitution class.
 
-      procedure Template_Signature_Set;
+      procedure UML_Template_Signature_Set;
       --  Sets attribute's value of instance of TemplateSignature class.
 
-      procedure Test_Identity_Action_Set;
+      procedure UML_Test_Identity_Action_Set;
       --  Sets attribute's value of instance of TestIdentityAction class.
 
-      procedure Time_Constraint_Set;
+      procedure UML_Time_Constraint_Set;
       --  Sets attribute's value of instance of TimeConstraint class.
 
-      procedure Time_Event_Set;
+      procedure UML_Time_Event_Set;
       --  Sets attribute's value of instance of TimeEvent class.
 
-      procedure Time_Expression_Set;
+      procedure UML_Time_Expression_Set;
       --  Sets attribute's value of instance of TimeExpression class.
 
-      procedure Time_Interval_Set;
+      procedure UML_Time_Interval_Set;
       --  Sets attribute's value of instance of TimeInterval class.
 
-      procedure Time_Observation_Set;
+      procedure UML_Time_Observation_Set;
       --  Sets attribute's value of instance of TimeObservation class.
 
-      procedure Transition_Set;
+      procedure UML_Transition_Set;
       --  Sets attribute's value of instance of Transition class.
 
-      procedure Trigger_Set;
+      procedure UML_Trigger_Set;
       --  Sets attribute's value of instance of Trigger class.
 
-      procedure Unmarshall_Action_Set;
+      procedure UML_Unmarshall_Action_Set;
       --  Sets attribute's value of instance of UnmarshallAction class.
 
-      procedure Usage_Set;
+      procedure UML_Usage_Set;
       --  Sets attribute's value of instance of Usage class.
 
-      procedure Use_Case_Set;
+      procedure UML_Use_Case_Set;
       --  Sets attribute's value of instance of UseCase class.
 
-      procedure Value_Pin_Set;
+      procedure UML_Value_Pin_Set;
       --  Sets attribute's value of instance of ValuePin class.
 
-      procedure Value_Specification_Action_Set;
+      procedure UML_Value_Specification_Action_Set;
       --  Sets attribute's value of instance of ValueSpecificationAction class.
 
-      procedure Variable_Set;
+      procedure UML_Variable_Set;
       --  Sets attribute's value of instance of Variable class.
 
-      ---------------------
-      -- Abstraction_Set --
-      ---------------------
+      ---------------------------------------
+      -- Standard_Profile_L2_Auxiliary_Set --
+      ---------------------------------------
 
-      procedure Abstraction_Set is
+      procedure Standard_Profile_L2_Auxiliary_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Auxiliary_Base_Class then
+            --  Auxiliary::base_Class : Class
+
+            AMF.Standard_Profile_L2.Auxiliaries.Standard_Profile_L2_Auxiliary_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Auxiliary_Set;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Call_Set --
+      ----------------------------------
+
+      procedure Standard_Profile_L2_Call_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Call_Base_Usage then
+            --  Call::base_Usage : Usage
+
+            AMF.Standard_Profile_L2.Calls.Standard_Profile_L2_Call_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Usage
+               (AMF.UML.Usages.UML_Usage_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Call_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Create_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Create_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Create_Base_Behavioral_Feature then
+            --  Create::base_BehavioralFeature : BehavioralFeature
+
+            AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Behavioral_Feature
+               (AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Create_Base_Usage then
+            --  Create::base_Usage : Usage
+
+            AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Usage
+               (AMF.UML.Usages.UML_Usage_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Create_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Derive_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Derive_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Derive_Base_Abstraction then
+            --  Derive::base_Abstraction : Abstraction
+
+            AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Abstraction
+               (AMF.UML.Abstractions.UML_Abstraction_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Derive_Computation then
+            --  Derive::computation : ValueSpecification
+
+            AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Computation
+               (AMF.UML.Value_Specifications.UML_Value_Specification_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Derive_Set;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Destroy_Set --
+      -------------------------------------
+
+      procedure Standard_Profile_L2_Destroy_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature then
+            --  Destroy::base_BehavioralFeature : BehavioralFeature
+
+            AMF.Standard_Profile_L2.Destroies.Standard_Profile_L2_Destroy_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Behavioral_Feature
+               (AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Destroy_Set;
+
+      --------------------------------------
+      -- Standard_Profile_L2_Document_Set --
+      --------------------------------------
+
+      procedure Standard_Profile_L2_Document_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Document_Base_Artifact then
+            --  Document::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Document_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Entity_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Entity_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Entity_Base_Component then
+            --  Entity::base_Component : Component
+
+            AMF.Standard_Profile_L2.Entities.Standard_Profile_L2_Entity_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Entity_Set;
+
+      ----------------------------------------
+      -- Standard_Profile_L2_Executable_Set --
+      ----------------------------------------
+
+      procedure Standard_Profile_L2_Executable_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Executable_Base_Artifact then
+            --  Executable::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Executable_Set;
+
+      -----------------------------------
+      -- Standard_Profile_L2_Focus_Set --
+      -----------------------------------
+
+      procedure Standard_Profile_L2_Focus_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Focus_Base_Class then
+            --  Focus::base_Class : Class
+
+            AMF.Standard_Profile_L2.Focuses.Standard_Profile_L2_Focus_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Focus_Set;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Framework_Set --
+      ---------------------------------------
+
+      procedure Standard_Profile_L2_Framework_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Framework_Base_Package then
+            --  Framework::base_Package : Package
+
+            AMF.Standard_Profile_L2.Frameworks.Standard_Profile_L2_Framework_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Package
+               (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Framework_Set;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Implement_Set --
+      ---------------------------------------
+
+      procedure Standard_Profile_L2_Implement_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Implement_Base_Component then
+            --  Implement::base_Component : Component
+
+            AMF.Standard_Profile_L2.Implements.Standard_Profile_L2_Implement_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Implement_Set;
+
+      --------------------------------------------------
+      -- Standard_Profile_L2_Implementation_Class_Set --
+      --------------------------------------------------
+
+      procedure Standard_Profile_L2_Implementation_Class_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Implementation_Class_Base_Class then
+            --  ImplementationClass::base_Class : Class
+
+            AMF.Standard_Profile_L2.Implementation_Classes.Standard_Profile_L2_Implementation_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Implementation_Class_Set;
+
+      -----------------------------------------
+      -- Standard_Profile_L2_Instantiate_Set --
+      -----------------------------------------
+
+      procedure Standard_Profile_L2_Instantiate_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Instantiate_Base_Usage then
+            --  Instantiate::base_Usage : Usage
+
+            AMF.Standard_Profile_L2.Instantiates.Standard_Profile_L2_Instantiate_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Usage
+               (AMF.UML.Usages.UML_Usage_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Instantiate_Set;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Library_Set --
+      -------------------------------------
+
+      procedure Standard_Profile_L2_Library_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Library_Base_Artifact then
+            --  Library::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Library_Set;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Metaclass_Set --
+      ---------------------------------------
+
+      procedure Standard_Profile_L2_Metaclass_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Metaclass_Base_Class then
+            --  Metaclass::base_Class : Class
+
+            AMF.Standard_Profile_L2.Metaclasses.Standard_Profile_L2_Metaclass_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Metaclass_Set;
+
+      -------------------------------------------
+      -- Standard_Profile_L2_Model_Library_Set --
+      -------------------------------------------
+
+      procedure Standard_Profile_L2_Model_Library_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Model_Library_Base_Package then
+            --  ModelLibrary::base_Package : Package
+
+            AMF.Standard_Profile_L2.Model_Libraries.Standard_Profile_L2_Model_Library_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Package
+               (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Model_Library_Set;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Process_Set --
+      -------------------------------------
+
+      procedure Standard_Profile_L2_Process_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Process_Base_Component then
+            --  Process::base_Component : Component
+
+            AMF.Standard_Profile_L2.Processes.Standard_Profile_L2_Process_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Process_Set;
+
+      -----------------------------------------
+      -- Standard_Profile_L2_Realization_Set --
+      -----------------------------------------
+
+      procedure Standard_Profile_L2_Realization_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Realization_Base_Classifier then
+            --  Realization::base_Classifier : Classifier
+
+            AMF.Standard_Profile_L2.Realizations.Standard_Profile_L2_Realization_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Classifier
+               (AMF.UML.Classifiers.UML_Classifier_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Realization_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Refine_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Refine_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Refine_Base_Abstraction then
+            --  Refine::base_Abstraction : Abstraction
+
+            AMF.Standard_Profile_L2.Refines.Standard_Profile_L2_Refine_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Abstraction
+               (AMF.UML.Abstractions.UML_Abstraction_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Refine_Set;
+
+      --------------------------------------------
+      -- Standard_Profile_L2_Responsibility_Set --
+      --------------------------------------------
+
+      procedure Standard_Profile_L2_Responsibility_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Responsibility_Base_Usage then
+            --  Responsibility::base_Usage : Usage
+
+            AMF.Standard_Profile_L2.Responsibilities.Standard_Profile_L2_Responsibility_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Usage
+               (AMF.UML.Usages.UML_Usage_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Responsibility_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Script_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Script_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Script_Base_Artifact then
+            --  Script::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Script_Set;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Send_Set --
+      ----------------------------------
+
+      procedure Standard_Profile_L2_Send_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Send_Base_Usage then
+            --  Send::base_Usage : Usage
+
+            AMF.Standard_Profile_L2.Sends.Standard_Profile_L2_Send_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Usage
+               (AMF.UML.Usages.UML_Usage_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Send_Set;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Service_Set --
+      -------------------------------------
+
+      procedure Standard_Profile_L2_Service_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Service_Base_Component then
+            --  Service::base_Component : Component
+
+            AMF.Standard_Profile_L2.Services.Standard_Profile_L2_Service_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Service_Set;
+
+      ------------------------------------
+      -- Standard_Profile_L2_Source_Set --
+      ------------------------------------
+
+      procedure Standard_Profile_L2_Source_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_File_Base_Artifact then
+            --  File::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Source_Base_Artifact then
+            --  Source::base_Artifact : Artifact
+
+            AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Artifact
+               (AMF.UML.Artifacts.UML_Artifact_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Source_Set;
+
+      -------------------------------------------
+      -- Standard_Profile_L2_Specification_Set --
+      -------------------------------------------
+
+      procedure Standard_Profile_L2_Specification_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Specification_Base_Classifier then
+            --  Specification::base_Classifier : Classifier
+
+            AMF.Standard_Profile_L2.Specifications.Standard_Profile_L2_Specification_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Classifier
+               (AMF.UML.Classifiers.UML_Classifier_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Specification_Set;
+
+      ---------------------------------------
+      -- Standard_Profile_L2_Subsystem_Set --
+      ---------------------------------------
+
+      procedure Standard_Profile_L2_Subsystem_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Subsystem_Base_Component then
+            --  Subsystem::base_Component : Component
+
+            AMF.Standard_Profile_L2.Subsystems.Standard_Profile_L2_Subsystem_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Subsystem_Set;
+
+      -----------------------------------
+      -- Standard_Profile_L2_Trace_Set --
+      -----------------------------------
+
+      procedure Standard_Profile_L2_Trace_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Trace_Base_Abstraction then
+            --  Trace::base_Abstraction : Abstraction
+
+            AMF.Standard_Profile_L2.Traces.Standard_Profile_L2_Trace_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Abstraction
+               (AMF.UML.Abstractions.UML_Abstraction_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Trace_Set;
+
+      ----------------------------------
+      -- Standard_Profile_L2_Type_Set --
+      ----------------------------------
+
+      procedure Standard_Profile_L2_Type_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Type_Base_Class then
+            --  Type::base_Class : Class
+
+            AMF.Standard_Profile_L2.Types.Standard_Profile_L2_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Type_Set;
+
+      -------------------------------------
+      -- Standard_Profile_L2_Utility_Set --
+      -------------------------------------
+
+      procedure Standard_Profile_L2_Utility_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Utility_Base_Class then
+            --  Utility::base_Class : Class
+
+            AMF.Standard_Profile_L2.Utilities.Standard_Profile_L2_Utility_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Class
+               (AMF.UML.Classes.UML_Class_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L2_Utility_Set;
+
+      ---------------------------------------------
+      -- Standard_Profile_L3_Build_Component_Set --
+      ---------------------------------------------
+
+      procedure Standard_Profile_L3_Build_Component_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_Build_Component_Base_Component then
+            --  BuildComponent::base_Component : Component
+
+            AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Component
+               (AMF.UML.Components.UML_Component_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_Build_Component_Set;
+
+      ---------------------------------------
+      -- Standard_Profile_L3_Metamodel_Set --
+      ---------------------------------------
+
+      procedure Standard_Profile_L3_Metamodel_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_Metamodel_Base_Model then
+            --  Metamodel::base_Model : Model
+
+            AMF.Standard_Profile_L3.Metamodels.Standard_Profile_L3_Metamodel_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Model
+               (AMF.UML.Models.UML_Model_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_Metamodel_Set;
+
+      ------------------------------------------
+      -- Standard_Profile_L3_System_Model_Set --
+      ------------------------------------------
+
+      procedure Standard_Profile_L3_System_Model_Set is
+      begin
+         if Property = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MP_Standard_Profile_L3_System_Model_Base_Model then
+            --  SystemModel::base_Model : Model
+
+            AMF.Standard_Profile_L3.System_Models.Standard_Profile_L3_System_Model_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Model
+               (AMF.UML.Models.UML_Model_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end Standard_Profile_L3_System_Model_Set;
+
+      -------------------------
+      -- UML_Abstraction_Set --
+      -------------------------
+
+      procedure UML_Abstraction_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Abstraction_Mapping then
             --  Abstraction::mapping : OpaqueExpression
@@ -46640,13 +48386,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Abstraction_Set;
+      end UML_Abstraction_Set;
 
-      ----------------------------
-      -- Accept_Call_Action_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Accept_Call_Action_Set --
+      --------------------------------
 
-      procedure Accept_Call_Action_Set is
+      procedure UML_Accept_Call_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -46714,13 +48460,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Accept_Call_Action_Set;
+      end UML_Accept_Call_Action_Set;
 
-      -----------------------------
-      -- Accept_Event_Action_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Accept_Event_Action_Set --
+      ---------------------------------
 
-      procedure Accept_Event_Action_Set is
+      procedure UML_Accept_Event_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -46781,13 +48527,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Accept_Event_Action_Set;
+      end UML_Accept_Event_Action_Set;
 
-      ----------------------------------------
-      -- Action_Execution_Specification_Set --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Action_Execution_Specification_Set --
+      --------------------------------------------
 
-      procedure Action_Execution_Specification_Set is
+      procedure UML_Action_Execution_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Action_Execution_Specification_Action then
             --  ActionExecutionSpecification::action : Action
@@ -46848,13 +48594,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Action_Execution_Specification_Set;
+      end UML_Action_Execution_Specification_Set;
 
-      --------------------------
-      -- Action_Input_Pin_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Action_Input_Pin_Set --
+      ------------------------------
 
-      procedure Action_Input_Pin_Set is
+      procedure UML_Action_Input_Pin_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -46978,13 +48724,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Action_Input_Pin_Set;
+      end UML_Action_Input_Pin_Set;
 
-      ------------------
-      -- Activity_Set --
-      ------------------
+      ----------------------
+      -- UML_Activity_Set --
+      ----------------------
 
-      procedure Activity_Set is
+      procedure UML_Activity_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -47136,13 +48882,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Set;
+      end UML_Activity_Set;
 
-      -----------------------------
-      -- Activity_Final_Node_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Activity_Final_Node_Set --
+      ---------------------------------
 
-      procedure Activity_Final_Node_Set is
+      procedure UML_Activity_Final_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -47189,13 +48935,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Final_Node_Set;
+      end UML_Activity_Final_Node_Set;
 
-      ---------------------------------
-      -- Activity_Parameter_Node_Set --
-      ---------------------------------
+      -------------------------------------
+      -- UML_Activity_Parameter_Node_Set --
+      -------------------------------------
 
-      procedure Activity_Parameter_Node_Set is
+      procedure UML_Activity_Parameter_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -47284,13 +49030,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Parameter_Node_Set;
+      end UML_Activity_Parameter_Node_Set;
 
-      ----------------------------
-      -- Activity_Partition_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Activity_Partition_Set --
+      --------------------------------
 
-      procedure Activity_Partition_Set is
+      procedure UML_Activity_Partition_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_In_Activity then
             --  ActivityGroup::inActivity : Activity
@@ -47351,13 +49097,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Activity_Partition_Set;
+      end UML_Activity_Partition_Set;
 
-      ---------------
-      -- Actor_Set --
-      ---------------
+      -------------------
+      -- UML_Actor_Set --
+      -------------------
 
-      procedure Actor_Set is
+      procedure UML_Actor_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -47467,13 +49213,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Actor_Set;
+      end UML_Actor_Set;
 
-      ---------------------------------------------
-      -- Add_Structural_Feature_Value_Action_Set --
-      ---------------------------------------------
+      -------------------------------------------------
+      -- UML_Add_Structural_Feature_Value_Action_Set --
+      -------------------------------------------------
 
-      procedure Add_Structural_Feature_Value_Action_Set is
+      procedure UML_Add_Structural_Feature_Value_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -47569,13 +49315,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Add_Structural_Feature_Value_Action_Set;
+      end UML_Add_Structural_Feature_Value_Action_Set;
 
-      -----------------------------------
-      -- Add_Variable_Value_Action_Set --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Add_Variable_Value_Action_Set --
+      ---------------------------------------
 
-      procedure Add_Variable_Value_Action_Set is
+      procedure UML_Add_Variable_Value_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -47657,13 +49403,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Add_Variable_Value_Action_Set;
+      end UML_Add_Variable_Value_Action_Set;
 
-      ---------------------------
-      -- Any_Receive_Event_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Any_Receive_Event_Set --
+      -------------------------------
 
-      procedure Any_Receive_Event_Set is
+      procedure UML_Any_Receive_Event_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -47710,13 +49456,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Any_Receive_Event_Set;
+      end UML_Any_Receive_Event_Set;
 
-      ------------------
-      -- Artifact_Set --
-      ------------------
+      ----------------------
+      -- UML_Artifact_Set --
+      ----------------------
 
-      procedure Artifact_Set is
+      procedure UML_Artifact_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Artifact_File_Name then
             --  Artifact::fileName : String
@@ -47826,13 +49572,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Artifact_Set;
+      end UML_Artifact_Set;
 
-      ---------------------
-      -- Association_Set --
-      ---------------------
+      -------------------------
+      -- UML_Association_Set --
+      -------------------------
 
-      procedure Association_Set is
+      procedure UML_Association_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -47942,13 +49688,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Set;
+      end UML_Association_Set;
 
-      ---------------------------
-      -- Association_Class_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Association_Class_Set --
+      -------------------------------
 
-      procedure Association_Class_Set is
+      procedure UML_Association_Class_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -48079,13 +49825,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Class_Set;
+      end UML_Association_Class_Set;
 
-      ------------------------------------------
-      -- Behavior_Execution_Specification_Set --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Behavior_Execution_Specification_Set --
+      ----------------------------------------------
 
-      procedure Behavior_Execution_Specification_Set is
+      procedure UML_Behavior_Execution_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavior_Execution_Specification_Behavior then
             --  BehaviorExecutionSpecification::behavior : Behavior
@@ -48146,13 +49892,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Behavior_Execution_Specification_Set;
+      end UML_Behavior_Execution_Specification_Set;
 
-      ---------------------------------
-      -- Broadcast_Signal_Action_Set --
-      ---------------------------------
+      -------------------------------------
+      -- UML_Broadcast_Signal_Action_Set --
+      -------------------------------------
 
-      procedure Broadcast_Signal_Action_Set is
+      procedure UML_Broadcast_Signal_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48220,13 +49966,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Broadcast_Signal_Action_Set;
+      end UML_Broadcast_Signal_Action_Set;
 
-      ------------------------------
-      -- Call_Behavior_Action_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Call_Behavior_Action_Set --
+      ----------------------------------
 
-      procedure Call_Behavior_Action_Set is
+      procedure UML_Call_Behavior_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48301,13 +50047,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Behavior_Action_Set;
+      end UML_Call_Behavior_Action_Set;
 
-      --------------------
-      -- Call_Event_Set --
-      --------------------
+      ------------------------
+      -- UML_Call_Event_Set --
+      ------------------------
 
-      procedure Call_Event_Set is
+      procedure UML_Call_Event_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -48361,13 +50107,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Event_Set;
+      end UML_Call_Event_Set;
 
-      -------------------------------
-      -- Call_Operation_Action_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Call_Operation_Action_Set --
+      -----------------------------------
 
-      procedure Call_Operation_Action_Set is
+      procedure UML_Call_Operation_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48449,13 +50195,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Call_Operation_Action_Set;
+      end UML_Call_Operation_Action_Set;
 
-      -----------------------------
-      -- Central_Buffer_Node_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Central_Buffer_Node_Set --
+      ---------------------------------
 
-      procedure Central_Buffer_Node_Set is
+      procedure UML_Central_Buffer_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48537,13 +50283,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Central_Buffer_Node_Set;
+      end UML_Central_Buffer_Node_Set;
 
-      ----------------------
-      -- Change_Event_Set --
-      ----------------------
+      --------------------------
+      -- UML_Change_Event_Set --
+      --------------------------
 
-      procedure Change_Event_Set is
+      procedure UML_Change_Event_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Change_Event_Change_Expression then
             --  ChangeEvent::changeExpression : ValueSpecification
@@ -48597,13 +50343,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Change_Event_Set;
+      end UML_Change_Event_Set;
 
-      ---------------
-      -- Class_Set --
-      ---------------
+      -------------------
+      -- UML_Class_Set --
+      -------------------
 
-      procedure Class_Set is
+      procedure UML_Class_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -48727,13 +50473,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Class_Set;
+      end UML_Class_Set;
 
-      ---------------------------------------
-      -- Classifier_Template_Parameter_Set --
-      ---------------------------------------
+      -------------------------------------------
+      -- UML_Classifier_Template_Parameter_Set --
+      -------------------------------------------
 
-      procedure Classifier_Template_Parameter_Set is
+      procedure UML_Classifier_Template_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Allow_Substitutable then
             --  ClassifierTemplateParameter::allowSubstitutable : Boolean
@@ -48787,13 +50533,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Classifier_Template_Parameter_Set;
+      end UML_Classifier_Template_Parameter_Set;
 
-      ----------------
-      -- Clause_Set --
-      ----------------
+      --------------------
+      -- UML_Clause_Set --
+      --------------------
 
-      procedure Clause_Set is
+      procedure UML_Clause_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Clause_Decider then
             --  Clause::decider : OutputPin
@@ -48805,13 +50551,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clause_Set;
+      end UML_Clause_Set;
 
-      ----------------------------------
-      -- Clear_Association_Action_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Clear_Association_Action_Set --
+      --------------------------------------
 
-      procedure Clear_Association_Action_Set is
+      procedure UML_Clear_Association_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48879,13 +50625,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Association_Action_Set;
+      end UML_Clear_Association_Action_Set;
 
-      -----------------------------------------
-      -- Clear_Structural_Feature_Action_Set --
-      -----------------------------------------
+      ---------------------------------------------
+      -- UML_Clear_Structural_Feature_Action_Set --
+      ---------------------------------------------
 
-      procedure Clear_Structural_Feature_Action_Set is
+      procedure UML_Clear_Structural_Feature_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -48960,13 +50706,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Structural_Feature_Action_Set;
+      end UML_Clear_Structural_Feature_Action_Set;
 
-      -------------------------------
-      -- Clear_Variable_Action_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Clear_Variable_Action_Set --
+      -----------------------------------
 
-      procedure Clear_Variable_Action_Set is
+      procedure UML_Clear_Variable_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -49027,13 +50773,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Clear_Variable_Action_Set;
+      end UML_Clear_Variable_Action_Set;
 
-      -----------------------
-      -- Collaboration_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Collaboration_Set --
+      ---------------------------
 
-      procedure Collaboration_Set is
+      procedure UML_Collaboration_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -49143,13 +50889,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collaboration_Set;
+      end UML_Collaboration_Set;
 
-      ---------------------------
-      -- Collaboration_Use_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Collaboration_Use_Set --
+      -------------------------------
 
-      procedure Collaboration_Use_Set is
+      procedure UML_Collaboration_Use_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -49182,13 +50928,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collaboration_Use_Set;
+      end UML_Collaboration_Use_Set;
 
-      ---------------------------
-      -- Combined_Fragment_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Combined_Fragment_Set --
+      -------------------------------
 
-      procedure Combined_Fragment_Set is
+      procedure UML_Combined_Fragment_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -49235,13 +50981,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Combined_Fragment_Set;
+      end UML_Combined_Fragment_Set;
 
-      -----------------
-      -- Comment_Set --
-      -----------------
+      ---------------------
+      -- UML_Comment_Set --
+      ---------------------
 
-      procedure Comment_Set is
+      procedure UML_Comment_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Comment_Body then
             --  Comment::body : String
@@ -49253,13 +50999,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Comment_Set;
+      end UML_Comment_Set;
 
-      ----------------------------
-      -- Communication_Path_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Communication_Path_Set --
+      --------------------------------
 
-      procedure Communication_Path_Set is
+      procedure UML_Communication_Path_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -49369,13 +51115,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Communication_Path_Set;
+      end UML_Communication_Path_Set;
 
-      -------------------
-      -- Component_Set --
-      -------------------
+      -----------------------
+      -- UML_Component_Set --
+      -----------------------
 
-      procedure Component_Set is
+      procedure UML_Component_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -49506,13 +51252,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Component_Set;
+      end UML_Component_Set;
 
-      -------------------------------
-      -- Component_Realization_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Component_Realization_Set --
+      -----------------------------------
 
-      procedure Component_Realization_Set is
+      procedure UML_Component_Realization_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Component_Realization_Abstraction then
             --  ComponentRealization::abstraction : Component
@@ -49573,13 +51319,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Component_Realization_Set;
+      end UML_Component_Realization_Set;
 
-      --------------------------
-      -- Conditional_Node_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Conditional_Node_Set --
+      ------------------------------
 
-      procedure Conditional_Node_Set is
+      procedure UML_Conditional_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -49668,13 +51414,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Conditional_Node_Set;
+      end UML_Conditional_Node_Set;
 
-      ------------------------------------------------
-      -- Connectable_Element_Template_Parameter_Set --
-      ------------------------------------------------
+      ----------------------------------------------------
+      -- UML_Connectable_Element_Template_Parameter_Set --
+      ----------------------------------------------------
 
-      procedure Connectable_Element_Template_Parameter_Set is
+      procedure UML_Connectable_Element_Template_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -49721,13 +51467,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connectable_Element_Template_Parameter_Set;
+      end UML_Connectable_Element_Template_Parameter_Set;
 
-      ------------------------------------
-      -- Connection_Point_Reference_Set --
-      ------------------------------------
+      ----------------------------------------
+      -- UML_Connection_Point_Reference_Set --
+      ----------------------------------------
 
-      procedure Connection_Point_Reference_Set is
+      procedure UML_Connection_Point_Reference_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Vertex_Container then
             --  Vertex::container : Region
@@ -49767,13 +51513,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connection_Point_Reference_Set;
+      end UML_Connection_Point_Reference_Set;
 
-      -------------------
-      -- Connector_Set --
-      -------------------
+      -----------------------
+      -- UML_Connector_Set --
+      -----------------------
 
-      procedure Connector_Set is
+      procedure UML_Connector_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
@@ -49820,13 +51566,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connector_Set;
+      end UML_Connector_Set;
 
-      -----------------------
-      -- Connector_End_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Connector_End_Set --
+      ---------------------------
 
-      procedure Connector_End_Set is
+      procedure UML_Connector_End_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
@@ -49873,13 +51619,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Connector_End_Set;
+      end UML_Connector_End_Set;
 
-      ----------------------------------
-      -- Consider_Ignore_Fragment_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Consider_Ignore_Fragment_Set --
+      --------------------------------------
 
-      procedure Consider_Ignore_Fragment_Set is
+      procedure UML_Consider_Ignore_Fragment_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -49926,13 +51672,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Consider_Ignore_Fragment_Set;
+      end UML_Consider_Ignore_Fragment_Set;
 
-      --------------------
-      -- Constraint_Set --
-      --------------------
+      ------------------------
+      -- UML_Constraint_Set --
+      ------------------------
 
-      procedure Constraint_Set is
+      procedure UML_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Context then
             --  Constraint::context : Namespace
@@ -49993,13 +51739,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Constraint_Set;
+      end UML_Constraint_Set;
 
-      ----------------------
-      -- Continuation_Set --
-      ----------------------
+      --------------------------
+      -- UML_Continuation_Set --
+      --------------------------
 
-      procedure Continuation_Set is
+      procedure UML_Continuation_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -50046,13 +51792,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Continuation_Set;
+      end UML_Continuation_Set;
 
-      ----------------------
-      -- Control_Flow_Set --
-      ----------------------
+      --------------------------
+      -- UML_Control_Flow_Set --
+      --------------------------
 
-      procedure Control_Flow_Set is
+      procedure UML_Control_Flow_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Edge_Activity then
             --  ActivityEdge::activity : Activity
@@ -50134,13 +51880,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Control_Flow_Set;
+      end UML_Control_Flow_Set;
 
-      ----------------------------
-      -- Create_Link_Action_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Create_Link_Action_Set --
+      --------------------------------
 
-      procedure Create_Link_Action_Set is
+      procedure UML_Create_Link_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50194,13 +51940,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Link_Action_Set;
+      end UML_Create_Link_Action_Set;
 
-      -----------------------------------
-      -- Create_Link_Object_Action_Set --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Create_Link_Object_Action_Set --
+      ---------------------------------------
 
-      procedure Create_Link_Object_Action_Set is
+      procedure UML_Create_Link_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50261,13 +52007,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Link_Object_Action_Set;
+      end UML_Create_Link_Object_Action_Set;
 
-      ------------------------------
-      -- Create_Object_Action_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Create_Object_Action_Set --
+      ----------------------------------
 
-      procedure Create_Object_Action_Set is
+      procedure UML_Create_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50335,13 +52081,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Create_Object_Action_Set;
+      end UML_Create_Object_Action_Set;
 
-      -------------------------
-      -- Data_Store_Node_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Data_Store_Node_Set --
+      -----------------------------
 
-      procedure Data_Store_Node_Set is
+      procedure UML_Data_Store_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50423,13 +52169,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Store_Node_Set;
+      end UML_Data_Store_Node_Set;
 
-      -------------------
-      -- Data_Type_Set --
-      -------------------
+      -----------------------
+      -- UML_Data_Type_Set --
+      -----------------------
 
-      procedure Data_Type_Set is
+      procedure UML_Data_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -50532,13 +52278,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Type_Set;
+      end UML_Data_Type_Set;
 
-      -----------------------
-      -- Decision_Node_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Decision_Node_Set --
+      ---------------------------
 
-      procedure Decision_Node_Set is
+      procedure UML_Decision_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50599,13 +52345,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Decision_Node_Set;
+      end UML_Decision_Node_Set;
 
-      --------------------
-      -- Dependency_Set --
-      --------------------
+      ------------------------
+      -- UML_Dependency_Set --
+      ------------------------
 
-      procedure Dependency_Set is
+      procedure UML_Dependency_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -50652,13 +52398,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Dependency_Set;
+      end UML_Dependency_Set;
 
-      --------------------
-      -- Deployment_Set --
-      --------------------
+      ------------------------
+      -- UML_Deployment_Set --
+      ------------------------
 
-      procedure Deployment_Set is
+      procedure UML_Deployment_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Location then
             --  Deployment::location : DeploymentTarget
@@ -50712,13 +52458,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Deployment_Set;
+      end UML_Deployment_Set;
 
-      ----------------------------------
-      -- Deployment_Specification_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Deployment_Specification_Set --
+      --------------------------------------
 
-      procedure Deployment_Specification_Set is
+      procedure UML_Deployment_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Specification_Deployment then
             --  DeploymentSpecification::deployment : Deployment
@@ -50849,13 +52595,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Deployment_Specification_Set;
+      end UML_Deployment_Specification_Set;
 
-      -----------------------------
-      -- Destroy_Link_Action_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Destroy_Link_Action_Set --
+      ---------------------------------
 
-      procedure Destroy_Link_Action_Set is
+      procedure UML_Destroy_Link_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50909,13 +52655,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destroy_Link_Action_Set;
+      end UML_Destroy_Link_Action_Set;
 
-      -------------------------------
-      -- Destroy_Object_Action_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Destroy_Object_Action_Set --
+      -----------------------------------
 
-      procedure Destroy_Object_Action_Set is
+      procedure UML_Destroy_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -50990,13 +52736,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destroy_Object_Action_Set;
+      end UML_Destroy_Object_Action_Set;
 
-      ----------------------------------------------
-      -- Destruction_Occurrence_Specification_Set --
-      ----------------------------------------------
+      --------------------------------------------------
+      -- UML_Destruction_Occurrence_Specification_Set --
+      --------------------------------------------------
 
-      procedure Destruction_Occurrence_Specification_Set is
+      procedure UML_Destruction_Occurrence_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered then
             --  OccurrenceSpecification::covered : Lifeline
@@ -51050,13 +52796,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Destruction_Occurrence_Specification_Set;
+      end UML_Destruction_Occurrence_Specification_Set;
 
-      ----------------
-      -- Device_Set --
-      ----------------
+      --------------------
+      -- UML_Device_Set --
+      --------------------
 
-      procedure Device_Set is
+      procedure UML_Device_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -51180,13 +52926,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Device_Set;
+      end UML_Device_Set;
 
-      ------------------
-      -- Duration_Set --
-      ------------------
+      ----------------------
+      -- UML_Duration_Set --
+      ----------------------
 
-      procedure Duration_Set is
+      procedure UML_Duration_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Duration_Expr then
             --  Duration::expr : ValueSpecification
@@ -51247,13 +52993,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Set;
+      end UML_Duration_Set;
 
-      -----------------------------
-      -- Duration_Constraint_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Duration_Constraint_Set --
+      ---------------------------------
 
-      procedure Duration_Constraint_Set is
+      procedure UML_Duration_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Context then
             --  Constraint::context : Namespace
@@ -51328,13 +53074,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Constraint_Set;
+      end UML_Duration_Constraint_Set;
 
-      ---------------------------
-      -- Duration_Interval_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Duration_Interval_Set --
+      -------------------------------
 
-      procedure Duration_Interval_Set is
+      procedure UML_Duration_Interval_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Duration_Interval_Max then
             --  DurationInterval::max : Duration
@@ -51416,13 +53162,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Interval_Set;
+      end UML_Duration_Interval_Set;
 
-      ------------------------------
-      -- Duration_Observation_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Duration_Observation_Set --
+      ----------------------------------
 
-      procedure Duration_Observation_Set is
+      procedure UML_Duration_Observation_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -51469,13 +53215,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Duration_Observation_Set;
+      end UML_Duration_Observation_Set;
 
-      ------------------------
-      -- Element_Import_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Element_Import_Set --
+      ----------------------------
 
-      procedure Element_Import_Set is
+      procedure UML_Element_Import_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Import_Alias then
             --  ElementImport::alias : String
@@ -51508,13 +53254,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Element_Import_Set;
+      end UML_Element_Import_Set;
 
-      ---------------------
-      -- Enumeration_Set --
-      ---------------------
+      -------------------------
+      -- UML_Enumeration_Set --
+      -------------------------
 
-      procedure Enumeration_Set is
+      procedure UML_Enumeration_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -51617,13 +53363,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Set;
+      end UML_Enumeration_Set;
 
-      -----------------------------
-      -- Enumeration_Literal_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Enumeration_Literal_Set --
+      ---------------------------------
 
-      procedure Enumeration_Literal_Set is
+      procedure UML_Enumeration_Literal_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Enumeration_Literal_Enumeration then
             --  EnumerationLiteral::enumeration : Enumeration
@@ -51684,13 +53430,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Literal_Set;
+      end UML_Enumeration_Literal_Set;
 
-      ---------------------------
-      -- Exception_Handler_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Exception_Handler_Set --
+      -------------------------------
 
-      procedure Exception_Handler_Set is
+      procedure UML_Exception_Handler_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Exception_Handler_Exception_Input then
             --  ExceptionHandler::exceptionInput : ObjectNode
@@ -51716,13 +53462,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Exception_Handler_Set;
+      end UML_Exception_Handler_Set;
 
-      -------------------------------
-      -- Execution_Environment_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Execution_Environment_Set --
+      -----------------------------------
 
-      procedure Execution_Environment_Set is
+      procedure UML_Execution_Environment_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -51846,13 +53592,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Execution_Environment_Set;
+      end UML_Execution_Environment_Set;
 
-      --------------------------------------------
-      -- Execution_Occurrence_Specification_Set --
-      --------------------------------------------
+      ------------------------------------------------
+      -- UML_Execution_Occurrence_Specification_Set --
+      ------------------------------------------------
 
-      procedure Execution_Occurrence_Specification_Set is
+      procedure UML_Execution_Occurrence_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered then
             --  OccurrenceSpecification::covered : Lifeline
@@ -51906,13 +53652,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Execution_Occurrence_Specification_Set;
+      end UML_Execution_Occurrence_Specification_Set;
 
-      ------------------------
-      -- Expansion_Node_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Expansion_Node_Set --
+      ----------------------------
 
-      procedure Expansion_Node_Set is
+      procedure UML_Expansion_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -52008,13 +53754,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expansion_Node_Set;
+      end UML_Expansion_Node_Set;
 
-      --------------------------
-      -- Expansion_Region_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Expansion_Region_Set --
+      ------------------------------
 
-      procedure Expansion_Region_Set is
+      procedure UML_Expansion_Region_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -52096,13 +53842,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expansion_Region_Set;
+      end UML_Expansion_Region_Set;
 
-      --------------------
-      -- Expression_Set --
-      --------------------
+      ------------------------
+      -- UML_Expression_Set --
+      ------------------------
 
-      procedure Expression_Set is
+      procedure UML_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -52163,13 +53909,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_Set;
+      end UML_Expression_Set;
 
-      ----------------
-      -- Extend_Set --
-      ----------------
+      --------------------
+      -- UML_Extend_Set --
+      --------------------
 
-      procedure Extend_Set is
+      procedure UML_Extend_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Extend_Condition then
             --  Extend::condition : Constraint
@@ -52216,13 +53962,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extend_Set;
+      end UML_Extend_Set;
 
-      -------------------
-      -- Extension_Set --
-      -------------------
+      -----------------------
+      -- UML_Extension_Set --
+      -----------------------
 
-      procedure Extension_Set is
+      procedure UML_Extension_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -52339,13 +54085,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_Set;
+      end UML_Extension_Set;
 
-      -----------------------
-      -- Extension_End_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Extension_End_Set --
+      ---------------------------
 
-      procedure Extension_End_Set is
+      procedure UML_Extension_End_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -52539,13 +54285,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_End_Set;
+      end UML_Extension_End_Set;
 
-      -------------------------
-      -- Extension_Point_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Extension_Point_Set --
+      -----------------------------
 
-      procedure Extension_Point_Set is
+      procedure UML_Extension_Point_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
@@ -52585,13 +54331,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Extension_Point_Set;
+      end UML_Extension_Point_Set;
 
-      ---------------------
-      -- Final_State_Set --
-      ---------------------
+      -------------------------
+      -- UML_Final_State_Set --
+      -------------------------
 
-      procedure Final_State_Set is
+      procedure UML_Final_State_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Vertex_Container then
             --  Vertex::container : Region
@@ -52673,13 +54419,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Final_State_Set;
+      end UML_Final_State_Set;
 
-      -------------------------
-      -- Flow_Final_Node_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Flow_Final_Node_Set --
+      -----------------------------
 
-      procedure Flow_Final_Node_Set is
+      procedure UML_Flow_Final_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -52726,13 +54472,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Flow_Final_Node_Set;
+      end UML_Flow_Final_Node_Set;
 
-      -------------------
-      -- Fork_Node_Set --
-      -------------------
+      -----------------------
+      -- UML_Fork_Node_Set --
+      -----------------------
 
-      procedure Fork_Node_Set is
+      procedure UML_Fork_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -52779,13 +54525,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Fork_Node_Set;
+      end UML_Fork_Node_Set;
 
-      ---------------------------
-      -- Function_Behavior_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Function_Behavior_Set --
+      -------------------------------
 
-      procedure Function_Behavior_Set is
+      procedure UML_Function_Behavior_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -52923,13 +54669,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Function_Behavior_Set;
+      end UML_Function_Behavior_Set;
 
-      --------------
-      -- Gate_Set --
-      --------------
+      ------------------
+      -- UML_Gate_Set --
+      ------------------
 
-      procedure Gate_Set is
+      procedure UML_Gate_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Message_End_Message then
             --  MessageEnd::message : Message
@@ -52962,13 +54708,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Gate_Set;
+      end UML_Gate_Set;
 
-      --------------------------
-      -- General_Ordering_Set --
-      --------------------------
+      ------------------------------
+      -- UML_General_Ordering_Set --
+      ------------------------------
 
-      procedure General_Ordering_Set is
+      procedure UML_General_Ordering_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_General_Ordering_After then
             --  GeneralOrdering::after : OccurrenceSpecification
@@ -53008,13 +54754,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end General_Ordering_Set;
+      end UML_General_Ordering_Set;
 
-      ------------------------
-      -- Generalization_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Generalization_Set --
+      ----------------------------
 
-      procedure Generalization_Set is
+      procedure UML_Generalization_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Generalization_General then
             --  Generalization::general : Classifier
@@ -53040,13 +54786,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Generalization_Set;
+      end UML_Generalization_Set;
 
-      ----------------------------
-      -- Generalization_Set_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Generalization_Set_Set --
+      --------------------------------
 
-      procedure Generalization_Set_Set is
+      procedure UML_Generalization_Set_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Generalization_Set_Is_Covering then
             --  GeneralizationSet::isCovering : Boolean
@@ -53114,13 +54860,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Generalization_Set_Set;
+      end UML_Generalization_Set_Set;
 
-      ---------------
-      -- Image_Set --
-      ---------------
+      -------------------
+      -- UML_Image_Set --
+      -------------------
 
-      procedure Image_Set is
+      procedure UML_Image_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Image_Content then
             --  Image::content : String
@@ -53146,13 +54892,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Image_Set;
+      end UML_Image_Set;
 
-      -----------------
-      -- Include_Set --
-      -----------------
+      ---------------------
+      -- UML_Include_Set --
+      ---------------------
 
-      procedure Include_Set is
+      procedure UML_Include_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Include_Addition then
             --  Include::addition : UseCase
@@ -53192,13 +54938,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Include_Set;
+      end UML_Include_Set;
 
-      --------------------------
-      -- Information_Flow_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Information_Flow_Set --
+      ------------------------------
 
-      procedure Information_Flow_Set is
+      procedure UML_Information_Flow_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -53245,13 +54991,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Information_Flow_Set;
+      end UML_Information_Flow_Set;
 
-      --------------------------
-      -- Information_Item_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Information_Item_Set --
+      ------------------------------
 
-      procedure Information_Item_Set is
+      procedure UML_Information_Item_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -53354,13 +55100,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Information_Item_Set;
+      end UML_Information_Item_Set;
 
-      ----------------------
-      -- Initial_Node_Set --
-      ----------------------
+      --------------------------
+      -- UML_Initial_Node_Set --
+      --------------------------
 
-      procedure Initial_Node_Set is
+      procedure UML_Initial_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -53407,13 +55153,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Initial_Node_Set;
+      end UML_Initial_Node_Set;
 
-      -------------------
-      -- Input_Pin_Set --
-      -------------------
+      -----------------------
+      -- UML_Input_Pin_Set --
+      -----------------------
 
-      procedure Input_Pin_Set is
+      procedure UML_Input_Pin_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -53530,13 +55276,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Input_Pin_Set;
+      end UML_Input_Pin_Set;
 
-      --------------------------------
-      -- Instance_Specification_Set --
-      --------------------------------
+      ------------------------------------
+      -- UML_Instance_Specification_Set --
+      ------------------------------------
 
-      procedure Instance_Specification_Set is
+      procedure UML_Instance_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -53590,13 +55336,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Instance_Specification_Set;
+      end UML_Instance_Specification_Set;
 
-      ------------------------
-      -- Instance_Value_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Instance_Value_Set --
+      ----------------------------
 
-      procedure Instance_Value_Set is
+      procedure UML_Instance_Value_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Instance_Value_Instance then
             --  InstanceValue::instance : InstanceSpecification
@@ -53657,13 +55403,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Instance_Value_Set;
+      end UML_Instance_Value_Set;
 
-      ---------------------
-      -- Interaction_Set --
-      ---------------------
+      -------------------------
+      -- UML_Interaction_Set --
+      -------------------------
 
-      procedure Interaction_Set is
+      procedure UML_Interaction_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -53815,13 +55561,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Set;
+      end UML_Interaction_Set;
 
-      --------------------------------
-      -- Interaction_Constraint_Set --
-      --------------------------------
+      ------------------------------------
+      -- UML_Interaction_Constraint_Set --
+      ------------------------------------
 
-      procedure Interaction_Constraint_Set is
+      procedure UML_Interaction_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Context then
             --  Constraint::context : Namespace
@@ -53896,13 +55642,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Constraint_Set;
+      end UML_Interaction_Constraint_Set;
 
-      -----------------------------
-      -- Interaction_Operand_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Interaction_Operand_Set --
+      ---------------------------------
 
-      procedure Interaction_Operand_Set is
+      procedure UML_Interaction_Operand_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -53949,13 +55695,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Operand_Set;
+      end UML_Interaction_Operand_Set;
 
-      -------------------------
-      -- Interaction_Use_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Interaction_Use_Set --
+      -----------------------------
 
-      procedure Interaction_Use_Set is
+      procedure UML_Interaction_Use_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -54016,13 +55762,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interaction_Use_Set;
+      end UML_Interaction_Use_Set;
 
-      -------------------
-      -- Interface_Set --
-      -------------------
+      -----------------------
+      -- UML_Interface_Set --
+      -----------------------
 
-      procedure Interface_Set is
+      procedure UML_Interface_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -54132,13 +55878,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interface_Set;
+      end UML_Interface_Set;
 
-      -------------------------------
-      -- Interface_Realization_Set --
-      -------------------------------
+      -----------------------------------
+      -- UML_Interface_Realization_Set --
+      -----------------------------------
 
-      procedure Interface_Realization_Set is
+      procedure UML_Interface_Realization_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interface_Realization_Contract then
             --  InterfaceRealization::contract : Interface
@@ -54206,13 +55952,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interface_Realization_Set;
+      end UML_Interface_Realization_Set;
 
-      ---------------------------------------
-      -- Interruptible_Activity_Region_Set --
-      ---------------------------------------
+      -------------------------------------------
+      -- UML_Interruptible_Activity_Region_Set --
+      -------------------------------------------
 
-      procedure Interruptible_Activity_Region_Set is
+      procedure UML_Interruptible_Activity_Region_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Group_In_Activity then
             --  ActivityGroup::inActivity : Activity
@@ -54245,13 +55991,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interruptible_Activity_Region_Set;
+      end UML_Interruptible_Activity_Region_Set;
 
-      ------------------
-      -- Interval_Set --
-      ------------------
+      ----------------------
+      -- UML_Interval_Set --
+      ----------------------
 
-      procedure Interval_Set is
+      procedure UML_Interval_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interval_Max then
             --  Interval::max : ValueSpecification
@@ -54319,13 +56065,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interval_Set;
+      end UML_Interval_Set;
 
-      -----------------------------
-      -- Interval_Constraint_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Interval_Constraint_Set --
+      ---------------------------------
 
-      procedure Interval_Constraint_Set is
+      procedure UML_Interval_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Context then
             --  Constraint::context : Namespace
@@ -54393,13 +56139,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Interval_Constraint_Set;
+      end UML_Interval_Constraint_Set;
 
-      -------------------
-      -- Join_Node_Set --
-      -------------------
+      -----------------------
+      -- UML_Join_Node_Set --
+      -----------------------
 
-      procedure Join_Node_Set is
+      procedure UML_Join_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -54460,13 +56206,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Join_Node_Set;
+      end UML_Join_Node_Set;
 
-      ------------------
-      -- Lifeline_Set --
-      ------------------
+      ----------------------
+      -- UML_Lifeline_Set --
+      ----------------------
 
-      procedure Lifeline_Set is
+      procedure UML_Lifeline_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Lifeline_Decomposed_As then
             --  Lifeline::decomposedAs : PartDecomposition
@@ -54520,13 +56266,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Lifeline_Set;
+      end UML_Lifeline_Set;
 
-      --------------------------------
-      -- Link_End_Creation_Data_Set --
-      --------------------------------
+      ------------------------------------
+      -- UML_Link_End_Creation_Data_Set --
+      ------------------------------------
 
-      procedure Link_End_Creation_Data_Set is
+      procedure UML_Link_End_Creation_Data_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_End then
             --  LinkEndData::end : Property
@@ -54559,13 +56305,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Creation_Data_Set;
+      end UML_Link_End_Creation_Data_Set;
 
-      -----------------------
-      -- Link_End_Data_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Link_End_Data_Set --
+      ---------------------------
 
-      procedure Link_End_Data_Set is
+      procedure UML_Link_End_Data_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Data_End then
             --  LinkEndData::end : Property
@@ -54584,13 +56330,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Data_Set;
+      end UML_Link_End_Data_Set;
 
-      -----------------------------------
-      -- Link_End_Destruction_Data_Set --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Link_End_Destruction_Data_Set --
+      ---------------------------------------
 
-      procedure Link_End_Destruction_Data_Set is
+      procedure UML_Link_End_Destruction_Data_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_End_Destruction_Data_Destroy_At then
             --  LinkEndDestructionData::destroyAt : InputPin
@@ -54623,13 +56369,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Link_End_Destruction_Data_Set;
+      end UML_Link_End_Destruction_Data_Set;
 
-      -------------------------
-      -- Literal_Boolean_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Literal_Boolean_Set --
+      -----------------------------
 
-      procedure Literal_Boolean_Set is
+      procedure UML_Literal_Boolean_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -54690,13 +56436,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Boolean_Set;
+      end UML_Literal_Boolean_Set;
 
-      -------------------------
-      -- Literal_Integer_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Literal_Integer_Set --
+      -----------------------------
 
-      procedure Literal_Integer_Set is
+      procedure UML_Literal_Integer_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -54757,13 +56503,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Integer_Set;
+      end UML_Literal_Integer_Set;
 
-      ----------------------
-      -- Literal_Null_Set --
-      ----------------------
+      --------------------------
+      -- UML_Literal_Null_Set --
+      --------------------------
 
-      procedure Literal_Null_Set is
+      procedure UML_Literal_Null_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -54817,13 +56563,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Null_Set;
+      end UML_Literal_Null_Set;
 
-      ----------------------
-      -- Literal_Real_Set --
-      ----------------------
+      --------------------------
+      -- UML_Literal_Real_Set --
+      --------------------------
 
-      procedure Literal_Real_Set is
+      procedure UML_Literal_Real_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -54884,13 +56630,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Real_Set;
+      end UML_Literal_Real_Set;
 
-      ------------------------
-      -- Literal_String_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Literal_String_Set --
+      ----------------------------
 
-      procedure Literal_String_Set is
+      procedure UML_Literal_String_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -54951,13 +56697,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_String_Set;
+      end UML_Literal_String_Set;
 
-      -----------------------------------
-      -- Literal_Unlimited_Natural_Set --
-      -----------------------------------
+      ---------------------------------------
+      -- UML_Literal_Unlimited_Natural_Set --
+      ---------------------------------------
 
-      procedure Literal_Unlimited_Natural_Set is
+      procedure UML_Literal_Unlimited_Natural_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -55018,13 +56764,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Literal_Unlimited_Natural_Set;
+      end UML_Literal_Unlimited_Natural_Set;
 
-      -------------------
-      -- Loop_Node_Set --
-      -------------------
+      -----------------------
+      -- UML_Loop_Node_Set --
+      -----------------------
 
-      procedure Loop_Node_Set is
+      procedure UML_Loop_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -55113,13 +56859,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Loop_Node_Set;
+      end UML_Loop_Node_Set;
 
-      -----------------------
-      -- Manifestation_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Manifestation_Set --
+      ---------------------------
 
-      procedure Manifestation_Set is
+      procedure UML_Manifestation_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Abstraction_Mapping then
             --  Abstraction::mapping : OpaqueExpression
@@ -55180,13 +56926,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Manifestation_Set;
+      end UML_Manifestation_Set;
 
-      --------------------
-      -- Merge_Node_Set --
-      --------------------
+      ------------------------
+      -- UML_Merge_Node_Set --
+      ------------------------
 
-      procedure Merge_Node_Set is
+      procedure UML_Merge_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -55233,13 +56979,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Merge_Node_Set;
+      end UML_Merge_Node_Set;
 
-      -----------------
-      -- Message_Set --
-      -----------------
+      ---------------------
+      -- UML_Message_Set --
+      ---------------------
 
-      procedure Message_Set is
+      procedure UML_Message_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Message_Connector then
             --  Message::connector : Connector
@@ -55307,13 +57053,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Set;
+      end UML_Message_Set;
 
-      ------------------------------------------
-      -- Message_Occurrence_Specification_Set --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Message_Occurrence_Specification_Set --
+      ----------------------------------------------
 
-      procedure Message_Occurrence_Specification_Set is
+      procedure UML_Message_Occurrence_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered then
             --  OccurrenceSpecification::covered : Lifeline
@@ -55367,13 +57113,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Occurrence_Specification_Set;
+      end UML_Message_Occurrence_Specification_Set;
 
-      ---------------
-      -- Model_Set --
-      ---------------
+      -------------------
+      -- UML_Model_Set --
+      -------------------
 
-      procedure Model_Set is
+      procedure UML_Model_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -55448,13 +57194,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Model_Set;
+      end UML_Model_Set;
 
-      --------------
-      -- Node_Set --
-      --------------
+      ------------------
+      -- UML_Node_Set --
+      ------------------
 
-      procedure Node_Set is
+      procedure UML_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -55578,13 +57324,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Node_Set;
+      end UML_Node_Set;
 
-      ---------------------
-      -- Object_Flow_Set --
-      ---------------------
+      -------------------------
+      -- UML_Object_Flow_Set --
+      -------------------------
 
-      procedure Object_Flow_Set is
+      procedure UML_Object_Flow_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Edge_Activity then
             --  ActivityEdge::activity : Activity
@@ -55694,13 +57440,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Object_Flow_Set;
+      end UML_Object_Flow_Set;
 
-      ----------------------------------
-      -- Occurrence_Specification_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Occurrence_Specification_Set --
+      --------------------------------------
 
-      procedure Occurrence_Specification_Set is
+      procedure UML_Occurrence_Specification_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered then
             --  OccurrenceSpecification::covered : Lifeline
@@ -55747,13 +57493,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Occurrence_Specification_Set;
+      end UML_Occurrence_Specification_Set;
 
-      -----------------------
-      -- Opaque_Action_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Opaque_Action_Set --
+      ---------------------------
 
-      procedure Opaque_Action_Set is
+      procedure UML_Opaque_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -55807,13 +57553,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Action_Set;
+      end UML_Opaque_Action_Set;
 
-      -------------------------
-      -- Opaque_Behavior_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Opaque_Behavior_Set --
+      -----------------------------
 
-      procedure Opaque_Behavior_Set is
+      procedure UML_Opaque_Behavior_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -55951,13 +57697,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Behavior_Set;
+      end UML_Opaque_Behavior_Set;
 
-      ---------------------------
-      -- Opaque_Expression_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Opaque_Expression_Set --
+      -------------------------------
 
-      procedure Opaque_Expression_Set is
+      procedure UML_Opaque_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
             --  OpaqueExpression::behavior : Behavior
@@ -56018,13 +57764,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Expression_Set;
+      end UML_Opaque_Expression_Set;
 
-      -------------------
-      -- Operation_Set --
-      -------------------
+      -----------------------
+      -- UML_Operation_Set --
+      -----------------------
 
-      procedure Operation_Set is
+      procedure UML_Operation_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Body_Condition then
             --  Operation::bodyCondition : Constraint
@@ -56141,13 +57887,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Set;
+      end UML_Operation_Set;
 
-      --------------------------------------
-      -- Operation_Template_Parameter_Set --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Operation_Template_Parameter_Set --
+      ------------------------------------------
 
-      procedure Operation_Template_Parameter_Set is
+      procedure UML_Operation_Template_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -56194,13 +57940,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Template_Parameter_Set;
+      end UML_Operation_Template_Parameter_Set;
 
-      --------------------
-      -- Output_Pin_Set --
-      --------------------
+      ------------------------
+      -- UML_Output_Pin_Set --
+      ------------------------
 
-      procedure Output_Pin_Set is
+      procedure UML_Output_Pin_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -56317,13 +58063,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Output_Pin_Set;
+      end UML_Output_Pin_Set;
 
-      -----------------
-      -- Package_Set --
-      -----------------
+      ---------------------
+      -- UML_Package_Set --
+      ---------------------
 
-      procedure Package_Set is
+      procedure UML_Package_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -56391,13 +58137,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Set;
+      end UML_Package_Set;
 
-      ------------------------
-      -- Package_Import_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Package_Import_Set --
+      ----------------------------
 
-      procedure Package_Import_Set is
+      procedure UML_Package_Import_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_Import_Imported_Package then
             --  PackageImport::importedPackage : Package
@@ -56423,13 +58169,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Import_Set;
+      end UML_Package_Import_Set;
 
-      -----------------------
-      -- Package_Merge_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Package_Merge_Set --
+      ---------------------------
 
-      procedure Package_Merge_Set is
+      procedure UML_Package_Merge_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_Merge_Merged_Package then
             --  PackageMerge::mergedPackage : Package
@@ -56448,13 +58194,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Merge_Set;
+      end UML_Package_Merge_Set;
 
-      -------------------
-      -- Parameter_Set --
-      -------------------
+      -----------------------
+      -- UML_Parameter_Set --
+      -----------------------
 
-      procedure Parameter_Set is
+      procedure UML_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameter_Default_Value then
             --  Parameter::defaultValue : ValueSpecification
@@ -56578,13 +58324,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Set;
+      end UML_Parameter_Set;
 
-      -----------------------
-      -- Parameter_Set_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Parameter_Set_Set --
+      ---------------------------
 
-      procedure Parameter_Set_Set is
+      procedure UML_Parameter_Set_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -56610,13 +58356,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Set_Set;
+      end UML_Parameter_Set_Set;
 
-      ----------------------------
-      -- Part_Decomposition_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Part_Decomposition_Set --
+      --------------------------------
 
-      procedure Part_Decomposition_Set is
+      procedure UML_Part_Decomposition_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction then
             --  InteractionFragment::enclosingInteraction : Interaction
@@ -56677,13 +58423,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Part_Decomposition_Set;
+      end UML_Part_Decomposition_Set;
 
-      --------------
-      -- Port_Set --
-      --------------
+      ------------------
+      -- UML_Port_Set --
+      ------------------
 
-      procedure Port_Set is
+      procedure UML_Port_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -56898,13 +58644,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Port_Set;
+      end UML_Port_Set;
 
-      ------------------------
-      -- Primitive_Type_Set --
-      ------------------------
+      ----------------------------
+      -- UML_Primitive_Type_Set --
+      ----------------------------
 
-      procedure Primitive_Type_Set is
+      procedure UML_Primitive_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -57007,13 +58753,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Primitive_Type_Set;
+      end UML_Primitive_Type_Set;
 
-      -----------------
-      -- Profile_Set --
-      -----------------
+      ---------------------
+      -- UML_Profile_Set --
+      ---------------------
 
-      procedure Profile_Set is
+      procedure UML_Profile_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Package_URI then
             --  Package::URI : String
@@ -57081,13 +58827,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Profile_Set;
+      end UML_Profile_Set;
 
-      -----------------------------
-      -- Profile_Application_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Profile_Application_Set --
+      ---------------------------------
 
-      procedure Profile_Application_Set is
+      procedure UML_Profile_Application_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Profile_Application_Applied_Profile then
             --  ProfileApplication::appliedProfile : Profile
@@ -57113,13 +58859,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Profile_Application_Set;
+      end UML_Profile_Application_Set;
 
-      ------------------
-      -- Property_Set --
-      ------------------
+      ----------------------
+      -- UML_Property_Set --
+      ----------------------
 
-      procedure Property_Set is
+      procedure UML_Property_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Aggregation then
             --  Property::aggregation : AggregationKind
@@ -57306,13 +59052,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Set;
+      end UML_Property_Set;
 
-      ------------------------------
-      -- Protocol_Conformance_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Protocol_Conformance_Set --
+      ----------------------------------
 
-      procedure Protocol_Conformance_Set is
+      procedure UML_Protocol_Conformance_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Protocol_Conformance_General_Machine then
             --  ProtocolConformance::generalMachine : ProtocolStateMachine
@@ -57331,13 +59077,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_Conformance_Set;
+      end UML_Protocol_Conformance_Set;
 
-      --------------------------------
-      -- Protocol_State_Machine_Set --
-      --------------------------------
+      ------------------------------------
+      -- UML_Protocol_State_Machine_Set --
+      ------------------------------------
 
-      procedure Protocol_State_Machine_Set is
+      procedure UML_Protocol_State_Machine_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -57475,13 +59221,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_State_Machine_Set;
+      end UML_Protocol_State_Machine_Set;
 
-      -----------------------------
-      -- Protocol_Transition_Set --
-      -----------------------------
+      ---------------------------------
+      -- UML_Protocol_Transition_Set --
+      ---------------------------------
 
-      procedure Protocol_Transition_Set is
+      procedure UML_Protocol_Transition_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Container then
             --  Transition::container : Region
@@ -57577,13 +59323,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Protocol_Transition_Set;
+      end UML_Protocol_Transition_Set;
 
-      ---------------------
-      -- Pseudostate_Set --
-      ---------------------
+      -------------------------
+      -- UML_Pseudostate_Set --
+      -------------------------
 
-      procedure Pseudostate_Set is
+      procedure UML_Pseudostate_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Vertex_Container then
             --  Vertex::container : Region
@@ -57637,13 +59383,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Pseudostate_Set;
+      end UML_Pseudostate_Set;
 
-      -------------------------
-      -- Qualifier_Value_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Qualifier_Value_Set --
+      -----------------------------
 
-      procedure Qualifier_Value_Set is
+      procedure UML_Qualifier_Value_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Qualifier_Value_Qualifier then
             --  QualifierValue::qualifier : Property
@@ -57662,13 +59408,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Qualifier_Value_Set;
+      end UML_Qualifier_Value_Set;
 
-      --------------------------------
-      -- Raise_Exception_Action_Set --
-      --------------------------------
+      ------------------------------------
+      -- UML_Raise_Exception_Action_Set --
+      ------------------------------------
 
-      procedure Raise_Exception_Action_Set is
+      procedure UML_Raise_Exception_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -57729,13 +59475,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Raise_Exception_Action_Set;
+      end UML_Raise_Exception_Action_Set;
 
-      ----------------------------
-      -- Read_Extent_Action_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Read_Extent_Action_Set --
+      --------------------------------
 
-      procedure Read_Extent_Action_Set is
+      procedure UML_Read_Extent_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -57803,13 +59549,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Extent_Action_Set;
+      end UML_Read_Extent_Action_Set;
 
-      ------------------------------------------
-      -- Read_Is_Classified_Object_Action_Set --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Read_Is_Classified_Object_Action_Set --
+      ----------------------------------------------
 
-      procedure Read_Is_Classified_Object_Action_Set is
+      procedure UML_Read_Is_Classified_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -57891,13 +59637,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Is_Classified_Object_Action_Set;
+      end UML_Read_Is_Classified_Object_Action_Set;
 
-      --------------------------
-      -- Read_Link_Action_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Read_Link_Action_Set --
+      ------------------------------
 
-      procedure Read_Link_Action_Set is
+      procedure UML_Read_Link_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -57958,13 +59704,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Action_Set;
+      end UML_Read_Link_Action_Set;
 
-      -------------------------------------
-      -- Read_Link_Object_End_Action_Set --
-      -------------------------------------
+      -----------------------------------------
+      -- UML_Read_Link_Object_End_Action_Set --
+      -----------------------------------------
 
-      procedure Read_Link_Object_End_Action_Set is
+      procedure UML_Read_Link_Object_End_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58039,13 +59785,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Object_End_Action_Set;
+      end UML_Read_Link_Object_End_Action_Set;
 
-      -----------------------------------------------
-      -- Read_Link_Object_End_Qualifier_Action_Set --
-      -----------------------------------------------
+      ---------------------------------------------------
+      -- UML_Read_Link_Object_End_Qualifier_Action_Set --
+      ---------------------------------------------------
 
-      procedure Read_Link_Object_End_Qualifier_Action_Set is
+      procedure UML_Read_Link_Object_End_Qualifier_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58120,13 +59866,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Link_Object_End_Qualifier_Action_Set;
+      end UML_Read_Link_Object_End_Qualifier_Action_Set;
 
-      --------------------------
-      -- Read_Self_Action_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Read_Self_Action_Set --
+      ------------------------------
 
-      procedure Read_Self_Action_Set is
+      procedure UML_Read_Self_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58187,13 +59933,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Self_Action_Set;
+      end UML_Read_Self_Action_Set;
 
-      ----------------------------------------
-      -- Read_Structural_Feature_Action_Set --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Read_Structural_Feature_Action_Set --
+      --------------------------------------------
 
-      procedure Read_Structural_Feature_Action_Set is
+      procedure UML_Read_Structural_Feature_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58268,13 +60014,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Structural_Feature_Action_Set;
+      end UML_Read_Structural_Feature_Action_Set;
 
-      ------------------------------
-      -- Read_Variable_Action_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Read_Variable_Action_Set --
+      ----------------------------------
 
-      procedure Read_Variable_Action_Set is
+      procedure UML_Read_Variable_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58342,13 +60088,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Read_Variable_Action_Set;
+      end UML_Read_Variable_Action_Set;
 
-      ---------------------
-      -- Realization_Set --
-      ---------------------
+      -------------------------
+      -- UML_Realization_Set --
+      -------------------------
 
-      procedure Realization_Set is
+      procedure UML_Realization_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Abstraction_Mapping then
             --  Abstraction::mapping : OpaqueExpression
@@ -58402,13 +60148,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Realization_Set;
+      end UML_Realization_Set;
 
-      -------------------
-      -- Reception_Set --
-      -------------------
+      -----------------------
+      -- UML_Reception_Set --
+      -----------------------
 
-      procedure Reception_Set is
+      procedure UML_Reception_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavioral_Feature_Concurrency then
             --  BehavioralFeature::concurrency : CallConcurrencyKind
@@ -58469,13 +60215,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reception_Set;
+      end UML_Reception_Set;
 
-      ----------------------------------
-      -- Reclassify_Object_Action_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Reclassify_Object_Action_Set --
+      --------------------------------------
 
-      procedure Reclassify_Object_Action_Set is
+      procedure UML_Reclassify_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58543,13 +60289,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reclassify_Object_Action_Set;
+      end UML_Reclassify_Object_Action_Set;
 
-      ----------------------------------------
-      -- Redefinable_Template_Signature_Set --
-      ----------------------------------------
+      --------------------------------------------
+      -- UML_Redefinable_Template_Signature_Set --
+      --------------------------------------------
 
-      procedure Redefinable_Template_Signature_Set is
+      procedure UML_Redefinable_Template_Signature_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Classifier then
             --  RedefinableTemplateSignature::classifier : Classifier
@@ -58596,13 +60342,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Redefinable_Template_Signature_Set;
+      end UML_Redefinable_Template_Signature_Set;
 
-      -----------------------
-      -- Reduce_Action_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Reduce_Action_Set --
+      ---------------------------
 
-      procedure Reduce_Action_Set is
+      procedure UML_Reduce_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58684,13 +60430,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reduce_Action_Set;
+      end UML_Reduce_Action_Set;
 
-      ----------------
-      -- Region_Set --
-      ----------------
+      --------------------
+      -- UML_Region_Set --
+      --------------------
 
-      procedure Region_Set is
+      procedure UML_Region_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Region_Extended_Region then
             --  Region::extendedRegion : Region
@@ -58744,13 +60490,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Region_Set;
+      end UML_Region_Set;
 
-      ------------------------------------------------
-      -- Remove_Structural_Feature_Value_Action_Set --
-      ------------------------------------------------
+      ----------------------------------------------------
+      -- UML_Remove_Structural_Feature_Value_Action_Set --
+      ----------------------------------------------------
 
-      procedure Remove_Structural_Feature_Value_Action_Set is
+      procedure UML_Remove_Structural_Feature_Value_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58846,13 +60592,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Remove_Structural_Feature_Value_Action_Set;
+      end UML_Remove_Structural_Feature_Value_Action_Set;
 
-      --------------------------------------
-      -- Remove_Variable_Value_Action_Set --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Remove_Variable_Value_Action_Set --
+      ------------------------------------------
 
-      procedure Remove_Variable_Value_Action_Set is
+      procedure UML_Remove_Variable_Value_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -58934,13 +60680,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Remove_Variable_Value_Action_Set;
+      end UML_Remove_Variable_Value_Action_Set;
 
-      ----------------------
-      -- Reply_Action_Set --
-      ----------------------
+      --------------------------
+      -- UML_Reply_Action_Set --
+      --------------------------
 
-      procedure Reply_Action_Set is
+      procedure UML_Reply_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59008,13 +60754,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Reply_Action_Set;
+      end UML_Reply_Action_Set;
 
-      ----------------------------
-      -- Send_Object_Action_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Send_Object_Action_Set --
+      --------------------------------
 
-      procedure Send_Object_Action_Set is
+      procedure UML_Send_Object_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59089,13 +60835,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Send_Object_Action_Set;
+      end UML_Send_Object_Action_Set;
 
-      ----------------------------
-      -- Send_Signal_Action_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Send_Signal_Action_Set --
+      --------------------------------
 
-      procedure Send_Signal_Action_Set is
+      procedure UML_Send_Signal_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59170,13 +60916,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Send_Signal_Action_Set;
+      end UML_Send_Signal_Action_Set;
 
-      -----------------------
-      -- Sequence_Node_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Sequence_Node_Set --
+      ---------------------------
 
-      procedure Sequence_Node_Set is
+      procedure UML_Sequence_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59251,13 +60997,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Sequence_Node_Set;
+      end UML_Sequence_Node_Set;
 
-      ----------------
-      -- Signal_Set --
-      ----------------
+      --------------------
+      -- UML_Signal_Set --
+      --------------------
 
-      procedure Signal_Set is
+      procedure UML_Signal_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -59360,13 +61106,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Signal_Set;
+      end UML_Signal_Set;
 
-      ----------------------
-      -- Signal_Event_Set --
-      ----------------------
+      --------------------------
+      -- UML_Signal_Event_Set --
+      --------------------------
 
-      procedure Signal_Event_Set is
+      procedure UML_Signal_Event_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -59420,13 +61166,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Signal_Event_Set;
+      end UML_Signal_Event_Set;
 
-      --------------
-      -- Slot_Set --
-      --------------
+      ------------------
+      -- UML_Slot_Set --
+      ------------------
 
-      procedure Slot_Set is
+      procedure UML_Slot_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Slot_Defining_Feature then
             --  Slot::definingFeature : StructuralFeature
@@ -59445,13 +61191,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Slot_Set;
+      end UML_Slot_Set;
 
-      ------------------------------------------
-      -- Start_Classifier_Behavior_Action_Set --
-      ------------------------------------------
+      ----------------------------------------------
+      -- UML_Start_Classifier_Behavior_Action_Set --
+      ----------------------------------------------
 
-      procedure Start_Classifier_Behavior_Action_Set is
+      procedure UML_Start_Classifier_Behavior_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59512,13 +61258,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Start_Classifier_Behavior_Action_Set;
+      end UML_Start_Classifier_Behavior_Action_Set;
 
-      --------------------------------------
-      -- Start_Object_Behavior_Action_Set --
-      --------------------------------------
+      ------------------------------------------
+      -- UML_Start_Object_Behavior_Action_Set --
+      ------------------------------------------
 
-      procedure Start_Object_Behavior_Action_Set is
+      procedure UML_Start_Object_Behavior_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -59593,13 +61339,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Start_Object_Behavior_Action_Set;
+      end UML_Start_Object_Behavior_Action_Set;
 
-      ---------------
-      -- State_Set --
-      ---------------
+      -------------------
+      -- UML_State_Set --
+      -------------------
 
-      procedure State_Set is
+      procedure UML_State_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Vertex_Container then
             --  Vertex::container : Region
@@ -59681,13 +61427,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Set;
+      end UML_State_Set;
 
-      -------------------------
-      -- State_Invariant_Set --
-      -------------------------
+      -----------------------------
+      -- UML_State_Invariant_Set --
+      -----------------------------
 
-      procedure State_Invariant_Set is
+      procedure UML_State_Invariant_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Invariant_Covered then
             --  StateInvariant::covered : Lifeline
@@ -59741,13 +61487,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Invariant_Set;
+      end UML_State_Invariant_Set;
 
-      -----------------------
-      -- State_Machine_Set --
-      -----------------------
+      ---------------------------
+      -- UML_State_Machine_Set --
+      ---------------------------
 
-      procedure State_Machine_Set is
+      procedure UML_State_Machine_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -59885,13 +61631,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Machine_Set;
+      end UML_State_Machine_Set;
 
-      --------------------
-      -- Stereotype_Set --
-      --------------------
+      ------------------------
+      -- UML_Stereotype_Set --
+      ------------------------
 
-      procedure Stereotype_Set is
+      procedure UML_Stereotype_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -60015,13 +61761,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Stereotype_Set;
+      end UML_Stereotype_Set;
 
-      ---------------------------
-      -- String_Expression_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_String_Expression_Set --
+      -------------------------------
 
-      procedure String_Expression_Set is
+      procedure UML_String_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -60096,13 +61842,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end String_Expression_Set;
+      end UML_String_Expression_Set;
 
-      ----------------------------------
-      -- Structured_Activity_Node_Set --
-      ----------------------------------
+      --------------------------------------
+      -- UML_Structured_Activity_Node_Set --
+      --------------------------------------
 
-      procedure Structured_Activity_Node_Set is
+      procedure UML_Structured_Activity_Node_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -60177,13 +61923,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Structured_Activity_Node_Set;
+      end UML_Structured_Activity_Node_Set;
 
-      ----------------------
-      -- Substitution_Set --
-      ----------------------
+      --------------------------
+      -- UML_Substitution_Set --
+      --------------------------
 
-      procedure Substitution_Set is
+      procedure UML_Substitution_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Substitution_Contract then
             --  Substitution::contract : Classifier
@@ -60251,13 +61997,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Substitution_Set;
+      end UML_Substitution_Set;
 
-      --------------------------
-      -- Template_Binding_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Template_Binding_Set --
+      ------------------------------
 
-      procedure Template_Binding_Set is
+      procedure UML_Template_Binding_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Binding_Bound_Element then
             --  TemplateBinding::boundElement : TemplateableElement
@@ -60276,13 +62022,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Binding_Set;
+      end UML_Template_Binding_Set;
 
-      ----------------------------
-      -- Template_Parameter_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Template_Parameter_Set --
+      --------------------------------
 
-      procedure Template_Parameter_Set is
+      procedure UML_Template_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Default then
             --  TemplateParameter::default : ParameterableElement
@@ -60322,13 +62068,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Set;
+      end UML_Template_Parameter_Set;
 
-      -----------------------------------------
-      -- Template_Parameter_Substitution_Set --
-      -----------------------------------------
+      ---------------------------------------------
+      -- UML_Template_Parameter_Substitution_Set --
+      ---------------------------------------------
 
-      procedure Template_Parameter_Substitution_Set is
+      procedure UML_Template_Parameter_Substitution_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Parameter_Substitution_Actual then
             --  TemplateParameterSubstitution::actual : ParameterableElement
@@ -60361,13 +62107,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Substitution_Set;
+      end UML_Template_Parameter_Substitution_Set;
 
-      ----------------------------
-      -- Template_Signature_Set --
-      ----------------------------
+      --------------------------------
+      -- UML_Template_Signature_Set --
+      --------------------------------
 
-      procedure Template_Signature_Set is
+      procedure UML_Template_Signature_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Template_Signature_Template then
             --  TemplateSignature::template : TemplateableElement
@@ -60379,13 +62125,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Signature_Set;
+      end UML_Template_Signature_Set;
 
-      ------------------------------
-      -- Test_Identity_Action_Set --
-      ------------------------------
+      ----------------------------------
+      -- UML_Test_Identity_Action_Set --
+      ----------------------------------
 
-      procedure Test_Identity_Action_Set is
+      procedure UML_Test_Identity_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -60460,13 +62206,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Test_Identity_Action_Set;
+      end UML_Test_Identity_Action_Set;
 
-      -------------------------
-      -- Time_Constraint_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Time_Constraint_Set --
+      -----------------------------
 
-      procedure Time_Constraint_Set is
+      procedure UML_Time_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Context then
             --  Constraint::context : Namespace
@@ -60548,13 +62294,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Constraint_Set;
+      end UML_Time_Constraint_Set;
 
-      --------------------
-      -- Time_Event_Set --
-      --------------------
+      ------------------------
+      -- UML_Time_Event_Set --
+      ------------------------
 
-      procedure Time_Event_Set is
+      procedure UML_Time_Event_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Event_Is_Relative then
             --  TimeEvent::isRelative : Boolean
@@ -60615,13 +62361,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Event_Set;
+      end UML_Time_Event_Set;
 
-      -------------------------
-      -- Time_Expression_Set --
-      -------------------------
+      -----------------------------
+      -- UML_Time_Expression_Set --
+      -----------------------------
 
-      procedure Time_Expression_Set is
+      procedure UML_Time_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Expression_Expr then
             --  TimeExpression::expr : ValueSpecification
@@ -60682,13 +62428,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Expression_Set;
+      end UML_Time_Expression_Set;
 
-      -----------------------
-      -- Time_Interval_Set --
-      -----------------------
+      ---------------------------
+      -- UML_Time_Interval_Set --
+      ---------------------------
 
-      procedure Time_Interval_Set is
+      procedure UML_Time_Interval_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interval_Max then
             --  Interval::max : ValueSpecification
@@ -60770,13 +62516,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Interval_Set;
+      end UML_Time_Interval_Set;
 
-      --------------------------
-      -- Time_Observation_Set --
-      --------------------------
+      ------------------------------
+      -- UML_Time_Observation_Set --
+      ------------------------------
 
-      procedure Time_Observation_Set is
+      procedure UML_Time_Observation_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Observation_Event then
             --  TimeObservation::event : NamedElement
@@ -60837,13 +62583,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Time_Observation_Set;
+      end UML_Time_Observation_Set;
 
-      --------------------
-      -- Transition_Set --
-      --------------------
+      ------------------------
+      -- UML_Transition_Set --
+      ------------------------
 
-      procedure Transition_Set is
+      procedure UML_Transition_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Container then
             --  Transition::container : Region
@@ -60925,13 +62671,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Transition_Set;
+      end UML_Transition_Set;
 
-      -----------------
-      -- Trigger_Set --
-      -----------------
+      ---------------------
+      -- UML_Trigger_Set --
+      ---------------------
 
-      procedure Trigger_Set is
+      procedure UML_Trigger_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Trigger_Event then
             --  Trigger::event : Event
@@ -60964,13 +62710,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Trigger_Set;
+      end UML_Trigger_Set;
 
-      ---------------------------
-      -- Unmarshall_Action_Set --
-      ---------------------------
+      -------------------------------
+      -- UML_Unmarshall_Action_Set --
+      -------------------------------
 
-      procedure Unmarshall_Action_Set is
+      procedure UML_Unmarshall_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -61038,13 +62784,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unmarshall_Action_Set;
+      end UML_Unmarshall_Action_Set;
 
-      ---------------
-      -- Usage_Set --
-      ---------------
+      -------------------
+      -- UML_Usage_Set --
+      -------------------
 
-      procedure Usage_Set is
+      procedure UML_Usage_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -61091,13 +62837,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Usage_Set;
+      end UML_Usage_Set;
 
-      ------------------
-      -- Use_Case_Set --
-      ------------------
+      ----------------------
+      -- UML_Use_Case_Set --
+      ----------------------
 
-      procedure Use_Case_Set is
+      procedure UML_Use_Case_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behaviored_Classifier_Classifier_Behavior then
             --  BehavioredClassifier::classifierBehavior : Behavior
@@ -61207,13 +62953,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Use_Case_Set;
+      end UML_Use_Case_Set;
 
-      -------------------
-      -- Value_Pin_Set --
-      -------------------
+      -----------------------
+      -- UML_Value_Pin_Set --
+      -----------------------
 
-      procedure Value_Pin_Set is
+      procedure UML_Value_Pin_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -61337,13 +63083,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Value_Pin_Set;
+      end UML_Value_Pin_Set;
 
-      ------------------------------------
-      -- Value_Specification_Action_Set --
-      ------------------------------------
+      ----------------------------------------
+      -- UML_Value_Specification_Action_Set --
+      ----------------------------------------
 
-      procedure Value_Specification_Action_Set is
+      procedure UML_Value_Specification_Action_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity then
             --  ActivityNode::activity : Activity
@@ -61411,13 +63157,13 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Value_Specification_Action_Set;
+      end UML_Value_Specification_Action_Set;
 
-      ------------------
-      -- Variable_Set --
-      ------------------
+      ----------------------
+      -- UML_Variable_Set --
+      ----------------------
 
-      procedure Variable_Set is
+      procedure UML_Variable_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Variable_Activity_Scope then
             --  Variable::activityScope : Activity
@@ -61513,590 +63259,686 @@ package body AMF.Internals.Tables.UML_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Set;
+      end UML_Variable_Set;
    begin
       case UML_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UML_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.UML_Types.E_Abstraction =>
-            Abstraction_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary =>
+            Standard_Profile_L2_Auxiliary_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Call_Action =>
-            Accept_Call_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call =>
+            Standard_Profile_L2_Call_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Accept_Event_Action =>
-            Accept_Event_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create =>
+            Standard_Profile_L2_Create_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Execution_Specification =>
-            Action_Execution_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive =>
+            Standard_Profile_L2_Derive_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Action_Input_Pin =>
-            Action_Input_Pin_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy =>
+            Standard_Profile_L2_Destroy_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity =>
-            Activity_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document =>
+            Standard_Profile_L2_Document_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Final_Node =>
-            Activity_Final_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity =>
+            Standard_Profile_L2_Entity_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Parameter_Node =>
-            Activity_Parameter_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable =>
+            Standard_Profile_L2_Executable_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Activity_Partition =>
-            Activity_Partition_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus =>
+            Standard_Profile_L2_Focus_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Actor =>
-            Actor_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework =>
+            Standard_Profile_L2_Framework_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Structural_Feature_Value_Action =>
-            Add_Structural_Feature_Value_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement =>
+            Standard_Profile_L2_Implement_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Add_Variable_Value_Action =>
-            Add_Variable_Value_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class =>
+            Standard_Profile_L2_Implementation_Class_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Any_Receive_Event =>
-            Any_Receive_Event_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate =>
+            Standard_Profile_L2_Instantiate_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Artifact =>
-            Artifact_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library =>
+            Standard_Profile_L2_Library_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Association =>
-            Association_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass =>
+            Standard_Profile_L2_Metaclass_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Association_Class =>
-            Association_Class_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library =>
+            Standard_Profile_L2_Model_Library_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Behavior_Execution_Specification =>
-            Behavior_Execution_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process =>
+            Standard_Profile_L2_Process_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Broadcast_Signal_Action =>
-            Broadcast_Signal_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization =>
+            Standard_Profile_L2_Realization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Behavior_Action =>
-            Call_Behavior_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine =>
+            Standard_Profile_L2_Refine_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Event =>
-            Call_Event_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility =>
+            Standard_Profile_L2_Responsibility_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Call_Operation_Action =>
-            Call_Operation_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script =>
+            Standard_Profile_L2_Script_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Central_Buffer_Node =>
-            Central_Buffer_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send =>
+            Standard_Profile_L2_Send_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Change_Event =>
-            Change_Event_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service =>
+            Standard_Profile_L2_Service_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Class =>
-            Class_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source =>
+            Standard_Profile_L2_Source_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Classifier_Template_Parameter =>
-            Classifier_Template_Parameter_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification =>
+            Standard_Profile_L2_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Clause =>
-            Clause_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem =>
+            Standard_Profile_L2_Subsystem_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Association_Action =>
-            Clear_Association_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace =>
+            Standard_Profile_L2_Trace_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Structural_Feature_Action =>
-            Clear_Structural_Feature_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type =>
+            Standard_Profile_L2_Type_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Clear_Variable_Action =>
-            Clear_Variable_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility =>
+            Standard_Profile_L2_Utility_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration =>
-            Collaboration_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component =>
+            Standard_Profile_L3_Build_Component_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Collaboration_Use =>
-            Collaboration_Use_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel =>
+            Standard_Profile_L3_Metamodel_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Combined_Fragment =>
-            Combined_Fragment_Set;
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model =>
+            Standard_Profile_L3_System_Model_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Comment =>
-            Comment_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            UML_Abstraction_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Communication_Path =>
-            Communication_Path_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            UML_Accept_Call_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Component =>
-            Component_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
+            UML_Accept_Event_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Component_Realization =>
-            Component_Realization_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            UML_Action_Execution_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Conditional_Node =>
-            Conditional_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            UML_Action_Input_Pin_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Connectable_Element_Template_Parameter =>
-            Connectable_Element_Template_Parameter_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            UML_Activity_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Connection_Point_Reference =>
-            Connection_Point_Reference_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
+            UML_Activity_Final_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector =>
-            Connector_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            UML_Activity_Parameter_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Connector_End =>
-            Connector_End_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            UML_Activity_Partition_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Consider_Ignore_Fragment =>
-            Consider_Ignore_Fragment_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            UML_Actor_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Constraint =>
-            Constraint_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            UML_Add_Structural_Feature_Value_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Continuation =>
-            Continuation_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            UML_Add_Variable_Value_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Control_Flow =>
-            Control_Flow_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
+            UML_Any_Receive_Event_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Action =>
-            Create_Link_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            UML_Artifact_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Link_Object_Action =>
-            Create_Link_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            UML_Association_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Create_Object_Action =>
-            Create_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            UML_Association_Class_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Store_Node =>
-            Data_Store_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            UML_Behavior_Execution_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Data_Type =>
-            Data_Type_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            UML_Broadcast_Signal_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Decision_Node =>
-            Decision_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            UML_Call_Behavior_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Dependency =>
-            Dependency_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            UML_Call_Event_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment =>
-            Deployment_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            UML_Call_Operation_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Deployment_Specification =>
-            Deployment_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            UML_Central_Buffer_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Link_Action =>
-            Destroy_Link_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            UML_Change_Event_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Destroy_Object_Action =>
-            Destroy_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            UML_Class_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Destruction_Occurrence_Specification =>
-            Destruction_Occurrence_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            UML_Classifier_Template_Parameter_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Device =>
-            Device_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clause =>
+            UML_Clause_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration =>
-            Duration_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            UML_Clear_Association_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Constraint =>
-            Duration_Constraint_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            UML_Clear_Structural_Feature_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Interval =>
-            Duration_Interval_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            UML_Clear_Variable_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Duration_Observation =>
-            Duration_Observation_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            UML_Collaboration_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Element_Import =>
-            Element_Import_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use =>
+            UML_Collaboration_Use_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration =>
-            Enumeration_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
+            UML_Combined_Fragment_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Enumeration_Literal =>
-            Enumeration_Literal_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Comment =>
+            UML_Comment_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Exception_Handler =>
-            Exception_Handler_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            UML_Communication_Path_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Environment =>
-            Execution_Environment_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            UML_Component_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Execution_Occurrence_Specification =>
-            Execution_Occurrence_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            UML_Component_Realization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Node =>
-            Expansion_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            UML_Conditional_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Expansion_Region =>
-            Expansion_Region_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            UML_Connectable_Element_Template_Parameter_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Expression =>
-            Expression_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
+            UML_Connection_Point_Reference_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Extend =>
-            Extend_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector =>
+            UML_Connector_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension =>
-            Extension_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            UML_Connector_End_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_End =>
-            Extension_End_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
+            UML_Consider_Ignore_Fragment_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Extension_Point =>
-            Extension_Point_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            UML_Constraint_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Final_State =>
-            Final_State_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
+            UML_Continuation_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Flow_Final_Node =>
-            Flow_Final_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            UML_Control_Flow_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Fork_Node =>
-            Fork_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
+            UML_Create_Link_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Function_Behavior =>
-            Function_Behavior_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            UML_Create_Link_Object_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Gate =>
-            Gate_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            UML_Create_Object_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_General_Ordering =>
-            General_Ordering_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            UML_Data_Store_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization =>
-            Generalization_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            UML_Data_Type_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Generalization_Set =>
-            Generalization_Set_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            UML_Decision_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Image =>
-            Image_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
+            UML_Dependency_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Include =>
-            Include_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            UML_Deployment_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Flow =>
-            Information_Flow_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            UML_Deployment_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Information_Item =>
-            Information_Item_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
+            UML_Destroy_Link_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Initial_Node =>
-            Initial_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            UML_Destroy_Object_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Input_Pin =>
-            Input_Pin_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            UML_Destruction_Occurrence_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Specification =>
-            Instance_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            UML_Device_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Instance_Value =>
-            Instance_Value_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            UML_Duration_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction =>
-            Interaction_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            UML_Duration_Constraint_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Constraint =>
-            Interaction_Constraint_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            UML_Duration_Interval_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Operand =>
-            Interaction_Operand_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
+            UML_Duration_Observation_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interaction_Use =>
-            Interaction_Use_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Element_Import =>
+            UML_Element_Import_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface =>
-            Interface_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            UML_Enumeration_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interface_Realization =>
-            Interface_Realization_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            UML_Enumeration_Literal_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interruptible_Activity_Region =>
-            Interruptible_Activity_Region_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
+            UML_Exception_Handler_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval =>
-            Interval_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            UML_Execution_Environment_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Interval_Constraint =>
-            Interval_Constraint_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            UML_Execution_Occurrence_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Join_Node =>
-            Join_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            UML_Expansion_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Lifeline =>
-            Lifeline_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            UML_Expansion_Region_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Creation_Data =>
-            Link_End_Creation_Data_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            UML_Expression_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Data =>
-            Link_End_Data_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            UML_Extend_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Link_End_Destruction_Data =>
-            Link_End_Destruction_Data_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            UML_Extension_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Boolean =>
-            Literal_Boolean_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            UML_Extension_End_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Integer =>
-            Literal_Integer_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_Point =>
+            UML_Extension_Point_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Null =>
-            Literal_Null_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            UML_Final_State_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Real =>
-            Literal_Real_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
+            UML_Flow_Final_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_String =>
-            Literal_String_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
+            UML_Fork_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Literal_Unlimited_Natural =>
-            Literal_Unlimited_Natural_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            UML_Function_Behavior_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Loop_Node =>
-            Loop_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Gate =>
+            UML_Gate_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Manifestation =>
-            Manifestation_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
+            UML_General_Ordering_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Merge_Node =>
-            Merge_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization =>
+            UML_Generalization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Message =>
-            Message_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            UML_Generalization_Set_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Message_Occurrence_Specification =>
-            Message_Occurrence_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Image =>
+            UML_Image_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Model =>
-            Model_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
+            UML_Include_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Node =>
-            Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
+            UML_Information_Flow_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Object_Flow =>
-            Object_Flow_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            UML_Information_Item_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Occurrence_Specification =>
-            Occurrence_Specification_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
+            UML_Initial_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Action =>
-            Opaque_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            UML_Input_Pin_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Behavior =>
-            Opaque_Behavior_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            UML_Instance_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Opaque_Expression =>
-            Opaque_Expression_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            UML_Instance_Value_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation =>
-            Operation_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            UML_Interaction_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Operation_Template_Parameter =>
-            Operation_Template_Parameter_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            UML_Interaction_Constraint_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Output_Pin =>
-            Output_Pin_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            UML_Interaction_Operand_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Package =>
-            Package_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            UML_Interaction_Use_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Import =>
-            Package_Import_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            UML_Interface_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Package_Merge =>
-            Package_Merge_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            UML_Interface_Realization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter =>
-            Parameter_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region =>
+            UML_Interruptible_Activity_Region_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Parameter_Set =>
-            Parameter_Set_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            UML_Interval_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Part_Decomposition =>
-            Part_Decomposition_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            UML_Interval_Constraint_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Port =>
-            Port_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            UML_Join_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Primitive_Type =>
-            Primitive_Type_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            UML_Lifeline_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile =>
-            Profile_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
+            UML_Link_End_Creation_Data_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Profile_Application =>
-            Profile_Application_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data =>
+            UML_Link_End_Data_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Property =>
-            Property_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
+            UML_Link_End_Destruction_Data_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Conformance =>
-            Protocol_Conformance_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            UML_Literal_Boolean_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_State_Machine =>
-            Protocol_State_Machine_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            UML_Literal_Integer_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Protocol_Transition =>
-            Protocol_Transition_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            UML_Literal_Null_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Pseudostate =>
-            Pseudostate_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            UML_Literal_Real_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Qualifier_Value =>
-            Qualifier_Value_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            UML_Literal_String_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Raise_Exception_Action =>
-            Raise_Exception_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            UML_Literal_Unlimited_Natural_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Extent_Action =>
-            Read_Extent_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            UML_Loop_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Is_Classified_Object_Action =>
-            Read_Is_Classified_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            UML_Manifestation_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Action =>
-            Read_Link_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
+            UML_Merge_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Action =>
-            Read_Link_Object_End_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            UML_Message_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Link_Object_End_Qualifier_Action =>
-            Read_Link_Object_End_Qualifier_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            UML_Message_Occurrence_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Self_Action =>
-            Read_Self_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            UML_Model_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Structural_Feature_Action =>
-            Read_Structural_Feature_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            UML_Node_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Read_Variable_Action =>
-            Read_Variable_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            UML_Object_Flow_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Realization =>
-            Realization_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
+            UML_Occurrence_Specification_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Reception =>
-            Reception_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
+            UML_Opaque_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Reclassify_Object_Action =>
-            Reclassify_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            UML_Opaque_Behavior_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Redefinable_Template_Signature =>
-            Redefinable_Template_Signature_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            UML_Opaque_Expression_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Reduce_Action =>
-            Reduce_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            UML_Operation_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Region =>
-            Region_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            UML_Operation_Template_Parameter_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Structural_Feature_Value_Action =>
-            Remove_Structural_Feature_Value_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            UML_Output_Pin_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Remove_Variable_Value_Action =>
-            Remove_Variable_Value_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            UML_Package_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Reply_Action =>
-            Reply_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Import =>
+            UML_Package_Import_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Object_Action =>
-            Send_Object_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Merge =>
+            UML_Package_Merge_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Send_Signal_Action =>
-            Send_Signal_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            UML_Parameter_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Sequence_Node =>
-            Sequence_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set =>
+            UML_Parameter_Set_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal =>
-            Signal_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            UML_Part_Decomposition_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Signal_Event =>
-            Signal_Event_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            UML_Port_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Slot =>
-            Slot_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            UML_Primitive_Type_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Classifier_Behavior_Action =>
-            Start_Classifier_Behavior_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            UML_Profile_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Start_Object_Behavior_Action =>
-            Start_Object_Behavior_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile_Application =>
+            UML_Profile_Application_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_State =>
-            State_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            UML_Property_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Invariant =>
-            State_Invariant_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance =>
+            UML_Protocol_Conformance_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_State_Machine =>
-            State_Machine_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            UML_Protocol_State_Machine_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Stereotype =>
-            Stereotype_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            UML_Protocol_Transition_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_String_Expression =>
-            String_Expression_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            UML_Pseudostate_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Structured_Activity_Node =>
-            Structured_Activity_Node_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value =>
+            UML_Qualifier_Value_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Substitution =>
-            Substitution_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            UML_Raise_Exception_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Binding =>
-            Template_Binding_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            UML_Read_Extent_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter =>
-            Template_Parameter_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            UML_Read_Is_Classified_Object_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Parameter_Substitution =>
-            Template_Parameter_Substitution_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            UML_Read_Link_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Template_Signature =>
-            Template_Signature_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            UML_Read_Link_Object_End_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Test_Identity_Action =>
-            Test_Identity_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            UML_Read_Link_Object_End_Qualifier_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Constraint =>
-            Time_Constraint_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            UML_Read_Self_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Event =>
-            Time_Event_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            UML_Read_Structural_Feature_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Expression =>
-            Time_Expression_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            UML_Read_Variable_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Interval =>
-            Time_Interval_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            UML_Realization_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Time_Observation =>
-            Time_Observation_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
+            UML_Reception_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Transition =>
-            Transition_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            UML_Reclassify_Object_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Trigger =>
-            Trigger_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
+            UML_Redefinable_Template_Signature_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Unmarshall_Action =>
-            Unmarshall_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            UML_Reduce_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Usage =>
-            Usage_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            UML_Region_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Use_Case =>
-            Use_Case_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            UML_Remove_Structural_Feature_Value_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Pin =>
-            Value_Pin_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            UML_Remove_Variable_Value_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Value_Specification_Action =>
-            Value_Specification_Action_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            UML_Reply_Action_Set;
 
-         when AMF.Internals.Tables.UML_Types.E_Variable =>
-            Variable_Set;
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            UML_Send_Object_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            UML_Send_Signal_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            UML_Sequence_Node_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            UML_Signal_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            UML_Signal_Event_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Slot =>
+            UML_Slot_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            UML_Start_Classifier_Behavior_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            UML_Start_Object_Behavior_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            UML_State_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            UML_State_Invariant_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            UML_State_Machine_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            UML_Stereotype_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            UML_String_Expression_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            UML_Structured_Activity_Node_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            UML_Substitution_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Binding =>
+            UML_Template_Binding_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            UML_Template_Parameter_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            UML_Template_Parameter_Substitution_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Signature =>
+            UML_Template_Signature_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            UML_Test_Identity_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            UML_Time_Constraint_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            UML_Time_Event_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            UML_Time_Expression_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            UML_Time_Interval_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            UML_Time_Observation_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            UML_Transition_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Trigger =>
+            UML_Trigger_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            UML_Unmarshall_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
+            UML_Usage_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            UML_Use_Case_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            UML_Value_Pin_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            UML_Value_Specification_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            UML_Variable_Set;
       end case;
    end Set;
 

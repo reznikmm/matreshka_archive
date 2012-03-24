@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -294,6 +294,102 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Classifier::attribute
    --  Stereotype => Classifier::attribute
    --  UseCase => Classifier::attribute
+
+   function Internal_Get_Base_Abstraction
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Abstraction
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Derive => Derive::base_Abstraction
+   --  Refine => Refine::base_Abstraction
+   --  Trace => Trace::base_Abstraction
+
+   function Internal_Get_Base_Artifact
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Artifact
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Document => Document::base_Artifact
+   --  Executable => Executable::base_Artifact
+   --  Library => File::base_Artifact
+   --  Script => File::base_Artifact
+   --  Source => File::base_Artifact
+
+   function Internal_Get_Base_Behavioral_Feature
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Behavioral_Feature
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Create => Create::base_BehavioralFeature
+   --  Destroy => Destroy::base_BehavioralFeature
+
+   function Internal_Get_Base_Class
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Class
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Auxiliary => Auxiliary::base_Class
+   --  Focus => Focus::base_Class
+   --  ImplementationClass => ImplementationClass::base_Class
+   --  Metaclass => Metaclass::base_Class
+   --  Type => Type::base_Class
+   --  Utility => Utility::base_Class
+
+   function Internal_Get_Base_Classifier
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Classifier
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Realization => Realization::base_Classifier
+   --  Specification => Specification::base_Classifier
+
+   function Internal_Get_Base_Component
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Component
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Entity => Entity::base_Component
+   --  Implement => Implement::base_Component
+   --  Process => Process::base_Component
+   --  Service => Service::base_Component
+   --  Subsystem => Subsystem::base_Component
+   --  BuildComponent => BuildComponent::base_Component
+
+   function Internal_Get_Base_Model
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Model
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Metamodel => Metamodel::base_Model
+   --  SystemModel => SystemModel::base_Model
+
+   function Internal_Get_Base_Package
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Package
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Framework => Framework::base_Package
+   --  ModelLibrary => ModelLibrary::base_Package
+
+   function Internal_Get_Base_Usage
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Base_Usage
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Call => Call::base_Usage
+   --  Create => Create::base_Usage
+   --  Instantiate => Instantiate::base_Usage
+   --  Responsibility => Responsibility::base_Usage
+   --  Send => Send::base_Usage
 
    function Internal_Get_Before
     (Self : AMF.Internals.UML_Element)
@@ -661,6 +757,14 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.UML_Element;
      To   : AMF.Internals.UML_Element);
    --  ReduceAction => ReduceAction::collection
+
+   function Internal_Get_Computation
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element;
+   procedure Internal_Set_Computation
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element);
+   --  Derive => Derive::computation
 
    function Internal_Get_Concurrency
     (Self : AMF.Internals.UML_Element)

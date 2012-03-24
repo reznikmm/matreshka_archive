@@ -45,6 +45,8 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
 with AMF.Internals.Tables.Primitive_Types_Notification;
+with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
+with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
@@ -52,6 +54,173 @@ with AMF.Internals.Tables.UML_Notification;
 package body AMF.Internals.Tables.UML_Attributes is
 
    use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   --  Auxiliary
+   --
+   --     1  Auxiliary::base_Class
+   --
+
+   --  Call
+   --
+   --     1  Call::base_Usage
+   --
+
+   --  Create
+   --
+   --     2  Create::base_BehavioralFeature
+   --     1  Create::base_Usage
+   --
+
+   --  Derive
+   --
+   --     1  Derive::base_Abstraction
+   --     2  Derive::computation
+   --
+
+   --  Destroy
+   --
+   --     2  Destroy::base_BehavioralFeature
+   --
+
+   --  Document
+   --
+   --     1  Document::base_Artifact
+   --     1  File::base_Artifact
+   --
+
+   --  Entity
+   --
+   --     1  Entity::base_Component
+   --
+
+   --  Executable
+   --
+   --     1  Executable::base_Artifact
+   --     1  File::base_Artifact
+   --
+
+   --  Focus
+   --
+   --     1  Focus::base_Class
+   --
+
+   --  Framework
+   --
+   --     1  Framework::base_Package
+   --
+
+   --  Implement
+   --
+   --     1  Implement::base_Component
+   --
+
+   --  ImplementationClass
+   --
+   --     1  ImplementationClass::base_Class
+   --
+
+   --  Instantiate
+   --
+   --     1  Instantiate::base_Usage
+   --
+
+   --  Library
+   --
+   --     1  File::base_Artifact
+   --     1  Library::base_Artifact
+   --
+
+   --  Metaclass
+   --
+   --     1  Metaclass::base_Class
+   --
+
+   --  ModelLibrary
+   --
+   --     1  ModelLibrary::base_Package
+   --
+
+   --  Process
+   --
+   --     1  Process::base_Component
+   --
+
+   --  Realization
+   --
+   --     1  Realization::base_Classifier
+   --
+
+   --  Refine
+   --
+   --     1  Refine::base_Abstraction
+   --
+
+   --  Responsibility
+   --
+   --     1  Responsibility::base_Usage
+   --
+
+   --  Script
+   --
+   --     1  File::base_Artifact
+   --     1  Script::base_Artifact
+   --
+
+   --  Send
+   --
+   --     1  Send::base_Usage
+   --
+
+   --  Service
+   --
+   --     1  Service::base_Component
+   --
+
+   --  Source
+   --
+   --     1  File::base_Artifact
+   --     1  Source::base_Artifact
+   --
+
+   --  Specification
+   --
+   --     1  Specification::base_Classifier
+   --
+
+   --  Subsystem
+   --
+   --     1  Subsystem::base_Component
+   --
+
+   --  Trace
+   --
+   --     1  Trace::base_Abstraction
+   --
+
+   --  Type
+   --
+   --     1  Type::base_Class
+   --
+
+   --  Utility
+   --
+   --     1  Utility::base_Class
+   --
+
+   --  BuildComponent
+   --
+   --     1  BuildComponent::base_Component
+   --
+
+   --  Metamodel
+   --
+   --     1  Metamodel::base_Model
+   --
+
+   --  SystemModel
+   --
+   --     1  SystemModel::base_Model
+   --
 
    --  Abstraction
    --
@@ -6111,6 +6280,123 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
    end Internal_Get_Attribute;
 
+   -----------------------------------
+   -- Internal_Get_Base_Abstraction --
+   -----------------------------------
+
+   function Internal_Get_Base_Abstraction
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Abstraction;
+
+   --------------------------------
+   -- Internal_Get_Base_Artifact --
+   --------------------------------
+
+   function Internal_Get_Base_Artifact
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Artifact;
+
+   ------------------------------------------
+   -- Internal_Get_Base_Behavioral_Feature --
+   ------------------------------------------
+
+   function Internal_Get_Base_Behavioral_Feature
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Behavioral_Feature;
+
+   -----------------------------
+   -- Internal_Get_Base_Class --
+   -----------------------------
+
+   function Internal_Get_Base_Class
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Class;
+
+   ----------------------------------
+   -- Internal_Get_Base_Classifier --
+   ----------------------------------
+
+   function Internal_Get_Base_Classifier
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Classifier;
+
+   ---------------------------------
+   -- Internal_Get_Base_Component --
+   ---------------------------------
+
+   function Internal_Get_Base_Component
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Component;
+
+   -----------------------------
+   -- Internal_Get_Base_Model --
+   -----------------------------
+
+   function Internal_Get_Base_Model
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Model;
+
+   -------------------------------
+   -- Internal_Get_Base_Package --
+   -------------------------------
+
+   function Internal_Get_Base_Package
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Package;
+
+   -----------------------------
+   -- Internal_Get_Base_Usage --
+   -----------------------------
+
+   function Internal_Get_Base_Usage
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+   end Internal_Get_Base_Usage;
+
    -------------------------
    -- Internal_Get_Before --
    -------------------------
@@ -6359,6 +6645,19 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
    end Internal_Get_Collection;
+
+   ------------------------------
+   -- Internal_Get_Computation --
+   ------------------------------
+
+   function Internal_Get_Computation
+    (Self : AMF.Internals.UML_Element)
+       return AMF.Internals.UML_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+   end Internal_Get_Computation;
 
    ------------------------------
    -- Internal_Get_Concurrency --
@@ -11358,6 +11657,159 @@ package body AMF.Internals.Tables.UML_Attributes is
         Self);
    end Internal_Set_Association_End;
 
+   -----------------------------------
+   -- Internal_Set_Base_Abstraction --
+   -----------------------------------
+
+   procedure Internal_Set_Base_Abstraction
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Base_Abstraction,
+        To,
+        Self);
+   end Internal_Set_Base_Abstraction;
+
+   --------------------------------
+   -- Internal_Set_Base_Artifact --
+   --------------------------------
+
+   procedure Internal_Set_Base_Artifact
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Document_Extension_Document_Base_Artifact,
+        To,
+        Self);
+   end Internal_Set_Base_Artifact;
+
+   ------------------------------------------
+   -- Internal_Set_Base_Behavioral_Feature --
+   ------------------------------------------
+
+   procedure Internal_Set_Base_Behavioral_Feature
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Create_Extension_Create_Base_Behavioral_Feature,
+        To,
+        Self);
+   end Internal_Set_Base_Behavioral_Feature;
+
+   -----------------------------
+   -- Internal_Set_Base_Class --
+   -----------------------------
+
+   procedure Internal_Set_Base_Class
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Auxiliary_Extension_Auxiliary_Base_Class,
+        To,
+        Self);
+   end Internal_Set_Base_Class;
+
+   ----------------------------------
+   -- Internal_Set_Base_Classifier --
+   ----------------------------------
+
+   procedure Internal_Set_Base_Classifier
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Realization_Extension_Realization_Base_Classifier,
+        To,
+        Self);
+   end Internal_Set_Base_Classifier;
+
+   ---------------------------------
+   -- Internal_Set_Base_Component --
+   ---------------------------------
+
+   procedure Internal_Set_Base_Component
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Entity_Extension_Entity_Base_Component,
+        To,
+        Self);
+   end Internal_Set_Base_Component;
+
+   -----------------------------
+   -- Internal_Set_Base_Model --
+   -----------------------------
+
+   procedure Internal_Set_Base_Model
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MA_Standard_Profile_L3_Metamodel_Extension_Metamodel_Base_Model,
+        To,
+        Self);
+   end Internal_Set_Base_Model;
+
+   -------------------------------
+   -- Internal_Set_Base_Package --
+   -------------------------------
+
+   procedure Internal_Set_Base_Package
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Framework_Extension_Framework_Base_Package,
+        To,
+        Self);
+   end Internal_Set_Base_Package;
+
+   -----------------------------
+   -- Internal_Set_Base_Usage --
+   -----------------------------
+
+   procedure Internal_Set_Base_Usage
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Call_Extension_Call_Base_Usage,
+        To,
+        Self);
+   end Internal_Set_Base_Usage;
+
    -------------------------
    -- Internal_Set_Before --
    -------------------------
@@ -11538,6 +11990,23 @@ package body AMF.Internals.Tables.UML_Attributes is
         Self,
         To);
    end Internal_Set_Collection;
+
+   ------------------------------
+   -- Internal_Set_Computation --
+   ------------------------------
+
+   procedure Internal_Set_Computation
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.Internals.UML_Element)
+   is
+      Old : AMF.Internals.UML_Element;
+
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Computation,
+        To,
+        Self);
+   end Internal_Set_Computation;
 
    ------------------------------
    -- Internal_Set_Concurrency --

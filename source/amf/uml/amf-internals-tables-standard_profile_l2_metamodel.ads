@@ -131,12 +131,13 @@ package AMF.Internals.Tables.Standard_Profile_L2_Metamodel is
    function MA_Standard_Profile_L2_Derive_Extension_Derive_Base_Abstraction return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Create_Extension_Create_Base_Usage return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Refine_Extension_Refine_Base_Abstraction return AMF.Internals.CMOF_Element;
-   function MA_Standard_Profile_L2_Instantiate_Extension_Instantiate_Base_Usage return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L2_Derive_Extension_Derive_Computation return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Trace_Extension_Trace_Base_Abstraction return AMF.Internals.CMOF_Element;
-   function MA_Standard_Profile_L2_Responsibility_Extension_Responsibility_Base_Usage return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L2_Instantiate_Extension_Instantiate_Base_Usage return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Document_Extension_Document_Base_Artifact return AMF.Internals.CMOF_Element;
-   function MA_Standard_Profile_L2_Send_Extension_Send_Base_Usage return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L2_Responsibility_Extension_Responsibility_Base_Usage return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Executable_Extension_Executable_Base_Artifact return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L2_Send_Extension_Send_Base_Usage return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_File_Extension_File_Base_Artifact return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Library_Extension_Library_Base_Artifact return AMF.Internals.CMOF_Element;
    function MA_Standard_Profile_L2_Script_Extension_Script_Base_Artifact return AMF.Internals.CMOF_Element;
