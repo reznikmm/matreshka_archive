@@ -54,7 +54,7 @@ package body AMF.Internals.UML_Elements is
    ------------
 
    overriding function Extent
-    (Self : not null access constant UML_Element_Proxy)
+    (Self : not null access constant UML_Element_Base)
        return AMF.Extents.Extent_Access is
    begin
       return
@@ -67,7 +67,7 @@ package body AMF.Internals.UML_Elements is
    ---------
 
    overriding function Get
-    (Self     : not null access constant UML_Element_Proxy;
+    (Self     : not null access constant UML_Element_Base;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return League.Holders.Holder is
    begin
@@ -83,7 +83,7 @@ package body AMF.Internals.UML_Elements is
    --------------------
 
    overriding function Get_Meta_Class
-    (Self : not null access constant UML_Element_Proxy)
+    (Self : not null access constant UML_Element_Base)
        return AMF.CMOF.Classes.CMOF_Class_Access is
    begin
       return
@@ -119,7 +119,7 @@ package body AMF.Internals.UML_Elements is
    ---------
 
    overriding procedure Set
-    (Self     : not null access UML_Element_Proxy;
+    (Self     : not null access UML_Element_Base;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder) is
    begin

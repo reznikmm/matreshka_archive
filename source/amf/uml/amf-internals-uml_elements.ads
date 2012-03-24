@@ -51,27 +51,30 @@ with AMF.UML.Elements;
 
 package AMF.Internals.UML_Elements is
 
-   type UML_Element_Proxy is
-     abstract limited new AMF.Internals.Elements.Element_Base
-       and AMF.UML.Elements.UML_Element with null record;
+   type UML_Element_Base is
+     abstract limited new AMF.Internals.Elements.Element_Base with null record;
 
    overriding function Get
-    (Self     : not null access constant UML_Element_Proxy;
+    (Self     : not null access constant UML_Element_Base;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return League.Holders.Holder;
 
    overriding function Get_Meta_Class
-    (Self : not null access constant UML_Element_Proxy)
+    (Self : not null access constant UML_Element_Base)
        return AMF.CMOF.Classes.CMOF_Class_Access;
 
    overriding procedure Set
-    (Self     : not null access UML_Element_Proxy;
+    (Self     : not null access UML_Element_Base;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder);
 
    overriding function Extent
-    (Self : not null access constant UML_Element_Proxy)
+    (Self : not null access constant UML_Element_Base)
        return AMF.Extents.Extent_Access;
+
+   type UML_Element_Proxy is
+     abstract limited new UML_Element_Base
+       and AMF.UML.Elements.UML_Element with null record;
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Element_Proxy) return Boolean;
