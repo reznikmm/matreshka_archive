@@ -26,35 +26,35 @@ all: $(ALL_TARGETS)
 league:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 
-xml:
+xml: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
 
-fastcgi:
+fastcgi: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
 
-sql:
+sql: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr
 
-sqlite3:
+sqlite3: league sql
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3.gpr
 
-postgresql:
+postgresql: league sql
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
 
-oci:
+oci: league sql
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oracle.gpr
 
-firebird:
+firebird: league sql
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_firebird.gpr
 
-amf:
+amf: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr
 
-uml:
+uml: league amf
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_uml.gpr
 
-mofext:
+mofext: league amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_mofext.gpr
 
-ocl:
+ocl: league amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_ocl.gpr
