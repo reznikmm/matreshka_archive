@@ -88,6 +88,9 @@
     <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Create" name="Usage_Create" memberEnd="Usage_Create-extension_Create Create-base_Usage">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Create-extension_Create" name="extension_Create" visibility="public" type="Create" isComposite="true" association="Usage_Create" lower="0"/>
     </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="ValueSpecification_Derive" name="ValueSpecification_Derive" memberEnd="ValueSpecification_Derive-extension_Derive Derive-computation">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="ValueSpecification_Derive-extension_Derive" name="extension_Derive" visibility="public" type="Derive" isComposite="true" association="ValueSpecification_Derive" lower="0"/>
+    </packagedElement>
     <packagedElement xmi:type="cmof:Association" xmi:id="Usage_Instantiate" name="Usage_Instantiate" memberEnd="Usage_Instantiate-extension_Instantiate Instantiate-base_Usage">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Usage_Instantiate-extension_Instantiate" name="extension_Instantiate" visibility="public" type="Instantiate" isComposite="true" association="Usage_Instantiate" lower="0"/>
     </packagedElement>
@@ -143,7 +146,7 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Derive-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Derive">
         <type href="http://www.omg.org/spec/UML/20100901/UML.cmof#Abstraction"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="cmof:Property" xmi:id="Derive-computation" name="computation" visibility="public" isComposite="true" lower="1" upper="1">
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Derive-computation" name="computation" visibility="public" isComposite="true" lower="1" upper="1" association="ValueSpecification_Derive">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Derive-computation-_ownedComment.0" annotatedElement="Derive-computation">
           <body>The specification for computing the derived client element from the derivation supplier element.</body>
         </ownedComment>
