@@ -51,6 +51,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Abstractions.UML_Abstraction_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Actions.UML_Action_Access)
        return League.Holders.Holder is
    begin
@@ -100,6 +112,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Activity_Partitions.UML_Activity_Partition_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Artifacts.UML_Artifact_Access)
        return League.Holders.Holder is
    begin
       return
@@ -591,6 +615,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Models.UML_Model_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Named_Elements.UML_Named_Element_Access)
        return League.Holders.Holder is
    begin
@@ -1024,6 +1060,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Types.UML_Type_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Usages.UML_Usage_Access)
        return League.Holders.Holder is
    begin
       return

@@ -46,11 +46,13 @@
 --  otherwise creation of intermediate object should be done in reflections
 --  module. Most probably this package can be removed for Ada2020.
 ------------------------------------------------------------------------------
+with AMF.UML.Abstractions;
 with AMF.UML.Actions;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Groups;
 with AMF.UML.Activity_Nodes;
 with AMF.UML.Activity_Partitions;
+with AMF.UML.Artifacts;
 with AMF.UML.Association_Classes;
 with AMF.UML.Associations;
 with AMF.UML.Behaviored_Classifiers;
@@ -91,6 +93,7 @@ with AMF.UML.Intervals;
 with AMF.UML.Lifelines;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
+with AMF.UML.Models;
 with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces;
 with AMF.UML.Object_Flows;
@@ -128,12 +131,17 @@ with AMF.UML.Time_Intervals;
 with AMF.UML.Transitions;
 with AMF.UML.Triggers;
 with AMF.UML.Types;
+with AMF.UML.Usages;
 with AMF.UML.Use_Cases;
 with AMF.UML.Value_Specifications;
 with AMF.UML.Variables;
 with AMF.UML.Vertexs;
 
 package AMF.Internals.Holders.UML_Holders is
+
+   function To_Holder
+    (Item : AMF.UML.Abstractions.UML_Abstraction_Access)
+       return League.Holders.Holder;
 
    function To_Holder
     (Item : AMF.UML.Actions.UML_Action_Access)
@@ -153,6 +161,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Activity_Partitions.UML_Activity_Partition_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Artifacts.UML_Artifact_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -316,6 +328,10 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Models.UML_Model_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Named_Elements.UML_Named_Element_Access)
        return League.Holders.Holder;
 
@@ -461,6 +477,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Types.UML_Type_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Usages.UML_Usage_Access)
        return League.Holders.Holder;
 
    function To_Holder
