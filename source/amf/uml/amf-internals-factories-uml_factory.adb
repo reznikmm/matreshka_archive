@@ -622,583 +622,583 @@ package body AMF.Internals.Factories.UML_Factory is
       --  Create corresponding element.
 
       if MC = MC_UML_Abstraction then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Abstraction;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Abstraction;
 
       elsif MC = MC_UML_Accept_Call_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Accept_Call_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Call_Action;
 
       elsif MC = MC_UML_Accept_Event_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Accept_Event_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Event_Action;
 
       elsif MC = MC_UML_Action_Execution_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Action_Execution_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Execution_Specification;
 
       elsif MC = MC_UML_Action_Input_Pin then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Action_Input_Pin;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Input_Pin;
 
       elsif MC = MC_UML_Activity then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Activity;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity;
 
       elsif MC = MC_UML_Activity_Final_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Activity_Final_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Final_Node;
 
       elsif MC = MC_UML_Activity_Parameter_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Activity_Parameter_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Parameter_Node;
 
       elsif MC = MC_UML_Activity_Partition then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Activity_Partition;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Partition;
 
       elsif MC = MC_UML_Actor then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Actor;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Actor;
 
       elsif MC = MC_UML_Add_Structural_Feature_Value_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Add_Structural_Feature_Value_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Structural_Feature_Value_Action;
 
       elsif MC = MC_UML_Add_Variable_Value_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Add_Variable_Value_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Variable_Value_Action;
 
       elsif MC = MC_UML_Any_Receive_Event then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Any_Receive_Event;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Any_Receive_Event;
 
       elsif MC = MC_UML_Artifact then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Artifact;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Artifact;
 
       elsif MC = MC_UML_Association then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Association;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Association;
 
       elsif MC = MC_UML_Association_Class then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Association_Class;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Association_Class;
 
       elsif MC = MC_UML_Behavior_Execution_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Behavior_Execution_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Behavior_Execution_Specification;
 
       elsif MC = MC_UML_Broadcast_Signal_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Broadcast_Signal_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Broadcast_Signal_Action;
 
       elsif MC = MC_UML_Call_Behavior_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Call_Behavior_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Behavior_Action;
 
       elsif MC = MC_UML_Call_Event then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Call_Event;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Event;
 
       elsif MC = MC_UML_Call_Operation_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Call_Operation_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Operation_Action;
 
       elsif MC = MC_UML_Central_Buffer_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Central_Buffer_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Central_Buffer_Node;
 
       elsif MC = MC_UML_Change_Event then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Change_Event;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Change_Event;
 
       elsif MC = MC_UML_Class then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Class;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Class;
 
       elsif MC = MC_UML_Classifier_Template_Parameter then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Classifier_Template_Parameter;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Classifier_Template_Parameter;
 
       elsif MC = MC_UML_Clause then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Clause;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clause;
 
       elsif MC = MC_UML_Clear_Association_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Clear_Association_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Association_Action;
 
       elsif MC = MC_UML_Clear_Structural_Feature_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Clear_Structural_Feature_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Structural_Feature_Action;
 
       elsif MC = MC_UML_Clear_Variable_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Clear_Variable_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Variable_Action;
 
       elsif MC = MC_UML_Collaboration then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Collaboration;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration;
 
       elsif MC = MC_UML_Collaboration_Use then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Collaboration_Use;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration_Use;
 
       elsif MC = MC_UML_Combined_Fragment then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Combined_Fragment;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Combined_Fragment;
 
       elsif MC = MC_UML_Comment then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Comment;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Comment;
 
       elsif MC = MC_UML_Communication_Path then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Communication_Path;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Communication_Path;
 
       elsif MC = MC_UML_Component then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Component;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Component;
 
       elsif MC = MC_UML_Component_Realization then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Component_Realization;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Component_Realization;
 
       elsif MC = MC_UML_Conditional_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Conditional_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Conditional_Node;
 
       elsif MC = MC_UML_Connectable_Element_Template_Parameter then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Connectable_Element_Template_Parameter;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connectable_Element_Template_Parameter;
 
       elsif MC = MC_UML_Connection_Point_Reference then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Connection_Point_Reference;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connection_Point_Reference;
 
       elsif MC = MC_UML_Connector then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Connector;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connector;
 
       elsif MC = MC_UML_Connector_End then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Connector_End;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connector_End;
 
       elsif MC = MC_UML_Consider_Ignore_Fragment then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Consider_Ignore_Fragment;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Consider_Ignore_Fragment;
 
       elsif MC = MC_UML_Constraint then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Constraint;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Constraint;
 
       elsif MC = MC_UML_Continuation then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Continuation;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Continuation;
 
       elsif MC = MC_UML_Control_Flow then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Control_Flow;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Control_Flow;
 
       elsif MC = MC_UML_Create_Link_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Create_Link_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Action;
 
       elsif MC = MC_UML_Create_Link_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Create_Link_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Object_Action;
 
       elsif MC = MC_UML_Create_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Create_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Object_Action;
 
       elsif MC = MC_UML_Data_Store_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Data_Store_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Store_Node;
 
       elsif MC = MC_UML_Data_Type then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Data_Type;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Type;
 
       elsif MC = MC_UML_Decision_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Decision_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Decision_Node;
 
       elsif MC = MC_UML_Dependency then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Dependency;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Dependency;
 
       elsif MC = MC_UML_Deployment then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Deployment;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment;
 
       elsif MC = MC_UML_Deployment_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Deployment_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment_Specification;
 
       elsif MC = MC_UML_Destroy_Link_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Destroy_Link_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Link_Action;
 
       elsif MC = MC_UML_Destroy_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Destroy_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Object_Action;
 
       elsif MC = MC_UML_Destruction_Occurrence_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Destruction_Occurrence_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destruction_Occurrence_Specification;
 
       elsif MC = MC_UML_Device then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Device;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Device;
 
       elsif MC = MC_UML_Duration then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Duration;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration;
 
       elsif MC = MC_UML_Duration_Constraint then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Duration_Constraint;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Constraint;
 
       elsif MC = MC_UML_Duration_Interval then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Duration_Interval;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Interval;
 
       elsif MC = MC_UML_Duration_Observation then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Duration_Observation;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Observation;
 
       elsif MC = MC_UML_Element_Import then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Element_Import;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Element_Import;
 
       elsif MC = MC_UML_Enumeration then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Enumeration;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration;
 
       elsif MC = MC_UML_Enumeration_Literal then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Enumeration_Literal;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration_Literal;
 
       elsif MC = MC_UML_Exception_Handler then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Exception_Handler;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Exception_Handler;
 
       elsif MC = MC_UML_Execution_Environment then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Execution_Environment;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Environment;
 
       elsif MC = MC_UML_Execution_Occurrence_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Execution_Occurrence_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Occurrence_Specification;
 
       elsif MC = MC_UML_Expansion_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Expansion_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Node;
 
       elsif MC = MC_UML_Expansion_Region then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Expansion_Region;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Region;
 
       elsif MC = MC_UML_Expression then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Expression;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expression;
 
       elsif MC = MC_UML_Extend then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Extend;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extend;
 
       elsif MC = MC_UML_Extension then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Extension;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension;
 
       elsif MC = MC_UML_Extension_End then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Extension_End;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_End;
 
       elsif MC = MC_UML_Extension_Point then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Extension_Point;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_Point;
 
       elsif MC = MC_UML_Final_State then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Final_State;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Final_State;
 
       elsif MC = MC_UML_Flow_Final_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Flow_Final_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Flow_Final_Node;
 
       elsif MC = MC_UML_Fork_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Fork_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Fork_Node;
 
       elsif MC = MC_UML_Function_Behavior then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Function_Behavior;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Function_Behavior;
 
       elsif MC = MC_UML_Gate then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Gate;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Gate;
 
       elsif MC = MC_UML_General_Ordering then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_General_Ordering;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_General_Ordering;
 
       elsif MC = MC_UML_Generalization then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Generalization;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization;
 
       elsif MC = MC_UML_Generalization_Set then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Generalization_Set;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization_Set;
 
       elsif MC = MC_UML_Image then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Image;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Image;
 
       elsif MC = MC_UML_Include then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Include;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Include;
 
       elsif MC = MC_UML_Information_Flow then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Information_Flow;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Flow;
 
       elsif MC = MC_UML_Information_Item then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Information_Item;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Item;
 
       elsif MC = MC_UML_Initial_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Initial_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Initial_Node;
 
       elsif MC = MC_UML_Input_Pin then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Input_Pin;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Input_Pin;
 
       elsif MC = MC_UML_Instance_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Instance_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Specification;
 
       elsif MC = MC_UML_Instance_Value then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Instance_Value;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Value;
 
       elsif MC = MC_UML_Interaction then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interaction;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction;
 
       elsif MC = MC_UML_Interaction_Constraint then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interaction_Constraint;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Constraint;
 
       elsif MC = MC_UML_Interaction_Operand then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interaction_Operand;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Operand;
 
       elsif MC = MC_UML_Interaction_Use then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interaction_Use;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Use;
 
       elsif MC = MC_UML_Interface then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interface;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interface;
 
       elsif MC = MC_UML_Interface_Realization then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interface_Realization;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interface_Realization;
 
       elsif MC = MC_UML_Interruptible_Activity_Region then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interruptible_Activity_Region;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interruptible_Activity_Region;
 
       elsif MC = MC_UML_Interval then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interval;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interval;
 
       elsif MC = MC_UML_Interval_Constraint then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Interval_Constraint;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interval_Constraint;
 
       elsif MC = MC_UML_Join_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Join_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Join_Node;
 
       elsif MC = MC_UML_Lifeline then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Lifeline;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Lifeline;
 
       elsif MC = MC_UML_Link_End_Creation_Data then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Link_End_Creation_Data;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Creation_Data;
 
       elsif MC = MC_UML_Link_End_Data then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Link_End_Data;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Data;
 
       elsif MC = MC_UML_Link_End_Destruction_Data then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Link_End_Destruction_Data;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Destruction_Data;
 
       elsif MC = MC_UML_Literal_Boolean then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_Boolean;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Boolean;
 
       elsif MC = MC_UML_Literal_Integer then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_Integer;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Integer;
 
       elsif MC = MC_UML_Literal_Null then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_Null;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Null;
 
       elsif MC = MC_UML_Literal_Real then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_Real;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Real;
 
       elsif MC = MC_UML_Literal_String then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_String;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_String;
 
       elsif MC = MC_UML_Literal_Unlimited_Natural then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Literal_Unlimited_Natural;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Unlimited_Natural;
 
       elsif MC = MC_UML_Loop_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Loop_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Loop_Node;
 
       elsif MC = MC_UML_Manifestation then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Manifestation;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Manifestation;
 
       elsif MC = MC_UML_Merge_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Merge_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Merge_Node;
 
       elsif MC = MC_UML_Message then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Message;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Message;
 
       elsif MC = MC_UML_Message_Occurrence_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Message_Occurrence_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Message_Occurrence_Specification;
 
       elsif MC = MC_UML_Model then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Model;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Model;
 
       elsif MC = MC_UML_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Node;
 
       elsif MC = MC_UML_Object_Flow then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Object_Flow;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Object_Flow;
 
       elsif MC = MC_UML_Occurrence_Specification then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Occurrence_Specification;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Occurrence_Specification;
 
       elsif MC = MC_UML_Opaque_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Opaque_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Action;
 
       elsif MC = MC_UML_Opaque_Behavior then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Opaque_Behavior;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Behavior;
 
       elsif MC = MC_UML_Opaque_Expression then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Opaque_Expression;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Expression;
 
       elsif MC = MC_UML_Operation then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Operation;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Operation;
 
       elsif MC = MC_UML_Operation_Template_Parameter then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Operation_Template_Parameter;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Operation_Template_Parameter;
 
       elsif MC = MC_UML_Output_Pin then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Output_Pin;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Output_Pin;
 
       elsif MC = MC_UML_Package then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Package;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package;
 
       elsif MC = MC_UML_Package_Import then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Package_Import;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Import;
 
       elsif MC = MC_UML_Package_Merge then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Package_Merge;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Merge;
 
       elsif MC = MC_UML_Parameter then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Parameter;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter;
 
       elsif MC = MC_UML_Parameter_Set then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Parameter_Set;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter_Set;
 
       elsif MC = MC_UML_Part_Decomposition then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Part_Decomposition;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Part_Decomposition;
 
       elsif MC = MC_UML_Port then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Port;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Port;
 
       elsif MC = MC_UML_Primitive_Type then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Primitive_Type;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Primitive_Type;
 
       elsif MC = MC_UML_Profile then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Profile;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Profile;
 
       elsif MC = MC_UML_Profile_Application then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Profile_Application;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Profile_Application;
 
       elsif MC = MC_UML_Property then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Property;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Property;
 
       elsif MC = MC_UML_Protocol_Conformance then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Protocol_Conformance;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Conformance;
 
       elsif MC = MC_UML_Protocol_State_Machine then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Protocol_State_Machine;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_State_Machine;
 
       elsif MC = MC_UML_Protocol_Transition then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Protocol_Transition;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Transition;
 
       elsif MC = MC_UML_Pseudostate then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Pseudostate;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Pseudostate;
 
       elsif MC = MC_UML_Qualifier_Value then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Qualifier_Value;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Qualifier_Value;
 
       elsif MC = MC_UML_Raise_Exception_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Raise_Exception_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Raise_Exception_Action;
 
       elsif MC = MC_UML_Read_Extent_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Extent_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Extent_Action;
 
       elsif MC = MC_UML_Read_Is_Classified_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Is_Classified_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Is_Classified_Object_Action;
 
       elsif MC = MC_UML_Read_Link_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Link_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Action;
 
       elsif MC = MC_UML_Read_Link_Object_End_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Link_Object_End_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Action;
 
       elsif MC = MC_UML_Read_Link_Object_End_Qualifier_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Link_Object_End_Qualifier_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Qualifier_Action;
 
       elsif MC = MC_UML_Read_Self_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Self_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Self_Action;
 
       elsif MC = MC_UML_Read_Structural_Feature_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Structural_Feature_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Structural_Feature_Action;
 
       elsif MC = MC_UML_Read_Variable_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Read_Variable_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Variable_Action;
 
       elsif MC = MC_UML_Realization then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Realization;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Realization;
 
       elsif MC = MC_UML_Reception then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Reception;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reception;
 
       elsif MC = MC_UML_Reclassify_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Reclassify_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reclassify_Object_Action;
 
       elsif MC = MC_UML_Redefinable_Template_Signature then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Redefinable_Template_Signature;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Redefinable_Template_Signature;
 
       elsif MC = MC_UML_Reduce_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Reduce_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reduce_Action;
 
       elsif MC = MC_UML_Region then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Region;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Region;
 
       elsif MC = MC_UML_Remove_Structural_Feature_Value_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Remove_Structural_Feature_Value_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Structural_Feature_Value_Action;
 
       elsif MC = MC_UML_Remove_Variable_Value_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Remove_Variable_Value_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Variable_Value_Action;
 
       elsif MC = MC_UML_Reply_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Reply_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reply_Action;
 
       elsif MC = MC_UML_Send_Object_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Send_Object_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Object_Action;
 
       elsif MC = MC_UML_Send_Signal_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Send_Signal_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Signal_Action;
 
       elsif MC = MC_UML_Sequence_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Sequence_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Sequence_Node;
 
       elsif MC = MC_UML_Signal then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Signal;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Signal;
 
       elsif MC = MC_UML_Signal_Event then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Signal_Event;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Signal_Event;
 
       elsif MC = MC_UML_Slot then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Slot;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Slot;
 
       elsif MC = MC_UML_Start_Classifier_Behavior_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Start_Classifier_Behavior_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Classifier_Behavior_Action;
 
       elsif MC = MC_UML_Start_Object_Behavior_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Start_Object_Behavior_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Object_Behavior_Action;
 
       elsif MC = MC_UML_State then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_State;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State;
 
       elsif MC = MC_UML_State_Invariant then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_State_Invariant;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State_Invariant;
 
       elsif MC = MC_UML_State_Machine then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_State_Machine;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State_Machine;
 
       elsif MC = MC_UML_Stereotype then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Stereotype;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Stereotype;
 
       elsif MC = MC_UML_String_Expression then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_String_Expression;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_String_Expression;
 
       elsif MC = MC_UML_Structured_Activity_Node then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Structured_Activity_Node;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Structured_Activity_Node;
 
       elsif MC = MC_UML_Substitution then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Substitution;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Substitution;
 
       elsif MC = MC_UML_Template_Binding then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Template_Binding;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Binding;
 
       elsif MC = MC_UML_Template_Parameter then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Template_Parameter;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter;
 
       elsif MC = MC_UML_Template_Parameter_Substitution then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Template_Parameter_Substitution;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter_Substitution;
 
       elsif MC = MC_UML_Template_Signature then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Template_Signature;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Signature;
 
       elsif MC = MC_UML_Test_Identity_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Test_Identity_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Test_Identity_Action;
 
       elsif MC = MC_UML_Time_Constraint then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Time_Constraint;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Constraint;
 
       elsif MC = MC_UML_Time_Event then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Time_Event;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Event;
 
       elsif MC = MC_UML_Time_Expression then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Time_Expression;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Expression;
 
       elsif MC = MC_UML_Time_Interval then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Time_Interval;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Interval;
 
       elsif MC = MC_UML_Time_Observation then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Time_Observation;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Observation;
 
       elsif MC = MC_UML_Transition then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Transition;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Transition;
 
       elsif MC = MC_UML_Trigger then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Trigger;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Trigger;
 
       elsif MC = MC_UML_Unmarshall_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Unmarshall_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Unmarshall_Action;
 
       elsif MC = MC_UML_Usage then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Usage;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Usage;
 
       elsif MC = MC_UML_Use_Case then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Use_Case;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Use_Case;
 
       elsif MC = MC_UML_Value_Pin then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Value_Pin;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Pin;
 
       elsif MC = MC_UML_Value_Specification_Action then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Value_Specification_Action;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Specification_Action;
 
       elsif MC = MC_UML_Variable then
-         Element := AMF.Internals.Tables.UML_Constructors.Create_Variable;
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Variable;
 
       else
          raise Program_Error with CMOF_Element'Image (MC);
