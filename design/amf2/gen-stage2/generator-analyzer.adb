@@ -552,18 +552,16 @@ package body Generator.Analyzer is
 
       declare
          Class              : AMF.CMOF.Classes.CMOF_Class_Access;
-         Class_Position     : CMOF_Element_Sets.Cursor
-           := Metamodel_Info.Classes.First;
+         Class_Position     : CMOF_Class_Sets.Cursor
+           := Module_Info.Classes.First;
          Info               : Class_Information_Access;
          Current            : Positive := 1;
          Attribute_Position : CMOF_Property_Sets.Cursor;
          Attribute          : AMF.CMOF.Properties.CMOF_Property_Access;
 
       begin
-         while CMOF_Element_Sets.Has_Element (Class_Position) loop
-            Class
-              := AMF.CMOF.Classes.CMOF_Class_Access
-                  (CMOF_Element_Sets.Element (Class_Position));
+         while CMOF_Class_Sets.Has_Element (Class_Position) loop
+            Class := CMOF_Class_Sets.Element (Class_Position);
 
             if not Class.Get_Is_Abstract then
                Info := Class_Info.Element (Class);
@@ -579,7 +577,7 @@ package body Generator.Analyzer is
                Current := Current + 1;
             end if;
 
-            CMOF_Element_Sets.Next (Class_Position);
+            CMOF_Class_Sets.Next (Class_Position);
          end loop;
       end;
 
