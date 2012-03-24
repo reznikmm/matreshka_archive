@@ -98,7 +98,7 @@ package body Configure.Builder is
       if Ada.Directories.Exists (Directory & "check.gpr.in")
         and Ada.Directories.Exists (Directory & "check.gpr")
       then
-         Ada.Directories.Delete_File (Directory & "check.gpr");
+         null;  --  Ada.Directories.Delete_File (Directory & "check.gpr");
       end if;
 
       return Result;

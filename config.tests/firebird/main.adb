@@ -52,7 +52,7 @@ procedure Main is
    pragma Convention (C, Isc_Results);
 
    function Isc_Sqlcode (Status : Isc_Results) return Interfaces.C.long;
-   pragma Import (Stdcall, Isc_Sqlcode, Link_Name => "_isc_sqlcode");
+   pragma Import (Stdcall, Isc_Sqlcode, "isc_sqlcode");
 
    Param : Isc_Results := (others => 0);
    Aux   : Interfaces.C.long;

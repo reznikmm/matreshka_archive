@@ -641,39 +641,39 @@ package Matreshka.Internals.SQL_Drivers.Firebird is
 
 private
 
-   pragma Import (Stdcall, Isc_Attach_Database, "_isc_attach_database");
-   pragma Import (Stdcall, Isc_Detach_Database, "_isc_detach_database");
-   pragma Import (Stdcall, Isc_Sqlcode, "_isc_sqlcode");
-   pragma Import (Stdcall, Isc_Sql_Interprete, "_isc_sql_interprete");
-   pragma Import (Stdcall, Isc_Interprete, "_isc_interprete");
-   pragma Import (Stdcall, Isc_Commit_Retaining, "_isc_commit_retaining");
-   pragma Import (Stdcall, Isc_Start_Multiple, "_isc_start_multiple");
-   pragma Import (Stdcall, Isc_Dsql_Fetch, "_isc_dsql_fetch");
+   pragma Import (Stdcall, Isc_Attach_Database, "isc_attach_database");
+   pragma Import (Stdcall, Isc_Detach_Database, "isc_detach_database");
+   pragma Import (Stdcall, Isc_Sqlcode, "isc_sqlcode");
+   pragma Import (Stdcall, Isc_Sql_Interprete, "isc_sql_interprete");
+   pragma Import (Stdcall, Isc_Interprete, "isc_interprete");
+   pragma Import (Stdcall, Isc_Commit_Retaining, "isc_commit_retaining");
+   pragma Import (Stdcall, Isc_Start_Multiple, "isc_start_multiple");
+   pragma Import (Stdcall, Isc_Dsql_Fetch, "isc_dsql_fetch");
    pragma Import
-           (Stdcall, Isc_Dsql_Free_Statement, "_isc_dsql_free_statement");
-   pragma Import (Stdcall, Isc_Dsql_Prepare, "_isc_dsql_prepare");
-   pragma Import (Stdcall, Isc_Dsql_Sql_Info, "_isc_dsql_sql_info");
-   pragma Import (Stdcall, Isc_Vax_Integer, "_isc_vax_integer");
-   pragma Import (Stdcall, Isc_Dsql_Describe_Bind, "_isc_dsql_describe_bind");
-   pragma Import (Stdcall, Isc_Dsql_Describe, "_isc_dsql_describe");
-   pragma Import (Stdcall, Isc_Dsql_Execute, "_isc_dsql_execute");
-   pragma Import (Stdcall, Isc_Dsql_Execute2, "_isc_dsql_execute2");
-   pragma Import (Stdcall, Isc_Encode_Sql_Time, "_isc_encode_sql_time");
-   pragma Import (Stdcall, Isc_Encode_Timestamp, "_isc_encode_timestamp");
-   pragma Import (Stdcall, Isc_Encode_Sql_Date, "_isc_encode_sql_date");
-   pragma Import (Stdcall, Isc_Decode_Timestamp, "_isc_decode_timestamp");
-   pragma Import (Stdcall, Isc_Decode_Sql_Date, "_isc_decode_sql_date");
-   pragma Import (Stdcall, Isc_Decode_Sql_Time, "_isc_decode_sql_time");
-   pragma Import (Stdcall, Isc_Database_Info, "_isc_database_info");
+           (Stdcall, Isc_Dsql_Free_Statement, "isc_dsql_free_statement");
+   pragma Import (Stdcall, Isc_Dsql_Prepare, "isc_dsql_prepare");
+   pragma Import (Stdcall, Isc_Dsql_Sql_Info, "isc_dsql_sql_info");
+   pragma Import (Stdcall, Isc_Vax_Integer, "isc_vax_integer");
+   pragma Import (Stdcall, Isc_Dsql_Describe_Bind, "isc_dsql_describe_bind");
+   pragma Import (Stdcall, Isc_Dsql_Describe, "isc_dsql_describe");
+   pragma Import (Stdcall, Isc_Dsql_Execute, "isc_dsql_execute");
+   pragma Import (Stdcall, Isc_Dsql_Execute2, "isc_dsql_execute2");
+   pragma Import (Stdcall, Isc_Encode_Sql_Time, "isc_encode_sql_time");
+   pragma Import (Stdcall, Isc_Encode_Timestamp, "isc_encode_timestamp");
+   pragma Import (Stdcall, Isc_Encode_Sql_Date, "isc_encode_sql_date");
+   pragma Import (Stdcall, Isc_Decode_Timestamp, "isc_decode_timestamp");
+   pragma Import (Stdcall, Isc_Decode_Sql_Date, "isc_decode_sql_date");
+   pragma Import (Stdcall, Isc_Decode_Sql_Time, "isc_decode_sql_time");
+   pragma Import (Stdcall, Isc_Database_Info, "isc_database_info");
    pragma Import
-           (Stdcall, Isc_Rollback_Transaction, "_isc_rollback_transaction");
+           (Stdcall, Isc_Rollback_Transaction, "isc_rollback_transaction");
    pragma Import
-           (Stdcall, Isc_Dsql_Alloc_Statement2, "_isc_dsql_alloc_statement2");
+           (Stdcall, Isc_Dsql_Alloc_Statement2, "isc_dsql_alloc_statement2");
    pragma Import
-           (Stdcall, Isc_Dsql_Set_Cursor_Name, "_isc_dsql_set_cursor_name");
+           (Stdcall, Isc_Dsql_Set_Cursor_Name, "isc_dsql_set_cursor_name");
    pragma Import
            (Stdcall,
             Isc_Dsql_Execute_Immediate,
-            "_isc_dsql_execute_immediate");
+            "isc_dsql_execute_immediate");
 
 end Matreshka.Internals.SQL_Drivers.Firebird;
