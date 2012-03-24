@@ -57,4 +57,11 @@
   <uri name="http://schema.omg.org/spec/UML/2.1" uri="http://www.omg.org/spec/UML/20100901"/>
   <!--  Map MOF 2.4 namespace URI to supported version  -->
   <uri name="http://www.omg.org/spec/MOF/20100901" uri="http://www.omg.org/spec/MOF/20110701"/>
+
+  <!--==============================-->
+  <!--  MagicDraw specific entries  -->
+  <!--==============================-->
+
+  <uri name="http://schema.omg.org/spec/UML/2.3/StandardProfileL2.xmi" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL2"/>
+  <uri name="http://schema.omg.org/spec/UML/2.3/StandardProfileL3.xmi" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL3"/>
 </catalog>
