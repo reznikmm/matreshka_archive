@@ -41,56 +41,55 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
-pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
---  CMOF factory package and all its dependencies must be elaborated before
---  elaboration of this package.
+--  Factory for StandardProfileL3 classes.
+------------------------------------------------------------------------------
 
-with AMF.Internals.Factories.Primitive_Types_Factory;
-with AMF.Internals.Factories.Standard_Profile_L2_Factory;
-with AMF.Internals.Factories.Standard_Profile_L3_Factory;
-with AMF.Internals.Factories.UML_Factory;
-with AMF.Internals.Tables.Primitive_Types_Metamodel;
-with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
-with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
-with AMF.Internals.Tables.UML_Element_Table;
-with AMF.Internals.Tables.UML_Metamodel;
+package AMF.Internals.Factories.Standard_Profile_L3_Factory is
 
-package body AMF.Internals.Modules.UML_Module is
+   type Standard_Profile_L3_Factory is
+     limited new AMF.Internals.Factories.Abstract_Factory with null record;
 
-   --  Global objects of factories for supported metamodels.
+   ------------------------------
+   -- AMF_Factory's operations --
+   ------------------------------
 
-   Primitive_Types_Factory     : aliased
-     AMF.Internals.Factories.Primitive_Types_Factory.Primitive_Types_Factory;
-   Standard_Profile_L2_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L2_Factory.Standard_Profile_L2_Factory;
-   Standard_Profile_L3_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L3_Factory.Standard_Profile_L3_Factory;
-   UML_Factory                 :
-     aliased AMF.Internals.Factories.UML_Factory.UML_Factory;
+   overriding procedure Connect_Extent
+    (Self    : not null access constant Standard_Profile_L3_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent);
 
-begin
-   --  Initialize metamodels.
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant Standard_Profile_L3_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element);
 
-   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Objects;
+   overriding function Convert_To_String
+    (Self      : not null access Standard_Profile_L3_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
 
-   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Links;
+   overriding function Create
+    (Self       : not null access Standard_Profile_L3_Factory;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
+       return not null AMF.Elements.Element_Access;
 
-   --  Initialize element table of UML module.
+   overriding function Create_From_String
+    (Self      : not null access Standard_Profile_L3_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
-   AMF.Internals.Tables.UML_Element_Table.Increment_Last;
+   overriding function Get_Metamodel
+    (Self : not null access constant Standard_Profile_L3_Factory)
+       return AMF.Internals.AMF_Metamodel;
 
-   --  Register factories.
+   overriding function Get_Package
+    (Self : not null access constant Standard_Profile_L3_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
-   AMF.Internals.Factories.Register (Primitive_Types_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L2_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L3_Factory'Access);
-   AMF.Internals.Factories.Register (UML_Factory'Access);
-end AMF.Internals.Modules.UML_Module;
+   overriding function To_Element
+    (Self     : not null access constant Standard_Profile_L3_Factory;
+     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
+
+end AMF.Internals.Factories.Standard_Profile_L3_Factory;
