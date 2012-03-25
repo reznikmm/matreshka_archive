@@ -125,10 +125,7 @@ package body AMF.Internals.OCL_Parser is
 
    procedure Parse_Boolean_Literal_Exp_CS
     (Scanner : in out AMF.Internals.OCL_Scanners.OCL_Scanner;
-     Ast     : out OCL_Boolean_Literal_Exp_Access)
-   is
-      State : constant OCL_Scanner_State := Scanner.Save_State;
-
+     Ast     : out OCL_Boolean_Literal_Exp_Access) is
    begin
       case Scanner.Token is
          --  [94] [A] BooleanLiteralExpCS ::= ‘true’
@@ -140,6 +137,7 @@ package body AMF.Internals.OCL_Parser is
 
             Ast := Create_Boolean_Literal_Exp;
             Ast.Set_Boolean_Symbol (True);
+            Scanner.Forward;
 
          --  [95] [B] BooleanLiteralExpCS ::= ‘false’
 
@@ -150,9 +148,10 @@ package body AMF.Internals.OCL_Parser is
 
             Ast := Create_Boolean_Literal_Exp;
             Ast.Set_Boolean_Symbol (False);
+            Scanner.Forward;
 
          when others =>
-            Scanner.Restore_State (State);
+            null;
       end case;
    end Parse_Boolean_Literal_Exp_CS;
 

@@ -44,34 +44,34 @@
 
 package body AMF.Internals.OCL_Scanners is
 
-   ----------
-   -- Next --
-   ----------
+   -------------
+   -- Forward --
+   -------------
 
-   procedure Next (Self : in out OCL_Scanner) is
+   procedure Forward (Self : in out OCL_Scanner) is
    begin
       raise Program_Error;
-   end Next;
+   end Forward;
 
-   -------------------
-   -- Restore_State --
-   -------------------
+   -------------
+   -- Restore --
+   -------------
 
-   procedure Restore_State
+   procedure Restore
     (Self : in out OCL_Scanner; State : OCL_Scanner_State) is
    begin
       raise Program_Error;
-   end Restore_State;
+   end Restore;
 
-   ----------------
-   -- Save_State --
-   ----------------
+   ----------
+   -- Save --
+   ----------
 
-   function Save_State (Self : in out OCL_Scanner) return OCL_Scanner_State is
+   function Save (Self : in out OCL_Scanner) return OCL_Scanner_State is
    begin
       raise Program_Error;
       return X : OCL_Scanner_State;
-   end Save_State;
+   end Save;
 
    -----------
    -- Token --

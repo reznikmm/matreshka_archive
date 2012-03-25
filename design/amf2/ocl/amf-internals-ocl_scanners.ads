@@ -99,14 +99,14 @@ package AMF.Internals.OCL_Scanners is
 
    type OCL_Scanner_State is private;
 
-   function Save_State (Self : in out OCL_Scanner) return OCL_Scanner_State;
+   function Save (Self : in out OCL_Scanner) return OCL_Scanner_State;
 
-   procedure Restore_State
+   procedure Restore
     (Self : in out OCL_Scanner; State : OCL_Scanner_State);
 
    function Token (Self : in out OCL_Scanner) return OCL_Token;
 
-   procedure Next (Self : in out OCL_Scanner);
+   procedure Forward (Self : in out OCL_Scanner);
 
 private
 
