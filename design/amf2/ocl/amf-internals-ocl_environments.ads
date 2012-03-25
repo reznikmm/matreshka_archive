@@ -55,7 +55,7 @@ with AMF.Elements;
 
 package AMF.Internals.OCL_Environments is
 
-   type Environment is tagged private;
+   type OCL_Environment is tagged private;
 
    --  lookupLocal()
    --  lookup()
@@ -71,7 +71,7 @@ package AMF.Internals.OCL_Environments is
    --  namedElements : NamedElement [0..*]
 
    procedure Add_Element
-    (Self     : in out Environment;
+    (Self     : in out OCL_Environment;
      Name     : League.Strings.Universal_String;
      Element  : not null AMF.Elements.Element_Access;
      Implicit : Boolean);
@@ -83,6 +83,6 @@ package AMF.Internals.OCL_Environments is
 
 private
 
-   type Environment is tagged null record;
+   type OCL_Environment is tagged null record;
 
 end AMF.Internals.OCL_Environments;

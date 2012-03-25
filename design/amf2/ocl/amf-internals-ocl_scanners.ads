@@ -42,53 +42,76 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body AMF.Internals.OCL_Environments is
+package AMF.Internals.OCL_Scanners is
 
-   --  lookupLocal()
-   --  lookup()
-   --  lookupLocal()
-   --  lookup()
-   --  addNamespace()
-   --  nestedEnvironment()
-   --  lookupImplicitAttribute()
-   --  lookupImplicitSourceForAttribute()
-   --  lookupImplicitAssociationEnd()
-   --  lookupImplicitOperation()
-   --
-   --  namedElements : NamedElement [0..*]
+   type OCL_Token is
+    (T_Error,
 
-   -----------------
-   -- Add_Element --
-   -----------------
+     --  Keywords.
 
-   procedure Add_Element
-    (Self     : in out OCL_Environment;
-     Name     : League.Strings.Universal_String;
-     Element  : not null AMF.Elements.Element_Access;
-     Implicit : Boolean)
-   is
-      --  [OCL 2.3.1] 9.5.1 Environment
-      --
-      --  "[5] Add a new named element to the environment. Note that this
-      --  operation is defined as a query operation so that it can be used in
-      --  OCL constraints.
-      --
-      --  context Environment::addElement (name : String,
-      --                     elem : ModelElement, imp : Boolean) : Environment
-      --  pre : -- the name must not clash with names already existing in this
-      --        -- environment
-      --      self.lookupLocal(name).oclIsUndefined()
-      --
-      --  post: result.parent = self.parent and
-      --      result.namedElements->includesAll (self.namedElements) and
-      --      result.namedElements->count (v | v.oclIsNew()) = 1 and
-      --      result.namedElements->forAll (v | v.oclIsNew() implies
-      --                            v.name = name and v.referredElement = elem)
-      --                            and
-      --                            v.mayBeImplicit = imp )"
+     T_And,
+     T_Body,
+     T_Context,
+     T_Def,
+     T_Derive,
+     T_Else,
+     T_End_If,
+     T_End_Package,
+     T_False,
+     T_If,
+     T_Implies,
+     T_In,
+     T_Init,
+     T_Inv,
+     T_Invalid,
+     T_Let,
+     T_Not,
+     T_Null,
+     T_Or,
+     T_Package,
+     T_Post,
+     T_Pre,
+     T_Self,
+     T_Static,
+     T_Then,
+     T_True,
+     T_Xor,
 
-   begin
-      null;
-   end Add_Element;
+     --  Restricted words.
 
-end AMF.Internals.OCL_Environments;
+     T_Bag,
+     T_Boolean,
+     T_Collection,
+     T_Integer,
+     T_Ocl_Any,
+     T_Ocl_Invalid,
+     T_Ocl_Message,
+     T_Ocl_Void,
+     T_Ordered_Set,
+     T_Real,
+     T_Sequence,
+     T_Set,
+     T_String,
+     T_Tuple,
+     T_Unlimited_Natural);
+
+   type OCL_Scanner is tagged limited private;
+
+   type OCL_Scanner_State is private;
+
+   function Save_State (Self : in out OCL_Scanner) return OCL_Scanner_State;
+
+   procedure Restore_State
+    (Self : in out OCL_Scanner; State : OCL_Scanner_State);
+
+   function Token (Self : in out OCL_Scanner) return OCL_Token;
+
+   procedure Next (Self : in out OCL_Scanner);
+
+private
+
+   type OCL_Scanner is tagged limited null record;
+
+   type OCL_Scanner_State is null record;
+
+end AMF.Internals.OCL_Scanners;

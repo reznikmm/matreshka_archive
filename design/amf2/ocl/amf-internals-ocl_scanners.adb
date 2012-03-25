@@ -42,53 +42,44 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body AMF.Internals.OCL_Environments is
+package body AMF.Internals.OCL_Scanners is
 
-   --  lookupLocal()
-   --  lookup()
-   --  lookupLocal()
-   --  lookup()
-   --  addNamespace()
-   --  nestedEnvironment()
-   --  lookupImplicitAttribute()
-   --  lookupImplicitSourceForAttribute()
-   --  lookupImplicitAssociationEnd()
-   --  lookupImplicitOperation()
-   --
-   --  namedElements : NamedElement [0..*]
+   ----------
+   -- Next --
+   ----------
 
-   -----------------
-   -- Add_Element --
-   -----------------
-
-   procedure Add_Element
-    (Self     : in out OCL_Environment;
-     Name     : League.Strings.Universal_String;
-     Element  : not null AMF.Elements.Element_Access;
-     Implicit : Boolean)
-   is
-      --  [OCL 2.3.1] 9.5.1 Environment
-      --
-      --  "[5] Add a new named element to the environment. Note that this
-      --  operation is defined as a query operation so that it can be used in
-      --  OCL constraints.
-      --
-      --  context Environment::addElement (name : String,
-      --                     elem : ModelElement, imp : Boolean) : Environment
-      --  pre : -- the name must not clash with names already existing in this
-      --        -- environment
-      --      self.lookupLocal(name).oclIsUndefined()
-      --
-      --  post: result.parent = self.parent and
-      --      result.namedElements->includesAll (self.namedElements) and
-      --      result.namedElements->count (v | v.oclIsNew()) = 1 and
-      --      result.namedElements->forAll (v | v.oclIsNew() implies
-      --                            v.name = name and v.referredElement = elem)
-      --                            and
-      --                            v.mayBeImplicit = imp )"
-
+   procedure Next (Self : in out OCL_Scanner) is
    begin
-      null;
-   end Add_Element;
+      raise Program_Error;
+   end Next;
 
-end AMF.Internals.OCL_Environments;
+   -------------------
+   -- Restore_State --
+   -------------------
+
+   procedure Restore_State
+    (Self : in out OCL_Scanner; State : OCL_Scanner_State) is
+   begin
+      raise Program_Error;
+   end Restore_State;
+
+   ----------------
+   -- Save_State --
+   ----------------
+
+   function Save_State (Self : in out OCL_Scanner) return OCL_Scanner_State is
+   begin
+      raise Program_Error;
+      return X : OCL_Scanner_State;
+   end Save_State;
+
+   -----------
+   -- Token --
+   -----------
+
+   function Token (Self : in out OCL_Scanner) return OCL_Token is
+   begin
+      return T_Error;
+   end Token;
+
+end AMF.Internals.OCL_Scanners;

@@ -44,11 +44,13 @@
 with AMF.UML.Classifiers;
 
 with AMF.OCL.Expression_In_Ocls;
+with AMF.Internals.OCL_Scanners;
 
 package AMF.Internals.OCL_Parser is
 
    function Parse_Expression_In_Ocl_CS
-    (Contextual_Classifier :
+    (Scanner               : in out AMF.Internals.OCL_Scanners.OCL_Scanner;
+     Contextual_Classifier :
        not null AMF.UML.Classifiers.UML_Classifier_Access)
        return not null AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access;
      
