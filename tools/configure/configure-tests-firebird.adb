@@ -87,40 +87,40 @@ package body Configure.Tests.Firebird is
          --  When pg_config is installed, it is used to check whether
          --  Firebird is installed and to retrieve linker switches to link
 
-         elsif Configure.Pkg_Config.Has_Pkg_Config then
-            if Configure.Pkg_Config.Has_Package (Firebird_Package_Name) then
-               Self.Report_Status ("yes (pkg-config)");
+         elsif Configure.Pkg_Config.Has_Pkg_Config and then
+           Configure.Pkg_Config.Has_Package (Firebird_Package_Name)
+         then
+            Self.Report_Status ("yes (pkg-config)");
 
-               Self.Report_Check ("checking for linker switches");
+            Self.Report_Check ("checking for linker switches");
 
-               declare
-                  Libs : constant String_Vectors.Vector
-                    := Configure.Pkg_Config.Package_Libs
-                      (Firebird_Package_Name);
-                  Opts : Unbounded_String;
+            declare
+               Libs : constant String_Vectors.Vector
+                 := Configure.Pkg_Config.Package_Libs
+                 (Firebird_Package_Name);
+               Opts : Unbounded_String;
 
-               begin
-                  for J in Libs.First_Index .. Libs.Last_Index loop
-                     if Length (Opts) /= 0 then
-                        Append (Opts, ", ");
-                     end if;
+            begin
+               for J in Libs.First_Index .. Libs.Last_Index loop
+                  if Length (Opts) /= 0 then
+                     Append (Opts, ", ");
+                  end if;
 
-                     Append (Opts, '"');
-                     Append (Opts, Libs.Element (J));
-                     Append (Opts, '"');
-                  end loop;
+                  Append (Opts, '"');
+                  Append (Opts, Libs.Element (J));
+                  Append (Opts, '"');
+               end loop;
 
-                  Substitutions.Insert (Firebird_Library_Options, Opts);
+               Substitutions.Insert (Firebird_Library_Options, Opts);
 
-                  Self.Report_Status (+Opts);
-               end;
-
-            else
-               Self.Report_Status ("no (not found)");
-            end if;
-
+               Self.Report_Status (+Opts);
+            end;
          else
-            Self.Report_Status ("no (pkg-config not found)");
+            Substitutions.Insert
+             (Firebird_Library_Options,
+              +"""-lfbclient""");
+
+            Self.Report_Status ("yes (try default)");
          end if;
 
       else

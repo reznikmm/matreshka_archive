@@ -227,6 +227,8 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       Pwd_Separator : constant Natural := Options.Index ('/');
       DB_Separator  : constant Natural := Options.Index ('@');
+      Charset       : constant League.Strings.Universal_String :=
+        League.Strings.To_Universal_String ("UTF8");        
 
       ------------------
       -- Create_Codec --
@@ -375,6 +377,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       Self.Params.Clear;
       Self.Params.Append ((Isc_Dpb_User_Name, Get_User));
       Self.Params.Append ((Isc_Dpb_Password, Get_Password));
+      Self.Params.Append ((Isc_Dpb_Lc_Ctype, Charset));
 
       Self.Generate_DB_Params_Block;
 

@@ -141,9 +141,13 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
       if Status (Status'First) = 1
         and then Status (Status'First + 1) > 0
       then
-         sqlcode := Isc_Short (Isc_Sqlcode (Status.all));
-         Isc_Sql_Interprete (sqlcode, Buffer'Access, Huge_Buffer_Length);
-         Append;
+         if Isc_Sqlcode (Status.all) in
+           Isc_Long (Isc_Short'First) .. Isc_Long (Isc_Short'Last)
+         then
+            sqlcode := Isc_Short (Isc_Sqlcode (Status.all));
+            Isc_Sql_Interprete (sqlcode, Buffer'Access, Huge_Buffer_Length);
+            Append;
+         end if;
 
          while Isc_Interprete (Buffer'Access, Pos'Access) > 0 loop
             Append;

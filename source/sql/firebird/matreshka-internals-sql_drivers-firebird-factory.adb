@@ -2,9 +2,9 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                           SQL Database Access                            --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,67 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Directories;
-with GNAT.Expect;
+with Matreshka.Internals.SQL_Drivers.Firebird.Databases;
 
-with Configure.Instantiate;
+package body Matreshka.Internals.SQL_Drivers.Firebird.Factory is
 
-package body Configure.Builder is
+   type Firebird_Factory is new Abstract_Factory with null record;
 
-   use GNAT.Expect;
+   overriding function Create
+    (Self : not null access Firebird_Factory) return not null Database_Access;
 
-   -----------
-   -- Build --
-   -----------
+   ------------
+   -- Create --
+   ------------
 
-   function Build (Directory : String) return Boolean is
-      Result : Boolean;
-
+   overriding function Create
+    (Self : not null access Firebird_Factory) return not null Database_Access is
    begin
-      --  Generate project file from template when necessary.
+      return new Databases.Firebird_Database;
+   end Create;
 
-      if Ada.Directories.Exists (Directory & "check.gpr.in") then
-         Configure.Instantiate (Directory & "check.gpr", True);
-      end if;
+   use type Interfaces.C.int;
 
-      --  Run builder.
+   Factory : aliased Firebird_Factory;
 
-      begin
-         declare
-            Status : aliased Integer;
-            Output : constant String :=
-              Get_Command_Output
-               ("gnatmake",
-                (1 => new String'("-p"),
-                 2 => new String'("-P" & Directory & "/check.gpr")),
-                "",
-                Status'Access,
-                True);
-
-         begin
-            Result := Status = 0;
-         end;
-
-      exception
-         when GNAT.Expect.Invalid_Process =>
-            Result := False;
-      end;
-
-      --  Cleanup build directory.
-
-      if Ada.Directories.Exists (Directory & "_build") then
-         Ada.Directories.Delete_Tree (Directory & "_build");
-      end if;
-
-      --  Remove generated project file when necessary.
-
-      if Ada.Directories.Exists (Directory & "check.gpr.in")
-        and Ada.Directories.Exists (Directory & "check.gpr")
-      then
-         Ada.Directories.Delete_File (Directory & "check.gpr");
-      end if;
-
-      return Result;
-   end Build;
-
-end Configure.Builder;
+begin
+   Register (League.Strings.To_Universal_String ("FIREBIRD"), Factory'Access);
+end Matreshka.Internals.SQL_Drivers.Firebird.Factory;

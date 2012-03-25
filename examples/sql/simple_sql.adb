@@ -48,6 +48,7 @@ with League.Holders.Floats;
 with League.Holders.Integers;
 --with Matreshka.Internals.SQL_Drivers.Oracle.Factory;
 --with Matreshka.Internals.SQL_Drivers.PostgreSQL.Factory;
+--with Matreshka.Internals.SQL_Drivers.Firebird.Factory;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 with SQL.Databases;
 with SQL.Queries;
@@ -74,6 +75,12 @@ procedure Simple_SQL is
    DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
    DB_Options : constant League.Strings.Universal_String := +"test.db";
 
+   --  Firebird
+
+--   DB_Driver  : constant League.Strings.Universal_String := +"FIREBIRD";
+--   DB_Options : constant League.Strings.Universal_String :=
+--     +"SYSDBA/masterkey@localhost:/tmp/aaa";
+
    D : aliased SQL.Databases.SQL_Database
      := SQL.Databases.Create (DB_Driver, DB_Options);
 
@@ -85,7 +92,7 @@ begin
 
    begin
       Q.Prepare
-       (+"CREATE TABLE point (x INTEGER, y CHARACTER VARYING, z FLOAT)");
+       (+"CREATE TABLE point (x INTEGER, y CHARACTER VARYING (6), z FLOAT)");
       Q.Execute;
    end;
 

@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --with "../../gnat/matreshka_sql_oracle.gpr";
 --with "../../gnat/matreshka_sql_postgresql.gpr";
+--with "../../gnat/matreshka_sql_firebird.gpr";
 with "../../gnat/matreshka_sql_sqlite3.gpr";
 
 project Simple_SQL is
