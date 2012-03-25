@@ -53,5 +53,5 @@ package AMF.Internals.OCL_Parser is
      Contextual_Classifier :
        not null AMF.UML.Classifiers.UML_Classifier_Access)
        return not null AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access;
-     
+
 end AMF.Internals.OCL_Parser;

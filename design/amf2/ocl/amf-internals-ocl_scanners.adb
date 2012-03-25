@@ -53,6 +53,17 @@ package body AMF.Internals.OCL_Scanners is
       raise Program_Error;
    end Forward;
 
+   ---------------------
+   -- Get_String_Char --
+   ---------------------
+
+   function Get_String_Char
+    (Self : OCL_Scanner) return League.Strings.Universal_String is
+   begin
+      raise Program_Error;
+      return League.Strings.Empty_Universal_String;
+   end Get_String_Char;
+
    -------------
    -- Restore --
    -------------

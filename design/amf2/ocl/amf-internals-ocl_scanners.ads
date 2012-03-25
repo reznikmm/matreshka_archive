@@ -47,6 +47,8 @@ package AMF.Internals.OCL_Scanners is
    type OCL_Token is
     (T_Error,
 
+     T_String_Char,
+
      --  Keywords.
 
      T_And,
@@ -105,6 +107,9 @@ package AMF.Internals.OCL_Scanners is
     (Self : in out OCL_Scanner; State : OCL_Scanner_State);
 
    function Token (Self : in out OCL_Scanner) return OCL_Token;
+
+   function Get_String_Char
+    (Self : OCL_Scanner) return League.Strings.Universal_String;
 
    procedure Forward (Self : in out OCL_Scanner);
 

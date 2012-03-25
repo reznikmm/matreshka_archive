@@ -50,6 +50,7 @@ with AMF.OCL.Boolean_Literal_Exps;
 with AMF.OCL.Literal_Exps;
 with AMF.OCL.Ocl_Expressions;
 with AMF.OCL.Primitive_Literal_Exps;
+with AMF.OCL.String_Literal_Exps;
 
 package body AMF.Internals.OCL_Parser is
 
@@ -59,12 +60,16 @@ package body AMF.Internals.OCL_Parser is
    use AMF.OCL.Literal_Exps;
    use AMF.OCL.Ocl_Expressions;
    use AMF.OCL.Primitive_Literal_Exps;
+   use AMF.OCL.String_Literal_Exps;
 
    Self_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("self");
 
    function Create_Boolean_Literal_Exp
      return not null OCL_Boolean_Literal_Exp_Access;
+
+   function Create_String_Literal_Exp
+     return not null OCL_String_Literal_Exp_Access;
 
    function Get_Environment_With_Parents
     (Namespace : not null AMF.UML.Namespaces.UML_Namespace_Access)
@@ -93,6 +98,11 @@ package body AMF.Internals.OCL_Parser is
      Ast     : out OCL_Primitive_Literal_Exp_Access);
    --  [OCL 2.3.1] 9.4.15 PrimitiveLiteralExpCS
 
+   procedure Parse_String_Literal_Exp_CS
+    (Scanner : in out AMF.Internals.OCL_Scanners.OCL_Scanner;
+     Ast     : out OCL_String_Literal_Exp_Access);
+   --  [OCL 2.3.1] 9.4.20 StringLiteralExpCS
+
    procedure Parse_Boolean_Literal_Exp_CS
     (Scanner : in out AMF.Internals.OCL_Scanners.OCL_Scanner;
      Ast     : out OCL_Boolean_Literal_Exp_Access);
@@ -107,6 +117,16 @@ package body AMF.Internals.OCL_Parser is
    begin
       return null;
    end Create_Boolean_Literal_Exp;
+
+   -------------------------------
+   -- Create_String_Literal_Exp --
+   -------------------------------
+
+   function Create_String_Literal_Exp
+     return not null OCL_String_Literal_Exp_Access is
+   begin
+      return null;
+   end Create_String_Literal_Exp;
 
    ----------------------------------
    -- Get_Environment_With_Parents --
@@ -139,6 +159,8 @@ package body AMF.Internals.OCL_Parser is
             Ast.Set_Boolean_Symbol (True);
             Scanner.Forward;
 
+            return;
+
          --  [95] [B] BooleanLiteralExpCS ::= ‘false’
 
          when T_False =>
@@ -149,6 +171,8 @@ package body AMF.Internals.OCL_Parser is
             Ast := Create_Boolean_Literal_Exp;
             Ast.Set_Boolean_Symbol (False);
             Scanner.Forward;
+
+            return;
 
          when others =>
             null;
@@ -189,7 +213,7 @@ package body AMF.Internals.OCL_Parser is
 
       return Ast;
    end Parse_Expression_In_Ocl_CS;
-     
+
    --------------------------
    -- Parse_Literal_Exp_CS --
    --------------------------
@@ -260,12 +284,22 @@ package body AMF.Internals.OCL_Parser is
      Env     : OCL_Environment;
      Ast     : out OCL_Primitive_Literal_Exp_Access)
    is
+      Ast_C : OCL_String_Literal_Exp_Access;
       Ast_D : OCL_Boolean_Literal_Exp_Access;
 
    begin
       --  [A] PrimitiveLiteralExpCS ::= IntegerLiteralExpCS
       --  [B] PrimitiveLiteralExpCS ::= RealLiteralExpCS
       --  [C] PrimitiveLiteralExpCS ::= StringLiteralExpCS
+
+      Parse_String_Literal_Exp_CS (Scanner, Ast_C);
+
+      if Ast_C /= null then
+         Ast := OCL_Primitive_Literal_Exp_Access (Ast_C);
+
+         return;
+      end if;
+
       --  [D] PrimitiveLiteralExpCS ::= BooleanLiteralExpCS
 
       Parse_Boolean_Literal_Exp_CS (Scanner, Ast_D);
@@ -282,5 +316,40 @@ package body AMF.Internals.OCL_Parser is
 
       raise Program_Error;
    end Parse_Primitive_Literal_Exp_CS;
+
+   ---------------------------------
+   -- Parse_String_Literal_Exp_CS --
+   ---------------------------------
+
+   procedure Parse_String_Literal_Exp_CS
+    (Scanner : in out AMF.Internals.OCL_Scanners.OCL_Scanner;
+     Ast     : out OCL_String_Literal_Exp_Access)
+   is
+      Symbol : League.Strings.Universal_String;
+
+   begin
+      --  [A] StringLiteralExpCS ::= #x27 StringChar* #x27
+      --  [B] StringLiteralExpCS[1] ::=
+      --        StringLiteralExpCS[2] WhiteSpaceChar* #x27 StringChar* #x27
+
+      if Scanner.Token = T_String_Char then
+         --  Synthesized attributes
+         --
+         --  [A] StringLiteralExpCS.ast.symbol = <CodePoints of StringChar*>
+         --  [B] StringLiteralExpCS.ast.symbol
+         --     = StringLiteralExpCS[2] + <CodePoints of StringChar*>
+
+         Symbol := Scanner.Get_String_Char;
+         Scanner.Forward;
+
+         while Scanner.Token = T_String_Char loop
+            Symbol.Append (Scanner.Get_String_Char);
+            Scanner.Forward;
+         end loop;
+
+         Ast := Create_String_Literal_Exp;
+         Ast.Set_String_Symbol (Symbol);
+      end if;
+   end Parse_String_Literal_Exp_CS;
 
 end AMF.Internals.OCL_Parser;
