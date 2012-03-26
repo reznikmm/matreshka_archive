@@ -137,50 +137,50 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Package;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
       Base := Aux - 1;
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
