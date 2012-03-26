@@ -84,7 +84,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Association,
         Extent   => 0,
         Proxy    =>
@@ -245,7 +245,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Class,
         Extent   => 0,
         Proxy    =>
@@ -385,7 +385,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment,
         Extent   => 0,
         Proxy    =>
@@ -436,7 +436,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -497,7 +497,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type,
         Extent   => 0,
         Proxy    =>
@@ -635,7 +635,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import,
         Extent   => 0,
         Proxy    =>
@@ -706,7 +706,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration,
         Extent   => 0,
         Proxy    =>
@@ -851,7 +851,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
@@ -903,7 +903,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression,
         Extent   => 0,
         Proxy    =>
@@ -962,7 +962,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
@@ -1018,7 +1018,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation,
         Extent   => 0,
         Proxy    =>
@@ -1186,7 +1186,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package,
         Extent   => 0,
         Proxy    =>
@@ -1310,7 +1310,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import,
         Extent   => 0,
         Proxy    =>
@@ -1379,7 +1379,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge,
         Extent   => 0,
         Proxy    =>
@@ -1446,7 +1446,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -1512,7 +1512,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type,
         Extent   => 0,
         Proxy    =>
@@ -1650,7 +1650,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Property,
         Extent   => 0,
         Proxy    =>
@@ -1767,7 +1767,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       CMOF_Element_Table.Increment_Last;
       Self := CMOF_Element_Table.Last;
 
-      CMOF_Element_Table.Table (Self) :=
+      CMOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag,
         Extent   => 0,
         Proxy    =>

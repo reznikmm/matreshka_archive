@@ -137,21 +137,16 @@ package AMF.Internals.Tables.CMOF_Types is
    type Member_Array is array (Natural range 0 .. 21) of Member_Record;
    --  XXX Size of this array must be generated.
 
-   type Element_Record (Kind : Element_Kinds := E_None) is record
-      case Kind is
-         when E_None =>
-            null;
-
-         when others =>
-            Extent : AMF_Extent;
-            Proxy  : AMF.Elements.Element_Access;
-            Member : Member_Array;
-            --  First element (with index 0) contains index of first collection
-            --  of class instance. To save space all class's collections have
-            --  sequential numbers, thus we need to store only first one. This
-            --  first collection is used to establish links with other classes
-            --  when correspondig association end is not owned by the class.
-      end case;
+   type Element_Record is record
+      Kind   : Element_Kinds := E_None;
+      Extent : AMF_Extent;
+      Proxy  : AMF.Elements.Element_Access;
+      Member : Member_Array;
+      --  First element (with index 0) contains index of first collection of
+      --  class instance. To save space all class's collections have sequential
+      --  numbers, thus we need to store only first one. This first collection
+      --  is used to establish links with other classes when correspondig
+      --  association end is not owned by the class.
    end record;
 
 end AMF.Internals.Tables.CMOF_Types;

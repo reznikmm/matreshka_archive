@@ -477,6 +477,10 @@ begin
 
    AMF.Internals.Factories.Set_CMOF_Factory (Factory'Access);
 
+   --  Initialize element table.
+
+   AMF.Internals.Tables.CMOF_Element_Table.Initialize (0);
+
    --  Initialize metamodel.
 
    AMF.Internals.Tables.CMOF_Metamodel.Initialize_Objects;

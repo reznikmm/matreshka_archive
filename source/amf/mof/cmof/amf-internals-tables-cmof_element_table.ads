@@ -41,14 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with GNAT.Table;
-
+with AMF.Internals.Generic_Element_Table;
 with AMF.Internals.Tables.CMOF_Types;
 
 package AMF.Internals.Tables.CMOF_Element_Table is
-  new GNAT.Table
-       (AMF.Internals.Tables.CMOF_Types.Element_Record,
-        AMF.Internals.CMOF_Element,
-        1,
-        10_000,
-        100);
+  new AMF.Internals.Generic_Element_Table
+       (AMF.Internals.Tables.CMOF_Types.Element_Record);
