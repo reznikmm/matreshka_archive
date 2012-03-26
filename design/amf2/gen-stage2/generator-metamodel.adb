@@ -626,7 +626,7 @@ package body Generator.Metamodel is
       Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Constructors");
       Unit.Context.Add (+"AMF.Internals.Extents");
       Unit.Add_Line
-       (+"      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_"
+       (+"      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_"
            & To_Ada_Identifier (Meta_Class.Get_Name.Value)
            & ";");
       Unit.Add_Line
