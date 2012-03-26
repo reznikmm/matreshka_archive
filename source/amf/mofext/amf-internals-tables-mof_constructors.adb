@@ -67,7 +67,7 @@ package body AMF.Internals.Tables.MOF_Constructors is
       MOF_Element_Table.Increment_Last;
       Self := MOF_Element_Table.Last;
 
-      MOF_Element_Table.Table (Self) :=
+      MOF_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.MOF_Types.E_MOF_Tag,
         Extent   => 0,
         Proxy    =>

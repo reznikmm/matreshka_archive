@@ -179,7 +179,7 @@ package body AMF.Internals.Factories.MOF_Factory is
       --  Create corresponding element.
 
       if MC = MC_MOF_Tag then
-         Element := AMF.Internals.Tables.MOF_Constructors.Create_Tag;
+         Element := AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag;
 
       else
          raise Program_Error with CMOF_Element'Image (MC);

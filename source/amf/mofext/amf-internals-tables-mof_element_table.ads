@@ -41,14 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with GNAT.Table;
-
+with AMF.Internals.Generic_Element_Table;
 with AMF.Internals.Tables.MOF_Types;
 
 package AMF.Internals.Tables.MOF_Element_Table is
- new GNAT.Table
-      (AMF.Internals.Tables.MOF_Types.Element_Record,
-       AMF.Internals.MOF_Element,
-       AMF.Internals.MOF_Element'First,
-       100,
-       100);
+  new AMF.Internals.Generic_Element_Table
+       (AMF.Internals.Tables.MOF_Types.Element_Record);

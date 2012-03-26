@@ -65,7 +65,7 @@ begin
 
    --  Initialize element table of MOF metamodel.
 
-   AMF.Internals.Tables.MOF_Element_Table.Increment_Last;
+   AMF.Internals.Tables.MOF_Element_Table.Initialize (MOF_Metamodel);
 
    --  Register factories.
 
