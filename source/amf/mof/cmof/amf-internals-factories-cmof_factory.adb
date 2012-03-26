@@ -269,64 +269,64 @@ package body AMF.Internals.Factories.CMOF_Factory is
       --  Create corresponding proxy element.
 
       if MC = MC_CMOF_Association then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
 
       elsif MC = MC_CMOF_Class then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
 
       elsif MC = MC_CMOF_Comment then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
 
       elsif MC = MC_CMOF_Constraint then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
 
       elsif MC = MC_CMOF_Data_Type then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Data_Type;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Data_Type;
 
       elsif MC = MC_CMOF_Element_Import then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Element_Import;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Element_Import;
 
       elsif MC = MC_CMOF_Enumeration then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration;
 
       elsif MC = MC_CMOF_Enumeration_Literal then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
 
       elsif MC = MC_CMOF_Expression then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Expression;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Expression;
 
       elsif MC = MC_CMOF_Opaque_Expression then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
 
       elsif MC = MC_CMOF_Operation then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
 
       elsif MC = MC_CMOF_Package then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Package;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package;
 
       elsif MC = MC_CMOF_Package_Import then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Package_Import;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Import;
 
       elsif MC = MC_CMOF_Package_Merge then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Package_Merge;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Merge;
 
       elsif MC = MC_CMOF_Parameter then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
 
       elsif MC = MC_CMOF_Primitive_Type then
          Element :=
-           AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+           AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
 
       elsif MC = MC_CMOF_Property then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
 
       elsif MC = MC_CMOF_Tag then
-         Element := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
 
       else
          raise Program_Error with CMOF_Element'Image (MC);

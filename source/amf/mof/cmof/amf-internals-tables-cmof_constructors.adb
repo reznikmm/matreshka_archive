@@ -73,11 +73,11 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
-   ------------------------
-   -- Create_Association --
-   ------------------------
+   -----------------------------
+   -- Create_CMOF_Association --
+   -----------------------------
 
-   function Create_Association return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Association return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -85,7 +85,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Association,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Association,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Associations.CMOF_Association_Proxy'(Element => Self),
@@ -232,13 +232,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       return Self;
-   end Create_Association;
+   end Create_CMOF_Association;
 
-   ------------------
-   -- Create_Class --
-   ------------------
+   -----------------------
+   -- Create_CMOF_Class --
+   -----------------------
 
-   function Create_Class return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Class return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -246,7 +246,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Class,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Class,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Classes.CMOF_Class_Proxy'(Element => Self),
@@ -372,13 +372,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Class;
+   end Create_CMOF_Class;
 
-   --------------------
-   -- Create_Comment --
-   --------------------
+   -------------------------
+   -- Create_CMOF_Comment --
+   -------------------------
 
-   function Create_Comment return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Comment return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -386,7 +386,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Comment,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Comments.CMOF_Comment_Proxy'(Element => Self),
@@ -423,13 +423,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Comment;
+   end Create_CMOF_Comment;
 
-   -----------------------
-   -- Create_Constraint --
-   -----------------------
+   ----------------------------
+   -- Create_CMOF_Constraint --
+   ----------------------------
 
-   function Create_Constraint return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Constraint return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -437,7 +437,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Constraint,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Constraints.CMOF_Constraint_Proxy'(Element => Self),
@@ -484,13 +484,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Constraint;
+   end Create_CMOF_Constraint;
 
-   ----------------------
-   -- Create_Data_Type --
-   ----------------------
+   ---------------------------
+   -- Create_CMOF_Data_Type --
+   ---------------------------
 
-   function Create_Data_Type return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Data_Type return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -498,7 +498,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Data_Type,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy'(Element => Self),
@@ -622,13 +622,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Data_Type;
+   end Create_CMOF_Data_Type;
 
-   ---------------------------
-   -- Create_Element_Import --
-   ---------------------------
+   --------------------------------
+   -- Create_CMOF_Element_Import --
+   --------------------------------
 
-   function Create_Element_Import return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Element_Import return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -636,7 +636,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Element_Import,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'(Element => Self),
@@ -693,13 +693,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Element_Import;
+   end Create_CMOF_Element_Import;
 
-   ------------------------
-   -- Create_Enumeration --
-   ------------------------
+   -----------------------------
+   -- Create_CMOF_Enumeration --
+   -----------------------------
 
-   function Create_Enumeration return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Enumeration return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -707,7 +707,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Enumeration,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Enumerations.CMOF_Enumeration_Proxy'(Element => Self),
@@ -838,13 +838,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Enumeration;
+   end Create_CMOF_Enumeration;
 
-   --------------------------------
-   -- Create_Enumeration_Literal --
-   --------------------------------
+   -------------------------------------
+   -- Create_CMOF_Enumeration_Literal --
+   -------------------------------------
 
-   function Create_Enumeration_Literal return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Enumeration_Literal return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -852,7 +852,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Enumeration_Literal,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Enumeration_Literals.CMOF_Enumeration_Literal_Proxy'(Element => Self),
@@ -890,13 +890,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Enumeration_Literal;
+   end Create_CMOF_Enumeration_Literal;
 
-   -----------------------
-   -- Create_Expression --
-   -----------------------
+   ----------------------------
+   -- Create_CMOF_Expression --
+   ----------------------------
 
-   function Create_Expression return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Expression return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -904,7 +904,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Expression,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Expressions.CMOF_Expression_Proxy'(Element => Self),
@@ -949,13 +949,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Expression;
+   end Create_CMOF_Expression;
 
-   ------------------------------
-   -- Create_Opaque_Expression --
-   ------------------------------
+   -----------------------------------
+   -- Create_CMOF_Opaque_Expression --
+   -----------------------------------
 
-   function Create_Opaque_Expression return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Opaque_Expression return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -963,7 +963,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Opaque_Expression,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Opaque_Expressions.CMOF_Opaque_Expression_Proxy'(Element => Self),
@@ -1005,13 +1005,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Opaque_Expression;
+   end Create_CMOF_Opaque_Expression;
 
-   ----------------------
-   -- Create_Operation --
-   ----------------------
+   ---------------------------
+   -- Create_CMOF_Operation --
+   ---------------------------
 
-   function Create_Operation return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Operation return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1019,7 +1019,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Operation,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'(Element => Self),
@@ -1173,13 +1173,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       return Self;
-   end Create_Operation;
+   end Create_CMOF_Operation;
 
-   --------------------
-   -- Create_Package --
-   --------------------
+   -------------------------
+   -- Create_CMOF_Package --
+   -------------------------
 
-   function Create_Package return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Package return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1187,7 +1187,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Packages.CMOF_Package_Proxy'(Element => Self),
@@ -1297,13 +1297,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       return Self;
-   end Create_Package;
+   end Create_CMOF_Package;
 
-   ---------------------------
-   -- Create_Package_Import --
-   ---------------------------
+   --------------------------------
+   -- Create_CMOF_Package_Import --
+   --------------------------------
 
-   function Create_Package_Import return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Package_Import return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1311,7 +1311,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package_Import,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Package_Imports.CMOF_Package_Import_Proxy'(Element => Self),
@@ -1366,13 +1366,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Package_Import;
+   end Create_CMOF_Package_Import;
 
-   --------------------------
-   -- Create_Package_Merge --
-   --------------------------
+   -------------------------------
+   -- Create_CMOF_Package_Merge --
+   -------------------------------
 
-   function Create_Package_Merge return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Package_Merge return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1380,7 +1380,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Package_Merge,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'(Element => Self),
@@ -1433,13 +1433,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Package_Merge;
+   end Create_CMOF_Package_Merge;
 
-   ----------------------
-   -- Create_Parameter --
-   ----------------------
+   ---------------------------
+   -- Create_CMOF_Parameter --
+   ---------------------------
 
-   function Create_Parameter return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Parameter return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1447,7 +1447,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Parameter,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'(Element => Self),
@@ -1499,13 +1499,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Parameter;
+   end Create_CMOF_Parameter;
 
-   ---------------------------
-   -- Create_Primitive_Type --
-   ---------------------------
+   --------------------------------
+   -- Create_CMOF_Primitive_Type --
+   --------------------------------
 
-   function Create_Primitive_Type return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Primitive_Type return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1513,7 +1513,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Primitive_Type,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Primitive_Types.CMOF_Primitive_Type_Proxy'(Element => Self),
@@ -1637,13 +1637,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
-   end Create_Primitive_Type;
+   end Create_CMOF_Primitive_Type;
 
-   ---------------------
-   -- Create_Property --
-   ---------------------
+   --------------------------
+   -- Create_CMOF_Property --
+   --------------------------
 
-   function Create_Property return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Property return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1651,7 +1651,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Property,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Property,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Properties.CMOF_Property_Proxy'(Element => Self),
@@ -1754,13 +1754,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Property;
+   end Create_CMOF_Property;
 
-   ----------------
-   -- Create_Tag --
-   ----------------
+   ---------------------
+   -- Create_CMOF_Tag --
+   ---------------------
 
-   function Create_Tag return AMF.Internals.CMOF_Element is
+   function Create_CMOF_Tag return AMF.Internals.CMOF_Element is
       Self : AMF.Internals.CMOF_Element;
 
    begin
@@ -1768,7 +1768,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
       Self := CMOF_Element_Table.Last;
 
       CMOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.CMOF_Types.E_Tag,
+       (Kind     => AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Element => Self),
@@ -1809,6 +1809,6 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
-   end Create_Tag;
+   end Create_CMOF_Tag;
 
 end AMF.Internals.Tables.CMOF_Constructors;

@@ -92,65 +92,65 @@ package body AMF.Internals.Tables.CMOF_Reflection is
      Property : CMOF_Element) return League.Holders.Holder
    is
 
-      function Association_Get return League.Holders.Holder;
+      function CMOF_Association_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Association class.
 
-      function Class_Get return League.Holders.Holder;
+      function CMOF_Class_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Class class.
 
-      function Comment_Get return League.Holders.Holder;
+      function CMOF_Comment_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Comment class.
 
-      function Constraint_Get return League.Holders.Holder;
+      function CMOF_Constraint_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Constraint class.
 
-      function Data_Type_Get return League.Holders.Holder;
+      function CMOF_Data_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of DataType class.
 
-      function Element_Import_Get return League.Holders.Holder;
+      function CMOF_Element_Import_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ElementImport class.
 
-      function Enumeration_Get return League.Holders.Holder;
+      function CMOF_Enumeration_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Enumeration class.
 
-      function Enumeration_Literal_Get return League.Holders.Holder;
+      function CMOF_Enumeration_Literal_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of EnumerationLiteral class.
 
-      function Expression_Get return League.Holders.Holder;
+      function CMOF_Expression_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Expression class.
 
-      function Opaque_Expression_Get return League.Holders.Holder;
+      function CMOF_Opaque_Expression_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of OpaqueExpression class.
 
-      function Operation_Get return League.Holders.Holder;
+      function CMOF_Operation_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Operation class.
 
-      function Package_Get return League.Holders.Holder;
+      function CMOF_Package_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Package class.
 
-      function Package_Import_Get return League.Holders.Holder;
+      function CMOF_Package_Import_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of PackageImport class.
 
-      function Package_Merge_Get return League.Holders.Holder;
+      function CMOF_Package_Merge_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of PackageMerge class.
 
-      function Parameter_Get return League.Holders.Holder;
+      function CMOF_Parameter_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Parameter class.
 
-      function Primitive_Type_Get return League.Holders.Holder;
+      function CMOF_Primitive_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of PrimitiveType class.
 
-      function Property_Get return League.Holders.Holder;
+      function CMOF_Property_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Property class.
 
-      function Tag_Get return League.Holders.Holder;
+      function CMOF_Tag_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Tag class.
 
-      ---------------------
-      -- Association_Get --
-      ---------------------
+      --------------------------
+      -- CMOF_Association_Get --
+      --------------------------
 
-      function Association_Get return League.Holders.Holder is
+      function CMOF_Association_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -358,13 +358,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Get;
+      end CMOF_Association_Get;
 
-      ---------------
-      -- Class_Get --
-      ---------------
+      --------------------
+      -- CMOF_Class_Get --
+      --------------------
 
-      function Class_Get return League.Holders.Holder is
+      function CMOF_Class_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -556,13 +556,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Class_Get;
+      end CMOF_Class_Get;
 
-      -----------------
-      -- Comment_Get --
-      -----------------
+      ----------------------
+      -- CMOF_Comment_Get --
+      ----------------------
 
-      function Comment_Get return League.Holders.Holder is
+      function CMOF_Comment_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element then
             --  Comment::annotatedElement : Element
@@ -608,13 +608,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Comment_Get;
+      end CMOF_Comment_Get;
 
-      --------------------
-      -- Constraint_Get --
-      --------------------
+      -------------------------
+      -- CMOF_Constraint_Get --
+      -------------------------
 
-      function Constraint_Get return League.Holders.Holder is
+      function CMOF_Constraint_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Constraint_Constrained_Element then
             --  Constraint::constrainedElement : Element
@@ -703,13 +703,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Constraint_Get;
+      end CMOF_Constraint_Get;
 
-      -------------------
-      -- Data_Type_Get --
-      -------------------
+      ------------------------
+      -- CMOF_Data_Type_Get --
+      ------------------------
 
-      function Data_Type_Get return League.Holders.Holder is
+      function CMOF_Data_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -885,13 +885,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Type_Get;
+      end CMOF_Data_Type_Get;
 
-      ------------------------
-      -- Element_Import_Get --
-      ------------------------
+      -----------------------------
+      -- CMOF_Element_Import_Get --
+      -----------------------------
 
-      function Element_Import_Get return League.Holders.Holder is
+      function CMOF_Element_Import_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Alias then
             --  ElementImport::alias : String
@@ -979,13 +979,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Element_Import_Get;
+      end CMOF_Element_Import_Get;
 
-      ---------------------
-      -- Enumeration_Get --
-      ---------------------
+      --------------------------
+      -- CMOF_Enumeration_Get --
+      --------------------------
 
-      function Enumeration_Get return League.Holders.Holder is
+      function CMOF_Enumeration_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -1169,13 +1169,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Get;
+      end CMOF_Enumeration_Get;
 
-      -----------------------------
-      -- Enumeration_Literal_Get --
-      -----------------------------
+      ----------------------------------
+      -- CMOF_Enumeration_Literal_Get --
+      ----------------------------------
 
-      function Enumeration_Literal_Get return League.Holders.Holder is
+      function CMOF_Enumeration_Literal_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Literal_Enumeration then
             --  EnumerationLiteral::enumeration : Enumeration
@@ -1247,13 +1247,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Literal_Get;
+      end CMOF_Enumeration_Literal_Get;
 
-      --------------------
-      -- Expression_Get --
-      --------------------
+      -------------------------
+      -- CMOF_Expression_Get --
+      -------------------------
 
-      function Expression_Get return League.Holders.Holder is
+      function CMOF_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1333,13 +1333,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_Get;
+      end CMOF_Expression_Get;
 
-      ---------------------------
-      -- Opaque_Expression_Get --
-      ---------------------------
+      --------------------------------
+      -- CMOF_Opaque_Expression_Get --
+      --------------------------------
 
-      function Opaque_Expression_Get return League.Holders.Holder is
+      function CMOF_Opaque_Expression_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Opaque_Expression_Body then
             --  OpaqueExpression::body : String
@@ -1427,13 +1427,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Expression_Get;
+      end CMOF_Opaque_Expression_Get;
 
-      -------------------
-      -- Operation_Get --
-      -------------------
+      ------------------------
+      -- CMOF_Operation_Get --
+      ------------------------
 
-      function Operation_Get return League.Holders.Holder is
+      function CMOF_Operation_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Body_Condition then
             --  Operation::bodyCondition : Constraint
@@ -1708,13 +1708,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Get;
+      end CMOF_Operation_Get;
 
-      -----------------
-      -- Package_Get --
-      -----------------
+      ----------------------
+      -- CMOF_Package_Get --
+      ----------------------
 
-      function Package_Get return League.Holders.Holder is
+      function CMOF_Package_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
@@ -1874,13 +1874,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Get;
+      end CMOF_Package_Get;
 
-      ------------------------
-      -- Package_Import_Get --
-      ------------------------
+      -----------------------------
+      -- CMOF_Package_Import_Get --
+      -----------------------------
 
-      function Package_Import_Get return League.Holders.Holder is
+      function CMOF_Package_Import_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Import_Imported_Package then
             --  PackageImport::importedPackage : Package
@@ -1960,13 +1960,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Import_Get;
+      end CMOF_Package_Import_Get;
 
-      -----------------------
-      -- Package_Merge_Get --
-      -----------------------
+      ----------------------------
+      -- CMOF_Package_Merge_Get --
+      ----------------------------
 
-      function Package_Merge_Get return League.Holders.Holder is
+      function CMOF_Package_Merge_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Merge_Merged_Package then
             --  PackageMerge::mergedPackage : Package
@@ -2038,13 +2038,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Merge_Get;
+      end CMOF_Package_Merge_Get;
 
-      -------------------
-      -- Parameter_Get --
-      -------------------
+      ------------------------
+      -- CMOF_Parameter_Get --
+      ------------------------
 
-      function Parameter_Get return League.Holders.Holder is
+      function CMOF_Parameter_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Parameter_Default then
             --  Parameter::default : String
@@ -2173,13 +2173,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Get;
+      end CMOF_Parameter_Get;
 
-      ------------------------
-      -- Primitive_Type_Get --
-      ------------------------
+      -----------------------------
+      -- CMOF_Primitive_Type_Get --
+      -----------------------------
 
-      function Primitive_Type_Get return League.Holders.Holder is
+      function CMOF_Primitive_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -2355,13 +2355,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Primitive_Type_Get;
+      end CMOF_Primitive_Type_Get;
 
-      ------------------
-      -- Property_Get --
-      ------------------
+      -----------------------
+      -- CMOF_Property_Get --
+      -----------------------
 
-      function Property_Get return League.Holders.Holder is
+      function CMOF_Property_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Association then
             --  Property::association : Association
@@ -2598,13 +2598,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Get;
+      end CMOF_Property_Get;
 
-      -------------
-      -- Tag_Get --
-      -------------
+      ------------------
+      -- CMOF_Tag_Get --
+      ------------------
 
-      function Tag_Get return League.Holders.Holder is
+      function CMOF_Tag_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element then
             --  Tag::element : Element
@@ -2667,66 +2667,66 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tag_Get;
+      end CMOF_Tag_Get;
 
    begin
       case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.CMOF_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Association =>
-            return Association_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return CMOF_Association_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Class =>
-            return Class_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return CMOF_Class_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Comment =>
-            return Comment_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            return CMOF_Comment_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Constraint =>
-            return Constraint_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return CMOF_Constraint_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Data_Type =>
-            return Data_Type_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return CMOF_Data_Type_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Element_Import =>
-            return Element_Import_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return CMOF_Element_Import_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration =>
-            return Enumeration_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return CMOF_Enumeration_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration_Literal =>
-            return Enumeration_Literal_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return CMOF_Enumeration_Literal_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Expression =>
-            return Expression_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return CMOF_Expression_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Opaque_Expression =>
-            return Opaque_Expression_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return CMOF_Opaque_Expression_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Operation =>
-            return Operation_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return CMOF_Operation_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package =>
-            return Package_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return CMOF_Package_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Import =>
-            return Package_Import_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return CMOF_Package_Import_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Merge =>
-            return Package_Merge_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return CMOF_Package_Merge_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Parameter =>
-            return Parameter_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return CMOF_Parameter_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Primitive_Type =>
-            return Primitive_Type_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return CMOF_Primitive_Type_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Property =>
-            return Property_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return CMOF_Property_Get;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Tag =>
-            return Tag_Get;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return CMOF_Tag_Get;
       end case;
    end Get;
 
@@ -2740,58 +2740,58 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          when AMF.Internals.Tables.CMOF_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Association =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Association;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Class =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Class;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Comment =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Comment;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Constraint =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Constraint;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Data_Type =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Data_Type;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Element_Import =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Element_Import;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration_Literal =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration_Literal;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Expression =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Expression;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Opaque_Expression =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Opaque_Expression;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Operation =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Operation;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Import =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Import;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Merge =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Merge;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Parameter =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Parameter;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Primitive_Type =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Primitive_Type;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Property =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Property;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Tag =>
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
             return AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Tag;
       end case;
    end Get_Meta_Class;
@@ -2806,65 +2806,65 @@ package body AMF.Internals.Tables.CMOF_Reflection is
      Value    : League.Holders.Holder)
    is
 
-      procedure Association_Set;
+      procedure CMOF_Association_Set;
       --  Sets attribute's value of instance of Association class.
 
-      procedure Class_Set;
+      procedure CMOF_Class_Set;
       --  Sets attribute's value of instance of Class class.
 
-      procedure Comment_Set;
+      procedure CMOF_Comment_Set;
       --  Sets attribute's value of instance of Comment class.
 
-      procedure Constraint_Set;
+      procedure CMOF_Constraint_Set;
       --  Sets attribute's value of instance of Constraint class.
 
-      procedure Data_Type_Set;
+      procedure CMOF_Data_Type_Set;
       --  Sets attribute's value of instance of DataType class.
 
-      procedure Element_Import_Set;
+      procedure CMOF_Element_Import_Set;
       --  Sets attribute's value of instance of ElementImport class.
 
-      procedure Enumeration_Set;
+      procedure CMOF_Enumeration_Set;
       --  Sets attribute's value of instance of Enumeration class.
 
-      procedure Enumeration_Literal_Set;
+      procedure CMOF_Enumeration_Literal_Set;
       --  Sets attribute's value of instance of EnumerationLiteral class.
 
-      procedure Expression_Set;
+      procedure CMOF_Expression_Set;
       --  Sets attribute's value of instance of Expression class.
 
-      procedure Opaque_Expression_Set;
+      procedure CMOF_Opaque_Expression_Set;
       --  Sets attribute's value of instance of OpaqueExpression class.
 
-      procedure Operation_Set;
+      procedure CMOF_Operation_Set;
       --  Sets attribute's value of instance of Operation class.
 
-      procedure Package_Set;
+      procedure CMOF_Package_Set;
       --  Sets attribute's value of instance of Package class.
 
-      procedure Package_Import_Set;
+      procedure CMOF_Package_Import_Set;
       --  Sets attribute's value of instance of PackageImport class.
 
-      procedure Package_Merge_Set;
+      procedure CMOF_Package_Merge_Set;
       --  Sets attribute's value of instance of PackageMerge class.
 
-      procedure Parameter_Set;
+      procedure CMOF_Parameter_Set;
       --  Sets attribute's value of instance of Parameter class.
 
-      procedure Primitive_Type_Set;
+      procedure CMOF_Primitive_Type_Set;
       --  Sets attribute's value of instance of PrimitiveType class.
 
-      procedure Property_Set;
+      procedure CMOF_Property_Set;
       --  Sets attribute's value of instance of Property class.
 
-      procedure Tag_Set;
+      procedure CMOF_Tag_Set;
       --  Sets attribute's value of instance of Tag class.
 
-      ---------------------
-      -- Association_Set --
-      ---------------------
+      --------------------------
+      -- CMOF_Association_Set --
+      --------------------------
 
-      procedure Association_Set is
+      procedure CMOF_Association_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Is_Derived then
             --  Association::isDerived : Boolean
@@ -2904,13 +2904,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Set;
+      end CMOF_Association_Set;
 
-      ---------------
-      -- Class_Set --
-      ---------------
+      --------------------
+      -- CMOF_Class_Set --
+      --------------------
 
-      procedure Class_Set is
+      procedure CMOF_Class_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Is_Abstract then
             --  Class::isAbstract : Boolean
@@ -2950,13 +2950,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Class_Set;
+      end CMOF_Class_Set;
 
-      -----------------
-      -- Comment_Set --
-      -----------------
+      ----------------------
+      -- CMOF_Comment_Set --
+      ----------------------
 
-      procedure Comment_Set is
+      procedure CMOF_Comment_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Body then
             --  Comment::body : String
@@ -2968,13 +2968,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Comment_Set;
+      end CMOF_Comment_Set;
 
-      --------------------
-      -- Constraint_Set --
-      --------------------
+      -------------------------
+      -- CMOF_Constraint_Set --
+      -------------------------
 
-      procedure Constraint_Set is
+      procedure CMOF_Constraint_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Constraint_Context then
             --  Constraint::context : Namespace
@@ -3007,13 +3007,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Constraint_Set;
+      end CMOF_Constraint_Set;
 
-      -------------------
-      -- Data_Type_Set --
-      -------------------
+      ------------------------
+      -- CMOF_Data_Type_Set --
+      ------------------------
 
-      procedure Data_Type_Set is
+      procedure CMOF_Data_Type_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -3046,13 +3046,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Data_Type_Set;
+      end CMOF_Data_Type_Set;
 
-      ------------------------
-      -- Element_Import_Set --
-      ------------------------
+      -----------------------------
+      -- CMOF_Element_Import_Set --
+      -----------------------------
 
-      procedure Element_Import_Set is
+      procedure CMOF_Element_Import_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Alias then
             --  ElementImport::alias : String
@@ -3085,13 +3085,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Element_Import_Set;
+      end CMOF_Element_Import_Set;
 
-      ---------------------
-      -- Enumeration_Set --
-      ---------------------
+      --------------------------
+      -- CMOF_Enumeration_Set --
+      --------------------------
 
-      procedure Enumeration_Set is
+      procedure CMOF_Enumeration_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -3124,13 +3124,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Set;
+      end CMOF_Enumeration_Set;
 
-      -----------------------------
-      -- Enumeration_Literal_Set --
-      -----------------------------
+      ----------------------------------
+      -- CMOF_Enumeration_Literal_Set --
+      ----------------------------------
 
-      procedure Enumeration_Literal_Set is
+      procedure CMOF_Enumeration_Literal_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Literal_Enumeration then
             --  EnumerationLiteral::enumeration : Enumeration
@@ -3156,13 +3156,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enumeration_Literal_Set;
+      end CMOF_Enumeration_Literal_Set;
 
-      --------------------
-      -- Expression_Set --
-      --------------------
+      -------------------------
+      -- CMOF_Expression_Set --
+      -------------------------
 
-      procedure Expression_Set is
+      procedure CMOF_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -3188,13 +3188,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_Set;
+      end CMOF_Expression_Set;
 
-      ---------------------------
-      -- Opaque_Expression_Set --
-      ---------------------------
+      --------------------------------
+      -- CMOF_Opaque_Expression_Set --
+      --------------------------------
 
-      procedure Opaque_Expression_Set is
+      procedure CMOF_Opaque_Expression_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -3220,13 +3220,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Opaque_Expression_Set;
+      end CMOF_Opaque_Expression_Set;
 
-      -------------------
-      -- Operation_Set --
-      -------------------
+      ------------------------
+      -- CMOF_Operation_Set --
+      ------------------------
 
-      procedure Operation_Set is
+      procedure CMOF_Operation_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Body_Condition then
             --  Operation::bodyCondition : Constraint
@@ -3280,13 +3280,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Set;
+      end CMOF_Operation_Set;
 
-      -----------------
-      -- Package_Set --
-      -----------------
+      ----------------------
+      -- CMOF_Package_Set --
+      ----------------------
 
-      procedure Package_Set is
+      procedure CMOF_Package_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -3319,13 +3319,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Set;
+      end CMOF_Package_Set;
 
-      ------------------------
-      -- Package_Import_Set --
-      ------------------------
+      -----------------------------
+      -- CMOF_Package_Import_Set --
+      -----------------------------
 
-      procedure Package_Import_Set is
+      procedure CMOF_Package_Import_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Import_Imported_Package then
             --  PackageImport::importedPackage : Package
@@ -3351,13 +3351,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Import_Set;
+      end CMOF_Package_Import_Set;
 
-      -----------------------
-      -- Package_Merge_Set --
-      -----------------------
+      ----------------------------
+      -- CMOF_Package_Merge_Set --
+      ----------------------------
 
-      procedure Package_Merge_Set is
+      procedure CMOF_Package_Merge_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Merge_Merged_Package then
             --  PackageMerge::mergedPackage : Package
@@ -3376,13 +3376,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Package_Merge_Set;
+      end CMOF_Package_Merge_Set;
 
-      -------------------
-      -- Parameter_Set --
-      -------------------
+      ------------------------
+      -- CMOF_Parameter_Set --
+      ------------------------
 
-      procedure Parameter_Set is
+      procedure CMOF_Parameter_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Parameter_Default then
             --  Parameter::default : String
@@ -3457,13 +3457,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Parameter_Set;
+      end CMOF_Parameter_Set;
 
-      ------------------------
-      -- Primitive_Type_Set --
-      ------------------------
+      -----------------------------
+      -- CMOF_Primitive_Type_Set --
+      -----------------------------
 
-      procedure Primitive_Type_Set is
+      procedure CMOF_Primitive_Type_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -3496,13 +3496,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Primitive_Type_Set;
+      end CMOF_Primitive_Type_Set;
 
-      ------------------
-      -- Property_Set --
-      ------------------
+      -----------------------
+      -- CMOF_Property_Set --
+      -----------------------
 
-      procedure Property_Set is
+      procedure CMOF_Property_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Association then
             --  Property::association : Association
@@ -3626,13 +3626,13 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Set;
+      end CMOF_Property_Set;
 
-      -------------
-      -- Tag_Set --
-      -------------
+      ------------------
+      -- CMOF_Tag_Set --
+      ------------------
 
-      procedure Tag_Set is
+      procedure CMOF_Tag_Set is
       begin
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Name then
             --  Tag::name : String
@@ -3658,65 +3658,65 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tag_Set;
+      end CMOF_Tag_Set;
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.CMOF_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Association =>
-            Association_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            CMOF_Association_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Class =>
-            Class_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            CMOF_Class_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Comment =>
-            Comment_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            CMOF_Comment_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Constraint =>
-            Constraint_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            CMOF_Constraint_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Data_Type =>
-            Data_Type_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            CMOF_Data_Type_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Element_Import =>
-            Element_Import_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            CMOF_Element_Import_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration =>
-            Enumeration_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            CMOF_Enumeration_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Enumeration_Literal =>
-            Enumeration_Literal_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            CMOF_Enumeration_Literal_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Expression =>
-            Expression_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            CMOF_Expression_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Opaque_Expression =>
-            Opaque_Expression_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            CMOF_Opaque_Expression_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Operation =>
-            Operation_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            CMOF_Operation_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package =>
-            Package_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            CMOF_Package_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Import =>
-            Package_Import_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            CMOF_Package_Import_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Package_Merge =>
-            Package_Merge_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            CMOF_Package_Merge_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Parameter =>
-            Parameter_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            CMOF_Parameter_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Primitive_Type =>
-            Primitive_Type_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            CMOF_Primitive_Type_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Property =>
-            Property_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            CMOF_Property_Set;
 
-         when AMF.Internals.Tables.CMOF_Types.E_Tag =>
-            Tag_Set;
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            CMOF_Tag_Set;
       end case;
    end Set;
 

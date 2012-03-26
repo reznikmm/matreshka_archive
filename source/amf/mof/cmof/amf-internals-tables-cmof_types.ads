@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,24 +57,24 @@ package AMF.Internals.Tables.CMOF_Types is
 
    type Element_Kinds is
      (E_None,
-      E_Association,
-      E_Class,
-      E_Comment,
-      E_Constraint,
-      E_Data_Type,
-      E_Element_Import,
-      E_Enumeration,
-      E_Enumeration_Literal,
-      E_Expression,
-      E_Opaque_Expression,
-      E_Operation,
-      E_Package,
-      E_Package_Import,
-      E_Package_Merge,
-      E_Parameter,
-      E_Primitive_Type,
-      E_Property,
-      E_Tag);
+      E_CMOF_Association,
+      E_CMOF_Class,
+      E_CMOF_Comment,
+      E_CMOF_Constraint,
+      E_CMOF_Data_Type,
+      E_CMOF_Element_Import,
+      E_CMOF_Enumeration,
+      E_CMOF_Enumeration_Literal,
+      E_CMOF_Expression,
+      E_CMOF_Opaque_Expression,
+      E_CMOF_Operation,
+      E_CMOF_Package,
+      E_CMOF_Package_Import,
+      E_CMOF_Package_Merge,
+      E_CMOF_Parameter,
+      E_CMOF_Primitive_Type,
+      E_CMOF_Property,
+      E_CMOF_Tag);
 
    type Member_Kinds is
     (M_None,

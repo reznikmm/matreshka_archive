@@ -2164,2405 +2164,2405 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
       Base := Aux - 1;
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Class;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Association;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Package;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Primitive_Type;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Operation;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Constraint;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Opaque_Expression;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Parameter;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Enumeration_Literal;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Comment;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Property;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
-      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_Tag;
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,40 +46,40 @@
 
 package AMF.Internals.Tables.CMOF_Constructors is
 
-   function Create_Association return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Association return AMF.Internals.CMOF_Element;
 
-   function Create_Class return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Class return AMF.Internals.CMOF_Element;
 
-   function Create_Comment return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Comment return AMF.Internals.CMOF_Element;
 
-   function Create_Constraint return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Constraint return AMF.Internals.CMOF_Element;
 
-   function Create_Data_Type return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Data_Type return AMF.Internals.CMOF_Element;
 
-   function Create_Element_Import return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Element_Import return AMF.Internals.CMOF_Element;
 
-   function Create_Enumeration return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration return AMF.Internals.CMOF_Element;
 
-   function Create_Enumeration_Literal return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration_Literal return AMF.Internals.CMOF_Element;
 
-   function Create_Expression return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Expression return AMF.Internals.CMOF_Element;
 
-   function Create_Opaque_Expression return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Opaque_Expression return AMF.Internals.CMOF_Element;
 
-   function Create_Operation return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Operation return AMF.Internals.CMOF_Element;
 
-   function Create_Package return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package return AMF.Internals.CMOF_Element;
 
-   function Create_Package_Import return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Import return AMF.Internals.CMOF_Element;
 
-   function Create_Package_Merge return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Merge return AMF.Internals.CMOF_Element;
 
-   function Create_Parameter return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Parameter return AMF.Internals.CMOF_Element;
 
-   function Create_Primitive_Type return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Primitive_Type return AMF.Internals.CMOF_Element;
 
-   function Create_Property return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Property return AMF.Internals.CMOF_Element;
 
-   function Create_Tag return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Tag return AMF.Internals.CMOF_Element;
 
 end AMF.Internals.Tables.CMOF_Constructors;
