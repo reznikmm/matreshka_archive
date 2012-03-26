@@ -151,7 +151,9 @@ package body Generator.Constructors is
           ("      Self := " & Module_Info.Ada_Name & "_Element_Table.Last;");
          Unit.Add_Line;
          Unit.Add_Line
-          ("      " & Module_Info.Ada_Name & "_Element_Table.Table (Self) :=");
+          ("      "
+             & Module_Info.Ada_Name
+             & "_Element_Table.Table (Self).all :=");
          Unit.Add_Line ("       (Kind     => " & Element_Kind & ",");
          Unit.Add_Line (+"        Extent   => 0,");
          Unit.Add_Line (+"        Proxy    =>");
