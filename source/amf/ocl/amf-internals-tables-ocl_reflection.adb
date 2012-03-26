@@ -145,125 +145,125 @@ package body AMF.Internals.Tables.OCL_Reflection is
      Property : CMOF_Element) return League.Holders.Holder
    is
 
-      function Any_Type_Get return League.Holders.Holder;
+      function OCL_Any_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of AnyType class.
 
-      function Association_Class_Call_Exp_Get return League.Holders.Holder;
+      function OCL_Association_Class_Call_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of AssociationClassCallExp class.
 
-      function Bag_Type_Get return League.Holders.Holder;
+      function OCL_Bag_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of BagType class.
 
-      function Boolean_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Boolean_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of BooleanLiteralExp class.
 
-      function Collection_Item_Get return League.Holders.Holder;
+      function OCL_Collection_Item_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of CollectionItem class.
 
-      function Collection_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Collection_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of CollectionLiteralExp class.
 
-      function Collection_Range_Get return League.Holders.Holder;
+      function OCL_Collection_Range_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of CollectionRange class.
 
-      function Collection_Type_Get return League.Holders.Holder;
+      function OCL_Collection_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of CollectionType class.
 
-      function Enum_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Enum_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of EnumLiteralExp class.
 
-      function Expression_In_Ocl_Get return League.Holders.Holder;
+      function OCL_Expression_In_Ocl_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of ExpressionInOcl class.
 
-      function If_Exp_Get return League.Holders.Holder;
+      function OCL_If_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of IfExp class.
 
-      function Integer_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Integer_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of IntegerLiteralExp class.
 
-      function Invalid_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Invalid_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of InvalidLiteralExp class.
 
-      function Invalid_Type_Get return League.Holders.Holder;
+      function OCL_Invalid_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of InvalidType class.
 
-      function Iterate_Exp_Get return League.Holders.Holder;
+      function OCL_Iterate_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of IterateExp class.
 
-      function Iterator_Exp_Get return League.Holders.Holder;
+      function OCL_Iterator_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of IteratorExp class.
 
-      function Let_Exp_Get return League.Holders.Holder;
+      function OCL_Let_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of LetExp class.
 
-      function Message_Exp_Get return League.Holders.Holder;
+      function OCL_Message_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of MessageExp class.
 
-      function Message_Type_Get return League.Holders.Holder;
+      function OCL_Message_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of MessageType class.
 
-      function Null_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Null_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of NullLiteralExp class.
 
-      function Operation_Call_Exp_Get return League.Holders.Holder;
+      function OCL_Operation_Call_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of OperationCallExp class.
 
-      function Ordered_Set_Type_Get return League.Holders.Holder;
+      function OCL_Ordered_Set_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of OrderedSetType class.
 
-      function Property_Call_Exp_Get return League.Holders.Holder;
+      function OCL_Property_Call_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of PropertyCallExp class.
 
-      function Real_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Real_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of RealLiteralExp class.
 
-      function Sequence_Type_Get return League.Holders.Holder;
+      function OCL_Sequence_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SequenceType class.
 
-      function Set_Type_Get return League.Holders.Holder;
+      function OCL_Set_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of SetType class.
 
-      function State_Exp_Get return League.Holders.Holder;
+      function OCL_State_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StateExp class.
 
-      function String_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_String_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of StringLiteralExp class.
 
-      function Template_Parameter_Type_Get return League.Holders.Holder;
+      function OCL_Template_Parameter_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TemplateParameterType class.
 
-      function Tuple_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Tuple_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TupleLiteralExp class.
 
-      function Tuple_Literal_Part_Get return League.Holders.Holder;
+      function OCL_Tuple_Literal_Part_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TupleLiteralPart class.
 
-      function Tuple_Type_Get return League.Holders.Holder;
+      function OCL_Tuple_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TupleType class.
 
-      function Type_Exp_Get return League.Holders.Holder;
+      function OCL_Type_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of TypeExp class.
 
-      function Unlimited_Natural_Literal_Exp_Get return League.Holders.Holder;
+      function OCL_Unlimited_Natural_Literal_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of UnlimitedNaturalLiteralExp class.
 
-      function Unspecified_Value_Exp_Get return League.Holders.Holder;
+      function OCL_Unspecified_Value_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of UnspecifiedValueExp class.
 
-      function Variable_Get return League.Holders.Holder;
+      function OCL_Variable_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Variable class.
 
-      function Variable_Exp_Get return League.Holders.Holder;
+      function OCL_Variable_Exp_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of VariableExp class.
 
-      function Void_Type_Get return League.Holders.Holder;
+      function OCL_Void_Type_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of VoidType class.
 
-      ------------------
-      -- Any_Type_Get --
-      ------------------
+      ----------------------
+      -- OCL_Any_Type_Get --
+      ----------------------
 
-      function Any_Type_Get return League.Holders.Holder is
+      function OCL_Any_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -598,13 +598,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Any_Type_Get;
+      end OCL_Any_Type_Get;
 
-      ------------------------------------
-      -- Association_Class_Call_Exp_Get --
-      ------------------------------------
+      ----------------------------------------
+      -- OCL_Association_Class_Call_Exp_Get --
+      ----------------------------------------
 
-      function Association_Class_Call_Exp_Get return League.Holders.Holder is
+      function OCL_Association_Class_Call_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -728,13 +728,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Class_Call_Exp_Get;
+      end OCL_Association_Class_Call_Exp_Get;
 
-      ------------------
-      -- Bag_Type_Get --
-      ------------------
+      ----------------------
+      -- OCL_Bag_Type_Get --
+      ----------------------
 
-      function Bag_Type_Get return League.Holders.Holder is
+      function OCL_Bag_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -1094,13 +1094,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Bag_Type_Get;
+      end OCL_Bag_Type_Get;
 
-      -----------------------------
-      -- Boolean_Literal_Exp_Get --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Boolean_Literal_Exp_Get --
+      ---------------------------------
 
-      function Boolean_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Boolean_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Boolean_Literal_Exp_Boolean_Symbol then
             --  BooleanLiteralExp::booleanSymbol : Boolean
@@ -1197,13 +1197,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Boolean_Literal_Exp_Get;
+      end OCL_Boolean_Literal_Exp_Get;
 
-      -------------------------
-      -- Collection_Item_Get --
-      -------------------------
+      -----------------------------
+      -- OCL_Collection_Item_Get --
+      -----------------------------
 
-      function Collection_Item_Get return League.Holders.Holder is
+      function OCL_Collection_Item_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -1301,13 +1301,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Item_Get;
+      end OCL_Collection_Item_Get;
 
-      --------------------------------
-      -- Collection_Literal_Exp_Get --
-      --------------------------------
+      ------------------------------------
+      -- OCL_Collection_Literal_Exp_Get --
+      ------------------------------------
 
-      function Collection_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Collection_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -1412,13 +1412,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Literal_Exp_Get;
+      end OCL_Collection_Literal_Exp_Get;
 
-      --------------------------
-      -- Collection_Range_Get --
-      --------------------------
+      ------------------------------
+      -- OCL_Collection_Range_Get --
+      ------------------------------
 
-      function Collection_Range_Get return League.Holders.Holder is
+      function OCL_Collection_Range_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -1525,13 +1525,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Range_Get;
+      end OCL_Collection_Range_Get;
 
-      -------------------------
-      -- Collection_Type_Get --
-      -------------------------
+      -----------------------------
+      -- OCL_Collection_Type_Get --
+      -----------------------------
 
-      function Collection_Type_Get return League.Holders.Holder is
+      function OCL_Collection_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -1891,13 +1891,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Type_Get;
+      end OCL_Collection_Type_Get;
 
-      --------------------------
-      -- Enum_Literal_Exp_Get --
-      --------------------------
+      ------------------------------
+      -- OCL_Enum_Literal_Exp_Get --
+      ------------------------------
 
-      function Enum_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Enum_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -1995,13 +1995,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enum_Literal_Exp_Get;
+      end OCL_Enum_Literal_Exp_Get;
 
-      ---------------------------
-      -- Expression_In_Ocl_Get --
-      ---------------------------
+      -------------------------------
+      -- OCL_Expression_In_Ocl_Get --
+      -------------------------------
 
-      function Expression_In_Ocl_Get return League.Holders.Holder is
+      function OCL_Expression_In_Ocl_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
             --  OpaqueExpression::behavior : Behavior
@@ -2194,13 +2194,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_In_Ocl_Get;
+      end OCL_Expression_In_Ocl_Get;
 
-      ----------------
-      -- If_Exp_Get --
-      ----------------
+      --------------------
+      -- OCL_If_Exp_Get --
+      --------------------
 
-      function If_Exp_Get return League.Holders.Holder is
+      function OCL_If_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -2316,13 +2316,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end If_Exp_Get;
+      end OCL_If_Exp_Get;
 
-      -----------------------------
-      -- Integer_Literal_Exp_Get --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Integer_Literal_Exp_Get --
+      ---------------------------------
 
-      function Integer_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Integer_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -2419,13 +2419,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Integer_Literal_Exp_Get;
+      end OCL_Integer_Literal_Exp_Get;
 
-      -----------------------------
-      -- Invalid_Literal_Exp_Get --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Invalid_Literal_Exp_Get --
+      ---------------------------------
 
-      function Invalid_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Invalid_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -2514,13 +2514,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Invalid_Literal_Exp_Get;
+      end OCL_Invalid_Literal_Exp_Get;
 
-      ----------------------
-      -- Invalid_Type_Get --
-      ----------------------
+      --------------------------
+      -- OCL_Invalid_Type_Get --
+      --------------------------
 
-      function Invalid_Type_Get return League.Holders.Holder is
+      function OCL_Invalid_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -2855,13 +2855,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Invalid_Type_Get;
+      end OCL_Invalid_Type_Get;
 
-      ---------------------
-      -- Iterate_Exp_Get --
-      ---------------------
+      -------------------------
+      -- OCL_Iterate_Exp_Get --
+      -------------------------
 
-      function Iterate_Exp_Get return League.Holders.Holder is
+      function OCL_Iterate_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
             --  LoopExp::body : OclExpression
@@ -2985,13 +2985,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Iterate_Exp_Get;
+      end OCL_Iterate_Exp_Get;
 
-      ----------------------
-      -- Iterator_Exp_Get --
-      ----------------------
+      --------------------------
+      -- OCL_Iterator_Exp_Get --
+      --------------------------
 
-      function Iterator_Exp_Get return League.Holders.Holder is
+      function OCL_Iterator_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
             --  LoopExp::body : OclExpression
@@ -3106,13 +3106,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Iterator_Exp_Get;
+      end OCL_Iterator_Exp_Get;
 
-      -----------------
-      -- Let_Exp_Get --
-      -----------------
+      ---------------------
+      -- OCL_Let_Exp_Get --
+      ---------------------
 
-      function Let_Exp_Get return League.Holders.Holder is
+      function OCL_Let_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -3219,13 +3219,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Let_Exp_Get;
+      end OCL_Let_Exp_Get;
 
-      ---------------------
-      -- Message_Exp_Get --
-      ---------------------
+      -------------------------
+      -- OCL_Message_Exp_Get --
+      -------------------------
 
-      function Message_Exp_Get return League.Holders.Holder is
+      function OCL_Message_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Argument then
             --  MessageExp::argument : OclExpression
@@ -3349,13 +3349,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Exp_Get;
+      end OCL_Message_Exp_Get;
 
-      ----------------------
-      -- Message_Type_Get --
-      ----------------------
+      --------------------------
+      -- OCL_Message_Type_Get --
+      --------------------------
 
-      function Message_Type_Get return League.Holders.Holder is
+      function OCL_Message_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -3708,13 +3708,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Type_Get;
+      end OCL_Message_Type_Get;
 
-      --------------------------
-      -- Null_Literal_Exp_Get --
-      --------------------------
+      ------------------------------
+      -- OCL_Null_Literal_Exp_Get --
+      ------------------------------
 
-      function Null_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Null_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -3803,13 +3803,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Null_Literal_Exp_Get;
+      end OCL_Null_Literal_Exp_Get;
 
-      ----------------------------
-      -- Operation_Call_Exp_Get --
-      ----------------------------
+      --------------------------------
+      -- OCL_Operation_Call_Exp_Get --
+      --------------------------------
 
-      function Operation_Call_Exp_Get return League.Holders.Holder is
+      function OCL_Operation_Call_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Argument then
             --  OperationCallExp::argument : OclExpression
@@ -3924,13 +3924,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Call_Exp_Get;
+      end OCL_Operation_Call_Exp_Get;
 
-      --------------------------
-      -- Ordered_Set_Type_Get --
-      --------------------------
+      ------------------------------
+      -- OCL_Ordered_Set_Type_Get --
+      ------------------------------
 
-      function Ordered_Set_Type_Get return League.Holders.Holder is
+      function OCL_Ordered_Set_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -4290,13 +4290,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Ordered_Set_Type_Get;
+      end OCL_Ordered_Set_Type_Get;
 
-      ---------------------------
-      -- Property_Call_Exp_Get --
-      ---------------------------
+      -------------------------------
+      -- OCL_Property_Call_Exp_Get --
+      -------------------------------
 
-      function Property_Call_Exp_Get return League.Holders.Holder is
+      function OCL_Property_Call_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -4420,13 +4420,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Call_Exp_Get;
+      end OCL_Property_Call_Exp_Get;
 
-      --------------------------
-      -- Real_Literal_Exp_Get --
-      --------------------------
+      ------------------------------
+      -- OCL_Real_Literal_Exp_Get --
+      ------------------------------
 
-      function Real_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Real_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -4523,13 +4523,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Real_Literal_Exp_Get;
+      end OCL_Real_Literal_Exp_Get;
 
-      -----------------------
-      -- Sequence_Type_Get --
-      -----------------------
+      ---------------------------
+      -- OCL_Sequence_Type_Get --
+      ---------------------------
 
-      function Sequence_Type_Get return League.Holders.Holder is
+      function OCL_Sequence_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -4889,13 +4889,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Sequence_Type_Get;
+      end OCL_Sequence_Type_Get;
 
-      ------------------
-      -- Set_Type_Get --
-      ------------------
+      ----------------------
+      -- OCL_Set_Type_Get --
+      ----------------------
 
-      function Set_Type_Get return League.Holders.Holder is
+      function OCL_Set_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -5255,13 +5255,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Set_Type_Get;
+      end OCL_Set_Type_Get;
 
-      -------------------
-      -- State_Exp_Get --
-      -------------------
+      -----------------------
+      -- OCL_State_Exp_Get --
+      -----------------------
 
-      function State_Exp_Get return League.Holders.Holder is
+      function OCL_State_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -5359,13 +5359,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Exp_Get;
+      end OCL_State_Exp_Get;
 
-      ----------------------------
-      -- String_Literal_Exp_Get --
-      ----------------------------
+      --------------------------------
+      -- OCL_String_Literal_Exp_Get --
+      --------------------------------
 
-      function String_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_String_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -5462,13 +5462,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end String_Literal_Exp_Get;
+      end OCL_String_Literal_Exp_Get;
 
-      ---------------------------------
-      -- Template_Parameter_Type_Get --
-      ---------------------------------
+      -------------------------------------
+      -- OCL_Template_Parameter_Type_Get --
+      -------------------------------------
 
-      function Template_Parameter_Type_Get return League.Holders.Holder is
+      function OCL_Template_Parameter_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -5811,13 +5811,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Type_Get;
+      end OCL_Template_Parameter_Type_Get;
 
-      ---------------------------
-      -- Tuple_Literal_Exp_Get --
-      ---------------------------
+      -------------------------------
+      -- OCL_Tuple_Literal_Exp_Get --
+      -------------------------------
 
-      function Tuple_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Tuple_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -5914,13 +5914,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Literal_Exp_Get;
+      end OCL_Tuple_Literal_Exp_Get;
 
-      ----------------------------
-      -- Tuple_Literal_Part_Get --
-      ----------------------------
+      --------------------------------
+      -- OCL_Tuple_Literal_Part_Get --
+      --------------------------------
 
-      function Tuple_Literal_Part_Get return League.Holders.Holder is
+      function OCL_Tuple_Literal_Part_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute then
             --  TupleLiteralPart::attribute : Property
@@ -6018,13 +6018,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Literal_Part_Get;
+      end OCL_Tuple_Literal_Part_Get;
 
-      --------------------
-      -- Tuple_Type_Get --
-      --------------------
+      ------------------------
+      -- OCL_Tuple_Type_Get --
+      ------------------------
 
-      function Tuple_Type_Get return League.Holders.Holder is
+      function OCL_Tuple_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -6375,13 +6375,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Type_Get;
+      end OCL_Tuple_Type_Get;
 
-      ------------------
-      -- Type_Exp_Get --
-      ------------------
+      ----------------------
+      -- OCL_Type_Exp_Get --
+      ----------------------
 
-      function Type_Exp_Get return League.Holders.Holder is
+      function OCL_Type_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6479,13 +6479,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Type_Exp_Get;
+      end OCL_Type_Exp_Get;
 
-      ---------------------------------------
-      -- Unlimited_Natural_Literal_Exp_Get --
-      ---------------------------------------
+      -------------------------------------------
+      -- OCL_Unlimited_Natural_Literal_Exp_Get --
+      -------------------------------------------
 
-      function Unlimited_Natural_Literal_Exp_Get return League.Holders.Holder is
+      function OCL_Unlimited_Natural_Literal_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6582,13 +6582,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unlimited_Natural_Literal_Exp_Get;
+      end OCL_Unlimited_Natural_Literal_Exp_Get;
 
-      -------------------------------
-      -- Unspecified_Value_Exp_Get --
-      -------------------------------
+      -----------------------------------
+      -- OCL_Unspecified_Value_Exp_Get --
+      -----------------------------------
 
-      function Unspecified_Value_Exp_Get return League.Holders.Holder is
+      function OCL_Unspecified_Value_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6677,13 +6677,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unspecified_Value_Exp_Get;
+      end OCL_Unspecified_Value_Exp_Get;
 
-      ------------------
-      -- Variable_Get --
-      ------------------
+      ----------------------
+      -- OCL_Variable_Get --
+      ----------------------
 
-      function Variable_Get return League.Holders.Holder is
+      function OCL_Variable_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6790,13 +6790,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Get;
+      end OCL_Variable_Get;
 
-      ----------------------
-      -- Variable_Exp_Get --
-      ----------------------
+      --------------------------
+      -- OCL_Variable_Exp_Get --
+      --------------------------
 
-      function Variable_Exp_Get return League.Holders.Holder is
+      function OCL_Variable_Exp_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -6894,13 +6894,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Exp_Get;
+      end OCL_Variable_Exp_Get;
 
-      -------------------
-      -- Void_Type_Get --
-      -------------------
+      -----------------------
+      -- OCL_Void_Type_Get --
+      -----------------------
 
-      function Void_Type_Get return League.Holders.Holder is
+      function OCL_Void_Type_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             --  Classifier::attribute : Property
@@ -7235,126 +7235,126 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Void_Type_Get;
+      end OCL_Void_Type_Get;
 
    begin
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            return Any_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            return OCL_Any_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            return Association_Class_Call_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            return OCL_Association_Class_Call_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            return Bag_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            return OCL_Bag_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            return Boolean_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp =>
+            return OCL_Boolean_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            return Collection_Item_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
+            return OCL_Collection_Item_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            return Collection_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp =>
+            return OCL_Collection_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            return Collection_Range_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            return OCL_Collection_Range_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            return Collection_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            return OCL_Collection_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            return Enum_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
+            return OCL_Enum_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            return Expression_In_Ocl_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            return OCL_Expression_In_Ocl_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            return If_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            return OCL_If_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            return Integer_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp =>
+            return OCL_Integer_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            return Invalid_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp =>
+            return OCL_Invalid_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            return Invalid_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            return OCL_Invalid_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            return Iterate_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            return OCL_Iterate_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            return Iterator_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            return OCL_Iterator_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            return Let_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            return OCL_Let_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            return Message_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            return OCL_Message_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            return Message_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            return OCL_Message_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            return Null_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp =>
+            return OCL_Null_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            return Operation_Call_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            return OCL_Operation_Call_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            return Ordered_Set_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            return OCL_Ordered_Set_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            return Property_Call_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            return OCL_Property_Call_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            return Real_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp =>
+            return OCL_Real_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            return Sequence_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            return OCL_Sequence_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            return Set_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            return OCL_Set_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            return State_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
+            return OCL_State_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            return String_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp =>
+            return OCL_String_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            return Template_Parameter_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            return OCL_Template_Parameter_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            return Tuple_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp =>
+            return OCL_Tuple_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            return Tuple_Literal_Part_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
+            return OCL_Tuple_Literal_Part_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            return Tuple_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            return OCL_Tuple_Type_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            return Type_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
+            return OCL_Type_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            return Unlimited_Natural_Literal_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp =>
+            return OCL_Unlimited_Natural_Literal_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            return Unspecified_Value_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp =>
+            return OCL_Unspecified_Value_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            return Variable_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            return OCL_Variable_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            return Variable_Exp_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
+            return OCL_Variable_Exp_Get;
 
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            return Void_Type_Get;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            return OCL_Void_Type_Get;
       end case;
    end Get;
 
@@ -7368,118 +7368,118 @@ package body AMF.Internals.Tables.OCL_Reflection is
          when AMF.Internals.Tables.OCL_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Any_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Association_Class_Call_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Bag_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Boolean_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Item;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Range;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Enum_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Expression_In_Ocl;
 
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_If_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Integer_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Invalid_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Invalid_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Iterate_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Iterator_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Let_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Message_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Message_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Null_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Operation_Call_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Ordered_Set_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Property_Call_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Real_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Sequence_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Set_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_State_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_String_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Template_Parameter_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Literal_Part;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Type;
 
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Type_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Unlimited_Natural_Literal_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Unspecified_Value_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Variable;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Variable_Exp;
 
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
             return AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Void_Type;
       end case;
    end Get_Meta_Class;
@@ -7494,125 +7494,125 @@ package body AMF.Internals.Tables.OCL_Reflection is
      Value    : League.Holders.Holder)
    is
 
-      procedure Any_Type_Set;
+      procedure OCL_Any_Type_Set;
       --  Sets attribute's value of instance of AnyType class.
 
-      procedure Association_Class_Call_Exp_Set;
+      procedure OCL_Association_Class_Call_Exp_Set;
       --  Sets attribute's value of instance of AssociationClassCallExp class.
 
-      procedure Bag_Type_Set;
+      procedure OCL_Bag_Type_Set;
       --  Sets attribute's value of instance of BagType class.
 
-      procedure Boolean_Literal_Exp_Set;
+      procedure OCL_Boolean_Literal_Exp_Set;
       --  Sets attribute's value of instance of BooleanLiteralExp class.
 
-      procedure Collection_Item_Set;
+      procedure OCL_Collection_Item_Set;
       --  Sets attribute's value of instance of CollectionItem class.
 
-      procedure Collection_Literal_Exp_Set;
+      procedure OCL_Collection_Literal_Exp_Set;
       --  Sets attribute's value of instance of CollectionLiteralExp class.
 
-      procedure Collection_Range_Set;
+      procedure OCL_Collection_Range_Set;
       --  Sets attribute's value of instance of CollectionRange class.
 
-      procedure Collection_Type_Set;
+      procedure OCL_Collection_Type_Set;
       --  Sets attribute's value of instance of CollectionType class.
 
-      procedure Enum_Literal_Exp_Set;
+      procedure OCL_Enum_Literal_Exp_Set;
       --  Sets attribute's value of instance of EnumLiteralExp class.
 
-      procedure Expression_In_Ocl_Set;
+      procedure OCL_Expression_In_Ocl_Set;
       --  Sets attribute's value of instance of ExpressionInOcl class.
 
-      procedure If_Exp_Set;
+      procedure OCL_If_Exp_Set;
       --  Sets attribute's value of instance of IfExp class.
 
-      procedure Integer_Literal_Exp_Set;
+      procedure OCL_Integer_Literal_Exp_Set;
       --  Sets attribute's value of instance of IntegerLiteralExp class.
 
-      procedure Invalid_Literal_Exp_Set;
+      procedure OCL_Invalid_Literal_Exp_Set;
       --  Sets attribute's value of instance of InvalidLiteralExp class.
 
-      procedure Invalid_Type_Set;
+      procedure OCL_Invalid_Type_Set;
       --  Sets attribute's value of instance of InvalidType class.
 
-      procedure Iterate_Exp_Set;
+      procedure OCL_Iterate_Exp_Set;
       --  Sets attribute's value of instance of IterateExp class.
 
-      procedure Iterator_Exp_Set;
+      procedure OCL_Iterator_Exp_Set;
       --  Sets attribute's value of instance of IteratorExp class.
 
-      procedure Let_Exp_Set;
+      procedure OCL_Let_Exp_Set;
       --  Sets attribute's value of instance of LetExp class.
 
-      procedure Message_Exp_Set;
+      procedure OCL_Message_Exp_Set;
       --  Sets attribute's value of instance of MessageExp class.
 
-      procedure Message_Type_Set;
+      procedure OCL_Message_Type_Set;
       --  Sets attribute's value of instance of MessageType class.
 
-      procedure Null_Literal_Exp_Set;
+      procedure OCL_Null_Literal_Exp_Set;
       --  Sets attribute's value of instance of NullLiteralExp class.
 
-      procedure Operation_Call_Exp_Set;
+      procedure OCL_Operation_Call_Exp_Set;
       --  Sets attribute's value of instance of OperationCallExp class.
 
-      procedure Ordered_Set_Type_Set;
+      procedure OCL_Ordered_Set_Type_Set;
       --  Sets attribute's value of instance of OrderedSetType class.
 
-      procedure Property_Call_Exp_Set;
+      procedure OCL_Property_Call_Exp_Set;
       --  Sets attribute's value of instance of PropertyCallExp class.
 
-      procedure Real_Literal_Exp_Set;
+      procedure OCL_Real_Literal_Exp_Set;
       --  Sets attribute's value of instance of RealLiteralExp class.
 
-      procedure Sequence_Type_Set;
+      procedure OCL_Sequence_Type_Set;
       --  Sets attribute's value of instance of SequenceType class.
 
-      procedure Set_Type_Set;
+      procedure OCL_Set_Type_Set;
       --  Sets attribute's value of instance of SetType class.
 
-      procedure State_Exp_Set;
+      procedure OCL_State_Exp_Set;
       --  Sets attribute's value of instance of StateExp class.
 
-      procedure String_Literal_Exp_Set;
+      procedure OCL_String_Literal_Exp_Set;
       --  Sets attribute's value of instance of StringLiteralExp class.
 
-      procedure Template_Parameter_Type_Set;
+      procedure OCL_Template_Parameter_Type_Set;
       --  Sets attribute's value of instance of TemplateParameterType class.
 
-      procedure Tuple_Literal_Exp_Set;
+      procedure OCL_Tuple_Literal_Exp_Set;
       --  Sets attribute's value of instance of TupleLiteralExp class.
 
-      procedure Tuple_Literal_Part_Set;
+      procedure OCL_Tuple_Literal_Part_Set;
       --  Sets attribute's value of instance of TupleLiteralPart class.
 
-      procedure Tuple_Type_Set;
+      procedure OCL_Tuple_Type_Set;
       --  Sets attribute's value of instance of TupleType class.
 
-      procedure Type_Exp_Set;
+      procedure OCL_Type_Exp_Set;
       --  Sets attribute's value of instance of TypeExp class.
 
-      procedure Unlimited_Natural_Literal_Exp_Set;
+      procedure OCL_Unlimited_Natural_Literal_Exp_Set;
       --  Sets attribute's value of instance of UnlimitedNaturalLiteralExp class.
 
-      procedure Unspecified_Value_Exp_Set;
+      procedure OCL_Unspecified_Value_Exp_Set;
       --  Sets attribute's value of instance of UnspecifiedValueExp class.
 
-      procedure Variable_Set;
+      procedure OCL_Variable_Set;
       --  Sets attribute's value of instance of Variable class.
 
-      procedure Variable_Exp_Set;
+      procedure OCL_Variable_Exp_Set;
       --  Sets attribute's value of instance of VariableExp class.
 
-      procedure Void_Type_Set;
+      procedure OCL_Void_Type_Set;
       --  Sets attribute's value of instance of VoidType class.
 
-      ------------------
-      -- Any_Type_Set --
-      ------------------
+      ----------------------
+      -- OCL_Any_Type_Set --
+      ----------------------
 
-      procedure Any_Type_Set is
+      procedure OCL_Any_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -7715,13 +7715,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Any_Type_Set;
+      end OCL_Any_Type_Set;
 
-      ------------------------------------
-      -- Association_Class_Call_Exp_Set --
-      ------------------------------------
+      ----------------------------------------
+      -- OCL_Association_Class_Call_Exp_Set --
+      ----------------------------------------
 
-      procedure Association_Class_Call_Exp_Set is
+      procedure OCL_Association_Class_Call_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -7775,13 +7775,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Association_Class_Call_Exp_Set;
+      end OCL_Association_Class_Call_Exp_Set;
 
-      ------------------
-      -- Bag_Type_Set --
-      ------------------
+      ----------------------
+      -- OCL_Bag_Type_Set --
+      ----------------------
 
-      procedure Bag_Type_Set is
+      procedure OCL_Bag_Type_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
             --  CollectionType::elementType : Classifier
@@ -7891,13 +7891,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Bag_Type_Set;
+      end OCL_Bag_Type_Set;
 
-      -----------------------------
-      -- Boolean_Literal_Exp_Set --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Boolean_Literal_Exp_Set --
+      ---------------------------------
 
-      procedure Boolean_Literal_Exp_Set is
+      procedure OCL_Boolean_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Boolean_Literal_Exp_Boolean_Symbol then
             --  BooleanLiteralExp::booleanSymbol : Boolean
@@ -7937,13 +7937,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Boolean_Literal_Exp_Set;
+      end OCL_Boolean_Literal_Exp_Set;
 
-      -------------------------
-      -- Collection_Item_Set --
-      -------------------------
+      -----------------------------
+      -- OCL_Collection_Item_Set --
+      -----------------------------
 
-      procedure Collection_Item_Set is
+      procedure OCL_Collection_Item_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Item_Item then
             --  CollectionItem::item : OclExpression
@@ -7983,13 +7983,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Item_Set;
+      end OCL_Collection_Item_Set;
 
-      --------------------------------
-      -- Collection_Literal_Exp_Set --
-      --------------------------------
+      ------------------------------------
+      -- OCL_Collection_Literal_Exp_Set --
+      ------------------------------------
 
-      procedure Collection_Literal_Exp_Set is
+      procedure OCL_Collection_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Literal_Exp_Kind then
             --  CollectionLiteralExp::kind : CollectionKind
@@ -8029,13 +8029,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Literal_Exp_Set;
+      end OCL_Collection_Literal_Exp_Set;
 
-      --------------------------
-      -- Collection_Range_Set --
-      --------------------------
+      ------------------------------
+      -- OCL_Collection_Range_Set --
+      ------------------------------
 
-      procedure Collection_Range_Set is
+      procedure OCL_Collection_Range_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_First then
             --  CollectionRange::first : OclExpression
@@ -8082,13 +8082,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Range_Set;
+      end OCL_Collection_Range_Set;
 
-      -------------------------
-      -- Collection_Type_Set --
-      -------------------------
+      -----------------------------
+      -- OCL_Collection_Type_Set --
+      -----------------------------
 
-      procedure Collection_Type_Set is
+      procedure OCL_Collection_Type_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
             --  CollectionType::elementType : Classifier
@@ -8198,13 +8198,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Collection_Type_Set;
+      end OCL_Collection_Type_Set;
 
-      --------------------------
-      -- Enum_Literal_Exp_Set --
-      --------------------------
+      ------------------------------
+      -- OCL_Enum_Literal_Exp_Set --
+      ------------------------------
 
-      procedure Enum_Literal_Exp_Set is
+      procedure OCL_Enum_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -8244,13 +8244,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Enum_Literal_Exp_Set;
+      end OCL_Enum_Literal_Exp_Set;
 
-      ---------------------------
-      -- Expression_In_Ocl_Set --
-      ---------------------------
+      -------------------------------
+      -- OCL_Expression_In_Ocl_Set --
+      -------------------------------
 
-      procedure Expression_In_Ocl_Set is
+      procedure OCL_Expression_In_Ocl_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
             --  OpaqueExpression::behavior : Behavior
@@ -8339,13 +8339,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Expression_In_Ocl_Set;
+      end OCL_Expression_In_Ocl_Set;
 
-      ----------------
-      -- If_Exp_Set --
-      ----------------
+      --------------------
+      -- OCL_If_Exp_Set --
+      --------------------
 
-      procedure If_Exp_Set is
+      procedure OCL_If_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Condition then
             --  IfExp::condition : OclExpression
@@ -8399,13 +8399,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end If_Exp_Set;
+      end OCL_If_Exp_Set;
 
-      -----------------------------
-      -- Integer_Literal_Exp_Set --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Integer_Literal_Exp_Set --
+      ---------------------------------
 
-      procedure Integer_Literal_Exp_Set is
+      procedure OCL_Integer_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Integer_Literal_Exp_Integer_Symbol then
             --  IntegerLiteralExp::integerSymbol : Integer
@@ -8445,13 +8445,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Integer_Literal_Exp_Set;
+      end OCL_Integer_Literal_Exp_Set;
 
-      -----------------------------
-      -- Invalid_Literal_Exp_Set --
-      -----------------------------
+      ---------------------------------
+      -- OCL_Invalid_Literal_Exp_Set --
+      ---------------------------------
 
-      procedure Invalid_Literal_Exp_Set is
+      procedure OCL_Invalid_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -8484,13 +8484,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Invalid_Literal_Exp_Set;
+      end OCL_Invalid_Literal_Exp_Set;
 
-      ----------------------
-      -- Invalid_Type_Set --
-      ----------------------
+      --------------------------
+      -- OCL_Invalid_Type_Set --
+      --------------------------
 
-      procedure Invalid_Type_Set is
+      procedure OCL_Invalid_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -8593,13 +8593,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Invalid_Type_Set;
+      end OCL_Invalid_Type_Set;
 
-      ---------------------
-      -- Iterate_Exp_Set --
-      ---------------------
+      -------------------------
+      -- OCL_Iterate_Exp_Set --
+      -------------------------
 
-      procedure Iterate_Exp_Set is
+      procedure OCL_Iterate_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
             --  LoopExp::body : OclExpression
@@ -8653,13 +8653,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Iterate_Exp_Set;
+      end OCL_Iterate_Exp_Set;
 
-      ----------------------
-      -- Iterator_Exp_Set --
-      ----------------------
+      --------------------------
+      -- OCL_Iterator_Exp_Set --
+      --------------------------
 
-      procedure Iterator_Exp_Set is
+      procedure OCL_Iterator_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
             --  LoopExp::body : OclExpression
@@ -8706,13 +8706,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Iterator_Exp_Set;
+      end OCL_Iterator_Exp_Set;
 
-      -----------------
-      -- Let_Exp_Set --
-      -----------------
+      ---------------------
+      -- OCL_Let_Exp_Set --
+      ---------------------
 
-      procedure Let_Exp_Set is
+      procedure OCL_Let_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_In then
             --  LetExp::in : OclExpression
@@ -8759,13 +8759,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Let_Exp_Set;
+      end OCL_Let_Exp_Set;
 
-      ---------------------
-      -- Message_Exp_Set --
-      ---------------------
+      -------------------------
+      -- OCL_Message_Exp_Set --
+      -------------------------
 
-      procedure Message_Exp_Set is
+      procedure OCL_Message_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Called_Operation then
             --  MessageExp::calledOperation : CallOperationAction
@@ -8819,13 +8819,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Exp_Set;
+      end OCL_Message_Exp_Set;
 
-      ----------------------
-      -- Message_Type_Set --
-      ----------------------
+      --------------------------
+      -- OCL_Message_Type_Set --
+      --------------------------
 
-      procedure Message_Type_Set is
+      procedure OCL_Message_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -8942,13 +8942,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Message_Type_Set;
+      end OCL_Message_Type_Set;
 
-      --------------------------
-      -- Null_Literal_Exp_Set --
-      --------------------------
+      ------------------------------
+      -- OCL_Null_Literal_Exp_Set --
+      ------------------------------
 
-      procedure Null_Literal_Exp_Set is
+      procedure OCL_Null_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -8981,13 +8981,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Null_Literal_Exp_Set;
+      end OCL_Null_Literal_Exp_Set;
 
-      ----------------------------
-      -- Operation_Call_Exp_Set --
-      ----------------------------
+      --------------------------------
+      -- OCL_Operation_Call_Exp_Set --
+      --------------------------------
 
-      procedure Operation_Call_Exp_Set is
+      procedure OCL_Operation_Call_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9034,13 +9034,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Operation_Call_Exp_Set;
+      end OCL_Operation_Call_Exp_Set;
 
-      --------------------------
-      -- Ordered_Set_Type_Set --
-      --------------------------
+      ------------------------------
+      -- OCL_Ordered_Set_Type_Set --
+      ------------------------------
 
-      procedure Ordered_Set_Type_Set is
+      procedure OCL_Ordered_Set_Type_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
             --  CollectionType::elementType : Classifier
@@ -9150,13 +9150,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Ordered_Set_Type_Set;
+      end OCL_Ordered_Set_Type_Set;
 
-      ---------------------------
-      -- Property_Call_Exp_Set --
-      ---------------------------
+      -------------------------------
+      -- OCL_Property_Call_Exp_Set --
+      -------------------------------
 
-      procedure Property_Call_Exp_Set is
+      procedure OCL_Property_Call_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9210,13 +9210,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Property_Call_Exp_Set;
+      end OCL_Property_Call_Exp_Set;
 
-      --------------------------
-      -- Real_Literal_Exp_Set --
-      --------------------------
+      ------------------------------
+      -- OCL_Real_Literal_Exp_Set --
+      ------------------------------
 
-      procedure Real_Literal_Exp_Set is
+      procedure OCL_Real_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9256,13 +9256,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Real_Literal_Exp_Set;
+      end OCL_Real_Literal_Exp_Set;
 
-      -----------------------
-      -- Sequence_Type_Set --
-      -----------------------
+      ---------------------------
+      -- OCL_Sequence_Type_Set --
+      ---------------------------
 
-      procedure Sequence_Type_Set is
+      procedure OCL_Sequence_Type_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
             --  CollectionType::elementType : Classifier
@@ -9372,13 +9372,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Sequence_Type_Set;
+      end OCL_Sequence_Type_Set;
 
-      ------------------
-      -- Set_Type_Set --
-      ------------------
+      ----------------------
+      -- OCL_Set_Type_Set --
+      ----------------------
 
-      procedure Set_Type_Set is
+      procedure OCL_Set_Type_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
             --  CollectionType::elementType : Classifier
@@ -9488,13 +9488,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Set_Type_Set;
+      end OCL_Set_Type_Set;
 
-      -------------------
-      -- State_Exp_Set --
-      -------------------
+      -----------------------
+      -- OCL_State_Exp_Set --
+      -----------------------
 
-      procedure State_Exp_Set is
+      procedure OCL_State_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9534,13 +9534,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end State_Exp_Set;
+      end OCL_State_Exp_Set;
 
-      ----------------------------
-      -- String_Literal_Exp_Set --
-      ----------------------------
+      --------------------------------
+      -- OCL_String_Literal_Exp_Set --
+      --------------------------------
 
-      procedure String_Literal_Exp_Set is
+      procedure OCL_String_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9580,13 +9580,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end String_Literal_Exp_Set;
+      end OCL_String_Literal_Exp_Set;
 
-      ---------------------------------
-      -- Template_Parameter_Type_Set --
-      ---------------------------------
+      -------------------------------------
+      -- OCL_Template_Parameter_Type_Set --
+      -------------------------------------
 
-      procedure Template_Parameter_Type_Set is
+      procedure OCL_Template_Parameter_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -9696,13 +9696,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Template_Parameter_Type_Set;
+      end OCL_Template_Parameter_Type_Set;
 
-      ---------------------------
-      -- Tuple_Literal_Exp_Set --
-      ---------------------------
+      -------------------------------
+      -- OCL_Tuple_Literal_Exp_Set --
+      -------------------------------
 
-      procedure Tuple_Literal_Exp_Set is
+      procedure OCL_Tuple_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9735,13 +9735,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Literal_Exp_Set;
+      end OCL_Tuple_Literal_Exp_Set;
 
-      ----------------------------
-      -- Tuple_Literal_Part_Set --
-      ----------------------------
+      --------------------------------
+      -- OCL_Tuple_Literal_Part_Set --
+      --------------------------------
 
-      procedure Tuple_Literal_Part_Set is
+      procedure OCL_Tuple_Literal_Part_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute then
             --  TupleLiteralPart::attribute : Property
@@ -9781,13 +9781,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Literal_Part_Set;
+      end OCL_Tuple_Literal_Part_Set;
 
-      --------------------
-      -- Tuple_Type_Set --
-      --------------------
+      ------------------------
+      -- OCL_Tuple_Type_Set --
+      ------------------------
 
-      procedure Tuple_Type_Set is
+      procedure OCL_Tuple_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -9890,13 +9890,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tuple_Type_Set;
+      end OCL_Tuple_Type_Set;
 
-      ------------------
-      -- Type_Exp_Set --
-      ------------------
+      ----------------------
+      -- OCL_Type_Exp_Set --
+      ----------------------
 
-      procedure Type_Exp_Set is
+      procedure OCL_Type_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9936,13 +9936,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Type_Exp_Set;
+      end OCL_Type_Exp_Set;
 
-      ---------------------------------------
-      -- Unlimited_Natural_Literal_Exp_Set --
-      ---------------------------------------
+      -------------------------------------------
+      -- OCL_Unlimited_Natural_Literal_Exp_Set --
+      -------------------------------------------
 
-      procedure Unlimited_Natural_Literal_Exp_Set is
+      procedure OCL_Unlimited_Natural_Literal_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -9982,13 +9982,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unlimited_Natural_Literal_Exp_Set;
+      end OCL_Unlimited_Natural_Literal_Exp_Set;
 
-      -------------------------------
-      -- Unspecified_Value_Exp_Set --
-      -------------------------------
+      -----------------------------------
+      -- OCL_Unspecified_Value_Exp_Set --
+      -----------------------------------
 
-      procedure Unspecified_Value_Exp_Set is
+      procedure OCL_Unspecified_Value_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -10021,13 +10021,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Unspecified_Value_Exp_Set;
+      end OCL_Unspecified_Value_Exp_Set;
 
-      ------------------
-      -- Variable_Set --
-      ------------------
+      ----------------------
+      -- OCL_Variable_Set --
+      ----------------------
 
-      procedure Variable_Set is
+      procedure OCL_Variable_Set is
       begin
          if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Init_Expression then
             --  Variable::initExpression : OclExpression
@@ -10074,13 +10074,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Set;
+      end OCL_Variable_Set;
 
-      ----------------------
-      -- Variable_Exp_Set --
-      ----------------------
+      --------------------------
+      -- OCL_Variable_Exp_Set --
+      --------------------------
 
-      procedure Variable_Exp_Set is
+      procedure OCL_Variable_Exp_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
             --  NamedElement::name : String
@@ -10120,13 +10120,13 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Variable_Exp_Set;
+      end OCL_Variable_Exp_Set;
 
-      -------------------
-      -- Void_Type_Set --
-      -------------------
+      -----------------------
+      -- OCL_Void_Type_Set --
+      -----------------------
 
-      procedure Void_Type_Set is
+      procedure OCL_Void_Type_Set is
       begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
@@ -10229,125 +10229,125 @@ package body AMF.Internals.Tables.OCL_Reflection is
          else
             raise Program_Error;
          end if;
-      end Void_Type_Set;
+      end OCL_Void_Type_Set;
    begin
       case OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.OCL_Types.E_Any_Type =>
-            Any_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            OCL_Any_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp =>
-            Association_Class_Call_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            OCL_Association_Class_Call_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Bag_Type =>
-            Bag_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            OCL_Bag_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp =>
-            Boolean_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp =>
+            OCL_Boolean_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Item =>
-            Collection_Item_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
+            OCL_Collection_Item_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp =>
-            Collection_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp =>
+            OCL_Collection_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Range =>
-            Collection_Range_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            OCL_Collection_Range_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Collection_Type =>
-            Collection_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            OCL_Collection_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp =>
-            Enum_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
+            OCL_Enum_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl =>
-            Expression_In_Ocl_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            OCL_Expression_In_Ocl_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_If_Exp =>
-            If_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            OCL_If_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp =>
-            Integer_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp =>
+            OCL_Integer_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp =>
-            Invalid_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp =>
+            OCL_Invalid_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Invalid_Type =>
-            Invalid_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            OCL_Invalid_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterate_Exp =>
-            Iterate_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            OCL_Iterate_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Iterator_Exp =>
-            Iterator_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            OCL_Iterator_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Let_Exp =>
-            Let_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            OCL_Let_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Exp =>
-            Message_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            OCL_Message_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Message_Type =>
-            Message_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            OCL_Message_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp =>
-            Null_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp =>
+            OCL_Null_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp =>
-            Operation_Call_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            OCL_Operation_Call_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type =>
-            Ordered_Set_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            OCL_Ordered_Set_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp =>
-            Property_Call_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            OCL_Property_Call_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp =>
-            Real_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp =>
+            OCL_Real_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Sequence_Type =>
-            Sequence_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            OCL_Sequence_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Set_Type =>
-            Set_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            OCL_Set_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_State_Exp =>
-            State_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
+            OCL_State_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp =>
-            String_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp =>
+            OCL_String_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type =>
-            Template_Parameter_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            OCL_Template_Parameter_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp =>
-            Tuple_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp =>
+            OCL_Tuple_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part =>
-            Tuple_Literal_Part_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
+            OCL_Tuple_Literal_Part_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Tuple_Type =>
-            Tuple_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            OCL_Tuple_Type_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Type_Exp =>
-            Type_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
+            OCL_Type_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp =>
-            Unlimited_Natural_Literal_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp =>
+            OCL_Unlimited_Natural_Literal_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp =>
-            Unspecified_Value_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp =>
+            OCL_Unspecified_Value_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable =>
-            Variable_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            OCL_Variable_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Variable_Exp =>
-            Variable_Exp_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
+            OCL_Variable_Exp_Set;
 
-         when AMF.Internals.Tables.OCL_Types.E_Void_Type =>
-            Void_Type_Set;
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            OCL_Void_Type_Set;
       end case;
    end Set;
 

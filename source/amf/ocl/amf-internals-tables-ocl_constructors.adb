@@ -94,11 +94,11 @@ package body AMF.Internals.Tables.OCL_Constructors is
    use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
-   ---------------------
-   -- Create_Any_Type --
-   ---------------------
+   -------------------------
+   -- Create_OCL_Any_Type --
+   -------------------------
 
-   function Create_Any_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Any_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -106,7 +106,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Any_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Any_Types.OCL_Any_Type_Proxy'(Element => Self),
@@ -307,13 +307,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Any_Type;
+   end Create_OCL_Any_Type;
 
-   ---------------------------------------
-   -- Create_Association_Class_Call_Exp --
-   ---------------------------------------
+   -------------------------------------------
+   -- Create_OCL_Association_Class_Call_Exp --
+   -------------------------------------------
 
-   function Create_Association_Class_Call_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Association_Class_Call_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -321,7 +321,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Association_Class_Call_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Proxy'(Element => Self),
@@ -381,13 +381,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Association_Class_Call_Exp;
+   end Create_OCL_Association_Class_Call_Exp;
 
-   ---------------------
-   -- Create_Bag_Type --
-   ---------------------
+   -------------------------
+   -- Create_OCL_Bag_Type --
+   -------------------------
 
-   function Create_Bag_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Bag_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -395,7 +395,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Bag_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Bag_Types.OCL_Bag_Type_Proxy'(Element => Self),
@@ -612,13 +612,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Bag_Type;
+   end Create_OCL_Bag_Type;
 
-   --------------------------------
-   -- Create_Boolean_Literal_Exp --
-   --------------------------------
+   ------------------------------------
+   -- Create_OCL_Boolean_Literal_Exp --
+   ------------------------------------
 
-   function Create_Boolean_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Boolean_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -626,7 +626,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Boolean_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Proxy'(Element => Self),
@@ -675,13 +675,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Boolean_Literal_Exp;
+   end Create_OCL_Boolean_Literal_Exp;
 
-   ----------------------------
-   -- Create_Collection_Item --
-   ----------------------------
+   --------------------------------
+   -- Create_OCL_Collection_Item --
+   --------------------------------
 
-   function Create_Collection_Item return AMF.Internals.OCL_Element is
+   function Create_OCL_Collection_Item return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -689,7 +689,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Item,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Collection_Items.OCL_Collection_Item_Proxy'(Element => Self),
@@ -738,13 +738,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Collection_Item;
+   end Create_OCL_Collection_Item;
 
-   -----------------------------------
-   -- Create_Collection_Literal_Exp --
-   -----------------------------------
+   ---------------------------------------
+   -- Create_OCL_Collection_Literal_Exp --
+   ---------------------------------------
 
-   function Create_Collection_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Collection_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -752,7 +752,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Collection_Literal_Exps.OCL_Collection_Literal_Exp_Proxy'(Element => Self),
@@ -808,13 +808,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Collection_Literal_Exp;
+   end Create_OCL_Collection_Literal_Exp;
 
-   -----------------------------
-   -- Create_Collection_Range --
-   -----------------------------
+   ---------------------------------
+   -- Create_OCL_Collection_Range --
+   ---------------------------------
 
-   function Create_Collection_Range return AMF.Internals.OCL_Element is
+   function Create_OCL_Collection_Range return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -822,7 +822,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Range,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Collection_Ranges.OCL_Collection_Range_Proxy'(Element => Self),
@@ -873,13 +873,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Collection_Range;
+   end Create_OCL_Collection_Range;
 
-   ----------------------------
-   -- Create_Collection_Type --
-   ----------------------------
+   --------------------------------
+   -- Create_OCL_Collection_Type --
+   --------------------------------
 
-   function Create_Collection_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Collection_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -887,7 +887,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Collection_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Collection_Types.OCL_Collection_Type_Proxy'(Element => Self),
@@ -1104,13 +1104,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Collection_Type;
+   end Create_OCL_Collection_Type;
 
-   -----------------------------
-   -- Create_Enum_Literal_Exp --
-   -----------------------------
+   ---------------------------------
+   -- Create_OCL_Enum_Literal_Exp --
+   ---------------------------------
 
-   function Create_Enum_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Enum_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1118,7 +1118,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Enum_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Enum_Literal_Exps.OCL_Enum_Literal_Exp_Proxy'(Element => Self),
@@ -1167,13 +1167,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Enum_Literal_Exp;
+   end Create_OCL_Enum_Literal_Exp;
 
-   ------------------------------
-   -- Create_Expression_In_Ocl --
-   ------------------------------
+   ----------------------------------
+   -- Create_OCL_Expression_In_Ocl --
+   ----------------------------------
 
-   function Create_Expression_In_Ocl return AMF.Internals.OCL_Element is
+   function Create_OCL_Expression_In_Ocl return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1181,7 +1181,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Expression_In_Ocl,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Expression_In_Ocls.OCL_Expression_In_Ocl_Proxy'(Element => Self),
@@ -1255,13 +1255,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Expression_In_Ocl;
+   end Create_OCL_Expression_In_Ocl;
 
-   -------------------
-   -- Create_If_Exp --
-   -------------------
+   -----------------------
+   -- Create_OCL_If_Exp --
+   -----------------------
 
-   function Create_If_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_If_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1269,7 +1269,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_If_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_If_Exps.OCL_If_Exp_Proxy'(Element => Self),
@@ -1322,13 +1322,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_If_Exp;
+   end Create_OCL_If_Exp;
 
-   --------------------------------
-   -- Create_Integer_Literal_Exp --
-   --------------------------------
+   ------------------------------------
+   -- Create_OCL_Integer_Literal_Exp --
+   ------------------------------------
 
-   function Create_Integer_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Integer_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1336,7 +1336,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Integer_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Integer_Literal_Exps.OCL_Integer_Literal_Exp_Proxy'(Element => Self),
@@ -1385,13 +1385,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Integer_Literal_Exp;
+   end Create_OCL_Integer_Literal_Exp;
 
-   --------------------------------
-   -- Create_Invalid_Literal_Exp --
-   --------------------------------
+   ------------------------------------
+   -- Create_OCL_Invalid_Literal_Exp --
+   ------------------------------------
 
-   function Create_Invalid_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Invalid_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1399,7 +1399,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Invalid_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Proxy'(Element => Self),
@@ -1446,13 +1446,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Invalid_Literal_Exp;
+   end Create_OCL_Invalid_Literal_Exp;
 
-   -------------------------
-   -- Create_Invalid_Type --
-   -------------------------
+   -----------------------------
+   -- Create_OCL_Invalid_Type --
+   -----------------------------
 
-   function Create_Invalid_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Invalid_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1460,7 +1460,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Invalid_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Invalid_Types.OCL_Invalid_Type_Proxy'(Element => Self),
@@ -1661,13 +1661,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Invalid_Type;
+   end Create_OCL_Invalid_Type;
 
-   ------------------------
-   -- Create_Iterate_Exp --
-   ------------------------
+   ----------------------------
+   -- Create_OCL_Iterate_Exp --
+   ----------------------------
 
-   function Create_Iterate_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Iterate_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1675,7 +1675,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Iterate_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Iterate_Exps.OCL_Iterate_Exp_Proxy'(Element => Self),
@@ -1735,13 +1735,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Iterate_Exp;
+   end Create_OCL_Iterate_Exp;
 
-   -------------------------
-   -- Create_Iterator_Exp --
-   -------------------------
+   -----------------------------
+   -- Create_OCL_Iterator_Exp --
+   -----------------------------
 
-   function Create_Iterator_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Iterator_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1749,7 +1749,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Iterator_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Iterator_Exps.OCL_Iterator_Exp_Proxy'(Element => Self),
@@ -1807,13 +1807,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Iterator_Exp;
+   end Create_OCL_Iterator_Exp;
 
-   --------------------
-   -- Create_Let_Exp --
-   --------------------
+   ------------------------
+   -- Create_OCL_Let_Exp --
+   ------------------------
 
-   function Create_Let_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Let_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1821,7 +1821,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Let_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Let_Exps.OCL_Let_Exp_Proxy'(Element => Self),
@@ -1872,13 +1872,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Let_Exp;
+   end Create_OCL_Let_Exp;
 
-   ------------------------
-   -- Create_Message_Exp --
-   ------------------------
+   ----------------------------
+   -- Create_OCL_Message_Exp --
+   ----------------------------
 
-   function Create_Message_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Message_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1886,7 +1886,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Message_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Message_Exps.OCL_Message_Exp_Proxy'(Element => Self),
@@ -1946,13 +1946,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Message_Exp;
+   end Create_OCL_Message_Exp;
 
-   -------------------------
-   -- Create_Message_Type --
-   -------------------------
+   -----------------------------
+   -- Create_OCL_Message_Type --
+   -----------------------------
 
-   function Create_Message_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Message_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -1960,7 +1960,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Message_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Message_Types.OCL_Message_Type_Proxy'(Element => Self),
@@ -2165,13 +2165,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Message_Type;
+   end Create_OCL_Message_Type;
 
-   -----------------------------
-   -- Create_Null_Literal_Exp --
-   -----------------------------
+   ---------------------------------
+   -- Create_OCL_Null_Literal_Exp --
+   ---------------------------------
 
-   function Create_Null_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Null_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2179,7 +2179,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Null_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Null_Literal_Exps.OCL_Null_Literal_Exp_Proxy'(Element => Self),
@@ -2226,13 +2226,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Null_Literal_Exp;
+   end Create_OCL_Null_Literal_Exp;
 
-   -------------------------------
-   -- Create_Operation_Call_Exp --
-   -------------------------------
+   -----------------------------------
+   -- Create_OCL_Operation_Call_Exp --
+   -----------------------------------
 
-   function Create_Operation_Call_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Operation_Call_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2240,7 +2240,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Operation_Call_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Operation_Call_Exps.OCL_Operation_Call_Exp_Proxy'(Element => Self),
@@ -2298,13 +2298,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Operation_Call_Exp;
+   end Create_OCL_Operation_Call_Exp;
 
-   -----------------------------
-   -- Create_Ordered_Set_Type --
-   -----------------------------
+   ---------------------------------
+   -- Create_OCL_Ordered_Set_Type --
+   ---------------------------------
 
-   function Create_Ordered_Set_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Ordered_Set_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2312,7 +2312,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Ordered_Set_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Ordered_Set_Types.OCL_Ordered_Set_Type_Proxy'(Element => Self),
@@ -2529,13 +2529,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Ordered_Set_Type;
+   end Create_OCL_Ordered_Set_Type;
 
-   ------------------------------
-   -- Create_Property_Call_Exp --
-   ------------------------------
+   ----------------------------------
+   -- Create_OCL_Property_Call_Exp --
+   ----------------------------------
 
-   function Create_Property_Call_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Property_Call_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2543,7 +2543,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Property_Call_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Property_Call_Exps.OCL_Property_Call_Exp_Proxy'(Element => Self),
@@ -2603,13 +2603,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Property_Call_Exp;
+   end Create_OCL_Property_Call_Exp;
 
-   -----------------------------
-   -- Create_Real_Literal_Exp --
-   -----------------------------
+   ---------------------------------
+   -- Create_OCL_Real_Literal_Exp --
+   ---------------------------------
 
-   function Create_Real_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Real_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2617,7 +2617,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Real_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Real_Literal_Exps.OCL_Real_Literal_Exp_Proxy'(Element => Self),
@@ -2666,13 +2666,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Real_Literal_Exp;
+   end Create_OCL_Real_Literal_Exp;
 
-   --------------------------
-   -- Create_Sequence_Type --
-   --------------------------
+   ------------------------------
+   -- Create_OCL_Sequence_Type --
+   ------------------------------
 
-   function Create_Sequence_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Sequence_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2680,7 +2680,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Sequence_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Sequence_Types.OCL_Sequence_Type_Proxy'(Element => Self),
@@ -2897,13 +2897,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Sequence_Type;
+   end Create_OCL_Sequence_Type;
 
-   ---------------------
-   -- Create_Set_Type --
-   ---------------------
+   -------------------------
+   -- Create_OCL_Set_Type --
+   -------------------------
 
-   function Create_Set_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Set_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -2911,7 +2911,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Set_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Set_Types.OCL_Set_Type_Proxy'(Element => Self),
@@ -3128,13 +3128,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Set_Type;
+   end Create_OCL_Set_Type;
 
-   ----------------------
-   -- Create_State_Exp --
-   ----------------------
+   --------------------------
+   -- Create_OCL_State_Exp --
+   --------------------------
 
-   function Create_State_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_State_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3142,7 +3142,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_State_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_State_Exps.OCL_State_Exp_Proxy'(Element => Self),
@@ -3191,13 +3191,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_State_Exp;
+   end Create_OCL_State_Exp;
 
-   -------------------------------
-   -- Create_String_Literal_Exp --
-   -------------------------------
+   -----------------------------------
+   -- Create_OCL_String_Literal_Exp --
+   -----------------------------------
 
-   function Create_String_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_String_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3205,7 +3205,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_String_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_String_Literal_Exps.OCL_String_Literal_Exp_Proxy'(Element => Self),
@@ -3254,13 +3254,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_String_Literal_Exp;
+   end Create_OCL_String_Literal_Exp;
 
-   ------------------------------------
-   -- Create_Template_Parameter_Type --
-   ------------------------------------
+   ----------------------------------------
+   -- Create_OCL_Template_Parameter_Type --
+   ----------------------------------------
 
-   function Create_Template_Parameter_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Template_Parameter_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3268,7 +3268,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Template_Parameter_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Template_Parameter_Types.OCL_Template_Parameter_Type_Proxy'(Element => Self),
@@ -3471,13 +3471,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Template_Parameter_Type;
+   end Create_OCL_Template_Parameter_Type;
 
-   ------------------------------
-   -- Create_Tuple_Literal_Exp --
-   ------------------------------
+   ----------------------------------
+   -- Create_OCL_Tuple_Literal_Exp --
+   ----------------------------------
 
-   function Create_Tuple_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Tuple_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3485,7 +3485,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Proxy'(Element => Self),
@@ -3539,13 +3539,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
-   end Create_Tuple_Literal_Exp;
+   end Create_OCL_Tuple_Literal_Exp;
 
-   -------------------------------
-   -- Create_Tuple_Literal_Part --
-   -------------------------------
+   -----------------------------------
+   -- Create_OCL_Tuple_Literal_Part --
+   -----------------------------------
 
-   function Create_Tuple_Literal_Part return AMF.Internals.OCL_Element is
+   function Create_OCL_Tuple_Literal_Part return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3553,7 +3553,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Literal_Part,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Proxy'(Element => Self),
@@ -3602,13 +3602,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Tuple_Literal_Part;
+   end Create_OCL_Tuple_Literal_Part;
 
-   -----------------------
-   -- Create_Tuple_Type --
-   -----------------------
+   ---------------------------
+   -- Create_OCL_Tuple_Type --
+   ---------------------------
 
-   function Create_Tuple_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Tuple_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3616,7 +3616,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Tuple_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Tuple_Types.OCL_Tuple_Type_Proxy'(Element => Self),
@@ -3831,13 +3831,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Tuple_Type;
+   end Create_OCL_Tuple_Type;
 
-   ---------------------
-   -- Create_Type_Exp --
-   ---------------------
+   -------------------------
+   -- Create_OCL_Type_Exp --
+   -------------------------
 
-   function Create_Type_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Type_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3845,7 +3845,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Type_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Type_Exps.OCL_Type_Exp_Proxy'(Element => Self),
@@ -3894,13 +3894,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Type_Exp;
+   end Create_OCL_Type_Exp;
 
-   ------------------------------------------
-   -- Create_Unlimited_Natural_Literal_Exp --
-   ------------------------------------------
+   ----------------------------------------------
+   -- Create_OCL_Unlimited_Natural_Literal_Exp --
+   ----------------------------------------------
 
-   function Create_Unlimited_Natural_Literal_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Unlimited_Natural_Literal_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3908,7 +3908,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Unlimited_Natural_Literal_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Proxy'(Element => Self),
@@ -3957,13 +3957,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Unlimited_Natural_Literal_Exp;
+   end Create_OCL_Unlimited_Natural_Literal_Exp;
 
-   ----------------------------------
-   -- Create_Unspecified_Value_Exp --
-   ----------------------------------
+   --------------------------------------
+   -- Create_OCL_Unspecified_Value_Exp --
+   --------------------------------------
 
-   function Create_Unspecified_Value_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Unspecified_Value_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -3971,7 +3971,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Unspecified_Value_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Proxy'(Element => Self),
@@ -4018,13 +4018,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Unspecified_Value_Exp;
+   end Create_OCL_Unspecified_Value_Exp;
 
-   ---------------------
-   -- Create_Variable --
-   ---------------------
+   -------------------------
+   -- Create_OCL_Variable --
+   -------------------------
 
-   function Create_Variable return AMF.Internals.OCL_Element is
+   function Create_OCL_Variable return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -4032,7 +4032,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Variable,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Variable,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Variables.OCL_Variable_Proxy'(Element => Self),
@@ -4083,13 +4083,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Variable;
+   end Create_OCL_Variable;
 
-   -------------------------
-   -- Create_Variable_Exp --
-   -------------------------
+   -----------------------------
+   -- Create_OCL_Variable_Exp --
+   -----------------------------
 
-   function Create_Variable_Exp return AMF.Internals.OCL_Element is
+   function Create_OCL_Variable_Exp return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -4097,7 +4097,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Variable_Exp,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Variable_Exps.OCL_Variable_Exp_Proxy'(Element => Self),
@@ -4146,13 +4146,13 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Variable_Exp;
+   end Create_OCL_Variable_Exp;
 
-   ----------------------
-   -- Create_Void_Type --
-   ----------------------
+   --------------------------
+   -- Create_OCL_Void_Type --
+   --------------------------
 
-   function Create_Void_Type return AMF.Internals.OCL_Element is
+   function Create_OCL_Void_Type return AMF.Internals.OCL_Element is
       Self : AMF.Internals.OCL_Element;
 
    begin
@@ -4160,7 +4160,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       Self := OCL_Element_Table.Last;
 
       OCL_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.OCL_Types.E_Void_Type,
+       (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.OCL_Void_Types.OCL_Void_Type_Proxy'(Element => Self),
@@ -4361,6 +4361,6 @@ package body AMF.Internals.Tables.OCL_Constructors is
         OCL_Element_Table.Table (Self).Member (0).Collection + 23);
 
       return Self;
-   end Create_Void_Type;
+   end Create_OCL_Void_Type;
 
 end AMF.Internals.Tables.OCL_Constructors;
