@@ -290,7 +290,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary,
         Extent   => 0,
         Proxy    =>
@@ -318,7 +318,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call,
         Extent   => 0,
         Proxy    =>
@@ -346,7 +346,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create,
         Extent   => 0,
         Proxy    =>
@@ -376,7 +376,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive,
         Extent   => 0,
         Proxy    =>
@@ -406,7 +406,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy,
         Extent   => 0,
         Proxy    =>
@@ -434,7 +434,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document,
         Extent   => 0,
         Proxy    =>
@@ -462,7 +462,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity,
         Extent   => 0,
         Proxy    =>
@@ -490,7 +490,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable,
         Extent   => 0,
         Proxy    =>
@@ -518,7 +518,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus,
         Extent   => 0,
         Proxy    =>
@@ -546,7 +546,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework,
         Extent   => 0,
         Proxy    =>
@@ -574,7 +574,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement,
         Extent   => 0,
         Proxy    =>
@@ -602,7 +602,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class,
         Extent   => 0,
         Proxy    =>
@@ -630,7 +630,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate,
         Extent   => 0,
         Proxy    =>
@@ -658,7 +658,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library,
         Extent   => 0,
         Proxy    =>
@@ -686,7 +686,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass,
         Extent   => 0,
         Proxy    =>
@@ -714,7 +714,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library,
         Extent   => 0,
         Proxy    =>
@@ -742,7 +742,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process,
         Extent   => 0,
         Proxy    =>
@@ -770,7 +770,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization,
         Extent   => 0,
         Proxy    =>
@@ -798,7 +798,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine,
         Extent   => 0,
         Proxy    =>
@@ -826,7 +826,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility,
         Extent   => 0,
         Proxy    =>
@@ -854,7 +854,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script,
         Extent   => 0,
         Proxy    =>
@@ -882,7 +882,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send,
         Extent   => 0,
         Proxy    =>
@@ -910,7 +910,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service,
         Extent   => 0,
         Proxy    =>
@@ -938,7 +938,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source,
         Extent   => 0,
         Proxy    =>
@@ -966,7 +966,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification,
         Extent   => 0,
         Proxy    =>
@@ -994,7 +994,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem,
         Extent   => 0,
         Proxy    =>
@@ -1022,7 +1022,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace,
         Extent   => 0,
         Proxy    =>
@@ -1050,7 +1050,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type,
         Extent   => 0,
         Proxy    =>
@@ -1078,7 +1078,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility,
         Extent   => 0,
         Proxy    =>
@@ -1106,7 +1106,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component,
         Extent   => 0,
         Proxy    =>
@@ -1134,7 +1134,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel,
         Extent   => 0,
         Proxy    =>
@@ -1162,7 +1162,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model,
         Extent   => 0,
         Proxy    =>
@@ -1190,7 +1190,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Abstraction,
         Extent   => 0,
         Proxy    =>
@@ -1290,7 +1290,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action,
         Extent   => 0,
         Proxy    =>
@@ -1468,7 +1468,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action,
         Extent   => 0,
         Proxy    =>
@@ -1644,7 +1644,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification,
         Extent   => 0,
         Proxy    =>
@@ -1727,7 +1727,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin,
         Extent   => 0,
         Proxy    =>
@@ -1881,7 +1881,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity,
         Extent   => 0,
         Proxy    =>
@@ -2264,7 +2264,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node,
         Extent   => 0,
         Proxy    =>
@@ -2385,7 +2385,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node,
         Extent   => 0,
         Proxy    =>
@@ -2525,7 +2525,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition,
         Extent   => 0,
         Proxy    =>
@@ -2638,7 +2638,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Actor,
         Extent   => 0,
         Proxy    =>
@@ -2869,7 +2869,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
@@ -3041,7 +3041,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
@@ -3209,7 +3209,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event,
         Extent   => 0,
         Proxy    =>
@@ -3272,7 +3272,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Artifact,
         Extent   => 0,
         Proxy    =>
@@ -3517,7 +3517,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Association,
         Extent   => 0,
         Proxy    =>
@@ -3769,7 +3769,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Association_Class,
         Extent   => 0,
         Proxy    =>
@@ -4102,7 +4102,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification,
         Extent   => 0,
         Proxy    =>
@@ -4185,7 +4185,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action,
         Extent   => 0,
         Proxy    =>
@@ -4356,7 +4356,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action,
         Extent   => 0,
         Proxy    =>
@@ -4536,7 +4536,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Event,
         Extent   => 0,
         Proxy    =>
@@ -4601,7 +4601,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action,
         Extent   => 0,
         Proxy    =>
@@ -4783,7 +4783,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node,
         Extent   => 0,
         Proxy    =>
@@ -4921,7 +4921,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Change_Event,
         Extent   => 0,
         Proxy    =>
@@ -4986,7 +4986,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Class,
         Extent   => 0,
         Proxy    =>
@@ -5282,7 +5282,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -5343,7 +5343,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clause,
         Extent   => 0,
         Proxy    =>
@@ -5422,7 +5422,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action,
         Extent   => 0,
         Proxy    =>
@@ -5586,7 +5586,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
@@ -5752,7 +5752,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action,
         Extent   => 0,
         Proxy    =>
@@ -5914,7 +5914,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Collaboration,
         Extent   => 0,
         Proxy    =>
@@ -6180,7 +6180,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use,
         Extent   => 0,
         Proxy    =>
@@ -6248,7 +6248,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment,
         Extent   => 0,
         Proxy    =>
@@ -6341,7 +6341,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Comment,
         Extent   => 0,
         Proxy    =>
@@ -6392,7 +6392,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Communication_Path,
         Extent   => 0,
         Proxy    =>
@@ -6644,7 +6644,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Component,
         Extent   => 0,
         Proxy    =>
@@ -6970,7 +6970,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Component_Realization,
         Extent   => 0,
         Proxy    =>
@@ -7079,7 +7079,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node,
         Extent   => 0,
         Proxy    =>
@@ -7354,7 +7354,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -7406,7 +7406,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference,
         Extent   => 0,
         Proxy    =>
@@ -7497,7 +7497,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connector,
         Extent   => 0,
         Proxy    =>
@@ -7606,7 +7606,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Connector_End,
         Extent   => 0,
         Proxy    =>
@@ -7666,7 +7666,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment,
         Extent   => 0,
         Proxy    =>
@@ -7766,7 +7766,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -7840,7 +7840,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Continuation,
         Extent   => 0,
         Proxy    =>
@@ -7919,7 +7919,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Control_Flow,
         Extent   => 0,
         Proxy    =>
@@ -8029,7 +8029,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action,
         Extent   => 0,
         Proxy    =>
@@ -8203,7 +8203,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -8379,7 +8379,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -8543,7 +8543,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node,
         Extent   => 0,
         Proxy    =>
@@ -8681,7 +8681,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Data_Type,
         Extent   => 0,
         Proxy    =>
@@ -8910,7 +8910,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Decision_Node,
         Extent   => 0,
         Proxy    =>
@@ -9035,7 +9035,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Dependency,
         Extent   => 0,
         Proxy    =>
@@ -9133,7 +9133,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Deployment,
         Extent   => 0,
         Proxy    =>
@@ -9247,7 +9247,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification,
         Extent   => 0,
         Proxy    =>
@@ -9498,7 +9498,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action,
         Extent   => 0,
         Proxy    =>
@@ -9672,7 +9672,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -9838,7 +9838,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
@@ -9931,7 +9931,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Device,
         Extent   => 0,
         Proxy    =>
@@ -10248,7 +10248,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration,
         Extent   => 0,
         Proxy    =>
@@ -10322,7 +10322,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -10398,7 +10398,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval,
         Extent   => 0,
         Proxy    =>
@@ -10467,7 +10467,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation,
         Extent   => 0,
         Proxy    =>
@@ -10539,7 +10539,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Element_Import,
         Extent   => 0,
         Proxy    =>
@@ -10610,7 +10610,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Enumeration,
         Extent   => 0,
         Proxy    =>
@@ -10846,7 +10846,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal,
         Extent   => 0,
         Proxy    =>
@@ -10941,7 +10941,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler,
         Extent   => 0,
         Proxy    =>
@@ -10996,7 +10996,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment,
         Extent   => 0,
         Proxy    =>
@@ -11313,7 +11313,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
@@ -11406,7 +11406,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node,
         Extent   => 0,
         Proxy    =>
@@ -11548,7 +11548,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region,
         Extent   => 0,
         Proxy    =>
@@ -11828,7 +11828,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Expression,
         Extent   => 0,
         Proxy    =>
@@ -11902,7 +11902,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extend,
         Extent   => 0,
         Proxy    =>
@@ -11995,7 +11995,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension,
         Extent   => 0,
         Proxy    =>
@@ -12251,7 +12251,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension_End,
         Extent   => 0,
         Proxy    =>
@@ -12425,7 +12425,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Extension_Point,
         Extent   => 0,
         Proxy    =>
@@ -12502,7 +12502,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Final_State,
         Extent   => 0,
         Proxy    =>
@@ -12683,7 +12683,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node,
         Extent   => 0,
         Proxy    =>
@@ -12804,7 +12804,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Fork_Node,
         Extent   => 0,
         Proxy    =>
@@ -12925,7 +12925,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior,
         Extent   => 0,
         Proxy    =>
@@ -13266,7 +13266,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Gate,
         Extent   => 0,
         Proxy    =>
@@ -13327,7 +13327,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_General_Ordering,
         Extent   => 0,
         Proxy    =>
@@ -13390,7 +13390,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Generalization,
         Extent   => 0,
         Proxy    =>
@@ -13466,7 +13466,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set,
         Extent   => 0,
         Proxy    =>
@@ -13542,7 +13542,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Image,
         Extent   => 0,
         Proxy    =>
@@ -13590,7 +13590,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Include,
         Extent   => 0,
         Proxy    =>
@@ -13674,7 +13674,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Information_Flow,
         Extent   => 0,
         Proxy    =>
@@ -13807,7 +13807,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Information_Item,
         Extent   => 0,
         Proxy    =>
@@ -14029,7 +14029,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Initial_Node,
         Extent   => 0,
         Proxy    =>
@@ -14150,7 +14150,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Input_Pin,
         Extent   => 0,
         Proxy    =>
@@ -14302,7 +14302,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification,
         Extent   => 0,
         Proxy    =>
@@ -14395,7 +14395,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Instance_Value,
         Extent   => 0,
         Proxy    =>
@@ -14462,7 +14462,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction,
         Extent   => 0,
         Proxy    =>
@@ -14852,7 +14852,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -14930,7 +14930,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand,
         Extent   => 0,
         Proxy    =>
@@ -15058,7 +15058,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use,
         Extent   => 0,
         Proxy    =>
@@ -15155,7 +15155,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interface,
         Extent   => 0,
         Proxy    =>
@@ -15407,7 +15407,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization,
         Extent   => 0,
         Proxy    =>
@@ -15511,7 +15511,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region,
         Extent   => 0,
         Proxy    =>
@@ -15609,7 +15609,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interval,
         Extent   => 0,
         Proxy    =>
@@ -15678,7 +15678,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -15752,7 +15752,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Join_Node,
         Extent   => 0,
         Proxy    =>
@@ -15877,7 +15877,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Lifeline,
         Extent   => 0,
         Proxy    =>
@@ -15951,7 +15951,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data,
         Extent   => 0,
         Proxy    =>
@@ -16008,7 +16008,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data,
         Extent   => 0,
         Proxy    =>
@@ -16061,7 +16061,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data,
         Extent   => 0,
         Proxy    =>
@@ -16118,7 +16118,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean,
         Extent   => 0,
         Proxy    =>
@@ -16185,7 +16185,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer,
         Extent   => 0,
         Proxy    =>
@@ -16252,7 +16252,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Null,
         Extent   => 0,
         Proxy    =>
@@ -16317,7 +16317,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Real,
         Extent   => 0,
         Proxy    =>
@@ -16384,7 +16384,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_String,
         Extent   => 0,
         Proxy    =>
@@ -16451,7 +16451,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural,
         Extent   => 0,
         Proxy    =>
@@ -16518,7 +16518,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Loop_Node,
         Extent   => 0,
         Proxy    =>
@@ -16821,7 +16821,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Manifestation,
         Extent   => 0,
         Proxy    =>
@@ -16923,7 +16923,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Merge_Node,
         Extent   => 0,
         Proxy    =>
@@ -17044,7 +17044,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Message,
         Extent   => 0,
         Proxy    =>
@@ -17124,7 +17124,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
@@ -17217,7 +17217,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Model,
         Extent   => 0,
         Proxy    =>
@@ -17379,7 +17379,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Node,
         Extent   => 0,
         Proxy    =>
@@ -17696,7 +17696,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Object_Flow,
         Extent   => 0,
         Proxy    =>
@@ -17814,7 +17814,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification,
         Extent   => 0,
         Proxy    =>
@@ -17905,7 +17905,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action,
         Extent   => 0,
         Proxy    =>
@@ -18083,7 +18083,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior,
         Extent   => 0,
         Proxy    =>
@@ -18424,7 +18424,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression,
         Extent   => 0,
         Proxy    =>
@@ -18497,7 +18497,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Operation,
         Extent   => 0,
         Proxy    =>
@@ -18709,7 +18709,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -18761,7 +18761,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Output_Pin,
         Extent   => 0,
         Proxy    =>
@@ -18913,7 +18913,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package,
         Extent   => 0,
         Proxy    =>
@@ -19073,7 +19073,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package_Import,
         Extent   => 0,
         Proxy    =>
@@ -19142,7 +19142,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Package_Merge,
         Extent   => 0,
         Proxy    =>
@@ -19209,7 +19209,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -19314,7 +19314,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set,
         Extent   => 0,
         Proxy    =>
@@ -19387,7 +19387,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition,
         Extent   => 0,
         Proxy    =>
@@ -19484,7 +19484,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Port,
         Extent   => 0,
         Proxy    =>
@@ -19687,7 +19687,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type,
         Extent   => 0,
         Proxy    =>
@@ -19916,7 +19916,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Profile,
         Extent   => 0,
         Proxy    =>
@@ -20090,7 +20090,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Profile_Application,
         Extent   => 0,
         Proxy    =>
@@ -20159,7 +20159,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Property,
         Extent   => 0,
         Proxy    =>
@@ -20333,7 +20333,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance,
         Extent   => 0,
         Proxy    =>
@@ -20400,7 +20400,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine,
         Extent   => 0,
         Proxy    =>
@@ -20765,7 +20765,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition,
         Extent   => 0,
         Proxy    =>
@@ -20914,7 +20914,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Pseudostate,
         Extent   => 0,
         Proxy    =>
@@ -20995,7 +20995,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value,
         Extent   => 0,
         Proxy    =>
@@ -21041,7 +21041,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action,
         Extent   => 0,
         Proxy    =>
@@ -21203,7 +21203,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action,
         Extent   => 0,
         Proxy    =>
@@ -21367,7 +21367,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -21535,7 +21535,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action,
         Extent   => 0,
         Proxy    =>
@@ -21711,7 +21711,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action,
         Extent   => 0,
         Proxy    =>
@@ -21877,7 +21877,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action,
         Extent   => 0,
         Proxy    =>
@@ -22043,7 +22043,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action,
         Extent   => 0,
         Proxy    =>
@@ -22205,7 +22205,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action,
         Extent   => 0,
         Proxy    =>
@@ -22371,7 +22371,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action,
         Extent   => 0,
         Proxy    =>
@@ -22535,7 +22535,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Realization,
         Extent   => 0,
         Proxy    =>
@@ -22635,7 +22635,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reception,
         Extent   => 0,
         Proxy    =>
@@ -22795,7 +22795,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -22973,7 +22973,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature,
         Extent   => 0,
         Proxy    =>
@@ -23078,7 +23078,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action,
         Extent   => 0,
         Proxy    =>
@@ -23246,7 +23246,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Region,
         Extent   => 0,
         Proxy    =>
@@ -23383,7 +23383,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action,
         Extent   => 0,
         Proxy    =>
@@ -23555,7 +23555,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action,
         Extent   => 0,
         Proxy    =>
@@ -23723,7 +23723,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Reply_Action,
         Extent   => 0,
         Proxy    =>
@@ -23894,7 +23894,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action,
         Extent   => 0,
         Proxy    =>
@@ -24065,7 +24065,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action,
         Extent   => 0,
         Proxy    =>
@@ -24238,7 +24238,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node,
         Extent   => 0,
         Proxy    =>
@@ -24502,7 +24502,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Signal,
         Extent   => 0,
         Proxy    =>
@@ -24724,7 +24724,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Signal_Event,
         Extent   => 0,
         Proxy    =>
@@ -24789,7 +24789,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Slot,
         Extent   => 0,
         Proxy    =>
@@ -24842,7 +24842,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action,
         Extent   => 0,
         Proxy    =>
@@ -25004,7 +25004,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action,
         Extent   => 0,
         Proxy    =>
@@ -25184,7 +25184,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State,
         Extent   => 0,
         Proxy    =>
@@ -25365,7 +25365,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State_Invariant,
         Extent   => 0,
         Proxy    =>
@@ -25444,7 +25444,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_State_Machine,
         Extent   => 0,
         Proxy    =>
@@ -25802,7 +25802,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Stereotype,
         Extent   => 0,
         Proxy    =>
@@ -26107,7 +26107,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_String_Expression,
         Extent   => 0,
         Proxy    =>
@@ -26199,7 +26199,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node,
         Extent   => 0,
         Proxy    =>
@@ -26463,7 +26463,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Substitution,
         Extent   => 0,
         Proxy    =>
@@ -26567,7 +26567,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Binding,
         Extent   => 0,
         Proxy    =>
@@ -26641,7 +26641,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter,
         Extent   => 0,
         Proxy    =>
@@ -26693,7 +26693,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution,
         Extent   => 0,
         Proxy    =>
@@ -26743,7 +26743,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Template_Signature,
         Extent   => 0,
         Proxy    =>
@@ -26801,7 +26801,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action,
         Extent   => 0,
         Proxy    =>
@@ -26967,7 +26967,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint,
         Extent   => 0,
         Proxy    =>
@@ -27043,7 +27043,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Event,
         Extent   => 0,
         Proxy    =>
@@ -27110,7 +27110,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Expression,
         Extent   => 0,
         Proxy    =>
@@ -27184,7 +27184,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Interval,
         Extent   => 0,
         Proxy    =>
@@ -27253,7 +27253,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Time_Observation,
         Extent   => 0,
         Proxy    =>
@@ -27320,7 +27320,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Transition,
         Extent   => 0,
         Proxy    =>
@@ -27458,7 +27458,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Trigger,
         Extent   => 0,
         Proxy    =>
@@ -27526,7 +27526,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action,
         Extent   => 0,
         Proxy    =>
@@ -27697,7 +27697,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Usage,
         Extent   => 0,
         Proxy    =>
@@ -27795,7 +27795,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Use_Case,
         Extent   => 0,
         Proxy    =>
@@ -28054,7 +28054,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Value_Pin,
         Extent   => 0,
         Proxy    =>
@@ -28208,7 +28208,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action,
         Extent   => 0,
         Proxy    =>
@@ -28372,7 +28372,7 @@ package body AMF.Internals.Tables.UML_Constructors is
       UML_Element_Table.Increment_Last;
       Self := UML_Element_Table.Last;
 
-      UML_Element_Table.Table (Self) :=
+      UML_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.UML_Types.E_UML_Variable,
         Extent   => 0,
         Proxy    =>

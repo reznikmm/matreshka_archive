@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,14 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with GNAT.Table;
-
+with AMF.Internals.Generic_Element_Table;
 with AMF.Internals.Tables.UML_Types;
 
 package AMF.Internals.Tables.UML_Element_Table is
- new GNAT.Table
-      (AMF.Internals.Tables.UML_Types.Element_Record,
-       AMF.Internals.UML_Element,
-       AMF.Internals.UML_Element'First,
-       10_000,
-       100);
+  new AMF.Internals.Generic_Element_Table
+       (AMF.Internals.Tables.UML_Types.Element_Record);

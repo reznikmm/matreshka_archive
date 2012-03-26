@@ -85,7 +85,7 @@ begin
 
    --  Initialize element table of UML module.
 
-   AMF.Internals.Tables.UML_Element_Table.Increment_Last;
+   AMF.Internals.Tables.UML_Element_Table.Initialize (UML_Metamodel);
 
    --  Register factories.
 

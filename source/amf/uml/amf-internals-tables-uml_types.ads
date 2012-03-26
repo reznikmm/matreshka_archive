@@ -394,16 +394,11 @@ package AMF.Internals.Tables.UML_Types is
 
    type Member_Array is array (Natural range 0 .. 36) of Member_Record;
 
-   type Element_Record (Kind : Element_Kinds := E_None) is record
-      case Kind is
-         when E_None =>
-            null;
-
-         when others =>
-            Extent : AMF_Extent;
-            Proxy  : AMF.Elements.Element_Access;
-            Member : Member_Array;
-      end case;
+   type Element_Record is record
+      Kind   : Element_Kinds := E_None;
+      Extent : AMF_Extent;
+      Proxy  : AMF.Elements.Element_Access;
+      Member : Member_Array;
    end record;
 
 end AMF.Internals.Tables.UML_Types;
