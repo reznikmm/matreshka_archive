@@ -66,14 +66,14 @@ package body AMF.Internals.Tables.MOF_Reflection is
      Property : CMOF_Element) return League.Holders.Holder
    is
 
-      function Tag_Get return League.Holders.Holder;
+      function MOF_Tag_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Tag class.
 
-      -------------
-      -- Tag_Get --
-      -------------
+      -----------------
+      -- MOF_Tag_Get --
+      -----------------
 
-      function Tag_Get return League.Holders.Holder is
+      function MOF_Tag_Get return League.Holders.Holder is
       begin
          if Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element then
             --  Tag::element : Element
@@ -136,15 +136,15 @@ package body AMF.Internals.Tables.MOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tag_Get;
+      end MOF_Tag_Get;
 
    begin
       case AMF.Internals.Tables.MOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.MOF_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.MOF_Types.E_Tag =>
-            return Tag_Get;
+         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+            return MOF_Tag_Get;
       end case;
    end Get;
 
@@ -158,7 +158,7 @@ package body AMF.Internals.Tables.MOF_Reflection is
          when AMF.Internals.Tables.MOF_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.MOF_Types.E_Tag =>
+         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
             return AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag;
       end case;
    end Get_Meta_Class;
@@ -173,14 +173,14 @@ package body AMF.Internals.Tables.MOF_Reflection is
      Value    : League.Holders.Holder)
    is
 
-      procedure Tag_Set;
+      procedure MOF_Tag_Set;
       --  Sets attribute's value of instance of Tag class.
 
-      -------------
-      -- Tag_Set --
-      -------------
+      -----------------
+      -- MOF_Tag_Set --
+      -----------------
 
-      procedure Tag_Set is
+      procedure MOF_Tag_Set is
       begin
          if Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Name then
             --  Tag::name : String
@@ -206,14 +206,14 @@ package body AMF.Internals.Tables.MOF_Reflection is
          else
             raise Program_Error;
          end if;
-      end Tag_Set;
+      end MOF_Tag_Set;
    begin
       case MOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.MOF_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.MOF_Types.E_Tag =>
-            Tag_Set;
+         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+            MOF_Tag_Set;
       end case;
    end Set;
 

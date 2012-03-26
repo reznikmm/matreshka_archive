@@ -55,7 +55,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
        of AMF.Internals.AMF_Collection_Of_Element :=
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_Tag =>
+         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
           (2      => 3,     --  Tag::element
            others => 0));
 
@@ -64,7 +64,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
             AMF.Internals.CMOF_Element range 3 .. 5) of Natural :=
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_Tag =>
+         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
           (3      => 2,     --  Tag::name
            4      => 4,     --  Tag::tagOwner
            5      => 3,     --  Tag::value
@@ -76,7 +76,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
        of AMF.Internals.AMF_Collection_Of_Element :=
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_Tag =>
+         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
           (347    => 1,     --  Element::ownedComment
            348    => 2,     --  Element::ownedElement
            others => 0));
@@ -86,7 +86,7 @@ package AMF.Internals.Tables.MOF_Attribute_Mappings is
             AMF.Internals.CMOF_Element range 491 .. 866) of Natural :=
         (AMF.Internals.Tables.MOF_Types.E_None =>
           (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_Tag =>
+         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
           (585    => 1,     --  Element::owner
            others => 0));
 

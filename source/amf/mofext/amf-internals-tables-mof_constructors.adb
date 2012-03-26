@@ -56,11 +56,11 @@ package body AMF.Internals.Tables.MOF_Constructors is
    use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
-   ----------------
-   -- Create_Tag --
-   ----------------
+   --------------------
+   -- Create_MOF_Tag --
+   --------------------
 
-   function Create_Tag return AMF.Internals.MOF_Element is
+   function Create_MOF_Tag return AMF.Internals.MOF_Element is
       Self : AMF.Internals.MOF_Element;
 
    begin
@@ -68,7 +68,7 @@ package body AMF.Internals.Tables.MOF_Constructors is
       Self := MOF_Element_Table.Last;
 
       MOF_Element_Table.Table (Self) :=
-       (Kind     => AMF.Internals.Tables.MOF_Types.E_Tag,
+       (Kind     => AMF.Internals.Tables.MOF_Types.E_MOF_Tag,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Element => Self),
@@ -109,6 +109,6 @@ package body AMF.Internals.Tables.MOF_Constructors is
         MOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
-   end Create_Tag;
+   end Create_MOF_Tag;
 
 end AMF.Internals.Tables.MOF_Constructors;
