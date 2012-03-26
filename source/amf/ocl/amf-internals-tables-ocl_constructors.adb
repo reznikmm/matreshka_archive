@@ -105,7 +105,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type,
         Extent   => 0,
         Proxy    =>
@@ -320,7 +320,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp,
         Extent   => 0,
         Proxy    =>
@@ -394,7 +394,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type,
         Extent   => 0,
         Proxy    =>
@@ -625,7 +625,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -688,7 +688,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item,
         Extent   => 0,
         Proxy    =>
@@ -751,7 +751,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -821,7 +821,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range,
         Extent   => 0,
         Proxy    =>
@@ -886,7 +886,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type,
         Extent   => 0,
         Proxy    =>
@@ -1117,7 +1117,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1180,7 +1180,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl,
         Extent   => 0,
         Proxy    =>
@@ -1268,7 +1268,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1335,7 +1335,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1398,7 +1398,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1459,7 +1459,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type,
         Extent   => 0,
         Proxy    =>
@@ -1674,7 +1674,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1748,7 +1748,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1820,7 +1820,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1885,7 +1885,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp,
         Extent   => 0,
         Proxy    =>
@@ -1959,7 +1959,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type,
         Extent   => 0,
         Proxy    =>
@@ -2178,7 +2178,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -2239,7 +2239,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp,
         Extent   => 0,
         Proxy    =>
@@ -2311,7 +2311,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type,
         Extent   => 0,
         Proxy    =>
@@ -2542,7 +2542,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp,
         Extent   => 0,
         Proxy    =>
@@ -2616,7 +2616,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -2679,7 +2679,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type,
         Extent   => 0,
         Proxy    =>
@@ -2910,7 +2910,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type,
         Extent   => 0,
         Proxy    =>
@@ -3141,7 +3141,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp,
         Extent   => 0,
         Proxy    =>
@@ -3204,7 +3204,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -3267,7 +3267,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type,
         Extent   => 0,
         Proxy    =>
@@ -3484,7 +3484,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -3552,7 +3552,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part,
         Extent   => 0,
         Proxy    =>
@@ -3615,7 +3615,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type,
         Extent   => 0,
         Proxy    =>
@@ -3844,7 +3844,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp,
         Extent   => 0,
         Proxy    =>
@@ -3907,7 +3907,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp,
         Extent   => 0,
         Proxy    =>
@@ -3970,7 +3970,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp,
         Extent   => 0,
         Proxy    =>
@@ -4031,7 +4031,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Variable,
         Extent   => 0,
         Proxy    =>
@@ -4096,7 +4096,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp,
         Extent   => 0,
         Proxy    =>
@@ -4159,7 +4159,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
       OCL_Element_Table.Increment_Last;
       Self := OCL_Element_Table.Last;
 
-      OCL_Element_Table.Table (Self) :=
+      OCL_Element_Table.Table (Self).all :=
        (Kind     => AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type,
         Extent   => 0,
         Proxy    =>

@@ -65,7 +65,7 @@ begin
 
    --  Initialize element table of OCL metamodel.
 
-   AMF.Internals.Tables.OCL_Element_Table.Increment_Last;
+   AMF.Internals.Tables.OCL_Element_Table.Initialize (OCL_Metamodel);
 
    --  Register factories.
 

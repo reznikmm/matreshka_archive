@@ -41,14 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with GNAT.Table;
-
+with AMF.Internals.Generic_Element_Table;
 with AMF.Internals.Tables.OCL_Types;
 
 package AMF.Internals.Tables.OCL_Element_Table is
- new GNAT.Table
-      (AMF.Internals.Tables.OCL_Types.Element_Record,
-       AMF.Internals.OCL_Element,
-       AMF.Internals.OCL_Element'First,
-       10_000,
-       100);
+  new AMF.Internals.Generic_Element_Table
+       (AMF.Internals.Tables.OCL_Types.Element_Record);

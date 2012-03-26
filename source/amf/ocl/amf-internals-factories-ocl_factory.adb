@@ -224,118 +224,118 @@ package body AMF.Internals.Factories.OCL_Factory is
       --  Create corresponding element.
 
       if MC = MC_OCL_Any_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Any_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Any_Type;
 
       elsif MC = MC_OCL_Association_Class_Call_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Association_Class_Call_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Association_Class_Call_Exp;
 
       elsif MC = MC_OCL_Bag_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Bag_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Bag_Type;
 
       elsif MC = MC_OCL_Boolean_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Boolean_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Boolean_Literal_Exp;
 
       elsif MC = MC_OCL_Collection_Item then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Collection_Item;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Collection_Item;
 
       elsif MC = MC_OCL_Collection_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Collection_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Collection_Literal_Exp;
 
       elsif MC = MC_OCL_Collection_Range then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Collection_Range;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Collection_Range;
 
       elsif MC = MC_OCL_Collection_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Collection_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Collection_Type;
 
       elsif MC = MC_OCL_Enum_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Enum_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Enum_Literal_Exp;
 
       elsif MC = MC_OCL_Expression_In_Ocl then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Expression_In_Ocl;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Expression_In_Ocl;
 
       elsif MC = MC_OCL_If_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_If_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_If_Exp;
 
       elsif MC = MC_OCL_Integer_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Integer_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Integer_Literal_Exp;
 
       elsif MC = MC_OCL_Invalid_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Invalid_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Invalid_Literal_Exp;
 
       elsif MC = MC_OCL_Invalid_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Invalid_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Invalid_Type;
 
       elsif MC = MC_OCL_Iterate_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Iterate_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Iterate_Exp;
 
       elsif MC = MC_OCL_Iterator_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Iterator_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Iterator_Exp;
 
       elsif MC = MC_OCL_Let_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Let_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Let_Exp;
 
       elsif MC = MC_OCL_Message_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Message_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Message_Exp;
 
       elsif MC = MC_OCL_Message_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Message_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Message_Type;
 
       elsif MC = MC_OCL_Null_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Null_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Null_Literal_Exp;
 
       elsif MC = MC_OCL_Operation_Call_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Operation_Call_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Operation_Call_Exp;
 
       elsif MC = MC_OCL_Ordered_Set_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Ordered_Set_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Ordered_Set_Type;
 
       elsif MC = MC_OCL_Property_Call_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Property_Call_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Property_Call_Exp;
 
       elsif MC = MC_OCL_Real_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Real_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Real_Literal_Exp;
 
       elsif MC = MC_OCL_Sequence_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Sequence_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Sequence_Type;
 
       elsif MC = MC_OCL_Set_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Set_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Set_Type;
 
       elsif MC = MC_OCL_State_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_State_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_State_Exp;
 
       elsif MC = MC_OCL_String_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_String_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_String_Literal_Exp;
 
       elsif MC = MC_OCL_Template_Parameter_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Template_Parameter_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Template_Parameter_Type;
 
       elsif MC = MC_OCL_Tuple_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Tuple_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Tuple_Literal_Exp;
 
       elsif MC = MC_OCL_Tuple_Literal_Part then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Tuple_Literal_Part;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Tuple_Literal_Part;
 
       elsif MC = MC_OCL_Tuple_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Tuple_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Tuple_Type;
 
       elsif MC = MC_OCL_Type_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Type_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Type_Exp;
 
       elsif MC = MC_OCL_Unlimited_Natural_Literal_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Unlimited_Natural_Literal_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Unlimited_Natural_Literal_Exp;
 
       elsif MC = MC_OCL_Unspecified_Value_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Unspecified_Value_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Unspecified_Value_Exp;
 
       elsif MC = MC_OCL_Variable then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Variable;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Variable;
 
       elsif MC = MC_OCL_Variable_Exp then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Variable_Exp;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Variable_Exp;
 
       elsif MC = MC_OCL_Void_Type then
-         Element := AMF.Internals.Tables.OCL_Constructors.Create_Void_Type;
+         Element := AMF.Internals.Tables.OCL_Constructors.Create_OCL_Void_Type;
 
       else
          raise Program_Error with CMOF_Element'Image (MC);

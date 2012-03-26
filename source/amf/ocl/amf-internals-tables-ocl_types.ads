@@ -53,44 +53,44 @@ package AMF.Internals.Tables.OCL_Types is
 
    type Element_Kinds is
     (E_None,
-     E_Any_Type,
-     E_Association_Class_Call_Exp,
-     E_Bag_Type,
-     E_Boolean_Literal_Exp,
-     E_Collection_Item,
-     E_Collection_Literal_Exp,
-     E_Collection_Range,
-     E_Collection_Type,
-     E_Enum_Literal_Exp,
-     E_Expression_In_Ocl,
-     E_If_Exp,
-     E_Integer_Literal_Exp,
-     E_Invalid_Literal_Exp,
-     E_Invalid_Type,
-     E_Iterate_Exp,
-     E_Iterator_Exp,
-     E_Let_Exp,
-     E_Message_Exp,
-     E_Message_Type,
-     E_Null_Literal_Exp,
-     E_Operation_Call_Exp,
-     E_Ordered_Set_Type,
-     E_Property_Call_Exp,
-     E_Real_Literal_Exp,
-     E_Sequence_Type,
-     E_Set_Type,
-     E_State_Exp,
-     E_String_Literal_Exp,
-     E_Template_Parameter_Type,
-     E_Tuple_Literal_Exp,
-     E_Tuple_Literal_Part,
-     E_Tuple_Type,
-     E_Type_Exp,
-     E_Unlimited_Natural_Literal_Exp,
-     E_Unspecified_Value_Exp,
-     E_Variable,
-     E_Variable_Exp,
-     E_Void_Type);
+     E_OCL_Any_Type,
+     E_OCL_Association_Class_Call_Exp,
+     E_OCL_Bag_Type,
+     E_OCL_Boolean_Literal_Exp,
+     E_OCL_Collection_Item,
+     E_OCL_Collection_Literal_Exp,
+     E_OCL_Collection_Range,
+     E_OCL_Collection_Type,
+     E_OCL_Enum_Literal_Exp,
+     E_OCL_Expression_In_Ocl,
+     E_OCL_If_Exp,
+     E_OCL_Integer_Literal_Exp,
+     E_OCL_Invalid_Literal_Exp,
+     E_OCL_Invalid_Type,
+     E_OCL_Iterate_Exp,
+     E_OCL_Iterator_Exp,
+     E_OCL_Let_Exp,
+     E_OCL_Message_Exp,
+     E_OCL_Message_Type,
+     E_OCL_Null_Literal_Exp,
+     E_OCL_Operation_Call_Exp,
+     E_OCL_Ordered_Set_Type,
+     E_OCL_Property_Call_Exp,
+     E_OCL_Real_Literal_Exp,
+     E_OCL_Sequence_Type,
+     E_OCL_Set_Type,
+     E_OCL_State_Exp,
+     E_OCL_String_Literal_Exp,
+     E_OCL_Template_Parameter_Type,
+     E_OCL_Tuple_Literal_Exp,
+     E_OCL_Tuple_Literal_Part,
+     E_OCL_Tuple_Type,
+     E_OCL_Type_Exp,
+     E_OCL_Unlimited_Natural_Literal_Exp,
+     E_OCL_Unspecified_Value_Exp,
+     E_OCL_Variable,
+     E_OCL_Variable_Exp,
+     E_OCL_Void_Type);
 
    type Member_Kinds is
     (M_None,
@@ -144,16 +144,11 @@ package AMF.Internals.Tables.OCL_Types is
 
    type Member_Array is array (Natural range 0 .. 17) of Member_Record;
 
-   type Element_Record (Kind : Element_Kinds := E_None) is record
-      case Kind is
-         when E_None =>
-            null;
-
-         when others =>
-            Extent : AMF_Extent;
-            Proxy  : AMF.Elements.Element_Access;
-            Member : Member_Array;
-      end case;
+   type Element_Record is record
+      Kind   : Element_Kinds := E_None;
+      Extent : AMF_Extent;
+      Proxy  : AMF.Elements.Element_Access;
+      Member : Member_Array;
    end record;
 
 end AMF.Internals.Tables.OCL_Types;
