@@ -104,6 +104,9 @@ package body AMF.Internals.Element_Collections is
 
       AMF_Tables.Collections.Table (First) :=
        (Kind     => AMF_Tables.C_None,
+        Proxy    =>
+          new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+               (Collection => First),
         Owner    => 0,
         Property => 0,
         Head     => 0,
@@ -149,6 +152,9 @@ package body AMF.Internals.Element_Collections is
    begin
       AMF_Tables.Collections.Table (Collection) :=
        (Kind     => AMF_Tables.C_Ordered_Set,
+        Proxy    =>
+          new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+               (Collection => Collection),
         Owner    => Element,
         Property => Property,
         Head     => 0,
@@ -166,6 +172,9 @@ package body AMF.Internals.Element_Collections is
    begin
       AMF_Tables.Collections.Table (Collection) :=
        (Kind     => AMF_Tables.C_Set,
+        Proxy    =>
+          new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+               (Collection => Collection),
         Owner    => Element,
         Property => Property,
         Head     => 0,
@@ -241,8 +250,8 @@ package body AMF.Internals.Element_Collections is
        return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access is
    begin
       return
-        new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
-             (Counter => <>, Collection => Collection);
+        AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
+         (AMF_Tables.Collections.Table (Collection).Proxy);
    end Wrap;
 
 end AMF.Internals.Element_Collections;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,30 +44,16 @@
 --  This package provides implementation of proxy to map collection of elements
 --  into internal representation used to represent value of object's attribute.
 ------------------------------------------------------------------------------
-with Matreshka.Atomics.Counters;
 
 package AMF.Internals.Collections.Elements.Proxies is
 
    type Shared_Element_Collection_Proxy is
      new Shared_Element_Collection with record
-      Counter    : Matreshka.Atomics.Counters.Counter;
       Collection : AMF.Internals.AMF_Collection_Of_Element;
    end record;
 
    type Shared_Element_Collection_Proxy_Access is
      access all Shared_Element_Collection_Proxy'Class;
-
---   overriding procedure Reference
---    (Self : not null access Shared_Element_Collection_Proxy) is null;
---
---   overriding procedure Unreference
---    (Self : not null access Shared_Element_Collection_Proxy) is null;
-
-   overriding procedure Reference
-    (Self : not null access Shared_Element_Collection_Proxy);
-
-   overriding procedure Unreference
-    (Self : not null access Shared_Element_Collection_Proxy);
 
    overriding function Length
     (Self : not null access constant Shared_Element_Collection_Proxy)
@@ -83,5 +69,12 @@ package AMF.Internals.Collections.Elements.Proxies is
    overriding procedure Add
     (Self : not null access Shared_Element_Collection_Proxy;
      Item : not null AMF.Elements.Element_Access);
+
+   overriding procedure Reference
+    (Self : not null access Shared_Element_Collection_Proxy) is null;
+   overriding procedure Unreference
+    (Self : not null access Shared_Element_Collection_Proxy) is null;
+   --  Reference to the proxy is owned by the collection table, reference
+   --  counting is not used.
 
 end AMF.Internals.Collections.Elements.Proxies;

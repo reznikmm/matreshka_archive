@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with GNAT.Table;
 
 with Matreshka.Internals.Strings;
 
+with AMF.Internals.Collections.Elements.Proxies;
 with AMF.Internals.AMF_URI_Extents;
 
 package AMF.Internals.Tables.AMF_Tables is
@@ -87,6 +88,8 @@ package AMF.Internals.Tables.AMF_Tables is
    type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
 
    type Collection_Record (Kind : Collection_Kinds := C_None) is record
+      Proxy     :
+        AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy_Access;
       Owner     : AMF_Element;
       --  Owner of the collection.
       Property  : CMOF_Element;
