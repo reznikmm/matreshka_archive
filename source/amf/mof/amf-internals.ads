@@ -63,7 +63,7 @@ package AMF.Internals is
    --  Element identifier and its subtypes for each metamodel  --
    --------------------------------------------------------------
 
-   type AMF_Element is range 0 .. 2 ** 31 - 1;
+   type AMF_Element is mod 2 ** 32;
    for AMF_Element'Size use 32;
    --  Identifier of the element inside metamodel.
 

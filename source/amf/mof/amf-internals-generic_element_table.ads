@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides two-stage table to manage storage for model elements.
 ------------------------------------------------------------------------------
-private with Interfaces;
 
 generic
    type Element_Type is private;
@@ -76,7 +75,7 @@ private
 
    type Segment_Access is access all Segment_Array;
 
-   Module_Component : Interfaces.Unsigned_32;
+   Module_Component : AMF_Element;
    Segments         : array (Segment_Index) of Segment_Access;
    Last_Element     : AMF_Element;
 

@@ -41,19 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
 
 package body AMF.Internals.Generic_Element_Table is
-
-   use type Interfaces.Unsigned_32;
 
    function S (Item : AMF_Element) return Segment_Index;
    pragma Inline (S);
    function E (Item : AMF_Element) return Element_Index;
    pragma Inline (E);
    function M (Item : AMF_Element) return AMF_Metamodel;
-   function U  is
-     new Ada.Unchecked_Conversion (AMF_Element, Interfaces.Unsigned_32);
 
    -------
    -- S --
@@ -61,7 +56,7 @@ package body AMF.Internals.Generic_Element_Table is
 
    function S (Item : AMF_Element) return Segment_Index is
    begin
-      return Segment_Index ((U (Item) / 2 ** 12) and 16#00000FFF#);
+      return Segment_Index ((Item / 2 ** 12) and 16#00000FFF#);
    end S;
 
    -------
@@ -70,7 +65,7 @@ package body AMF.Internals.Generic_Element_Table is
 
    function E (Item : AMF_Element) return Element_Index is
    begin
-      return Element_Index (U (Item) and 16#00000FFF#);
+      return Element_Index (Item and 16#00000FFF#);
    end E;
 
    -------
@@ -79,7 +74,7 @@ package body AMF.Internals.Generic_Element_Table is
 
    function M (Item : AMF_Element) return AMF_Metamodel is
    begin
-      return AMF_Metamodel (U (Item) / 2 ** 24);
+      return AMF_Metamodel (Item / 2 ** 24);
    end M;
 
    --------------
@@ -112,7 +107,7 @@ package body AMF.Internals.Generic_Element_Table is
 
    procedure Initialize (Metamodel : AMF_Metamodel) is
    begin
-      Module_Component := Interfaces.Unsigned_32 (Metamodel) * 2 ** 24;
+      Module_Component := AMF_Element (Metamodel) * 2 ** 24;
       Last_Element := 0;
       Segments (0) := new Segment_Array;
    end Initialize;
@@ -123,7 +118,7 @@ package body AMF.Internals.Generic_Element_Table is
 
    function Last return AMF_Element is
    begin
-      return AMF_Element (U (Last_Element) or Module_Component);
+      return AMF_Element (Last_Element or Module_Component);
    end Last;
 
    -----------
