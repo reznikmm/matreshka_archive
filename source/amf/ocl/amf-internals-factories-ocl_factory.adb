@@ -41,13 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
-with AMF.Internals.Tables.OCL_Attribute_Mappings;
 with AMF.Internals.Tables.OCL_Constructors;
-with AMF.Internals.Tables.OCL_Element_Table;
 with AMF.Internals.Tables.OCL_Metamodel;
-with AMF.Internals.Tables.UML_Metamodel;
 with AMF.OCL.Holders.Collection_Kinds;
 
 package body AMF.Internals.Factories.OCL_Factory is
@@ -66,101 +62,6 @@ package body AMF.Internals.Factories.OCL_Factory is
      := League.Strings.To_Universal_String ("Bag");
    Sequence_Image    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Sequence");
-
-   --------------------
-   -- Connect_Extent --
-   --------------------
-
-   overriding procedure Connect_Extent
-    (Self    : not null access constant OCL_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent)
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      AMF.Internals.Tables.OCL_Element_Table.Table (Element).Extent := Extent;
-   end Connect_Extent;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant OCL_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element)
-   is
-      pragma Unreferenced (Self);
-
-      use AMF.Internals.Tables;
-      use AMF.Internals.Tables.OCL_Attribute_Mappings;
-      use AMF.Internals.Tables.UML_Metamodel;
-
-   begin
-      --  Properties which comes from UML metamodel.
-
-      if Property in MB_UML .. ML_UML then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
-
-         begin
-            if PO in UML_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (OCL_Element_Table.Table (Element).Member (0).Collection
-                   + UML_Collection_Offset
-                      (OCL_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in UML_Member_Offset'Range (2)
-              and then UML_Member_Offset
-                        (OCL_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               OCL_Element_Table.Table (Element).Member
-                (UML_Member_Offset
-                  (OCL_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (OCL_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-
-      elsif Property in MB_OCL .. ML_OCL then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_OCL;
-
-         begin
-            if PO in OCL_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (OCL_Element_Table.Table (Element).Member (0).Collection
-                   + OCL_Collection_Offset
-                      (OCL_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in OCL_Member_Offset'Range (2)
-              and then OCL_Member_Offset
-                        (OCL_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               OCL_Element_Table.Table (Element).Member
-                (OCL_Member_Offset
-                  (OCL_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (OCL_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-      end if;
-   end Connect_Link_End;
 
    -----------------------
    -- Convert_To_String --
@@ -215,6 +116,8 @@ package body AMF.Internals.Factories.OCL_Factory is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
+      pragma Unreferenced (Self);
+
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Meta_Class));
@@ -341,7 +244,7 @@ package body AMF.Internals.Factories.OCL_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return Self.To_Element (Element);
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
@@ -393,20 +296,6 @@ package body AMF.Internals.Factories.OCL_Factory is
       raise Program_Error;
    end Create_From_String;
 
-   -------------------
-   -- Get_Metamodel --
-   -------------------
-
-   overriding function Get_Metamodel
-    (Self : not null access constant OCL_Factory)
-       return AMF.Internals.AMF_Metamodel
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return OCL_Metamodel;
-   end Get_Metamodel;
-
    -----------------
    -- Get_Package --
    -----------------
@@ -422,19 +311,5 @@ package body AMF.Internals.Factories.OCL_Factory is
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element (MM_OCL_OCL));
    end Get_Package;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   overriding function To_Element
-    (Self     : not null access constant OCL_Factory;
-     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Element).Proxy;
-   end To_Element;
 
 end AMF.Internals.Factories.OCL_Factory;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,7 +54,7 @@ package body AMF.Internals.AMF_URI_Stores is
 
    function Factory
     (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return AMF.Internals.Factories.Factory_Access;
+       return AMF.Internals.Factories.Metamodel_Factory_Access;
    --  Returns factory for the specified meta type.
 
    -----------------------
@@ -179,7 +179,7 @@ package body AMF.Internals.AMF_URI_Stores is
 
    function Factory
     (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return AMF.Internals.Factories.Factory_Access
+       return AMF.Internals.Factories.Metamodel_Factory_Access
    is
       Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
         := AMF.CMOF.Packages.CMOF_Package_Access

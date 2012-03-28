@@ -67,18 +67,6 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
    Unlimited_Image : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("*");
 
-   --------------------
-   -- Connect_Extent --
-   --------------------
-
-   overriding procedure Connect_Extent
-    (Self    : not null access constant Primitive_Types_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent) is
-   begin
-      raise Program_Error;
-   end Connect_Extent;
-
    ------------
    -- Create --
    ------------
@@ -88,6 +76,8 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
+      pragma Unreferenced (Self);
+
       MC : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Meta_Class));
@@ -106,6 +96,8 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder
    is
+      pragma Unreferenced (Self);
+
       use type League.Strings.Universal_String;
 
       DT : constant AMF.Internals.CMOF_Element
@@ -152,20 +144,6 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
       raise Program_Error with "Unknown CMOF data type";
    end Create_From_String;
 
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant Primitive_Types_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element) is
-   begin
-      raise Program_Error;
-   end Connect_Link_End;
-
    -----------------------
    -- Convert_To_String --
    -----------------------
@@ -175,6 +153,8 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String
    is
+      pragma Unreferenced (Self);
+
       DT : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Data_Type));
@@ -224,42 +204,21 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
       raise Program_Error;
    end Convert_To_String;
 
-   -------------------
-   -- Get_Metamodel --
-   -------------------
-
-   overriding function Get_Metamodel
-    (Self : not null access constant Primitive_Types_Factory)
-       return AMF.Internals.AMF_Metamodel is
-   begin
-      return Primitive_Types_Metamodel;
-   end Get_Metamodel;
-
    -----------------
    -- Get_Package --
    -----------------
 
    overriding function Get_Package
     (Self : not null access constant Primitive_Types_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access is
+       return not null AMF.CMOF.Packages.CMOF_Package_Access
+   is
+      pragma Unreferenced (Self);
+
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element
            (MM_Primitive_Types_Primitive_Types));
    end Get_Package;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   overriding function To_Element
-    (Self     : not null access constant Primitive_Types_Factory;
-     Element  : AMF.Internals.AMF_Element)
-       return AMF.Elements.Element_Access is
-   begin
-      raise Program_Error;
-      return null;
-   end To_Element;
 
 end AMF.Internals.Factories.Primitive_Types_Factory;

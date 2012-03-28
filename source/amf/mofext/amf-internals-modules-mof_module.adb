@@ -48,6 +48,7 @@ pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
 --  elaboration of this package.
 
 with AMF.Internals.Factories.MOF_Factory;
+with AMF.Internals.Factories.MOF_Module_Factory;
 with AMF.Internals.Tables.MOF_Element_Table;
 with AMF.Internals.Tables.MOF_Metamodel;
 
@@ -55,7 +56,10 @@ package body AMF.Internals.Modules.MOF_Module is
 
    --  Global object of factory for supported metamodel.
 
-   MOF_Factory : aliased AMF.Internals.Factories.MOF_Factory.MOF_Factory;
+   MOF_Factory        : aliased
+     AMF.Internals.Factories.MOF_Factory.MOF_Factory;
+   MOF_Module_Factory : aliased
+     AMF.Internals.Factories.MOF_Module_Factory.MOF_Module_Factory;
 
 begin
    --  Initialize metamodels.
@@ -69,5 +73,6 @@ begin
 
    --  Register factories.
 
+   AMF.Internals.Factories.Register (MOF_Module_Factory'Access);
    AMF.Internals.Factories.Register (MOF_Factory'Access);
 end AMF.Internals.Modules.MOF_Module;

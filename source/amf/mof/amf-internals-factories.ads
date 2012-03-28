@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides interface type and registry for internal factories.
---  Every metamodel should provide implementation of the interface type to
---  allow AMF to create elements and convert data types.
+--  This package provides interface types and registry for internal factories.
+--  Every module should provide implementation of the interface type
+--  Abstract_Module_Factory and one or more implementations of the interface
+--  type Abstract_Metamodel_Factory to allow AMF to create elements and convert
+--  data types.
 ------------------------------------------------------------------------------
 with League.Holders;
 with League.Strings;
@@ -57,12 +59,17 @@ package AMF.Internals.Factories is
 
    pragma Preelaborate;
 
-   type Abstract_Factory is limited interface;
+   --------------------------------
+   -- Abstract_Metamodel_Factory --
+   --------------------------------
 
-   type Factory_Access is access all Abstract_Factory'Class;
+   type Abstract_Metamodel_Factory is limited interface;
+
+   type Metamodel_Factory_Access is
+     access all Abstract_Metamodel_Factory'Class;
 
    not overriding function Create
-    (Self       : not null access Abstract_Factory;
+    (Self       : not null access Abstract_Metamodel_Factory;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access is abstract;
    --  Creates an element that is an instance of the metaClass.
@@ -117,7 +124,7 @@ package AMF.Internals.Factories is
    --  instantiated.
 
    not overriding function Create_From_String
-    (Self      : not null access Abstract_Factory;
+    (Self      : not null access Abstract_Metamodel_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String)
        return League.Holders.Holder is abstract;
@@ -133,7 +140,7 @@ package AMF.Internals.Factories is
    --  package returned by getPackage().
 
    not overriding function Convert_To_String
-    (Self      : not null access Abstract_Factory;
+    (Self      : not null access Abstract_Metamodel_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder)
        return League.Strings.Universal_String is abstract;
@@ -146,51 +153,60 @@ package AMF.Internals.Factories is
    --  instance of that datatype.
 
    not overriding function Get_Package
-    (Self : not null access constant Abstract_Factory)
+    (Self : not null access constant Abstract_Metamodel_Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  Returns the package this is a factory for.
 
+   -----------------------------
+   -- Abstract_Module_Factory --
+   -----------------------------
+
+   type Abstract_Module_Factory is limited interface;
+
+   type Module_Factory_Access is access all Abstract_Module_Factory'Class;
+
    not overriding function Get_Metamodel
-    (Self : not null access constant Abstract_Factory)
+    (Self : not null access constant Abstract_Module_Factory)
        return AMF.Internals.AMF_Metamodel is abstract;
    --  Returns metamodel to which is factory for.
+   --
+   --  XXX Deprecated: metamodel identifier will be replaced by module
+   --  identifier and assigned dynamically during module registration.
 
    not overriding function To_Element
-    (Self    : not null access constant Abstract_Factory;
+    (Self    : not null access constant Abstract_Module_Factory;
      Element : AMF.Internals.AMF_Element)
        return AMF.Elements.Element_Access is abstract;
    --  Converts internal element's identifier into element object.
 
    not overriding procedure Connect_Extent
-    (Self    : not null access constant Abstract_Factory;
+    (Self    : not null access constant Abstract_Module_Factory;
      Element : AMF.Internals.AMF_Element;
      Extent  : AMF.Internals.AMF_Extent) is abstract;
    --  Connects element with extent.
 
    not overriding procedure Connect_Link_End
-    (Self     : not null access constant Abstract_Factory;
+    (Self     : not null access constant Abstract_Module_Factory;
      Element  : AMF.Internals.AMF_Element;
      Property : AMF.Internals.CMOF_Element;
      Link     : AMF.Internals.AMF_Link;
      Other    : AMF.Internals.AMF_Element) is abstract;
    --  Connects link end with specified element:property.
 
-   procedure Register (Factory : not null Factory_Access);
-   --  Registers factory.
+   procedure Register (Factory : not null Metamodel_Factory_Access);
+   --  Registers metamodel factory.
+
+   procedure Register (Factory : not null Module_Factory_Access);
+   --  Registers module factory.
 
    function Get_Factory
-    (URI : League.Strings.Universal_String) return Factory_Access;
+    (URI : League.Strings.Universal_String) return Metamodel_Factory_Access;
    --  Returns factory for the metamodel specified by URI or null when
    --  metamodel is not registered.
 
    function Get_Factory
-    (Metamodel : AMF.Internals.AMF_Metamodel) return Factory_Access;
+    (Metamodel : AMF.Internals.AMF_Metamodel) return Module_Factory_Access;
    --  Returns factory for the metamodel.
-
-   procedure Set_CMOF_Factory (Factory : not null Factory_Access);
-   --  Sets factory for CMOF metamodel to bootstrap internal CMOF metamodel.
-   --  This subprogram must be called before initialization of CMOF metamodel
-   --  package. CMOF factory must be registered later in usual way.
 
    function Get_Packages
      return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;

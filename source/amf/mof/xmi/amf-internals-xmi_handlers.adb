@@ -948,9 +948,9 @@ package body AMF.Internals.XMI_Handlers is
    is
       pragma Unreferenced (Success);
 
-      use type AMF.Internals.Factories.Factory_Access;
+      use type AMF.Internals.Factories.Metamodel_Factory_Access;
 
-      Factory     : AMF.Internals.Factories.Factory_Access;
+      Factory     : AMF.Internals.Factories.Metamodel_Factory_Access;
       The_Package : AMF.Elements.Element_Access;
 
    begin

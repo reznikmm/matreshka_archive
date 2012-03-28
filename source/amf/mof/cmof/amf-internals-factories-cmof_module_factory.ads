@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,36 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for PrimitiveTypes of UML module.
+--  Factory for CMOF module.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Factories.Primitive_Types_Factory is
+package AMF.Internals.Factories.CMOF_Module_Factory is
 
-   type Primitive_Types_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
+   type CMOF_Module_Factory is
+     limited new AMF.Internals.Factories.Abstract_Module_Factory
        with null record;
 
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+   --------------------------
+   -- Factory's operations --
+   --------------------------
 
-   overriding function Convert_To_String
-    (Self      : not null access Primitive_Types_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+   overriding procedure Connect_Extent
+    (Self    : not null access constant CMOF_Module_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent);
 
-   overriding function Create
-    (Self       : not null access Primitive_Types_Factory;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
-       return not null AMF.Elements.Element_Access;
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant CMOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element);
 
-   overriding function Create_From_String
-    (Self      : not null access Primitive_Types_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Image     : League.Strings.Universal_String) return League.Holders.Holder;
+   overriding function Get_Metamodel
+    (Self : not null access constant CMOF_Module_Factory)
+       return AMF.Internals.AMF_Metamodel;
 
-   overriding function Get_Package
-    (Self : not null access constant Primitive_Types_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+   overriding function To_Element
+    (Self     : not null access constant CMOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
 
-end AMF.Internals.Factories.Primitive_Types_Factory;
+end AMF.Internals.Factories.CMOF_Module_Factory;

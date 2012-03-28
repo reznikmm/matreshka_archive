@@ -41,112 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
-with AMF.Internals.Tables.MOF_Attribute_Mappings;
 with AMF.Internals.Tables.MOF_Constructors;
-with AMF.Internals.Tables.MOF_Element_Table;
 with AMF.Internals.Tables.MOF_Metamodel;
-with AMF.Internals.Tables.UML_Metamodel;
 
 package body AMF.Internals.Factories.MOF_Factory is
 
    use AMF.Internals.Tables.MOF_Metamodel;
-
-   --------------------
-   -- Connect_Extent --
-   --------------------
-
-   overriding procedure Connect_Extent
-    (Self    : not null access constant MOF_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent)
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      AMF.Internals.Tables.MOF_Element_Table.Table (Element).Extent := Extent;
-   end Connect_Extent;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant MOF_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element)
-   is
-      pragma Unreferenced (Self);
-
-      use AMF.Internals.Tables;
-      use AMF.Internals.Tables.UML_Metamodel;
-      use AMF.Internals.Tables.MOF_Attribute_Mappings;
-
-   begin
-      --  Properties which comes from UML metamodel.
-
-      if Property in MB_UML .. ML_UML then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
-
-         begin
-            if PO in UML_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection
-                   + UML_Collection_Offset
-                      (MOF_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in UML_Member_Offset'Range (2)
-              and then UML_Member_Offset
-                        (MOF_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               MOF_Element_Table.Table (Element).Member
-                (UML_Member_Offset
-                  (MOF_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-
-      elsif Property in MB_MOF .. ML_MOF then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_MOF;
-
-         begin
-            if PO in MOF_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection
-                   + MOF_Collection_Offset
-                      (MOF_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in MOF_Member_Offset'Range (2)
-              and then MOF_Member_Offset
-                        (MOF_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               MOF_Element_Table.Table (Element).Member
-                (MOF_Member_Offset
-                  (MOF_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-      end if;
-   end Connect_Link_End;
 
    -----------------------
    -- Convert_To_String --
@@ -185,7 +86,7 @@ package body AMF.Internals.Factories.MOF_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return Self.To_Element (Element);
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
@@ -200,20 +101,6 @@ package body AMF.Internals.Factories.MOF_Factory is
       raise Program_Error;
       return League.Holders.Empty_Holder;
    end Create_From_String;
-
-   -------------------
-   -- Get_Metamodel --
-   -------------------
-
-   overriding function Get_Metamodel
-    (Self : not null access constant MOF_Factory)
-       return AMF.Internals.AMF_Metamodel
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return MOF_Metamodel;
-   end Get_Metamodel;
 
    -----------------
    -- Get_Package --
@@ -230,19 +117,5 @@ package body AMF.Internals.Factories.MOF_Factory is
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element (MM_MOF_MOF));
    end Get_Package;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   overriding function To_Element
-    (Self     : not null access constant MOF_Factory;
-     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return AMF.Internals.Tables.MOF_Element_Table.Table (Element).Proxy;
-   end To_Element;
 
 end AMF.Internals.Factories.MOF_Factory;

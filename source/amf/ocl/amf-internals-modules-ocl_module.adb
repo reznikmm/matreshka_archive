@@ -48,6 +48,7 @@ pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
 --  elaboration of this package.
 
 with AMF.Internals.Factories.OCL_Factory;
+with AMF.Internals.Factories.OCL_Module_Factory;
 with AMF.Internals.Tables.OCL_Element_Table;
 with AMF.Internals.Tables.OCL_Metamodel;
 
@@ -55,7 +56,10 @@ package body AMF.Internals.Modules.OCL_Module is
 
    --  Global object of factory for supported metamodel.
 
-   OCL_Factory : aliased AMF.Internals.Factories.OCL_Factory.OCL_Factory;
+   OCL_Module_Factory : aliased
+     AMF.Internals.Factories.OCL_Module_Factory.OCL_Module_Factory;
+   OCL_Factory        : aliased
+     AMF.Internals.Factories.OCL_Factory.OCL_Factory;
 
 begin
    --  Initialize metamodels.
@@ -69,5 +73,6 @@ begin
 
    --  Register factories.
 
+   AMF.Internals.Factories.Register (OCL_Module_Factory'Access);
    AMF.Internals.Factories.Register (OCL_Factory'Access);
 end AMF.Internals.Modules.OCL_Module;

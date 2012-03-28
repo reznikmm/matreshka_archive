@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,23 +47,12 @@
 package AMF.Internals.Factories.UML_Factory is
 
    type UML_Factory is
-     limited new AMF.Internals.Factories.Abstract_Factory with null record;
+     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
+       with null record;
 
    ------------------------------
    -- AMF_Factory's operations --
    ------------------------------
-
-   overriding procedure Connect_Extent
-    (Self    : not null access constant UML_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent);
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant UML_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element);
 
    overriding function Convert_To_String
     (Self      : not null access UML_Factory;
@@ -80,16 +69,8 @@ package AMF.Internals.Factories.UML_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
-   overriding function Get_Metamodel
-    (Self : not null access constant UML_Factory)
-       return AMF.Internals.AMF_Metamodel;
-
    overriding function Get_Package
     (Self : not null access constant UML_Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
-
-   overriding function To_Element
-    (Self     : not null access constant UML_Factory;
-     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
 
 end AMF.Internals.Factories.UML_Factory;

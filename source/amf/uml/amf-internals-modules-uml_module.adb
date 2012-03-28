@@ -41,16 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
-pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
---  CMOF factory package and all its dependencies must be elaborated before
+with AMF.Internals.Modules.CMOF_Module;
+pragma Unreferenced (AMF.Internals.Modules.CMOF_Module);
+pragma Elaborate_All (AMF.Internals.Modules.CMOF_Module);
+--  CMOF module package and all its dependencies must be elaborated before
 --  elaboration of this package.
 
 with AMF.Internals.Factories.Primitive_Types_Factory;
 with AMF.Internals.Factories.Standard_Profile_L2_Factory;
 with AMF.Internals.Factories.Standard_Profile_L3_Factory;
 with AMF.Internals.Factories.UML_Factory;
+with AMF.Internals.Factories.UML_Module_Factory;
 with AMF.Internals.Tables.Primitive_Types_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
@@ -69,6 +70,8 @@ package body AMF.Internals.Modules.UML_Module is
      AMF.Internals.Factories.Standard_Profile_L3_Factory.Standard_Profile_L3_Factory;
    UML_Factory                 :
      aliased AMF.Internals.Factories.UML_Factory.UML_Factory;
+   UML_Module_Factory          :
+     aliased AMF.Internals.Factories.UML_Module_Factory.UML_Module_Factory;
 
 begin
    --  Initialize metamodels.
@@ -89,6 +92,7 @@ begin
 
    --  Register factories.
 
+   AMF.Internals.Factories.Register (UML_Module_Factory'Access);
    AMF.Internals.Factories.Register (Primitive_Types_Factory'Access);
    AMF.Internals.Factories.Register (Standard_Profile_L2_Factory'Access);
    AMF.Internals.Factories.Register (Standard_Profile_L3_Factory'Access);

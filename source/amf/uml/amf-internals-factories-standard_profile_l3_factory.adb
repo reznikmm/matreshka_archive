@@ -41,112 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
-with AMF.Internals.Tables.UML_Attribute_Mappings;
 with AMF.Internals.Tables.UML_Constructors;
-with AMF.Internals.Tables.UML_Element_Table;
-with AMF.Internals.Tables.UML_Metamodel;
 
 package body AMF.Internals.Factories.Standard_Profile_L3_Factory is
 
    use AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
-
-   --------------------
-   -- Connect_Extent --
-   --------------------
-
-   overriding procedure Connect_Extent
-    (Self    : not null access constant Standard_Profile_L3_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent)
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent := Extent;
-   end Connect_Extent;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant Standard_Profile_L3_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element)
-   is
-      pragma Unreferenced (Self);
-
-      use AMF.Internals.Tables;
-      use AMF.Internals.Tables.UML_Attribute_Mappings;
-      use AMF.Internals.Tables.UML_Metamodel;
-
-   begin
-      --  Properties which comes from UML metamodel.
-
-      if Property in MB_UML .. ML_UML then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
-
-         begin
-            if PO in UML_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (UML_Element_Table.Table (Element).Member (0).Collection
-                   + UML_Collection_Offset
-                      (UML_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in UML_Member_Offset'Range (2)
-              and then UML_Member_Offset
-                        (UML_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               UML_Element_Table.Table (Element).Member
-                (UML_Member_Offset
-                  (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (UML_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-
-      elsif Property in MB_Standard_Profile_L3 .. ML_Standard_Profile_L3 then
-         declare
-            PO : constant AMF.Internals.CMOF_Element := Property - MB_Standard_Profile_L3;
-
-         begin
-            if PO in Standard_Profile_L3_Collection_Offset'Range (2) then
-               AMF.Internals.Element_Collections.Internal_Append
-                (UML_Element_Table.Table (Element).Member (0).Collection
-                   + Standard_Profile_L3_Collection_Offset
-                      (UML_Element_Table.Table (Element).Kind, PO),
-                 Other,
-                 Link);
-
-            elsif PO in Standard_Profile_L3_Member_Offset'Range (2)
-              and then Standard_Profile_L3_Member_Offset
-                        (UML_Element_Table.Table (Element).Kind, PO) /= 0
-            then
-               UML_Element_Table.Table (Element).Member
-                (Standard_Profile_L3_Member_Offset
-                  (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
-
-            else
-               AMF.Internals.Element_Collections.Internal_Append
-                (UML_Element_Table.Table (Element).Member (0).Collection,
-                 Other,
-                 Link);
-            end if;
-         end;
-      end if;
-   end Connect_Link_End;
 
    -----------------------
    -- Convert_To_String --
@@ -170,6 +71,8 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factory is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
+      pragma Unreferenced (Self);
+
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Meta_Class));
@@ -191,7 +94,7 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return Self.To_Element (Element);
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
@@ -207,20 +110,6 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factory is
       return League.Holders.Empty_Holder;
    end Create_From_String;
 
-   -------------------
-   -- Get_Metamodel --
-   -------------------
-
-   overriding function Get_Metamodel
-    (Self : not null access constant Standard_Profile_L3_Factory)
-       return AMF.Internals.AMF_Metamodel
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return UML_Metamodel;
-   end Get_Metamodel;
-
    -----------------
    -- Get_Package --
    -----------------
@@ -234,21 +123,8 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factory is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (MM_Standard_Profile_L3_Standard_Profile_L3));
+         (AMF.Internals.Helpers.To_Element
+           (MM_Standard_Profile_L3_Standard_Profile_L3));
    end Get_Package;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   overriding function To_Element
-    (Self     : not null access constant Standard_Profile_L3_Factory;
-     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Element).Proxy;
-   end To_Element;
 
 end AMF.Internals.Factories.Standard_Profile_L3_Factory;
