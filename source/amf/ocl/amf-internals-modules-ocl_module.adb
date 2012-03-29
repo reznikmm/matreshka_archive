@@ -57,9 +57,9 @@ package body AMF.Internals.Modules.OCL_Module is
    --  Global object of factory for supported metamodel.
 
    OCL_Module_Factory : aliased
-     AMF.Internals.Factories.OCL_Module_Factories.OCL_Module_Factory;
+     AMF.Internals.Factories.OCL_Module_Factory.OCL_Module_Factory;
    OCL_Factory        : aliased
-     AMF.Internals.Factories.OCL_Factory.OCL_Factory;
+     AMF.Internals.Factories.OCL_Factories.OCL_Factory;
 
 begin
    --  Initialize metamodels.
