@@ -66,10 +66,6 @@ package AMF.Internals.Factories.MOF_Module_Factory is
      Link     : AMF.Internals.AMF_Link;
      Other    : AMF.Internals.AMF_Element);
 
-   overriding function Get_Metamodel
-    (Self : not null access constant MOF_Module_Factory)
-       return AMF.Internals.AMF_Metamodel;
-
    overriding function To_Element
     (Self     : not null access constant MOF_Module_Factory;
      Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;

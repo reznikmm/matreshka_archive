@@ -60,8 +60,13 @@ package body AMF.Internals.Modules.MOF_Module is
      AMF.Internals.Factories.MOF_Factories.MOF_Factory;
    MOF_Module_Factory : aliased
      AMF.Internals.Factories.MOF_Module_Factory.MOF_Module_Factory;
+   Module             : AMF_Metamodel;
 
 begin
+   --  Register module's factory.
+
+   AMF.Internals.Factories.Register (MOF_Module_Factory'Access, Module);
+
    --  Initialize metamodels.
 
    AMF.Internals.Tables.MOF_Metamodel.Initialize_Objects;
@@ -69,10 +74,9 @@ begin
 
    --  Initialize element table of MOF metamodel.
 
-   AMF.Internals.Tables.MOF_Element_Table.Initialize (MOF_Metamodel);
+   AMF.Internals.Tables.MOF_Element_Table.Initialize (Module);
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (MOF_Module_Factory'Access);
    AMF.Internals.Factories.Register (MOF_Factory'Access);
 end AMF.Internals.Modules.MOF_Module;
