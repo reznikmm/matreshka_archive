@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -224,12 +224,11 @@ package body AMF.Internals.Links is
    ----------------------
 
    function Opposite_Element
-    (Self       : AMF_Link;
-     Element    : AMF_Element;
-     No_Element : AMF_Element) return AMF_Element is
+    (Self    : AMF_Link;
+     Element : AMF_Element) return AMF_Element is
    begin
       if Self = No_AMF_Link then
-         return No_Element;
+         return No_AMF_Element;
 
       elsif AMF_Link_Table.Table (Self).First_Element = Element then
          return AMF_Link_Table.Table (Self).Second_Element;

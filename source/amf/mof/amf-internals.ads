@@ -66,18 +66,9 @@ package AMF.Internals is
    type AMF_Element is mod 2 ** 32;
    for AMF_Element'Size use 32;
    --  Identifier of the element inside metamodel.
+   No_AMF_Element : constant AMF_Element := AMF_Element'First;
 
    subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
-   subtype UML_Element   is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
-   subtype MOF_Element   is AMF_Element range 16#03000000# .. 16#03FFFFFF#;
-   subtype OCL_Element   is AMF_Element range 16#04000000# .. 16#04FFFFFF#;
-   subtype IATS_Element  is AMF_Element range 16#05000000# .. 16#05FFFFFF#;
-
-   No_CMOF_Element : constant CMOF_Element := CMOF_Element'First;
-   No_UML_Element  : constant UML_Element  := UML_Element'First;
-   No_MOF_Element  : constant MOF_Element  := MOF_Element'First;
-   No_OCL_Element  : constant OCL_Element  := OCL_Element'First;
-   No_IATS_Element : constant IATS_Element := IATS_Element'First;
 
    -----------------------
    --  Link identifier  --

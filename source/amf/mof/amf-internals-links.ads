@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,9 +70,8 @@ package AMF.Internals.Links is
    function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access;
 
    function Opposite_Element
-    (Self       : AMF_Link;
-     Element    : AMF_Element;
-     No_Element : AMF_Element) return AMF_Element;
+    (Self    : AMF_Link;
+     Element : AMF_Element) return AMF_Element;
    --  Returns opposite element of the link or Null_Element when Link is
    --  No_Link.
 
