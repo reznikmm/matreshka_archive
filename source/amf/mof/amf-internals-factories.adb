@@ -57,6 +57,7 @@ package body AMF.Internals.Factories is
    URI_Registry    : Universal_String_Factory_Maps.Map;
    Module_Registry :
      array (AMF.Internals.AMF_Metamodel) of Module_Factory_Access;
+   Last_Module     : AMF_Metamodel := 0;
 
    -----------------
    -- Get_Factory --
@@ -123,9 +124,14 @@ package body AMF.Internals.Factories is
    -- Register --
    --------------
 
-   procedure Register (Factory : not null Module_Factory_Access) is
+   procedure Register
+    (Factory : not null Module_Factory_Access;
+     Module  : out AMF_Metamodel) is
    begin
-      Module_Registry (Factory.Get_Metamodel) := Factory;
+      Module := Last_Module;
+      Last_Module := Last_Module + 1;
+
+      Module_Registry (Module) := Factory;
    end Register;
 
 end AMF.Internals.Factories;

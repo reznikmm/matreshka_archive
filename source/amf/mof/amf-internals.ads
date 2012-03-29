@@ -50,14 +50,8 @@ package AMF.Internals is
    --  this requires to replace GNAT.Tables package by own implementation.
 
    type AMF_Metamodel is mod 2 ** 8;
+   for AMF_Metamodel'Size use 8;
    --  Identifier of the metamodel. AMF can supports up to 255 metamodels.
-
-   CMOF_Metamodel            : constant AMF_Metamodel := 0;
-   Primitive_Types_Metamodel : constant AMF_Metamodel := 1;
-   UML_Metamodel             : constant AMF_Metamodel := 2;
-   MOF_Metamodel             : constant AMF_Metamodel := 3;
-   OCL_Metamodel             : constant AMF_Metamodel := 4;
-   IATS_Metamodel            : constant AMF_Metamodel := 5;
 
    --------------------------------------------------------------
    --  Element identifier and its subtypes for each metamodel  --

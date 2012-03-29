@@ -165,14 +165,6 @@ package AMF.Internals.Factories is
 
    type Module_Factory_Access is access all Abstract_Module_Factory'Class;
 
-   not overriding function Get_Metamodel
-    (Self : not null access constant Abstract_Module_Factory)
-       return AMF.Internals.AMF_Metamodel is abstract;
-   --  Returns metamodel to which is factory for.
-   --
-   --  XXX Deprecated: metamodel identifier will be replaced by module
-   --  identifier and assigned dynamically during module registration.
-
    not overriding function To_Element
     (Self    : not null access constant Abstract_Module_Factory;
      Element : AMF.Internals.AMF_Element)
@@ -196,7 +188,9 @@ package AMF.Internals.Factories is
    procedure Register (Factory : not null Metamodel_Factory_Access);
    --  Registers metamodel factory.
 
-   procedure Register (Factory : not null Module_Factory_Access);
+   procedure Register
+    (Factory : not null Module_Factory_Access;
+     Module  : out AMF_Metamodel);
    --  Registers module factory.
 
    function Get_Factory
