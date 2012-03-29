@@ -50,33 +50,29 @@ with Generator.Units;
 package body Generator.Visitors is
 
    procedure Generate_Visitors_Package
-    (Info : not null Metamodel_Information_Access);
+    (Metamodel_Info : not null Metamodel_Information_Access);
    --  Generates visitor interface package
 
    procedure Generate_Iterators_Package
-    (Info : not null Metamodel_Information_Access);
+    (Metamodel_Info : not null Metamodel_Information_Access);
    --  Generates iterator interface package
-
-   function To_Ordered_Set
-    (Elements : CMOF_Element_Sets.Set) return CMOF_Class_Ordered_Sets.Set;
 
    --------------------------------
    -- Generate_Iterators_Package --
    --------------------------------
 
    procedure Generate_Iterators_Package
-    (Info : not null Metamodel_Information_Access)
+    (Metamodel_Info : not null Metamodel_Information_Access)
    is
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Visitors." & Info.Ada_Name & "_Visitors";
-      Classes      : constant CMOF_Class_Ordered_Sets.Set
-        := To_Ordered_Set (Info.Classes);
-      Position     : CMOF_Class_Ordered_Sets.Cursor := Classes.First;
+        := "AMF.Visitors." & Metamodel_Info.Ada_Name & "_Visitors";
+      Position     : CMOF_Class_Ordered_Sets.Cursor
+        := Metamodel_Info.Non_Abstract_Classes.First;
       Unit         : Generator.Units.Unit;
       Class        : AMF.CMOF.Classes.CMOF_Class_Access;
 
    begin
-      if Classes.Is_Empty then
+      if Metamodel_Info.Non_Abstract_Classes.Is_Empty then
          --  Don't generate visitors package when there are no classes in
          --  metamodel.
 
@@ -92,7 +88,7 @@ package body Generator.Visitors is
       Unit.Add_Line;
       Unit.Add_Line
        ("   type "
-          & Info.Ada_Name
+          & Metamodel_Info.Ada_Name
           & "_Visitor is limited interface and AMF.Visitors.Abstract_Visitor;");
 
       while CMOF_Class_Ordered_Sets.Has_Element (Position) loop
@@ -104,7 +100,9 @@ package body Generator.Visitors is
              (+"   not overriding procedure Enter_"
                  & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
             Unit.Add_Line
-             ("    (Self    : in out " & Info.Ada_Name & "_Visitor;");
+             ("    (Self    : in out "
+                & Metamodel_Info.Ada_Name
+                & "_Visitor;");
             Unit.Context.Add
              (Generator.Type_Mapping.Public_Ada_Package_Name (Class, Value));
             Unit.Add_Line
@@ -119,7 +117,9 @@ package body Generator.Visitors is
              (+"   not overriding procedure Leave_"
                  & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
             Unit.Add_Line
-             ("    (Self    : in out " & Info.Ada_Name & "_Visitor;");
+             ("    (Self    : in out "
+                & Metamodel_Info.Ada_Name
+                & "_Visitor;");
             Unit.Context.Add
              (Generator.Type_Mapping.Public_Ada_Package_Name (Class, Value));
             Unit.Add_Line
@@ -157,18 +157,17 @@ package body Generator.Visitors is
    -------------------------------
 
    procedure Generate_Visitors_Package
-    (Info : not null Metamodel_Information_Access)
+    (Metamodel_Info : not null Metamodel_Information_Access)
    is
       Package_Name : constant League.Strings.Universal_String
-        := "AMF.Visitors." & Info.Ada_Name & "_Iterators";
-      Classes      : constant CMOF_Class_Ordered_Sets.Set
-        := To_Ordered_Set (Info.Classes);
-      Position     : CMOF_Class_Ordered_Sets.Cursor := Classes.First;
+        := "AMF.Visitors." & Metamodel_Info.Ada_Name & "_Iterators";
+      Position     : CMOF_Class_Ordered_Sets.Cursor
+        := Metamodel_Info.Non_Abstract_Classes.First;
       Unit         : Generator.Units.Unit;
       Class        : AMF.CMOF.Classes.CMOF_Class_Access;
 
    begin
-      if Classes.Is_Empty then
+      if Metamodel_Info.Non_Abstract_Classes.Is_Empty then
          --  Don't generate visitors package when there are no classes in
          --  metamodel.
 
@@ -184,7 +183,7 @@ package body Generator.Visitors is
       Unit.Add_Line;
       Unit.Add_Line
        ("   type "
-          & Info.Ada_Name
+          & Metamodel_Info.Ada_Name
           & "_Iterator is limited interface"
           & " and AMF.Visitors.Abstract_Iterator;");
 
@@ -197,7 +196,9 @@ package body Generator.Visitors is
              (+"   not overriding procedure Visit_"
                  & Generator.Names.To_Ada_Identifier (Class.Get_Name.Value));
             Unit.Add_Line
-             ("    (Self    : in out " & Info.Ada_Name & "_Iterator;");
+             ("    (Self    : in out "
+                & Metamodel_Info.Ada_Name
+                & "_Iterator;");
             Unit.Add_Line
              (+"     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;");
             Unit.Context.Add
@@ -231,25 +232,5 @@ package body Generator.Visitors is
           (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
       end loop;
    end Generate_Visitors_Packages;
-
-   --------------------
-   -- To_Ordered_Set --
-   --------------------
-
-   function To_Ordered_Set
-    (Elements : CMOF_Element_Sets.Set) return CMOF_Class_Ordered_Sets.Set
-   is
-      Position : CMOF_Element_Sets.Cursor := Elements.First;
-
-   begin
-      return Result : CMOF_Class_Ordered_Sets.Set do
-         while CMOF_Element_Sets.Has_Element (Position) loop
-            Result.Insert
-             (AMF.CMOF.Classes.CMOF_Class_Access
-               (CMOF_Element_Sets.Element (Position)));
-            CMOF_Element_Sets.Next (Position);
-         end loop;
-      end return;
-   end To_Ordered_Set;
 
 end Generator.Visitors;

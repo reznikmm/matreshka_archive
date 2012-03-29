@@ -233,6 +233,9 @@ package Generator is
       --  All classes, associations, data types and packages of the model
       --  correspondingly.
 
+      Non_Abstract_Classes         : CMOF_Class_Ordered_Sets.Set;
+      --  Alphabetically ordered set of non-abstract classes in the metamodel.
+
       Root_Package                 : AMF.CMOF.Packages.CMOF_Package_Access;
       --  Root package of metamodel.
 

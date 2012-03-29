@@ -65,30 +65,9 @@ package body Generator.Factories is
       Type_Name    : constant League.Strings.Universal_String
         := Metamodel_Info.Ada_Name & "_Factory";
       The_Class    : AMF.CMOF.Classes.CMOF_Class_Access;
-      Classes      : CMOF_Class_Ordered_Sets.Set;
       Unit         : Generator.Units.Unit;
 
    begin
-      --  Collect non-abstract classes and sort then alphabetically.
-
-      declare
-         Position : CMOF_Element_Sets.Cursor
-           := Metamodel_Info.Classes.First;
-
-      begin
-         while CMOF_Element_Sets.Has_Element (Position) loop
-            The_Class :=
-              AMF.CMOF.Classes.CMOF_Class_Access
-               (CMOF_Element_Sets.Element (Position));
-
-            if not The_Class.Get_Is_Abstract then
-               Classes.Insert (The_Class);
-            end if;
-
-            CMOF_Element_Sets.Next (Position);
-         end loop;
-      end;
-
       --  Generate factory interface package specification.
 
       Unit.Add_Unit_Header (2012, 2012);
@@ -101,7 +80,8 @@ package body Generator.Factories is
       Unit.Add_Line ("   type " & Type_Name & " is limited interface;");
 
       declare
-         Position : CMOF_Class_Ordered_Sets.Cursor := Classes.First;
+         Position : CMOF_Class_Ordered_Sets.Cursor
+           := Metamodel_Info.Non_Abstract_Classes.First;
 
       begin
          while CMOF_Class_Ordered_Sets.Has_Element (Position) loop

@@ -621,7 +621,8 @@ package body Generator.Analyzer is
     (Info     : not null Metamodel_Information_Access;
      Elements : AMF.Elements.Collections.Set_Of_Element)
    is
-      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+      Element   : AMF.CMOF.Elements.CMOF_Element_Access;
+      The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
 
    begin
       --  Classify elements and fills All_Classes and All_Associations sets.
@@ -634,11 +635,16 @@ package body Generator.Analyzer is
             Info.Associations.Insert (Element);
 
          elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            The_Class := AMF.CMOF.Classes.CMOF_Class_Access (Element);
+
             Info.Classes.Insert (Element);
 
+            if not The_Class.Get_Is_Abstract then
+               Info.Non_Abstract_Classes.Insert (The_Class);
+            end if;
+
             if Module_Info.Extents.Contains (Info.Extent) then
-               Module_Info.Classes.Insert
-                (AMF.CMOF.Classes.CMOF_Class_Access (Element));
+               Module_Info.Classes.Insert (The_Class);
             end if;
 
          elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
