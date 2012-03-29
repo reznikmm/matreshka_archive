@@ -66,6 +66,12 @@ package Generator is
     (Left  : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Right : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access) return Boolean;
 
+   function Less
+    (Left  : not null AMF.CMOF.Classes.CMOF_Class_Access;
+     Right : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return Boolean;
+   --  Returns True when name of Left is less than name of Right.
+
    package CMOF_Named_Element_Ordered_Sets is
      new Ada.Containers.Ordered_Sets
           (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access,
@@ -78,6 +84,10 @@ package Generator is
            AMF.CMOF.Classes.Hash,
            AMF.CMOF.Classes."=",
            AMF.CMOF.Classes."=");
+
+   package CMOF_Class_Ordered_Sets is
+     new Ada.Containers.Ordered_Sets
+          (AMF.CMOF.Classes.CMOF_Class_Access, Less, AMF.CMOF.Classes."=");
 
    package CMOF_Element_String_Maps is
      new Ada.Containers.Hashed_Maps
@@ -143,12 +153,6 @@ package Generator is
    --  Returns True when name of Left is less than name of Right, if they are
    --  equal returns True when internal identifier of Left is less than
    --  internals identifier of Right.
-
-   function Less
-    (Left  : not null AMF.CMOF.Classes.CMOF_Class_Access;
-     Right : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return Boolean;
-   --  Returns True when name of Left is less than name of Right.
 
    package CMOF_Property_Sets is
      new Ada.Containers.Ordered_Sets

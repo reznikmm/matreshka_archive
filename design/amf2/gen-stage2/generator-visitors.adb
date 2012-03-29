@@ -57,10 +57,6 @@ package body Generator.Visitors is
     (Info : not null Metamodel_Information_Access);
    --  Generates iterator interface package
 
-   package CMOF_Class_Ordered_Sets is
-     new Ada.Containers.Ordered_Sets
-          (AMF.CMOF.Classes.CMOF_Class_Access, Less, AMF.CMOF.Classes."=");
-
    function To_Ordered_Set
     (Elements : CMOF_Element_Sets.Set) return CMOF_Class_Ordered_Sets.Set;
 
