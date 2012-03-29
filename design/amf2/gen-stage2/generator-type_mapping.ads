@@ -95,6 +95,11 @@ package Generator.Type_Mapping is
        AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
        return League.Strings.Universal_String;
 
+   function Ada_Enumeration_Literal_Qualified_Name
+    (Element : not null access
+       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
+       return League.Strings.Universal_String;
+
 private
 
    type Representation_Mapping is record

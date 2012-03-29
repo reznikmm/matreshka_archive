@@ -104,6 +104,22 @@ package body Generator.Type_Mapping is
       end if;
    end Ada_Enumeration_Literal_Name;
 
+   --------------------------------------------
+   -- Ada_Enumeration_Literal_Qualified_Name --
+   --------------------------------------------
+
+   function Ada_Enumeration_Literal_Qualified_Name
+    (Element : not null access
+       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
+       return League.Strings.Universal_String is
+   begin
+      return
+        "AMF."
+          & Owning_Metamodel_Ada_Name (Element)
+          & "."
+          & Ada_Enumeration_Literal_Name (Element);
+   end Ada_Enumeration_Literal_Qualified_Name;
+
    -----------------------------
    -- Public_Ada_Package_Name --
    -----------------------------

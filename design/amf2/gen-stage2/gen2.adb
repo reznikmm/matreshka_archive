@@ -120,4 +120,5 @@ begin
 
    Put_Line (Standard_Error, "Generating factories...");
    Generator.Factories.Generate_Factory_Interface;
+   Generator.Factories.Generate_Factory_Implementation;
 end Gen2;

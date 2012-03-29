@@ -46,4 +46,6 @@ package Generator.Factories is
 
    procedure Generate_Factory_Interface;
 
+   procedure Generate_Factory_Implementation;
+
 end Generator.Factories;
