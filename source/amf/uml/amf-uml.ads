@@ -68,6 +68,7 @@ package AMF.UML is
    type UML_Interaction_Operator_Kind is
     (Alt_Operator,
      Opt_Operator,
+     Break_Operator,
      Par_Operator,
      Loop_Operator,
      Critical_Operator,
