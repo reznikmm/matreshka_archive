@@ -41,23 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Factories.OCL_Factories;
+with AMF.Internals.Factories.OCL_Module_Factory;
+with AMF.Internals.Tables.OCL_Element_Table;
+with AMF.Internals.Tables.OCL_Metamodel;
+
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
 --  UML nodule package and all its dependencies must be elaborated before
 --  elaboration of this package.
 
-with AMF.Internals.Factories.OCL_Factory;
-with AMF.Internals.Factories.OCL_Module_Factory;
-with AMF.Internals.Tables.OCL_Element_Table;
-with AMF.Internals.Tables.OCL_Metamodel;
-
 package body AMF.Internals.Modules.OCL_Module is
 
    --  Global object of factory for supported metamodel.
 
    OCL_Module_Factory : aliased
-     AMF.Internals.Factories.OCL_Module_Factory.OCL_Module_Factory;
+     AMF.Internals.Factories.OCL_Module_Factories.OCL_Module_Factory;
    OCL_Factory        : aliased
      AMF.Internals.Factories.OCL_Factory.OCL_Factory;
 
