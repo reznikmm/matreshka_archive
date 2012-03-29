@@ -413,9 +413,7 @@ package body Generator.Attributes is
                          (Integer'Wide_Wide_Image
                            (Module_Info.Attribute_Member.Element (Attribute)),
                           Both)
-                      & ").Link, Self, No_"
-                      & Module_Info.Ada_Name
-                      & "_Element)");
+                      & ").Link, Self)");
 
                else
                   Unit.Context.Add
@@ -475,8 +473,7 @@ package body Generator.Attributes is
          Unit.Add_Header (Name, 3);
          Unit.Add_Line;
          Unit.Add_Line ("   function " & Name);
-         Unit.Add_Line
-          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element)");
+         Unit.Add_Line (+"    (Self : AMF.Internals.AMF_Element)");
          Unit.Add_Line
           ("       return "
              & Type_Mapping.Internal_Ada_Type_Qualified_Name
@@ -780,8 +777,7 @@ package body Generator.Attributes is
          Unit.Add_Header (Name, 3);
          Unit.Add_Line;
          Unit.Add_Line ("   procedure " & Name);
-         Unit.Add_Line
-          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element;");
+         Unit.Add_Line (+"    (Self : AMF.Internals.AMF_Element;");
          Unit.Add_Line
           ("     To   : "
             & Type_Mapping.Internal_Ada_Type_Qualified_Name
@@ -1158,16 +1154,12 @@ package body Generator.Attributes is
          Unit.Context.Add
           (Generator.Type_Mapping.Internal_Ada_Package_Name
             (Attribute.Get_Type, Representation (Attribute)));
-         Unit.Add_Line
-          ("    (Self : AMF.Internals." & Module_Info.Ada_Name & "_Element)");
+         Unit.Add_Line (+"    (Self : AMF.Internals.AMF_Element)");
          Unit.Add_Line ("       return " & Type_Name & ";");
 
          if Has_Internal_Setter (Attribute) then
             Unit.Add_Line ("   procedure " & Set_Name);
-            Unit.Add_Line
-             ("    (Self : AMF.Internals."
-                & Module_Info.Ada_Name
-                & "_Element;");
+            Unit.Add_Line (+"    (Self : AMF.Internals.AMF_Element;");
             Unit.Add_Line ("     To   : " & Type_Name & ");");
          end if;
 

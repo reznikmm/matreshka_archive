@@ -367,12 +367,10 @@ package body Generator.Type_Mapping is
 
          case Representation is
             when Value | Holder =>
-               return "AMF.Internals." & Module_Info.Ada_Name & "_Element";
+               return +"AMF.Internals.AMF_Element";
 
             when Set | Ordered_Set | Bag | Sequence =>
-               return
-                 League.Strings.To_Universal_String
-                  ("AMF.Internals.AMF_Collection_Of_Element");
+               return +"AMF.Internals.AMF_Collection_Of_Element";
          end case;
 
       elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then

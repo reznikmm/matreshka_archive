@@ -902,7 +902,7 @@ package body Generator.Reflection is
       Unit.Add_Header (+"Get", 3);
       Unit.Add_Line;
       Unit.Add_Line (+"   function Get");
-      Unit.Add_Line ("    (Self     : " & Module_Info.Ada_Name & "_Element;");
+      Unit.Add_Line (+"    (Self     : AMF.Internals.AMF_Element;");
       Unit.Add_Line
        (+"     Property : CMOF_Element) return League.Holders.Holder");
       Unit.Add_Line (+"   is");
@@ -929,10 +929,9 @@ package body Generator.Reflection is
 
       Unit.Add_Header (+"Get_Meta_Class", 3);
       Unit.Add_Line;
+      Unit.Add_Line (+"   function Get_Meta_Class");
       Unit.Add_Line
-       ("   function Get_Meta_Class (Self : "
-          & Module_Info.Ada_Name
-          & "_Element) return CMOF_Element is");
+       (+"    (Self : AMF.Internals.AMF_Element) return CMOF_Element is");
       Unit.Add_Line (+"   begin");
       Unit.Add_Line
        ("      case "
@@ -952,7 +951,7 @@ package body Generator.Reflection is
       Unit.Add_Header (+"Set", 3);
       Unit.Add_Line;
       Unit.Add_Line (+"   procedure Set");
-      Unit.Add_Line ("    (Self     : " & Module_Info.Ada_Name & "_Element;");
+      Unit.Add_Line (+"    (Self     : AMF.Internals.AMF_Element;");
       Unit.Add_Line (+"     Property : CMOF_Element;");
       Unit.Add_Line (+"     Value    : League.Holders.Holder)");
       Unit.Add_Line (+"   is");
