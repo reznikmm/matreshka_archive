@@ -72,8 +72,13 @@ package body AMF.Internals.Modules.UML_Module is
      aliased AMF.Internals.Factories.UML_Factories.UML_Factory;
    UML_Module_Factory          :
      aliased AMF.Internals.Factories.UML_Module_Factory.UML_Module_Factory;
+   Module                      : AMF_Metamodel;
 
 begin
+   --  Register module's factory.
+
+   AMF.Internals.Factories.Register (UML_Module_Factory'Access, Module);
+
    --  Initialize metamodels.
 
    AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Objects;
@@ -88,11 +93,10 @@ begin
 
    --  Initialize element table of UML module.
 
-   AMF.Internals.Tables.UML_Element_Table.Initialize (UML_Metamodel);
+   AMF.Internals.Tables.UML_Element_Table.Initialize (Module);
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (UML_Module_Factory'Access);
    AMF.Internals.Factories.Register (Primitive_Types_Factory'Access);
    AMF.Internals.Factories.Register (Standard_Profile_L2_Factory'Access);
    AMF.Internals.Factories.Register (Standard_Profile_L3_Factory'Access);
