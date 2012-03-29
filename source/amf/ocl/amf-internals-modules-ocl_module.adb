@@ -60,8 +60,13 @@ package body AMF.Internals.Modules.OCL_Module is
      AMF.Internals.Factories.OCL_Module_Factory.OCL_Module_Factory;
    OCL_Factory        : aliased
      AMF.Internals.Factories.OCL_Factories.OCL_Factory;
+   Module             : AMF_Metamodel;
 
 begin
+   --  Register module's factory.
+
+   AMF.Internals.Factories.Register (OCL_Module_Factory'Access, Module);
+
    --  Initialize metamodels.
 
    AMF.Internals.Tables.OCL_Metamodel.Initialize_Objects;
@@ -69,10 +74,9 @@ begin
 
    --  Initialize element table of OCL metamodel.
 
-   AMF.Internals.Tables.OCL_Element_Table.Initialize (OCL_Metamodel);
+   AMF.Internals.Tables.OCL_Element_Table.Initialize (Module);
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (OCL_Module_Factory'Access);
    AMF.Internals.Factories.Register (OCL_Factory'Access);
 end AMF.Internals.Modules.OCL_Module;
