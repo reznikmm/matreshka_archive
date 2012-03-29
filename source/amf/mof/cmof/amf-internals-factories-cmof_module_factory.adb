@@ -114,20 +114,6 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
       end if;
    end Connect_Link_End;
 
-   -------------------
-   -- Get_Metamodel --
-   -------------------
-
-   overriding function Get_Metamodel
-    (Self : not null access constant CMOF_Module_Factory)
-       return AMF.Internals.AMF_Metamodel
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return AMF.Internals.CMOF_Metamodel;
-   end Get_Metamodel;
-
    ----------------
    -- To_Element --
    ----------------

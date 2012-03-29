@@ -52,16 +52,17 @@ package body AMF.Internals.Modules.CMOF_Module is
      AMF.Internals.Factories.CMOF_Module_Factory.CMOF_Module_Factory;
    CMOF_Factory   : aliased
      AMF.Internals.Factories.CMOF_Factories.CMOF_Factory;
+   Module         : AMF_Metamodel;
 
 begin
    --  Register module's factory, it should be registered before initialization
    --  of metamodel to be able to bootstrap CMOF module.
 
-   AMF.Internals.Factories.Register (Module_Factory'Access);
+   AMF.Internals.Factories.Register (Module_Factory'Access, Module);
 
    --  Initialize element table.
 
-   AMF.Internals.Tables.CMOF_Element_Table.Initialize (0);
+   AMF.Internals.Tables.CMOF_Element_Table.Initialize (Module);
 
    --  Initialize metamodel.
 
