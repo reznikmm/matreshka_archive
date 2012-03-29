@@ -41,36 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for UML classes.
-------------------------------------------------------------------------------
+with League.Holders.Integers;
 
-package AMF.Internals.Factories.UML_Factory is
-
-   type UML_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
-       with null record;
-
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
-
-   overriding function Convert_To_String
-    (Self      : not null access UML_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String;
-
-   overriding function Create
-    (Self       : not null access UML_Factory;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
-       return not null AMF.Elements.Element_Access;
-
-   overriding function Create_From_String
-    (Self      : not null access UML_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Image     : League.Strings.Universal_String) return League.Holders.Holder;
-
-   overriding function Get_Package
-    (Self : not null access constant UML_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
-
-end AMF.Internals.Factories.UML_Factory;
+separate (AMF.Internals.Factories.Primitive_Types_Factories)
+function Create_Integer_From_String
+ (Image : League.Strings.Universal_String) return League.Holders.Holder is
+begin
+   return
+     League.Holders.Integers.To_Holder
+      (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+end Create_Integer_From_String;

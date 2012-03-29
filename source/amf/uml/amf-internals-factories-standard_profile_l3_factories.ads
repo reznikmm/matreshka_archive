@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,36 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for PrimitiveTypes of UML module.
+--  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Factories.Primitive_Types_Factory is
+package AMF.Internals.Factories.Standard_Profile_L3_Factories is
 
-   type Primitive_Types_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
-       with null record;
-
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+   type Standard_Profile_L3_Factory is
+     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory with null record;
 
    overriding function Convert_To_String
-    (Self      : not null access Primitive_Types_Factory;
+    (Self      : not null access Standard_Profile_L3_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String;
 
    overriding function Create
-    (Self       : not null access Primitive_Types_Factory;
+    (Self       : not null access Standard_Profile_L3_Factory;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access;
 
    overriding function Create_From_String
-    (Self      : not null access Primitive_Types_Factory;
+    (Self      : not null access Standard_Profile_L3_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
    overriding function Get_Package
-    (Self : not null access constant Primitive_Types_Factory)
+    (Self : not null access constant Standard_Profile_L3_Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
-end AMF.Internals.Factories.Primitive_Types_Factory;
+end AMF.Internals.Factories.Standard_Profile_L3_Factories;

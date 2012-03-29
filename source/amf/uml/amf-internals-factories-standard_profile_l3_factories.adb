@@ -41,36 +41,91 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for StandardProfileL2 classes.
+--  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Elements;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
+with AMF.Internals.Tables.UML_Constructors;
 
-package AMF.Internals.Factories.Standard_Profile_L2_Factory is
+package body AMF.Internals.Factories.Standard_Profile_L3_Factories is
 
-   type Standard_Profile_L2_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
-       with null record;
-
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+   -----------------------
+   -- Convert_To_String --
+   -----------------------
 
    overriding function Convert_To_String
-    (Self      : not null access Standard_Profile_L2_Factory;
+    (Self      : not null access Standard_Profile_L3_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String is
+   begin
+      raise Program_Error;
+      return League.Strings.Empty_Universal_String;
+   end Convert_To_String;
+
+   ------------
+   -- Create --
+   ------------
 
    overriding function Create
-    (Self       : not null access Standard_Profile_L2_Factory;
+    (Self       : not null access Standard_Profile_L3_Factory;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
-       return not null AMF.Elements.Element_Access;
+       return not null AMF.Elements.Element_Access
+   is
+      pragma Unreferenced (Self);
+
+      MC : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+
+   begin
+      if MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Build_Component then
+         return
+           AMF.Internals.Helpers.To_Element
+            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Build_Component);
+
+      elsif MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Metamodel then
+         return
+           AMF.Internals.Helpers.To_Element
+            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Metamodel);
+
+      elsif MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_System_Model then
+         return
+           AMF.Internals.Helpers.To_Element
+            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_System_Model);
+
+      else
+         raise Program_Error;
+      end if;
+   end Create;
+
+   ------------------------
+   -- Create_From_String --
+   ------------------------
 
    overriding function Create_From_String
-    (Self      : not null access Standard_Profile_L2_Factory;
+    (Self      : not null access Standard_Profile_L3_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Image     : League.Strings.Universal_String) return League.Holders.Holder;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder is
+   begin
+      raise Program_Error;
+      return League.Holders.Empty_Holder;
+   end Create_From_String;
+
+   -----------------
+   -- Get_Package --
+   -----------------
 
    overriding function Get_Package
-    (Self : not null access constant Standard_Profile_L2_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+    (Self : not null access constant Standard_Profile_L3_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access
+   is
+      pragma Unreferenced (Self);
 
-end AMF.Internals.Factories.Standard_Profile_L2_Factory;
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MM_Standard_Profile_L3_Standard_Profile_L3));
+   end Get_Package;
+
+end AMF.Internals.Factories.Standard_Profile_L3_Factories;

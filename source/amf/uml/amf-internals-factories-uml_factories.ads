@@ -41,60 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Factories.Primitive_Types_Factories;
-with AMF.Internals.Factories.Standard_Profile_L2_Factories;
-with AMF.Internals.Factories.Standard_Profile_L3_Factories;
-with AMF.Internals.Factories.UML_Factories;
-with AMF.Internals.Factories.UML_Module_Factory;
-with AMF.Internals.Tables.Primitive_Types_Metamodel;
-with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
-with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
-with AMF.Internals.Tables.UML_Element_Table;
-with AMF.Internals.Tables.UML_Metamodel;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 
-with AMF.Internals.Modules.CMOF_Module;
-pragma Unreferenced (AMF.Internals.Modules.CMOF_Module);
-pragma Elaborate_All (AMF.Internals.Modules.CMOF_Module);
---  CMOF module package and all its dependencies must be elaborated before
---  elaboration of this package.
+package AMF.Internals.Factories.UML_Factories is
 
-package body AMF.Internals.Modules.UML_Module is
+   type UML_Factory is
+     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory with null record;
 
-   --  Global objects of factories for supported metamodels.
+   overriding function Convert_To_String
+    (Self      : not null access UML_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
 
-   Primitive_Types_Factory     : aliased
-     AMF.Internals.Factories.Primitive_Types_Factories.Primitive_Types_Factory;
-   Standard_Profile_L2_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L2_Factories.Standard_Profile_L2_Factory;
-   Standard_Profile_L3_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L3_Factories.Standard_Profile_L3_Factory;
-   UML_Factory                 :
-     aliased AMF.Internals.Factories.UML_Factories.UML_Factory;
-   UML_Module_Factory          :
-     aliased AMF.Internals.Factories.UML_Module_Factory.UML_Module_Factory;
+   overriding function Create
+    (Self       : not null access UML_Factory;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
+       return not null AMF.Elements.Element_Access;
 
-begin
-   --  Initialize metamodels.
+   overriding function Create_From_String
+    (Self      : not null access UML_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
-   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Objects;
+   overriding function Get_Package
+    (Self : not null access constant UML_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
-   AMF.Internals.Tables.Primitive_Types_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Initialize_Links;
-   AMF.Internals.Tables.UML_Metamodel.Initialize_Links;
-
-   --  Initialize element table of UML module.
-
-   AMF.Internals.Tables.UML_Element_Table.Initialize (UML_Metamodel);
-
-   --  Register factories.
-
-   AMF.Internals.Factories.Register (UML_Module_Factory'Access);
-   AMF.Internals.Factories.Register (Primitive_Types_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L2_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L3_Factory'Access);
-   AMF.Internals.Factories.Register (UML_Factory'Access);
-end AMF.Internals.Modules.UML_Module;
+end AMF.Internals.Factories.UML_Factories;
