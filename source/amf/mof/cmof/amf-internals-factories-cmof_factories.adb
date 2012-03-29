@@ -383,7 +383,8 @@ package body AMF.Internals.Factories.CMOF_Factories is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
    end Get_Package;
 
 end AMF.Internals.Factories.CMOF_Factories;
