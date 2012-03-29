@@ -370,6 +370,7 @@ package body Generator.Factories is
          Unit.Add_Line (+"      pragma Unreferenced (Self);");
          Unit.Add_Line;
          Unit.Add_Line (+"      MC : constant AMF.Internals.CMOF_Element");
+         Unit.Context.Add (+"AMF.Internals.Elements");
          Unit.Add_Line
           (+"        := AMF.Internals.Elements.Element_Base'Class"
               & " (Meta_Class.all).Element;");
@@ -586,12 +587,15 @@ package body Generator.Factories is
       Unit.Add_Line (+"   begin");
       Unit.Add_Line (+"      return");
       Unit.Add_Line (+"        AMF.CMOF.Packages.CMOF_Package_Access");
+      Unit.Context.Add (+"AMF.Internals.Helpers");
       Unit.Context.Add
        (Element_Constant_Package_Name
          (AMF.CMOF.Elements.CMOF_Element_Access
            (Metamodel_Info.Root_Package)));
       Unit.Add_Line
-       (+"         (AMF.Internals.Helpers.To_Element ("
+       (+"         (AMF.Internals.Helpers.To_Element");
+      Unit.Add_Line
+       (+"           ("
            & Element_Constant_Qualified_Name
               (AMF.CMOF.Elements.CMOF_Element_Access
                 (Metamodel_Info.Root_Package))
