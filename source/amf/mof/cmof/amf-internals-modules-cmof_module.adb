@@ -41,17 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Factories.CMOF_Metamodel_Factory;
+with AMF.Internals.Factories.CMOF_Factories;
 with AMF.Internals.Factories.CMOF_Module_Factory;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
 package body AMF.Internals.Modules.CMOF_Module is
 
-   Module_Factory    : aliased
+   Module_Factory : aliased
      AMF.Internals.Factories.CMOF_Module_Factory.CMOF_Module_Factory;
-   Metamodel_Factory : aliased
-     AMF.Internals.Factories.CMOF_Metamodel_Factory.CMOF_Metamodel_Factory;
+   CMOF_Factory   : aliased
+     AMF.Internals.Factories.CMOF_Factories.CMOF_Factory;
 
 begin
    --  Register module's factory, it should be registered before initialization
@@ -70,5 +70,5 @@ begin
 
    --  Register factory.
 
-   AMF.Internals.Factories.Register (Metamodel_Factory'Access);
+   AMF.Internals.Factories.Register (CMOF_Factory'Access);
 end AMF.Internals.Modules.CMOF_Module;
