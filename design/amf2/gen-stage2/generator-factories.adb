@@ -414,7 +414,7 @@ package body Generator.Factories is
                 ("            (AMF.Internals.Tables."
                    & Module_Info.Ada_Name
                    & "_Constructors.Create_"
-                   & Owning_Metamodel_Name (The_Class)
+                   & Owning_Metamodel_Ada_Name (The_Class)
                    & "_"
                    & To_Ada_Identifier (The_Class.Get_Name.Value)
                    & ");");
