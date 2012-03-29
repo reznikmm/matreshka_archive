@@ -77,8 +77,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Association --
    -----------------------------
 
-   function Create_CMOF_Association return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Association return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -238,8 +238,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Class --
    -----------------------
 
-   function Create_CMOF_Class return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Class return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -378,8 +378,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Comment --
    -------------------------
 
-   function Create_CMOF_Comment return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Comment return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -429,8 +429,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Constraint --
    ----------------------------
 
-   function Create_CMOF_Constraint return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Constraint return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -490,8 +490,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Data_Type --
    ---------------------------
 
-   function Create_CMOF_Data_Type return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Data_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -628,8 +628,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Element_Import --
    --------------------------------
 
-   function Create_CMOF_Element_Import return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Element_Import return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -699,8 +699,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Enumeration --
    -----------------------------
 
-   function Create_CMOF_Enumeration return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -844,8 +844,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Enumeration_Literal --
    -------------------------------------
 
-   function Create_CMOF_Enumeration_Literal return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration_Literal return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -896,8 +896,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Expression --
    ----------------------------
 
-   function Create_CMOF_Expression return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Expression return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -955,8 +955,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Opaque_Expression --
    -----------------------------------
 
-   function Create_CMOF_Opaque_Expression return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Opaque_Expression return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1011,8 +1011,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Operation --
    ---------------------------
 
-   function Create_CMOF_Operation return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Operation return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1179,8 +1179,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Package --
    -------------------------
 
-   function Create_CMOF_Package return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1303,8 +1303,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Package_Import --
    --------------------------------
 
-   function Create_CMOF_Package_Import return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Import return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1372,8 +1372,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Package_Merge --
    -------------------------------
 
-   function Create_CMOF_Package_Merge return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Merge return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1439,8 +1439,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Parameter --
    ---------------------------
 
-   function Create_CMOF_Parameter return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Parameter return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1505,8 +1505,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Primitive_Type --
    --------------------------------
 
-   function Create_CMOF_Primitive_Type return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Primitive_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1643,8 +1643,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Property --
    --------------------------
 
-   function Create_CMOF_Property return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Property return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;
@@ -1760,8 +1760,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_CMOF_Tag --
    ---------------------
 
-   function Create_CMOF_Tag return AMF.Internals.CMOF_Element is
-      Self : AMF.Internals.CMOF_Element;
+   function Create_CMOF_Tag return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       CMOF_Element_Table.Increment_Last;

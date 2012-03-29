@@ -88,7 +88,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
    ---------
 
    function Get
-    (Self     : CMOF_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element) return League.Holders.Holder
    is
 
@@ -2734,7 +2734,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
    -- Get_Meta_Class --
    --------------------
 
-   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Element is
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.CMOF_Types.E_None =>
@@ -2801,7 +2802,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
    ---------
 
    procedure Set
-    (Self     : CMOF_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element;
      Value    : League.Holders.Holder)
    is

@@ -46,40 +46,40 @@
 
 package AMF.Internals.Tables.CMOF_Constructors is
 
-   function Create_CMOF_Association return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Association return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Class return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Class return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Comment return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Comment return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Constraint return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Constraint return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Data_Type return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Data_Type return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Element_Import return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Element_Import return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Enumeration return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Enumeration_Literal return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Enumeration_Literal return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Expression return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Expression return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Opaque_Expression return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Opaque_Expression return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Operation return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Operation return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Package return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Package_Import return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Import return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Package_Merge return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Package_Merge return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Parameter return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Parameter return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Primitive_Type return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Primitive_Type return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Property return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Property return AMF.Internals.AMF_Element;
 
-   function Create_CMOF_Tag return AMF.Internals.CMOF_Element;
+   function Create_CMOF_Tag return AMF.Internals.AMF_Element;
 
 end AMF.Internals.Tables.CMOF_Constructors;
