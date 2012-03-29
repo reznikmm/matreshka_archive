@@ -86,21 +86,11 @@ package body Generator.Type_Mapping is
          return Enumeration_Literal_Maps.Element (Position).Ada_Name;
 
       else
-         declare
-            Enumeration : constant
-              AMF.CMOF.Enumerations.CMOF_Enumeration_Access
-                := Element.Get_Enumeration;
+         --  Generate name then it is not specified explicitly.
 
-         begin
-            Ada.Wide_Wide_Text_IO.Put_Line
-             (Ada.Wide_Wide_Text_IO.Standard_Error,
-              "error: no mapping for "
-                & Enumeration.Get_Name.Value.To_Wide_Wide_String
-                & "::"
-                & Element.Get_Name.Value.To_Wide_Wide_String);
-
-            raise Program_Error;
-         end;
+         return
+           League.Strings.To_Universal_String
+            (To_Ada_Identifier (Element.Get_Name.Value));
       end if;
    end Ada_Enumeration_Literal_Name;
 
