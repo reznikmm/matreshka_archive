@@ -41,19 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.MOF_Constructors;
 with AMF.Internals.Tables.MOF_Metamodel;
 
-package body AMF.Internals.Factories.MOF_Factory is
-
-   use AMF.Internals.Tables.MOF_Metamodel;
+package body AMF.Internals.Factories.MOF_Factories is
 
    -----------------------
    -- Convert_To_String --
    -----------------------
 
-   function Convert_To_String
+   overriding function Convert_To_String
     (Self      : not null access MOF_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String is
@@ -71,29 +72,27 @@ package body AMF.Internals.Factories.MOF_Factory is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      MC      : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Element_Access (Meta_Class));
-      Element : AMF.Internals.MOF_Element;
+      pragma Unreferenced (Self);
+
+      MC : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
 
    begin
-      --  Create corresponding element.
-
-      if MC = MC_MOF_Tag then
-         Element := AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag;
+      if MC = AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag then
+         return
+           AMF.Internals.Helpers.To_Element
+            (AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag);
 
       else
-         raise Program_Error with CMOF_Element'Image (MC);
+         raise Program_Error;
       end if;
-
-      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
    -- Create_From_String --
    ------------------------
 
-   function Create_From_String
+   overriding function Create_From_String
     (Self      : not null access MOF_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder is
@@ -115,7 +114,8 @@ package body AMF.Internals.Factories.MOF_Factory is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (MM_MOF_MOF));
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.MOF_Metamodel.MM_MOF_MOF));
    end Get_Package;
 
-end AMF.Internals.Factories.MOF_Factory;
+end AMF.Internals.Factories.MOF_Factories;

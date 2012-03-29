@@ -41,23 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Factories.MOF_Factories;
+with AMF.Internals.Factories.MOF_Module_Factory;
+with AMF.Internals.Tables.MOF_Element_Table;
+with AMF.Internals.Tables.MOF_Metamodel;
+
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
 --  UML nodule package and all its dependencies must be elaborated before
 --  elaboration of this package.
 
-with AMF.Internals.Factories.MOF_Factory;
-with AMF.Internals.Factories.MOF_Module_Factory;
-with AMF.Internals.Tables.MOF_Element_Table;
-with AMF.Internals.Tables.MOF_Metamodel;
-
 package body AMF.Internals.Modules.MOF_Module is
 
    --  Global object of factory for supported metamodel.
 
    MOF_Factory        : aliased
-     AMF.Internals.Factories.MOF_Factory.MOF_Factory;
+     AMF.Internals.Factories.MOF_Factories.MOF_Factory;
    MOF_Module_Factory : aliased
      AMF.Internals.Factories.MOF_Module_Factory.MOF_Module_Factory;
 

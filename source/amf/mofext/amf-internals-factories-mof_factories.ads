@@ -41,18 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for MOF classes.
+--  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Factories.MOF_Factory is
+package AMF.Internals.Factories.MOF_Factories is
 
    type MOF_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory
-       with null record;
-
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory with null record;
 
    overriding function Convert_To_String
     (Self      : not null access MOF_Factory;
@@ -73,4 +68,4 @@ package AMF.Internals.Factories.MOF_Factory is
     (Self : not null access constant MOF_Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
-end AMF.Internals.Factories.MOF_Factory;
+end AMF.Internals.Factories.MOF_Factories;
