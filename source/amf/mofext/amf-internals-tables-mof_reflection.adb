@@ -62,7 +62,7 @@ package body AMF.Internals.Tables.MOF_Reflection is
    ---------
 
    function Get
-    (Self     : MOF_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element) return League.Holders.Holder
    is
 
@@ -152,7 +152,8 @@ package body AMF.Internals.Tables.MOF_Reflection is
    -- Get_Meta_Class --
    --------------------
 
-   function Get_Meta_Class (Self : MOF_Element) return CMOF_Element is
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
       case MOF_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.MOF_Types.E_None =>
@@ -168,7 +169,7 @@ package body AMF.Internals.Tables.MOF_Reflection is
    ---------
 
    procedure Set
-    (Self     : MOF_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element;
      Value    : League.Holders.Holder)
    is

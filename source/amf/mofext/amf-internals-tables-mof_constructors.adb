@@ -60,8 +60,8 @@ package body AMF.Internals.Tables.MOF_Constructors is
    -- Create_MOF_Tag --
    --------------------
 
-   function Create_MOF_Tag return AMF.Internals.MOF_Element is
-      Self : AMF.Internals.MOF_Element;
+   function Create_MOF_Tag return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       MOF_Element_Table.Increment_Last;

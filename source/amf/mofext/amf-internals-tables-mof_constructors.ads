@@ -46,6 +46,6 @@
 
 package AMF.Internals.Tables.MOF_Constructors is
 
-   function Create_MOF_Tag return AMF.Internals.MOF_Element;
+   function Create_MOF_Tag return AMF.Internals.AMF_Element;
 
 end AMF.Internals.Tables.MOF_Constructors;

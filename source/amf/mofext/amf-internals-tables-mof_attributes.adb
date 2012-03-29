@@ -68,7 +68,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    --------------------------
 
    function Internal_Get_Element
-    (Self : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -79,7 +79,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    -----------------------
 
    function Internal_Get_Name
-    (Self : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -91,7 +91,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 1;
@@ -102,7 +102,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Element
-    (Self : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 2;
@@ -113,12 +113,12 @@ package body AMF.Internals.Tables.MOF_Attributes is
    ------------------------
 
    function Internal_Get_Owner
-    (Self : AMF.Internals.MOF_Element)
-       return AMF.Internals.MOF_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (1).Link, Self, No_MOF_Element);
+         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Owner;
 
    ----------------------------
@@ -126,12 +126,12 @@ package body AMF.Internals.Tables.MOF_Attributes is
    ----------------------------
 
    function Internal_Get_Tag_Owner
-    (Self : AMF.Internals.MOF_Element)
-       return AMF.Internals.MOF_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (4).Link, Self, No_MOF_Element);
+         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Tag_Owner;
 
    ------------------------
@@ -139,7 +139,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -151,7 +151,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    -----------------------
 
    procedure Internal_Set_Name
-    (Self : AMF.Internals.MOF_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -174,10 +174,10 @@ package body AMF.Internals.Tables.MOF_Attributes is
    ----------------------------
 
    procedure Internal_Set_Tag_Owner
-    (Self : AMF.Internals.MOF_Element;
-     To   : AMF.Internals.MOF_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.MOF_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -191,7 +191,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.MOF_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
