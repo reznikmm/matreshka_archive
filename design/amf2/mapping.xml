@@ -22,10 +22,16 @@
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind">
     <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-in" adaLiteral="In_Parameter"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-inout" adaLiteral="In_Out_Parameter"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-out" adaLiteral="Out_Parameter"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind-return" adaLiteral="Return_Parameter"/>
     <mapping representation="value" memberName="Parameter_Direction_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind">
     <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-public" adaLiteral="Public_Visibility"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-protected" adaLiteral="Protected_Visibility"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-private" adaLiteral="Private_Visibility"/>
+    <literal uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind-package" adaLiteral="Package_Visibility"/>
     <mapping representation="value" memberName="Visibility_Value" memberKindName="M_Visibility_Kind"/>
     <mapping representation="holder" memberName="Visibility_Holder_Value" memberKindName="M_Visibility_Holder_Kind"/>
   </type>
@@ -77,6 +83,17 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-seq" adaLiteral="Seq_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-alt" adaLiteral="Alt_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-opt" adaLiteral="Opt_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-break" adaLiteral="Break_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-par" adaLiteral="Par_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-strict" adaLiteral="Strict_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-loop" adaLiteral="Loop_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-critical" adaLiteral="Critical_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-neg" adaLiteral="Neg_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-assert" adaLiteral="Assert_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-ignore" adaLiteral="Ignore_Operator"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#InteractionOperatorKind-consider" adaLiteral="Consider_Operator"/>
     <mapping representation="value" memberName="Interaction_Operator_Kind_Value" memberKindName="M_Interaction_Operator_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#MessageKind">
@@ -93,6 +110,9 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-in" adaLiteral="In_Parameter"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-inout" adaLiteral="In_Out_Parameter"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-out" adaLiteral="Out_Parameter"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterDirectionKind-return" adaLiteral="Return_Parameter"/>
     <mapping representation="value" memberName="Parameter_Direction_Kind_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#ParameterEffectKind">
@@ -100,6 +120,15 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-initial" adaLiteral="Initial_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-deepHistory" adaLiteral="Deep_History_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-shallowHistory" adaLiteral="Shallow_History_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-join" adaLiteral="Join_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-fork" adaLiteral="Fork_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-junction" adaLiteral="Junction_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-choice" adaLiteral="Choice_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-entryPoint" adaLiteral="Entry_Point_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-exitPoint" adaLiteral="Exit_Point_Pseudostate"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#PseudostateKind-terminate" adaLiteral="Terminate_Pseudostate"/>
     <mapping representation="value" memberName="Pseudostate_Kind_Value" memberKindName="M_Pseudostate_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#TransitionKind">
@@ -108,6 +137,9 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-public" adaLiteral="Public_Visibility"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-private" adaLiteral="Private_Visibility"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-protected" adaLiteral="Protected_Visibility"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/UML.cmof#VisibilityKind-package" adaLiteral="Package_Visibility"/>
     <mapping representation="value" memberName="Visibility_Kind_Value" memberKindName="M_Visibility_Kind"/>
     <mapping representation="holder" memberName="Visibility_Kind_Holder" memberKindName="M_Visibility_Kind_Holder"/>
   </type>
