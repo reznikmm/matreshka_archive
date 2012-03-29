@@ -50,21 +50,21 @@ with Matreshka.Internals.Strings;
 package AMF.Internals.Tables.OCL_Attributes is
 
    function Internal_Get_Argument
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  MessageExp => MessageExp::argument
    --  OperationCallExp => OperationCallExp::argument
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Attribute
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TupleLiteralPart => TupleLiteralPart::attribute
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::attribute
    --  BagType => Classifier::attribute
@@ -79,53 +79,53 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::attribute
 
    function Internal_Get_Behavior
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Behavior
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpressionInOcl => OpaqueExpression::behavior
 
    function Internal_Get_Body
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Body
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  IterateExp => LoopExp::body
    --  IteratorExp => LoopExp::body
 
    function Internal_Get_Body
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String;
    --  ExpressionInOcl => OpaqueExpression::body
 
    function Internal_Get_Body_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Body_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpressionInOcl => ExpressionInOcl::bodyExpression
 
    function Internal_Get_Boolean_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Boolean_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  BooleanLiteralExp => BooleanLiteralExp::booleanSymbol
 
    function Internal_Get_Called_Operation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Called_Operation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  MessageExp => MessageExp::calledOperation
 
    function Internal_Get_Client_Dependency
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => NamedElement::clientDependency
    --  AssociationClassCallExp => NamedElement::clientDependency
@@ -167,7 +167,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => NamedElement::clientDependency
 
    function Internal_Get_Collaboration_Use
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::collaborationUse
    --  BagType => Classifier::collaborationUse
@@ -182,23 +182,23 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::collaborationUse
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Condition
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  IfExp => IfExp::condition
 
    function Internal_Get_Context_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Context_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpressionInOcl => ExpressionInOcl::contextVariable
 
    function Internal_Get_Element_Import
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::elementImport
    --  BagType => Namespace::elementImport
@@ -213,11 +213,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::elementImport
 
    function Internal_Get_Element_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Element_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  BagType => CollectionType::elementType
    --  CollectionType => CollectionType::elementType
    --  OrderedSetType => CollectionType::elementType
@@ -225,15 +225,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  SetType => CollectionType::elementType
 
    function Internal_Get_Else_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Else_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  IfExp => IfExp::elseExpression
 
    function Internal_Get_Feature
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::feature
    --  BagType => Classifier::feature
@@ -248,15 +248,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::feature
 
    function Internal_Get_First
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_First
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CollectionRange => CollectionRange::first
 
    function Internal_Get_General
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::general
    --  BagType => Classifier::general
@@ -271,7 +271,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::general
 
    function Internal_Get_Generalization
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::generalization
    --  BagType => Classifier::generalization
@@ -286,15 +286,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::generalization
 
    function Internal_Get_Generated_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Generated_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpressionInOcl => ExpressionInOcl::generatedType
 
    function Internal_Get_Imported_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::importedMember
    --  BagType => Namespace::importedMember
@@ -309,15 +309,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::importedMember
 
    function Internal_Get_In
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_In
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  LetExp => LetExp::in
 
    function Internal_Get_Inherited_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::inheritedMember
    --  BagType => Classifier::inheritedMember
@@ -332,26 +332,26 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::inheritedMember
 
    function Internal_Get_Init_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Init_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Variable => Variable::initExpression
 
    function Internal_Get_Integer_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Integer;
    procedure Internal_Set_Integer_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Integer);
    --  IntegerLiteralExp => IntegerLiteralExp::integerSymbol
 
    function Internal_Get_Is_Abstract
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Abstract
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AnyType => Classifier::isAbstract
    --  BagType => Classifier::isAbstract
@@ -366,10 +366,10 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::isAbstract
 
    function Internal_Get_Is_Final_Specialization
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Final_Specialization
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AnyType => Classifier::isFinalSpecialization
    --  BagType => Classifier::isFinalSpecialization
@@ -384,10 +384,10 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::isFinalSpecialization
 
    function Internal_Get_Is_Leaf
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Leaf
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AnyType => RedefinableElement::isLeaf
    --  BagType => RedefinableElement::isLeaf
@@ -402,42 +402,42 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => RedefinableElement::isLeaf
 
    function Internal_Get_Item
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Item
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CollectionItem => CollectionItem::item
 
    function Internal_Get_Iterator
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  IterateExp => LoopExp::iterator
    --  IteratorExp => LoopExp::iterator
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.OCL.OCL_Collection_Kind;
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.OCL.OCL_Collection_Kind);
    --  CollectionLiteralExp => CollectionLiteralExp::kind
 
    function Internal_Get_Language
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String;
    --  ExpressionInOcl => OpaqueExpression::language
 
    function Internal_Get_Last
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Last
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CollectionRange => CollectionRange::last
 
    function Internal_Get_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::member
    --  BagType => Namespace::member
@@ -452,10 +452,10 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::member
 
    function Internal_Get_Name
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Name
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  AnyType => NamedElement::name
    --  AssociationClassCallExp => NamedElement::name
@@ -497,11 +497,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => NamedElement::name
 
    function Internal_Get_Name_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Name_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => NamedElement::nameExpression
    --  AssociationClassCallExp => NamedElement::nameExpression
    --  BagType => NamedElement::nameExpression
@@ -542,8 +542,8 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => NamedElement::nameExpression
 
    function Internal_Get_Namespace
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  AnyType => NamedElement::namespace
    --  AssociationClassCallExp => NamedElement::namespace
    --  BagType => NamedElement::namespace
@@ -584,16 +584,16 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => NamedElement::namespace
 
    function Internal_Get_Navigation_Source
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Navigation_Source
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AssociationClassCallExp => NavigationCallExp::navigationSource
    --  PropertyCallExp => NavigationCallExp::navigationSource
 
    function Internal_Get_Owned_Attribute
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  BagType => DataType::ownedAttribute
    --  CollectionType => DataType::ownedAttribute
@@ -603,7 +603,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  TupleType => DataType::ownedAttribute
 
    function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Element::ownedComment
    --  AssociationClassCallExp => Element::ownedComment
@@ -645,7 +645,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Element::ownedComment
 
    function Internal_Get_Owned_Element
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Element::ownedElement
    --  AssociationClassCallExp => Element::ownedElement
@@ -687,7 +687,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Element::ownedElement
 
    function Internal_Get_Owned_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::ownedMember
    --  BagType => Namespace::ownedMember
@@ -702,7 +702,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::ownedMember
 
    function Internal_Get_Owned_Operation
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  BagType => DataType::ownedOperation
    --  CollectionType => DataType::ownedOperation
@@ -712,7 +712,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  TupleType => DataType::ownedOperation
 
    function Internal_Get_Owned_Rule
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::ownedRule
    --  BagType => Namespace::ownedRule
@@ -727,11 +727,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::ownedRule
 
    function Internal_Get_Owned_Template_Signature
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owned_Template_Signature
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => Classifier::ownedTemplateSignature
    --  BagType => Classifier::ownedTemplateSignature
    --  CollectionType => Classifier::ownedTemplateSignature
@@ -745,7 +745,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::ownedTemplateSignature
 
    function Internal_Get_Owned_Use_Case
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::ownedUseCase
    --  BagType => Classifier::ownedUseCase
@@ -760,8 +760,8 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::ownedUseCase
 
    function Internal_Get_Owner
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  AnyType => Element::owner
    --  AssociationClassCallExp => Element::owner
    --  BagType => Element::owner
@@ -802,11 +802,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Element::owner
 
    function Internal_Get_Owning_Template_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owning_Template_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => ParameterableElement::owningTemplateParameter
    --  BagType => ParameterableElement::owningTemplateParameter
    --  CollectionType => ParameterableElement::owningTemplateParameter
@@ -821,11 +821,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => ParameterableElement::owningTemplateParameter
 
    function Internal_Get_Package
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Package
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => Type::package
    --  BagType => Type::package
    --  CollectionType => Type::package
@@ -839,7 +839,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Type::package
 
    function Internal_Get_Package_Import
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Namespace::packageImport
    --  BagType => Namespace::packageImport
@@ -854,18 +854,18 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Namespace::packageImport
 
    function Internal_Get_Parameter_Variable
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExpressionInOcl => ExpressionInOcl::parameterVariable
 
    function Internal_Get_Part
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CollectionLiteralExp => CollectionLiteralExp::part
    --  TupleLiteralExp => TupleLiteralExp::part
 
    function Internal_Get_Powertype_Extent
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::powertypeExtent
    --  BagType => Classifier::powertypeExtent
@@ -880,7 +880,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::powertypeExtent
 
    function Internal_Get_Qualified_Name
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    --  AnyType => NamedElement::qualifiedName
    --  AssociationClassCallExp => NamedElement::qualifiedName
@@ -922,21 +922,21 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => NamedElement::qualifiedName
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AssociationClassCallExp => NavigationCallExp::qualifier
    --  PropertyCallExp => NavigationCallExp::qualifier
 
    function Internal_Get_Real_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Real;
    procedure Internal_Set_Real_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Real);
    --  RealLiteralExp => RealLiteralExp::realSymbol
 
    function Internal_Get_Redefined_Classifier
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::redefinedClassifier
    --  BagType => Classifier::redefinedClassifier
@@ -951,7 +951,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::redefinedClassifier
 
    function Internal_Get_Redefined_Element
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => RedefinableElement::redefinedElement
    --  BagType => RedefinableElement::redefinedElement
@@ -966,7 +966,7 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => RedefinableElement::redefinedElement
 
    function Internal_Get_Redefinition_Context
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => RedefinableElement::redefinitionContext
    --  BagType => RedefinableElement::redefinitionContext
@@ -981,76 +981,76 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => RedefinableElement::redefinitionContext
 
    function Internal_Get_Referred_Association_Class
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Association_Class
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AssociationClassCallExp => AssociationClassCallExp::referredAssociationClass
 
    function Internal_Get_Referred_Enum_Literal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Enum_Literal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  EnumLiteralExp => EnumLiteralExp::referredEnumLiteral
 
    function Internal_Get_Referred_Operation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Operation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  MessageType => MessageType::referredOperation
    --  OperationCallExp => OperationCallExp::referredOperation
 
    function Internal_Get_Referred_Property
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Property
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  PropertyCallExp => PropertyCallExp::referredProperty
 
    function Internal_Get_Referred_Signal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Signal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  MessageType => MessageType::referredSignal
 
    function Internal_Get_Referred_State
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_State
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  StateExp => StateExp::referredState
 
    function Internal_Get_Referred_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TypeExp => TypeExp::referredType
 
    function Internal_Get_Referred_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Referred_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  VariableExp => VariableExp::referredVariable
 
    function Internal_Get_Representation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Representation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => Classifier::representation
    --  BagType => Classifier::representation
    --  CollectionType => Classifier::representation
@@ -1064,41 +1064,41 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::representation
 
    function Internal_Get_Represented_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Represented_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Variable => Variable::representedParameter
 
    function Internal_Get_Result
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  ExpressionInOcl => OpaqueExpression::result
    --  IterateExp => IterateExp::result
 
    function Internal_Get_Result_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Result_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpressionInOcl => ExpressionInOcl::resultVariable
 
    function Internal_Get_Sent_Signal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Sent_Signal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  MessageExp => MessageExp::sentSignal
 
    function Internal_Get_Source
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Source
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AssociationClassCallExp => CallExp::source
    --  IterateExp => CallExp::source
    --  IteratorExp => CallExp::source
@@ -1106,23 +1106,23 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  PropertyCallExp => CallExp::source
 
    function Internal_Get_Specification
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Specification
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  TemplateParameterType => TemplateParameterType::specification
 
    function Internal_Get_String_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_String_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  StringLiteralExp => StringLiteralExp::stringSymbol
 
    function Internal_Get_Substitution
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::substitution
    --  BagType => Classifier::substitution
@@ -1137,15 +1137,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::substitution
 
    function Internal_Get_Target
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Target
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  MessageExp => MessageExp::target
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => TemplateableElement::templateBinding
    --  BagType => TemplateableElement::templateBinding
@@ -1160,11 +1160,11 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => TemplateableElement::templateBinding
 
    function Internal_Get_Template_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Template_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AnyType => Classifier::templateParameter
    --  BagType => Classifier::templateParameter
    --  CollectionType => Classifier::templateParameter
@@ -1179,19 +1179,19 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::templateParameter
 
    function Internal_Get_Then_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Then_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  IfExp => IfExp::thenExpression
 
    function Internal_Get_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AssociationClassCallExp => TypedElement::type
    --  BooleanLiteralExp => TypedElement::type
    --  CollectionItem => TypedElement::type
@@ -1221,15 +1221,15 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VariableExp => TypedElement::type
 
    function Internal_Get_Unlimited_Natural_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Unlimited_Natural;
    procedure Internal_Set_Unlimited_Natural_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Unlimited_Natural);
    --  UnlimitedNaturalLiteralExp => UnlimitedNaturalLiteralExp::unlimitedNaturalSymbol
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AnyType => Classifier::useCase
    --  BagType => Classifier::useCase
@@ -1244,18 +1244,18 @@ package AMF.Internals.Tables.OCL_Attributes is
    --  VoidType => Classifier::useCase
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  LetExp => LetExp::variable
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Visibility_Kind;
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  AnyType => NamedElement::visibility
    --  AssociationClassCallExp => NamedElement::visibility

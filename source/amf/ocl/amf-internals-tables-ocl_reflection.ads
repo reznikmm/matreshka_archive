@@ -45,14 +45,15 @@ with League.Holders;
 
 package AMF.Internals.Tables.OCL_Reflection is
 
-   function Get_Meta_Class (Self : OCL_Element) return CMOF_Element;
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element;
 
    function Get
-    (Self     : OCL_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element) return League.Holders.Holder;
 
    procedure Set
-    (Self     : OCL_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element;
      Value    : League.Holders.Holder);
 

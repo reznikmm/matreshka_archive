@@ -999,7 +999,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Argument
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1010,12 +1010,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Attribute;
 
    ----------------------------
@@ -1023,7 +1023,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 13;
@@ -1034,12 +1034,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Behavior
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Behavior;
 
    -----------------------
@@ -1047,12 +1047,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Body;
 
    -----------------------
@@ -1060,7 +1060,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).String_Collection_Value;   end Internal_Get_Body;
@@ -1070,12 +1070,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Body_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Body_Expression;
 
    ---------------------------------
@@ -1083,7 +1083,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Boolean_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Boolean_Value;
@@ -1094,12 +1094,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    function Internal_Get_Called_Operation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Called_Operation;
 
    ------------------------------------
@@ -1107,7 +1107,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Client_Dependency
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -1118,7 +1118,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Collaboration_Use
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 14;
@@ -1129,12 +1129,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Condition;
 
    -----------------------------------
@@ -1142,12 +1142,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    function Internal_Get_Context_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Context_Variable;
 
    ---------------------------------
@@ -1155,7 +1155,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Element_Import
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1166,12 +1166,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------
 
    function Internal_Get_Element_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Element_Type;
 
    ----------------------------------
@@ -1179,12 +1179,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Else_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Else_Expression;
 
    --------------------------
@@ -1192,7 +1192,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    function Internal_Get_Feature
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 15;
@@ -1203,12 +1203,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------
 
    function Internal_Get_First
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_First;
 
    --------------------------
@@ -1216,7 +1216,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    function Internal_Get_General
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 16;
@@ -1227,7 +1227,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Generalization
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 17;
@@ -1238,12 +1238,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Generated_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Generated_Type;
 
    ----------------------------------
@@ -1251,7 +1251,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Imported_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -1262,12 +1262,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------
 
    function Internal_Get_In
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_In;
 
    -----------------------------------
@@ -1275,7 +1275,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    function Internal_Get_Inherited_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 18;
@@ -1286,12 +1286,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Init_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Init_Expression;
 
    ---------------------------------
@@ -1299,7 +1299,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Integer_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Integer is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Integer_Value;
@@ -1310,7 +1310,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Abstract
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).Boolean_Value;
@@ -1321,7 +1321,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------------
 
    function Internal_Get_Is_Final_Specialization
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).Boolean_Value;
@@ -1332,7 +1332,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    function Internal_Get_Is_Leaf
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (11).Boolean_Value;
@@ -1343,12 +1343,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Item
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Item;
 
    ---------------------------
@@ -1356,7 +1356,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Iterator
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1367,7 +1367,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.OCL.OCL_Collection_Kind is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Collection_Kind_Value;
@@ -1378,7 +1378,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Language
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).String_Collection_Value;   end Internal_Get_Language;
@@ -1388,12 +1388,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Last
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Last;
 
    -------------------------
@@ -1401,7 +1401,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    function Internal_Get_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -1412,7 +1412,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Name
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -1424,12 +1424,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Name_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Name_Expression;
 
    ----------------------------
@@ -1437,12 +1437,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    function Internal_Get_Namespace
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Namespace;
 
    ------------------------------------
@@ -1450,12 +1450,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Navigation_Source
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Navigation_Source;
 
    ----------------------------------
@@ -1463,7 +1463,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Attribute
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -1474,7 +1474,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 1;
@@ -1485,7 +1485,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Element
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 2;
@@ -1496,7 +1496,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------
 
    function Internal_Get_Owned_Member
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -1507,7 +1507,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Operation
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 25;
@@ -1518,7 +1518,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Rule
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -1529,12 +1529,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------------
 
    function Internal_Get_Owned_Template_Signature
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Owned_Template_Signature;
 
    ---------------------------------
@@ -1542,7 +1542,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Owned_Use_Case
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 19;
@@ -1553,12 +1553,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------
 
    function Internal_Get_Owner
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Owner;
 
    --------------------------------------------
@@ -1566,12 +1566,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------------------
 
    function Internal_Get_Owning_Template_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Owning_Template_Parameter;
 
    --------------------------
@@ -1579,12 +1579,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    function Internal_Get_Package
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Package;
 
    ---------------------------------
@@ -1592,7 +1592,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Package_Import
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -1603,7 +1603,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------
 
    function Internal_Get_Parameter_Variable
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1614,7 +1614,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Part
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1625,7 +1625,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    function Internal_Get_Powertype_Extent
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 20;
@@ -1636,7 +1636,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Qualified_Name
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -1648,7 +1648,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -1659,7 +1659,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    function Internal_Get_Real_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Real_Value;
@@ -1670,7 +1670,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefined_Classifier
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 21;
@@ -1681,7 +1681,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Redefined_Element
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -1692,7 +1692,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefinition_Context
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -1703,12 +1703,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------------------
 
    function Internal_Get_Referred_Association_Class
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Referred_Association_Class;
 
    ----------------------------------------
@@ -1716,12 +1716,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------------
 
    function Internal_Get_Referred_Enum_Literal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Referred_Enum_Literal;
 
    -------------------------------------
@@ -1729,12 +1729,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------
 
    function Internal_Get_Referred_Operation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Referred_Operation;
 
    ------------------------------------
@@ -1742,12 +1742,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Referred_Property
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Referred_Property;
 
    ----------------------------------
@@ -1755,12 +1755,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Referred_Signal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Referred_Signal;
 
    ---------------------------------
@@ -1768,12 +1768,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Referred_State
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Referred_State;
 
    --------------------------------
@@ -1781,12 +1781,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    function Internal_Get_Referred_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Referred_Type;
 
    ------------------------------------
@@ -1794,12 +1794,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    function Internal_Get_Referred_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Referred_Variable;
 
    ---------------------------------
@@ -1807,12 +1807,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    function Internal_Get_Representation
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Representation;
 
    ----------------------------------------
@@ -1820,12 +1820,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------------
 
    function Internal_Get_Represented_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Represented_Parameter;
 
    -------------------------
@@ -1833,12 +1833,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    function Internal_Get_Result
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Result;
 
    ----------------------------------
@@ -1846,12 +1846,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Result_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Result_Variable;
 
    ------------------------------
@@ -1859,12 +1859,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    function Internal_Get_Sent_Signal
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Sent_Signal;
 
    -------------------------
@@ -1872,12 +1872,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    function Internal_Get_Source
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Source;
 
    --------------------------------
@@ -1885,7 +1885,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    function Internal_Get_Specification
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -1897,7 +1897,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    function Internal_Get_String_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -1909,7 +1909,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------
 
    function Internal_Get_Substitution
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 22;
@@ -1920,12 +1920,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    function Internal_Get_Target
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Target;
 
    -----------------------------------
@@ -1933,7 +1933,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -1944,12 +1944,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------
 
    function Internal_Get_Template_Parameter
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Template_Parameter;
 
    ----------------------------------
@@ -1957,12 +1957,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    function Internal_Get_Then_Expression
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Then_Expression;
 
    -----------------------
@@ -1970,12 +1970,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    function Internal_Get_Type
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Type;
 
    -------------------------------------------
@@ -1983,7 +1983,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------------
 
    function Internal_Get_Unlimited_Natural_Symbol
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Unlimited_Natural is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (8).Unlimited_Natural_Value;
@@ -1994,7 +1994,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (0).Collection + 23;
@@ -2005,12 +2005,12 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.OCL_Element)
-       return AMF.Internals.OCL_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self, No_OCL_Element);
+         (AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Variable;
 
    -----------------------------
@@ -2018,7 +2018,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is
    begin
       return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
@@ -2029,10 +2029,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    procedure Internal_Set_Attribute
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2046,10 +2046,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    procedure Internal_Set_Behavior
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2063,10 +2063,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Body
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2080,10 +2080,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Body_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2097,7 +2097,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Boolean_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -2115,10 +2115,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Called_Operation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2132,10 +2132,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------
 
    procedure Internal_Set_Condition
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2149,10 +2149,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Context_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2166,10 +2166,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------
 
    procedure Internal_Set_Element_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2183,10 +2183,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Else_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2200,10 +2200,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------
 
    procedure Internal_Set_First
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2217,10 +2217,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Generated_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2234,10 +2234,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------
 
    procedure Internal_Set_In
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2251,10 +2251,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Init_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2268,7 +2268,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Integer_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Integer)
    is
       Old : Integer;
@@ -2286,7 +2286,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Abstract
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -2304,7 +2304,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------------
 
    procedure Internal_Set_Is_Final_Specialization
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -2322,7 +2322,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    procedure Internal_Set_Is_Leaf
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -2340,10 +2340,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Item
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2357,7 +2357,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.OCL.OCL_Collection_Kind)
    is
       Old : AMF.OCL.OCL_Collection_Kind;
@@ -2375,10 +2375,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Last
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2392,7 +2392,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Name
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -2420,10 +2420,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Name_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2437,10 +2437,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Navigation_Source
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2454,10 +2454,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------------
 
    procedure Internal_Set_Owned_Template_Signature
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2471,10 +2471,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------------------
 
    procedure Internal_Set_Owning_Template_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2488,10 +2488,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------
 
    procedure Internal_Set_Package
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2505,7 +2505,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    procedure Internal_Set_Real_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Real)
    is
       Old : AMF.Real;
@@ -2523,10 +2523,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------------------
 
    procedure Internal_Set_Referred_Association_Class
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2540,10 +2540,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------------
 
    procedure Internal_Set_Referred_Enum_Literal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2557,10 +2557,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Referred_Operation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2574,10 +2574,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Referred_Property
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2591,10 +2591,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Referred_Signal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2608,10 +2608,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Referred_State
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2625,10 +2625,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    procedure Internal_Set_Referred_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2642,10 +2642,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Referred_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2659,10 +2659,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Representation
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2676,10 +2676,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------------
 
    procedure Internal_Set_Represented_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2693,10 +2693,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Result_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2710,10 +2710,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ------------------------------
 
    procedure Internal_Set_Sent_Signal
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2727,10 +2727,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    procedure Internal_Set_Source
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2744,7 +2744,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    procedure Internal_Set_Specification
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -2772,7 +2772,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    --------------------------------
 
    procedure Internal_Set_String_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -2795,10 +2795,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------
 
    procedure Internal_Set_Target
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2812,10 +2812,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Template_Parameter
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2829,10 +2829,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Then_Expression
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2846,10 +2846,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------
 
    procedure Internal_Set_Type
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2863,7 +2863,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -------------------------------------------
 
    procedure Internal_Set_Unlimited_Natural_Symbol
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Unlimited_Natural)
    is
       Old : AMF.Unlimited_Natural;
@@ -2881,10 +2881,10 @@ package body AMF.Internals.Tables.OCL_Attributes is
    ---------------------------
 
    procedure Internal_Set_Variable
-    (Self : AMF.Internals.OCL_Element;
-     To   : AMF.Internals.OCL_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.OCL_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -2898,7 +2898,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
    -----------------------------
 
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.OCL_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind)
    is
       Old : AMF.UML.Optional_UML_Visibility_Kind;

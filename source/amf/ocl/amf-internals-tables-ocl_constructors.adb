@@ -98,8 +98,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Any_Type --
    -------------------------
 
-   function Create_OCL_Any_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Any_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -313,8 +313,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Association_Class_Call_Exp --
    -------------------------------------------
 
-   function Create_OCL_Association_Class_Call_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Association_Class_Call_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -387,8 +387,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Bag_Type --
    -------------------------
 
-   function Create_OCL_Bag_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Bag_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -618,8 +618,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Boolean_Literal_Exp --
    ------------------------------------
 
-   function Create_OCL_Boolean_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Boolean_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -681,8 +681,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Collection_Item --
    --------------------------------
 
-   function Create_OCL_Collection_Item return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Collection_Item return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -744,8 +744,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Collection_Literal_Exp --
    ---------------------------------------
 
-   function Create_OCL_Collection_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Collection_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -814,8 +814,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Collection_Range --
    ---------------------------------
 
-   function Create_OCL_Collection_Range return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Collection_Range return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -879,8 +879,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Collection_Type --
    --------------------------------
 
-   function Create_OCL_Collection_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Collection_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1110,8 +1110,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Enum_Literal_Exp --
    ---------------------------------
 
-   function Create_OCL_Enum_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Enum_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1173,8 +1173,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Expression_In_Ocl --
    ----------------------------------
 
-   function Create_OCL_Expression_In_Ocl return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Expression_In_Ocl return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1261,8 +1261,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_If_Exp --
    -----------------------
 
-   function Create_OCL_If_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_If_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1328,8 +1328,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Integer_Literal_Exp --
    ------------------------------------
 
-   function Create_OCL_Integer_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Integer_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1391,8 +1391,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Invalid_Literal_Exp --
    ------------------------------------
 
-   function Create_OCL_Invalid_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Invalid_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1452,8 +1452,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Invalid_Type --
    -----------------------------
 
-   function Create_OCL_Invalid_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Invalid_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1667,8 +1667,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Iterate_Exp --
    ----------------------------
 
-   function Create_OCL_Iterate_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Iterate_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1741,8 +1741,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Iterator_Exp --
    -----------------------------
 
-   function Create_OCL_Iterator_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Iterator_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1813,8 +1813,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Let_Exp --
    ------------------------
 
-   function Create_OCL_Let_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Let_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1878,8 +1878,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Message_Exp --
    ----------------------------
 
-   function Create_OCL_Message_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Message_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -1952,8 +1952,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Message_Type --
    -----------------------------
 
-   function Create_OCL_Message_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Message_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2171,8 +2171,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Null_Literal_Exp --
    ---------------------------------
 
-   function Create_OCL_Null_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Null_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2232,8 +2232,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Operation_Call_Exp --
    -----------------------------------
 
-   function Create_OCL_Operation_Call_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Operation_Call_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2304,8 +2304,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Ordered_Set_Type --
    ---------------------------------
 
-   function Create_OCL_Ordered_Set_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Ordered_Set_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2535,8 +2535,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Property_Call_Exp --
    ----------------------------------
 
-   function Create_OCL_Property_Call_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Property_Call_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2609,8 +2609,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Real_Literal_Exp --
    ---------------------------------
 
-   function Create_OCL_Real_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Real_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2672,8 +2672,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Sequence_Type --
    ------------------------------
 
-   function Create_OCL_Sequence_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Sequence_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -2903,8 +2903,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Set_Type --
    -------------------------
 
-   function Create_OCL_Set_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Set_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3134,8 +3134,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_State_Exp --
    --------------------------
 
-   function Create_OCL_State_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_State_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3197,8 +3197,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_String_Literal_Exp --
    -----------------------------------
 
-   function Create_OCL_String_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_String_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3260,8 +3260,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Template_Parameter_Type --
    ----------------------------------------
 
-   function Create_OCL_Template_Parameter_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Template_Parameter_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3477,8 +3477,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Tuple_Literal_Exp --
    ----------------------------------
 
-   function Create_OCL_Tuple_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Tuple_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3545,8 +3545,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Tuple_Literal_Part --
    -----------------------------------
 
-   function Create_OCL_Tuple_Literal_Part return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Tuple_Literal_Part return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3608,8 +3608,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Tuple_Type --
    ---------------------------
 
-   function Create_OCL_Tuple_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Tuple_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3837,8 +3837,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Type_Exp --
    -------------------------
 
-   function Create_OCL_Type_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Type_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3900,8 +3900,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Unlimited_Natural_Literal_Exp --
    ----------------------------------------------
 
-   function Create_OCL_Unlimited_Natural_Literal_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Unlimited_Natural_Literal_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -3963,8 +3963,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Unspecified_Value_Exp --
    --------------------------------------
 
-   function Create_OCL_Unspecified_Value_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Unspecified_Value_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -4024,8 +4024,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Variable --
    -------------------------
 
-   function Create_OCL_Variable return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Variable return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -4089,8 +4089,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Variable_Exp --
    -----------------------------
 
-   function Create_OCL_Variable_Exp return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Variable_Exp return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
@@ -4152,8 +4152,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
    -- Create_OCL_Void_Type --
    --------------------------
 
-   function Create_OCL_Void_Type return AMF.Internals.OCL_Element is
-      Self : AMF.Internals.OCL_Element;
+   function Create_OCL_Void_Type return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
 
    begin
       OCL_Element_Table.Increment_Last;
