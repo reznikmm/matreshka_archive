@@ -65,7 +65,12 @@ package body Generator.Arguments is
       for J in 3 .. Arguments.Length loop
          Argument := Arguments.Element (J);
 
-         if Argument = +"--stubs" then
+         if Argument = +"--verbose" then
+            --  Output verbose messages.
+
+            Verbose := True;
+
+         elsif Argument = +"--stubs" then
             --  In the implementation stubs mode only stubs code is generated.
 
             Generate_Attributes   := True;

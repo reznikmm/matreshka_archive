@@ -62,4 +62,7 @@ package Generator.Arguments is
    Last_Year             : Natural := 0;
    --  First and last years for copyright statement.
 
+   Verbose               : Boolean := False;
+   --  Verbose output mode.
+
 end Generator.Arguments;

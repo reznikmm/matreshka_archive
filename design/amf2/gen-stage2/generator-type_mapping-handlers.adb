@@ -48,6 +48,8 @@ with AMF.URI_Stores;
 with AMF.Internals.XMI_Handlers;
 --  XXX Internal structures are used now because of absence of user's API.
 
+with Generator.Arguments;
+
 package body Generator.Type_Mapping.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
@@ -143,11 +145,14 @@ package body Generator.Type_Mapping.Handlers is
 
          begin
             if Element = null then
-               Put_Line
-                (Standard_Error,
-                 "Element '"
-                   & Attributes.Value (URI_Attribute_Name).To_Wide_Wide_String
-                   & "' is not found, ignoring");
+               if Generator.Arguments.Verbose then
+                  Put_Line
+                   (Standard_Error,
+                    "Element '"
+                      & Attributes.Value
+                         (URI_Attribute_Name).To_Wide_Wide_String
+                      & "' is not found, ignoring");
+               end if;
 
             else
                if Literal.Contains (Element) then
@@ -203,11 +208,13 @@ package body Generator.Type_Mapping.Handlers is
          Self.Mapping := null;
 
          if Self.Element = null then
-            Put_Line
-             (Standard_Error,
-              "Element '"
-                & Attributes.Value (URI_Attribute_Name).To_Wide_Wide_String
-                & "' is not found, ignoring");
+            if Generator.Arguments.Verbose then
+               Put_Line
+                (Standard_Error,
+                 "Element '"
+                   & Attributes.Value (URI_Attribute_Name).To_Wide_Wide_String
+                   & "' is not found, ignoring");
+            end if;
 
          else
             Self.Mapping := new Type_Mapping;
