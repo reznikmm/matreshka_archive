@@ -49,42 +49,42 @@ with Matreshka.Internals.Strings;
 package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_URI
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_URI
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Model => Package::URI
    --  Package => Package::URI
    --  Profile => Package::URI
 
    function Internal_Get_Abstraction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Abstraction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ComponentRealization => ComponentRealization::abstraction
 
    function Internal_Get_Action
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Action
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionExecutionSpecification => ActionExecutionSpecification::action
 
    function Internal_Get_Action
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Interaction => Interaction::action
 
    function Internal_Get_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AcceptCallAction => ActivityNode::activity
    --  AcceptEventAction => ActivityNode::activity
    --  ActionInputPin => ActivityNode::activity
@@ -146,92 +146,92 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::activity
 
    function Internal_Get_Activity_Scope
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Activity_Scope
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Variable => Variable::activityScope
 
    function Internal_Get_Actual
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Actual
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TemplateParameterSubstitution => TemplateParameterSubstitution::actual
 
    function Internal_Get_Actual_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InteractionUse => InteractionUse::actualGate
    --  PartDecomposition => InteractionUse::actualGate
 
    function Internal_Get_Addition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Addition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Include => Include::addition
 
    function Internal_Get_After
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_After
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  GeneralOrdering => GeneralOrdering::after
 
    function Internal_Get_Aggregation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Aggregation_Kind;
    procedure Internal_Set_Aggregation
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Aggregation_Kind);
    --  ExtensionEnd => Property::aggregation
    --  Port => Property::aggregation
    --  Property => Property::aggregation
 
    function Internal_Get_Alias
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Alias
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ElementImport => ElementImport::alias
 
    function Internal_Get_Allow_Substitutable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Allow_Substitutable
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ClassifierTemplateParameter => ClassifierTemplateParameter::allowSubstitutable
 
    function Internal_Get_Annotated_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Comment => Comment::annotatedElement
 
    function Internal_Get_Applied_Profile
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Applied_Profile
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProfileApplication => ProfileApplication::appliedProfile
 
    function Internal_Get_Applying_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Applying_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProfileApplication => ProfileApplication::applyingPackage
 
    function Internal_Get_Argument
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  BroadcastSignalAction => InvocationAction::argument
    --  CallBehaviorAction => InvocationAction::argument
@@ -244,28 +244,28 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StartObjectBehaviorAction => InvocationAction::argument
 
    function Internal_Get_Association
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Association
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClearAssociationAction => ClearAssociationAction::association
    --  ExtensionEnd => Property::association
    --  Port => Property::association
    --  Property => Property::association
 
    function Internal_Get_Association_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Association_End
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::associationEnd
    --  Port => Property::associationEnd
    --  Property => Property::associationEnd
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::attribute
    --  Actor => Classifier::attribute
@@ -296,21 +296,21 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::attribute
 
    function Internal_Get_Base_Abstraction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Abstraction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Derive => Derive::base_Abstraction
    --  Refine => Refine::base_Abstraction
    --  Trace => Trace::base_Abstraction
 
    function Internal_Get_Base_Artifact
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Artifact
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Document => Document::base_Artifact
    --  Executable => Executable::base_Artifact
    --  Library => File::base_Artifact
@@ -318,20 +318,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Source => File::base_Artifact
 
    function Internal_Get_Base_Behavioral_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Behavioral_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Create => Create::base_BehavioralFeature
    --  Destroy => Destroy::base_BehavioralFeature
 
    function Internal_Get_Base_Class
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Class
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Auxiliary => Auxiliary::base_Class
    --  Focus => Focus::base_Class
    --  ImplementationClass => ImplementationClass::base_Class
@@ -340,20 +340,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Utility => Utility::base_Class
 
    function Internal_Get_Base_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Realization => Realization::base_Classifier
    --  Specification => Specification::base_Classifier
 
    function Internal_Get_Base_Component
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Component
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Entity => Entity::base_Component
    --  Implement => Implement::base_Component
    --  Process => Process::base_Component
@@ -362,29 +362,29 @@ package AMF.Internals.Tables.UML_Attributes is
    --  BuildComponent => BuildComponent::base_Component
 
    function Internal_Get_Base_Model
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Model
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Metamodel => Metamodel::base_Model
    --  SystemModel => SystemModel::base_Model
 
    function Internal_Get_Base_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Framework => Framework::base_Package
    --  ModelLibrary => ModelLibrary::base_Package
 
    function Internal_Get_Base_Usage
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Base_Usage
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Call => Call::base_Usage
    --  Create => Create::base_Usage
    --  Instantiate => Instantiate::base_Usage
@@ -392,38 +392,38 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Send => Send::base_Usage
 
    function Internal_Get_Before
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Before
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  GeneralOrdering => GeneralOrdering::before
 
    function Internal_Get_Behavior
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Behavior
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  BehaviorExecutionSpecification => BehaviorExecutionSpecification::behavior
    --  CallBehaviorAction => CallBehaviorAction::behavior
    --  OpaqueExpression => OpaqueExpression::behavior
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::body
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Body
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Comment => Comment::body
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String;
    --  FunctionBehavior => OpaqueBehavior::body
    --  OpaqueAction => OpaqueAction::body
@@ -431,80 +431,80 @@ package AMF.Internals.Tables.UML_Attributes is
    --  OpaqueExpression => OpaqueExpression::body
 
    function Internal_Get_Body_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Body_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Operation => Operation::bodyCondition
 
    function Internal_Get_Body_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::bodyOutput
    --  LoopNode => LoopNode::bodyOutput
 
    function Internal_Get_Body_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  LoopNode => LoopNode::bodyPart
 
    function Internal_Get_Bound_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Bound_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TemplateBinding => TemplateBinding::boundElement
 
    function Internal_Get_Cfragment_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CombinedFragment => CombinedFragment::cfragmentGate
    --  ConsiderIgnoreFragment => CombinedFragment::cfragmentGate
 
    function Internal_Get_Change_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Change_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ChangeEvent => ChangeEvent::changeExpression
 
    function Internal_Get_Class
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Class
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::class
    --  Operation => Operation::class
    --  Port => Property::class
    --  Property => Property::class
 
    function Internal_Get_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CreateObjectAction => CreateObjectAction::classifier
    --  ReadExtentAction => ReadExtentAction::classifier
    --  ReadIsClassifiedObjectAction => ReadIsClassifiedObjectAction::classifier
    --  RedefinableTemplateSignature => RedefinableTemplateSignature::classifier
 
    function Internal_Get_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  EnumerationLiteral => EnumerationLiteral::classifier
    --  InstanceSpecification => InstanceSpecification::classifier
 
    function Internal_Get_Classifier_Behavior
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Classifier_Behavior
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Activity => BehavioredClassifier::classifierBehavior
    --  Actor => BehavioredClassifier::classifierBehavior
    --  AssociationClass => BehavioredClassifier::classifierBehavior
@@ -523,12 +523,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => BehavioredClassifier::classifierBehavior
 
    function Internal_Get_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConditionalNode => ConditionalNode::clause
 
    function Internal_Get_Client
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => Dependency::client
    --  ComponentRealization => Dependency::client
@@ -541,7 +541,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Usage => Dependency::client
 
    function Internal_Get_Client_Dependency
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => NamedElement::clientDependency
    --  AcceptCallAction => NamedElement::clientDependency
@@ -715,12 +715,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::clientDependency
 
    function Internal_Get_Collaboration_Role
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Collaboration => Collaboration::collaborationRole
 
    function Internal_Get_Collaboration_Use
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::collaborationUse
    --  Actor => Classifier::collaborationUse
@@ -751,61 +751,61 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::collaborationUse
 
    function Internal_Get_Collection
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Collection
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ReduceAction => ReduceAction::collection
 
    function Internal_Get_Computation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Computation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Derive => Derive::computation
 
    function Internal_Get_Concurrency
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Call_Concurrency_Kind;
    procedure Internal_Set_Concurrency
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Call_Concurrency_Kind);
    --  Operation => BehavioralFeature::concurrency
    --  Reception => BehavioralFeature::concurrency
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Extend => Extend::condition
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ParameterSet => ParameterSet::condition
 
    function Internal_Get_Configuration
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Deployment => Deployment::configuration
 
    function Internal_Get_Conformance
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ProtocolStateMachine => ProtocolStateMachine::conformance
 
    function Internal_Get_Connection
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  FinalState => State::connection
    --  State => State::connection
 
    function Internal_Get_Connection_Point
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  FinalState => State::connectionPoint
    --  ProtocolStateMachine => StateMachine::connectionPoint
@@ -813,15 +813,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => StateMachine::connectionPoint
 
    function Internal_Get_Connector
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Connector
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Message => Message::connector
 
    function Internal_Get_Constrained_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Constraint => Constraint::constrainedElement
    --  DurationConstraint => Constraint::constrainedElement
@@ -830,12 +830,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  TimeConstraint => Constraint::constrainedElement
 
    function Internal_Get_Constraining_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ClassifierTemplateParameter => ClassifierTemplateParameter::constrainingClassifier
 
    function Internal_Get_Contained_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActivityPartition => ActivityGroup::containedEdge
    --  ConditionalNode => ActivityGroup::containedEdge
@@ -846,7 +846,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => ActivityGroup::containedEdge
 
    function Internal_Get_Contained_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActivityPartition => ActivityGroup::containedNode
    --  ConditionalNode => ActivityGroup::containedNode
@@ -857,11 +857,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => ActivityGroup::containedNode
 
    function Internal_Get_Container
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Container
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ConnectionPointReference => Vertex::container
    --  FinalState => Vertex::container
    --  ProtocolTransition => Transition::container
@@ -870,16 +870,16 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Transition => Transition::container
 
    function Internal_Get_Content
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Content
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::content
 
    function Internal_Get_Context
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  AcceptCallAction => Action::context
    --  AcceptEventAction => Action::context
    --  Activity => Behavior::context
@@ -935,26 +935,26 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::context
 
    function Internal_Get_Contract
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Connector => Connector::contract
 
    function Internal_Get_Contract
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Contract
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InterfaceRealization => InterfaceRealization::contract
    --  Substitution => Substitution::contract
 
    function Internal_Get_Conveyed
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::conveyed
 
    function Internal_Get_Covered
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActionExecutionSpecification => InteractionFragment::covered
    --  BehaviorExecutionSpecification => InteractionFragment::covered
@@ -972,59 +972,59 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateInvariant => InteractionFragment::covered
 
    function Internal_Get_Covered_By
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Lifeline => Lifeline::coveredBy
 
    function Internal_Get_Datatype
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Datatype
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::datatype
    --  Operation => Operation::datatype
    --  Port => Property::datatype
    --  Property => Property::datatype
 
    function Internal_Get_Decider
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Decider
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Clause => Clause::decider
    --  LoopNode => LoopNode::decider
 
    function Internal_Get_Decision_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Decision_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DecisionNode => DecisionNode::decisionInput
 
    function Internal_Get_Decision_Input_Flow
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Decision_Input_Flow
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DecisionNode => DecisionNode::decisionInputFlow
 
    function Internal_Get_Decomposed_As
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Decomposed_As
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Lifeline => Lifeline::decomposedAs
 
    function Internal_Get_Default
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Default
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ExtensionEnd => Property::default
    --  Parameter => Parameter::default
@@ -1032,53 +1032,53 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => Property::default
 
    function Internal_Get_Default
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Default
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClassifierTemplateParameter => TemplateParameter::default
    --  ConnectableElementTemplateParameter => TemplateParameter::default
    --  OperationTemplateParameter => TemplateParameter::default
    --  TemplateParameter => TemplateParameter::default
 
    function Internal_Get_Default_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Default_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::defaultValue
    --  Parameter => Parameter::defaultValue
    --  Port => Property::defaultValue
    --  Property => Property::defaultValue
 
    function Internal_Get_Deferrable_Trigger
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  FinalState => State::deferrableTrigger
    --  State => State::deferrableTrigger
 
    function Internal_Get_Defining_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  ConnectorEnd => ConnectorEnd::definingEnd
 
    function Internal_Get_Defining_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Defining_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Slot => Slot::definingFeature
 
    function Internal_Get_Deployed_Artifact
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Deployment => Deployment::deployedArtifact
 
    function Internal_Get_Deployed_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Device => DeploymentTarget::deployedElement
    --  EnumerationLiteral => DeploymentTarget::deployedElement
@@ -1090,15 +1090,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => DeploymentTarget::deployedElement
 
    function Internal_Get_Deployment
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Deployment
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DeploymentSpecification => DeploymentSpecification::deployment
 
    function Internal_Get_Deployment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Device => DeploymentTarget::deployment
    --  EnumerationLiteral => DeploymentTarget::deployment
@@ -1110,40 +1110,40 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => DeploymentTarget::deployment
 
    function Internal_Get_Deployment_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Deployment_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  DeploymentSpecification => DeploymentSpecification::deploymentLocation
 
    function Internal_Get_Destroy_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Destroy_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  LinkEndDestructionData => LinkEndDestructionData::destroyAt
 
    function Internal_Get_Direction
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Parameter_Direction_Kind;
    procedure Internal_Set_Direction
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Parameter_Direction_Kind);
    --  Parameter => Parameter::direction
 
    function Internal_Get_Do_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Do_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::doActivity
    --  State => State::doActivity
 
    function Internal_Get_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::edge
    --  ActivityPartition => ActivityPartition::edge
@@ -1154,24 +1154,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::edge
 
    function Internal_Get_Effect
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Parameter_Effect_Kind;
    procedure Internal_Set_Effect
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Parameter_Effect_Kind);
    --  Parameter => Parameter::effect
 
    function Internal_Get_Effect
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Effect
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolTransition => Transition::effect
    --  Transition => Transition::effect
 
    function Internal_Get_Element_Import
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::elementImport
    --  Actor => Namespace::elementImport
@@ -1218,11 +1218,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::elementImport
 
    function Internal_Get_Enclosing_Interaction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Enclosing_Interaction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionExecutionSpecification => InteractionFragment::enclosingInteraction
    --  BehaviorExecutionSpecification => InteractionFragment::enclosingInteraction
    --  CombinedFragment => InteractionFragment::enclosingInteraction
@@ -1239,11 +1239,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateInvariant => InteractionFragment::enclosingInteraction
 
    function Internal_Get_Enclosing_Operand
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Enclosing_Operand
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionExecutionSpecification => InteractionFragment::enclosingOperand
    --  BehaviorExecutionSpecification => InteractionFragment::enclosingOperand
    --  CombinedFragment => InteractionFragment::enclosingOperand
@@ -1260,7 +1260,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateInvariant => InteractionFragment::enclosingOperand
 
    function Internal_Get_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Connector => Connector::end
    --  ExtensionEnd => ConnectableElement::end
@@ -1270,18 +1270,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => ConnectableElement::end
 
    function Internal_Get_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_End
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  LinkEndCreationData => LinkEndData::end
    --  LinkEndData => LinkEndData::end
    --  LinkEndDestructionData => LinkEndData::end
    --  ReadLinkObjectEndAction => ReadLinkObjectEndAction::end
 
    function Internal_Get_End_Data
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CreateLinkAction => CreateLinkAction::endData
    --  CreateLinkObjectAction => CreateLinkAction::endData
@@ -1289,7 +1289,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ReadLinkAction => LinkAction::endData
 
    function Internal_Get_End_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Association => Association::endType
    --  AssociationClass => Association::endType
@@ -1297,140 +1297,140 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Extension => Association::endType
 
    function Internal_Get_Entry
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConnectionPointReference => ConnectionPointReference::entry
 
    function Internal_Get_Entry
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Entry
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::entry
    --  State => State::entry
 
    function Internal_Get_Enumeration
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Enumeration
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  EnumerationLiteral => EnumerationLiteral::enumeration
 
    function Internal_Get_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  DurationObservation => DurationObservation::event
 
    function Internal_Get_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TimeObservation => TimeObservation::event
    --  Trigger => Trigger::event
 
    function Internal_Get_Exception
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Exception
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  RaiseExceptionAction => RaiseExceptionAction::exception
 
    function Internal_Get_Exception_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Exception_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExceptionHandler => ExceptionHandler::exceptionInput
 
    function Internal_Get_Exception_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExceptionHandler => ExceptionHandler::exceptionType
 
    function Internal_Get_Executable_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  SequenceNode => SequenceNode::executableNode
 
    function Internal_Get_Execution
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Execution
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExecutionOccurrenceSpecification => ExecutionOccurrenceSpecification::execution
 
    function Internal_Get_Execution_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Execution_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  DeploymentSpecification => DeploymentSpecification::executionLocation
 
    function Internal_Get_Exit
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConnectionPointReference => ConnectionPointReference::exit
 
    function Internal_Get_Exit
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Exit
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::exit
    --  State => State::exit
 
    function Internal_Get_Expr
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Expr
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Duration => Duration::expr
    --  TimeExpression => TimeExpression::expr
 
    function Internal_Get_Extend
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  UseCase => UseCase::extend
 
    function Internal_Get_Extended_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Extended_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Extend => Extend::extendedCase
 
    function Internal_Get_Extended_Region
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Extended_Region
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Region => Region::extendedRegion
 
    function Internal_Get_Extended_Signature
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  RedefinableTemplateSignature => RedefinableTemplateSignature::extendedSignature
 
    function Internal_Get_Extended_State_Machine
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ProtocolStateMachine => StateMachine::extendedStateMachine
    --  StateMachine => StateMachine::extendedStateMachine
 
    function Internal_Get_Extension
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::extension
    --  AssociationClass => Class::extension
@@ -1447,25 +1447,25 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::extension
 
    function Internal_Get_Extension
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Extension
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Extend => Extend::extension
 
    function Internal_Get_Extension_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Extend => Extend::extensionLocation
 
    function Internal_Get_Extension_Point
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  UseCase => UseCase::extensionPoint
 
    function Internal_Get_Feature
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::feature
    --  Actor => Classifier::feature
@@ -1496,7 +1496,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::feature
 
    function Internal_Get_Featuring_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Connector => Feature::featuringClassifier
    --  ExtensionEnd => Feature::featuringClassifier
@@ -1506,90 +1506,90 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Reception => Feature::featuringClassifier
 
    function Internal_Get_File_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_File_Name
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Artifact => Artifact::fileName
    --  DeploymentSpecification => Artifact::fileName
 
    function Internal_Get_Finish
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Finish
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionExecutionSpecification => ExecutionSpecification::finish
    --  BehaviorExecutionSpecification => ExecutionSpecification::finish
 
    function Internal_Get_First
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_First
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TestIdentityAction => TestIdentityAction::first
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Boolean;
    --  DurationConstraint => DurationConstraint::firstEvent
    --  DurationObservation => DurationObservation::firstEvent
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Boolean;
    procedure Internal_Set_First_Event
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Boolean);
    --  TimeConstraint => TimeConstraint::firstEvent
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_First_Event
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  TimeObservation => TimeObservation::firstEvent
 
    function Internal_Get_Formal
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Formal
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TemplateParameterSubstitution => TemplateParameterSubstitution::formal
 
    function Internal_Get_Formal_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Interaction => Interaction::formalGate
 
    function Internal_Get_Format
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Format
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::format
 
    function Internal_Get_Fragment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Interaction => Interaction::fragment
    --  InteractionOperand => InteractionOperand::fragment
 
    function Internal_Get_From_Action
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_From_Action
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => ActionInputPin::fromAction
 
    function Internal_Get_General
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::general
    --  Actor => Classifier::general
@@ -1620,23 +1620,23 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::general
 
    function Internal_Get_General
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_General
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Generalization => Generalization::general
 
    function Internal_Get_General_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_General_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolConformance => ProtocolConformance::generalMachine
 
    function Internal_Get_General_Ordering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActionExecutionSpecification => InteractionFragment::generalOrdering
    --  BehaviorExecutionSpecification => InteractionFragment::generalOrdering
@@ -1654,7 +1654,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateInvariant => InteractionFragment::generalOrdering
 
    function Internal_Get_Generalization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::generalization
    --  Actor => Classifier::generalization
@@ -1686,21 +1686,21 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::generalization
 
    function Internal_Get_Generalization_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Generalization => Generalization::generalizationSet
 
    function Internal_Get_Group
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::group
 
    function Internal_Get_Guard
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Guard
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ControlFlow => ActivityEdge::guard
    --  InteractionOperand => InteractionOperand::guard
    --  ObjectFlow => ActivityEdge::guard
@@ -1708,7 +1708,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Transition => Transition::guard
 
    function Internal_Get_Handler
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ExecutableNode::handler
    --  AcceptEventAction => ExecutableNode::handler
@@ -1754,36 +1754,36 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ExecutableNode::handler
 
    function Internal_Get_Handler_Body
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Handler_Body
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExceptionHandler => ExceptionHandler::handlerBody
 
    function Internal_Get_Icon
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Stereotype => Stereotype::icon
 
    function Internal_Get_Implementing_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Implementing_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InterfaceRealization => InterfaceRealization::implementingClassifier
 
    function Internal_Get_Imported_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Imported_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ElementImport => ElementImport::importedElement
 
    function Internal_Get_Imported_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::importedMember
    --  Actor => Namespace::importedMember
@@ -1830,28 +1830,28 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::importedMember
 
    function Internal_Get_Imported_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Imported_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  PackageImport => PackageImport::importedPackage
 
    function Internal_Get_Importing_Namespace
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Importing_Namespace
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ElementImport => ElementImport::importingNamespace
    --  PackageImport => PackageImport::importingNamespace
 
    function Internal_Get_In_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_In_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActivityPartition => ActivityGroup::inActivity
    --  ConditionalNode => ActivityGroup::inActivity
    --  ExpansionRegion => ActivityGroup::inActivity
@@ -1861,7 +1861,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => ActivityGroup::inActivity
 
    function Internal_Get_In_Group
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::inGroup
    --  AcceptEventAction => ActivityNode::inGroup
@@ -1924,7 +1924,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::inGroup
 
    function Internal_Get_In_Interruptible_Region
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::inInterruptibleRegion
    --  AcceptEventAction => ActivityNode::inInterruptibleRegion
@@ -1985,7 +1985,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::inInterruptibleRegion
 
    function Internal_Get_In_Partition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::inPartition
    --  AcceptEventAction => ActivityNode::inPartition
@@ -2048,7 +2048,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::inPartition
 
    function Internal_Get_In_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActionInputPin => ObjectNode::inState
    --  ActivityParameterNode => ObjectNode::inState
@@ -2060,11 +2060,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => ObjectNode::inState
 
    function Internal_Get_In_Structured_Node
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_In_Structured_Node
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AcceptCallAction => ActivityNode::inStructuredNode
    --  AcceptEventAction => ActivityNode::inStructuredNode
    --  ActionInputPin => ActivityNode::inStructuredNode
@@ -2126,20 +2126,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::inStructuredNode
 
    function Internal_Get_Include
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  UseCase => UseCase::include
 
    function Internal_Get_Including_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Including_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Include => Include::includingCase
 
    function Internal_Get_Incoming
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::incoming
    --  AcceptEventAction => ActivityNode::incoming
@@ -2204,17 +2204,17 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::incoming
 
    function Internal_Get_Information_Source
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::informationSource
 
    function Internal_Get_Information_Target
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::informationTarget
 
    function Internal_Get_Inherited_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::inheritedMember
    --  Actor => Classifier::inheritedMember
@@ -2245,12 +2245,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::inheritedMember
 
    function Internal_Get_Inherited_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  RedefinableTemplateSignature => RedefinableTemplateSignature::inheritedParameter
 
    function Internal_Get_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => Action::input
    --  AcceptEventAction => Action::input
@@ -2296,12 +2296,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::input
 
    function Internal_Get_Input_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExpansionRegion => ExpansionRegion::inputElement
 
    function Internal_Get_Input_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CreateLinkAction => LinkAction::inputValue
    --  CreateLinkObjectAction => LinkAction::inputValue
@@ -2310,54 +2310,54 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ReadLinkAction => LinkAction::inputValue
 
    function Internal_Get_Insert_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Insert_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddStructuralFeatureValueAction => AddStructuralFeatureValueAction::insertAt
    --  AddVariableValueAction => AddVariableValueAction::insertAt
    --  LinkEndCreationData => LinkEndCreationData::insertAt
 
    function Internal_Get_Instance
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Instance
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InstanceValue => InstanceValue::instance
 
    function Internal_Get_Interaction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Interaction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Lifeline => Lifeline::interaction
    --  Message => Message::interaction
 
    function Internal_Get_Interaction_Operator
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Interaction_Operator_Kind;
    procedure Internal_Set_Interaction_Operator
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Interaction_Operator_Kind);
    --  CombinedFragment => CombinedFragment::interactionOperator
    --  ConsiderIgnoreFragment => CombinedFragment::interactionOperator
 
    function Internal_Get_Interface
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Interface
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::interface
    --  Operation => Operation::interface
    --  Port => Property::interface
    --  Property => Property::interface
 
    function Internal_Get_Interface_Realization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => BehavioredClassifier::interfaceRealization
    --  Actor => BehavioredClassifier::interfaceRealization
@@ -2377,32 +2377,32 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => BehavioredClassifier::interfaceRealization
 
    function Internal_Get_Interrupting_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InterruptibleActivityRegion => InterruptibleActivityRegion::interruptingEdge
 
    function Internal_Get_Interrupts
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Interrupts
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ControlFlow => ActivityEdge::interrupts
    --  ObjectFlow => ActivityEdge::interrupts
 
    function Internal_Get_Invariant
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Invariant
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  StateInvariant => StateInvariant::invariant
 
    function Internal_Get_Is_Abstract
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Abstract
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Class::isAbstract
    --  Actor => Classifier::isAbstract
@@ -2435,10 +2435,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::isAbstract
 
    function Internal_Get_Is_Active
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Active
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Class::isActive
    --  AssociationClass => Class::isActive
@@ -2455,34 +2455,34 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::isActive
 
    function Internal_Get_Is_Assured
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Assured
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ConditionalNode => ConditionalNode::isAssured
 
    function Internal_Get_Is_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Behavior
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Port => Port::isBehavior
 
    function Internal_Get_Is_Combine_Duplicate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Combine_Duplicate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  JoinNode => JoinNode::isCombineDuplicate
 
    function Internal_Get_Is_Composite
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Composite
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ExtensionEnd => Property::isComposite
    --  FinalState => State::isComposite
@@ -2491,18 +2491,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  State => State::isComposite
 
    function Internal_Get_Is_Conjugated
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Conjugated
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Port => Port::isConjugated
 
    function Internal_Get_Is_Control
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Control
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActionInputPin => Pin::isControl
    --  InputPin => Pin::isControl
@@ -2510,10 +2510,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => Pin::isControl
 
    function Internal_Get_Is_Control_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Control_Type
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActionInputPin => ObjectNode::isControlType
    --  ActivityParameterNode => ObjectNode::isControlType
@@ -2525,18 +2525,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => ObjectNode::isControlType
 
    function Internal_Get_Is_Covering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Covering
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  GeneralizationSet => GeneralizationSet::isCovering
 
    function Internal_Get_Is_Derived
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Derived
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Association => Association::isDerived
    --  AssociationClass => Association::isDerived
@@ -2547,92 +2547,92 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => Property::isDerived
 
    function Internal_Get_Is_Derived_Union
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Derived_Union
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ExtensionEnd => Property::isDerivedUnion
    --  Port => Property::isDerivedUnion
    --  Property => Property::isDerivedUnion
 
    function Internal_Get_Is_Destroy_Duplicates
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Destroy_Duplicates
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  LinkEndDestructionData => LinkEndDestructionData::isDestroyDuplicates
 
    function Internal_Get_Is_Destroy_Links
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Destroy_Links
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  DestroyObjectAction => DestroyObjectAction::isDestroyLinks
 
    function Internal_Get_Is_Destroy_Owned_Objects
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Destroy_Owned_Objects
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  DestroyObjectAction => DestroyObjectAction::isDestroyOwnedObjects
 
    function Internal_Get_Is_Determinate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Determinate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ConditionalNode => ConditionalNode::isDeterminate
 
    function Internal_Get_Is_Dimension
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Dimension
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActivityPartition => ActivityPartition::isDimension
 
    function Internal_Get_Is_Direct
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Direct
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ReadIsClassifiedObjectAction => ReadIsClassifiedObjectAction::isDirect
 
    function Internal_Get_Is_Disjoint
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Disjoint
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  GeneralizationSet => GeneralizationSet::isDisjoint
 
    function Internal_Get_Is_Exception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Exception
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Parameter => Parameter::isException
 
    function Internal_Get_Is_External
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_External
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActivityPartition => ActivityPartition::isExternal
 
    function Internal_Get_Is_Final_Specialization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Final_Specialization
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Classifier::isFinalSpecialization
    --  Actor => Classifier::isFinalSpecialization
@@ -2663,28 +2663,28 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::isFinalSpecialization
 
    function Internal_Get_Is_ID
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_ID
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ExtensionEnd => Property::isID
    --  Port => Property::isID
    --  Property => Property::isID
 
    function Internal_Get_Is_Indirectly_Instantiated
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Indirectly_Instantiated
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Component => Component::isIndirectlyInstantiated
 
    function Internal_Get_Is_Leaf
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Leaf
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AcceptCallAction => RedefinableElement::isLeaf
    --  AcceptEventAction => RedefinableElement::isLeaf
@@ -2787,10 +2787,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => RedefinableElement::isLeaf
 
    function Internal_Get_Is_Locally_Reentrant
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Locally_Reentrant
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AcceptCallAction => Action::isLocallyReentrant
    --  AcceptEventAction => Action::isLocallyReentrant
@@ -2836,26 +2836,26 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::isLocallyReentrant
 
    function Internal_Get_Is_Multicast
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Multicast
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ObjectFlow => ObjectFlow::isMulticast
 
    function Internal_Get_Is_Multireceive
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Multireceive
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ObjectFlow => ObjectFlow::isMultireceive
 
    function Internal_Get_Is_Ordered
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Ordered
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActionInputPin => MultiplicityElement::isOrdered
    --  ConnectorEnd => MultiplicityElement::isOrdered
@@ -2871,24 +2871,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::isOrdered
 
    function Internal_Get_Is_Orthogonal
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    --  FinalState => State::isOrthogonal
    --  State => State::isOrthogonal
 
    function Internal_Get_Is_Query
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Query
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Operation => Operation::isQuery
 
    function Internal_Get_Is_Read_Only
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Read_Only
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Activity::isReadOnly
    --  ExtensionEnd => Property::isReadOnly
@@ -2896,10 +2896,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => Property::isReadOnly
 
    function Internal_Get_Is_Reentrant
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Reentrant
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Behavior::isReentrant
    --  FunctionBehavior => Behavior::isReentrant
@@ -2909,27 +2909,27 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Behavior::isReentrant
 
    function Internal_Get_Is_Relative
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Relative
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  TimeEvent => TimeEvent::isRelative
 
    function Internal_Get_Is_Remove_Duplicates
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Remove_Duplicates
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  RemoveStructuralFeatureValueAction => RemoveStructuralFeatureValueAction::isRemoveDuplicates
    --  RemoveVariableValueAction => RemoveVariableValueAction::isRemoveDuplicates
 
    function Internal_Get_Is_Replace_All
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Replace_All
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AddStructuralFeatureValueAction => AddStructuralFeatureValueAction::isReplaceAll
    --  AddVariableValueAction => AddVariableValueAction::isReplaceAll
@@ -2937,37 +2937,37 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ReclassifyObjectAction => ReclassifyObjectAction::isReplaceAll
 
    function Internal_Get_Is_Required
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    --  Extension => Extension::isRequired
 
    function Internal_Get_Is_Service
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Service
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Port => Port::isService
 
    function Internal_Get_Is_Simple
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    --  FinalState => State::isSimple
    --  State => State::isSimple
 
    function Internal_Get_Is_Single_Execution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Single_Execution
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Activity => Activity::isSingleExecution
 
    function Internal_Get_Is_Static
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Static
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Connector => Feature::isStatic
    --  ExtensionEnd => Feature::isStatic
@@ -2977,58 +2977,58 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Reception => Feature::isStatic
 
    function Internal_Get_Is_Stream
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Stream
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Parameter => Parameter::isStream
 
    function Internal_Get_Is_Strict
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Strict
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ProfileApplication => ProfileApplication::isStrict
 
    function Internal_Get_Is_Submachine_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    --  FinalState => State::isSubmachineState
    --  State => State::isSubmachineState
 
    function Internal_Get_Is_Substitutable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Boolean;
    procedure Internal_Set_Is_Substitutable
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Boolean);
    --  Generalization => Generalization::isSubstitutable
 
    function Internal_Get_Is_Synchronous
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Synchronous
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  CallBehaviorAction => CallAction::isSynchronous
    --  CallOperationAction => CallAction::isSynchronous
    --  StartObjectBehaviorAction => CallAction::isSynchronous
 
    function Internal_Get_Is_Tested_First
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Tested_First
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  LoopNode => LoopNode::isTestedFirst
 
    function Internal_Get_Is_Unique
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Unique
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ActionInputPin => MultiplicityElement::isUnique
    --  ConnectorEnd => MultiplicityElement::isUnique
@@ -3043,46 +3043,46 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::isUnique
 
    function Internal_Get_Is_Unmarshall
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Is_Unmarshall
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  AcceptCallAction => AcceptEventAction::isUnmarshall
    --  AcceptEventAction => AcceptEventAction::isUnmarshall
 
    function Internal_Get_Join_Spec
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Join_Spec
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  JoinNode => JoinNode::joinSpec
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Connector_Kind;
    --  Connector => Connector::kind
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Pseudostate_Kind;
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Pseudostate_Kind);
    --  Pseudostate => Pseudostate::kind
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Transition_Kind;
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Transition_Kind);
    --  ProtocolTransition => Transition::kind
    --  Transition => Transition::kind
 
    function Internal_Get_Language
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String;
    --  FunctionBehavior => OpaqueBehavior::language
    --  OpaqueAction => OpaqueAction::language
@@ -3090,12 +3090,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  OpaqueExpression => OpaqueExpression::language
 
    function Internal_Get_Lifeline
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Interaction => Interaction::lifeline
 
    function Internal_Get_Local_Postcondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => Action::localPostcondition
    --  AcceptEventAction => Action::localPostcondition
@@ -3141,7 +3141,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::localPostcondition
 
    function Internal_Get_Local_Precondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => Action::localPrecondition
    --  AcceptEventAction => Action::localPrecondition
@@ -3187,36 +3187,36 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::localPrecondition
 
    function Internal_Get_Location
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Location
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Deployment => Deployment::location
 
    function Internal_Get_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::location
 
    function Internal_Get_Loop_Variable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  LoopNode => LoopNode::loopVariable
 
    function Internal_Get_Loop_Variable_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  LoopNode => LoopNode::loopVariableInput
 
    function Internal_Get_Lower
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Integer;
    procedure Internal_Set_Lower
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Integer);
    --  ActionInputPin => MultiplicityElement::lower
    --  ConnectorEnd => MultiplicityElement::lower
@@ -3231,11 +3231,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::lower
 
    function Internal_Get_Lower_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Lower_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => MultiplicityElement::lowerValue
    --  ConnectorEnd => MultiplicityElement::lowerValue
    --  ExtensionEnd => MultiplicityElement::lowerValue
@@ -3248,17 +3248,17 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::lowerValue
 
    function Internal_Get_Manifestation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Artifact => Artifact::manifestation
    --  DeploymentSpecification => Artifact::manifestation
 
    function Internal_Get_Mapping
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Mapping
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Abstraction => Abstraction::mapping
    --  ComponentRealization => Abstraction::mapping
    --  InterfaceRealization => Abstraction::mapping
@@ -3267,25 +3267,25 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Substitution => Abstraction::mapping
 
    function Internal_Get_Max
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Max
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DurationInterval => DurationInterval::max
    --  Interval => Interval::max
    --  TimeInterval => Interval::max
 
    function Internal_Get_Maxint
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Maxint
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InteractionConstraint => InteractionConstraint::maxint
 
    function Internal_Get_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::member
    --  Actor => Namespace::member
@@ -3332,7 +3332,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::member
 
    function Internal_Get_Member_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Association => Association::memberEnd
    --  AssociationClass => Association::memberEnd
@@ -3340,94 +3340,94 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Extension => Association::memberEnd
 
    function Internal_Get_Merged_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Merged_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  PackageMerge => PackageMerge::mergedPackage
 
    function Internal_Get_Message
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConsiderIgnoreFragment => ConsiderIgnoreFragment::message
    --  Interaction => Interaction::message
 
    function Internal_Get_Message
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Message
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DestructionOccurrenceSpecification => MessageEnd::message
    --  Gate => MessageEnd::message
    --  MessageOccurrenceSpecification => MessageEnd::message
 
    function Internal_Get_Message_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Message_Kind;
    --  Message => Message::messageKind
 
    function Internal_Get_Message_Sort
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Message_Sort;
    procedure Internal_Set_Message_Sort
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Message_Sort);
    --  Message => Message::messageSort
 
    function Internal_Get_Metaclass
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  Extension => Extension::metaclass
 
    function Internal_Get_Metaclass_Reference
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Profile => Profile::metaclassReference
 
    function Internal_Get_Metamodel_Reference
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Profile => Profile::metamodelReference
 
    function Internal_Get_Method
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Operation => BehavioralFeature::method
    --  Reception => BehavioralFeature::method
 
    function Internal_Get_Min
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Min
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  DurationInterval => DurationInterval::min
    --  Interval => Interval::min
    --  TimeInterval => Interval::min
 
    function Internal_Get_Minint
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Minint
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InteractionConstraint => InteractionConstraint::minint
 
    function Internal_Get_Mode
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Expansion_Kind;
    procedure Internal_Set_Mode
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Expansion_Kind);
    --  ExpansionRegion => ExpansionRegion::mode
 
    function Internal_Get_Must_Isolate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Must_Isolate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  ConditionalNode => StructuredActivityNode::mustIsolate
    --  ExpansionRegion => StructuredActivityNode::mustIsolate
@@ -3436,10 +3436,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::mustIsolate
 
    function Internal_Get_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Name
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Abstraction => NamedElement::name
    --  AcceptCallAction => NamedElement::name
@@ -3613,11 +3613,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::name
 
    function Internal_Get_Name_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Name_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Abstraction => NamedElement::nameExpression
    --  AcceptCallAction => NamedElement::nameExpression
    --  AcceptEventAction => NamedElement::nameExpression
@@ -3790,8 +3790,8 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::nameExpression
 
    function Internal_Get_Namespace
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  Abstraction => NamedElement::namespace
    --  AcceptCallAction => NamedElement::namespace
    --  AcceptEventAction => NamedElement::namespace
@@ -3964,7 +3964,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::namespace
 
    function Internal_Get_Navigable_Owned_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Association => Association::navigableOwnedEnd
    --  AssociationClass => Association::navigableOwnedEnd
@@ -3972,13 +3972,13 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Extension => Association::navigableOwnedEnd
 
    function Internal_Get_Nested_Artifact
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Artifact => Artifact::nestedArtifact
    --  DeploymentSpecification => Artifact::nestedArtifact
 
    function Internal_Get_Nested_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::nestedClassifier
    --  AssociationClass => Class::nestedClassifier
@@ -3996,36 +3996,36 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::nestedClassifier
 
    function Internal_Get_Nested_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Device => Node::nestedNode
    --  ExecutionEnvironment => Node::nestedNode
    --  Node => Node::nestedNode
 
    function Internal_Get_Nested_Package
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Model => Package::nestedPackage
    --  Package => Package::nestedPackage
    --  Profile => Package::nestedPackage
 
    function Internal_Get_Nesting_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Nesting_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Model => Package::nestingPackage
    --  Package => Package::nestingPackage
    --  Profile => Package::nestingPackage
 
    function Internal_Get_New_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ReclassifyObjectAction => ReclassifyObjectAction::newClassifier
 
    function Internal_Get_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::node
    --  ActivityPartition => ActivityPartition::node
@@ -4037,11 +4037,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::node
 
    function Internal_Get_Object
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Object
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddStructuralFeatureValueAction => StructuralFeatureAction::object
    --  ClearAssociationAction => ClearAssociationAction::object
    --  ClearStructuralFeatureAction => StructuralFeatureAction::object
@@ -4056,22 +4056,22 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UnmarshallAction => UnmarshallAction::object
 
    function Internal_Get_Observation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Duration => Duration::observation
    --  TimeExpression => TimeExpression::observation
 
    function Internal_Get_Old_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ReclassifyObjectAction => ReclassifyObjectAction::oldClassifier
 
    function Internal_Get_On_Port
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_On_Port
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  BroadcastSignalAction => InvocationAction::onPort
    --  CallBehaviorAction => InvocationAction::onPort
    --  CallOperationAction => InvocationAction::onPort
@@ -4080,7 +4080,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StartObjectBehaviorAction => InvocationAction::onPort
 
    function Internal_Get_Operand
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CombinedFragment => CombinedFragment::operand
    --  ConsiderIgnoreFragment => CombinedFragment::operand
@@ -4088,30 +4088,30 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StringExpression => Expression::operand
 
    function Internal_Get_Operation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Operation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CallEvent => CallEvent::operation
    --  CallOperationAction => CallOperationAction::operation
    --  Parameter => Parameter::operation
 
    function Internal_Get_Opposite
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Opposite
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::opposite
    --  Port => Property::opposite
    --  Property => Property::opposite
 
    function Internal_Get_Ordering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Object_Node_Ordering_Kind;
    procedure Internal_Set_Ordering
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Object_Node_Ordering_Kind);
    --  ActionInputPin => ObjectNode::ordering
    --  ActivityParameterNode => ObjectNode::ordering
@@ -4123,7 +4123,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => ObjectNode::ordering
 
    function Internal_Get_Outgoing
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::outgoing
    --  AcceptEventAction => ActivityNode::outgoing
@@ -4188,7 +4188,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::outgoing
 
    function Internal_Get_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => Action::output
    --  AcceptEventAction => Action::output
@@ -4234,25 +4234,25 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => Action::output
 
    function Internal_Get_Output_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExpansionRegion => ExpansionRegion::outputElement
 
    function Internal_Get_Output_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  OpaqueAction => OpaqueAction::outputValue
 
    function Internal_Get_Owned_Actual
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owned_Actual
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TemplateParameterSubstitution => TemplateParameterSubstitution::ownedActual
 
    function Internal_Get_Owned_Attribute
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::ownedAttribute
    --  Artifact => Artifact::ownedAttribute
@@ -4277,7 +4277,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::ownedAttribute
 
    function Internal_Get_Owned_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => BehavioredClassifier::ownedBehavior
    --  Actor => BehavioredClassifier::ownedBehavior
@@ -4297,7 +4297,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => BehavioredClassifier::ownedBehavior
 
    function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => Element::ownedComment
    --  AcceptCallAction => Element::ownedComment
@@ -4494,7 +4494,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => Element::ownedComment
 
    function Internal_Get_Owned_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => StructuredClassifier::ownedConnector
    --  AssociationClass => StructuredClassifier::ownedConnector
@@ -4512,18 +4512,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => StructuredClassifier::ownedConnector
 
    function Internal_Get_Owned_Default
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owned_Default
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClassifierTemplateParameter => TemplateParameter::ownedDefault
    --  ConnectableElementTemplateParameter => TemplateParameter::ownedDefault
    --  OperationTemplateParameter => TemplateParameter::ownedDefault
    --  TemplateParameter => TemplateParameter::ownedDefault
 
    function Internal_Get_Owned_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => Element::ownedElement
    --  AcceptCallAction => Element::ownedElement
@@ -4720,7 +4720,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => Element::ownedElement
 
    function Internal_Get_Owned_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Association => Association::ownedEnd
    --  AssociationClass => Association::ownedEnd
@@ -4728,12 +4728,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Extension => Association::ownedEnd
 
    function Internal_Get_Owned_Literal
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Enumeration => Enumeration::ownedLiteral
 
    function Internal_Get_Owned_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::ownedMember
    --  Actor => Namespace::ownedMember
@@ -4780,7 +4780,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::ownedMember
 
    function Internal_Get_Owned_Operation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::ownedOperation
    --  Artifact => Artifact::ownedOperation
@@ -4803,7 +4803,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::ownedOperation
 
    function Internal_Get_Owned_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Behavior::ownedParameter
    --  FunctionBehavior => Behavior::ownedParameter
@@ -4817,7 +4817,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  TemplateSignature => TemplateSignature::ownedParameter
 
    function Internal_Get_Owned_Parameter_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Behavior::ownedParameterSet
    --  FunctionBehavior => Behavior::ownedParameterSet
@@ -4829,18 +4829,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Behavior::ownedParameterSet
 
    function Internal_Get_Owned_Parametered_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owned_Parametered_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClassifierTemplateParameter => TemplateParameter::ownedParameteredElement
    --  ConnectableElementTemplateParameter => TemplateParameter::ownedParameteredElement
    --  OperationTemplateParameter => TemplateParameter::ownedParameteredElement
    --  TemplateParameter => TemplateParameter::ownedParameteredElement
 
    function Internal_Get_Owned_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => EncapsulatedClassifier::ownedPort
    --  AssociationClass => EncapsulatedClassifier::ownedPort
@@ -4857,7 +4857,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => EncapsulatedClassifier::ownedPort
 
    function Internal_Get_Owned_Reception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::ownedReception
    --  AssociationClass => Class::ownedReception
@@ -4875,7 +4875,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::ownedReception
 
    function Internal_Get_Owned_Rule
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::ownedRule
    --  Actor => Namespace::ownedRule
@@ -4922,18 +4922,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::ownedRule
 
    function Internal_Get_Owned_Stereotype
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Model => Package::ownedStereotype
    --  Package => Package::ownedStereotype
    --  Profile => Package::ownedStereotype
 
    function Internal_Get_Owned_Template_Signature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owned_Template_Signature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Activity => Classifier::ownedTemplateSignature
    --  Actor => Classifier::ownedTemplateSignature
    --  Artifact => Classifier::ownedTemplateSignature
@@ -4968,14 +4968,14 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::ownedTemplateSignature
 
    function Internal_Get_Owned_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Model => Package::ownedType
    --  Package => Package::ownedType
    --  Profile => Package::ownedType
 
    function Internal_Get_Owned_Use_Case
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::ownedUseCase
    --  Actor => Classifier::ownedUseCase
@@ -5006,8 +5006,8 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::ownedUseCase
 
    function Internal_Get_Owner
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  Abstraction => Element::owner
    --  AcceptCallAction => Element::owner
    --  AcceptEventAction => Element::owner
@@ -5203,37 +5203,37 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => Element::owner
 
    function Internal_Get_Owning_Association
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owning_Association
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionEnd => Property::owningAssociation
    --  Port => Property::owningAssociation
    --  Property => Property::owningAssociation
 
    function Internal_Get_Owning_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owning_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  StringExpression => StringExpression::owningExpression
 
    function Internal_Get_Owning_Instance
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owning_Instance
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Slot => Slot::owningInstance
 
    function Internal_Get_Owning_Template_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Owning_Template_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Abstraction => ParameterableElement::owningTemplateParameter
    --  Activity => ParameterableElement::owningTemplateParameter
    --  Actor => ParameterableElement::owningTemplateParameter
@@ -5312,11 +5312,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => ParameterableElement::owningTemplateParameter
 
    function Internal_Get_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Activity => Type::package
    --  Actor => Type::package
    --  Artifact => Type::package
@@ -5346,7 +5346,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Type::package
 
    function Internal_Get_Package_Import
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Namespace::packageImport
    --  Actor => Namespace::packageImport
@@ -5393,14 +5393,14 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Namespace::packageImport
 
    function Internal_Get_Package_Merge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Model => Package::packageMerge
    --  Package => Package::packageMerge
    --  Profile => Package::packageMerge
 
    function Internal_Get_Packaged_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Component => Component::packagedElement
    --  Model => Package::packagedElement
@@ -5408,43 +5408,43 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Profile => Package::packagedElement
 
    function Internal_Get_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActivityParameterNode => ActivityParameterNode::parameter
 
    function Internal_Get_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ParameterSet => ParameterSet::parameter
    --  RedefinableTemplateSignature => TemplateSignature::parameter
    --  TemplateSignature => TemplateSignature::parameter
 
    function Internal_Get_Parameter_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Parameter => Parameter::parameterSet
 
    function Internal_Get_Parameter_Substitution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  TemplateBinding => TemplateBinding::parameterSubstitution
 
    function Internal_Get_Parametered_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Parametered_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClassifierTemplateParameter => ClassifierTemplateParameter::parameteredElement
    --  ConnectableElementTemplateParameter => ConnectableElementTemplateParameter::parameteredElement
    --  OperationTemplateParameter => OperationTemplateParameter::parameteredElement
    --  TemplateParameter => TemplateParameter::parameteredElement
 
    function Internal_Get_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => StructuredClassifier::part
    --  AssociationClass => StructuredClassifier::part
@@ -5462,33 +5462,33 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => StructuredClassifier::part
 
    function Internal_Get_Part_With_Port
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Part_With_Port
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ConnectorEnd => ConnectorEnd::partWithPort
 
    function Internal_Get_Partition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::partition
 
    function Internal_Get_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Trigger => Trigger::port
 
    function Internal_Get_Post_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Post_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolTransition => ProtocolTransition::postCondition
 
    function Internal_Get_Postcondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Behavior::postcondition
    --  FunctionBehavior => Behavior::postcondition
@@ -5499,15 +5499,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Behavior::postcondition
 
    function Internal_Get_Powertype
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Powertype
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  GeneralizationSet => GeneralizationSet::powertype
 
    function Internal_Get_Powertype_Extent
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::powertypeExtent
    --  Actor => Classifier::powertypeExtent
@@ -5538,15 +5538,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::powertypeExtent
 
    function Internal_Get_Pre_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Pre_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolTransition => ProtocolTransition::preCondition
 
    function Internal_Get_Precondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Behavior::precondition
    --  FunctionBehavior => Behavior::precondition
@@ -5557,47 +5557,47 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Behavior::precondition
 
    function Internal_Get_Predecessor_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::predecessorClause
 
    function Internal_Get_Profile
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  Stereotype => Stereotype::profile
 
    function Internal_Get_Profile_Application
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Model => Package::profileApplication
    --  Package => Package::profileApplication
    --  Profile => Package::profileApplication
 
    function Internal_Get_Protected_Node
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Protected_Node
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExceptionHandler => ExceptionHandler::protectedNode
 
    function Internal_Get_Protocol
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Protocol
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Interface => Interface::protocol
    --  Port => Port::protocol
 
    function Internal_Get_Provided
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Component => Component::provided
    --  Port => Port::provided
 
    function Internal_Get_Qualified_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    --  Abstraction => NamedElement::qualifiedName
    --  AcceptCallAction => NamedElement::qualifiedName
@@ -5771,7 +5771,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::qualifiedName
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExtensionEnd => Property::qualifier
    --  LinkEndCreationData => LinkEndData::qualifier
@@ -5781,64 +5781,64 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Property => Property::qualifier
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Qualifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  QualifierValue => QualifierValue::qualifier
    --  ReadLinkObjectEndQualifierAction => ReadLinkObjectEndQualifierAction::qualifier
 
    function Internal_Get_Raised_Exception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Operation => BehavioralFeature::raisedException
    --  Reception => BehavioralFeature::raisedException
 
    function Internal_Get_Realization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Component => Component::realization
    --  InformationFlow => InformationFlow::realization
 
    function Internal_Get_Realizing_Activity_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::realizingActivityEdge
 
    function Internal_Get_Realizing_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ComponentRealization => ComponentRealization::realizingClassifier
 
    function Internal_Get_Realizing_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::realizingConnector
 
    function Internal_Get_Realizing_Message
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationFlow => InformationFlow::realizingMessage
 
    function Internal_Get_Receive_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Receive_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Message => Message::receiveEvent
 
    function Internal_Get_Receiving_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Receiving_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  PackageMerge => PackageMerge::receivingPackage
 
    function Internal_Get_Redefined_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Behavior::redefinedBehavior
    --  FunctionBehavior => Behavior::redefinedBehavior
@@ -5848,7 +5848,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Behavior::redefinedBehavior
 
    function Internal_Get_Redefined_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::redefinedClassifier
    --  Actor => Classifier::redefinedClassifier
@@ -5879,18 +5879,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::redefinedClassifier
 
    function Internal_Get_Redefined_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Connector => Connector::redefinedConnector
 
    function Internal_Get_Redefined_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ControlFlow => ActivityEdge::redefinedEdge
    --  ObjectFlow => ActivityEdge::redefinedEdge
 
    function Internal_Get_Redefined_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => RedefinableElement::redefinedElement
    --  AcceptEventAction => RedefinableElement::redefinedElement
@@ -5993,12 +5993,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => RedefinableElement::redefinedElement
 
    function Internal_Get_Redefined_Interface
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Interface => Interface::redefinedInterface
 
    function Internal_Get_Redefined_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => ActivityNode::redefinedNode
    --  AcceptEventAction => ActivityNode::redefinedNode
@@ -6059,42 +6059,42 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ActivityNode::redefinedNode
 
    function Internal_Get_Redefined_Operation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Operation => Operation::redefinedOperation
 
    function Internal_Get_Redefined_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Port => Port::redefinedPort
 
    function Internal_Get_Redefined_Property
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExtensionEnd => Property::redefinedProperty
    --  Port => Property::redefinedProperty
    --  Property => Property::redefinedProperty
 
    function Internal_Get_Redefined_State
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Redefined_State
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::redefinedState
    --  State => State::redefinedState
 
    function Internal_Get_Redefined_Transition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Redefined_Transition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolTransition => Transition::redefinedTransition
    --  Transition => Transition::redefinedTransition
 
    function Internal_Get_Redefinition_Context
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => RedefinableElement::redefinitionContext
    --  AcceptEventAction => RedefinableElement::redefinitionContext
@@ -6197,29 +6197,29 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => RedefinableElement::redefinitionContext
 
    function Internal_Get_Reducer
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Reducer
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ReduceAction => ReduceAction::reducer
 
    function Internal_Get_Referred
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ProtocolTransition => ProtocolTransition::referred
 
    function Internal_Get_Refers_To
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Refers_To
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InteractionUse => InteractionUse::refersTo
    --  PartDecomposition => InteractionUse::refersTo
 
    function Internal_Get_Region
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  FinalState => State::region
    --  ProtocolStateMachine => StateMachine::region
@@ -6227,23 +6227,23 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => StateMachine::region
 
    function Internal_Get_Region_As_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Region_As_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpansionNode => ExpansionNode::regionAsInput
 
    function Internal_Get_Region_As_Output
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Region_As_Output
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExpansionNode => ExpansionNode::regionAsOutput
 
    function Internal_Get_Related_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => Relationship::relatedElement
    --  Association => Relationship::relatedElement
@@ -6270,33 +6270,33 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Usage => Relationship::relatedElement
 
    function Internal_Get_Remove_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Remove_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  RemoveStructuralFeatureValueAction => RemoveStructuralFeatureValueAction::removeAt
    --  RemoveVariableValueAction => RemoveVariableValueAction::removeAt
 
    function Internal_Get_Reply_To_Call
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Reply_To_Call
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ReplyAction => ReplyAction::replyToCall
 
    function Internal_Get_Reply_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ReplyAction => ReplyAction::replyValue
 
    function Internal_Get_Representation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Representation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Activity => Classifier::representation
    --  Actor => Classifier::representation
    --  Artifact => Classifier::representation
@@ -6326,32 +6326,32 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::representation
 
    function Internal_Get_Represented
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  InformationItem => InformationItem::represented
 
    function Internal_Get_Represents
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Represents
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActivityPartition => ActivityPartition::represents
    --  Lifeline => Lifeline::represents
 
    function Internal_Get_Request
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  SendObjectAction => SendObjectAction::request
 
    function Internal_Get_Required
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Component => Component::required
    --  Port => Port::required
 
    function Internal_Get_Result
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => AcceptEventAction::result
    --  AcceptEventAction => AcceptEventAction::result
@@ -6363,11 +6363,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UnmarshallAction => UnmarshallAction::result
 
    function Internal_Get_Result
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Result
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddStructuralFeatureValueAction => WriteStructuralFeatureAction::result
    --  ClearStructuralFeatureAction => ClearStructuralFeatureAction::result
    --  CreateLinkObjectAction => CreateLinkObjectAction::result
@@ -6387,42 +6387,42 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ValueSpecificationAction::result
 
    function Internal_Get_Return_Information
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Return_Information
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AcceptCallAction => AcceptCallAction::returnInformation
    --  ReplyAction => ReplyAction::returnInformation
 
    function Internal_Get_Return_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Return_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InteractionUse => InteractionUse::returnValue
    --  PartDecomposition => InteractionUse::returnValue
 
    function Internal_Get_Return_Value_Recipient
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Return_Value_Recipient
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  InteractionUse => InteractionUse::returnValueRecipient
    --  PartDecomposition => InteractionUse::returnValueRecipient
 
    function Internal_Get_Role
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Role
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ConnectorEnd => ConnectorEnd::role
 
    function Internal_Get_Role
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => StructuredClassifier::role
    --  AssociationClass => StructuredClassifier::role
@@ -6440,32 +6440,32 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => StructuredClassifier::role
 
    function Internal_Get_Role_Binding
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  CollaborationUse => CollaborationUse::roleBinding
 
    function Internal_Get_Scope
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Scope
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Variable => Variable::scope
 
    function Internal_Get_Second
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Second
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TestIdentityAction => TestIdentityAction::second
 
    function Internal_Get_Selection
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Selection
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => ObjectNode::selection
    --  ActivityParameterNode => ObjectNode::selection
    --  CentralBufferNode => ObjectNode::selection
@@ -6477,51 +6477,51 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => ObjectNode::selection
 
    function Internal_Get_Selector
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Selector
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Lifeline => Lifeline::selector
 
    function Internal_Get_Send_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Send_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Message => Message::sendEvent
 
    function Internal_Get_Setting
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Setting
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Continuation => Continuation::setting
 
    function Internal_Get_Setup_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  LoopNode => LoopNode::setupPart
 
    function Internal_Get_Signal
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Signal
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  BroadcastSignalAction => BroadcastSignalAction::signal
    --  Reception => Reception::signal
    --  SendSignalAction => SendSignalAction::signal
    --  SignalEvent => SignalEvent::signal
 
    function Internal_Get_Signature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Signature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ClassifierTemplateParameter => TemplateParameter::signature
    --  ConnectableElementTemplateParameter => TemplateParameter::signature
    --  Message => Message::signature
@@ -6530,24 +6530,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  TemplateParameter => TemplateParameter::signature
 
    function Internal_Get_Slot
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  EnumerationLiteral => InstanceSpecification::slot
    --  InstanceSpecification => InstanceSpecification::slot
 
    function Internal_Get_Source
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Source
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ControlFlow => ActivityEdge::source
    --  ObjectFlow => ActivityEdge::source
    --  ProtocolTransition => Transition::source
    --  Transition => Transition::source
 
    function Internal_Get_Source
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => DirectedRelationship::source
    --  ComponentRealization => DirectedRelationship::source
@@ -6570,27 +6570,27 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Usage => DirectedRelationship::source
 
    function Internal_Get_Specific
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Specific
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Generalization => Generalization::specific
 
    function Internal_Get_Specific_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Specific_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ProtocolConformance => ProtocolConformance::specificMachine
 
    function Internal_Get_Specification
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Specification
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Activity => Behavior::specification
    --  Constraint => Constraint::specification
    --  DurationConstraint => Constraint::specification
@@ -6606,60 +6606,60 @@ package AMF.Internals.Tables.UML_Attributes is
    --  TimeConstraint => Constraint::specification
 
    function Internal_Get_Start
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Start
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionExecutionSpecification => ExecutionSpecification::start
    --  BehaviorExecutionSpecification => ExecutionSpecification::start
 
    function Internal_Get_State
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_State
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ConnectionPointReference => ConnectionPointReference::state
    --  Pseudostate => Pseudostate::state
    --  Region => Region::state
 
    function Internal_Get_State_Invariant
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_State_Invariant
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::stateInvariant
    --  State => State::stateInvariant
 
    function Internal_Get_State_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_State_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Pseudostate => Pseudostate::stateMachine
    --  Region => Region::stateMachine
 
    function Internal_Get_Structural_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Structural_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddStructuralFeatureValueAction => StructuralFeatureAction::structuralFeature
    --  ClearStructuralFeatureAction => StructuralFeatureAction::structuralFeature
    --  ReadStructuralFeatureAction => StructuralFeatureAction::structuralFeature
    --  RemoveStructuralFeatureValueAction => StructuralFeatureAction::structuralFeature
 
    function Internal_Get_Structured_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::structuredNode
 
    function Internal_Get_Structured_Node_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConditionalNode => StructuredActivityNode::structuredNodeInput
    --  ExpansionRegion => StructuredActivityNode::structuredNodeInput
@@ -6668,7 +6668,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::structuredNodeInput
 
    function Internal_Get_Structured_Node_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ConditionalNode => StructuredActivityNode::structuredNodeOutput
    --  ExpansionRegion => StructuredActivityNode::structuredNodeOutput
@@ -6677,12 +6677,12 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::structuredNodeOutput
 
    function Internal_Get_Sub_Expression
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  StringExpression => StringExpression::subExpression
 
    function Internal_Get_Subgroup
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActivityPartition => ActivityGroup::subgroup
    --  ConditionalNode => ActivityGroup::subgroup
@@ -6693,47 +6693,47 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => ActivityGroup::subgroup
 
    function Internal_Get_Subject
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  UseCase => UseCase::subject
 
    function Internal_Get_Submachine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Submachine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  FinalState => State::submachine
    --  State => State::submachine
 
    function Internal_Get_Submachine_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ProtocolStateMachine => StateMachine::submachineState
    --  StateMachine => StateMachine::submachineState
 
    function Internal_Get_Subpartition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ActivityPartition => ActivityPartition::subpartition
 
    function Internal_Get_Subsetted_Property
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  ExtensionEnd => Property::subsettedProperty
    --  Port => Property::subsettedProperty
    --  Property => Property::subsettedProperty
 
    function Internal_Get_Substituting_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Substituting_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Substitution => Substitution::substitutingClassifier
 
    function Internal_Get_Substitution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::substitution
    --  Actor => Classifier::substitution
@@ -6764,17 +6764,17 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::substitution
 
    function Internal_Get_Subvertex
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Region => Region::subvertex
 
    function Internal_Get_Successor_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::successorClause
 
    function Internal_Get_Super_Class
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Class::superClass
    --  AssociationClass => Class::superClass
@@ -6791,8 +6791,8 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Class::superClass
 
    function Internal_Get_Super_Group
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    --  ActivityPartition => ActivityGroup::superGroup
    --  ConditionalNode => ActivityGroup::superGroup
    --  ExpansionRegion => ActivityGroup::superGroup
@@ -6802,15 +6802,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => ActivityGroup::superGroup
 
    function Internal_Get_Super_Partition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Super_Partition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActivityPartition => ActivityPartition::superPartition
 
    function Internal_Get_Supplier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => Dependency::supplier
    --  ComponentRealization => Dependency::supplier
@@ -6823,20 +6823,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Usage => Dependency::supplier
 
    function Internal_Get_Symbol
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Symbol
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Expression => Expression::symbol
    --  StringExpression => Expression::symbol
 
    function Internal_Get_Target
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Target
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  CallOperationAction => CallOperationAction::target
    --  ControlFlow => ActivityEdge::target
    --  DestroyObjectAction => DestroyObjectAction::target
@@ -6847,7 +6847,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Transition => Transition::target
 
    function Internal_Get_Target
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Abstraction => DirectedRelationship::target
    --  ComponentRealization => DirectedRelationship::target
@@ -6870,24 +6870,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Usage => DirectedRelationship::target
 
    function Internal_Get_Template
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Template
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  RedefinableTemplateSignature => TemplateSignature::template
    --  TemplateSignature => TemplateSignature::template
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Template_Binding
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TemplateParameterSubstitution => TemplateParameterSubstitution::templateBinding
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => TemplateableElement::templateBinding
    --  Actor => TemplateableElement::templateBinding
@@ -6923,11 +6923,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => TemplateableElement::templateBinding
 
    function Internal_Get_Template_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Template_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Abstraction => ParameterableElement::templateParameter
    --  Activity => Classifier::templateParameter
    --  Actor => Classifier::templateParameter
@@ -7006,13 +7006,13 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => ConnectableElement::templateParameter
 
    function Internal_Get_Test
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::test
    --  LoopNode => LoopNode::test
 
    function Internal_Get_To_After
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  DestructionOccurrenceSpecification => OccurrenceSpecification::toAfter
    --  ExecutionOccurrenceSpecification => OccurrenceSpecification::toAfter
@@ -7020,7 +7020,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  OccurrenceSpecification => OccurrenceSpecification::toAfter
 
    function Internal_Get_To_Before
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  DestructionOccurrenceSpecification => OccurrenceSpecification::toBefore
    --  ExecutionOccurrenceSpecification => OccurrenceSpecification::toBefore
@@ -7028,20 +7028,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  OccurrenceSpecification => OccurrenceSpecification::toBefore
 
    function Internal_Get_Transformation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Transformation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ObjectFlow => ObjectFlow::transformation
 
    function Internal_Get_Transition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Region => Region::transition
 
    function Internal_Get_Trigger
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  AcceptCallAction => AcceptEventAction::trigger
    --  AcceptEventAction => AcceptEventAction::trigger
@@ -7049,11 +7049,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Transition => Transition::trigger
 
    function Internal_Get_Type
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Type
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => TypedElement::type
    --  ActivityParameterNode => TypedElement::type
    --  CentralBufferNode => TypedElement::type
@@ -7087,18 +7087,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => TypedElement::type
 
    function Internal_Get_Unmarshall_Type
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Unmarshall_Type
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  UnmarshallAction => UnmarshallAction::unmarshallType
 
    function Internal_Get_Upper
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Unlimited_Natural;
    procedure Internal_Set_Upper
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Unlimited_Natural);
    --  ActionInputPin => MultiplicityElement::upper
    --  ConnectorEnd => MultiplicityElement::upper
@@ -7113,11 +7113,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::upper
 
    function Internal_Get_Upper_Bound
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Upper_Bound
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => ObjectNode::upperBound
    --  ActivityParameterNode => ObjectNode::upperBound
    --  CentralBufferNode => ObjectNode::upperBound
@@ -7128,11 +7128,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => ObjectNode::upperBound
 
    function Internal_Get_Upper_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Upper_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ActionInputPin => MultiplicityElement::upperValue
    --  ConnectorEnd => MultiplicityElement::upperValue
    --  ExtensionEnd => MultiplicityElement::upperValue
@@ -7145,7 +7145,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => MultiplicityElement::upperValue
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Classifier::useCase
    --  Actor => Classifier::useCase
@@ -7176,72 +7176,72 @@ package AMF.Internals.Tables.UML_Attributes is
    --  UseCase => Classifier::useCase
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Use_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ExtensionPoint => ExtensionPoint::useCase
 
    function Internal_Get_Utilized_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Utilized_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  Manifestation => Manifestation::utilizedElement
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  LiteralBoolean => LiteralBoolean::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Integer;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Integer);
    --  LiteralInteger => LiteralInteger::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Real;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Real);
    --  LiteralReal => LiteralReal::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  LiteralString => LiteralString::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Unlimited_Natural;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Unlimited_Natural);
    --  LiteralUnlimitedNatural => LiteralUnlimitedNatural::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Slot => Slot::value
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddStructuralFeatureValueAction => WriteStructuralFeatureAction::value
    --  AddVariableValueAction => WriteVariableAction::value
    --  LinkEndCreationData => LinkEndData::value
@@ -7254,7 +7254,7 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => ValueSpecificationAction::value
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Activity => Activity::variable
    --  ConditionalNode => StructuredActivityNode::variable
@@ -7264,38 +7264,38 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => StructuredActivityNode::variable
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Variable
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  AddVariableValueAction => VariableAction::variable
    --  ClearVariableAction => VariableAction::variable
    --  ReadVariableAction => VariableAction::variable
    --  RemoveVariableValueAction => VariableAction::variable
 
    function Internal_Get_Viewpoint
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Viewpoint
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Model => Model::viewpoint
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Visibility_Kind;
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Visibility_Kind);
    --  ElementImport => ElementImport::visibility
    --  PackageImport => PackageImport::visibility
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Visibility_Kind;
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind);
    --  Abstraction => NamedElement::visibility
    --  AcceptCallAction => NamedElement::visibility
@@ -7469,20 +7469,20 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Variable => NamedElement::visibility
 
    function Internal_Get_Weight
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_Weight
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  ControlFlow => ActivityEdge::weight
    --  ObjectFlow => ActivityEdge::weight
 
    function Internal_Get_When
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
    procedure Internal_Set_When
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element);
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  TimeEvent => TimeEvent::when
 
 end AMF.Internals.Tables.UML_Attributes;

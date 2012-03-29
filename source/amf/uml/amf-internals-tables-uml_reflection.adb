@@ -333,7 +333,7 @@ package body AMF.Internals.Tables.UML_Reflection is
    ---------
 
    function Get
-    (Self     : UML_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element) return League.Holders.Holder
    is
 
@@ -46335,7 +46335,8 @@ package body AMF.Internals.Tables.UML_Reflection is
    -- Get_Meta_Class --
    --------------------
 
-   function Get_Meta_Class (Self : UML_Element) return CMOF_Element is
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UML_Types.E_None =>
@@ -47023,7 +47024,7 @@ package body AMF.Internals.Tables.UML_Reflection is
    ---------
 
    procedure Set
-    (Self     : UML_Element;
+    (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element;
      Value    : League.Holders.Holder)
    is

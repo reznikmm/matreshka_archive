@@ -50,8 +50,8 @@ package AMF.Internals.Tables.UML_Notification is
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Internals.UML_Element;
-     New_Value : AMF.Internals.UML_Element);
+     Old_Value : AMF.Internals.AMF_Element;
+     New_Value : AMF.Internals.AMF_Element);
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;

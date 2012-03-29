@@ -65,8 +65,8 @@ package body AMF.Internals.Tables.UML_Notification is
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Internals.UML_Element;
-     New_Value : AMF.Internals.UML_Element) is
+     Old_Value : AMF.Internals.AMF_Element;
+     New_Value : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
        (AMF.Internals.Helpers.To_Element (Element),

@@ -6041,7 +6041,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    function Internal_Get_URI
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -6053,12 +6053,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Abstraction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Abstraction;
 
    -------------------------
@@ -6066,12 +6066,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Action
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Action;
 
    -------------------------
@@ -6079,7 +6079,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Action
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 44;
@@ -6090,12 +6090,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Activity;
 
    ---------------------------------
@@ -6103,12 +6103,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Activity_Scope
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Activity_Scope;
 
    -------------------------
@@ -6116,12 +6116,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Actual
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Actual;
 
    ------------------------------
@@ -6129,7 +6129,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Actual_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -6140,12 +6140,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Addition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Addition;
 
    ------------------------
@@ -6153,12 +6153,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_After
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_After;
 
    ------------------------------
@@ -6166,7 +6166,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Aggregation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Aggregation_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (27).Aggregation_Kind_Value;
@@ -6177,7 +6177,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Alias
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -6189,7 +6189,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Allow_Substitutable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (6).Boolean_Value;
@@ -6200,7 +6200,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Annotated_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -6211,12 +6211,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Applied_Profile
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Applied_Profile;
 
    -----------------------------------
@@ -6224,12 +6224,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Applying_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Applying_Package;
 
    ---------------------------
@@ -6237,7 +6237,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Argument
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -6248,12 +6248,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Association
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (23).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (23).Link, Self);
    end Internal_Get_Association;
 
    ----------------------------------
@@ -6261,12 +6261,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Association_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (28).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (28).Link, Self);
    end Internal_Get_Association_End;
 
    ----------------------------
@@ -6274,7 +6274,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Attribute
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -6285,12 +6285,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Base_Abstraction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Abstraction;
 
    --------------------------------
@@ -6298,12 +6298,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Base_Artifact
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Artifact;
 
    ------------------------------------------
@@ -6311,12 +6311,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Base_Behavioral_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Base_Behavioral_Feature;
 
    -----------------------------
@@ -6324,12 +6324,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Base_Class
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Class;
 
    ----------------------------------
@@ -6337,12 +6337,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Base_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Classifier;
 
    ---------------------------------
@@ -6350,12 +6350,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Base_Component
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Component;
 
    -----------------------------
@@ -6363,12 +6363,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Base_Model
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Model;
 
    -------------------------------
@@ -6376,12 +6376,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Base_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Package;
 
    -----------------------------
@@ -6389,12 +6389,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Base_Usage
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Usage;
 
    -------------------------
@@ -6402,12 +6402,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Before
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Before;
 
    ---------------------------
@@ -6415,12 +6415,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Behavior
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Behavior;
 
    -----------------------
@@ -6428,7 +6428,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -6439,7 +6439,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -6451,7 +6451,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).String_Collection_Value;   end Internal_Get_Body;
@@ -6461,12 +6461,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Body_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Link, Self);
    end Internal_Get_Body_Condition;
 
    ------------------------------
@@ -6474,7 +6474,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Body_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 30;
@@ -6485,7 +6485,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Body_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 32;
@@ -6496,12 +6496,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Bound_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Bound_Element;
 
    ---------------------------------
@@ -6509,7 +6509,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Cfragment_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -6520,12 +6520,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Change_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Change_Expression;
 
    ------------------------
@@ -6533,12 +6533,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Class
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (24).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (24).Link, Self);
    end Internal_Get_Class;
 
    -----------------------------
@@ -6546,12 +6546,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Classifier;
 
    -----------------------------
@@ -6559,7 +6559,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -6570,12 +6570,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Classifier_Behavior
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Classifier_Behavior;
 
    -------------------------
@@ -6583,7 +6583,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 30;
@@ -6594,7 +6594,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Client
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -6605,7 +6605,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Client_Dependency
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -6616,7 +6616,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Collaboration_Role
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -6627,7 +6627,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Collaboration_Use
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -6638,12 +6638,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Collection
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Collection;
 
    ------------------------------
@@ -6651,12 +6651,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Computation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Computation;
 
    ------------------------------
@@ -6664,7 +6664,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Concurrency
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Call_Concurrency_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Call_Concurrency_Kind_Value;
@@ -6675,12 +6675,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Condition;
 
    ----------------------------
@@ -6688,7 +6688,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Condition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -6699,7 +6699,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Configuration
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -6710,7 +6710,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Conformance
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 43;
@@ -6721,7 +6721,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Connection
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -6732,7 +6732,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Connection_Point
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -6743,12 +6743,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Connector
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Connector;
 
    --------------------------------------
@@ -6756,7 +6756,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Constrained_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -6767,7 +6767,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Constraining_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -6778,7 +6778,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Contained_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 25;
@@ -6789,7 +6789,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Contained_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 26;
@@ -6800,12 +6800,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Container
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Container;
 
    --------------------------
@@ -6813,7 +6813,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Content
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -6825,12 +6825,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Context
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Context;
 
    ---------------------------
@@ -6838,7 +6838,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Contract
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -6849,12 +6849,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Contract
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Contract;
 
    ---------------------------
@@ -6862,7 +6862,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Conveyed
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -6873,7 +6873,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Covered
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -6884,7 +6884,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Covered_By
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -6895,12 +6895,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Datatype
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (25).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (25).Link, Self);
    end Internal_Get_Datatype;
 
    --------------------------
@@ -6908,12 +6908,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Decider
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Decider;
 
    ---------------------------------
@@ -6921,12 +6921,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Decision_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Decision_Input;
 
    --------------------------------------
@@ -6934,12 +6934,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Decision_Input_Flow
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Decision_Input_Flow;
 
    --------------------------------
@@ -6947,12 +6947,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Decomposed_As
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Decomposed_As;
 
    --------------------------
@@ -6960,7 +6960,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Default
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -6972,12 +6972,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Default
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Default;
 
    --------------------------------
@@ -6985,12 +6985,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Default_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Link, Self);
    end Internal_Get_Default_Value;
 
    -------------------------------------
@@ -6998,7 +6998,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Deferrable_Trigger
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -7009,12 +7009,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Defining_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Defining_End;
 
    -----------------------------------
@@ -7022,12 +7022,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Defining_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Defining_Feature;
 
    ------------------------------------
@@ -7035,7 +7035,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Deployed_Artifact
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -7046,7 +7046,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Deployed_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -7057,12 +7057,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Deployment
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Deployment;
 
    -----------------------------
@@ -7070,7 +7070,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Deployment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -7081,7 +7081,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Deployment_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -7093,12 +7093,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Destroy_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Destroy_At;
 
    ----------------------------
@@ -7106,7 +7106,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Direction
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Parameter_Direction_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Parameter_Direction_Kind_Value;
@@ -7117,12 +7117,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Do_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Do_Activity;
 
    -----------------------
@@ -7130,7 +7130,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -7141,7 +7141,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Effect
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Parameter_Effect_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Parameter_Effect_Kind_Holder;
@@ -7152,12 +7152,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Effect
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Effect;
 
    ---------------------------------
@@ -7165,7 +7165,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Element_Import
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -7176,12 +7176,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    function Internal_Get_Enclosing_Interaction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Enclosing_Interaction;
 
    ------------------------------------
@@ -7189,12 +7189,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Enclosing_Operand
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Link, Self);
    end Internal_Get_Enclosing_Operand;
 
    ----------------------
@@ -7202,7 +7202,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    function Internal_Get_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -7213,12 +7213,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    function Internal_Get_End
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_End;
 
    ---------------------------
@@ -7226,7 +7226,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_End_Data
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 13;
@@ -7237,7 +7237,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_End_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -7248,7 +7248,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Entry
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -7259,12 +7259,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Entry
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Entry;
 
    ------------------------------
@@ -7272,12 +7272,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Enumeration
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Enumeration;
 
    ------------------------
@@ -7285,7 +7285,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -7296,12 +7296,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Event;
 
    ----------------------------
@@ -7309,12 +7309,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Exception
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Exception;
 
    ----------------------------------
@@ -7322,12 +7322,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Exception_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Exception_Input;
 
    ---------------------------------
@@ -7335,7 +7335,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Exception_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -7346,7 +7346,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Executable_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -7357,12 +7357,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Execution
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Execution;
 
    -------------------------------------
@@ -7370,7 +7370,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Execution_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -7382,7 +7382,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Exit
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -7393,12 +7393,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Exit
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Exit;
 
    -----------------------
@@ -7406,12 +7406,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Expr
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Expr;
 
    -------------------------
@@ -7419,7 +7419,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Extend
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -7430,12 +7430,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Extended_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Extended_Case;
 
    ----------------------------------
@@ -7443,12 +7443,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Extended_Region
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Extended_Region;
 
    -------------------------------------
@@ -7456,7 +7456,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Extended_Signature
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -7467,7 +7467,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------------
 
    function Internal_Get_Extended_State_Machine
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 42;
@@ -7478,7 +7478,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Extension
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 36;
@@ -7489,12 +7489,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Extension
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Extension;
 
    -------------------------------------
@@ -7502,7 +7502,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Extension_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -7513,7 +7513,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Extension_Point
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 25;
@@ -7524,7 +7524,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Feature
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -7535,7 +7535,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Featuring_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -7546,7 +7546,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_File_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -7558,12 +7558,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Finish
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Finish;
 
    ------------------------
@@ -7571,12 +7571,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_First
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_First;
 
    ------------------------------
@@ -7584,7 +7584,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Collection;
@@ -7595,7 +7595,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Holder;
@@ -7606,7 +7606,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_First_Event
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
@@ -7617,12 +7617,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Formal
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Formal;
 
    ------------------------------
@@ -7630,7 +7630,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Formal_Gate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 45;
@@ -7641,7 +7641,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Format
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -7653,7 +7653,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Fragment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 41;
@@ -7664,12 +7664,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_From_Action
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_From_Action;
 
    --------------------------
@@ -7677,7 +7677,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_General
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -7688,12 +7688,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_General
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_General;
 
    ----------------------------------
@@ -7701,12 +7701,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_General_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_General_Machine;
 
    -----------------------------------
@@ -7714,7 +7714,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_General_Ordering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -7725,7 +7725,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Generalization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -7736,7 +7736,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Generalization_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -7747,7 +7747,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Group
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 43;
@@ -7758,12 +7758,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Guard
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Guard;
 
    --------------------------
@@ -7771,7 +7771,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Handler
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 18;
@@ -7782,12 +7782,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Handler_Body
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Handler_Body;
 
    -----------------------
@@ -7795,7 +7795,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Icon
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -7806,12 +7806,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Implementing_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Implementing_Classifier;
 
    -----------------------------------
@@ -7819,12 +7819,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self);
    end Internal_Get_Imported_Element;
 
    ----------------------------------
@@ -7832,7 +7832,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Imported_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 13;
@@ -7843,12 +7843,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Imported_Package;
 
    --------------------------------------
@@ -7856,12 +7856,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Importing_Namespace
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Importing_Namespace;
 
    ------------------------------
@@ -7869,12 +7869,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_In_Activity
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_In_Activity;
 
    ---------------------------
@@ -7882,7 +7882,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_In_Group
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -7893,7 +7893,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_In_Interruptible_Region
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -7904,7 +7904,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_In_Partition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -7915,7 +7915,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_In_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -7926,12 +7926,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_In_Structured_Node
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_In_Structured_Node;
 
    --------------------------
@@ -7939,7 +7939,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Include
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 26;
@@ -7950,12 +7950,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Including_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Including_Case;
 
    ---------------------------
@@ -7963,7 +7963,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Incoming
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -7974,7 +7974,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Information_Source
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -7985,7 +7985,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Information_Target
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -7996,7 +7996,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Inherited_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 18;
@@ -8007,7 +8007,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Inherited_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -8018,7 +8018,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 19;
@@ -8029,7 +8029,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Input_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 30;
@@ -8040,7 +8040,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Input_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -8051,12 +8051,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Insert_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Insert_At;
 
    ---------------------------
@@ -8064,12 +8064,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Instance
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Instance;
 
    ------------------------------
@@ -8077,12 +8077,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Interaction
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Interaction;
 
    ---------------------------------------
@@ -8090,7 +8090,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Interaction_Operator
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Interaction_Operator_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Interaction_Operator_Kind_Value;
@@ -8101,12 +8101,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Interface
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (26).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (26).Link, Self);
    end Internal_Get_Interface;
 
    ----------------------------------------
@@ -8114,7 +8114,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    function Internal_Get_Interface_Realization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 27;
@@ -8125,7 +8125,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Interrupting_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -8136,12 +8136,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Interrupts
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Interrupts;
 
    ----------------------------
@@ -8149,12 +8149,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Invariant
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Invariant;
 
    ------------------------------
@@ -8162,7 +8162,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Abstract
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value;
@@ -8173,7 +8173,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Active
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
@@ -8184,7 +8184,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Is_Assured
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8195,7 +8195,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (34).Boolean_Value;
@@ -8206,7 +8206,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Is_Combine_Duplicate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
@@ -8217,7 +8217,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Composite
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
@@ -8228,7 +8228,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Is_Conjugated
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (35).Boolean_Value;
@@ -8239,7 +8239,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Is_Control
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value;
@@ -8250,7 +8250,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Is_Control_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
@@ -8261,7 +8261,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Covering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Value;
@@ -8272,7 +8272,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Is_Derived
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Boolean_Value;
@@ -8283,7 +8283,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Is_Derived_Union
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (29).Boolean_Value;
@@ -8294,7 +8294,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    function Internal_Get_Is_Destroy_Duplicates
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Boolean_Value;
@@ -8305,7 +8305,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Is_Destroy_Links
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
@@ -8316,7 +8316,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------------
 
    function Internal_Get_Is_Destroy_Owned_Objects
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
@@ -8327,7 +8327,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Is_Determinate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Boolean_Value;
@@ -8338,7 +8338,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Dimension
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Boolean_Value;
@@ -8349,7 +8349,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Direct
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8360,7 +8360,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Disjoint
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
@@ -8371,7 +8371,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Exception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
@@ -8382,7 +8382,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_External
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Boolean_Value;
@@ -8393,7 +8393,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Is_Final_Specialization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
@@ -8404,7 +8404,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Is_ID
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (30).Boolean_Value;
@@ -8415,7 +8415,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------------
 
    function Internal_Get_Is_Indirectly_Instantiated
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
@@ -8426,7 +8426,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Is_Leaf
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Value;
@@ -8437,7 +8437,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Is_Locally_Reentrant
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Boolean_Value;
@@ -8448,7 +8448,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Multicast
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8459,7 +8459,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Is_Multireceive
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Boolean_Value;
@@ -8470,7 +8470,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Is_Ordered
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
@@ -8481,7 +8481,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Is_Orthogonal
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value;
@@ -8492,7 +8492,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Is_Query
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value;
@@ -8503,7 +8503,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Read_Only
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value;
@@ -8514,7 +8514,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Is_Reentrant
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Boolean_Value;
@@ -8525,7 +8525,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Relative
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Value;
@@ -8536,7 +8536,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Is_Remove_Duplicates
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8547,7 +8547,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Is_Replace_All
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8558,7 +8558,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Is_Required
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
@@ -8569,7 +8569,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Is_Service
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (36).Boolean_Value;
@@ -8580,7 +8580,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Simple
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
@@ -8591,7 +8591,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Is_Single_Execution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Boolean_Value;
@@ -8602,7 +8602,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Static
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Boolean_Value;
@@ -8613,7 +8613,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Stream
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value;
@@ -8624,7 +8624,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Strict
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Boolean_Value;
@@ -8635,7 +8635,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Is_Submachine_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
@@ -8646,7 +8646,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Is_Substitutable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Boolean_Holder;
@@ -8657,7 +8657,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Is_Synchronous
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
@@ -8668,7 +8668,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Is_Tested_First
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Boolean_Value;
@@ -8679,7 +8679,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Is_Unique
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
@@ -8690,7 +8690,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Is_Unmarshall
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value;
@@ -8701,12 +8701,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Join_Spec
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Join_Spec;
 
    -----------------------
@@ -8714,7 +8714,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Connector_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Connector_Kind_Value;
@@ -8725,7 +8725,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Pseudostate_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Pseudostate_Kind_Value;
@@ -8736,7 +8736,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Transition_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Transition_Kind_Value;
@@ -8747,7 +8747,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Language
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).String_Collection_Value;   end Internal_Get_Language;
@@ -8757,7 +8757,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Lifeline
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 46;
@@ -8768,7 +8768,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Local_Postcondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 20;
@@ -8779,7 +8779,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Local_Precondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 21;
@@ -8790,12 +8790,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Location
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Location;
 
    ---------------------------
@@ -8803,7 +8803,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Location
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -8815,7 +8815,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Loop_Variable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 33;
@@ -8826,7 +8826,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Loop_Variable_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 28;
@@ -8837,7 +8837,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Lower
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Integer is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Integer_Holder;
@@ -8848,12 +8848,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Lower_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Lower_Value;
 
    --------------------------------
@@ -8861,7 +8861,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Manifestation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -8872,12 +8872,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Mapping
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Mapping;
 
    ----------------------
@@ -8885,12 +8885,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    function Internal_Get_Max
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Max;
 
    -------------------------
@@ -8898,12 +8898,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Maxint
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Maxint;
 
    -------------------------
@@ -8911,7 +8911,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 14;
@@ -8922,7 +8922,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Member_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 37;
@@ -8933,12 +8933,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Merged_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Merged_Package;
 
    --------------------------
@@ -8946,7 +8946,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Message
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 43;
@@ -8957,12 +8957,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Message
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Message;
 
    -------------------------------
@@ -8970,7 +8970,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Message_Kind
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Message_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Message_Kind_Value;
@@ -8981,7 +8981,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Message_Sort
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Message_Sort is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Message_Sort_Value;
@@ -8992,12 +8992,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Metaclass
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Metaclass;
 
    --------------------------------------
@@ -9005,7 +9005,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Metaclass_Reference
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -9016,7 +9016,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Metamodel_Reference
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -9027,7 +9027,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Method
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -9038,12 +9038,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    function Internal_Get_Min
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Min;
 
    -------------------------
@@ -9051,12 +9051,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Minint
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Minint;
 
    -----------------------
@@ -9064,7 +9064,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Mode
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Expansion_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Expansion_Kind_Value;
@@ -9075,7 +9075,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Must_Isolate
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
@@ -9086,7 +9086,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -9098,12 +9098,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Name_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Name_Expression;
 
    ----------------------------
@@ -9111,12 +9111,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Namespace
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Namespace;
 
    --------------------------------------
@@ -9124,7 +9124,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Navigable_Owned_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 38;
@@ -9135,7 +9135,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Nested_Artifact
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 27;
@@ -9146,7 +9146,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Nested_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 33;
@@ -9157,7 +9157,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Nested_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 37;
@@ -9168,7 +9168,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Nested_Package
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9179,12 +9179,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Nesting_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Nesting_Package;
 
    ---------------------------------
@@ -9192,7 +9192,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_New_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -9203,7 +9203,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -9214,12 +9214,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Object
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Object;
 
    ------------------------------
@@ -9227,7 +9227,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Observation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9238,7 +9238,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Old_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 13;
@@ -9249,12 +9249,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_On_Port
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_On_Port;
 
    --------------------------
@@ -9262,7 +9262,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Operand
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9273,12 +9273,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Operation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Operation;
 
    ---------------------------
@@ -9286,12 +9286,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Opposite
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (31).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (31).Link, Self);
    end Internal_Get_Opposite;
 
    ---------------------------
@@ -9299,7 +9299,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Ordering
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Object_Node_Ordering_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Object_Node_Ordering_Kind_Value;
@@ -9310,7 +9310,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Outgoing
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -9321,7 +9321,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 22;
@@ -9332,7 +9332,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Output_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 31;
@@ -9343,7 +9343,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Output_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 13;
@@ -9354,12 +9354,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Owned_Actual
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Owned_Actual;
 
    ----------------------------------
@@ -9367,7 +9367,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Attribute
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 25;
@@ -9378,7 +9378,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Owned_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 28;
@@ -9389,7 +9389,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 1;
@@ -9400,7 +9400,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 30;
@@ -9411,12 +9411,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Default
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Owned_Default;
 
    --------------------------------
@@ -9424,7 +9424,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 2;
@@ -9435,7 +9435,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Owned_End
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 39;
@@ -9446,7 +9446,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Literal
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -9457,7 +9457,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Owned_Member
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 15;
@@ -9468,7 +9468,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Operation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 26;
@@ -9479,7 +9479,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 37;
@@ -9490,7 +9490,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Owned_Parameter_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 38;
@@ -9501,12 +9501,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------------
 
    function Internal_Get_Owned_Parametered_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Owned_Parametered_Element;
 
    -----------------------------
@@ -9514,7 +9514,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 35;
@@ -9525,7 +9525,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Reception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 34;
@@ -9536,7 +9536,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Rule
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 16;
@@ -9547,7 +9547,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Owned_Stereotype
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -9558,12 +9558,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------------
 
    function Internal_Get_Owned_Template_Signature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Owned_Template_Signature;
 
    -----------------------------
@@ -9571,7 +9571,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Type
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -9582,7 +9582,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Owned_Use_Case
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 19;
@@ -9593,12 +9593,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Owner
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Owner;
 
    -------------------------------------
@@ -9606,12 +9606,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Owning_Association
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (32).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (32).Link, Self);
    end Internal_Get_Owning_Association;
 
    ------------------------------------
@@ -9619,12 +9619,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Owning_Expression
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Owning_Expression;
 
    ----------------------------------
@@ -9632,12 +9632,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Owning_Instance
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Owning_Instance;
 
    --------------------------------------------
@@ -9645,12 +9645,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------------
 
    function Internal_Get_Owning_Template_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Owning_Template_Parameter;
 
    --------------------------
@@ -9658,12 +9658,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Package;
 
    ---------------------------------
@@ -9671,7 +9671,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Package_Import
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 17;
@@ -9682,7 +9682,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Package_Merge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -9693,7 +9693,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Packaged_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -9704,12 +9704,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Parameter;
 
    ----------------------------
@@ -9717,7 +9717,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Parameter
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -9728,7 +9728,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Parameter_Set
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9739,7 +9739,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------------
 
    function Internal_Get_Parameter_Substitution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -9750,12 +9750,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Parametered_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self);
    end Internal_Get_Parametered_Element;
 
    -----------------------
@@ -9763,7 +9763,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 31;
@@ -9774,12 +9774,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Part_With_Port
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Part_With_Port;
 
    ----------------------------
@@ -9787,7 +9787,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Partition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 44;
@@ -9798,7 +9798,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9809,12 +9809,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Post_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Post_Condition;
 
    --------------------------------
@@ -9822,7 +9822,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Postcondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 39;
@@ -9833,12 +9833,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Powertype
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Powertype;
 
    -----------------------------------
@@ -9846,7 +9846,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Powertype_Extent
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 20;
@@ -9857,12 +9857,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Pre_Condition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Pre_Condition;
 
    -------------------------------
@@ -9870,7 +9870,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Precondition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 40;
@@ -9881,7 +9881,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Predecessor_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -9892,12 +9892,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Profile
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Profile;
 
    --------------------------------------
@@ -9905,7 +9905,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Profile_Application
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -9916,12 +9916,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Protected_Node
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Protected_Node;
 
    ---------------------------
@@ -9929,12 +9929,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Protocol
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (33).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (33).Link, Self);
    end Internal_Get_Protocol;
 
    ---------------------------
@@ -9942,7 +9942,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Provided
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 37;
@@ -9953,7 +9953,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Qualified_Name
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -9965,7 +9965,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -9976,12 +9976,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Qualifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Qualifier;
 
    -----------------------------------
@@ -9989,7 +9989,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Raised_Exception
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -10000,7 +10000,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Realization
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -10011,7 +10011,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Realizing_Activity_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -10022,7 +10022,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Realizing_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
@@ -10033,7 +10033,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Realizing_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -10044,7 +10044,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Realizing_Message
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -10055,12 +10055,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Receive_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Receive_Event;
 
    ------------------------------------
@@ -10068,12 +10068,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Receiving_Package
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Receiving_Package;
 
    -------------------------------------
@@ -10081,7 +10081,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Redefined_Behavior
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 42;
@@ -10092,7 +10092,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefined_Classifier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 21;
@@ -10103,7 +10103,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Redefined_Connector
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -10114,7 +10114,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Redefined_Edge
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -10125,7 +10125,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    function Internal_Get_Redefined_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -10136,7 +10136,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Redefined_Interface
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -10147,7 +10147,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Redefined_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -10158,7 +10158,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    function Internal_Get_Redefined_Operation
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -10169,7 +10169,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Redefined_Port
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -10180,7 +10180,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Redefined_Property
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 9;
@@ -10191,12 +10191,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Redefined_State
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Redefined_State;
 
    ---------------------------------------
@@ -10204,12 +10204,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefined_Transition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Redefined_Transition;
 
    ---------------------------------------
@@ -10217,7 +10217,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefinition_Context
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -10228,12 +10228,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Reducer
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Reducer;
 
    ---------------------------
@@ -10241,7 +10241,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Referred
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -10252,12 +10252,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Refers_To
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Refers_To;
 
    -------------------------
@@ -10265,7 +10265,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Region
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -10276,12 +10276,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Region_As_Input
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Region_As_Input;
 
    -----------------------------------
@@ -10289,12 +10289,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Region_As_Output
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Region_As_Output;
 
    ----------------------------------
@@ -10302,7 +10302,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Related_Element
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -10313,12 +10313,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Remove_At
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_Remove_At;
 
    --------------------------------
@@ -10326,12 +10326,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Reply_To_Call
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Reply_To_Call;
 
    ------------------------------
@@ -10339,7 +10339,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Reply_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -10350,12 +10350,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Representation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Representation;
 
    ------------------------------
@@ -10363,7 +10363,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Represented
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -10374,12 +10374,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Represents
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Represents;
 
    --------------------------
@@ -10387,7 +10387,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Request
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
@@ -10398,7 +10398,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Required
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 38;
@@ -10409,7 +10409,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Result
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 23;
@@ -10420,12 +10420,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Result
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Result;
 
    -------------------------------------
@@ -10433,12 +10433,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Return_Information
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Return_Information;
 
    -------------------------------
@@ -10446,12 +10446,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Return_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Return_Value;
 
    -----------------------------------------
@@ -10459,12 +10459,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------------
 
    function Internal_Get_Return_Value_Recipient
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Return_Value_Recipient;
 
    -----------------------
@@ -10472,12 +10472,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Role
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Role;
 
    -----------------------
@@ -10485,7 +10485,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Role
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 32;
@@ -10496,7 +10496,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Role_Binding
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -10507,12 +10507,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Scope
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Scope;
 
    -------------------------
@@ -10520,12 +10520,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Second
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Second;
 
    ----------------------------
@@ -10533,12 +10533,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Selection
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Link, Self);
    end Internal_Get_Selection;
 
    ---------------------------
@@ -10546,12 +10546,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Selector
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Selector;
 
    -----------------------------
@@ -10559,12 +10559,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Send_Event
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Send_Event;
 
    --------------------------
@@ -10572,7 +10572,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Setting
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Value;
@@ -10583,7 +10583,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Setup_Part
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 34;
@@ -10594,12 +10594,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Signal
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Signal;
 
    ----------------------------
@@ -10607,12 +10607,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Signature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
    end Internal_Get_Signature;
 
    -----------------------
@@ -10620,7 +10620,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Slot
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -10631,12 +10631,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Source
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Source;
 
    -------------------------
@@ -10644,7 +10644,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Source
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -10655,12 +10655,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Specific
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Specific;
 
    -----------------------------------
@@ -10668,12 +10668,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Specific_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Specific_Machine;
 
    --------------------------------
@@ -10681,12 +10681,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_Specification
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Link, Self);
    end Internal_Get_Specification;
 
    ------------------------
@@ -10694,12 +10694,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Start
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Start;
 
    ------------------------
@@ -10707,12 +10707,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_State
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_State;
 
    ----------------------------------
@@ -10720,12 +10720,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_State_Invariant
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Link, Self);
    end Internal_Get_State_Invariant;
 
    --------------------------------
@@ -10733,12 +10733,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    function Internal_Get_State_Machine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_State_Machine;
 
    -------------------------------------
@@ -10746,12 +10746,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Structural_Feature
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Structural_Feature;
 
    ----------------------------------
@@ -10759,7 +10759,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Structured_Node
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 45;
@@ -10770,7 +10770,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    function Internal_Get_Structured_Node_Input
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 28;
@@ -10781,7 +10781,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------------
 
    function Internal_Get_Structured_Node_Output
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 23;
@@ -10792,7 +10792,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Sub_Expression
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -10803,7 +10803,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Subgroup
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 27;
@@ -10814,7 +10814,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Subject
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 29;
@@ -10825,12 +10825,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Submachine
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Submachine;
 
    -----------------------------------
@@ -10838,7 +10838,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Submachine_State
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 41;
@@ -10849,7 +10849,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Subpartition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -10860,7 +10860,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Subsetted_Property
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 10;
@@ -10871,12 +10871,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    function Internal_Get_Substituting_Classifier
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Substituting_Classifier;
 
    -------------------------------
@@ -10884,7 +10884,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    function Internal_Get_Substitution
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 22;
@@ -10895,7 +10895,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Subvertex
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -10906,7 +10906,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Successor_Clause
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -10917,7 +10917,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Super_Class
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 11;
@@ -10928,12 +10928,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Super_Group
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Super_Group;
 
    ----------------------------------
@@ -10941,12 +10941,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Super_Partition
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Super_Partition;
 
    ---------------------------
@@ -10954,7 +10954,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Supplier
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -10965,7 +10965,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Symbol
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -10977,12 +10977,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Target
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Target;
 
    -------------------------
@@ -10990,7 +10990,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Target
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -11001,12 +11001,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Template
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Template;
 
    -----------------------------------
@@ -11014,12 +11014,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).Link, Self);
    end Internal_Get_Template_Binding;
 
    -----------------------------------
@@ -11027,7 +11027,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Template_Binding
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 6;
@@ -11038,12 +11038,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    function Internal_Get_Template_Parameter
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Template_Parameter;
 
    -----------------------
@@ -11051,7 +11051,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Test
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 31;
@@ -11062,7 +11062,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_To_After
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 4;
@@ -11073,7 +11073,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_To_Before
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 5;
@@ -11084,12 +11084,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    function Internal_Get_Transformation
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Transformation;
 
    -----------------------------
@@ -11097,7 +11097,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Transition
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 7;
@@ -11108,7 +11108,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    function Internal_Get_Trigger
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
@@ -11119,12 +11119,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_Type
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Type;
 
    ----------------------------------
@@ -11132,12 +11132,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    function Internal_Get_Unmarshall_Type
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Unmarshall_Type;
 
    ------------------------
@@ -11145,7 +11145,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Upper
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Unlimited_Natural is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Unlimited_Natural_Holder;
@@ -11156,12 +11156,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Upper_Bound
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Link, Self);
    end Internal_Get_Upper_Bound;
 
    ------------------------------
@@ -11169,12 +11169,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    function Internal_Get_Upper_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Upper_Value;
 
    ---------------------------
@@ -11182,7 +11182,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 23;
@@ -11193,12 +11193,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Use_Case
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (8).Link, Self);
    end Internal_Get_Use_Case;
 
    -----------------------------------
@@ -11206,12 +11206,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    function Internal_Get_Utilized_Element
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_Utilized_Element;
 
    ------------------------
@@ -11219,7 +11219,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Boolean_Value;
@@ -11230,7 +11230,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Integer is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Integer_Value;
@@ -11241,7 +11241,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Real_Value;
@@ -11252,7 +11252,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -11264,7 +11264,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Unlimited_Natural is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Unlimited_Natural_Value;
@@ -11275,7 +11275,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 3;
@@ -11286,12 +11286,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    function Internal_Get_Value
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
    end Internal_Get_Value;
 
    ---------------------------
@@ -11299,7 +11299,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 41;
@@ -11310,12 +11310,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    function Internal_Get_Variable
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Variable;
 
    ----------------------------
@@ -11323,7 +11323,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    function Internal_Get_Viewpoint
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
@@ -11335,7 +11335,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Visibility_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Visibility_Kind_Value;
@@ -11346,7 +11346,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
@@ -11357,12 +11357,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    function Internal_Get_Weight
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Weight;
 
    -----------------------
@@ -11370,12 +11370,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    function Internal_Get_When
-    (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_When;
 
    ----------------------
@@ -11383,7 +11383,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    procedure Internal_Set_URI
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -11411,10 +11411,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Abstraction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11428,10 +11428,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Action
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11445,10 +11445,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11462,10 +11462,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Activity_Scope
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11479,10 +11479,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Actual
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11496,10 +11496,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Addition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11513,10 +11513,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_After
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11530,7 +11530,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Aggregation
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Aggregation_Kind)
    is
       Old : AMF.UML.UML_Aggregation_Kind;
@@ -11548,7 +11548,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Alias
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -11576,7 +11576,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Allow_Substitutable
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -11594,10 +11594,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Applied_Profile
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11611,10 +11611,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Applying_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11628,10 +11628,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Association
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11645,10 +11645,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Association_End
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11662,10 +11662,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Base_Abstraction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11679,10 +11679,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Base_Artifact
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11696,10 +11696,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    procedure Internal_Set_Base_Behavioral_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11713,10 +11713,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Base_Class
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11730,10 +11730,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Base_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11747,10 +11747,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Base_Component
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11764,10 +11764,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Base_Model
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11781,10 +11781,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Base_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11798,10 +11798,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Base_Usage
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11815,10 +11815,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Before
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11832,10 +11832,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Behavior
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11849,7 +11849,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Body
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -11877,10 +11877,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Body_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11894,10 +11894,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Bound_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11911,10 +11911,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Change_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11928,10 +11928,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Class
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11945,10 +11945,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11962,10 +11962,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Classifier_Behavior
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11979,10 +11979,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Collection
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -11996,10 +11996,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Computation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12013,7 +12013,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Concurrency
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Call_Concurrency_Kind)
    is
       Old : AMF.UML.UML_Call_Concurrency_Kind;
@@ -12031,10 +12031,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12048,10 +12048,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Connector
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12065,10 +12065,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Container
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12082,7 +12082,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Content
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12110,10 +12110,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Contract
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12127,10 +12127,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Datatype
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12144,10 +12144,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Decider
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12161,10 +12161,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Decision_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12178,10 +12178,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Decision_Input_Flow
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12195,10 +12195,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Decomposed_As
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12212,7 +12212,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Default
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12240,10 +12240,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Default
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12257,10 +12257,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Default_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12274,10 +12274,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Defining_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12291,10 +12291,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Deployment
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12308,7 +12308,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Deployment_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12336,10 +12336,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Destroy_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12353,7 +12353,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Direction
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Parameter_Direction_Kind)
    is
       Old : AMF.UML.UML_Parameter_Direction_Kind;
@@ -12371,10 +12371,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Do_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12388,7 +12388,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Effect
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Parameter_Effect_Kind)
    is
       Old : AMF.UML.Optional_UML_Parameter_Effect_Kind;
@@ -12406,10 +12406,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Effect
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12423,10 +12423,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    procedure Internal_Set_Enclosing_Interaction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12440,10 +12440,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Enclosing_Operand
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12457,10 +12457,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    procedure Internal_Set_End
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12474,10 +12474,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Entry
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12491,10 +12491,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Enumeration
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12508,10 +12508,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12525,10 +12525,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Exception
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12542,10 +12542,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Exception_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12559,10 +12559,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Execution
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12576,7 +12576,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Execution_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12604,10 +12604,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Exit
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12621,10 +12621,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Expr
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12638,10 +12638,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Extended_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12655,10 +12655,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Extended_Region
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12672,10 +12672,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Extension
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12689,7 +12689,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_File_Name
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12717,10 +12717,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Finish
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12734,10 +12734,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_First
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12751,7 +12751,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_First_Event
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Boolean)
    is
       Old : AMF.Optional_Boolean;
@@ -12769,7 +12769,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_First_Event
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -12787,10 +12787,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Formal
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12804,7 +12804,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Format
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -12832,10 +12832,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_From_Action
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12849,10 +12849,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_General
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12866,10 +12866,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_General_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12883,10 +12883,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Guard
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12900,10 +12900,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Handler_Body
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12917,10 +12917,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    procedure Internal_Set_Implementing_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12934,10 +12934,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Imported_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12951,10 +12951,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Imported_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12968,10 +12968,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Importing_Namespace
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -12985,10 +12985,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_In_Activity
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13002,10 +13002,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_In_Structured_Node
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13019,10 +13019,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Including_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13036,10 +13036,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Insert_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13053,10 +13053,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Instance
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13070,10 +13070,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Interaction
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13087,7 +13087,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    procedure Internal_Set_Interaction_Operator
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Interaction_Operator_Kind)
    is
       Old : AMF.UML.UML_Interaction_Operator_Kind;
@@ -13105,10 +13105,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Interface
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13122,10 +13122,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Interrupts
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13139,10 +13139,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Invariant
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13156,7 +13156,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Abstract
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13174,7 +13174,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Active
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13192,7 +13192,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Is_Assured
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13210,7 +13210,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Behavior
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13228,7 +13228,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    procedure Internal_Set_Is_Combine_Duplicate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13246,7 +13246,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Composite
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13264,7 +13264,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Is_Conjugated
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13282,7 +13282,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Is_Control
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13300,7 +13300,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Is_Control_Type
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13318,7 +13318,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Covering
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13336,7 +13336,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Is_Derived
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13354,7 +13354,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Is_Derived_Union
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13372,7 +13372,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------------
 
    procedure Internal_Set_Is_Destroy_Duplicates
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13390,7 +13390,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Is_Destroy_Links
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13408,7 +13408,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------------
 
    procedure Internal_Set_Is_Destroy_Owned_Objects
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13426,7 +13426,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Is_Determinate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13444,7 +13444,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Dimension
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13462,7 +13462,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Direct
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13480,7 +13480,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Disjoint
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13498,7 +13498,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Exception
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13516,7 +13516,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_External
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13534,7 +13534,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    procedure Internal_Set_Is_Final_Specialization
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13552,7 +13552,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Is_ID
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13570,7 +13570,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------------
 
    procedure Internal_Set_Is_Indirectly_Instantiated
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13588,7 +13588,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Is_Leaf
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13606,7 +13606,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    procedure Internal_Set_Is_Locally_Reentrant
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13624,7 +13624,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Multicast
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13642,7 +13642,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Is_Multireceive
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13660,7 +13660,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Is_Ordered
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13678,7 +13678,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Is_Query
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13696,7 +13696,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Read_Only
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13714,7 +13714,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Is_Reentrant
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13732,7 +13732,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Is_Relative
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13750,7 +13750,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    procedure Internal_Set_Is_Remove_Duplicates
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13768,7 +13768,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Is_Replace_All
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13786,7 +13786,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Is_Service
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13804,7 +13804,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Is_Single_Execution
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13822,7 +13822,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Static
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13840,7 +13840,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Stream
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13858,7 +13858,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Strict
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13876,7 +13876,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Is_Substitutable
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Boolean)
    is
       Old : AMF.Optional_Boolean;
@@ -13894,7 +13894,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Is_Synchronous
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13912,7 +13912,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Is_Tested_First
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13930,7 +13930,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Is_Unique
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13948,7 +13948,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Is_Unmarshall
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -13966,10 +13966,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Join_Spec
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -13983,7 +13983,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Pseudostate_Kind)
    is
       Old : AMF.UML.UML_Pseudostate_Kind;
@@ -14001,7 +14001,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Kind
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Transition_Kind)
    is
       Old : AMF.UML.UML_Transition_Kind;
@@ -14019,10 +14019,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Location
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14036,7 +14036,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Location
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -14064,7 +14064,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Lower
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Integer)
    is
       Old : AMF.Optional_Integer;
@@ -14082,10 +14082,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Lower_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14099,10 +14099,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Mapping
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14116,10 +14116,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    procedure Internal_Set_Max
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14133,10 +14133,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Maxint
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14150,10 +14150,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Merged_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14167,10 +14167,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Message
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14184,7 +14184,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Message_Sort
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Message_Sort)
    is
       Old : AMF.UML.UML_Message_Sort;
@@ -14202,10 +14202,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------
 
    procedure Internal_Set_Min
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14219,10 +14219,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Minint
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14236,7 +14236,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Mode
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Expansion_Kind)
    is
       Old : AMF.UML.UML_Expansion_Kind;
@@ -14254,7 +14254,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Must_Isolate
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -14272,7 +14272,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Name
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -14300,10 +14300,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Name_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14317,10 +14317,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Nesting_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14334,10 +14334,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Object
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14351,10 +14351,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_On_Port
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14368,10 +14368,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Operation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14385,10 +14385,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Opposite
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14402,7 +14402,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Ordering
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Object_Node_Ordering_Kind)
    is
       Old : AMF.UML.UML_Object_Node_Ordering_Kind;
@@ -14420,10 +14420,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Owned_Actual
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14437,10 +14437,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Owned_Default
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14454,10 +14454,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------------
 
    procedure Internal_Set_Owned_Parametered_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14471,10 +14471,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------------
 
    procedure Internal_Set_Owned_Template_Signature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14488,10 +14488,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Owning_Association
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14505,10 +14505,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Owning_Expression
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14522,10 +14522,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Owning_Instance
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14539,10 +14539,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------------
 
    procedure Internal_Set_Owning_Template_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14556,10 +14556,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14573,10 +14573,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14590,10 +14590,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------------
 
    procedure Internal_Set_Parametered_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14607,10 +14607,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Part_With_Port
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14624,10 +14624,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Post_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14641,10 +14641,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Powertype
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14658,10 +14658,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Pre_Condition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14675,10 +14675,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Protected_Node
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14692,10 +14692,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Protocol
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14709,10 +14709,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Qualifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14726,10 +14726,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Receive_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14743,10 +14743,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------
 
    procedure Internal_Set_Receiving_Package
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14760,10 +14760,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Redefined_State
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14777,10 +14777,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------------
 
    procedure Internal_Set_Redefined_Transition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14794,10 +14794,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Reducer
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14811,10 +14811,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Refers_To
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14828,10 +14828,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Region_As_Input
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14845,10 +14845,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Region_As_Output
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14862,10 +14862,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Remove_At
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14879,10 +14879,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Reply_To_Call
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14896,10 +14896,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Representation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14913,10 +14913,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Represents
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14930,10 +14930,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Result
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14947,10 +14947,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Return_Information
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14964,10 +14964,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------
 
    procedure Internal_Set_Return_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14981,10 +14981,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------------
 
    procedure Internal_Set_Return_Value_Recipient
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -14998,10 +14998,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Role
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15015,10 +15015,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Scope
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15032,10 +15032,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Second
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15049,10 +15049,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Selection
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15066,10 +15066,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Selector
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15083,10 +15083,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Send_Event
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15100,7 +15100,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------
 
    procedure Internal_Set_Setting
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -15118,10 +15118,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Signal
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15135,10 +15135,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Signature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15152,10 +15152,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Source
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15169,10 +15169,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Specific
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15186,10 +15186,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Specific_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15203,10 +15203,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_Specification
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15220,10 +15220,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Start
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15237,10 +15237,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_State
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15254,10 +15254,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_State_Invariant
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15271,10 +15271,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --------------------------------
 
    procedure Internal_Set_State_Machine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15288,10 +15288,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Structural_Feature
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15305,10 +15305,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Submachine
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15322,10 +15322,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------------------
 
    procedure Internal_Set_Substituting_Classifier
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15339,10 +15339,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Super_Partition
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15356,7 +15356,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Symbol
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -15384,10 +15384,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Target
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15401,10 +15401,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Template
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15418,10 +15418,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Template_Binding
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15435,10 +15435,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------------------
 
    procedure Internal_Set_Template_Parameter
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15452,10 +15452,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------------
 
    procedure Internal_Set_Transformation
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15469,10 +15469,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_Type
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15486,10 +15486,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------------
 
    procedure Internal_Set_Unmarshall_Type
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15503,7 +15503,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Upper
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Optional_Unlimited_Natural)
    is
       Old : AMF.Optional_Unlimited_Natural;
@@ -15521,10 +15521,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Upper_Bound
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15538,10 +15538,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------------
 
    procedure Internal_Set_Upper_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15555,10 +15555,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Use_Case
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15572,10 +15572,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------------
 
    procedure Internal_Set_Utilized_Element
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15589,7 +15589,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Boolean)
    is
       Old : Boolean;
@@ -15607,7 +15607,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Integer)
    is
       Old : Integer;
@@ -15625,7 +15625,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Real)
    is
       Old : AMF.Real;
@@ -15643,7 +15643,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -15671,7 +15671,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.Unlimited_Natural)
    is
       Old : AMF.Unlimited_Natural;
@@ -15689,10 +15689,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ------------------------
 
    procedure Internal_Set_Value
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15706,10 +15706,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    ---------------------------
 
    procedure Internal_Set_Variable
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15723,7 +15723,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    ----------------------------
 
    procedure Internal_Set_Viewpoint
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
@@ -15751,7 +15751,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.UML_Visibility_Kind)
    is
       Old : AMF.UML.UML_Visibility_Kind;
@@ -15769,7 +15769,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------------
 
    procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
+    (Self : AMF.Internals.AMF_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind)
    is
       Old : AMF.UML.Optional_UML_Visibility_Kind;
@@ -15787,10 +15787,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -------------------------
 
    procedure Internal_Set_Weight
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
@@ -15804,10 +15804,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    -----------------------
 
    procedure Internal_Set_When
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.Internals.UML_Element)
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element)
    is
-      Old : AMF.Internals.UML_Element;
+      Old : AMF.Internals.AMF_Element;
 
    begin
       AMF.Internals.Links.Create_Link
