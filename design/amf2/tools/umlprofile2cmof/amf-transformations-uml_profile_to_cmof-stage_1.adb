@@ -60,12 +60,16 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
    is
       pragma Unreferenced (Control);
 
+      Collection :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
    begin
       --  Create association and set its attributes.
 
       Self.The_Association := Self.Context.Create_CMOF_Association (Element);
       Self.The_Association.Set_Name (Element.Get_Name);
-      Self.The_Package.Get_Packaged_Element.Add (Self.The_Association);
+      Collection := Self.The_Package.Get_Packaged_Element;
+      Collection.Add (Self.The_Association);
    end Enter_Extension;
 
    -------------------------
@@ -80,6 +84,7 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       pragma Unreferenced (Control);
 
       The_Property : AMF.CMOF.Properties.CMOF_Property_Access;
+      Collection   : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property;
 
    begin
       --  Create instance of CMOF::Property and set its attributes.
@@ -90,7 +95,8 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       The_Property.Set_Upper (Element.Upper_Bound);
       The_Property.Set_Is_Composite
        (Element.Get_Aggregation = AMF.UML.Composite);
-      Self.The_Association.Get_Owned_End.Add (The_Property);
+      Collection := Self.The_Association.Get_Owned_End;
+      Collection.Add (The_Property);
    end Enter_Extension_End;
 
    -------------------
@@ -124,6 +130,7 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       pragma Unreferenced (Control);
 
       The_Property : AMF.CMOF.Properties.CMOF_Property_Access;
+      Collection   : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property;
 
    begin
       --  Create instance of CMOF::Property and set its attributes.
@@ -135,7 +142,8 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       The_Property.Set_Is_Composite
        (Element.Get_Aggregation = AMF.UML.Composite);
 
-      Self.The_Class.Get_Owned_Attribute.Add (The_Property);
+      Collection := Self.The_Class.Get_Owned_Attribute;
+      Collection.Add (The_Property);
    end Enter_Property;
 
    ----------------------
@@ -149,6 +157,9 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
    is
       pragma Unreferenced (Control);
 
+      Collection :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
    begin
       --  Create instance of CMOF::Class and set its attributes.
 
@@ -156,7 +167,8 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       Self.The_Class.Set_Name (Element.Get_Name);
       Self.The_Class.Set_Is_Abstract (Element.Get_Is_Abstract);
 
-      Self.The_Package.Get_Packaged_Element.Add (Self.The_Class);
+      Collection := Self.The_Package.Get_Packaged_Element;
+      Collection.Add (Self.The_Class);
    end Enter_Stereotype;
 
    ---------------

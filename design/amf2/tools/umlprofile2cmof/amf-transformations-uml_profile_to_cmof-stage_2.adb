@@ -71,12 +71,15 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
       Member_End      : constant
         AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
           := Element.Get_Member_End;
+      Collection      :
+        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+          := The_Association.Get_Member_End;
 
    begin
       --  Fill CMOF::Association::memberEnd attribute.
 
       for J in 1 .. Member_End.Length loop
-         The_Association.Get_Member_End.Add
+         Collection.Add
           (AMF.CMOF.Properties.CMOF_Property_Access
             (Self.Context.Mapped_Element (Member_End.Element (J))));
       end loop;
@@ -143,15 +146,18 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_2 is
    is
       pragma Unreferenced (Control);
 
-      The_Tag  : constant not null AMF.CMOF.Tags.CMOF_Tag_Access
+      The_Tag    : constant not null AMF.CMOF.Tags.CMOF_Tag_Access
         := AMF.CMOF.Tags.CMOF_Tag_Access
             (Self.Context.Mapped_Element (Element));
-      Elements : constant AMF.UML.Elements.Collections.Set_Of_UML_Element
+      Elements   : constant AMF.UML.Elements.Collections.Set_Of_UML_Element
         := Element.Get_Element;
+      Collection :
+        AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+          := The_Tag.Get_Element;
 
    begin
       for J in 1 .. Elements.Length loop
-         The_Tag.Get_Element.Add
+         Collection.Add
           (AMF.CMOF.Elements.CMOF_Element_Access
             (Self.Context.Mapped_Element (Elements.Element (J))));
       end loop;
