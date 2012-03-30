@@ -405,9 +405,12 @@ package body AMF.Internals.XMI_Handlers is
       --------------------
 
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor) is
+         use type AMF.Elements.Element_Access;
+
          L : constant Postponed_Link
            := Postponed_Link_Vectors.Element (Position);
          S : constant Natural := L.Id.Index ('#');
+         E : AMF.Elements.Element_Access;
 
       begin
          if S = 0 then
@@ -428,13 +431,19 @@ package body AMF.Internals.XMI_Handlers is
          else
             --  Cross link.
 
-            Establish_Link
-             (Self,
-              L.Attribute,
-              L.Element,
+            E := 
               Documents.Element
                (L.Id.Slice (1, S - 1)).Element
-                 (L.Id.Slice (S + 1, L.Id.Length)));
+                 (L.Id.Slice (S + 1, L.Id.Length));
+
+            if E /= null then
+               Establish_Link (Self, L.Attribute, L.Element, E);
+
+            else
+               Ada.Wide_Wide_Text_IO.Put_Line
+                (Ada.Wide_Wide_Text_IO.Standard_Error,
+                 "Element '" & L.Id.To_Wide_Wide_String & "' not found");
+            end if;
          end if;
       end Establish_Link;
 
