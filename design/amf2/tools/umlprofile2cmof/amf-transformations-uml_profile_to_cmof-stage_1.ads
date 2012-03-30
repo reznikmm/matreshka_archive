@@ -42,11 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
+with AMF.CMOF.Enumerations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Packages;
 with AMF.MOF.Tags;
+with AMF.UML.Enumerations;
 with AMF.UML.Extensions;
 with AMF.UML.Extension_Ends;
+with AMF.UML.Primitive_Types;
 with AMF.UML.Profiles;
 with AMF.UML.Properties;
 with AMF.UML.Stereotypes;
@@ -63,9 +66,20 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
          and AMF.Visitors.UML_Visitors.UML_Visitor with
    record
       The_Association : AMF.CMOF.Associations.CMOF_Association_Access;
+      The_Enumeration : AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
       The_Class       : AMF.CMOF.Classes.CMOF_Class_Access;
       The_Package     : AMF.CMOF.Packages.CMOF_Package_Access;
    end record;
+
+   overriding procedure Enter_Enumeration
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Enumeration
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Extension
     (Self    : in out Transformer;
@@ -80,6 +94,11 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
    overriding procedure Enter_Extension_End
     (Self    : in out Transformer;
      Element : not null AMF.UML.Extension_Ends.UML_Extension_End_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Primitive_Type
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Primitive_Types.UML_Primitive_Type_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Profile

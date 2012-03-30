@@ -46,7 +46,10 @@ private with Ada.Containers.Hashed_Maps;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements;
+with AMF.CMOF.Enumerations;
+with AMF.CMOF.Enumeration_Literals;
 with AMF.CMOF.Packages;
+with AMF.CMOF.Primitive_Types;
 with AMF.CMOF.Properties;
 with AMF.CMOF.Tags;
 with AMF.UML.Elements;
@@ -85,12 +88,33 @@ package AMF.Transformations.UML_Profile_To_CMOF.Contexts is
    --  Creates element of CMOF::Class and associate it with specified UML
    --  element.
 
+   function Create_CMOF_Enumeration
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
+   --  Creates element of CMOF::Enumeration and associate it with specified UML
+   --  element.
+
+   function Create_CMOF_Enumeration_Literal
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+   --  Creates element of CMOF::Enumeration_Literal and associate it with
+   --  specified UML element.
+
    function Create_CMOF_Package
     (Self    : in out Transformation_Context;
      Element : not null access AMF.UML.Elements.UML_Element'Class)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
    --  Creates element of CMOF::Package and associate it with specified UML
    --  element.
+
+   function Create_CMOF_Primitive_Type
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
+   --  Creates element of CMOF::PrimitiveType and associate it with specified
+   --  UML element.
 
    function Create_CMOF_Property
     (Self    : in out Transformation_Context;
@@ -117,18 +141,24 @@ private
            AMF.CMOF.Elements."=");
 
    type Transformation_Context is tagged limited record
-      Destination                : AMF.URI_Stores.URI_Store_Access;
+      Destination                        : AMF.URI_Stores.URI_Store_Access;
 
-      Element_Map                : UML_Element_To_CMOF_Element_Maps.Map;
+      Element_Map                        :
+        UML_Element_To_CMOF_Element_Maps.Map;
 
-      CMOF_Association_Metaclass : AMF.CMOF.Classes.CMOF_Class_Access;
-      CMOF_Class_Metaclass       : AMF.CMOF.Classes.CMOF_Class_Access;
-      CMOF_Package_Metaclass     : AMF.CMOF.Classes.CMOF_Class_Access;
-      CMOF_Property_Metaclass    : AMF.CMOF.Classes.CMOF_Class_Access;
-      CMOF_Tag_Metaclass         : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Association_Metaclass         : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Class_Metaclass               : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Enumeration_Metaclass         : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Enumeration_Literal_Metaclass : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Package_Metaclass             : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Primitive_Type_Metaclass      : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Property_Metaclass            : AMF.CMOF.Classes.CMOF_Class_Access;
+      CMOF_Tag_Metaclass                 : AMF.CMOF.Classes.CMOF_Class_Access;
 
-      UML_Package                : AMF.CMOF.Packages.CMOF_Package_Access;
-      Primitive_Types_Package    : AMF.CMOF.Packages.CMOF_Package_Access;
+      UML_Package                        :
+        AMF.CMOF.Packages.CMOF_Package_Access;
+      Primitive_Types_Package            :
+        AMF.CMOF.Packages.CMOF_Package_Access;
    end record;
 
 end AMF.Transformations.UML_Profile_To_CMOF.Contexts;

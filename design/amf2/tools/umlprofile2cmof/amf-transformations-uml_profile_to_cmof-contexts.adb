@@ -53,23 +53,30 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
    procedure Lookup_CMOF_Metaclasses (Self : in out Transformation_Context);
    --  Lookup for CMOF metaclasses to be used to create elements.
 
-   CMOF_URI                     : constant League.Strings.Universal_String
+   CMOF_URI                       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/MOF/2.0/cmof.xml");
-   CMOF_Association_Class_Name  : constant League.Strings.Universal_String
+   CMOF_Association_Class_Name    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Association");
-   CMOF_Class_Class_Name        : constant League.Strings.Universal_String
+   CMOF_Class_Class_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Class");
-   CMOF_Package_Class_Name      : constant League.Strings.Universal_String
+   CMOF_Enumeration_Class_Name    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Enumeration");
+   CMOF_Enumeration_Literal_Class_Name :
+     constant League.Strings.Universal_String
+       := League.Strings.To_Universal_String ("EnumerationLiteral");
+   CMOF_Package_Class_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Package");
-   CMOF_Property_Class_Name     : constant League.Strings.Universal_String
+   CMOF_Primitive_Type_Class_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("PrimitiveType");
+   CMOF_Property_Class_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Property");
-   CMOF_Tag_Class_Name          : constant League.Strings.Universal_String
+   CMOF_Tag_Class_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Tag");
-   Internal_UML_URI             : constant League.Strings.Universal_String
+   Internal_UML_URI               : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/UML.cmof");
-   Internal_Primitive_Types_URI : constant League.Strings.Universal_String
+   Internal_Primitive_Types_URI   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof");
 
@@ -122,6 +129,58 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
       return The_Class;
    end Create_CMOF_Class;
 
+   -----------------------------
+   -- Create_CMOF_Enumeration --
+   -----------------------------
+
+   function Create_CMOF_Enumeration
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+   is
+      The_Enumeration :
+        constant not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+          := AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+              (Self.Destination.Create (Self.CMOF_Enumeration_Metaclass));
+
+   begin
+      The_Enumeration.Set_Visibility ((False, AMF.CMOF.Public_Visibility));
+      --  CMOF does not support visibilities.
+
+      Self.Element_Map.Insert
+       (AMF.UML.Elements.UML_Element_Access (Element),
+        AMF.CMOF.Elements.CMOF_Element_Access (The_Enumeration));
+
+      return The_Enumeration;
+   end Create_CMOF_Enumeration;
+
+   -------------------------------------
+   -- Create_CMOF_Enumeration_Literal --
+   -------------------------------------
+
+   function Create_CMOF_Enumeration_Literal
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+   is
+      The_Enumeration_Literal : constant
+        not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+          := AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+              (Self.Destination.Create
+                (Self.CMOF_Enumeration_Literal_Metaclass));
+
+   begin
+      The_Enumeration_Literal.Set_Visibility
+       ((False, AMF.CMOF.Public_Visibility));
+      --  CMOF does not support visibilities.
+
+      Self.Element_Map.Insert
+       (AMF.UML.Elements.UML_Element_Access (Element),
+        AMF.CMOF.Elements.CMOF_Element_Access (The_Enumeration_Literal));
+
+      return The_Enumeration_Literal;
+   end Create_CMOF_Enumeration_Literal;
+
    -------------------------
    -- Create_CMOF_Package --
    -------------------------
@@ -145,6 +204,31 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
 
       return The_Package;
    end Create_CMOF_Package;
+
+   --------------------------------
+   -- Create_CMOF_Primitive_Type --
+   --------------------------------
+
+   function Create_CMOF_Primitive_Type
+    (Self    : in out Transformation_Context;
+     Element : not null access AMF.UML.Elements.UML_Element'Class)
+       return not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+   is
+      The_Primitive_Type : constant
+        not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+          := AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+              (Self.Destination.Create (Self.CMOF_Primitive_Type_Metaclass));
+
+   begin
+      The_Primitive_Type.Set_Visibility ((False, AMF.CMOF.Public_Visibility));
+      --  CMOF does not support visibilities.
+
+      Self.Element_Map.Insert
+       (AMF.UML.Elements.UML_Element_Access (Element),
+        AMF.CMOF.Elements.CMOF_Element_Access (The_Primitive_Type));
+
+      return The_Primitive_Type;
+   end Create_CMOF_Primitive_Type;
 
    --------------------------
    -- Create_CMOF_Property --
@@ -285,8 +369,19 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Contexts is
                   elsif Class.Get_Name = CMOF_Class_Class_Name then
                      Self.CMOF_Class_Metaclass := Class;
 
+                  elsif Class.Get_Name = CMOF_Enumeration_Class_Name then
+                     Self.CMOF_Enumeration_Metaclass := Class;
+
+                  elsif Class.Get_Name
+                          = CMOF_Enumeration_Literal_Class_Name
+                  then
+                     Self.CMOF_Enumeration_Literal_Metaclass := Class;
+
                   elsif Class.Get_Name = CMOF_Package_Class_Name then
                      Self.CMOF_Package_Metaclass := Class;
+
+                  elsif Class.Get_Name = CMOF_Primitive_Type_Class_Name then
+                     Self.CMOF_Primitive_Type_Metaclass := Class;
 
                   elsif Class.Get_Name = CMOF_Property_Class_Name then
                      Self.CMOF_Property_Metaclass := Class;

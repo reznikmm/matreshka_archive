@@ -42,12 +42,36 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.CMOF.Primitive_Types;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Tags;
 
 package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
 
    use type AMF.UML.UML_Aggregation_Kind;
+
+   -----------------------
+   -- Enter_Enumeration --
+   -----------------------
+
+   overriding procedure Enter_Enumeration
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      Collection :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   begin
+      --  Create Enumeration and set its attributes.
+
+      Self.The_Enumeration := Self.Context.Create_CMOF_Enumeration (Element);
+      Self.The_Enumeration.Set_Name (Element.Get_Name);
+      Collection := Self.The_Package.Get_Packaged_Element;
+      Collection.Add (Self.The_Enumeration);
+   end Enter_Enumeration;
 
    ---------------------
    -- Enter_Extension --
@@ -98,6 +122,30 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       Collection := Self.The_Association.Get_Owned_End;
       Collection.Add (The_Property);
    end Enter_Extension_End;
+
+   --------------------------
+   -- Enter_Primitive_Type --
+   --------------------------
+
+   overriding procedure Enter_Primitive_Type
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Primitive_Types.UML_Primitive_Type_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      The_Primitive_Type : AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
+      Collection         :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   begin
+      --  Create instance of CMOF::PrimitiveType and set its attributes.
+
+      The_Primitive_Type := Self.Context.Create_CMOF_Primitive_Type (Element);
+      The_Primitive_Type.Set_Name (Element.Get_Name);
+      Collection := Self.The_Package.Get_Packaged_Element;
+      Collection.Add (The_Primitive_Type);
+   end Enter_Primitive_Type;
 
    -------------------
    -- Enter_Profile --
@@ -191,6 +239,22 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       The_Tag.Set_Name (Element.Get_Name);
       The_Tag.Set_Value (Element.Get_Value);
    end Enter_Tag;
+
+   -----------------------
+   -- Leave_Enumeration --
+   -----------------------
+
+   overriding procedure Leave_Enumeration
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Element);
+      pragma Unreferenced (Control);
+
+   begin
+      Self.The_Enumeration := null;
+   end Leave_Enumeration;
 
    ---------------------
    -- Leave_Extension --
