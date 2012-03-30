@@ -48,9 +48,9 @@ function Convert_Boolean_To_String
  (Value : League.Holders.Holder) return League.Strings.Universal_String is
 begin
    if League.Holders.Booleans.Element (Value) then
-      return League.Strings.To_Universal_String ("false");
+      return League.Strings.To_Universal_String ("true");
 
    else
-      return League.Strings.To_Universal_String ("true");
+      return League.Strings.To_Universal_String ("false");
    end if;
 end Convert_Boolean_To_String;
