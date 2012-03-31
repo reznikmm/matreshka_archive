@@ -47,6 +47,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Packages;
 with AMF.MOF.Tags;
 with AMF.UML.Enumerations;
+with AMF.UML.Enumeration_Literals;
 with AMF.UML.Extensions;
 with AMF.UML.Extension_Ends;
 with AMF.UML.Primitive_Types;
@@ -79,6 +80,11 @@ private package AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
    overriding procedure Leave_Enumeration
     (Self    : in out Transformer;
      Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Enumeration_Literal
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Extension

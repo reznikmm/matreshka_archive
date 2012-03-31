@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Enumeration_Literals.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Primitive_Types;
 with AMF.CMOF.Properties.Collections;
@@ -72,6 +73,32 @@ package body AMF.Transformations.UML_Profile_To_CMOF.Stage_1 is
       Collection := Self.The_Package.Get_Packaged_Element;
       Collection.Add (Self.The_Enumeration);
    end Enter_Enumeration;
+
+   -------------------------------
+   -- Enter_Enumeration_Literal --
+   -------------------------------
+
+   overriding procedure Enter_Enumeration_Literal
+    (Self    : in out Transformer;
+     Element : not null AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      The_Enumeration_Literal :
+        AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+      Collection              :
+        AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal;
+
+   begin
+      --  Create EnumerationLiteral and set its attributes.
+
+      The_Enumeration_Literal :=
+        Self.Context.Create_CMOF_Enumeration_Literal (Element);
+      The_Enumeration_Literal.Set_Name (Element.Get_Name);
+      Collection := Self.The_Enumeration.Get_Owned_Literal;
+      Collection.Add (The_Enumeration_Literal);
+   end Enter_Enumeration_Literal;
 
    ---------------------
    -- Enter_Extension --
