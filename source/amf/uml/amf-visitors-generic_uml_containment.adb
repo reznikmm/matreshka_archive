@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.UML.Comments.Collections;
+with AMF.UML.Enumeration_Literals.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Properties.Collections;
 
@@ -930,9 +931,37 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
-     Control : in out Traverse_Control) is
+     Control : in out Traverse_Control)
+   is
+      Owned_Literals : constant
+        AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal
+          := Element.Get_Owned_Literal;
+
    begin
-      null;
+      for J in 1 .. Owned_Literals.Length loop
+         Self.Visit_Element (Visitor, Owned_Literals.Element (J), Control);
+
+         case Control is
+            when Continue =>
+               null;
+
+            when Abandon_Children =>
+               Control := Continue;
+
+            when Abandon_Sibling =>
+               Control := Continue;
+
+               exit;
+
+            when Terminate_Immediately =>
+               exit;
+         end case;
+      end loop;
+
+      Self.Visit_Data_Type
+       (Visitor,
+        AMF.UML.Data_Types.UML_Data_Type_Access (Element),
+        Control);
    end Visit_Enumeration;
 
    -------------------------------
@@ -1629,25 +1658,10 @@ package body AMF.Visitors.Generic_UML_Containment is
           := Element.Get_Packaged_Element;
 
    begin
-      for J in 1 .. Packaged_Elements.Length loop
-         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
-
-         case Control is
-            when Continue =>
-               null;
-
-            when Abandon_Children =>
-               Control := Continue;
-
-            when Abandon_Sibling =>
-               Control := Continue;
-
-               exit;
-
-            when Terminate_Immediately =>
-               exit;
-         end case;
-      end loop;
+      Self.Visit_Package
+       (Visitor,
+        AMF.UML.Packages.UML_Package_Access (Element),
+        Control);
    end Visit_Model;
 
    ----------------
