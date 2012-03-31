@@ -1651,12 +1651,7 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Models.UML_Model_Access;
-     Control : in out Traverse_Control)
-   is
-      Packaged_Elements : constant
-        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-          := Element.Get_Packaged_Element;
-
+     Control : in out Traverse_Control) is
    begin
       Self.Visit_Package
        (Visitor,
