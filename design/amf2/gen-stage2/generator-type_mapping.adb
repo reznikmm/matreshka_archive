@@ -49,6 +49,8 @@ with XML.SAX.Simple_Readers;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Enumerations;
 with AMF.CMOF.Primitive_Types;
+with AMF.Extents;
+with AMF.URI_Extents;
 
 with Generator.Names;
 with Generator.Type_Mapping.Handlers;
@@ -161,6 +163,27 @@ package body Generator.Type_Mapping is
       elsif The_Type.all
               in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
       then
+         if not Mapping.Contains
+                 (AMF.CMOF.Elements.CMOF_Element_Access (The_Type))
+         then
+            declare
+               Element : constant AMF.Elements.Element_Access
+                 := AMF.Elements.Element_Access (The_Type);
+               Extent  : constant AMF.Extents.Extent_Access
+                 := Element.Extent;
+
+            begin
+               Ada.Wide_Wide_Text_IO.Put_Line
+                (Ada.Wide_Wide_Text_IO.Standard_Error,
+                 "error: there is no mapping for '"
+                   & AMF.URI_Extents.URI_Extent'Class
+                      (Extent.all).URI (Element).To_Wide_Wide_String
+                   & ''');
+
+               raise Program_Error;
+            end;
+         end if;
+
          return
            Mapping.Element
             (AMF.CMOF.Elements.CMOF_Element_Access
