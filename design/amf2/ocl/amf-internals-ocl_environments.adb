@@ -91,4 +91,16 @@ package body AMF.Internals.OCL_Environments is
       null;
    end Add_Element;
 
+   ----------------------
+   -- Lookup_Path_Name --
+   ----------------------
+
+   function Lookup_Path_Name
+    (Self  : in out OCL_Environment;
+     Names : League.String_Vectors.Universal_String_Vector)
+       return AMF.Elements.Element_Access is
+   begin
+      return null;
+   end Lookup_Path_Name;
+
 end AMF.Internals.OCL_Environments;

@@ -51,6 +51,8 @@
 --  denoted by the existence of a parent environment. Each environment keeps a
 --  list of named elements, that have a name a reference to a ModelElement."
 ------------------------------------------------------------------------------
+with League.String_Vectors;
+
 with AMF.Elements;
 
 package AMF.Internals.OCL_Environments is
@@ -77,9 +79,18 @@ package AMF.Internals.OCL_Environments is
      Implicit : Boolean);
    --  [OCL 2.3.1] 9.5.1 Environment
    --
-   --  "[5] Add a new named element to the environment. Note that this
+   --  "[143][5] Add a new named element to the environment. Note that this
    --  operation is defined as a query operation so that it can be used in OCL
    --  constraints."
+
+   function Lookup_Path_Name
+    (Self  : in out OCL_Environment;
+     Names : League.String_Vectors.Universal_String_Vector)
+       return AMF.Elements.Element_Access;
+   --  [OCL 2.3.1] 9.5.1 Environment
+   --
+   --  "[142][4] Find a named element in the current environment or recursively
+   --  in its parent environment, based on a path name."
 
 private
 

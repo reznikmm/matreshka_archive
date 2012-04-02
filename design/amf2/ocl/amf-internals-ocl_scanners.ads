@@ -47,7 +47,11 @@ package AMF.Internals.OCL_Scanners is
    type OCL_Token is
     (T_Error,
 
-     T_String_Char,
+     T_String_Char,    --  #x27 StringChar* #x27
+     T_Simple_Name_A,  --  NameStartChar NameChar*
+     T_Simple_Name_B,  --  '_' #x27 StringChar* #x27
+
+     T_Double_Colon,   --  '::'
 
      --  Keywords.
 
