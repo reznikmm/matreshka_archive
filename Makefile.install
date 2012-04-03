@@ -1,6 +1,6 @@
 include Makefile.config
 DESTDIR ?=
-INSTALL_PROJECT_DIR ?= $(DESTDIR)${PREFIX}/lib/gnat
+INSTALL_PROJECT_DIR ?= $(DESTDIR)$(GPRDIR)
 INSTALL_INCLUDE_DIR ?= $(DESTDIR)$(PREFIX)/include/matreshka
 INSTALL_SHARE_DIR   ?= $(DESTDIR)$(PREFIX)/share/matreshka
 INSTALL_EXEC_DIR    ?= $(DESTDIR)$(BINDIR)
@@ -67,8 +67,8 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat league-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/league/{}" > .objs/league-devel.files
 	cat league-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/league-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/league.gpr" >> .objs/league-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/league.gpr" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT)" >> .objs/league-devel.files
 
 fastcgi:
@@ -89,7 +89,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat fastcgi-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/fastcgi/{}" > .objs/fastcgi-devel.files
 	cat fastcgi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/fastcgi-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/fastcgi.gpr" >> .objs/fastcgi-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/fastcgi.gpr" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)" >> .objs/fastcgi-devel.files
 
 sql:
@@ -110,7 +110,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/{}" > .objs/sql-devel.files
 	cat sql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql.gpr" >> .objs/sql-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql.gpr" >> .objs/sql-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql-devel.files
 
 oci:
@@ -131,7 +131,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql_oci-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/oci/{}" > .objs/sql_oci-devel.files
 	cat sql_oci-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_oci-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_oci.gpr" >> .objs/sql_oci-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_oci.gpr" >> .objs/sql_oci-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_oci-devel.files
 
 postgresql:
@@ -152,7 +152,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql_postgresql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/postgresql/{}" > .objs/sql_postgresql-devel.files
 	cat sql_postgresql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_postgresql-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_postgresql.gpr" >> .objs/sql_postgresql-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_postgresql.gpr" >> .objs/sql_postgresql-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_postgresql-devel.files
 
 sqlite3:
@@ -173,7 +173,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql_sqlite3-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/sqlite3/{}" > .objs/sql_sqlite3-devel.files
 	cat sql_sqlite3-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_sqlite3-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_sqlite3.gpr" >> .objs/sql_sqlite3-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_sqlite3.gpr" >> .objs/sql_sqlite3-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_sqlite3-devel.files
 
 firebird:
@@ -194,7 +194,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql_firebird-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/firebird/{}" > .objs/sql_firebird-devel.files
 	cat sql_firebird-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_firebird-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_firebird.gpr" >> .objs/sql_firebird-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_firebird.gpr" >> .objs/sql_firebird-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_firebird-devel.files
 
 xml:
@@ -215,7 +215,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat xml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/xml/{}" > .objs/xml-devel.files
 	cat xml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/xml-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/xml.gpr" >> .objs/xml-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/xml.gpr" >> .objs/xml-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-xml$(RTL_VERSION).$(LIBEXT)" >> .objs/xml-devel.files
 
 amf:
@@ -244,7 +244,7 @@ endif
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/mapping.xml" >> .objs/amf-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/CMOF24.cmof" >> .objs/amf-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/mapping.xml" >> .objs/amf-lib.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf.gpr" >> .objs/amf-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/amf.gpr" >> .objs/amf-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf$(RTL_VERSION).$(LIBEXT)" >> .objs/amf-devel.files
 
 uml:
@@ -282,7 +282,7 @@ endif
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL2.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL3.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/UML.xmi" >> .objs/amf_uml-lib.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_uml.gpr" >> .objs/amf_uml-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/amf_uml.gpr" >> .objs/amf_uml-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_uml-devel.files
 
 ocl:
@@ -305,7 +305,7 @@ endif
 	cat amf_ocl-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/ocl/{}" > .objs/amf_ocl-devel.files
 	cat amf_ocl-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_ocl-devel.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/OCL23.cmof" >> .objs/amf_ocl-lib.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_ocl.gpr" >> .objs/amf_ocl-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/amf_ocl.gpr" >> .objs/amf_ocl-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_ocl-devel.files
 
 mofext:
@@ -328,7 +328,7 @@ endif
 	cat amf_mofext-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/mofext/{}" > .objs/amf_mofext-devel.files
 	cat amf_mofext-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_mofext-devel.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/MOFEXT241.cmof" >> .objs/amf_mofext-lib.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_mofext.gpr" >> .objs/amf_mofext-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/amf_mofext.gpr" >> .objs/amf_mofext-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_mofext-devel.files
 
 cleanup:
