@@ -52,7 +52,7 @@ library project AMF_OCL is
 
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
-   for Source_Dirs use ("../../include/matreshka/amf/ocl");
+   for Source_Dirs use (Matreshka_Config.Include_Dir & "/matreshka/amf/ocl");
    for Library_Dir use Matreshka_Config.Library_Dir;
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
