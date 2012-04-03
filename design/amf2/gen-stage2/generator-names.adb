@@ -459,6 +459,14 @@ package body Generator.Names is
          end if;
       end loop;
 
+      --  Remove trailing underscores.
+
+      loop
+         exit when Aux (Last) /= '_';
+
+         Last := Last - 1;
+      end loop;
+
       return Aux (Aux'First .. Last);
    end To_Ada_Identifier;
 
