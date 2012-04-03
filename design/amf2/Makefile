@@ -2,7 +2,7 @@
 all:
 	make -C ../..
 	gprbuild -p -j0 -Ptools/umlprofile2cmof/umlprofile2cmof.gpr
-	gprbuild -p -j0 -Ptools/umlmof2cmof/umlmof2cmof.gpr
+#	gprbuild -p -j0 -Ptools/umlmof2cmof/umlmof2cmof.gpr
 	gprbuild -p -Pxmi.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
@@ -28,12 +28,6 @@ gen-all: gen-cmof gen-uml gen-mofext gen-ocl
 gen-cmof: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2010 2011 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' > .new/sources.ada
-	gnatchop -gnat12 -w .new/sources.ada .new
-	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
-	rm -r .new
-	rm -rf .new
-	mkdir .new
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2010 2011 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' > .new/sources.ada
 	gnatchop -gnat05 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mof/cmof/{}
@@ -48,17 +42,12 @@ gen-cmof: gens
 
 gen-uml-stubs: gens
 	test -d uml/generated/.new || mkdir uml/generated/.new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2011 'http://www.omg.org/spec/UML/20100901/UML.cmof' --stubs > uml/generated/.new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 'http://www.omg.org/spec/UML/20100901/UML.cmof' --stubs > uml/generated/.new/sources.ada
 	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
 	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/{}
 	rm -r uml/generated/.new
 
 gen-uml: gens
-	rm -rf .new
-	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 'http://www.omg.org/spec/UML/20100901/UML.cmof' 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL2.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL3.cmof' > .new/sources.ada
-	gnatchop -gnat12 -w .new/sources.ada .new
-	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/uml/{}
 	rm -rf .new
 	mkdir .new
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2012 'http://www.omg.org/spec/UML/20100901/UML.cmof' 'http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL2.cmof' 'http://www.omg.org/spec/UML/20100901/StandardProfileL3.cmof' > .new/sources.ada
@@ -69,11 +58,6 @@ gen-uml: gens
 gen-ocl: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' > .new/sources.ada
-	gnatchop -gnat12 -w .new/sources.ada .new
-	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
-	rm -rf .new
-	mkdir .new
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
@@ -82,18 +66,12 @@ gen-ocl: gens
 gen-ocl-stubs: gens
 	rm -rf .new
 	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' --stubs > .new/sources.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/OCL/20090501/OCL.cmof' --stubs > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/ocl/{}
 	rm -rf .new
 
 gen-mofext: gens
-	rm -rf .new
-	mkdir .new
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' > .new/sources.ada
-#	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' --stubs >> .new/sources.ada
-	gnatchop -gnat12 -w .new/sources.ada .new
-	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mofext/{}
 	rm -rf .new
 	mkdir .new
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' > .new/sources.ada
@@ -106,9 +84,7 @@ clean:
 
 
 gen-iats: gens
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' > iats/source.ada
-	gnatchop -gnat12 -w iats/source.ada iats
-	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api 2011 2012 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' --stubs > iats/source.ada
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2012 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' --stubs > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2011 2011 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
