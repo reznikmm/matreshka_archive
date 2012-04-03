@@ -355,29 +355,7 @@ package body Generator.Attributes is
                              Both)
                          & ").String_Value;");
 
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     Unit.Context.Add
-                      ("AMF.Internals.Tables."
-                         & Module_Info.Ada_Name
-                         & "_Element_Table");
-                     Unit.Add
-                      ("      return AMF.Internals.Tables."
-                         & Module_Info.Ada_Name
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Module_Info.Attribute_Member.Element
-                                (Attribute)),
-                             Both)
-                         & ").String_Collection_Value;");
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
+                  when Set | Ordered_Set | Bag | Sequence =>
                      Unit.Context.Add
                       ("AMF.Internals.Tables."
                          & Module_Info.Ada_Name

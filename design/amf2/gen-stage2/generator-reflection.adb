@@ -333,19 +333,7 @@ package body Generator.Reflection is
                        League.Strings.To_Universal_String
                         ("AMF.Holders.To_Holder");
 
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     Unit.Context.Add (+"AMF.String_Collections.Internals");
-                     Holder_Name :=
-                       League.Strings.To_Universal_String
-                        ("AMF.String_Collections.Internals.To_Holder");
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
+                  when Set | Ordered_Set | Bag | Sequence =>
                      Unit.Context.Add (+"AMF.String_Collections.Internals");
                      Holder_Name :=
                        League.Strings.To_Universal_String
