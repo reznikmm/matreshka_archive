@@ -78,4 +78,8 @@ abstract project Matreshka_Config is
          Library_Dir := "@BINDIR@";
    end case;
 
+   --  Source code.
+
+   Include_Dir := "@PREFIX@/include";
+
 end Matreshka_Config;
