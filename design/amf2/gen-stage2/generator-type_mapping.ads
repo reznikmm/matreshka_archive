@@ -54,6 +54,13 @@ package Generator.Type_Mapping is
    procedure Load_Mapping;
    --  Loads mapping data.
 
+   function Public_Ada_Type_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Constructs name of the type which is used to represent values of the
+   --  specified type.
+
    function Public_Ada_Type_Qualified_Name
     (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
      Representation : Representation_Kinds)

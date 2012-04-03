@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,15 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../../../gnat/matreshka_amf.gpr";
+--  Generates public API of the model.
+------------------------------------------------------------------------------
 
-project Gens is
+package Generator.API is
 
-   for Main use ("gen2.adb");
-   for Object_Dir use ".obj";
+   procedure Generate_Public_API;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
-   end Compiler;
+   procedure Generate_Stubs;
 
-end Gens;
+end Generator.API;

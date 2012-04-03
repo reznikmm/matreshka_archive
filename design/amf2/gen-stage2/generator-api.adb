@@ -41,41 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Generates public API of the model.
-------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
-
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Comments.Collections;
-with AMF.CMOF.Elements;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Facility;
 with League.Characters;
 with League.String_Vectors;
-with League.Strings;
 
-with Generator.Analyzer;
-with Generator.Arguments;
 with Generator.Attribute_Mapping;
-with Generator.Loader;
 with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Units;
 
-procedure Gen_API is
+package body Generator.API is
 
-   use Ada.Wide_Wide_Text_IO;
    use type AMF.CMOF.CMOF_Parameter_Direction_Kind;
    use type AMF.CMOF.Types.CMOF_Type_Access;
    use type AMF.Optional_String;
-   use type League.Strings.Universal_String;
-
-   function "+"
-    (Item : Wide_Wide_String) return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
 
    String_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
@@ -138,6 +122,9 @@ procedure Gen_API is
      Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
+
+   procedure Generate_Proxy_Specification
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
 
    procedure Generate_Proxy_Implementation
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
@@ -1842,6 +1829,49 @@ procedure Gen_API is
       Unit.Put;
    end Generate_Proxy_Specification;
 
+   -------------------------
+   -- Generate_Public_API --
+   -------------------------
+
+   procedure Generate_Public_API is
+      Position  : Generator.CMOF_Class_Sets.Cursor;
+      The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
+
+   begin
+      Position := Generator.Module_Info.Classes.First;
+
+      while CMOF_Class_Sets.Has_Element (Position) loop
+         The_Class := Generator.CMOF_Class_Sets.Element (Position);
+
+         Generate_Class (The_Class);
+         Generate_Collections (The_Class);
+         Generate_Hash (The_Class);
+
+         CMOF_Class_Sets.Next (Position);
+      end loop;
+   end Generate_Public_API;
+
+   --------------------
+   -- Generate_Stubs --
+   --------------------
+
+   procedure Generate_Stubs is
+      Position  : Generator.CMOF_Class_Sets.Cursor;
+      The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
+
+   begin
+      Position := Generator.Module_Info.Classes.First;
+
+      while Generator.CMOF_Class_Sets.Has_Element (Position) loop
+         The_Class := Generator.CMOF_Class_Sets.Element (Position);
+
+         Generate_Proxy_Specification (The_Class);
+         Generate_Proxy_Implementation (The_Class);
+
+         Generator.CMOF_Class_Sets.Next (Position);
+      end loop;
+   end Generate_Stubs;
+
    ----------------------------
    -- Is_Ada_Distinguishable --
    ----------------------------
@@ -1929,51 +1959,4 @@ procedure Gen_API is
       return Result;
    end Split_Text;
 
-   Position  : Generator.CMOF_Class_Sets.Cursor;
-   The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
-
-begin
-   --  Parse command line arguments.
-
-   Generator.Arguments.Parse_Command_Line_Arguments;
-
-   --  Initialize facility.
-
-   AMF.Facility.Initialize;
-
-   --  Load metamodel.
-
-   Put_Line (Standard_Error, "Loading metamodels...");
-   Generator.Loader.Load_Metamodels;
-
-   --  Load type mapping.
-
-   Put_Line (Standard_Error, "Loading type mapping...");
-   Generator.Type_Mapping.Load_Mapping;
-
-   --  Analyze model.
-
-   Put_Line (Standard_Error, "Analyzing...");
-   Generator.Analyzer.Analyze_Module;
-
-   --  Generate code.
-
-   Position := Generator.Module_Info.Classes.First;
-
-   while Generator.CMOF_Class_Sets.Has_Element (Position) loop
-      The_Class := Generator.CMOF_Class_Sets.Element (Position);
-
-      if Generator.Arguments.Generate_Public_API then
-         Generate_Class (The_Class);
-         Generate_Collections (The_Class);
-         Generate_Hash (The_Class);
-      end if;
-
-      if Generator.Arguments.Generate_API_Stubs then
-         Generate_Proxy_Specification (The_Class);
-         Generate_Proxy_Implementation (The_Class);
-      end if;
-
-      Generator.CMOF_Class_Sets.Next (Position);
-   end loop;
-end Gen_API;
+end Generator.API;

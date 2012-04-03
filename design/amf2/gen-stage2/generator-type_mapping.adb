@@ -61,13 +61,6 @@ package body Generator.Type_Mapping is
    use Generator.Names;
    use type League.Strings.Universal_String;
 
-   function Public_Ada_Type_Name
-    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
-     Representation : Representation_Kinds)
-       return League.Strings.Universal_String;
-   --  Constructs name of the type which is used to represent values of the
-   --  specified type.
-
    ----------------------------------
    -- Ada_Enumeration_Literal_Name --
    ----------------------------------

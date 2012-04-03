@@ -51,6 +51,7 @@ with AMF.URI_Stores;
 with XMI.Reader;
 
 with Generator.Analyzer;
+with Generator.API;
 with Generator.Arguments;
 with Generator.Attributes;
 with Generator.Constructors;
@@ -88,6 +89,16 @@ begin
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Module;
+
+   if Generator.Arguments.Generate_Public_API then
+      Put_Line (Standard_Error, "Generating public API...");
+      Generator.API.Generate_Public_API;
+   end if;
+
+   if Generator.Arguments.Generate_API_Stubs then
+      Put_Line (Standard_Error, "Generating API stubs...");
+      Generator.API.Generate_Stubs;
+   end if;
 
    if Generator.Arguments.Generate_Attributes then
       Put_Line (Standard_Error, "Generating attributes...");
