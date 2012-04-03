@@ -480,15 +480,34 @@ package body Generator.Type_Mapping is
               (Representation).Member_Name;
 
       else
-         Put_Line
-          (Standard_Error,
-           "error: memberName is not defined for "
-             & Representation_Kinds'Wide_Wide_Image (Representation)
-             & " of "
-             & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
-                (Element.all).Get_Name.Value.To_Wide_Wide_String);
+         case Representation is
+            when Value =>
+               return
+                 League.Strings.To_Universal_String
+                  (To_Ada_Identifier
+                    (AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                      (Element.all).Get_Name.Value))
+                   & "_Value";
 
-         raise Program_Error;
+            when Holder =>
+               return
+                 League.Strings.To_Universal_String
+                  (To_Ada_Identifier
+                    (AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                      (Element.all).Get_Name.Value))
+                   & "_Holder";
+
+            when Set | Ordered_Set | Bag | Sequence =>
+               Put_Line
+                (Standard_Error,
+                 "error: memberName is not defined for "
+                   & Representation_Kinds'Wide_Wide_Image (Representation)
+                   & " of "
+                   & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                      (Element.all).Get_Name.Value.To_Wide_Wide_String);
+
+               raise Program_Error;
+         end case;
       end if;
    end Member_Name;
 
@@ -518,15 +537,23 @@ package body Generator.Type_Mapping is
               (Representation).Member_Kind_Name;
 
       else
-         Put_Line
-          (Standard_Error,
-           "error: memberKindName is not defined for "
-             & Representation_Kinds'Wide_Wide_Image (Representation)
-             & " of "
-             & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
-                (Element.all).Get_Name.Value.To_Wide_Wide_String);
+         case Representation is
+            when Value =>
+               return
+                 "M_" 
+                   & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                      (Element.all).Get_Name.Value;
+            when Holder | Set | Ordered_Set | Bag | Sequence =>
+               Put_Line
+                (Standard_Error,
+                 "error: memberKindName is not defined for "
+                   & Representation_Kinds'Wide_Wide_Image (Representation)
+                   & " of "
+                   & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                      (Element.all).Get_Name.Value.To_Wide_Wide_String);
 
-         raise Program_Error;
+               raise Program_Error;
+         end case;
       end if;
    end Member_Kind_Name;
 
