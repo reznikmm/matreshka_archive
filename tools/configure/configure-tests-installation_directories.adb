@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,10 +48,12 @@ package body Configure.Tests.Installation_Directories is
    Prefix_Switch : constant String := "--prefix";
    Bindir_Switch : constant String := "--bindir";
    Libdir_Switch : constant String := "--libdir";
+   Gprdir_Switch : constant String := "--gprdir";
 
    Prefix_Name : constant Unbounded_String := +"PREFIX";
    Bindir_Name : constant Unbounded_String := +"BINDIR";
    Libdir_Name : constant Unbounded_String := +"LIBDIR";
+   Gprdir_Name : constant Unbounded_String := +"GPRDIR";
 
    -------------
    -- Execute --
@@ -86,6 +88,10 @@ package body Configure.Tests.Installation_Directories is
        (Libdir_Name,
         +Ada.Directories.Compose
           (+Substitutions.Element (Prefix_Name), "lib"));
+      Substitutions.Insert
+       (Gprdir_Name,
+        +Ada.Directories.Compose
+          (+Substitutions.Element (Libdir_Name), "gnat"));
 
       --  Looking for '--bindir=' and otherwrite default value when found.
 
@@ -105,6 +111,15 @@ package body Configure.Tests.Installation_Directories is
          Remove_Parameter (Arguments, Libdir_Switch);
       end if;
 
+      --  Looking for '--gprdir=' and otherwrite default value when found.
+
+      if Has_Parameter (Arguments, Gprdir_Switch) then
+         Substitutions.Replace
+          (Gprdir_Name,
+           Parameter_Value (Arguments, Gprdir_Switch));
+         Remove_Parameter (Arguments, Gprdir_Switch);
+      end if;
+
       --  Transform paths on Windows to be compatible with sh.
 
       Substitutions.Replace
@@ -116,6 +131,9 @@ package body Configure.Tests.Installation_Directories is
       Substitutions.Replace
        (Libdir_Name,
         Convert_Windows_Path (Substitutions.Element (Libdir_Name)));
+      Substitutions.Replace
+       (Gprdir_Name,
+        Convert_Windows_Path (Substitutions.Element (Gprdir_Name)));
    end Execute;
 
    ----------
@@ -139,6 +157,9 @@ package body Configure.Tests.Installation_Directories is
          Result.Append
           (+"  --libdir=DIR            "
               & "object code libraries [EPREFIX/lib]");
+         Result.Append
+          (+"  --gprdir=DIR            "
+              & "GNAT project files [EPREFIX/lib/gnat]");
       end return;
    end Help;
 
