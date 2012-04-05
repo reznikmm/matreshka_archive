@@ -48,14 +48,26 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
 -->
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+  <!--==============-->
+  <!--  (C)MOF 2.0  -->
+  <!--==============-->
+
+  <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="../metamodels/CMOF24.cmof"/>
+
+  <!--===========-->
   <!--  UML 2.4  -->
+  <!--===========-->
 
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi" uri="UML24/PrimitiveTypes.xmi"/>
   <uri name="http://www.omg.org/spec/UML/20100901/StandardProfileL2.xmi" uri="UML24/StandardProfileL2.xmi"/>
   <uri name="http://www.omg.org/spec/UML/20100901/StandardProfileL3.xmi" uri="UML24/StandardProfileL3.xmi"/>
   <uri name="http://www.omg.org/spec/UML/20100901/UML.xmi" uri="UML24/UML.xmi"/>
 
-  <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="../metamodels/CMOF24.cmof"/>
+  <!--===============================================-->
+  <!--  Eclipse Modeling Framework specific entries  -->
+  <!--===============================================-->
+
+  <uri name="pathmap://uml_libraries/UMLPrimitiveTypes.library.uml" uri="UML24/PrimitiveTypes.xmi"/>
 
   <!--  For internal purposes only  -->
 

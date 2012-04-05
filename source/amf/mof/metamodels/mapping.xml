@@ -58,6 +58,12 @@
   <!--  Map MOF 2.4 namespace URI to supported version  -->
   <uri name="http://www.omg.org/spec/MOF/20100901" uri="http://www.omg.org/spec/MOF/20110701"/>
 
+  <!--===============================================-->
+  <!--  Eclipse Modeling Framework specific entries  -->
+  <!--===============================================-->
+
+  <uri name="http://www.eclipse.org/uml2/3.0.0/UML" uri="http://www.omg.org/spec/UML/20100901"/>
+
   <!--==============================-->
   <!--  MagicDraw specific entries  -->
   <!--==============================-->
