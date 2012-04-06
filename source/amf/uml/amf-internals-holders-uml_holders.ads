@@ -47,6 +47,7 @@
 --  module. Most probably this package can be removed for Ada2020.
 ------------------------------------------------------------------------------
 with AMF.UML.Abstractions;
+with AMF.UML.Accept_Event_Actions;
 with AMF.UML.Actions;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Groups;
@@ -64,12 +65,14 @@ with AMF.UML.Classifiers;
 with AMF.UML.Classes;
 with AMF.UML.Collaboration_Uses;
 with AMF.UML.Collaborations;
+with AMF.UML.Combined_Fragments;
 with AMF.UML.Components;
 with AMF.UML.Connectable_Element_Template_Parameters;
 with AMF.UML.Connectable_Elements;
 with AMF.UML.Connectors;
 with AMF.UML.Constraints;
 with AMF.UML.Data_Types;
+with AMF.UML.Dependencies;
 with AMF.UML.Deployment_Targets;
 with AMF.UML.Deployments;
 with AMF.UML.Duration_Intervals;
@@ -90,7 +93,9 @@ with AMF.UML.Interactions;
 with AMF.UML.Interfaces;
 with AMF.UML.Interruptible_Activity_Regions;
 with AMF.UML.Intervals;
+with AMF.UML.Invocation_Actions;
 with AMF.UML.Lifelines;
+with AMF.UML.Literal_Specifications;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
 with AMF.UML.Models;
@@ -99,6 +104,7 @@ with AMF.UML.Namespaces;
 with AMF.UML.Object_Flows;
 with AMF.UML.Object_Nodes;
 with AMF.UML.Occurrence_Specifications;
+with AMF.UML.Opaque_Actions;
 with AMF.UML.Opaque_Expressions;
 with AMF.UML.Operation_Template_Parameters;
 with AMF.UML.Operations;
@@ -112,8 +118,10 @@ with AMF.UML.Ports;
 with AMF.UML.Profiles;
 with AMF.UML.Properties;
 with AMF.UML.Protocol_State_Machines;
+with AMF.UML.Read_Structural_Feature_Actions;
 with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.Regions;
+with AMF.UML.Send_Object_Actions;
 with AMF.UML.Send_Signal_Actions;
 with AMF.UML.Signals;
 with AMF.UML.State_Machines;
@@ -121,11 +129,13 @@ with AMF.UML.States;
 with AMF.UML.Stereotypes;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
+with AMF.UML.Structured_Classifiers;
 with AMF.UML.Structural_Features;
 with AMF.UML.Template_Bindings;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Templateable_Elements;
+with AMF.UML.Time_Events;
 with AMF.UML.Time_Expressions;
 with AMF.UML.Time_Intervals;
 with AMF.UML.Transitions;
@@ -136,11 +146,16 @@ with AMF.UML.Use_Cases;
 with AMF.UML.Value_Specifications;
 with AMF.UML.Variables;
 with AMF.UML.Vertexs;
+with AMF.UML.Write_Structural_Feature_Actions;
 
 package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Abstractions.UML_Abstraction_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -212,6 +227,10 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Components.UML_Component_Access)
        return League.Holders.Holder;
 
@@ -233,6 +252,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Data_Types.UML_Data_Type_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Dependencies.UML_Dependency_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -316,7 +339,15 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Invocation_Actions.UML_Invocation_Action_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Lifelines.UML_Lifeline_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Literal_Specifications.UML_Literal_Specification_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -349,6 +380,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Opaque_Actions.UML_Opaque_Action_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -404,11 +439,19 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access)
        return League.Holders.Holder;
 
    function To_Holder
     (Item : AMF.UML.Regions.UML_Region_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -440,6 +483,10 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Structural_Features.UML_Structural_Feature_Access)
        return League.Holders.Holder;
 
@@ -461,6 +508,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Time_Intervals.UML_Time_Interval_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Time_Events.UML_Time_Event_Access)
        return League.Holders.Holder;
 
    function To_Holder
@@ -497,6 +548,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Vertexs.UML_Vertex_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Write_Structural_Feature_Actions.UML_Write_Structural_Feature_Action_Access)
        return League.Holders.Holder;
 
 end AMF.Internals.Holders.UML_Holders;

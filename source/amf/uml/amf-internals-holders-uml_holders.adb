@@ -63,6 +63,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Actions.UML_Action_Access)
        return League.Holders.Holder is
    begin
@@ -267,6 +279,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Components.UML_Component_Access)
        return League.Holders.Holder is
    begin
@@ -328,6 +352,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Data_Types.UML_Data_Type_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Dependencies.UML_Dependency_Access)
        return League.Holders.Holder is
    begin
       return
@@ -579,7 +615,31 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Invocation_Actions.UML_Invocation_Action_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Lifelines.UML_Lifeline_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Literal_Specifications.UML_Literal_Specification_Access)
        return League.Holders.Holder is
    begin
       return
@@ -676,6 +736,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Opaque_Actions.UML_Opaque_Action_Access)
        return League.Holders.Holder is
    begin
       return
@@ -843,6 +915,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access)
        return League.Holders.Holder is
    begin
@@ -856,6 +940,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Regions.UML_Region_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access)
        return League.Holders.Holder is
    begin
       return
@@ -951,6 +1047,18 @@ package body AMF.Internals.Holders.UML_Holders is
    ---------------
 
    function To_Holder
+    (Item : AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Item : AMF.UML.Structural_Features.UML_Structural_Feature_Access)
        return League.Holders.Holder is
    begin
@@ -1012,6 +1120,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Time_Intervals.UML_Time_Interval_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Time_Events.UML_Time_Event_Access)
        return League.Holders.Holder is
    begin
       return
@@ -1120,6 +1240,18 @@ package body AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Vertexs.UML_Vertex_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.UML.Write_Structural_Feature_Actions.UML_Write_Structural_Feature_Action_Access)
        return League.Holders.Holder is
    begin
       return
