@@ -23,7 +23,7 @@ gens:
 uml-all:
 	gprbuild -p -Puml/uml.gpr
 
-gen-all: gen-cmof gen-uml gen-mofext gen-ocl
+gen-all: gen-cmof gen-uml gen-ocl gen-mofext gen-utp
 
 gen-cmof: gens
 	rm -rf .new
@@ -77,6 +77,22 @@ gen-mofext: gens
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/spec/MOF/20110701/MOFEXT.cmof' > .new/sources.ada
 	gnatchop -gnat12 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/mofext/{}
+	rm -r .new
+
+gen-utp: gens
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/UTPSA.cmof' > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/utp/{}
+	rm -r .new
+
+gen-utp-stubs: gens
+	rm -rf .new
+	mkdir .new
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 2012 2012 'http://www.omg.org/UTPSA.cmof' --stubs > .new/sources.ada
+	gnatchop -gnat12 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed .new/{} ../../source/amf/utp/{}
 	rm -r .new
 
 clean:
