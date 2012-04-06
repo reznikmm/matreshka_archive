@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<xmi:XMI xmlns:cmof='http://schema.omg.org/spec/MOF/2.0/cmof.xml' xmlns:xmi='http://www.omg.org/spec/XMI/20100901'>
+  <cmof:Package xmi:type='cmof:Package' xmi:id='10695' name='utp' visibility='public' uri='http://www.omg.org/UTPSA'>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10696' name='TestComponent' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10697' association='10701' name='base_StructuredClassifier' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#StructuredClassifier'/>
+      </ownedAttribute>
+      <!--
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10698' type='Timezone' lower='0' name='zone' visibility='public'/>
+      -->
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10699' lower='0' upper='*' name='compatibleSUTVersion' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10700' lower='0' upper='*' name='compatibleSUTVariant' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10701' memberEnd='10697 10702' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10702' association='10701' isComposite='true' type='10696' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10703' name='TestContext' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10704' association='10709' name='base_StructuredClassifier' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#StructuredClassifier'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10705' association='10851' name='base_BehavioredClassifier' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#BehavioredClassifier'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10706' lower='0' name='testLevel' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10707' lower='0' upper='*' name='compatibleSUTVersion' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10708' lower='0' upper='*' name='compatibleSUTVariant' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10709' memberEnd='10704 10710' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10710' association='10709' isComposite='true' type='10703' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Enumeration' xmi:id='10711' name='Verdict' visibility='public'>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10712' name='none' visibility='public'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10713' name='pass' visibility='public'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10714' name='inconclusive' visibility='public'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10715' name='fail' visibility='public'/>
+      <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10716' name='error' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:PrimitiveType' xmi:id='Timezone' name='Timezone' visibility='public'/>
+    <packagedElement xmi:type='cmof:PrimitiveType' xmi:id='10718' name='Time' visibility='public'/>
+    <packagedElement xmi:type='cmof:PrimitiveType' xmi:id='10719' name='Duration' visibility='public'/>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10720' name='TestCase' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10721' association='10726' name='base_Behavior' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Behavior'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10722' association='10728' name='base_Operation' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Operation'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10723' lower='0' name='priority' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10724' lower='0' upper='*' name='compatibleSUTVersion' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10725' lower='0' upper='*' name='compatibleSUTVariant' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10726' memberEnd='10721 10727' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10727' association='10726' isComposite='true' type='10720' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10728' memberEnd='10722 10729' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10729' association='10728' isComposite='true' type='10720' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10730' name='TestObjective' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10731' association='10733' name='base_Dependency' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Dependency'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10732' lower='0' name='priority' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10733' memberEnd='10731 10734' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10734' association='10733' isComposite='true' type='10730' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10735' name='Default' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10736' association='10737' name='base_Behavior' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Behavior'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10737' memberEnd='10736 10738' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10738' association='10737' isComposite='true' type='10735' lower='0' name='extension_Default' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10739' name='DefaultApplication' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10740' association='10742' name='base_Dependency' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Dependency'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10741' name='repetition' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#UnlimitedNatural'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10742' memberEnd='10740 10743' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10743' association='10742' isComposite='true' type='10739' lower='0' name='extension_DefaultApplication' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10744' name='ValidationAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10745' association='10746' name='base_CallOperationAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CallOperationAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10746' memberEnd='10745 10747' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10747' association='10746' isComposite='true' type='10744' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10748' name='LogAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10749' association='10839' name='base_SendObjectAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#SendObjectAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10750' name='FinishAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10751' association='10837' name='base_OpaqueAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#OpaqueAction'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10752' association='10841' name='base_InvocationAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#InvocationAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10753' name='TestLog' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10754' association='10761' name='base_Behavior' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Behavior'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10755' lower='0' upper='*' name='tester' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10756' lower='0' name='executedAt' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10757' lower='0' name='duration' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10758' type='10711' name='verdict' visibility='public'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10759' lower='0' name='verdictReason' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10760' lower='0' name='sutVersion' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10761' memberEnd='10754 10762' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10762' association='10761' isComposite='true' type='10753' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10763' name='TestLogApplication' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10764' association='10765' name='base_Dependency' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Dependency'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10765' memberEnd='10764 10766' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10766' association='10765' isComposite='true' type='10763' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10767' name='CodingRule' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10768' association='10772' name='base_ValueSpecification' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#ValueSpecification'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10769' association='10774' name='base_Namespace' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Namespace'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10770' association='10776' name='base_Property' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10771' name='coding' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10772' memberEnd='10768 10773' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10773' association='10772' isComposite='true' type='10767' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10774' memberEnd='10769 10775' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10775' association='10774' isComposite='true' type='10767' lower='0' name='extension_CodingRule' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10776' memberEnd='10770 10777' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10777' association='10776' isComposite='true' type='10767' lower='0' name='extension_CodingRule' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10778' name='LiteralAny' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10779' association='10780' name='base_LiteralSpecification' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#LiteralSpecification'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10780' memberEnd='10779 10781' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10781' association='10780' isComposite='true' type='10778' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10782' name='LiteralAnyOrNull' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10783' association='10784' name='base_LiteralSpecification' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#LiteralSpecification'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10784' memberEnd='10783 10785' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10785' association='10784' isComposite='true' type='10782' lower='0' name='extension_LiteralAnyOrNull' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10786' name='DataPool' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10787' association='10789' name='base_Classifier' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10788' association='10791' name='base_Property' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10789' memberEnd='10787 10790' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10790' association='10789' isComposite='true' type='10786' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10791' memberEnd='10788 10792' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10792' association='10791' isComposite='true' type='10786' lower='0' name='extension_DataPool' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10793' name='DataPartition' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10794' association='10795' name='base_Classifier' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10795' memberEnd='10794 10796' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10796' association='10795' isComposite='true' type='10793' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10797' name='DataSelector' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10798' association='10799' name='base_Operation' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Operation'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10799' memberEnd='10798 10800' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10800' association='10799' isComposite='true' type='10797' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10801' name='TimeOut' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10802' association='10803' name='base_TimeEvent' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TimeEvent'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10803' memberEnd='10802 10804' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10804' association='10803' isComposite='true' type='10801' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10805' name='TimeOutMessage' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10806' association='10807' name='base_Message' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Message'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10807' memberEnd='10806 10808' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10808' association='10807' isComposite='true' type='10805' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10809' name='TimeOutAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10810' association='10811' name='base_AcceptEventAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#AcceptEventAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10811' memberEnd='10810 10812' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10812' association='10811' isComposite='true' type='10809' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10813' name='StartTimerAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10814' association='10815' name='base_CallOperationAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CallOperationAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10815' memberEnd='10814 10816' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10816' association='10815' isComposite='true' type='10813' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10817' name='StopTimerAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10818' association='10819' name='base_CallOperationAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CallOperationAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10819' memberEnd='10818 10820' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10820' association='10819' isComposite='true' type='10817' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10821' name='ReadTimerAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10822' association='10823' name='base_CallOperationAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CallOperationAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10823' memberEnd='10822 10824' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10824' association='10823' isComposite='true' type='10821' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10825' name='TimerRunningAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10826' association='10827' name='base_ReadStructuralFeatureAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#ReadStructuralFeatureAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10827' memberEnd='10826 10828' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10828' association='10827' isComposite='true' type='10825' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10829' name='GetTimezoneAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10830' association='10831' name='base_ReadStructuralFeatureAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#ReadStructuralFeatureAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10831' memberEnd='10830 10832' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10832' association='10831' isComposite='true' type='10829' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10833' name='SetTimezoneAction' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10834' association='10835' name='base_WriteStructuralFeatureAction' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#WriteStructuralFeatureAction'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10835' memberEnd='10834 10836' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10836' association='10835' isComposite='true' type='10833' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10837' memberEnd='10751 10838' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10838' association='10837' isComposite='true' type='10750' lower='0' name='extension_FinishAction' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10839' memberEnd='10749 10840' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10840' association='10839' isComposite='true' type='10748' lower='0' name='extension_LogAction' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10841' memberEnd='10752 10842' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10842' association='10841' isComposite='true' type='10750' lower='0' name='extension_FinishAction' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10843' name='DetermAlt' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10844' association='10845' name='base_CombinedFragment' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#CombinedFragment'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10845' memberEnd='10844 10846' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10846' association='10845' isComposite='true' type='10843' lower='0' name='extension_DetermAlt' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10847' name='SUT' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10848' association='10849' name='base_Property' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Property'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10849' memberEnd='10848 10850' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10850' association='10849' isComposite='true' type='10847' lower='0' name='extension_SUT' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10851' memberEnd='10705 10852' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10852' association='10851' isComposite='true' type='10703' lower='0' name='extension_TestContext' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10853' name='ManagedElement' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10854' association='10859' name='base_Element' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Element'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10855' lower='0' name='owner' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10856' lower='0' name='description' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10857' lower='0' name='version' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10858' lower='0' name='criticality' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10859' memberEnd='10854 10860' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10860' association='10859' isComposite='true' type='10853' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Class' xmi:id='10861' name='TestSuite' visibility='public'>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10862' association='10865' name='base_Behavior' visibility='public'>
+        <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Behavior'/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10863' type='10720' lower='0' upper='*' name='testCase' visibility='public'/>
+      <ownedAttribute xmi:type='cmof:Property' xmi:id='10864' lower='0' name='priority' visibility='public'>
+        <type xmi:type='cmof:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String'/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type='cmof:Association' xmi:id='10865' memberEnd='10862 10866' visibility='public'>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10866' association='10865' isComposite='true' type='10861' lower='0' name='extension_' visibility='public'/>
+    </packagedElement>
+  </cmof:Package>
+</xmi:XMI>
