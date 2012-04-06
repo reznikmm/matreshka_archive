@@ -150,4 +150,11 @@
     <literal uri="http://www.omg.org/spec/OCL/20090501/OCL.cmof#CollectionKind-Collection" adaLiteral="Collection"/>
     <mapping representation="value" memberName="Collection_Kind_Value" memberKindName="M_Collection_Kind"/>
   </type>
+
+  <!--  Types of UML Testing Profile  -->
+
+  <type uri="http://www.omg.org/spec/UTP.cmof#Timezone">
+    <mapping representation="holder" adaType="AMF.UTP.Optional_Timezone" memberName="Timezone_Holder"/>
+  </type>
+
 </mappings>
