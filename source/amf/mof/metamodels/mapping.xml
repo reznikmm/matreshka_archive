@@ -70,4 +70,6 @@
 
   <uri name="http://schema.omg.org/spec/UML/2.3/StandardProfileL2.xmi" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL2"/>
   <uri name="http://schema.omg.org/spec/UML/2.3/StandardProfileL3.xmi" uri="http://www.omg.org/spec/UML/20100901/StandardProfileL3"/>
+  <uri name="http://www.magicdraw.com/schemas/UML_Testing_Profile.xmi" uri="http://www.omg.org/UTPSA"/>
+
 </catalog>
