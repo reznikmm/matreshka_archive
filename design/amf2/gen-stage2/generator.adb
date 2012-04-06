@@ -223,6 +223,25 @@ package body Generator is
    ----------
 
    function Less
+    (Left  : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
+     Right : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access)
+       return Boolean
+   is
+      L : constant League.Strings.Universal_String
+        := Generator.Names.Owning_Metamodel_Name (Left) & Left.Get_Name.Value;
+      R : constant League.Strings.Universal_String
+        := Generator.Names.Owning_Metamodel_Name (Right)
+             & Right.Get_Name.Value;
+
+   begin
+      return L < R;
+   end Less;
+
+   ----------
+   -- Less --
+   ----------
+
+   function Less
     (Left  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Right : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return Boolean is

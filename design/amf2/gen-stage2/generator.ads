@@ -50,6 +50,7 @@ with Ada.Containers.Vectors;
 with League.Strings.Hash;
 
 with AMF.CMOF.Data_Types;
+with AMF.CMOF.Enumerations;
 with AMF.CMOF.Classes.Hash;
 with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
@@ -79,6 +80,12 @@ package Generator is
        return Boolean;
    --  Returns True when name of Left is less than name of Right.
 
+   function Less
+    (Left  : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
+     Right : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access)
+       return Boolean;
+   --  Returns True when name of Left is less than name of Right.
+
    package CMOF_Named_Element_Ordered_Sets is
      new Ada.Containers.Ordered_Sets
           (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access,
@@ -101,6 +108,12 @@ package Generator is
           (AMF.CMOF.Data_Types.CMOF_Data_Type_Access,
            Less,
            AMF.CMOF.Data_Types."=");
+
+   package CMOF_Enumeration_Ordered_Sets is
+     new Ada.Containers.Ordered_Sets
+          (AMF.CMOF.Enumerations.CMOF_Enumeration_Access,
+           Less,
+           AMF.CMOF.Enumerations."=");
 
    package CMOF_Element_String_Maps is
      new Ada.Containers.Hashed_Maps
