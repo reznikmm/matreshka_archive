@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 
 package body AMF.CMOF.Holders is
@@ -50,7 +53,30 @@ package body AMF.CMOF.Holders is
    -------------
 
    function Element
-    (Holder : League.Holders.Holder) return Optional_CMOF_Visibility_Kind is
+    (Holder : League.Holders.Holder)
+       return AMF.CMOF.Optional_CMOF_Parameter_Direction_Kind is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.CMOF.Holders.Parameter_Direction_Kinds.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.CMOF.Optional_CMOF_Visibility_Kind is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.CMOF.Holders.Visibility_Kinds.Value_Tag)
@@ -71,15 +97,35 @@ package body AMF.CMOF.Holders is
    ---------------
 
    function To_Holder
-    (Item : Optional_CMOF_Visibility_Kind) return League.Holders.Holder is
+    (Element : AMF.CMOF.Optional_CMOF_Parameter_Direction_Kind)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.CMOF.Holders.Parameter_Direction_Kinds.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.CMOF.Holders.Parameter_Direction_Kinds.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Element : AMF.CMOF.Optional_CMOF_Visibility_Kind)
+       return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
          League.Holders.Set_Tag
           (Result, AMF.CMOF.Holders.Visibility_Kinds.Value_Tag);
 
-         if not Item.Is_Empty then
+         if not Element.Is_Empty then
             AMF.CMOF.Holders.Visibility_Kinds.Replace_Element
-             (Result, Item.Value);
+             (Result, Element.Value);
          end if;
       end return;
    end To_Holder;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,17 +41,30 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders;
 
 package AMF.CMOF.Holders is
 
    pragma Preelaborate;
 
+   --  ParameterDirectionKind [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.CMOF.Optional_CMOF_Parameter_Direction_Kind;
+   function To_Holder
+    (Element : AMF.CMOF.Optional_CMOF_Parameter_Direction_Kind)
+       return League.Holders.Holder;
+
    --  VisibilityKind [0..1]
 
-   function To_Holder
-    (Item : Optional_CMOF_Visibility_Kind) return League.Holders.Holder;
    function Element
-    (Holder : League.Holders.Holder) return Optional_CMOF_Visibility_Kind;
+    (Holder : League.Holders.Holder)
+       return AMF.CMOF.Optional_CMOF_Visibility_Kind;
+   function To_Holder
+    (Element : AMF.CMOF.Optional_CMOF_Visibility_Kind)
+       return League.Holders.Holder;
 
 end AMF.CMOF.Holders;

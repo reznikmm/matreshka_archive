@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Enumerations;
 
 package AMF.CMOF.Holders.Parameter_Direction_Kinds is
-  new League.Holders.Generic_Enumerations (CMOF_Parameter_Direction_Kind);
+  new League.Holders.Generic_Enumerations
+       (AMF.CMOF.CMOF_Parameter_Direction_Kind);
 pragma Preelaborate (AMF.CMOF.Holders.Parameter_Direction_Kinds);

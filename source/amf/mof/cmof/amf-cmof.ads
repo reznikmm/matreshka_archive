@@ -68,4 +68,16 @@ package AMF.CMOF is
       end case;
    end record;
 
+   type Optional_CMOF_Parameter_Direction_Kind
+         (Is_Empty : Boolean := True) is
+   record
+      case Is_Empty is
+         when False =>
+            Value : CMOF_Parameter_Direction_Kind;
+
+         when True =>
+            null;
+      end case;
+   end record;
+
 end AMF.CMOF;
