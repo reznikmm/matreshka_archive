@@ -41,30 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.UML.Properties;
+with AMF.Utp.SUTs;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_SUTs is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_SUT_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.SUTs.Utp_SUT with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Property
+    (Self : not null access constant Utp_SUT_Proxy)
+       return AMF.UML.Properties.UML_Property_Access;
+   --  Getter of SUT::base_Property.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Property
+    (Self : not null access Utp_SUT_Proxy;
+     To   : AMF.UML.Properties.UML_Property_Access);
+   --  Setter of SUT::base_Property.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_SUT_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_SUT_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_SUT_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_SUTs;

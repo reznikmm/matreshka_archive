@@ -41,30 +41,93 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.UML.Elements;
+with AMF.Utp.Managed_Elements;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Managed_Elements is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Managed_Element_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.Managed_Elements.Utp_Managed_Element with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Element
+    (Self : not null access constant Utp_Managed_Element_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of ManagedElement::base_Element.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Element
+    (Self : not null access Utp_Managed_Element_Proxy;
+     To   : AMF.UML.Elements.UML_Element_Access);
+   --  Setter of ManagedElement::base_Element.
+   --
+
+   overriding function Get_Owner
+    (Self : not null access constant Utp_Managed_Element_Proxy)
+       return AMF.Optional_String;
+   --  Getter of ManagedElement::owner.
+   --
+
+   overriding procedure Set_Owner
+    (Self : not null access Utp_Managed_Element_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of ManagedElement::owner.
+   --
+
+   overriding function Get_Description
+    (Self : not null access constant Utp_Managed_Element_Proxy)
+       return AMF.Optional_String;
+   --  Getter of ManagedElement::description.
+   --
+
+   overriding procedure Set_Description
+    (Self : not null access Utp_Managed_Element_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of ManagedElement::description.
+   --
+
+   overriding function Get_Version
+    (Self : not null access constant Utp_Managed_Element_Proxy)
+       return AMF.Optional_String;
+   --  Getter of ManagedElement::version.
+   --
+
+   overriding procedure Set_Version
+    (Self : not null access Utp_Managed_Element_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of ManagedElement::version.
+   --
+
+   overriding function Get_Criticality
+    (Self : not null access constant Utp_Managed_Element_Proxy)
+       return AMF.Optional_String;
+   --  Getter of ManagedElement::criticality.
+   --
+
+   overriding procedure Set_Criticality
+    (Self : not null access Utp_Managed_Element_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of ManagedElement::criticality.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Managed_Element_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Managed_Element_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Managed_Element_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_Managed_Elements;

@@ -41,30 +41,83 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.String_Collections;
+with AMF.UML.Behaviors;
+with AMF.UML.Operations;
+with AMF.Utp.Test_Cases;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Test_Cases is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Test_Case_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.Test_Cases.Utp_Test_Case with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Behavior
+    (Self : not null access constant Utp_Test_Case_Proxy)
+       return AMF.UML.Behaviors.UML_Behavior_Access;
+   --  Getter of TestCase::base_Behavior.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Behavior
+    (Self : not null access Utp_Test_Case_Proxy;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access);
+   --  Setter of TestCase::base_Behavior.
+   --
+
+   overriding function Get_Base_Operation
+    (Self : not null access constant Utp_Test_Case_Proxy)
+       return AMF.UML.Operations.UML_Operation_Access;
+   --  Getter of TestCase::base_Operation.
+   --
+
+   overriding procedure Set_Base_Operation
+    (Self : not null access Utp_Test_Case_Proxy;
+     To   : AMF.UML.Operations.UML_Operation_Access);
+   --  Setter of TestCase::base_Operation.
+   --
+
+   overriding function Get_Priority
+    (Self : not null access constant Utp_Test_Case_Proxy)
+       return AMF.Optional_String;
+   --  Getter of TestCase::priority.
+   --
+
+   overriding procedure Set_Priority
+    (Self : not null access Utp_Test_Case_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of TestCase::priority.
+   --
+
+   overriding function Get_Compatible_SUT_Version
+    (Self : not null access constant Utp_Test_Case_Proxy)
+       return AMF.String_Collections.Set_Of_String;
+   --  Getter of TestCase::compatibleSUTVersion.
+   --
+
+   overriding function Get_Compatible_SUT_Variant
+    (Self : not null access constant Utp_Test_Case_Proxy)
+       return AMF.String_Collections.Set_Of_String;
+   --  Getter of TestCase::compatibleSUTVariant.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Test_Case_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Test_Case_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Test_Case_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_Test_Cases;

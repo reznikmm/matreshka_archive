@@ -41,30 +41,83 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.String_Collections;
+with AMF.UML.Behaviored_Classifiers;
+with AMF.UML.Structured_Classifiers;
+with AMF.Utp.Test_Contexts;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Test_Contexts is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Test_Context_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.Test_Contexts.Utp_Test_Context with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Structured_Classifier
+    (Self : not null access constant Utp_Test_Context_Proxy)
+       return AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Access;
+   --  Getter of TestContext::base_StructuredClassifier.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Structured_Classifier
+    (Self : not null access Utp_Test_Context_Proxy;
+     To   : AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Access);
+   --  Setter of TestContext::base_StructuredClassifier.
+   --
+
+   overriding function Get_Base_Behaviored_Classifier
+    (Self : not null access constant Utp_Test_Context_Proxy)
+       return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access;
+   --  Getter of TestContext::base_BehavioredClassifier.
+   --
+
+   overriding procedure Set_Base_Behaviored_Classifier
+    (Self : not null access Utp_Test_Context_Proxy;
+     To   : AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access);
+   --  Setter of TestContext::base_BehavioredClassifier.
+   --
+
+   overriding function Get_Test_Level
+    (Self : not null access constant Utp_Test_Context_Proxy)
+       return AMF.Optional_String;
+   --  Getter of TestContext::testLevel.
+   --
+
+   overriding procedure Set_Test_Level
+    (Self : not null access Utp_Test_Context_Proxy;
+     To   : AMF.Optional_String);
+   --  Setter of TestContext::testLevel.
+   --
+
+   overriding function Get_Compatible_SUT_Version
+    (Self : not null access constant Utp_Test_Context_Proxy)
+       return AMF.String_Collections.Set_Of_String;
+   --  Getter of TestContext::compatibleSUTVersion.
+   --
+
+   overriding function Get_Compatible_SUT_Variant
+    (Self : not null access constant Utp_Test_Context_Proxy)
+       return AMF.String_Collections.Set_Of_String;
+   --  Getter of TestContext::compatibleSUTVariant.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Test_Context_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Test_Context_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Test_Context_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_Test_Contexts;

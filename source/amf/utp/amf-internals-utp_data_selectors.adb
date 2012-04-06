@@ -41,30 +41,97 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
 with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+with AMF.Internals.Tables.Utp_Attributes;
+with AMF.UML.Operations;
+with AMF.Visitors.Utp_Iterators;
+with AMF.Visitors.Utp_Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package body AMF.Internals.Utp_Data_Selectors is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   ------------------------
+   -- Get_Base_Operation --
+   ------------------------
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
+   overriding function Get_Base_Operation
+    (Self : not null access constant Utp_Data_Selector_Proxy)
+       return AMF.UML.Operations.UML_Operation_Access is
    begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+      return
+        AMF.UML.Operations.UML_Operation_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.Utp_Attributes.Internal_Get_Base_Operation
+             (Self.Element)));
+   end Get_Base_Operation;
 
-end AMF.Internals.Tables.UTP_Notification;
+   ------------------------
+   -- Set_Base_Operation --
+   ------------------------
+
+   overriding procedure Set_Base_Operation
+    (Self : not null access Utp_Data_Selector_Proxy;
+     To   : AMF.UML.Operations.UML_Operation_Access) is
+   begin
+      AMF.Internals.Tables.Utp_Attributes.Internal_Set_Base_Operation
+       (Self.Element,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Base_Operation;
+
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Data_Selector_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.Utp_Visitors.Utp_Visitor'Class then
+         AMF.Visitors.Utp_Visitors.Utp_Visitor'Class
+          (Visitor).Enter_Data_Selector
+            (AMF.Utp.Data_Selectors.Utp_Data_Selector_Access (Self),
+           Control);
+      end if;
+   end Enter_Element;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Data_Selector_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor in AMF.Visitors.Utp_Visitors.Utp_Visitor'Class then
+         AMF.Visitors.Utp_Visitors.Utp_Visitor'Class
+          (Visitor).Leave_Data_Selector
+            (AMF.Utp.Data_Selectors.Utp_Data_Selector_Access (Self),
+           Control);
+      end if;
+   end Leave_Element;
+
+   -------------------
+   -- Visit_Element --
+   -------------------
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Data_Selector_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Iterator in AMF.Visitors.Utp_Iterators.Utp_Iterator'Class then
+         AMF.Visitors.Utp_Iterators.Utp_Iterator'Class
+          (Iterator).Visit_Data_Selector
+            (Visitor,
+             AMF.Utp.Data_Selectors.Utp_Data_Selector_Access (Self),
+           Control);
+      end if;
+   end Visit_Element;
+
+end AMF.Internals.Utp_Data_Selectors;

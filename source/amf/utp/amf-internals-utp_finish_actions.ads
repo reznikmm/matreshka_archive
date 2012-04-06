@@ -41,30 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.UML.Invocation_Actions;
+with AMF.UML.Opaque_Actions;
+with AMF.Utp.Finish_Actions;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Finish_Actions is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Finish_Action_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.Finish_Actions.Utp_Finish_Action with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Opaque_Action
+    (Self : not null access constant Utp_Finish_Action_Proxy)
+       return AMF.UML.Opaque_Actions.UML_Opaque_Action_Access;
+   --  Getter of FinishAction::base_OpaqueAction.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Opaque_Action
+    (Self : not null access Utp_Finish_Action_Proxy;
+     To   : AMF.UML.Opaque_Actions.UML_Opaque_Action_Access);
+   --  Setter of FinishAction::base_OpaqueAction.
+   --
+
+   overriding function Get_Base_Invocation_Action
+    (Self : not null access constant Utp_Finish_Action_Proxy)
+       return AMF.UML.Invocation_Actions.UML_Invocation_Action_Access;
+   --  Getter of FinishAction::base_InvocationAction.
+   --
+
+   overriding procedure Set_Base_Invocation_Action
+    (Self : not null access Utp_Finish_Action_Proxy;
+     To   : AMF.UML.Invocation_Actions.UML_Invocation_Action_Access);
+   --  Setter of FinishAction::base_InvocationAction.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Finish_Action_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Finish_Action_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Finish_Action_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_Finish_Actions;

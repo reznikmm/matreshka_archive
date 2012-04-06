@@ -41,30 +41,83 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Utp_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Properties;
+with AMF.UML.Value_Specifications;
+with AMF.Utp.Coding_Rules;
+with AMF.Visitors;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Coding_Rules is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Coding_Rule_Proxy is
+     limited new AMF.Internals.Utp_Elements.Utp_Element_Proxy
+       and AMF.Utp.Coding_Rules.Utp_Coding_Rule with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get_Base_Value_Specification
+    (Self : not null access constant Utp_Coding_Rule_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+   --  Getter of CodingRule::base_ValueSpecification.
+   --
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding procedure Set_Base_Value_Specification
+    (Self : not null access Utp_Coding_Rule_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+   --  Setter of CodingRule::base_ValueSpecification.
+   --
+
+   overriding function Get_Base_Namespace
+    (Self : not null access constant Utp_Coding_Rule_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Getter of CodingRule::base_Namespace.
+   --
+
+   overriding procedure Set_Base_Namespace
+    (Self : not null access Utp_Coding_Rule_Proxy;
+     To   : AMF.UML.Namespaces.UML_Namespace_Access);
+   --  Setter of CodingRule::base_Namespace.
+   --
+
+   overriding function Get_Base_Property
+    (Self : not null access constant Utp_Coding_Rule_Proxy)
+       return AMF.UML.Properties.UML_Property_Access;
+   --  Getter of CodingRule::base_Property.
+   --
+
+   overriding procedure Set_Base_Property
+    (Self : not null access Utp_Coding_Rule_Proxy;
+     To   : AMF.UML.Properties.UML_Property_Access);
+   --  Setter of CodingRule::base_Property.
+   --
+
+   overriding function Get_Coding
+    (Self : not null access constant Utp_Coding_Rule_Proxy)
+       return League.Strings.Universal_String;
+   --  Getter of CodingRule::coding.
+   --
+
+   overriding procedure Set_Coding
+    (Self : not null access Utp_Coding_Rule_Proxy;
+     To   : League.Strings.Universal_String);
+   --  Setter of CodingRule::coding.
+   --
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant Utp_Coding_Rule_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant Utp_Coding_Rule_Proxy;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Visit_Element
+    (Self     : not null access constant Utp_Coding_Rule_Proxy;
+     Iterator : in out AMF.Visitors.Abstract_Iterator'Class;
+     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
+     Control  : in out AMF.Visitors.Traverse_Control);
+
+end AMF.Internals.Utp_Coding_Rules;

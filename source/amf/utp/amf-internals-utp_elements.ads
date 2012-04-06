@@ -41,30 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
-with AMF.Internals.Helpers;
-with AMF.Internals.Listener_Registry;
-with AMF.UTP.Holders.Verdicts;
+with AMF.Extents;
+with AMF.Internals.Elements;
+with League.Holders;
 
-package body AMF.Internals.Tables.UTP_Notification is
+package AMF.Internals.Utp_Elements is
 
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+   type Utp_Element_Proxy is
+     abstract limited new AMF.Internals.Elements.Element_Base with null record;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Utp.Utp_Verdict;
-     New_Value : AMF.Utp.Utp_Verdict) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        AMF.UTP.Holders.Verdicts.To_Holder (Old_Value),
-        AMF.UTP.Holders.Verdicts.To_Holder (New_Value));
-   end Notify_Attribute_Set;
+   overriding function Get
+    (Self     : not null access constant Utp_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder;
 
-end AMF.Internals.Tables.UTP_Notification;
+   overriding function Get_Meta_Class
+    (Self : not null access constant Utp_Element_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+
+   overriding procedure Set
+    (Self     : not null access Utp_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Value    : League.Holders.Holder);
+
+   overriding function Extent
+    (Self : not null access constant Utp_Element_Proxy)
+       return AMF.Extents.Extent_Access;
+
+end AMF.Internals.Utp_Elements;
