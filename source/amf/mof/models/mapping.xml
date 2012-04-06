@@ -54,6 +54,12 @@
 
   <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="../metamodels/CMOF24.cmof"/>
 
+  <!--===========================-->
+  <!--  UML Testing Profile 1.1  -->
+  <!--===========================-->
+
+  <uri name="http://www.omg.org/UTPSA.cmof" uri="../metamodels/UTPSA11.cmof"/>
+
   <!--===========-->
   <!--  UML 2.4  -->
   <!--===========-->
