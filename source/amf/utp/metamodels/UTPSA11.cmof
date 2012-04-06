@@ -16,7 +16,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10701' memberEnd='10697 10702' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10702' association='10701' isComposite='true' type='10696' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10702' association='10701' isComposite='true' type='10696' lower='0' name='extension_TestComponent' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10703' name='TestContext' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10704' association='10709' name='base_StructuredClassifier' visibility='public'>
@@ -36,7 +36,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10709' memberEnd='10704 10710' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10710' association='10709' isComposite='true' type='10703' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10710' association='10709' isComposite='true' type='10703' lower='0' name='extension_TestContext' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Enumeration' xmi:id='10711' name='Verdict' visibility='public'>
       <ownedLiteral xmi:type='cmof:EnumerationLiteral' xmi:id='10712' name='none' visibility='public'/>
@@ -66,10 +66,10 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10726' memberEnd='10721 10727' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10727' association='10726' isComposite='true' type='10720' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10727' association='10726' isComposite='true' type='10720' lower='0' name='extension_TestCase' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10728' memberEnd='10722 10729' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10729' association='10728' isComposite='true' type='10720' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10729' association='10728' isComposite='true' type='10720' lower='0' name='extension_TestCase' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10730' name='TestObjective' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10731' association='10733' name='base_Dependency' visibility='public'>
@@ -80,7 +80,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10733' memberEnd='10731 10734' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10734' association='10733' isComposite='true' type='10730' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10734' association='10733' isComposite='true' type='10730' lower='0' name='extension_TestObjective' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10735' name='Default' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10736' association='10737' name='base_Behavior' visibility='public'>
@@ -107,7 +107,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10746' memberEnd='10745 10747' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10747' association='10746' isComposite='true' type='10744' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10747' association='10746' isComposite='true' type='10744' lower='0' name='extension_ValidationAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10748' name='LogAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10749' association='10839' name='base_SendObjectAction' visibility='public'>
@@ -144,7 +144,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10761' memberEnd='10754 10762' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10762' association='10761' isComposite='true' type='10753' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10762' association='10761' isComposite='true' type='10753' lower='0' name='extension_TestLog' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10763' name='TestLogApplication' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10764' association='10765' name='base_Dependency' visibility='public'>
@@ -152,7 +152,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10765' memberEnd='10764 10766' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10766' association='10765' isComposite='true' type='10763' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10766' association='10765' isComposite='true' type='10763' lower='0' name='extension_TestLogApplication' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10767' name='CodingRule' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10768' association='10772' name='base_ValueSpecification' visibility='public'>
@@ -169,7 +169,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10772' memberEnd='10768 10773' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10773' association='10772' isComposite='true' type='10767' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10773' association='10772' isComposite='true' type='10767' lower='0' name='extension_CodingRule' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10774' memberEnd='10769 10775' visibility='public'>
       <ownedEnd xmi:type='cmof:Property' xmi:id='10775' association='10774' isComposite='true' type='10767' lower='0' name='extension_CodingRule' visibility='public'/>
@@ -183,7 +183,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10780' memberEnd='10779 10781' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10781' association='10780' isComposite='true' type='10778' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10781' association='10780' isComposite='true' type='10778' lower='0' name='extension_LiteralAny' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10782' name='LiteralAnyOrNull' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10783' association='10784' name='base_LiteralSpecification' visibility='public'>
@@ -202,7 +202,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10789' memberEnd='10787 10790' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10790' association='10789' isComposite='true' type='10786' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10790' association='10789' isComposite='true' type='10786' lower='0' name='extension_DataPool' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10791' memberEnd='10788 10792' visibility='public'>
       <ownedEnd xmi:type='cmof:Property' xmi:id='10792' association='10791' isComposite='true' type='10786' lower='0' name='extension_DataPool' visibility='public'/>
@@ -213,7 +213,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10795' memberEnd='10794 10796' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10796' association='10795' isComposite='true' type='10793' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10796' association='10795' isComposite='true' type='10793' lower='0' name='extension_DataPartition' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10797' name='DataSelector' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10798' association='10799' name='base_Operation' visibility='public'>
@@ -221,7 +221,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10799' memberEnd='10798 10800' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10800' association='10799' isComposite='true' type='10797' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10800' association='10799' isComposite='true' type='10797' lower='0' name='extension_DataSelector' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10801' name='TimeOut' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10802' association='10803' name='base_TimeEvent' visibility='public'>
@@ -229,7 +229,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10803' memberEnd='10802 10804' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10804' association='10803' isComposite='true' type='10801' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10804' association='10803' isComposite='true' type='10801' lower='0' name='extension_TimeOut' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10805' name='TimeOutMessage' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10806' association='10807' name='base_Message' visibility='public'>
@@ -237,7 +237,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10807' memberEnd='10806 10808' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10808' association='10807' isComposite='true' type='10805' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10808' association='10807' isComposite='true' type='10805' lower='0' name='extension_TimeOutMessage' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10809' name='TimeOutAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10810' association='10811' name='base_AcceptEventAction' visibility='public'>
@@ -245,7 +245,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10811' memberEnd='10810 10812' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10812' association='10811' isComposite='true' type='10809' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10812' association='10811' isComposite='true' type='10809' lower='0' name='extension_TimeOutAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10813' name='StartTimerAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10814' association='10815' name='base_CallOperationAction' visibility='public'>
@@ -253,7 +253,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10815' memberEnd='10814 10816' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10816' association='10815' isComposite='true' type='10813' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10816' association='10815' isComposite='true' type='10813' lower='0' name='extension_StartTimerAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10817' name='StopTimerAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10818' association='10819' name='base_CallOperationAction' visibility='public'>
@@ -261,7 +261,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10819' memberEnd='10818 10820' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10820' association='10819' isComposite='true' type='10817' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10820' association='10819' isComposite='true' type='10817' lower='0' name='extension_StopTimerAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10821' name='ReadTimerAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10822' association='10823' name='base_CallOperationAction' visibility='public'>
@@ -269,7 +269,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10823' memberEnd='10822 10824' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10824' association='10823' isComposite='true' type='10821' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10824' association='10823' isComposite='true' type='10821' lower='0' name='extension_ReadTimerAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10825' name='TimerRunningAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10826' association='10827' name='base_ReadStructuralFeatureAction' visibility='public'>
@@ -277,7 +277,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10827' memberEnd='10826 10828' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10828' association='10827' isComposite='true' type='10825' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10828' association='10827' isComposite='true' type='10825' lower='0' name='extension_TimerRunningAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10829' name='GetTimezoneAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10830' association='10831' name='base_ReadStructuralFeatureAction' visibility='public'>
@@ -285,7 +285,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10831' memberEnd='10830 10832' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10832' association='10831' isComposite='true' type='10829' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10832' association='10831' isComposite='true' type='10829' lower='0' name='extension_GetTimezoneAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10833' name='SetTimezoneAction' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10834' association='10835' name='base_WriteStructuralFeatureAction' visibility='public'>
@@ -293,7 +293,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10835' memberEnd='10834 10836' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10836' association='10835' isComposite='true' type='10833' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10836' association='10835' isComposite='true' type='10833' lower='0' name='extension_SetTimezoneAction' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10837' memberEnd='10751 10838' visibility='public'>
       <ownedEnd xmi:type='cmof:Property' xmi:id='10838' association='10837' isComposite='true' type='10750' lower='0' name='extension_FinishAction' visibility='public'/>
@@ -341,7 +341,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10859' memberEnd='10854 10860' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10860' association='10859' isComposite='true' type='10853' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10860' association='10859' isComposite='true' type='10853' lower='0' name='extension_ManagedElement' visibility='public'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='10861' name='TestSuite' visibility='public'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='10862' association='10865' name='base_Behavior' visibility='public'>
@@ -353,7 +353,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='10865' memberEnd='10862 10866' visibility='public'>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='10866' association='10865' isComposite='true' type='10861' lower='0' name='extension_' visibility='public'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='10866' association='10865' isComposite='true' type='10861' lower='0' name='extension_TestSuite' visibility='public'/>
     </packagedElement>
   </cmof:Package>
 </xmi:XMI>
