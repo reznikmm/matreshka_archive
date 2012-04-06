@@ -356,4 +356,5 @@
       <ownedEnd xmi:type='cmof:Property' xmi:id='10866' association='10865' isComposite='true' type='10861' lower='0' name='extension_TestSuite' visibility='public'/>
     </packagedElement>
   </cmof:Package>
+  <cmof:Tag xmi:type="cmof:Tag" xmi:id="_2" name="org.omg.xmi.nsPrefix" value="utp" element="10695"/>
 </xmi:XMI>

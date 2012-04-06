@@ -1242,7 +1242,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
    function ML_Utp return AMF.Internals.AMF_Element is
    begin
-      return Base + 171;
+      return Base + 172;
    end ML_Utp;
 
    ------------------------
@@ -1770,6 +1770,9 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
+      Aux := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
+      AMF.Internals.Extents.Internal_Append (Extent, Aux);
+
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
         AMF.Internals.Tables.Utp_String_Data_00.MS_000D'Access);
@@ -1787,7 +1790,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0064'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0065'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 4, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1797,22 +1800,22 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0056'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0057'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 6, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 7,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0060'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0061'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 7, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005F'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0060'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 8, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 9,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004C'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 9, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1822,7 +1825,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 11,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004F'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0050'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 11, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1832,7 +1835,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0057'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0058'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 13, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1852,12 +1855,12 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 17,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0061'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0062'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 17, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 18,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0053'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 18, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1867,17 +1870,17 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 20,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004D'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 20, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 21,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0066'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 21, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 22,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_006B'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 22, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1892,17 +1895,17 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 25,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0047'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0048'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 25, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 26,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0054'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0055'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 26, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 27,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0059'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 27, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1912,12 +1915,12 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 29,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0067'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0068'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 29, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 30,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005B'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 30, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 31, (False, 0));
@@ -1944,17 +1947,17 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 35,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0055'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0056'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 35, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 36,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0049'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 36, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 37,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0049'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 37, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -1964,17 +1967,17 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 39,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0058'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0059'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 39, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 40,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 40, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 41,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0069'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 41, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2004,12 +2007,12 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 47,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0065'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0066'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 47, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 48,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0065'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0066'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 48, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2031,7 +2034,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 52, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 52,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0068'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0069'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 52, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 53, (False, 0));
@@ -2073,12 +2076,12 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 60,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 60, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 61,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0058'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0059'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 61, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 62, (False, 0));
@@ -2098,7 +2101,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 64, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 64,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0045'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0046'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 64, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2152,7 +2155,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 73,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 73, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 74, (False, 0));
@@ -2164,13 +2167,13 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 75, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 75,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0041'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0042'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 75, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 76, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 76,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005C'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 76, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 77, (False, 0));
@@ -2182,40 +2185,40 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 78,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0043'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0044'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 78, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 79, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 79,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 79, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 80,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0069'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 80, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 81,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0069'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 81, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 82, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 82,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0045'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0046'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 82, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 83,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 83, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 84, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 84,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0045'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0046'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 84, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2230,7 +2233,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 87,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005D'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 87, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2317,7 +2320,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 126,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_006A'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 126,
         AMF.Internals.Tables.Utp_String_Data_00.MS_0027'Access);
@@ -2327,7 +2330,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 127, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 127,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0050'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0051'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 127, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 128, True);
@@ -2344,7 +2347,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 130,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_006C'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 130, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2359,7 +2362,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 133,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0062'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0063'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 133, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2369,7 +2372,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 135,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0052'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0053'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 135, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
@@ -2379,21 +2382,21 @@ package body AMF.Internals.Tables.Utp_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 137,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0051'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0052'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 137, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 138, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 138, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 138,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0040'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0041'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 138, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 139, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 139, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 139,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0040'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0041'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 139, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 140, True);
@@ -2435,28 +2438,28 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 145, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 145,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004E'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 145, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 146, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 146, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 146,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0048'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0049'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 146, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 147, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 147, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 147,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0048'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0049'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 147, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 148, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 148, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 148,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0048'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0049'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 148, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 149, True);
@@ -2470,35 +2473,35 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 150, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 150,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0044'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0045'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 150, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 151, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 151, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 151,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005E'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 151, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 152, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 152, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 152,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_005E'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_005F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 152, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 153, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 153, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 153,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_004B'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_004C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 153, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 154, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 154, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 154,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0046'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0047'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 154, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 155, True);
@@ -2512,7 +2515,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 156, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 156,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0063'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0064'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 156, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 157, True);
@@ -2547,7 +2550,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 161, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 161,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_0042'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0043'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 161, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 162, True);
@@ -2596,7 +2599,7 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 168, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 168,
-        AMF.Internals.Tables.Utp_String_Data_00.MS_003F'Access);
+        AMF.Internals.Tables.Utp_String_Data_00.MS_0040'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 168, (False, AMF.CMOF.Public_Visibility));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 169, True);
@@ -2619,6 +2622,13 @@ package body AMF.Internals.Tables.Utp_Metamodel is
        (Base + 171,
         AMF.Internals.Tables.Utp_String_Data_00.MS_0008'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 171, (False, AMF.CMOF.Public_Visibility));
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 172,
+        AMF.Internals.Tables.Utp_String_Data_00.MS_003F'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
+       (Base + 172,
+        AMF.Internals.Tables.Utp_String_Data_00.MS_006B'Access);
    end Initialize_Objects;
 
    ----------------------
@@ -4649,6 +4659,12 @@ package body AMF.Internals.Tables.Utp_Metamodel is
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Typed_Element_Type,
         Base + 25,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Typed_Element);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Element_Tag,
+        Base + 172,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
    end Initialize_Links;
 
 end AMF.Internals.Tables.Utp_Metamodel;

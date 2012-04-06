@@ -964,9 +964,24 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
-   --  "extension_SUT"
+   --  "org.omg.xmi.nsPrefix"
 
    MS_003F : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 23,
+         Unused => 20,
+         Length => 20,
+         Value  =>
+          (16#006F#, 16#0072#, 16#0067#, 16#002E#,
+           16#006F#, 16#006D#, 16#0067#, 16#002E#,
+           16#0078#, 16#006D#, 16#0069#, 16#002E#,
+           16#006E#, 16#0073#, 16#0050#, 16#0072#,
+           16#0065#, 16#0066#, 16#0069#, 16#0078#,
+           others => 16#0000#),
+         others => <>);
+
+   --  "extension_SUT"
+
+   MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -980,7 +995,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_TestCase"
 
-   MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 18,
          Length => 18,
@@ -995,7 +1010,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "executedAt"
 
-   MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1008,7 +1023,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_TimerRunningAction"
 
-   MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 28,
          Length => 28,
@@ -1025,7 +1040,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "verdict"
 
-   MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1037,7 +1052,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_LiteralAnyOrNull"
 
-   MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 26,
          Length => 26,
@@ -1054,7 +1069,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "priority"
 
-   MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1066,7 +1081,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_DataSelector"
 
-   MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 22,
          Length => 22,
@@ -1082,7 +1097,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TestSuite"
 
-   MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1095,7 +1110,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_CodingRule"
 
-   MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 20,
          Length => 20,
@@ -1110,7 +1125,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_Classifier"
 
-   MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -1124,7 +1139,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "verdictReason"
 
-   MS_004A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1138,7 +1153,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_DataPartition"
 
-   MS_004B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 23,
          Length => 23,
@@ -1154,7 +1169,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "GetTimezoneAction"
 
-   MS_004C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -1169,7 +1184,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TestComponent"
 
-   MS_004D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1183,7 +1198,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_TestLogApplication"
 
-   MS_004E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 28,
          Length => 28,
@@ -1200,7 +1215,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "LiteralAnyOrNull"
 
-   MS_004F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1214,7 +1229,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_TestComponent"
 
-   MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 23,
          Length => 23,
@@ -1230,7 +1245,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "Duration"
 
-   MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1242,7 +1257,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "Timezone"
 
-   MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1254,7 +1269,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "StopTimerAction"
 
-   MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -1268,7 +1283,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TimeOut"
 
-   MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1280,7 +1295,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "coding"
 
-   MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -1292,7 +1307,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "DefaultApplication"
 
-   MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 18,
          Length => 18,
@@ -1307,7 +1322,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "ManagedElement"
 
-   MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -1321,7 +1336,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_Operation"
 
-   MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -1335,7 +1350,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TimeOutAction"
 
-   MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1349,7 +1364,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_Behavior"
 
-   MS_005A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1363,7 +1378,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "ValidationAction"
 
-   MS_005B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1377,7 +1392,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "sutVersion"
 
-   MS_005C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1390,7 +1405,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_Message"
 
-   MS_005D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -1403,7 +1418,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_DataPool"
 
-   MS_005E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 18,
          Length => 18,
@@ -1418,7 +1433,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "FinishAction"
 
-   MS_005F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -1431,7 +1446,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "DetermAlt"
 
-   MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1444,7 +1459,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "StartTimerAction"
 
-   MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1458,7 +1473,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "fail"
 
-   MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -1469,7 +1484,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "extension_TimeOutMessage"
 
-   MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 24,
          Length => 24,
@@ -1485,7 +1500,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "DataSelector"
 
-   MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -1498,7 +1513,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_LiteralSpecification"
 
-   MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 25,
          Length => 25,
@@ -1515,7 +1530,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TestContext"
 
-   MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -1528,7 +1543,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TimerRunningAction"
 
-   MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 18,
          Length => 18,
@@ -1543,7 +1558,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "description"
 
-   MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -1556,7 +1571,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "base_Dependency"
 
-   MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -1570,7 +1585,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "utp"
 
-   MS_006A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 3,
          Length => 3,
@@ -1581,7 +1596,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "TestLog"
 
-   MS_006B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1593,7 +1608,7 @@ package AMF.Internals.Tables.Utp_String_Data_00 is
 
    --  "none"
 
-   MS_006C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
