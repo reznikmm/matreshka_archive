@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -134,6 +134,96 @@ package AMF.UML is
      Protected_Visibility,
      Package_Visibility);
 
+   type Optional_UML_Aggregation_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Aggregation_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Call_Concurrency_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Call_Concurrency_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Connector_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Connector_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Expansion_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Expansion_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Interaction_Operator_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Interaction_Operator_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Message_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Message_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Message_Sort (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Message_Sort;
+      end case;
+   end record;
+
+   type Optional_UML_Object_Node_Ordering_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Object_Node_Ordering_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Parameter_Direction_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Parameter_Direction_Kind;
+      end case;
+   end record;
+
    type Optional_UML_Parameter_Effect_Kind (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when True =>
@@ -141,6 +231,26 @@ package AMF.UML is
 
          when False =>
             Value : UML_Parameter_Effect_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Pseudostate_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Pseudostate_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Transition_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Transition_Kind;
       end case;
    end record;
 

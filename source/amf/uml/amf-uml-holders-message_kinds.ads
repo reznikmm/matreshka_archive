@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Enumerations;
 
 package AMF.UML.Holders.Message_Kinds is
-  new League.Holders.Generic_Enumerations (UML_Message_Kind);
+  new League.Holders.Generic_Enumerations
+       (AMF.UML.UML_Message_Kind);
 pragma Preelaborate (AMF.UML.Holders.Message_Kinds);
