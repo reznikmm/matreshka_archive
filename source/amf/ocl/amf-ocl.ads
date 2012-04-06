@@ -53,4 +53,14 @@ package AMF.OCL is
      Bag,
      Sequence);
 
+   type Optional_OCL_Collection_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : OCL_Collection_Kind;
+      end case;
+   end record;
+
 end AMF.OCL;

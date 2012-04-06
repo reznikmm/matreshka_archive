@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Enumerations;
 
 package AMF.OCL.Holders.Collection_Kinds is
-  new League.Holders.Generic_Enumerations (OCL_Collection_Kind);
+  new League.Holders.Generic_Enumerations
+       (AMF.OCL.OCL_Collection_Kind);
 pragma Preelaborate (AMF.OCL.Holders.Collection_Kinds);

@@ -43,19 +43,49 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with League.Holders;
+with AMF.OCL.Holders.Collection_Kinds;
 
-package AMF.OCL.Holders is
+package body AMF.OCL.Holders is
 
-   pragma Preelaborate;
-
-   --  CollectionKind [0..1]
+   -------------
+   -- Element --
+   -------------
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.OCL.Optional_OCL_Collection_Kind;
+       return AMF.OCL.Optional_OCL_Collection_Kind is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.OCL.Holders.Collection_Kinds.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.OCL.Holders.Collection_Kinds.Element (Holder));
+      end if;
+   end Element;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
    function To_Holder
     (Element : AMF.OCL.Optional_OCL_Collection_Kind)
-       return League.Holders.Holder;
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.OCL.Holders.Collection_Kinds.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.OCL.Holders.Collection_Kinds.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
 
 end AMF.OCL.Holders;
