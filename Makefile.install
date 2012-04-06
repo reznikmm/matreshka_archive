@@ -20,7 +20,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 LIBEXT = dll
 endif
 
-INSTALL_TARGETS = league fastcgi sql xml amf uml mofext ocl
+INSTALL_TARGETS = league fastcgi sql xml amf uml mofext ocl utp
 
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
@@ -307,6 +307,29 @@ endif
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/OCL23.cmof" >> .objs/amf_ocl-lib.files
 	echo "%attr(-,root,root) %{_gprdir}/amf_ocl.gpr" >> .objs/amf_ocl-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_ocl-devel.files
+
+utp:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf/utp
+	gnat ls -d -s -P gnat/matreshka_amf_utp.gpr | sort | uniq | grep -v '^$$' > amf_utp-src.aux
+	cat league-src.lst xml-src.aux amf-src.aux amf_uml-src.aux | sort | uniq | diff -u - amf_utp-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_utp-src.lst
+	gnat ls -o -P gnat/matreshka_amf_utp.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf_utp-ali.lst
+	cat amf_utp-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/utp
+	cat amf_utp-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_data) source/amf/utp/metamodels/UTPSA11.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/UTPSA11.cmof
+	$(INSTALL_project) gnat/install/amf_utp.gpr $(INSTALL_PROJECT_DIR)/amf_utp.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/amf_utp-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)" > .objs/amf_utp-lib.files
+endif
+	cat amf_utp-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/utp/{}" > .objs/amf_utp-devel.files
+	cat amf_utp-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_utp-devel.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UTPSA11.cmof" >> .objs/amf_utp-lib.files
+	echo "%attr(-,root,root) %{_gprdir}/amf_utp.gpr" >> .objs/amf_utp-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_utp-devel.files
 
 mofext:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf/mofext
