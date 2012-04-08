@@ -42,8 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Attributes;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Reflection;
 
@@ -91,6 +93,21 @@ package body AMF.Internals.UML_Elements is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Reflection.Get_Meta_Class (Self.Element)));
    end Get_Meta_Class;
+
+   -----------------------
+   -- Get_Owned_Comment --
+   -----------------------
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
+   begin
+      return
+        AMF.UML.Comments.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
+             (Self.Element)));
+   end Get_Owned_Comment;
 
    -------------------
    -- Must_Be_Owned --

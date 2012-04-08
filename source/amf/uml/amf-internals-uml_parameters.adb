@@ -480,21 +480,6 @@ package body AMF.Internals.UML_Parameters is
    end Set_Upper_Value;
 
    -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
-   begin
-      return
-        AMF.UML.Comments.Collections.Wrap
-         (AMF.Internals.Element_Collections.Wrap
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Element)));
-   end Get_Owned_Comment;
-
-   -----------------------
    -- Get_Owned_Element --
    -----------------------
 

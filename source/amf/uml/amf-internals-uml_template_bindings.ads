@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Template_Bindings;
 with AMF.UML.Template_Parameter_Substitutions.Collections;
@@ -113,13 +112,6 @@ package AMF.Internals.UML_Template_Bindings is
    --  Getter of Relationship::relatedElement.
    --
    --  Specifies the elements related by the Relationship.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Template_Binding_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Template_Binding_Proxy)

@@ -46,7 +46,6 @@ with AMF.String_Collections;
 with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Data_Types;
 with AMF.UML.Dependencies.Collections;
@@ -438,13 +437,6 @@ package AMF.Internals.UML_Operations is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Operation_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Operation_Proxy)

@@ -49,7 +49,6 @@ with AMF.UML.Activity_Groups.Collections;
 with AMF.UML.Activity_Nodes.Collections;
 with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
@@ -353,13 +352,6 @@ package AMF.Internals.UML_Accept_Event_Actions is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Accept_Event_Action_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Accept_Event_Action_Proxy)

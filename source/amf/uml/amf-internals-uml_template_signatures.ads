@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Template_Parameters.Collections;
 with AMF.UML.Template_Signatures;
@@ -84,13 +83,6 @@ package AMF.Internals.UML_Template_Signatures is
    --  Setter of TemplateSignature::template.
    --
    --  The element that owns this template signature.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Template_Signature_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Template_Signature_Proxy)

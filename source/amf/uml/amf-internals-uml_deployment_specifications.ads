@@ -47,7 +47,6 @@ with AMF.UML.Artifacts.Collections;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Collaboration_Uses.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Deployment_Specifications;
@@ -460,13 +459,6 @@ package AMF.Internals.UML_Deployment_Specifications is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Deployment_Specification_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Deployment_Specification_Proxy)

@@ -47,6 +47,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
+with AMF.UML.Comments.Collections;
 with AMF.UML.Elements;
 
 package AMF.Internals.UML_Elements is
@@ -75,6 +76,13 @@ package AMF.Internals.UML_Elements is
    type UML_Element_Proxy is
      abstract limited new UML_Element_Base
        and AMF.UML.Elements.UML_Element with null record;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Element_Proxy) return Boolean;

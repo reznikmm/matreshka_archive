@@ -46,7 +46,6 @@ with AMF.Internals.UML_Multiplicity_Elements;
 with AMF.UML.Associations;
 with AMF.UML.Classes;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Connectable_Element_Template_Parameters;
 with AMF.UML.Connector_Ends.Collections;
 with AMF.UML.Data_Types;
@@ -450,13 +449,6 @@ package AMF.Internals.UML_Properties is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Property_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Property_Proxy)

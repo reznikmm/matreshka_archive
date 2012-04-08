@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Images;
 with AMF.Visitors;
@@ -112,13 +111,6 @@ package AMF.Internals.UML_Images is
    --
    --  This contains a location that can be used by a tool to locate the image
    --  as an alternative to embedding it in the stereotype.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Image_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Image_Proxy)

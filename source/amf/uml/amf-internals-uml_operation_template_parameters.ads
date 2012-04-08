@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Operation_Template_Parameters;
 with AMF.UML.Operations;
@@ -141,13 +140,6 @@ package AMF.Internals.UML_Operation_Template_Parameters is
    --  Setter of TemplateParameter::signature.
    --
    --  The template signature that owns this template parameter.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Operation_Template_Parameter_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Operation_Template_Parameter_Proxy)

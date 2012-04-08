@@ -49,7 +49,6 @@ with AMF.UML.Activity_Nodes;
 with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Behaviors;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Interruptible_Activity_Regions;
@@ -362,13 +361,6 @@ package AMF.Internals.UML_Object_Flows is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Object_Flow_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Object_Flow_Proxy)

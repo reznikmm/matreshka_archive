@@ -311,21 +311,6 @@ package body AMF.Internals.UML_Change_Events is
    end Set_Visibility;
 
    -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Change_Event_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
-   begin
-      return
-        AMF.UML.Comments.Collections.Wrap
-         (AMF.Internals.Element_Collections.Wrap
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
-             (Self.Element)));
-   end Get_Owned_Comment;
-
-   -----------------------
    -- Get_Owned_Element --
    -----------------------
 

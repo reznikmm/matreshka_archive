@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Packages;
 with AMF.String_Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
@@ -269,13 +268,6 @@ package AMF.Internals.UML_Profiles is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Profile_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Profile_Proxy)

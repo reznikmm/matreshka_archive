@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
+with AMF.UML.Comments;
 with AMF.UML.Elements.Collections;
 with AMF.Visitors;
 
@@ -72,13 +72,6 @@ package AMF.Internals.UML_Comments is
    --  Setter of Comment::body.
    --
    --  Specifies a string that is the comment.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Comment_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Comment_Proxy)

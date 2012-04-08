@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Instance_Specifications;
 with AMF.UML.Slots;
@@ -93,13 +92,6 @@ package AMF.Internals.UML_Slots is
    --
    --  The value or values corresponding to the defining feature for the
    --  owning instance specification.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Slot_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Slot_Proxy)

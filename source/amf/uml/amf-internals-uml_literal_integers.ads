@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Value_Specifications;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Integers;
@@ -158,13 +157,6 @@ package AMF.Internals.UML_Literal_Integers is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Literal_Integer_Proxy)

@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Clauses.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Executable_Nodes.Collections;
 with AMF.UML.Output_Pins.Collections;
@@ -114,13 +113,6 @@ package AMF.Internals.UML_Clauses is
    --
    --  A nested activity fragment with a designated output pin that specifies
    --  the result of the test.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Clause_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Clause_Proxy)

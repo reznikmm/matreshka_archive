@@ -46,7 +46,6 @@ with AMF.String_Collections;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Collaboration_Uses.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Data_Types;
 with AMF.UML.Dependencies.Collections;
@@ -375,13 +374,6 @@ package AMF.Internals.UML_Data_Types is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Data_Type_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Data_Type_Proxy)

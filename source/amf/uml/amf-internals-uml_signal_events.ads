@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Named_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Named_Elements;
@@ -158,13 +157,6 @@ package AMF.Internals.UML_Signal_Events is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Signal_Event_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Signal_Event_Proxy)

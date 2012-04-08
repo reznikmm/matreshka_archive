@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Exception_Handlers;
 with AMF.UML.Executable_Nodes;
@@ -112,13 +111,6 @@ package AMF.Internals.UML_Exception_Handlers is
    --
    --  The node protected by the handler. The handler is examined if an
    --  exception propagates to the outside of the node.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Exception_Handler_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Exception_Handler_Proxy)

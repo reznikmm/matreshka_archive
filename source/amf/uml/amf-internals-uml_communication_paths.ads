@@ -46,7 +46,6 @@ with AMF.String_Collections;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Collaboration_Uses.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Communication_Paths;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
@@ -131,13 +130,6 @@ package AMF.Internals.UML_Communication_Paths is
    --  Getter of Relationship::relatedElement.
    --
    --  Specifies the elements related by the Relationship.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Communication_Path_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Communication_Path_Proxy)

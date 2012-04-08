@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Component_Realizations;
 with AMF.UML.Components;
 with AMF.UML.Dependencies.Collections;
@@ -154,13 +153,6 @@ package AMF.Internals.UML_Component_Realizations is
    --  Getter of Relationship::relatedElement.
    --
    --  Specifies the elements related by the Relationship.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Component_Realization_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Component_Realization_Proxy)

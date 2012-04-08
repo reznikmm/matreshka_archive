@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Named_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Deployed_Artifacts.Collections;
 with AMF.UML.Deployment_Specifications.Collections;
@@ -136,13 +135,6 @@ package AMF.Internals.UML_Deployments is
    --  Getter of Relationship::relatedElement.
    --
    --  Specifies the elements related by the Relationship.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Deployment_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Deployment_Proxy)

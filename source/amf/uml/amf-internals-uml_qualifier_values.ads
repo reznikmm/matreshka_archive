@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Input_Pins;
 with AMF.UML.Properties;
@@ -84,13 +83,6 @@ package AMF.Internals.UML_Qualifier_Values is
    --  Setter of QualifierValue::value.
    --
    --  Input pin from which the specified value for the qualifier is taken.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Qualifier_Value_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Qualifier_Value_Proxy)

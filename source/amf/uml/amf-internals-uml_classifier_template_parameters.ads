@@ -44,7 +44,6 @@
 with AMF.Internals.UML_Elements;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.Template_Signatures;
@@ -169,13 +168,6 @@ package AMF.Internals.UML_Classifier_Template_Parameters is
    --  Setter of TemplateParameter::signature.
    --
    --  The template signature that owns this template parameter.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)

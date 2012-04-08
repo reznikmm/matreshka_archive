@@ -44,7 +44,6 @@
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Connectors.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
@@ -135,13 +134,6 @@ package AMF.Internals.UML_Information_Flows is
    --  Getter of Relationship::relatedElement.
    --
    --  Specifies the elements related by the Relationship.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Information_Flow_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Information_Flow_Proxy)

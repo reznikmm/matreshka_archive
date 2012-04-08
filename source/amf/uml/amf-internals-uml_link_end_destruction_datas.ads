@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Input_Pins;
 with AMF.UML.Link_End_Destruction_Datas;
@@ -126,13 +125,6 @@ package AMF.Internals.UML_Link_End_Destruction_Datas is
    --
    --  Input pin that provides the specified object for the given end. This
    --  pin is omitted if the link-end data specifies an 'open' end for reading.
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
-       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-   --  Getter of Element::ownedComment.
-   --
-   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
