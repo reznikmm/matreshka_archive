@@ -177,17 +177,20 @@ package body League.String_Vectors is
     (Self    : Universal_String_Vector'Class;
      Pattern : League.Strings.Universal_String'Class) return Natural
    is
-      V_D : constant not null
+      V_D   : constant not null
         Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
           := Self.Data;
-      P_D : constant not null Shared_String_Access
+      P_D   : constant not null Shared_String_Access
         := League.Strings.Internals.Internal (Pattern);
+      Index : Matreshka.Internals.String_Vectors.String_Vector_Index := 0;
 
    begin
-      for J in 0 .. V_D.Unused - 1 loop
-         if String_Handler.Is_Equal (V_D.Value (J), P_D) then
-            return Positive (J + 1);
+      while Index < V_D.Unused loop
+         if String_Handler.Is_Equal (V_D.Value (Index), P_D) then
+            return Positive (Index + 1);
          end if;
+
+         Index := Index + 1;
       end loop;
 
       return 0;
