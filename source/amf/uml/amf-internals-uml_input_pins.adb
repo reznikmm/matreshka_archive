@@ -1001,20 +1001,6 @@ package body AMF.Internals.UML_Input_Pins is
       return Iss (Self, Lowerbound, Upperbound);
    end Iss;
 
-   --------------------
-   -- Is_Multivalued --
-   --------------------
-
-   overriding function Is_Multivalued
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Multivalued unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Input_Pin_Proxy.Is_Multivalued";
-      return Is_Multivalued (Self);
-   end Is_Multivalued;
-
    -----------
    -- Lower --
    -----------
@@ -1029,20 +1015,6 @@ package body AMF.Internals.UML_Input_Pins is
       return Lower (Self);
    end Lower;
 
-   -----------------
-   -- Lower_Bound --
-   -----------------
-
-   overriding function Lower_Bound
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return AMF.Optional_Integer is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Lower_Bound unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Input_Pin_Proxy.Lower_Bound";
-      return Lower_Bound (Self);
-   end Lower_Bound;
-
    -----------
    -- Upper --
    -----------
@@ -1056,19 +1028,5 @@ package body AMF.Internals.UML_Input_Pins is
       raise Program_Error with "Unimplemented procedure UML_Input_Pin_Proxy.Upper";
       return Upper (Self);
    end Upper;
-
-   -----------------
-   -- Upper_Bound --
-   -----------------
-
-   overriding function Upper_Bound
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return AMF.Optional_Unlimited_Natural is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Upper_Bound unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Input_Pin_Proxy.Upper_Bound";
-      return Upper_Bound (Self);
-   end Upper_Bound;
 
 end AMF.Internals.UML_Input_Pins;

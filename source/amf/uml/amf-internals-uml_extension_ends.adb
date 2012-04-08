@@ -1538,20 +1538,6 @@ package body AMF.Internals.UML_Extension_Ends is
       return Iss (Self, Lowerbound, Upperbound);
    end Iss;
 
-   --------------------
-   -- Is_Multivalued --
-   --------------------
-
-   overriding function Is_Multivalued
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Multivalued unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Extension_End_Proxy.Is_Multivalued";
-      return Is_Multivalued (Self);
-   end Is_Multivalued;
-
    -----------
    -- Lower --
    -----------

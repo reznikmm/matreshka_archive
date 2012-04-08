@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.UML_Multiplicity_Elements;
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
@@ -67,8 +68,12 @@ with AMF.Visitors;
 
 package AMF.Internals.UML_Output_Pins is
 
+   package UML_Multiplicity_Elements is
+     new AMF.Internals.UML_Multiplicity_Elements
+          (AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy);
+
    type UML_Output_Pin_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new UML_Multiplicity_Elements.UML_Multiplicity_Element_Proxy
        and AMF.UML.Output_Pins.UML_Output_Pin with null record;
 
    overriding function Get_Is_Control
@@ -570,14 +575,6 @@ package AMF.Internals.UML_Output_Pins is
    --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
-   overriding function Is_Multivalued
-    (Self : not null access constant UML_Output_Pin_Proxy)
-       return Boolean;
-   --  Operation MultiplicityElement::isMultivalued.
-   --
-   --  The query isMultivalued() checks whether this multiplicity has an upper
-   --  bound greater than one.
-
    overriding function Lower
     (Self : not null access constant UML_Output_Pin_Proxy)
        return AMF.Optional_Integer;
@@ -585,28 +582,12 @@ package AMF.Internals.UML_Output_Pins is
    --
    --  The derived lower attribute must equal the lowerBound.
 
-   overriding function Lower_Bound
-    (Self : not null access constant UML_Output_Pin_Proxy)
-       return AMF.Optional_Integer;
-   --  Operation MultiplicityElement::lowerBound.
-   --
-   --  The query lowerBound() returns the lower bound of the multiplicity as
-   --  an integer.
-
    overriding function Upper
     (Self : not null access constant UML_Output_Pin_Proxy)
        return AMF.Optional_Unlimited_Natural;
    --  Operation MultiplicityElement::upper.
    --
    --  The derived upper attribute must equal the upperBound.
-
-   overriding function Upper_Bound
-    (Self : not null access constant UML_Output_Pin_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Operation MultiplicityElement::upperBound.
-   --
-   --  The query upperBound() returns the upper bound of the multiplicity for
-   --  a bounded multiplicity as an unlimited natural.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Output_Pin_Proxy;

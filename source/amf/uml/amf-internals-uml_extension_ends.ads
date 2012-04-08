@@ -884,14 +884,6 @@ package AMF.Internals.UML_Extension_Ends is
    --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
-   overriding function Is_Multivalued
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean;
-   --  Operation MultiplicityElement::isMultivalued.
-   --
-   --  The query isMultivalued() checks whether this multiplicity has an upper
-   --  bound greater than one.
-
    overriding function Lower
     (Self : not null access constant UML_Extension_End_Proxy)
        return AMF.Optional_Integer;
