@@ -54,6 +54,25 @@ package body AMF.Internals.Links is
 
    use AMF.Internals.Tables;
 
+   function Create_Link
+    (Association    : CMOF_Element;
+     First_Element  : AMF_Element;
+     Second_Element : AMF_Element) return AMF_Link
+   is
+      Member_End : constant AMF_Collection_Of_Element
+        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
+            (Association);
+
+   begin
+      return
+        AMF.Internals.Links.Internal_Create_Link
+         (Association,
+          First_Element,
+          AMF.Internals.Element_Collections.Element (Member_End, 1),
+          Second_Element,
+          AMF.Internals.Element_Collections.Element (Member_End, 2));
+   end Create_Link;
+
    -----------------
    -- Create_Link --
    -----------------
@@ -63,17 +82,12 @@ package body AMF.Internals.Links is
      First_Element  : AMF_Element;
      Second_Element : AMF_Element)
    is
-      Member_End : constant AMF_Collection_Of_Element
-        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
-            (Association);
+      Aux : constant AMF_Link
+        := Create_Link (Association, First_Element, Second_Element);
+      pragma Unreferenced (Aux);
 
    begin
-      AMF.Internals.Links.Internal_Create_Link
-       (Association,
-        First_Element,
-        AMF.Internals.Element_Collections.Element (Member_End, 1),
-        Second_Element,
-        AMF.Internals.Element_Collections.Element (Member_End, 2));
+      null;
    end Create_Link;
 
    --------------------------

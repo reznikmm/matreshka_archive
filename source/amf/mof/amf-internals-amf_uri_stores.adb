@@ -42,13 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Types;
-with AMF.Internals.Element_Collections;
+with AMF.Internals.Elements;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
-with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.AMF_URI_Stores is
 
@@ -156,21 +155,14 @@ package body AMF.Internals.AMF_URI_Stores is
    is
       pragma Unreferenced (Self);
 
-      A          : constant CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Abstract_Element'Class (Association.all)'Access);
-      Member_End : constant AMF_Collection_Of_Element
-        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End (A);
-
    begin
       return
         AMF.Internals.Links.Proxy
-         (AMF.Internals.Links.Internal_Create_Link
-           (A,
+         (AMF.Internals.Links.Create_Link
+           (AMF.Internals.Elements.Element_Base'Class
+             (Association.all).Element,
             AMF.Internals.Helpers.To_Element (First_Element),
-            AMF.Internals.Element_Collections.Element (Member_End, 1),
-            AMF.Internals.Helpers.To_Element (Second_Element),
-            AMF.Internals.Element_Collections.Element (Member_End, 2)));
+            AMF.Internals.Helpers.To_Element (Second_Element)));
    end Create_Link;
 
    -------------
