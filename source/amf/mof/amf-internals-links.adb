@@ -54,6 +54,18 @@ package body AMF.Internals.Links is
 
    use AMF.Internals.Tables;
 
+   function Internal_Create_Link
+    (Association     : CMOF_Element;
+     First_Element   : AMF_Element;
+     First_Property  : CMOF_Element;
+     Second_Element  : AMF_Element;
+     Second_Property : CMOF_Element) return AMF_Link;
+   --  Internal implementation of link creation.
+
+   -----------------
+   -- Create_Link --
+   -----------------
+
    function Create_Link
     (Association    : CMOF_Element;
      First_Element  : AMF_Element;

@@ -45,22 +45,6 @@ with AMF.Links;
 
 package AMF.Internals.Links is
 
-   function Internal_Create_Link
-    (Association     : CMOF_Element;
-     First_Element   : AMF_Element;
-     First_Property  : CMOF_Element;
-     Second_Element  : AMF_Element;
-     Second_Property : CMOF_Element) return AMF_Link;
-   procedure Internal_Create_Link
-    (Association     : CMOF_Element;
-     First_Element   : AMF_Element;
-     First_Property  : CMOF_Element;
-     Second_Element  : AMF_Element;
-     Second_Property : CMOF_Element);
-   --  Creates link between two elements. It uses only Property::upper
-   --  attribute and intended to be used to construct initial CMOF
-   --  metametamodel only.
-
    function Create_Link
     (Association    : CMOF_Element;
      First_Element  : AMF_Element;
@@ -78,5 +62,15 @@ package AMF.Internals.Links is
      Element : AMF_Element) return AMF_Element;
    --  Returns opposite element of the link or Null_Element when Link is
    --  No_Link.
+
+   procedure Internal_Create_Link
+    (Association     : CMOF_Element;
+     First_Element   : AMF_Element;
+     First_Property  : CMOF_Element;
+     Second_Element  : AMF_Element;
+     Second_Property : CMOF_Element);
+   --  Creates link between two elements. It uses only Property::upper
+   --  attribute and intended to be used to construct initial CMOF
+   --  metametamodel only.
 
 end AMF.Internals.Links;
