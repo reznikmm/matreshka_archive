@@ -114,14 +114,16 @@ package body AMF.Internals.Links is
       ------------------------------
 
       procedure Create_Multiple_Multiple is
+         Link : constant AMF_Link := AMF_Link_Table.Last;
+
       begin
-         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+         AMF_Link_Table.Table (Link) :=
           (AMF_Types.L_Multiple_Multiple,
-           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
-                (Id => AMF_Link_Table.Last),
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'(Id => Link),
            Association,
            First_Element,
-           Second_Element);
+           Second_Element,
+           Link);
       end Create_Multiple_Multiple;
 
       ----------------------------
@@ -129,14 +131,16 @@ package body AMF.Internals.Links is
       ----------------------------
 
       procedure Create_Multiple_Single is
+         Link : constant AMF_Link := AMF_Link_Table.Last;
+
       begin
-         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+         AMF_Link_Table.Table (Link) :=
           (AMF_Types.L_Multiple_Single,
-           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
-                (Id => AMF_Link_Table.Last),
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'(Id => Link),
            Association,
            First_Element,
-           Second_Element);
+           Second_Element,
+           Link);
       end Create_Multiple_Single;
 
       ----------------------------
@@ -144,14 +148,16 @@ package body AMF.Internals.Links is
       ----------------------------
 
       procedure Create_Single_Multiple is
+         Link : constant AMF_Link := AMF_Link_Table.Last;
+
       begin
-         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+         AMF_Link_Table.Table (Link) :=
           (AMF_Types.L_Single_Multiple,
-           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
-                (Id => AMF_Link_Table.Last),
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'(Id => Link),
            Association,
            First_Element,
-           Second_Element);
+           Second_Element,
+           Link);
       end Create_Single_Multiple;
 
       --------------------------
@@ -159,14 +165,16 @@ package body AMF.Internals.Links is
       --------------------------
 
       procedure Create_Single_Single is
+         Link : constant AMF_Link := AMF_Link_Table.Last;
+
       begin
-         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+         AMF_Link_Table.Table (Link) :=
           (AMF_Types.L_Single_Single,
-           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
-                (Id => AMF_Link_Table.Last),
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'(Id => Link),
            Association,
            First_Element,
-           Second_Element);
+           Second_Element,
+           Link);
       end Create_Single_Single;
 
    begin
