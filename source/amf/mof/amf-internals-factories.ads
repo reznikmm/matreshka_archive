@@ -185,6 +185,13 @@ package AMF.Internals.Factories is
      Other    : AMF.Internals.AMF_Element) is abstract;
    --  Connects link end with specified element:property.
 
+   not overriding procedure Synchronize_Link_Set
+    (Self     : not null access constant Abstract_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link) is null;
+   --  Creates required additional links to construct set of links.
+
    procedure Register (Factory : not null Metamodel_Factory_Access);
    --  Registers metamodel factory.
 

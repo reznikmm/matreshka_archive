@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -78,6 +78,20 @@ package body AMF.Internals.Helpers is
        (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Link_End
          (Element, Property, Link, Other);
    end Connect_Link_End;
+
+   --------------------------
+   -- Synchronize_Link_Set --
+   --------------------------
+
+   procedure Synchronize_Link_Set
+    (Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link) is
+   begin
+      AMF.Internals.Factories.Get_Factory
+       (AMF_Metamodel (U32 (Element) / 16#01000000#)).Synchronize_Link_Set
+         (Element, Property, Link);
+   end Synchronize_Link_Set;
 
    ----------------
    -- To_Element --

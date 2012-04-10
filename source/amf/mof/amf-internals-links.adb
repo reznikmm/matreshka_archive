@@ -71,18 +71,33 @@ package body AMF.Internals.Links is
      First_Element  : AMF_Element;
      Second_Element : AMF_Element) return AMF_Link
    is
-      Member_End : constant AMF_Collection_Of_Element
+      Member_End      : constant AMF_Collection_Of_Element
         := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
             (Association);
+      First_Property  : constant CMOF_Element
+        := AMF.Internals.Element_Collections.Element (Member_End, 1);
+      Second_Property : constant CMOF_Element
+        := AMF.Internals.Element_Collections.Element (Member_End, 2);
+      Link            : constant AMF_Link
+        := AMF.Internals.Links.Internal_Create_Link
+            (Association,
+             First_Element,
+             AMF.Internals.Element_Collections.Element (Member_End, 1),
+             Second_Element,
+             AMF.Internals.Element_Collections.Element (Member_End, 2));
 
    begin
-      return
-        AMF.Internals.Links.Internal_Create_Link
-         (Association,
-          First_Element,
-          AMF.Internals.Element_Collections.Element (Member_End, 1),
-          Second_Element,
-          AMF.Internals.Element_Collections.Element (Member_End, 2));
+      --  Synchronize set of links.
+      --
+      --  XXX This operations need to be circular probably to allow to handle
+      --  complicated cases.
+
+      AMF.Internals.Helpers.Synchronize_Link_Set
+       (First_Element, First_Property, Link);
+      AMF.Internals.Helpers.Synchronize_Link_Set
+       (Second_Element, Second_Property, Link);
+
+      return Link;
    end Create_Link;
 
    -----------------
