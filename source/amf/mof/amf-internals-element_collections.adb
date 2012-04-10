@@ -190,37 +190,33 @@ package body AMF.Internals.Element_Collections is
      Element    : AMF_Element;
      Link       : AMF_Link)
    is
-      Head        : AMF_Tables.Collection_Element_Identifier
-        := AMF_Tables.Collections.Table (Collection).Head;
-      Tail        : AMF_Tables.Collection_Element_Identifier
-        := AMF_Tables.Collections.Table (Collection).Tail;
       Previous    : constant AMF_Tables.Collection_Element_Identifier
         := AMF_Tables.Collections.Table (Collection).Tail;
-      Next        : constant AMF_Tables.Collection_Element_Identifier := 0;
       New_Element : AMF_Tables.Collection_Element_Identifier;
 
    begin
       AMF_Tables.Collection_Elements.Increment_Last;
       New_Element := AMF_Tables.Collection_Elements.Last;
 
-      if Head = 0 then
-         --  List is empty.
-
-         Head := New_Element;
-         Tail := New_Element;
-
-         AMF_Tables.Collections.Table (Collection).Head := Head;
-         AMF_Tables.Collections.Table (Collection).Tail := Tail;
-
-      else
-         Tail := New_Element;
-
-         AMF_Tables.Collections.Table (Collection).Tail := Tail;
-         AMF_Tables.Collection_Elements.Table (Previous).Next := New_Element;
-      end if;
+      --  Initialize new element.
 
       AMF_Tables.Collection_Elements.Table (New_Element) :=
-       (Element, Link, Previous, Next);
+       (Element, Link, Previous, 0);
+
+      --  Connect list.
+
+      AMF_Tables.Collections.Table (Collection).Tail := New_Element;
+
+      if AMF_Tables.Collections.Table (Collection).Head = 0 then
+         --  List is empty, sets list's head to point to element.
+
+         AMF_Tables.Collections.Table (Collection).Head := New_Element;
+
+      else
+         --  List is not empty, attach new element to last element in the list.
+
+         AMF_Tables.Collection_Elements.Table (Previous).Next := New_Element;
+      end if;
    end Internal_Append;
 
    ------------
