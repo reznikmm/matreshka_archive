@@ -69,20 +69,10 @@ package body AMF.Internals.Element_Collections is
 
    begin
       if Element (Member_End, 1) = Property then
-         AMF.Internals.Links.Internal_Create_Link
-          (Association,
-           Owner,
-           Property,
-           Item,
-           Element (Member_End, 2));
+         AMF.Internals.Links.Create_Link (Association, Owner, Item);
 
       else
-         AMF.Internals.Links.Internal_Create_Link
-          (Association,
-           Item,
-           Element (Member_End, 1),
-           Owner,
-           Property);
+         AMF.Internals.Links.Create_Link (Association, Item, Owner);
       end if;
    end Add;
 
