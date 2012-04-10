@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -358,40 +358,40 @@ package body AMF.Internals.Extents is
    ---------------------
 
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element) is
-      Head     : Tables.AMF_Tables.Extent_Element_Identifier
-        := Tables.AMF_Tables.Extents.Table (Extent).Head;
-      Tail     : Tables.AMF_Tables.Extent_Element_Identifier
-        := Tables.AMF_Tables.Extents.Table (Extent).Tail;
       Previous : constant Tables.AMF_Tables.Extent_Element_Identifier
         := Tables.AMF_Tables.Extents.Table (Extent).Tail;
-      Next     : constant Tables.AMF_Tables.Extent_Element_Identifier := 0;
 
    begin
       Tables.AMF_Tables.Extent_Elements.Increment_Last;
 
-      if Head = 0 then
-         --  List is empty.
+      --  Initialize table's element.
 
-         Head := Tables.AMF_Tables.Extent_Elements.Last;
-         Tail := Tables.AMF_Tables.Extent_Elements.Last;
-
-         Tables.AMF_Tables.Extents.Table (Extent).Head := Head;
-         Tables.AMF_Tables.Extents.Table (Extent).Tail := Tail;
-
-      else
-         Tail := Tables.AMF_Tables.Extent_Elements.Last;
-
-         Tables.AMF_Tables.Extents.Table (Extent).Tail := Tail;
-         Tables.AMF_Tables.Extent_Elements.Table (Previous).Next := Tail;
-      end if;
-
-      AMF.Internals.Helpers.Connect_Extent (Element, Extent);
       Tables.AMF_Tables.Extent_Elements.Table
        (Tables.AMF_Tables.Extent_Elements.Last) :=
        (Id       => Matreshka.Internals.Strings.Shared_Empty'Access,
         Element  => Element,
         Previous => Previous,
-        Next     => Next);
+        Next     => 0);
+
+      --  Connect to the list.
+
+      Tables.AMF_Tables.Extents.Table (Extent).Tail :=
+        Tables.AMF_Tables.Extent_Elements.Last;
+
+      if Tables.AMF_Tables.Extents.Table (Extent).Head = 0 then
+         --  List is empty.
+
+         Tables.AMF_Tables.Extents.Table (Extent).Head :=
+           Tables.AMF_Tables.Extent_Elements.Last;
+
+      else
+         Tables.AMF_Tables.Extent_Elements.Table (Previous).Next :=
+           Tables.AMF_Tables.Extent_Elements.Last;
+      end if;
+
+      --  Complete connection at module's side.
+
+      AMF.Internals.Helpers.Connect_Extent (Element, Extent);
    end Internal_Append;
 
    ------------
