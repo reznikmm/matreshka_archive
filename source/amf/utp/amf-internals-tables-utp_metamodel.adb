@@ -3994,6 +3994,210 @@ package body AMF.Internals.Tables.Utp_Metamodel is
         Base + 142,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Owning_Association);
       AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 20,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 21,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 129,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 135,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 136,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 137,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 19,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 24,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 5,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 6,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 30,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 12,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 8,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 22,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 23,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 1,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 10,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 11,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 3,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 2,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 4,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 26,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 28,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 27,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 17,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 18,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 14,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 29,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 9,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 16,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 7,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 15,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 13,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+        Base + 126,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        Base + 25,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package);
+      AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 126,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
