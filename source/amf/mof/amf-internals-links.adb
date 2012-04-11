@@ -117,6 +117,24 @@ package body AMF.Internals.Links is
       null;
    end Create_Link;
 
+   -----------------
+   -- Create_Link --
+   -----------------
+
+   procedure Create_Link
+    (Association    : CMOF_Element;
+     First_Element  : AMF_Element;
+     Second_Element : AMF_Element;
+     Link           : AMF_Link)
+   is
+      New_Link : constant AMF_Link
+        := Create_Link (Association, First_Element, Second_Element);
+
+   begin
+      AMF_Link_Table.Table (New_Link).Next := AMF_Link_Table.Table (Link).Next;
+      AMF_Link_Table.Table (Link).Next := New_Link;
+   end Create_Link;
+
    --------------------------
    -- Internal_Create_Link --
    --------------------------

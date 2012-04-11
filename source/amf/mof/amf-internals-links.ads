@@ -55,6 +55,14 @@ package AMF.Internals.Links is
      Second_Element : AMF_Element);
    --  Creates link between two elements.
 
+   procedure Create_Link
+    (Association    : CMOF_Element;
+     First_Element  : AMF_Element;
+     Second_Element : AMF_Element;
+     Link           : AMF_Link);
+   --  Creates link and add it into set of links to which specified link
+   --  belongs.
+
    function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access;
 
    function Opposite_Element
