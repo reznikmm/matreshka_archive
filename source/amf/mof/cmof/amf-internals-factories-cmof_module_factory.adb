@@ -42,11 +42,16 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
+with AMF.Internals.Tables.CMOF_Metamodel;
+with AMF.Internals.Tables.CMOF_Types;
 
 package body AMF.Internals.Factories.CMOF_Module_Factory is
+
+   use AMF.Internals.Tables;
 
    --------------------
    -- Connect_Extent --
@@ -76,7 +81,6 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
    is
       pragma Unreferenced (Self);
 
-      use AMF.Internals.Tables;
       use AMF.Internals.Tables.CMOF_Attribute_Mappings;
 
    begin
@@ -113,6 +117,48 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
          end if;
       end if;
    end Connect_Link_End;
+
+   --------------------------
+   -- Synchronize_Link_Set --
+   --------------------------
+
+   overriding procedure Synchronize_Link_Set
+    (Self     : not null access constant CMOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link)
+   is
+      pragma Unreferenced (Self);
+
+      use AMF.Internals.Tables.CMOF_Metamodel;
+      use AMF.Internals.Tables.CMOF_Types;
+
+      Element_Kind  : constant CMOF_Types.Element_Kinds
+        := CMOF_Element_Table.Table (Element).Kind;
+      Opposite      : constant AMF_Element
+        := AMF.Internals.Links.Opposite_Element (Link, Element);
+      Opposite_Kind : constant CMOF_Types.Element_Kinds
+        := CMOF_Element_Table.Table (Opposite).Kind;
+
+   begin
+      --  XXX Experimental code: when element is added to
+      --  CMOF::Package::packagedElement attribute and element is subclass of
+      --  CMOF::Type when add it to CMOF::Package::ownedType attribute also.
+
+      if Element_Kind = E_CMOF_Package
+        and then Property = MP_CMOF_Package_Packaged_Element
+        and then (Opposite_Kind = E_CMOF_Class
+                    or Opposite_Kind = E_CMOF_Enumeration
+                    or Opposite_Kind = E_CMOF_Data_Type
+                    or Opposite_Kind = E_CMOF_Primitive_Type)
+      then
+         AMF.Internals.Links.Create_Link
+          (MA_CMOF_Type_Owned_Type_Package,
+           Element,
+           Opposite,
+           Link);
+      end if;
+   end Synchronize_Link_Set;
 
    ----------------
    -- To_Element --
