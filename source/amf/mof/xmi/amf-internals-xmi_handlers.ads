@@ -51,6 +51,7 @@ with XML.SAX.Error_Handlers;
 private with XML.SAX.Locators;
 private with XML.SAX.Parse_Exceptions;
 
+private with AMF.CMOF.Packages;
 private with AMF.CMOF.Properties;
 private with AMF.Elements;
 with AMF.URI_Stores;
@@ -93,6 +94,14 @@ private
            League.Strings."=",
            AMF.Elements."=");
 
+   package String_Package_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           AMF.CMOF.Packages.CMOF_Package_Access,
+           League.Strings.Hash,
+           League.Strings."=",
+           AMF.CMOF.Packages."=");
+
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with record
@@ -107,8 +116,8 @@ private
       Skip_Element       : Natural := 0;
       XMI_Namespace      : League.Strings.Universal_String;
       --  Actual namespace of the XMI document.
-      URI_Package_Map    : String_Element_Maps.Map;
-      Prefix_Package_Map : String_Element_Maps.Map;
+      URI_Package_Map    : String_Package_Maps.Map;
+      Prefix_Package_Map : String_Package_Maps.Map;
       --  Mapping from namespace URI and namespace prefix to the package of the
       --  corresponding metamodel.
       Diagnosis          : League.Strings.Universal_String;

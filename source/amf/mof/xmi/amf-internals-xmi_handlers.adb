@@ -55,13 +55,11 @@ with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packageable_Elements.Collections;
-with AMF.CMOF.Packages;
+with AMF.CMOF.Packages.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Facility;
 with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Factories;
---  XXX Direct use of AMF.Internals.Factories must be removed.
 with AMF.Internals.XMI_URI_Rewriter;
 
 package body AMF.Internals.XMI_Handlers is
@@ -848,9 +846,8 @@ package body AMF.Internals.XMI_Handlers is
                Aux := Name.Slice (Name.Index (':') + 1, Name.Length);
                Meta :=
                  Resolve_Owned_Class
-                  (AMF.CMOF.Packages.CMOF_Package_Access
-                    (Self.Prefix_Package_Map.Element
-                      (Name.Slice (1, Name.Index (':') - 1))),
+                  (Self.Prefix_Package_Map.Element
+                    (Name.Slice (1, Name.Index (':') - 1)),
                    Aux);
 
                if Meta = null then
@@ -904,9 +901,7 @@ package body AMF.Internals.XMI_Handlers is
       else
          --  Looking for package associated with namespace URI.
 
-         The_Package :=
-           AMF.CMOF.Packages.CMOF_Package_Access
-            (Self.URI_Package_Map.Element (Namespace_URI));
+         The_Package := Self.URI_Package_Map.Element (Namespace_URI);
 
          if The_Package = null then
             --  Null package means what corresponding metamodel was not found,
@@ -957,10 +952,11 @@ package body AMF.Internals.XMI_Handlers is
    is
       pragma Unreferenced (Success);
 
-      use type AMF.Internals.Factories.Metamodel_Factory_Access;
+      use type AMF.CMOF.Packages.CMOF_Package_Access;
 
-      Factory     : AMF.Internals.Factories.Metamodel_Factory_Access;
-      The_Package : AMF.Elements.Element_Access;
+      The_Package   : AMF.CMOF.Packages.CMOF_Package_Access;
+      Metamodel_URI : League.Strings.Universal_String;
+      Packages      : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
 
    begin
       if Namespace_URI = XMI_2_1_Namespace
@@ -972,17 +968,32 @@ package body AMF.Internals.XMI_Handlers is
          null;
 
       else
-         --  Resolve element's factory.
+         --  Rewrite metamodel's URI to supported one.
 
-         Factory :=
-           AMF.Internals.Factories.Get_Factory
-            (AMF.Internals.XMI_URI_Rewriter.Rewrite_Namespace_URI
-              (Namespace_URI));
+         Metamodel_URI :=
+           AMF.Internals.XMI_URI_Rewriter.Rewrite_Namespace_URI
+            (Namespace_URI);
 
-         --  Resolve root package of metamodel when factory is available.
+         --  Resolve metamodel's package.
 
-         if Factory /= null then
-            The_Package := AMF.Elements.Element_Access (Factory.Get_Package);
+         Packages := Self.Extent.Get_Package;
+
+         for J in 1 .. Packages.Length loop
+            if Packages.Element (J).Get_URI = Metamodel_URI then
+               The_Package := Packages.Element (J);
+
+               exit;
+            end if;
+         end loop;
+
+         if The_Package /= null then
+            --  Associate metamodel's package with namespace URI and prefix.
+            --  Both are mapped to null when factory is not found; but only
+            --  prefix mapping is important because it allows to detect errors
+            --  in XMI.
+
+            Self.Prefix_Package_Map.Insert (Prefix, The_Package);
+            Self.URI_Package_Map.Insert (Namespace_URI, The_Package);
 
          else
             Put_Line
@@ -991,13 +1002,6 @@ package body AMF.Internals.XMI_Handlers is
                 & Namespace_URI.To_Wide_Wide_String
                 & ''');
          end if;
-
-         --  Associate metamodel's package with namespace URI and prefix. Both
-         --  are mapped to null when factory is not found; but only prefix
-         --  mapping is important because it allows to detect errors in XMI.
-
-         Self.Prefix_Package_Map.Insert (Prefix, The_Package);
-         Self.URI_Package_Map.Insert (Namespace_URI, The_Package);
       end if;
    end Start_Prefix_Mapping;
 
