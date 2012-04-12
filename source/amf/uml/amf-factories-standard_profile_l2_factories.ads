@@ -80,6 +80,9 @@ package AMF.Factories.Standard_Profile_L2_Factories is
    type Standard_Profile_L2_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type Standard_Profile_L2_Factory_Access is access all Standard_Profile_L2_Factory'Class;
+   for Standard_Profile_L2_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Auxiliary
     (Self : not null access Standard_Profile_L2_Factory)
        return AMF.Standard_Profile_L2.Auxiliaries.Standard_Profile_L2_Auxiliary_Access is abstract;

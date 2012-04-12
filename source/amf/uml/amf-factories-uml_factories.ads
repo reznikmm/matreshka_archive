@@ -244,6 +244,9 @@ package AMF.Factories.UML_Factories is
    type UML_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type UML_Factory_Access is access all UML_Factory'Class;
+   for UML_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Abstraction
     (Self : not null access UML_Factory)
        return AMF.UML.Abstractions.UML_Abstraction_Access is abstract;

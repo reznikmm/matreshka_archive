@@ -81,6 +81,9 @@ package AMF.Factories.Utp_Factories is
    type Utp_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type Utp_Factory_Access is access all Utp_Factory'Class;
+   for Utp_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Coding_Rule
     (Self : not null access Utp_Factory)
        return AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access is abstract;

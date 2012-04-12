@@ -52,6 +52,9 @@ package AMF.Factories.MOF_Factories is
    type MOF_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type MOF_Factory_Access is access all MOF_Factory'Class;
+   for MOF_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Tag
     (Self : not null access MOF_Factory)
        return AMF.MOF.Tags.MOF_Tag_Access is abstract;

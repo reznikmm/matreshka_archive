@@ -51,4 +51,7 @@ package AMF.Factories.Primitive_Types_Factories is
    type Primitive_Types_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type Primitive_Types_Factory_Access is access all Primitive_Types_Factory'Class;
+   for Primitive_Types_Factory_Access'Storage_Size use 0;
+
 end AMF.Factories.Primitive_Types_Factories;

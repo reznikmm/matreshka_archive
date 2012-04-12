@@ -69,6 +69,9 @@ package AMF.Factories.CMOF_Factories is
    type CMOF_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type CMOF_Factory_Access is access all CMOF_Factory'Class;
+   for CMOF_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Association
     (Self : not null access CMOF_Factory)
        return AMF.CMOF.Associations.CMOF_Association_Access is abstract;

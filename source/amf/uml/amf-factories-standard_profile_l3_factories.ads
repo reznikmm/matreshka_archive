@@ -54,6 +54,9 @@ package AMF.Factories.Standard_Profile_L3_Factories is
    type Standard_Profile_L3_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type Standard_Profile_L3_Factory_Access is access all Standard_Profile_L3_Factory'Class;
+   for Standard_Profile_L3_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Build_Component
     (Self : not null access Standard_Profile_L3_Factory)
        return AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access is abstract;

@@ -89,6 +89,9 @@ package AMF.Factories.OCL_Factories is
    type OCL_Factory is limited interface
      and AMF.Factories.Factory;
 
+   type OCL_Factory_Access is access all OCL_Factory'Class;
+   for OCL_Factory_Access'Storage_Size use 0;
+
    not overriding function Create_Any_Type
     (Self : not null access OCL_Factory)
        return AMF.OCL.Any_Types.OCL_Any_Type_Access is abstract;
