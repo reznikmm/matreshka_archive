@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,6 +57,10 @@ package AMF.Stores is
    type Store_Access is access all Store'Class;
    for Store_Access'Storage_Size use 0;
 
+   ----------------------
+   --  AMF Extensions  --
+   ----------------------
+
    not overriding function Create
     (Self       : not null access Store;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
@@ -64,5 +68,11 @@ package AMF.Stores is
        return not null AMF.Elements.Element_Access is abstract;
    --  Creates an element that is an instance of the metaClass and assign
    --  identifier to created element.
+
+   not overriding function Get_Factory
+    (Self          : not null access Store;
+     Metamodel_URI : League.Strings.Universal_String)
+       return AMF.Factories.Factory_Access is abstract;
+   --  Returns factory for the specified URI of metamodel.
 
 end AMF.Stores;

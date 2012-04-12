@@ -124,7 +124,9 @@ package body AMF.Internals.Extents is
       AMF.Internals.Tables.AMF_Tables.Extents.Table
        (AMF.Internals.Tables.AMF_Tables.Extents.Last) :=
          (new AMF.Internals.AMF_URI_Stores.AMF_URI_Store'
-               (Id => AMF.Internals.Tables.AMF_Tables.Extents.Last),
+               (Id        => AMF.Internals.Tables.AMF_Tables.Extents.Last,
+                Factories =>
+                  AMF.Internals.AMF_URI_Stores.String_Factory_Maps.Empty_Map),
           Context_URI,
           0,
           0);

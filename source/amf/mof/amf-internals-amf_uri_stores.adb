@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Types;
 with AMF.Internals.Elements;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
@@ -50,11 +49,6 @@ with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 
 package body AMF.Internals.AMF_URI_Stores is
-
-   function Factory
-    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return AMF.Internals.Factories.Metamodel_Factory_Access;
-   --  Returns factory for the specified meta type.
 
    -----------------------
    -- Convert_To_String --
@@ -66,10 +60,13 @@ package body AMF.Internals.AMF_URI_Stores is
      Value     : League.Holders.Holder)
        return League.Strings.Universal_String
    is
-      pragma Unreferenced (Self);
+      The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := Data_Type.Get_Package;
 
    begin
-      return Factory (Data_Type).Convert_To_String (Data_Type, Value);
+      return
+        Self.Get_Factory
+         (The_Package.Get_URI.Value).Convert_To_String (Data_Type, Value);
    end Convert_To_String;
 
    ------------
@@ -81,10 +78,14 @@ package body AMF.Internals.AMF_URI_Stores is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      Element : constant AMF.Elements.Element_Access
-        := Factory (Meta_Class).Create (Meta_Class);
+      The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := Meta_Class.Get_Package;
+      Element     : constant AMF.Elements.Element_Access
+        := Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
 
    begin
+      --  XXX This code need to be moved outside of this unit.
+
       --  Add element to the store.
 
       AMF.Internals.Extents.Internal_Append
@@ -93,6 +94,8 @@ package body AMF.Internals.AMF_URI_Stores is
       --  Notify about creation of element.
 
       AMF.Internals.Listener_Registry.Notify_Instance_Create (Element);
+
+      --  XXX This code need to be moved outside of this unit.
 
       return Element;
    end Create;
@@ -107,12 +110,16 @@ package body AMF.Internals.AMF_URI_Stores is
      Id         : League.Strings.Universal_String)
        return not null AMF.Elements.Element_Access
    is
+      The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := Meta_Class.Get_Package;
       Element    : constant AMF.Elements.Element_Access
-        := Factory (Meta_Class).Create (Meta_Class);
+        := Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
       Element_Id : constant AMF.Internals.AMF_Element
         := AMF.Internals.Helpers.To_Element (Element);
 
    begin
+      --  XXX This code need to be moved outside of this unit.
+
       --  Add element to the store.
 
       AMF.Internals.Extents.Internal_Append (Self.Id, Element_Id);
@@ -121,6 +128,8 @@ package body AMF.Internals.AMF_URI_Stores is
       --  Notify about creation of element.
 
       AMF.Internals.Listener_Registry.Notify_Instance_Create (Element);
+
+      --  XXX This code need to be moved outside of this unit.
 
       return Element;
    end Create;
@@ -135,10 +144,13 @@ package body AMF.Internals.AMF_URI_Stores is
      Image     : League.Strings.Universal_String)
        return League.Holders.Holder
    is
-      pragma Unreferenced (Self);
+      The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := Data_Type.Get_Package;
 
    begin
-      return Factory (Data_Type).Create_From_String (Data_Type, Image);
+      return
+        Self.Get_Factory
+         (The_Package.Get_URI.Value).Create_From_String (Data_Type, Image);
    end Create_From_String;
 
    -----------------
@@ -165,25 +177,51 @@ package body AMF.Internals.AMF_URI_Stores is
             AMF.Internals.Helpers.To_Element (Second_Element)));
    end Create_Link;
 
-   -------------
-   -- Factory --
-   -------------
+   -----------------
+   -- Get_Factory --
+   -----------------
 
-   function Factory
-    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return AMF.Internals.Factories.Metamodel_Factory_Access
+   overriding function Get_Factory
+    (Self          : not null access AMF_URI_Store;
+     Metamodel_URI : League.Strings.Universal_String)
+       return AMF.Factories.Factory_Access
    is
-      Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
-        := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Elements.Element_Access (Meta_Type).Container);
-      --  := Meta_Type.Get_Package;
-      --
-      --  XXX Type:getPackage is derived property, it is not implemented now.
+      use type AMF.Factories.Factory_Access;
+
+      Position : constant String_Factory_Maps.Cursor
+        := Self.Factories.Find (Metamodel_URI);
+      Factory  : AMF.Factories.Factory_Access;
 
    begin
-      return
-        AMF.Internals.Factories.Get_Factory (Enclosing_Package.Get_URI.Value);
-   end Factory;
+      --  Lookup factory in the map.
+
+      if String_Factory_Maps.Has_Element (Position) then
+         return String_Factory_Maps.Element (Position);
+      end if;
+
+      --  Create factory.
+
+      Factory :=
+        AMF.Internals.Factories.Create_Factory (Metamodel_URI, Self.Id);
+
+      if Factory /= null then
+         --  If factory is created register mapping of all its packages.
+
+         declare
+            Packages :
+              constant AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
+                := Factory.Get_Package;
+
+         begin
+            for J in 1 .. Packages.Length loop
+               Self.Factories.Insert
+                (Packages.Element (J).Get_URI.Value, Factory);
+            end loop;
+         end;
+      end if;
+
+      return Factory;
+   end Get_Factory;
 
    -----------------
    -- Get_Package --

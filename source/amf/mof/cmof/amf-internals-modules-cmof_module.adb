@@ -50,8 +50,6 @@ package body AMF.Internals.Modules.CMOF_Module is
 
    Module_Factory : aliased
      AMF.Internals.Factories.CMOF_Module_Factory.CMOF_Module_Factory;
-   CMOF_Factory   : aliased
-     AMF.Internals.Factories.CMOF_Factories.CMOF_Factory;
    Module         : AMF_Metamodel;
 
 begin
@@ -69,7 +67,9 @@ begin
    AMF.Internals.Tables.CMOF_Metamodel.Initialize_Objects;
    AMF.Internals.Tables.CMOF_Metamodel.Initialize_Links;
 
-   --  Register factory.
+   --  Register factory's constructor.
 
-   AMF.Internals.Factories.Register (CMOF_Factory'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.CMOF_Factories.Get_Package,
+     AMF.Internals.Factories.CMOF_Factories.Constructor'Access);
 end AMF.Internals.Modules.CMOF_Module;

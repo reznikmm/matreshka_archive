@@ -50,33 +50,35 @@ package body AMF.Internals.Factories is
    package Universal_String_Factory_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           Metamodel_Factory_Access,
+           Factory_Constructor,
            League.Strings.Hash,
            League.Strings."=");
 
    URI_Registry    : Universal_String_Factory_Maps.Map;
+   Packages        : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
    Module_Registry :
      array (AMF.Internals.AMF_Metamodel) of Module_Factory_Access;
    Last_Module     : AMF_Metamodel := 0;
 
-   -----------------
-   -- Get_Factory --
-   -----------------
+   --------------------
+   -- Create_Factory --
+   --------------------
 
-   function Get_Factory
-    (URI : League.Strings.Universal_String) return Metamodel_Factory_Access
+   function Create_Factory
+    (URI    : League.Strings.Universal_String;
+     Extent : AMF_Extent) return AMF.Factories.Factory_Access
    is
       Position : constant Universal_String_Factory_Maps.Cursor
         := URI_Registry.Find (URI);
 
    begin
       if Universal_String_Factory_Maps.Has_Element (Position) then
-         return Universal_String_Factory_Maps.Element (Position);
+         return Universal_String_Factory_Maps.Element (Position) (Extent);
 
       else
          return null;
       end if;
-   end Get_Factory;
+   end Create_Factory;
 
    -----------------
    -- Get_Factory --
@@ -95,29 +97,19 @@ package body AMF.Internals.Factories is
    function Get_Packages
      return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is
    begin
-      return Result : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package do
-         declare
-            Position : Universal_String_Factory_Maps.Cursor
-              := URI_Registry.First;
-
-         begin
-            while Universal_String_Factory_Maps.Has_Element (Position) loop
-               Result.Add
-                (Universal_String_Factory_Maps.Element (Position).Get_Package);
-
-               Universal_String_Factory_Maps.Next (Position);
-            end loop;
-         end;
-      end return;
+      return Packages;
    end Get_Packages;
 
    --------------
    -- Register --
    --------------
 
-   procedure Register (Factory : not null Metamodel_Factory_Access) is
+   procedure Register
+    (The_Package : not null AMF.CMOF.Packages.CMOF_Package_Access;
+     Constructor : not null Factory_Constructor) is
    begin
-      URI_Registry.Insert (Factory.Get_Package.Get_URI.Value, Factory);
+      URI_Registry.Insert (The_Package.Get_URI.Value, Constructor);
+      Packages.Add (The_Package);
    end Register;
 
    --------------

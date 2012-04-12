@@ -43,11 +43,17 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with League.Holders;
+
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Data_Types;
+with AMF.Links;
 
 package AMF.Internals.Factories.CMOF_Factories is
 
    type CMOF_Factory is
-     limited new AMF.Internals.Factories.Abstract_Metamodel_Factory with null record;
+     limited new AMF.Internals.Factories.Metamodel_Factory_Base with null record;
 
    overriding function Convert_To_String
     (Self      : not null access CMOF_Factory;
@@ -64,8 +70,22 @@ package AMF.Internals.Factories.CMOF_Factories is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
+   overriding function Create_Link
+    (Self           : not null access CMOF_Factory;
+     Association    :
+       not null access AMF.CMOF.Associations.CMOF_Association'Class;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
+       return not null AMF.Links.Link_Access;
+
    overriding function Get_Package
     (Self : not null access constant CMOF_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
+
+   function Constructor
+    (Extent : AMF.Internals.AMF_Extent)
+       return not null AMF.Factories.Factory_Access;
+
+   function Get_Package return AMF.CMOF.Packages.CMOF_Package_Access;
 
 end AMF.Internals.Factories.CMOF_Factories;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,22 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
 with League.Holders;
+with League.Strings.Hash;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
+with AMF.Factories;
 with AMF.Internals.AMF_URI_Extents;
 with AMF.Links;
 with AMF.URI_Stores;
 
 package AMF.Internals.AMF_URI_Stores is
 
+   package String_Factory_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           AMF.Factories.Factory_Access,
+           League.Strings.Hash,
+           League.Strings."=",
+           AMF.Factories."=");
+
    type AMF_URI_Store is
      limited new AMF.Internals.AMF_URI_Extents.AMF_URI_Extent
-       and AMF.URI_Stores.URI_Store with null record;
+       and AMF.URI_Stores.URI_Store with
+   record
+      Factories : String_Factory_Maps.Map;
+   end record;
 
    ----------------------------
    --  Factory's operations  --
@@ -168,5 +182,11 @@ package AMF.Internals.AMF_URI_Stores is
     (Self : not null access constant AMF_URI_Store)
        return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
    --  Returns the package this is a factory for.
+
+   overriding function Get_Factory
+    (Self          : not null access AMF_URI_Store;
+     Metamodel_URI : League.Strings.Universal_String)
+       return AMF.Factories.Factory_Access;
+   --  Returns factory for the specified URI of metamodel.
 
 end AMF.Internals.AMF_URI_Stores;

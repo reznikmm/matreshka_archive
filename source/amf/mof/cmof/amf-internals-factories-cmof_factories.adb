@@ -47,6 +47,7 @@ with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
+with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
@@ -101,6 +102,17 @@ package body AMF.Internals.Factories.CMOF_Factories is
    function Create_Unlimited_Natural_From_String
     (Image : League.Strings.Universal_String) return League.Holders.Holder
        is separate;
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   function Constructor
+    (Extent : AMF.Internals.AMF_Extent)
+       return not null AMF.Factories.Factory_Access is
+   begin
+      return new CMOF_Factory'(Extent => Extent);
+   end Constructor;
 
    -----------------------
    -- Convert_To_String --
@@ -371,15 +383,53 @@ package body AMF.Internals.Factories.CMOF_Factories is
    end Create_From_String;
 
    -----------------
+   -- Create_Link --
+   -----------------
+
+   overriding function Create_Link
+    (Self           : not null access CMOF_Factory;
+     Association    :
+       not null access AMF.CMOF.Associations.CMOF_Association'Class;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
+       return not null AMF.Links.Link_Access
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return
+        AMF.Internals.Links.Proxy
+         (AMF.Internals.Links.Create_Link
+           (AMF.Internals.Elements.Element_Base'Class
+             (Association.all).Element,
+            AMF.Internals.Helpers.To_Element (First_Element),
+            AMF.Internals.Helpers.To_Element (Second_Element)));
+   end Create_Link;
+
+   -----------------
    -- Get_Package --
    -----------------
 
    overriding function Get_Package
     (Self : not null access constant CMOF_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
    is
       pragma Unreferenced (Self);
 
+   begin
+      return Result : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package do
+         Result.Add
+          (AMF.CMOF.Packages.CMOF_Package_Access
+            (AMF.Internals.Helpers.To_Element
+              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF)));
+      end return;
+   end Get_Package;
+
+   -----------------
+   -- Get_Package --
+   -----------------
+
+   function Get_Package return AMF.CMOF.Packages.CMOF_Package_Access is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
