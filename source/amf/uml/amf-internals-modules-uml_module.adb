@@ -62,17 +62,9 @@ package body AMF.Internals.Modules.UML_Module is
 
    --  Global objects of factories for supported metamodels.
 
-   Primitive_Types_Factory     : aliased
-     AMF.Internals.Factories.Primitive_Types_Factories.Primitive_Types_Factory;
-   Standard_Profile_L2_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L2_Factories.Standard_Profile_L2_Factory;
-   Standard_Profile_L3_Factory : aliased
-     AMF.Internals.Factories.Standard_Profile_L3_Factories.Standard_Profile_L3_Factory;
-   UML_Factory                 :
-     aliased AMF.Internals.Factories.UML_Factories.UML_Factory;
-   UML_Module_Factory          :
+   UML_Module_Factory :
      aliased AMF.Internals.Factories.UML_Module_Factory.UML_Module_Factory;
-   Module                      : AMF_Metamodel;
+   Module             : AMF_Metamodel;
 
 begin
    --  Register module's factory.
@@ -97,8 +89,16 @@ begin
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (Primitive_Types_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L2_Factory'Access);
-   AMF.Internals.Factories.Register (Standard_Profile_L3_Factory'Access);
-   AMF.Internals.Factories.Register (UML_Factory'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.Primitive_Types_Factories.Get_Package,
+     AMF.Internals.Factories.Primitive_Types_Factories.Constructor'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.UML_Factories.Get_Package,
+     AMF.Internals.Factories.UML_Factories.Constructor'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.Standard_Profile_L2_Factories.Get_Package,
+     AMF.Internals.Factories.Standard_Profile_L2_Factories.Constructor'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.Standard_Profile_L3_Factories.Get_Package,
+     AMF.Internals.Factories.Standard_Profile_L3_Factories.Constructor'Access);
 end AMF.Internals.Modules.UML_Module;
