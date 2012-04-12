@@ -378,8 +378,6 @@ package body Generator.Factories is
       else
          Unit.Add_Line;
          Unit.Add_Line (+"   is");
-         Unit.Add_Line (+"      pragma Unreferenced (Self);");
-         Unit.Add_Line;
          Unit.Add_Line
           (+"      MC      : constant AMF.Internals.CMOF_Element");
          Unit.Context.Add (+"AMF.Internals.Elements");
@@ -674,6 +672,50 @@ package body Generator.Factories is
            & "));");
       Unit.Add_Line (+"   end Get_Package;");
 
+      --  Generate implementation of Create_<Class>.
+
+      declare
+         Position  : CMOF_Class_Ordered_Sets.Cursor
+           := Metamodel_Info.Non_Abstract_Classes.First;
+         The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
+
+      begin
+         while CMOF_Class_Ordered_Sets.Has_Element (Position) loop
+            The_Class := CMOF_Class_Ordered_Sets.Element (Position);
+
+            Unit.Add_Header
+             (+"Create_" & To_Ada_Identifier (The_Class.Get_Name.Value), 3);
+            Unit.Add_Line;
+            Unit.Add_Line
+             (+"   overriding function Create_"
+                 & To_Ada_Identifier (The_Class.Get_Name.Value));
+            Unit.Add_Line
+             ("    (Self : not null access " & Type_Name & ')');
+            Unit.Add_Line
+             ("       return "
+                & Public_Ada_Type_Qualified_Name (The_Class, Value)
+                & " is");
+            Unit.Add_Line (+"   begin");
+            Unit.Add_Line (+"      return");
+            Unit.Add_Line
+             ("        " & Public_Ada_Type_Qualified_Name (The_Class, Value));
+            Unit.Add_Line (+"         (Self.Create");
+            Unit.Add_Line (+"           (AMF.CMOF.Classes.CMOF_Class_Access");
+            Unit.Add_Line (+"             (AMF.Internals.Helpers.To_Element");
+            Unit.Add_Line
+             (+"               ("
+                 & Type_Constant_Qualified_Name (The_Class)
+                 & "))));");
+
+            Unit.Add_Line
+             (+"   end Create_"
+                 & To_Ada_Identifier (The_Class.Get_Name.Value)
+                 & ";");
+
+            CMOF_Class_Ordered_Sets.Next (Position);
+         end loop;
+      end;
+
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ';');
 
@@ -705,7 +747,8 @@ package body Generator.Factories is
       Unit.Add_Line;
       Unit.Add_Line (+"   pragma Preelaborate;");
       Unit.Add_Line;
-      Unit.Add_Line ("   type " & Type_Name & " is limited interface;");
+      Unit.Add_Line ("   type " & Type_Name & " is limited interface");
+      Unit.Add_Line (+"     and AMF.Factories.Factory;");
 
       declare
          Position : CMOF_Class_Ordered_Sets.Cursor
@@ -776,10 +819,17 @@ package body Generator.Factories is
 --      Unit.Add_Line;
 --      Unit.Add_Line (+"   pragma Preelaborate;");
       Unit.Add_Line;
+      Unit.Context.Add
+       ("AMF.Factories." & Metamodel_Info.Ada_Name & "_Factories");
       Unit.Add_Line ("   type " & Type_Name & " is");
       Unit.Add_Line
-       (+"     limited new AMF.Internals.Factories.Metamodel_Factory_Base"
-           & " with null record;");
+       (+"     limited new AMF.Internals.Factories.Metamodel_Factory_Base");
+      Unit.Add_Line
+       ("       and AMF.Factories."
+          & Metamodel_Info.Ada_Name
+          & "_Factories."
+          & Metamodel_Info.Ada_Name
+          & "_Factory with null record;");
 
       --  Common subprograms of factory.
 
@@ -841,6 +891,31 @@ package body Generator.Factories is
       Unit.Add_Line
        (+"   function Get_Package"
            & " return not null AMF.CMOF.Packages.CMOF_Package_Access;");
+
+      declare
+         Position  : CMOF_Class_Ordered_Sets.Cursor
+           := Metamodel_Info.Non_Abstract_Classes.First;
+         The_Class : AMF.CMOF.Classes.CMOF_Class_Access;
+
+      begin
+         while CMOF_Class_Ordered_Sets.Has_Element (Position) loop
+            The_Class := CMOF_Class_Ordered_Sets.Element (Position);
+
+            Unit.Add_Line;
+            Unit.Add_Line
+             (+"   function Create_"
+                 & To_Ada_Identifier (The_Class.Get_Name.Value));
+            Unit.Add_Line
+             ("    (Self : not null access " & Type_Name & ')');
+            Unit.Context.Add (Public_Ada_Package_Name (The_Class, Value));
+            Unit.Add_Line
+             ("       return "
+                & Public_Ada_Type_Qualified_Name (The_Class, Value)
+                & ";");
+
+            CMOF_Class_Ordered_Sets.Next (Position);
+         end loop;
+      end;
 
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ';');
