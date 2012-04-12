@@ -152,7 +152,7 @@ package body Generator.Factories is
                   Unit.Add_Line
                    (+"   "
                        & To_Ada_Identifier (Name)
-                       & "_Image : constant League.Strings.Universal_String");
+                       & "_Img : constant League.Strings.Universal_String");
                   Unit.Add_Line
                    ("     := League.Strings.To_Universal_String ("""
                       & Name
@@ -328,7 +328,7 @@ package body Generator.Factories is
                       (+"                  return "
                           & To_Ada_Identifier
                              (Literals.Element (J).Get_Name.Value)
-                          & "_Image;");
+                          & "_Img;");
                   end loop;
 
                   Unit.Add_Line (+"            end case;");
@@ -543,7 +543,7 @@ package body Generator.Factories is
                       (+" Image = "
                           & To_Ada_Identifier
                              (Literals.Element (J).Get_Name.Value)
-                          & "_Image then");
+                          & "_Img then");
                      Unit.Context.Add
                       ("AMF."
                          & Module_Info.Ada_Name
