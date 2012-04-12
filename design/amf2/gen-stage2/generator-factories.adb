@@ -380,11 +380,13 @@ package body Generator.Factories is
          Unit.Add_Line (+"   is");
          Unit.Add_Line (+"      pragma Unreferenced (Self);");
          Unit.Add_Line;
-         Unit.Add_Line (+"      MC : constant AMF.Internals.CMOF_Element");
+         Unit.Add_Line
+          (+"      MC      : constant AMF.Internals.CMOF_Element");
          Unit.Context.Add (+"AMF.Internals.Elements");
          Unit.Add_Line
           (+"        := AMF.Internals.Elements.Element_Base'Class"
               & " (Meta_Class.all).Element;");
+         Unit.Add_Line (+"      Element : AMF.Internals.AMF_Element;");
          Unit.Add_Line;
          Unit.Add_Line (+"   begin");
 
@@ -415,21 +417,18 @@ package body Generator.Factories is
                    & Element_Constant_Qualified_Name
                       (AMF.CMOF.Elements.CMOF_Element_Access (The_Class))
                    & " then");
-               Unit.Context.Add (+"AMF.Internals.Helpers");
-               Unit.Add_Line (+"         return");
-               Unit.Add_Line (+"           AMF.Internals.Helpers.To_Element");
                Unit.Context.Add
                 ("AMF.Internals.Tables."
                    & Module_Info.Ada_Name
                    & "_Constructors");
                Unit.Add_Line
-                ("            (AMF.Internals.Tables."
+                (+"         Element := AMF.Internals.Tables."
                    & Module_Info.Ada_Name
                    & "_Constructors.Create_"
                    & Owning_Metamodel_Ada_Name (The_Class)
                    & "_"
                    & To_Ada_Identifier (The_Class.Get_Name.Value)
-                   & ");");
+                   & ";");
 
                CMOF_Class_Ordered_Sets.Next (Position);
             end loop;
@@ -438,6 +437,21 @@ package body Generator.Factories is
             Unit.Add_Line (+"      else");
             Unit.Add_Line (+"         raise Program_Error;");
             Unit.Add_Line (+"      end if;");
+
+            Unit.Add_Line;
+            Unit.Context.Add (+"AMF.Internals.Extents");
+            Unit.Add_Line
+             (+"      AMF.Internals.Extents.Internal_Append"
+                 & " (Self.Extent, Element);");
+            Unit.Context.Add (+"AMF.Internals.Listener_Registry");
+            Unit.Context.Add (+"AMF.Internals.Helpers");
+            Unit.Add_Line
+             (+"      AMF.Internals.Listener_Registry.Notify_Instance_Create");
+            Unit.Add_Line
+             (+"       (AMF.Internals.Helpers.To_Element (Element));");
+            Unit.Add_Line;
+            Unit.Add_Line
+             (+"      return AMF.Internals.Helpers.To_Element (Element);");
          end;
       end if;
 
