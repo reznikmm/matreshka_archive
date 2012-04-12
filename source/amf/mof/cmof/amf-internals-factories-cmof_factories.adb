@@ -418,10 +418,7 @@ package body AMF.Internals.Factories.CMOF_Factories is
 
    begin
       return Result : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package do
-         Result.Add
-          (AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF)));
+         Result.Add (Get_Package);
       end return;
    end Get_Package;
 
@@ -429,7 +426,7 @@ package body AMF.Internals.Factories.CMOF_Factories is
    -- Get_Package --
    -----------------
 
-   function Get_Package return AMF.CMOF.Packages.CMOF_Package_Access is
+   function Get_Package return not null AMF.CMOF.Packages.CMOF_Package_Access is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access

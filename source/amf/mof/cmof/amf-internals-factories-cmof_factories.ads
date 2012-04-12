@@ -85,6 +85,6 @@ package AMF.Internals.Factories.CMOF_Factories is
     (Extent : AMF.Internals.AMF_Extent)
        return not null AMF.Factories.Factory_Access;
 
-   function Get_Package return AMF.CMOF.Packages.CMOF_Package_Access;
+   function Get_Package return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
 end AMF.Internals.Factories.CMOF_Factories;
