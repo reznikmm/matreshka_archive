@@ -54,15 +54,15 @@ with AMF.OCL.Holders.Collection_Kinds;
 
 package body AMF.Internals.Factories.OCL_Factories is
 
-   Collection_Image : constant League.Strings.Universal_String
+   Collection_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Collection");
-   Set_Image : constant League.Strings.Universal_String
+   Set_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Set");
-   Ordered_Set_Image : constant League.Strings.Universal_String
+   Ordered_Set_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("OrderedSet");
-   Bag_Image : constant League.Strings.Universal_String
+   Bag_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Bag");
-   Sequence_Image : constant League.Strings.Universal_String
+   Sequence_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Sequence");
 
    -----------------
@@ -99,19 +99,19 @@ package body AMF.Internals.Factories.OCL_Factories is
          begin
             case Item is
                when AMF.OCL.Collection =>
-                  return Collection_Image;
+                  return Collection_Img;
 
                when AMF.OCL.Set =>
-                  return Set_Image;
+                  return Set_Img;
 
                when AMF.OCL.Ordered_Set =>
-                  return Ordered_Set_Image;
+                  return Ordered_Set_Img;
 
                when AMF.OCL.Bag =>
-                  return Bag_Image;
+                  return Bag_Img;
 
                when AMF.OCL.Sequence =>
-                  return Sequence_Image;
+                  return Sequence_Img;
             end case;
          end;
 
@@ -277,27 +277,27 @@ package body AMF.Internals.Factories.OCL_Factories is
 
    begin
       if DT = AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Kind then
-         if Image = Collection_Image then
+         if Image = Collection_Img then
             return
               AMF.OCL.Holders.Collection_Kinds.To_Holder
                (AMF.OCL.Collection);
 
-         elsif Image = Set_Image then
+         elsif Image = Set_Img then
             return
               AMF.OCL.Holders.Collection_Kinds.To_Holder
                (AMF.OCL.Set);
 
-         elsif Image = Ordered_Set_Image then
+         elsif Image = Ordered_Set_Img then
             return
               AMF.OCL.Holders.Collection_Kinds.To_Holder
                (AMF.OCL.Ordered_Set);
 
-         elsif Image = Bag_Image then
+         elsif Image = Bag_Img then
             return
               AMF.OCL.Holders.Collection_Kinds.To_Holder
                (AMF.OCL.Bag);
 
-         elsif Image = Sequence_Image then
+         elsif Image = Sequence_Img then
             return
               AMF.OCL.Holders.Collection_Kinds.To_Holder
                (AMF.OCL.Sequence);

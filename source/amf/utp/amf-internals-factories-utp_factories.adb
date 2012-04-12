@@ -54,15 +54,15 @@ with AMF.Utp.Holders.Verdicts;
 
 package body AMF.Internals.Factories.Utp_Factories is
 
-   None_Image : constant League.Strings.Universal_String
+   None_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("none");
-   Pass_Image : constant League.Strings.Universal_String
+   Pass_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("pass");
-   Inconclusive_Image : constant League.Strings.Universal_String
+   Inconclusive_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("inconclusive");
-   Fail_Image : constant League.Strings.Universal_String
+   Fail_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("fail");
-   Error_Image : constant League.Strings.Universal_String
+   Error_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("error");
 
    function Convert_Duration_To_String
@@ -132,19 +132,19 @@ package body AMF.Internals.Factories.Utp_Factories is
          begin
             case Item is
                when AMF.Utp.None =>
-                  return None_Image;
+                  return None_Img;
 
                when AMF.Utp.Pass =>
-                  return Pass_Image;
+                  return Pass_Img;
 
                when AMF.Utp.Inconclusive =>
-                  return Inconclusive_Image;
+                  return Inconclusive_Img;
 
                when AMF.Utp.Fail =>
-                  return Fail_Image;
+                  return Fail_Img;
 
                when AMF.Utp.Error =>
-                  return Error_Image;
+                  return Error_Img;
             end case;
          end;
 
@@ -295,27 +295,27 @@ package body AMF.Internals.Factories.Utp_Factories is
          return Create_Timezone_From_String (Image);
 
       elsif DT = AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Verdict then
-         if Image = None_Image then
+         if Image = None_Img then
             return
               AMF.Utp.Holders.Verdicts.To_Holder
                (AMF.Utp.None);
 
-         elsif Image = Pass_Image then
+         elsif Image = Pass_Img then
             return
               AMF.Utp.Holders.Verdicts.To_Holder
                (AMF.Utp.Pass);
 
-         elsif Image = Inconclusive_Image then
+         elsif Image = Inconclusive_Img then
             return
               AMF.Utp.Holders.Verdicts.To_Holder
                (AMF.Utp.Inconclusive);
 
-         elsif Image = Fail_Image then
+         elsif Image = Fail_Img then
             return
               AMF.Utp.Holders.Verdicts.To_Holder
                (AMF.Utp.Fail);
 
-         elsif Image = Error_Image then
+         elsif Image = Error_Img then
             return
               AMF.Utp.Holders.Verdicts.To_Holder
                (AMF.Utp.Error);

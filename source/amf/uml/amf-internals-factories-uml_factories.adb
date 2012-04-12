@@ -66,141 +66,141 @@ with AMF.UML.Holders.Visibility_Kinds;
 
 package body AMF.Internals.Factories.UML_Factories is
 
-   None_Image : constant League.Strings.Universal_String
+   None_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("none");
-   Shared_Image : constant League.Strings.Universal_String
+   Shared_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("shared");
-   Composite_Image : constant League.Strings.Universal_String
+   Composite_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("composite");
 
-   Sequential_Image : constant League.Strings.Universal_String
+   Sequential_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("sequential");
-   Guarded_Image : constant League.Strings.Universal_String
+   Guarded_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("guarded");
-   Concurrent_Image : constant League.Strings.Universal_String
+   Concurrent_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("concurrent");
 
-   Assembly_Image : constant League.Strings.Universal_String
+   Assembly_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("assembly");
-   Delegation_Image : constant League.Strings.Universal_String
+   Delegation_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("delegation");
 
-   Parallel_Image : constant League.Strings.Universal_String
+   Parallel_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("parallel");
-   Iterative_Image : constant League.Strings.Universal_String
+   Iterative_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("iterative");
-   Stream_Image : constant League.Strings.Universal_String
+   Stream_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("stream");
 
-   Seq_Image : constant League.Strings.Universal_String
+   Seq_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("seq");
-   Alt_Image : constant League.Strings.Universal_String
+   Alt_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("alt");
-   Opt_Image : constant League.Strings.Universal_String
+   Opt_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("opt");
-   Break_Image : constant League.Strings.Universal_String
+   Break_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("break");
-   Par_Image : constant League.Strings.Universal_String
+   Par_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("par");
-   Strict_Image : constant League.Strings.Universal_String
+   Strict_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("strict");
-   Loop_Image : constant League.Strings.Universal_String
+   Loop_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("loop");
-   Critical_Image : constant League.Strings.Universal_String
+   Critical_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("critical");
-   Neg_Image : constant League.Strings.Universal_String
+   Neg_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("neg");
-   Assert_Image : constant League.Strings.Universal_String
+   Assert_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("assert");
-   Ignore_Image : constant League.Strings.Universal_String
+   Ignore_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("ignore");
-   Consider_Image : constant League.Strings.Universal_String
+   Consider_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("consider");
 
-   Complete_Image : constant League.Strings.Universal_String
+   Complete_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("complete");
-   Lost_Image : constant League.Strings.Universal_String
+   Lost_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("lost");
-   Found_Image : constant League.Strings.Universal_String
+   Found_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("found");
-   Unknown_Image : constant League.Strings.Universal_String
+   Unknown_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("unknown");
 
-   Synch_Call_Image : constant League.Strings.Universal_String
+   Synch_Call_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("synchCall");
-   Asynch_Call_Image : constant League.Strings.Universal_String
+   Asynch_Call_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("asynchCall");
-   Asynch_Signal_Image : constant League.Strings.Universal_String
+   Asynch_Signal_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("asynchSignal");
-   Create_Message_Image : constant League.Strings.Universal_String
+   Create_Message_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("createMessage");
-   Delete_Message_Image : constant League.Strings.Universal_String
+   Delete_Message_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("deleteMessage");
-   Reply_Image : constant League.Strings.Universal_String
+   Reply_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("reply");
 
-   Unordered_Image : constant League.Strings.Universal_String
+   Unordered_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("unordered");
-   Ordered_Image : constant League.Strings.Universal_String
+   Ordered_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("ordered");
-   LIFO_Image : constant League.Strings.Universal_String
+   LIFO_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("LIFO");
-   FIFO_Image : constant League.Strings.Universal_String
+   FIFO_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("FIFO");
 
-   In_Image : constant League.Strings.Universal_String
+   In_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("in");
-   Inout_Image : constant League.Strings.Universal_String
+   Inout_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("inout");
-   Out_Image : constant League.Strings.Universal_String
+   Out_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("out");
-   Return_Image : constant League.Strings.Universal_String
+   Return_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("return");
 
-   Create_Image : constant League.Strings.Universal_String
+   Create_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("create");
-   Read_Image : constant League.Strings.Universal_String
+   Read_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("read");
-   Update_Image : constant League.Strings.Universal_String
+   Update_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("update");
-   Delete_Image : constant League.Strings.Universal_String
+   Delete_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("delete");
 
-   Initial_Image : constant League.Strings.Universal_String
+   Initial_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("initial");
-   Deep_History_Image : constant League.Strings.Universal_String
+   Deep_History_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("deepHistory");
-   Shallow_History_Image : constant League.Strings.Universal_String
+   Shallow_History_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("shallowHistory");
-   Join_Image : constant League.Strings.Universal_String
+   Join_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("join");
-   Fork_Image : constant League.Strings.Universal_String
+   Fork_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("fork");
-   Junction_Image : constant League.Strings.Universal_String
+   Junction_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("junction");
-   Choice_Image : constant League.Strings.Universal_String
+   Choice_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("choice");
-   Entry_Point_Image : constant League.Strings.Universal_String
+   Entry_Point_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("entryPoint");
-   Exit_Point_Image : constant League.Strings.Universal_String
+   Exit_Point_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("exitPoint");
-   Terminate_Image : constant League.Strings.Universal_String
+   Terminate_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("terminate");
 
-   Internal_Image : constant League.Strings.Universal_String
+   Internal_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("internal");
-   Local_Image : constant League.Strings.Universal_String
+   Local_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("local");
-   External_Image : constant League.Strings.Universal_String
+   External_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("external");
 
-   Public_Image : constant League.Strings.Universal_String
+   Public_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("public");
-   Private_Image : constant League.Strings.Universal_String
+   Private_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("private");
-   Protected_Image : constant League.Strings.Universal_String
+   Protected_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("protected");
-   Package_Image : constant League.Strings.Universal_String
+   Package_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
 
    -----------------
@@ -237,13 +237,13 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.None =>
-                  return None_Image;
+                  return None_Img;
 
                when AMF.UML.Shared =>
-                  return Shared_Image;
+                  return Shared_Img;
 
                when AMF.UML.Composite =>
-                  return Composite_Image;
+                  return Composite_Img;
             end case;
          end;
 
@@ -255,13 +255,13 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Sequential =>
-                  return Sequential_Image;
+                  return Sequential_Img;
 
                when AMF.UML.Guarded =>
-                  return Guarded_Image;
+                  return Guarded_Img;
 
                when AMF.UML.Concurrent =>
-                  return Concurrent_Image;
+                  return Concurrent_Img;
             end case;
          end;
 
@@ -273,10 +273,10 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Assembly =>
-                  return Assembly_Image;
+                  return Assembly_Img;
 
                when AMF.UML.Delegation =>
-                  return Delegation_Image;
+                  return Delegation_Img;
             end case;
          end;
 
@@ -288,13 +288,13 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Parallel =>
-                  return Parallel_Image;
+                  return Parallel_Img;
 
                when AMF.UML.Iterative =>
-                  return Iterative_Image;
+                  return Iterative_Img;
 
                when AMF.UML.Stream =>
-                  return Stream_Image;
+                  return Stream_Img;
             end case;
          end;
 
@@ -306,40 +306,40 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Seq_Operator =>
-                  return Seq_Image;
+                  return Seq_Img;
 
                when AMF.UML.Alt_Operator =>
-                  return Alt_Image;
+                  return Alt_Img;
 
                when AMF.UML.Opt_Operator =>
-                  return Opt_Image;
+                  return Opt_Img;
 
                when AMF.UML.Break_Operator =>
-                  return Break_Image;
+                  return Break_Img;
 
                when AMF.UML.Par_Operator =>
-                  return Par_Image;
+                  return Par_Img;
 
                when AMF.UML.Strict_Operator =>
-                  return Strict_Image;
+                  return Strict_Img;
 
                when AMF.UML.Loop_Operator =>
-                  return Loop_Image;
+                  return Loop_Img;
 
                when AMF.UML.Critical_Operator =>
-                  return Critical_Image;
+                  return Critical_Img;
 
                when AMF.UML.Neg_Operator =>
-                  return Neg_Image;
+                  return Neg_Img;
 
                when AMF.UML.Assert_Operator =>
-                  return Assert_Image;
+                  return Assert_Img;
 
                when AMF.UML.Ignore_Operator =>
-                  return Ignore_Image;
+                  return Ignore_Img;
 
                when AMF.UML.Consider_Operator =>
-                  return Consider_Image;
+                  return Consider_Img;
             end case;
          end;
 
@@ -351,16 +351,16 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Complete =>
-                  return Complete_Image;
+                  return Complete_Img;
 
                when AMF.UML.Lost =>
-                  return Lost_Image;
+                  return Lost_Img;
 
                when AMF.UML.Found =>
-                  return Found_Image;
+                  return Found_Img;
 
                when AMF.UML.Unknown =>
-                  return Unknown_Image;
+                  return Unknown_Img;
             end case;
          end;
 
@@ -372,22 +372,22 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Synch_Call =>
-                  return Synch_Call_Image;
+                  return Synch_Call_Img;
 
                when AMF.UML.Asynch_Call =>
-                  return Asynch_Call_Image;
+                  return Asynch_Call_Img;
 
                when AMF.UML.Asynch_Signal =>
-                  return Asynch_Signal_Image;
+                  return Asynch_Signal_Img;
 
                when AMF.UML.Create_Message =>
-                  return Create_Message_Image;
+                  return Create_Message_Img;
 
                when AMF.UML.Delete_Message =>
-                  return Delete_Message_Image;
+                  return Delete_Message_Img;
 
                when AMF.UML.Reply =>
-                  return Reply_Image;
+                  return Reply_Img;
             end case;
          end;
 
@@ -399,16 +399,16 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Unordered =>
-                  return Unordered_Image;
+                  return Unordered_Img;
 
                when AMF.UML.Ordered =>
-                  return Ordered_Image;
+                  return Ordered_Img;
 
                when AMF.UML.LIFO =>
-                  return LIFO_Image;
+                  return LIFO_Img;
 
                when AMF.UML.FIFO =>
-                  return FIFO_Image;
+                  return FIFO_Img;
             end case;
          end;
 
@@ -420,16 +420,16 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.In_Parameter =>
-                  return In_Image;
+                  return In_Img;
 
                when AMF.UML.In_Out_Parameter =>
-                  return Inout_Image;
+                  return Inout_Img;
 
                when AMF.UML.Out_Parameter =>
-                  return Out_Image;
+                  return Out_Img;
 
                when AMF.UML.Return_Parameter =>
-                  return Return_Image;
+                  return Return_Img;
             end case;
          end;
 
@@ -441,16 +441,16 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Create =>
-                  return Create_Image;
+                  return Create_Img;
 
                when AMF.UML.Read =>
-                  return Read_Image;
+                  return Read_Img;
 
                when AMF.UML.Update =>
-                  return Update_Image;
+                  return Update_Img;
 
                when AMF.UML.Delete =>
-                  return Delete_Image;
+                  return Delete_Img;
             end case;
          end;
 
@@ -462,34 +462,34 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Initial_Pseudostate =>
-                  return Initial_Image;
+                  return Initial_Img;
 
                when AMF.UML.Deep_History_Pseudostate =>
-                  return Deep_History_Image;
+                  return Deep_History_Img;
 
                when AMF.UML.Shallow_History_Pseudostate =>
-                  return Shallow_History_Image;
+                  return Shallow_History_Img;
 
                when AMF.UML.Join_Pseudostate =>
-                  return Join_Image;
+                  return Join_Img;
 
                when AMF.UML.Fork_Pseudostate =>
-                  return Fork_Image;
+                  return Fork_Img;
 
                when AMF.UML.Junction_Pseudostate =>
-                  return Junction_Image;
+                  return Junction_Img;
 
                when AMF.UML.Choice_Pseudostate =>
-                  return Choice_Image;
+                  return Choice_Img;
 
                when AMF.UML.Entry_Point_Pseudostate =>
-                  return Entry_Point_Image;
+                  return Entry_Point_Img;
 
                when AMF.UML.Exit_Point_Pseudostate =>
-                  return Exit_Point_Image;
+                  return Exit_Point_Img;
 
                when AMF.UML.Terminate_Pseudostate =>
-                  return Terminate_Image;
+                  return Terminate_Img;
             end case;
          end;
 
@@ -501,13 +501,13 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Internal =>
-                  return Internal_Image;
+                  return Internal_Img;
 
                when AMF.UML.Local =>
-                  return Local_Image;
+                  return Local_Img;
 
                when AMF.UML.External =>
-                  return External_Image;
+                  return External_Img;
             end case;
          end;
 
@@ -519,16 +519,16 @@ package body AMF.Internals.Factories.UML_Factories is
          begin
             case Item is
                when AMF.UML.Public_Visibility =>
-                  return Public_Image;
+                  return Public_Img;
 
                when AMF.UML.Private_Visibility =>
-                  return Private_Image;
+                  return Private_Img;
 
                when AMF.UML.Protected_Visibility =>
-                  return Protected_Image;
+                  return Protected_Img;
 
                when AMF.UML.Package_Visibility =>
-                  return Package_Image;
+                  return Package_Img;
             end case;
          end;
 
@@ -1159,17 +1159,17 @@ package body AMF.Internals.Factories.UML_Factories is
 
    begin
       if DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Aggregation_Kind then
-         if Image = None_Image then
+         if Image = None_Img then
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
                (AMF.UML.None);
 
-         elsif Image = Shared_Image then
+         elsif Image = Shared_Img then
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
                (AMF.UML.Shared);
 
-         elsif Image = Composite_Image then
+         elsif Image = Composite_Img then
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
                (AMF.UML.Composite);
@@ -1179,17 +1179,17 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Concurrency_Kind then
-         if Image = Sequential_Image then
+         if Image = Sequential_Img then
             return
               AMF.UML.Holders.Call_Concurrency_Kinds.To_Holder
                (AMF.UML.Sequential);
 
-         elsif Image = Guarded_Image then
+         elsif Image = Guarded_Img then
             return
               AMF.UML.Holders.Call_Concurrency_Kinds.To_Holder
                (AMF.UML.Guarded);
 
-         elsif Image = Concurrent_Image then
+         elsif Image = Concurrent_Img then
             return
               AMF.UML.Holders.Call_Concurrency_Kinds.To_Holder
                (AMF.UML.Concurrent);
@@ -1199,12 +1199,12 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Connector_Kind then
-         if Image = Assembly_Image then
+         if Image = Assembly_Img then
             return
               AMF.UML.Holders.Connector_Kinds.To_Holder
                (AMF.UML.Assembly);
 
-         elsif Image = Delegation_Image then
+         elsif Image = Delegation_Img then
             return
               AMF.UML.Holders.Connector_Kinds.To_Holder
                (AMF.UML.Delegation);
@@ -1214,17 +1214,17 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Expansion_Kind then
-         if Image = Parallel_Image then
+         if Image = Parallel_Img then
             return
               AMF.UML.Holders.Expansion_Kinds.To_Holder
                (AMF.UML.Parallel);
 
-         elsif Image = Iterative_Image then
+         elsif Image = Iterative_Img then
             return
               AMF.UML.Holders.Expansion_Kinds.To_Holder
                (AMF.UML.Iterative);
 
-         elsif Image = Stream_Image then
+         elsif Image = Stream_Img then
             return
               AMF.UML.Holders.Expansion_Kinds.To_Holder
                (AMF.UML.Stream);
@@ -1234,62 +1234,62 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Operator_Kind then
-         if Image = Seq_Image then
+         if Image = Seq_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Seq_Operator);
 
-         elsif Image = Alt_Image then
+         elsif Image = Alt_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Alt_Operator);
 
-         elsif Image = Opt_Image then
+         elsif Image = Opt_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Opt_Operator);
 
-         elsif Image = Break_Image then
+         elsif Image = Break_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Break_Operator);
 
-         elsif Image = Par_Image then
+         elsif Image = Par_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Par_Operator);
 
-         elsif Image = Strict_Image then
+         elsif Image = Strict_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Strict_Operator);
 
-         elsif Image = Loop_Image then
+         elsif Image = Loop_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Loop_Operator);
 
-         elsif Image = Critical_Image then
+         elsif Image = Critical_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Critical_Operator);
 
-         elsif Image = Neg_Image then
+         elsif Image = Neg_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Neg_Operator);
 
-         elsif Image = Assert_Image then
+         elsif Image = Assert_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Assert_Operator);
 
-         elsif Image = Ignore_Image then
+         elsif Image = Ignore_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Ignore_Operator);
 
-         elsif Image = Consider_Image then
+         elsif Image = Consider_Img then
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
                (AMF.UML.Consider_Operator);
@@ -1299,22 +1299,22 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Message_Kind then
-         if Image = Complete_Image then
+         if Image = Complete_Img then
             return
               AMF.UML.Holders.Message_Kinds.To_Holder
                (AMF.UML.Complete);
 
-         elsif Image = Lost_Image then
+         elsif Image = Lost_Img then
             return
               AMF.UML.Holders.Message_Kinds.To_Holder
                (AMF.UML.Lost);
 
-         elsif Image = Found_Image then
+         elsif Image = Found_Img then
             return
               AMF.UML.Holders.Message_Kinds.To_Holder
                (AMF.UML.Found);
 
-         elsif Image = Unknown_Image then
+         elsif Image = Unknown_Img then
             return
               AMF.UML.Holders.Message_Kinds.To_Holder
                (AMF.UML.Unknown);
@@ -1324,32 +1324,32 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Message_Sort then
-         if Image = Synch_Call_Image then
+         if Image = Synch_Call_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Synch_Call);
 
-         elsif Image = Asynch_Call_Image then
+         elsif Image = Asynch_Call_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Asynch_Call);
 
-         elsif Image = Asynch_Signal_Image then
+         elsif Image = Asynch_Signal_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Asynch_Signal);
 
-         elsif Image = Create_Message_Image then
+         elsif Image = Create_Message_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Create_Message);
 
-         elsif Image = Delete_Message_Image then
+         elsif Image = Delete_Message_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Delete_Message);
 
-         elsif Image = Reply_Image then
+         elsif Image = Reply_Img then
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
                (AMF.UML.Reply);
@@ -1359,22 +1359,22 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Object_Node_Ordering_Kind then
-         if Image = Unordered_Image then
+         if Image = Unordered_Img then
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
                (AMF.UML.Unordered);
 
-         elsif Image = Ordered_Image then
+         elsif Image = Ordered_Img then
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
                (AMF.UML.Ordered);
 
-         elsif Image = LIFO_Image then
+         elsif Image = LIFO_Img then
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
                (AMF.UML.LIFO);
 
-         elsif Image = FIFO_Image then
+         elsif Image = FIFO_Img then
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
                (AMF.UML.FIFO);
@@ -1384,22 +1384,22 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter_Direction_Kind then
-         if Image = In_Image then
+         if Image = In_Img then
             return
               AMF.UML.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.UML.In_Parameter);
 
-         elsif Image = Inout_Image then
+         elsif Image = Inout_Img then
             return
               AMF.UML.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.UML.In_Out_Parameter);
 
-         elsif Image = Out_Image then
+         elsif Image = Out_Img then
             return
               AMF.UML.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.UML.Out_Parameter);
 
-         elsif Image = Return_Image then
+         elsif Image = Return_Img then
             return
               AMF.UML.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.UML.Return_Parameter);
@@ -1409,22 +1409,22 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter_Effect_Kind then
-         if Image = Create_Image then
+         if Image = Create_Img then
             return
               AMF.UML.Holders.Parameter_Effect_Kinds.To_Holder
                (AMF.UML.Create);
 
-         elsif Image = Read_Image then
+         elsif Image = Read_Img then
             return
               AMF.UML.Holders.Parameter_Effect_Kinds.To_Holder
                (AMF.UML.Read);
 
-         elsif Image = Update_Image then
+         elsif Image = Update_Img then
             return
               AMF.UML.Holders.Parameter_Effect_Kinds.To_Holder
                (AMF.UML.Update);
 
-         elsif Image = Delete_Image then
+         elsif Image = Delete_Img then
             return
               AMF.UML.Holders.Parameter_Effect_Kinds.To_Holder
                (AMF.UML.Delete);
@@ -1434,52 +1434,52 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Pseudostate_Kind then
-         if Image = Initial_Image then
+         if Image = Initial_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Initial_Pseudostate);
 
-         elsif Image = Deep_History_Image then
+         elsif Image = Deep_History_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Deep_History_Pseudostate);
 
-         elsif Image = Shallow_History_Image then
+         elsif Image = Shallow_History_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Shallow_History_Pseudostate);
 
-         elsif Image = Join_Image then
+         elsif Image = Join_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Join_Pseudostate);
 
-         elsif Image = Fork_Image then
+         elsif Image = Fork_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Fork_Pseudostate);
 
-         elsif Image = Junction_Image then
+         elsif Image = Junction_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Junction_Pseudostate);
 
-         elsif Image = Choice_Image then
+         elsif Image = Choice_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Choice_Pseudostate);
 
-         elsif Image = Entry_Point_Image then
+         elsif Image = Entry_Point_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Entry_Point_Pseudostate);
 
-         elsif Image = Exit_Point_Image then
+         elsif Image = Exit_Point_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Exit_Point_Pseudostate);
 
-         elsif Image = Terminate_Image then
+         elsif Image = Terminate_Img then
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
                (AMF.UML.Terminate_Pseudostate);
@@ -1489,17 +1489,17 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Transition_Kind then
-         if Image = Internal_Image then
+         if Image = Internal_Img then
             return
               AMF.UML.Holders.Transition_Kinds.To_Holder
                (AMF.UML.Internal);
 
-         elsif Image = Local_Image then
+         elsif Image = Local_Img then
             return
               AMF.UML.Holders.Transition_Kinds.To_Holder
                (AMF.UML.Local);
 
-         elsif Image = External_Image then
+         elsif Image = External_Img then
             return
               AMF.UML.Holders.Transition_Kinds.To_Holder
                (AMF.UML.External);
@@ -1509,22 +1509,22 @@ package body AMF.Internals.Factories.UML_Factories is
          end if;
 
       elsif DT = AMF.Internals.Tables.UML_Metamodel.MC_UML_Visibility_Kind then
-         if Image = Public_Image then
+         if Image = Public_Img then
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
                (AMF.UML.Public_Visibility);
 
-         elsif Image = Private_Image then
+         elsif Image = Private_Img then
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
                (AMF.UML.Private_Visibility);
 
-         elsif Image = Protected_Image then
+         elsif Image = Protected_Img then
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
                (AMF.UML.Protected_Visibility);
 
-         elsif Image = Package_Image then
+         elsif Image = Package_Img then
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
                (AMF.UML.Package_Visibility);

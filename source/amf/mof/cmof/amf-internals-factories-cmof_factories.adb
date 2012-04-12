@@ -55,22 +55,22 @@ with AMF.Internals.Tables.CMOF_Metamodel;
 
 package body AMF.Internals.Factories.CMOF_Factories is
 
-   In_Image : constant League.Strings.Universal_String
+   In_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("in");
-   Inout_Image : constant League.Strings.Universal_String
+   Inout_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("inout");
-   Out_Image : constant League.Strings.Universal_String
+   Out_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("out");
-   Return_Image : constant League.Strings.Universal_String
+   Return_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("return");
 
-   Public_Image : constant League.Strings.Universal_String
+   Public_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("public");
-   Private_Image : constant League.Strings.Universal_String
+   Private_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("private");
-   Protected_Image : constant League.Strings.Universal_String
+   Protected_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("protected");
-   Package_Image : constant League.Strings.Universal_String
+   Package_Img : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
 
    function Convert_Boolean_To_String
@@ -145,16 +145,16 @@ package body AMF.Internals.Factories.CMOF_Factories is
          begin
             case Item is
                when AMF.CMOF.In_Parameter =>
-                  return In_Image;
+                  return In_Img;
 
                when AMF.CMOF.In_Out_Parameter =>
-                  return Inout_Image;
+                  return Inout_Img;
 
                when AMF.CMOF.Out_Parameter =>
-                  return Out_Image;
+                  return Out_Img;
 
                when AMF.CMOF.Return_Parameter =>
-                  return Return_Image;
+                  return Return_Img;
             end case;
          end;
 
@@ -172,16 +172,16 @@ package body AMF.Internals.Factories.CMOF_Factories is
          begin
             case Item is
                when AMF.CMOF.Public_Visibility =>
-                  return Public_Image;
+                  return Public_Img;
 
                when AMF.CMOF.Private_Visibility =>
-                  return Private_Image;
+                  return Private_Img;
 
                when AMF.CMOF.Protected_Visibility =>
-                  return Protected_Image;
+                  return Protected_Img;
 
                when AMF.CMOF.Package_Visibility =>
-                  return Package_Image;
+                  return Package_Img;
             end case;
          end;
 
@@ -293,22 +293,22 @@ package body AMF.Internals.Factories.CMOF_Factories is
          return Create_Integer_From_String (Image);
 
       elsif DT = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Parameter_Direction_Kind then
-         if Image = In_Image then
+         if Image = In_Img then
             return
               AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.In_Parameter);
 
-         elsif Image = Inout_Image then
+         elsif Image = Inout_Img then
             return
               AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.In_Out_Parameter);
 
-         elsif Image = Out_Image then
+         elsif Image = Out_Img then
             return
               AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.Out_Parameter);
 
-         elsif Image = Return_Image then
+         elsif Image = Return_Img then
             return
               AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.Return_Parameter);
@@ -324,22 +324,22 @@ package body AMF.Internals.Factories.CMOF_Factories is
          return Create_Unlimited_Natural_From_String (Image);
 
       elsif DT = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Visibility_Kind then
-         if Image = Public_Image then
+         if Image = Public_Img then
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Public_Visibility);
 
-         elsif Image = Private_Image then
+         elsif Image = Private_Img then
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Private_Visibility);
 
-         elsif Image = Protected_Image then
+         elsif Image = Protected_Img then
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Protected_Visibility);
 
-         elsif Image = Package_Image then
+         elsif Image = Package_Img then
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Package_Visibility);
