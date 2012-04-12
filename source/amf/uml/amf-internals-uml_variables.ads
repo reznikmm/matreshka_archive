@@ -250,22 +250,6 @@ package AMF.Internals.UML_Variables is
    --
    --  The template parameter that exposes this element as a formal parameter.
 
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Variable_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Variable_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
    overriding function Get_Lower
     (Self : not null access constant UML_Variable_Proxy)
        return AMF.Optional_Integer;

@@ -107,22 +107,6 @@ package AMF.Internals.UML_Connector_Ends is
    --  on the multiplicities) be created to an instance of the classifier that
    --  types this connectable element.
 
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
    overriding function Get_Lower
     (Self : not null access constant UML_Connector_End_Proxy)
        return AMF.Optional_Integer;

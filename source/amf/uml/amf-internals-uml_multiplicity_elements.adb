@@ -61,6 +61,19 @@ package body AMF.Internals.UML_Multiplicity_Elements is
          (Self.Element);
    end Get_Is_Ordered;
 
+   -------------------
+   -- Get_Is_Unique --
+   -------------------
+
+   overriding function Get_Is_Unique
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
+         (Self.Element);
+   end Get_Is_Unique;
+
    --------------------
    -- Is_Multivalued --
    --------------------

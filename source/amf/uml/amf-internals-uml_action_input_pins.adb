@@ -695,31 +695,6 @@ package body AMF.Internals.UML_Action_Input_Pins is
          (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
-   -------------------
-   -- Get_Is_Unique --
-   -------------------
-
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Action_Input_Pin_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
-         (Self.Element);
-   end Get_Is_Unique;
-
-   -------------------
-   -- Set_Is_Unique --
-   -------------------
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Action_Input_Pin_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique
-       (Self.Element, To);
-   end Set_Is_Unique;
-
    ---------------
    -- Get_Lower --
    ---------------

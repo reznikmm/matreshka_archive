@@ -538,22 +538,6 @@ package AMF.Internals.UML_Extension_Ends is
    --
    --  The set of Deployments for a DeploymentTarget.
 
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
    overriding function Get_Lower_Value
     (Self : not null access constant UML_Extension_End_Proxy)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access;

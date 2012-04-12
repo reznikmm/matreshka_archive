@@ -63,6 +63,14 @@ package AMF.Internals.UML_Multiplicity_Elements is
    --  For a multivalued multiplicity, this attribute specifies whether the
    --  values in an instantiation of this element are sequentially ordered.
 
+   overriding function Get_Is_Unique
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean;
+   --  Getter of MultiplicityElement::isUnique.
+   --
+   --  For a multivalued multiplicity, this attributes specifies whether the
+   --  values in an instantiation of this element are unique.
+
    overriding function Is_Multivalued
     (Self : not null access constant UML_Multiplicity_Element_Proxy)
        return Boolean;

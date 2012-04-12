@@ -190,22 +190,6 @@ package AMF.Internals.UML_Parameters is
    --
    --  The parameter sets containing the parameter. See ParameterSet.
 
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Parameter_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Parameter_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isUnique.
-   --
-   --  For a multivalued multiplicity, this attributes specifies whether the
-   --  values in an instantiation of this element are unique.
-
    overriding function Get_Lower
     (Self : not null access constant UML_Parameter_Proxy)
        return AMF.Optional_Integer;

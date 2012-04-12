@@ -971,31 +971,6 @@ package body AMF.Internals.UML_Extension_Ends is
              (Self.Element)));
    end Get_Deployment;
 
-   -------------------
-   -- Get_Is_Unique --
-   -------------------
-
-   overriding function Get_Is_Unique
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
-         (Self.Element);
-   end Get_Is_Unique;
-
-   -------------------
-   -- Set_Is_Unique --
-   -------------------
-
-   overriding procedure Set_Is_Unique
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique
-       (Self.Element, To);
-   end Set_Is_Unique;
-
    ---------------------
    -- Get_Lower_Value --
    ---------------------
