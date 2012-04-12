@@ -48,6 +48,7 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
 -->
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+
   <!--==============-->
   <!--  (C)MOF 2.0  -->
   <!--==============-->
@@ -74,6 +75,7 @@
   <!--===============================================-->
 
   <uri name="pathmap://uml_libraries/UMLPrimitiveTypes.library.uml" uri="UML24/PrimitiveTypes.xmi"/>
+  <uri name="pathmap://uml_libraries/XMLPrimitiveTypes.library.uml" uri="UML24/PrimitiveTypes.xmi"/>
 
   <!--  For internal purposes only  -->
 
