@@ -343,11 +343,7 @@ is
       Value_Extent := Element.Extent;
       Meta_Class := Element.Get_Meta_Class;
       Meta_All_Attributes := Serializable_Attributes (Meta_Class);
-      Meta_Package :=
-        AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Elements.Element_Access (Meta_Class).Container);
-      --  XXX Type:package is not implemented, thus Element:container is used
-      --  to obtain owned package.
+      Meta_Package := Meta_Class.Get_Package;
 
       --  Add xmi:type attribute, it is required always.
 
