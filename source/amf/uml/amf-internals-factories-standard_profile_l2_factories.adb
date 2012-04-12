@@ -44,8 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.UML_Constructors;
 
@@ -86,158 +88,107 @@ package body AMF.Internals.Factories.Standard_Profile_L2_Factories is
    is
       pragma Unreferenced (Self);
 
-      MC : constant AMF.Internals.CMOF_Element
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+      Element : AMF.Internals.AMF_Element;
 
    begin
       if MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Auxiliary then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Auxiliary);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Auxiliary;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Call then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Call);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Call;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Create then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Create);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Create;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Derive then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Derive);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Derive;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Destroy then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Destroy);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Destroy;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Document then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Document);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Document;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Entity then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Entity);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Entity;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Executable then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Executable);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Executable;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Focus then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Focus);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Focus;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Framework then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Framework);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Framework;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implement then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Implement);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Implement;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implementation_Class then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Implementation_Class);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Implementation_Class;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Instantiate then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Instantiate);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Instantiate;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Library then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Library);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Library;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Metaclass then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Metaclass);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Metaclass;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Model_Library then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Model_Library);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Model_Library;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Process then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Process);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Process;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Realization then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Realization);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Realization;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Refine then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Refine);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Refine;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Responsibility then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Responsibility);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Responsibility;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Script then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Script);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Script;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Send then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Send);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Send;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Service then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Service);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Service;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Source then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Source);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Source;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Specification;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Subsystem then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Subsystem);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Subsystem;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Trace then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Trace);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Trace;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Type then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Type);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Type;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Utility then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Utility);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L2_Utility;
 
       else
          raise Program_Error;
       end if;
+
+      AMF.Internals.Extents.Internal_Append (Self.Extent, Element);
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (AMF.Internals.Helpers.To_Element (Element));
+
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------

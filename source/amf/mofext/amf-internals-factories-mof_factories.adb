@@ -44,8 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.MOF_Constructors;
 with AMF.Internals.Tables.MOF_Metamodel;
 
@@ -86,18 +88,23 @@ package body AMF.Internals.Factories.MOF_Factories is
    is
       pragma Unreferenced (Self);
 
-      MC : constant AMF.Internals.CMOF_Element
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+      Element : AMF.Internals.AMF_Element;
 
    begin
       if MC = AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag);
+         Element := AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag;
 
       else
          raise Program_Error;
       end if;
+
+      AMF.Internals.Extents.Internal_Append (Self.Extent, Element);
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (AMF.Internals.Helpers.To_Element (Element));
+
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------

@@ -44,8 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Constructors;
 
@@ -86,28 +88,29 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factories is
    is
       pragma Unreferenced (Self);
 
-      MC : constant AMF.Internals.CMOF_Element
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+      Element : AMF.Internals.AMF_Element;
 
    begin
       if MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Build_Component then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Build_Component);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Build_Component;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Metamodel then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Metamodel);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_Metamodel;
 
       elsif MC = AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_System_Model then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_System_Model);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_Standard_Profile_L3_System_Model;
 
       else
          raise Program_Error;
       end if;
+
+      AMF.Internals.Extents.Internal_Append (Self.Extent, Element);
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (AMF.Internals.Helpers.To_Element (Element));
+
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------

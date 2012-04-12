@@ -46,8 +46,10 @@
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Internals.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
@@ -199,103 +201,74 @@ package body AMF.Internals.Factories.CMOF_Factories is
    is
       pragma Unreferenced (Self);
 
-      MC : constant AMF.Internals.CMOF_Element
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+      Element : AMF.Internals.AMF_Element;
 
    begin
       if MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Association then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Association;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Class then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Class;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Comment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Comment;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Constraint;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Data_Type then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Data_Type);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Data_Type;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Element_Import then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Element_Import);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Element_Import;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration_Literal then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Enumeration_Literal;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Expression);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Expression;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Opaque_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Opaque_Expression;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Operation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Operation;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Import then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Import);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Import;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Merge then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Merge);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Package_Merge;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Parameter;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Primitive_Type then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Primitive_Type;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Property then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Property;
 
       elsif MC = AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Tag then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag);
+         Element := AMF.Internals.Tables.CMOF_Constructors.Create_CMOF_Tag;
 
       else
          raise Program_Error;
       end if;
+
+      AMF.Internals.Extents.Internal_Append (Self.Extent, Element);
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (AMF.Internals.Helpers.To_Element (Element));
+
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------

@@ -44,8 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.UML_Constructors;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.UML.Holders.Aggregation_Kinds;
@@ -546,978 +548,599 @@ package body AMF.Internals.Factories.UML_Factories is
    is
       pragma Unreferenced (Self);
 
-      MC : constant AMF.Internals.CMOF_Element
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
+      Element : AMF.Internals.AMF_Element;
 
    begin
       if MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Abstraction then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Abstraction);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Abstraction;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Accept_Call_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Call_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Call_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Accept_Event_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Event_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Accept_Event_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Action_Execution_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Execution_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Execution_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Action_Input_Pin then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Input_Pin);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Action_Input_Pin;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Activity);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Final_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Final_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Final_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Parameter_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Parameter_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Parameter_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Activity_Partition then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Partition);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Activity_Partition;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Actor then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Actor);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Actor;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Add_Structural_Feature_Value_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Structural_Feature_Value_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Structural_Feature_Value_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Add_Variable_Value_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Variable_Value_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Add_Variable_Value_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Any_Receive_Event then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Any_Receive_Event);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Any_Receive_Event;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Artifact then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Artifact);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Artifact;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Association then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Association);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Association;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Association_Class then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Association_Class);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Association_Class;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Behavior_Execution_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Behavior_Execution_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Behavior_Execution_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Broadcast_Signal_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Broadcast_Signal_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Broadcast_Signal_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Behavior_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Behavior_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Behavior_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Event then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Event);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Event;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Call_Operation_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Operation_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Call_Operation_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Central_Buffer_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Central_Buffer_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Central_Buffer_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Change_Event then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Change_Event);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Change_Event;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Class then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Class);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Class;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Classifier_Template_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Classifier_Template_Parameter);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Classifier_Template_Parameter;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Clause then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Clause);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clause;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Association_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Association_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Association_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Structural_Feature_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Structural_Feature_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Structural_Feature_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Clear_Variable_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Variable_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Clear_Variable_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Collaboration then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Collaboration_Use then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration_Use);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Collaboration_Use;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Combined_Fragment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Combined_Fragment);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Combined_Fragment;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Comment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Comment);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Comment;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Communication_Path then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Communication_Path);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Communication_Path;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Component then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Component);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Component;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Component_Realization then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Component_Realization);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Component_Realization;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Conditional_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Conditional_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Conditional_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Connectable_Element_Template_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Connectable_Element_Template_Parameter);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connectable_Element_Template_Parameter;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Connection_Point_Reference then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Connection_Point_Reference);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connection_Point_Reference;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Connector then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Connector);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connector;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Connector_End then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Connector_End);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Connector_End;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Consider_Ignore_Fragment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Consider_Ignore_Fragment);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Consider_Ignore_Fragment;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Constraint);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Constraint;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Continuation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Continuation);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Continuation;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Control_Flow then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Control_Flow);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Control_Flow;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Link_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Link_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Link_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Create_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Data_Store_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Store_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Store_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Data_Type then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Type);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Data_Type;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Decision_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Decision_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Decision_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Dependency then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Dependency);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Dependency;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Deployment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Deployment_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Deployment_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Destroy_Link_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Link_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Link_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Destroy_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destroy_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Destruction_Occurrence_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Destruction_Occurrence_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Destruction_Occurrence_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Device then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Device);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Device;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Duration);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Constraint);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Constraint;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Interval then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Interval);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Interval;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Duration_Observation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Observation);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Duration_Observation;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Element_Import then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Element_Import);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Element_Import;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Enumeration then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Enumeration_Literal then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration_Literal);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Enumeration_Literal;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Exception_Handler then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Exception_Handler);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Exception_Handler;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Execution_Environment then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Environment);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Environment;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Execution_Occurrence_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Occurrence_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Execution_Occurrence_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Expansion_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Expansion_Region then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Region);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expansion_Region;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Expression);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Expression;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Extend then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Extend);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extend;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Extension);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension_End then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_End);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_End;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Extension_Point then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_Point);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Extension_Point;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Final_State then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Final_State);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Final_State;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Flow_Final_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Flow_Final_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Flow_Final_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Fork_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Fork_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Fork_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Function_Behavior then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Function_Behavior);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Function_Behavior;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Gate then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Gate);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Gate;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_General_Ordering then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_General_Ordering);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_General_Ordering;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Generalization then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Generalization_Set then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization_Set);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Generalization_Set;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Image then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Image);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Image;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Include then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Include);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Include;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Information_Flow then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Flow);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Flow;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Information_Item then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Item);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Information_Item;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Initial_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Initial_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Initial_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Input_Pin then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Input_Pin);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Input_Pin;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Instance_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Instance_Value then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Value);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Instance_Value;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Constraint);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Constraint;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Operand then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Operand);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Operand;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interaction_Use then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Use);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interaction_Use;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interface then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interface);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interface;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interface_Realization then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interface_Realization);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interface_Realization;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interruptible_Activity_Region then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interruptible_Activity_Region);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interruptible_Activity_Region;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interval then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interval);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interval;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Interval_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Interval_Constraint);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Interval_Constraint;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Join_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Join_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Join_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Lifeline then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Lifeline);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Lifeline;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Creation_Data then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Creation_Data);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Creation_Data;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Data then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Data);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Data;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Link_End_Destruction_Data then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Destruction_Data);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Link_End_Destruction_Data;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Boolean then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Boolean);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Boolean;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Integer then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Integer);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Integer;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Null then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Null);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Null;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Real then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Real);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Real;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_String then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_String);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_String;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Literal_Unlimited_Natural then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Unlimited_Natural);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Literal_Unlimited_Natural;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Loop_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Loop_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Loop_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Manifestation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Manifestation);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Manifestation;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Merge_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Merge_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Merge_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Message then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Message);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Message;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Message_Occurrence_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Message_Occurrence_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Message_Occurrence_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Model then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Model);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Model;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Object_Flow then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Object_Flow);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Object_Flow;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Occurrence_Specification then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Occurrence_Specification);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Occurrence_Specification;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Behavior then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Behavior);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Behavior;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Opaque_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Expression);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Opaque_Expression;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Operation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Operation);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Operation;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Operation_Template_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Operation_Template_Parameter);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Operation_Template_Parameter;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Output_Pin then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Output_Pin);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Output_Pin;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Package then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Package);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Package_Import then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Import);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Import;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Package_Merge then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Merge);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Package_Merge;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Parameter_Set then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter_Set);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Parameter_Set;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Part_Decomposition then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Part_Decomposition);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Part_Decomposition;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Port then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Port);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Port;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Primitive_Type then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Primitive_Type);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Primitive_Type;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Profile then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Profile);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Profile;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Profile_Application then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Profile_Application);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Profile_Application;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Property then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Property);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Property;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_Conformance then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Conformance);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Conformance;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_State_Machine then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_State_Machine);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_State_Machine;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Protocol_Transition then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Transition);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Protocol_Transition;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Pseudostate then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Pseudostate);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Pseudostate;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Qualifier_Value then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Qualifier_Value);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Qualifier_Value;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Raise_Exception_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Raise_Exception_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Raise_Exception_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Extent_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Extent_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Extent_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Is_Classified_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Is_Classified_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Is_Classified_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Object_End_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Link_Object_End_Qualifier_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Qualifier_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Link_Object_End_Qualifier_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Self_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Self_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Self_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Structural_Feature_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Structural_Feature_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Structural_Feature_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Read_Variable_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Variable_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Read_Variable_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Realization then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Realization);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Realization;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Reception then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Reception);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reception;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Reclassify_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Reclassify_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reclassify_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Redefinable_Template_Signature then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Redefinable_Template_Signature);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Redefinable_Template_Signature;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Reduce_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Reduce_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reduce_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Region then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Region);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Region;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Remove_Structural_Feature_Value_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Structural_Feature_Value_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Structural_Feature_Value_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Remove_Variable_Value_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Variable_Value_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Remove_Variable_Value_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Reply_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Reply_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Reply_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Send_Object_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Object_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Object_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Send_Signal_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Signal_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Send_Signal_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Sequence_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Sequence_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Sequence_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Signal then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Signal);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Signal;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Signal_Event then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Signal_Event);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Signal_Event;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Slot then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Slot);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Slot;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Start_Classifier_Behavior_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Classifier_Behavior_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Classifier_Behavior_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Start_Object_Behavior_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Object_Behavior_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Start_Object_Behavior_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_State then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_State);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_State_Invariant then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_State_Invariant);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State_Invariant;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_State_Machine then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_State_Machine);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_State_Machine;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Stereotype then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Stereotype);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Stereotype;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_String_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_String_Expression);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_String_Expression;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Structured_Activity_Node then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Structured_Activity_Node);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Structured_Activity_Node;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Substitution then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Substitution);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Substitution;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Binding then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Binding);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Binding;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Parameter then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Parameter_Substitution then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter_Substitution);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Parameter_Substitution;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Template_Signature then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Signature);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Template_Signature;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Test_Identity_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Test_Identity_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Test_Identity_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Constraint then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Constraint);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Constraint;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Event then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Event);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Event;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Expression then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Expression);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Expression;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Interval then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Interval);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Interval;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Time_Observation then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Observation);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Time_Observation;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Transition then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Transition);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Transition;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Trigger then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Trigger);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Trigger;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Unmarshall_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Unmarshall_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Unmarshall_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Usage then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Usage);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Usage;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Use_Case then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Use_Case);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Use_Case;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Value_Pin then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Pin);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Pin;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Value_Specification_Action then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Specification_Action);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Value_Specification_Action;
 
       elsif MC = AMF.Internals.Tables.UML_Metamodel.MC_UML_Variable then
-         return
-           AMF.Internals.Helpers.To_Element
-            (AMF.Internals.Tables.UML_Constructors.Create_UML_Variable);
+         Element := AMF.Internals.Tables.UML_Constructors.Create_UML_Variable;
 
       else
          raise Program_Error;
       end if;
+
+      AMF.Internals.Extents.Internal_Append (Self.Extent, Element);
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (AMF.Internals.Helpers.To_Element (Element));
+
+      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
