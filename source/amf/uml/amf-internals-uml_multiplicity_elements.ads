@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Multiplicity_Elements;
+with AMF.UML.Value_Specifications;
 
 generic
    type Element_Proxy is
@@ -70,6 +71,34 @@ package AMF.Internals.UML_Multiplicity_Elements is
    --
    --  For a multivalued multiplicity, this attributes specifies whether the
    --  values in an instantiation of this element are unique.
+
+   overriding function Get_Lower
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Integer;
+   --  Getter of MultiplicityElement::lower.
+   --
+   --  Specifies the lower bound of the multiplicity interval.
+
+   overriding function Get_Lower_Value
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+   --  Getter of MultiplicityElement::lowerValue.
+   --
+   --  The specification of the lower bound for this multiplicity.
+
+   overriding function Get_Upper
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Unlimited_Natural;
+   --  Getter of MultiplicityElement::upper.
+   --
+   --  Specifies the upper bound of the multiplicity interval.
+
+   overriding function Get_Upper_Value
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+   --  Getter of MultiplicityElement::upperValue.
+   --
+   --  The specification of the upper bound for this multiplicity.
 
    overriding function Is_Multivalued
     (Self : not null access constant UML_Multiplicity_Element_Proxy)
@@ -102,6 +131,34 @@ package AMF.Internals.UML_Multiplicity_Elements is
    --
    --  For a multivalued multiplicity, this attributes specifies whether the 
    --  values in an instantiation of this element are unique.
+
+   overriding procedure Set_Lower
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.Optional_Integer);
+   --  Setter of MultiplicityElement::lower.
+   --
+   --  Specifies the lower bound of the multiplicity interval.
+
+   overriding procedure Set_Lower_Value
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+   --  Setter of MultiplicityElement::lowerValue.
+   --
+   --  The specification of the lower bound for this multiplicity.
+
+   overriding procedure Set_Upper
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.Optional_Unlimited_Natural);
+   --  Setter of MultiplicityElement::upper.
+   --
+   --  Specifies the upper bound of the multiplicity interval.
+
+   overriding procedure Set_Upper_Value
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+   --  Setter of MultiplicityElement::upperValue.
+   --
+   --  The specification of the upper bound for this multiplicity.
 
    overriding function Upper_Bound
     (Self : not null access constant UML_Multiplicity_Element_Proxy)

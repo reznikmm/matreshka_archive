@@ -538,48 +538,6 @@ package AMF.Internals.UML_Extension_Ends is
    --
    --  The set of Deployments for a DeploymentTarget.
 
-   overriding function Get_Lower_Value
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding procedure Set_Lower_Value
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding function Get_Upper
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Getter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding procedure Set_Upper
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : AMF.Optional_Unlimited_Natural);
-   --  Setter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding function Get_Upper_Value
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
-
-   overriding procedure Set_Upper_Value
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
-
    overriding function Get_Featuring_Classifier
     (Self : not null access constant UML_Extension_End_Proxy)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;

@@ -58,7 +58,6 @@ with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Types;
-with AMF.UML.Value_Specifications;
 with AMF.UML.Variables;
 with AMF.Visitors;
 
@@ -249,62 +248,6 @@ package AMF.Internals.UML_Variables is
    --  Setter of ParameterableElement::templateParameter.
    --
    --  The template parameter that exposes this element as a formal parameter.
-
-   overriding function Get_Lower
-    (Self : not null access constant UML_Variable_Proxy)
-       return AMF.Optional_Integer;
-   --  Getter of MultiplicityElement::lower.
-   --
-   --  Specifies the lower bound of the multiplicity interval.
-
-   overriding procedure Set_Lower
-    (Self : not null access UML_Variable_Proxy;
-     To   : AMF.Optional_Integer);
-   --  Setter of MultiplicityElement::lower.
-   --
-   --  Specifies the lower bound of the multiplicity interval.
-
-   overriding function Get_Lower_Value
-    (Self : not null access constant UML_Variable_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding procedure Set_Lower_Value
-    (Self : not null access UML_Variable_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding function Get_Upper
-    (Self : not null access constant UML_Variable_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Getter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding procedure Set_Upper
-    (Self : not null access UML_Variable_Proxy;
-     To   : AMF.Optional_Unlimited_Natural);
-   --  Setter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding function Get_Upper_Value
-    (Self : not null access constant UML_Variable_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
-
-   overriding procedure Set_Upper_Value
-    (Self : not null access UML_Variable_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
 
    overriding function Is_Accessible_By
     (Self : not null access constant UML_Variable_Proxy;

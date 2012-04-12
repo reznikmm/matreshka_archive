@@ -41,8 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
-with AMF.UML.Value_Specifications;
 
 package body AMF.Internals.UML_Multiplicity_Elements is
 
@@ -73,6 +74,62 @@ package body AMF.Internals.UML_Multiplicity_Elements is
         AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
          (Self.Element);
    end Get_Is_Unique;
+
+   ---------------
+   -- Get_Lower --
+   ---------------
+
+   overriding function Get_Lower
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Integer is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower
+         (Self.Element);
+   end Get_Lower;
+
+   ---------------------
+   -- Get_Lower_Value --
+   ---------------------
+
+   overriding function Get_Lower_Value
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is
+   begin
+      return
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower_Value
+             (Self.Element)));
+   end Get_Lower_Value;
+
+   ---------------
+   -- Get_Upper --
+   ---------------
+
+   overriding function Get_Upper
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Unlimited_Natural is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper
+         (Self.Element);
+   end Get_Upper;
+
+   ---------------------
+   -- Get_Upper_Value --
+   ---------------------
+
+   overriding function Get_Upper_Value
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is
+   begin
+      return
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper_Value
+             (Self.Element)));
+   end Get_Upper_Value;
 
    --------------------
    -- Is_Multivalued --
@@ -155,6 +212,58 @@ package body AMF.Internals.UML_Multiplicity_Elements is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique (Self.Element, To);
    end Set_Is_Unique;
+
+   ---------------
+   -- Set_Lower --
+   ---------------
+
+   overriding procedure Set_Lower
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.Optional_Integer) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower
+       (Self.Element, To);
+   end Set_Lower;
+
+   ---------------------
+   -- Set_Lower_Value --
+   ---------------------
+
+   overriding procedure Set_Lower_Value
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
+       (Self.Element,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Lower_Value;
+
+   ---------------
+   -- Set_Upper --
+   ---------------
+
+   overriding procedure Set_Upper
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.Optional_Unlimited_Natural) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper
+       (Self.Element, To);
+   end Set_Upper;
+
+   ---------------------
+   -- Set_Upper_Value --
+   ---------------------
+
+   overriding procedure Set_Upper_Value
+    (Self : not null access UML_Multiplicity_Element_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
+       (Self.Element,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Upper_Value;
 
    -----------------
    -- Upper_Bound --

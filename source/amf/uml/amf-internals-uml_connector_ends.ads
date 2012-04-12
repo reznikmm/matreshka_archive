@@ -48,7 +48,6 @@ with AMF.UML.Connector_Ends;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Properties;
-with AMF.UML.Value_Specifications;
 with AMF.Visitors;
 
 package AMF.Internals.UML_Connector_Ends is
@@ -106,62 +105,6 @@ package AMF.Internals.UML_Connector_Ends is
    --  instance of the containing classifier is created, a link may (depending
    --  on the multiplicities) be created to an instance of the classifier that
    --  types this connectable element.
-
-   overriding function Get_Lower
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.Optional_Integer;
-   --  Getter of MultiplicityElement::lower.
-   --
-   --  Specifies the lower bound of the multiplicity interval.
-
-   overriding procedure Set_Lower
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : AMF.Optional_Integer);
-   --  Setter of MultiplicityElement::lower.
-   --
-   --  Specifies the lower bound of the multiplicity interval.
-
-   overriding function Get_Lower_Value
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding procedure Set_Lower_Value
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::lowerValue.
-   --
-   --  The specification of the lower bound for this multiplicity.
-
-   overriding function Get_Upper
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Getter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding procedure Set_Upper
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : AMF.Optional_Unlimited_Natural);
-   --  Setter of MultiplicityElement::upper.
-   --
-   --  Specifies the upper bound of the multiplicity interval.
-
-   overriding function Get_Upper_Value
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
-   --  Getter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
-
-   overriding procedure Set_Upper_Value
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
-   --  Setter of MultiplicityElement::upperValue.
-   --
-   --  The specification of the upper bound for this multiplicity.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Connector_End_Proxy)
