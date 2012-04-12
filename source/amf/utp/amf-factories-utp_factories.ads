@@ -78,7 +78,8 @@ package AMF.Factories.Utp_Factories is
 
    pragma Preelaborate;
 
-   type Utp_Factory is limited interface;
+   type Utp_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Coding_Rule
     (Self : not null access Utp_Factory)

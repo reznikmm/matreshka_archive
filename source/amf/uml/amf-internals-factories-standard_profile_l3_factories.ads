@@ -46,13 +46,18 @@
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
+with AMF.Factories.Standard_Profile_L3_Factories;
 with AMF.Links;
+with AMF.Standard_Profile_L3.Build_Components;
+with AMF.Standard_Profile_L3.Metamodels;
+with AMF.Standard_Profile_L3.System_Models;
 with League.Holders;
 
 package AMF.Internals.Factories.Standard_Profile_L3_Factories is
 
    type Standard_Profile_L3_Factory is
-     limited new AMF.Internals.Factories.Metamodel_Factory_Base with null record;
+     limited new AMF.Internals.Factories.Metamodel_Factory_Base
+       and AMF.Factories.Standard_Profile_L3_Factories.Standard_Profile_L3_Factory with null record;
 
    overriding function Convert_To_String
     (Self      : not null access Standard_Profile_L3_Factory;
@@ -86,5 +91,17 @@ package AMF.Internals.Factories.Standard_Profile_L3_Factories is
        return not null AMF.Factories.Factory_Access;
 
    function Get_Package return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+   function Create_Build_Component
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access;
+
+   function Create_Metamodel
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.Metamodels.Standard_Profile_L3_Metamodel_Access;
+
+   function Create_System_Model
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.System_Models.Standard_Profile_L3_System_Model_Access;
 
 end AMF.Internals.Factories.Standard_Profile_L3_Factories;

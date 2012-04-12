@@ -49,7 +49,8 @@ package AMF.Factories.MOF_Factories is
 
    pragma Preelaborate;
 
-   type MOF_Factory is limited interface;
+   type MOF_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Tag
     (Self : not null access MOF_Factory)

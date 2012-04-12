@@ -241,7 +241,8 @@ package AMF.Factories.UML_Factories is
 
    pragma Preelaborate;
 
-   type UML_Factory is limited interface;
+   type UML_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Abstraction
     (Self : not null access UML_Factory)

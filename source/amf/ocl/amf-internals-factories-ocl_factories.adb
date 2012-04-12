@@ -129,8 +129,6 @@ package body AMF.Internals.Factories.OCL_Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      pragma Unreferenced (Self);
-
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.AMF_Element;
@@ -364,5 +362,613 @@ package body AMF.Internals.Factories.OCL_Factories is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.OCL_Metamodel.MM_OCL_OCL));
    end Get_Package;
+
+   ---------------------
+   -- Create_Any_Type --
+   ---------------------
+
+   overriding function Create_Any_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Any_Types.OCL_Any_Type_Access is
+   begin
+      return
+        AMF.OCL.Any_Types.OCL_Any_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Any_Type))));
+   end Create_Any_Type;
+
+   ---------------------------------------
+   -- Create_Association_Class_Call_Exp --
+   ---------------------------------------
+
+   overriding function Create_Association_Class_Call_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access is
+   begin
+      return
+        AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Association_Class_Call_Exp))));
+   end Create_Association_Class_Call_Exp;
+
+   ---------------------
+   -- Create_Bag_Type --
+   ---------------------
+
+   overriding function Create_Bag_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Bag_Types.OCL_Bag_Type_Access is
+   begin
+      return
+        AMF.OCL.Bag_Types.OCL_Bag_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Bag_Type))));
+   end Create_Bag_Type;
+
+   --------------------------------
+   -- Create_Boolean_Literal_Exp --
+   --------------------------------
+
+   overriding function Create_Boolean_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Boolean_Literal_Exp))));
+   end Create_Boolean_Literal_Exp;
+
+   ----------------------------
+   -- Create_Collection_Item --
+   ----------------------------
+
+   overriding function Create_Collection_Item
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Collection_Items.OCL_Collection_Item_Access is
+   begin
+      return
+        AMF.OCL.Collection_Items.OCL_Collection_Item_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Item))));
+   end Create_Collection_Item;
+
+   -----------------------------------
+   -- Create_Collection_Literal_Exp --
+   -----------------------------------
+
+   overriding function Create_Collection_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Literal_Exp))));
+   end Create_Collection_Literal_Exp;
+
+   -----------------------------
+   -- Create_Collection_Range --
+   -----------------------------
+
+   overriding function Create_Collection_Range
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access is
+   begin
+      return
+        AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Range))));
+   end Create_Collection_Range;
+
+   ----------------------------
+   -- Create_Collection_Type --
+   ----------------------------
+
+   overriding function Create_Collection_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Collection_Types.OCL_Collection_Type_Access is
+   begin
+      return
+        AMF.OCL.Collection_Types.OCL_Collection_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Collection_Type))));
+   end Create_Collection_Type;
+
+   -----------------------------
+   -- Create_Enum_Literal_Exp --
+   -----------------------------
+
+   overriding function Create_Enum_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Enum_Literal_Exp))));
+   end Create_Enum_Literal_Exp;
+
+   ------------------------------
+   -- Create_Expression_In_Ocl --
+   ------------------------------
+
+   overriding function Create_Expression_In_Ocl
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access is
+   begin
+      return
+        AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Expression_In_Ocl))));
+   end Create_Expression_In_Ocl;
+
+   -------------------
+   -- Create_If_Exp --
+   -------------------
+
+   overriding function Create_If_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.If_Exps.OCL_If_Exp_Access is
+   begin
+      return
+        AMF.OCL.If_Exps.OCL_If_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_If_Exp))));
+   end Create_If_Exp;
+
+   --------------------------------
+   -- Create_Integer_Literal_Exp --
+   --------------------------------
+
+   overriding function Create_Integer_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Integer_Literal_Exp))));
+   end Create_Integer_Literal_Exp;
+
+   --------------------------------
+   -- Create_Invalid_Literal_Exp --
+   --------------------------------
+
+   overriding function Create_Invalid_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Invalid_Literal_Exp))));
+   end Create_Invalid_Literal_Exp;
+
+   -------------------------
+   -- Create_Invalid_Type --
+   -------------------------
+
+   overriding function Create_Invalid_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access is
+   begin
+      return
+        AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Invalid_Type))));
+   end Create_Invalid_Type;
+
+   ------------------------
+   -- Create_Iterate_Exp --
+   ------------------------
+
+   overriding function Create_Iterate_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access is
+   begin
+      return
+        AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Iterate_Exp))));
+   end Create_Iterate_Exp;
+
+   -------------------------
+   -- Create_Iterator_Exp --
+   -------------------------
+
+   overriding function Create_Iterator_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access is
+   begin
+      return
+        AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Iterator_Exp))));
+   end Create_Iterator_Exp;
+
+   --------------------
+   -- Create_Let_Exp --
+   --------------------
+
+   overriding function Create_Let_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Let_Exps.OCL_Let_Exp_Access is
+   begin
+      return
+        AMF.OCL.Let_Exps.OCL_Let_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Let_Exp))));
+   end Create_Let_Exp;
+
+   ------------------------
+   -- Create_Message_Exp --
+   ------------------------
+
+   overriding function Create_Message_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Message_Exps.OCL_Message_Exp_Access is
+   begin
+      return
+        AMF.OCL.Message_Exps.OCL_Message_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Message_Exp))));
+   end Create_Message_Exp;
+
+   -------------------------
+   -- Create_Message_Type --
+   -------------------------
+
+   overriding function Create_Message_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Message_Types.OCL_Message_Type_Access is
+   begin
+      return
+        AMF.OCL.Message_Types.OCL_Message_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Message_Type))));
+   end Create_Message_Type;
+
+   -----------------------------
+   -- Create_Null_Literal_Exp --
+   -----------------------------
+
+   overriding function Create_Null_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Null_Literal_Exp))));
+   end Create_Null_Literal_Exp;
+
+   -------------------------------
+   -- Create_Operation_Call_Exp --
+   -------------------------------
+
+   overriding function Create_Operation_Call_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access is
+   begin
+      return
+        AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Operation_Call_Exp))));
+   end Create_Operation_Call_Exp;
+
+   -----------------------------
+   -- Create_Ordered_Set_Type --
+   -----------------------------
+
+   overriding function Create_Ordered_Set_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access is
+   begin
+      return
+        AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Ordered_Set_Type))));
+   end Create_Ordered_Set_Type;
+
+   ------------------------------
+   -- Create_Property_Call_Exp --
+   ------------------------------
+
+   overriding function Create_Property_Call_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access is
+   begin
+      return
+        AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Property_Call_Exp))));
+   end Create_Property_Call_Exp;
+
+   -----------------------------
+   -- Create_Real_Literal_Exp --
+   -----------------------------
+
+   overriding function Create_Real_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Real_Literal_Exp))));
+   end Create_Real_Literal_Exp;
+
+   --------------------------
+   -- Create_Sequence_Type --
+   --------------------------
+
+   overriding function Create_Sequence_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access is
+   begin
+      return
+        AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Sequence_Type))));
+   end Create_Sequence_Type;
+
+   ---------------------
+   -- Create_Set_Type --
+   ---------------------
+
+   overriding function Create_Set_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Set_Types.OCL_Set_Type_Access is
+   begin
+      return
+        AMF.OCL.Set_Types.OCL_Set_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Set_Type))));
+   end Create_Set_Type;
+
+   ----------------------
+   -- Create_State_Exp --
+   ----------------------
+
+   overriding function Create_State_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.State_Exps.OCL_State_Exp_Access is
+   begin
+      return
+        AMF.OCL.State_Exps.OCL_State_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_State_Exp))));
+   end Create_State_Exp;
+
+   -------------------------------
+   -- Create_String_Literal_Exp --
+   -------------------------------
+
+   overriding function Create_String_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_String_Literal_Exp))));
+   end Create_String_Literal_Exp;
+
+   ------------------------------------
+   -- Create_Template_Parameter_Type --
+   ------------------------------------
+
+   overriding function Create_Template_Parameter_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access is
+   begin
+      return
+        AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Template_Parameter_Type))));
+   end Create_Template_Parameter_Type;
+
+   ------------------------------
+   -- Create_Tuple_Literal_Exp --
+   ------------------------------
+
+   overriding function Create_Tuple_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Literal_Exp))));
+   end Create_Tuple_Literal_Exp;
+
+   -------------------------------
+   -- Create_Tuple_Literal_Part --
+   -------------------------------
+
+   overriding function Create_Tuple_Literal_Part
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access is
+   begin
+      return
+        AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Literal_Part))));
+   end Create_Tuple_Literal_Part;
+
+   -----------------------
+   -- Create_Tuple_Type --
+   -----------------------
+
+   overriding function Create_Tuple_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access is
+   begin
+      return
+        AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Tuple_Type))));
+   end Create_Tuple_Type;
+
+   ---------------------
+   -- Create_Type_Exp --
+   ---------------------
+
+   overriding function Create_Type_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Type_Exps.OCL_Type_Exp_Access is
+   begin
+      return
+        AMF.OCL.Type_Exps.OCL_Type_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Type_Exp))));
+   end Create_Type_Exp;
+
+   ------------------------------------------
+   -- Create_Unlimited_Natural_Literal_Exp --
+   ------------------------------------------
+
+   overriding function Create_Unlimited_Natural_Literal_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access is
+   begin
+      return
+        AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Unlimited_Natural_Literal_Exp))));
+   end Create_Unlimited_Natural_Literal_Exp;
+
+   ----------------------------------
+   -- Create_Unspecified_Value_Exp --
+   ----------------------------------
+
+   overriding function Create_Unspecified_Value_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access is
+   begin
+      return
+        AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Unspecified_Value_Exp))));
+   end Create_Unspecified_Value_Exp;
+
+   ---------------------
+   -- Create_Variable --
+   ---------------------
+
+   overriding function Create_Variable
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Variables.OCL_Variable_Access is
+   begin
+      return
+        AMF.OCL.Variables.OCL_Variable_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Variable))));
+   end Create_Variable;
+
+   -------------------------
+   -- Create_Variable_Exp --
+   -------------------------
+
+   overriding function Create_Variable_Exp
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access is
+   begin
+      return
+        AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Variable_Exp))));
+   end Create_Variable_Exp;
+
+   ----------------------
+   -- Create_Void_Type --
+   ----------------------
+
+   overriding function Create_Void_Type
+    (Self : not null access OCL_Factory)
+       return AMF.OCL.Void_Types.OCL_Void_Type_Access is
+   begin
+      return
+        AMF.OCL.Void_Types.OCL_Void_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.OCL_Metamodel.MC_OCL_Void_Type))));
+   end Create_Void_Type;
 
 end AMF.Internals.Factories.OCL_Factories;

@@ -86,8 +86,6 @@ package body AMF.Internals.Factories.MOF_Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      pragma Unreferenced (Self);
-
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.AMF_Element;
@@ -171,5 +169,21 @@ package body AMF.Internals.Factories.MOF_Factories is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.MOF_Metamodel.MM_MOF_MOF));
    end Get_Package;
+
+   ----------------
+   -- Create_Tag --
+   ----------------
+
+   overriding function Create_Tag
+    (Self : not null access MOF_Factory)
+       return AMF.MOF.Tags.MOF_Tag_Access is
+   begin
+      return
+        AMF.MOF.Tags.MOF_Tag_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag))));
+   end Create_Tag;
 
 end AMF.Internals.Factories.MOF_Factories;

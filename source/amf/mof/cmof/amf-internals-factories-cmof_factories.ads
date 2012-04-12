@@ -45,14 +45,31 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
+with AMF.CMOF.Comments;
+with AMF.CMOF.Constraints;
 with AMF.CMOF.Data_Types;
+with AMF.CMOF.Element_Imports;
+with AMF.CMOF.Enumeration_Literals;
+with AMF.CMOF.Enumerations;
+with AMF.CMOF.Expressions;
+with AMF.CMOF.Opaque_Expressions;
+with AMF.CMOF.Operations;
+with AMF.CMOF.Package_Imports;
+with AMF.CMOF.Package_Merges;
+with AMF.CMOF.Packages;
+with AMF.CMOF.Parameters;
+with AMF.CMOF.Primitive_Types;
+with AMF.CMOF.Properties;
+with AMF.CMOF.Tags;
+with AMF.Factories.CMOF_Factories;
 with AMF.Links;
 with League.Holders;
 
 package AMF.Internals.Factories.CMOF_Factories is
 
    type CMOF_Factory is
-     limited new AMF.Internals.Factories.Metamodel_Factory_Base with null record;
+     limited new AMF.Internals.Factories.Metamodel_Factory_Base
+       and AMF.Factories.CMOF_Factories.CMOF_Factory with null record;
 
    overriding function Convert_To_String
     (Self      : not null access CMOF_Factory;
@@ -86,5 +103,77 @@ package AMF.Internals.Factories.CMOF_Factories is
        return not null AMF.Factories.Factory_Access;
 
    function Get_Package return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+   function Create_Association
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Associations.CMOF_Association_Access;
+
+   function Create_Class
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+
+   function Create_Comment
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Comments.CMOF_Comment_Access;
+
+   function Create_Constraint
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Constraints.CMOF_Constraint_Access;
+
+   function Create_Data_Type
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
+
+   function Create_Element_Import
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Element_Imports.CMOF_Element_Import_Access;
+
+   function Create_Enumeration
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
+
+   function Create_Enumeration_Literal
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+   function Create_Expression
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Expressions.CMOF_Expression_Access;
+
+   function Create_Opaque_Expression
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
+
+   function Create_Operation
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Operations.CMOF_Operation_Access;
+
+   function Create_Package
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Packages.CMOF_Package_Access;
+
+   function Create_Package_Import
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Package_Imports.CMOF_Package_Import_Access;
+
+   function Create_Package_Merge
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access;
+
+   function Create_Parameter
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Parameters.CMOF_Parameter_Access;
+
+   function Create_Primitive_Type
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
+
+   function Create_Property
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Properties.CMOF_Property_Access;
+
+   function Create_Tag
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Tags.CMOF_Tag_Access;
 
 end AMF.Internals.Factories.CMOF_Factories;

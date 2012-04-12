@@ -48,6 +48,7 @@ package AMF.Factories.Primitive_Types_Factories is
 
    pragma Preelaborate;
 
-   type Primitive_Types_Factory is limited interface;
+   type Primitive_Types_Factory is limited interface
+     and AMF.Factories.Factory;
 
 end AMF.Factories.Primitive_Types_Factories;

@@ -86,8 +86,6 @@ package body AMF.Internals.Factories.Standard_Profile_L2_Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      pragma Unreferenced (Self);
-
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.AMF_Element;
@@ -255,5 +253,469 @@ package body AMF.Internals.Factories.Standard_Profile_L2_Factories is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MM_Standard_Profile_L2_Standard_Profile_L2));
    end Get_Package;
+
+   ----------------------
+   -- Create_Auxiliary --
+   ----------------------
+
+   overriding function Create_Auxiliary
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Auxiliaries.Standard_Profile_L2_Auxiliary_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Auxiliaries.Standard_Profile_L2_Auxiliary_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Auxiliary))));
+   end Create_Auxiliary;
+
+   -----------------
+   -- Create_Call --
+   -----------------
+
+   overriding function Create_Call
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Calls.Standard_Profile_L2_Call_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Calls.Standard_Profile_L2_Call_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Call))));
+   end Create_Call;
+
+   -------------------
+   -- Create_Create --
+   -------------------
+
+   overriding function Create_Create
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Creates.Standard_Profile_L2_Create_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Create))));
+   end Create_Create;
+
+   -------------------
+   -- Create_Derive --
+   -------------------
+
+   overriding function Create_Derive
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Derives.Standard_Profile_L2_Derive_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Derive))));
+   end Create_Derive;
+
+   --------------------
+   -- Create_Destroy --
+   --------------------
+
+   overriding function Create_Destroy
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Destroies.Standard_Profile_L2_Destroy_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Destroies.Standard_Profile_L2_Destroy_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Destroy))));
+   end Create_Destroy;
+
+   ---------------------
+   -- Create_Document --
+   ---------------------
+
+   overriding function Create_Document
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Documents.Standard_Profile_L2_Document_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Document))));
+   end Create_Document;
+
+   -------------------
+   -- Create_Entity --
+   -------------------
+
+   overriding function Create_Entity
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Entities.Standard_Profile_L2_Entity_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Entities.Standard_Profile_L2_Entity_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Entity))));
+   end Create_Entity;
+
+   -----------------------
+   -- Create_Executable --
+   -----------------------
+
+   overriding function Create_Executable
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Executables.Standard_Profile_L2_Executable_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Executable))));
+   end Create_Executable;
+
+   ------------------
+   -- Create_Focus --
+   ------------------
+
+   overriding function Create_Focus
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Focuses.Standard_Profile_L2_Focus_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Focuses.Standard_Profile_L2_Focus_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Focus))));
+   end Create_Focus;
+
+   ----------------------
+   -- Create_Framework --
+   ----------------------
+
+   overriding function Create_Framework
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Frameworks.Standard_Profile_L2_Framework_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Frameworks.Standard_Profile_L2_Framework_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Framework))));
+   end Create_Framework;
+
+   ----------------------
+   -- Create_Implement --
+   ----------------------
+
+   overriding function Create_Implement
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Implements.Standard_Profile_L2_Implement_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Implements.Standard_Profile_L2_Implement_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implement))));
+   end Create_Implement;
+
+   ---------------------------------
+   -- Create_Implementation_Class --
+   ---------------------------------
+
+   overriding function Create_Implementation_Class
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Implementation_Classes.Standard_Profile_L2_Implementation_Class_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Implementation_Classes.Standard_Profile_L2_Implementation_Class_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Implementation_Class))));
+   end Create_Implementation_Class;
+
+   ------------------------
+   -- Create_Instantiate --
+   ------------------------
+
+   overriding function Create_Instantiate
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Instantiates.Standard_Profile_L2_Instantiate_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Instantiates.Standard_Profile_L2_Instantiate_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Instantiate))));
+   end Create_Instantiate;
+
+   --------------------
+   -- Create_Library --
+   --------------------
+
+   overriding function Create_Library
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Libraries.Standard_Profile_L2_Library_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Library))));
+   end Create_Library;
+
+   ----------------------
+   -- Create_Metaclass --
+   ----------------------
+
+   overriding function Create_Metaclass
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Metaclasses.Standard_Profile_L2_Metaclass_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Metaclasses.Standard_Profile_L2_Metaclass_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Metaclass))));
+   end Create_Metaclass;
+
+   --------------------------
+   -- Create_Model_Library --
+   --------------------------
+
+   overriding function Create_Model_Library
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Model_Libraries.Standard_Profile_L2_Model_Library_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Model_Libraries.Standard_Profile_L2_Model_Library_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Model_Library))));
+   end Create_Model_Library;
+
+   --------------------
+   -- Create_Process --
+   --------------------
+
+   overriding function Create_Process
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Processes.Standard_Profile_L2_Process_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Processes.Standard_Profile_L2_Process_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Process))));
+   end Create_Process;
+
+   ------------------------
+   -- Create_Realization --
+   ------------------------
+
+   overriding function Create_Realization
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Realizations.Standard_Profile_L2_Realization_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Realizations.Standard_Profile_L2_Realization_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Realization))));
+   end Create_Realization;
+
+   -------------------
+   -- Create_Refine --
+   -------------------
+
+   overriding function Create_Refine
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Refines.Standard_Profile_L2_Refine_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Refines.Standard_Profile_L2_Refine_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Refine))));
+   end Create_Refine;
+
+   ---------------------------
+   -- Create_Responsibility --
+   ---------------------------
+
+   overriding function Create_Responsibility
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Responsibilities.Standard_Profile_L2_Responsibility_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Responsibilities.Standard_Profile_L2_Responsibility_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Responsibility))));
+   end Create_Responsibility;
+
+   -------------------
+   -- Create_Script --
+   -------------------
+
+   overriding function Create_Script
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Scripts.Standard_Profile_L2_Script_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Script))));
+   end Create_Script;
+
+   -----------------
+   -- Create_Send --
+   -----------------
+
+   overriding function Create_Send
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Sends.Standard_Profile_L2_Send_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Sends.Standard_Profile_L2_Send_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Send))));
+   end Create_Send;
+
+   --------------------
+   -- Create_Service --
+   --------------------
+
+   overriding function Create_Service
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Services.Standard_Profile_L2_Service_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Services.Standard_Profile_L2_Service_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Service))));
+   end Create_Service;
+
+   -------------------
+   -- Create_Source --
+   -------------------
+
+   overriding function Create_Source
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Sources.Standard_Profile_L2_Source_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Source))));
+   end Create_Source;
+
+   --------------------------
+   -- Create_Specification --
+   --------------------------
+
+   overriding function Create_Specification
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Specifications.Standard_Profile_L2_Specification_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Specifications.Standard_Profile_L2_Specification_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Specification))));
+   end Create_Specification;
+
+   ----------------------
+   -- Create_Subsystem --
+   ----------------------
+
+   overriding function Create_Subsystem
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Subsystems.Standard_Profile_L2_Subsystem_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Subsystems.Standard_Profile_L2_Subsystem_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Subsystem))));
+   end Create_Subsystem;
+
+   ------------------
+   -- Create_Trace --
+   ------------------
+
+   overriding function Create_Trace
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Traces.Standard_Profile_L2_Trace_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Traces.Standard_Profile_L2_Trace_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Trace))));
+   end Create_Trace;
+
+   -----------------
+   -- Create_Type --
+   -----------------
+
+   overriding function Create_Type
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Types.Standard_Profile_L2_Type_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Types.Standard_Profile_L2_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Type))));
+   end Create_Type;
+
+   --------------------
+   -- Create_Utility --
+   --------------------
+
+   overriding function Create_Utility
+    (Self : not null access Standard_Profile_L2_Factory)
+       return AMF.Standard_Profile_L2.Utilities.Standard_Profile_L2_Utility_Access is
+   begin
+      return
+        AMF.Standard_Profile_L2.Utilities.Standard_Profile_L2_Utility_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MC_Standard_Profile_L2_Utility))));
+   end Create_Utility;
 
 end AMF.Internals.Factories.Standard_Profile_L2_Factories;

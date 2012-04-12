@@ -86,8 +86,6 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      pragma Unreferenced (Self);
-
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.AMF_Element;
@@ -177,5 +175,53 @@ package body AMF.Internals.Factories.Standard_Profile_L3_Factories is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MM_Standard_Profile_L3_Standard_Profile_L3));
    end Get_Package;
+
+   ----------------------------
+   -- Create_Build_Component --
+   ----------------------------
+
+   overriding function Create_Build_Component
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access is
+   begin
+      return
+        AMF.Standard_Profile_L3.Build_Components.Standard_Profile_L3_Build_Component_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Build_Component))));
+   end Create_Build_Component;
+
+   ----------------------
+   -- Create_Metamodel --
+   ----------------------
+
+   overriding function Create_Metamodel
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.Metamodels.Standard_Profile_L3_Metamodel_Access is
+   begin
+      return
+        AMF.Standard_Profile_L3.Metamodels.Standard_Profile_L3_Metamodel_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_Metamodel))));
+   end Create_Metamodel;
+
+   -------------------------
+   -- Create_System_Model --
+   -------------------------
+
+   overriding function Create_System_Model
+    (Self : not null access Standard_Profile_L3_Factory)
+       return AMF.Standard_Profile_L3.System_Models.Standard_Profile_L3_System_Model_Access is
+   begin
+      return
+        AMF.Standard_Profile_L3.System_Models.Standard_Profile_L3_System_Model_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MC_Standard_Profile_L3_System_Model))));
+   end Create_System_Model;
 
 end AMF.Internals.Factories.Standard_Profile_L3_Factories;

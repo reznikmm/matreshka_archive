@@ -51,7 +51,8 @@ package AMF.Factories.Standard_Profile_L3_Factories is
 
    pragma Preelaborate;
 
-   type Standard_Profile_L3_Factory is limited interface;
+   type Standard_Profile_L3_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Build_Component
     (Self : not null access Standard_Profile_L3_Factory)

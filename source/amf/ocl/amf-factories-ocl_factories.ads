@@ -86,7 +86,8 @@ package AMF.Factories.OCL_Factories is
 
    pragma Preelaborate;
 
-   type OCL_Factory is limited interface;
+   type OCL_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Any_Type
     (Self : not null access OCL_Factory)

@@ -199,8 +199,6 @@ package body AMF.Internals.Factories.CMOF_Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      pragma Unreferenced (Self);
-
       MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Elements.Element_Base'Class (Meta_Class.all).Element;
       Element : AMF.Internals.AMF_Element;
@@ -406,5 +404,293 @@ package body AMF.Internals.Factories.CMOF_Factories is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
    end Get_Package;
+
+   ------------------------
+   -- Create_Association --
+   ------------------------
+
+   overriding function Create_Association
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Associations.CMOF_Association_Access is
+   begin
+      return
+        AMF.CMOF.Associations.CMOF_Association_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Association))));
+   end Create_Association;
+
+   ------------------
+   -- Create_Class --
+   ------------------
+
+   overriding function Create_Class
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Classes.CMOF_Class_Access is
+   begin
+      return
+        AMF.CMOF.Classes.CMOF_Class_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Class))));
+   end Create_Class;
+
+   --------------------
+   -- Create_Comment --
+   --------------------
+
+   overriding function Create_Comment
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Comments.CMOF_Comment_Access is
+   begin
+      return
+        AMF.CMOF.Comments.CMOF_Comment_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Comment))));
+   end Create_Comment;
+
+   -----------------------
+   -- Create_Constraint --
+   -----------------------
+
+   overriding function Create_Constraint
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Constraints.CMOF_Constraint_Access is
+   begin
+      return
+        AMF.CMOF.Constraints.CMOF_Constraint_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Constraint))));
+   end Create_Constraint;
+
+   ----------------------
+   -- Create_Data_Type --
+   ----------------------
+
+   overriding function Create_Data_Type
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access is
+   begin
+      return
+        AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Data_Type))));
+   end Create_Data_Type;
+
+   ---------------------------
+   -- Create_Element_Import --
+   ---------------------------
+
+   overriding function Create_Element_Import
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Element_Imports.CMOF_Element_Import_Access is
+   begin
+      return
+        AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Element_Import))));
+   end Create_Element_Import;
+
+   ------------------------
+   -- Create_Enumeration --
+   ------------------------
+
+   overriding function Create_Enumeration
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Enumerations.CMOF_Enumeration_Access is
+   begin
+      return
+        AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration))));
+   end Create_Enumeration;
+
+   --------------------------------
+   -- Create_Enumeration_Literal --
+   --------------------------------
+
+   overriding function Create_Enumeration_Literal
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access is
+   begin
+      return
+        AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Enumeration_Literal))));
+   end Create_Enumeration_Literal;
+
+   -----------------------
+   -- Create_Expression --
+   -----------------------
+
+   overriding function Create_Expression
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Expressions.CMOF_Expression_Access is
+   begin
+      return
+        AMF.CMOF.Expressions.CMOF_Expression_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Expression))));
+   end Create_Expression;
+
+   ------------------------------
+   -- Create_Opaque_Expression --
+   ------------------------------
+
+   overriding function Create_Opaque_Expression
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access is
+   begin
+      return
+        AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Opaque_Expression))));
+   end Create_Opaque_Expression;
+
+   ----------------------
+   -- Create_Operation --
+   ----------------------
+
+   overriding function Create_Operation
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Operations.CMOF_Operation_Access is
+   begin
+      return
+        AMF.CMOF.Operations.CMOF_Operation_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Operation))));
+   end Create_Operation;
+
+   --------------------
+   -- Create_Package --
+   --------------------
+
+   overriding function Create_Package
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package))));
+   end Create_Package;
+
+   ---------------------------
+   -- Create_Package_Import --
+   ---------------------------
+
+   overriding function Create_Package_Import
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Package_Imports.CMOF_Package_Import_Access is
+   begin
+      return
+        AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Import))));
+   end Create_Package_Import;
+
+   --------------------------
+   -- Create_Package_Merge --
+   --------------------------
+
+   overriding function Create_Package_Merge
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access is
+   begin
+      return
+        AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Package_Merge))));
+   end Create_Package_Merge;
+
+   ----------------------
+   -- Create_Parameter --
+   ----------------------
+
+   overriding function Create_Parameter
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Parameters.CMOF_Parameter_Access is
+   begin
+      return
+        AMF.CMOF.Parameters.CMOF_Parameter_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Parameter))));
+   end Create_Parameter;
+
+   ---------------------------
+   -- Create_Primitive_Type --
+   ---------------------------
+
+   overriding function Create_Primitive_Type
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access is
+   begin
+      return
+        AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Primitive_Type))));
+   end Create_Primitive_Type;
+
+   ---------------------
+   -- Create_Property --
+   ---------------------
+
+   overriding function Create_Property
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Properties.CMOF_Property_Access is
+   begin
+      return
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Property))));
+   end Create_Property;
+
+   ----------------
+   -- Create_Tag --
+   ----------------
+
+   overriding function Create_Tag
+    (Self : not null access CMOF_Factory)
+       return AMF.CMOF.Tags.CMOF_Tag_Access is
+   begin
+      return
+        AMF.CMOF.Tags.CMOF_Tag_Access
+         (Self.Create
+           (AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element
+               (AMF.Internals.Tables.CMOF_Metamodel.MC_CMOF_Tag))));
+   end Create_Tag;
 
 end AMF.Internals.Factories.CMOF_Factories;

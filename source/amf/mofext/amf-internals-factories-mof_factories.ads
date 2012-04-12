@@ -46,13 +46,16 @@
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
+with AMF.Factories.MOF_Factories;
 with AMF.Links;
+with AMF.MOF.Tags;
 with League.Holders;
 
 package AMF.Internals.Factories.MOF_Factories is
 
    type MOF_Factory is
-     limited new AMF.Internals.Factories.Metamodel_Factory_Base with null record;
+     limited new AMF.Internals.Factories.Metamodel_Factory_Base
+       and AMF.Factories.MOF_Factories.MOF_Factory with null record;
 
    overriding function Convert_To_String
     (Self      : not null access MOF_Factory;
@@ -86,5 +89,9 @@ package AMF.Internals.Factories.MOF_Factories is
        return not null AMF.Factories.Factory_Access;
 
    function Get_Package return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+   function Create_Tag
+    (Self : not null access MOF_Factory)
+       return AMF.MOF.Tags.MOF_Tag_Access;
 
 end AMF.Internals.Factories.MOF_Factories;

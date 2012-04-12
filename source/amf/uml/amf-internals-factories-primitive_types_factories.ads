@@ -46,13 +46,15 @@
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
+with AMF.Factories.Primitive_Types_Factories;
 with AMF.Links;
 with League.Holders;
 
 package AMF.Internals.Factories.Primitive_Types_Factories is
 
    type Primitive_Types_Factory is
-     limited new AMF.Internals.Factories.Metamodel_Factory_Base with null record;
+     limited new AMF.Internals.Factories.Metamodel_Factory_Base
+       and AMF.Factories.Primitive_Types_Factories.Primitive_Types_Factory with null record;
 
    overriding function Convert_To_String
     (Self      : not null access Primitive_Types_Factory;

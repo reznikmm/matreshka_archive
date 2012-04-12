@@ -66,7 +66,8 @@ package AMF.Factories.CMOF_Factories is
 
    pragma Preelaborate;
 
-   type CMOF_Factory is limited interface;
+   type CMOF_Factory is limited interface
+     and AMF.Factories.Factory;
 
    not overriding function Create_Association
     (Self : not null access CMOF_Factory)
