@@ -749,6 +749,14 @@ package body Generator.Factories is
       Unit.Add_Line;
       Unit.Add_Line ("   type " & Type_Name & " is limited interface");
       Unit.Add_Line (+"     and AMF.Factories.Factory;");
+      Unit.Add_Line;
+      Unit.Add_Line
+       ("   type "
+          & Type_Name
+          & "_Access is access all "
+          & Type_Name
+          & "'Class;");
+      Unit.Add_Line ("   for " & Type_Name & "_Access'Storage_Size use 0;");
 
       declare
          Position : CMOF_Class_Ordered_Sets.Cursor
