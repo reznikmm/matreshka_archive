@@ -107,22 +107,6 @@ package AMF.Internals.UML_Connector_Ends is
    --  on the multiplicities) be created to an instance of the classifier that
    --  types this connectable element.
 
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Connector_End_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
    overriding function Get_Is_Unique
     (Self : not null access constant UML_Connector_End_Proxy)
        return Boolean;

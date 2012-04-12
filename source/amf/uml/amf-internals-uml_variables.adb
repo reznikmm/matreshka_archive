@@ -475,31 +475,6 @@ package body AMF.Internals.UML_Variables is
          (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
-   --------------------
-   -- Get_Is_Ordered --
-   --------------------
-
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Variable_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Ordered
-         (Self.Element);
-   end Get_Is_Ordered;
-
-   --------------------
-   -- Set_Is_Ordered --
-   --------------------
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Variable_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Ordered
-       (Self.Element, To);
-   end Set_Is_Ordered;
-
    -------------------
    -- Get_Is_Unique --
    -------------------

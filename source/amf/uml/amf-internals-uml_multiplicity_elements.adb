@@ -49,6 +49,19 @@ package body AMF.Internals.UML_Multiplicity_Elements is
    use type AMF.UML.Value_Specifications.UML_Value_Specification_Access;
 
    --------------------
+   -- Get_Is_Ordered --
+   --------------------
+
+   overriding function Get_Is_Ordered
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Ordered
+         (Self.Element);
+   end Get_Is_Ordered;
+
+   --------------------
    -- Is_Multivalued --
    --------------------
 

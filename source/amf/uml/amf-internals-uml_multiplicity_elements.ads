@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,14 @@ package AMF.Internals.UML_Multiplicity_Elements is
      abstract limited new Element_Proxy
        and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element
          with null record;
+
+   overriding function Get_Is_Ordered
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean;
+   --  Getter of MultiplicityElement::isOrdered.
+   --
+   --  For a multivalued multiplicity, this attribute specifies whether the
+   --  values in an instantiation of this element are sequentially ordered.
 
    overriding function Is_Multivalued
     (Self : not null access constant UML_Multiplicity_Element_Proxy)

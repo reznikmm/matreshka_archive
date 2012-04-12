@@ -373,22 +373,6 @@ package AMF.Internals.UML_Input_Pins is
    --  The type of the TypedElement.
    --  This information is derived from the return result for this Operation.
 
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Input_Pin_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
    overriding function Get_Is_Unique
     (Self : not null access constant UML_Input_Pin_Proxy)
        return Boolean;

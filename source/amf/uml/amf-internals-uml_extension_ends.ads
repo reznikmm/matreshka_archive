@@ -538,22 +538,6 @@ package AMF.Internals.UML_Extension_Ends is
    --
    --  The set of Deployments for a DeploymentTarget.
 
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
    overriding function Get_Is_Unique
     (Self : not null access constant UML_Extension_End_Proxy)
        return Boolean;

@@ -250,22 +250,6 @@ package AMF.Internals.UML_Variables is
    --
    --  The template parameter that exposes this element as a formal parameter.
 
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Variable_Proxy)
-       return Boolean;
-   --  Getter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Variable_Proxy;
-     To   : Boolean);
-   --  Setter of MultiplicityElement::isOrdered.
-   --
-   --  For a multivalued multiplicity, this attribute specifies whether the
-   --  values in an instantiation of this element are sequentially ordered.
-
    overriding function Get_Is_Unique
     (Self : not null access constant UML_Variable_Proxy)
        return Boolean;

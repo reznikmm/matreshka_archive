@@ -695,31 +695,6 @@ package body AMF.Internals.UML_Value_Pins is
          (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
-   --------------------
-   -- Get_Is_Ordered --
-   --------------------
-
-   overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Value_Pin_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Ordered
-         (Self.Element);
-   end Get_Is_Ordered;
-
-   --------------------
-   -- Set_Is_Ordered --
-   --------------------
-
-   overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Value_Pin_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Ordered
-       (Self.Element, To);
-   end Set_Is_Ordered;
-
    -------------------
    -- Get_Is_Unique --
    -------------------
