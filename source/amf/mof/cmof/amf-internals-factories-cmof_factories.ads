@@ -43,12 +43,11 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with League.Holders;
-
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.Links;
+with League.Holders;
 
 package AMF.Internals.Factories.CMOF_Factories is
 
