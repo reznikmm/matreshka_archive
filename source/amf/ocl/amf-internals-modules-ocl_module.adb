@@ -58,8 +58,6 @@ package body AMF.Internals.Modules.OCL_Module is
 
    OCL_Module_Factory : aliased
      AMF.Internals.Factories.OCL_Module_Factory.OCL_Module_Factory;
-   OCL_Factory        : aliased
-     AMF.Internals.Factories.OCL_Factories.OCL_Factory;
    Module             : AMF_Metamodel;
 
 begin
@@ -78,5 +76,7 @@ begin
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (OCL_Factory'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.OCL_Factories.Get_Package,
+     AMF.Internals.Factories.OCL_Factories.Constructor'Access);
 end AMF.Internals.Modules.OCL_Module;
