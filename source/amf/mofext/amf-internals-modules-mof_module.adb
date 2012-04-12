@@ -56,8 +56,6 @@ package body AMF.Internals.Modules.MOF_Module is
 
    --  Global object of factory for supported metamodel.
 
-   MOF_Factory        : aliased
-     AMF.Internals.Factories.MOF_Factories.MOF_Factory;
    MOF_Module_Factory : aliased
      AMF.Internals.Factories.MOF_Module_Factory.MOF_Module_Factory;
    Module             : AMF_Metamodel;
@@ -78,5 +76,7 @@ begin
 
    --  Register factories.
 
-   AMF.Internals.Factories.Register (MOF_Factory'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.MOF_Factories.Get_Package,
+     AMF.Internals.Factories.MOF_Factories.Constructor'Access);
 end AMF.Internals.Modules.MOF_Module;
