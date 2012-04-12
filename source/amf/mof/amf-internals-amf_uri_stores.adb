@@ -46,7 +46,6 @@ with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
-with AMF.Internals.Listener_Registry;
 
 package body AMF.Internals.AMF_URI_Stores is
 
@@ -80,24 +79,9 @@ package body AMF.Internals.AMF_URI_Stores is
    is
       The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
         := Meta_Class.Get_Package;
-      Element     : constant AMF.Elements.Element_Access
-        := Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
 
    begin
-      --  XXX This code need to be moved outside of this unit.
-
-      --  Add element to the store.
-
-      AMF.Internals.Extents.Internal_Append
-       (Self.Id, AMF.Internals.Helpers.To_Element (Element));
-
-      --  Notify about creation of element.
-
-      AMF.Internals.Listener_Registry.Notify_Instance_Create (Element);
-
-      --  XXX This code need to be moved outside of this unit.
-
-      return Element;
+      return Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
    end Create;
 
    ------------
@@ -118,18 +102,7 @@ package body AMF.Internals.AMF_URI_Stores is
         := AMF.Internals.Helpers.To_Element (Element);
 
    begin
-      --  XXX This code need to be moved outside of this unit.
-
-      --  Add element to the store.
-
-      AMF.Internals.Extents.Internal_Append (Self.Id, Element_Id);
       AMF.Internals.Extents.Set_Id (Self.Id, Element_Id, Id);
-
-      --  Notify about creation of element.
-
-      AMF.Internals.Listener_Registry.Notify_Instance_Create (Element);
-
-      --  XXX This code need to be moved outside of this unit.
 
       return Element;
    end Create;
