@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,12 +55,17 @@ private with AMF.CMOF.Packages;
 private with AMF.CMOF.Properties;
 private with AMF.Elements;
 with AMF.URI_Stores;
+with AMF.XMI.Error_Handlers;
 
 package AMF.Internals.XMI_Handlers is
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
+
+   not overriding procedure Set_Error_Handler
+    (Self    : in out XMI_Handler;
+     Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access);
 
    function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
 
@@ -122,6 +127,8 @@ private
       --  corresponding metamodel.
       Diagnosis          : League.Strings.Universal_String;
       Locator            : XML.SAX.Locators.SAX_Locator;
+
+      Error_Handler      : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access;
    end record;
 
    overriding procedure Characters

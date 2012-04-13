@@ -476,7 +476,11 @@ package body AMF.Internals.XMI_Handlers is
                   Ada.Wide_Wide_Text_IO.Put_Line
                    (Ada.Wide_Wide_Text_IO.Standard_Error,
                     URI.To_Wide_Wide_String);
-                  Extent := XMI.Reader.Read_URI (URI);
+                  Extent := Standard.XMI.Reader.Read_URI (URI);
+                  --  XXX It is not a good strategy to have recursive call
+                  --  here. It should be replaced by separate component to
+                  --  handle cross-document references and load documents on
+                  --  demand.
 
                exception
                   when X : Ada.IO_Exceptions.Name_Error =>
@@ -763,10 +767,16 @@ package body AMF.Internals.XMI_Handlers is
       Self.Locator := Locator;
    end Set_Document_Locator;
 
---   overriding procedure Skipped_Entity
---    (Self    : in out XMI_Handler;
---     Name    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
+   -----------------------
+   -- Set_Error_Handler --
+   -----------------------
+
+   not overriding procedure Set_Error_Handler
+    (Self    : in out XMI_Handler;
+     Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access) is
+   begin
+      Self.Error_Handler := Handler;
+   end Set_Error_Handler;
 
    --------------------
    -- Start_Document --
