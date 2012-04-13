@@ -147,20 +147,6 @@ package AMF.Internals.UML_Element_Imports is
    --
    --  Specifies the elements related by the Relationship.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Element_Import_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Element_Import_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Get_Name
     (Self : not null access constant UML_Element_Import_Proxy)
        return League.Strings.Universal_String;
@@ -168,14 +154,6 @@ package AMF.Internals.UML_Element_Imports is
    --
    --  The query getName() returns the name under which the imported
    --  PackageableElement will be known in the importing namespace.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Element_Import_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Element_Import_Proxy;

@@ -51,7 +51,6 @@ with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Behaviors;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Input_Pins;
 with AMF.UML.Interruptible_Activity_Regions.Collections;
 with AMF.UML.Multiplicity_Elements;
@@ -343,20 +342,6 @@ package AMF.Internals.UML_Input_Pins is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Get_Type
     (Self : not null access constant UML_Input_Pin_Proxy)
        return AMF.UML.Types.UML_Type_Access;
@@ -441,14 +426,6 @@ package AMF.Internals.UML_Input_Pins is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Input_Pin_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function Compatible_With
     (Self : not null access constant UML_Input_Pin_Proxy;

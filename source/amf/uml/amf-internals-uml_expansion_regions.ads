@@ -52,7 +52,6 @@ with AMF.UML.Classifiers.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Exception_Handlers.Collections;
 with AMF.UML.Expansion_Nodes.Collections;
 with AMF.UML.Expansion_Regions;
@@ -287,20 +286,6 @@ package AMF.Internals.UML_Expansion_Regions is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Expansion_Region_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Expansion_Region_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
 
    overriding function Get_Contained_Edge
     (Self : not null access constant UML_Expansion_Region_Proxy)
@@ -616,14 +601,6 @@ package AMF.Internals.UML_Expansion_Regions is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Expansion_Region_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function Context
     (Self : not null access constant UML_Expansion_Region_Proxy)

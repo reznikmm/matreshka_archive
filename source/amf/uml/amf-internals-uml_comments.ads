@@ -73,28 +73,6 @@ package AMF.Internals.UML_Comments is
    --
    --  Specifies a string that is the comment.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Comment_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Comment_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Comment_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
-
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Comment_Proxy;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;

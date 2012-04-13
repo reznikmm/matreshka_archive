@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Images;
 with AMF.Visitors;
 
@@ -111,28 +110,6 @@ package AMF.Internals.UML_Images is
    --
    --  This contains a location that can be used by a tool to locate the image
    --  as an alternative to embedding it in the stereotype.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Image_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Image_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Image_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Image_Proxy;

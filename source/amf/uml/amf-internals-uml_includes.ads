@@ -109,20 +109,6 @@ package AMF.Internals.UML_Includes is
    --
    --  Specifies the elements related by the Relationship.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Include_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Include_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Get_Client_Dependency
     (Self : not null access constant UML_Include_Proxy)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
@@ -190,14 +176,6 @@ package AMF.Internals.UML_Includes is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Include_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Include_Proxy)

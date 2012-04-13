@@ -46,7 +46,6 @@ with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Connectable_Element_Template_Parameters;
 with AMF.UML.Connector_Ends.Collections;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces.Collections;
@@ -189,20 +188,6 @@ package AMF.Internals.UML_Parameters is
    --  Getter of Parameter::parameterSet.
    --
    --  The parameter sets containing the parameter. See ParameterSet.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
 
    overriding function Get_End
     (Self : not null access constant UML_Parameter_Proxy)
@@ -397,14 +382,6 @@ package AMF.Internals.UML_Parameters is
    --  Operation MultiplicityElement::upper.
    --
    --  The derived upper attribute must equal the upperBound.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function Ends
     (Self : not null access constant UML_Parameter_Proxy)

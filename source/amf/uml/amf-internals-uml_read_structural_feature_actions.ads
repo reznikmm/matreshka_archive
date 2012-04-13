@@ -50,7 +50,6 @@ with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Exception_Handlers.Collections;
 with AMF.UML.Input_Pins.Collections;
 with AMF.UML.Interruptible_Activity_Regions.Collections;
@@ -363,20 +362,6 @@ package AMF.Internals.UML_Read_Structural_Feature_Actions is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Read_Structural_Feature_Action_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Read_Structural_Feature_Action_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Context
     (Self : not null access constant UML_Read_Structural_Feature_Action_Proxy)
        return AMF.UML.Classifiers.UML_Classifier_Access;
@@ -452,14 +437,6 @@ package AMF.Internals.UML_Read_Structural_Feature_Actions is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Read_Structural_Feature_Action_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Read_Structural_Feature_Action_Proxy;

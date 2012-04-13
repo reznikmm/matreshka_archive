@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Value_Specifications;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Booleans;
 with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces.Collections;
@@ -157,20 +156,6 @@ package AMF.Internals.UML_Literal_Booleans is
    --
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Literal_Boolean_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Literal_Boolean_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Literal_Boolean_Proxy)
@@ -294,14 +279,6 @@ package AMF.Internals.UML_Literal_Booleans is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Literal_Boolean_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function Is_Template_Parameter
     (Self : not null access constant UML_Literal_Boolean_Proxy)

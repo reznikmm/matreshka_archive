@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.General_Orderings.Collections;
 with AMF.UML.Interaction_Operands;
 with AMF.UML.Interactions;
@@ -203,20 +202,6 @@ package AMF.Internals.UML_Occurrence_Specifications is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Occurrence_Specification_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Occurrence_Specification_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function All_Namespaces
     (Self : not null access constant UML_Occurrence_Specification_Proxy)
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
@@ -260,14 +245,6 @@ package AMF.Internals.UML_Occurrence_Specifications is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Occurrence_Specification_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Occurrence_Specification_Proxy;

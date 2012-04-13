@@ -44,7 +44,6 @@
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Connectors;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Interactions;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
@@ -229,20 +228,6 @@ package AMF.Internals.UML_Messages is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Message_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Message_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Message_Kind
     (Self : not null access constant UML_Message_Proxy)
        return AMF.UML.UML_Message_Kind;
@@ -293,14 +278,6 @@ package AMF.Internals.UML_Messages is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Message_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Message_Proxy;

@@ -387,36 +387,6 @@ package body AMF.Internals.UML_Lifelines is
        (Self.Element, To);
    end Set_Visibility;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Lifeline_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
-   begin
-      return
-        AMF.UML.Elements.Collections.Wrap
-         (AMF.Internals.Element_Collections.Wrap
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
-             (Self.Element)));
-   end Get_Owned_Element;
-
-   ---------------
-   -- Get_Owner --
-   ---------------
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Lifeline_Proxy)
-       return AMF.UML.Elements.UML_Element_Access is
-   begin
-      return
-        AMF.UML.Elements.UML_Element_Access
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
-             (Self.Element)));
-   end Get_Owner;
-
    --------------------
    -- All_Namespaces --
    --------------------
@@ -488,19 +458,5 @@ package body AMF.Internals.UML_Lifelines is
       raise Program_Error with "Unimplemented procedure UML_Lifeline_Proxy.Qualified_Name";
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   ------------------------
-   -- All_Owned_Elements --
-   ------------------------
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Lifeline_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Lifeline_Proxy.All_Owned_Elements";
-      return All_Owned_Elements (Self);
-   end All_Owned_Elements;
 
 end AMF.Internals.UML_Lifelines;

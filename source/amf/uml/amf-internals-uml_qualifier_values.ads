@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Input_Pins;
 with AMF.UML.Properties;
 with AMF.UML.Qualifier_Values;
@@ -83,28 +82,6 @@ package AMF.Internals.UML_Qualifier_Values is
    --  Setter of QualifierValue::value.
    --
    --  Input pin from which the specified value for the qualifier is taken.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Qualifier_Value_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Qualifier_Value_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Qualifier_Value_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Qualifier_Value_Proxy;

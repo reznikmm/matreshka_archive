@@ -48,7 +48,7 @@ with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
 with AMF.UML.Comments.Collections;
-with AMF.UML.Elements;
+with AMF.UML.Elements.Collections;
 
 package AMF.Internals.UML_Elements is
 
@@ -77,12 +77,34 @@ package AMF.Internals.UML_Elements is
      abstract limited new UML_Element_Base
        and AMF.UML.Elements.UML_Element with null record;
 
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned
+   --  elements of an element.
+
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Element_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
    --  Getter of Element::ownedComment.
    --
    --  The Comments owned by this element.
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Element_Proxy) return Boolean;

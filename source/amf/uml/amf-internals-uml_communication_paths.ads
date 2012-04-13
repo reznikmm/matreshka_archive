@@ -131,20 +131,6 @@ package AMF.Internals.UML_Communication_Paths is
    --
    --  Specifies the elements related by the Relationship.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Communication_Path_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Communication_Path_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Get_Attribute
     (Self : not null access constant UML_Communication_Path_Proxy)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property;
@@ -558,14 +544,6 @@ package AMF.Internals.UML_Communication_Paths is
    --  Operation Association::endType.
    --
    --  endType is derived from the types of the member ends.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Communication_Path_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function All_Features
     (Self : not null access constant UML_Communication_Path_Proxy)

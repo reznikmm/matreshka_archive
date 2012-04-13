@@ -50,7 +50,6 @@ with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Control_Flows;
 with AMF.UML.Dependencies.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Interruptible_Activity_Regions;
 with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces.Collections;
@@ -303,20 +302,6 @@ package AMF.Internals.UML_Control_Flows is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Control_Flow_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Control_Flow_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Is_Consistent_With
     (Self : not null access constant UML_Control_Flow_Proxy;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
@@ -385,14 +370,6 @@ package AMF.Internals.UML_Control_Flows is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Control_Flow_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Control_Flow_Proxy;

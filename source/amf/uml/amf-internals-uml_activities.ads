@@ -60,7 +60,6 @@ with AMF.UML.Connectors.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
-with AMF.UML.Elements.Collections;
 with AMF.UML.Extensions.Collections;
 with AMF.UML.Features.Collections;
 with AMF.UML.Generalization_Sets.Collections;
@@ -658,20 +657,6 @@ package AMF.Internals.UML_Activities is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UML_Activity_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Getter of Element::ownedElement.
-   --
-   --  The Elements owned by this element.
-
-   overriding function Get_Owner
-    (Self : not null access constant UML_Activity_Proxy)
-       return AMF.UML.Elements.UML_Element_Access;
-   --  Getter of Element::owner.
-   --
-   --  The Element that owns this element.
-
    overriding function Get_Package
     (Self : not null access constant UML_Activity_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
@@ -1047,14 +1032,6 @@ package AMF.Internals.UML_Activities is
    --  When there is a name, and all of the containing namespaces have a name,
    --  the qualified name is constructed from the names of the containing
    --  namespaces.
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant UML_Activity_Proxy)
-       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
-   --  Operation Element::allOwnedElements.
-   --
-   --  The query allOwnedElements() gives all of the direct and indirect owned
-   --  elements of an element.
 
    overriding function Conforms_To
     (Self : not null access constant UML_Activity_Proxy;
