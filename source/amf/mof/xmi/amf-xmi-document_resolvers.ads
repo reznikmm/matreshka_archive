@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,95 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
+--  Interface of XMI document resolvers.
+------------------------------------------------------------------------------
+with XML.SAX.Input_Sources;
 
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+package AMF.XMI.Document_Resolvers is
 
-with AMF.Internals.XMI_Handlers;
-with AMF.Internals.XMI_Document_Resolvers;
+   pragma Preelaborate;
 
-package body XMI.Reader is
+   type XMI_Document_Resolver is limited interface;
 
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (XML.SAX.Input_Sources.SAX_Input_Source'Class,
-           XML.SAX.Input_Sources.SAX_Input_Source_Access);
+   type XMI_Document_Resolver_Access is access all XMI_Document_Resolver'Class;
 
-   ---------------
-   -- Read_File --
-   ---------------
+   not overriding function Error_String
+    (Self : XMI_Document_Resolver)
+       return League.Strings.Universal_String is abstract;
+   --  Returns error message for the last detected error.
 
-   function Read_File
-    (File_Name   : League.Strings.Universal_String;
-     Context_URI : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
-       return AMF.URI_Stores.URI_Store_Access
-   is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
-      Success  : Boolean := True;
+   not overriding procedure Resolve_Document
+    (Self    : in out XMI_Document_Resolver;
+     URI     : League.Strings.Universal_String;
+     Source  : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success : in out Boolean) is abstract;
+   --  Resolves document URI, opens and returns its input source.
 
-   begin
-      if Context_URI.Is_Empty then
-         Resolver.Resolve_Document (File_Name, Source, Success);
-
-         if not Success then
-            raise Program_Error;
-         end if;
-
-      else
-         --  Context URI is defined, just open specified file and set its
-         --  system identifier.
-
-         Source := new XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-
-         XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
-          (Source.all).Open_By_File_Name (File_Name);
-         Source.Set_System_Id (Context_URI);
-      end if;
-
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
-
-      Free (Source);
-
-      return Handler.Root;
-   end Read_File;
-
-   --------------
-   -- Read_URI --
-   --------------
-
-   function Read_URI
-    (URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access
-   is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
-      Success  : Boolean := True;
-
-   begin
-      Resolver.Resolve_Document (URI, Source, Success);
-
-      if not Success then
-         raise Program_Error;
-      end if;
-
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
-
-      Free (Source);
-
-      return Handler.Root;
-   end Read_URI;
-
-end XMI.Reader;
+end AMF.XMI.Document_Resolvers;

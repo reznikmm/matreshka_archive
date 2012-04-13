@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,95 +41,73 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
+with Ada.Wide_Wide_Text_IO;
 
+with League.IRIs;
 with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
 
-with AMF.Internals.XMI_Handlers;
-with AMF.Internals.XMI_Document_Resolvers;
+with AMF.Internals.XMI_URI_Rewriter;
 
-package body XMI.Reader is
+package body AMF.Internals.XMI_Document_Resolvers is
 
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (XML.SAX.Input_Sources.SAX_Input_Source'Class,
-           XML.SAX.Input_Sources.SAX_Input_Source_Access);
+   ------------------
+   -- Error_String --
+   ------------------
 
-   ---------------
-   -- Read_File --
-   ---------------
+   overriding function Error_String
+    (Self : Default_Document_Resolver)
+       return League.Strings.Universal_String is
+   begin
+      return Self.Error_String;
+   end Error_String;
 
-   function Read_File
-    (File_Name   : League.Strings.Universal_String;
-     Context_URI : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
-       return AMF.URI_Stores.URI_Store_Access
+   ----------------------
+   -- Resolve_Document --
+   ----------------------
+
+   overriding procedure Resolve_Document
+    (Self    : in out Default_Document_Resolver;
+     URI     : League.Strings.Universal_String;
+     Source  : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success : in out Boolean)
    is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
-      Success  : Boolean := True;
+      use type League.Strings.Universal_String;
+
+      New_URI    : constant League.Strings.Universal_String
+        := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (URI);
+      Parsed_URI : constant League.IRIs.IRI
+        := League.IRIs.From_Universal_String (New_URI);
 
    begin
-      if Context_URI.Is_Empty then
-         Resolver.Resolve_Document (File_Name, Source, Success);
+      Self.Error_String.Clear;
 
-         if not Success then
-            raise Program_Error;
-         end if;
+      Source :=
+        new XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+
+      --  Open input source.
+
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        "Opening '"
+          & URI.To_Wide_Wide_String
+          & "' (use '"
+          & New_URI.To_Wide_Wide_String
+          & "')");
+
+      if not Parsed_URI.Scheme.Is_Empty then
+         XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
+          (Source.all).Open_By_URI (New_URI);
 
       else
-         --  Context URI is defined, just open specified file and set its
-         --  system identifier.
-
-         Source := new XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-
          XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
-          (Source.all).Open_By_File_Name (File_Name);
-         Source.Set_System_Id (Context_URI);
+          (Source.all).Open_By_File_Name (New_URI);
       end if;
 
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
+      --  Set system identifier when is was rewritten.
 
-      Free (Source);
-
-      return Handler.Root;
-   end Read_File;
-
-   --------------
-   -- Read_URI --
-   --------------
-
-   function Read_URI
-    (URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access
-   is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
-      Success  : Boolean := True;
-
-   begin
-      Resolver.Resolve_Document (URI, Source, Success);
-
-      if not Success then
-         raise Program_Error;
+      if URI /= New_URI then
+         Source.Set_System_Id (URI);
       end if;
+   end Resolve_Document;
 
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
-
-      Free (Source);
-
-      return Handler.Root;
-   end Read_URI;
-
-end XMI.Reader;
+end AMF.Internals.XMI_Document_Resolvers;
