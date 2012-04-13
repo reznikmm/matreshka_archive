@@ -321,10 +321,18 @@ package body AMF.Internals.UML_Message_Occurrence_Specifications is
 
    overriding function Get_Covered
     (Self : not null access constant UML_Message_Occurrence_Specification_Proxy)
-       return AMF.UML.Lifelines.UML_Lifeline_Access is
+       return AMF.UML.Lifelines.UML_Lifeline_Access
+   is
+      Set : constant AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline
+        := Self.Get_Covered;
+
    begin
-      raise Program_Error;
-      return Get_Covered (Self);
+      if Set.Is_Empty then
+         return null;
+
+      else
+         return Set.Element (1);
+      end if;
    end Get_Covered;
 
    -----------------
