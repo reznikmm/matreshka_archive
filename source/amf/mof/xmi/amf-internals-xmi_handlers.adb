@@ -473,6 +473,9 @@ package body AMF.Internals.XMI_Handlers is
 
             if not Documents.Contains (URI) then
                begin
+                  Ada.Wide_Wide_Text_IO.Put_Line
+                   (Ada.Wide_Wide_Text_IO.Standard_Error,
+                    URI.To_Wide_Wide_String);
                   Extent := XMI.Reader.Read_URI (URI);
 
                exception
@@ -802,7 +805,6 @@ package body AMF.Internals.XMI_Handlers is
       Meta          : AMF.CMOF.Classes.CMOF_Class_Access;
       Property      : AMF.CMOF.Properties.CMOF_Property_Access;
       Property_Type : AMF.CMOF.Types.CMOF_Type_Access;
-      The_Package   : AMF.CMOF.Packages.CMOF_Package_Access;
       Aux           : League.Strings.Universal_String;
       --  XXX GCC 4.6: This variable is used to workaround bug.
 
@@ -899,44 +901,49 @@ package body AMF.Internals.XMI_Handlers is
       --  the loaded document.
 
       else
-         --  Looking for package associated with namespace URI.
+         declare
+            Position : constant String_Package_Maps.Cursor
+              := Self.URI_Package_Map.Find (Namespace_URI);
 
-         The_Package := Self.URI_Package_Map.Element (Namespace_URI);
+         begin
+            --  Looking for package associated with namespace URI.
 
-         if The_Package = null then
-            --  Null package means what corresponding metamodel was not found,
-            --  report warning.
-
-            Put_Line
-             (Standard_Error,
-              "Element of unknown namespace '"
-                & Namespace_URI.To_Wide_Wide_String
-                & "' is ignored");
-
-            Self.Skip_Element := 1;
-
-         else
-            --  Resolve specified class name in the package.
-
-            Meta := Resolve_Owned_Class (The_Package, Local_Name);
-
-            if Meta = null then
-               --  Null metaclass means that specified class is not resolved in
-               --  the package, treat it as fatal error.
+            if not String_Package_Maps.Has_Element (Position) then
+               --  Corresponding metamodel was not found, report warning.
 
                Put_Line
                 (Standard_Error,
-                 "Class '"
-                   & Local_Name.To_Wide_Wide_String
-                   & "' is not defined in '"
+                 "Element of unknown namespace '"
                    & Namespace_URI.To_Wide_Wide_String
-                   & ''');
+                   & "' is ignored");
 
-               raise Program_Error;
+               Self.Skip_Element := 1;
+
+            else
+               --  Resolve specified class name in the package.
+
+               Meta :=
+                 Resolve_Owned_Class
+                  (String_Package_Maps.Element (Position), Local_Name);
+
+               if Meta = null then
+                  --  Null metaclass means that specified class is not resolved
+                  --  in the package, treat it as fatal error.
+
+                  Put_Line
+                   (Standard_Error,
+                    "Class '"
+                      & Local_Name.To_Wide_Wide_String
+                      & "' is not defined in '"
+                      & Namespace_URI.To_Wide_Wide_String
+                      & ''');
+
+                  raise Program_Error;
+               end if;
+
+               Analyze_Object_Element (Self, Meta, null, Attributes, Success);
             end if;
-
-            Analyze_Object_Element (Self, Meta, null, Attributes, Success);
-         end if;
+         end;
       end if;
    end Start_Element;
 
