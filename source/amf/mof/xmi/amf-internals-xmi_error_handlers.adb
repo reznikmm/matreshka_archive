@@ -52,14 +52,17 @@ package body AMF.Internals.XMI_Error_Handlers is
    overriding procedure Error
     (Self       : in out Default_Error_Handler;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean)
-   is
-      pragma Unreferenced (Self);
-
+     Success    : in out Boolean) is
    begin
-      Ada.Wide_Wide_Text_IO.Put_Line
-       (Ada.Wide_Wide_Text_IO.Standard_Error,
-        Occurrence.Message.To_Wide_Wide_String);
+      --  Don't output duplicate messages.
+
+      if not Self.Messages.Contains (Occurrence.Message) then
+         Self.Messages.Insert (Occurrence.Message);
+
+         Ada.Wide_Wide_Text_IO.Put_Line
+          (Ada.Wide_Wide_Text_IO.Standard_Error,
+           Occurrence.Message.To_Wide_Wide_String);
+      end if;
    end Error;
 
    ------------------

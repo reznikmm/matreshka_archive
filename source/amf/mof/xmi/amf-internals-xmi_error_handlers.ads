@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Sets;
+
+private with League.Strings.Hash;
 with XML.SAX.Parse_Exceptions;
 
 with AMF.XMI.Error_Handlers;
@@ -62,7 +65,16 @@ package AMF.Internals.XMI_Error_Handlers is
 
 private
 
+   package String_Sets is
+     new Ada.Containers.Hashed_Sets
+          (League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Strings."=");
+
    type Default_Error_Handler is
-     limited new AMF.XMI.Error_Handlers.XMI_Error_Handler with null record;
+     limited new AMF.XMI.Error_Handlers.XMI_Error_Handler with record
+      Messages : String_Sets.Set;
+   end record;
 
 end AMF.Internals.XMI_Error_Handlers;
