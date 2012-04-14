@@ -50,6 +50,7 @@ with Ada.Wide_Wide_Text_IO;
 with League.IRIs;
 with League.String_Vectors;
 with XMI.Reader;
+with XML.SAX.Parse_Exceptions.Internals;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
@@ -64,7 +65,6 @@ with AMF.Internals.XMI_URI_Rewriter;
 
 package body AMF.Internals.XMI_Handlers is
 
-   use Ada.Wide_Wide_Text_IO;
    use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type League.Strings.Universal_String;
 
@@ -357,8 +357,8 @@ package body AMF.Internals.XMI_Handlers is
          else
             --  XXX Is this format violation?
 
-            Put_Line
-             (Standard_Error,
+            Ada.Wide_Wide_Text_IO.Put_Line
+             (Ada.Wide_Wide_Text_IO.Standard_Error,
               "  "
                 & Attributes.Namespace_URI (J).To_Wide_Wide_String
                 & "  "
@@ -415,11 +415,18 @@ package body AMF.Internals.XMI_Handlers is
             --  Local link.
 
             if not Self.Mapping.Contains (L.Id) then
-               Ada.Wide_Wide_Text_IO.Put_Line
-                (Ada.Wide_Wide_Text_IO.Standard_Error,
-                 "Unable to establish link to element '"
-                   & L.Id.To_Wide_Wide_String
-                   & "' - unknown element");
+               Self.Error_Handler.Error
+                (XML.SAX.Parse_Exceptions.Internals.Create
+                  (Public_Id => Self.Locator.Public_Id,
+                   System_Id => Self.Locator.System_Id,
+                   Line      => Self.Locator.Line,
+                   Column    => Self.Locator.Column,
+                   Message   => "Unknown element '" & L.Id & "'"),
+                 Success);
+
+               if not Success then
+                  raise Program_Error;
+               end if;
 
             else
                Establish_Link
@@ -438,9 +445,18 @@ package body AMF.Internals.XMI_Handlers is
                Establish_Link (Self, L.Attribute, L.Element, E);
 
             else
-               Ada.Wide_Wide_Text_IO.Put_Line
-                (Ada.Wide_Wide_Text_IO.Standard_Error,
-                 "Element '" & L.Id.To_Wide_Wide_String & "' not found");
+               Self.Error_Handler.Error
+                (XML.SAX.Parse_Exceptions.Internals.Create
+                  (Public_Id => Self.Locator.Public_Id,
+                   System_Id => Self.Locator.System_Id,
+                   Line      => Self.Locator.Line,
+                   Column    => Self.Locator.Column,
+                   Message   => "Unknown element '" & L.Id & "'"),
+                 Success);
+
+               if not Success then
+                  raise Program_Error;
+               end if;
             end if;
          end if;
       end Establish_Link;
@@ -473,9 +489,6 @@ package body AMF.Internals.XMI_Handlers is
 
             if not Documents.Contains (URI) then
                begin
-                  Ada.Wide_Wide_Text_IO.Put_Line
-                   (Ada.Wide_Wide_Text_IO.Standard_Error,
-                    URI.To_Wide_Wide_String);
                   Extent := Standard.XMI.Reader.Read_URI (URI);
                   --  XXX It is not a good strategy to have recursive call
                   --  here. It should be replaced by separate component to
@@ -496,12 +509,6 @@ package body AMF.Internals.XMI_Handlers is
 
       if URI_Queue.Is_Empty then
          Postponed_Cross_Links.Iterate (Establish_Link'Access);
-      end if;
-
-      --  Output diagnosis if any.
-
-      if not Self.Diagnosis.Is_Empty then
-         Put_Line (Standard_Error, Self.Diagnosis.To_Wide_Wide_String);
       end if;
    end End_Document;
 
@@ -553,7 +560,21 @@ package body AMF.Internals.XMI_Handlers is
                end if;
 
             else
-               Put_Line (Standard_Error, "Skip - not DataType");
+               Self.Error_Handler.Error
+                (XML.SAX.Parse_Exceptions.Internals.Create
+                  (Public_Id => Self.Locator.Public_Id,
+                   System_Id => Self.Locator.System_Id,
+                   Line      => Self.Locator.Line,
+                   Column    => Self.Locator.Column,
+                   Message   =>
+                     "Character data for '"
+                       & Self.Attribute.Get_Name.Value
+                       & "' is ignored"),
+                 Success);
+
+               if not Success then
+                  raise Program_Error;
+               end if;
             end if;
 
          else
@@ -866,13 +887,27 @@ package body AMF.Internals.XMI_Handlers is
                   --  Metaclass is not defined in metamodel, report warning and
                   --  skip all nested elements.
 
-                  Put_Line
-                   (Standard_Error,
-                    "Unknown class '" & Name.To_Wide_Wide_String & ''');
+                  Self.Error_Handler.Error
+                   (XML.SAX.Parse_Exceptions.Internals.Create
+                     (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column,
+                      Message   =>
+                        "Class '"
+                          & Aux
+                          & "' is not defined in '"
+                          & Self.Prefix_Package_Map.Element
+                             (Name.Slice
+                               (1, Name.Index (':') - 1)).Get_URI.Value
+                          & "'"),
+                    Success);
+
+                  if not Success then
+                     raise Program_Error;
+                  end if;
 
                   Self.Skip_Element := 1;
-
-                  --  Success := False;
 
                   return;
                end if;
@@ -921,12 +956,6 @@ package body AMF.Internals.XMI_Handlers is
             if not String_Package_Maps.Has_Element (Position) then
                --  Corresponding metamodel was not found, report warning.
 
-               Put_Line
-                (Standard_Error,
-                 "Element of unknown namespace '"
-                   & Namespace_URI.To_Wide_Wide_String
-                   & "' is ignored");
-
                Self.Skip_Element := 1;
 
             else
@@ -940,18 +969,30 @@ package body AMF.Internals.XMI_Handlers is
                   --  Null metaclass means that specified class is not resolved
                   --  in the package, treat it as fatal error.
 
-                  Put_Line
-                   (Standard_Error,
-                    "Class '"
-                      & Local_Name.To_Wide_Wide_String
-                      & "' is not defined in '"
-                      & Namespace_URI.To_Wide_Wide_String
-                      & ''');
+                  Self.Error_Handler.Error
+                   (XML.SAX.Parse_Exceptions.Internals.Create
+                     (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column,
+                      Message   =>
+                        "Class '"
+                          & Local_Name
+                          & "' is not defined in '"
+                          & Namespace_URI
+                          & "'"),
+                    Success);
 
-                  raise Program_Error;
+                  if not Success then
+                     raise Program_Error;
+                  end if;
+
+                  Self.Skip_Element := 1;
+
+               else
+                  Analyze_Object_Element
+                   (Self, Meta, null, Attributes, Success);
                end if;
-
-               Analyze_Object_Element (Self, Meta, null, Attributes, Success);
             end if;
          end;
       end if;
@@ -1013,11 +1054,19 @@ package body AMF.Internals.XMI_Handlers is
             Self.URI_Package_Map.Insert (Namespace_URI, The_Package);
 
          else
-            Put_Line
-             (Standard_Error,
-              "No factory for '"
-                & Namespace_URI.To_Wide_Wide_String
-                & ''');
+            Self.Error_Handler.Error
+             (XML.SAX.Parse_Exceptions.Internals.Create
+               (Public_Id => Self.Locator.Public_Id,
+                System_Id => Self.Locator.System_Id,
+                Line      => Self.Locator.Line,
+                Column    => Self.Locator.Column,
+                Message   =>
+                  "Unknown namespace '" & Namespace_URI & "'"),
+              Success);
+
+            if not Success then
+               raise Program_Error;
+            end if;
          end if;
       end if;
    end Start_Prefix_Mapping;
