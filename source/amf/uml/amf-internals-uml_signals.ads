@@ -350,22 +350,6 @@ package AMF.Internals.UML_Signals is
    --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Signal_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind;
-   --  Getter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Signal_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
-   --  Setter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
    overriding function Get_Package
     (Self : not null access constant UML_Signal_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
@@ -379,22 +363,6 @@ package AMF.Internals.UML_Signals is
    --  Setter of Type::package.
    --
    --  Specifies the owning package of this classifier, if any.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Signal_Proxy)
-       return AMF.UML.UML_Visibility_Kind;
-   --  Getter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Signal_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind);
-   --  Setter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
 
    overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Signal_Proxy)

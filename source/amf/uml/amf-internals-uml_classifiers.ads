@@ -41,13 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Packageable_Elements;
 with AMF.UML.Classifiers.Collections;
 
 package AMF.Internals.UML_Classifiers is
 
    type UML_Classifier_Proxy is
-     abstract new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     abstract new AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy
        and AMF.UML.Classifiers.UML_Classifier
          with null record;
 

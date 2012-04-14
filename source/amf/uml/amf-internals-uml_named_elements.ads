@@ -50,6 +50,14 @@ package AMF.Internals.UML_Named_Elements is
      abstract limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Named_Elements.UML_Named_Element with null record;
 
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+   --  Getter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces
+   --  within the overall model, and its accessibility.
+
    overriding function Separator
     (Self : not null access constant UML_Named_Element_Proxy)
        return League.Strings.Universal_String;

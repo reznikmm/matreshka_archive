@@ -334,22 +334,6 @@ package AMF.Internals.UML_Read_Link_Actions is
    --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
 
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Read_Link_Action_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind;
-   --  Getter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Read_Link_Action_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
-   --  Setter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
    overriding function Association
     (Self : not null access constant UML_Read_Link_Action_Proxy)
        return AMF.UML.Associations.UML_Association_Access;

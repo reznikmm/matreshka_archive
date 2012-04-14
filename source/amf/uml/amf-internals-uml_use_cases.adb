@@ -730,31 +730,6 @@ package body AMF.Internals.UML_Use_Cases is
       end;
    end Get_Qualified_Name;
 
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Use_Case_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Use_Case_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
-
    -----------------
    -- Get_Package --
    -----------------
@@ -783,31 +758,6 @@ package body AMF.Internals.UML_Use_Cases is
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Package;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Use_Case_Proxy)
-       return AMF.UML.UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Use_Case_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
 
    -----------------------------------
    -- Get_Owning_Template_Parameter --

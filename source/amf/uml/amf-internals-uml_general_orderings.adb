@@ -290,31 +290,6 @@ package body AMF.Internals.UML_General_Orderings is
    end Get_Qualified_Name;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_General_Ordering_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_General_Ordering_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
-
-   --------------------
    -- All_Namespaces --
    --------------------
 

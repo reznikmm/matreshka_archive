@@ -534,31 +534,6 @@ package body AMF.Internals.UML_Control_Flows is
       end;
    end Get_Qualified_Name;
 
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Control_Flow_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Control_Flow_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
-
    ------------------------
    -- Is_Consistent_With --
    ------------------------

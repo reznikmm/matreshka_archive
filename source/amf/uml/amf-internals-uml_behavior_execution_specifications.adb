@@ -407,31 +407,6 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
    end Get_Qualified_Name;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Behavior_Execution_Specification_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Behavior_Execution_Specification_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
-
-   --------------------
    -- All_Namespaces --
    --------------------
 

@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Boolean_Collections;
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Packageable_Elements;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Duration_Observations;
 with AMF.UML.Named_Elements.Collections;
@@ -56,7 +56,7 @@ with AMF.Visitors;
 package AMF.Internals.UML_Duration_Observations is
 
    type UML_Duration_Observation_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy
        and AMF.UML.Duration_Observations.UML_Duration_Observation with null record;
 
    overriding function Get_Event
@@ -78,22 +78,6 @@ package AMF.Internals.UML_Duration_Observations is
    --  is false, then the corresponding observation event is the time instant
    --  the execution exits event[i]. Default value is true applied when
    --  event[i] refers an element that represents only one time instant.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Duration_Observation_Proxy)
-       return AMF.UML.UML_Visibility_Kind;
-   --  Getter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Duration_Observation_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind);
-   --  Setter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
 
    overriding function Get_Client_Dependency
     (Self : not null access constant UML_Duration_Observation_Proxy)
@@ -146,22 +130,6 @@ package AMF.Internals.UML_Duration_Observations is
    --  hierarchy of nested Namespaces. It is constructed from the names of the
    --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Duration_Observation_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind;
-   --  Getter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Duration_Observation_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
-   --  Setter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
 
    overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Duration_Observation_Proxy)

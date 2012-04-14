@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,74 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with AMF.Internals.UML_Named_Elements;
+with AMF.UML.Packageable_Elements;
 
-with AMF.Internals.Tables.UML_Attributes;
+package AMF.Internals.UML_Packageable_Elements is
 
-package body AMF.Internals.UML_Named_Elements is
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Named_Element_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-    (Self : not null access constant UML_Named_Element_Proxy)
-       return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
-      --  [UML241] 7.3.34 NamedElement (from Kernel, Dependencies)
-      --
-      --  The query separator() gives the string that is used to separate names
-      --  when constructing a qualified name.
-      --
-      --  NamedElement::separator(): String;
-      --  separator = ‘::’
-
-   begin
-      return League.Strings.To_Universal_String ("::");
-   end Separator;
-
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Named_Element_Proxy;
-     To   : AMF.Optional_String) is
-   begin
-      if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name (Self.Element, null);
-
-      else
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Element, League.Strings.Internals.Internal (To.Value));
-      end if;
-   end Set_Name;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
+   type UML_Packageable_Element_Proxy is
+     abstract limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+       and AMF.UML.Packageable_Elements.UML_Packageable_Element with null record;
 
    overriding procedure Set_Visibility
-    (Self : not null access UML_Named_Element_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
+    (Self : not null access UML_Packageable_Element_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces
+   --  within the overall model, and its accessibility.
 
-end AMF.Internals.UML_Named_Elements;
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Packageable_Element_Proxy)
+       return AMF.UML.UML_Visibility_Kind;
+   --  Getter of PackageableElement::visibility.
+   --
+   --  Indicates that packageable elements must always have a visibility,
+   --  i.e., visibility is not optional.
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Packageable_Element_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind);
+   --  Setter of PackageableElement::visibility.
+   --
+   --  Indicates that packageable elements must always have a visibility,
+   --  i.e., visibility is not optional.
+
+end AMF.Internals.UML_Packageable_Elements;

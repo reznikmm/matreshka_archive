@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Packageable_Elements;
 with AMF.UML.Call_Events;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Named_Elements;
@@ -56,7 +56,7 @@ with AMF.Visitors;
 package AMF.Internals.UML_Call_Events is
 
    type UML_Call_Event_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy
        and AMF.UML.Call_Events.UML_Call_Event with null record;
 
    overriding function Get_Operation
@@ -72,22 +72,6 @@ package AMF.Internals.UML_Call_Events is
    --  Setter of CallEvent::operation.
    --
    --  Designates the operation whose invocation raised the call event.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Call_Event_Proxy)
-       return AMF.UML.UML_Visibility_Kind;
-   --  Getter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Call_Event_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind);
-   --  Setter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility,
-   --  i.e., visibility is not optional.
 
    overriding function Get_Client_Dependency
     (Self : not null access constant UML_Call_Event_Proxy)
@@ -140,22 +124,6 @@ package AMF.Internals.UML_Call_Events is
    --  hierarchy of nested Namespaces. It is constructed from the names of the
    --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Call_Event_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind;
-   --  Getter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Call_Event_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
-   --  Setter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces
-   --  within the overall model, and its accessibility.
 
    overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Call_Event_Proxy)
