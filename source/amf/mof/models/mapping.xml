@@ -77,6 +77,12 @@
   <uri name="pathmap://uml_libraries/UMLPrimitiveTypes.library.uml" uri="UML24/PrimitiveTypes.xmi"/>
   <uri name="pathmap://uml_libraries/XMLPrimitiveTypes.library.uml" uri="UML24/PrimitiveTypes.xmi"/>
 
+  <!--===============================-->
+  <!--  Magic Draw specific entries  -->
+  <!--===============================-->
+
+  <uri name="http://www.omg.org/spec/UML/20090901/uml.xml" uri="UML24/UML.xmi"/>
+
   <!--  For internal purposes only  -->
 
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof" uri="../metamodels/PrimitiveTypes24.cmof"/>
