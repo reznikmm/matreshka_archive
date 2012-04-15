@@ -436,10 +436,17 @@ package body AMF.Internals.XMI_Handlers is
          else
             --  Cross link.
 
-            E := 
-              Documents.Element
-               (L.Id.Slice (1, S - 1)).Element
-                 (L.Id.Slice (S + 1, L.Id.Length));
+            declare
+               Position : constant Universal_String_Extent_Maps.Cursor
+                 := Documents.Find (L.Id.Slice (1, S - 1));
+
+            begin
+               if Universal_String_Extent_Maps.Has_Element (Position) then
+                  E :=
+                    Universal_String_Extent_Maps.Element (Position).Element
+                     (L.Id.Slice (S + 1, L.Id.Length));
+               end if;
+            end;
 
             if E /= null then
                Establish_Link (Self, L.Attribute, L.Element, E);
