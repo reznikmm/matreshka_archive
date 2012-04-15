@@ -283,6 +283,9 @@ is
                else
                   Opposite := Association.Get_Member_End.Element (1);
                end if;
+
+            else
+               Opposite := null;
             end if;
 
             if Attribute.Get_Is_Derived then
