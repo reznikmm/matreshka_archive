@@ -1213,7 +1213,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1928,7 +1928,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2673,7 +2673,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3230,7 +3230,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3307,7 +3307,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3552,7 +3552,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3808,7 +3808,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4559,7 +4559,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4944,7 +4944,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5023,7 +5023,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5949,7 +5949,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6427,7 +6427,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6683,7 +6683,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6995,7 +6995,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7791,7 +7791,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8714,7 +8714,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9056,7 +9056,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9156,7 +9156,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9288,7 +9288,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9968,7 +9968,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10273,7 +10273,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10349,7 +10349,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10425,7 +10425,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10490,7 +10490,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10643,7 +10643,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10871,7 +10871,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11033,7 +11033,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11853,7 +11853,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12034,7 +12034,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12292,7 +12292,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 0)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -12972,7 +12972,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13399,7 +13399,7 @@ package body AMF.Internals.Tables.UML_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  general
-          3      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (False, True)),
                        --  isSubstitutable
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -13493,7 +13493,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13695,7 +13695,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13840,7 +13840,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14325,7 +14325,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14420,7 +14420,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14509,7 +14509,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14881,7 +14881,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15190,7 +15190,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15434,7 +15434,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15636,7 +15636,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15703,7 +15703,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16143,7 +16143,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  value
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16210,7 +16210,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Integer, 0),
                        --  value
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16275,7 +16275,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16342,7 +16342,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Real, 0.0),
                        --  value
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16409,7 +16409,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  value
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16476,7 +16476,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
           7      => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural, (False, 0)),
                        --  value
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16846,7 +16846,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  utilizedElement
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17246,7 +17246,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           12     => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  viewpoint
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17416,7 +17416,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18130,7 +18130,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18455,7 +18455,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18940,7 +18940,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19720,7 +19720,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19943,7 +19943,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20443,7 +20443,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22558,7 +22558,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24535,7 +24535,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24747,7 +24747,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  signal
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25487,7 +25487,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25841,7 +25841,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26136,7 +26136,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26490,7 +26490,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  substitutingClassifier
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26976,7 +26976,7 @@ package body AMF.Internals.Tables.UML_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          7      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (Is_Empty => True)),
+          7      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (False, True)),
                        --  firstEvent
           2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
@@ -26994,7 +26994,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27066,7 +27066,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  when
@@ -27135,7 +27135,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27211,7 +27211,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27278,7 +27278,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27718,7 +27718,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27830,7 +27830,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
