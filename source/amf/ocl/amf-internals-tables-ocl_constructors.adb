@@ -87,6 +87,7 @@ with AMF.Internals.Tables.OCL_Metamodel;
 with AMF.Internals.Tables.OCL_Types;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.OCL;
+with AMF.UML;
 with Matreshka.Internals.Strings;
 
 package body AMF.Internals.Tables.OCL_Constructors is
@@ -138,7 +139,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -429,7 +430,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -921,7 +922,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -1219,7 +1220,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  templateParameter
           7      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  type
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -1492,7 +1493,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -1996,7 +1997,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -2346,7 +2347,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -2714,7 +2715,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -2945,7 +2946,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -3302,7 +3303,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  specification
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -3648,7 +3649,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
@@ -4192,7 +4193,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  representation
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
-          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
+          6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.OCL_Types.M_None)));
       OCL_Element_Table.Table (Self).Member (0) :=
