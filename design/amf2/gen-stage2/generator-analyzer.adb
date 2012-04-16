@@ -833,6 +833,17 @@ package body Generator.Analyzer is
             if not Info.All_Attributes.Contains (Attribute) then
                Info.All_Attributes.Insert (Attribute);
             end if;
+
+            --  Add redefined attribute into the set of redefined attributes.
+
+            for J in 1 .. Redefines.Length loop
+               if not Info.Redefined_Attributes.Contains
+                       (Redefines.Element (J))
+               then
+                  Info.Redefined_Attributes.Include
+                   (Redefines.Element (J));
+               end if;
+            end loop;
          end loop;
       end Process_Class;
 

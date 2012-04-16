@@ -193,8 +193,14 @@ package body Generator.Constructors is
                Redefined := Original_Attribute.Get_Redefined_Property;
             end loop;
 
-            if Attribute = Original_Attribute
-              and then Module_Info.Attribute_Member.Contains (Attribute)
+            --  Generate slot initialization for attributes which original
+            --  attributes occupies member and nor original attribute nor
+            --  current attribute are not redefined.
+
+            if (not Class.Redefined_Attributes.Contains (Original_Attribute)
+                  or else not Class.Redefined_Attributes.Contains (Attribute))
+              and then Module_Info.Attribute_Member.Contains
+                        (Original_Attribute)
             then
                Image :=
                  League.Strings.To_Universal_String
@@ -207,7 +213,7 @@ package body Generator.Constructors is
                    & "=>");
 
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            Unit.Add
@@ -269,9 +275,10 @@ package body Generator.Constructors is
                       & Types_Package
                       & '.'
                       & Generator.Type_Mapping.Member_Kind_Name
-                         (Attribute_Type, Representation (Attribute)));
+                         (Attribute_Type,
+                          Representation (Original_Attribute)));
 
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            --  There is no default value specified, initialize
@@ -332,7 +339,37 @@ package body Generator.Constructors is
                            Unit.Add (+", (Is_Empty => True)),");
 
                         else
-                           raise Program_Error;
+                           declare
+                              use type AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+                              Literals : constant
+                                AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
+                                    := AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+                                        (Attribute_Type.all).Get_Owned_Literal;
+                              Literal  :
+                                AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+                           begin
+                              for J in 1 .. Literals.Length loop
+                                 if Literals.Element (J).Get_Name = Default then
+                                    Literal := Literals.Element (J);
+
+                                    exit;
+                                 end if;
+                              end loop;
+
+                              if Literal = null then
+                                 raise Program_Error;
+                              end if;
+
+                              Unit.Context.Add
+                               ("AMF." & Owning_Metamodel_Ada_Name (Literal));
+                              Unit.Add
+                               (", (False, "
+                                  & Type_Mapping.Ada_Enumeration_Literal_Qualified_Name
+                                     (Literal)
+                                  & ")),");
+                           end;
                         end if;
 
                      when Set =>
@@ -349,7 +386,7 @@ package body Generator.Constructors is
                   end case;
 
                elsif Attribute_Type.Get_Name = Boolean_Name then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            --  There is no default value specified, initialize
@@ -372,10 +409,28 @@ package body Generator.Constructors is
                         end if;
 
                      when Holder =>
-                        Unit.Add
-                         (" ("
-                            & Types_Package
-                            & ".M_Boolean_Holder, (Is_Empty => True)),");
+                        if Default.Is_Empty then
+                           Unit.Add
+                            (" ("
+                               & Types_Package
+                               & ".M_Boolean_Holder, (Is_Empty => True)),");
+
+                        else
+                           if Boolean'Wide_Wide_Value
+                               (Default.Value.To_Wide_Wide_String)
+                           then
+                              Unit.Add
+                               (" ("
+                                  & Types_Package
+                                  & ".M_Boolean_Holder, (False, True)),");
+
+                           else
+                              Unit.Add
+                               (" ("
+                                  & Types_Package
+                                  & ".M_Boolean_Holder, (False, False)),");
+                           end if;
+                        end if;
 
                      when Set =>
                         Unit.Add
@@ -394,7 +449,7 @@ package body Generator.Constructors is
                   end case;
 
                elsif Attribute_Type.Get_Name = Integer_Name then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            --  There is no default value specified, initialize
@@ -442,7 +497,7 @@ package body Generator.Constructors is
                   end case;
 
                elsif Attribute_Type.Get_Name = String_Name then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            Unit.Context.Add (+"Matreshka.Internals.Strings");
@@ -490,7 +545,7 @@ package body Generator.Constructors is
                   end case;
 
                elsif Attribute_Type.Get_Name = Real_Name then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            Unit.Add (" (" & Types_Package & ".M_Real, 0.0),");
@@ -541,7 +596,7 @@ package body Generator.Constructors is
                   end case;
 
                elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
-                  case Representation (Attribute) is
+                  case Representation (Original_Attribute) is
                      when Value =>
                         if Default.Is_Empty then
                            --  There is no default value specified, initialize

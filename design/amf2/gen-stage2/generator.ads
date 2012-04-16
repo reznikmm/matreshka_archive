@@ -202,9 +202,12 @@ package Generator is
            AMF.CMOF.Properties."=");
 
    type Class_Information is record
-      Class            : AMF.CMOF.Classes.CMOF_Class_Access;
-      All_Attributes   : CMOF_Property_Sets.Set;
+      Class                : AMF.CMOF.Classes.CMOF_Class_Access;
+      All_Attributes       : CMOF_Property_Sets.Set;
       --  Set of all attributes of the class.
+      Redefined_Attributes : CMOF_Property_Sets.Set;
+      --  Subset of all attributes of the class witch is redefined by another
+      --  attribute of the class.
    end record;
    --  Class information record contains extracted information for each class.
 
