@@ -42,7 +42,7 @@
 --  $Revision: $ $Date: $
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
-
+with Ada.Streams;
 with Matreshka.Internals.SQL_Drivers.Firebird.Queries;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
