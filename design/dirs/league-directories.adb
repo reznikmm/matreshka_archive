@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -72,6 +72,15 @@ package body League.Directories is
       raise Program_Error with "Unimplemented function Absolute_Path";
       return Absolute_Path (Self);
    end Absolute_Path;
+
+   ------------
+   -- Adjust --
+   ------------
+
+   procedure Adjust (Self : in out Directory_Information) is
+   begin
+      Matreshka.Internals.Files.Reference (Self.Data);
+   end Adjust;
 
    --------------------
    -- Canonical_Path --
@@ -251,6 +260,15 @@ package body League.Directories is
          raise Constraint_Error;
       end if;
    end Create_Path;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out Directory_Information) is
+   begin
+      Matreshka.Internals.Files.Dereference (Self.Data);
+   end Finalize;
 
    ----------------
    -- Entry_List --

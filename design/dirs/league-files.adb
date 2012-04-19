@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,8 @@
 pragma Ada_2012;
 
 package body League.Files is
+
+   use type Matreshka.Internals.Files.Shared_File_Information_Access;
 
    ------------------------
    -- Absolute_Directory --
@@ -84,6 +86,15 @@ package body League.Files is
       raise Program_Error with "Unimplemented function Absolute_Path";
       return Absolute_Path (Self);
    end Absolute_Path;
+
+   ------------
+   -- Adjust --
+   ------------
+
+   procedure Adjust (Self : in out File_Information) is
+   begin
+      Matreshka.Internals.Files.Reference (Self.Data);
+   end Adjust;
 
    ---------------
    -- Base_Name --
@@ -241,6 +252,15 @@ package body League.Files is
       raise Program_Error with "Unimplemented function Exists";
       return Exists (Self);
    end Exists;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out File_Information) is
+   begin
+      Matreshka.Internals.Files.Dereference (Self.Data);
+   end Finalize;
 
    -----------------
    -- Is_Absolute --

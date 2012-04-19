@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,11 +48,12 @@ private with Ada.Finalization;
 with League.Calendars;
 with League.Directories;
 with League.Strings;
+private with Matreshka.Internals.Files;
 
 package League.Files is
 
    pragma Preelaborate;
-   pragma Remote_Types;
+--   pragma Remote_Types;
 
    type File_Information is tagged private;
    pragma Preelaborable_Initialization (File_Information);
@@ -181,6 +182,12 @@ package League.Files is
 
 private
 
-   type File_Information is new Ada.Finalization.Controlled with null record;
+   type File_Information is new Ada.Finalization.Controlled with record
+      Data : Matreshka.Internals.Files.Shared_File_Information_Access;
+   end record;
+
+   procedure Adjust (Self : in out File_Information);
+
+   procedure Finalize (Self : in out File_Information);
 
 end League.Files;
