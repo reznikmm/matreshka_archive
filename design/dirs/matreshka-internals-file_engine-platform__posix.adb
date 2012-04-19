@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../../gnat/matreshka_league.gpr";
-with "../../gnat/matreshka_common.gpr";
-with "../../gnat/matreshka_config.gpr";
+with League.Characters;
 
-project Dirs is
+separate (Matreshka.Internals.File_Engine)
+package body Platform is
 
-   for Main use ("main.adb");
-   for Object_Dir use ".objs";
+   -----------
+   -- Parse --
+   -----------
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function Parse
+    (Path : League.Strings.Universal_String)
+       return Matreshka.Internals.Files.Shared_File_Information_Access
+   is
+      use type League.Characters.Universal_Character;
 
-   package Naming is
-      case Matreshka_Config.Operating_System is
-         when "POSIX" =>
-            for Implementation ("Matreshka.Internals.File_Engine.Platform")
-              use "matreshka-internals-file_engine-platform__posix.adb";
+   begin
+      --  This is POSIX version.
 
-         when "Windows" =>
-            for Implementation ("Matreshka.Internals.File_Engine.Platform")
-              use "matreshka-internals-file_engine-platform__windows.adb";
-      end case;
-   end Naming;
+      if Path.Is_Empty then
+         return null;
+      end if;
 
-end Dirs;
+      return Result : constant
+        Matreshka.Internals.Files.Shared_File_Information_Access
+          := new Matreshka.Internals.Files.Shared_File_Information
+      do
+         Result.Device.Clear;
+         Result.Has_Root := Path.Element (1) = '/';
+         Result.Segments := Path.Split ('/', League.Strings.Skip_Empty);
+      end return;
+   end Parse;
+
+end Platform;

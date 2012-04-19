@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../../gnat/matreshka_league.gpr";
-with "../../gnat/matreshka_common.gpr";
-with "../../gnat/matreshka_config.gpr";
+with League.Strings;
+with Matreshka.Internals.Files;
 
-project Dirs is
+package Matreshka.Internals.File_Engine is
 
-   for Main use ("main.adb");
-   for Object_Dir use ".objs";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function Parse
+    (Path : League.Strings.Universal_String)
+       return Matreshka.Internals.Files.Shared_File_Information_Access;
+   --  Parses specified path according to operating system conventions and
+   --  returns its internal representation.
 
-   package Naming is
-      case Matreshka_Config.Operating_System is
-         when "POSIX" =>
-            for Implementation ("Matreshka.Internals.File_Engine.Platform")
-              use "matreshka-internals-file_engine-platform__posix.adb";
-
-         when "Windows" =>
-            for Implementation ("Matreshka.Internals.File_Engine.Platform")
-              use "matreshka-internals-file_engine-platform__windows.adb";
-      end case;
-   end Naming;
-
-end Dirs;
+end Matreshka.Internals.File_Engine;

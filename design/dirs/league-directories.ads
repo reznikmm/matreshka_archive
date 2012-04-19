@@ -48,9 +48,9 @@ pragma Ada_2012;
 
 private with Ada.Finalization;
 
-with League.Characters;
+--with League.Characters;
 with League.Strings;
-with League.String_Vectors;
+--with League.String_Vectors;
 private with Matreshka.Internals.Files;
 
 package League.Directories is
@@ -63,186 +63,188 @@ package League.Directories is
 
    function Create
     (Path : League.Strings.Universal_String) return Directory_Information;
+   --  Creates new object pointing to the given directory. Empty path points to
+   --  program's working directory (".").
 
-   function Absolute_File_Path
-    (Self : Directory_Information'Class;
-     Name : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-
-   function Absolute_Path
-    (Self : Directory_Information'Class)
-       return League.Strings.Universal_String;
-
-   function Canonical_Path
-    (Self : Directory_Information'Class)
-       return League.Strings.Universal_String;
-
-   function Change_Directory
-    (Self : Directory_Information'Class) return Boolean;
-
-   function Change_Directory
-    (Self      : Directory_Information'Class;
-     Directory : League.Strings.Universal_String) return Boolean;
-
-   procedure Change_Directory (Self : Directory_Information'Class);
-
---   function Change_Directory_Up (Self : in out Directory_Information'Class)
-
-   function Count (Directory : League.Strings.Universal_String) return Natural;
-
-   function Create_Directory
-    (Self : Directory_Information'Class) return Boolean;
-
-   procedure Create_Directory (Self : Directory_Information'Class);
-
-   function Create_Directory
-    (Self : Directory_Information'Class;
-     Name : League.Strings.Universal_String) return Boolean;
-
-   procedure Create_Directory
-    (Self : Directory_Information'Class;
-     Name : League.Strings.Universal_String);
-
-   function Create_Path
-    (Self : Directory_Information'Class) return Boolean;
-
-   procedure Create_Path (Self : Directory_Information'Class);
-
-   function Create_Path
-    (Self : Directory_Information'Class;
-     Path : League.Strings.Universal_String) return Boolean;
-
-   procedure Create_Path
-    (Self : Directory_Information'Class;
-     Path : League.Strings.Universal_String);
-
---   function Entry_Information_List
+--   function Absolute_File_Path
+--    (Self : Directory_Information'Class;
+--     Name : League.Strings.Universal_String)
+--       return League.Strings.Universal_String;
+--
+--   function Absolute_Path
 --    (Self : Directory_Information'Class)
---       return File_Information_Vector;
-
-   function Entry_List
-    (Self : Directory_Information'Class)
-       return League.String_Vectors.Universal_String_Vector;
-
-   function Exists (Self : Directory_Information'Class) return Boolean;
-
-   function Exists
-    (Self      : Directory_Information'Class;
-     Directory : League.Strings.Universal_String) return Boolean;
-
-   function Is_Absolute (Self : Directory_Information'Class) return Boolean;
-
-   function Is_Readable (Self : Directory_Information'Class) return Boolean;
-
-   function Is_Relative (Self : Directory_Information'Class) return Boolean;
-
-   function Is_Root (Self : Directory_Information'Class) return Boolean;
-
-   function Make_Absolute
-    (Self : in out Directory_Information'Class) return Boolean;
-
-   procedure Make_Absolute (Self : in out Directory_Information'Class);
-
-   function Name
-    (Self : Directory_Information'Class)
-       return League.Strings.Universal_String;
-
-   function Path
-    (Self : Directory_Information'Class)
-       return League.Strings.Universal_String;
-
-   procedure Refresh (Self : in out Directory_Information'Class);
-
-   function Relative_File_Path
-    (Self : Directory_Information'Class;
-     Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-
-   function Remove
-    (Self : Directory_Information'Class;
-     File : League.Strings.Universal_String) return Boolean;
-
-   procedure Remove
-    (Self : Directory_Information'Class;
-     File : League.Strings.Universal_String);
-
-   function Remove_Directory
-    (Self : Directory_Information'Class) return Boolean;
-
-   procedure Remove_Directory (Self : Directory_Information'Class);
-
-   function Remove_Directory
-    (Self : Directory_Information'Class;
-     Name : League.Strings.Universal_String) return Boolean;
-
-   procedure Remove_Directory
-    (Self : Directory_Information'Class;
-     Name : League.Strings.Universal_String);
-
-   function Remove_Path (Self : Directory_Information'Class) return Boolean;
-
-   procedure Remove_Path (Self : Directory_Information'Class);
-
-   function Remove_Path
-    (Self : Directory_Information'Class;
-     Path : League.Strings.Universal_String) return Boolean;
-
-   procedure Remove_Path
-    (Self : Directory_Information'Class;
-     Path : League.Strings.Universal_String);
-
-   procedure Set_Path
-    (Self : in out Directory_Information'Class;
-     Path : League.Strings.Universal_String);
-
-   --
-
-   function Change_Directory
-    (Directory : League.Strings.Universal_String) return Boolean;
-
-   procedure Change_Directory
-    (Directory : League.Strings.Universal_String);
-
-   function Clean_Path
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-
-   function Current_Directory return League.Strings.Universal_String;
-
-   function Current_Directory return Directory_Information;
-
---   function Drives return File_Information_Vector;
-
-   function Drives return League.String_Vectors.Universal_String_Vector;
-
-   function From_Native_Separators
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-
-   function Home return League.Strings.Universal_String;
-
-   function Home return Directory_Information;
-
-   function Is_Absolute_Path
-    (Path : League.Strings.Universal_String) return Boolean;
-
-   function Is_Relative_Path
-    (Path : League.Strings.Universal_String) return Boolean;
-
-   function Root return League.Strings.Universal_String;
-
-   function Root return Directory_Information;
-
-   function Separator return League.Characters.Universal_Character;
-
-   function Temp return League.Strings.Universal_String;
-   --  XXX Rename to be close to Ada conventions.
-
-   function Temp return Directory_Information;
-
-   function To_Native_Separators
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
+--       return League.Strings.Universal_String;
+--
+--   function Canonical_Path
+--    (Self : Directory_Information'Class)
+--       return League.Strings.Universal_String;
+--
+--   function Change_Directory
+--    (Self : Directory_Information'Class) return Boolean;
+--
+--   function Change_Directory
+--    (Self      : Directory_Information'Class;
+--     Directory : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Change_Directory (Self : Directory_Information'Class);
+--
+----   function Change_Directory_Up (Self : in out Directory_Information'Class)
+--
+--   function Count (Directory : League.Strings.Universal_String) return Natural;
+--
+--   function Create_Directory
+--    (Self : Directory_Information'Class) return Boolean;
+--
+--   procedure Create_Directory (Self : Directory_Information'Class);
+--
+--   function Create_Directory
+--    (Self : Directory_Information'Class;
+--     Name : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Create_Directory
+--    (Self : Directory_Information'Class;
+--     Name : League.Strings.Universal_String);
+--
+--   function Create_Path
+--    (Self : Directory_Information'Class) return Boolean;
+--
+--   procedure Create_Path (Self : Directory_Information'Class);
+--
+--   function Create_Path
+--    (Self : Directory_Information'Class;
+--     Path : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Create_Path
+--    (Self : Directory_Information'Class;
+--     Path : League.Strings.Universal_String);
+--
+----   function Entry_Information_List
+----    (Self : Directory_Information'Class)
+----       return File_Information_Vector;
+--
+--   function Entry_List
+--    (Self : Directory_Information'Class)
+--       return League.String_Vectors.Universal_String_Vector;
+--
+--   function Exists (Self : Directory_Information'Class) return Boolean;
+--
+--   function Exists
+--    (Self      : Directory_Information'Class;
+--     Directory : League.Strings.Universal_String) return Boolean;
+--
+--   function Is_Absolute (Self : Directory_Information'Class) return Boolean;
+--
+--   function Is_Readable (Self : Directory_Information'Class) return Boolean;
+--
+--   function Is_Relative (Self : Directory_Information'Class) return Boolean;
+--
+--   function Is_Root (Self : Directory_Information'Class) return Boolean;
+--
+--   function Make_Absolute
+--    (Self : in out Directory_Information'Class) return Boolean;
+--
+--   procedure Make_Absolute (Self : in out Directory_Information'Class);
+--
+--   function Name
+--    (Self : Directory_Information'Class)
+--       return League.Strings.Universal_String;
+--
+--   function Path
+--    (Self : Directory_Information'Class)
+--       return League.Strings.Universal_String;
+--
+--   procedure Refresh (Self : in out Directory_Information'Class);
+--
+--   function Relative_File_Path
+--    (Self : Directory_Information'Class;
+--     Path : League.Strings.Universal_String)
+--       return League.Strings.Universal_String;
+--
+--   function Remove
+--    (Self : Directory_Information'Class;
+--     File : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Remove
+--    (Self : Directory_Information'Class;
+--     File : League.Strings.Universal_String);
+--
+--   function Remove_Directory
+--    (Self : Directory_Information'Class) return Boolean;
+--
+--   procedure Remove_Directory (Self : Directory_Information'Class);
+--
+--   function Remove_Directory
+--    (Self : Directory_Information'Class;
+--     Name : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Remove_Directory
+--    (Self : Directory_Information'Class;
+--     Name : League.Strings.Universal_String);
+--
+--   function Remove_Path (Self : Directory_Information'Class) return Boolean;
+--
+--   procedure Remove_Path (Self : Directory_Information'Class);
+--
+--   function Remove_Path
+--    (Self : Directory_Information'Class;
+--     Path : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Remove_Path
+--    (Self : Directory_Information'Class;
+--     Path : League.Strings.Universal_String);
+--
+--   procedure Set_Path
+--    (Self : in out Directory_Information'Class;
+--     Path : League.Strings.Universal_String);
+--
+--   --
+--
+--   function Change_Directory
+--    (Directory : League.Strings.Universal_String) return Boolean;
+--
+--   procedure Change_Directory
+--    (Directory : League.Strings.Universal_String);
+--
+--   function Clean_Path
+--    (Path : League.Strings.Universal_String)
+--       return League.Strings.Universal_String;
+--
+--   function Current_Directory return League.Strings.Universal_String;
+--
+--   function Current_Directory return Directory_Information;
+--
+----   function Drives return File_Information_Vector;
+--
+--   function Drives return League.String_Vectors.Universal_String_Vector;
+--
+--   function From_Native_Separators
+--    (Path : League.Strings.Universal_String)
+--       return League.Strings.Universal_String;
+--
+--   function Home return League.Strings.Universal_String;
+--
+--   function Home return Directory_Information;
+--
+--   function Is_Absolute_Path
+--    (Path : League.Strings.Universal_String) return Boolean;
+--
+--   function Is_Relative_Path
+--    (Path : League.Strings.Universal_String) return Boolean;
+--
+--   function Root return League.Strings.Universal_String;
+--
+--   function Root return Directory_Information;
+--
+--   function Separator return League.Characters.Universal_Character;
+--
+--   function Temp return League.Strings.Universal_String;
+--   --  XXX Rename to be close to Ada conventions.
+--
+--   function Temp return Directory_Information;
+--
+--   function To_Native_Separators
+--    (Path : League.Strings.Universal_String)
+--       return League.Strings.Universal_String;
 
 private
 

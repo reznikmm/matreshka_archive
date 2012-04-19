@@ -52,7 +52,7 @@ package Matreshka.Internals.Files is
    type Shared_File_Information is record
       Counter  : Matreshka.Atomics.Counters.Counter;
       Device   : League.Strings.Universal_String;
-      Is_Root  : Boolean;
+      Has_Root : Boolean;
       Segments : League.String_Vectors.Universal_String_Vector;
    end record;
 
