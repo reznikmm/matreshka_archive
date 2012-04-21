@@ -55,7 +55,7 @@ with AMF.CMOF.Classes.Hash;
 with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Parameters;
-with AMF.CMOF.Properties;
+with AMF.CMOF.Properties.Hash;
 with AMF.CMOF.Packages;
 with AMF.Elements.Collections;
 with AMF.Extents.Collections;
@@ -158,18 +158,6 @@ package Generator is
    --  Second generation of internal data.  --
    -------------------------------------------
 
---   function Hash
---    (Item : not null access AMF.CMOF.Elements.CMOF_Element'Class)
---       return Ada.Containers.Hash_Type;
-
---   function Hash
---    (Item : not null AMF.CMOF.Classes.CMOF_Class_Access)
---       return Ada.Containers.Hash_Type;
-
-   function Hash
-    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
-       return Ada.Containers.Hash_Type;
-
    function Hash (Item : Natural) return Ada.Containers.Hash_Type;
 
    function Less
@@ -190,7 +178,7 @@ package Generator is
      new Ada.Containers.Hashed_Maps
           (AMF.CMOF.Properties.CMOF_Property_Access,
            Natural,
-           Hash,
+           AMF.CMOF.Properties.Hash,
            AMF.CMOF.Properties."=");
 
    package Natural_CMOF_Property_Maps is

@@ -161,20 +161,6 @@ package body Generator is
    -- Hash --
    ----------
 
-   function Hash
-    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
-       return Ada.Containers.Hash_Type is
-   begin
-      return
-        Ada.Containers.Hash_Type
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Elements.Element_Access (Item)));
-   end Hash;
-
-   ----------
-   -- Hash --
-   ----------
-
    function Hash (Item : Natural) return Ada.Containers.Hash_Type is
    begin
       return Ada.Containers.Hash_Type (Item);

@@ -111,7 +111,7 @@ package body Generator.Analyzer is
      new Ada.Containers.Hashed_Maps
           (AMF.CMOF.Properties.CMOF_Property_Access,
            Attribute_Group_Access,
-           Hash,
+           AMF.CMOF.Properties.Hash,
            AMF.CMOF.Properties."=");
 
    package Attribute_Group_Sets is
