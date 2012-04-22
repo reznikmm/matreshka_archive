@@ -53,6 +53,11 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
 
    use AMF.Internals.Tables;
 
+   procedure Construct_Union
+    (Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link);
+
    --------------------
    -- Connect_Extent --
    --------------------
@@ -118,6 +123,15 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
       end if;
    end Connect_Link_End;
 
+   ---------------------
+   -- Construct_Union --
+   ---------------------
+
+   procedure Construct_Union
+    (Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link) is separate;
+
    --------------------------
    -- Synchronize_Link_Set --
    --------------------------
@@ -158,6 +172,10 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
            Opposite,
            Link);
       end if;
+
+      --  Construct derived unions.
+
+      Construct_Union (Element, Property, Link);
    end Synchronize_Link_Set;
 
    ----------------
