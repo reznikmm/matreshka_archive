@@ -81,14 +81,22 @@ begin
 
    Splash.Show_Message
     (+"Initialize AMF", Qt4.Align_H_Center + Qt4.Align_Bottom);
+
    AMF.Facility.Initialize;
 
    --  Initialize GUI
 
+   Splash.Show_Message
+    (+"Initialize GUI", Qt4.Align_H_Center + Qt4.Align_Bottom);
+
    Main := Modeler.Main_Windows.Constructors.Create;
    Main.Show;
 
+   --  Hide splash screen and opens main window.
+
    Splash.Finish (Main);
+
+   --  Run event handling loop.
 
    Qt_Ada.Application.Execute;
 
