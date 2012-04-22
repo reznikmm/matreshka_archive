@@ -127,10 +127,23 @@ package body AMF.Internals.Links is
      Second_Element : AMF_Element;
      Link           : AMF_Link)
    is
-      New_Link : constant AMF_Link
-        := Create_Link (Association, First_Element, Second_Element);
+      New_Link : AMF_Link;
+      Current  : AMF_Link := Link;
 
    begin
+      loop
+         if AMF_Link_Table.Table (Current).Association = Association then
+            --  Don't create duplicate links in the same set of links.
+
+            return;
+         end if;
+
+         Current := AMF_Link_Table.Table (Current).Next;
+
+         exit when Current = Link;
+      end loop;
+
+      New_Link := Create_Link (Association, First_Element, Second_Element);
       AMF_Link_Table.Table (New_Link).Next := AMF_Link_Table.Table (Link).Next;
       AMF_Link_Table.Table (Link).Next := New_Link;
    end Create_Link;
