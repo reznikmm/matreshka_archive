@@ -50,6 +50,11 @@ with AMF.Internals.Tables.UML_Metamodel;
 
 package body AMF.Internals.Factories.UML_Module_Factory is
 
+   procedure Construct_Union
+    (Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link);
+
    --------------------
    -- Connect_Extent --
    --------------------
@@ -177,6 +182,30 @@ package body AMF.Internals.Factories.UML_Module_Factory is
          end;
       end if;
    end Connect_Link_End;
+
+   ---------------------
+   -- Construct_Union --
+   ---------------------
+
+   procedure Construct_Union
+    (Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link) is separate;
+
+   --------------------------
+   -- Synchronize_Link_Set --
+   --------------------------
+
+   overriding procedure Synchronize_Link_Set
+    (Self     : not null access constant UML_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link) is
+   begin
+      --  Construct derived unions.
+
+      Construct_Union (Element, Property, Link);
+   end Synchronize_Link_Set;
 
    ----------------
    -- To_Element --
