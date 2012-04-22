@@ -106,6 +106,7 @@ package League.Calendars is
 
    function "+" (Left : Date_Time; Right : Time) return Date_Time;
    function "-" (Left : Date_Time; Right : Time) return Date_Time;
+   function "-" (Left : Date_Time; Right : Date_Time) return Time;
 
    overriding function "="
     (Left : Date_Time; Right : Date_Time) return Boolean;

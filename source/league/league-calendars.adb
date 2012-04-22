@@ -102,6 +102,15 @@ package body League.Calendars is
    end "-";
 
    ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Date_Time; Right : Date_Time) return Time is
+   begin
+      return Time (Absolute_Time (Left) - Absolute_Time (Right));
+   end "-";
+
+   ---------
    -- "<" --
    ---------
 
