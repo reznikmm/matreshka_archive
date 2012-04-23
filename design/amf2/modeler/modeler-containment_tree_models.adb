@@ -92,6 +92,12 @@ package body Modeler.Containment_Tree_Models is
       begin
          Qt4.Abstract_Item_Models.Directors.Constructors.Initialize
           (Self, Parent);
+
+         --  Register self as AMF listener.
+
+         AMF.Listeners.Register (AMF.Listeners.Listener_Access (Self));
+         --  GNAT Pro 7.1w (20120405): explicit type conversion is needed to
+         --  workaround compiler's bug.
       end Initialize;
 
    end Constructors;
@@ -107,6 +113,28 @@ package body Modeler.Containment_Tree_Models is
    begin
       return Qt4.Variants.Create;
    end Data;
+
+   -------------------
+   -- Extent_Create --
+   -------------------
+
+   overriding procedure Extent_Create
+    (Self   : not null access Containment_Tree_Model;
+     Extent : not null AMF.Extents.Extent_Access) is
+   begin
+      null;
+   end Extent_Create;
+
+   -------------------
+   -- Extent_Remove --
+   -------------------
+
+   overriding procedure Extent_Remove
+    (Self   : not null access Containment_Tree_Model;
+     Extent : not null AMF.Extents.Extent_Access) is
+   begin
+      null;
+   end Extent_Remove;
 
    -----------
    -- Index --

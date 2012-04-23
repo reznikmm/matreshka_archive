@@ -47,10 +47,14 @@ private with Qt4.Model_Indices;
 with Qt4.Objects;
 private with Qt4.Variants;
 
+with AMF.Listeners;
+private with AMF.Extents;
+
 package Modeler.Containment_Tree_Models is
 
    type Containment_Tree_Model is
-     limited new Qt4.Abstract_Item_Models.Q_Abstract_Item_Model with private;
+     limited new Qt4.Abstract_Item_Models.Q_Abstract_Item_Model
+       and AMF.Listeners.Abstract_Listener with private;
 
    type Containment_Tree_Model_Access is
      access all Containment_Tree_Model'Class;
@@ -67,7 +71,11 @@ private
 
    type Containment_Tree_Model is limited
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
-       with null record;
+       and AMF.Listeners.Abstract_Listener with null record;
+
+   ----------------------------------------------------
+   -- Overrided subprograms of Q_Abstract_Item_Model --
+   ----------------------------------------------------
 
    overriding function Column_Count
     (Self   : not null access constant Containment_Tree_Model;
@@ -93,5 +101,17 @@ private
    overriding function Row_Count
     (Self   : not null access constant Containment_Tree_Model;
      Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
+
+   ------------------------------------------------
+   -- Overrided subprograms of Abstract_Listener --
+   ------------------------------------------------
+
+   overriding procedure Extent_Create
+    (Self   : not null access Containment_Tree_Model;
+     Extent : not null AMF.Extents.Extent_Access);
+
+   overriding procedure Extent_Remove
+    (Self   : not null access Containment_Tree_Model;
+     Extent : not null AMF.Extents.Extent_Access);
 
 end Modeler.Containment_Tree_Models;
