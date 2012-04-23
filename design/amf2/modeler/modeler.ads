@@ -43,9 +43,15 @@
 ------------------------------------------------------------------------------
 with Qt4.Strings;
 
+with League.Strings;
+
 package Modeler is
 
    function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
      renames Qt4.Strings.From_Ucs_4;
+
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
 end Modeler;
