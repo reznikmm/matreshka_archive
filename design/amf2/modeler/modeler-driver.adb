@@ -55,9 +55,6 @@ procedure Modeler.Driver is
 
    use type Qt4.Alignment_Flag;
 
-   function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Ucs_4;
-
    Splash : Qt4.Splash_Screens.Q_Splash_Screen_Access;
    Main   : Modeler.Main_Windows.Main_Window_Access;
 

@@ -41,39 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "qt_gui.gpr";
+with Qt4.Dock_Widgets;
+private with Qt4.Dock_Widgets.Directors;
+with Qt4.Widgets;
 
-with "../../../gnat/matreshka_amf_uml.gpr";
+package Modeler.Containment_Tree_Docks is
 
-project Modeler is
+   type Containment_Tree_Dock is
+     limited new Qt4.Dock_Widgets.Q_Dock_Widget with private;
 
-   type Build_Modes is ("APP", "MOC");
-   Build_Mode : Build_Modes := external ("BUILD_MODE");
+   type Containment_Tree_Dock_Access is access all Containment_Tree_Dock'Class;
 
-   Common_Source_Dirs := (".");
+   package Constructors is
 
-   case Build_Mode is
-      when "APP" =>
-         for Main use ("modeler-driver.adb");
-         for Source_Dirs use Common_Source_Dirs & (".amoc");
-         for Object_Dir use ".objs";
+      function Create
+       (Parent : access Qt4.Widgets.Q_Widget'Class := null)
+          return not null Containment_Tree_Dock_Access;
 
-      when "MOC" =>
-         for Languages use ("Amoc");
-         for Source_Dirs use Common_Source_Dirs;
-         for Source_Files use
-          ("modeler-containment_tree_docks.ads",
-           "modeler-main_windows.ads");
-         for Object_Dir use ".amoc";
-   end case;
+   end Constructors;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+private
 
-   package Builder is
-      for Executable ("modeler-driver.adb") use "mmodeler";
-      for Global_Configuration_Pragmas use "modeler.adc";
-   end Builder;
+   type Containment_Tree_Dock is
+     limited new Qt4.Dock_Widgets.Directors.Q_Dock_Widget_Director
+       with null record;
 
-end Modeler;
+end Modeler.Containment_Tree_Docks;

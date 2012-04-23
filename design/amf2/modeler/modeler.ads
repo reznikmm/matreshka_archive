@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Qt4.Strings;
 
 package Modeler is
 
-   pragma Pure;
+   function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
+     renames Qt4.Strings.From_Ucs_4;
 
 end Modeler;

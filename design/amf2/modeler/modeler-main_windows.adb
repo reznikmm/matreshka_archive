@@ -45,6 +45,8 @@ with Qt4.Mdi_Areas.Constructors;
 with Qt4.Menu_Bars.Constructors;
 --with Qt4.Status_Bars.Constructors;
 
+with Modeler.Containment_Tree_Docks;
+
 with Modeler.Main_Windows.Moc;
 pragma Unreferenced (Modeler.Main_Windows.Moc);
 
@@ -77,9 +79,11 @@ package body Modeler.Main_Windows is
       ----------------
 
       procedure Initialize (Self : not null access Main_Window'Class) is
-         Mdi_Area   : Qt4.Mdi_Areas.Q_Mdi_Area_Access;
-         Menu_Bar   : Qt4.Menu_Bars.Q_Menu_Bar_Access;
+         Mdi_Area         : Qt4.Mdi_Areas.Q_Mdi_Area_Access;
+         Menu_Bar         : Qt4.Menu_Bars.Q_Menu_Bar_Access;
 --         Status_Bar : Qt4.Status_Bars.Q_Status_Bar_Access;
+         Containment_Dock :
+           Modeler.Containment_Tree_Docks.Containment_Tree_Dock_Access;
 
       begin
          Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
@@ -93,6 +97,12 @@ package body Modeler.Main_Windows is
 
          Mdi_Area := Qt4.Mdi_Areas.Constructors.Create (Self);
          Self.Set_Central_Widget (Mdi_Area);
+
+         --  Create docks.
+
+         Containment_Dock :=
+           Modeler.Containment_Tree_Docks.Constructors.Create (Self);
+         Self.Add_Dock_Widget (Qt4.Left_Dock_Widget_Area, Containment_Dock);
 
          --  Create status bar.
 

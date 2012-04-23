@@ -41,39 +41,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "qt_gui.gpr";
+with Modeler.Containment_Tree_Docks.Moc;
+pragma Unreferenced (Modeler.Containment_Tree_Docks.Moc);
 
-with "../../../gnat/matreshka_amf_uml.gpr";
+package body Modeler.Containment_Tree_Docks is
 
-project Modeler is
+   ------------------
+   -- Constructors --
+   ------------------
 
-   type Build_Modes is ("APP", "MOC");
-   Build_Mode : Build_Modes := external ("BUILD_MODE");
+   package body Constructors is
 
-   Common_Source_Dirs := (".");
+      procedure Initialize
+       (Self   : not null access Containment_Tree_Dock'Class;
+        Parent : access Qt4.Widgets.Q_Widget'Class);
+      --  Initialize widget.
 
-   case Build_Mode is
-      when "APP" =>
-         for Main use ("modeler-driver.adb");
-         for Source_Dirs use Common_Source_Dirs & (".amoc");
-         for Object_Dir use ".objs";
+      ------------
+      -- Create --
+      ------------
 
-      when "MOC" =>
-         for Languages use ("Amoc");
-         for Source_Dirs use Common_Source_Dirs;
-         for Source_Files use
-          ("modeler-containment_tree_docks.ads",
-           "modeler-main_windows.ads");
-         for Object_Dir use ".amoc";
-   end case;
+      function Create
+       (Parent : access Qt4.Widgets.Q_Widget'Class := null)
+          return not null Containment_Tree_Dock_Access is
+      begin
+         return Self : constant not null Containment_Tree_Dock_Access
+           := new Containment_Tree_Dock
+         do
+            Initialize (Self, Parent);
+         end return;
+      end Create;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+      ----------------
+      -- Initialize --
+      ----------------
 
-   package Builder is
-      for Executable ("modeler-driver.adb") use "mmodeler";
-      for Global_Configuration_Pragmas use "modeler.adc";
-   end Builder;
+      procedure Initialize
+       (Self   : not null access Containment_Tree_Dock'Class;
+        Parent : access Qt4.Widgets.Q_Widget'Class) is
+      begin
+         Qt4.Dock_Widgets.Directors.Constructors.Initialize
+          (Self, +"Containment Tree", Parent);
+      end Initialize;
 
-end Modeler;
+   end Constructors;
+
+end Modeler.Containment_Tree_Docks;
