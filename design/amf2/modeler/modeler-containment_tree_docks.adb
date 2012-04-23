@@ -84,7 +84,8 @@ package body Modeler.Containment_Tree_Docks is
        (Self   : not null access Containment_Tree_Dock'Class;
         Parent : access Qt4.Widgets.Q_Widget'Class)
       is
-         View : Qt4.Tree_Views.Q_Tree_View_Access;
+         View  : Qt4.Tree_Views.Q_Tree_View_Access;
+         Model : Modeler.Containment_Tree_Models.Containment_Tree_Model_Access;
 
       begin
          Qt4.Dock_Widgets.Directors.Constructors.Initialize
@@ -92,6 +93,9 @@ package body Modeler.Containment_Tree_Docks is
 
          View := Qt4.Tree_Views.Constructors.Create (Self);
          Self.Set_Widget (View);
+
+         Model := Modeler.Containment_Tree_Models.Constructors.Create (View);
+         View.Set_Model (Model);
       end Initialize;
 
    end Constructors;
