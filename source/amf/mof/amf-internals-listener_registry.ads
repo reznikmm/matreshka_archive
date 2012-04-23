@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,7 @@
 with AMF.CMOF.Associations;
 with AMF.CMOF.Properties;
 with AMF.Elements;
+with AMF.Extents;
 with AMF.Listeners;
 with League.Holders;
 
@@ -52,6 +53,9 @@ package AMF.Internals.Listener_Registry is
    pragma Preelaborate;
 
    procedure Register (Listener : not null AMF.Listeners.Listener_Access);
+
+   procedure Notify_Extent_Create
+    (Extent : not null AMF.Extents.Extent_Access);
 
    procedure Notify_Attribute_Set
     (Element   : not null AMF.Elements.Element_Access;

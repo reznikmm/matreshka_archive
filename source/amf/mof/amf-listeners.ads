@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,7 @@ with League.Holders;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Properties;
 with AMF.Elements;
+with AMF.Extents;
 
 package AMF.Listeners is
 
@@ -71,10 +72,12 @@ package AMF.Listeners is
     (Self : not null access Abstract_Listener) is null;
 
    not overriding procedure Extent_Create
-    (Self : not null access Abstract_Listener) is null;
+    (Self   : not null access Abstract_Listener;
+     Extent : not null AMF.Extents.Extent_Access) is null;
 
    not overriding procedure Extent_Remove
-    (Self : not null access Abstract_Listener) is null;
+    (Self   : not null access Abstract_Listener;
+     Extent : not null AMF.Extents.Extent_Access) is null;
 
    not overriding procedure Instance_Create
     (Self    : not null access Abstract_Listener;

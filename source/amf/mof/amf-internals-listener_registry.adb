@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,6 +67,18 @@ package body AMF.Internals.Listener_Registry is
           (Element, Property, Position, Old_Value, New_Value);
       end loop;
    end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Extent_Create --
+   --------------------------
+
+   procedure Notify_Extent_Create
+    (Extent : not null AMF.Extents.Extent_Access) is
+   begin
+      for J in 1 .. Natural (Registry.Length) loop
+         Registry.Element (J).Extent_Create (Extent);
+      end loop;
+   end Notify_Extent_Create;
 
    ----------------------------
    -- Notify_Instance_Create --

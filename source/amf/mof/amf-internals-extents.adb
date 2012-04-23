@@ -49,6 +49,7 @@ with AMF.Internals.AMF_URI_Extents;
 with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Collections.Elements.Containers;
 with AMF.Internals.Helpers;
+with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
 
 package body AMF.Internals.Extents is
@@ -130,6 +131,11 @@ package body AMF.Internals.Extents is
           Context_URI,
           0,
           0);
+
+      AMF.Internals.Listener_Registry.Notify_Extent_Create
+       (AMF.Extents.Extent_Access
+         (AMF.Internals.Tables.AMF_Tables.Extents.Table
+           (AMF.Internals.Tables.AMF_Tables.Extents.Last).Proxy));
 
       return
         AMF.URI_Stores.URI_Store_Access
