@@ -41,59 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Qt4.Tree_Views.Constructors;
+with Qt4.Abstract_Item_Models;
+private with Qt4.Abstract_Item_Models.Directors;
+private with Qt4.Model_Indices;
+with Qt4.Objects;
+private with Qt4.Variants;
 
-with Modeler.Containment_Tree_Models;
+package Modeler.Containment_Tree_Models is
 
-with Modeler.Containment_Tree_Docks.Moc;
-pragma Unreferenced (Modeler.Containment_Tree_Docks.Moc);
+   type Containment_Tree_Model is
+     limited new Qt4.Abstract_Item_Models.Q_Abstract_Item_Model with private;
 
-package body Modeler.Containment_Tree_Docks is
+   type Containment_Tree_Model_Access is
+     access all Containment_Tree_Model'Class;
 
-   ------------------
-   -- Constructors --
-   ------------------
-
-   package body Constructors is
-
-      procedure Initialize
-       (Self   : not null access Containment_Tree_Dock'Class;
-        Parent : access Qt4.Widgets.Q_Widget'Class);
-      --  Initialize widget.
-
-      ------------
-      -- Create --
-      ------------
+   package Constructors is
 
       function Create
-       (Parent : access Qt4.Widgets.Q_Widget'Class := null)
-          return not null Containment_Tree_Dock_Access is
-      begin
-         return Self : constant not null Containment_Tree_Dock_Access
-           := new Containment_Tree_Dock
-         do
-            Initialize (Self, Parent);
-         end return;
-      end Create;
-
-      ----------------
-      -- Initialize --
-      ----------------
-
-      procedure Initialize
-       (Self   : not null access Containment_Tree_Dock'Class;
-        Parent : access Qt4.Widgets.Q_Widget'Class)
-      is
-         View : Qt4.Tree_Views.Q_Tree_View_Access;
-
-      begin
-         Qt4.Dock_Widgets.Directors.Constructors.Initialize
-          (Self, +"Containment Tree", Parent);
-
-         View := Qt4.Tree_Views.Constructors.Create (Self);
-         Self.Set_Widget (View);
-      end Initialize;
+       (Parent : access Qt4.Objects.Q_Object'Class := null)
+          return not null Containment_Tree_Model_Access;
 
    end Constructors;
 
-end Modeler.Containment_Tree_Docks;
+private
+
+   type Containment_Tree_Model is limited
+     new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
+       with null record;
+
+   overriding function Column_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
+
+   overriding function Data
+    (Self  : not null access Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index;
+     Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant;
+
+   overriding function Index
+    (Self   : not null access constant Containment_Tree_Model;
+     Row    : Qt4.Q_Integer;
+     Column : Qt4.Q_Integer;
+     Parent : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index;
+
+   overriding function Parent
+    (Self  : not null access constant Containment_Tree_Model;
+     Child : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index;
+
+   overriding function Row_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
+
+end Modeler.Containment_Tree_Models;

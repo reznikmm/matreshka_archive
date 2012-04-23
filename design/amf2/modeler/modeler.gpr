@@ -63,6 +63,7 @@ project Modeler is
          for Source_Dirs use Common_Source_Dirs;
          for Source_Files use
           ("modeler-containment_tree_docks.ads",
+           "modeler-containment_tree_models.ads",
            "modeler-main_windows.ads");
          for Object_Dir use ".amoc";
    end case;

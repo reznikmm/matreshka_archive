@@ -41,14 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Qt4.Tree_Views.Constructors;
+with Modeler.Containment_Tree_Models.Moc;
+pragma Unreferenced (Modeler.Containment_Tree_Models.Moc);
 
-with Modeler.Containment_Tree_Models;
+package body Modeler.Containment_Tree_Models is
 
-with Modeler.Containment_Tree_Docks.Moc;
-pragma Unreferenced (Modeler.Containment_Tree_Docks.Moc);
+   ------------------
+   -- Column_Count --
+   ------------------
 
-package body Modeler.Containment_Tree_Docks is
+   overriding function Column_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
+   begin
+      return 0;
+   end Column_Count;
 
    ------------------
    -- Constructors --
@@ -57,20 +64,19 @@ package body Modeler.Containment_Tree_Docks is
    package body Constructors is
 
       procedure Initialize
-       (Self   : not null access Containment_Tree_Dock'Class;
-        Parent : access Qt4.Widgets.Q_Widget'Class);
-      --  Initialize widget.
+       (Self   : not null access Containment_Tree_Model'Class;
+        Parent : access Qt4.Objects.Q_Object'Class);
 
       ------------
       -- Create --
       ------------
 
       function Create
-       (Parent : access Qt4.Widgets.Q_Widget'Class := null)
-          return not null Containment_Tree_Dock_Access is
+       (Parent : access Qt4.Objects.Q_Object'Class := null)
+          return not null Containment_Tree_Model_Access is
       begin
-         return Self : constant not null Containment_Tree_Dock_Access
-           := new Containment_Tree_Dock
+         return Self : constant not null Containment_Tree_Model_Access
+           := new Containment_Tree_Model
          do
             Initialize (Self, Parent);
          end return;
@@ -81,19 +87,62 @@ package body Modeler.Containment_Tree_Docks is
       ----------------
 
       procedure Initialize
-       (Self   : not null access Containment_Tree_Dock'Class;
-        Parent : access Qt4.Widgets.Q_Widget'Class)
-      is
-         View : Qt4.Tree_Views.Q_Tree_View_Access;
-
+       (Self   : not null access Containment_Tree_Model'Class;
+        Parent : access Qt4.Objects.Q_Object'Class) is
       begin
-         Qt4.Dock_Widgets.Directors.Constructors.Initialize
-          (Self, +"Containment Tree", Parent);
-
-         View := Qt4.Tree_Views.Constructors.Create (Self);
-         Self.Set_Widget (View);
+         Qt4.Abstract_Item_Models.Directors.Constructors.Initialize
+          (Self, Parent);
       end Initialize;
 
    end Constructors;
 
-end Modeler.Containment_Tree_Docks;
+   ----------
+   -- Data --
+   ----------
+
+   overriding function Data
+    (Self  : not null access Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index;
+     Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant is
+   begin
+      return Qt4.Variants.Create;
+   end Data;
+
+   -----------
+   -- Index --
+   -----------
+
+   overriding function Index
+    (Self   : not null access constant Containment_Tree_Model;
+     Row    : Qt4.Q_Integer;
+     Column : Qt4.Q_Integer;
+     Parent : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      return Qt4.Model_Indices.Create;
+   end Index;
+
+   ------------
+   -- Parent --
+   ------------
+
+   overriding function Parent
+    (Self  : not null access constant Containment_Tree_Model;
+     Child : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      return Qt4.Model_Indices.Create;
+   end Parent;
+
+   ---------------
+   -- Row_Count --
+   ---------------
+
+   overriding function Row_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
+   begin
+      return 0;
+   end Row_Count;
+
+end Modeler.Containment_Tree_Models;
