@@ -41,10 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with System.Address_To_Access_Conversions;
+
+with AMF.URI_Extents;
+
 with Modeler.Containment_Tree_Models.Moc;
 pragma Unreferenced (Modeler.Containment_Tree_Models.Moc);
 
 package body Modeler.Containment_Tree_Models is
+
+   package Node_Conversions is
+     new System.Address_To_Access_Conversions (Node);
+
+   function To_Node
+    (Self  : not null access constant Containment_Tree_Model'Class;
+     Index : Qt4.Model_Indices.Q_Model_Index) return Node_Access;
 
    ------------------
    -- Column_Count --
@@ -52,9 +63,15 @@ package body Modeler.Containment_Tree_Models is
 
    overriding function Column_Count
     (Self   : not null access constant Containment_Tree_Model;
-     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Parent);
+
    begin
-      return 0;
+      --  All rows has exactly one column.
+
+      return 1;
    end Column_Count;
 
    ------------------
@@ -93,6 +110,10 @@ package body Modeler.Containment_Tree_Models is
          Qt4.Abstract_Item_Models.Directors.Constructors.Initialize
           (Self, Parent);
 
+         --  Create root node.
+
+         Self.Root := new Node (N_Root);
+
          --  Register self as AMF listener.
 
          AMF.Listeners.Register (AMF.Listeners.Listener_Access (Self));
@@ -109,9 +130,27 @@ package body Modeler.Containment_Tree_Models is
    overriding function Data
     (Self  : not null access Containment_Tree_Model;
      Index : Qt4.Model_Indices.Q_Model_Index;
-     Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant is
+     Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant
+   is
+      Node : constant Node_Access := Self.To_Node (Index);
+
    begin
-      return Qt4.Variants.Create;
+      case Role is
+         when Qt4.Display_Role =>
+            case Node.Kind is
+               when N_Root =>
+                  return Qt4.Variants.Create;
+
+               when N_Extent =>
+                  return
+                    Qt4.Variants.Create
+                     (+AMF.URI_Extents.URI_Extent'Class
+                        (Node.Extent.all).Context_URI.To_Wide_Wide_String);
+            end case;
+
+         when others =>
+            return Qt4.Variants.Create;
+      end case;
    end Data;
 
    -------------------
@@ -120,9 +159,19 @@ package body Modeler.Containment_Tree_Models is
 
    overriding procedure Extent_Create
     (Self   : not null access Containment_Tree_Model;
-     Extent : not null AMF.Extents.Extent_Access) is
+     Extent : not null AMF.Extents.Extent_Access)
+   is
+      Position : constant Natural := Natural (Self.Root.Children.Length);
+      Child    : Node_Access
+        := new Node'(N_Extent, Self.Root, Node_Vectors.Empty_Vector, Extent);
+
    begin
-      null;
+      Self.Begin_Insert_Rows
+       (Qt4.Model_Indices.Create,
+        Qt4.Q_Integer (Self.Root.Children.Length),
+        Qt4.Q_Integer (Self.Root.Children.Length));
+      Self.Root.Children.Append (Child);
+      Self.End_Insert_Rows;
    end Extent_Create;
 
    -------------------
@@ -136,6 +185,19 @@ package body Modeler.Containment_Tree_Models is
       null;
    end Extent_Remove;
 
+   -----------------
+   -- Header_Data --
+   -----------------
+
+   overriding function Header_Data
+    (Self        : not null access Containment_Tree_Model;
+     Section     : Qt4.Q_Integer;
+     Orientation : Qt4.Orientations;
+     Role        : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant is
+   begin
+      return Qt4.Variants.Create;
+   end Header_Data;
+
    -----------
    -- Index --
    -----------
@@ -145,9 +207,27 @@ package body Modeler.Containment_Tree_Models is
      Row    : Qt4.Q_Integer;
      Column : Qt4.Q_Integer;
      Parent : Qt4.Model_Indices.Q_Model_Index)
-       return Qt4.Model_Indices.Q_Model_Index is
+       return Qt4.Model_Indices.Q_Model_Index
+   is
+      use type Qt4.Q_Integer;
+
+      Parent_Node : constant Node_Access := Self.To_Node (Parent);
+
    begin
-      return Qt4.Model_Indices.Create;
+      if Column /= 0
+        or else Row >= Qt4.Q_Integer (Parent_Node.Children.Length)
+      then
+         return Qt4.Model_Indices.Create;
+
+      else
+         return
+           Self.Create_Index
+            (Row,
+             Column,
+             Node_Conversions.To_Address
+              (Node_Conversions.Object_Pointer
+                (Parent_Node.Children.Element (Natural (Row)))));
+      end if;
    end Index;
 
    ------------
@@ -157,9 +237,20 @@ package body Modeler.Containment_Tree_Models is
    overriding function Parent
     (Self  : not null access constant Containment_Tree_Model;
      Child : Qt4.Model_Indices.Q_Model_Index)
-       return Qt4.Model_Indices.Q_Model_Index is
+       return Qt4.Model_Indices.Q_Model_Index
+   is
+      Child_Node  : constant not null Node_Access := Self.To_Node (Child);
+      Parent_Node : Node_Access := Child_Node.Parent;
+
    begin
-      return Qt4.Model_Indices.Create;
+      if Parent_Node = null
+        or else Parent_Node.Parent = null
+      then
+         return Qt4.Model_Indices.Create;
+
+      else
+         raise Program_Error;
+      end if;
    end Parent;
 
    ---------------
@@ -168,9 +259,30 @@ package body Modeler.Containment_Tree_Models is
 
    overriding function Row_Count
     (Self   : not null access constant Containment_Tree_Model;
-     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer
+   is
+      Parent_Node : constant not null Node_Access := Self.To_Node (Parent);
+
    begin
-      return 0;
+      return Qt4.Q_Integer (Parent_Node.Children.Length);
    end Row_Count;
+
+   -------------
+   -- To_Node --
+   -------------
+
+   function To_Node
+    (Self  : not null access constant Containment_Tree_Model'Class;
+     Index : Qt4.Model_Indices.Q_Model_Index) return Node_Access is
+   begin
+      if not Index.Is_Valid then
+         return Self.Root;
+
+      else
+         return
+           Node_Access
+            (Node_Conversions.To_Pointer (Index.Internal_Pointer));
+      end if;
+   end To_Node;
 
 end Modeler.Containment_Tree_Models;

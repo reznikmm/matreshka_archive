@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Vectors;
+
 with Qt4.Abstract_Item_Models;
 private with Qt4.Abstract_Item_Models.Directors;
 private with Qt4.Model_Indices;
@@ -69,9 +71,32 @@ package Modeler.Containment_Tree_Models is
 
 private
 
+   type Node_Kinds is (N_Root, N_Extent);
+
+   type Node;
+   type Node_Access is access all Node;
+
+   package Node_Vectors is new Ada.Containers.Vectors (Natural, Node_Access);
+
+   type Node (Kind : Node_Kinds) is record
+      Parent   : Node_Access;
+      Children : Node_Vectors.Vector;
+
+      case Kind is
+         when N_Root =>
+            null;
+
+         when N_Extent =>
+            Extent : AMF.Extents.Extent_Access;
+      end case;
+   end record;
+
    type Containment_Tree_Model is limited
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
-       and AMF.Listeners.Abstract_Listener with null record;
+       and AMF.Listeners.Abstract_Listener with
+   record
+      Root : Node_Access;
+   end record;
 
    ----------------------------------------------------
    -- Overrided subprograms of Q_Abstract_Item_Model --
@@ -85,6 +110,12 @@ private
     (Self  : not null access Containment_Tree_Model;
      Index : Qt4.Model_Indices.Q_Model_Index;
      Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant;
+
+   overriding function Header_Data
+    (Self        : not null access Containment_Tree_Model;
+     Section     : Qt4.Q_Integer;
+     Orientation : Qt4.Orientations;
+     Role        : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant;
 
    overriding function Index
     (Self   : not null access constant Containment_Tree_Model;
