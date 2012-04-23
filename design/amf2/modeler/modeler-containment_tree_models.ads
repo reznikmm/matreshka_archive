@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
 private with Ada.Containers.Vectors;
 
 with Qt4.Abstract_Item_Models;
@@ -50,7 +51,8 @@ with Qt4.Objects;
 private with Qt4.Variants;
 
 with AMF.Listeners;
-private with AMF.Extents;
+private with AMF.Elements.Hash;
+private with AMF.Extents.Hash;
 
 package Modeler.Containment_Tree_Models is
 
@@ -71,12 +73,26 @@ package Modeler.Containment_Tree_Models is
 
 private
 
-   type Node_Kinds is (N_Root, N_Extent);
+   type Node_Kinds is (N_Root, N_Extent, N_Element);
 
    type Node;
    type Node_Access is access all Node;
 
    package Node_Vectors is new Ada.Containers.Vectors (Natural, Node_Access);
+
+   package Extent_Node_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.Extents.Extent_Access,
+           Node_Access,
+           AMF.Extents.Hash,
+           AMF.Extents."=");
+
+   package Element_Node_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.Elements.Element_Access,
+           Node_Access,
+           AMF.Elements.Hash,
+           AMF.Elements."=");
 
    type Node (Kind : Node_Kinds) is record
       Parent   : Node_Access;
@@ -88,6 +104,9 @@ private
 
          when N_Extent =>
             Extent : AMF.Extents.Extent_Access;
+
+         when N_Element =>
+            Element : AMF.Elements.Element_Access;
       end case;
    end record;
 
@@ -95,7 +114,9 @@ private
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
        and AMF.Listeners.Abstract_Listener with
    record
-      Root : Node_Access;
+      Root     : Node_Access;
+      Extents  : Extent_Node_Maps.Map;
+      Elements : Element_Node_Maps.Map;
    end record;
 
    ----------------------------------------------------
@@ -144,5 +165,13 @@ private
    overriding procedure Extent_Remove
     (Self   : not null access Containment_Tree_Model;
      Extent : not null AMF.Extents.Extent_Access);
+
+   overriding procedure Instance_Create
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access);
+
+   overriding procedure Instance_Remove
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access);
 
 end Modeler.Containment_Tree_Models;

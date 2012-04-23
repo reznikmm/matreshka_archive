@@ -146,6 +146,9 @@ package body Modeler.Containment_Tree_Models is
                     Qt4.Variants.Create
                      (+AMF.URI_Extents.URI_Extent'Class
                         (Node.Extent.all).Context_URI.To_Wide_Wide_String);
+
+               when N_Element =>
+                  return Qt4.Variants.Create;
             end case;
 
          when others =>
@@ -171,6 +174,7 @@ package body Modeler.Containment_Tree_Models is
         Qt4.Q_Integer (Self.Root.Children.Length),
         Qt4.Q_Integer (Self.Root.Children.Length));
       Self.Root.Children.Append (Child);
+      Self.Extents.Insert (Extent, Child);
       Self.End_Insert_Rows;
    end Extent_Create;
 
@@ -230,6 +234,40 @@ package body Modeler.Containment_Tree_Models is
       end if;
    end Index;
 
+   ---------------------
+   -- Instance_Create --
+   ---------------------
+
+   overriding procedure Instance_Create
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access)
+   is
+      Parent   : constant Node_Access := Self.Extents.Element (Element.Extent);
+      Position : constant Natural := Natural (Parent.Children.Length);
+      Child    : Node_Access
+        := new Node'(N_Element, Parent, Node_Vectors.Empty_Vector, Element);
+
+   begin
+      Self.Begin_Insert_Rows
+       (Qt4.Model_Indices.Create,
+        Qt4.Q_Integer (Parent.Children.Length),
+        Qt4.Q_Integer (Parent.Children.Length));
+      Parent.Children.Append (Child);
+      Self.Elements.Insert (Element, Child);
+      Self.End_Insert_Rows;
+   end Instance_Create;
+
+   ---------------------
+   -- Instance_Remove --
+   ---------------------
+
+   overriding procedure Instance_Remove
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access) is
+   begin
+      null;
+   end Instance_Remove;
+
    ------------
    -- Parent --
    ------------
@@ -249,7 +287,13 @@ package body Modeler.Containment_Tree_Models is
          return Qt4.Model_Indices.Create;
 
       else
-         raise Program_Error;
+         return
+           Self.Create_Index
+            (0,
+             Qt4.Q_Integer
+              (Parent_Node.Parent.Children.Find_Index (Parent_Node)),
+             Node_Conversions.To_Address
+              (Node_Conversions.Object_Pointer (Parent_Node)));
       end if;
    end Parent;
 
