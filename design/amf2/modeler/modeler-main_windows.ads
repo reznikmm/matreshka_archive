@@ -50,6 +50,9 @@ package Modeler.Main_Windows is
 
    type Main_Window_Access is access all Main_Window'Class;
 
+   procedure File_New (Self : not null access Main_Window'Class);
+   pragma Q_Slot (File_New);
+
    package Constructors is
 
       function Create return not null Main_Window_Access;
