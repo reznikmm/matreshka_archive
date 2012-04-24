@@ -51,6 +51,11 @@ with AMF.Facility;
 
 with Modeler.Main_Windows;
 
+with AMF.Internals.Modules.MOF_Module;
+pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
+with AMF.Internals.Modules.UML_Module;
+pragma Unreferenced (AMF.Internals.Modules.UML_Module);
+
 procedure Modeler.Driver is
 
    use type Qt4.Alignment_Flag;
