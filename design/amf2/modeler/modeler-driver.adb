@@ -51,10 +51,14 @@ with AMF.Facility;
 
 with Modeler.Main_Windows;
 
-with AMF.Internals.Modules.MOF_Module;
-pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
+with AMF.Internals.Modules.OCL_Module;
+pragma Unreferenced (AMF.Internals.Modules.OCL_Module);
+with AMF.Internals.Modules.MOF_Module;
+pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
+with AMF.Internals.Modules.UTP_Module;
+pragma Unreferenced (AMF.Internals.Modules.UTP_Module);
 
 procedure Modeler.Driver is
 

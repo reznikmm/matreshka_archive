@@ -44,7 +44,9 @@
 with "qt_gui.gpr";
 
 with "../../../gnat/matreshka_amf_uml.gpr";
+with "../../../gnat/matreshka_amf_ocl.gpr";
 with "../../../gnat/matreshka_amf_mofext.gpr";
+with "../../../gnat/matreshka_amf_utp.gpr";
 
 project Modeler is
 
