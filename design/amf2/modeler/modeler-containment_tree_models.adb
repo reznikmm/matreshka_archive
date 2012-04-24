@@ -43,7 +43,11 @@
 ------------------------------------------------------------------------------
 with System.Address_To_Access_Conversions;
 
+with AMF.CMOF.Properties.Collections;
 with AMF.URI_Extents;
+
+with AMF.UML.Comments;
+with AMF.UML.Named_Elements;
 
 with Modeler.Containment_Tree_Models.Moc;
 pragma Unreferenced (Modeler.Containment_Tree_Models.Moc);
@@ -56,6 +60,10 @@ package body Modeler.Containment_Tree_Models is
    function To_Node
     (Self  : not null access constant Containment_Tree_Model'Class;
      Index : Qt4.Model_Indices.Q_Model_Index) return Node_Access;
+
+   function To_Index
+    (Self : not null access constant Containment_Tree_Model'Class;
+     Node : Node_Access) return Qt4.Model_Indices.Q_Model_Index;
 
    ------------------
    -- Column_Count --
@@ -148,7 +156,36 @@ package body Modeler.Containment_Tree_Models is
                         (Node.Extent.all).Context_URI.To_Wide_Wide_String);
 
                when N_Element =>
-                  return Qt4.Variants.Create;
+                  if Node.Element.all
+                    in AMF.UML.Named_Elements.UML_Named_Element'Class
+                  then
+                     declare
+                        Name : constant AMF.Optional_String
+                          := AMF.UML.Named_Elements.UML_Named_Element'Class
+                              (Node.Element.all).Get_Name;
+
+                     begin
+                        if Name.Is_Empty then
+                           return Qt4.Variants.Create;
+
+                        else
+                           return
+                             Qt4.Variants.Create
+                              (+Name.Value.To_Wide_Wide_String);
+                        end if;
+                     end;
+
+                  elsif Node.Element.all
+                    in AMF.UML.Comments.UML_Comment'Class
+                  then
+                     return
+                       Qt4.Variants.Create
+                        (+AMF.UML.Comments.UML_Comment'Class
+                           (Node.Element.all).Get_Body.Value.To_Wide_Wide_String);
+
+                  else
+                     return Qt4.Variants.Create;
+                  end if;
             end case;
 
          when others =>
@@ -224,13 +261,7 @@ package body Modeler.Containment_Tree_Models is
          return Qt4.Model_Indices.Create;
 
       else
-         return
-           Self.Create_Index
-            (Row,
-             Column,
-             Node_Conversions.To_Address
-              (Node_Conversions.Object_Pointer
-                (Parent_Node.Children.Element (Natural (Row)))));
+         return Self.To_Index (Parent_Node.Children.Element (Natural (Row)));
       end if;
    end Index;
 
@@ -268,6 +299,76 @@ package body Modeler.Containment_Tree_Models is
       null;
    end Instance_Remove;
 
+   --------------
+   -- Link_Add --
+   --------------
+
+   overriding procedure Link_Add
+    (Self           : not null access Containment_Tree_Model;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
+   is
+      use type AMF.Elements.Element_Access;
+
+      Member_End   : constant
+        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+          := Association.Get_Member_End;
+      Owner        : AMF.Elements.Element_Access;
+      Owned        : AMF.Elements.Element_Access;
+      Owner_Node   : Node_Access;
+      Owned_Node   : Node_Access;
+      Source_First : Natural;
+      Aux          : Boolean;
+
+   begin
+      --  Check whether one of the ends is composite. Determine owner and owned
+      --  elements.
+      --
+      --  XXX For profiles, it is needed to check navigability too.
+
+      if Member_End.Element (1).Get_Is_Composite then
+         Owner := First_Element;
+         Owned := Second_Element;
+
+      elsif Member_End.Element (2).Get_Is_Composite then
+         Owner := Second_Element;
+         Owned := First_Element;
+      end if;
+
+      if Owner /= null and Owned /= null then
+         Owner_Node := Self.Elements.Element (Owner);
+         Owned_Node := Self.Elements.Element (Owned);
+
+         --  Check whether ownership is changed and move rows when necessary.
+
+         if Owned_Node.Parent /= Owner_Node then
+            Source_First := Owned_Node.Parent.Children.Find_Index (Owned_Node);
+            Aux :=
+              Self.Begin_Move_Rows
+               (Self.To_Index (Owned_Node.Parent),
+                Qt4.Q_Integer (Source_First),
+                Qt4.Q_Integer (Source_First),
+                Self.To_Index (Owner_Node),
+                Qt4.Q_Integer (Owner_Node.Children.Length));
+            Owned_Node.Parent.Children.Delete (Source_First);
+            Owned_Node.Parent := Owner_Node;
+            Owner_Node.Children.Append (Owned_Node);
+            Self.End_Move_Rows;
+         end if;
+      end if;
+   end Link_Add;
+
+   -----------------
+   -- Link_Remove --
+   -----------------
+
+   overriding procedure Link_Remove
+    (Self : not null access Containment_Tree_Model) is
+   begin
+      null;
+   end Link_Remove;
+
    ------------
    -- Parent --
    ------------
@@ -275,26 +376,9 @@ package body Modeler.Containment_Tree_Models is
    overriding function Parent
     (Self  : not null access constant Containment_Tree_Model;
      Child : Qt4.Model_Indices.Q_Model_Index)
-       return Qt4.Model_Indices.Q_Model_Index
-   is
-      Child_Node  : constant not null Node_Access := Self.To_Node (Child);
-      Parent_Node : Node_Access := Child_Node.Parent;
-
+       return Qt4.Model_Indices.Q_Model_Index is
    begin
-      if Parent_Node = null
-        or else Parent_Node.Parent = null
-      then
-         return Qt4.Model_Indices.Create;
-
-      else
-         return
-           Self.Create_Index
-            (0,
-             Qt4.Q_Integer
-              (Parent_Node.Parent.Children.Find_Index (Parent_Node)),
-             Node_Conversions.To_Address
-              (Node_Conversions.Object_Pointer (Parent_Node)));
-      end if;
+      return Self.To_Index (Self.To_Node (Child).Parent);
    end Parent;
 
    ---------------
@@ -324,9 +408,31 @@ package body Modeler.Containment_Tree_Models is
 
       else
          return
-           Node_Access
-            (Node_Conversions.To_Pointer (Index.Internal_Pointer));
+           Node_Access (Node_Conversions.To_Pointer (Index.Internal_Pointer));
       end if;
    end To_Node;
+
+   --------------
+   -- To_Index --
+   --------------
+
+   function To_Index
+    (Self : not null access constant Containment_Tree_Model'Class;
+     Node : Node_Access) return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      if Node = null
+        or else Node.Parent = null
+      then
+         return Qt4.Model_Indices.Create;
+
+      else
+         return
+           Self.Create_Index
+            (Qt4.Q_Integer (Node.Parent.Children.Find_Index (Node)),
+             0,
+             Node_Conversions.To_Address
+              (Node_Conversions.Object_Pointer (Node)));
+      end if;
+   end To_Index;
 
 end Modeler.Containment_Tree_Models;
