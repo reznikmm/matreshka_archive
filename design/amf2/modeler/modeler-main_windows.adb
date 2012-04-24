@@ -42,12 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Qt4.Actions.Constructors;
+with Qt4.File_Dialogs;
 with Qt4.Mdi_Areas.Constructors;
 with Qt4.Menu_Bars.Constructors;
 --with Qt4.Status_Bars.Constructors;
 
 with AMF.Facility;
 with AMF.URI_Stores;
+with XMI.Reader;
 
 with Modeler.Containment_Tree_Docks;
 
@@ -89,6 +91,7 @@ package body Modeler.Main_Windows is
          Containment_Dock :
            Modeler.Containment_Tree_Docks.Containment_Tree_Dock_Access;
          File_New_Action  : Qt4.Actions.Q_Action_Access;
+         File_Open_Action : Qt4.Actions.Q_Action_Access;
 
       begin
          Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
@@ -99,12 +102,17 @@ package body Modeler.Main_Windows is
          File_New_Action.Connect
           (Qt4.Signal ("triggered()"), Self, Qt4.Slot ("fileNew()"));
 
+         File_Open_Action := Qt4.Actions.Constructors.Create (+"Open", Self);
+         File_Open_Action.Connect
+          (Qt4.Signal ("triggered()"), Self, Qt4.Slot ("fileOpen()"));
+
          --  Create menu bar.
 
          Menu_Bar := Qt4.Menu_Bars.Constructors.Create (Self);
          Self.Set_Menu_Bar (Menu_Bar);
 
          Menu_Bar.Add_Action (File_New_Action);
+         Menu_Bar.Add_Action (File_Open_Action);
 
          --  Create MDI area.
 
@@ -136,5 +144,20 @@ package body Modeler.Main_Windows is
    begin
       Store := AMF.Facility.Create_URI_Store (+"file:///untitled.xmi");
    end File_New;
+
+   ---------------
+   -- File_Open --
+   ---------------
+
+   procedure File_Open (Self : not null access Main_Window'Class) is
+      Name  : constant Qt4.Strings.Q_String
+        := Qt4.File_Dialogs.Get_Open_File_Name (Self);
+      Store : AMF.URI_Stores.URI_Store_Access;
+
+   begin
+      if not Name.Is_Null then
+         Store := XMI.Reader.Read_File (+Name.To_UCS_4);
+      end if;
+   end File_Open;
 
 end Modeler.Main_Windows;

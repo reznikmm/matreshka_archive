@@ -53,6 +53,9 @@ package Modeler.Main_Windows is
    procedure File_New (Self : not null access Main_Window'Class);
    pragma Q_Slot (File_New);
 
+   procedure File_Open (Self : not null access Main_Window'Class);
+   pragma Q_Slot (File_Open);
+
    package Constructors is
 
       function Create return not null Main_Window_Access;
