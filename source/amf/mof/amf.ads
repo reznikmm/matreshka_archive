@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -188,6 +188,19 @@ package AMF is
             Value : Unlimited_Natural;
       end case;
    end record;
+
+   function "="
+    (Left  : Optional_Unlimited_Natural;
+     Right : Unlimited_Natural) return Boolean;
+   function "="
+    (Left  : Unlimited_Natural;
+     Right : Optional_Unlimited_Natural) return Boolean;
+   function "="
+    (Left  : Optional_Unlimited_Natural;
+     Right : Optional_Integer) return Boolean;
+   function "="
+    (Left  : Optional_Integer;
+     Right : Optional_Unlimited_Natural) return Boolean;
 
    type Optional_Real (Is_Empty : Boolean := True) is record
       case Is_Empty is

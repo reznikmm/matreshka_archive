@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -322,6 +322,58 @@ package body AMF is
    function "=" (Left : Integer; Right : Optional_Integer) return Boolean is
    begin
       return not Right.Is_Empty and then Left = Right.Value;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Optional_Unlimited_Natural;
+     Right : Unlimited_Natural) return Boolean is
+   begin
+      return not Left.Is_Empty and then Left.Value = Right;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Unlimited_Natural;
+     Right : Optional_Unlimited_Natural) return Boolean is
+   begin
+      return not Right.Is_Empty and then Left = Right.Value;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Optional_Unlimited_Natural;
+     Right : Optional_Integer) return Boolean is
+   begin
+      return
+       (Left.Is_Empty and Right.Is_Empty)
+          or (not Left.Is_Empty
+                and then not Right.Is_Empty
+                and then Left.Value = Right.Value);
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Optional_Integer;
+     Right : Optional_Unlimited_Natural) return Boolean is
+   begin
+      return
+       (Left.Is_Empty and Right.Is_Empty)
+          or (not Left.Is_Empty
+                and then not Right.Is_Empty
+                and then Left.Value = Right.Value);
    end "=";
 
    ---------
