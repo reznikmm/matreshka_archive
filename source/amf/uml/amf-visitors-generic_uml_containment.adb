@@ -41,68 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.UML.Comments.Collections;
-with AMF.UML.Enumeration_Literals.Collections;
-with AMF.UML.Packageable_Elements.Collections;
-with AMF.UML.Properties.Collections;
+with AMF.UML.Elements.Collections;
 
 package body AMF.Visitors.Generic_UML_Containment is
 
-   procedure Visit_Elements
-    (Self     : in out UML_Containment_Iterator;
-     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
-     Elements : AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-     Control  : in out Traverse_Control);
-
-   --------------------
-   -- Visit_Elements --
-   --------------------
-
-   procedure Visit_Elements
-    (Self     : in out UML_Containment_Iterator;
-     Visitor  : in out AMF.Visitors.Abstract_Visitor'Class;
-     Elements : AMF.UML.Comments.Collections.Set_Of_UML_Comment;
-     Control  : in out Traverse_Control) is
-   begin
-      --  Traversing elements of UML::Stereotype::ownedAttribute.
-
-      for J in 1 .. Elements.Length loop
-         Self.Visit_Element (Visitor, Elements.Element (J), Control);
-
-         case Control is
-            when Continue =>
-               null;
-
-            when Abandon_Children =>
-               Control := Continue;
-
-            when Abandon_Sibling =>
-               Control := Continue;
-
-               exit;
-
-            when Terminate_Immediately =>
-               exit;
-         end case;
-      end loop;
-   end Visit_Elements;
-
-   -------------------
-   -- Visit_Element --
-   -------------------
-
-   not overriding procedure Visit_Element
-    (Self    : in out UML_Containment_Iterator;
+   procedure Visit_Owned_Elements
+    (Self    : in out UML_Containment_Iterator'Class;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null access AMF.UML.Elements.UML_Element'Class;
-     Control : in out Traverse_Control) is
-   begin
-      AMF.Visitors.Visit
-       (Self,
-        Visitor,
-        AMF.Elements.Element_Access (Element),
-        Control);
-   end Visit_Element;
+     Control : in out Traverse_Control);
+   --  Visit members of ownedElement of the element.
 
    -----------------------
    -- Visit_Abstraction --
@@ -114,7 +62,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Abstractions.UML_Abstraction_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Abstraction;
 
    ------------------------------
@@ -127,7 +75,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Accept_Call_Action;
 
    -------------------------------
@@ -140,7 +88,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Accept_Event_Action;
 
    ------------------------------------------
@@ -153,7 +101,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Action_Execution_Specifications.UML_Action_Execution_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Action_Execution_Specification;
 
    ----------------------------
@@ -166,7 +114,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Action_Input_Pin;
 
    --------------------
@@ -179,7 +127,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Activities.UML_Activity_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Activity;
 
    -------------------------------
@@ -192,7 +140,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Activity_Final_Nodes.UML_Activity_Final_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Activity_Final_Node;
 
    -----------------------------------
@@ -205,7 +153,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Activity_Parameter_Node;
 
    ------------------------------
@@ -218,7 +166,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Activity_Partitions.UML_Activity_Partition_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Activity_Partition;
 
    -----------------
@@ -231,7 +179,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Actors.UML_Actor_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Actor;
 
    -----------------------------------------------
@@ -244,7 +192,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Add_Structural_Feature_Value_Action;
 
    -------------------------------------
@@ -257,7 +205,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Add_Variable_Value_Action;
 
    -----------------------------
@@ -270,7 +218,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Any_Receive_Event;
 
    --------------------
@@ -283,7 +231,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Artifacts.UML_Artifact_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Artifact;
 
    -----------------------
@@ -296,7 +244,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Associations.UML_Association_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Association;
 
    -----------------------------
@@ -309,7 +257,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Association_Classes.UML_Association_Class_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Association_Class;
 
    --------------------------------------------
@@ -322,7 +270,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Behavior_Execution_Specification;
 
    -----------------------------------
@@ -335,7 +283,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Broadcast_Signal_Action;
 
    --------------------------------
@@ -348,7 +296,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Call_Behavior_Action;
 
    ----------------------
@@ -361,7 +309,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Call_Events.UML_Call_Event_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Call_Event;
 
    ---------------------------------
@@ -374,7 +322,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Call_Operation_Action;
 
    -------------------------------
@@ -387,7 +335,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Central_Buffer_Node;
 
    ------------------------
@@ -400,7 +348,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Change_Events.UML_Change_Event_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Change_Event;
 
    -----------------
@@ -413,7 +361,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Classes.UML_Class_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Class;
 
    -----------------------------------------
@@ -426,7 +374,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Classifier_Template_Parameter;
 
    ------------------
@@ -439,7 +387,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Clauses.UML_Clause_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Clause;
 
    ------------------------------------
@@ -452,7 +400,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Clear_Association_Action;
 
    -------------------------------------------
@@ -465,7 +413,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Clear_Structural_Feature_Action;
 
    ---------------------------------
@@ -478,7 +426,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Clear_Variable_Action;
 
    -------------------------
@@ -491,7 +439,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Collaborations.UML_Collaboration_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Collaboration;
 
    -----------------------------
@@ -504,7 +452,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Collaboration_Use;
 
    -----------------------------
@@ -517,7 +465,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Combined_Fragment;
 
    -------------------
@@ -530,7 +478,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Comments.UML_Comment_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Comment;
 
    ------------------------------
@@ -543,7 +491,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Communication_Paths.UML_Communication_Path_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Communication_Path;
 
    ---------------------
@@ -556,7 +504,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Components.UML_Component_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Component;
 
    ---------------------------------
@@ -569,7 +517,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Component_Realizations.UML_Component_Realization_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Component_Realization;
 
    ----------------------------
@@ -582,7 +530,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Conditional_Node;
 
    --------------------------------------------------
@@ -595,7 +543,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Connectable_Element_Template_Parameter;
 
    --------------------------------------
@@ -608,7 +556,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Connection_Point_References.UML_Connection_Point_Reference_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Connection_Point_Reference;
 
    ---------------------
@@ -621,7 +569,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Connectors.UML_Connector_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Connector;
 
    -------------------------
@@ -634,7 +582,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Connector_Ends.UML_Connector_End_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Connector_End;
 
    ------------------------------------
@@ -647,7 +595,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Consider_Ignore_Fragment;
 
    ----------------------
@@ -660,7 +608,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Constraints.UML_Constraint_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Constraint;
 
    ------------------------
@@ -673,7 +621,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Continuations.UML_Continuation_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Continuation;
 
    ------------------------
@@ -686,7 +634,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Control_Flows.UML_Control_Flow_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Control_Flow;
 
    ------------------------------
@@ -699,7 +647,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Create_Link_Action;
 
    -------------------------------------
@@ -712,7 +660,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Create_Link_Object_Action;
 
    --------------------------------
@@ -725,7 +673,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Create_Object_Action;
 
    ---------------------------
@@ -738,7 +686,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Data_Store_Node;
 
    ---------------------
@@ -751,7 +699,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Data_Types.UML_Data_Type_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Data_Type;
 
    -------------------------
@@ -764,7 +712,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Decision_Nodes.UML_Decision_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Decision_Node;
 
    ----------------------
@@ -777,7 +725,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Dependencies.UML_Dependency_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Dependency;
 
    ----------------------
@@ -790,7 +738,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Deployments.UML_Deployment_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Deployment;
 
    ------------------------------------
@@ -803,7 +751,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Deployment_Specification;
 
    -------------------------------
@@ -816,7 +764,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Destroy_Link_Action;
 
    ---------------------------------
@@ -829,7 +777,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Destroy_Object_Action;
 
    ------------------------------------------------
@@ -842,7 +790,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Destruction_Occurrence_Specification;
 
    ------------------
@@ -855,7 +803,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Devices.UML_Device_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Device;
 
    --------------------
@@ -868,7 +816,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Durations.UML_Duration_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Duration;
 
    -------------------------------
@@ -881,7 +829,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Duration_Constraint;
 
    -----------------------------
@@ -894,7 +842,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Duration_Intervals.UML_Duration_Interval_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Duration_Interval;
 
    --------------------------------
@@ -907,7 +855,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Duration_Observations.UML_Duration_Observation_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Duration_Observation;
 
    --------------------------
@@ -920,7 +868,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Element_Imports.UML_Element_Import_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Element_Import;
 
    -----------------------
@@ -931,37 +879,9 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Enumerations.UML_Enumeration_Access;
-     Control : in out Traverse_Control)
-   is
-      Owned_Literals : constant
-        AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal
-          := Element.Get_Owned_Literal;
-
+     Control : in out Traverse_Control) is
    begin
-      for J in 1 .. Owned_Literals.Length loop
-         Self.Visit_Element (Visitor, Owned_Literals.Element (J), Control);
-
-         case Control is
-            when Continue =>
-               null;
-
-            when Abandon_Children =>
-               Control := Continue;
-
-            when Abandon_Sibling =>
-               Control := Continue;
-
-               exit;
-
-            when Terminate_Immediately =>
-               exit;
-         end case;
-      end loop;
-
-      Self.Visit_Data_Type
-       (Visitor,
-        AMF.UML.Data_Types.UML_Data_Type_Access (Element),
-        Control);
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Enumeration;
 
    -------------------------------
@@ -974,7 +894,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Enumeration_Literal;
 
    -----------------------------
@@ -987,7 +907,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Exception_Handlers.UML_Exception_Handler_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Exception_Handler;
 
    ---------------------------------
@@ -1000,7 +920,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Execution_Environments.UML_Execution_Environment_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Execution_Environment;
 
    ----------------------------------------------
@@ -1013,7 +933,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Execution_Occurrence_Specification;
 
    --------------------------
@@ -1026,7 +946,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Expansion_Node;
 
    ----------------------------
@@ -1039,7 +959,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Expansion_Regions.UML_Expansion_Region_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Expansion_Region;
 
    ----------------------
@@ -1052,7 +972,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Expressions.UML_Expression_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Expression;
 
    ------------------
@@ -1065,7 +985,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Extends.UML_Extend_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Extend;
 
    ---------------------
@@ -1078,10 +998,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Extensions.UML_Extension_Access;
      Control : in out Traverse_Control) is
    begin
-      --  Traverse element of UML::Extension::ownedEnd.
-
-      Self.Visit_Element
-       (Visitor, Element.Get_Owned_End.Element (1), Control);
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Extension;
 
    -------------------------
@@ -1094,7 +1011,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Extension_Ends.UML_Extension_End_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Extension_End;
 
    ---------------------------
@@ -1107,7 +1024,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Extension_Points.UML_Extension_Point_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Extension_Point;
 
    -----------------------
@@ -1120,7 +1037,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Final_States.UML_Final_State_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Final_State;
 
    ---------------------------
@@ -1133,7 +1050,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Flow_Final_Nodes.UML_Flow_Final_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Flow_Final_Node;
 
    ---------------------
@@ -1146,7 +1063,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Fork_Nodes.UML_Fork_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Fork_Node;
 
    -----------------------------
@@ -1159,7 +1076,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Function_Behaviors.UML_Function_Behavior_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Function_Behavior;
 
    ----------------
@@ -1172,7 +1089,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Gates.UML_Gate_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Gate;
 
    ----------------------------
@@ -1185,7 +1102,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.General_Orderings.UML_General_Ordering_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_General_Ordering;
 
    --------------------------
@@ -1198,7 +1115,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Generalizations.UML_Generalization_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Generalization;
 
    ------------------------------
@@ -1211,7 +1128,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Generalization_Sets.UML_Generalization_Set_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Generalization_Set;
 
    -----------------
@@ -1224,7 +1141,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Images.UML_Image_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Image;
 
    -------------------
@@ -1237,7 +1154,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Includes.UML_Include_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Include;
 
    ----------------------------
@@ -1250,7 +1167,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Information_Flows.UML_Information_Flow_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Information_Flow;
 
    ----------------------------
@@ -1263,7 +1180,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Information_Items.UML_Information_Item_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Information_Item;
 
    ------------------------
@@ -1276,7 +1193,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Initial_Nodes.UML_Initial_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Initial_Node;
 
    ---------------------
@@ -1289,7 +1206,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Input_Pins.UML_Input_Pin_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Input_Pin;
 
    ----------------------------------
@@ -1302,7 +1219,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Instance_Specifications.UML_Instance_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Instance_Specification;
 
    --------------------------
@@ -1315,7 +1232,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Instance_Values.UML_Instance_Value_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Instance_Value;
 
    -----------------------
@@ -1328,7 +1245,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interactions.UML_Interaction_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interaction;
 
    ----------------------------------
@@ -1341,7 +1258,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interaction_Constraint;
 
    -------------------------------
@@ -1354,7 +1271,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interaction_Operand;
 
    ---------------------------
@@ -1367,7 +1284,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interaction_Uses.UML_Interaction_Use_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interaction_Use;
 
    ---------------------
@@ -1380,7 +1297,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interfaces.UML_Interface_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interface;
 
    ---------------------------------
@@ -1393,7 +1310,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interface_Realizations.UML_Interface_Realization_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interface_Realization;
 
    -----------------------------------------
@@ -1406,7 +1323,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interruptible_Activity_Region;
 
    --------------------
@@ -1419,7 +1336,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Intervals.UML_Interval_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interval;
 
    -------------------------------
@@ -1432,7 +1349,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Interval_Constraint;
 
    ---------------------
@@ -1445,7 +1362,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Join_Nodes.UML_Join_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Join_Node;
 
    --------------------
@@ -1458,7 +1375,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Lifelines.UML_Lifeline_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Lifeline;
 
    ----------------------------------
@@ -1471,7 +1388,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Link_End_Creation_Datas.UML_Link_End_Creation_Data_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Link_End_Creation_Data;
 
    -------------------------
@@ -1484,7 +1401,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Link_End_Datas.UML_Link_End_Data_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Link_End_Data;
 
    -------------------------------------
@@ -1497,7 +1414,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Link_End_Destruction_Data;
 
    ---------------------------
@@ -1510,7 +1427,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_Boolean;
 
    ---------------------------
@@ -1523,7 +1440,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Integers.UML_Literal_Integer_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_Integer;
 
    ------------------------
@@ -1536,7 +1453,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Nulls.UML_Literal_Null_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_Null;
 
    ------------------------
@@ -1549,7 +1466,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Reals.UML_Literal_Real_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_Real;
 
    --------------------------
@@ -1562,7 +1479,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Strings.UML_Literal_String_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_String;
 
    -------------------------------------
@@ -1575,7 +1492,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Literal_Unlimited_Natural;
 
    ---------------------
@@ -1588,7 +1505,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Loop_Nodes.UML_Loop_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Loop_Node;
 
    -------------------------
@@ -1601,7 +1518,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Manifestations.UML_Manifestation_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Manifestation;
 
    ----------------------
@@ -1614,7 +1531,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Merge_Nodes.UML_Merge_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Merge_Node;
 
    -------------------
@@ -1627,7 +1544,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Messages.UML_Message_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Message;
 
    --------------------------------------------
@@ -1640,7 +1557,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Message_Occurrence_Specification;
 
    -----------------
@@ -1669,7 +1586,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Nodes.UML_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Node;
 
    -----------------------
@@ -1682,7 +1599,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Object_Flows.UML_Object_Flow_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Object_Flow;
 
    ------------------------------------
@@ -1695,7 +1612,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Occurrence_Specification;
 
    -------------------------
@@ -1708,7 +1625,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Opaque_Actions.UML_Opaque_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Opaque_Action;
 
    ---------------------------
@@ -1721,7 +1638,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Opaque_Behavior;
 
    -----------------------------
@@ -1734,7 +1651,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Opaque_Expression;
 
    ---------------------
@@ -1747,7 +1664,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Operations.UML_Operation_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Operation;
 
    ----------------------------------------
@@ -1760,7 +1677,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Operation_Template_Parameter;
 
    ----------------------
@@ -1773,26 +1690,29 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Output_Pins.UML_Output_Pin_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Output_Pin;
 
-   -------------------
-   -- Visit_Package --
-   -------------------
+   --------------------------
+   -- Visit_Owned_Elements --
+   --------------------------
 
-   overriding procedure Visit_Package
-    (Self    : in out UML_Containment_Iterator;
+   procedure Visit_Owned_Elements
+    (Self    : in out UML_Containment_Iterator'Class;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
-     Element : not null AMF.UML.Packages.UML_Package_Access;
+     Element : not null access AMF.UML.Elements.UML_Element'Class;
      Control : in out Traverse_Control)
    is
-      Packaged_Elements : constant
-        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-          := Element.Get_Packaged_Element;
+      Owned_Element : constant AMF.UML.Elements.Collections.Set_Of_UML_Element
+        := Element.Get_Owned_Element;
 
    begin
-      for J in 1 .. Packaged_Elements.Length loop
-         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
+      for J in 1 .. Owned_Element.Length loop
+         AMF.Visitors.Visit
+          (Self,
+           Visitor,
+           AMF.Elements.Element_Access (Owned_Element.Element (J)),
+           Control);
 
          case Control is
             when Continue =>
@@ -1810,6 +1730,19 @@ package body AMF.Visitors.Generic_UML_Containment is
                exit;
          end case;
       end loop;
+   end Visit_Owned_Elements;
+
+   -------------------
+   -- Visit_Package --
+   -------------------
+
+   overriding procedure Visit_Package
+    (Self    : in out UML_Containment_Iterator;
+     Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
+     Element : not null AMF.UML.Packages.UML_Package_Access;
+     Control : in out Traverse_Control) is
+   begin
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Package;
 
    --------------------------
@@ -1822,7 +1755,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Package_Imports.UML_Package_Import_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Package_Import;
 
    -------------------------
@@ -1835,7 +1768,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Package_Merges.UML_Package_Merge_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Package_Merge;
 
    ---------------------
@@ -1848,7 +1781,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Parameters.UML_Parameter_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Parameter;
 
    -------------------------
@@ -1861,7 +1794,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Parameter_Sets.UML_Parameter_Set_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Parameter_Set;
 
    ------------------------------
@@ -1874,7 +1807,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Part_Decomposition;
 
    ----------------
@@ -1887,7 +1820,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Ports.UML_Port_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Port;
 
    --------------------------
@@ -1900,7 +1833,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Primitive_Types.UML_Primitive_Type_Access;
      Control : in out Traverse_Control) is
    begin
-      Visit_Elements (Self, Visitor, Element.Get_Owned_Comment, Control);
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Primitive_Type;
 
    -------------------
@@ -1911,32 +1844,9 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Profiles.UML_Profile_Access;
-     Control : in out Traverse_Control)
-   is
-      Packaged_Elements : constant
-        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-          := Element.Get_Packaged_Element;
-
+     Control : in out Traverse_Control) is
    begin
-      for J in 1 .. Packaged_Elements.Length loop
-         Self.Visit_Element (Visitor, Packaged_Elements.Element (J), Control);
-
-         case Control is
-            when Continue =>
-               null;
-
-            when Abandon_Children =>
-               Control := Continue;
-
-            when Abandon_Sibling =>
-               Control := Continue;
-
-               exit;
-
-            when Terminate_Immediately =>
-               exit;
-         end case;
-      end loop;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Profile;
 
    -------------------------------
@@ -1949,7 +1859,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Profile_Applications.UML_Profile_Application_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Profile_Application;
 
    --------------------
@@ -1962,7 +1872,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Properties.UML_Property_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Property;
 
    --------------------------------
@@ -1975,7 +1885,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Protocol_Conformances.UML_Protocol_Conformance_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Protocol_Conformance;
 
    ----------------------------------
@@ -1988,7 +1898,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Protocol_State_Machine;
 
    -------------------------------
@@ -2001,7 +1911,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Protocol_Transition;
 
    -----------------------
@@ -2014,7 +1924,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Pseudostates.UML_Pseudostate_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Pseudostate;
 
    ---------------------------
@@ -2027,7 +1937,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Qualifier_Values.UML_Qualifier_Value_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Qualifier_Value;
 
    ----------------------------------
@@ -2040,7 +1950,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Raise_Exception_Action;
 
    ------------------------------
@@ -2053,7 +1963,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Extent_Action;
 
    --------------------------------------------
@@ -2066,7 +1976,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Is_Classified_Object_Action;
 
    ----------------------------
@@ -2079,7 +1989,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Link_Action;
 
    ---------------------------------------
@@ -2092,7 +2002,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Link_Object_End_Action;
 
    -------------------------------------------------
@@ -2105,7 +2015,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Link_Object_End_Qualifier_Action;
 
    ----------------------------
@@ -2118,7 +2028,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Self_Action;
 
    ------------------------------------------
@@ -2131,7 +2041,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Structural_Feature_Action;
 
    --------------------------------
@@ -2144,7 +2054,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Read_Variable_Action;
 
    -----------------------
@@ -2157,7 +2067,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Realizations.UML_Realization_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Realization;
 
    ---------------------
@@ -2170,7 +2080,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Receptions.UML_Reception_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Reception;
 
    ------------------------------------
@@ -2183,7 +2093,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Reclassify_Object_Action;
 
    ------------------------------------------
@@ -2196,7 +2106,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Redefinable_Template_Signature;
 
    -------------------------
@@ -2209,7 +2119,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Reduce_Actions.UML_Reduce_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Reduce_Action;
 
    ------------------
@@ -2222,7 +2132,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Regions.UML_Region_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Region;
 
    --------------------------------------------------
@@ -2235,7 +2145,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Remove_Structural_Feature_Value_Action;
 
    ----------------------------------------
@@ -2248,7 +2158,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Remove_Variable_Value_Action;
 
    ------------------------
@@ -2261,7 +2171,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Reply_Actions.UML_Reply_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Reply_Action;
 
    ------------------------------
@@ -2274,7 +2184,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Send_Object_Action;
 
    ------------------------------
@@ -2287,7 +2197,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Send_Signal_Action;
 
    -------------------------
@@ -2300,7 +2210,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Sequence_Node;
 
    ------------------
@@ -2313,7 +2223,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Signals.UML_Signal_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Signal;
 
    ------------------------
@@ -2326,7 +2236,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Signal_Events.UML_Signal_Event_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Signal_Event;
 
    ----------------
@@ -2339,7 +2249,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Slots.UML_Slot_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Slot;
 
    --------------------------------------------
@@ -2352,7 +2262,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Start_Classifier_Behavior_Action;
 
    ----------------------------------------
@@ -2365,7 +2275,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Start_Object_Behavior_Action;
 
    -----------------
@@ -2378,7 +2288,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.States.UML_State_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_State;
 
    ---------------------------
@@ -2391,7 +2301,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.State_Invariants.UML_State_Invariant_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_State_Invariant;
 
    -------------------------
@@ -2404,7 +2314,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.State_Machines.UML_State_Machine_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_State_Machine;
 
    ----------------------
@@ -2415,34 +2325,9 @@ package body AMF.Visitors.Generic_UML_Containment is
     (Self    : in out UML_Containment_Iterator;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;
      Element : not null AMF.UML.Stereotypes.UML_Stereotype_Access;
-     Control : in out Traverse_Control)
-   is
-      Owned_Attributes : constant
-        AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
-          := Element.Get_Owned_Attribute;
-
+     Control : in out Traverse_Control) is
    begin
-      --  Traversing elements of UML::Stereotype::ownedAttribute.
-
-      for J in 1 .. Owned_Attributes.Length loop
-         Self.Visit_Element (Visitor, Owned_Attributes.Element (J), Control);
-
-         case Control is
-            when Continue =>
-               null;
-
-            when Abandon_Children =>
-               Control := Continue;
-
-            when Abandon_Sibling =>
-               Control := Continue;
-
-               exit;
-
-            when Terminate_Immediately =>
-               exit;
-         end case;
-      end loop;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Stereotype;
 
    -----------------------------
@@ -2455,7 +2340,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.String_Expressions.UML_String_Expression_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_String_Expression;
 
    ------------------------------------
@@ -2468,7 +2353,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Structured_Activity_Node;
 
    ------------------------
@@ -2481,7 +2366,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Substitutions.UML_Substitution_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Substitution;
 
    ----------------------------
@@ -2494,7 +2379,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Template_Bindings.UML_Template_Binding_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Template_Binding;
 
    ------------------------------
@@ -2507,7 +2392,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Template_Parameter;
 
    -------------------------------------------
@@ -2520,7 +2405,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Template_Parameter_Substitutions.UML_Template_Parameter_Substitution_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Template_Parameter_Substitution;
 
    ------------------------------
@@ -2533,7 +2418,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Template_Signatures.UML_Template_Signature_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Template_Signature;
 
    --------------------------------
@@ -2546,7 +2431,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Test_Identity_Action;
 
    ---------------------------
@@ -2559,7 +2444,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Time_Constraints.UML_Time_Constraint_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Time_Constraint;
 
    ----------------------
@@ -2572,7 +2457,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Time_Events.UML_Time_Event_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Time_Event;
 
    ---------------------------
@@ -2585,7 +2470,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Time_Expressions.UML_Time_Expression_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Time_Expression;
 
    -------------------------
@@ -2598,7 +2483,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Time_Intervals.UML_Time_Interval_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Time_Interval;
 
    ----------------------------
@@ -2611,7 +2496,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Time_Observations.UML_Time_Observation_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Time_Observation;
 
    ----------------------
@@ -2624,7 +2509,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Transitions.UML_Transition_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Transition;
 
    -------------------
@@ -2637,7 +2522,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Triggers.UML_Trigger_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Trigger;
 
    -----------------------------
@@ -2650,7 +2535,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Unmarshall_Action;
 
    -----------------
@@ -2663,7 +2548,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Usages.UML_Usage_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Usage;
 
    --------------------
@@ -2676,7 +2561,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Use_Cases.UML_Use_Case_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Use_Case;
 
    ---------------------
@@ -2689,7 +2574,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Value_Pins.UML_Value_Pin_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Value_Pin;
 
    --------------------------------------
@@ -2702,7 +2587,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Value_Specification_Action;
 
    --------------------
@@ -2715,7 +2600,7 @@ package body AMF.Visitors.Generic_UML_Containment is
      Element : not null AMF.UML.Variables.UML_Variable_Access;
      Control : in out Traverse_Control) is
    begin
-      null;
+      Self.Visit_Owned_Elements (Visitor, Element, Control);
    end Visit_Variable;
 
 end AMF.Visitors.Generic_UML_Containment;
