@@ -321,20 +321,6 @@ package AMF.Internals.UML_Enumerations is
    --
    --  Indicates the dependencies that reference the client.
 
-   overriding function Get_Name
-    (Self : not null access constant UML_Enumeration_Proxy)
-       return AMF.Optional_String;
-   --  Getter of NamedElement::name.
-   --
-   --  The name of the NamedElement.
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Enumeration_Proxy;
-     To   : AMF.Optional_String);
-   --  Setter of NamedElement::name.
-   --
-   --  The name of the NamedElement.
-
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Enumeration_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;

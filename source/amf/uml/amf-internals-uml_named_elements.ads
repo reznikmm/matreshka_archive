@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,13 @@ package AMF.Internals.UML_Named_Elements is
    type UML_Named_Element_Proxy is
      abstract limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Named_Elements.UML_Named_Element with null record;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return AMF.Optional_String;
+   --  Getter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Named_Element_Proxy)

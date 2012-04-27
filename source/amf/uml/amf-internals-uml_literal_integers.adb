@@ -120,30 +120,6 @@ package body AMF.Internals.UML_Literal_Integers is
              (Self.Element)));
    end Get_Client_Dependency;
 
-   --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.Optional_String is
-   begin
-      declare
-         use type Matreshka.Internals.Strings.Shared_String_Access;
-
-         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Element);
-
-      begin
-         if Aux = null then
-            return (Is_Empty => True);
-
-         else
-            return (False, League.Strings.Internals.Create (Aux));
-         end if;
-      end;
-   end Get_Name;
-
    -------------------------
    -- Get_Name_Expression --
    -------------------------
@@ -293,25 +269,6 @@ package body AMF.Internals.UML_Literal_Integers is
    begin
       return (False, UML_Literal_Integer_Proxy'Class (Self.all).Get_Value);
    end Integer_Value;
-
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.Optional_String) is
-   begin
-      if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Element, null);
-
-      else
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Element,
-           League.Strings.Internals.Internal (To.Value));
-      end if;
-   end Set_Name;
 
    -------------------------
    -- Set_Name_Expression --

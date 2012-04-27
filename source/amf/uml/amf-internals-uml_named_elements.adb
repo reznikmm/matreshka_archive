@@ -42,10 +42,36 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Strings;
 
 with AMF.Internals.Tables.UML_Attributes;
 
 package body AMF.Internals.UML_Named_Elements is
+
+   --------------
+   -- Get_Name --
+   --------------
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return AMF.Optional_String is
+   begin
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name
+               (Self.Element);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
+   end Get_Name;
 
    --------------------
    -- Get_Visibility --
@@ -91,7 +117,8 @@ package body AMF.Internals.UML_Named_Elements is
      To   : AMF.Optional_String) is
    begin
       if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name (Self.Element, null);
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Element, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
