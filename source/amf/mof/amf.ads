@@ -190,14 +190,18 @@ package AMF is
    end record;
 
    function "="
+    (Left : Optional_Unlimited_Natural; Right : Integer) return Boolean;
+   function "="
     (Left  : Optional_Unlimited_Natural;
      Right : Unlimited_Natural) return Boolean;
    function "="
-    (Left  : Unlimited_Natural;
-     Right : Optional_Unlimited_Natural) return Boolean;
-   function "="
     (Left  : Optional_Unlimited_Natural;
      Right : Optional_Integer) return Boolean;
+   function "="
+    (Left : Integer; Right : Optional_Unlimited_Natural) return Boolean;
+   function "="
+    (Left  : Unlimited_Natural;
+     Right : Optional_Unlimited_Natural) return Boolean;
    function "="
     (Left  : Optional_Integer;
      Right : Optional_Unlimited_Natural) return Boolean;
