@@ -87,6 +87,33 @@ package body AMF.Internals.UML_Operations is
    end Leave_Element;
 
    -------------------
+   -- Return_Result --
+   -------------------
+
+   overriding function Return_Result
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter
+   is
+      use type AMF.UML.UML_Parameter_Direction_Kind;
+
+      Parameters    : constant
+        AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter
+          := Self.Get_Owned_Parameter;
+      The_Parameter : AMF.UML.Parameters.UML_Parameter_Access;
+
+   begin
+      return Result : AMF.UML.Parameters.Collections.Set_Of_UML_Parameter do
+         for J in 1 .. Parameters.Length loop
+            The_Parameter := Parameters.Element (J);
+
+            if The_Parameter.Get_Direction = AMF.UML.Return_Parameter then
+               Result.Add (The_Parameter);
+            end if;
+         end loop;
+      end return;
+   end Return_Result;
+
+   -------------------
    -- Visit_Element --
    -------------------
 
@@ -966,20 +993,6 @@ package body AMF.Internals.UML_Operations is
       raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Lower";
       return Lower (Self);
    end Lower;
-
-   -------------------
-   -- Return_Result --
-   -------------------
-
-   overriding function Return_Result
-    (Self : not null access constant UML_Operation_Proxy)
-       return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Return_Result unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Return_Result";
-      return Return_Result (Self);
-   end Return_Result;
 
    -----------
    -- Types --
