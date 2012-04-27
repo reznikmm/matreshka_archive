@@ -869,16 +869,64 @@ package body League.Strings is
 
    procedure Prepend
     (Self : in out Universal_String'Class;
-     Item : Wide_Wide_Character)
+     Item : Universal_String'Class)
    is
-      Aux : constant Universal_String := Wide_Wide_String'(1 => Item) & Self;
+      P : constant Utf16_String_Index := Self.Data.Unused;
 
    begin
-      --  XXX Inefficient implementation.
+      Prepend (Self.Data, Item.Data);
+      Emit_Changed (Self, 0, Utf16_String_Index'Last, Self.Data.Unused - P);
+   end Prepend;
 
-      Dereference (Self.Data);
-      Reference (Aux.Data);
-      Self.Data := Aux.Data;
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : League.Characters.Universal_Character'Class)
+   is
+      P : constant Utf16_String_Index := Self.Data.Unused;
+      C : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Item);
+
+   begin
+      if not Is_Valid (C) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      Prepend (Self.Data, C);
+      Emit_Changed (Self, 0, Utf16_String_Index'Last, Self.Data.Unused - P);
+   end Prepend;
+
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String) is
+   begin
+      Self.Prepend (To_Universal_String (Item));
+   end Prepend;
+
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character)
+   is
+      P : constant Utf16_String_Index := Self.Data.Unused;
+
+   begin
+      if not Is_Valid (Wide_Wide_Character'Pos (Item)) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      Prepend (Self.Data, Wide_Wide_Character'Pos (Item));
+      Emit_Changed (Self, 0, Utf16_String_Index'Last, Self.Data.Unused - P);
    end Prepend;
 
    ----------

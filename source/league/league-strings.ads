@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -152,34 +152,30 @@ package League.Strings is
    procedure Append
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class);
-
    procedure Append
     (Self : in out Universal_String'Class;
      Item : League.Characters.Universal_Character'Class);
-
    procedure Append
     (Self : in out Universal_String'Class;
      Item : Wide_Wide_String);
-
    procedure Append
     (Self : in out Universal_String'Class;
      Item : Wide_Wide_Character);
-
---   procedure Prepend
---    (Self : in out Universal_String'Class;
---     Item : Universal_String'Class);
---
---   procedure Prepend
---    (Self : in out Universal_String'Class;
---     Item : Universal_Character'Class);
---
---   procedure Prepend
---    (Self : in out Universal_String'Class;
---     Item : Wide_Wide_String);
+   --  Appends the character of the string onto the end of the string.
 
    procedure Prepend
     (Self : in out Universal_String'Class;
+     Item : Universal_String'Class);
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : League.Characters.Universal_Character'Class);
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String);
+   procedure Prepend
+    (Self : in out Universal_String'Class;
      Item : Wide_Wide_Character);
+   --  Prepends the character or the string to the beginning of the string.
 
 --   procedure Replace
 --    (Self  : in out Universal_String'Class;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,16 @@ package Matreshka.Internals.Strings.Operations is
     (Self : in out Shared_String_Access;
      Item : Shared_String_Access);
    --  Appends data from to Item to the string, reallocate string when needed.
+
+   procedure Prepend
+    (Target : in out Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point);
+   --  Prepends character to the string, reallocate memory if needed.
+
+   procedure Prepend
+    (Target : in out Shared_String_Access;
+     Item   : Shared_String_Access);
+   --  Prepends data from to Item to the string, reallocate string when needed.
 
    procedure Copy_Slice
     (Self   : in out Shared_String_Access;

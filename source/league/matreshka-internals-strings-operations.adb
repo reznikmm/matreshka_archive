@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -193,6 +193,119 @@ package body Matreshka.Internals.Strings.Operations is
          String_Handler.Fill_Null_Terminator (Self);
       end if;
    end Copy_Slice;
+
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Target : in out Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Assert (Target /= null);
+      pragma Suppress (Access_Check);
+      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
+      --  by convention it is always not-null, thus access checks is not
+      --  needed at all.
+
+      Source   : not null Shared_String_Access := Target;
+      Position : Utf16_String_Index := 0;
+      Offset   : Utf16_String_Index;
+
+   begin
+      --  Assigning of the "default" value to the variable and use of simple
+      --  operation in if statement helps to compiler to use conditional move
+      --  instruction instead of branch instruction.
+
+      Offset := 1;
+
+      if Code > 16#FFFF# then
+         Offset := 2;
+      end if;
+
+      if not Can_Be_Reused (Source, Source.Unused + Offset) then
+         --  Allocate new shared string when shared source string can't be
+         --  reused.
+
+         Target := Allocate (Source.Unused + Offset);
+      end if;
+
+      --  Copy source data before store prepended character because source
+      --  string can be rewritten overwise.
+
+      Target.Value (Offset .. Offset + Source.Unused - 1) :=
+        Source.Value (0 .. Source.Unused - 1);
+      Unchecked_Store (Target.Value, Position, Code);
+      Target.Unused := Source.Unused + Offset;
+      Target.Length := Source.Length + 1;
+      Free (Target.Index_Map);
+      String_Handler.Fill_Null_Terminator (Target);
+
+      if Target /= Source then
+         --  Release shared source string when new shared string was allocated
+         --  for target.
+
+         Dereference (Source);
+      end if;
+   end Prepend;
+
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Target : in out Shared_String_Access;
+     Item   : Shared_String_Access)
+   is
+      pragma Assert (Target /= null);
+      pragma Suppress (Access_Check);
+      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
+      --  by convention it is always not-null, thus access checks is not
+      --  needed at all.
+
+      Source : not null Shared_String_Access := Target;
+      Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
+
+   begin
+      if Item.Unused = 0 then
+         --  Prepended string is empty, nothing to be done.
+
+         null;
+
+      elsif Source.Unused = 0 then
+         --  Source string is empty, share data of prepended string.
+
+         Dereference (Target);
+         Reference (Item);
+         Target := Item;
+
+      else
+         if not Can_Be_Reused (Source, Size) then
+            --  Allocate new shared segment when source string can't be reused.
+
+            Target := Allocate (Size);
+         end if;
+
+         --  Copy data starting from the source string, because it can be
+         --  overwritten otherwise.
+
+         Target.Value (Item.Unused .. Item.Unused + Source.Unused - 1) :=
+           Source.Value (0 .. Source.Unused - 1);
+         Target.Value (0 .. Item.Unused - 1) :=
+           Item.Value (0 .. Item.Unused - 1);
+         Target.Unused := Size;
+         Target.Length := Source.Length + Item.Length;
+         Free (Target.Index_Map);
+         String_Handler.Fill_Null_Terminator (Target);
+
+         if Target /= Source then
+            --  Release shared source string when new shared string was
+            --  allocated for target.
+
+            Dereference (Source);
+         end if;
+      end if;
+   end Prepend;
 
    -------------
    -- Replace --
