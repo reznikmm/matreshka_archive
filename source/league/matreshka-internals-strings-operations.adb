@@ -213,39 +213,53 @@ package body Matreshka.Internals.Strings.Operations is
       Offset   : Utf16_String_Index;
 
    begin
-      --  Assigning of the "default" value to the variable and use of simple
-      --  operation in if statement helps to compiler to use conditional move
-      --  instruction instead of branch instruction.
+      if Source.Unused = 0 then
+         --  Source string is empty, allocate new shared string and save given
+         --  character into it. Length of the allocated shared string for any
+         --  one character is same on almost all platforms, so shared string is
+         --  allocated for longest possible character.
 
-      Offset := 1;
+         Target := Allocate (2);
+         Target.Unused := 0;
+         Target.Length := 1;
+         Unchecked_Store (Target.Value, Target.Unused, Code);
+         String_Handler.Fill_Null_Terminator (Target);
 
-      if Code > 16#FFFF# then
-         Offset := 2;
-      end if;
+      else
+         --  Assigning of the "default" value to the variable and use of simple
+         --  operation in if statement helps to compiler to use conditional
+         --  move instruction instead of branch instruction.
 
-      if not Can_Be_Reused (Source, Source.Unused + Offset) then
-         --  Allocate new shared string when shared source string can't be
-         --  reused.
+         Offset := 1;
 
-         Target := Allocate (Source.Unused + Offset);
-      end if;
+         if Code > 16#FFFF# then
+            Offset := 2;
+         end if;
 
-      --  Copy source data before store prepended character because source
-      --  string can be rewritten overwise.
+         if not Can_Be_Reused (Source, Source.Unused + Offset) then
+            --  Allocate new shared string when shared source string can't be
+            --  reused.
 
-      Target.Value (Offset .. Offset + Source.Unused - 1) :=
-        Source.Value (0 .. Source.Unused - 1);
-      Unchecked_Store (Target.Value, Position, Code);
-      Target.Unused := Source.Unused + Offset;
-      Target.Length := Source.Length + 1;
-      Free (Target.Index_Map);
-      String_Handler.Fill_Null_Terminator (Target);
+            Target := Allocate (Source.Unused + Offset);
+         end if;
 
-      if Target /= Source then
-         --  Release shared source string when new shared string was allocated
-         --  for target.
+         --  Copy source data before store prepended character because source
+         --  string can be rewritten overwise.
 
-         Dereference (Source);
+         Target.Value (Offset .. Offset + Source.Unused - 1) :=
+           Source.Value (0 .. Source.Unused - 1);
+         Unchecked_Store (Target.Value, Position, Code);
+         Target.Unused := Source.Unused + Offset;
+         Target.Length := Source.Length + 1;
+         Free (Target.Index_Map);
+         String_Handler.Fill_Null_Terminator (Target);
+
+         if Target /= Source then
+            --  Release shared source string when new shared string was
+            --  allocated for target.
+
+            Dereference (Source);
+         end if;
       end if;
    end Prepend;
 
