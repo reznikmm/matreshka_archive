@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This subprogram incorporates test for known problems of Universal_String
+--  This test incorporates tests for known problems of Universal_String
 --  manipulation subprograms.
+------------------------------------------------------------------------------
 with League.Application;
 with League.String_Vectors;
 with League.Strings;
@@ -50,6 +51,27 @@ with League.Strings;
 procedure String_Operations_Test is
    use League.String_Vectors;
    use League.Strings;
+
+   procedure Test_TN_219;
+
+   --------------
+   -- Test_219 --
+   --------------
+
+   procedure Test_TN_219 is
+      --  Initial implementation of prepend character operation crash with
+      --  internal exception when source string is empty.
+
+      S : Universal_String;
+      E : Universal_String := To_Universal_String (" ");
+
+   begin
+      S.Prepend (' ');
+
+      if S /= E then
+         raise Program_Error;
+      end if;
+   end Test_TN_219;
 
 begin
    --  Initial implementation of concatenation of character with empty string
@@ -180,4 +202,6 @@ begin
          raise Program_Error;
       end if;
    end;
+
+   Test_TN_219;
 end String_Operations_Test;
