@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,29 +44,32 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.MOF_Metamodel is
+package AMF.Internals.Tables.MOF_Metamodel.Objects is
 
-   pragma Preelaborate;
-
-   function MM_MOF_MOF return AMF.Internals.CMOF_Element;
-
-
-   function MC_MOF_Tag return AMF.Internals.CMOF_Element;
-
-   function MP_MOF_Tag_Element return AMF.Internals.CMOF_Element;
-   function MP_MOF_Tag_Name return AMF.Internals.CMOF_Element;
-   function MP_MOF_Tag_Tag_Owner return AMF.Internals.CMOF_Element;
-   function MP_MOF_Tag_Value return AMF.Internals.CMOF_Element;
-
-   function MA_MOF_Element_Element_Tag return AMF.Internals.CMOF_Element;
-   function MA_MOF_Element_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element;
-
-   function MB_MOF return AMF.Internals.AMF_Element;
-
-   function ML_MOF return AMF.Internals.AMF_Element;
+   procedure Initialize;
 
 private
 
-   Base : AMF.Internals.CMOF_Element := 0;
+   procedure Initialize_1 (Extent : AMF.Internals.AMF_Extent);
 
-end AMF.Internals.Tables.MOF_Metamodel;
+   procedure Initialize_2 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_3 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_4 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_5 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_6 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_7 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_8 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_9 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_10 (Extent : AMF.Internals.AMF_Extent);
+
+   procedure Initialize_11 (Extent : AMF.Internals.AMF_Extent);
+
+end AMF.Internals.Tables.MOF_Metamodel.Objects;
