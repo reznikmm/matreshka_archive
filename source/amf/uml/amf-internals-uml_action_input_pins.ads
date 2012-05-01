@@ -390,15 +390,6 @@ package AMF.Internals.UML_Action_Input_Pins is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Action_Input_Pin_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Compatible_With
     (Self : not null access constant UML_Action_Input_Pin_Proxy;
      Other : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)

@@ -218,15 +218,6 @@ package AMF.Internals.UML_Interaction_Constraints is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Interaction_Constraint_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Interaction_Constraint_Proxy;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)

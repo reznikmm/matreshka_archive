@@ -270,15 +270,6 @@ package AMF.Internals.UML_Fork_Nodes is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Fork_Node_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Fork_Node_Proxy;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;

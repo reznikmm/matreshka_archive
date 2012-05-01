@@ -454,20 +454,6 @@ package body AMF.Internals.UML_Interaction_Operands is
       return Namespace (Self);
    end Namespace;
 
-   --------------------
-   -- Qualified_Name --
-   --------------------
-
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Interaction_Operand_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Interaction_Operand_Proxy.Qualified_Name";
-      return Qualified_Name (Self);
-   end Qualified_Name;
-
    ------------------------
    -- Exclude_Collisions --
    ------------------------

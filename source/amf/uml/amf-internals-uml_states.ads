@@ -520,15 +520,6 @@ package AMF.Internals.UML_States is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_State_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Exclude_Collisions
     (Self : not null access constant UML_State_Proxy;
      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)

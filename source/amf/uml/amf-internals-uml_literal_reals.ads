@@ -215,15 +215,6 @@ package AMF.Internals.UML_Literal_Reals is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Literal_Real_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Is_Template_Parameter
     (Self : not null access constant UML_Literal_Real_Proxy)
        return Boolean;

@@ -419,20 +419,6 @@ package body AMF.Internals.UML_Literal_Strings is
       return Namespace (Self);
    end Namespace;
 
-   --------------------
-   -- Qualified_Name --
-   --------------------
-
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Literal_String_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_String_Proxy.Qualified_Name";
-      return Qualified_Name (Self);
-   end Qualified_Name;
-
    ---------------------------
    -- Is_Template_Parameter --
    ---------------------------

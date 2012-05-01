@@ -647,15 +647,6 @@ package AMF.Internals.UML_Properties is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Property_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Is_Template_Parameter
     (Self : not null access constant UML_Property_Proxy)
        return Boolean;

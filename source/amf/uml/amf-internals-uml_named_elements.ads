@@ -74,6 +74,15 @@ package AMF.Internals.UML_Named_Elements is
    --  Determines where the NamedElement appears within different Namespaces
    --  within the overall model, and its accessibility.
 
+   function Qualified_Name
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return League.Strings.Universal_String;
+   --  Operation NamedElement::qualifiedName.
+   --
+   --  When there is a name, and all of the containing namespaces have a name,
+   --  the qualified name is constructed from the names of the containing
+   --  namespaces.
+
    overriding function Separator
     (Self : not null access constant UML_Named_Element_Proxy)
        return League.Strings.Universal_String;

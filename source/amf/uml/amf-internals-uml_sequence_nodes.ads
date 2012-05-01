@@ -526,15 +526,6 @@ package AMF.Internals.UML_Sequence_Nodes is
    --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
-   overriding function Qualified_Name
-    (Self : not null access constant UML_Sequence_Node_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::qualifiedName.
-   --
-   --  When there is a name, and all of the containing namespaces have a name,
-   --  the qualified name is constructed from the names of the containing
-   --  namespaces.
-
    overriding function Context
     (Self : not null access constant UML_Sequence_Node_Proxy)
        return AMF.UML.Classifiers.UML_Classifier_Access;
