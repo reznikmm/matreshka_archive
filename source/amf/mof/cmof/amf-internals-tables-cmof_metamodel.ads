@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.CMOF_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_CMOF_CMOF return AMF.Internals.CMOF_Element;
 
    function MC_CMOF_Boolean return AMF.Internals.CMOF_Element;
@@ -290,8 +292,8 @@ package AMF.Internals.Tables.CMOF_Metamodel is
 
    function ML_CMOF return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.CMOF_Metamodel;
