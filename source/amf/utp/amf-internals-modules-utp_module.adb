@@ -44,7 +44,9 @@
 with AMF.Internals.Factories.Utp_Factories;
 with AMF.Internals.Factories.Utp_Module_Factory;
 with AMF.Internals.Tables.Utp_Element_Table;
-with AMF.Internals.Tables.Utp_Metamodel;
+with AMF.Internals.Tables.Utp_Metamodel.Links;
+with AMF.Internals.Tables.Utp_Metamodel.Objects;
+with AMF.Internals.Tables.Utp_Metamodel.Properties;
 
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
@@ -67,8 +69,9 @@ begin
 
    --  Initialize metamodels.
 
-   AMF.Internals.Tables.Utp_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.Utp_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.Utp_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.Utp_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.Utp_Metamodel.Links.Initialize;
 
    --  Initialize element table of Utp metamodel.
 
