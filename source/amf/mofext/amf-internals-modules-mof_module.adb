@@ -44,7 +44,9 @@
 with AMF.Internals.Factories.MOF_Factories;
 with AMF.Internals.Factories.MOF_Module_Factory;
 with AMF.Internals.Tables.MOF_Element_Table;
-with AMF.Internals.Tables.MOF_Metamodel;
+with AMF.Internals.Tables.MOF_Metamodel.Links;
+with AMF.Internals.Tables.MOF_Metamodel.Objects;
+with AMF.Internals.Tables.MOF_Metamodel.Properties;
 
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
@@ -67,8 +69,9 @@ begin
 
    --  Initialize metamodels.
 
-   AMF.Internals.Tables.MOF_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.MOF_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.MOF_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.MOF_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.MOF_Metamodel.Links.Initialize;
 
    --  Initialize element table of MOF metamodel.
 
