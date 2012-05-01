@@ -44,7 +44,9 @@
 with AMF.Internals.Factories.CMOF_Factories;
 with AMF.Internals.Factories.CMOF_Module_Factory;
 with AMF.Internals.Tables.CMOF_Element_Table;
-with AMF.Internals.Tables.CMOF_Metamodel;
+with AMF.Internals.Tables.CMOF_Metamodel.Objects;
+with AMF.Internals.Tables.CMOF_Metamodel.Properties;
+with AMF.Internals.Tables.CMOF_Metamodel.Links;
 
 package body AMF.Internals.Modules.CMOF_Module is
 
@@ -64,8 +66,9 @@ begin
 
    --  Initialize metamodel.
 
-   AMF.Internals.Tables.CMOF_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.CMOF_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.CMOF_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.CMOF_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.CMOF_Metamodel.Links.Initialize;
 
    --  Register factory's constructor.
 
