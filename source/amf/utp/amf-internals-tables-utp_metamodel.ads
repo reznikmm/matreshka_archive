@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.Utp_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_Utp_Utp return AMF.Internals.CMOF_Element;
 
    function MC_Utp_Duration return AMF.Internals.CMOF_Element;
@@ -185,8 +187,8 @@ package AMF.Internals.Tables.Utp_Metamodel is
 
    function ML_Utp return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.Utp_Metamodel;
