@@ -44,7 +44,9 @@
 with AMF.Internals.Factories.OCL_Factories;
 with AMF.Internals.Factories.OCL_Module_Factory;
 with AMF.Internals.Tables.OCL_Element_Table;
-with AMF.Internals.Tables.OCL_Metamodel;
+with AMF.Internals.Tables.OCL_Metamodel.Links;
+with AMF.Internals.Tables.OCL_Metamodel.Objects;
+with AMF.Internals.Tables.OCL_Metamodel.Properties;
 
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
@@ -67,8 +69,9 @@ begin
 
    --  Initialize metamodels.
 
-   AMF.Internals.Tables.OCL_Metamodel.Initialize_Objects;
-   AMF.Internals.Tables.OCL_Metamodel.Initialize_Links;
+   AMF.Internals.Tables.OCL_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.OCL_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.OCL_Metamodel.Links.Initialize;
 
    --  Initialize element table of OCL metamodel.
 
