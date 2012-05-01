@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.UML_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_UML_UML return AMF.Internals.CMOF_Element;
 
    function MC_UML_Aggregation_Kind return AMF.Internals.CMOF_Element;
@@ -1353,8 +1355,8 @@ package AMF.Internals.Tables.UML_Metamodel is
 
    function ML_UML return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.UML_Metamodel;

@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.Standard_Profile_L2_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_Standard_Profile_L2_Standard_Profile_L2 return AMF.Internals.CMOF_Element;
 
 
@@ -150,8 +152,8 @@ package AMF.Internals.Tables.Standard_Profile_L2_Metamodel is
 
    function ML_Standard_Profile_L2 return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.Standard_Profile_L2_Metamodel;

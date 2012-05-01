@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.Standard_Profile_L3_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_Standard_Profile_L3_Standard_Profile_L3 return AMF.Internals.CMOF_Element;
 
 
@@ -65,8 +67,8 @@ package AMF.Internals.Tables.Standard_Profile_L3_Metamodel is
 
    function ML_Standard_Profile_L3 return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.Standard_Profile_L3_Metamodel;

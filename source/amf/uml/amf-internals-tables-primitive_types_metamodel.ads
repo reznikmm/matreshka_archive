@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.Primitive_Types_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_Primitive_Types_Primitive_Types return AMF.Internals.CMOF_Element;
 
    function MC_Primitive_Types_Boolean return AMF.Internals.CMOF_Element;
@@ -58,8 +60,8 @@ package AMF.Internals.Tables.Primitive_Types_Metamodel is
 
    function ML_Primitive_Types return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.Primitive_Types_Metamodel;
