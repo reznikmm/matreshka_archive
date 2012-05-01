@@ -78,10 +78,6 @@ package body Generator.Metamodel is
    procedure Generate_Metamodel_Implementation
     (Metamodel_Info : not null Metamodel_Information_Access);
 
-   procedure Generate_Metamodel_Initialization
-    (Metamodel_Info : not null Metamodel_Information_Access;
-     Unit           : in out Generator.Units.Unit);
-
    procedure Generate_Metaclass_Initialization
     (Metamodel_Info : not null Metamodel_Information_Access;
      Unit           : in out Generator.Units.Unit;
@@ -99,6 +95,12 @@ package body Generator.Metamodel is
      Unit           : in out Generator.Units.Unit;
      Element        : not null AMF.CMOF.Elements.CMOF_Element_Access);
    --  Generate initialization of links.
+
+   procedure Generate_Objects_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access);
+
+   procedure Generate_Links_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access);
 
    function Is_Parameter_Direction_Kind_Type
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
@@ -124,6 +126,8 @@ package body Generator.Metamodel is
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return Boolean;
 
+   function Image (Item : Integer) return League.Strings.Universal_String;
+
    ----------------------------------
    -- Generate_Link_Initialization --
    ----------------------------------
@@ -135,6 +139,7 @@ package body Generator.Metamodel is
    is
       Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
+      Generated  : Boolean := False;
 
       procedure Generate_Attribute_Initialization
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
@@ -190,6 +195,8 @@ package body Generator.Metamodel is
                --  Link is created only when specified property is a first
                --  property in the Association::membrEnd. This allows to
                --  suppress generation of duplicate links.
+
+               Generated := True;
 
                Unit.Context.Add (+"AMF.Internals.Links");
                Unit.Add_Line
@@ -275,7 +282,367 @@ package body Generator.Metamodel is
       Sort
        (Class_Properties_Except_Redefined (Meta_Class)).Iterate
          (Generate_Attribute_Initialization'Access);
+
+      if not Generated then
+         Unit.Add_Line (+"      null;");
+      end if;
    end Generate_Link_Initialization;
+
+   -----------------------------------
+   -- Generate_Links_Implementation --
+   -----------------------------------
+
+   procedure Generate_Links_Implementation
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Links";
+      Unit         : Generator.Units.Unit;
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
+
+      --  Generate main initialization subprogram.
+
+      Unit.Add_Header (+"Initialize", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize is");
+      Unit.Add_Line (+"   begin");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line
+          ("      Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line (+"   end Initialize;");
+
+      --  Generate initialization subprogram for each object.
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Header
+          (+"Initialize_" & Image (Number_CMOF_Element_Maps.Key (Position)), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & " is");
+         Unit.Add_Line (+"   begin");
+         Generate_Link_Initialization
+          (Metamodel_Info,
+           Unit,
+           Number_CMOF_Element_Maps.Element (Position));
+         Unit.Add_Line
+          ("   end Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Links_Implementation;
+
+   ----------------------------------
+   -- Generate_Links_Specification --
+   ----------------------------------
+
+   procedure Generate_Links_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Unit : Generator.Units.Unit;
+
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Links";
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"private");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Links_Specification;
+
+   -------------------------------------
+   -- Generate_Objects_Implementation --
+   -------------------------------------
+
+   procedure Generate_Objects_Implementation
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Unit : Generator.Units.Unit;
+
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Objects";
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
+
+      --  Generate main initialization subprogram.
+
+      Unit.Add_Header (+"Initialize", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize is");
+      Unit.Add_Line (+"      Extent : constant AMF.Internals.AMF_Extent");
+      Unit.Add_Line (+"        := AMF.Internals.Extents.Allocate_Extent");
+      Unit.Context.Add
+       (String_Data_Package_Name
+         (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value));
+      Unit.Add_Line
+       ("            ("
+          & String_Data_Package_Name
+             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
+          & "."
+          & String_Data_Constant_Name
+             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
+          & "'Access);");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   begin");
+      Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Element_Table");
+      Unit.Add_Line
+       (+"      Base := AMF.Internals.Tables.CMOF_Element_Table.Last;");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line
+          ("      Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & " (Extent);");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line (+"   end Initialize;");
+
+      --  Generate initialization subprogram for each object.
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Header
+          (+"Initialize_" & Image (Number_CMOF_Element_Maps.Key (Position)), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & " (Extent : AMF.Internals.AMF_Extent) is");
+         Unit.Add_Line (+"      Aux : AMF.Internals.CMOF_Element;");
+         Unit.Add_Line;
+         Unit.Add_Line (+"   begin");
+         Generate_Metaclass_Initialization
+          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
+         Unit.Add_Line
+          ("   end Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Objects_Implementation;
+
+   ------------------------------------
+   -- Generate_Objects_Specification --
+   ------------------------------------
+
+   procedure Generate_Objects_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Unit : Generator.Units.Unit;
+
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Objects";
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"private");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & " (Extent : AMF.Internals.AMF_Extent);");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Objects_Specification;
+
+   ----------------------------------------
+   -- Generate_Properties_Implementation --
+   ----------------------------------------
+
+   procedure Generate_Properties_Implementation
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Unit : Generator.Units.Unit;
+
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Properties";
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package body " & Package_Name & " is");
+
+      --  Generate main initialization subprogram.
+
+      Unit.Add_Header (+"Initialize", 3);
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize is");
+      Unit.Add_Line (+"   begin");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line
+          ("      Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line (+"   end Initialize;");
+
+      --  Generate initialization subprogram for each object.
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Header
+          (+"Initialize_" & Image (Number_CMOF_Element_Maps.Key (Position)), 3);
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & " is");
+         Unit.Add_Line (+"   begin");
+         Generate_Properties_Initialization
+          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
+         Unit.Add_Line
+          ("   end Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Properties_Implementation;
+
+   ---------------------------------------
+   -- Generate_Properties_Specification --
+   ---------------------------------------
+
+   procedure Generate_Properties_Specification
+    (Metamodel_Info : not null Metamodel_Information_Access)
+   is
+      Unit : Generator.Units.Unit;
+
+      Package_Name : constant League.Strings.Universal_String
+        := "AMF.Internals.Tables."
+             & Metamodel_Info.Ada_Name
+             & "_Metamodel.Properties";
+      Position     : Number_CMOF_Element_Maps.Cursor;
+
+   begin
+      Unit.Add_Unit_Header (2012, 2012);
+
+      Unit.Add_Line;
+      Unit.Add_Line ("package " & Package_Name & " is");
+      Unit.Add_Line;
+      Unit.Add_Line (+"   procedure Initialize;");
+      Unit.Add_Line;
+      Unit.Add_Line (+"private");
+
+      Position := Metamodel_Info.Number_Element.First;
+
+      while Number_CMOF_Element_Maps.Has_Element (Position) loop
+         Unit.Add_Line;
+         Unit.Add_Line
+          ("   procedure Initialize_"
+             & Image (Number_CMOF_Element_Maps.Key (Position))
+             & ";");
+         Number_CMOF_Element_Maps.Next (Position);
+      end loop;
+
+      Unit.Add_Line;
+      Unit.Add_Line ("end " & Package_Name & ";");
+
+      Unit.Context.Instantiate (Package_Name);
+      Unit.Put;
+   end Generate_Properties_Specification;
 
    ---------------------------------------
    -- Generate_Metamodel_Implementation --
@@ -285,6 +652,12 @@ package body Generator.Metamodel is
    begin
       for J in 1 .. Natural (Module_Info.Extents.Length) loop
          Generate_Metamodel_Implementation
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Objects_Implementation
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Properties_Implementation
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Links_Implementation
           (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
       end loop;
    end Generate_Metamodel_Implementation;
@@ -551,9 +924,6 @@ package body Generator.Metamodel is
       Unit.Add_Line;
       Unit.Add_Line ("package body " & Package_Name & " is");
 
-      Unit.Add_Line;
-      Unit.Add_Line (+"   Base : AMF.Internals.CMOF_Element := 0;");
-
       --  Generate implementation of meta element query function.
 
       Sort (Metamodel_Info.Packages).Iterate
@@ -598,7 +968,6 @@ package body Generator.Metamodel is
            & ";");
       Unit.Add_Line ("   end ML_" & Metamodel_Info.Ada_Name & ";");
 
-      Generate_Metamodel_Initialization (Metamodel_Info, Unit);
       Unit.Add_Line;
       Unit.Add_Line ("end " & Package_Name & ";");
 
@@ -619,10 +988,6 @@ package body Generator.Metamodel is
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
    begin
-      if Metamodel_Info.Element_Numbers.Element (Element) /= 1 then
-         Unit.Add_Line;
-      end if;
-
       Unit.Context.Add (+"AMF.Internals.Tables.CMOF_Constructors");
       Unit.Context.Add (+"AMF.Internals.Extents");
       Unit.Add_Line
@@ -631,73 +996,7 @@ package body Generator.Metamodel is
            & ";");
       Unit.Add_Line
        (+"      AMF.Internals.Extents.Internal_Append (Extent, Aux);");
-
-      if Metamodel_Info.Element_Numbers.Element (Element) = 1 then
-         Unit.Add_Line (+"      Base := Aux - 1;");
-      end if;
    end Generate_Metaclass_Initialization;
-
-   ---------------------------------------
-   -- Generate_Metamodel_Initialization --
-   ---------------------------------------
-
-   procedure Generate_Metamodel_Initialization
-    (Metamodel_Info : not null Metamodel_Information_Access;
-     Unit           : in out Generator.Units.Unit)
-   is
-      Position : Number_CMOF_Element_Maps.Cursor;
-
-   begin
-      Unit.Add_Header (+"Initialize_Objects", 3);
-      Unit.Add_Line;
-      Unit.Context.Add (+"AMF.Internals.Extents");
-      Unit.Add_Line (+"   procedure Initialize_Objects is");
-      Unit.Add_Line (+"      Extent : constant AMF.Internals.AMF_Extent");
-      Unit.Add_Line (+"        := AMF.Internals.Extents.Allocate_Extent");
-      Unit.Add_Line
-       ("            ("
-          & String_Data_Package_Name
-             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
-          & "."
-          & String_Data_Constant_Name
-             (Metamodel_Info.all, Metamodel_Info.Root_Package.Get_Uri.Value)
-          & "'Access);");
-      Unit.Add_Line (+"      Aux    : AMF.Internals.CMOF_Element;");
-      Unit.Add_Line;
-      Unit.Add_Line (+"   begin");
-
-      Position := Metamodel_Info.Number_Element.First;
-
-      while Number_CMOF_Element_Maps.Has_Element (Position) loop
-         Generate_Metaclass_Initialization
-          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
-         Number_CMOF_Element_Maps.Next (Position);
-      end loop;
-
-      Position := Metamodel_Info.Number_Element.First;
-
-      while Number_CMOF_Element_Maps.Has_Element (Position) loop
-         Generate_Properties_Initialization
-          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
-         Number_CMOF_Element_Maps.Next (Position);
-      end loop;
-
-      Unit.Add_Line (+"   end Initialize_Objects;");
-      Unit.Add_Header (+"Initialize_Links", 3);
-      Unit.Add_Line;
-      Unit.Add_Line (+"   procedure Initialize_Links is");
-      Unit.Add_Line (+"   begin");
-
-      Position := Metamodel_Info.Number_Element.First;
-
-      while Number_CMOF_Element_Maps.Has_Element (Position) loop
-         Generate_Link_Initialization
-          (Metamodel_Info, Unit, Number_CMOF_Element_Maps.Element (Position));
-         Number_CMOF_Element_Maps.Next (Position);
-      end loop;
-
-      Unit.Add_Line (+"   end Initialize_Links;");
-   end Generate_Metamodel_Initialization;
 
    ----------------------------------------
    -- Generate_Properties_Initialization --
@@ -985,7 +1284,6 @@ package body Generator.Metamodel is
       end Generate_Attribute_Initialization;
 
    begin
-      Unit.Add_Line;
       Sort
        (Class_Properties_Except_Redefined (Meta_Class)).Iterate
          (Generate_Attribute_Initialization'Access);
@@ -999,6 +1297,12 @@ package body Generator.Metamodel is
    begin
       for J in 1 .. Natural (Module_Info.Extents.Length) loop
          Generate_Metamodel_Specification
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Objects_Specification
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Properties_Specification
+          (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
+         Generate_Links_Specification
           (Metamodel_Infos.Element (Module_Info.Extents.Element (J)));
       end loop;
    end Generate_Metamodel_Specification;
@@ -1193,8 +1497,8 @@ package body Generator.Metamodel is
        ("package AMF.Internals.Tables."
           & Metamodel_Info.Ada_Name
           & "_Metamodel is");
---      New_Line;
---      Put_Line ("   pragma Preelaborate;");
+      New_Line;
+      Put_Line ("   pragma Preelaborate;");
       New_Line;
       Sort (Metamodel_Info.Packages).Iterate
        (Generate_Package_Constant'Access);
@@ -1252,13 +1556,32 @@ package body Generator.Metamodel is
           & " return AMF.Internals.AMF_Element;");
 
       New_Line;
-      Put_Line ("   procedure Initialize_Objects;");
+      Put_Line ("private");
       New_Line;
-      Put_Line ("   procedure Initialize_Links;");
+      Put_Line (+"   Base : AMF.Internals.CMOF_Element := 0;");
+
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables." & Metamodel_Info.Ada_Name & "_Metamodel;");
    end Generate_Metamodel_Specification;
+
+   -----------
+   -- Image --
+   -----------
+
+   function Image (Item : Integer) return League.Strings.Universal_String is
+      Aux : constant Wide_Wide_String := Integer'Wide_Wide_Image (Item);
+
+   begin
+      if Aux (Aux'First) = ' ' then
+         return
+           League.Strings.To_Universal_String
+            (Aux (Aux'First + 1 .. Aux'Last));
+
+      else
+         return League.Strings.To_Universal_String (Aux);
+      end if;
+   end Image;
 
    ---------------------
    -- Is_Boolean_Type --
