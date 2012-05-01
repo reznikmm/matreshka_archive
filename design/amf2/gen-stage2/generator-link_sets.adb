@@ -161,7 +161,7 @@ package body Generator.Link_Sets is
                                   (The_Property)
                                & " then");
 
-                        else
+                        elsif J = 1 then
                            Unit.Add_Line;
                            Unit.Add_Line
                             ("         elsif Property = "
