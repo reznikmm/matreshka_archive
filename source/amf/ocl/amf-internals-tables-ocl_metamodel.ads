@@ -46,6 +46,8 @@
 
 package AMF.Internals.Tables.OCL_Metamodel is
 
+   pragma Preelaborate;
+
    function MM_OCL_OCL return AMF.Internals.CMOF_Element;
 
    function MC_OCL_Collection_Kind return AMF.Internals.CMOF_Element;
@@ -189,8 +191,8 @@ package AMF.Internals.Tables.OCL_Metamodel is
 
    function ML_OCL return AMF.Internals.AMF_Element;
 
-   procedure Initialize_Objects;
+private
 
-   procedure Initialize_Links;
+   Base : AMF.Internals.CMOF_Element := 0;
 
 end AMF.Internals.Tables.OCL_Metamodel;
