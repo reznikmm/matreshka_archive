@@ -48,7 +48,7 @@ with AMF.UML.Interactions;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Value_Specifications.Collections;
@@ -204,14 +204,6 @@ package AMF.Internals.UML_Messages is
    --  Operation Message::messageKind.
    --
    --  Missing derivation for Message::/messageKind : MessageKind
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Message_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Message_Proxy)

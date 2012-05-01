@@ -58,7 +58,7 @@ with AMF.UML.Exception_Handlers.Collections;
 with AMF.UML.Input_Pins.Collections;
 with AMF.UML.Interruptible_Activity_Regions.Collections;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
@@ -534,14 +534,6 @@ package AMF.Internals.UML_Conditional_Nodes is
    --  Operation Namespace::ownedMember.
    --
    --  Missing derivation for Namespace::/ownedMember : NamedElement
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Conditional_Node_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Conditional_Node_Proxy)

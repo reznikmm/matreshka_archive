@@ -432,20 +432,6 @@ package body AMF.Internals.UML_Durations is
       return Unlimited_Value (Self);
    end Unlimited_Value;
 
-   --------------------
-   -- All_Namespaces --
-   --------------------
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Duration_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Duration_Proxy.All_Namespaces";
-      return All_Namespaces (Self);
-   end All_Namespaces;
-
    -------------------------
    -- All_Owning_Packages --
    -------------------------

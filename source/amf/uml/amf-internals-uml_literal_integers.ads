@@ -45,7 +45,7 @@ with AMF.Internals.UML_Value_Specifications;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Literal_Integers;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.String_Expressions;
@@ -189,14 +189,6 @@ package AMF.Internals.UML_Literal_Integers is
    --  the kind of P is the same or a subtype as the kind of Q. In addition,
    --  for ValueSpecification, the type must be conformant with the type of
    --  the specified parameterable element.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Literal_Integer_Proxy)

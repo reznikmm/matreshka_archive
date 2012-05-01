@@ -357,20 +357,6 @@ package body AMF.Internals.UML_Literal_Reals is
       return Real_Value (Self);
    end Real_Value;
 
-   --------------------
-   -- All_Namespaces --
-   --------------------
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Literal_Real_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Real_Proxy.All_Namespaces";
-      return All_Namespaces (Self);
-   end All_Namespaces;
-
    -------------------------
    -- All_Owning_Packages --
    -------------------------

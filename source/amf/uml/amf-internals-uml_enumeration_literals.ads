@@ -48,7 +48,7 @@ with AMF.UML.Deployments.Collections;
 with AMF.UML.Enumeration_Literals;
 with AMF.UML.Enumerations;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
@@ -214,14 +214,6 @@ package AMF.Internals.UML_Enumeration_Literals is
    --
    --  Missing derivation for DeploymentTarget::/deployedElement :
    --  PackageableElement
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Enumeration_Literal_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Enumeration_Literal_Proxy)

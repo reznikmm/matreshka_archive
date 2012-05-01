@@ -49,7 +49,7 @@ with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
@@ -339,14 +339,6 @@ package AMF.Internals.UML_Receptions is
    --  allow this element to redefine the other. By default at least one of
    --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Reception_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Reception_Proxy)

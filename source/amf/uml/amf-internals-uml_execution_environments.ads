@@ -61,7 +61,7 @@ with AMF.UML.Generalization_Sets.Collections;
 with AMF.UML.Generalizations.Collections;
 with AMF.UML.Interface_Realizations.Collections;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Nodes.Collections;
 with AMF.UML.Operations.Collections;
 with AMF.UML.Package_Imports.Collections;
@@ -758,14 +758,6 @@ package AMF.Internals.UML_Execution_Environments is
    --  Operation Namespace::ownedMember.
    --
    --  Missing derivation for Namespace::/ownedMember : NamedElement
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Execution_Environment_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Execution_Environment_Proxy)

@@ -1132,20 +1132,6 @@ package body AMF.Internals.UML_Extension_Ends is
       return Ends (Self);
    end Ends;
 
-   --------------------
-   -- All_Namespaces --
-   --------------------
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Extension_End_Proxy.All_Namespaces";
-      return All_Namespaces (Self);
-   end All_Namespaces;
-
    -------------------------
    -- All_Owning_Packages --
    -------------------------

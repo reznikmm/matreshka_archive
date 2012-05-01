@@ -50,7 +50,7 @@ with AMF.UML.Connector_Ends.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.String_Expressions;
@@ -220,14 +220,6 @@ package AMF.Internals.UML_Variables is
    --  Operation ConnectableElement::end.
    --
    --  Missing derivation for ConnectableElement::/end : ConnectorEnd
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Variable_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Variable_Proxy)

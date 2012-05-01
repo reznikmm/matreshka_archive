@@ -44,7 +44,7 @@
 with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Pseudostates;
 with AMF.UML.Regions;
@@ -195,14 +195,6 @@ package AMF.Internals.UML_Pseudostates is
    --  Operation Vertex::outgoing.
    --
    --  Missing derivation for Vertex::/outgoing : Transition
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Pseudostate_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Pseudostate_Proxy)

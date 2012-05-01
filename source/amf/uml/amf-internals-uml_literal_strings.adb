@@ -375,20 +375,6 @@ package body AMF.Internals.UML_Literal_Strings is
       return String_Value (Self);
    end String_Value;
 
-   --------------------
-   -- All_Namespaces --
-   --------------------
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Literal_String_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_String_Proxy.All_Namespaces";
-      return All_Namespaces (Self);
-   end All_Namespaces;
-
    -------------------------
    -- All_Owning_Packages --
    -------------------------

@@ -43,12 +43,21 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces.Collections;
 
 package AMF.Internals.UML_Named_Elements is
 
    type UML_Named_Element_Proxy is
      abstract limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Named_Elements.UML_Named_Element with null record;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+   --  Operation NamedElement::allNamespaces.
+   --
+   --  The query allNamespaces() gives the sequence of namespaces in which the
+   --  NamedElement is nested, working outwards.
 
    overriding function Get_Name
     (Self : not null access constant UML_Named_Element_Proxy)

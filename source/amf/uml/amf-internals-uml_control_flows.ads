@@ -52,7 +52,7 @@ with AMF.UML.Control_Flows;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Interruptible_Activity_Regions;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
@@ -296,14 +296,6 @@ package AMF.Internals.UML_Control_Flows is
    --  allow this element to redefine the other. By default at least one of
    --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Control_Flow_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Control_Flow_Proxy)

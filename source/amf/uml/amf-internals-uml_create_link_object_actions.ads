@@ -58,7 +58,7 @@ with AMF.UML.Interruptible_Activity_Regions.Collections;
 with AMF.UML.Link_End_Creation_Datas.Collections;
 with AMF.UML.Link_End_Datas.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Redefinable_Elements.Collections;
@@ -365,14 +365,6 @@ package AMF.Internals.UML_Create_Link_Object_Actions is
    --  allow this element to redefine the other. By default at least one of
    --  the redefinition contexts of this element must be a specialization of
    --  at least one of the redefinition contexts of the specified element.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Create_Link_Object_Action_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Create_Link_Object_Action_Proxy)

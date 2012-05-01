@@ -50,7 +50,7 @@ with AMF.UML.Interactions;
 with AMF.UML.Lifelines.Collections;
 with AMF.UML.Messages;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;
 with AMF.Visitors;
@@ -186,14 +186,6 @@ package AMF.Internals.UML_Destruction_Occurrence_Specifications is
    --  Getter of InteractionFragment::generalOrdering.
    --
    --  The general ordering relationships contained in this fragment.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Destruction_Occurrence_Specification_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Destruction_Occurrence_Specification_Proxy)

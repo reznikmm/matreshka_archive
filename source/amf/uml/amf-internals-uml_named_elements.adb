@@ -48,6 +48,43 @@ with AMF.Internals.Tables.UML_Attributes;
 
 package body AMF.Internals.UML_Named_Elements is
 
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace
+   is
+      --  [UML 2.4.1] 7.3.34 NamedElement (from Kernel, Dependencies)
+      --
+      --  [1] The query allNamespaces() gives the sequence of namespaces in
+      --  which the NamedElement is nested, working outwards.
+      --
+      --  NamedElement::allNamespaces(): Sequence(Namespace);
+      --
+      --  allNamespaces =
+      --    if self.namespace->isEmpty()
+      --    then Sequence{}
+      --    else self.namespace.allNamespaces()->prepend(self.namespace)
+      --    endif
+
+      use type AMF.UML.Namespaces.UML_Namespace_Access;
+
+      The_Namespace : AMF.UML.Namespaces.UML_Namespace_Access
+        := UML_Named_Element_Proxy'Class (Self.all).Get_Namespace;
+
+   begin
+      return Result :
+               AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace
+      do
+         while The_Namespace /= null loop
+            Result.Add (The_Namespace);
+            The_Namespace := The_Namespace.Get_Namespace;
+         end loop;
+      end return;
+   end All_Namespaces;
+
    --------------
    -- Get_Name --
    --------------

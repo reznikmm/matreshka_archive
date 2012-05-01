@@ -49,7 +49,7 @@ with AMF.UML.Duration_Intervals;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Intervals;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.String_Expressions;
@@ -209,14 +209,6 @@ package AMF.Internals.UML_Duration_Constraints is
    --  Setter of ParameterableElement::templateParameter.
    --
    --  The template parameter that exposes this element as a formal parameter.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Duration_Constraint_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Duration_Constraint_Proxy)

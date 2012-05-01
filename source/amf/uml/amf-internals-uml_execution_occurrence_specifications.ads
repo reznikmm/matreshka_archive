@@ -50,7 +50,7 @@ with AMF.UML.Interaction_Operands;
 with AMF.UML.Interactions;
 with AMF.UML.Lifelines.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces.Collections;
+with AMF.UML.Namespaces;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;
 with AMF.Visitors;
@@ -188,14 +188,6 @@ package AMF.Internals.UML_Execution_Occurrence_Specifications is
    --  hierarchy of nested Namespaces. It is constructed from the names of the
    --  containing namespaces starting at the root of the hierarchy and ending
    --  with the name of the NamedElement itself.
-
-   overriding function All_Namespaces
-    (Self : not null access constant UML_Execution_Occurrence_Specification_Proxy)
-       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
-   --  Operation NamedElement::allNamespaces.
-   --
-   --  The query allNamespaces() gives the sequence of namespaces in which the
-   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Execution_Occurrence_Specification_Proxy)
