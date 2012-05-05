@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Exceptions;
+with Ada.Text_IO;
+
 with League.Application;
 with Matreshka.XML_Catalogs.Entry_Files;
 with Matreshka.XML_Catalogs.Loader;
@@ -66,16 +69,37 @@ package body AMF.Internals.XMI_URI_Rewriter is
 
    procedure Initialize is
    begin
-      Namespace_Rules.Catalog_Entry_Files.Append
-       (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
-         (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
-            & "/metamodels/mapping.xml",
-          Matreshka.XML_Catalogs.Entry_Files.System));
-      Document_Rules.Catalog_Entry_Files.Append
-       (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
-         (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
-            & "/models/mapping.xml",
-          Matreshka.XML_Catalogs.Entry_Files.System));
+      --  Load metamodels mapping.
+
+      begin
+         Namespace_Rules.Catalog_Entry_Files.Append
+          (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
+            (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
+               & "/metamodels/mapping.xml",
+             Matreshka.XML_Catalogs.Entry_Files.System));
+
+      exception
+         when E : others =>
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              Ada.Exceptions.Exception_Information (E));
+      end;
+
+      --  Load models mapping.
+
+      begin
+         Document_Rules.Catalog_Entry_Files.Append
+          (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
+            (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
+               & "/models/mapping.xml",
+             Matreshka.XML_Catalogs.Entry_Files.System));
+
+      exception
+         when E : others =>
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              Ada.Exceptions.Exception_Information (E));
+      end;
    end Initialize;
 
    -----------------------
