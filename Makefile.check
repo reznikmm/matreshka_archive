@@ -4,7 +4,7 @@ GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 VALGRIND_FLAGS = --error-exitcode=7 --quiet --suppressions=testsuite/glibc.supp
 
-ALL_TARGETS = league
+ALL_TARGETS = league amf
 
 ifdef HAS_VALGRIND
     ALL_TARGETS += league-valgrind
@@ -67,3 +67,7 @@ sqlite3:
 
 sqlite3-valgrind:
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
+
+amf:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
+	AMF_DATA_DIR=source/amf/mof .objs/test_222
