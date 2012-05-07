@@ -68,6 +68,17 @@ sqlite3:
 sqlite3-valgrind:
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
 
-amf:
+amf: amf-setup
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
-	AMF_DATA_DIR=source/amf/mof .objs/test_222
+	AMF_DATA_DIR=.objs/share .objs/test_222
+	AMF_DATA_DIR=.objs/share .objs/test_226 testsuite/amf/TN-226/test_226.xmi
+
+amf-setup:
+	rm -rf .objs/share
+	mkdir .objs/share
+	mkdir .objs/share/metamodels
+	mkdir .objs/share/models
+	mkdir .objs/share/models/UML24
+	cp source/amf/mof/metamodels/mapping.xml .objs/share/metamodels
+	cp source/amf/mof/models/mapping.xml .objs/share/models
+	cp source/amf/uml/models/UML24/PrimitiveTypes.xmi .objs/share/models/UML24

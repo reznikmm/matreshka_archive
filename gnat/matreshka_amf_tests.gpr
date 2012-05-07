@@ -44,14 +44,16 @@
 with "matreshka_common.gpr";
 with "matreshka_league.gpr";
 with "matreshka_amf.gpr";
+with "matreshka_amf_mofext.gpr";
 with "matreshka_amf_uml.gpr";
 
 project Matreshka_AMF_Tests is
 
-   for Main use ("test_222.adb");
+   for Main use ("test_222.adb", "test_226.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use
-    ("../testsuite/amf/TN-222");
+    ("../testsuite/amf/TN-222",
+     "../testsuite/amf/TN-226");
 
    package Compiler is
       for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
