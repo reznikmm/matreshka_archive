@@ -54,18 +54,15 @@ private with XML.SAX.Parse_Exceptions;
 private with AMF.CMOF.Packages;
 private with AMF.CMOF.Properties;
 private with AMF.Elements;
+with AMF.Internals.XMI_Readers;
 with AMF.URI_Stores;
-with AMF.XMI.Error_Handlers;
 
 package AMF.Internals.XMI_Handlers is
 
-   type XMI_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
-
-   not overriding procedure Set_Error_Handler
-    (Self    : in out XMI_Handler;
-     Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access);
+   type XMI_Handler
+    (Context : not null access AMF.Internals.XMI_Readers.XMI_Reader'Class) is
+       limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+         and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
    function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
 
@@ -107,9 +104,11 @@ private
            League.Strings."=",
            AMF.CMOF.Packages."=");
 
-   type XMI_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler with record
+   type XMI_Handler
+    (Context : not null access AMF.Internals.XMI_Readers.XMI_Reader'Class) is
+       limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+         and XML.SAX.Error_Handlers.SAX_Error_Handler with
+   record
       Extent             : AMF.URI_Stores.URI_Store_Access;
       Current            : AMF.Elements.Element_Access;
       Stack              : Element_Vectors.Vector;
@@ -127,8 +126,6 @@ private
       --  corresponding metamodel.
       Diagnosis          : League.Strings.Universal_String;
       Locator            : XML.SAX.Locators.SAX_Locator;
-
-      Error_Handler      : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access;
    end record;
 
    overriding procedure Characters

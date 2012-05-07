@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,56 +41,90 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
+--  XMI_Reader is primary component to handle loading of related XMI documents
+--  and to resolve cross-document references.
+------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
+with Ada.Containers.Hashed_Sets;
+with Ada.Containers.Vectors;
 
-with XML.SAX.Input_Sources;
-with XML.SAX.Simple_Readers;
+with League.Strings.Hash;
 
-with AMF.Internals.XMI_Handlers;
-with AMF.Internals.XMI_Readers;
+with AMF.CMOF.Properties;
+with AMF.Elements;
 with AMF.Internals.XMI_Document_Resolvers;
+with AMF.Internals.XMI_Error_Handlers;
+with AMF.XMI.Document_Resolvers;
+with AMF.XMI.Error_Handlers;
+with AMF.URI_Stores;
 
-package body XMI.Reader is
+package AMF.Internals.XMI_Readers is
 
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (XML.SAX.Input_Sources.SAX_Input_Source'Class,
-           XML.SAX.Input_Sources.SAX_Input_Source_Access);
+   package Universal_String_Extent_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           AMF.URI_Stores.URI_Store_Access,
+           League.Strings.Hash,
+           League.Strings."=",
+           AMF.URI_Stores."=");
 
-   --------------
-   -- Read_URI --
-   --------------
+   Documents : Universal_String_Extent_Maps.Map;
+   --  Map file name of document to extent.
 
-   function Read_URI
-    (URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access
-   is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      R        : aliased AMF.Internals.XMI_Readers.XMI_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler (R'Access);
-      Success  : Boolean := True;
+   package Universal_String_Sets is
+     new Ada.Containers.Hashed_Sets
+          (League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Strings."=");
 
-   begin
-      Resolver.Resolve_Document (URI, Source, Success);
+   type Cross_Document_Link is record
+      Element   : AMF.Elements.Element_Access;
+      Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
+      Extent    : AMF.URI_Stores.URI_Store_Access;
+      Id        : League.Strings.Universal_String;
 
-      if not Success then
-         raise Program_Error;
-      end if;
+      --  Location information for error reporting.
 
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String;
+      Line      : Natural;
+      Column    : Natural;
+   end record;
 
-      Free (Source);
+   package Cross_Document_Link_Vectors is
+     new Ada.Containers.Vectors (Positive, Cross_Document_Link);
 
-      --  Load next document in queue.
+   Default_Document_Resolver : aliased
+     AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
+   --  Default XMI document resolver.
 
-      R.Load_Referenced_Documents;
+   Default_Error_Handler     : aliased
+     AMF.Internals.XMI_Error_Handlers.Default_Error_Handler;
+   --  Default XMI error handler.
 
-      return Handler.Root;
-   end Read_URI;
+   type XMI_Reader is tagged limited record
+      Resolver      : AMF.XMI.Document_Resolvers.XMI_Document_Resolver_Access
+        := Default_Document_Resolver'Access;
+      --  Resolver of XMI documents.
+      Error_Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access
+        := Default_Error_Handler'Access;
+      --  Error handler.
+      URI_Queue     : Universal_String_Sets.Set;
+      --  List of URIs to be loaded.
+      Cross_Links   : Cross_Document_Link_Vectors.Vector;
+   end record;
 
-end XMI.Reader;
+   procedure Load_Referenced_Documents (Self : in out XMI_Reader'Class);
+
+   procedure Establish_Link
+    (Extent        : not null AMF.URI_Stores.URI_Store_Access;
+     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     One_Element   : not null AMF.Elements.Element_Access;
+     Other_Element : not null AMF.Elements.Element_Access);
+   --  Creates link between specified elements, but prevents to create
+   --  duplicate links. Duplicate links are created for association which
+   --  is not composition association, because opposite element referered
+   --  on both ends.
+
+end AMF.Internals.XMI_Readers;

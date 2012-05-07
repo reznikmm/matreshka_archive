@@ -41,15 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
-with Ada.Exceptions;
-with Ada.IO_Exceptions;
-with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with League.IRIs;
 with League.String_Vectors;
-with XMI.Reader;
 with XML.SAX.Parse_Exceptions.Internals;
 
 with AMF.CMOF.Associations;
@@ -111,37 +106,6 @@ package body AMF.Internals.XMI_Handlers is
    --  XML attributes and set element's attributes or creates links. Creates
    --  ownership link when current element is nested into another element.
 
-   procedure Establish_Link
-    (Self          : in out XMI_Handler;
-     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     One_Element   : not null AMF.Elements.Element_Access;
-     Other_Element : not null AMF.Elements.Element_Access);
-   --  Creates link between specified elements, but prevents to create
-   --  duplicate links. Duplicate links are created for association which
-   --  is not composition association, because opposite element referered
-   --  on both ends.
-
-   package Universal_String_Sets is
-     new Ada.Containers.Hashed_Sets
-          (League.Strings.Universal_String,
-           League.Strings.Hash,
-           League.Strings."=");
-
-   package Universal_String_Extent_Maps is
-     new Ada.Containers.Hashed_Maps
-          (League.Strings.Universal_String,
-           AMF.URI_Stores.URI_Store_Access,
-           League.Strings.Hash,
-           League.Strings."=",
-           AMF.URI_Stores."=");
-
-   Documents             : Universal_String_Extent_Maps.Map;
-   --  Map file name of document to extent.
-   Postponed_Cross_Links : Postponed_Link_Vectors.Vector;
-   --  Postponed cross-extents links.
-   URI_Queue             : Universal_String_Sets.Set;
-   --  List of URIs to be loaded.
-
    ----------------------------
    -- Analyze_Object_Element --
    ----------------------------
@@ -198,8 +162,8 @@ package body AMF.Internals.XMI_Handlers is
                begin
                   for J in 1 .. Ids.Length loop
                      if Self.Mapping.Contains (Ids.Element (J)) then
-                        Establish_Link
-                         (Self,
+                        AMF.Internals.XMI_Readers.Establish_Link
+                         (Self.Extent,
                           Property,
                           Self.Current,
                           Self.Mapping.Element (Ids.Element (J)));
@@ -213,8 +177,8 @@ package body AMF.Internals.XMI_Handlers is
 
             else
                if Self.Mapping.Contains (Value) then
-                  Establish_Link
-                   (Self,
+                  AMF.Internals.XMI_Readers.Establish_Link
+                   (Self.Extent,
                     Property,
                     Self.Current,
                     Self.Mapping.Element (Value));
@@ -264,10 +228,12 @@ package body AMF.Internals.XMI_Handlers is
          begin
             --  Check whether referenced document is already loaded.
 
-            if Documents.Contains (File_Name) then
+            if AMF.Internals.XMI_Readers.Documents.Contains (File_Name) then
                --  When document is loaded resolve referenced element.
 
-               Self.Current := Documents.Element (File_Name).Element (Name);
+               Self.Current :=
+                 AMF.Internals.XMI_Readers.Documents.Element
+                  (File_Name).Element (Name);
 
                if Self.Current = null then
                   raise Program_Error;
@@ -277,12 +243,17 @@ package body AMF.Internals.XMI_Handlers is
                --  When document is not loaded queue it and register postponed
                --  cross link.
 
-               URI_Queue.Include (Resolved_URI);
+               Self.Context.URI_Queue.Include (Resolved_URI);
 
-               Postponed_Cross_Links.Append
-                ((Self.Stack.Last_Element,
-                  Attribute,
-                  Resolved_URI & '#' & Name));
+               Self.Context.Cross_Links.Append
+                ((Element   => Self.Stack.Last_Element,
+                  Attribute => Attribute,
+                  Extent    => Self.Extent,
+                  Id        => Resolved_URI & '#' & Name,
+                  Public_Id => Self.Locator.Public_Id,
+                  System_Id => Self.Locator.System_Id,
+                  Line      => Self.Locator.Line,
+                  Column    => Self.Locator.Column));
 
                Self.Current := null;
 
@@ -314,8 +285,8 @@ package body AMF.Internals.XMI_Handlers is
       --  Establish ownership link.
 
       if Attribute /= null then
-         Establish_Link
-          (Self, Attribute, Self.Stack.Last_Element, Self.Current);
+         AMF.Internals.XMI_Readers.Establish_Link
+          (Self.Extent, Attribute, Self.Stack.Last_Element, Self.Current);
       end if;
 
       --  Process attributes.
@@ -394,7 +365,6 @@ package body AMF.Internals.XMI_Handlers is
     (Self    : in out XMI_Handler;
      Success : in out Boolean)
    is
-      pragma Unreferenced (Success);
 
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor);
 
@@ -403,68 +373,27 @@ package body AMF.Internals.XMI_Handlers is
       --------------------
 
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor) is
-         use type AMF.Elements.Element_Access;
-
          L : constant Postponed_Link
            := Postponed_Link_Vectors.Element (Position);
-         S : constant Natural := L.Id.Index ('#');
-         E : AMF.Elements.Element_Access;
 
       begin
-         if S = 0 then
-            --  Local link.
+         if not Self.Mapping.Contains (L.Id) then
+            Self.Context.Error_Handler.Error
+             (XML.SAX.Parse_Exceptions.Internals.Create
+               (Public_Id => Self.Locator.Public_Id,
+                System_Id => Self.Locator.System_Id,
+                Line      => Self.Locator.Line,
+                Column    => Self.Locator.Column,
+                Message   => "Unknown element '" & L.Id & "'"),
+              Success);
 
-            if not Self.Mapping.Contains (L.Id) then
-               Self.Error_Handler.Error
-                (XML.SAX.Parse_Exceptions.Internals.Create
-                  (Public_Id => Self.Locator.Public_Id,
-                   System_Id => Self.Locator.System_Id,
-                   Line      => Self.Locator.Line,
-                   Column    => Self.Locator.Column,
-                   Message   => "Unknown element '" & L.Id & "'"),
-                 Success);
-
-               if not Success then
-                  raise Program_Error;
-               end if;
-
-            else
-               Establish_Link
-                (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
+            if not Success then
+               raise Program_Error;
             end if;
 
          else
-            --  Cross link.
-
-            declare
-               Position : constant Universal_String_Extent_Maps.Cursor
-                 := Documents.Find (L.Id.Slice (1, S - 1));
-
-            begin
-               if Universal_String_Extent_Maps.Has_Element (Position) then
-                  E :=
-                    Universal_String_Extent_Maps.Element (Position).Element
-                     (L.Id.Slice (S + 1, L.Id.Length));
-               end if;
-            end;
-
-            if E /= null then
-               Establish_Link (Self, L.Attribute, L.Element, E);
-
-            else
-               Self.Error_Handler.Error
-                (XML.SAX.Parse_Exceptions.Internals.Create
-                  (Public_Id => Self.Locator.Public_Id,
-                   System_Id => Self.Locator.System_Id,
-                   Line      => Self.Locator.Line,
-                   Column    => Self.Locator.Column,
-                   Message   => "Unknown element '" & L.Id & "'"),
-                 Success);
-
-               if not Success then
-                  raise Program_Error;
-               end if;
-            end if;
+            AMF.Internals.XMI_Readers.Establish_Link
+             (Self.Extent, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
          end if;
       end Establish_Link;
 
@@ -475,48 +404,8 @@ package body AMF.Internals.XMI_Handlers is
 
       --  Register extent.
 
-      Documents.Insert (Self.Locator.System_Id, Self.Extent);
-
-      --  Load next document in queue.
-
-      declare
-         Position : Universal_String_Sets.Cursor := URI_Queue.First;
-         URI      : League.Strings.Universal_String;
-         Extent   : AMF.URI_Stores.URI_Store_Access;
-         pragma Unreferenced (Extent);
-
-      begin
-         if Universal_String_Sets.Has_Element (Position) then
-            URI := Universal_String_Sets.Element (Position);
-            URI_Queue.Delete (Position);
-
-            --  Load document only when it is not loaded already. Some
-            --  documents with circular dependencies can register loading of
-            --  document when its loading was started but not completed yet.
-
-            if not Documents.Contains (URI) then
-               begin
-                  Extent := Standard.XMI.Reader.Read_URI (URI);
-                  --  XXX It is not a good strategy to have recursive call
-                  --  here. It should be replaced by separate component to
-                  --  handle cross-document references and load documents on
-                  --  demand.
-
-               exception
-                  when X : Ada.IO_Exceptions.Name_Error =>
-                     Ada.Text_IO.Put_Line
-                      (Ada.Text_IO.Standard_Error,
-                       Ada.Exceptions.Exception_Information (X));
-               end;
-            end if;
-         end if;
-      end;
-
-      --  Resolve postponed cross links when all documents has been loaded.
-
-      if URI_Queue.Is_Empty then
-         Postponed_Cross_Links.Iterate (Establish_Link'Access);
-      end if;
+      AMF.Internals.XMI_Readers.Documents.Insert
+       (Self.Locator.System_Id, Self.Extent);
    end End_Document;
 
    -----------------
@@ -533,7 +422,6 @@ package body AMF.Internals.XMI_Handlers is
       pragma Unreferenced (Namespace_URI);
       pragma Unreferenced (Local_Name);
       pragma Unreferenced (Qualified_Name);
-      pragma Unreferenced (Success);
 
       Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
@@ -567,7 +455,7 @@ package body AMF.Internals.XMI_Handlers is
                end if;
 
             else
-               Self.Error_Handler.Error
+               Self.Context.Error_Handler.Error
                 (XML.SAX.Parse_Exceptions.Internals.Create
                   (Public_Id => Self.Locator.Public_Id,
                    System_Id => Self.Locator.System_Id,
@@ -606,49 +494,6 @@ package body AMF.Internals.XMI_Handlers is
       return Self.Diagnosis;
    end Error_String;
 
-   --------------------
-   -- Establish_Link --
-   --------------------
-
-   procedure Establish_Link
-    (Self          : in out XMI_Handler;
-     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     One_Element   : not null AMF.Elements.Element_Access;
-     Other_Element : not null AMF.Elements.Element_Access)
-   is
-      Association : constant AMF.CMOF.Associations.CMOF_Association_Access
-        := Attribute.Get_Association;
-
-   begin
-      --  This subprograms take in sense constraint of MOF meta models to
-      --  handle potentially duplicated links:
-      --
-      --  "[12] An Association has exactly 2 memberEnds, may never have a
-      --  navigableOwnedEnd (they will always be owned by Classes) and may have
-      --  at most one ownedEnd."
-
-      if Association.Get_Owned_End.Length = 1 then
-         --  One of the ends is owned by association, link must be created
-         --  even when order of ends is reversed.
-
-         if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Extent.Create_Link (Association, One_Element, Other_Element);
-
-         else
-            Self.Extent.Create_Link (Association, Other_Element, One_Element);
-         end if;
-
-      else
-         --  None of ends are owned by association, link is created when
-         --  specified attribute is a first end of the association to prevent
-         --  duplicate links.
-
-         if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Extent.Create_Link (Association, One_Element, Other_Element);
-         end if;
-      end if;
-   end Establish_Link;
-
    ------------
    -- Extent --
    ------------
@@ -657,8 +502,8 @@ package body AMF.Internals.XMI_Handlers is
     (URI : League.Strings.Universal_String)
        return AMF.URI_Stores.URI_Store_Access is
    begin
-      if Documents.Contains (URI) then
-         return Documents.Element (URI);
+      if AMF.Internals.XMI_Readers.Documents.Contains (URI) then
+         return AMF.Internals.XMI_Readers.Documents.Element (URI);
 
       else
          return null;
@@ -795,17 +640,6 @@ package body AMF.Internals.XMI_Handlers is
       Self.Locator := Locator;
    end Set_Document_Locator;
 
-   -----------------------
-   -- Set_Error_Handler --
-   -----------------------
-
-   not overriding procedure Set_Error_Handler
-    (Self    : in out XMI_Handler;
-     Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access) is
-   begin
-      Self.Error_Handler := Handler;
-   end Set_Error_Handler;
-
    --------------------
    -- Start_Document --
    --------------------
@@ -832,8 +666,6 @@ package body AMF.Internals.XMI_Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
-      pragma Unreferenced (Success);
-
       use type AMF.CMOF.Associations.CMOF_Association_Access;
       use type AMF.CMOF.Classes.CMOF_Class_Access;
       use type AMF.CMOF.Packages.CMOF_Package_Access;
@@ -894,7 +726,7 @@ package body AMF.Internals.XMI_Handlers is
                   --  Metaclass is not defined in metamodel, report warning and
                   --  skip all nested elements.
 
-                  Self.Error_Handler.Error
+                  Self.Context.Error_Handler.Error
                    (XML.SAX.Parse_Exceptions.Internals.Create
                      (Public_Id => Self.Locator.Public_Id,
                       System_Id => Self.Locator.System_Id,
@@ -976,7 +808,7 @@ package body AMF.Internals.XMI_Handlers is
                   --  Null metaclass means that specified class is not resolved
                   --  in the package, treat it as fatal error.
 
-                  Self.Error_Handler.Error
+                  Self.Context.Error_Handler.Error
                    (XML.SAX.Parse_Exceptions.Internals.Create
                      (Public_Id => Self.Locator.Public_Id,
                       System_Id => Self.Locator.System_Id,
@@ -1015,8 +847,6 @@ package body AMF.Internals.XMI_Handlers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean)
    is
-      pragma Unreferenced (Success);
-
       use type AMF.CMOF.Packages.CMOF_Package_Access;
 
       The_Package   : AMF.CMOF.Packages.CMOF_Package_Access;
@@ -1061,7 +891,7 @@ package body AMF.Internals.XMI_Handlers is
             Self.URI_Package_Map.Insert (Namespace_URI, The_Package);
 
          else
-            Self.Error_Handler.Error
+            Self.Context.Error_Handler.Error
              (XML.SAX.Parse_Exceptions.Internals.Create
                (Public_Id => Self.Locator.Public_Id,
                 System_Id => Self.Locator.System_Id,
