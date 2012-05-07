@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://www.omg.org/spec/UML/20090901'>
+  <uml:Model xmi:id='0' name='test'>
+    <packagedElement xmi:type='uml:Package' xmi:id='3' href='file:///test_226_0.xmi#test'/>
+    <packagedElement xmi:type='uml:Class' xmi:id='1' name='Class' visibility='public'>
+      <ownedAttribute xmi:type='uml:Property' xmi:id='2' name='attribute' visibility='public'>
+        <type xmi:type='uml:PrimitiveType' href='http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean'/>
+      </ownedAttribute>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>
