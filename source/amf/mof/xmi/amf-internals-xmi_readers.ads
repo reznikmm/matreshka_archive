@@ -45,16 +45,16 @@
 --  and to resolve cross-document references.
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Maps;
-with Ada.Containers.Hashed_Sets;
-with Ada.Containers.Vectors;
+private with Ada.Containers.Hashed_Sets;
+private with Ada.Containers.Vectors;
 
 with League.Strings.Hash;
 
 with AMF.CMOF.Properties;
 with AMF.Elements;
-with AMF.Internals.XMI_Document_Resolvers;
-with AMF.Internals.XMI_Error_Handlers;
-with AMF.XMI.Document_Resolvers;
+private with AMF.Internals.XMI_Document_Resolvers;
+private with AMF.Internals.XMI_Error_Handlers;
+private with AMF.XMI.Document_Resolvers;
 with AMF.XMI.Error_Handlers;
 with AMF.URI_Stores;
 
