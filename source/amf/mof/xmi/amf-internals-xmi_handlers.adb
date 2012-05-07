@@ -478,11 +478,6 @@ package body AMF.Internals.XMI_Handlers is
       end if;
    end End_Element;
 
---   overriding procedure End_Prefix_Mapping
---    (Self    : in out XMI_Handler;
---     Prefix  : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
-
    ------------------
    -- Error_String --
    ------------------
@@ -523,17 +518,6 @@ package body AMF.Internals.XMI_Handlers is
          Success := False;
       end if;
    end Fatal_Error;
-
---   overriding procedure Ignorable_Whitespace
---    (Self    : in out XMI_Handler;
---     Text    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
-
---   overriding procedure Processing_Instruction
---    (Self    : in out XMI_Handler;
---     Target  : League.Strings.Universal_String;
---     Data    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
 
    -----------------------------
    -- Resolve_Owned_Attribute --

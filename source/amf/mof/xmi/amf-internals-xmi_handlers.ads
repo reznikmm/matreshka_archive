@@ -144,11 +144,6 @@ private
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
 
---   overriding procedure End_Prefix_Mapping
---    (Self    : in out XMI_Handler;
---     Prefix  : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
-
    overriding function Error_String
     (Self : XMI_Handler) return League.Strings.Universal_String;
 
@@ -157,25 +152,9 @@ private
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean);
 
---   overriding procedure Ignorable_Whitespace
---    (Self    : in out XMI_Handler;
---     Text    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
---
---   overriding procedure Processing_Instruction
---    (Self    : in out XMI_Handler;
---     Target  : League.Strings.Universal_String;
---     Data    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
-
    overriding procedure Set_Document_Locator
     (Self    : in out XMI_Handler;
      Locator : XML.SAX.Locators.SAX_Locator);
-
---   overriding procedure Skipped_Entity
---    (Self    : in out XMI_Handler;
---     Name    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
 
    overriding procedure Start_Document
     (Self    : in out XMI_Handler;
