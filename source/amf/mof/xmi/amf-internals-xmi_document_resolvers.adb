@@ -41,7 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.IO_Exceptions;
 with Ada.Wide_Wide_Text_IO;
+with Ada.Unchecked_Deallocation;
 
 with League.IRIs;
 with XML.SAX.Input_Sources.Streams.Files;
@@ -73,6 +75,11 @@ package body AMF.Internals.XMI_Document_Resolvers is
    is
       use type League.Strings.Universal_String;
 
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (XML.SAX.Input_Sources.SAX_Input_Source'Class,
+              XML.SAX.Input_Sources.SAX_Input_Source_Access);
+
       New_URI    : constant League.Strings.Universal_String
         := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (URI);
       Parsed_URI : constant League.IRIs.IRI
@@ -94,20 +101,37 @@ package body AMF.Internals.XMI_Document_Resolvers is
           & New_URI.To_Wide_Wide_String
           & "')");
 
-      if not Parsed_URI.Scheme.Is_Empty then
-         XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
-          (Source.all).Open_By_URI (New_URI);
+      begin
+         if not Parsed_URI.Scheme.Is_Empty then
+            XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
+             (Source.all).Open_By_URI (New_URI);
 
-      else
-         XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
-          (Source.all).Open_By_File_Name (New_URI);
-      end if;
+         else
+            XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
+             (Source.all).Open_By_File_Name (New_URI);
+         end if;
 
-      --  Set system identifier when is was rewritten.
+         --  Set system identifier when is was rewritten.
 
-      if URI /= New_URI then
-         Source.Set_System_Id (URI);
-      end if;
+         if URI /= New_URI then
+            Source.Set_System_Id (URI);
+         end if;
+
+      exception
+         when Ada.IO_Exceptions.Name_Error =>
+            --  Set error string and error flag.
+
+            Self.Error_String := "Unable to open '" & New_URI & ''';
+            Success := False;
+
+            --  Free input source.
+
+            Free (Source);
+
+            Ada.Wide_Wide_Text_IO.Put_Line
+             (Ada.Wide_Wide_Text_IO.Standard_Error,
+              Self.Error_String.To_Wide_Wide_String);
+      end;
    end Resolve_Document;
 
 end AMF.Internals.XMI_Document_Resolvers;
