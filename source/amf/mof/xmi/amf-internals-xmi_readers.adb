@@ -55,9 +55,16 @@ with AMF.Internals.XMI_Handlers;
 
 package body AMF.Internals.XMI_Readers is
 
-   procedure Load_Document
-    (Self : in out XMI_Reader'Class;
-     URI  : League.Strings.Universal_String);
+   -------------------
+   -- Error_Handler --
+   -------------------
+
+   function Error_Handler
+    (Self : XMI_Reader'Class)
+       return AMF.XMI.Error_Handlers.XMI_Error_Handler_Access is
+   begin
+      return Self.Error_Handler;
+   end Error_Handler;
 
    --------------------
    -- Establish_Link --
@@ -108,129 +115,173 @@ package body AMF.Internals.XMI_Readers is
    -- Load_Referenced_Documents --
    -------------------------------
 
-   procedure Load_Referenced_Documents (Self : in out XMI_Reader'Class) is
-
-      procedure Establish_Link (Position : Cross_Document_Link_Vectors.Cursor);
-
-      --------------------
-      -- Establish_Link --
-      --------------------
-
-      procedure Establish_Link
-       (Position : Cross_Document_Link_Vectors.Cursor)
-      is
-         use type AMF.Elements.Element_Access;
-         use type League.Strings.Universal_String;
-
-         Link         : constant Cross_Document_Link
-           := Cross_Document_Link_Vectors.Element (Position);
-         Separator    : constant Natural := Link.Id.Index ('#');
-         Document_URI : constant League.Strings.Universal_String
-           := Link.Id.Slice (1, Separator - 1);
-         Element_Id   : constant League.Strings.Universal_String
-           := Link.Id.Slice (Separator + 1, Link.Id.Length);
-         Element      : AMF.Elements.Element_Access;
-         Success      : Boolean := True;
-
-      begin
-         --  Lookup for document and element in the document.
-
-         declare
-            Position : constant Universal_String_Extent_Maps.Cursor
-              := Documents.Find (Document_URI);
-
-         begin
-            if Universal_String_Extent_Maps.Has_Element (Position) then
-               Element :=
-                 Universal_String_Extent_Maps.Element
-                  (Position).Element (Element_Id);
-            end if;
-         end;
-
-         if Element /= null then
-            Establish_Link
-             (Link.Extent, Link.Attribute, Link.Element, Element);
-
-         else
-            Self.Error_Handler.Error
-             (XML.SAX.Parse_Exceptions.Internals.Create
-               (Public_Id => Link.Public_Id,
-                System_Id => Link.System_Id,
-                Line      => Link.Line,
-                Column    => Link.Column,
-                Message   => "Unknown element '" & Link.Id & "'"),
-              Success);
-
-            if not Success then
-               --  Error handling is not implemented.
-
-               raise Program_Error;
-            end if;
-         end if;
-      end Establish_Link;
-
-      Position : Universal_String_Sets.Cursor;
-      URI      : League.Strings.Universal_String;
-
-   begin
-      --  Load all referenced documents.
-
-      while not Self.URI_Queue.Is_Empty loop
-         Position := Self.URI_Queue.First;
-         URI      := Universal_String_Sets.Element (Position);
-         Self.URI_Queue.Delete (Position);
-
-         --  Load document only when it is not loaded already. Some documents
-         --  with circular dependencies can register loading of document when
-         --  its loading was started but not completed yet.
-         --
-         --  XXX This need to be reviewed for new architecture of XMI reader.
-
-         Self.Load_Document (URI);
-      end loop;
-
-      --  Resolve cross-document links.
-
-      Self.Cross_Links.Iterate (Establish_Link'Access);
-   end Load_Referenced_Documents;
-
-   -------------------
-   -- Load_Document --
-   -------------------
-
-   procedure Load_Document
-    (Self : in out XMI_Reader'Class;
-     URI  : League.Strings.Universal_String)
+   function Load
+    (Self         : in out XMI_Reader'Class;
+     Document_URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access
    is
+      use type AMF.Elements.Element_Access;
+      use type AMF.URI_Stores.URI_Store_Access;
+      use type League.Strings.Universal_String;
 
       procedure Free is
         new Ada.Unchecked_Deallocation
              (XML.SAX.Input_Sources.SAX_Input_Source'Class,
               XML.SAX.Input_Sources.SAX_Input_Source_Access);
 
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler (Self'Access);
-      Success  : Boolean := True;
+      Result : AMF.URI_Stores.URI_Store_Access;
 
    begin
-      --  Resolve XMI document.
+      --  Insert requested document into the queue.
 
-      Self.Resolver.Resolve_Document (URI, Source, Success);
+      Self.URI_Queue.Include (Document_URI);
 
-      --  Load document when it was resolved successfuly.
-      --
-      --  XXX It can be reasonable to report error here.
+      --  Load all referenced documents.
 
-      if Success then
-         Reader.Set_Content_Handler (Handler'Unchecked_Access);
-         Reader.Set_Error_Handler (Handler'Unchecked_Access);
-         Reader.Parse (Source);
-      end if;
+      declare
+         Position : Universal_String_Sets.Cursor;
+         URI      : League.Strings.Universal_String;
 
-      --  Deallocate input source.
+      begin
+         while not Self.URI_Queue.Is_Empty loop
+            Position := Self.URI_Queue.First;
+            URI      := Universal_String_Sets.Element (Position);
+            Self.URI_Queue.Delete (Position);
 
-      Free (Source);
-   end Load_Document;
+            --  Load document only when it is not loaded already. Some
+            --  documents with circular dependencies can register loading of
+            --  document when its loading was started but not completed yet.
+            --
+            --  XXX This need to be reviewed for new architecture of XMI
+            --  reader.
+
+            declare
+               Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+               Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+               Handler  : aliased
+                 AMF.Internals.XMI_Handlers.XMI_Handler (Self'Access);
+               Success  : Boolean := True;
+
+            begin
+               --  Resolve XMI document.
+
+               Self.Resolver.Resolve_Document (URI, Source, Success);
+
+               --  Load document when it was resolved successfuly.
+               --
+               --  XXX It can be reasonable to report error here.
+
+               if Success then
+                  Reader.Set_Content_Handler (Handler'Unchecked_Access);
+                  Reader.Set_Error_Handler (Handler'Unchecked_Access);
+                  Reader.Parse (Source);
+
+                  if Result = null then
+                     Result := Handler.Root;
+                  end if;
+               end if;
+
+               --  Deallocate input source.
+
+               Free (Source);
+            end;
+         end loop;
+      end;
+
+      --  Resolve cross-document links.
+
+      declare
+         Link     : Cross_Document_Link;
+         Element  : AMF.Elements.Element_Access;
+         Success  : Boolean;
+         Position : Cross_Document_Link_Vectors.Cursor
+           := Self.Cross_Links.First;
+
+      begin
+         while Cross_Document_Link_Vectors.Has_Element (Position) loop
+            Link    := Cross_Document_Link_Vectors.Element (Position);
+            Element := null;
+            Success := True;
+
+            --  Lookup for document and element in the document.
+
+            declare
+               Position : constant Universal_String_Extent_Maps.Cursor
+                 := Documents.Find (Link.Document_URI);
+
+            begin
+               if Universal_String_Extent_Maps.Has_Element (Position) then
+                  Element :=
+                    Universal_String_Extent_Maps.Element
+                     (Position).Element (Link.Element_Id);
+               end if;
+            end;
+
+            --  Establish link when element was resolved, otherwise report
+            --  error.
+
+            if Element /= null then
+               Establish_Link
+                (Link.Extent, Link.Attribute, Link.Element, Element);
+
+            else
+               Self.Error_Handler.Error
+                (XML.SAX.Parse_Exceptions.Internals.Create
+                  (Public_Id => Link.Public_Id,
+                   System_Id => Link.System_Id,
+                   Line      => Link.Line,
+                   Column    => Link.Column,
+                   Message   =>
+                     "Unknown element '"
+                       & Link.Document_URI
+                       & '#'
+                       & Link.Element_Id
+                       & "'"),
+                 Success);
+
+               if not Success then
+                  --  Error handling is not implemented.
+
+                  raise Program_Error;
+               end if;
+            end if;
+
+            Cross_Document_Link_Vectors.Next (Position);
+         end loop;
+      end;
+
+      return Result;
+   end Load;
+
+   ----------------------------------
+   -- Postpone_Cross_Document_Link --
+   ----------------------------------
+
+   procedure Postpone_Cross_Document_Link
+    (Self         : in out XMI_Reader'Class;
+     Element      : AMF.Elements.Element_Access;
+     Attribute    : AMF.CMOF.Properties.CMOF_Property_Access;
+     Extent       : AMF.URI_Stores.URI_Store_Access;
+     Document_URI : League.Strings.Universal_String;
+     Element_Id   : League.Strings.Universal_String;
+     Public_Id    : League.Strings.Universal_String;
+     System_Id    : League.Strings.Universal_String;
+     Line         : Natural;
+     Column       : Natural) is
+   begin
+      --  Include document into the document queue.
+
+      Self.URI_Queue.Include (Document_URI);
+      Self.Cross_Links.Append
+       ((Element      => Element,
+         Attribute    => Attribute,
+         Extent       => Extent,
+         Document_URI => Document_URI,
+         Element_Id   => Element_Id,
+         Public_Id    => Public_Id,
+         System_Id    => System_Id,
+         Line         => Line,
+         Column       => Column));
+   end Postpone_Cross_Document_Link;
 
 end AMF.Internals.XMI_Readers;

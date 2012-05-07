@@ -41,21 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
-
-with XML.SAX.Input_Sources;
-with XML.SAX.Simple_Readers;
-
-with AMF.Internals.XMI_Handlers;
 with AMF.Internals.XMI_Readers;
-with AMF.Internals.XMI_Document_Resolvers;
 
 package body XMI.Reader is
-
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (XML.SAX.Input_Sources.SAX_Input_Source'Class,
-           XML.SAX.Input_Sources.SAX_Input_Source_Access);
 
    --------------
    -- Read_URI --
@@ -65,32 +53,10 @@ package body XMI.Reader is
     (URI : League.Strings.Universal_String)
        return AMF.URI_Stores.URI_Store_Access
    is
-      Resolver : aliased
-        AMF.Internals.XMI_Document_Resolvers.Default_Document_Resolver;
-      Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-      R        : aliased AMF.Internals.XMI_Readers.XMI_Reader;
-      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler (R'Access);
-      Success  : Boolean := True;
+      Reader : aliased AMF.Internals.XMI_Readers.XMI_Reader;
 
    begin
-      Resolver.Resolve_Document (URI, Source, Success);
-
-      if not Success then
-         raise Program_Error;
-      end if;
-
-      Reader.Set_Content_Handler (Handler'Unchecked_Access);
-      Reader.Set_Error_Handler (Handler'Unchecked_Access);
-      Reader.Parse (Source);
-
-      Free (Source);
-
-      --  Load next document in queue.
-
-      R.Load_Referenced_Documents;
-
-      return Handler.Root;
+      return Reader.Load (URI);
    end Read_URI;
 
 end XMI.Reader;

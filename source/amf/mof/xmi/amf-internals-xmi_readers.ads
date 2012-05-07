@@ -60,6 +60,42 @@ with AMF.URI_Stores;
 
 package AMF.Internals.XMI_Readers is
 
+   type XMI_Reader is tagged limited private;
+
+   function Load
+    (Self         : in out XMI_Reader'Class;
+     Document_URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access;
+   --  Loads specified document.
+
+   procedure Postpone_Cross_Document_Link
+    (Self         : in out XMI_Reader'Class;
+     Element      : AMF.Elements.Element_Access;
+     Attribute    : AMF.CMOF.Properties.CMOF_Property_Access;
+     Extent       : AMF.URI_Stores.URI_Store_Access;
+     Document_URI : League.Strings.Universal_String;
+     Element_Id   : League.Strings.Universal_String;
+     Public_Id    : League.Strings.Universal_String;
+     System_Id    : League.Strings.Universal_String;
+     Line         : Natural;
+     Column       : Natural);
+   --  Postpone establishment of cross-document link.
+
+   function Error_Handler
+    (Self : XMI_Reader'Class)
+       return AMF.XMI.Error_Handlers.XMI_Error_Handler_Access;
+   --  Returns registered XMI error handler.
+
+   procedure Establish_Link
+    (Extent        : not null AMF.URI_Stores.URI_Store_Access;
+     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     One_Element   : not null AMF.Elements.Element_Access;
+     Other_Element : not null AMF.Elements.Element_Access);
+   --  Creates link between specified elements, but prevents to create
+   --  duplicate links. Duplicate links are created for association which
+   --  is not composition association, because opposite element referered
+   --  on both ends.
+
    package Universal_String_Extent_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
@@ -71,6 +107,8 @@ package AMF.Internals.XMI_Readers is
    Documents : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.
 
+private
+
    package Universal_String_Sets is
      new Ada.Containers.Hashed_Sets
           (League.Strings.Universal_String,
@@ -79,17 +117,18 @@ package AMF.Internals.XMI_Readers is
            League.Strings."=");
 
    type Cross_Document_Link is record
-      Element   : AMF.Elements.Element_Access;
-      Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
-      Extent    : AMF.URI_Stores.URI_Store_Access;
-      Id        : League.Strings.Universal_String;
+      Element      : AMF.Elements.Element_Access;
+      Attribute    : AMF.CMOF.Properties.CMOF_Property_Access;
+      Extent       : AMF.URI_Stores.URI_Store_Access;
+      Document_URI : League.Strings.Universal_String;
+      Element_Id   : League.Strings.Universal_String;
 
       --  Location information for error reporting.
 
-      Public_Id : League.Strings.Universal_String;
-      System_Id : League.Strings.Universal_String;
-      Line      : Natural;
-      Column    : Natural;
+      Public_Id    : League.Strings.Universal_String;
+      System_Id    : League.Strings.Universal_String;
+      Line         : Natural;
+      Column       : Natural;
    end record;
 
    package Cross_Document_Link_Vectors is
@@ -107,24 +146,15 @@ package AMF.Internals.XMI_Readers is
       Resolver      : AMF.XMI.Document_Resolvers.XMI_Document_Resolver_Access
         := Default_Document_Resolver'Access;
       --  Resolver of XMI documents.
+
       Error_Handler : AMF.XMI.Error_Handlers.XMI_Error_Handler_Access
         := Default_Error_Handler'Access;
       --  Error handler.
+
       URI_Queue     : Universal_String_Sets.Set;
       --  List of URIs to be loaded.
+
       Cross_Links   : Cross_Document_Link_Vectors.Vector;
    end record;
-
-   procedure Load_Referenced_Documents (Self : in out XMI_Reader'Class);
-
-   procedure Establish_Link
-    (Extent        : not null AMF.URI_Stores.URI_Store_Access;
-     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     One_Element   : not null AMF.Elements.Element_Access;
-     Other_Element : not null AMF.Elements.Element_Access);
-   --  Creates link between specified elements, but prevents to create
-   --  duplicate links. Duplicate links are created for association which
-   --  is not composition association, because opposite element referered
-   --  on both ends.
 
 end AMF.Internals.XMI_Readers;

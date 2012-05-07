@@ -240,20 +240,19 @@ package body AMF.Internals.XMI_Handlers is
                end if;
 
             else
-               --  When document is not loaded queue it and register postponed
-               --  cross link.
+               --  Register postponed cross-document link when document is not
+               --  loaded.
 
-               Self.Context.URI_Queue.Include (Resolved_URI);
-
-               Self.Context.Cross_Links.Append
-                ((Element   => Self.Stack.Last_Element,
-                  Attribute => Attribute,
-                  Extent    => Self.Extent,
-                  Id        => Resolved_URI & '#' & Name,
-                  Public_Id => Self.Locator.Public_Id,
-                  System_Id => Self.Locator.System_Id,
-                  Line      => Self.Locator.Line,
-                  Column    => Self.Locator.Column));
+               Self.Context.Postpone_Cross_Document_Link
+                (Element      => Self.Stack.Last_Element,
+                 Attribute    => Attribute,
+                 Extent       => Self.Extent,
+                 Document_URI => Resolved_URI,
+                 Element_Id   => Name,
+                 Public_Id    => Self.Locator.Public_Id,
+                 System_Id    => Self.Locator.System_Id,
+                 Line         => Self.Locator.Line,
+                 Column       => Self.Locator.Column);
 
                Self.Current := null;
 
