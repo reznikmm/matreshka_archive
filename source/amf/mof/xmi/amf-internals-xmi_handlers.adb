@@ -487,6 +487,15 @@ package body AMF.Internals.XMI_Handlers is
    -- Extent --
    ------------
 
+   function Extent (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access is
+   begin
+      return Self.Extent;
+   end Extent;
+
+   ------------
+   -- Extent --
+   ------------
+
    function Extent
     (URI : League.Strings.Universal_String)
        return AMF.URI_Stores.URI_Store_Access is
@@ -597,15 +606,6 @@ package body AMF.Internals.XMI_Handlers is
 
       return null;
    end Resolve_Owned_Class;
-
-   ----------
-   -- Root --
-   ----------
-
-   function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access is
-   begin
-      return Self.Extent;
-   end Root;
 
    --------------------------
    -- Set_Document_Locator --

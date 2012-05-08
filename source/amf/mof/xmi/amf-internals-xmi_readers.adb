@@ -178,10 +178,10 @@ package body AMF.Internals.XMI_Readers is
 
                   --  Register loaded extent.
 
-                  Documents.Insert (Source.System_Id, Handler.Root);
+                  Documents.Insert (Source.System_Id, Handler.Extent);
 
                   if Result = null then
-                     Result := Handler.Root;
+                     Result := Handler.Extent;
                   end if;
                end if;
 

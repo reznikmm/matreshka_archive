@@ -64,7 +64,7 @@ package AMF.Internals.XMI_Handlers is
        limited new XML.SAX.Content_Handlers.SAX_Content_Handler
          and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
-   function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
+   function Extent (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
 
    function Extent
     (URI : League.Strings.Universal_String)
