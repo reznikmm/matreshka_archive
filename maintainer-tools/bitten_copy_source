@@ -1,4 +1,0 @@
-#!/bin/sh
-#  This script is used to make copy of source code
-
-(cd $1 && tar c --exclude='.svn' . ) | tar xf -
