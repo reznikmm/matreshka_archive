@@ -50,8 +50,6 @@ package AMF.OCL.Any_Types is
    pragma Preelaborate;
 
    type OCL_Any_Type is limited interface
-     and AMF.UML.Classifiers.UML_Classifier
-     and AMF.UML.Classifiers.UML_Classifier
      and AMF.UML.Classifiers.UML_Classifier;
 
    type OCL_Any_Type_Access is

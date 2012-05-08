@@ -51,8 +51,6 @@ package AMF.OCL.Collection_Types is
    pragma Preelaborate;
 
    type OCL_Collection_Type is limited interface
-     and AMF.UML.Data_Types.UML_Data_Type
-     and AMF.UML.Data_Types.UML_Data_Type
      and AMF.UML.Data_Types.UML_Data_Type;
 
    type OCL_Collection_Type_Access is

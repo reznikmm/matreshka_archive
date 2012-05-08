@@ -50,8 +50,6 @@ package AMF.OCL.Collection_Literal_Parts is
    pragma Preelaborate;
 
    type OCL_Collection_Literal_Part is limited interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element
-     and AMF.UML.Typed_Elements.UML_Typed_Element
      and AMF.UML.Typed_Elements.UML_Typed_Element;
 
    type OCL_Collection_Literal_Part_Access is

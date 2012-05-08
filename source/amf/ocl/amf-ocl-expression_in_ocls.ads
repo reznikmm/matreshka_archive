@@ -53,8 +53,6 @@ package AMF.OCL.Expression_In_Ocls is
    pragma Preelaborate;
 
    type OCL_Expression_In_Ocl is limited interface
-     and AMF.UML.Opaque_Expressions.UML_Opaque_Expression
-     and AMF.UML.Opaque_Expressions.UML_Opaque_Expression
      and AMF.UML.Opaque_Expressions.UML_Opaque_Expression;
 
    type OCL_Expression_In_Ocl_Access is

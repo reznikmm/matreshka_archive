@@ -50,8 +50,6 @@ package AMF.OCL.Ocl_Expressions is
    pragma Preelaborate;
 
    type OCL_Ocl_Expression is limited interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element
-     and AMF.UML.Typed_Elements.UML_Typed_Element
      and AMF.UML.Typed_Elements.UML_Typed_Element;
 
    type OCL_Ocl_Expression_Access is

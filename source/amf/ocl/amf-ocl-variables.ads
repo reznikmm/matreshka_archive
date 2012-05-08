@@ -52,8 +52,6 @@ package AMF.OCL.Variables is
    pragma Preelaborate;
 
    type OCL_Variable is limited interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element
-     and AMF.UML.Typed_Elements.UML_Typed_Element
      and AMF.UML.Typed_Elements.UML_Typed_Element;
 
    type OCL_Variable_Access is

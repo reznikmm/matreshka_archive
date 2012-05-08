@@ -50,8 +50,6 @@ package AMF.OCL.Void_Types is
    pragma Preelaborate;
 
    type OCL_Void_Type is limited interface
-     and AMF.UML.Classifiers.UML_Classifier
-     and AMF.UML.Classifiers.UML_Classifier
      and AMF.UML.Classifiers.UML_Classifier;
 
    type OCL_Void_Type_Access is

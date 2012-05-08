@@ -50,8 +50,6 @@ package AMF.OCL.Template_Parameter_Types is
    pragma Preelaborate;
 
    type OCL_Template_Parameter_Type is limited interface
-     and AMF.UML.Classifiers.UML_Classifier
-     and AMF.UML.Classifiers.UML_Classifier
      and AMF.UML.Classifiers.UML_Classifier;
 
    type OCL_Template_Parameter_Type_Access is
