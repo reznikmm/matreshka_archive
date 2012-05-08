@@ -176,6 +176,10 @@ package body AMF.Internals.XMI_Readers is
                   Reader.Set_Error_Handler (Handler'Unchecked_Access);
                   Reader.Parse (Source);
 
+                  --  Register loaded extent.
+
+                  Documents.Insert (Source.System_Id, Handler.Root);
+
                   if Result = null then
                      Result := Handler.Root;
                   end if;

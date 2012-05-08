@@ -228,12 +228,12 @@ package body AMF.Internals.XMI_Handlers is
          begin
             --  Check whether referenced document is already loaded.
 
-            if AMF.Internals.XMI_Readers.Documents.Contains (File_Name) then
+            if AMF.Internals.XMI_Readers.Documents.Contains (Resolved_URI) then
                --  When document is loaded resolve referenced element.
 
                Self.Current :=
                  AMF.Internals.XMI_Readers.Documents.Element
-                  (File_Name).Element (Name);
+                  (Resolved_URI).Element (Name);
 
                if Self.Current = null then
                   raise Program_Error;
@@ -400,11 +400,6 @@ package body AMF.Internals.XMI_Handlers is
       --  Resolve postponed local links.
 
       Self.Postponed.Iterate (Establish_Link'Access);
-
-      --  Register extent.
-
-      AMF.Internals.XMI_Readers.Documents.Insert
-       (Self.Locator.System_Id, Self.Extent);
    end End_Document;
 
    -----------------
