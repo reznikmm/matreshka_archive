@@ -156,7 +156,7 @@ package body Modeler.Main_Windows is
 
    begin
       if not Name.Is_Null then
-         Store := XMI.Reader.Read_File (+Name.To_UCS_4);
+         Store := XMI.Reader.Read_URI (+Name.To_UCS_4);
       end if;
    end File_Open;
 
