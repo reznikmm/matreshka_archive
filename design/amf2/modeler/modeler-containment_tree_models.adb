@@ -47,7 +47,10 @@ with AMF.CMOF.Properties.Collections;
 with AMF.URI_Extents;
 
 with AMF.UML.Comments;
+with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements;
+with AMF.UML.Operations.Collections;
+with AMF.UML.Parameters.Collections;
 with AMF.UML.Properties.Collections;
 with AMF.UML.Types;
 
@@ -55,6 +58,9 @@ with Modeler.Containment_Tree_Models.Moc;
 pragma Unreferenced (Modeler.Containment_Tree_Models.Moc);
 
 package body Modeler.Containment_Tree_Models is
+
+   use type AMF.UML.Types.UML_Type_Access;
+   use type League.Strings.Universal_String;
 
    package Node_Conversions is
      new System.Address_To_Access_Conversions (Node);
@@ -67,9 +73,30 @@ package body Modeler.Containment_Tree_Models is
     (Self : not null access constant Containment_Tree_Model'Class;
      Node : Node_Access) return Qt4.Model_Indices.Q_Model_Index;
 
+   function Get_UML_Operation_Image
+    (Element : not null AMF.UML.Operations.UML_Operation_Access)
+       return League.Strings.Universal_String;
+
    function Get_UML_Property_Image
     (Element : not null AMF.UML.Properties.UML_Property_Access)
        return League.Strings.Universal_String;
+
+   function Image
+    (Item : AMF.UML.Optional_UML_Visibility_Kind)
+       return League.Strings.Universal_String;
+   --  Returns image of visibility kind
+   --   - empty string when no visibility kind specified
+   --   - '+' for 'public'
+   --   - '-' for 'private'
+   --   - '#' for 'protected'
+   --   - '~' for 'package'
+
+   function Multiplicity_Image
+    (Element : not null access
+       AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element'Class)
+         return League.Strings.Universal_String;
+   --  Returns textual representation of multiplicity of
+   --  UML::MultiplicityElement.
 
    ------------------
    -- Column_Count --
@@ -163,6 +190,15 @@ package body Modeler.Containment_Tree_Models is
 
                when N_Element =>
                   if Node.Element.all
+                       in AMF.UML.Operations.UML_Operation'Class
+                  then
+                     return
+                       Qt4.Variants.Create
+                        (+Get_UML_Operation_Image
+                           (AMF.UML.Operations.UML_Operation_Access
+                             (Node.Element)).To_Wide_Wide_String);
+
+                  elsif Node.Element.all
                        in AMF.UML.Properties.UML_Property'Class
                   then
                      return
@@ -241,6 +277,163 @@ package body Modeler.Containment_Tree_Models is
       null;
    end Extent_Remove;
 
+   -----------------------------
+   -- Get_UML_Operation_Image --
+   -----------------------------
+
+   function Get_UML_Operation_Image
+    (Element : not null AMF.UML.Operations.UML_Operation_Access)
+       return League.Strings.Universal_String
+   is
+      use type AMF.UML.UML_Parameter_Direction_Kind;
+
+      Name                 : AMF.Optional_String := Element.Get_Name;
+      Default              : AMF.Optional_String;
+      Owned_Parameters     : constant
+        AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter
+          := Element.Get_Owned_Parameter;
+      Returns              : constant
+        AMF.UML.Parameters.Collections.Set_Of_UML_Parameter
+          := Element.Return_Result;
+      Redefined_Operations : constant
+        AMF.UML.Operations.Collections.Set_Of_UML_Operation
+          := Element.Get_Redefined_Operation;
+      The_Operation        : AMF.UML.Operations.UML_Operation_Access;
+      The_Parameter        : AMF.UML.Parameters.UML_Parameter_Access;
+      The_Type             : AMF.UML.Types.UML_Type_Access;
+      Result               : League.Strings.Universal_String;
+      Modifiers            : League.Strings.Universal_String;
+      First                : Boolean;
+
+   begin
+      --  visibility
+
+      Result.Append (Image (Element.Get_Visibility));
+
+      --  name
+
+      if not Name.Is_Empty then
+         Result.Append (Name.Value);
+      end if;
+
+      --  parameter list
+
+      Result.Append ('(');
+      First := True;
+
+      for J in 1 .. Owned_Parameters.Length loop
+         The_Parameter := Owned_Parameters.Element (J);
+
+         if The_Parameter.Get_Direction /= AMF.UML.Return_Parameter then
+            if First then
+               First := False;
+
+            else
+               Result.Append (", ");
+            end if;
+
+            The_Type := The_Parameter.Get_Type;
+
+            --  name
+
+            Name := The_Parameter.Get_Name;
+
+            if not Name.Is_Empty then
+               Result.Append (Name.Value);
+            end if;
+
+            Result.Append (+" : ");
+
+            --  direction
+
+            case The_Parameter.Get_Direction is
+               when AMF.UML.In_Parameter =>
+                  Result.Append (" in ");
+
+               when AMF.UML.In_Out_Parameter =>
+                  Result.Append (" in out ");
+
+               when AMF.UML.Out_Parameter =>
+                  Result.Append (" out ");
+
+               when AMF.UML.Return_Parameter =>
+                  raise Program_Error;
+            end case;
+
+            --  type
+
+            if The_Type /= null then
+               Name := The_Type.Get_Name;
+
+               if not Name.Is_Empty then
+                  Result.Append (Name.Value);
+               end if;
+            end if;
+
+            --  multiplicty
+
+            Result.Append (Multiplicity_Image (The_Parameter));
+
+            --  default
+
+            Default := The_Parameter.Get_Default;
+         end if;
+      end loop;
+
+      Result.Append (')');
+
+      --  result
+
+      if not Returns.Is_Empty then
+         The_Parameter := Returns.Element (1);
+         The_Type      := The_Parameter.Get_Type;
+
+         --  type
+
+         Result.Append (" : ");
+
+         if The_Type /= null then
+            Name := The_Type.Get_Name;
+
+            if not Name.Is_Empty then
+               Result.Append (Name.Value);
+            end if;
+         end if;
+
+         --  multiplicty
+
+         Result.Append (Multiplicity_Image (The_Parameter));
+      end if;
+
+      --  redefines
+
+      for J in 1 .. Redefined_Operations.Length loop
+         if not Modifiers.Is_Empty then
+            Modifiers.Append (+", ");
+         end if;
+
+         The_Operation := Redefined_Operations.Element (J);
+--         Name := The_Operation.Get_Name;
+
+         Modifiers.Append (+"redefines ");
+         Modifiers.Append (The_Operation.Qualified_Name);
+
+--         if not Name.Is_Empty then
+--            Modifiers.Append (Name.Value);
+--         end if;
+      end loop;
+
+      --  Append operation properties.
+
+      if not Modifiers.Is_Empty then
+         Result.Append ('{');
+         Result.Append (Modifiers);
+         Result.Append ('}');
+      end if;
+
+      return Result;
+   end Get_UML_Operation_Image;
+
    ----------------------------
    -- Get_UML_Property_Image --
    ----------------------------
@@ -249,11 +442,6 @@ package body Modeler.Containment_Tree_Models is
     (Element : not null AMF.UML.Properties.UML_Property_Access)
        return League.Strings.Universal_String
    is
-      use type AMF.Optional_Integer;
-      use type AMF.Optional_Unlimited_Natural;
-      use type AMF.UML.Types.UML_Type_Access;
-      use type League.Strings.Universal_String;
-
       Name         : constant AMF.Optional_String := Element.Get_Name;
       Default      : constant AMF.Optional_String := Element.Get_Default;
       Visibility   : constant AMF.UML.Optional_UML_Visibility_Kind
@@ -270,13 +458,6 @@ package body Modeler.Containment_Tree_Models is
       procedure Add (Item : League.Strings.Universal_String);
 
       procedure Add_Modifier (Item : League.Strings.Universal_String);
-
-      function Image
-       (Item : AMF.Optional_Integer) return League.Strings.Universal_String;
-
-      function Image
-       (Item : AMF.Optional_Unlimited_Natural)
-          return League.Strings.Universal_String;
 
       ---------
       -- Add --
@@ -308,91 +489,21 @@ package body Modeler.Containment_Tree_Models is
          Result.Append (Item);
       end Add_Modifier;
 
-      -----------
-      -- Image --
-      -----------
-
-      function Image
-       (Item : AMF.Optional_Integer) return League.Strings.Universal_String is
-      begin
-         if Item.Is_Empty then
-            return League.Strings.Empty_Universal_String;
-
-         else
-            declare
-               Image : constant Wide_Wide_String
-                 := Integer'Wide_Wide_Image (Item.Value);
-
-            begin
-               if Image (Image'First) = ' ' then
-                  return +Image (Image'First + 1 .. Image'Last);
-
-               else
-                  return +Image;
-               end if;
-            end;
-         end if;
-      end Image;
-
-      -----------
-      -- Image --
-      -----------
-
-      function Image
-       (Item : AMF.Optional_Unlimited_Natural)
-          return League.Strings.Universal_String is
-      begin
-         if Item.Is_Empty then
-            return League.Strings.Empty_Universal_String;
-
-         elsif Item.Value.Unlimited then
-            return +"*";
-
-         else
-            declare
-               Image : constant Wide_Wide_String
-                 := Integer'Wide_Wide_Image (Item.Value.Value);
-
-            begin
-               if Image (Image'First) = ' ' then
-                  return +Image (Image'First + 1 .. Image'Last);
-
-               else
-                  return +Image;
-               end if;
-            end;
-         end if;
-      end Image;
-
    begin
       --  visibility
 
-      if not Visibility.Is_Empty then
-         case Visibility.Value is
-            when AMF.UML.Public_Visibility =>
-               Add (+"+");
-
-            when AMF.UML.Private_Visibility =>
-               Add (+"-");
-
-            when AMF.UML.Protected_Visibility =>
-               Add (+"#");
-
-            when AMF.UML.Package_Visibility =>
-               Add (+"~");
-         end case;
-      end if;
+      Result.Append (Image (Visibility));
 
       --  isDerived
 
       if Element.Get_Is_Derived then
-         Add (+"/");
+         Result.Append (+"/");
       end if;
 
       --  name
 
       if not Name.Is_Empty then
-         Add (Name.Value);
+         Result.Append (Name.Value);
       end if;
 
       --  type
@@ -403,17 +514,7 @@ package body Modeler.Containment_Tree_Models is
 
       --  multiplicity
 
-      if not Lower.Is_Empty and not Upper.Is_Empty then
-         if Lower = 0 and Upper = AMF.Unlimited then
-            Add (+"[*]");
-
-         elsif Lower = Upper then
-            Add (+"[" & Image (Lower) & "]");
-
-         else
-            Add (+"[" & Image (Lower) & ".." & Image (Upper) & "]");
-         end if;
-      end if;
+      Add (Multiplicity_Image (Element));
 
       --  default
 
@@ -490,6 +591,34 @@ package body Modeler.Containment_Tree_Models is
    begin
       return Qt4.Variants.Create;
    end Header_Data;
+
+   -----------
+   -- Image --
+   -----------
+
+   function Image
+    (Item : AMF.UML.Optional_UML_Visibility_Kind)
+       return League.Strings.Universal_String is
+   begin
+      if Item.Is_Empty then
+         return League.Strings.Empty_Universal_String;
+
+      else
+         case Item.Value is
+            when AMF.UML.Public_Visibility =>
+               return +"+";
+
+            when AMF.UML.Private_Visibility =>
+               return +"-";
+
+            when AMF.UML.Protected_Visibility =>
+               return +"#";
+
+            when AMF.UML.Package_Visibility =>
+               return +"~";
+         end case;
+      end if;
+   end Image;
 
    -----------
    -- Index --
@@ -620,6 +749,104 @@ package body Modeler.Containment_Tree_Models is
    begin
       null;
    end Link_Remove;
+
+   ------------------------
+   -- Multiplicity_Image --
+   ------------------------
+
+   function Multiplicity_Image
+    (Element : not null access
+       AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element'Class)
+         return League.Strings.Universal_String
+   is
+      use type AMF.Optional_Integer;
+      use type AMF.Optional_Unlimited_Natural;
+
+      function Image
+       (Item : AMF.Optional_Integer) return League.Strings.Universal_String;
+
+      function Image
+       (Item : AMF.Optional_Unlimited_Natural)
+          return League.Strings.Universal_String;
+
+      -----------
+      -- Image --
+      -----------
+
+      function Image
+       (Item : AMF.Optional_Integer) return League.Strings.Universal_String is
+      begin
+         if Item.Is_Empty then
+            return League.Strings.Empty_Universal_String;
+
+         else
+            declare
+               Image : constant Wide_Wide_String
+                 := Integer'Wide_Wide_Image (Item.Value);
+
+            begin
+               if Image (Image'First) = ' ' then
+                  return +Image (Image'First + 1 .. Image'Last);
+
+               else
+                  return +Image;
+               end if;
+            end;
+         end if;
+      end Image;
+
+      -----------
+      -- Image --
+      -----------
+
+      function Image
+       (Item : AMF.Optional_Unlimited_Natural)
+          return League.Strings.Universal_String is
+      begin
+         if Item.Is_Empty then
+            return League.Strings.Empty_Universal_String;
+
+         elsif Item.Value.Unlimited then
+            return +"*";
+
+         else
+            declare
+               Image : constant Wide_Wide_String
+                 := Integer'Wide_Wide_Image (Item.Value.Value);
+
+            begin
+               if Image (Image'First) = ' ' then
+                  return +Image (Image'First + 1 .. Image'Last);
+
+               else
+                  return +Image;
+               end if;
+            end;
+         end if;
+      end Image;
+
+      Lower : constant AMF.Optional_Integer           := Element.Lower_Bound;
+      Upper : constant AMF.Optional_Unlimited_Natural := Element.Upper_Bound;
+
+   begin
+      if not Lower.Is_Empty and not Upper.Is_Empty then
+         if Lower = 1 and Upper = 1 then
+            return League.Strings.Empty_Universal_String;
+
+         elsif Lower = 0 and Upper = AMF.Unlimited then
+            return +"[*]";
+
+         elsif Lower = Upper then
+            return +"[" & Image (Lower) & "]";
+
+         else
+            return +"[" & Image (Lower) & ".." & Image (Upper) & "]";
+         end if;
+
+      else
+         return League.Strings.Empty_Universal_String;
+      end if;
+   end Multiplicity_Image;
 
    ------------
    -- Parent --
