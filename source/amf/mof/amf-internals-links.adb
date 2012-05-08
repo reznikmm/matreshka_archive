@@ -88,9 +88,6 @@ package body AMF.Internals.Links is
 
    begin
       --  Synchronize set of links.
-      --
-      --  XXX This operations need to be circular probably to allow to handle
-      --  complicated cases.
 
       AMF.Internals.Helpers.Synchronize_Link_Set
        (First_Element, First_Property, Link);
@@ -127,10 +124,11 @@ package body AMF.Internals.Links is
      Second_Element : AMF_Element;
      Link           : AMF_Link)
    is
-      New_Link : AMF_Link;
       Current  : AMF_Link := Link;
 
    begin
+      --  Check whether link is in the set already.
+
       loop
          if AMF_Link_Table.Table (Current).Association = Association then
             --  Don't create duplicate links in the same set of links.
@@ -143,9 +141,38 @@ package body AMF.Internals.Links is
          exit when Current = Link;
       end loop;
 
-      New_Link := Create_Link (Association, First_Element, Second_Element);
-      AMF_Link_Table.Table (New_Link).Next := AMF_Link_Table.Table (Link).Next;
-      AMF_Link_Table.Table (Link).Next := New_Link;
+      --  Create new link.
+
+      declare
+         Member_End      : constant AMF_Collection_Of_Element
+           := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
+               (Association);
+         First_Property  : constant CMOF_Element
+           := AMF.Internals.Element_Collections.Element (Member_End, 1);
+         Second_Property : constant CMOF_Element
+           := AMF.Internals.Element_Collections.Element (Member_End, 2);
+         New_Link        : constant AMF_Link
+           := AMF.Internals.Links.Internal_Create_Link
+               (Association,
+                First_Element,
+                AMF.Internals.Element_Collections.Element (Member_End, 1),
+                Second_Element,
+                AMF.Internals.Element_Collections.Element (Member_End, 2));
+
+      begin
+         --  Include created link into the set of links.
+
+         AMF_Link_Table.Table (New_Link).Next :=
+           AMF_Link_Table.Table (Link).Next;
+         AMF_Link_Table.Table (Link).Next := New_Link;
+
+         --  Synchronize set of links.
+
+         AMF.Internals.Helpers.Synchronize_Link_Set
+          (First_Element, First_Property, New_Link);
+         AMF.Internals.Helpers.Synchronize_Link_Set
+          (Second_Element, Second_Property, New_Link);
+      end;
    end Create_Link;
 
    --------------------------
