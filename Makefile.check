@@ -71,6 +71,7 @@ sqlite3-valgrind:
 amf: amf-setup
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
 	AMF_DATA_DIR=.objs/share .objs/test_222
+	AMF_DATA_DIR=.objs/share .objs/test_225
 	AMF_DATA_DIR=.objs/share .objs/test_226 testsuite/amf/TN-226/test_226.xmi
 
 amf-setup:

@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,26 +41,80 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_amf.gpr";
-with "matreshka_amf_mofext.gpr";
-with "matreshka_amf_uml.gpr";
+with League.Strings;
 
-project Matreshka_AMF_Tests is
+with AMF.Facility;
+with AMF.Factories.UML_Factories;
+with AMF.UML.Classes;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Packageable_Elements.Collections;
+with AMF.UML.Packages;
+with AMF.UML.Properties.Collections;
+with AMF.URI_Stores;
 
-   for Main use
-    ("test_222.adb",
-     "test_225.adb",
-     "test_226.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/amf/TN-222",
-     "../testsuite/amf/TN-225",
-     "../testsuite/amf/TN-226");
+with AMF.Internals.Modules.UML_Module;
+pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+procedure Test_225 is
 
-end Matreshka_AMF_Tests;
+   use type AMF.UML.Elements.UML_Element_Access;
+
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
+   UML_URI          : constant League.Strings.Universal_String
+     := +"http://www.omg.org/spec/UML/20100901";
+
+   Store            : AMF.URI_Stores.URI_Store_Access;
+   UML_Factory      : AMF.Factories.UML_Factories.UML_Factory_Access;
+   The_Package      : AMF.UML.Packages.UML_Package_Access;
+   The_Class        : AMF.UML.Classes.UML_Class_Access;
+   The_Property     : AMF.UML.Properties.UML_Property_Access;
+   Packaged_Element :
+     AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
+   Owned_Attribute  :
+     AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property;
+   Owned_Element    : AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+begin
+   --  Initialize facility.
+
+   AMF.Facility.Initialize;
+
+   --  Create URI store.
+
+   Store := AMF.Facility.Create_URI_Store (+"local:///test");
+
+   --  Lookup for factory.
+
+   UML_Factory :=
+     AMF.Factories.UML_Factories.UML_Factory_Access
+      (Store.Get_Factory (UML_URI));
+
+   --  Create elements.
+
+   The_Package   := UML_Factory.Create_Package;
+   The_Class     := UML_Factory.Create_Class;
+   The_Property  := UML_Factory.Create_Property;
+
+   --  Link elements.
+
+   Packaged_Element := The_Package.Get_Packaged_Element;
+   Packaged_Element.Add (The_Class);
+
+   Owned_Attribute := The_Class.Get_Owned_Attribute;
+   Owned_Attribute.Add (The_Property);
+
+   Owned_Element := The_Class.Get_Owned_Element;
+
+   if Owned_Element.Length /= 1 then
+      raise Program_Error;
+   end if;
+
+   if Owned_Element.Element (1)
+        /= AMF.UML.Elements.UML_Element_Access (The_Property)
+   then
+      raise Program_Error;
+   end if;
+end Test_225;
