@@ -7711,7 +7711,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -7887,7 +7887,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -8194,7 +8194,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -8335,7 +8335,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -8589,7 +8589,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -8938,7 +8938,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -9146,7 +9146,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -9368,7 +9368,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -9484,7 +9484,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -9692,7 +9692,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -9886,7 +9886,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -10225,7 +10225,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Element (Value));
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
