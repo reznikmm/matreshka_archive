@@ -893,9 +893,9 @@ package body Generator.Analyzer is
       end loop;
    end Compute_Metamodel_Name;
 
-   --------------------
-   -- Assign_Numbers --
-   --------------------
+   -------------------------
+   -- Extract_String_Data --
+   -------------------------
 
    procedure Extract_String_Data
     (Metamodel_Info : not null Metamodel_Information_Access)
