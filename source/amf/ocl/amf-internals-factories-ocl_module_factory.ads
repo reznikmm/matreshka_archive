@@ -66,6 +66,12 @@ package AMF.Internals.Factories.OCL_Module_Factory is
      Link     : AMF.Internals.AMF_Link;
      Other    : AMF.Internals.AMF_Element);
 
+   overriding procedure Synchronize_Link_Set
+    (Self     : not null access constant OCL_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link);
+
    overriding function To_Element
     (Self     : not null access constant OCL_Module_Factory;
      Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
