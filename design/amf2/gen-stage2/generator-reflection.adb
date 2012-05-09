@@ -586,11 +586,6 @@ package body Generator.Reflection is
             Attribute          : constant
               not null AMF.CMOF.Properties.CMOF_Property_Access
                 := CMOF_Property_Sets.Element (Position);
-            Redefined_Property :
-              AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
-                := Attribute.Get_Redefined_Property;
-            Redefined          : AMF.CMOF.Properties.CMOF_Property_Access
-              := Attribute;
             Attribute_Class    : constant
               not null AMF.CMOF.Classes.CMOF_Class_Access
                 := Attribute.Get_Class;
@@ -605,13 +600,6 @@ package body Generator.Reflection is
             then
                return;
             end if;
-
-            --  Unwind to original property definition.
-
-            while not Redefined_Property.Is_Empty loop
-               Redefined := Redefined_Property.Element (1);
-               Redefined_Property := Redefined.Get_Redefined_Property;
-            end loop;
 
             if First then
                Unit.Add (+"         if");
@@ -788,7 +776,7 @@ package body Generator.Reflection is
             elsif Attribute_Type.all
                     in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
             then
-               case Representation (Redefined) is
+               case Representation (Attribute) is
                   when Value =>
                      Unit.Context.Add
                       ("AMF."
