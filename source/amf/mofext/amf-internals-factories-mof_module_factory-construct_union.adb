@@ -76,16 +76,6 @@ begin
               Opposite,
               Element,
               Link);
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
-              Opposite,
-              Element,
-              Link);
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
-              Opposite,
-              Element,
-              Link);
          end if;
 
       when others =>

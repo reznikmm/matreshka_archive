@@ -51,8 +51,6 @@ package AMF.MOF.Tags is
    pragma Preelaborate;
 
    type MOF_Tag is limited interface
-     and AMF.UML.Elements.UML_Element
-     and AMF.UML.Elements.UML_Element
      and AMF.UML.Elements.UML_Element;
 
    type MOF_Tag_Access is

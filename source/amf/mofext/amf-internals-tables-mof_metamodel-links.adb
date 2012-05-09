@@ -109,18 +109,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        Base + 3,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        Base + 5,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
         Base + 5,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
       AMF.Internals.Links.Internal_Create_Link
@@ -128,18 +116,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
         Base + 2,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        Base + 2,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
-        Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
@@ -157,30 +133,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 3,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 3,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 5,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 5,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
         Base + 5,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
       AMF.Internals.Links.Internal_Create_Link
@@ -188,30 +140,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
         Base + 2,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 2,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 2,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 4,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
@@ -291,18 +219,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Class_Super_Class_Class,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Super_Class,
-        AMF.Internals.Tables.UML_Metamodel.MC_UML_Element,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Super_Class_Class);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Class_Super_Class_Class,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Super_Class,
-        AMF.Internals.Tables.UML_Metamodel.MC_UML_Element,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Super_Class_Class);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Class_Super_Class_Class,
         Base + 1,
@@ -352,18 +268,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Subsetted_Property_Property);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Subsetted_Property_Property,
-        Base + 4,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Subsetted_Property_Property);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Subsetted_Property_Property,
-        Base + 4,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Subsetted_Property_Property);
-      AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Typed_Element_Type,
@@ -397,12 +301,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
         Base + 9,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 6,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 9,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
         Base + 6,
@@ -484,12 +382,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         Base + 10,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 7,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 10,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Member_End_Association,
         Base + 7,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Member_End,
@@ -543,12 +435,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
-        Base + 8,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
         Base + 7,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Member_Namespace);
       AMF.Internals.Links.Internal_Create_Link
@@ -567,12 +453,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Owned_Element_Owner,
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
-        Base + 1,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owner);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Owned_Element_Owner,
-        Base + 8,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
         Base + 7,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owner);
       AMF.Internals.Links.Internal_Create_Link
@@ -580,12 +460,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
         Base + 6,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Namespace);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
-        Base + 8,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
-        Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Namespace);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
@@ -645,18 +519,6 @@ package body AMF.Internals.Tables.MOF_Metamodel.Links is
 
    procedure Initialize_10 is
    begin
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Subsetted_Property_Property,
-        Base + 10,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Subsetted_Property_Property);
-      AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Subsetted_Property_Property,
-        Base + 10,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Subsetted_Property_Property);
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Subsetted_Property_Property,
         Base + 10,
