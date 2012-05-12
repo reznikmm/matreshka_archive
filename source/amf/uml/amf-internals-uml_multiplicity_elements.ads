@@ -108,6 +108,13 @@ package AMF.Internals.UML_Multiplicity_Elements is
    --  The query isMultivalued() checks whether this multiplicity has an upper 
    --  bound greater than one.
 
+   overriding function Lower
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Integer renames Get_Lower;
+   --  Operation MultiplicityElement::lower.
+   --
+   --  The derived lower attribute must equal the lowerBound.
+
    overriding function Lower_Bound
     (Self : not null access constant UML_Multiplicity_Element_Proxy)
        return AMF.Optional_Integer;
@@ -159,6 +166,13 @@ package AMF.Internals.UML_Multiplicity_Elements is
    --  Setter of MultiplicityElement::upperValue.
    --
    --  The specification of the upper bound for this multiplicity.
+
+   overriding function Upper
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Unlimited_Natural renames Get_Upper;
+   --  Operation MultiplicityElement::upper.
+   --
+   --  The derived upper attribute must equal the upperBound.
 
    overriding function Upper_Bound
     (Self : not null access constant UML_Multiplicity_Element_Proxy)

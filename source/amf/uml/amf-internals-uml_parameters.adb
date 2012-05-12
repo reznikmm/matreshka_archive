@@ -610,34 +610,6 @@ package body AMF.Internals.UML_Parameters is
       return Iss (Self, Lowerbound, Upperbound);
    end Iss;
 
-   -----------
-   -- Lower --
-   -----------
-
-   overriding function Lower
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.Optional_Integer is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Lower unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Parameter_Proxy.Lower";
-      return Lower (Self);
-   end Lower;
-
-   -----------
-   -- Upper --
-   -----------
-
-   overriding function Upper
-    (Self : not null access constant UML_Parameter_Proxy)
-       return AMF.Optional_Unlimited_Natural is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Upper unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Parameter_Proxy.Upper";
-      return Upper (Self);
-   end Upper;
-
    ----------
    -- Ends --
    ----------

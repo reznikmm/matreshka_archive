@@ -149,20 +149,6 @@ package AMF.Internals.UML_Connector_Ends is
    --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
-   overriding function Lower
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.Optional_Integer;
-   --  Operation MultiplicityElement::lower.
-   --
-   --  The derived lower attribute must equal the lowerBound.
-
-   overriding function Upper
-    (Self : not null access constant UML_Connector_End_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Operation MultiplicityElement::upper.
-   --
-   --  The derived upper attribute must equal the upperBound.
-
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Connector_End_Proxy;
      Visitor : in out AMF.Visitors.Abstract_Visitor'Class;

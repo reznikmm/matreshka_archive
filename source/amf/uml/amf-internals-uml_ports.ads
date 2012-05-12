@@ -830,20 +830,6 @@ package AMF.Internals.UML_Ports is
    --  The operation is determines if the upper and lower bound of the ranges
    --  are the ones given.
 
-   overriding function Lower
-    (Self : not null access constant UML_Port_Proxy)
-       return AMF.Optional_Integer;
-   --  Operation MultiplicityElement::lower.
-   --
-   --  The derived lower attribute must equal the lowerBound.
-
-   overriding function Upper
-    (Self : not null access constant UML_Port_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Operation MultiplicityElement::upper.
-   --
-   --  The derived upper attribute must equal the upperBound.
-
    overriding function Is_Redefinition_Context_Valid
     (Self : not null access constant UML_Port_Proxy;
      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
