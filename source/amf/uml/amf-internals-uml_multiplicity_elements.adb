@@ -83,9 +83,13 @@ package body AMF.Internals.UML_Multiplicity_Elements is
     (Self : not null access constant UML_Multiplicity_Element_Proxy)
        return AMF.Optional_Integer is
    begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower
-         (Self.Element);
+      --  [UML2.4.1] 7.3.33 MultiplicityElement (from Kernel)
+      --
+      --  [5] The derived lower attribute must equal the lowerBound.
+      --
+      --  lower = lowerBound()
+
+      return UML_Multiplicity_Element_Proxy'Class (Self.all).Lower_Bound;
    end Get_Lower;
 
    ---------------------
@@ -111,9 +115,13 @@ package body AMF.Internals.UML_Multiplicity_Elements is
     (Self : not null access constant UML_Multiplicity_Element_Proxy)
        return AMF.Optional_Unlimited_Natural is
    begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper
-         (Self.Element);
+      --  [UML2.4.1] 7.3.33 MultiplicityElement (from Kernel)
+      --
+      --  [6] The derived upper attribute must equal the upperBound.
+      --
+      --  upper = upperBound()
+
+      return UML_Multiplicity_Element_Proxy'Class (Self.all).Upper_Bound;
    end Get_Upper;
 
    ---------------------

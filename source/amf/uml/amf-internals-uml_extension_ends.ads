@@ -73,15 +73,6 @@ package AMF.Internals.UML_Extension_Ends is
      limited new AMF.Internals.UML_Properties.UML_Property_Proxy
        and AMF.UML.Extension_Ends.UML_Extension_End with null record;
 
-   overriding function Get_Lower
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Integer;
-   --  Getter of ExtensionEnd::lower.
-   --
-   --  This redefinition changes the default multiplicity of association ends,
-   --  since model elements are usually extended by 0 or 1 instance of the
-   --  extension stereotype.
-
    overriding procedure Set_Lower
     (Self : not null access UML_Extension_End_Proxy;
      To   : AMF.Optional_Integer);

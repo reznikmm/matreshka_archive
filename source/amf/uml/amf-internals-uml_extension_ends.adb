@@ -106,19 +106,6 @@ package body AMF.Internals.UML_Extension_Ends is
    end Visit_Element;
 
    ---------------
-   -- Get_Lower --
-   ---------------
-
-   overriding function Get_Lower
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Integer is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower
-         (Self.Element);
-   end Get_Lower;
-
-   ---------------
    -- Set_Lower --
    ---------------
 
