@@ -66,6 +66,15 @@ package AMF.Internals.CMOF_Named_Elements is
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return League.Strings.Universal_String;
+   --  Operation NamedElement::qualifiedName.
+   --
+   --  When there is a name, and all of the containing namespaces have a name, 
+   --  the qualified name is constructed from the names of the containing 
+   --  namespaces.
+
    overriding function Separator
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return League.Strings.Universal_String;

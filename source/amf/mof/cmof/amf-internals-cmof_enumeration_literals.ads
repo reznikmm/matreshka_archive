@@ -76,10 +76,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
 
-   overriding function Qualified_Name
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return League.Strings.Universal_String;
-
    overriding function Get_Enumeration
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return AMF.CMOF.Enumerations.CMOF_Enumeration_Access;

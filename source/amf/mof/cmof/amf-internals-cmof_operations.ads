@@ -89,10 +89,6 @@ package AMF.Internals.CMOF_Operations is
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
 
-   overriding function Qualified_Name
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return League.Strings.Universal_String;
-
    overriding function Imported_Member
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;

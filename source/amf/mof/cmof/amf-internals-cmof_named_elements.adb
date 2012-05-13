@@ -44,6 +44,7 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
+with AMF.CMOF.Namespaces.Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
@@ -97,13 +98,84 @@ package body AMF.Internals.CMOF_Named_Elements is
       return Internal_Get_Visibility (Self.Element);
    end Get_Visibility;
 
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return League.Strings.Universal_String
+   is
+      --  [UML 2.4.1] 7.3.34 NamedElement (from Kernel, Dependencies)
+      --
+      --  Constraints
+      --  [1] If there is no name, or one of the containing namespaces has no
+      --  name, there is no qualified name.
+      --
+      --  (self.name->isEmpty()
+      --     or self.allNamespaces()->select
+      --         (ns | ns.name->isEmpty())->notEmpty())
+      --  implies self.qualifiedName->isEmpty()
+      --
+      --  [2] When there is a name, and all of the containing namespaces have a
+      --  name, the qualified name is constructed from the names of the
+      --  containing namespaces.
+      --
+      --  (self.name->notEmpty()
+      --     and self.allNamespaces()->select
+      --          (ns | ns.name->isEmpty())->isEmpty())
+      --  implies
+      --    self.qualifiedName =
+      --      self.allNamespaces()->iterate
+      --       ( ns : Namespace; result: String = self.name |
+      --           ns.name->union(self.separator())->union(result))
+
+      Namespaces : constant
+        AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+          := CMOF_Named_Element_Proxy'Class (Self.all).All_Namespaces;
+      Separator  : constant League.Strings.Universal_String
+        := CMOF_Named_Element_Proxy'Class (Self.all).Separator;
+      Name       : AMF.Optional_String
+        := CMOF_Named_Element_Proxy'Class (Self.all).Get_Name;
+
+   begin
+      if Name.Is_Empty then
+         return League.Strings.Empty_Universal_String;
+      end if;
+
+      return Result : League.Strings.Universal_String := Name.Value do
+         for J in 1 .. Namespaces.Length loop
+            Name := Namespaces.Element (J).Get_Name;
+
+            if Name.Is_Empty then
+               --  When name of one of owning namespaces is empty the qualified
+               --  name is empty also. Clear result and exit from namespaces
+               --  loop.
+
+               Result.Clear;
+
+               exit;
+
+            else
+               --  Otherwise prepend separator and name of the namespace.
+
+               Result.Prepend (Separator);
+               Result.Prepend (Name.Value);
+            end if;
+         end loop;
+      end return;
+   end Qualified_Name;
+
    ---------------
    -- Separator --
    ---------------
 
    overriding function Separator
     (Self : not null access constant CMOF_Named_Element_Proxy)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.To_Universal_String ("::");
    end Separator;

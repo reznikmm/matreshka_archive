@@ -103,10 +103,6 @@ package AMF.Internals.CMOF_Parameters is
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
 
-   overriding function Qualified_Name
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return League.Strings.Universal_String;
-
    overriding function Get_Default
     (Self : not null access constant CMOF_Parameter_Proxy)
        return Optional_String;

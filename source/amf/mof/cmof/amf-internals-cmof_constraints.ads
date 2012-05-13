@@ -76,10 +76,6 @@ package AMF.Internals.CMOF_Constraints is
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
 
-   overriding function Qualified_Name
-    (Self : not null access constant CMOF_Constraint_Proxy)
-       return League.Strings.Universal_String;
-
    overriding function Get_Constrained_Element
     (Self : not null access constant CMOF_Constraint_Proxy)
        return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element;

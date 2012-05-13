@@ -161,21 +161,6 @@ package body AMF.Internals.CMOF_Expressions is
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
 
-   --------------------
-   -- Qualified_Name --
-   --------------------
-
-   overriding function Qualified_Name
-     (Self : not null access constant CMOF_Expression_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
-      raise Program_Error;
-      return Qualified_Name (Self);
-   end Qualified_Name;
-
    -------------------
    -- Is_Computable --
    -------------------

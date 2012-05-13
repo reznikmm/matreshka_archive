@@ -82,10 +82,6 @@ package AMF.Internals.CMOF_Classes is
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
 
-   overriding function Qualified_Name
-    (Self : not null access constant CMOF_Class_Proxy)
-       return League.Strings.Universal_String;
-
    overriding procedure Set_Package
     (Self : not null access CMOF_Class_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
