@@ -44,7 +44,6 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
-with AMF.CMOF.Namespaces.Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
@@ -52,6 +51,43 @@ package body AMF.Internals.CMOF_Named_Elements is
 
    use AMF.Internals.Tables.CMOF_Attributes;
    use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+   is
+      --  [UML 2.4.1] 7.3.34 NamedElement (from Kernel, Dependencies)
+      --
+      --  [1] The query allNamespaces() gives the sequence of namespaces in
+      --  which the NamedElement is nested, working outwards.
+      --
+      --  NamedElement::allNamespaces(): Sequence(Namespace);
+      --
+      --  allNamespaces =
+      --    if self.namespace->isEmpty()
+      --    then Sequence{}
+      --    else self.namespace.allNamespaces()->prepend(self.namespace)
+      --    endif
+
+      use type AMF.CMOF.Namespaces.CMOF_Namespace_Access;
+
+      The_Namespace : AMF.CMOF.Namespaces.CMOF_Namespace_Access
+        := CMOF_Named_Element_Proxy'Class (Self.all).Get_Namespace;
+
+   begin
+      return Result :
+               AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+      do
+         while The_Namespace /= null loop
+            Result.Add (The_Namespace);
+            The_Namespace := The_Namespace.Get_Namespace;
+         end loop;
+      end return;
+   end All_Namespaces;
 
    --------------
    -- Get_Name --

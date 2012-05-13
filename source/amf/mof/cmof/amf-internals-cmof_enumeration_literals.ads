@@ -45,7 +45,7 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Enumeration_Literals;
 with AMF.CMOF.Enumerations;
 with AMF.CMOF.Named_Elements;
-with AMF.CMOF.Namespaces.Collections;
+with AMF.CMOF.Namespaces;
 with AMF.Internals.CMOF_Named_Elements;
 with AMF.Visitors;
 
@@ -65,10 +65,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Optional_String;
-
-   overriding function All_Namespaces
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
 
    overriding function Is_Distinguishable_From
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy;

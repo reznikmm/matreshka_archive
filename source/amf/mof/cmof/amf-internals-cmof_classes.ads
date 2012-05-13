@@ -46,7 +46,7 @@ with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Features.Collections;
 with AMF.CMOF.Named_Elements.Collections;
-with AMF.CMOF.Namespaces.Collections;
+with AMF.CMOF.Namespaces;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
@@ -71,10 +71,6 @@ package AMF.Internals.CMOF_Classes is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Class_Proxy)
        return Optional_String;
-
-   overriding function All_Namespaces
-    (Self : not null access constant CMOF_Class_Proxy)
-       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
 
    overriding function Is_Distinguishable_From
     (Self : not null access constant CMOF_Class_Proxy;

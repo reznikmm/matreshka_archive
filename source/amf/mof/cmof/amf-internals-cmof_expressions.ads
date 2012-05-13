@@ -44,7 +44,7 @@
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Expressions;
 with AMF.CMOF.Named_Elements;
-with AMF.CMOF.Namespaces.Collections;
+with AMF.CMOF.Namespaces;
 with AMF.CMOF.Value_Specifications.Collections;
 with AMF.Internals.CMOF_Value_Specifications;
 with AMF.Visitors;
@@ -65,10 +65,6 @@ package AMF.Internals.CMOF_Expressions is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Expression_Proxy)
        return Optional_String;
-
-   overriding function All_Namespaces
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
 
    overriding function Is_Distinguishable_From
     (Self : not null access constant CMOF_Expression_Proxy;

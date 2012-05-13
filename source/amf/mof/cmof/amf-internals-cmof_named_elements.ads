@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Named_Elements;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Named_Elements is
@@ -50,6 +50,14 @@ package AMF.Internals.CMOF_Named_Elements is
    type CMOF_Named_Element_Proxy is
      abstract new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Named_Elements.CMOF_Named_Element with null record;
+
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+   --  Operation NamedElement::allNamespaces.
+   --
+   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  NamedElement is nested, working outwards.
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element_Proxy)

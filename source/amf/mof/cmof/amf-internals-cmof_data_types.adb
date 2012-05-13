@@ -161,21 +161,6 @@ package body AMF.Internals.CMOF_Data_Types is
       return Get_Qualified_Name (Self);
    end Get_Qualified_Name;
 
-   --------------------
-   -- All_Namespaces --
-   --------------------
-
-   overriding function All_Namespaces
-     (Self : not null access constant CMOF_Data_Type_Proxy)
-      return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error;
-      return All_Namespaces (Self);
-   end All_Namespaces;
-
    -----------------------------
    -- Is_Distinguishable_From --
    -----------------------------
