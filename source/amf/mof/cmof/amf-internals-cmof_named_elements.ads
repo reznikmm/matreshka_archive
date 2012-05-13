@@ -62,6 +62,9 @@ package AMF.Internals.CMOF_Named_Elements is
    overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return Optional_String;
+   --  Getter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Named_Element_Proxy)
@@ -73,6 +76,10 @@ package AMF.Internals.CMOF_Named_Elements is
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind;
+   --  Getter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Named_Element_Proxy)
@@ -86,10 +93,17 @@ package AMF.Internals.CMOF_Named_Elements is
    overriding function Separator
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return League.Strings.Universal_String;
+   --  Operation NamedElement::separator.
+   --
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Named_Element_Proxy;
      To   : Optional_String);
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Named_Element_Proxy;
