@@ -42,12 +42,20 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Factories.UML_Factories;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.Stores;
+with AMF.UML.Literal_Integers;
+with AMF.UML.Literal_Unlimited_Naturals;
 
 package body AMF.Internals.UML_Multiplicity_Elements is
 
    use type AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   UML_URI : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20100901");
 
    --------------------
    -- Get_Is_Ordered --
@@ -227,10 +235,35 @@ package body AMF.Internals.UML_Multiplicity_Elements is
 
    overriding procedure Set_Lower
     (Self : not null access UML_Multiplicity_Element_Proxy;
-     To   : AMF.Optional_Integer) is
+     To   : AMF.Optional_Integer)
+   is
+      Lower   : AMF.UML.Value_Specifications.UML_Value_Specification_Access
+        := UML_Multiplicity_Element_Proxy'Class (Self.all).Get_Lower_Value;
+      Factory : AMF.Factories.UML_Factories.UML_Factory_Access;
+
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower
-       (Self.Element, To);
+      if To.Is_Empty then
+         if Lower /= null then
+            --  XXX Remove of the element is not implemented.
+
+            raise Program_Error;
+         end if;
+
+      else
+         if Lower = null then
+            Factory :=
+             AMF.Factories.UML_Factories.UML_Factory_Access
+              (AMF.Stores.Store'Class (Self.Extent.all).Get_Factory (UML_URI));
+            Lower :=
+              AMF.UML.Value_Specifications.UML_Value_Specification_Access
+               (Factory.Create_Literal_Integer);
+            UML_Multiplicity_Element_Proxy'Class
+             (Self.all).Set_Lower_Value (Lower);
+         end if;
+
+         AMF.UML.Literal_Integers.UML_Literal_Integer'Class
+          (Lower.all).Set_Value (To.Value);
+      end if;
    end Set_Lower;
 
    ---------------------
@@ -253,10 +286,35 @@ package body AMF.Internals.UML_Multiplicity_Elements is
 
    overriding procedure Set_Upper
     (Self : not null access UML_Multiplicity_Element_Proxy;
-     To   : AMF.Optional_Unlimited_Natural) is
+     To   : AMF.Optional_Unlimited_Natural)
+   is
+      Upper   : AMF.UML.Value_Specifications.UML_Value_Specification_Access
+        := UML_Multiplicity_Element_Proxy'Class (Self.all).Get_Upper_Value;
+      Factory : AMF.Factories.UML_Factories.UML_Factory_Access;
+
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper
-       (Self.Element, To);
+      if To.Is_Empty then
+         if Upper /= null then
+            --  XXX Remove of the element is not implemented.
+
+            raise Program_Error;
+         end if;
+
+      else
+         if Upper = null then
+            Factory :=
+             AMF.Factories.UML_Factories.UML_Factory_Access
+              (AMF.Stores.Store'Class (Self.Extent.all).Get_Factory (UML_URI));
+            Upper :=
+              AMF.UML.Value_Specifications.UML_Value_Specification_Access
+               (Factory.Create_Literal_Unlimited_Natural);
+            UML_Multiplicity_Element_Proxy'Class
+             (Self.all).Set_Upper_Value (Upper);
+         end if;
+
+         AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural'Class
+          (Upper.all).Set_Value (To.Value);
+      end if;
    end Set_Upper;
 
    ---------------------
