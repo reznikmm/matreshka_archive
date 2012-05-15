@@ -520,7 +520,19 @@ package body Generator.Attributes is
             end Member_Name;
 
          begin
-            if Generated then
+            if Getter.Links then
+               Unit.Context.Add 
+                ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Types"); 
+               Unit.Add_Line 
+                ("         when AMF.Internals.Tables." 
+                   & Module_Info.Ada_Name 
+                   & "_Types.E_"
+                   & Owning_Metamodel_Ada_Name (Class)
+                   & '_'
+                   & To_Ada_Identifier (Class.Get_Name.Value)
+                   & " =>"); 
+               
+            elsif Generated then
                return;
 
             else
@@ -680,25 +692,27 @@ package body Generator.Attributes is
 
             elsif Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                Unit.Context.Add (+"AMF.Internals.Links");
-               Unit.Add_Line (+"      AMF.Internals.Links.Create_Link");
+               Unit.Add_Line (+"            AMF.Internals.Links.Create_Link");
                Unit.Context.Add
                 (Association_Constant_Package_Name (Association));
                Unit.Add_Line
-                ("       ("
+                ("             ("
                    & Association_Constant_Qualified_Name (Association)
                    & ',');
 
                if Association.Get_Member_End.Element (1) = Attribute then
-                  Unit.Add_Line (+"        Self,");
-                  Unit.Add_Line (+"        To);");
+                  Unit.Add_Line (+"              Self,");
+                  Unit.Add_Line (+"              To);");
 
                elsif Association.Get_Member_End.Element (2) = Attribute then
-                  Unit.Add_Line (+"        To,");
-                  Unit.Add_Line (+"        Self);");
+                  Unit.Add_Line (+"              To,");
+                  Unit.Add_Line (+"              Self);");
 
                else
                   raise Program_Error;
                end if;
+
+               Unit.Add_Line;
 
             else
                Unit.Context.Add
@@ -785,7 +799,22 @@ package body Generator.Attributes is
          Unit.Add_Line (+"   begin");
          Unit.Context.Add
           ("AMF.Internals.Tables." & Module_Info.Ada_Name & "_Element_Table");
+
+         if Getter.Links then
+            Unit.Add_Line 
+             ("      case AMF.Internals.Tables." 
+                & Module_Info.Ada_Name 
+                & "_Element_Table.Table (Self).Kind is"); 
+         end if;
+
          Getter.Pairs.Iterate (Generate'Access);
+
+         if Getter.Links then
+            Unit.Add_Line (+"         when others =>"); 
+            Unit.Add_Line (+"            raise Program_Error;"); 
+            Unit.Add_Line (+"      end case;"); 
+         end if;
+
          Unit.Add_Line ("   end " & Name & ";");
       end Generate_Setter;
 
