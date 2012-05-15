@@ -1434,10 +1434,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Association
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Member_End_Association,
@@ -1479,10 +1476,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Body_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Constraint_Body_Condition_Body_Context,
@@ -1496,10 +1490,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Class
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Operation_Owned_Operation_Class,
@@ -1513,10 +1504,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Context
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Constraint_Owned_Rule_Context,
@@ -1530,10 +1518,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Datatype
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Operation_Owned_Operation_Datatype,
@@ -1593,10 +1578,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Enumeration
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Enumeration_Literal_Owned_Literal_Enumeration,
@@ -1610,10 +1592,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Imported_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Imported_Element_Element_Import,
@@ -1627,10 +1606,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Imported_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Imported_Package_Package_Import,
@@ -1644,10 +1620,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Importing_Namespace
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Import_Element_Import_Importing_Namespace,
@@ -1859,10 +1832,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Merged_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Merged_Package_Package_Merge,
@@ -1904,10 +1874,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Nesting_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Nested_Package_Nesting_Package,
@@ -1921,10 +1888,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Operation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Parameter_Owned_Parameter_Operation,
@@ -1938,10 +1902,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Opposite
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Opposite_Property,
@@ -1955,10 +1916,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Owning_Association
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Owned_End_Owning_Association,
@@ -1972,10 +1930,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
@@ -1989,10 +1944,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Receiving_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Merge_Package_Merge_Receiving_Package,
@@ -2006,10 +1958,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Specification
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Value_Specification_Specification_Owning_Constraint,
@@ -2023,10 +1972,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Tag_Owner
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag_Owner_Owned_Tag,
@@ -2040,10 +1986,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
       AMF.Internals.Links.Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
