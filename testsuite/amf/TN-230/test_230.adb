@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,28 +41,89 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_amf.gpr";
-with "matreshka_amf_mofext.gpr";
-with "matreshka_amf_uml.gpr";
+with AMF.Facility;
+with AMF.Factories.UML_Factories;
+with AMF.UML.Classes;
+with AMF.UML.Constraints.Collections;
+with AMF.UML.Opaque_Expressions;
+with AMF.UML.Packageable_Elements.Collections;
+with AMF.UML.Packages;
+with AMF.UML.Value_Specifications;
+with AMF.URI_Stores;
+with League.Strings;
 
-project Matreshka_AMF_Tests is
+with AMF.Internals.Modules.UML_Module;
 
-   for Main use
-    ("test_222.adb",
-     "test_225.adb",
-     "test_226.adb",
-     "test_230.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/amf/TN-222",
-     "../testsuite/amf/TN-225",
-     "../testsuite/amf/TN-226",
-     "../testsuite/amf/TN-230");
+procedure Test_230 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
-end Matreshka_AMF_Tests;
+   UML_URI     : constant League.Strings.Universal_String
+     := +"http://www.omg.org/spec/UML/20100901";
+   UML_Factory : AMF.Factories.UML_Factories.UML_Factory_Access;
+   Store       : AMF.URI_Stores.URI_Store_Access;
+
+begin
+   --  Initialize facility.
+
+   AMF.Facility.Initialize;
+
+   --  Create URI Store.
+
+   Store := AMF.Facility.Create_URI_Store (+"local:///test");
+
+   --  Lookup for factory
+
+   UML_Factory :=
+     AMF.Factories.UML_Factories.UML_Factory_Access
+      (Store.Get_Factory (UML_URI));
+
+   --  Create elements of model
+
+   declare
+      use type AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+      The_Package    : AMF.UML.Packages.UML_Package_Access
+        := UML_Factory.Create_Package;
+      The_Class      : AMF.UML.Classes.UML_Class_Access
+        := UML_Factory.Create_Class;
+      The_Constraint : AMF.UML.Constraints.UML_Constraint_Access
+        := UML_Factory.Create_Constraint;
+      The_Opaque_Expression :
+        AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
+          := UML_Factory.Create_Opaque_Expression;
+      The_Value_Specification :
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+      Packaged_Element :
+        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element;
+      Owned_Rule       :
+        AMF.UML.Constraints.Collections.Set_Of_UML_Constraint;
+
+   begin
+
+      Packaged_Element := The_Package.Get_Packaged_Element;
+      Packaged_Element.Add (The_Class);
+
+      Owned_Rule := The_Class.Get_Owned_Rule;
+      Owned_Rule.Add (The_Constraint);
+
+      The_Constraint.Set_Specification
+       (AMF.UML.Value_Specifications.UML_Value_Specification_Access
+         (The_Opaque_Expression));
+
+      The_Value_Specification := The_Constraint.Get_Specification;
+
+      if The_Value_Specification = null then
+         raise Program_Error;
+      end if;
+
+      if The_Value_Specification
+           /= AMF.UML.Value_Specifications.UML_Value_Specification_Access
+               (The_Opaque_Expression)
+      then
+         raise Program_Error;
+      end if;
+   end;
+end Test_230;

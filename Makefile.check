@@ -73,6 +73,7 @@ amf: amf-setup
 	AMF_DATA_DIR=.objs/share .objs/test_222
 	AMF_DATA_DIR=.objs/share .objs/test_225
 	AMF_DATA_DIR=.objs/share .objs/test_226 testsuite/amf/TN-226/test_226.xmi
+	AMF_DATA_DIR=.objs/share .objs/test_230
 
 amf-setup:
 	rm -rf .objs/share
