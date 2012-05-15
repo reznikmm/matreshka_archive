@@ -205,10 +205,10 @@ private
      Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
        return not null AMF.UML.Elements.UML_Element_Access;
 
---   overriding procedure Enter_Association
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Associations.CMOF_Association_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
+   overriding procedure Enter_Association
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Class
     (Self    : in out Second_Pass_Visitor;
@@ -234,17 +234,17 @@ private
 --    (Self    : in out Second_Pass_Visitor;
 --     Element : not null AMF.CMOF.Element_Imports.CMOF_Element_Import_Access;
 --     Control : in out AMF.Visitors.Traverse_Control);
---
---   overriding procedure Enter_Enumeration
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
---
---   overriding procedure Enter_Enumeration_Literal
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
---
+
+   overriding procedure Enter_Enumeration
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Enumeration_Literal
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
 --   overriding procedure Enter_Expression
 --    (Self    : in out Second_Pass_Visitor;
 --     Element : not null AMF.CMOF.Expressions.CMOF_Expression_Access;
@@ -255,10 +255,10 @@ private
      Element : not null AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
---   overriding procedure Enter_Operation
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Operations.CMOF_Operation_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
+   overriding procedure Enter_Operation
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Operations.CMOF_Operation_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Package
     (Self    : in out Second_Pass_Visitor;
@@ -274,21 +274,21 @@ private
 --    (Self    : in out Second_Pass_Visitor;
 --     Element : not null AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access;
 --     Control : in out AMF.Visitors.Traverse_Control);
---
---   overriding procedure Enter_Parameter
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
+
+   overriding procedure Enter_Parameter
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Primitive_Type
     (Self    : in out Second_Pass_Visitor;
      Element : not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
      Control : in out AMF.Visitors.Traverse_Control);
 
---   overriding procedure Enter_Property
---    (Self    : in out Second_Pass_Visitor;
---     Element : not null AMF.CMOF.Properties.CMOF_Property_Access;
---     Control : in out AMF.Visitors.Traverse_Control);
+   overriding procedure Enter_Property
+    (Self    : in out Second_Pass_Visitor;
+     Element : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
 
    overriding procedure Enter_Tag
     (Self    : in out Second_Pass_Visitor;
