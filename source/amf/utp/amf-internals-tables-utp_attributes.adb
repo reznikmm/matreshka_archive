@@ -48,6 +48,7 @@ with AMF.Internals.Tables.Primitive_Types_Notification;
 with AMF.Internals.Tables.Utp_Element_Table;
 with AMF.Internals.Tables.Utp_Metamodel;
 with AMF.Internals.Tables.Utp_Notification;
+with AMF.Internals.Tables.Utp_Types;
 
 package body AMF.Internals.Tables.Utp_Attributes is
 
@@ -706,15 +707,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Accept_Event_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Accept_Event_Action;
 
    --------------------------------
@@ -723,15 +727,36 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Behavior
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Default,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Default =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Default,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Case,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Log,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Behavior;
 
    ---------------------------------------------
@@ -740,15 +765,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Behaviored_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Behaviored_Classifier;
 
    ---------------------------------------------
@@ -757,15 +785,36 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Call_Operation_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Call_Operation_Action;
 
    ----------------------------------
@@ -774,15 +823,24 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Classifier;
 
    -----------------------------------------
@@ -791,15 +849,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Combined_Fragment
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Combined_Fragment;
 
    ----------------------------------
@@ -808,15 +869,30 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Dependency
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Default_Application,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Default_Application,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Dependency;
 
    -------------------------------
@@ -825,15 +901,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Element_Base_Element_Extension_Managed_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Element_Base_Element_Extension_Managed_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Element;
 
    -----------------------------------------
@@ -842,15 +921,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Invocation_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Invocation_Action;
 
    ---------------------------------------------
@@ -859,15 +941,24 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Literal_Specification
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Literal_Specification;
 
    -------------------------------
@@ -876,15 +967,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Message
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Message_Base_Message_Extension_Time_Out_Message,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Message_Base_Message_Extension_Time_Out_Message,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Message;
 
    ---------------------------------
@@ -893,15 +987,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Namespace
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Namespace;
 
    -------------------------------------
@@ -910,15 +1007,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Opaque_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Opaque_Action;
 
    ---------------------------------
@@ -927,15 +1027,24 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Operation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Data_Selector,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Data_Selector,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Test_Case,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Operation;
 
    --------------------------------
@@ -944,15 +1053,30 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Property
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Coding_Rule,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Coding_Rule,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Data_Pool,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_SUT =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_SUT,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Property;
 
    ------------------------------------------------------
@@ -961,15 +1085,24 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Read_Structural_Feature_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Read_Structural_Feature_Action;
 
    ------------------------------------------
@@ -978,15 +1111,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Send_Object_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Send_Object_Action;
 
    ---------------------------------------------
@@ -995,15 +1131,24 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Structured_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Structured_Classifier;
 
    ----------------------------------
@@ -1012,15 +1157,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Time_Event
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Time_Event;
 
    -------------------------------------------
@@ -1029,15 +1177,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Value_Specification
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Value_Specification;
 
    -------------------------------------------------------
@@ -1046,15 +1197,18 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    procedure Internal_Set_Base_Write_Structural_Feature_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Write_Structural_Feature_Action;
 
    -------------------------

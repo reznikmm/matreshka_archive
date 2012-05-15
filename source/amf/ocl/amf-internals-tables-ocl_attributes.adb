@@ -47,6 +47,7 @@ with AMF.Internals.Links;
 with AMF.Internals.Tables.OCL_Element_Table;
 with AMF.Internals.Tables.OCL_Metamodel;
 with AMF.Internals.Tables.OCL_Notification;
+with AMF.Internals.Tables.OCL_Types;
 with AMF.Internals.Tables.Primitive_Types_Notification;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
@@ -2030,15 +2031,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Attribute
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Attribute_Tuple_Literal_Part,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Attribute_Tuple_Literal_Part,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Attribute;
 
    ---------------------------
@@ -2047,15 +2051,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Behavior
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Opaque_Expression,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Opaque_Expression,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Behavior;
 
    -----------------------
@@ -2064,15 +2071,24 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Body
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Loop_Body_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Body;
 
    ----------------------------------
@@ -2081,15 +2097,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Body_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Expression_Top_Expression,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Body_Expression_Top_Expression,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Body_Expression;
 
    ---------------------------------
@@ -2116,15 +2135,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Called_Operation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Called_Operation;
 
    ----------------------------
@@ -2133,15 +2155,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Condition_If_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Condition_If_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Condition;
 
    -----------------------------------
@@ -2150,15 +2175,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Context_Variable
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Context_Variable_Self_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Context_Variable_Self_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Context_Variable;
 
    -------------------------------
@@ -2167,15 +2195,42 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Element_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Element_Type_Collection_Type,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Element_Type;
 
    ----------------------------------
@@ -2184,15 +2239,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Else_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Else_Expression_Else_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Else_Expression_Else_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Else_Expression;
 
    ------------------------
@@ -2201,15 +2259,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_First
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_First_First_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_First_First_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_First;
 
    ---------------------------------
@@ -2218,15 +2279,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Generated_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Generated_Type_Owning_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Generated_Type_Owning_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Generated_Type;
 
    ---------------------
@@ -2235,15 +2299,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_In
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_In_Let_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_In_Let_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_In;
 
    ----------------------------------
@@ -2252,15 +2319,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Init_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Init_Expression;
 
    ---------------------------------
@@ -2341,15 +2411,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Item
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Item_Collection_Item,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Item_Collection_Item,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Item;
 
    -----------------------
@@ -2376,15 +2449,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Last
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Last_Last_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Last_Last_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Last;
 
    -----------------------
@@ -2421,15 +2497,240 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Name_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Name_Expression;
 
    ------------------------------------
@@ -2438,15 +2739,24 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Navigation_Source
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Navigation_Source_Navigation_Call_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Navigation_Source;
 
    -------------------------------------------
@@ -2455,15 +2765,78 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Owned_Template_Signature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owned_Template_Signature;
 
    --------------------------------------------
@@ -2472,15 +2845,84 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Owning_Template_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-        To,
-        Self);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owning_Template_Parameter;
 
    --------------------------
@@ -2489,15 +2931,78 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Package;
 
    ------------------------------
@@ -2524,15 +3029,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Association_Class
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Association_Class;
 
    ----------------------------------------
@@ -2541,15 +3049,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Enum_Literal
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Enum_Literal;
 
    -------------------------------------
@@ -2558,15 +3069,24 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Operation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Message_Type,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Message_Type,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Operation_Referred_Operation_Refering_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Operation;
 
    ------------------------------------
@@ -2575,15 +3095,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Property
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Referred_Property_Refering_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Property_Referred_Property_Refering_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Property;
 
    ----------------------------------
@@ -2592,15 +3115,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Signal
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Signal_Referred_Signal_Message_Type,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Signal_Referred_Signal_Message_Type,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Signal;
 
    ---------------------------------
@@ -2609,15 +3135,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_State
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Referred_State_State_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Referred_State_State_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_State;
 
    --------------------------------
@@ -2626,15 +3155,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Referred_Type_Type_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Classifier_Referred_Type_Type_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Type;
 
    ------------------------------------
@@ -2643,15 +3175,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Referred_Variable
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Referred_Variable_Refering_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Referred_Variable_Refering_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Referred_Variable;
 
    ---------------------------------
@@ -2660,15 +3195,78 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Representation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Representation;
 
    ----------------------------------------
@@ -2677,15 +3275,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Represented_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Parameter_Represented_Parameter_Variable,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Parameter_Represented_Parameter_Variable,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Represented_Parameter;
 
    ----------------------------------
@@ -2694,15 +3295,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Result_Variable
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Result_Variable_Result_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Result_Variable_Result_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Result_Variable;
 
    ------------------------------
@@ -2711,15 +3315,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Sent_Signal
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Sent_Signal;
 
    -------------------------
@@ -2728,15 +3335,42 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Source
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Source_Applied_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Source;
 
    --------------------------------
@@ -2796,15 +3430,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Target
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Target_Message_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Target_Message_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Target;
 
    -------------------------------------
@@ -2813,15 +3450,84 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Template_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Template_Parameter;
 
    ----------------------------------
@@ -2830,15 +3536,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Then_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Then_Expression_Then_Owner,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Ocl_Expression_Then_Expression_Then_Owner,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Then_Expression;
 
    -----------------------
@@ -2847,15 +3556,174 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Boolean_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Range =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Enum_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Expression_In_Ocl =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_If_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Integer_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterate_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Iterator_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Null_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Operation_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Real_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_String_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unlimited_Natural_Literal_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Unspecified_Value_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Variable_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Type;
 
    -------------------------------------------
@@ -2882,15 +3750,18 @@ package body AMF.Internals.Tables.OCL_Attributes is
 
    procedure Internal_Set_Variable
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Variable_Let_Exp,
-        Self,
-        To);
+      case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Variable_Variable_Let_Exp,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Variable;
 
    -----------------------------

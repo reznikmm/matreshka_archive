@@ -50,6 +50,7 @@ with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
+with AMF.Internals.Tables.UML_Types;
 
 package body AMF.Internals.Tables.UML_Attributes is
 
@@ -11412,15 +11413,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Abstraction
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Component_Realization_Realization_Abstraction,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Component_Realization_Realization_Abstraction,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Abstraction;
 
    -------------------------
@@ -11429,15 +11433,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Action_Action_Action_Execution_Specification,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Action_Action_Action_Execution_Specification,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Action;
 
    ---------------------------
@@ -11446,15 +11453,366 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Activity
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Edge_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Edge_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_Activity,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Activity;
 
    ---------------------------------
@@ -11463,15 +11821,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Activity_Scope
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Activity_Scope,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Activity_Scope,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Activity_Scope;
 
    -------------------------
@@ -11480,15 +11841,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Actual
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Actual_Template_Parameter_Substitution,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Actual_Template_Parameter_Substitution,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Actual;
 
    ---------------------------
@@ -11497,15 +11861,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Addition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Use_Case_Addition_Include,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Use_Case_Addition_Include,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Addition;
 
    ------------------------
@@ -11514,15 +11881,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_After
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_General_Ordering_To_Before_After,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_General_Ordering_To_Before_After,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_After;
 
    ------------------------------
@@ -11595,15 +11965,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Applied_Profile
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Profile_Applied_Profile_Profile_Application,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile_Application =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Profile_Applied_Profile_Profile_Application,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Applied_Profile;
 
    -----------------------------------
@@ -11612,15 +11985,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Applying_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Profile_Application_Profile_Application_Applying_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile_Application =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Profile_Application_Profile_Application_Applying_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Applying_Package;
 
    ------------------------------
@@ -11629,15 +12005,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Association
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Association_Association_Clear_Association_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Association_Association_Clear_Association_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Member_End_Association,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Member_End_Association,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Member_End_Association,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Association;
 
    ----------------------------------
@@ -11646,15 +12043,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Association_End
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Association_End,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Association_End,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Association_End,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Association_End,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Association_End;
 
    -----------------------------------
@@ -11663,15 +12075,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Abstraction
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Base_Abstraction,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Base_Abstraction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Refine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Refine_Extension_Refine_Base_Abstraction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Trace =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Trace_Extension_Trace_Base_Abstraction,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Abstraction;
 
    --------------------------------
@@ -11680,15 +12107,42 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Artifact
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Document_Extension_Document_Base_Artifact,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Document_Extension_Document_Base_Artifact,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Executable_Extension_Executable_Base_Artifact,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_File_Extension_File_Base_Artifact,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_File_Extension_File_Base_Artifact,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_File_Extension_File_Base_Artifact,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Artifact;
 
    ------------------------------------------
@@ -11697,15 +12151,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Behavioral_Feature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Create_Extension_Create_Base_Behavioral_Feature,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Create_Extension_Create_Base_Behavioral_Feature,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Destroy =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Destroy_Extension_Destroy_Base_Behavioral_Feature,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Behavioral_Feature;
 
    -----------------------------
@@ -11714,15 +12177,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Class
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Auxiliary_Extension_Auxiliary_Base_Class,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Auxiliary =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Auxiliary_Extension_Auxiliary_Base_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Focus =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Focus_Extension_Focus_Base_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implementation_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Implementation_Class_Extension_Implementation_Class_Base_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Metaclass =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Metaclass_Extension_Metaclass_Base_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Type_Extension_Type_Base_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Utility =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Utility_Extension_Utility_Base_Class,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Class;
 
    ----------------------------------
@@ -11731,15 +12227,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Realization_Extension_Realization_Base_Classifier,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Realization_Extension_Realization_Base_Classifier,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Specification_Extension_Specification_Base_Classifier,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Classifier;
 
    ---------------------------------
@@ -11748,15 +12253,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Component
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Entity_Extension_Entity_Base_Component,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Entity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Entity_Extension_Entity_Base_Component,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Implement =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Implement_Extension_Implement_Base_Component,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Process =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Process_Extension_Process_Base_Component,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Service =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Service_Extension_Service_Base_Component,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Subsystem =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Subsystem_Extension_Subsystem_Base_Component,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Build_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MA_Standard_Profile_L3_Build_Component_Extension_Build_Component_Base_Component,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Component;
 
    -----------------------------
@@ -11765,15 +12303,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Model
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MA_Standard_Profile_L3_Metamodel_Extension_Metamodel_Base_Model,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_Metamodel =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MA_Standard_Profile_L3_Metamodel_Extension_Metamodel_Base_Model,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L3_System_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L3_Metamodel.MA_Standard_Profile_L3_System_Model_Extension_System_Model_Base_Model,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Model;
 
    -------------------------------
@@ -11782,15 +12329,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Framework_Extension_Framework_Base_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Framework =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Framework_Extension_Framework_Base_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Model_Library =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Model_Library_Extension_Model_Library_Base_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Package;
 
    -----------------------------
@@ -11799,15 +12355,42 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Base_Usage
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Call_Extension_Call_Base_Usage,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Call =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Call_Extension_Call_Base_Usage,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Create =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Create_Extension_Create_Base_Usage,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Instantiate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Instantiate_Extension_Instantiate_Base_Usage,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Responsibility =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Responsibility_Extension_Responsibility_Base_Usage,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Send =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Send_Extension_Send_Base_Usage,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Base_Usage;
 
    -------------------------
@@ -11816,15 +12399,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Before
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Before_To_After,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Before_To_After,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Before;
 
    ---------------------------
@@ -11833,15 +12419,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Behavior
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Behavior_Execution_Specification,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Behavior_Execution_Specification,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Call_Behavior_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Behavior_Opaque_Expression,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Behavior;
 
    -----------------------
@@ -11878,15 +12479,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Body_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Body_Condition_Body_Context,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Body_Condition_Body_Context,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Body_Condition;
 
    --------------------------------
@@ -11895,15 +12499,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Bound_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Binding_Template_Binding_Bound_Element,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Binding =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Binding_Template_Binding_Bound_Element,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Bound_Element;
 
    ------------------------------------
@@ -11912,15 +12519,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Change_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Change_Expression_Change_Event,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Change_Expression_Change_Event,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Change_Expression;
 
    ------------------------
@@ -11929,15 +12539,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Class
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Class,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Owned_Operation_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Class,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Class,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Class;
 
    -----------------------------
@@ -11946,15 +12577,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Classifier_Create_Object_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Classifier_Create_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Classifier_Read_Extent_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Classifier_Read_Is_Classified_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Classifier;
 
    --------------------------------------
@@ -11963,15 +12615,108 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Classifier_Behavior
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Classifier_Behavior_Behaviored_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Classifier_Behavior;
 
    -----------------------------
@@ -11980,15 +12725,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Collection
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Collection_Reduce_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Collection_Reduce_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Collection;
 
    ------------------------------
@@ -11997,15 +12745,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Computation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Computation,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Derive =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_Derive_Extension_Derive_Computation,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Computation;
 
    ------------------------------
@@ -12032,15 +12783,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Condition_Extend,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Condition_Extend,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Condition;
 
    ----------------------------
@@ -12049,15 +12803,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Connector
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connector_Connector_Message,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connector_Connector_Message,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Connector;
 
    ----------------------------
@@ -12066,15 +12823,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Container
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Vertex_Subvertex_Container,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Vertex_Subvertex_Container,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Vertex_Subvertex_Container,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Transition_Container,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Vertex_Subvertex_Container,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Vertex_Subvertex_Container,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Transition_Container,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Container;
 
    --------------------------
@@ -12111,15 +12901,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Contract
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interface_Contract_Interface_Realization,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interface_Contract_Interface_Realization,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Contract_Substitution,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Contract;
 
    ---------------------------
@@ -12128,15 +12927,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Datatype
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Datatype,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Datatype,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Owned_Operation_Datatype,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Datatype,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Datatype,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Datatype;
 
    --------------------------
@@ -12145,15 +12965,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Decider
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Decider_Clause,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Clause =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Decider_Clause,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Decider_Loop_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Decider;
 
    ---------------------------------
@@ -12162,15 +12991,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Decision_Input
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Decision_Input_Decision_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Decision_Input_Decision_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Decision_Input;
 
    --------------------------------------
@@ -12179,15 +13011,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Decision_Input_Flow
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Object_Flow_Decision_Input_Flow_Decision_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Object_Flow_Decision_Input_Flow_Decision_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Decision_Input_Flow;
 
    --------------------------------
@@ -12196,15 +13031,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Decomposed_As
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Part_Decomposition_Decomposed_As_Lifeline,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Part_Decomposition_Decomposed_As_Lifeline,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Decomposed_As;
 
    --------------------------
@@ -12241,15 +13079,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Default
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Default_Template_Parameter,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Default_Template_Parameter,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Default;
 
    --------------------------------
@@ -12258,15 +13117,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Default_Value
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Default_Value_Owning_Property,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Default_Value_Owning_Property,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Default_Value_Owning_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Default_Value_Owning_Property,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Default_Value_Owning_Property,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Default_Value;
 
    -----------------------------------
@@ -12275,15 +13155,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Defining_Feature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Defining_Feature_Slot,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Slot =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Defining_Feature_Slot,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Defining_Feature;
 
    -----------------------------
@@ -12292,15 +13175,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Deployment
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Deployment_Specification_Configuration_Deployment,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Deployment_Specification_Configuration_Deployment,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Deployment;
 
    --------------------------------------
@@ -12337,15 +13223,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Destroy_At
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Destroy_At_Link_End_Destruction_Data,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Destroy_At_Link_End_Destruction_Data,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Destroy_At;
 
    ----------------------------
@@ -12372,15 +13261,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Do_Activity
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Do_Activity_State,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Do_Activity_State,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Do_Activity_State,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Do_Activity;
 
    -------------------------
@@ -12407,15 +13305,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Effect
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Effect_Transition,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Effect_Transition,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Effect_Transition,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Effect;
 
    ----------------------------------------
@@ -12424,15 +13331,96 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Enclosing_Interaction
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Interaction,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Enclosing_Interaction;
 
    ------------------------------------
@@ -12441,15 +13429,96 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Enclosing_Operand
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Fragment_Enclosing_Operand,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Enclosing_Operand;
 
    ----------------------
@@ -12458,15 +13527,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_End
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_End_Link_End_Data,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_End_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_End_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_End_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_End_Read_Link_Object_End_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_End;
 
    ------------------------
@@ -12475,15 +13565,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Entry
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Entry_State,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Entry_State,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Entry_State,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Entry;
 
    ------------------------------
@@ -12492,15 +13591,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Enumeration
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Enumeration_Literal_Owned_Literal_Enumeration,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Enumeration_Literal_Owned_Literal_Enumeration,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Enumeration;
 
    ------------------------
@@ -12509,15 +13611,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Event
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Event_Time_Observation,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Event_Time_Observation,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Trigger =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Event_Event_Trigger,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Event;
 
    ----------------------------
@@ -12526,15 +13637,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Exception
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Exception_Raise_Exception_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Exception_Raise_Exception_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Exception;
 
    ----------------------------------
@@ -12543,15 +13657,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Exception_Input
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Object_Node_Exception_Input_Exception_Handler,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Object_Node_Exception_Input_Exception_Handler,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Exception_Input;
 
    ----------------------------
@@ -12560,15 +13677,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Execution
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Execution_Specification_Execution_Execution_Occurrence_Specification,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Execution_Specification_Execution_Execution_Occurrence_Specification,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Execution;
 
    -------------------------------------
@@ -12605,15 +13725,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Exit
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Exit_State,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Exit_State,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Exit_State,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Exit;
 
    -----------------------
@@ -12622,15 +13751,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Expr
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Expr_Duration,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Expr_Duration,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Expr_Time_Expression,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Expr;
 
    --------------------------------
@@ -12639,15 +13777,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Extended_Case
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Use_Case_Extended_Case_Extend,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Use_Case_Extended_Case_Extend,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Extended_Case;
 
    ----------------------------------
@@ -12656,15 +13797,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Extended_Region
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Region_Extended_Region_Region,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Region_Extended_Region_Region,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Extended_Region;
 
    ----------------------------
@@ -12673,15 +13817,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Extension
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Extend_Extend_Extension,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Extend_Extend_Extension,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Extension;
 
    ----------------------------
@@ -12718,15 +13865,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Finish
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Finish_Execution_Specification,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Finish_Execution_Specification,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Finish_Execution_Specification,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Finish;
 
    ------------------------
@@ -12735,15 +13891,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_First
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_First_Test_Identity_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_First_Test_Identity_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_First;
 
    ------------------------------
@@ -12788,15 +13947,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Formal
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Formal_Template_Parameter_Substitution,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Formal_Template_Parameter_Substitution,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Formal;
 
    -------------------------
@@ -12833,15 +13995,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_From_Action
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Action_From_Action_Action_Input_Pin,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Action_From_Action_Action_Input_Pin,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_From_Action;
 
    --------------------------
@@ -12850,15 +14015,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_General
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Generalization,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Generalization,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_General;
 
    ----------------------------------
@@ -12867,15 +14035,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_General_Machine
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_State_Machine_General_Machine_Protocol_Conformance,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_State_Machine_General_Machine_Protocol_Conformance,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_General_Machine;
 
    ------------------------
@@ -12884,15 +14055,42 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Guard
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Guard_Activity_Edge,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Guard_Activity_Edge,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Constraint_Guard_Interaction_Operand,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Guard_Activity_Edge,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Guard_Transition,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Guard_Transition,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Guard;
 
    -------------------------------
@@ -12901,15 +14099,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Handler_Body
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Executable_Node_Handler_Body_Exception_Handler,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Executable_Node_Handler_Body_Exception_Handler,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Handler_Body;
 
    ------------------------------------------
@@ -12918,15 +14119,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Implementing_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interface_Realization_Interface_Realization_Implementing_Classifier,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interface_Realization_Interface_Realization_Implementing_Classifier,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Implementing_Classifier;
 
    -----------------------------------
@@ -12935,15 +14139,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Imported_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Packageable_Element_Imported_Element_Element_Import,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Element_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Packageable_Element_Imported_Element_Element_Import,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Imported_Element;
 
    -----------------------------------
@@ -12952,15 +14159,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Imported_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Imported_Package_Package_Import,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Imported_Package_Package_Import,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Imported_Package;
 
    --------------------------------------
@@ -12969,15 +14179,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Importing_Namespace
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Import_Element_Import_Importing_Namespace,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Element_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Import_Element_Import_Importing_Namespace,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Import_Package_Import_Importing_Namespace,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Importing_Namespace;
 
    ------------------------------
@@ -12986,15 +14205,54 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_In_Activity
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Group_In_Activity,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_In_Activity;
 
    -------------------------------------
@@ -13003,15 +14261,366 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_In_Structured_Node
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Edge_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Edge_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Node_In_Structured_Node,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_In_Structured_Node;
 
    ---------------------------------
@@ -13020,15 +14629,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Including_Case
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Include_Include_Including_Case,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Include_Include_Including_Case,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Including_Case;
 
    ----------------------------
@@ -13037,15 +14649,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Insert_At
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Insert_At_Add_Structural_Feature_Value_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Insert_At_Add_Structural_Feature_Value_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Insert_At_Add_Variable_Value_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Insert_At_Link_End_Creation_Data,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Insert_At;
 
    ---------------------------
@@ -13054,15 +14681,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Instance
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Instance_Specification_Instance_Instance_Value,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Instance_Specification_Instance_Instance_Value,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Instance;
 
    ------------------------------
@@ -13071,15 +14701,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Interaction
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Lifeline_Lifeline_Interaction,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Lifeline_Lifeline_Interaction,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_Message_Interaction,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Interaction;
 
    ---------------------------------------
@@ -13106,15 +14745,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Interface
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Interface,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Interface,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Owned_Operation_Interface,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Interface,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_Attribute_Interface,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Interface;
 
    -----------------------------
@@ -13123,15 +14783,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Interrupts
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Interrupting_Edge_Interrupts,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Interrupting_Edge_Interrupts,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Interrupting_Edge_Interrupts,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Interrupts;
 
    ----------------------------
@@ -13140,15 +14809,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Invariant
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Invariant_State_Invariant,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Invariant_State_Invariant,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Invariant;
 
    ------------------------------
@@ -13967,15 +15639,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Join_Spec
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Join_Spec_Join_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Join_Spec_Join_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Join_Spec;
 
    -----------------------
@@ -14020,15 +15695,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Location
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Deployment_Deployment_Location,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Deployment_Deployment_Location,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Location;
 
    ---------------------------
@@ -14083,15 +15761,72 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Lower_Value
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Lower_Value_Owning_Lower,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Lower_Value;
 
    --------------------------
@@ -14100,15 +15835,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Mapping
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Opaque_Expression_Mapping_Abstraction,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Mapping;
 
    ----------------------
@@ -14117,15 +15885,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Max
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Duration_Max_Duration_Interval,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Duration_Max_Duration_Interval,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Max_Interval,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Max_Interval,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Max;
 
    -------------------------
@@ -14134,15 +15917,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Maxint
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Maxint_Interaction_Constraint,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Maxint_Interaction_Constraint,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Maxint;
 
    ---------------------------------
@@ -14151,15 +15937,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Merged_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Merged_Package_Package_Merge,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Merge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Merged_Package_Package_Merge,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Merged_Package;
 
    --------------------------
@@ -14168,15 +15957,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Message
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_Message_Message_End,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_Message_Message_End,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Gate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_Message_Message_End,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_Message_Message_End,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Message;
 
    -------------------------------
@@ -14203,15 +16007,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Min
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Duration_Min_Duration_Interval,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Duration_Min_Duration_Interval,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Min_Interval,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Min_Interval,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Min;
 
    -------------------------
@@ -14220,15 +16039,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Minint
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Minint_Interaction_Constraint,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Minint_Interaction_Constraint,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Minint;
 
    -----------------------
@@ -14301,15 +16123,1032 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Name_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Event_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Combined_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Conditional_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Consider_Ignore_Fragment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Continuation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Decision_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extend =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_Point =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Flow_Final_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Fork_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Gate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_General_Ordering =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Include =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Initial_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Operand =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interruptible_Activity_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Join_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Merge_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter_Set =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Raise_Exception_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Sequence_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Structured_Activity_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Trigger =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Name_Expression;
 
    ----------------------------------
@@ -14318,15 +17157,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Nesting_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Nested_Package_Nesting_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Nested_Package_Nesting_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Nested_Package_Nesting_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Nested_Package_Nesting_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Nesting_Package;
 
    -------------------------
@@ -14335,15 +17189,84 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Object
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Structural_Feature_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Association_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Clear_Association_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Read_Is_Classified_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Read_Link_Object_End_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Read_Link_Object_End_Qualifier_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reclassify_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Reclassify_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Classifier_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Start_Classifier_Behavior_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Start_Object_Behavior_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Object_Unmarshall_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Object;
 
    --------------------------
@@ -14352,15 +17275,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_On_Port
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Port_On_Port_Invocation_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_On_Port;
 
    ----------------------------
@@ -14369,15 +17325,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Operation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Operation_Call_Event,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Operation_Call_Event,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Operation_Call_Operation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameter_Owned_Parameter_Operation,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Operation;
 
    ---------------------------
@@ -14386,15 +17357,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Opposite
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Opposite_Property,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Opposite_Property,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Opposite_Property,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Opposite_Property,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Opposite;
 
    ---------------------------
@@ -14421,15 +17407,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owned_Actual
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Actual_Template_Parameter_Substitution,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Actual_Template_Parameter_Substitution,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owned_Actual;
 
    --------------------------------
@@ -14438,15 +17427,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owned_Default
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Default_Template_Parameter,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Default_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Default_Template_Parameter,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owned_Default;
 
    --------------------------------------------
@@ -14455,15 +17465,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owned_Parametered_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owned_Parametered_Element;
 
    -------------------------------------------
@@ -14472,15 +17503,204 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owned_Template_Signature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Template_Signature_Owned_Template_Signature_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owned_Template_Signature;
 
    -------------------------------------
@@ -14489,15 +17709,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owning_Association
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_End_Owning_Association,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_End_Owning_Association,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_End_Owning_Association,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Owned_End_Owning_Association,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owning_Association;
 
    ------------------------------------
@@ -14506,15 +17741,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owning_Expression
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Sub_Expression_Owning_Expression,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_String_Expression_Sub_Expression_Owning_Expression,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owning_Expression;
 
    ----------------------------------
@@ -14523,15 +17761,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owning_Instance
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Slot_Slot_Owning_Instance,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Slot =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Slot_Slot_Owning_Instance,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owning_Instance;
 
    --------------------------------------------
@@ -14540,15 +17781,468 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Owning_Template_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Owning_Template_Parameter;
 
    --------------------------
@@ -14557,15 +18251,174 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Package;
 
    ----------------------------
@@ -14574,15 +18427,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameter_Parameter_Activity_Parameter_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameter_Parameter_Activity_Parameter_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Parameter;
 
    --------------------------------------
@@ -14591,15 +18447,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Parametered_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Template_Parameter_Template_Parameter_Parametered_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Parametered_Element;
 
    ---------------------------------
@@ -14608,15 +18485,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Part_With_Port
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Part_With_Port_Connector_End,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Part_With_Port_Connector_End,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Part_With_Port;
 
    ---------------------------------
@@ -14625,15 +18505,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Post_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Post_Condition_Owning_Transition,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Post_Condition_Owning_Transition,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Post_Condition;
 
    ----------------------------
@@ -14642,15 +18525,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Powertype
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Generalization_Set_Powertype_Extent_Powertype,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Generalization_Set_Powertype_Extent_Powertype,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Powertype;
 
    --------------------------------
@@ -14659,15 +18545,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Pre_Condition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Pre_Condition_Protocol_Transition,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Pre_Condition_Protocol_Transition,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Pre_Condition;
 
    ---------------------------------
@@ -14676,15 +18565,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Protected_Node
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Exception_Handler_Handler_Protected_Node,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Exception_Handler =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Exception_Handler_Handler_Protected_Node,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Protected_Node;
 
    ---------------------------
@@ -14693,15 +18585,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Protocol
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_State_Machine_Protocol_Interface,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_State_Machine_Protocol_Interface,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_State_Machine_Protocol_Port,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Protocol;
 
    ----------------------------
@@ -14710,15 +18611,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Qualifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Qualifier_Value,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Qualifier_Value,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Qualifier_Read_Link_Object_End_Qualifier_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Qualifier;
 
    --------------------------------
@@ -14727,15 +18637,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Receive_Event
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_End_Receive_Event_End_Message,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_End_Receive_Event_End_Message,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Receive_Event;
 
    ------------------------------------
@@ -14744,15 +18657,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Receiving_Package
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Merge_Package_Merge_Receiving_Package,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Package_Merge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Package_Merge_Package_Merge_Receiving_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Receiving_Package;
 
    ----------------------------------
@@ -14761,15 +18677,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Redefined_State
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Redefined_State_State,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Redefined_State_State,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Redefined_State_State,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Redefined_State;
 
    ---------------------------------------
@@ -14778,15 +18703,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Redefined_Transition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Redefined_Transition_Transition,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Redefined_Transition_Transition,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Redefined_Transition_Transition,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Redefined_Transition;
 
    --------------------------
@@ -14795,15 +18729,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Reducer
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Reducer_Reduce_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Reducer_Reduce_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Reducer;
 
    ----------------------------
@@ -14812,15 +18749,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Refers_To
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Refers_To_Interaction_Use,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Refers_To_Interaction_Use,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Refers_To_Interaction_Use,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Refers_To;
 
    ----------------------------------
@@ -14829,15 +18775,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Region_As_Input
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Expansion_Node_Input_Element_Region_As_Input,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Expansion_Node_Input_Element_Region_As_Input,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Region_As_Input;
 
    -----------------------------------
@@ -14846,15 +18795,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Region_As_Output
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Expansion_Node_Output_Element_Region_As_Output,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Expansion_Node_Output_Element_Region_As_Output,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Region_As_Output;
 
    ----------------------------
@@ -14863,15 +18815,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Remove_At
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Remove_At_Remove_Structural_Feature_Value_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Remove_At_Remove_Structural_Feature_Value_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Remove_At_Remove_Variable_Value_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Remove_At;
 
    --------------------------------
@@ -14880,15 +18841,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Reply_To_Call
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Trigger_Reply_To_Call_Reply_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Trigger_Reply_To_Call_Reply_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Reply_To_Call;
 
    ---------------------------------
@@ -14897,15 +18861,174 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Representation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Use_Representation_Classifier,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Representation;
 
    -----------------------------
@@ -14914,15 +19037,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Represents
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Represents_Activity_Partition,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Represents_Activity_Partition,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Represents_Lifeline,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Represents;
 
    -------------------------
@@ -14931,15 +19063,114 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Result
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Write_Structural_Feature_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Write_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Clear_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Create_Link_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Create_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameter_Result_Opaque_Expression,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Extent_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Extent_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Is_Classified_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Is_Classified_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Link_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Link_Object_End_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Link_Object_End_Qualifier_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Link_Object_End_Qualifier_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Self_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Self_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Read_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reduce_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Reduce_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Write_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Test_Identity_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Result_Value_Specification_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Result;
 
    -------------------------------------
@@ -14948,15 +19179,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Return_Information
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Return_Information_Accept_Call_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Accept_Call_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Output_Pin_Return_Information_Accept_Call_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reply_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Return_Information_Reply_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Return_Information;
 
    -------------------------------
@@ -14965,15 +19205,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Return_Value
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Return_Value_Interaction_Use,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Return_Value_Interaction_Use,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Return_Value_Interaction_Use,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Return_Value;
 
    -----------------------------------------
@@ -14982,15 +19231,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Return_Value_Recipient
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Return_Value_Recipient_Interaction_Use,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Return_Value_Recipient_Interaction_Use,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Part_Decomposition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Return_Value_Recipient_Interaction_Use,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Return_Value_Recipient;
 
    -----------------------
@@ -14999,15 +19257,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Role
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connector_End_End_Role,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connector_End_End_Role,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Role;
 
    ------------------------
@@ -15016,15 +19277,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Scope
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Scope,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Scope,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Scope;
 
    -------------------------
@@ -15033,15 +19297,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Second
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Second_Test_Identity_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Test_Identity_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Second_Test_Identity_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Second;
 
    ----------------------------
@@ -15050,15 +19317,66 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Selection
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Flow,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Selection_Object_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Selection;
 
    ---------------------------
@@ -15067,15 +19385,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Selector
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Selector_Lifeline,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Lifeline =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Selector_Lifeline,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Selector;
 
    -----------------------------
@@ -15084,15 +19405,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Send_Event
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_End_Send_Event_End_Message,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Message_End_Send_Event_End_Message,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Send_Event;
 
    --------------------------
@@ -15119,15 +19443,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Signal
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Signal_Signal_Broadcast_Signal_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Broadcast_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Signal_Signal_Broadcast_Signal_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Signal_Signal_Reception,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Signal_Signal_Send_Signal_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Signal_Signal_Signal_Event,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Signal;
 
    ----------------------------
@@ -15136,15 +19481,48 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Signature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parameter_Signature,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Classifier_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parameter_Signature,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connectable_Element_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parameter_Signature,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Message =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Signature_Message,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parameter_Signature,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Binding =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Signature_Template_Binding,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parameter_Signature,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Signature;
 
    -------------------------
@@ -15153,15 +19531,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Source
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Outgoing_Source,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Outgoing_Source,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Outgoing_Source,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Outgoing_Source,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Outgoing_Source,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Source;
 
    ---------------------------
@@ -15170,15 +19569,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Specific
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Generalization_Generalization_Specific,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Generalization_Generalization_Specific,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Specific;
 
    -----------------------------------
@@ -15187,15 +19589,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Specific_Machine
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_Conformance_Conformance_Specific_Machine,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Conformance =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Protocol_Conformance_Conformance_Specific_Machine,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Specific_Machine;
 
    --------------------------------
@@ -15204,15 +19609,90 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Specification
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Instance_Spec,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Instance_Spec,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Method_Specification,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Specification;
 
    ------------------------
@@ -15221,15 +19701,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Start
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Start_Execution_Specification,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Start_Execution_Specification,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Behavior_Execution_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Occurrence_Specification_Start_Execution_Specification,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Start;
 
    ------------------------
@@ -15238,15 +19727,30 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_State
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connection_Point_Reference_Connection_State,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Connection_Point_Reference =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connection_Point_Reference_Connection_State,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Pseudostate_Connection_Point_State,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Region_Region_State,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_State;
 
    ----------------------------------
@@ -15255,15 +19759,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_State_Invariant
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_State_Invariant_Owning_State,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_State_Invariant_Owning_State,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_State_Invariant_Owning_State,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_State_Invariant;
 
    --------------------------------
@@ -15272,15 +19785,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_State_Machine
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Pseudostate_Connection_Point_State_Machine,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Pseudostate =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Pseudostate_Connection_Point_State_Machine,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Region =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Region_Region_State_Machine,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_State_Machine;
 
    -------------------------------------
@@ -15289,15 +19811,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Structural_Feature
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Structural_Feature_Structural_Feature_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Structural_Feature_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Structural_Feature_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Structural_Feature_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Structural_Feature_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structural_Feature_Structural_Feature_Structural_Feature_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Structural_Feature;
 
    -----------------------------
@@ -15306,15 +19849,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Submachine
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Submachine_State_Submachine,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Submachine_State_Submachine,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_State_Submachine_State_Submachine,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Submachine;
 
    ------------------------------------------
@@ -15323,15 +19875,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Substituting_Classifier
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Substitution_Substitution_Substituting_Classifier,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Substitution_Substitution_Substituting_Classifier,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Substituting_Classifier;
 
    ----------------------------------
@@ -15340,15 +19895,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Super_Partition
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Partition_Subpartition_Super_Partition,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Partition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Partition_Subpartition_Super_Partition,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Super_Partition;
 
    -------------------------
@@ -15385,15 +19943,60 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Target
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Target_Call_Operation_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Operation_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Target_Call_Operation_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Incoming_Target,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Target_Destroy_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Edge_Incoming_Target,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Incoming_Target,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Target_Send_Object_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Send_Signal_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Target_Send_Signal_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Transition =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Transition_Incoming_Target,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Target;
 
    ---------------------------
@@ -15402,15 +20005,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Template
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Redefinable_Template_Signature =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Signature =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Signature_Owned_Template_Signature_Template,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Template;
 
    -----------------------------------
@@ -15419,15 +20031,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Template_Binding
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Substitution_Parameter_Substitution_Template_Binding,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Template_Parameter_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Substitution_Parameter_Substitution_Template_Binding,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Template_Binding;
 
    -------------------------------------
@@ -15436,15 +20051,468 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Template_Parameter
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Abstraction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Actor =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Any_Receive_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Artifact =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Association_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Call_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Change_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Communication_Path =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Component_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Dependency =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Deployment_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Device =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Execution_Environment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Function_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Generalization_Set =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Information_Item =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Specification =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interaction_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interface_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Model =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Behavior =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Operation_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Profile =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Realization =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Signal_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_State_Machine =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Stereotype =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Substitution =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Observation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Usage =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Parameterable_Element_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Use_Case =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Connectable_Element_Template_Parameter_Template_Parameter_Parametered_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Template_Parameter;
 
    ---------------------------------
@@ -15453,15 +20521,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Transformation
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Transformation_Object_Flow,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Transformation_Object_Flow,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Transformation;
 
    -----------------------
@@ -15470,15 +20541,198 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Collaboration_Use =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Collaboration_Type_Collaboration_Use,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Association_Type_Connector,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Stereotype_Type_Extension_End,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Instance_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Boolean =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Integer =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Null =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Real =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_String =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Literal_Unlimited_Natural =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Operation,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_String_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Type;
 
    ----------------------------------
@@ -15487,15 +20741,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Unmarshall_Type
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Unmarshall_Type_Unmarshall_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Unmarshall_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Unmarshall_Type_Unmarshall_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Unmarshall_Type;
 
    ------------------------
@@ -15522,15 +20779,60 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Upper_Bound
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Activity_Parameter_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Central_Buffer_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Node =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Bound_Object_Node,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Upper_Bound;
 
    ------------------------------
@@ -15539,15 +20841,72 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Upper_Value
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Action_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Connector_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_End =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Input_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Output_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Port =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Variable =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Upper_Value_Owning_Upper,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Upper_Value;
 
    ---------------------------
@@ -15556,15 +20915,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Use_Case
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Extension_Point_Extension_Point_Use_Case,
-        To,
-        Self);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Extension_Point =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Extension_Point_Extension_Point_Use_Case,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Use_Case;
 
    -----------------------------------
@@ -15573,15 +20935,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Utilized_Element
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Packageable_Element_Utilized_Element_Manifestation,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Manifestation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Packageable_Element_Utilized_Element_Manifestation,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Utilized_Element;
 
    ------------------------
@@ -15690,15 +21055,72 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Value
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Write_Structural_Feature_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Write_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Write_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Creation_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Link_End_Destruction_Data =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Link_End_Data,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Qualifier_Value =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Qualifier_Value,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Structural_Feature_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Write_Structural_Feature_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Input_Pin_Value_Write_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Pin =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Value_Value_Pin,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Value_Specification_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Value_Value_Specification_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Value;
 
    ---------------------------
@@ -15707,15 +21129,36 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Variable
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Variable_Action,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Add_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Clear_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Read_Variable_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Variable_Action,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Remove_Variable_Value_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Variable_Variable_Variable_Action,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Variable;
 
    ----------------------------
@@ -15788,15 +21231,24 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Weight
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Weight_Activity_Edge,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Control_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Weight_Activity_Edge,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Value_Specification_Weight_Activity_Edge,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Weight;
 
    -----------------------
@@ -15805,15 +21257,18 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_When
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.UML_Metamodel.MA_UML_Time_Expression_When_Time_Event,
-        Self,
-        To);
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Time_Expression_When_Time_Event,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_When;
 
 end AMF.Internals.Tables.UML_Attributes;

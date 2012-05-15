@@ -46,6 +46,7 @@
 with AMF.Internals.Links;
 with AMF.Internals.Tables.MOF_Element_Table;
 with AMF.Internals.Tables.MOF_Metamodel;
+with AMF.Internals.Tables.MOF_Types;
 with AMF.Internals.Tables.Primitive_Types_Notification;
 
 package body AMF.Internals.Tables.MOF_Attributes is
@@ -175,15 +176,18 @@ package body AMF.Internals.Tables.MOF_Attributes is
 
    procedure Internal_Set_Tag_Owner
     (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element)
-   is
-      Old : AMF.Internals.AMF_Element;
-
+     To   : AMF.Internals.AMF_Element) is
    begin
-      AMF.Internals.Links.Create_Link
-       (AMF.Internals.Tables.MOF_Metamodel.MA_MOF_Element_Tag_Owner_Owned_Tag,
-        Self,
-        To);
+      case AMF.Internals.Tables.MOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.MOF_Metamodel.MA_MOF_Element_Tag_Owner_Owned_Tag,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Tag_Owner;
 
    ------------------------
