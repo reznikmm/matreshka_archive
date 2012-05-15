@@ -72,6 +72,8 @@ package body Generator.Attributes is
 
    type Homograph_Information is record
       Pairs : Pair_Vectors.Vector;
+      Links : Boolean := False;
+      --  Set to True when attribute's setter created links.
    end record;
 
    type Homograph_Information_Access is access all Homograph_Information;
@@ -118,8 +120,10 @@ package body Generator.Attributes is
 
       procedure Find_Class (Position : Pair_Vectors.Cursor);
 
-      Group : Homograph_Information_Access;
-      Found : Boolean := False;
+      Attribute_Type : constant not null AMF.CMOF.Types.CMOF_Type_Access
+        := Attribute.Get_Type;
+      Group          : Homograph_Information_Access;
+      Found          : Boolean := False;
 
       ----------------
       -- Find_Class --
@@ -156,6 +160,8 @@ package body Generator.Attributes is
       if Group = null then
          Group := new Homograph_Information;
          Group.Pairs.Append ((Class, Attribute));
+         Group.Links :=
+           Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class;
 
          if Set.Contains (Group) then
             raise Program_Error;
@@ -475,6 +481,8 @@ package body Generator.Attributes is
          procedure Generate (Position : Pair_Vectors.Cursor);
 
          Generated : Boolean := False;
+         Getter    : constant Homograph_Information_Access
+           := Homograph_Sets.Element (Position);
 
          --------------
          -- Generate --
@@ -738,8 +746,6 @@ package body Generator.Attributes is
             end if;
          end Generate;
 
-         Getter         : constant Homograph_Information_Access
-           := Homograph_Sets.Element (Position);
          Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
          Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
@@ -756,17 +762,25 @@ package body Generator.Attributes is
          Unit.Add_Line;
          Unit.Add_Line ("   procedure " & Name);
          Unit.Add_Line (+"    (Self : AMF.Internals.AMF_Element;");
-         Unit.Add_Line
+         Unit.Add
           ("     To   : "
             & Type_Mapping.Internal_Ada_Type_Qualified_Name
                (Attribute_Type, Representation (Attribute))
             & ")");
-         Unit.Add_Line (+"   is");
-         Unit.Add_Line
-          ("      Old : "
-            & Type_Mapping.Internal_Ada_Type_Qualified_Name
-               (Attribute_Type, Representation (Attribute))
-            & ";");
+
+         if not Getter.Links then
+            Unit.Add_Line;
+            Unit.Add_Line (+"   is");
+            Unit.Add_Line
+             ("      Old : "
+               & Type_Mapping.Internal_Ada_Type_Qualified_Name
+                  (Attribute_Type, Representation (Attribute))
+               & ";");
+
+         else
+            Unit.Add (+" is");
+         end if;
+
          Unit.Add_Line;
          Unit.Add_Line (+"   begin");
          Unit.Context.Add
