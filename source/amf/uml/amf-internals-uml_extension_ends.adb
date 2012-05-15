@@ -388,31 +388,6 @@ package body AMF.Internals.UML_Extension_Ends is
          (AMF.Elements.Element_Access (To)));
    end Set_Interface;
 
-   ----------------------
-   -- Get_Is_Composite --
-   ----------------------
-
-   overriding function Get_Is_Composite
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Composite
-         (Self.Element);
-   end Get_Is_Composite;
-
-   ----------------------
-   -- Set_Is_Composite --
-   ----------------------
-
-   overriding procedure Set_Is_Composite
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Composite
-       (Self.Element, To);
-   end Set_Is_Composite;
-
    --------------------
    -- Get_Is_Derived --
    --------------------

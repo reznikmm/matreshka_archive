@@ -69,6 +69,29 @@ package body AMF.Internals.UML_Properties is
       end if;
    end Enter_Element;
 
+   ----------------------
+   -- Get_Is_Composite --
+   ----------------------
+
+   overriding function Get_Is_Composite
+    (Self : not null access constant UML_Property_Proxy)
+       return Boolean
+   is
+      use type AMF.UML.UML_Aggregation_Kind;
+
+   begin
+      --  [2.4.1] 7.3.45 Property (from Kernel, AssociationClasses, Interfaces)
+      --
+      --  [8] The value of isComposite is true only if aggregation is
+      --  composite.
+      --
+      --  isComposite = (self.aggregation = #composite)
+
+      return
+        UML_Property_Proxy'Class (Self.all).Get_Aggregation
+          = AMF.UML.Composite;
+   end Get_Is_Composite;
+
    -------------------
    -- Leave_Element --
    -------------------
@@ -85,6 +108,31 @@ package body AMF.Internals.UML_Properties is
            Control);
       end if;
    end Leave_Element;
+
+   ----------------------
+   -- Set_Is_Composite --
+   ----------------------
+
+   overriding procedure Set_Is_Composite
+    (Self : not null access UML_Property_Proxy;
+     To   : Boolean) is
+   begin
+      --  [2.4.1] 7.3.45 Property (from Kernel, AssociationClasses, Interfaces)
+      --
+      --  [8] The value of isComposite is true only if aggregation is
+      --  composite.
+      --
+      --  isComposite = (self.aggregation = #composite)
+
+      if To then
+         UML_Property_Proxy'Class
+          (Self.all).Set_Aggregation (AMF.UML.Composite);
+
+      else
+         UML_Property_Proxy'Class
+          (Self.all).Set_Aggregation (AMF.UML.None);
+      end if;
+   end Set_Is_Composite;
 
    -------------------
    -- Visit_Element --
@@ -346,31 +394,6 @@ package body AMF.Internals.UML_Properties is
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Interface;
-
-   ----------------------
-   -- Get_Is_Composite --
-   ----------------------
-
-   overriding function Get_Is_Composite
-    (Self : not null access constant UML_Property_Proxy)
-       return Boolean is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Composite
-         (Self.Element);
-   end Get_Is_Composite;
-
-   ----------------------
-   -- Set_Is_Composite --
-   ----------------------
-
-   overriding procedure Set_Is_Composite
-    (Self : not null access UML_Property_Proxy;
-     To   : Boolean) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Composite
-       (Self.Element, To);
-   end Set_Is_Composite;
 
    --------------------
    -- Get_Is_Derived --

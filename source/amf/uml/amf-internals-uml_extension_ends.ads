@@ -220,26 +220,6 @@ package AMF.Internals.UML_Extension_Ends is
    --
    --  References the Interface that owns the Property
 
-   overriding function Get_Is_Composite
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return Boolean;
-   --  Getter of Property::isComposite.
-   --
-   --  If isComposite is true, the object containing the attribute is a
-   --  container for the object or value contained in the attribute.
-   --  This is a derived value, indicating whether the aggregation of the
-   --  Property is composite or not.
-
-   overriding procedure Set_Is_Composite
-    (Self : not null access UML_Extension_End_Proxy;
-     To   : Boolean);
-   --  Setter of Property::isComposite.
-   --
-   --  If isComposite is true, the object containing the attribute is a
-   --  container for the object or value contained in the attribute.
-   --  This is a derived value, indicating whether the aggregation of the
-   --  Property is composite or not.
-
    overriding function Get_Is_Derived
     (Self : not null access constant UML_Extension_End_Proxy)
        return Boolean;
