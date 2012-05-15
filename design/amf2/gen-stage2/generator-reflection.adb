@@ -48,7 +48,6 @@ with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Enumerations;
 with AMF.CMOF.Properties.Collections;
-with AMF.CMOF.Visitors;
 with AMF.CMOF.Types;
 with League.Strings;
 
