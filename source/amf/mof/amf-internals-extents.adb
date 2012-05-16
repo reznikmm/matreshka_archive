@@ -212,6 +212,28 @@ package body AMF.Internals.Extents is
    end Internal_Append;
 
    ------------
+   -- Get_Id --
+   ------------
+
+   function Get_Id
+    (Extent  : AMF_Extent;
+     Element : AMF_Element) return League.Strings.Universal_String
+   is
+      Current : constant Tables.AMF_Tables.Extent_Element_Identifier
+        := Lookup (Extent, Element);
+
+   begin
+      if Current = 0 then
+         return League.Strings.Empty_Universal_String;
+
+      else
+         return
+           League.Strings.Internals.Create
+            (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+      end if;
+   end Get_Id;
+
+   ------------
    -- Lookup --
    ------------
 

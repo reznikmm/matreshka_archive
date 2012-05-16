@@ -272,7 +272,8 @@ package body AMF.Internals.XMI_Handlers is
       elsif Has_Id then
          --  Create new element, assign identifier and register it.
 
-         Self.Current := Self.Extent.Create (Meta_Class, Id);
+         Self.Current := Self.Extent.Create (Meta_Class);
+         Self.Extent.Set_Id (Self.Current, Id);
          Self.Mapping.Insert (Id, Self.Current);
 
       else

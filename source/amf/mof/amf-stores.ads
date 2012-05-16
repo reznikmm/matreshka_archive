@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Classes;
 with AMF.Elements;
 with AMF.Extents;
 with AMF.Factories;
@@ -61,13 +60,17 @@ package AMF.Stores is
    --  AMF Extensions  --
    ----------------------
 
-   not overriding function Create
-    (Self       : not null access Store;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
-     Id         : League.Strings.Universal_String)
-       return not null AMF.Elements.Element_Access is abstract;
-   --  Creates an element that is an instance of the metaClass and assign
-   --  identifier to created element.
+   not overriding function Get_Id
+    (Self    : not null access Store;
+     Element : not null AMF.Elements.Element_Access)
+       return League.Strings.Universal_String is abstract;
+   --  Returns identifier of the element inside the extent.
+
+   not overriding procedure Set_Id
+    (Self    : not null access Store;
+     Element : not null AMF.Elements.Element_Access;
+     Id      : League.Strings.Universal_String) is abstract;
+   --  Sets identifier of the element inside the extent.
 
    not overriding function Get_Factory
     (Self          : not null access Store;

@@ -131,14 +131,6 @@ package AMF.Internals.AMF_URI_Stores is
    --  These conditions also apply to all superclasses of the class being
    --  instantiated.
 
-   overriding function Create
-    (Self       : not null access AMF_URI_Store;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
-     Id         : League.Strings.Universal_String)
-       return not null AMF.Elements.Element_Access;
-   --  Creates an element that is an instance of the metaClass and assign
-   --  identifier to created element.
-
    overriding function Create_Link
     (Self           : not null access AMF_URI_Store;
      Association    :
@@ -183,10 +175,26 @@ package AMF.Internals.AMF_URI_Stores is
        return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
    --  Returns the package this is a factory for.
 
+   --------------------------
+   --  Store's operations  --
+   --------------------------
+
    overriding function Get_Factory
     (Self          : not null access AMF_URI_Store;
      Metamodel_URI : League.Strings.Universal_String)
        return AMF.Factories.Factory_Access;
    --  Returns factory for the specified URI of metamodel.
+
+   overriding function Get_Id
+    (Self    : not null access AMF_URI_Store;
+     Element : not null AMF.Elements.Element_Access)
+       return League.Strings.Universal_String;
+   --  Returns identifier of the element inside the extent.
+
+   overriding procedure Set_Id
+    (Self    : not null access AMF_URI_Store;
+     Element : not null AMF.Elements.Element_Access;
+     Id      : League.Strings.Universal_String);
+   --  Sets identifier of the element inside the extent.
 
 end AMF.Internals.AMF_URI_Stores;

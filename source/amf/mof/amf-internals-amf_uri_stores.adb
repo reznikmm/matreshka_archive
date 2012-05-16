@@ -84,29 +84,6 @@ package body AMF.Internals.AMF_URI_Stores is
       return Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
    end Create;
 
-   ------------
-   -- Create --
-   ------------
-
-   overriding function Create
-    (Self       : not null access AMF_URI_Store;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
-     Id         : League.Strings.Universal_String)
-       return not null AMF.Elements.Element_Access
-   is
-      The_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
-        := Meta_Class.Get_Package;
-      Element    : constant AMF.Elements.Element_Access
-        := Self.Get_Factory (The_Package.Get_URI.Value).Create (Meta_Class);
-      Element_Id : constant AMF.Internals.AMF_Element
-        := AMF.Internals.Helpers.To_Element (Element);
-
-   begin
-      AMF.Internals.Extents.Set_Id (Self.Id, Element_Id, Id);
-
-      return Element;
-   end Create;
-
    ------------------------
    -- Create_From_String --
    ------------------------
@@ -196,6 +173,20 @@ package body AMF.Internals.AMF_URI_Stores is
       return Factory;
    end Get_Factory;
 
+   ------------
+   -- Get_Id --
+   ------------
+
+   overriding function Get_Id
+    (Self    : not null access AMF_URI_Store;
+     Element : not null AMF.Elements.Element_Access)
+       return League.Strings.Universal_String is
+   begin
+      return
+        AMF.Internals.Extents.Get_Id
+         (Self.Id, AMF.Internals.Helpers.To_Element (Element));
+   end Get_Id;
+
    -----------------
    -- Get_Package --
    -----------------
@@ -209,5 +200,18 @@ package body AMF.Internals.AMF_URI_Stores is
    begin
       return AMF.Internals.Factories.Get_Packages;
    end Get_Package;
+
+   ------------
+   -- Set_Id --
+   ------------
+
+   overriding procedure Set_Id
+    (Self    : not null access AMF_URI_Store;
+     Element : not null AMF.Elements.Element_Access;
+     Id      : League.Strings.Universal_String) is
+   begin
+      AMF.Internals.Extents.Set_Id
+       (Self.Id, AMF.Internals.Helpers.To_Element (Element), Id);
+   end Set_Id;
 
 end AMF.Internals.AMF_URI_Stores;
