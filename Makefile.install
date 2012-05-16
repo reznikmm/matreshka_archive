@@ -249,6 +249,7 @@ endif
 
 uml:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf/uml
+	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models/UML23
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models/UML24
 	gnat ls -d -s -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' > amf_uml-src.aux
 	cat league-src.lst xml-src.aux amf-src.aux | sort | uniq | diff -u - amf_uml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_uml-src.lst
@@ -259,6 +260,7 @@ uml:
 	$(INSTALL_data) source/amf/uml/metamodels/StandardProfileL224.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/StandardProfileL224.cmof
 	$(INSTALL_data) source/amf/uml/metamodels/StandardProfileL324.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/StandardProfileL324.cmof
 	$(INSTALL_data) source/amf/uml/metamodels/UML24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/UML24.cmof
+	$(INSTALL_data) source/amf/uml/models/UML23/UML.xmi $(INSTALL_SHARE_DIR)/amf/models/UML23/UML.xmi
 	$(INSTALL_data) source/amf/uml/models/UML24/PrimitiveTypes.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/PrimitiveTypes.xmi
 	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL2.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL2.xmi
 	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL3.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL3.xmi
@@ -278,6 +280,7 @@ endif
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/StandardProfileL224.cmof" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/StandardProfileL324.cmof" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UML24.cmof" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML23/UML.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/PrimitiveTypes.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL2.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL3.xmi" >> .objs/amf_uml-lib.files
