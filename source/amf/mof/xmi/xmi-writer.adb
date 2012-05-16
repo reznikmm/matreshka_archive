@@ -133,6 +133,13 @@ is
    --  element, otherwise it means what element is owned by another element in
    --  Ownership attribute.
 
+   function Subsets_Composite_Serializable
+    (Attribute    : not null access AMF.CMOF.Properties.CMOF_Property'Class;
+     Serializable : Property_Sets.Set)
+       return Boolean;
+   --  Returns True when one of subsetted properties is composite and
+   --  serializable.
+
    ----------
    -- Hash --
    ----------
@@ -373,9 +380,20 @@ is
             Meta_Type := Meta_Attribute.Get_Type;
 
             if Meta_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-               if Meta_Attribute.Get_Is_Composite then
+               if Meta_Attribute.Get_Is_Composite
+                 and then not Subsets_Composite_Serializable
+                               (Meta_Attribute, Meta_All_Attributes)
+               then
                   --  All composite attributes are serialized as
                   --  2a:XMIObjectElement.
+                  --
+                  --  Note, when composite attribute subsets another
+                  --  serializable composite attribute the first is serialized
+                  --  as XML attribute. It is extension of XMI specification
+                  --  required to process UML models (for example,
+                  --  UML::Operation::bodyCondition is serialized as XML
+                  --  attribute, and UML::Operation::ownedRule is serialized as
+                  --  XML element).
 
                   Meta_Attributes.Insert (Meta_Attribute);
 
@@ -610,6 +628,36 @@ is
            Ownership.Get_Name.Value);
       end if;
    end Serialize;
+
+   ------------------------------------
+   -- Subsets_Composite_Serializable --
+   ------------------------------------
+
+   function Subsets_Composite_Serializable
+    (Attribute    : not null access AMF.CMOF.Properties.CMOF_Property'Class;
+     Serializable : Property_Sets.Set)
+       return Boolean
+   is
+      Subsetted : constant AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+        := Attribute.Get_Subsetted_Property;
+      Other     : AMF.CMOF.Properties.CMOF_Property_Access;
+
+   begin
+      for J in 1 .. Subsetted.Length loop
+         Other := Subsetted.Element (J);
+
+         if Other.Get_Is_Composite then
+            if Serializable.Contains (Other) then
+               return True;
+
+            elsif Subsets_Composite_Serializable (Other, Serializable) then
+               return True;
+            end if;
+         end if;
+      end loop;
+
+      return False;
+   end Subsets_Composite_Serializable;
 
    Elements    : constant AMF.Elements.Collections.Set_Of_Element
      := Store.Elements;
