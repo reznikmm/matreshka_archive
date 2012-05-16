@@ -108,7 +108,7 @@ package Nodes is
    Conditions : Start_Condition_Maps.Map;
    --  Map macros name to macros value
    Macros     : Macro_Maps.Map;
-   --  Array of compiles regexp
+   --  Array of compiled regexps
    Regexp     : Shared_Pattern_Array_Access;
 
    Success : Boolean := True;

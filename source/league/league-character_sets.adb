@@ -243,14 +243,12 @@ package body League.Character_Sets is
    is
       use Matreshka.Internals.Unicode;
 
-      Lo : constant Code_Unit_32 := Wide_Wide_Character'Pos (Low);
-      Hi : constant Code_Unit_32 := Wide_Wide_Character'Pos (High);
+      Lo : constant Code_Unit_32 :=
+        Code_Point'Min (Code_Point'Last, Wide_Wide_Character'Pos (Low));
+      Hi : constant Code_Unit_32 :=
+        Code_Point'Min (Code_Point'Last, Wide_Wide_Character'Pos (High));
    begin
-      if Is_Valid (Lo) or Is_Valid (Hi) then
-         return Wrap (new Shared_Code_Point_Set'(To_Set (Lo, Hi)));
-      else
-         raise Constraint_Error;
-      end if;
+      return Wrap (new Shared_Code_Point_Set'(To_Set (Lo, Hi)));
    end To_Set;
 
    ----------
