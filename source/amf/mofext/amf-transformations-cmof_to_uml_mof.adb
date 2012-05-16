@@ -114,8 +114,10 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
 
    procedure Link_Type
     (Self           : in out Second_Pass_Visitor'Class;
-     Source_Element : not null access AMF.CMOF.Typed_Elements.CMOF_Typed_Element'Class;
-     Target_Element : not null access AMF.UML.Typed_Elements.UML_Typed_Element'Class);
+     Source_Element :
+       not null access AMF.CMOF.Typed_Elements.CMOF_Typed_Element'Class;
+     Target_Element :
+       not null access AMF.UML.Typed_Elements.UML_Typed_Element'Class);
    --  Link element of CMOF::TypedElement::type into UML::TypedElement::type.
 
    -----------------------
@@ -127,6 +129,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Associations.CMOF_Association_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Association : constant not null
         AMF.UML.Associations.UML_Association_Access
           := Self.Transformer.UML_Factory.Create_Association;
@@ -147,6 +151,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Associations.CMOF_Association_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Association : constant not null
         AMF.UML.Associations.UML_Association_Access
           := AMF.UML.Associations.UML_Association_Access
@@ -158,8 +164,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Association::memberEnd
 
       declare
-         Source : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-           := Element.Get_Member_End;
+         Source : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Element.Get_Member_End;
          Target : AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
            := The_UML_Association.Get_Member_End;
 
@@ -175,8 +182,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Association::ownedEnd
 
       declare
-         Source : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-           := Element.Get_Owned_End;
+         Source : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Element.Get_Owned_End;
          Target : AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
            := The_UML_Association.Get_Owned_End;
 
@@ -198,6 +206,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Classes.CMOF_Class_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Class : constant not null AMF.UML.Classes.UML_Class_Access
         := Self.Transformer.UML_Factory.Create_Class;
 
@@ -217,6 +227,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Classes.CMOF_Class_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Class : constant not null AMF.UML.Classes.UML_Class_Access
         := AMF.UML.Classes.UML_Class_Access (Self.Resolve (Element));
 
@@ -227,8 +239,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Namespace::ownedAttribute
 
       declare
-         Source : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-           := Element.Get_Owned_Attribute;
+         Source : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Element.Get_Owned_Attribute;
          Target : AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
            := The_UML_Class.Get_Owned_Attribute;
 
@@ -249,8 +262,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Class::ownedOperation
 
       declare
-         Source : AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
-           := Element.Get_Owned_Operation;
+         Source : constant
+           AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
+             := Element.Get_Owned_Operation;
          Target : AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation
            := The_UML_Class.Get_Owned_Operation;
 
@@ -278,6 +292,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Comments.CMOF_Comment_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Comment : constant not null AMF.UML.Comments.UML_Comment_Access
         := Self.Transformer.UML_Factory.Create_Comment;
 
@@ -295,6 +311,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Comments.CMOF_Comment_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Comment : constant not null AMF.UML.Comments.UML_Comment_Access
         := AMF.UML.Comments.UML_Comment_Access (Self.Resolve (Element));
 
@@ -302,7 +320,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Comment::annotatedElement
 
       declare
-         Source : AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+         Source : constant AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
            := Element.Get_Annotated_Element;
          Target : AMF.UML.Elements.Collections.Set_Of_UML_Element
            := The_UML_Comment.Get_Annotated_Element;
@@ -331,6 +349,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Constraints.CMOF_Constraint_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Constraint : constant not null
         AMF.UML.Constraints.UML_Constraint_Access
           := Self.Transformer.UML_Factory.Create_Constraint;
@@ -350,6 +370,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Constraints.CMOF_Constraint_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Constraint : constant not null
         AMF.UML.Constraints.UML_Constraint_Access
           := AMF.UML.Constraints.UML_Constraint_Access
@@ -361,8 +383,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Constraint::constrainedElement
 
       declare
-         Source : AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element
-           := Element.Get_Constrained_Element;
+         Source : constant
+           AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element
+             := Element.Get_Constrained_Element;
          Target : AMF.UML.Elements.Collections.Ordered_Set_Of_UML_Element
            := The_UML_Constraint.Get_Constrained_Element;
 
@@ -427,6 +450,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Enumeration : constant not null
         AMF.UML.Enumerations.UML_Enumeration_Access
           := Self.Transformer.UML_Factory.Create_Enumeration;
@@ -446,6 +471,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Enumeration : constant not null
         AMF.UML.Enumerations.UML_Enumeration_Access
           := AMF.UML.Enumerations.UML_Enumeration_Access
@@ -458,8 +485,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Enumeration::ownedEnumeration_Literal
 
       declare
-         Source : AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
-           := Element.Get_Owned_Literal;
+         Source : constant
+           AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
+             := Element.Get_Owned_Literal;
          Target : AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal
            := The_UML_Enumeration.Get_Owned_Literal;
 
@@ -480,8 +508,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Enumeration::ownedOperation
 
       declare
-         Source : AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
-           := Element.Get_Owned_Operation;
+         Source : constant
+           AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
+             := Element.Get_Owned_Operation;
          Target : AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation
            := The_UML_Enumeration.Get_Owned_Operation;
 
@@ -509,6 +538,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Enumeration_Literal : constant not null
         AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
           := Self.Transformer.UML_Factory.Create_Enumeration_Literal;
@@ -528,6 +559,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Enumeration_Literal : constant not null
         AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
           := AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
@@ -558,6 +591,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Opaque_Expression : constant not null
         AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
           := Self.Transformer.UML_Factory.Create_Opaque_Expression;
@@ -581,6 +616,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Opaque_Expression : constant not null
         AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
           := AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
@@ -599,6 +636,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Operation : constant not null
         AMF.UML.Operations.UML_Operation_Access
           := Self.Transformer.UML_Factory.Create_Operation;
@@ -619,6 +658,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Operation : constant not null
         AMF.UML.Operations.UML_Operation_Access
           := AMF.UML.Operations.UML_Operation_Access (Self.Resolve (Element));
@@ -649,8 +690,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Operation::redefinedOperation
 
       declare
-         Source : AMF.CMOF.Operations.Collections.Set_Of_CMOF_Operation
-           := Element.Get_Redefined_Operation;
+         Source : constant
+           AMF.CMOF.Operations.Collections.Set_Of_CMOF_Operation
+             := Element.Get_Redefined_Operation;
          Target : AMF.UML.Operations.Collections.Set_Of_UML_Operation
            := The_UML_Operation.Get_Redefined_Operation;
 
@@ -671,8 +713,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Operation::ownedParameter
 
       declare
-         Source : AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
-           := Element.Get_Owned_Parameter;
+         Source : constant
+           AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
+             := Element.Get_Owned_Parameter;
          Target : AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter
            := The_UML_Operation.Get_Owned_Parameter;
 
@@ -700,6 +743,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Packages.CMOF_Package_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Package : constant not null AMF.UML.Packages.UML_Package_Access
         := Self.Transformer.UML_Factory.Create_Package;
 
@@ -719,6 +764,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Packages.CMOF_Package_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Package : constant not null AMF.UML.Packages.UML_Package_Access
         := AMF.UML.Packages.UML_Package_Access (Self.Resolve (Element));
 
@@ -728,7 +775,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Package::packagedElement
 
       declare
-         Source :
+         Source : constant
            AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
              := Element.Get_Packaged_Element;
          Target :
@@ -783,6 +830,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Parameter : constant not null
         AMF.UML.Parameters.UML_Parameter_Access
           := Self.Transformer.UML_Factory.Create_Parameter;
@@ -804,6 +853,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Parameters.CMOF_Parameter_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Parameter : constant not null
         AMF.UML.Parameters.UML_Parameter_Access
           := AMF.UML.Parameters.UML_Parameter_Access (Self.Resolve (Element));
@@ -822,6 +873,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Primitive_Type : constant not null
         AMF.UML.Primitive_Types.UML_Primitive_Type_Access
           := Self.Transformer.UML_Factory.Create_Primitive_Type;
@@ -841,6 +894,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Primitive_Type : constant not null
         AMF.UML.Primitive_Types.UML_Primitive_Type_Access
           := AMF.UML.Primitive_Types.UML_Primitive_Type_Access
@@ -859,6 +914,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Property : constant not null
         AMF.UML.Properties.UML_Property_Access
           := Self.Transformer.UML_Factory.Create_Property;
@@ -885,6 +942,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_UML_Property : constant not null
         AMF.UML.Properties.UML_Property_Access
           := AMF.UML.Properties.UML_Property_Access (Self.Resolve (Element));
@@ -899,7 +958,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Property::subsettedProperty
 
       declare
-         Source : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+         Source : constant AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
            := Element.Get_Subsetted_Property;
          Target : AMF.UML.Properties.Collections.Set_Of_UML_Property
            := The_UML_Property.Get_Subsetted_Property;
@@ -921,7 +980,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Property::redefinedProperty
 
       declare
-         Source : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+         Source : constant AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
            := Element.Get_Redefined_Property;
          Target : AMF.UML.Properties.Collections.Set_Of_UML_Property
            := The_UML_Property.Get_Redefined_Property;
@@ -950,6 +1009,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Tags.CMOF_Tag_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_MOF_Tag : constant not null AMF.MOF.Tags.MOF_Tag_Access
         := Self.Transformer.MOF_Factory.Create_Tag;
 
@@ -968,6 +1029,8 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Element : not null AMF.CMOF.Tags.CMOF_Tag_Access;
      Control : in out AMF.Visitors.Traverse_Control)
    is
+      pragma Unreferenced (Control);
+
       The_MOF_Tag : constant not null AMF.MOF.Tags.MOF_Tag_Access
         := AMF.MOF.Tags.MOF_Tag_Access (Self.Resolve (Element));
 
@@ -975,7 +1038,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  CMOF::Tag::element
 
       declare
-         Source : AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+         Source : constant AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
            := Element.Get_Element;
          Target : AMF.UML.Elements.Collections.Set_Of_UML_Element
            := The_MOF_Tag.Get_Element;
@@ -1017,7 +1080,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Source_Element : not null access AMF.CMOF.Elements.CMOF_Element'Class;
      Target_Element : not null access AMF.UML.Elements.UML_Element'Class)
    is
-      Source : AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+      Source : constant AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
         := Source_Element.Get_Owned_Comment;
       Target : AMF.UML.Comments.Collections.Set_Of_UML_Comment
         := Target_Element.Get_Owned_Comment;
@@ -1039,7 +1102,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Source_Element : not null access AMF.CMOF.Namespaces.CMOF_Namespace'Class;
      Target_Element : not null access AMF.UML.Namespaces.UML_Namespace'Class)
    is
-      Source : AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint
+      Source : constant AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint
         := Source_Element.Get_Owned_Rule;
       Target : AMF.UML.Constraints.Collections.Set_Of_UML_Constraint
         := Target_Element.Get_Owned_Rule;
