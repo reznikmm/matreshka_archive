@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -349,5 +349,25 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles asterisk in element content model and mixed content declaration,
    --  productions [47], [48], [51].
+
+   function On_Open_Of_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of CDATA section.
+
+   function On_Close_Of_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles close of CDATA section.
+
+   function On_Attribute_Value_In_XML_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles value of attribute in the XML declaration.
+
+   function On_System_Keyword_In_Document_Type
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles SYSTEM keyword in document type declaration.
+
+   function On_System_Keyword_In_Entity_Or_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles SYSTEM keyword in entity definition or notation declaration.
 
 end XML.SAX.Simple_Readers.Scanner.Actions;

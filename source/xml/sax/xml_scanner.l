@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -270,25 +270,19 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCUMENT_10>"<![CDATA[" {
    --  Start of CDATA section, production [19].
 
-   Enter_Start_Condition (Self, CDATA_10);
-
-   return Token_CData_Open;
+   return Actions.On_Open_Of_CDATA (Self);
 }
 
 <DOCUMENT_11>"<![CDATA[" {
    --  Start of CDATA section, production [19].
 
-   Enter_Start_Condition (Self, CDATA_11);
-
-   return Token_CData_Open;
+   return Actions.On_Open_Of_CDATA (Self);
 }
 
 <DOCUMENT_U11>"<![CDATA[" {
    --  Start of CDATA section, production [19].
 
-   Enter_Start_Condition (Self, CDATA_U11);
-
-   return Token_CData_Open;
+   return Actions.On_Open_Of_CDATA (Self);
 }
 
 <CDATA_10>({CHAR10_NO_RIGHT_SQUARE}+("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)*"]"*("]]>")?)|(("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)+"]"*("]]>")?)|("]"+("]]>")?) {
@@ -312,25 +306,19 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <CDATA_10>"]]>" {
    --  End of CDATA section, production [21].
 
-   Enter_Start_Condition (Self, DOCUMENT_10);
-
-   return Token_CData_Close;
+   return Actions.On_Close_Of_CDATA (Self);
 }
 
 <CDATA_11>"]]>" {
    --  End of CDATA section, production [21].
 
-   Enter_Start_Condition (Self, DOCUMENT_11);
-
-   return Token_CData_Close;
+   return Actions.On_Close_Of_CDATA (Self);
 }
 
 <CDATA_U11>"]]>" {
    --  End of CDATA section, production [21].
 
-   Enter_Start_Condition (Self, DOCUMENT_U11);
-
-   return Token_CData_Close;
+   return Actions.On_Close_Of_CDATA (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11>"&"{NAME}";" {
@@ -374,13 +362,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
    --  processed while parsing.
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (1, 1),
-     Is_Whitespace => False);
-   Reset_Whitespace_Matched (Self);
-
-   return Token_String_Segment;
+   return Actions.On_Attribute_Value_In_XML_Declaration (Self);
 }
 
 <XML_DECL>"?>" {
@@ -420,10 +402,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCTYPE_EXTINT>"SYSTEM" {
    --  Keyword SYSTEM, rule [75].
 
-   Reset_Whitespace_Matched (Self);
-   Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_SYS);
-
-   return Token_System;
+   return Actions.On_System_Keyword_In_Document_Type (Self);
 }
 
 <EXTERNAL_ID_SYS>\"[^"]*\"|\'[^']*\' {
@@ -570,10 +549,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ENTITY_DEF,NOTATION_DECL>"SYSTEM" {
    --  Entity value as ExternalID, rule [75], used by rules [73], [74].
 
-   Reset_Whitespace_Matched (Self);
-   Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-
-   return Token_System;
+   return Actions.On_System_Keyword_In_Entity_Or_Notation (Self);
 }
 
 <ENTITY_DEF,NOTATION_DECL>"PUBLIC" {
@@ -1277,6 +1253,21 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Close_Parenthesis_In_Notation_Attribute
+       (Self : access Integer) return Token;
+
+      function On_Open_Of_CDATA
+       (Self : access Integer) return Token;
+
+      function On_Close_Of_CDATA
+       (Self : access Integer) return Token;
+
+      function On_Attribute_Value_In_XML_Declaration
+       (Self : access Integer) return Token;
+
+      function On_System_Keyword_In_Document_Type
+       (Self : access Integer) return Token;
+
+      function On_System_Keyword_In_Entity_Or_Notation
        (Self : access Integer) return Token;
 
    end Actions;

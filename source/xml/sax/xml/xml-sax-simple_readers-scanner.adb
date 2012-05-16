@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -826,23 +826,17 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 11 =>
                --  Start of CDATA section, production [19].
 
-               Enter_Start_Condition (Self, CDATA_10);
-
-               return Token_CData_Open;
+               return Actions.On_Open_Of_CDATA (Self);
 
             when 12 =>
                --  Start of CDATA section, production [19].
 
-               Enter_Start_Condition (Self, CDATA_11);
-
-               return Token_CData_Open;
+               return Actions.On_Open_Of_CDATA (Self);
 
             when 13 =>
                --  Start of CDATA section, production [19].
 
-               Enter_Start_Condition (Self, CDATA_U11);
-
-               return Token_CData_Open;
+               return Actions.On_Open_Of_CDATA (Self);
 
             when 14 =>
                --  Text data of CDATA section, production [20].
@@ -862,23 +856,17 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 17 =>
                --  End of CDATA section, production [21].
 
-               Enter_Start_Condition (Self, DOCUMENT_10);
-
-               return Token_CData_Close;
+               return Actions.On_Close_Of_CDATA (Self);
 
             when 18 =>
                --  End of CDATA section, production [21].
 
-               Enter_Start_Condition (Self, DOCUMENT_11);
-
-               return Token_CData_Close;
+               return Actions.On_Close_Of_CDATA (Self);
 
             when 19 =>
                --  End of CDATA section, production [21].
 
-               Enter_Start_Condition (Self, DOCUMENT_U11);
-
-               return Token_CData_Close;
+               return Actions.On_Close_Of_CDATA (Self);
 
             when 20 =>
                --  General entity reference rule [68] in document content.
@@ -917,13 +905,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
                --  processed while parsing.
 
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal (1, 1),
-                 Is_Whitespace => False);
-               Reset_Whitespace_Matched (Self);
-
-               return Token_String_Segment;
+               return Actions.On_Attribute_Value_In_XML_Declaration (Self);
 
             when 25 =>
                --  Close of XML declaration (production [23]) or text declaration
@@ -957,10 +939,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 30 =>
                --  Keyword SYSTEM, rule [75].
 
-               Reset_Whitespace_Matched (Self);
-               Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_SYS);
-
-               return Token_System;
+               return Actions.On_System_Keyword_In_Document_Type (Self);
 
             when 31 =>
                --  System literal, rule [11], used in rule [75].
@@ -1087,10 +1066,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 50 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
 
-               Reset_Whitespace_Matched (Self);
-               Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-
-               return Token_System;
+               return Actions.On_System_Keyword_In_Entity_Or_Notation (Self);
 
             when 51 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].

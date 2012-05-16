@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -434,6 +434,22 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Attribute_Value_Close_Delimiter;
 
+   -------------------------------------------
+   -- On_Attribute_Value_In_XML_Declaration --
+   -------------------------------------------
+
+   function On_Attribute_Value_In_XML_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => YY_Text (Self, 1, 1),
+        Is_Whitespace => False);
+      Reset_Whitespace_Matched (Self);
+
+      return Token_String_Segment;
+   end On_Attribute_Value_In_XML_Declaration;
+
    ---------------------------------------
    -- On_Attribute_Value_Open_Delimiter --
    ---------------------------------------
@@ -713,6 +729,18 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return True;
    end On_Character_Reference_In_Attribute_Value;
+
+   -----------------------
+   -- On_Close_Of_CDATA --
+   -----------------------
+
+   function On_Close_Of_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Pop_Start_Condition (Self);
+
+      return Token_CData_Close;
+   end On_Close_Of_CDATA;
 
    -------------------------------------
    -- On_Close_Of_Conditional_Section --
@@ -1802,6 +1830,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Attlist_Decl_Open;
    end On_Open_Of_Attribute_List_Declaration;
 
+   ----------------------
+   -- On_Open_Of_CDATA --
+   ----------------------
+
+   function On_Open_Of_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Condition : Interfaces.Unsigned_32;
+
+   begin
+      case Start_Condition (Self) is
+         when Tables.DOCUMENT_10 =>
+            Condition := Tables.CDATA_10;
+
+         when Tables.DOCUMENT_11 =>
+            Condition := Tables.CDATA_11;
+
+         when Tables.DOCUMENT_U11 =>
+            Condition := Tables.CDATA_U11;
+
+         when others =>
+            raise Program_Error;
+      end case;
+
+      Push_Current_And_Enter_Start_Condition (Self, Condition);
+
+      return Token_CData_Open;
+   end On_Open_Of_CDATA;
+
    ------------------------------------
    -- On_Open_Of_Conditional_Section --
    ------------------------------------
@@ -2456,6 +2513,33 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return Token_Standalone;
       end if;
    end On_Standalone_Keyword;
+
+   ----------------------------------------
+   -- On_System_Keyword_In_Document_Type --
+   ----------------------------------------
+
+   function On_System_Keyword_In_Document_Type
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Reset_Whitespace_Matched (Self);
+      Push_And_Enter_Start_Condition
+       (Self, Tables.DOCTYPE_INT, Tables.EXTERNAL_ID_SYS);
+
+      return Token_System;
+   end On_System_Keyword_In_Document_Type;
+
+   ---------------------------------------------
+   -- On_System_Keyword_In_Entity_Or_Notation --
+   ---------------------------------------------
+
+   function On_System_Keyword_In_Entity_Or_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Reset_Whitespace_Matched (Self);
+      Push_Current_And_Enter_Start_Condition (Self, Tables.EXTERNAL_ID_SYS);
+
+      return Token_System;
+   end On_System_Keyword_In_Entity_Or_Notation;
 
    -----------------------
    -- On_System_Literal --
