@@ -53,13 +53,15 @@ project Matreshka_AMF_Tests is
     ("test_222.adb",
      "test_225.adb",
      "test_226.adb",
-     "test_230.adb");
+     "test_230.adb",
+     "test_231.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use
     ("../testsuite/amf/TN-222",
      "../testsuite/amf/TN-225",
      "../testsuite/amf/TN-226",
-     "../testsuite/amf/TN-230");
+     "../testsuite/amf/TN-230",
+     "../testsuite/amf/TN-231");
 
    package Compiler is
       for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
