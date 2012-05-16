@@ -674,13 +674,7 @@ begin
    Writer.Start_Prefix_Mapping (XMI_Prefix, XMI_Namespace);
 
    for J in 1 .. Elements.Length loop
-      The_Package :=
-        AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Elements.Element_Access
-           (Elements.Element (J).Get_Meta_Class).Container);
-      --  XXX Type:package is not implemented, thus Element:container is used
-      --  to obtain owned package.
-
+      The_Package := Elements.Element (J).Get_Meta_Class.Get_Package;
       Writer.Start_Prefix_Mapping
        (Namespace_Prefix (The_Package), Namespace_URI (The_Package));
    end loop;
