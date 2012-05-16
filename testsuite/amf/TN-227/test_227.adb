@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,32 +41,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_amf.gpr";
-with "matreshka_amf_mofext.gpr";
-with "matreshka_amf_uml.gpr";
+--  Checks whether type of property is not null when it imported from UML2.3
+--  metamodel.
+------------------------------------------------------------------------------
+with League.Application;
 
-project Matreshka_AMF_Tests is
+with AMF.Facility;
+with AMF.UML.Properties;
+with AMF.UML.Types;
+with AMF.URI_Stores;
+with AMF.Visitors.UML_Visitors;
+with AMF.Visitors.UML_Containment;
+with XMI.Reader;
 
-   for Main use
-    ("test_222.adb",
-     "test_225.adb",
-     "test_226.adb",
-     "test_227.adb",
-     "test_230.adb",
-     "test_231.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/amf/TN-222",
-     "../testsuite/amf/TN-225",
-     "../testsuite/amf/TN-226",
-     "../testsuite/amf/TN-227",
-     "../testsuite/amf/TN-230",
-     "../testsuite/amf/TN-231");
+with AMF.Internals.Modules.MOF_Module;
+pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
+with AMF.Internals.Modules.UML_Module;
+pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+procedure Test_227 is
 
-end Matreshka_AMF_Tests;
+   type Test_227_Visitor is
+     limited new AMF.Visitors.UML_Visitors.UML_Visitor with
+   record
+      Found : Boolean := False;
+   end record;
+
+   overriding procedure Enter_Property
+    (Self    : in out Test_227_Visitor;
+     Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control);
+
+   --------------------
+   -- Enter_Property --
+   --------------------
+
+   overriding procedure Enter_Property
+    (Self    : in out Test_227_Visitor;
+     Element : not null AMF.UML.Properties.UML_Property_Access;
+     Control : in out AMF.Visitors.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
+      use type AMF.UML.Types.UML_Type_Access;
+
+      The_Type : constant AMF.UML.Types.UML_Type_Access := Element.Get_Type;
+
+   begin
+      Self.Found := True;
+
+      if The_Type = null then
+         raise Program_Error;
+      end if;
+   end Enter_Property;
+
+   Store    : AMF.URI_Stores.URI_Store_Access;
+   Iterator : AMF.Visitors.UML_Containment.UML_Containment_Iterator;
+   Test     : Test_227_Visitor;
+
+begin
+   AMF.Facility.Initialize;
+   Store := XMI.Reader.Read_URI (League.Application.Arguments.Element (1));
+   Iterator.Visit (Test, Store);
+
+   if not Test.Found then
+      raise Program_Error;
+   end if;
+end Test_227;

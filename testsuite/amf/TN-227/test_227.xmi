@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901'>
+  <uml:Model xmi:type='uml:Model' xmi:id='16777217' name='Example'>
+    <packagedElement xmi:type='uml:Package' xmi:id='16777218' name='Test'>
+      <packagedElement xmi:type='uml:Class' xmi:id='16777219' name='Money'>
+        <ownedAttribute xmi:type='uml:Property' xmi:id='16777220' name='valid'>
+          <type href='http://www.omg.org/spec/UML/20090901/uml.xml#Boolean'/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

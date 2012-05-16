@@ -73,6 +73,7 @@ amf: amf-setup
 	AMF_DATA_DIR=.objs/share .objs/test_222
 	AMF_DATA_DIR=.objs/share .objs/test_225
 	AMF_DATA_DIR=.objs/share .objs/test_226 testsuite/amf/TN-226/test_226.xmi
+	AMF_DATA_DIR=.objs/share .objs/test_227 testsuite/amf/TN-227/test_227.xmi
 	AMF_DATA_DIR=.objs/share .objs/test_230
 	AMF_DATA_DIR=.objs/share .objs/test_231
 
@@ -81,7 +82,9 @@ amf-setup:
 	mkdir .objs/share
 	mkdir .objs/share/metamodels
 	mkdir .objs/share/models
+	mkdir .objs/share/models/UML23
 	mkdir .objs/share/models/UML24
 	cp source/amf/mof/metamodels/mapping.xml .objs/share/metamodels
 	cp source/amf/mof/models/mapping.xml .objs/share/models
+	cp source/amf/uml/models/UML23/UML.xmi .objs/share/models/UML23
 	cp source/amf/uml/models/UML24/PrimitiveTypes.xmi .objs/share/models/UML24
