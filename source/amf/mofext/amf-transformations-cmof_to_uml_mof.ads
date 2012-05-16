@@ -87,6 +87,7 @@ private
            AMF.UML.Elements."=");
 
    type CMOF_To_UML_MOF_Transformer is tagged limited record
+      Source         : AMF.URI_Stores.URI_Store_Access;
       Target         : AMF.URI_Stores.URI_Store_Access;
       UML_Factory    : AMF.Factories.UML_Factories.UML_Factory_Access;
       MOF_Factory    : AMF.Factories.MOF_Factories.MOF_Factory_Access;
@@ -95,6 +96,7 @@ private
 
    procedure Initialize
     (Self   : not null access CMOF_To_UML_MOF_Transformer'Class;
+     Source : not null AMF.URI_Stores.URI_Store_Access;
      Target : not null AMF.URI_Stores.URI_Store_Access);
 
    type First_Pass_Visitor
@@ -105,6 +107,8 @@ private
     (Self         : in out First_Pass_Visitor'Class;
      CMOF_Element : not null access AMF.CMOF.Elements.CMOF_Element'Class;
      UML_Element  : not null access AMF.UML.Elements.UML_Element'Class);
+   --  Register CMOF to UML+MOF element mapping and set identifier of the UML
+   --  element inside target extent.
 
    overriding procedure Enter_Association
     (Self    : in out First_Pass_Visitor;

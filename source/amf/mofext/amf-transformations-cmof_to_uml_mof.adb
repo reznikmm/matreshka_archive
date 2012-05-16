@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 with Ada.Wide_Wide_Text_IO;
 
---with AMF.CMOF.Associations;
---with AMF.CMOF.Classes;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Elements.Collections;
@@ -53,12 +51,12 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
---with AMF.CMOF.Packages;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Typed_Elements;
 with AMF.CMOF.Types;
 with AMF.CMOF.Value_Specifications;
+with AMF.Elements;
 with AMF.MOF.Tags;
 with AMF.UML.Associations;
 with AMF.UML.Classes;
@@ -997,8 +995,10 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
 
    procedure Initialize
     (Self   : not null access CMOF_To_UML_MOF_Transformer'Class;
+     Source : not null AMF.URI_Stores.URI_Store_Access;
      Target : not null AMF.URI_Stores.URI_Store_Access) is
    begin
+      Self.Source := Source;
       Self.Target := Target;
       Self.MOF_Factory :=
         AMF.Factories.MOF_Factories.MOF_Factory_Access
@@ -1091,6 +1091,10 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       Self.Transformer.To_UML_Element.Insert
        (AMF.CMOF.Elements.CMOF_Element_Access (CMOF_Element),
         AMF.UML.Elements.UML_Element_Access (UML_Element));
+      Self.Transformer.Target.Set_Id
+       (AMF.Elements.Element_Access (UML_Element),
+        Self.Transformer.Source.Get_Id
+         (AMF.Elements.Element_Access (CMOF_Element)));
    end Register;
 
    -------------
@@ -1188,7 +1192,7 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       Second_Pass : Second_Pass_Visitor (Transformer'Access);
 
    begin
-      Initialize (Transformer'Access, Target);
+      Initialize (Transformer'Access, Source, Target);
       Iterator.Visit (First_Pass, Source);
       Iterator.Visit (Second_Pass, Source);
    end Transform;
