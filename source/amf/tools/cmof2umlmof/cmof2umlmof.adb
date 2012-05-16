@@ -87,7 +87,6 @@ procedure CMOF2UMLMOF is
       return Result;
    end To_UTF8_String;
 
-
    Source : AMF.URI_Stores.URI_Store_Access;
    Target : AMF.URI_Stores.URI_Store_Access;
 
