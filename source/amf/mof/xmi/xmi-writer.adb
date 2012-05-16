@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
-with Ada.Wide_Wide_Text_IO;
 
 with League.Holders;
 with League.Strings;
@@ -66,8 +65,9 @@ with AMF.Holders.Reflective_Collections;
 with AMF.Reflective_Collections;
 with AMF.URI_Extents;
 
-procedure XMI.Writer
+function XMI.Writer
  (Store : not null access AMF.URI_Stores.URI_Store'Class)
+    return League.Strings.Universal_String
 is
    use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type AMF.Elements.Element_Access;
@@ -704,5 +704,5 @@ begin
 
    Writer.End_Document;
 
-   Ada.Wide_Wide_Text_IO.Put_Line (Writer.Text.To_Wide_Wide_String);
+   return Writer.Text;
 end XMI.Writer;

@@ -41,7 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
+
 with AMF.URI_Stores;
 
-procedure XMI.Writer
- (Store : not null access AMF.URI_Stores.URI_Store'Class);
+function XMI.Writer
+ (Store : not null access AMF.URI_Stores.URI_Store'Class)
+    return League.Strings.Universal_String;
