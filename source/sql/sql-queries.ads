@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,7 +70,7 @@ package SQL.Queries is
    function Error_Message
     (Self : SQL_Query'Class) return League.Strings.Universal_String;
 
---   function Execute (Self : in out SQL_Query'Class) return Boolean;
+   function Execute (Self : in out SQL_Query'Class) return Boolean;
    --  Executes a previously prepared SQL query. Returns True if the query
    --  executed successfully; otherwise returns False.
    --
@@ -112,9 +112,9 @@ package SQL.Queries is
 
    function Next (Self : in out SQL_Query'Class) return Boolean;
 
---   function Prepare
---    (Self  : in out SQL_Query'Class;
---     Query : League.Strings.Universal_String) return Boolean;
+   function Prepare
+    (Self  : in out SQL_Query'Class;
+     Query : League.Strings.Universal_String) return Boolean;
    --  Prepares the SQL query query for execution. Returns True if the query is
    --  prepared successfully; otherwise returns False.
    --

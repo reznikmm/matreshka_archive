@@ -314,10 +314,10 @@ package body Matreshka.XML_Catalogs.Resolver is
             end loop;
 
             if Rewrite_System /= null then
-               Resolved_URI := Rewrite_System.Prefix;
-               Resolved_URI.Append
-                (System_Id.Slice
-                  (Rewrite_System.System_Id.Length + 1, System_Id.Length));
+               Resolved_URI :=
+                 Rewrite_System.Prefix
+                   & System_Id.Slice
+                      (Rewrite_System.System_Id.Length + 1, System_Id.Length);
 
                return;
             end if;
@@ -740,9 +740,9 @@ package body Matreshka.XML_Catalogs.Resolver is
       end loop;
 
       if Rewrite_URI /= null then
-         Resolved_URI := Rewrite_URI.Rewrite;
-         Resolved_URI.Append
-          (URI.Slice (Rewrite_URI.Prefix.Length + 1, URI.Length));
+         Resolved_URI :=
+           Rewrite_URI.Rewrite
+             & URI.Slice (Rewrite_URI.Prefix.Length + 1, URI.Length);
 
          return;
       end if;

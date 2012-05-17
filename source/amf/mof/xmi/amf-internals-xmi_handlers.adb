@@ -654,8 +654,6 @@ package body AMF.Internals.XMI_Handlers is
       Meta          : AMF.CMOF.Classes.CMOF_Class_Access;
       Property      : AMF.CMOF.Properties.CMOF_Property_Access;
       Property_Type : AMF.CMOF.Types.CMOF_Type_Access;
-      Aux           : League.Strings.Universal_String;
-      --  XXX GCC 4.6: This variable is used to workaround bug.
 
    begin
       --  Skip nested elements for unknown element.
@@ -694,12 +692,11 @@ package body AMF.Internals.XMI_Handlers is
                --  it.
 
                Name := Attributes.Value (Self.XMI_Namespace, Type_Name);
-               Aux := Name.Slice (Name.Index (':') + 1, Name.Length);
                Meta :=
                  Resolve_Owned_Class
                   (Self.Prefix_Package_Map.Element
                     (Name.Slice (1, Name.Index (':') - 1)),
-                   Aux);
+                   Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = null then
                   --  Metaclass is not defined in metamodel, report warning and
@@ -713,7 +710,7 @@ package body AMF.Internals.XMI_Handlers is
                       Column    => Self.Locator.Column,
                       Message   =>
                         "Class '"
-                          & Aux
+                          & Name.Slice (Name.Index (':') + 1, Name.Length)
                           & "' is not defined in '"
                           & Self.Prefix_Package_Map.Element
                              (Name.Slice
