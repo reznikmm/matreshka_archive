@@ -671,7 +671,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
       --  UML::Operation::bodyCondition
 
       declare
-         The_Constraint : constant not null
+--         The_Constraint : constant not null
+--  XXX GNAT GCC 4.7.0 crash when null exclusion is applied.
+         The_Constraint : constant
            AMF.CMOF.Constraints.CMOF_Constraint_Access
              := Element.Get_Body_Condition;
 
@@ -1124,7 +1126,9 @@ package body AMF.Transformations.CMOF_To_UML_MOF is
      Source_Element : not null access AMF.CMOF.Typed_Elements.CMOF_Typed_Element'Class;
      Target_Element : not null access AMF.UML.Typed_Elements.UML_Typed_Element'Class)
    is
-      The_Type : constant not null AMF.CMOF.Types.CMOF_Type_Access
+--      The_Type : constant not null AMF.CMOF.Types.CMOF_Type_Access
+--  XXX GNAT GCC 4.7.0 crash when null exclusion is applied.
+      The_Type : constant AMF.CMOF.Types.CMOF_Type_Access
         := Source_Element.Get_Type;
 
    begin
