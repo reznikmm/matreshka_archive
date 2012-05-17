@@ -39,7 +39,7 @@ begin
 
    --  Load model
 
-   Store := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+   Store := XMI.Reader.Read_URI (League.Application.Arguments.Element (1));
 
    --  Output list of actually loaded models
 
@@ -55,5 +55,5 @@ begin
        (Store.URI (Elements.Element (1)).To_Wide_Wide_String);
    end;
 
-   XMI.Writer (Store);
+   Ada.Wide_Wide_Text_IO.Put_Line (XMI.Writer (Store).To_Wide_Wide_String);
 end XMI.Main;
