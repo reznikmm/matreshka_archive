@@ -59,15 +59,9 @@ package body Matreshka.Internals.Strings.Operations is
    ------------
 
    procedure Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point)
    is
-      pragma Assert (Self /= null);
-      pragma Suppress (Access_Check);
-      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
-      --  by convention it is always not-null, thus access checks is not
-      --  needed at all.
-
       Next_Unused : Utf16_String_Index;
 
    begin
@@ -108,15 +102,9 @@ package body Matreshka.Internals.Strings.Operations is
    ------------
 
    procedure Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Item : Shared_String_Access)
    is
-      pragma Assert (Self /= null);
-      pragma Suppress (Access_Check);
-      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
-      --  by convention it is always not-null, thus access checks is not
-      --  needed at all.
-
       Source : not null Shared_String_Access := Self;
       Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
@@ -160,7 +148,7 @@ package body Matreshka.Internals.Strings.Operations is
    ----------------
 
    procedure Copy_Slice
-    (Self   : in out Shared_String_Access;
+    (Self   : in out not null Shared_String_Access;
      Source : not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
@@ -199,15 +187,9 @@ package body Matreshka.Internals.Strings.Operations is
    -------------
 
    procedure Prepend
-    (Target : in out Shared_String_Access;
+    (Target : in out not null Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point)
    is
-      pragma Assert (Target /= null);
-      pragma Suppress (Access_Check);
-      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
-      --  by convention it is always not-null, thus access checks is not
-      --  needed at all.
-
       Source   : not null Shared_String_Access := Target;
       Position : Utf16_String_Index := 0;
       Offset   : Utf16_String_Index;
@@ -268,15 +250,9 @@ package body Matreshka.Internals.Strings.Operations is
    -------------
 
    procedure Prepend
-    (Target : in out Shared_String_Access;
+    (Target : in out not null Shared_String_Access;
      Item   : Shared_String_Access)
    is
-      pragma Assert (Target /= null);
-      pragma Suppress (Access_Check);
-      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
-      --  by convention it is always not-null, thus access checks is not
-      --  needed at all.
-
       Source : not null Shared_String_Access := Target;
       Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
@@ -326,7 +302,7 @@ package body Matreshka.Internals.Strings.Operations is
    -------------
 
    procedure Replace
-    (String : in out Shared_String_Access;
+    (String : in out not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural;
@@ -448,7 +424,7 @@ package body Matreshka.Internals.Strings.Operations is
    -----------
 
    procedure Slice
-    (Item   : in out Shared_String_Access;
+    (Item   : in out not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural)
@@ -497,15 +473,9 @@ package body Matreshka.Internals.Strings.Operations is
    -------------------------
 
    procedure Unterminated_Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point)
    is
-      pragma Assert (Self /= null);
-      pragma Suppress (Access_Check);
-      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
-      --  by convention it is always not-null, thus access checks is not
-      --  needed at all.
-
       Next_Unused : Utf16_String_Index;
 
    begin

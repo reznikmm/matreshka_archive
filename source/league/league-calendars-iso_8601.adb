@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,9 +71,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Days (Stamp : in out Date; Days : Integer) is
    begin
---      Calendar.Add_Days (Stamp, Days);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Days (Calendar, Stamp, Days);
+      Calendar.Add_Days (Stamp, Days);
    end Add_Days;
 
    --------------
@@ -91,9 +89,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Days (Stamp : in out Date_Time; Days : Integer) is
    begin
---      Calendar.Add_Days (Stamp, Days);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Days (Calendar, Stamp, Days);
+      Calendar.Add_Days (Stamp, Days);
    end Add_Days;
 
    --------------
@@ -176,9 +172,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Months (Stamp : in out Date; Months : Integer) is
    begin
---      Calendar.Add_Months (Stamp, Months);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Months (Calendar, Stamp, Months);
+      Calendar.Add_Months (Stamp, Months);
    end Add_Months;
 
    ----------------
@@ -197,9 +191,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Months (Stamp : in out Date_Time; Months : Integer) is
    begin
---      Calendar.Add_Months (Stamp, Months);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Months (Calendar, Stamp, Months);
+      Calendar.Add_Months (Stamp, Months);
    end Add_Months;
 
    ----------------
@@ -288,9 +280,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Years (Stamp : in out Date; Years : Integer) is
    begin
---      Calendar.Add_Years (Stamp, Years);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Years (Calendar, Stamp, Years);
+      Calendar.Add_Years (Stamp, Years);
    end Add_Years;
 
    ---------------
@@ -308,9 +298,7 @@ package body League.Calendars.ISO_8601 is
 
    procedure Add_Years (Stamp : in out Date_Time; Years : Integer) is
    begin
---      Calendar.Add_Years (Stamp, Years);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Add_Years (Calendar, Stamp, Years);
+      Calendar.Add_Years (Stamp, Years);
    end Add_Years;
 
    ---------------
@@ -1621,9 +1609,7 @@ package body League.Calendars.ISO_8601 is
      Month : out Month_Number;
      Day   : out Day_Number) is
    begin
---      Calendar.Split (Stamp, Year, Month, Day);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Split (Calendar, Stamp, Year, Month, Day);
+      Calendar.Split (Stamp, Year, Month, Day);
    end Split;
 
    -----------
@@ -1637,9 +1623,7 @@ package body League.Calendars.ISO_8601 is
      Day     : out Day_Number;
      Seconds : out Time) is
    begin
---      Calendar.Split (Stamp, Year, Month, Day, Seconds);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Split (Calendar, Stamp, Year, Month, Day, Seconds);
+      Calendar.Split (Stamp, Year, Month, Day, Seconds);
    end Split;
 
    -----------
@@ -1654,9 +1638,7 @@ package body League.Calendars.ISO_8601 is
      Day     : out Day_Number;
      Seconds : out Time) is
    begin
---      Calendar.Split (Stamp, Zone, Year, Month, Day, Seconds);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Split (Calendar, Stamp, Zone, Year, Month, Day, Seconds);
+      Calendar.Split (Stamp, Zone, Year, Month, Day, Seconds);
    end Split;
 
    -----------
@@ -1820,9 +1802,7 @@ package body League.Calendars.ISO_8601 is
      Week  : out Week_Of_Year_Number;
      Year  : out Year_Number) is
    begin
---      Calendar.Week_Of_Year (Stamp, Week, Year);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Week_Of_Year (Calendar, Stamp, Week, Year);
+      Calendar.Week_Of_Year (Stamp, Week, Year);
    end Week_Of_Year;
 
    ------------------
@@ -1834,9 +1814,7 @@ package body League.Calendars.ISO_8601 is
      Week  : out Week_Of_Year_Number;
      Year  : out Year_Number) is
    begin
---      Calendar.Week_Of_Year (Stamp, Week, Year);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Week_Of_Year (Calendar, Stamp, Week, Year);
+      Calendar.Week_Of_Year (Stamp, Week, Year);
    end Week_Of_Year;
 
    ------------------
@@ -1849,9 +1827,7 @@ package body League.Calendars.ISO_8601 is
      Week  : out Week_Of_Year_Number;
      Year  : out Year_Number) is
    begin
---      Calendar.Week_Of_Year (Stamp, Zone, Week, Year);
---  XXX GNAT GPL 2010 unable to resolve procedure
-      Week_Of_Year (Calendar, Stamp, Zone, Week, Year);
+      Calendar.Week_Of_Year (Stamp, Zone, Week, Year);
    end Week_Of_Year;
 
    ------------------

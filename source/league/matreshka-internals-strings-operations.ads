@@ -47,33 +47,33 @@ package Matreshka.Internals.Strings.Operations is
    pragma Preelaborate;
 
    procedure Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point);
    --  Appends character to the string, reallocate memory if needed.
 
    procedure Unterminated_Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point);
    --  Appends character to the string, reallocate memory if needed. Null
    --  terminator is not filled.
 
    procedure Append
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Item : Shared_String_Access);
    --  Appends data from to Item to the string, reallocate string when needed.
 
    procedure Prepend
-    (Target : in out Shared_String_Access;
+    (Target : in out not null Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point);
    --  Prepends character to the string, reallocate memory if needed.
 
    procedure Prepend
-    (Target : in out Shared_String_Access;
+    (Target : in out not null Shared_String_Access;
      Item   : Shared_String_Access);
    --  Prepends data from to Item to the string, reallocate string when needed.
 
    procedure Copy_Slice
-    (Self   : in out Shared_String_Access;
+    (Self   : in out not null Shared_String_Access;
      Source : not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
@@ -91,7 +91,7 @@ package Matreshka.Internals.Strings.Operations is
    --  length of the result.
 
    procedure Slice
-    (Item   : in out Shared_String_Access;
+    (Item   : in out not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural);
@@ -99,7 +99,7 @@ package Matreshka.Internals.Strings.Operations is
    --  expected length of the result.
 
    procedure Replace
-    (String : in out Shared_String_Access;
+    (String : in out not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural;
