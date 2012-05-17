@@ -9,10 +9,10 @@ svn export svn://forge.ada-ru.org/matreshka/trunk/matreshka matreshka-$VERSION
  rm -rf design maintainer-tools templates source/opm)
 tar cf matreshka-$VERSION.tar matreshka-$VERSION
 gzip -9 matreshka-$VERSION.tar
-# sources only
-(cd matreshka-$VERSION
- rm -rf unicode testsuite tools/*.ad[sb] tools/aflex tools/ayacc tools/parser_transformer tools/scanner_transformer tools/token_transformer tools/iana tools/shiftjis)
-tar cf matreshka-source-$VERSION.tar matreshka-$VERSION
-gzip -9 matreshka-source-$VERSION.tar
+# # sources only
+# (cd matreshka-$VERSION
+#  rm -rf unicode testsuite tools/*.ad[sb] tools/aflex tools/ayacc tools/parser_transformer tools/scanner_transformer tools/token_transformer tools/iana tools/shiftjis)
+# tar cf matreshka-source-$VERSION.tar matreshka-$VERSION
+# gzip -9 matreshka-source-$VERSION.tar
 
 rm -rf matreshka-$VERSION
