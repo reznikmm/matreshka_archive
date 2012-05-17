@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -146,7 +146,7 @@ package body League.Text_Codecs is
      Data : League.Strings.Universal_String)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
-      Encoder : Abstract_Encoder'Class := Self.Encoder (False);
+      Encoder : Abstract_Encoder'Class := Self.Encoder.all;
       Result  : Shared_Stream_Element_Vector_Access;
 
    begin

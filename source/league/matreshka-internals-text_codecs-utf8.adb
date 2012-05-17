@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -294,9 +294,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    -- Encoder --
    -------------
 
-   function Encoder (Dummy : Boolean) return Abstract_Encoder'Class is
-      pragma Unreferenced (Dummy);
-
+   function Encoder return Abstract_Encoder'Class is
    begin
       return UTF8_Encoder'(null record);
    end Encoder;

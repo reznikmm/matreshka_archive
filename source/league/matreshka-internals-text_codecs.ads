@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -134,11 +134,7 @@ package Matreshka.Internals.Text_Codecs is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      Buffer : out MISEV.Shared_Stream_Element_Vector_Access) is abstract;
 
-   type Encoder_Factory is
-     access function (Dummy : Boolean) return Abstract_Encoder'Class;
-   --  GNAT GPL 2010: Dummy parameter is required to workaround compiler's
-   --  bug; compiler doesn't recognize dereference of access to parameter
-   --  less function as function call in limited object initialization.
+   type Encoder_Factory is access function return Abstract_Encoder'Class;
 
    ----------------------
    -- Factory registry --
