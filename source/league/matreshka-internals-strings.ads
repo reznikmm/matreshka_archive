@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -153,7 +153,7 @@ package Matreshka.Internals.Strings is
    --  at least specified amount of code units.
 
    procedure Mutate
-    (Self : in out Shared_String_Access;
+    (Self : in out not null Shared_String_Access;
      Size : Matreshka.Internals.Utf16.Utf16_String_Index);
    --  Checks whether specified string can be reused to store data of specified
    --  size and prepare it to be changed; otherwise allocates new string and
