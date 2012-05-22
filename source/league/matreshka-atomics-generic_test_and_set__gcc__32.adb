@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,28 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is GCC version for 64-bit target.
+--  This is GCC version for 32-bit target.
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Conversion;
+with Interfaces;
 with System;
 
 function Matreshka.Atomics.Generic_Test_And_Set
- (Target         : not null access T_Access;
+ (Target         : in out T_Access;
   Expected_Value : T_Access;
-  New_Value      : T_Access)
-    return Boolean
+  New_Value      : T_Access) return Boolean
 is
    pragma Assert (T_Access'Size = System.Address'Size);
    pragma Assert (T_Access'Size = 32);
 
+   function To_Unsigned_32 is
+     new Ada.Unchecked_Conversion (T_Access, Interfaces.Unsigned_32);
+
    function Sync_Bool_Compare_And_Swap_32
-     (Ptr     : not null access T_Access;
-      Old_Val : T_Access;
-      New_Val : T_Access) return Boolean;
+    (Ptr     : not null access Interfaces.Unsigned_32;
+     Old_Val : Interfaces.Unsigned_32;
+     New_Val : Interfaces.Unsigned_32) return Boolean;
    pragma Import
-     (Intrinsic,
-      Sync_Bool_Compare_And_Swap_32,
-      "__sync_bool_compare_and_swap_4");
+    (Intrinsic,
+     Sync_Bool_Compare_And_Swap_32,
+     "__sync_bool_compare_and_swap_4");
+
+   Dummy : aliased Interfaces.Unsigned_32;
+   for Dummy'Address use Target'Address;
+   pragma Import (Ada, Dummy);
 
 begin
-   return Sync_Bool_Compare_And_Swap_32 (Target, Expected_Value, New_Value);
+   return
+     Sync_Bool_Compare_And_Swap_32
+      (Dummy'Access,
+       To_Unsigned_32 (Expected_Value),
+       To_Unsigned_32 (New_Value));
 end Matreshka.Atomics.Generic_Test_And_Set;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,10 +48,9 @@ with Interfaces;
 with System;
 
 function Matreshka.Atomics.Generic_Test_And_Set
- (Target         : not null access T_Access;
+ (Target         : in out T_Access;
   Expected_Value : T_Access;
-  New_Value      : T_Access)
-    return Boolean
+  New_Value      : T_Access) return Boolean
 is
    pragma Assert (T_Access'Size = System.Address'Size);
    pragma Assert (T_Access'Size = 64);
@@ -60,7 +59,7 @@ is
      new Ada.Unchecked_Conversion (T_Access, Interfaces.Unsigned_64);
 
    function Sync_Bool_Compare_And_Swap_64
-    (Ptr     : not null access T_Access;
+    (Ptr     : not null access Interfaces.Unsigned_64;
      Old_Val : Interfaces.Unsigned_64;
      New_Val : Interfaces.Unsigned_64) return Boolean;
    pragma Import
@@ -68,8 +67,14 @@ is
      Sync_Bool_Compare_And_Swap_64,
      "__sync_bool_compare_and_swap_8");
 
+   Dummy : aliased Interfaces.Unsigned_64;
+   for Dummy'Address use Target'Address;
+   pragma Import (Ada, Dummy);
+
 begin
    return
      Sync_Bool_Compare_And_Swap_64
-      (Target, To_Unsigned_64 (Expected_Value), To_Unsigned_64 (New_Value));
+      (Dummy'Access,
+       To_Unsigned_64 (Expected_Value),
+       To_Unsigned_64 (New_Value));
 end Matreshka.Atomics.Generic_Test_And_Set;

@@ -165,7 +165,7 @@ package body Matreshka.Internals.Strings is
             end if;
          end loop;
 
-         if not Test_And_Set (Self.Index_Map'Access, null, Map) then
+         if not Test_And_Set (Self.Index_Map, null, Map) then
             --  Operation can fail if mapping has been calculated by
             --  another thread. In this case computed result is
             --  dropped, memory freed and already calculated mapping

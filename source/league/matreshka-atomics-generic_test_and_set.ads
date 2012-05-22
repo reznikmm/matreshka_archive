@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,8 +49,8 @@ generic
    type T_Access is access T;
 
 function Matreshka.Atomics.Generic_Test_And_Set
- (Target         : not null access T_Access;
+ (Target         : in out T_Access;
   Expected_Value : T_Access;
-  New_Value      : T_Access)
-    return Boolean;
+  New_Value      : T_Access) return Boolean;
 pragma Preelaborate (Matreshka.Atomics.Generic_Test_And_Set);
+pragma Inline (Matreshka.Atomics.Generic_Test_And_Set);
