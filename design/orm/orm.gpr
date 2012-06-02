@@ -1,0 +1,11 @@
+with "../../gnat/matreshka_league.gpr";
+
+project ORM is
+
+   for Object_Dir use ".objs";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+end ORM;
