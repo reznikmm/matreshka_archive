@@ -1,3 +1,0 @@
-   Writer.End_Document;
-   Reply := Axe.Replies.Constructors.Text (Writer.Text);
-end $Package_Name$;

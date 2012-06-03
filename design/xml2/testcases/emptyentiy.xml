@@ -1,4 +1,0 @@
-<!DOCTYPE test [
-  <!ENTITY my "">
-]>
-<test>&my;</test>
