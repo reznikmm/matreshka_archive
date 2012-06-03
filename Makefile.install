@@ -368,3 +368,5 @@ cleanup:
 	rm -f amf-src.lst amf-ali.lst amf-src.aux
 	rm -f amf_uml-src.lst amf_uml-ali.lst amf_uml-src.aux
 	rm -f amf_ocl-src.lst amf_ocl-ali.lst amf_ocl-src.aux
+	rm -f amf_utp-src.lst amf_utp-ali.lst amf_utp-src.aux
+	rm -f amf_mofext-src.lst amf_mofext-ali.lst amf_mofext-src.aux
