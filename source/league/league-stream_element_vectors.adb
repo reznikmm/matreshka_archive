@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -196,6 +196,41 @@ package body League.Stream_Element_Vectors is
       return Self.Data.Length;
    end Length;
 
+   ----------
+   -- Read --
+   ----------
+
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Stream_Element_Vector)
+   is
+      Length : Ada.Streams.Stream_Element_Offset;
+
+   begin
+      --  Read length of the stream element array.
+
+      Ada.Streams.Stream_Element_Offset'Read (Stream, Length);
+
+      --  Release shared object. XXX Object mutation can be used here for
+      --  performance improvement.
+
+      Dereference (Item.Data);
+
+      if Length = 0 then
+         --  Shared empty object is used for empty stream element array.
+
+         Item.Data := Empty_Shared_Stream_Element_Vector'Access;
+
+      else
+         --  Allocate shared object and read data into it.
+
+         Item.Data := Allocate (Length);
+         Item.Data.Length := Length;
+         Ada.Streams.Stream_Element_Array'Read
+          (Stream, Item.Data.Value (0 .. Length - 1));
+      end if;
+   end Read;
+
    -----------------------------
    -- To_Stream_Element_Array --
    -----------------------------
@@ -222,5 +257,21 @@ package body League.Stream_Element_Vectors is
 
       return (Ada.Finalization.Controlled with Data => Data);
    end To_Stream_Element_Vector;
+
+   -----------
+   -- Write --
+   -----------
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Stream_Element_Vector) is
+   begin
+      Ada.Streams.Stream_Element_Offset'Write (Stream, Item.Data.Length);
+
+      if Item.Data.Length /= 0 then
+         Ada.Streams.Stream_Element_Array'Write
+          (Stream, Item.Data.Value (0 .. Item.Data.Length - 1));
+      end if;
+   end Write;
 
 end League.Stream_Element_Vectors;

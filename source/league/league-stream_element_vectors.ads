@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,7 @@ private with Matreshka.Internals.Stream_Element_Vectors;
 package League.Stream_Element_Vectors is
 
    pragma Preelaborate;
+   pragma Remote_Types;
 
    type Stream_Element_Vector is tagged private;
    pragma Preelaborable_Initialization (Stream_Element_Vector);
@@ -91,10 +92,20 @@ private
 
    package MISEV renames Matreshka.Internals.Stream_Element_Vectors;
 
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Stream_Element_Vector);
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Stream_Element_Vector);
+
    type Stream_Element_Vector is new Ada.Finalization.Controlled with record
       Data : MISEV.Shared_Stream_Element_Vector_Access
         := MISEV.Empty_Shared_Stream_Element_Vector'Access;
    end record;
+   for Stream_Element_Vector'Read use Read;
+   for Stream_Element_Vector'Write use Write;
 
    overriding procedure Adjust (Self : in out Stream_Element_Vector);
 
