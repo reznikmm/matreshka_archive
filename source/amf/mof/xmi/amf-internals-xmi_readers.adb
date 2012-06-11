@@ -51,6 +51,7 @@ with AMF.CMOF.Associations;
 with AMF.CMOF.Properties.Collections;
 pragma Unreferenced (AMF.CMOF.Properties.Collections);
 --  XXX GNAT Pro 7.1.0w (20120405) reports unused package.
+with AMF.Internals.XMI_Entity_Resolvers;
 with AMF.Internals.XMI_Handlers;
 
 package body AMF.Internals.XMI_Readers is
@@ -157,6 +158,8 @@ package body AMF.Internals.XMI_Readers is
 
             declare
                Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+               Resolver : aliased
+                 AMF.Internals.XMI_Entity_Resolvers.XMI_Entity_Resolver;
                Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
                Handler  : aliased
                  AMF.Internals.XMI_Handlers.XMI_Handler (Self'Access);
@@ -174,6 +177,7 @@ package body AMF.Internals.XMI_Readers is
                if Success then
                   Reader.Set_Content_Handler (Handler'Unchecked_Access);
                   Reader.Set_Error_Handler (Handler'Unchecked_Access);
+                  Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
                   Reader.Parse (Source);
 
                   --  Register loaded extent.
