@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,13 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
 
 package body XML.SAX.Input_Sources.Streams is
-
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
 
    procedure Free is
      new Ada.Unchecked_Deallocation

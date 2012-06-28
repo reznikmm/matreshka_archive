@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Finalization;
+--  General implementation of input source to process arrays of stream
+--  elements. Children packages provide several specific types of streams like
+--  files, sockets, element arrays, etc.
+------------------------------------------------------------------------------
+private with Ada.Finalization;
 with Ada.Streams;
+private with Ada.Unchecked_Deallocation;
 
 private with Matreshka.Internals.Text_Codecs;
 
@@ -125,6 +130,10 @@ private
         := new Ada.Streams.Stream_Element_Array (0 .. 1023);
       First        : Ada.Streams.Stream_Element_Offset := 0;
       Last         : Ada.Streams.Stream_Element_Offset := -1;
+      --  Buffer to store input data and index variables to handle input data.
+      --  Note, these variables are accessed by stream element array input
+      --  source implementation.
+
       Accumulate   : Boolean := True;
       Restart      : Boolean := False;
       --  Accumulate source data in the buffer. Accumulation is used till
@@ -150,5 +159,13 @@ private
    --  Resets internal state to initial. It can be used by derived types to
    --  reset state to start to receive new stream using the same input
    --  source object.
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
+   --  Instantiation of unchecked deallocation to deallocate internal buffer.
+   --  XXX It can be removed from here if this package will extended to provide
+   --  buffer manipulation subprograms to be used by stream element array input
+   --  source.
 
 end XML.SAX.Input_Sources.Streams;
