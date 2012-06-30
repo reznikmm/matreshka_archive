@@ -1,7 +1,7 @@
 ## rpmbuild cannot create debuginfo
 %define debug_package %{nil}
 Name:       matreshka
-Version:    0.3.0
+Version:    0.4.0
 Release:    5%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
