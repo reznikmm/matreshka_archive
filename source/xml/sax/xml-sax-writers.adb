@@ -64,6 +64,30 @@ package body XML.SAX.Writers is
       end if;
    end Characters;
 
+   ----------------
+   -- Characters --
+   ----------------
+
+   procedure Characters
+    (Self : in out SAX_Writer'Class;
+     Text : Wide_Wide_String) is
+   begin
+      Self.Characters (League.Strings.To_Universal_String (Text));
+   end Characters;
+
+   ----------------
+   -- Characters --
+   ----------------
+
+   procedure Characters
+    (Self    : in out SAX_Writer'Class;
+     Text    : Wide_Wide_String;
+     Success : in out  Boolean) is
+   begin
+      Self.Characters (League.Strings.To_Universal_String (Text),
+                       Success);
+   end Characters;
+
    -------------
    -- Comment --
    -------------
