@@ -100,7 +100,7 @@ package XML.SAX.Writers is
     (Self           : in out SAX_Writer'Class;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String);
-   --  Raises Constraint_Error with
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when End_Element sets Success to False.
 
    procedure End_Element
@@ -114,7 +114,7 @@ package XML.SAX.Writers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Success        : in out Boolean);
-   --  Raises Constraint_Error with
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when End_Element sets Success to False.
 
    procedure End_Element

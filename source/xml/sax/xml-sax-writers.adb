@@ -159,8 +159,7 @@ package body XML.SAX.Writers is
    procedure End_Element
     (Self          : in out SAX_Writer'Class;
      Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String)
-   is
+     Local_Name    : League.Strings.Universal_String) is
    begin
       Self.End_Element
        (Namespace_URI  => Namespace_URI,
@@ -174,8 +173,7 @@ package body XML.SAX.Writers is
 
    procedure End_Element
     (Self           : in out SAX_Writer'Class;
-     Qualified_Name : League.Strings.Universal_String)
-   is
+     Qualified_Name : League.Strings.Universal_String) is
    begin
       Self.End_Element
        (Namespace_URI  => League.Strings.Empty_Universal_String,
@@ -191,8 +189,7 @@ package body XML.SAX.Writers is
     (Self          : in out SAX_Writer'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
-     Success       : in out Boolean)
-   is
+     Success       : in out Boolean) is
    begin
       Self.End_Element
        (Namespace_URI  => Namespace_URI,
@@ -208,8 +205,7 @@ package body XML.SAX.Writers is
    procedure End_Element
     (Self           : in out SAX_Writer'Class;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean)
-   is
+     Success        : in out Boolean) is
    begin
       Self.End_Element
        (Namespace_URI  => League.Strings.Empty_Universal_String,
@@ -398,13 +394,13 @@ package body XML.SAX.Writers is
    -------------------
    -- Start_Element --
    -------------------
+
    procedure Start_Element
     (Self          : in out SAX_Writer'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
      Attributes    : XML.SAX.Attributes.SAX_Attributes
-       := XML.SAX.Attributes.Empty_SAX_Attributes)
-   is
+       := XML.SAX.Attributes.Empty_SAX_Attributes) is
    begin
       Self.Start_Element
        (Namespace_URI  => Namespace_URI,
@@ -416,12 +412,12 @@ package body XML.SAX.Writers is
    -------------------
    -- Start_Element --
    -------------------
+
    procedure Start_Element
     (Self           : in out SAX_Writer'Class;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes
-       := XML.SAX.Attributes.Empty_SAX_Attributes)
-   is
+       := XML.SAX.Attributes.Empty_SAX_Attributes) is
    begin
       Self.Start_Element
        (Namespace_URI  => League.Strings.Empty_Universal_String,
@@ -433,14 +429,14 @@ package body XML.SAX.Writers is
    -------------------
    -- Start_Element --
    -------------------
+
    procedure Start_Element
     (Self          : in out SAX_Writer'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
      Attributes    : XML.SAX.Attributes.SAX_Attributes
        := XML.SAX.Attributes.Empty_SAX_Attributes;
-     Success       : in out Boolean)
-   is
+     Success       : in out Boolean) is
    begin
       Self.Start_Element
        (Namespace_URI  => Namespace_URI,
@@ -453,13 +449,13 @@ package body XML.SAX.Writers is
    -------------------
    -- Start_Element --
    -------------------
+
    procedure Start_Element
     (Self           : in out SAX_Writer'Class;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes
        := XML.SAX.Attributes.Empty_SAX_Attributes;
-     Success        : in out Boolean)
-   is
+     Success        : in out Boolean) is
    begin
       Self.Start_Element
        (Namespace_URI  => League.Strings.Empty_Universal_String,
