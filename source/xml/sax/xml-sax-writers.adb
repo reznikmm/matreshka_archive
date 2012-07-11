@@ -137,12 +137,9 @@ package body XML.SAX.Writers is
 
    procedure End_Element
     (Self           : in out SAX_Writer'Class;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String)
    is
       Success : Boolean := True;
 
@@ -153,6 +150,72 @@ package body XML.SAX.Writers is
          raise Constraint_Error
            with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
+   end End_Element;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   procedure End_Element
+    (Self          : in out SAX_Writer'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+   is
+   begin
+      Self.End_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => League.Strings.Empty_Universal_String);
+   end End_Element;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String)
+   is
+   begin
+      Self.End_Element
+       (Namespace_URI  => League.Strings.Empty_Universal_String,
+        Local_Name     => League.Strings.Empty_Universal_String,
+        Qualified_Name => Qualified_Name);
+   end End_Element;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   procedure End_Element
+    (Self          : in out SAX_Writer'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String;
+     Success       : in out Boolean)
+   is
+   begin
+      Self.End_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => League.Strings.Empty_Universal_String,
+        Success        => Success);
+   end End_Element;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean)
+   is
+   begin
+      Self.End_Element
+       (Namespace_URI  => League.Strings.Empty_Universal_String,
+        Local_Name     => League.Strings.Empty_Universal_String,
+        Qualified_Name => Qualified_Name,
+        Success        => Success);
    end End_Element;
 
    ----------------
@@ -314,12 +377,9 @@ package body XML.SAX.Writers is
 
    procedure Start_Element
     (Self           : in out SAX_Writer'Class;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes
        := XML.SAX.Attributes.Empty_SAX_Attributes)
    is
@@ -333,6 +393,80 @@ package body XML.SAX.Writers is
          raise Constraint_Error
            with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
+   end Start_Element;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+   procedure Start_Element
+    (Self          : in out SAX_Writer'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String;
+     Attributes    : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes)
+   is
+   begin
+      Self.Start_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => League.Strings.Empty_Universal_String,
+        Attributes     => Attributes);
+   end Start_Element;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes)
+   is
+   begin
+      Self.Start_Element
+       (Namespace_URI  => League.Strings.Empty_Universal_String,
+        Local_Name     => League.Strings.Empty_Universal_String,
+        Qualified_Name => Qualified_Name,
+        Attributes     => Attributes);
+   end Start_Element;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+   procedure Start_Element
+    (Self          : in out SAX_Writer'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String;
+     Attributes    : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Success       : in out Boolean)
+   is
+   begin
+      Self.Start_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => League.Strings.Empty_Universal_String,
+        Attributes     => Attributes,
+        Success        => Success);
+   end Start_Element;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Success        : in out Boolean)
+   is
+   begin
+      Self.Start_Element
+       (Namespace_URI  => League.Strings.Empty_Universal_String,
+        Local_Name     => League.Strings.Empty_Universal_String,
+        Qualified_Name => Qualified_Name,
+        Attributes     => Attributes,
+        Success        => Success);
    end Start_Element;
 
    ------------------

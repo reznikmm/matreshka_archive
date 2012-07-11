@@ -90,12 +90,37 @@ package XML.SAX.Writers is
 
    procedure End_Element
     (Self           : in out SAX_Writer'Class;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String);
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Element sets Success to False.
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String);
+   --  Raises Constraint_Error with
+   --  Error_String when End_Element sets Success to False.
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Element sets Success to False.
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Success        : in out Boolean);
+   --  Raises Constraint_Error with
+   --  Error_String when End_Element sets Success to False.
+
+   procedure End_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
    --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when End_Element sets Success to False.
 
@@ -152,14 +177,47 @@ package XML.SAX.Writers is
 
    procedure Start_Element
     (Self           : in out SAX_Writer'Class;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes
        := XML.SAX.Attributes.Empty_SAX_Attributes);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Element sets Success to False.
+
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Element sets Success to False.
+
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Element sets Success to False.
+
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Success : in out Boolean);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Element sets Success to False.
+
+   procedure Start_Element
+    (Self           : in out SAX_Writer'Class;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Success : in out Boolean);
    --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when Start_Element sets Success to False.
 
