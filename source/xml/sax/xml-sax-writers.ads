@@ -83,6 +83,19 @@ package XML.SAX.Writers is
    --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when Characters sets Success to False.
 
+   procedure Characters
+    (Self : in out SAX_Writer'Class;
+     Text : Wide_Wide_Character);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Characters sets Success to False.
+
+   procedure Characters
+    (Self    : in out SAX_Writer'Class;
+     Text    : Wide_Wide_Character;
+     Success : in out  Boolean);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Characters sets Success to False.
+
    procedure Comment
     (Self : in out SAX_Writer'Class;
      Text : League.Strings.Universal_String);

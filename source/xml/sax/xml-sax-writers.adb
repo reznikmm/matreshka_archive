@@ -42,8 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Text_Codecs;
+with League.Characters;
 
 package body XML.SAX.Writers is
+
+   use League.Strings;
 
    ----------------
    -- Characters --
@@ -85,6 +88,32 @@ package body XML.SAX.Writers is
      Success : in out  Boolean) is
    begin
       Self.Characters (League.Strings.To_Universal_String (Text),
+                       Success);
+   end Characters;
+
+   ----------------
+   -- Characters --
+   ----------------
+
+   procedure Characters
+    (Self : in out SAX_Writer'Class;
+     Text : Wide_Wide_Character) is
+   begin
+      Self.Characters (League.Strings.Empty_Universal_String
+                         & League.Characters.To_Universal_Character (Text));
+   end Characters;
+
+   ----------------
+   -- Characters --
+   ----------------
+
+   procedure Characters
+    (Self    : in out SAX_Writer'Class;
+     Text    : Wide_Wide_Character;
+     Success : in out  Boolean) is
+   begin
+      Self.Characters (League.Strings.Empty_Universal_String
+                         & League.Characters.To_Universal_Character (Text),
                        Success);
    end Characters;
 
