@@ -123,8 +123,8 @@ package Matreshka.Internals.Strings is
    --  increment/decrement operations have significant perfomance penalty)
    --  and allows to be used in Preelaborateable_Initialization types.
 
-   procedure Reference (Self : Shared_String_Access);
-   pragma Inline (Reference);
+   procedure Reference (Self : not null Shared_String_Access)
+     with Inline => True;
    --  Increment reference counter. Change of reference counter of Shared_Empty
    --  object is prevented to provide speedup and to allow to use it to
    --  initialize components of Preelaborateable_Initialization types.
@@ -191,8 +191,8 @@ package Matreshka.Internals.Strings is
    --  increment/decrement operations have significant performance penalty)
    --  and allows to be used in Preelaborateable_Initialization types.
 
-   procedure Reference (Self : Shared_Sort_Key_Access);
-   pragma Inline (Reference);
+   procedure Reference (Self : not null Shared_Sort_Key_Access)
+     with Inline => True;
    --  Increment reference counter. Change of refernce counter of
    --  Shared_Empty_Key object is prevented to provide speedup and to allow
    --  to use it to initialize components of Preelaborateable_Initialization

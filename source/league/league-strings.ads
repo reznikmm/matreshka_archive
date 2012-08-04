@@ -372,7 +372,8 @@ private
 
    overriding procedure Initialize (Self : in out Universal_String);
 
-   overriding procedure Adjust (Self : in out Universal_String);
+   overriding procedure Adjust (Self : in out Universal_String)
+     with Inline => True;
 
    overriding procedure Finalize (Self : in out Universal_String);
 
@@ -418,7 +419,8 @@ private
    --  Attaches iterator to the specified string. Exclusive copy of the string
    --  is created if needed.
 
-   overriding procedure Adjust (Self : in out Abstract_Cursor);
+   overriding procedure Adjust (Self : in out Abstract_Cursor)
+     with Inline => True;
 
    overriding procedure Finalize (Self : in out Abstract_Cursor);
 
@@ -441,7 +443,8 @@ private
    for Sort_Key'Read use Read;
    for Sort_Key'Write use Write;
 
-   overriding procedure Adjust (Self : in out Sort_Key);
+   overriding procedure Adjust (Self : in out Sort_Key)
+     with Inline => True;
 
    overriding procedure Finalize (Self : in out Sort_Key);
 
@@ -450,7 +453,6 @@ private
    pragma Inline (">");
    pragma Inline ("<=");
    pragma Inline (">=");
-   pragma Inline (Adjust);
    pragma Inline (Clear);
    pragma Inline (Finalize);
    pragma Inline (Is_Empty);

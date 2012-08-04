@@ -285,7 +285,7 @@ package body Matreshka.Internals.Strings is
    -- Reference --
    ---------------
 
-   procedure Reference (Self : Shared_Sort_Key_Access) is
+   procedure Reference (Self : not null Shared_Sort_Key_Access) is
    begin
       if Self /= Shared_Empty_Key'Access then
          Matreshka.Atomics.Counters.Increment (Self.Counter);
@@ -296,7 +296,7 @@ package body Matreshka.Internals.Strings is
    -- Reference --
    ---------------
 
-   procedure Reference (Self : Shared_String_Access) is
+   procedure Reference (Self : not null Shared_String_Access) is
    begin
       if Self /= Shared_Empty'Access then
          Matreshka.Atomics.Counters.Increment (Self.Counter);

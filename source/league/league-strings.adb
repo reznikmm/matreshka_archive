@@ -405,6 +405,12 @@ package body League.Strings is
    ------------
 
    overriding procedure Adjust (Self : in out Universal_String) is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
    begin
       Reference (Self.Data);
       Self.List    := (Head => null);
@@ -762,6 +768,11 @@ package body League.Strings is
    --------------
 
    overriding procedure Finalize (Self : in out Universal_String) is
+
+      pragma Suppress (Access_Check);
+      --  Compiler generates access check for Self.Cursor which is known to be
+      --  non-null by convention.
+
       Current : Cursor_Access;
       Next    : Cursor_Access;
 
