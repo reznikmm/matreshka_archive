@@ -288,6 +288,16 @@ package body League.Strings is
    overriding function "="
     (Left : Universal_String; Right : Universal_String) return Boolean
    is
+      --  Data component of Universal_String as well as String_Handler are
+      --  non-null always by convention. Access check is suppressed to improve
+      --  performance and replaced by corresponding assertions.
+
+      pragma Assert (Left.Data /= null);
+      pragma Assert (Right.Data /= null);
+      pragma Assert (String_Handler /= null);
+
+      pragma Suppress (Access_Check);
+
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
 

@@ -359,6 +359,8 @@ private
    type Universal_String is new Ada.Finalization.Controlled with record
       Data    : Matreshka.Internals.Strings.Shared_String_Access :=
         Matreshka.Internals.Strings.Shared_Empty'Access;
+      --  Data component is non-null by convention. It is set to null only
+      --  during finalization to mark object as finalized.
       List    : aliased Cursor_List;
       --  Storage for holder of the head of the list of cursors
       Cursors : access Cursor_List;
