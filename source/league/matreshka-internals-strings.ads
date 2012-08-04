@@ -59,6 +59,8 @@
 --     zero code point - to allows to use optimized version of compare
 --     operations.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 with Matreshka.Atomics.Counters;
 with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
