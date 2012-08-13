@@ -59,7 +59,9 @@ package League.String_Vectors is
    pragma Preelaborate;
    pragma Remote_Types;
 
-   type Universal_String_Vector is tagged private;
+   type Universal_String_Vector is tagged private
+     with Iterator_Element  => League.Strings.Universal_String,
+          Constant_Indexing => Element;
    pragma Preelaborable_Initialization (Universal_String_Vector);
 
    Empty_Universal_String_Vector : constant Universal_String_Vector;

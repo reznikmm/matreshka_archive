@@ -79,7 +79,9 @@ package League.Strings is
 
    type Split_Behavior is (Keep_Empty, Skip_Empty);
 
-   type Universal_String is tagged private;
+   type Universal_String is tagged private
+     with Iterator_Element  => League.Characters.Universal_Character,
+          Constant_Indexing => Element;
 
    type Universal_Slice is tagged private;
 
