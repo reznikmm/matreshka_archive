@@ -50,7 +50,7 @@ library project XML is
 
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
-   for Source_Dirs use ("../../include/matreshka/xml");
+   for Source_Dirs use (Matreshka_Config.Include_Dir & "/matreshka/xml");
    for Library_Dir use Matreshka_Config.Library_Dir;
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
