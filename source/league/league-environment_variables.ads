@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,13 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Ada.Containers.Hashed_Maps;
 
 with League.Strings;
 
 package League.Environment_Variables is
 
-   type Environment_Variable_Set is tagged private;
+   type Environment_Variable_Set is tagged private
+     with Iterator_Element  => League.Strings.Universal_String,
+          Constant_Indexing => Value;
 
    procedure Clear (Self : in out Environment_Variable_Set'Class);
 
