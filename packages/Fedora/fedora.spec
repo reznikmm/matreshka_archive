@@ -6,8 +6,8 @@ Release:    5%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
-URL:        http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
-Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/download/file/13/%{name}-%{version}.tar.gz  
+URL:        http://forge.ada-ru.org/matreshka
+Source0:    http://forge.ada-ru.org/matreshka/downloads/%{name}-%{version}.tar.gz
 ## fedora specific
 Patch1:          %{name}-gpr.patch
 ## fedora has stable release ABI. so we haven't to specify RTL

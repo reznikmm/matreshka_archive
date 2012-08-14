@@ -45,7 +45,7 @@ Version:        0.4.0
 Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
-Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
+Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.3.0.tar.gz
 ##  Patch:
