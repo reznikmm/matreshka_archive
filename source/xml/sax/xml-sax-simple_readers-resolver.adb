@@ -41,8 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with XML.SAX.Input_Sources.Streams.Files;
 
 package body XML.SAX.Simple_Readers.Resolver is
+
+   File_Scheme : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("file");
 
    --------------------
    -- Resolve_Entity --
@@ -54,12 +58,32 @@ package body XML.SAX.Simple_Readers.Resolver is
      System_Id     : League.Strings.Universal_String;
      Source        : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success       : in out Boolean;
-     Error_Message : in out League.Strings.Universal_String) is
+     Error_Message : in out League.Strings.Universal_String)
+   is
+      pragma Unreferenced (Public_Id);
+      --  XXX PublicId is not used to resolve extental entity right now. This
+      --  can be changed in the future, when built-in entity resolver will be
+      --  able to use XML Catalogs to resolve entities.
+
+      use type League.Strings.Universal_String;
+
+      Absolute_System_Id : constant League.IRIs.IRI
+        := League.IRIs.From_Universal_String
+            (Base_URI).Resolve
+              (League.IRIs.From_Universal_String (System_Id));
+
    begin
-      Source := null;
-      Success := False;
-      Error_Message :=
-        League.Strings.To_Universal_String ("unable to resolve entity");
+      if Absolute_System_Id.Scheme = File_Scheme then
+         Source := new XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+         XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
+          (Source.all).Open_By_URI (Absolute_System_Id.To_Universal_String);
+
+      else
+         Source := null;
+         Success := False;
+         Error_Message :=
+           League.Strings.To_Universal_String ("unsupported IRI scheme");
+      end if;
    end Resolve_Entity;
 
 end XML.SAX.Simple_Readers.Resolver;
