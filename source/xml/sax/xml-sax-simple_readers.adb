@@ -471,17 +471,6 @@ package body XML.SAX.Simple_Readers is
       end if;
    end Set_DTD_Handler;
 
-   ---------------------------
-   -- Set_Enable_Validation --
-   ---------------------------
-
-   not overriding procedure Set_Enable_Validation
-    (Self    : not null access SAX_Simple_Reader;
-     Enabled : Boolean) is
-   begin
-      Self.Configuration.Enable_Validation := Enabled;
-   end Set_Enable_Validation;
-
    -------------------------
    -- Set_Entity_Resolver --
    -------------------------
