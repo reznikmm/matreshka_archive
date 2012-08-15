@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.URI_Utilities;
+with XML.SAX.Constants;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Parser;
 with XML.SAX.Simple_Readers.Scanner;
@@ -51,6 +52,7 @@ package body XML.SAX.Simple_Readers is
 
    use Matreshka.Internals.Strings;
    use XML.SAX.Readers;
+   use type League.Strings.Universal_String;
 
    procedure Reset (Self : not null access SAX_Simple_Reader);
    --  Resets reader to start to read data from new input source.
@@ -189,8 +191,11 @@ package body XML.SAX.Simple_Readers is
      Name : League.Strings.Universal_String)
        return Boolean is
    begin
+      if Name = XML.SAX.Constants.Namespaces_Feature then
+         return Self.Configuration.Enable_Namespaces;
+      end if;
+
       raise Constraint_Error;
-      return False;
    end Feature;
 
    --------------
@@ -228,7 +233,12 @@ package body XML.SAX.Simple_Readers is
      Name : League.Strings.Universal_String)
        return Boolean is
    begin
-      return False;
+      if Name = XML.SAX.Constants.Namespaces_Feature then
+         return True;
+
+      else
+         return False;
+      end if;
    end Has_Feature;
 
    ----------------
@@ -506,7 +516,9 @@ package body XML.SAX.Simple_Readers is
      Name  : League.Strings.Universal_String;
      Value : Boolean) is
    begin
-      null;
+      if Name = XML.SAX.Constants.Namespaces_Feature then
+         Self.Configuration.Enable_Namespaces := Value;
+      end if;
    end Set_Feature;
 
    ----------------------
