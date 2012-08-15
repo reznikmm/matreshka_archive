@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This package contains code to call handlers and catch exceptions comes
 --  from user defined handlers.
+------------------------------------------------------------------------------
 
 private package XML.SAX.Simple_Readers.Callbacks is
 
@@ -126,6 +127,8 @@ private package XML.SAX.Simple_Readers.Callbacks is
      System_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access);
    --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
+   --  Use built-in entity resolver when user defined entity resolver is not
+   --  defined or ask reader to resolve entity byself.
 
    procedure Call_Set_Document_Locator (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
