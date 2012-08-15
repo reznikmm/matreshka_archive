@@ -198,10 +198,8 @@ package body XML.SAX.Simple_Readers.Scanner is
          Last_Match := False;
 
          if not Self.Continue then
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("external entity is not resolved"));
+            Self.Error_Message.Prepend ("unable to resolve external entity: ");
+            Callbacks.Call_Fatal_Error (Self.all, Self.Error_Message);
 
             return False;
          end if;
