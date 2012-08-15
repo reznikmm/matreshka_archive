@@ -196,6 +196,9 @@ package body XML.SAX.Simple_Readers is
 
       elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
          return Self.Configuration.Enable_Prefixes;
+
+      elsif Name = XML.SAX.Constants.Validation_Feature then
+         return Self.Configuration.Enable_Validation;
       end if;
 
       raise Constraint_Error;
@@ -240,6 +243,9 @@ package body XML.SAX.Simple_Readers is
          return True;
 
       elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
+         return True;
+
+      elsif Name = XML.SAX.Constants.Validation_Feature then
          return True;
 
       else
@@ -517,6 +523,9 @@ package body XML.SAX.Simple_Readers is
 
       elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
          Self.Configuration.Enable_Prefixes := Value;
+
+      elsif Name = XML.SAX.Constants.Validation_Feature then
+         Self.Configuration.Enable_Validation := Value;
       end if;
    end Set_Feature;
 

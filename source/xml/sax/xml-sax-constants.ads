@@ -54,5 +54,8 @@ package XML.SAX.Constants is
    Namespace_Prefixes_Feature : constant League.Strings.Universal_String
     := League.Strings.To_Universal_String
         ("http://xml.org/sax/features/namespace-prefixes");
+   Validation_Feature         : constant League.Strings.Universal_String
+    := League.Strings.To_Universal_String
+        ("http://xml.org/sax/features/validation");
 
 end XML.SAX.Constants;
