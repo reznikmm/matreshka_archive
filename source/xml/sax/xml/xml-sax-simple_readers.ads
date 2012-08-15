@@ -92,11 +92,6 @@ package XML.SAX.Simple_Readers is
    --  Reads next chunk of data from the input source and parse it. Input
    --  source must be setted by call to procedure Set_Input_Source.
 
-   not overriding procedure Set_Enable_Namespaces
-    (Self    : not null access SAX_Simple_Reader;
-     Enabled : Boolean);
-   --  Enables/disables namespace processing.
-
    not overriding procedure Set_Enable_Validation
     (Self    : not null access SAX_Simple_Reader;
      Enabled : Boolean);
