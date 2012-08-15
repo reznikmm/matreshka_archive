@@ -193,6 +193,9 @@ package body XML.SAX.Simple_Readers is
    begin
       if Name = XML.SAX.Constants.Namespaces_Feature then
          return Self.Configuration.Enable_Namespaces;
+
+      elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
+         return Self.Configuration.Enable_Prefixes;
       end if;
 
       raise Constraint_Error;
@@ -234,6 +237,9 @@ package body XML.SAX.Simple_Readers is
        return Boolean is
    begin
       if Name = XML.SAX.Constants.Namespaces_Feature then
+         return True;
+
+      elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
          return True;
 
       else
@@ -372,8 +378,9 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Symbol_Tables.Reset (Self.Symbols);
       Matreshka.Internals.XML.Notation_Tables.Reset (Self.Notations);
 
-      Self.Namespaces.Enabled := Self.Configuration.Enable_Namespaces;
-      Self.Validation.Enabled := Self.Configuration.Enable_Validation;
+      Self.Namespaces.Enabled  := Self.Configuration.Enable_Namespaces;
+      Self.Namespaces.Prefixes := Self.Configuration.Enable_Prefixes;
+      Self.Validation.Enabled  := Self.Configuration.Enable_Validation;
 
       Callbacks.Call_Set_Document_Locator (Self.all);
       Self.Version := XML_1_0;
@@ -507,6 +514,9 @@ package body XML.SAX.Simple_Readers is
    begin
       if Name = XML.SAX.Constants.Namespaces_Feature then
          Self.Configuration.Enable_Namespaces := Value;
+
+      elsif Name = XML.SAX.Constants.Namespace_Prefixes_Feature then
+         Self.Configuration.Enable_Prefixes := Value;
       end if;
    end Set_Feature;
 

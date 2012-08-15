@@ -237,6 +237,7 @@ private
       Source            : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Incremental       : Boolean := False;
       Enable_Namespaces : Boolean := True;
+      Enable_Prefixes   : Boolean := False;
       Enable_Validation : Boolean := False;
    end record;
 
