@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -277,7 +277,7 @@ package body Scanner_Generator is
              (Output,
               "XML Processor",
               2010,
-              2011);
+              2012);
       end case;
 
       Put_Line (Output, "pragma Style_Checks (""-t"");");
@@ -302,8 +302,10 @@ package body Scanner_Generator is
 
       Put_Line (Output, ".Scanner.Tables is");
 
-      New_Line (Output);
-      Put_Line (Output, "   pragma Preelaborate;");
+      if Mode = Regexp then
+         New_Line (Output);
+         Put_Line (Output, "   pragma Preelaborate;");
+      end if;
 
       New_Line (Output);
       Put_Line (Output, "   subtype YY_Secondary_Index is");

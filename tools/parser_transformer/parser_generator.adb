@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -253,7 +253,7 @@ package body Parser_Generator is
           (Output,
            "XML Processor",
            2010,
-           2010);
+           2012);
       end if;
 
       Put_Line (Output, "pragma Style_Checks (""-t"");");
@@ -274,8 +274,11 @@ package body Parser_Generator is
       end if;
 
       Put_Line (Output, ".Parser.Tables is");
-      New_Line (Output);
-      Put_Line (Output, "   pragma Preelaborate;");
+
+      if Ada.Command_Line.Argument (1) = "regexp" then
+         New_Line (Output);
+         Put_Line (Output, "   pragma Preelaborate;");
+      end if;
 
       New_Line (Output);
       Put_Line (Output, "   type Goto_Entry is record");
