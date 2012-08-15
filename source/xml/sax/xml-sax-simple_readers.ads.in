@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,8 +70,6 @@ with XML.SAX.Input_Sources;
 with XML.SAX.Readers;
 
 package XML.SAX.Simple_Readers is
-
-   pragma Preelaborate;
 
    type SAX_Simple_Reader is
      limited new XML.SAX.Readers.SAX_Reader with private;

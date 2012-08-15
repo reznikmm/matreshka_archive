@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 
 private package XML.SAX.Simple_Readers.Parser is
-
-   pragma Preelaborate;
 
    procedure YYParse (Self : not null access SAX_Simple_Reader);
    --  Parse XML document.

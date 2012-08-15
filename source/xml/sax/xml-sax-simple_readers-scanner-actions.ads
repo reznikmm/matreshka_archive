@@ -44,8 +44,6 @@
 
 private package XML.SAX.Simple_Readers.Scanner.Actions is
 
-   pragma Preelaborate;
-
    function On_Attribute_Name_In_Attribute_List_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles name of the attribute in the attribute list declaration.
