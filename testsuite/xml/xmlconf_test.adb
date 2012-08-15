@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,6 @@ with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
-with XMLConf.Entity_Resolvers;
 with XMLConf.Testsuite_Handlers;
 with Put_Line;
 
@@ -68,7 +67,6 @@ procedure XMLConf_Test is
      := League.Application.Arguments.Element (1);
    Source     : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver   : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
    Handler    : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
    Enabled    : Test_Flags := (others => True);
    Passed     : Natural;
@@ -112,7 +110,6 @@ begin
    --  paths for entities the current working directory is changed to the
    --  containing directory of the testsuite description file.
 
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Source.Open_By_File_Name (Data);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,7 +50,6 @@ with Read_File;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
-with XMLConf.Entity_Resolvers;
 with SAX_Events_Writers;
 
 package body XMLConf.Testsuite_Handlers is
@@ -218,7 +217,6 @@ package body XMLConf.Testsuite_Handlers is
             Source   : aliased
               XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
             Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-            Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
             Writer   : aliased XMLConf.Canonical_Writers.Canonical_Writer;
             Expected : League.Strings.Universal_String;
 
@@ -237,7 +235,6 @@ package body XMLConf.Testsuite_Handlers is
                raise Program_Error with "terminated by timeout";
 
             then abort
-               Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
                Reader.Set_Content_Handler (Writer'Unchecked_Access);
                Reader.Set_DTD_Handler (Writer'Unchecked_Access);
                Reader.Set_Lexical_Handler (Writer'Unchecked_Access);

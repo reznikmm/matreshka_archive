@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,19 +45,16 @@ with League.Application;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
-with XMLConf.Entity_Resolvers;
 with XMLCatConf.Testsuite_Handlers;
 
 procedure XMLCatConf.Driver is
    Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Handler  : aliased XMLCatConf.Testsuite_Handlers.Testsuite_Handler;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
    Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
 begin
    Source.Open_By_File_Name (League.Application.Arguments.Element (1));
 
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
 
