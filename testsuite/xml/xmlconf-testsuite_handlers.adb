@@ -47,6 +47,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with Put_Line;
 with Read_File;
+with XML.SAX.Constants;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
@@ -153,7 +154,8 @@ package body XMLConf.Testsuite_Handlers is
             Reader.Set_DTD_Handler (Writer'Unchecked_Access);
             Reader.Set_Error_Handler (Writer'Unchecked_Access);
             Reader.Set_Entity_Resolver (Writer'Unchecked_Access);
-            Reader.Set_Enable_Namespaces (Namespaces);
+            Reader.Set_Feature
+             (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 
             if Kind = Invalid then
                Reader.Set_Enable_Validation (True);
@@ -238,7 +240,8 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Content_Handler (Writer'Unchecked_Access);
                Reader.Set_DTD_Handler (Writer'Unchecked_Access);
                Reader.Set_Lexical_Handler (Writer'Unchecked_Access);
-               Reader.Set_Enable_Namespaces (Namespaces);
+               Reader.Set_Feature
+                (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 
                Source.Open_By_URI
                 (Base_URI.Resolve
