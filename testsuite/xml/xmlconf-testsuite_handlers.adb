@@ -158,7 +158,7 @@ package body XMLConf.Testsuite_Handlers is
              (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 
             if Kind = Invalid then
-               Reader.Set_Enable_Validation (True);
+               Reader.Set_Feature (XML.SAX.Constants.Validation_Feature, True);
             end if;
 
             Source.Open_By_URI
