@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Abstract interface of XML reader.
+------------------------------------------------------------------------------
+with League.Strings;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Declaration_Handlers;
 with XML.SAX.DTD_Handlers;
@@ -70,26 +73,60 @@ package XML.SAX.Readers is
    not overriding function Content_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_Content_Handler_Access is abstract;
+   --  Returns the current content handler, or null if none has been
+   --  registered.
 
    not overriding function Declaration_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_Declaration_Handler_Access is abstract;
+   --  Returns the current declaration handler, or null if has not been
+   --  registered.
 
    not overriding function DTD_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_DTD_Handler_Access is abstract;
+   --  Returns the current DTD handler, or null if none has been registered.
 
    not overriding function Entity_Resolver
     (Self : not null access constant SAX_Reader)
        return SAX_Entity_Resolver_Access is abstract;
+   --  Returns the current entity resolver, or null if none has been
+   --  registered.
 
    not overriding function Error_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_Error_Handler_Access is abstract;
+   --  Returns the current error handler, or null if none has been registered.
+
+   not overriding function Feature
+    (Self : not null access constant SAX_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean is abstract;
+   --  Look up the value of a feature flag. Returns value of the feature or
+   --  false if feature is not recognized or not acceptable at this time.
+   --
+   --  The feature name is any fully-qualified URI. It is possible for an
+   --  XMLReader to recognize a feature name but temporarily be unable to
+   --  return its value. Some feature values may be available only in specific
+   --  contexts, such as before, during, or after a parse. Also, some feature
+   --  values may not be programmatically accessible.
+   --
+   --  All Readers are required to recognize the
+   --  http://xml.org/sax/features/namespaces and the
+   --  http://xml.org/sax/features/namespace-prefixes feature names.
+
+   not overriding function Has_Feature
+    (Self : not null access constant SAX_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean is abstract;
+   --  Returns True if the reader has the feature called Name; otherwise
+   --  returns False.
 
    not overriding function Lexical_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_Lexical_Handler_Access is abstract;
+   --  Returns the current lexical handler, or null if none has been
+   --  registered.
 
    not overriding procedure Set_Content_Handler
     (Self    : not null access SAX_Reader;
@@ -110,6 +147,21 @@ package XML.SAX.Readers is
    not overriding procedure Set_Error_Handler
     (Self    : not null access SAX_Reader;
      Handler : SAX_Error_Handler_Access) is abstract;
+
+   not overriding procedure Set_Feature
+    (Self  : not null access SAX_Reader;
+     Name  : League.Strings.Universal_String;
+     Value : Boolean) is abstract;
+   --  Set the value of a feature flag.
+   --
+   --  The feature name is any fully-qualified URI. It is possible for an
+   --  XMLReader to expose a feature value but to be unable to change the
+   --  current value. Some feature values may be immutable or mutable only in
+   --  specific contexts, such as before, during, or after a parse.
+   --
+   --  All XMLReaders are required to support setting
+   --  http://xml.org/sax/features/namespaces to true and
+   --  http://xml.org/sax/features/namespace-prefixes to false.
 
    not overriding procedure Set_Lexical_Handler
     (Self    : not null access SAX_Reader;

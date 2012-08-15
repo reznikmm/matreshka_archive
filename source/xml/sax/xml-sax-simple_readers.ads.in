@@ -405,6 +405,16 @@ private
     (Self : not null access constant SAX_Simple_Reader)
        return XML.SAX.Readers.SAX_Error_Handler_Access;
 
+   overriding function Feature
+    (Self : not null access constant SAX_Simple_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean;
+
+   overriding function Has_Feature
+    (Self : not null access constant SAX_Simple_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean;
+
    overriding function Lexical_Handler
     (Self : not null access constant SAX_Simple_Reader)
        return XML.SAX.Readers.SAX_Lexical_Handler_Access;
@@ -428,6 +438,11 @@ private
    overriding procedure Set_Error_Handler
     (Self    : not null access SAX_Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Error_Handler_Access);
+
+   overriding procedure Set_Feature
+    (Self  : not null access SAX_Simple_Reader;
+     Name  : League.Strings.Universal_String;
+     Value : Boolean);
 
    overriding procedure Set_Lexical_Handler
     (Self    : not null access SAX_Simple_Reader;

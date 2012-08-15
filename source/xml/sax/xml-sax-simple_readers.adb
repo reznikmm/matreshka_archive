@@ -180,6 +180,19 @@ package body XML.SAX.Simple_Readers is
       end if;
    end Error_Handler;
 
+   -------------
+   -- Feature --
+   -------------
+
+   overriding function Feature
+    (Self : not null access constant SAX_Simple_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      raise Constraint_Error;
+      return False;
+   end Feature;
+
    --------------
    -- Finalize --
    --------------
@@ -205,6 +218,18 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Notation_Tables.Finalize (Self.Notations);
       Matreshka.Internals.XML.Attributes.Finalize (Self.Attribute_Set);
    end Finalize;
+
+   -----------------
+   -- Has_Feature --
+   -----------------
+
+   overriding function Has_Feature
+    (Self : not null access constant SAX_Simple_Reader;
+     Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return False;
+   end Has_Feature;
 
    ----------------
    -- Initialize --
@@ -471,6 +496,18 @@ package body XML.SAX.Simple_Readers is
          Self.Error_Handler := Handler;
       end if;
    end Set_Error_Handler;
+
+   -----------------
+   -- Set_Feature --
+   -----------------
+
+   overriding procedure Set_Feature
+    (Self  : not null access SAX_Simple_Reader;
+     Name  : League.Strings.Universal_String;
+     Value : Boolean) is
+   begin
+      null;
+   end Set_Feature;
 
    ----------------------
    -- Set_Input_Source --
