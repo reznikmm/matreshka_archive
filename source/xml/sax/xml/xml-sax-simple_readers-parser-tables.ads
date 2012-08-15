@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,8 +46,6 @@ pragma Style_Checks ("-t");
 --  tables is not compatible with them.
 
 private package XML.SAX.Simple_Readers.Parser.Tables is
-
-   pragma Preelaborate;
 
    type Goto_Entry is record
       Nonterm  : Integer;

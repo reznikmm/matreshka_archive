@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,8 +47,6 @@ pragma Style_Checks ("-t");
 with Matreshka.Internals.Unicode;
 
 private package XML.SAX.Simple_Readers.Scanner.Tables is
-
-   pragma Preelaborate;
 
    subtype YY_Secondary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
