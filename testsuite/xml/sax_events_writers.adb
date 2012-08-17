@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -671,7 +671,13 @@ package body SAX_Events_Writers is
          Self.Add_Line ("    <prefix>" & Prefix & "</prefix>");
       end if;
 
-      Self.Add_Line ("    <data>" & URI & "</data>");
+      if URI.Is_Empty then
+         Self.Add_Line (To_Universal_String ("    <data/>"));
+
+      else
+         Self.Add_Line ("    <data>" & URI & "</data>");
+      end if;
+
       Self.Add_Line (To_Universal_String ("  </startPrefixMapping>"));
    end Start_Prefix_Mapping;
 
