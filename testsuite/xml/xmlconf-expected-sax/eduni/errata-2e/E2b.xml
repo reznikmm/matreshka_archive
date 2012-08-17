@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>one</name>
-        <systemID>file:///usr/bin/awk</systemID>
-    </notation>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>one</name>
+    <systemID>file:///usr/bin/awk</systemID>
+  </notation>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

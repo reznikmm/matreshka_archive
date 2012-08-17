@@ -15,7 +15,7 @@
   <characters>&#x20;</characters>
   <startPrefixMapping>
     <prefix>a</prefix>
-    <data></data>
+    <data/>
   </startPrefixMapping>
   <fatalError>[NSXML1.1&#x20;5&#x20;NSC:&#x20;Prefix&#x20;Declared]&#x20;the&#x20;element&apos;s&#x20;namespace&#x20;prefix&#x20;have&#x20;not&#x20;been&#x20;declared</fatalError>
   <endDocument/>

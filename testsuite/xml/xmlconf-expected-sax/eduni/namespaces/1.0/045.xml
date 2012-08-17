@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>id</localName>
-                <qualifiedName>id</qualifiedName>
-                <value>a:b</value>
-                <type>ID</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>id</localName>
+        <qualifiedName>id</qualifiedName>
+        <value>a:b</value>
+        <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

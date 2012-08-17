@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startPrefixMapping>
-        <prefix>xml2</prefix>
-        <data>http://example.org/namespace</data>
-    </startPrefixMapping>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endPrefixMapping>
-        <prefix>xml2</prefix>
-    </endPrefixMapping>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startPrefixMapping>
+    <prefix>xml2</prefix>
+    <data>http://example.org/namespace</data>
+  </startPrefixMapping>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endPrefixMapping>
+    <prefix>xml2</prefix>
+  </endPrefixMapping>
+  <endDocument/>
+</SAXEvents>
