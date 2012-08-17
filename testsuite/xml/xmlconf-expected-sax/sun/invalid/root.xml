@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>sun/invalid</baseURI>
     <systemID>../valid/sa.dtd</systemID>
   </resolveEntity>
   <notation>
@@ -29,7 +30,6 @@
     <systemID>scheme://host/data</systemID>
     <notation>foo</notation>
   </unparsedEntity>
-  <error>[2.8&#x20;VC:&#x20;Root&#x20;Element&#x20;Type]&#x20;Root&#x20;element&#x20;has&#x20;wrong&#x20;name</error>
   <startElement>
     <namespaceURI/>
     <localName>root</localName>

@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>fruit</name>
-        <publicID>-//International\sGrocery\sConsortium//Edible//Healthy//EN</publicID>
-    </notation>
-    <unparsedEntity>
-        <name>apple</name>
-        <systemID>http://www.apple.com</systemID>
-        <notation>fruit</notation>
-    </unparsedEntity>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>fruit</name>
+    <publicID>-//International&#x20;Grocery&#x20;Consortium//Edible//Healthy//EN</publicID>
+  </notation>
+  <unparsedEntity>
+    <name>apple</name>
+    <systemID>http://www.apple.com</systemID>
+    <notation>fruit</notation>
+  </unparsedEntity>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>affiliated</localName>
-                <qualifiedName>affiliated</qualifiedName>
-                <value>apple\sapple\sfood</value>
-                <type>ENTITIES</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>affiliated</localName>
+        <qualifiedName>affiliated</qualifiedName>
+        <value>apple&#x20;apple&#x20;food</value>
+        <type>ENTITIES</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
