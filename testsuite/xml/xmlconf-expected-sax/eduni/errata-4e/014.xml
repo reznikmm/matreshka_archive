@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>eggſ</localName>
+    <qualifiedName>eggſ</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>eggſ</localName>
+    <qualifiedName>eggſ</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

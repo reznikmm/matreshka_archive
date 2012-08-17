@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-4e/bombom_le.xml</systemID>
-    </resolveEntity>
-    <char>﻿</char>
-    <startElement>
-        <namespaceURI/>
-        <localName>f</localName>
-        <qualifiedName>f</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>f</localName>
-        <qualifiedName>f</qualifiedName>
-    </endElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <name>bombom</name>
+    <baseURI>eduni/errata-4e</baseURI>
+    <systemID>bombom_le.xml</systemID>
+  </resolveEntity>
+  <characters>﻿</characters>
+  <startElement>
+    <namespaceURI/>
+    <localName>f</localName>
+    <qualifiedName>f</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>f</localName>
+    <qualifiedName>f</qualifiedName>
+  </endElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
