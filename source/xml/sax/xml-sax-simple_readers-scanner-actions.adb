@@ -1515,6 +1515,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return End_Of_Input;
 
       else
+         Self.Scanner_State.Start_Issued := True;
+
          return Token_Entity_Start;
       end if;
    end On_General_Entity_Reference_In_Document_Content;
@@ -2198,6 +2200,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return End_Of_Input;
 
       else
+         Self.Scanner_State.Start_Issued := True;
+
          return Token_Entity_Start;
       end if;
    end On_Parameter_Entity_Reference_In_Document_Declaration;

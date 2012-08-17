@@ -577,6 +577,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Position_Offset         : Utf16_String_Index;
       YY_Index_Offset            : Natural;
       YY_Start_Condition         : Interfaces.Unsigned_32;
+      Start_Issued               : Boolean;
 
       function YY_Text_Internal
        (Trim_Left       : Natural := 0;
@@ -1589,6 +1590,11 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                            YY_Start_Condition := Start_Condition (Self);
 
+                           --  Save flag whether or not Token_Entity_Start was
+                           --  issued.
+
+                           Start_Issued := Self.Scanner_State.Start_Issued;
+
                            --  When entity's replacement text is empty and
                            --  there are no text declaration, then scanner is
                            --  in the initial state and actual state must be
@@ -1640,9 +1646,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            --  entity reference between markup declaration is
                            --  completed.
 
-                           if YY_Start_Condition = DOCTYPE_INTSUBSET_10
-                             or YY_Start_Condition = DOCTYPE_INTSUBSET_11
-                           then
+                           if Start_Issued then
                               YY_End_Of_Buffer_Action := YY_Report_Entity_End;
 
                            else

@@ -229,6 +229,10 @@ private
       --  ignored.
       --  XXX The same behavior can be achived by resetting Delimiter to
       --  any symbol.
+      Start_Issued         : Boolean := False;
+      --  Sets to True when Token_Entity_Start was issued before the start of
+      --  entity's replacement text scanning, thus Token_Entity_End must be
+      --  issued after completing of scanning of replacement text.
    end record;
 
    package Scanner_State_Vectors is
