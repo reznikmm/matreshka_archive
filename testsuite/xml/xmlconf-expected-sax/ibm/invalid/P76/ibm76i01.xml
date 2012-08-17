@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <unparsedEntity>
-        <name>ge2</name>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/invalid/P76/image.jpg</systemID>
-        <notation>JPGformat</notation>
-    </unparsedEntity>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <warning/>
+  <unparsedEntity>
+    <name>ge2</name>
+    <systemID>image.jpg</systemID>
+    <notation>JPGformat</notation>
+  </unparsedEntity>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>att2</localName>
-                <qualifiedName>att2</qualifiedName>
-                <value>any</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>att2</localName>
+        <qualifiedName>att2</qualifiedName>
+        <value>any</value>
+        <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
