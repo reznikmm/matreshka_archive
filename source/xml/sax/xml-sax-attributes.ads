@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This package provides the SAX_Attributes type provides XML attributes.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Ada.Finalization;
 
 with League.Strings;
