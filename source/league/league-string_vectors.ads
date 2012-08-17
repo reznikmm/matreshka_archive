@@ -47,6 +47,8 @@
 --  circular dependencies. In Ada2012 extended semantic of limited with
 --  clause will allow to separate string vector package from string package.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Ada.Finalization;
 private with Ada.Streams;
 
