@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\s</char>
-    <startElement>
-        <namespaceURI/>
-        <localName>undeclared</localName>
-        <qualifiedName>undeclared</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>undeclared</localName>
-        <qualifiedName>undeclared</qualifiedName>
-    </endElement>
-    <char>\s</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#x20;</characters>
+  <startElement>
+    <namespaceURI/>
+    <localName>undeclared</localName>
+    <qualifiedName>undeclared</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>undeclared</localName>
+    <qualifiedName>undeclared</qualifiedName>
+  </endElement>
+  <characters>&#x20;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

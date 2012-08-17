@@ -6,7 +6,6 @@
     <systemID>http://www.eb.com</systemID>
     <notation>Encyclopaedia</notation>
   </unparsedEntity>
-  <error>[XML&#x20;4.2.2&#x20;VC:&#x20;Notation&#x20;Declared]&#x20;notation&#x20;name&#x20;must&#x20;match&#x20;the&#x20;declared&#x20;name&#x20;of&#x20;a&#x20;notation</error>
   <startElement>
     <namespaceURI/>
     <localName>paper</localName>
