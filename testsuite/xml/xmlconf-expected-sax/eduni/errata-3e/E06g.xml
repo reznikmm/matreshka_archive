@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>not</name>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-3e/not</systemID>
-    </notation>
-    <notation>
-        <name>not2</name>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-3e/not2</systemID>
-    </notation>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>not</name>
+    <systemID>not</systemID>
+  </notation>
+  <notation>
+    <name>not2</name>
+    <systemID>not2</systemID>
+  </notation>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>a</localName>
-                <qualifiedName>a</qualifiedName>
-                <value>not</value>
-                <type>NOTATION</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>j</char>
-    <char>u</char>
-    <char>n</char>
-    <char>k</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>a</localName>
+        <qualifiedName>a</qualifiedName>
+        <value>not</value>
+        <type>NOTATION</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>j</characters>
+  <characters>u</characters>
+  <characters>n</characters>
+  <characters>k</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

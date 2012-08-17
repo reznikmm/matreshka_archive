@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>a</localName>
-                <qualifiedName>a</qualifiedName>
-                <value>34</value>
-                <type>NMTOKENS</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>a</localName>
+        <qualifiedName>a</qualifiedName>
+        <value>34</value>
+        <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
