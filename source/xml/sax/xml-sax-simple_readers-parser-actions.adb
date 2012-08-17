@@ -1460,12 +1460,19 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                      return;
                   end if;
 
-                  Bind (Self.Namespace_Scope, Lname, Ns);
+                  --  Check whether xml prefix is bound to xml namespace.
+                  --  Nothing need to be done in this case, otherwise new
+                  --  namespace binding must be processed and reported to
+                  --  the application.
 
-                  Callbacks.Call_Start_Prefix_Mapping
-                   (Self.all,
-                    Name (Self.Symbols, Lname),
-                    Name (Self.Symbols, Ns));
+                  if Ns /= Symbol_xml_NS or Lname /= Symbol_xml then
+                     Bind (Self.Namespace_Scope, Lname, Ns);
+
+                     Callbacks.Call_Start_Prefix_Mapping
+                      (Self.all,
+                       Name (Self.Symbols, Lname),
+                       Name (Self.Symbols, Ns));
+                  end if;
                end if;
             end;
          end loop;
