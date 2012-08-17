@@ -157,9 +157,12 @@ package body XMLConf.Testsuite_Handlers is
             Reader.Set_Feature
              (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 
-            if Kind = Invalid then
-               Reader.Set_Feature (XML.SAX.Constants.Validation_Feature, True);
-            end if;
+            --  XXX Non-validating reader must not detect errors for 'invalid'
+            --  testcases; thus validating mode is disabled for now.
+
+--            if Kind = Invalid then
+--               Reader.Set_Feature (XML.SAX.Constants.Validation_Feature, True);
+--            end if;
 
             Source.Open_By_URI
              (Base_URI.Resolve
@@ -184,8 +187,17 @@ package body XMLConf.Testsuite_Handlers is
                      end if;
 
                   when Invalid =>
-                     if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
-                        Put_Line (Id & ": doesn't have errors");
+                     --  XXX Non-validating reader must not detect errors for
+                     --  'invalid' testcases; thus validating mode is disabled
+                     --  for now.
+
+--                     if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
+--                        Put_Line (Id & ": doesn't have errors");
+--                        Failed := True;
+--                     end if;
+
+                     if Writer.Has_Fatal_Errors or Writer.Has_Errors then
+                        Put_Line (Id & ": has errors");
                         Failed := True;
                      end if;
 
