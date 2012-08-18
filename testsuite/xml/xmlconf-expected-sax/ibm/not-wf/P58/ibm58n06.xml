@@ -9,7 +9,6 @@
     <name>that</name>
     <systemID>beta</systemID>
   </notation>
-  <warning/>
   <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>

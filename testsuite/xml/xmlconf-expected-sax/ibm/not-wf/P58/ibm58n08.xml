@@ -5,7 +5,6 @@
     <name>this</name>
     <systemID>alpha</systemID>
   </notation>
-  <warning/>
   <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>

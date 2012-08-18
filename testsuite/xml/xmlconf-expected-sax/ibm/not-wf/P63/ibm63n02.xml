@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <warning/>
   <resolveEntity>
     <name>[dtd]</name>
     <baseURI>ibm/not-wf/P63</baseURI>
