@@ -957,23 +957,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Self.Current_Element := Element (Self.Symbols, Symbol);
 
-      --  [XML 3.3] Attribute List Declaration
-      --
-      --  "The Name in the AttlistDecl rule is the type of an element. At user
-      --  option, an XML processor MAY issue a warning if attributes are
-      --  declared for an element type not itself declared, but this is not an
-      --  error. The Name in the AttDef rule is the name of the attribute."
-      --
-      --  Check whether element is declared.
+      --  Check whether element entry was allocated and allocate entry when
+      --  necessary.
 
       if Self.Current_Element = No_Element then
-         Callbacks.Call_Warning
-          (Self.all,
-           League.Strings.To_Universal_String
-            ("[XML 3.3]"
-               & " attribute list declaration for element type not itself"
-               & " declared"));
-
          New_Element (Self.Elements, Self.Current_Element);
          Set_Element (Self.Symbols, Symbol, Self.Current_Element);
       end if;

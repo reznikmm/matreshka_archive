@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,6 +67,22 @@ package body Matreshka.Internals.XML.Element_Tables is
    begin
       Free (Self.Table);
    end Finalize;
+
+   -------------------
+   -- First_Element --
+   -------------------
+
+   function First_Element (Self : Element_Table) return Element_Identifier is
+   begin
+      if Self.Last /= No_Element then
+         return No_Element + 1;
+         --  First element of Self.Table has index No_Element + 1 by
+         --  convention.
+
+      else
+         return No_Element;
+      end if;
+   end First_Element;
 
    ------------------
    -- Has_Children --
@@ -165,6 +181,22 @@ package body Matreshka.Internals.XML.Element_Tables is
         Is_Mixed_Content       => False,
         Has_Children           => False);
    end New_Element;
+
+   ------------------
+   -- Next_Element --
+   ------------------
+
+   procedure Next_Element
+    (Self    : Element_Table;
+     Element : in out Element_Identifier) is
+   begin
+      if Element = Self.Last then
+         Element := No_Element;
+
+      else
+         Element := Element + 1;
+      end if;
+   end Next_Element;
 
    -----------
    -- Reset --

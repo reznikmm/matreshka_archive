@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
 
 package Matreshka.Internals.XML.Element_Tables is
 
@@ -133,6 +134,18 @@ package Matreshka.Internals.XML.Element_Tables is
 
    procedure Finalize (Self : in out Element_Table);
    --  Releases all ocupied resources.
+
+   function First_Element (Self : Element_Table) return Element_Identifier
+     with Inline => True;
+   --  Returns first element of the element table if any; returns No_Element
+   --  when table is empty.
+
+   procedure Next_Element
+    (Self    : Element_Table;
+     Element : in out Element_Identifier)
+       with Inline => True;
+   --  Sets Element to the next element in the element table if present or to
+   --  No_Element if where is no more element.
 
 private
 

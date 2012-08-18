@@ -46,6 +46,7 @@ with XML.SAX.Simple_Readers.Callbacks;
 package body XML.SAX.Simple_Readers.Analyzer is
 
    use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Element_Tables;
    use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
 
@@ -56,7 +57,8 @@ package body XML.SAX.Simple_Readers.Analyzer is
    procedure Analyze_Document_Type_Declaration
     (Self : not null access SAX_Simple_Reader'Class)
    is
-      Current : Entity_Identifier;
+      Current         : Entity_Identifier;
+      Current_Element : Element_Identifier;
 
    begin
       if Self.Validation.Enabled then
@@ -85,6 +87,32 @@ package body XML.SAX.Simple_Readers.Analyzer is
             Next_Entity (Self.Entities, Current);
          end loop;
       end if;
+
+      --  [XML 3.3] Attribute List Declaration
+      --
+      --  "The Name in the AttlistDecl rule is the type of an element. At user
+      --  option, an XML processor MAY issue a warning if attributes are
+      --  declared for an element type not itself declared, but this is not an
+      --  error. The Name in the AttDef rule is the name of the attribute."
+      --
+      --  Check whether element is not declared and has declared attributes.
+
+      Current_Element := First_Element (Self.Elements);
+
+      while Current_Element /= No_Element loop
+         if not Is_Declared (Self.Elements, Current_Element)
+           and Is_Attributes_Declared (Self.Elements, Current_Element)
+         then
+            Callbacks.Call_Warning
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[XML 3.3]"
+                  & " attribute list declaration for element type not itself"
+                  & " declared"));
+         end if;
+
+         Next_Element (Self.Elements, Current_Element);
+      end loop;
    end Analyze_Document_Type_Declaration;
 
 end XML.SAX.Simple_Readers.Analyzer;
