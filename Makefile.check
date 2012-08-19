@@ -53,6 +53,7 @@ endif
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/test_99
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed --invalid
+	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --validating --valid --not-wellformed
 	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
 
 league-valgrind:
