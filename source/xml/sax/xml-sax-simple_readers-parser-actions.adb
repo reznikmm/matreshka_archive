@@ -1567,34 +1567,55 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             (Self.Symbols, Self.Current_Element_Name);
       end if;
 
-      if Self.Validation.Enabled
-        and Self.Element_Names.Length = 1
-      then
-         --  Check presense of DTD and name of root element when validation is
-         --  enabled.
+      if Self.Validation.Enabled then
+         if Self.Element_Names.Length = 1 then
+            --  Check presense of DTD and name of root element when validation
+            --  is enabled.
 
-         if Self.Root_Symbol = No_Symbol then
-            --  Document doesn't have document type declaration.
-            --
-            --  "[Definition: An XML document is valid if it has an
-            --  associated document type declaration and if the document
-            --  complies with the constraints expressed in it.]"
+            if Self.Root_Symbol = No_Symbol then
+               --  XXX It would be interesting to do this check early, when
+               --  where are no DTD declaration was found.
 
+               --  Document doesn't have document type declaration.
+               --
+               --  "[Definition: An XML document is valid if it has an
+               --  associated document type declaration and if the document
+               --  complies with the constraints expressed in it.]"
+
+               Callbacks.Call_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("Document doen't have document type declaration"));
+
+            elsif Self.Root_Symbol /= Self.Current_Element_Name then
+               --  [2.8 VC: Root Element Type]
+               --
+               --  "The Name in the document type declaration MUST match the
+               --  element type of the root element."
+
+               Callbacks.Call_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[2.8 VC: Root Element Type] Root element has wrong name"));
+            end if;
+         end if;
+
+         --  [XML 3 VC: Element Valid]
+         --
+         --  "An element is valid if there is a declaration matching
+         --  elementdecl where the Name matches the element type, ..."
+         --
+         --  Check whether element was declared.
+
+         if Self.Root_Symbol /= No_Symbol
+           and (Self.Current_Element = No_Element
+                  or else not Is_Declared
+                               (Self.Elements, Self.Current_Element))
+         then
             Callbacks.Call_Error
              (Self.all,
               League.Strings.To_Universal_String
-               ("Document doen't have document type declaration"));
-
-         elsif Self.Root_Symbol /= Self.Current_Element_Name then
-            --  [2.8 VC: Root Element Type]
-            --
-            --  "The Name in the document type declaration MUST match the
-            --  element type of the root element."
-
-            Callbacks.Call_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[2.8 VC: Root Element Type] Root element has wrong name"));
+               ("[XML 3 VC: Element Valid] no declaration for element"));
          end if;
       end if;
 
