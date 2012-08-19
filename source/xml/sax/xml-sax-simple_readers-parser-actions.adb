@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,8 +47,9 @@ with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Analyzer;
-with XML.SAX.Simple_Readers.Scanner;
 with XML.SAX.Simple_Readers.Callbacks;
+with XML.SAX.Simple_Readers.Scanner;
+with XML.SAX.Simple_Readers.Validator;
 
 package body XML.SAX.Simple_Readers.Parser.Actions is
 
@@ -1098,8 +1099,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class) is
 
-      use type Ada.Containers.Count_Type;
-
       procedure Convert;
       --  Converts internal set of element's attributes into user visible set.
       --  Namespace declaration attributes are ignored when namespace
@@ -1583,39 +1582,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             (Self.Symbols, Self.Current_Element_Name);
       end if;
 
-      if Self.Validation.Enabled and Self.Validation.Has_DTD then
-         if Self.Element_Names.Length = 1 then
-            --  Check whether root element match declared element type.
-
-            if Self.Root_Symbol /= Self.Current_Element_Name then
-               --  [2.8 VC: Root Element Type]
-               --
-               --  "The Name in the document type declaration MUST match the
-               --  element type of the root element."
-
-               Callbacks.Call_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("[2.8 VC: Root Element Type] Root element has wrong name"));
-            end if;
-         end if;
-
-         --  [XML 3 VC: Element Valid]
-         --
-         --  "An element is valid if there is a declaration matching
-         --  elementdecl where the Name matches the element type, ..."
-         --
-         --  Check whether element was declared.
-
-         if Self.Current_Element = No_Element
-              or else not Is_Declared (Self.Elements, Self.Current_Element)
-         then
-            Callbacks.Call_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[XML 3 VC: Element Valid] no declaration for element"));
-         end if;
-      end if;
+      Validator.Validate_Element (Self.all);
 
       Convert;
       Callbacks.Call_Start_Element
