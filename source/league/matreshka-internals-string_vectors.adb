@@ -216,6 +216,36 @@ package body Matreshka.Internals.String_Vectors is
       end if;
    end Detach;
 
+   ------------
+   -- Insert --
+   ------------
+
+   procedure Insert
+    (Self  : in out Shared_String_Vector_Access;
+     Index : String_Vector_Index;
+     Item  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      --  Reference shared string object.
+
+      Matreshka.Internals.Strings.Reference (Item);
+
+      if Self = Empty_Shared_String_Vector'Access then
+         --  Vector is empty, create new one and initialize it.
+
+         Self := Allocate (1);
+         Self.Value (0) := Item;
+         Self.Unused := 1;
+
+      else
+         Detach (Self, Self.Unused);
+
+         Self.Value (Index + 1 .. Self.Unused) :=
+           Self.Value (Index .. Self.Unused - 1);
+         Self.Value (Index) := Item;
+         Self.Unused := Self.Unused + 1;
+      end if;
+   end Insert;
+
    -------------
    -- Prepend --
    -------------

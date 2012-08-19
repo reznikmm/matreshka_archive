@@ -207,6 +207,27 @@ package body League.String_Vectors is
       return Self.Index (League.Strings.To_Universal_String (Pattern));
    end Index;
 
+   ------------
+   -- Insert --
+   ------------
+
+   procedure Insert
+    (Self  : in out Universal_String_Vector'Class;
+     Index : Positive;
+     Item  : League.Strings.Universal_String'Class)
+   is
+      Position : constant String_Vector_Index
+        := String_Vector_Index (Index - 1);
+
+   begin
+      if Position > Self.Data.Unused then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      Matreshka.Internals.String_Vectors.Insert
+       (Self.Data, Position, League.Strings.Internals.Internal (Item));
+   end Insert;
+
    --------------
    -- Is_Empty --
    --------------

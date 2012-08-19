@@ -118,4 +118,10 @@ package Matreshka.Internals.String_Vectors is
      Item  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Replace string at the specified position by another one.
 
+   procedure Insert
+    (Self  : in out Shared_String_Vector_Access;
+     Index : String_Vector_Index;
+     Item  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Inserts string into the specified position.
+
 end Matreshka.Internals.String_Vectors;

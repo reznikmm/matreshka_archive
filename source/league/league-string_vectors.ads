@@ -42,10 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  Vector of Universal_String.
---
---  Content of this package is part of League.Strings package to resolve
---  circular dependencies. In Ada2012 extended semantic of limited with
---  clause will allow to separate string vector package from string package.
 ------------------------------------------------------------------------------
 pragma Ada_2012;
 
@@ -96,6 +92,12 @@ package League.String_Vectors is
      Index : Positive;
      Item  : League.Strings.Universal_String'Class);
    --  Replace element at the specified position by new value.
+
+   procedure Insert
+    (Self  : in out Universal_String_Vector'Class;
+     Index : Positive;
+     Item  : League.Strings.Universal_String'Class);
+   --  Inserts string into the given position.
 
    function Join
     (Self      : Universal_String_Vector'Class;
