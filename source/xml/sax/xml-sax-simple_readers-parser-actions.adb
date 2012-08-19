@@ -1082,6 +1082,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class) is
 
+      use type Ada.Containers.Count_Type;
+
       procedure Convert;
       --  Converts internal set of element's attributes into user visible set.
       --  Namespace declaration attributes are ignored when namespace
@@ -1120,40 +1122,14 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          end loop;
       end Convert;
 
-      Element_Prefix    : Symbol_Identifier;
-      Element_Namespace : Symbol_Identifier := No_Symbol;
+      Element_Prefix        : Symbol_Identifier;
+      Element_Namespace     : Symbol_Identifier := No_Symbol;
+      Element_Namespace_URI : Matreshka.Internals.Strings.Shared_String_Access;
+      Element_Local_Name    : Matreshka.Internals.Strings.Shared_String_Access;
+      Element_Qualified_Name :
+        Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      if Self.Element_Names.Is_Empty then
-         --  Root element.
-
-         if Self.Validation.Enabled then
-            if Self.Root_Symbol = No_Symbol then
-               --  Document doesn't have document type declaration.
-               --
-               --  "[Definition: An XML document is valid if it has an
-               --  associated document type declaration and if the document
-               --  complies with the constraints expressed in it.]"
-
-               Callbacks.Call_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("Document doen't have document type declaration"));
-
-            elsif Self.Root_Symbol /= Self.Current_Element_Name then
-               --  [2.8 VC: Root Element Type]
-               --
-               --  "The Name in the document type declaration MUST match the
-               --  element type of the root element."
-
-               Callbacks.Call_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("[2.8 VC: Root Element Type] Root element has wrong name"));
-            end if;
-         end if;
-      end if;
-
       Self.Element_Names.Append (Self.Current_Element_Name);
 
       Self.Current_Element :=
@@ -1575,26 +1551,60 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             end;
          end loop;
 
-         Convert;
-         Callbacks.Call_Start_Element
-          (Self           => Self.all,
-           Namespace_URI  => Name (Self.Symbols, Element_Namespace),
-           Local_Name     =>
-             Local_Name (Self.Symbols, Self.Current_Element_Name),
-           Qualified_Name => Name (Self.Symbols, Self.Current_Element_Name),
-           Attributes     => Self.SAX_Attributes);
+         Element_Namespace_URI  := Name (Self.Symbols, Element_Namespace);
+         Element_Local_Name     :=
+           Local_Name (Self.Symbols, Self.Current_Element_Name);
+         Element_Qualified_Name :=
+           Name (Self.Symbols, Self.Current_Element_Name);
 
       else
-         Convert;
-         Callbacks.Call_Start_Element
-          (Self           => Self.all,
-           Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Qualified_Name =>
-             Matreshka.Internals.XML.Symbol_Tables.Name
-              (Self.Symbols, Self.Current_Element_Name),
-           Attributes     => Self.SAX_Attributes);
+         Element_Namespace_URI  :=
+           Matreshka.Internals.Strings.Shared_Empty'Access;
+         Element_Local_Name     :=
+           Matreshka.Internals.Strings.Shared_Empty'Access;
+         Element_Qualified_Name :=
+           Matreshka.Internals.XML.Symbol_Tables.Name
+            (Self.Symbols, Self.Current_Element_Name);
       end if;
+
+      if Self.Validation.Enabled
+        and Self.Element_Names.Length = 1
+      then
+         --  Check presense of DTD and name of root element when validation is
+         --  enabled.
+
+         if Self.Root_Symbol = No_Symbol then
+            --  Document doesn't have document type declaration.
+            --
+            --  "[Definition: An XML document is valid if it has an
+            --  associated document type declaration and if the document
+            --  complies with the constraints expressed in it.]"
+
+            Callbacks.Call_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("Document doen't have document type declaration"));
+
+         elsif Self.Root_Symbol /= Self.Current_Element_Name then
+            --  [2.8 VC: Root Element Type]
+            --
+            --  "The Name in the document type declaration MUST match the
+            --  element type of the root element."
+
+            Callbacks.Call_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[2.8 VC: Root Element Type] Root element has wrong name"));
+         end if;
+      end if;
+
+      Convert;
+      Callbacks.Call_Start_Element
+       (Self           => Self.all,
+        Namespace_URI  => Element_Namespace_URI,
+        Local_Name     => Element_Local_Name,
+        Qualified_Name => Element_Qualified_Name,
+        Attributes     => Self.SAX_Attributes);
 
       --  Clear set of attributes. It is slightly more efficient to do here,
       --  then postpone to open of tag because occupied resources are not
