@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <startPrefixMapping>
+    <prefix>a</prefix>
+    <data>http://example.org/~wilbur</data>
+  </startPrefixMapping>
+  <startPrefixMapping>
+    <prefix>b</prefix>
+    <data>http://example.org/~wilbur</data>
+  </startPrefixMapping>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <characters>&#xA;</characters>
+  <fatalError>[NSXML1.1&#x20;6.3]&#x20;attributes&#x20;must&#x20;not&#x20;have&#x20;the&#x20;same&#x20;expanded&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

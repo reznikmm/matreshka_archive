@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <fatalError>Text&#x20;may&#x20;not&#x20;appear&#x20;after&#x20;the&#x20;root&#x20;element</fatalError>
+  <endDocument/>
+</SAXEvents>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>a</characters>
+  <fatalError>[[14]&#x20;CharData]&#x20;Text&#x20;may&#x20;not&#x20;contain&#x20;a&#x20;literal&#x20;&apos;]]&gt;&apos;&#x20;sequence</fatalError>
+  <endDocument/>
+</SAXEvents>

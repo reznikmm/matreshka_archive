@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;Entity&#x20;Declared]&#x20;general&#x20;entity&#x20;must&#x20;be&#x20;declared</fatalError>
+  <endDocument/>
+</SAXEvents>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <startElement>
+    <namespaceURI/>
+    <localName>a</localName>
+    <qualifiedName>a</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[3&#x20;WFC:&#x20;Element&#x20;Type&#x20;Match]&#x20;end&#x20;tag&#x20;name&#x20;must&#x20;match&#x20;start&#x20;tag&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

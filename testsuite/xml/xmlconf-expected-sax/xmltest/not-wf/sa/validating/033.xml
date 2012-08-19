@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>a</characters>
+  <characters>b</characters>
+  <characters>c</characters>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>
