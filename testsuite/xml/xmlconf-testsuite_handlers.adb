@@ -305,7 +305,10 @@ package body XMLConf.Testsuite_Handlers is
 
    overriding function Error_String
     (Self : Testsuite_Handler)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
@@ -317,7 +320,11 @@ package body XMLConf.Testsuite_Handlers is
    overriding procedure Fatal_Error
     (Self       : in out Testsuite_Handler;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean) is
+     Success    : in out Boolean)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Success);
+
    begin
       Put_Line ("FATAL ERROR: " & Occurrence.Message);
    end Fatal_Error;
@@ -366,7 +373,10 @@ package body XMLConf.Testsuite_Handlers is
 
    overriding procedure Start_Document
     (Self    : in out Testsuite_Handler;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Testsuite_Base_URI := Self.Locator.Base_URI;
       Self.Expected_Base_URI :=
@@ -386,6 +396,10 @@ package body XMLConf.Testsuite_Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Namespace_URI);
+      pragma Unreferenced (Local_Name);
+      pragma Unreferenced (Success);
+
       Index      : Natural;
       Id         : League.Strings.Universal_String;
       URI        : League.Strings.Universal_String;
