@@ -164,10 +164,10 @@ package body XMLConf.Testsuite_Handlers is
          --  Check whether expected data for validating mode is available.
 
          if not Validating_Expected_Data.Is_Empty
-           and Ada.Directories.Exists
-                (Ada.Characters.Conversions.To_String
-                  (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
-                    (Validating_Expected_Data).To_Wide_Wide_String))
+           and then Ada.Directories.Exists
+                     (Ada.Characters.Conversions.To_String
+                       (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                         (Validating_Expected_Data).To_Wide_Wide_String))
          then
             Expected :=
               Read_File
