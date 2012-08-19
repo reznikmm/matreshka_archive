@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <fatalError>[NSXML1.1]&#x20;qualified&#x20;name&#x20;must&#x20;not&#x20;end&#x20;with&#x20;colon&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

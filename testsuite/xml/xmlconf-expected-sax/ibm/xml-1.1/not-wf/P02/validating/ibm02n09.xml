@@ -5,7 +5,7 @@
     <target>Bad</target>
     <data>PI&#x20;0x0&#x20;&#x20;&#x20;&#x20;</data>
   </processingInstruction>
-  <error>Document&#x20;doen&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
   <startElement>
     <namespaceURI/>
     <localName>root</localName>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>pitarget</target>
+    <data/>
+  </processingInstruction>
+  <fatalError>XML&#x20;declaration&#x20;must&#x20;not&#x20;occur&#x20;other&#x20;than&#x20;at&#x20;the&#x20;beginning&#x20;of&#x20;document&#x20;entity</fatalError>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <endDocument/>
+</SAXEvents>

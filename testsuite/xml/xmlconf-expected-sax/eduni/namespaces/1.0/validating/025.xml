@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <fatalError>[NSXML1.1&#x20;5&#x20;NSC:&#x20;Prefix&#x20;Declared]&#x20;the&#x20;element&apos;s&#x20;namespace&#x20;prefix&#x20;have&#x20;not&#x20;been&#x20;declared</fatalError>
+  <endDocument/>
+</SAXEvents>

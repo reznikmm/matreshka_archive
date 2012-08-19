@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>pi</target>
+    <data>data</data>
+  </processingInstruction>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>
