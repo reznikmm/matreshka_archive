@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>゚</localName>
+    <qualifiedName>゚</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>゚</localName>
+    <qualifiedName>゚</qualifiedName>
+  </endElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

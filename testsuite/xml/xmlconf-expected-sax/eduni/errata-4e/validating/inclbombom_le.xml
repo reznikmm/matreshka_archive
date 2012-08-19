@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <name>bombom</name>
+    <baseURI>eduni/errata-4e</baseURI>
+    <systemID>bombom_le.xml</systemID>
+  </resolveEntity>
+  <characters>﻿</characters>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>f</localName>
+    <qualifiedName>f</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>f</localName>
+    <qualifiedName>f</qualifiedName>
+  </endElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
