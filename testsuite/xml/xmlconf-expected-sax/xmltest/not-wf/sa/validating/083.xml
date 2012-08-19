@@ -7,6 +7,7 @@
     <notation>n</notation>
   </unparsedEntity>
   <error>[XML&#x20;4.2.2&#x20;VC:&#x20;Notation&#x20;Declared]&#x20;notation&#x20;name&#x20;must&#x20;match&#x20;the&#x20;declared&#x20;name&#x20;of&#x20;a&#x20;notation</error>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
   <startElement>
     <namespaceURI/>
     <localName>doc</localName>

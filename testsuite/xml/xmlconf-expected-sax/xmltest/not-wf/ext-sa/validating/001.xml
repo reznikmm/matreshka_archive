@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <name>e</name>
+    <baseURI>xmltest/not-wf/ext-sa</baseURI>
+    <systemID>001.ent</systemID>
+  </resolveEntity>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;No&#x20;Recursion]&#x20;parsed&#x20;entity&#x20;must&#x20;not&#x20;containt&#x20;a&#x20;direct&#x20;recursive&#x20;reference&#x20;to&#x20;itself</fatalError>
+  <endDocument/>
+</SAXEvents>

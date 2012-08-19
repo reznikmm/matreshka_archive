@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[3.1&#x20;WFC:&#x20;No&#x20;&lt;&#x20;in&#x20;Attribute&#x20;Values]&#x20;&apos;&lt;&apos;&#x20;can&apos;t&#x20;be&#x20;used&#x20;in&#x20;attribute&#x20;value</fatalError>
+  <endDocument/>
+</SAXEvents>
