@@ -4,14 +4,14 @@
   <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
   <startElement>
     <namespaceURI/>
-    <localName>󯿿</localName>
-    <qualifiedName>󯿿</qualifiedName>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
   <endElement>
     <namespaceURI/>
-    <localName>󯿿</localName>
-    <qualifiedName>󯿿</qualifiedName>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
   </endElement>
   <endDocument/>
 </SAXEvents>

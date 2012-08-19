@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
   <startElement>
     <namespaceURI/>
     <localName>root</localName>
@@ -14,7 +14,7 @@
     <systemID>8bombom.xml</systemID>
   </resolveEntity>
   <characters>﻿</characters>
-  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;element&#x20;wasn&apos;t&#x20;be&#x20;declared</error>
+  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
   <startElement>
     <namespaceURI/>
     <localName>f</localName>

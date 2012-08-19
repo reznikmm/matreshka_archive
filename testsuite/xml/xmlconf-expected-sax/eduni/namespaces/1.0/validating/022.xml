@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startPrefixMapping>
+    <prefix/>
+    <data>http://example.org/namespace</data>
+  </startPrefixMapping>
+  <startElement>
+    <namespaceURI>http://example.org/namespace</namespaceURI>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <characters>&#x20;</characters>
+  <startPrefixMapping>
+    <prefix/>
+    <data>http://example.org/other-namespace</data>
+  </startPrefixMapping>
+  <startElement>
+    <namespaceURI>http://example.org/other-namespace</namespaceURI>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI>http://example.org/other-namespace</namespaceURI>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endPrefixMapping>
+    <prefix/>
+  </endPrefixMapping>
+  <characters>&#xA;</characters>
+  <endElement>
+    <namespaceURI>http://example.org/namespace</namespaceURI>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endPrefixMapping>
+    <prefix/>
+  </endPrefixMapping>
+  <endDocument/>
+</SAXEvents>

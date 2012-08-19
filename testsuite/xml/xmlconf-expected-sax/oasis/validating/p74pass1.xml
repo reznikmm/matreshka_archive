@@ -8,18 +8,6 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
-  <error>[XML&#x20;3&#x20;VC:&#x20;Element&#x20;Valid]&#x20;no&#x20;declaration&#x20;for&#x20;element</error>
-  <startElement>
-    <namespaceURI/>
-    <localName>X๜</localName>
-    <qualifiedName>X๜</qualifiedName>
-    <attributes/>
-  </startElement>
-  <endElement>
-    <namespaceURI/>
-    <localName>X๜</localName>
-    <qualifiedName>X๜</qualifiedName>
-  </endElement>
   <endElement>
     <namespaceURI/>
     <localName>doc</localName>

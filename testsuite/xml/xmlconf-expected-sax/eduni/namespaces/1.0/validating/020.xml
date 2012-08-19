@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAXEvents>
+  <startDocument/>
+  <error>Document&#x20;doesn&apos;t&#x20;have&#x20;document&#x20;type&#x20;declaration</error>
+  <startPrefixMapping>
+    <prefix>a</prefix>
+    <data>http://example.org/namespace</data>
+  </startPrefixMapping>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes>
+      <attribute>
+        <namespaceURI>http://example.org/namespace</namespaceURI>
+        <localName>attr</localName>
+        <qualifiedName>a:attr</qualifiedName>
+        <value>1</value>
+        <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endPrefixMapping>
+    <prefix>a</prefix>
+  </endPrefixMapping>
+  <endDocument/>
+</SAXEvents>
