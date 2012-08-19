@@ -387,6 +387,7 @@ package body XML.SAX.Simple_Readers is
       Self.Namespaces.Enabled  := Self.Configuration.Enable_Namespaces;
       Self.Namespaces.Prefixes := Self.Configuration.Enable_Prefixes;
       Self.Validation.Enabled  := Self.Configuration.Enable_Validation;
+      Self.Validation.Has_DTD  := False;
 
       Callbacks.Call_Set_Document_Locator (Self.all);
       Self.Version := XML_1_0;

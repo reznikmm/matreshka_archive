@@ -290,6 +290,7 @@ private
 
    type Validation_Options is record
       Enabled : Boolean := False;
+      Has_DTD : Boolean := False;
    end record;
 
    type Configuration_Information is record

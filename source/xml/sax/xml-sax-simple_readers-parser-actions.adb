@@ -352,6 +352,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Analyzer.Analyze_Document_Type_Declaration (Self);
       Callbacks.Call_End_DTD (Self.all);
+      Self.Validation.Has_DTD := True;
       Self.In_Document_Content := True;
    end On_End_Of_Document_Type_Declaration;
 
@@ -707,6 +708,21 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_No_Document_Type_Declaration
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
+      if Self.Validation.Enabled then
+         --  Document doesn't have document type declaration.
+         --
+         --  "[Definition: An XML document is valid if it has an associated
+         --  document type declaration and if the document complies with the
+         --  constraints expressed in it.]"
+
+         Callbacks.Call_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("Document doesn't have document type declaration"));
+      end if;
+
+      Self.Validation.Has_DTD := False;
+
       Self.In_Document_Content := True;
    end On_No_Document_Type_Declaration;
 
@@ -1567,27 +1583,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             (Self.Symbols, Self.Current_Element_Name);
       end if;
 
-      if Self.Validation.Enabled then
+      if Self.Validation.Enabled and Self.Validation.Has_DTD then
          if Self.Element_Names.Length = 1 then
-            --  Check presense of DTD and name of root element when validation
-            --  is enabled.
+            --  Check whether root element match declared element type.
 
-            if Self.Root_Symbol = No_Symbol then
-               --  XXX It would be interesting to do this check early, when
-               --  where are no DTD declaration was found.
-
-               --  Document doesn't have document type declaration.
-               --
-               --  "[Definition: An XML document is valid if it has an
-               --  associated document type declaration and if the document
-               --  complies with the constraints expressed in it.]"
-
-               Callbacks.Call_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("Document doen't have document type declaration"));
-
-            elsif Self.Root_Symbol /= Self.Current_Element_Name then
+            if Self.Root_Symbol /= Self.Current_Element_Name then
                --  [2.8 VC: Root Element Type]
                --
                --  "The Name in the document type declaration MUST match the
@@ -1607,10 +1607,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --
          --  Check whether element was declared.
 
-         if Self.Root_Symbol /= No_Symbol
-           and (Self.Current_Element = No_Element
-                  or else not Is_Declared
-                               (Self.Elements, Self.Current_Element))
+         if Self.Current_Element = No_Element
+              or else not Is_Declared (Self.Elements, Self.Current_Element)
          then
             Callbacks.Call_Error
              (Self.all,
