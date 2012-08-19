@@ -69,6 +69,7 @@ procedure XMLConf_Test is
    Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler    : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
    Enabled    : Test_Flags := (others => True);
+   Validating : Boolean := False;
    Passed     : Natural;
    Failed     : Natural;
    Suppressed : Natural;
@@ -89,6 +90,9 @@ begin
 
          elsif Ada.Command_Line.Argument (J) = "--error" then
             Enabled (Error) := True;
+
+         elsif Ada.Command_Line.Argument (J) = "--validating" then
+            Validating := True;
 
          else
             raise Program_Error;
@@ -114,6 +118,7 @@ begin
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Source.Open_By_File_Name (Data);
    Handler.Enabled := Enabled;
+   Handler.Validating := Validating;
    Reader.Parse (Source'Access);
 
    Passed :=

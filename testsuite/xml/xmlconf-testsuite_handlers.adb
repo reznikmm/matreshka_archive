@@ -42,9 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
+with Ada.Directories;
 with Ada.Exceptions;
 with Ada.Wide_Wide_Text_IO;
 
+with League.String_Vectors;
 with Put_Line;
 with Read_File;
 with XML.SAX.Constants;
@@ -108,8 +110,19 @@ package body XMLConf.Testsuite_Handlers is
      Namespaces : Boolean;
      Output     : League.Strings.Universal_String)
    is
-      Base_URI : constant League.IRIs.IRI := Self.Locator.Base_URI;
-      Failed   : Boolean := False;
+      Base_URI                 : constant League.IRIs.IRI
+        := Self.Locator.Base_URI;
+      Expected_Base_URI        : constant League.IRIs.IRI
+        := Self.Expected_Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Base_URI.To_Universal_String.Slice
+                (Self.Testsuite_Base_URI.To_Universal_String.Length + 2,
+                 Base_URI.To_Universal_String.Length)));
+      Expected_Data            : constant League.Strings.Universal_String
+        := Expected_Base_URI.Resolve
+            (League.IRIs.From_Universal_String (URI)).To_Universal_String;
+      Validating_Expected_Data : League.Strings.Universal_String;
+      Failed                   : Boolean := False;
 
    begin
       --  Skip suppressed tests.
@@ -118,6 +131,24 @@ package body XMLConf.Testsuite_Handlers is
          Self.Results (Kind).Suppressed := Self.Results (Kind).Suppressed + 1;
 
          return;
+      end if;
+
+      --  Compute URI of expected data for validating mode.
+
+      if Self.Validating then
+         declare
+            Paths : League.String_Vectors.Universal_String_Vector
+              := URI.Split ('/');
+
+         begin
+            Paths.Insert
+             (Paths.Length,
+              League.Strings.To_Universal_String ("validating"));
+            Validating_Expected_Data :=
+              Expected_Base_URI.Resolve
+               (League.IRIs.From_Universal_String
+                 (Paths.Join ('/'))).To_Universal_String;
+         end;
       end if;
 
       --  SAX test.
@@ -130,17 +161,27 @@ package body XMLConf.Testsuite_Handlers is
          Expected  : League.Strings.Universal_String;
 
       begin
-         Expected :=
-           Read_File
-            (Ada.Characters.Conversions.To_String
-              (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
-                (Self.Expected_Base_URI.Resolve
-                  (League.IRIs.From_Universal_String
-                    (Base_URI.To_Universal_String.Slice
-                      (Self.Testsuite_Base_URI.To_Universal_String.Length + 2,
-                       Base_URI.To_Universal_String.Length))).Resolve
-                        (League.IRIs.From_Universal_String
-                          (URI)).To_Universal_String).To_Wide_Wide_String));
+         --  Check whether expected data for validating mode is available.
+
+         if not Validating_Expected_Data.Is_Empty
+           and Ada.Directories.Exists
+                (Ada.Characters.Conversions.To_String
+                  (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                    (Validating_Expected_Data).To_Wide_Wide_String))
+         then
+            Expected :=
+              Read_File
+               (Ada.Characters.Conversions.To_String
+                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                   (Validating_Expected_Data).To_Wide_Wide_String));
+
+         else
+            Expected :=
+              Read_File
+               (Ada.Characters.Conversions.To_String
+                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                   (Expected_Data).To_Wide_Wide_String));
+         end if;
 
          select
             delay 60.0;
@@ -157,12 +198,9 @@ package body XMLConf.Testsuite_Handlers is
             Reader.Set_Feature
              (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 
-            --  XXX Non-validating reader must not detect errors for 'invalid'
-            --  testcases; thus validating mode is disabled for now.
-
---            if Kind = Invalid then
---               Reader.Set_Feature (XML.SAX.Constants.Validation_Feature, True);
---            end if;
+            if Self.Validating then
+               Reader.Set_Feature (XML.SAX.Constants.Validation_Feature, True);
+            end if;
 
             Source.Open_By_URI
              (Base_URI.Resolve
@@ -187,18 +225,23 @@ package body XMLConf.Testsuite_Handlers is
                      end if;
 
                   when Invalid =>
-                     --  XXX Non-validating reader must not detect errors for
-                     --  'invalid' testcases; thus validating mode is disabled
-                     --  for now.
+                     --  In non-validating mode all 'invalid' testcases must
+                     --  pass successfully, while in validating mode they must
+                     --  fail.
 
---                     if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
---                        Put_Line (Id & ": doesn't have errors");
---                        Failed := True;
---                     end if;
+                     if Self.Validating then
+                        if not Writer.Has_Fatal_Errors
+                          and not Writer.Has_Errors
+                        then
+                           Put_Line (Id & ": doesn't have errors");
+                           Failed := True;
+                        end if;
 
-                     if Writer.Has_Fatal_Errors or Writer.Has_Errors then
-                        Put_Line (Id & ": has errors");
-                        Failed := True;
+                     else
+                        if Writer.Has_Fatal_Errors or Writer.Has_Errors then
+                           Put_Line (Id & ": has errors");
+                           Failed := True;
+                        end if;
                      end if;
 
                   when Not_Wellformed =>
@@ -254,6 +297,11 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Lexical_Handler (Writer'Unchecked_Access);
                Reader.Set_Feature
                 (XML.SAX.Constants.Namespaces_Feature, Namespaces);
+
+               if Self.Validating then
+                  Reader.Set_Feature
+                   (XML.SAX.Constants.Validation_Feature, True);
+               end if;
 
                Source.Open_By_URI
                 (Base_URI.Resolve
