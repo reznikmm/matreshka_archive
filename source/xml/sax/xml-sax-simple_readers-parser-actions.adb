@@ -68,7 +68,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
 
    procedure Analyze_Attribute_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
+    (Self        : in out SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Constructor : not null access procedure
                     (Self      : in out Attribute_Table;
@@ -87,7 +87,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------
 
    procedure Analyze_Attribute_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
+    (Self        : in out SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Constructor : not null access procedure
                     (Self      : in out Attribute_Table;
@@ -136,7 +136,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
             if Name (Self.Attributes, Current) = Symbol then
                Callbacks.Call_Warning
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[XML 3.3]"
                      & " more than one attribute definition is provided for"
@@ -168,7 +168,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------
 
    procedure On_Any_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       Set_Is_Any (Self.Elements, Self.Current_Element, True);
    end On_Any_Declaration;
@@ -178,7 +178,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------
 
    procedure On_Attribute_Default_Declaration
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Default : Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if not Self.Attribute_Redefined then
@@ -191,7 +191,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------
 
    procedure On_CDATA_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_CDATA_Attribute'Access);
@@ -202,7 +202,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------
 
    procedure On_Character_Data
-    (Self          : not null access SAX_Simple_Reader'Class;
+    (Self          : in out SAX_Simple_Reader'Class;
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean)
    is
@@ -227,10 +227,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --  ignorable whitespaces to application. But, element content is not
          --  supported now.
 
-         Callbacks.Call_Ignorable_Whitespace (Self.all, Text);
+         Callbacks.Call_Ignorable_Whitespace (Self, Text);
 
       else
-         Callbacks.Call_Characters (Self.all, Text);
+         Callbacks.Call_Characters (Self, Text);
       end if;
    end On_Character_Data;
 
@@ -239,7 +239,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Element_Attribute
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -267,7 +267,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --  start-tag or empty-element tag.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[3.1 WFC: Unique Att Spec]"
                & " an attribute name must not appear more than once"
@@ -280,7 +280,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------
 
    procedure On_Element_Attribute_Name
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Normalize_Value   := False;
@@ -312,7 +312,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Empty_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       Set_Is_Empty (Self.Elements, Self.Current_Element, True);
    end On_Empty_Declaration;
@@ -321,8 +321,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_Empty_Element_Tag --
    --------------------------
 
-   procedure On_Empty_Element_Tag
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure On_Empty_Element_Tag (Self : in out SAX_Simple_Reader'Class) is
    begin
       On_Start_Tag (Self);
 
@@ -338,10 +337,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_End_Of_Document --
    ------------------------
 
-   procedure On_End_Of_Document
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure On_End_Of_Document (Self : in out SAX_Simple_Reader'Class) is
    begin
-      Callbacks.Call_End_Document (Self.all);
+      Callbacks.Call_End_Document (Self);
    end On_End_Of_Document;
 
    -----------------------------------------
@@ -349,10 +347,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------------
 
    procedure On_End_Of_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       Analyzer.Analyze_Document_Type_Declaration (Self);
-      Callbacks.Call_End_DTD (Self.all);
+      Callbacks.Call_End_DTD (Self);
       Self.Validation.Has_DTD := True;
       Self.In_Document_Content := True;
    end On_End_Of_Document_Type_Declaration;
@@ -362,7 +360,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------
 
    procedure On_End_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
    is
 
@@ -377,9 +375,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       procedure Notify_Unmap
        (Prefix : Matreshka.Internals.XML.Symbol_Identifier) is
       begin
-         Callbacks.Call_End_Prefix_Mapping
-          (Self.all,
-           Name (Self.Symbols, Prefix));
+         Callbacks.Call_End_Prefix_Mapping (Self, Name (Self.Symbols, Prefix));
       end Notify_Unmap;
 
    begin
@@ -390,7 +386,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Self.Element_Names.Last_Element /= Symbol then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[3 WFC: Element Type Match]"
                & " end tag name must match start tag name"));
@@ -398,7 +394,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       else
          if Self.Namespaces.Enabled then
             Callbacks.Call_End_Element
-             (Self           => Self.all,
+             (Self           => Self,
               Namespace_URI  =>
                 Name
                  (Self.Symbols,
@@ -412,7 +408,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          else
             Callbacks.Call_End_Element
-             (Self           => Self.all,
+             (Self           => Self,
               Namespace_URI  =>
                 Matreshka.Internals.Strings.Shared_Empty'Access,
               Local_Name     =>
@@ -430,7 +426,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_Entities_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -442,7 +438,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Entity_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -454,7 +450,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------------
 
    procedure On_Enumeration_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Notation_Attribute := False;
@@ -467,7 +463,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------------
 
    procedure On_Fixed_Attribute_Default_Declaration
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Default : Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if not Self.Attribute_Redefined then
@@ -481,7 +477,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------
 
    procedure On_General_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
+    (Self        : in out SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
@@ -504,7 +500,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if General_Entity (Self.Symbols, Symbol) /= No_Entity then
          Callbacks.Call_Warning
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML 4.2 Entities Declaration]"
                & " general entity is already declared"));
@@ -524,7 +520,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_External_Entity_Declaration
-             (Self.all, Name, Self.Public_Id, Self.System_Id);
+             (Self, Name, Self.Public_Id, Self.System_Id);
 
          else
             New_External_Unparsed_General_Entity
@@ -535,7 +531,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_Unparsed_Entity_Declaration
-             (Self.all,
+             (Self,
               Name,
               Self.Public_Id,
               Self.System_Id,
@@ -553,7 +549,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             New_Internal_General_Entity
              (Self.Entities, Self.Scanner_State.Entity, Symbol, A, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Callbacks.Call_Internal_Entity_Declaration (Self.all, Name, Value);
+            Callbacks.Call_Internal_Entity_Declaration (Self, Name, Value);
          end;
       end if;
    end On_General_Entity_Declaration;
@@ -563,7 +559,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------
 
    procedure On_Id_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_Id_Attribute'Access);
@@ -588,7 +584,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     and Is_ID (Self.Attributes, Current)
                   then
                      Callbacks.Call_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[XML 3.3.1 VC: One ID per Element Type]"
                            & " element type must not have more than one ID"
@@ -609,7 +605,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------
 
    procedure On_IdRef_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_IdRef_Attribute'Access);
@@ -620,7 +616,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_IdRefs_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -632,7 +628,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------------------------------------
 
    procedure On_Implied_Attribute_Default_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       if not Self.Attribute_Redefined then
          Set_Is_Implied (Self.Attributes, Self.Current_Attribute, True);
@@ -644,7 +640,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------------------------
 
    procedure On_Mixed_Content_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Is_Any : Boolean) is
    begin
       Set_Is_Mixed_Content (Self.Elements, Self.Current_Element, True);
@@ -660,7 +656,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
         and Has_Children (Self.Elements, Self.Current_Element)
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [51]] asterisk must be present after close parenthesis"));
 
@@ -673,7 +669,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------------
 
    procedure On_Name_In_Mixed_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       Set_Has_Children (Self.Elements, Self.Current_Element, True);
    end On_Name_In_Mixed_Content_Declaration;
@@ -683,7 +679,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------
 
    procedure On_NmToken_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -695,7 +691,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_NmTokens_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -707,7 +703,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_No_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       if Self.Validation.Enabled then
          --  Document doesn't have document type declaration.
@@ -717,7 +713,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --  constraints expressed in it.]"
 
          Callbacks.Call_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("Document doesn't have document type declaration"));
       end if;
@@ -732,7 +728,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_Notation_Attribute_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Notation_Attribute := True;
@@ -745,7 +741,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------
 
    procedure On_Notation_Declaration
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      System_Id : not null Matreshka.Internals.Strings.Shared_String_Access)
@@ -763,7 +759,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          if Self.Validation.Enabled then
             Callbacks.Call_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML VC: Unique Notation Name]"
                   & " another notation is declared with this name"));
@@ -773,7 +769,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          New_Notation (Self.Notations, Name, Public_Id, System_Id, Notation);
          Set_Notation (Self.Symbols, Name, Notation);
          Callbacks.Call_Notation_Declaration
-          (Self.all, Name, Public_Id, System_Id);
+          (Self, Name, Public_Id, System_Id);
       end if;
    end On_Notation_Declaration;
 
@@ -782,7 +778,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------
 
    procedure On_Open_Of_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       --  Save name of element and resolve it.
@@ -796,7 +792,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Parameter_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
+    (Self        : in out SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
@@ -816,7 +812,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Parameter_Entity (Self.Symbols, Symbol) /= No_Entity then
          Callbacks.Call_Warning
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML 4.2 Entities Declaration]"
                & " parameter entity is already declared"));
@@ -862,7 +858,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------
 
    procedure On_Processing_Instruction
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -879,7 +875,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       if Target = Symbol_xml then
          if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("XML declaration must not occur other than at the beginning"
                   & " of document entity"));
@@ -888,7 +884,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          else
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("text declaration must not occur other than at the beginning"
                   & " of external entity"));
@@ -912,15 +908,14 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                or Target_Name.Value (2) = Latin_Small_Letter_L)
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("name is reserved for future standardization"));
 
          return;
       end if;
 
-      Callbacks.Call_Processing_Instruction
-       (Self.all, Target, Data);
+      Callbacks.Call_Processing_Instruction (Self, Target, Data);
    end On_Processing_Instruction;
 
    -----------------------------------------------
@@ -928,7 +923,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------------------
 
    procedure On_Required_Attribute_Default_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       if not Self.Attribute_Redefined then
          Set_Is_Required (Self.Attributes, Self.Current_Attribute, True);
@@ -940,7 +935,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------
 
    procedure On_Standalone
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if Text.Unused = 2
@@ -958,7 +953,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       else
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [32]] valid values for standalone are 'yes' or 'no'"));
       end if;
@@ -969,7 +964,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------------
 
    procedure On_Start_Of_Attribute_List_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Symbol_Identifier) is
    begin
       Self.Current_Element := Element (Self.Symbols, Symbol);
@@ -1003,7 +998,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Is_Attributes_Declared (Self.Elements, Self.Current_Element) then
          Callbacks.Call_Warning
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML 3.3]"
                & " more than one attribute list declaration is provided for"
@@ -1018,9 +1013,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Start_Of_Document
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
-      Callbacks.Call_Start_Document (Self.all);
+      Callbacks.Call_Start_Document (Self);
    end On_Start_Of_Document;
 
    -------------------------------------------
@@ -1028,7 +1023,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------------
 
    procedure On_Start_Of_Document_Type_Declaration
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Name     : Matreshka.Internals.XML.Symbol_Identifier;
      External : Boolean) is
    begin
@@ -1043,14 +1038,14 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Base_URI (Self.Bases).To_Universal_String,
            Self.External_Subset_Entity);
          Callbacks.Call_Start_DTD
-          (Self.all,
+          (Self,
            Name,
            League.Strings.Internals.Internal (Self.Public_Id),
            League.Strings.Internals.Internal (Self.System_Id));
 
       else
          Callbacks.Call_Start_DTD
-          (Self.all,
+          (Self,
            Name,
            Matreshka.Internals.Strings.Shared_Empty'Access,
            Matreshka.Internals.Strings.Shared_Empty'Access);
@@ -1062,7 +1057,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Start_Of_Element_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Current_Element := Element (Self.Symbols, Symbol);
@@ -1079,7 +1074,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            and Is_Declared (Self.Elements, Self.Current_Element)
          then
             Callbacks.Call_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML1.1 3.2 VC: Unique Element Type Declaration]"
                   & " element type must not be declared more than once"));
@@ -1097,7 +1092,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_Start_Tag --
    ------------------
 
-   procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class) is
+   procedure On_Start_Tag (Self : in out SAX_Simple_Reader'Class) is
 
       procedure Convert;
       --  Converts internal set of element's attributes into user visible set.
@@ -1234,7 +1229,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               = Symbol_xmlns
          then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                   & " Names] element must not have the prefix xmlns"));
@@ -1271,7 +1266,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xml_NS then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xml namespace must not be declared"
@@ -1295,7 +1290,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xmlns_NS then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns namespace must not be declared"
@@ -1307,7 +1302,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                   Bind (Self.Namespace_Scope, No_Symbol, Ns);
 
                   Callbacks.Call_Start_Prefix_Mapping
-                   (Self.all,
+                   (Self,
                     Matreshka.Internals.Strings.Shared_Empty'Access,
                     Name (Self.Symbols, Ns));
 
@@ -1330,7 +1325,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol and Lname = Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be undeclared"));
@@ -1343,7 +1338,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns /= Symbol_xml_NS and Lname = Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be bound to any"
@@ -1357,7 +1352,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xml_NS and Lname /= Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] other prefixes must not be bound to xml"
@@ -1380,7 +1375,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns /= No_Symbol and Lname = Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be declared"));
@@ -1392,7 +1387,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol and Lname = Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be"
@@ -1405,7 +1400,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xmlns_NS and Lname /= Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] prefix must not be bound to xmlns"
@@ -1430,7 +1425,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Self.Version = XML_1_0 and Ns = No_Symbol then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.0] illegal use of 1.1-style prefix"
                            & " unbinding in 1.0 document"));
@@ -1447,7 +1442,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                      Bind (Self.Namespace_Scope, Lname, Ns);
 
                      Callbacks.Call_Start_Prefix_Mapping
-                      (Self.all,
+                      (Self,
                        Name (Self.Symbols, Lname),
                        Name (Self.Symbols, Ns));
                   end if;
@@ -1474,7 +1469,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
             if Element_Namespace = No_Symbol then
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1 5 NSC: Prefix Declared]"
                      & " the element's namespace prefix have not been"
@@ -1512,7 +1507,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 5 NSC: Prefix Declared]"
                            & " the attribute's namespace prefix have not been"
@@ -1555,7 +1550,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         = Ln
                   then
                      Callbacks.Call_Fatal_Error
-                      (Self.all,
+                      (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 6.3] attributes must not have the same"
                            & " expanded name"));
@@ -1582,11 +1577,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             (Self.Symbols, Self.Current_Element_Name);
       end if;
 
-      Validator.Validate_Element (Self.all);
+      Validator.Validate_Element (Self);
 
       Convert;
       Callbacks.Call_Start_Element
-       (Self           => Self.all,
+       (Self           => Self,
         Namespace_URI  => Element_Namespace_URI,
         Local_Name     => Element_Local_Name,
         Qualified_Name => Element_Qualified_Name,
@@ -1606,7 +1601,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------
 
    procedure On_Text_Declaration
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -1631,7 +1626,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Self.Version < Entity_Version then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("external general entity has later version number"));
 
@@ -1642,7 +1637,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Encoding.Unused /= 0 and Encoding_Name.Is_Empty then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String ("invalid name of encoding"));
 
          return;
@@ -1658,7 +1653,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
              (Encoding_Name) = 0
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String ("unknown encoding"));
 
          return;
@@ -1673,7 +1668,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------
 
    procedure On_XML_Declaration
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -1705,7 +1700,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Encoding.Unused /= 0 and Encoding_Name.Is_Empty then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String ("invalid name of encoding"));
 
          return;
@@ -1721,7 +1716,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
              (Encoding_Name) = 0
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String ("unknown encoding"));
 
          return;

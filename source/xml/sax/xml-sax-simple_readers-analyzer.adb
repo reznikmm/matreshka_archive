@@ -55,7 +55,7 @@ package body XML.SAX.Simple_Readers.Analyzer is
    ---------------------------------------
 
    procedure Analyze_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class)
+    (Self : in out SAX_Simple_Reader'Class)
    is
       Current         : Entity_Identifier;
       Current_Element : Element_Identifier;
@@ -77,7 +77,7 @@ package body XML.SAX.Simple_Readers.Analyzer is
                          Notation (Self.Entities, Current)) = No_Notation
             then
                Callbacks.Call_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[XML 4.2.2 VC: Notation Declared]"
                      & " notation name must match the declared name of a"
@@ -104,7 +104,7 @@ package body XML.SAX.Simple_Readers.Analyzer is
            and Is_Attributes_Declared (Self.Elements, Current_Element)
          then
             Callbacks.Call_Warning
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML 3.3]"
                   & " attribute list declaration for element type not itself"

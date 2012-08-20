@@ -64,8 +64,8 @@ package body XML.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Scanner.Tables;
 
-   procedure Set_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class);
+   procedure Set_Whitespace_Matched (Self : in out SAX_Simple_Reader'Class)
+     with Inline => True;
    --  Sets "whitespace matched" flag.
 
    procedure Free is
@@ -78,7 +78,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    ---------------------------
 
    procedure Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is
    begin
       Self.Scanner_State.YY_Start_State := State * 2 + 1;
@@ -132,8 +132,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    -- Pop_Start_Condition --
    -------------------------
 
-   procedure Pop_Start_Condition
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure Pop_Start_Condition (Self : in out SAX_Simple_Reader'Class) is
    begin
       Enter_Start_Condition
        (Self, Self.Scanner_State.Start_Condition_Stack.Last_Element);
@@ -145,7 +144,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    ------------------------------------
 
    procedure Push_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Push  : Interfaces.Unsigned_32;
      Enter : Interfaces.Unsigned_32) is
    begin
@@ -158,7 +157,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    --------------------------------------------
 
    procedure Push_Current_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Enter : Interfaces.Unsigned_32) is
    begin
       Self.Scanner_State.Start_Condition_Stack.Append (Start_Condition (Self));
@@ -170,7 +169,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    -----------------
 
    function Push_Entity
-    (Self             : not null access SAX_Simple_Reader'Class;
+    (Self             : in out SAX_Simple_Reader'Class;
      Entity           : Matreshka.Internals.XML.Entity_Identifier;
      In_Document_Type : Boolean;
      In_Literal       : Boolean) return Boolean
@@ -188,7 +187,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
       if not Is_Resolved (Self.Entities, Entity) then
          Callbacks.Call_Resolve_Entity
-          (Self.all,
+          (Self,
            Entity,
            Public_Id (Self.Entities, Entity),
            Enclosing_Base_URI (Self.Entities, Entity),
@@ -199,7 +198,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
          if not Self.Continue then
             Self.Error_Message.Prepend ("unable to resolve external entity: ");
-            Callbacks.Call_Fatal_Error (Self.all, Self.Error_Message);
+            Callbacks.Call_Fatal_Error (Self, Self.Error_Message);
 
             return False;
          end if;
@@ -361,7 +360,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    ------------------------------
 
    procedure Reset_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       Self.Whitespace_Matched := False;
    end Reset_Whitespace_Matched;
@@ -371,7 +370,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    ---------------------------------------
 
    procedure Set_Document_Version_And_Encoding
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Version  : XML_Version;
      Encoding : League.Strings.Universal_String)
    is
@@ -437,7 +436,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
       if not Success then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("invalid or unsupported encoding"));
 
@@ -453,8 +452,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    -- Set_Whitespace_Matched --
    ----------------------------
 
-   procedure Set_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure Set_Whitespace_Matched (Self : in out SAX_Simple_Reader'Class) is
    begin
       Self.Whitespace_Matched := True;
    end Set_Whitespace_Matched;
@@ -464,8 +462,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    ---------------------
 
    function Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class)
-       return Interfaces.Unsigned_32 is
+    (Self : SAX_Simple_Reader'Class) return Interfaces.Unsigned_32 is
    begin
       return (Self.Scanner_State.YY_Start_State - 1) / 2;
    end Start_Condition;
@@ -474,8 +471,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    -- YY_Move_Backward --
    ----------------------
 
-   procedure YY_Move_Backward
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure YY_Move_Backward (Self : in out SAX_Simple_Reader'Class) is
    begin
       Self.Scanner_State.YY_Current_Position :=
         Self.Scanner_State.YY_Current_Position - 1;
@@ -490,7 +486,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    -------------
 
    function YY_Text
-    (Self            : not null access SAX_Simple_Reader'Class;
+    (Self            : SAX_Simple_Reader'Class;
      Trim_Left       : Natural := 0;
      Trim_Right      : Natural := 0;
      Trim_Whitespace : Boolean := False)
@@ -535,9 +531,8 @@ package body XML.SAX.Simple_Readers.Scanner is
    -- YYLex --
    -----------
 
-   function YYLex
-    (Self : not null access SAX_Simple_Reader'Class) return Token
-   is
+   function YYLex (Self : in out SAX_Simple_Reader'Class) return Token is
+
       use type XML.SAX.Input_Sources.SAX_Input_Source_Access;
 
       type YY_End_Of_Buffer_Actions is

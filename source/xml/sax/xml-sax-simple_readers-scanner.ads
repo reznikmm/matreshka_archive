@@ -41,15 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
 
 private package XML.SAX.Simple_Readers.Scanner is
 
-   function YYLex
-    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   function YYLex (Self : in out SAX_Simple_Reader'Class) return Token;
    --  Returns next token.
 
    procedure Set_Document_Version_And_Encoding
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Version  : XML_Version;
      Encoding : League.Strings.Universal_String);
    --  Switch scanner to continue scanning according to the specified
@@ -62,7 +62,7 @@ private package XML.SAX.Simple_Readers.Scanner is
    --  Release scanner stack.
 
    function Push_Entity
-    (Self             : not null access SAX_Simple_Reader'Class;
+    (Self             : in out SAX_Simple_Reader'Class;
      Entity           : Matreshka.Internals.XML.Entity_Identifier;
      In_Document_Type : Boolean;
      In_Literal       : Boolean) return Boolean;
@@ -72,7 +72,7 @@ private package XML.SAX.Simple_Readers.Scanner is
 private
 
    function YY_Text
-    (Self            : not null access SAX_Simple_Reader'Class;
+    (Self            : SAX_Simple_Reader'Class;
      Trim_Left       : Natural := 0;
      Trim_Right      : Natural := 0;
      Trim_Whitespace : Boolean := False)
@@ -81,7 +81,7 @@ private
    --  reason, this subprogram is not UTF-16 aware and assume that all leading
    --  and traling characters belong BMP.
 
-   procedure YY_Move_Backward (Self : not null access SAX_Simple_Reader'Class);
+   procedure YY_Move_Backward (Self : in out SAX_Simple_Reader'Class);
    pragma Inline (YY_Move_Backward);
    --  Moves current position one step backward. It is intended to be used when
    --  pattern has trailing context. For performance reason, this subprogram
@@ -90,35 +90,32 @@ private
    --  tracking.
 
    procedure Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32);
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
 
    procedure Push_Current_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Enter : Interfaces.Unsigned_32);
    --  Pushs current start condition into the stack and set new start
    --  condition.
 
    procedure Push_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Push  : Interfaces.Unsigned_32;
      Enter : Interfaces.Unsigned_32);
    --  Pushs first specified condition into the stack of start conditions and
    --  enters second specified condition as current start condition.
 
-   procedure Pop_Start_Condition
-    (Self : not null access SAX_Simple_Reader'Class);
+   procedure Pop_Start_Condition (Self : in out SAX_Simple_Reader'Class);
    --  Set scanner's start condition from the stack of start conditions.
 
    function Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class)
-       return Interfaces.Unsigned_32;
+    (Self : SAX_Simple_Reader'Class) return Interfaces.Unsigned_32;
    --  Returns current start condition.
 
-   procedure Reset_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class);
+   procedure Reset_Whitespace_Matched (Self : in out SAX_Simple_Reader'Class);
    --  Resets "whitespace matched" flag.
 
 end XML.SAX.Simple_Readers.Scanner;

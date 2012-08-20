@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -62,12 +62,12 @@ package body XML.SAX.Simple_Readers.Parser is
    --  Lookup for parser action.
 
    procedure Process_Comment
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String);
    --  Process comment in the document.
 
    procedure Process_External_Id
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
@@ -90,10 +90,10 @@ package body XML.SAX.Simple_Readers.Parser is
    ---------------------
 
    procedure Process_Comment
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      Callbacks.Call_Comment (Self.all, Comment);
+      Callbacks.Call_Comment (Self, Comment);
    end Process_Comment;
 
    -------------------------
@@ -101,7 +101,7 @@ package body XML.SAX.Simple_Readers.Parser is
    -------------------------
 
    procedure Process_External_Id
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String) is
    begin
@@ -146,7 +146,7 @@ package body XML.SAX.Simple_Readers.Parser is
    -- YYParse --
    -------------
 
-   procedure YYParse (Self : not null access SAX_Simple_Reader) is
+   procedure YYParse (Self : in out SAX_Simple_Reader) is
 
       YY         : Parser_State_Information renames Self.Parser_State;
 
@@ -297,7 +297,7 @@ package body XML.SAX.Simple_Readers.Parser is
          elsif YY_Action = YY_Error_Code then  --  ERROR
             if not Self.Error_Reported then
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String ("syntax error"));
                Self.Continue := False;
             end if;

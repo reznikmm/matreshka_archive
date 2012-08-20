@@ -345,7 +345,7 @@ package body XML.SAX.Simple_Readers is
          Reset (Self);
       end if;
 
-      Parser.YYParse (Self);
+      Parser.YYParse (Self.all);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 

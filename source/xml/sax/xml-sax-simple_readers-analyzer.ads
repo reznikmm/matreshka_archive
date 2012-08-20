@@ -47,7 +47,7 @@
 private package XML.SAX.Simple_Readers.Analyzer is
 
    procedure Analyze_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class);
+    (Self : in out SAX_Simple_Reader'Class);
    --  Analyzes document type declaration.
    --  XXX It will report declarations of notations, entities, elements and
    --  attributes in right order.

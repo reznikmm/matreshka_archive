@@ -58,7 +58,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    use Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
+    (Self            : in out SAX_Simple_Reader'Class;
      Trim_Left       : Natural;
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
@@ -75,7 +75,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --  Error when error is detected and Symbol when symbol is resolved.
 
    procedure Character_Reference_To_Code_Point
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Hex   : Boolean;
      Code  : out Code_Point;
      Valid : out Boolean);
@@ -88,7 +88,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure Character_Reference_To_Code_Point
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Hex   : Boolean;
      Code  : out Code_Point;
      Valid : out Boolean)
@@ -206,7 +206,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Valid then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML 4.1 WFC: Legal Character] character reference refers to"
                & " invalid character"));
@@ -222,11 +222,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Asterisk_In_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [47], [48], [51]] illegal whitespace before asterisk"));
 
@@ -242,7 +242,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------
 
    function On_Attribute_Name_In_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -253,7 +253,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [53] AttDef]"
                & " no whitespace before attribute name"));
@@ -281,7 +281,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Attribute_Type
-    (Self       : not null access SAX_Simple_Reader'Class;
+    (Self       : in out SAX_Simple_Reader'Class;
      Type_Token : Token) return Token is
    begin
       --  Checks ithat whitespace before attribute type keyword is detected
@@ -291,7 +291,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  XXX This is recoverable error.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace required before attribute type"));
 
@@ -308,7 +308,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure On_Attribute_Value_Character_Data
-    (Self : not null access SAX_Simple_Reader'Class)
+    (Self : in out SAX_Simple_Reader'Class)
    is
       Next : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
       Code : Code_Point;
@@ -394,7 +394,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Attribute_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self  : in out SAX_Simple_Reader'Class) return Boolean
    is
       --  NOTE: Attribute value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -439,7 +439,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Attribute_Value_In_XML_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Set_String_Internal
        (Item          => Self.YYLVal,
@@ -455,14 +455,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    function On_Attribute_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) return Boolean is
    begin
       if not Self.Whitespace_Matched then
          --  XXX This is recoverable error.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace required before default value"));
 
@@ -479,7 +479,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure On_Attribute_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is
    begin
       --  NOTE: Attribute value delimiter can be ' or " and both are
@@ -506,8 +506,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_CDATA --
    --------------
 
-   function On_CDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   function On_CDATA (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  Segment of CDATA section (production [20]) optionally terminated by
       --  end of CDATA section mark (production [21]).
@@ -559,7 +558,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Character_Data
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       C : constant Code_Point
         := Code_Point
@@ -571,7 +570,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  Document content not entered.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("Text may not appear after the root element"));
          Self.Error_Reported := True;
@@ -606,7 +605,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             --  Exactly ']]>' found.
 
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[[14] CharData]"
                   & " Text may not contain a literal ']]>' sequence"));
@@ -647,7 +646,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------
 
    function On_Character_Reference
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Hex  : Boolean) return Token
    is
       Code  : Code_Point;
@@ -695,7 +694,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------
 
    function On_Character_Reference_In_Attribute_Value
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Hex  : Boolean) return Boolean
    is
       Code  : Code_Point;
@@ -735,7 +734,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Close_Of_CDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Pop_Start_Condition (Self);
 
@@ -747,11 +746,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Close_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if Self.Conditional_Depth = 0 then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("']]>' doesn't close conditional section"));
 
@@ -791,7 +790,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------
 
    function On_Close_Of_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -809,7 +808,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Close_Of_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : in out SAX_Simple_Reader'Class) return Boolean
    is
       Success : Boolean;
       pragma Unreferenced (Success);
@@ -854,7 +853,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------
 
    function On_Close_Of_Empty_Element_Tag
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -884,7 +883,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Close_Of_Processing_Instruction
-    (Self     : not null access SAX_Simple_Reader'Class;
+    (Self     : in out SAX_Simple_Reader'Class;
      Is_Empty : Boolean) return Token is
    begin
       if Is_Empty then
@@ -916,7 +915,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------
 
    function On_Close_Of_Tag
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -946,7 +945,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------
 
    function On_Close_Of_XML_Or_Text_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Set_String_Internal
        (Item          => Self.YYLVal,
@@ -974,7 +973,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------------
 
    function On_Close_Parenthesis_In_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  Whitespace can't be present between close parenthesis and
       --  multiplicity indicator if any, so reset whitespace matching flag.
@@ -989,7 +988,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------------
 
    function On_Close_Parenthesis_In_Notation_Attribute
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  Resets whitespace matching flag.
 
@@ -1003,7 +1002,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------
 
    procedure On_Conditional_Section_Directive
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Include : Boolean) is
    begin
       --  XXX Syntax check must be added!
@@ -1021,7 +1020,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------
 
    procedure On_Content_Of_Ignore_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       YY_Move_Backward (Self);
       YY_Move_Backward (Self);
@@ -1033,7 +1032,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------
 
    function On_Default_Declaration
-    (Self          : not null access SAX_Simple_Reader'Class;
+    (Self          : in out SAX_Simple_Reader'Class;
      State         : Interfaces.Unsigned_32;
      Default_Token : Token) return Token is
    begin
@@ -1044,7 +1043,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  XXX This is recoverable error.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace required before default declaration"));
 
@@ -1062,7 +1061,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------
 
    function On_Element_Name_In_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1073,7 +1072,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [52] AttlistDecl]"
                & " no whitespace before element's name"));
@@ -1101,11 +1100,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------
 
    function On_Encoding_Keyword
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("no whitespace before 'encoding'"));
          Self.Error_Reported := True;
@@ -1123,7 +1122,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Entity_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       --  NOTE: Entity value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -1157,7 +1156,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Entity_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  NOTE: Entity value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -1169,7 +1168,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[[71] GEDecl, [72] PEDecl]"
                & " no whitespace before entity value"));
@@ -1195,7 +1194,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------------
 
    function On_General_Entity_Reference_In_Attribute_Value
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : in out SAX_Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1239,7 +1238,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Entity = No_Entity then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
@@ -1258,7 +1257,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                  (Self.Entities, Enclosing_Entity (Self.Entities, Entity))
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must not be declared externally"));
@@ -1277,7 +1276,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Parsed Entity]"
                & " an entity reference must not contain the name of an"
@@ -1296,7 +1295,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Is_External_Parsed_General_Entity (Self.Entities, Entity) then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 3.1 WFC: No External Entity References]"
                & " attribute value must not contain entity reference to"
@@ -1315,7 +1314,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Self.Scanner_State.Entity = Entity then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: No Recursion]"
                & " parsed entity must not containt a direct recursive"
@@ -1329,7 +1328,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if State.Entity = Entity then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML1.1 4.1 WFC: No Recursion]"
                   & " parsed entity must not containt a indirect recursive"
@@ -1352,7 +1351,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------
 
    function On_General_Entity_Reference_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1381,7 +1380,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Self.Element_Names.Is_Empty then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("entity reference must be in content of element"));
 
@@ -1417,7 +1416,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Entity = No_Entity then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
@@ -1436,7 +1435,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                  (Self.Entities, Enclosing_Entity (Self.Entities, Entity))
       then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must not be declared externally"));
@@ -1455,7 +1454,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Parsed Entity]"
                & " an entity reference must not contain the name of an"
@@ -1474,7 +1473,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Self.Scanner_State.Entity = Entity then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: No Recursion]"
                & " parsed entity must not containt a direct recursive"
@@ -1488,7 +1487,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if State.Entity = Entity then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML1.1 4.1 WFC: No Recursion]"
                   & " parsed entity must not containt a indirect recursive"
@@ -1526,7 +1525,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------------
 
    function On_General_Entity_Reference_In_Entity_Value
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1553,7 +1552,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------
 
    function On_Less_Than_Sign_In_Attribute_Value
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  [3.1 WFC: No < in Attribute Values]
       --
@@ -1561,7 +1560,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       --  indirectly in an attribute value MUST NOT contain a <."
 
       Callbacks.Call_Fatal_Error
-       (Self.all,
+       (Self,
         League.Strings.To_Universal_String
          ("[3.1 WFC: No < in Attribute Values]"
             & " '<' can't be used in attribute value"));
@@ -1575,7 +1574,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------------
 
    function On_Name_In_Attribute_List_Declaration_Notation
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1615,7 +1614,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Name_In_Element_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1643,7 +1642,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_Name_In_Element_Declaration_Children
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1670,14 +1669,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------
 
    function On_Name_In_Element_Start_Tag
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace is missing before attribute name"));
          --  XXX It is recoverable error.
@@ -1701,7 +1700,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------
 
    function On_Name_In_Entity_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1715,7 +1714,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.2 productions [71], [72]]"
                & " whitespace must be present before the name"));
@@ -1743,7 +1742,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------------
 
    function On_Name_In_Entity_Declaration_Notation
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1756,7 +1755,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML1.1 4.2 production [76]]"
                & " whitespace must be present before the name of notation"));
@@ -1782,14 +1781,13 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_NDATA --
    --------------
 
-   function On_NDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   function On_NDATA (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          --  XXX This is recoverable error.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace required before NDATA"));
          Self.Error_Reported := True;
@@ -1808,8 +1806,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_No_XML_Declaration --
    ---------------------------
 
-   procedure On_No_XML_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+   procedure On_No_XML_Declaration (Self : in out SAX_Simple_Reader'Class) is
    begin
       --  Move scanner's position back to the start of the document or external
       --  parsed entity. Entity's XML version and encoding are set up
@@ -1824,7 +1821,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Open_Of_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Enter_Start_Condition (Self, Tables.ATTLIST_NAME);
       Self.Whitespace_Matched := False;
@@ -1837,7 +1834,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------
 
    function On_Open_Of_CDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Condition : Interfaces.Unsigned_32;
 
@@ -1866,14 +1863,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  [XML [28b], [31]] Conditional section can be present only in external
       --  subset of DTD.
 
       if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [28b], [31]]"
                & " conditional sections may only appear in the external"
@@ -1900,13 +1897,13 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------------
 
    function  On_Open_Of_Conditional_Section_Content
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
+    (Self : in out SAX_Simple_Reader'Class) return Boolean is
    begin
       --  XXX Syntax rules must be checked!
 
       if not Self.Conditional_Directive then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("conditional directive is missing"));
 
@@ -1940,7 +1937,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------
 
    function On_Open_Of_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1963,7 +1960,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Element_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Enter_Start_Condition (Self, Tables.ELEMENT_NAME);
 
@@ -1975,7 +1972,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------
 
    function On_Open_Of_End_Tag
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1998,7 +1995,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------
 
    function On_Open_Of_Internal_Subset
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -2016,7 +2013,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Open_Of_Notation_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2039,7 +2036,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    function On_Open_Of_Processing_Instruction
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2064,7 +2061,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------
 
    function On_Open_Of_Start_Tag
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2087,7 +2084,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Open_Of_XML_Or_Text_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Self.Whitespace_Matched := False;
 
@@ -2102,7 +2099,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------------
 
    function On_Open_Parenthesis_In_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       use type Interfaces.Unsigned_32;
 
@@ -2114,7 +2111,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if not Self.Whitespace_Matched then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML [45]] no whitespace after name"));
 
@@ -2132,7 +2129,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------
 
    function On_Open_Parenthesis_In_Notation_Attribute
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       --  Checks ithat whitespace before open parenthesis is detected
       --  and report error when check fail.
@@ -2141,7 +2138,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  XXX This is recoverable error.
 
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("whitespace required before open parenthesis"));
 
@@ -2156,7 +2153,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Document_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2176,7 +2173,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Entity = No_Entity then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("parameter entity must be declared"));
 
@@ -2211,7 +2208,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Entity_Value
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : in out SAX_Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2239,7 +2236,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML 2.8 WFC: PEs in Internal Subset]"
                   & " parameter-entity reference in internal subset must not"
@@ -2267,7 +2264,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if Entity = No_Entity then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("parameter entity must be declared"));
 
@@ -2288,7 +2285,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Markup_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : in out SAX_Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2313,7 +2310,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if not Self.External_Subset_Done then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("[XML 2.8 WFC: PEs in Internal Subset]"
                   & " parameter-entity reference in internal subset must not"
@@ -2326,7 +2323,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          if Entity = No_Entity then
             Callbacks.Call_Fatal_Error
-             (Self.all,
+             (Self,
               League.Strings.To_Universal_String
                ("parameter entity must be declared"));
 
@@ -2347,11 +2344,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------
 
    function On_Percent_Sign
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("no whitespace before percent"));
          Self.Error_Reported := True;
@@ -2371,11 +2368,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Plus_In_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [47], [48]] illegal whitespace before plus"));
 
@@ -2391,7 +2388,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Public_Literal
-    (Self : not null access SAX_Simple_Reader'Class) return Token
+    (Self : in out SAX_Simple_Reader'Class) return Token
    is
       Next         : Utf16_String_Index
         := Self.Scanner_State.YY_Base_Position + 1;
@@ -2402,7 +2399,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[[75] ExternalID, [83] PublicID]"
                & " whitespace is required before pubid literal"));
@@ -2481,11 +2478,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_Question_Mark_In_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[XML [47], [48]] illegal whitespace before question mark"));
 
@@ -2501,11 +2498,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------
 
    function On_Standalone_Keyword
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("no whitespace before 'standalone'"));
          Self.Error_Reported := True;
@@ -2523,7 +2520,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_System_Keyword_In_Document_Type
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Reset_Whitespace_Matched (Self);
       Push_And_Enter_Start_Condition
@@ -2537,7 +2534,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_System_Keyword_In_Entity_Or_Notation
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Reset_Whitespace_Matched (Self);
       Push_Current_And_Enter_Start_Condition (Self, Tables.EXTERNAL_ID_SYS);
@@ -2550,11 +2547,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_System_Literal
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("[[75] ExternalID]"
                & " whitespace is required before system literal"));
@@ -2577,10 +2574,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------
 
    function On_Unexpected_Character
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       Callbacks.Call_Fatal_Error
-       (Self.all,
+       (Self,
         League.Strings.To_Universal_String ("unexpected character"));
       Self.Error_Reported := True;
 
@@ -2592,11 +2589,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------
 
    function On_Version_Keyword
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
+    (Self : in out SAX_Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
-          (Self.all,
+          (Self,
            League.Strings.To_Universal_String
             ("no whitespace before 'version'"));
          Self.Error_Reported := True;
@@ -2614,7 +2611,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------
 
    function On_Whitespace_In_Document
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : in out SAX_Simple_Reader'Class) return Boolean
    is
       C : constant Code_Point
         := Code_Point
@@ -2658,7 +2655,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    procedure On_Whitespace_In_Processing_Instruction
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : in out SAX_Simple_Reader'Class) is
    begin
       --  Whitespace between processing instruction's target and data are
       --  required, so set flag which indicates their presence.
@@ -2679,7 +2676,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
+    (Self            : in out SAX_Simple_Reader'Class;
      Trim_Left       : Natural;
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
@@ -2741,7 +2738,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                   Error := True;
                   Symbol := No_Symbol;
                   Callbacks.Call_Fatal_Error
-                   (Self.all,
+                   (Self,
                     League.Strings.To_Universal_String
                      ("[NSXML1.1] qualified name must not be used here"));
                end if;
@@ -2750,7 +2747,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Error := True;
                Symbol := No_Symbol;
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1]"
                      & " qualified name must not start with colon character"));
@@ -2759,7 +2756,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Error := True;
                Symbol := No_Symbol;
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1]"
                      & " qualified name must not end with colon character"));
@@ -2768,7 +2765,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Error := True;
                Symbol := No_Symbol;
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1]"
                      & " qualified name must not contain more than one colon"
@@ -2778,7 +2775,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Error := True;
                Symbol := No_Symbol;
                Callbacks.Call_Fatal_Error
-                (Self.all,
+                (Self,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1] first character of local name is invalid"));
          end case;

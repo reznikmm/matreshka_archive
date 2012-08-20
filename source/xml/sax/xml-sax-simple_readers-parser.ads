@@ -41,10 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
 
 private package XML.SAX.Simple_Readers.Parser is
 
-   procedure YYParse (Self : not null access SAX_Simple_Reader);
+   procedure YYParse (Self : in out SAX_Simple_Reader);
    --  Parse XML document.
 
    procedure Initialize (State : in out Parser_State_Information);
