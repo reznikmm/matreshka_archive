@@ -43,10 +43,13 @@
 ------------------------------------------------------------------------------
 --  This package provides implementation of text codecs for both UTF-16BE and
 --  UTF-16LE encodings.
+--
+--  Note: this package is not private child of Text_Codecs because it is used
+--  in League.Strings directly.
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode;
 
-private package Matreshka.Internals.Text_Codecs.UTF16 is
+package Matreshka.Internals.Text_Codecs.UTF16 is
 
    pragma Preelaborate;
 
@@ -90,15 +93,15 @@ private
    type UTF16_DFA_State is mod 2 ** 8;
 
    type UTF16BE_Decoder is new Abstract_Decoder with record
-      State : UTF16_DFA_State;
-      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
-      Low   : Matreshka.Internals.Unicode.Code_Unit_16;
+      State : UTF16_DFA_State                          := 0;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32 := 0;
+      Low   : Matreshka.Internals.Unicode.Code_Unit_16 := 0;
    end record;
 
    type UTF16LE_Decoder is new Abstract_Decoder with record
-      State : UTF16_DFA_State;
-      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
-      Low   : Matreshka.Internals.Unicode.Code_Unit_16;
+      State : UTF16_DFA_State                          := 0;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32 := 0;
+      Low   : Matreshka.Internals.Unicode.Code_Unit_16 := 0;
    end record;
 
 end Matreshka.Internals.Text_Codecs.UTF16;
