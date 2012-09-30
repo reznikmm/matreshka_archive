@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with System;
+
 with League.Characters.Internals;
 with League.Strings.Internals;
 with League.String_Vectors.Internals;
@@ -49,6 +51,7 @@ with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.String_Vectors;
 with Matreshka.Internals.Stream_Element_Vectors;
+with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
@@ -795,6 +798,56 @@ package body League.Strings is
          Dereference (Self.Data);
       end if;
    end Finalize;
+
+   -----------------------------
+   -- From_UTF_16_Wide_String --
+   -----------------------------
+
+   function From_UTF_16_Wide_String
+    (Item : Ada.Strings.UTF_Encoding.UTF_16_Wide_String)
+       return Universal_String
+   is
+      use type Ada.Streams.Stream_Element_Offset;
+      use System;
+
+      Data    : constant
+        Ada.Streams.Stream_Element_Array (1 .. Item'Length * 2);
+      for Data'Address use Item'Address;
+      pragma Import (Ada, Data);
+      Aux     : Shared_String_Access;
+
+   begin
+      if Default_Bit_Order = High_Order_First then
+         declare
+            Decoder : Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
+
+         begin
+            Decoder.Decode (Data, Aux);
+
+            if Decoder.Is_Mailformed then
+               Dereference (Aux);
+
+               raise Constraint_Error with "Illegal UTF16BE data";
+            end if;
+         end;
+
+      else
+         declare
+            Decoder : Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
+
+         begin
+            Decoder.Decode (Data, Aux);
+
+            if Decoder.Is_Mailformed then
+               Dereference (Aux);
+
+               raise Constraint_Error with "Illegal UTF16LE data";
+            end if;
+         end;
+      end if;
+
+      return Wrap (Aux);
+   end From_UTF_16_Wide_String;
 
    -----------------------
    -- From_UTF_8_String --

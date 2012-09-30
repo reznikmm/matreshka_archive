@@ -323,6 +323,11 @@ package League.Strings is
        return Ada.Strings.UTF_Encoding.UTF_8_String;
    --  Converts string to UTF-8 encoded standard String.
 
+   function From_UTF_16_Wide_String
+    (Item : Ada.Strings.UTF_Encoding.UTF_16_Wide_String)
+       return Universal_String;
+   --  Converts standard String in UTF-16 host-endian encoding into string.
+
    function To_UTF_16_Wide_String
     (Self : Universal_String'Class)
        return Ada.Strings.UTF_Encoding.UTF_16_Wide_String;
