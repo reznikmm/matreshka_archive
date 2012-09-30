@@ -317,6 +317,13 @@ package League.Strings is
    function To_UTF_8_String
     (Self : Universal_String'Class)
        return Ada.Strings.UTF_Encoding.UTF_8_String;
+   --  Converts string to UTF-8 encoded standard String.
+
+   function To_UTF_16_Wide_String
+    (Self : Universal_String'Class)
+       return Ada.Strings.UTF_Encoding.UTF_16_Wide_String;
+   --  Converts string to UTF-16 encoded standard Wide_String using host-endian
+   --  variant.
 
    ---------------------------------------
    -- Comparison operators for Sort_Key --

@@ -1498,6 +1498,25 @@ package body League.Strings is
       end;
    end To_Uppercase;
 
+   ---------------------------
+   -- To_UTF_16_Wide_String --
+   ---------------------------
+
+   function To_UTF_16_Wide_String
+    (Self : Universal_String'Class)
+       return Ada.Strings.UTF_Encoding.UTF_16_Wide_String
+   is
+      --  Universal_String use UTF-16 encoding for internal data, thus no
+      --  encoder is needed to do host-endian encoding.
+
+      Result : constant Wide_String (1 .. Natural (Self.Data.Unused));
+      for Result'Address use Self.Data.Value'Address;
+      pragma Import (Ada, Result);
+
+   begin
+      return Result;
+   end To_UTF_16_Wide_String;
+
    ---------------------
    -- To_UTF_8_String --
    ---------------------
