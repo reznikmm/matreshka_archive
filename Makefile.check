@@ -48,10 +48,11 @@ endif
 	.objs/test_177
 	.objs/test_209
 	# Tests below is for XML module
-	.objs/test_126 testsuite/xml/TN-126/
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/test_99
+	.objs/test_126 testsuite/xml/TN-126/
+	.objs/test_157
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed --invalid
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --validating --valid --not-wellformed
 	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
