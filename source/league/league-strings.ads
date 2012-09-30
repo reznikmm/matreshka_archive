@@ -314,6 +314,10 @@ package League.Strings is
    -- UTF Encoding end Decoding --
    -------------------------------
 
+   function From_UTF_8_String
+    (Item : Ada.Strings.UTF_Encoding.UTF_8_String) return Universal_String;
+   --  Converts standard String in UTF-8 encoding into string.
+
    function To_UTF_8_String
     (Self : Universal_String'Class)
        return Ada.Strings.UTF_Encoding.UTF_8_String;
