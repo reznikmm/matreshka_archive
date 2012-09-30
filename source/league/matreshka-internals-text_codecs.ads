@@ -148,14 +148,6 @@ package Matreshka.Internals.Text_Codecs is
 
 private
 
-   type Abstract_Decoder is abstract tagged record
-      Skip_LF          : Boolean;
-      Unchecked_Append : not null access procedure
-       (Self   : in out Abstract_Decoder'Class;
-        Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
-        Code   : Matreshka.Internals.Unicode.Code_Point);
-   end record;
-
    procedure Unchecked_Append_Raw
     (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -175,5 +167,14 @@ private
      Code   : Matreshka.Internals.Unicode.Code_Point);
    --  Appends code to the string filtering out and replacing end of line
    --  characters according to XML 1.1 specification.
+
+   type Abstract_Decoder is abstract tagged record
+      Skip_LF          : Boolean := False;
+      Unchecked_Append : not null access procedure
+       (Self   : in out Abstract_Decoder'Class;
+        Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+        Code   : Matreshka.Internals.Unicode.Code_Point)
+        := Unchecked_Append_Raw'Access;
+   end record;
 
 end Matreshka.Internals.Text_Codecs;

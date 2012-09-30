@@ -88,8 +88,8 @@ private
    type UTF8_State is mod 2 ** 8;
 
    type UTF8_Decoder is new Abstract_Decoder with record
-      State : UTF8_State;
-      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
+      State : UTF8_State                               := 0;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32 := 0;
    end record;
 
    type UTF8_Encoder is new Abstract_Encoder with null record;
