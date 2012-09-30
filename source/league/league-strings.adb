@@ -796,6 +796,31 @@ package body League.Strings is
       end if;
    end Finalize;
 
+   -----------------------
+   -- From_UTF_8_String --
+   -----------------------
+
+   function From_UTF_8_String
+    (Item : Ada.Strings.UTF_Encoding.UTF_8_String) return Universal_String
+   is
+      Data    : constant Ada.Streams.Stream_Element_Array (1 .. Item'Length);
+      for Data'Address use Item'Address;
+      pragma Import (Ada, Data);
+      Decoder : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+      Aux     : Shared_String_Access;
+
+   begin
+      Decoder.Decode (Data, Aux);
+
+      if Decoder.Is_Mailformed then
+         Dereference (Aux);
+
+         raise Constraint_Error with "Illegal UTF8 data";
+      end if;
+
+      return Wrap (Aux);
+   end From_UTF_8_String;
+
    ----------
    -- Hash --
    ----------
@@ -1516,31 +1541,6 @@ package body League.Strings is
    begin
       return Result;
    end To_UTF_16_Wide_String;
-
-   -----------------------
-   -- From_UTF_8_String --
-   -----------------------
-
-   function From_UTF_8_String
-    (Item : Ada.Strings.UTF_Encoding.UTF_8_String) return Universal_String
-   is
-      Data    : constant Ada.Streams.Stream_Element_Array (1 .. Item'Length);
-      for Data'Address use Item'Address;
-      pragma Import (Ada, Data);
-      Decoder : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-      Aux     : Shared_String_Access;
-
-   begin
-      Decoder.Decode (Data, Aux);
-
-      if Decoder.Is_Mailformed then
-         Dereference (Aux);
-
-         raise Constraint_Error with "Illegal UTF8 data";
-      end if;
-
-      return Wrap (Aux);
-   end From_UTF_8_String;
 
    ---------------------
    -- To_UTF_8_String --
