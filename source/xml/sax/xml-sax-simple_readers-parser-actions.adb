@@ -1306,6 +1306,12 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Matreshka.Internals.Strings.Shared_Empty'Access,
                     Name (Self.Symbols, Ns));
 
+                  if not Self.Continue then
+                     --  Application requests end of execution.
+
+                     return;
+                  end if;
+
                elsif Prefix_Name (Self.Symbols, Qname) = Symbol_xmlns then
                   --  Prefixed namespace.
 
@@ -1445,6 +1451,12 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                       (Self,
                        Name (Self.Symbols, Lname),
                        Name (Self.Symbols, Ns));
+
+                     if not Self.Continue then
+                        --  Application requests end of execution.
+
+                        return;
+                     end if;
                   end if;
                end if;
             end;
