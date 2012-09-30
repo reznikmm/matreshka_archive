@@ -66,6 +66,7 @@ pragma Ada_2012;
 
 private with Ada.Finalization;
 private with Ada.Streams;
+with Ada.Strings.UTF_Encoding;
 
 with League.Characters;
 limited with League.String_Vectors;
@@ -308,6 +309,14 @@ package League.Strings is
 
    function Collation (Self : Universal_String'Class) return Sort_Key;
    --  Construct sort key for string comparison.
+
+   -------------------------------
+   -- UTF Encoding end Decoding --
+   -------------------------------
+
+   function To_UTF_8_String
+    (Self : Universal_String'Class)
+       return Ada.Strings.UTF_Encoding.UTF_8_String;
 
    ---------------------------------------
    -- Comparison operators for Sort_Key --

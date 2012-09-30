@@ -48,6 +48,8 @@ with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.String_Vectors;
+with Matreshka.Internals.Stream_Element_Vectors;
+with Matreshka.Internals.Text_Codecs.UTF8;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -1495,6 +1497,35 @@ package body League.Strings is
          return Wrap (Data);
       end;
    end To_Uppercase;
+
+   ---------------------
+   -- To_UTF_8_String --
+   ---------------------
+
+   function To_UTF_8_String
+    (Self : Universal_String'Class)
+       return Ada.Strings.UTF_Encoding.UTF_8_String
+   is
+      use Matreshka.Internals.Stream_Element_Vectors;
+
+      Encoder : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Encoder;
+      Buffer  : Shared_Stream_Element_Vector_Access;
+
+   begin
+      Encoder.Encode (Self.Data, Buffer);
+
+      declare
+         Aux    : String (1 .. Natural (Buffer.Length));
+         for Aux'Address use Buffer.Value'Address;
+         pragma Import (Ada, Aux);
+         Result : constant String (Aux'Range) := Aux;
+
+      begin
+         Dereference (Buffer);
+
+         return Result;
+      end;
+   end To_UTF_8_String;
 
    ---------------------
    -- To_Utf16_String --

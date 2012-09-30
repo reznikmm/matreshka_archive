@@ -41,9 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  UTF-8 encoder and decoder.
+--
+--  Note: this package is not private child of Text_Codecs because it is used
+--  in League.Strings directly.
+------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode;
 
-private package Matreshka.Internals.Text_Codecs.UTF8 is
+package Matreshka.Internals.Text_Codecs.UTF8 is
 
    pragma Preelaborate;
 
