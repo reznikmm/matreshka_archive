@@ -146,21 +146,24 @@ procedure Gen_Props is
    GCB_T_Image            : aliased constant String := "T";
    GCB_LV_Image           : aliased constant String := "LV";
    GCB_LVT_Image          : aliased constant String := "LVT";
+   GCB_Regional_Indicator_Image :
+     aliased constant String := "Regional_Indicator";
 
    Grapheme_Cluster_Break_Image : constant
      array (Grapheme_Cluster_Break) of Constant_String_Access
-       := (Other        => GCB_Other_Image'Access,
-           CR           => GCB_CR_Image'Access,
-           LF           => GCB_LF_Image'Access,
-           Control      => GCB_Control_Image'Access,
-           Extend       => GCB_Extend_Image'Access,
-           Prepend      => GCB_Prepend_Image'Access,
-           Spacing_Mark => GCB_Spacing_Mark_Image'Access,
-           L            => GCB_L_Image'Access,
-           V            => GCB_V_Image'Access,
-           T            => GCB_T_Image'Access,
-           LV           => GCB_LV_Image'Access,
-           LVT          => GCB_LVT_Image'Access);
+       := (Other              => GCB_Other_Image'Access,
+           CR                 => GCB_CR_Image'Access,
+           LF                 => GCB_LF_Image'Access,
+           Control            => GCB_Control_Image'Access,
+           Extend             => GCB_Extend_Image'Access,
+           Prepend            => GCB_Prepend_Image'Access,
+           Spacing_Mark       => GCB_Spacing_Mark_Image'Access,
+           L                  => GCB_L_Image'Access,
+           V                  => GCB_V_Image'Access,
+           T                  => GCB_T_Image'Access,
+           LV                 => GCB_LV_Image'Access,
+           LVT                => GCB_LVT_Image'Access,
+           Regional_Indicator => GCB_Regional_Indicator_Image'Access);
 
    WB_Other_Image          : aliased constant String := "Other";
    WB_CR_Image             : aliased constant String := "CR";
@@ -175,21 +178,24 @@ procedure Gen_Props is
    WB_Extend_Num_Let_Image : aliased constant String := "Extend_Num_Let";
    WB_Format_Image         : aliased constant String := "Format";
    WB_Extend_Image         : aliased constant String := "Extend";
+   WB_Regional_Indicator_Image :
+     aliased constant String := "Regional_Indicator";
 
    Word_Break_Image : constant array (Word_Break) of Constant_String_Access
-     := (Other          => WB_Other_Image'Access,
-         CR             => WB_CR_Image'Access,
-         LF             => WB_LF_Image'Access,
-         Newline        => WB_Newline_Image'Access,
-         Katakana       => WB_Katakana_Image'Access,
-         A_Letter       => WB_A_Letter_Image'Access,
-         Mid_Letter     => WB_Mid_Letter_Image'Access,
-         Mid_Num        => WB_Mid_Num_Image'Access,
-         Mid_Num_Let    => WB_Mid_Num_Let_Image'Access,
-         Numeric        => WB_Numeric_Image'Access,
-         Extend_Num_Let => WB_Extend_Num_Let_Image'Access,
-         Format         => WB_Format_Image'Access,
-         Extend         => WB_Extend_Image'Access);
+     := (Other              => WB_Other_Image'Access,
+         CR                 => WB_CR_Image'Access,
+         LF                 => WB_LF_Image'Access,
+         Newline            => WB_Newline_Image'Access,
+         Katakana           => WB_Katakana_Image'Access,
+         A_Letter           => WB_A_Letter_Image'Access,
+         Mid_Letter         => WB_Mid_Letter_Image'Access,
+         Mid_Num            => WB_Mid_Num_Image'Access,
+         Mid_Num_Let        => WB_Mid_Num_Let_Image'Access,
+         Numeric            => WB_Numeric_Image'Access,
+         Extend_Num_Let     => WB_Extend_Num_Let_Image'Access,
+         Format             => WB_Format_Image'Access,
+         Extend             => WB_Extend_Image'Access,
+         Regional_Indicator => WB_Regional_Indicator_Image'Access);
 
    SB_Other_Image      : aliased constant String := "Other";
    SB_CR_Image         : aliased constant String := "CR";
@@ -265,48 +271,51 @@ procedure Gen_Props is
    LB_Word_Joiner_Image       : aliased constant String := "Word_Joiner";
    LB_Unknown_Image           : aliased constant String := "Unknown";
    LB_ZW_Space_Image          : aliased constant String := "ZW_Space";
+   LB_Regional_Indicator_Image :
+     aliased constant String := "Regional_Indicator";
 
    Line_Break_Image : constant array (Line_Break) of Constant_String_Access
-     := (Ambiguous         => LB_Ambiguous_Image'Access,
-         Alphabetic        => LB_Alphabetic_Image'Access,
-         Break_Both        => LB_Break_Both_Image'Access,
-         Break_After       => LB_Break_After_Image'Access,
-         Break_Before      => LB_Break_Before_Image'Access,
-         Mandatory_Break   => LB_Mandatory_Break_Image'Access,
-         Contingent_Break  => LB_Contingent_Break_Image'Access,
+     := (Ambiguous          => LB_Ambiguous_Image'Access,
+         Alphabetic         => LB_Alphabetic_Image'Access,
+         Break_Both         => LB_Break_Both_Image'Access,
+         Break_After        => LB_Break_After_Image'Access,
+         Break_Before       => LB_Break_Before_Image'Access,
+         Mandatory_Break    => LB_Mandatory_Break_Image'Access,
+         Contingent_Break   => LB_Contingent_Break_Image'Access,
          Conditional_Japanese_Starter =>
            LB_Conditional_Japanese_Starter_Image'Access,
-         Close_Punctuation => LB_Close_Punctuation_Image'Access,
-         Combining_Mark    => LB_Combining_Mark_Image'Access,
-         Close_Parenthesis => LB_Close_Parenthesis_Image'Access,
-         Carriage_Return   => LB_Carriage_Return_Image'Access,
-         Exclamation       => LB_Exclamation_Image'Access,
-         Glue              => LB_Glue_Image'Access,
-         H2                => LB_H2_Image'Access,
-         H3                => LB_H3_Image'Access,
-         Hebrew_Letter     => LB_Hebrew_Letter_Image'Access,
-         Hyphen            => LB_Hyphen_Image'Access,
-         Ideographic       => LB_Ideographic_Image'Access,
-         Inseparable       => LB_Inseparable_Image'Access,
-         Infix_Numeric     => LB_Infix_Numeric_Image'Access,
-         JL                => LB_JL_Image'Access,
-         JT                => LB_JT_Image'Access,
-         JV                => LB_JV_Image'Access,
-         Line_Feed         => LB_Line_Feed_Image'Access,
-         Next_Line         => LB_Next_Line_Image'Access,
-         Nonstarter        => LB_Nonstarter_Image'Access,
-         Numeric           => LB_Numeric_Image'Access,
-         Open_Punctuation  => LB_Open_Punctuation_Image'Access,
-         Postfix_Numeric   => LB_Postfix_Numeric_Image'Access,
-         Prefix_Numeric    => LB_Prefix_Numeric_Image'Access,
-         Quotation         => LB_Quotation_Image'Access,
-         Complex_Context   => LB_Complex_Context_Image'Access,
-         Surrogate         => LB_Surrogate_Image'Access,
-         Space             => LB_Space_Image'Access,
-         Break_Symbols     => LB_Break_Symbols_Image'Access,
-         Word_Joiner       => LB_Word_Joiner_Image'Access,
-         Unknown           => LB_Unknown_Image'Access,
-         ZW_Space          => LB_ZW_Space_Image'Access);
+         Close_Punctuation  => LB_Close_Punctuation_Image'Access,
+         Combining_Mark     => LB_Combining_Mark_Image'Access,
+         Close_Parenthesis  => LB_Close_Parenthesis_Image'Access,
+         Carriage_Return    => LB_Carriage_Return_Image'Access,
+         Exclamation        => LB_Exclamation_Image'Access,
+         Glue               => LB_Glue_Image'Access,
+         H2                 => LB_H2_Image'Access,
+         H3                 => LB_H3_Image'Access,
+         Hebrew_Letter      => LB_Hebrew_Letter_Image'Access,
+         Hyphen             => LB_Hyphen_Image'Access,
+         Ideographic        => LB_Ideographic_Image'Access,
+         Inseparable        => LB_Inseparable_Image'Access,
+         Infix_Numeric      => LB_Infix_Numeric_Image'Access,
+         JL                 => LB_JL_Image'Access,
+         JT                 => LB_JT_Image'Access,
+         JV                 => LB_JV_Image'Access,
+         Line_Feed          => LB_Line_Feed_Image'Access,
+         Next_Line          => LB_Next_Line_Image'Access,
+         Nonstarter         => LB_Nonstarter_Image'Access,
+         Numeric            => LB_Numeric_Image'Access,
+         Open_Punctuation   => LB_Open_Punctuation_Image'Access,
+         Postfix_Numeric    => LB_Postfix_Numeric_Image'Access,
+         Prefix_Numeric     => LB_Prefix_Numeric_Image'Access,
+         Quotation          => LB_Quotation_Image'Access,
+         Complex_Context    => LB_Complex_Context_Image'Access,
+         Surrogate          => LB_Surrogate_Image'Access,
+         Space              => LB_Space_Image'Access,
+         Break_Symbols      => LB_Break_Symbols_Image'Access,
+         Word_Joiner        => LB_Word_Joiner_Image'Access,
+         Unknown            => LB_Unknown_Image'Access,
+         ZW_Space           => LB_ZW_Space_Image'Access,
+         Regional_Indicator => LB_Regional_Indicator_Image'Access);
 
    BP_ASCII_Hex_Digit_Image   : aliased constant String := "ASCII_Hex_Digit";
    BP_Alphabetic_Image        : aliased constant String := "Alphabetic";

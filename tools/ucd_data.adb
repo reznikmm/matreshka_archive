@@ -1326,21 +1326,24 @@ package body Ucd_Data is
       GCB_T_Image           : aliased constant String := "T";
       GCB_V_Image           : aliased constant String := "V";
       GCB_Other_Image       : aliased constant String := "Other";
+      GCB_Regional_Indicator_Image :
+        aliased constant String := "Regional_Indicator";
 
       Mapping : constant
         array (Grapheme_Cluster_Break) of Constant_String_Access
-          := (Control      => GCB_Control_Image'Access,
-              CR           => GCB_CR_Image'Access,
-              Extend       => GCB_Extend_Image'Access,
-              L            => GCB_L_Image'Access,
-              LF           => GCB_LF_Image'Access,
-              LV           => GCB_LV_Image'Access,
-              LVT          => GCB_LVT_Image'Access,
-              Prepend      => GCB_Prepend_Image'Access,
-              Spacing_Mark => GCB_SpacingMark_Image'Access,
-              T            => GCB_T_Image'Access,
-              V            => GCB_V_Image'Access,
-              Other        => GCB_Other_Image'Access);
+          := (Control            => GCB_Control_Image'Access,
+              CR                 => GCB_CR_Image'Access,
+              Extend             => GCB_Extend_Image'Access,
+              L                  => GCB_L_Image'Access,
+              LF                 => GCB_LF_Image'Access,
+              LV                 => GCB_LV_Image'Access,
+              LVT                => GCB_LVT_Image'Access,
+              Prepend            => GCB_Prepend_Image'Access,
+              Spacing_Mark       => GCB_SpacingMark_Image'Access,
+              T                  => GCB_T_Image'Access,
+              V                  => GCB_V_Image'Access,
+              Other              => GCB_Other_Image'Access,
+              Regional_Indicator => GCB_Regional_Indicator_Image'Access);
 
    begin
       for J in Mapping'Range loop
@@ -1396,7 +1399,8 @@ package body Ucd_Data is
             Break_Symbols                => "SY",
             Word_Joiner                  => "WJ",
             Unknown                      => "XX",
-            ZW_Space                     => "ZW");
+            ZW_Space                     => "ZW",
+            Regional_Indicator           => "RI");
 
    begin
       for J in Mapping'Range loop
@@ -1500,21 +1504,24 @@ package body Ucd_Data is
       WB_Newline_Image      : aliased constant String := "Newline";
       WB_Numeric_Image      : aliased constant String := "Numeric";
       WB_Other_Image        : aliased constant String := "Other";
+      WB_Regional_Indicator_Image :
+        aliased constant String := "Regional_Indicator";
 
       Mapping : constant array (Word_Break) of Constant_String_Access :=
-       (CR             => WB_CR_Image'Access,
-        Extend_Num_Let => WB_ExtendNumLet_Image'Access,
-        Extend         => WB_Extend_Image'Access,
-        Format         => WB_Format_Image'Access,
-        Katakana       => WB_Katakana_Image'Access,
-        A_Letter       => WB_ALetter_Image'Access,
-        LF             => WB_LF_Image'Access,
-        Mid_Num_Let    => WB_MidNumLet_Image'Access,
-        Mid_Letter     => WB_MidLetter_Image'Access,
-        Mid_Num        => WB_MidNum_Image'Access,
-        Newline        => WB_Newline_Image'Access,
-        Numeric        => WB_Numeric_Image'Access,
-        Other          => WB_Other_Image'Access);
+       (CR                 => WB_CR_Image'Access,
+        Extend_Num_Let     => WB_ExtendNumLet_Image'Access,
+        Extend             => WB_Extend_Image'Access,
+        Format             => WB_Format_Image'Access,
+        Katakana           => WB_Katakana_Image'Access,
+        A_Letter           => WB_ALetter_Image'Access,
+        LF                 => WB_LF_Image'Access,
+        Mid_Num_Let        => WB_MidNumLet_Image'Access,
+        Mid_Letter         => WB_MidLetter_Image'Access,
+        Mid_Num            => WB_MidNum_Image'Access,
+        Newline            => WB_Newline_Image'Access,
+        Numeric            => WB_Numeric_Image'Access,
+        Other              => WB_Other_Image'Access,
+        Regional_Indicator => WB_Regional_Indicator_Image'Access);
 
    begin
       for J in Mapping'Range loop
