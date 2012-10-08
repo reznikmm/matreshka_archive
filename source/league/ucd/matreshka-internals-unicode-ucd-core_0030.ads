@@ -347,11 +347,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue => True,
             others => False)),
          16#2E# .. 16#2F# =>  --  302E .. 302F
-          (Nonspacing_Mark, 224,
+          (Spacing_Mark, 224,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
-              | Case_Ignorable
+              | Other_Grapheme_Extend
               | Grapheme_Extend
               | ID_Continue
               | XID_Continue => True,
@@ -445,7 +445,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
            (others => False)),
          16#41#           =>  --  3041
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -456,7 +456,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#43#           =>  --  3043
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -467,7 +467,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#45#           =>  --  3045
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -478,7 +478,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#47#           =>  --  3047
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -489,7 +489,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#49#           =>  --  3049
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -656,7 +656,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#63#           =>  --  3063
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -771,7 +771,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#83#           =>  --  3083
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -782,7 +782,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#85#           =>  --  3085
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -793,7 +793,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#87#           =>  --  3087
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -804,7 +804,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#8E#           =>  --  308E
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -828,7 +828,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#95# .. 16#96# =>  --  3095 .. 3096
           (Other_Letter, 0,
-           Other, Other, O_Letter, Nonstarter,
+           Other, Other, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -915,7 +915,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#A1#           =>  --  30A1
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -937,7 +937,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#A3#           =>  --  30A3
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -959,7 +959,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#A5#           =>  --  30A5
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -981,7 +981,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#A7#           =>  --  30A7
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1003,7 +1003,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#A9#           =>  --  30A9
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1302,7 +1302,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#C3#           =>  --  30C3
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1516,7 +1516,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#E3#           =>  --  30E3
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1538,7 +1538,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#E5#           =>  --  30E5
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1560,7 +1560,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#E7#           =>  --  30E7
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1582,7 +1582,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#EE#           =>  --  30EE
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1617,7 +1617,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#F5# .. 16#F6# =>  --  30F5 .. 30F6
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -1648,7 +1648,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
             others => False)),
          16#FC#           =>  --  30FC
           (Modifier_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Extender

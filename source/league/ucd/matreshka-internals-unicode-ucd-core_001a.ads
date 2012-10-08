@@ -165,7 +165,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
             others => False)),
          16#61#           =>  --  1A61
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -186,7 +186,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
             others => False)),
          16#63# .. 16#64# =>  --  1A63 .. 1A64
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic

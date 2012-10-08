@@ -208,35 +208,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         16#C7# .. 16#CA# =>  --  27C7 .. 27CA
-          (Math_Symbol, 0,
-           Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax
-              | Grapheme_Base
-              | Math => True,
-            others => False)),
-         16#CB#           =>  --  27CB
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#CC#           =>  --  27CC
-          (Math_Symbol, 0,
-           Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax
-              | Grapheme_Base
-              | Math => True,
-            others => False)),
-         16#CD#           =>  --  27CD
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#CE# .. 16#E5# =>  --  27CE .. 27E5
+         16#C7# .. 16#E5# =>  --  27C7 .. 27E5
           (Math_Symbol, 0,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,

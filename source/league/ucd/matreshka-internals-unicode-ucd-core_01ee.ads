@@ -46,185 +46,201 @@ pragma Restrictions (No_Elaboration_Code);
 --  GNAT: enforce generation of preinitialized data section instead of
 --  generation of elaboration code.
 
-package Matreshka.Internals.Unicode.Ucd.Core_002D is
+package Matreshka.Internals.Unicode.Ucd.Core_01EE is
 
    pragma Preelaborate;
 
-   Group_002D : aliased constant Core_Second_Stage
-     := (16#00# .. 16#25# =>  --  2D00 .. 2D25
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+   Group_01EE : aliased constant Core_Second_Stage
+     := (16#04#           =>  --  01EE04
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+           (others => False)),
+         16#20#           =>  --  01EE20
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#23#           =>  --  01EE23
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#25# .. 16#26# =>  --  01EE25 .. 01EE26
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#28#           =>  --  01EE28
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#33#           =>  --  01EE33
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#38#           =>  --  01EE38
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#3A#           =>  --  01EE3A
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#3C# .. 16#41# =>  --  01EE3C .. 01EE41
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#43# .. 16#46# =>  --  01EE43 .. 01EE46
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#48#           =>  --  01EE48
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#4A#           =>  --  01EE4A
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#4C#           =>  --  01EE4C
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#50#           =>  --  01EE50
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#53#           =>  --  01EE53
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#55# .. 16#56# =>  --  01EE55 .. 01EE56
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#58#           =>  --  01EE58
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#5A#           =>  --  01EE5A
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#5C#           =>  --  01EE5C
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#5E#           =>  --  01EE5E
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#60#           =>  --  01EE60
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#63#           =>  --  01EE63
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#65# .. 16#66# =>  --  01EE65 .. 01EE66
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#6B#           =>  --  01EE6B
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#73#           =>  --  01EE73
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#78#           =>  --  01EE78
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#7D#           =>  --  01EE7D
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#7F#           =>  --  01EE7F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#8A#           =>  --  01EE8A
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#9C# .. 16#A0# =>  --  01EE9C .. 01EEA0
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#A4#           =>  --  01EEA4
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#AA#           =>  --  01EEAA
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#BC# .. 16#EF# =>  --  01EEBC .. 01EEEF
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#F0# .. 16#F1# =>  --  01EEF0 .. 01EEF1
+          (Math_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base
+              | Math => True,
             others => False)),
-         16#26#           =>  --  2D26
+         16#F2# .. 16#FF# =>  --  01EEF2 .. 01EEFF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#27#           =>  --  2D27
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
-            others => False)),
-         16#28# .. 16#2C# =>  --  2D28 .. 2D2C
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#2D#           =>  --  2D2D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
-            others => False)),
-         16#2E# .. 16#2F# =>  --  2D2E .. 2D2F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#68# .. 16#6E# =>  --  2D68 .. 2D6E
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#6F#           =>  --  2D6F
-          (Modifier_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Super,
-           (Alphabetic
-              | Case_Ignorable
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#70#           =>  --  2D70
-          (Other_Punctuation, 0,
-           Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#71# .. 16#7E# =>  --  2D71 .. 2D7E
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#7F#           =>  --  2D7F
-          (Nonspacing_Mark, 9,
-           Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
-           (Case_Ignorable
-              | Grapheme_Extend
-              | Grapheme_Link
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#97# .. 16#9F# =>  --  2D97 .. 2D9F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#A7#           =>  --  2DA7
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#AF#           =>  --  2DAF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#B7#           =>  --  2DB7
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#BF#           =>  --  2DBF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#C7#           =>  --  2DC7
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#CF#           =>  --  2DCF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#D7#           =>  --  2DD7
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#DF#           =>  --  2DDF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#E0# .. 16#FF# =>  --  2DE0 .. 2DFF
-          (Nonspacing_Mark, 230,
-           Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
-           (Other_Alphabetic
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Extend
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
          others           =>
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
+           (Yes, Yes, No, No), Font,
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
+              | Math
               | XID_Continue
-              | XID_Start => True,
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
             others => False)));
 
-end Matreshka.Internals.Unicode.Ucd.Core_002D;
+end Matreshka.Internals.Unicode.Ucd.Core_01EE;

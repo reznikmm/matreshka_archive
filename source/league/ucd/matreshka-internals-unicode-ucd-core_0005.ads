@@ -532,7 +532,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
               | Hyphen
               | Grapheme_Base => True,
             others => False)),
-         16#8B# .. 16#90# =>  --  058B .. 0590
+         16#8B# .. 16#8E# =>  --  058B .. 058E
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#8F#           =>  --  058F
+          (Currency_Symbol, 0,
+           Other, Other, Other, Prefix_Numeric,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#90#           =>  --  0590
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -945,7 +956,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
            (others => False)),
          16#D0# .. 16#EA# =>  --  05D0 .. 05EA
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -961,7 +972,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
            (others => False)),
          16#F0# .. 16#F2# =>  --  05F0 .. 05F2
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base

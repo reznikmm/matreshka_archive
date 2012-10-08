@@ -975,10 +975,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A6 is
            (Grapheme_Base => True,
             others => False)),
          16#74# .. 16#7B# =>  --  A674 .. A67B
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#7C# .. 16#7D# =>  --  A67C .. A67D
           (Nonspacing_Mark, 230,
            Extend, Extend, Extend, Combining_Mark,
@@ -1452,11 +1458,22 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A6 is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#98# .. 16#9F# =>  --  A698 .. A69F
+         16#98# .. 16#9E# =>  --  A698 .. A69E
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#9F#           =>  --  A69F
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#E6# .. 16#EF# =>  --  A6E6 .. A6EF
           (Letter_Number, 0,
            Other, A_Letter, O_Letter, Alphabetic,

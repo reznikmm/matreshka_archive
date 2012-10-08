@@ -97,7 +97,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#1D#           =>  --  FB1D
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -126,7 +126,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#1F#           =>  --  FB1F
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -143,7 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#20# .. 16#28# =>  --  FB20 .. FB28
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, No, No), Font,
            (Alphabetic
               | Grapheme_Base
@@ -163,7 +163,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#2A# .. 16#36# =>  --  FB2A .. FB36
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -180,7 +180,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#38# .. 16#3C# =>  --  FB38 .. FB3C
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -197,7 +197,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#3E#           =>  --  FB3E
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -214,7 +214,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#40# .. 16#41# =>  --  FB40 .. FB41
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -231,7 +231,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#43# .. 16#44# =>  --  FB43 .. FB44
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -248,7 +248,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#46# .. 16#4E# =>  --  FB46 .. FB4E
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (No, No, No, No), Canonical,
            (Alphabetic
               | Grapheme_Base
@@ -265,7 +265,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FB is
             others => False)),
          16#4F#           =>  --  FB4F
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, No, No), Compat,
            (Alphabetic
               | Grapheme_Base

@@ -192,11 +192,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_0017 is
               | XID_Start => True,
             others => False)),
          16#B4# .. 16#B5# =>  --  17B4 .. 17B5
-          (Format, 0,
-           Control, Format, Format, Complex_Context,
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
-           (Case_Ignorable
+           (Other_Default_Ignorable_Code_Point
+              | Case_Ignorable
               | Default_Ignorable_Code_Point
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#B6#           =>  --  17B6

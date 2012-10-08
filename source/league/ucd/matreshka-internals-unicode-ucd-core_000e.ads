@@ -51,20 +51,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
    pragma Preelaborate;
 
    Group_000E : aliased constant Core_Second_Stage
-     := (16#01# .. 16#2F# =>  --  0E01 .. 0E2F
+     := (16#01# .. 16#30# =>  --  0E01 .. 0E30
           (Other_Letter, 0,
            Other, Other, O_Letter, Complex_Context,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#30#           =>  --  0E30
-          (Other_Letter, 0,
-           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -86,7 +75,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
             others => False)),
          16#32#           =>  --  0E32
           (Other_Letter, 0,
-           Spacing_Mark, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -149,7 +138,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
             others => False)),
          16#40# .. 16#44# =>  --  0E40 .. 0E44
           (Other_Letter, 0,
-           Prepend, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Logical_Order_Exception
               | Alphabetic
@@ -161,7 +150,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
             others => False)),
          16#45#           =>  --  0E45
           (Other_Letter, 0,
-           Spacing_Mark, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -376,20 +365,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#AD# .. 16#AF# =>  --  0EAD .. 0EAF
+         16#AD# .. 16#B0# =>  --  0EAD .. 0EB0
           (Other_Letter, 0,
            Other, Other, O_Letter, Complex_Context,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B0#           =>  --  0EB0
-          (Other_Letter, 0,
-           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -411,7 +389,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
             others => False)),
          16#B2#           =>  --  0EB2
           (Other_Letter, 0,
-           Spacing_Mark, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -478,7 +456,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
             others => False)),
          16#C0# .. 16#C4# =>  --  0EC0 .. 0EC4
           (Other_Letter, 0,
-           Prepend, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Logical_Order_Exception
               | Alphabetic
@@ -552,6 +530,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
               | XID_Start
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#DE# .. 16#DF# =>  --  0EDE .. 0EDF
+          (Other_Letter, 0,
+           Other, Other, O_Letter, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
             others => False)),
          others           =>
           (Unassigned, 0,

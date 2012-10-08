@@ -71,7 +71,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
             others => False)),
          others           =>
           (Unassigned, 0,
-           Other, Other, Other, Unknown,
+           Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
               | Default_Ignorable_Code_Point

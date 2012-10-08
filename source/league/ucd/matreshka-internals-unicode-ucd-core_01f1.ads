@@ -111,6 +111,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
+         16#6A# .. 16#6B# =>  --  01F16A .. 01F16B
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, No, No), Super,
+           (Grapheme_Base
+              | Expands_On_NFKD
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
          16#70# .. 16#8F# =>  --  01F170 .. 01F18F
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,

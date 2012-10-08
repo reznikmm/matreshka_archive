@@ -195,6 +195,192 @@ package Matreshka.Internals.Unicode.Ucd.Core_0008 is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
+         16#A0#           =>  --  08A0
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#A2# .. 16#AC# =>  --  08A2 .. 08AC
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#E4# .. 16#E5# =>  --  08E4 .. 08E5
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E6#           =>  --  08E6
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E7# .. 16#E8# =>  --  08E7 .. 08E8
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E9#           =>  --  08E9
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EA# .. 16#EC# =>  --  08EA .. 08EC
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#ED# .. 16#EF# =>  --  08ED .. 08EF
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F0#           =>  --  08F0
+          (Nonspacing_Mark, 27,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F1#           =>  --  08F1
+          (Nonspacing_Mark, 28,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F2#           =>  --  08F2
+          (Nonspacing_Mark, 29,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F3# .. 16#F5# =>  --  08F3 .. 08F5
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F6#           =>  --  08F6
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F7# .. 16#F8# =>  --  08F7 .. 08F8
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F9# .. 16#FA# =>  --  08F9 .. 08FA
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#FB# .. 16#FE# =>  --  08FB .. 08FE
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          others           =>
           (Unassigned, 0,
            Other, Other, Other, Unknown,

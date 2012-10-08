@@ -142,11 +142,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#2E# .. 16#2F# =>  --  FA2E .. FA2F
-          (Unassigned, 0,
-           Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
          16#6E# .. 16#6F# =>  --  FA6E .. FA6F
           (Unassigned, 0,
            Other, Other, Other, Ideographic,

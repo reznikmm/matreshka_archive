@@ -168,13 +168,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_001D is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#62#           =>  --  1D62
-          (Lowercase_Letter, 0,
+          (Modifier_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Sub,
            (Diacritic
+              | Other_Lowercase
               | Soft_Dotted
               | Alphabetic
               | Cased
+              | Case_Ignorable
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -184,12 +186,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_001D is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#63# .. 16#6A# =>  --  1D63 .. 1D6A
-          (Lowercase_Letter, 0,
+          (Modifier_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Sub,
            (Diacritic
+              | Other_Lowercase
               | Alphabetic
               | Cased
+              | Case_Ignorable
               | Grapheme_Base
               | ID_Continue
               | ID_Start

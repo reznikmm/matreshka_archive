@@ -46,19 +46,14 @@ pragma Restrictions (No_Elaboration_Code);
 --  GNAT: enforce generation of preinitialized data section instead of
 --  generation of elaboration code.
 
-package Matreshka.Internals.Unicode.Ucd.Core_0031 is
+package Matreshka.Internals.Unicode.Ucd.Core_0116 is
 
    pragma Preelaborate;
 
-   Group_0031 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#04# =>  --  3100 .. 3104
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#05# .. 16#2D# =>  --  3105 .. 312D
+   Group_0116 : aliased constant Core_Second_Stage
+     := (16#80# .. 16#AA# =>  --  011680 .. 0116AA
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Ideographic,
+           Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -67,99 +62,91 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#2E# .. 16#30# =>  --  312E .. 3130
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+         16#AB#           =>  --  0116AB
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#64#           =>  --  3164
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, No, No), Compat,
-           (Other_Default_Ignorable_Code_Point
+           (Other_Alphabetic
               | Alphabetic
-              | Default_Ignorable_Code_Point
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#AC#           =>  --  0116AC
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
+              | XID_Continue => True,
             others => False)),
-         16#8F#           =>  --  318F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+         16#AD#           =>  --  0116AD
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#90# .. 16#91# =>  --  3190 .. 3191
-          (Other_Symbol, 0,
-           Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
             others => False)),
-         16#92# .. 16#95# =>  --  3192 .. 3195
-          (Other_Number, 0,
-           Other, Other, Other, Ideographic,
-           (Yes, Yes, No, No), Super,
+         16#AE# .. 16#AF# =>  --  0116AE .. 0116AF
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B0# .. 16#B5# =>  --  0116B0 .. 0116B5
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B6#           =>  --  0116B6
+          (Spacing_Mark, 9,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Grapheme_Base
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B7#           =>  --  0116B7
+          (Nonspacing_Mark, 7,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#C0# .. 16#C9# =>  --  0116C0 .. 0116C9
+          (Decimal_Number, 0,
+           Other, Numeric, Numeric, Numeric,
+           (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#96# .. 16#9F# =>  --  3196 .. 319F
-          (Other_Symbol, 0,
-           Other, Other, Other, Ideographic,
-           (Yes, Yes, No, No), Super,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#A0# .. 16#BA# =>  --  31A0 .. 31BA
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
               | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#BB# .. 16#BF# =>  --  31BB .. 31BF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#C0# .. 16#E3# =>  --  31C0 .. 31E3
-          (Other_Symbol, 0,
-           Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#E4# .. 16#EF# =>  --  31E4 .. 31EF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#F0# .. 16#FF# =>  --  31F0 .. 31FF
-          (Other_Letter, 0,
-           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
+              | XID_Continue => True,
             others => False)),
          others           =>
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, No, No), Compat,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)));
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)));
 
-end Matreshka.Internals.Unicode.Ucd.Core_0031;
+end Matreshka.Internals.Unicode.Ucd.Core_0116;

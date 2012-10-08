@@ -87,7 +87,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | XID_Continue => True,
             others => False)),
          16#60#           =>  --  1360
-          (Other_Symbol, 0,
+          (Other_Punctuation, 0,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

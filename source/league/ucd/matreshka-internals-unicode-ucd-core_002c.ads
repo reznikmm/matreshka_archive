@@ -245,12 +245,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
               | XID_Start => True,
             others => False)),
          16#7C#           =>  --  2C7C
-          (Lowercase_Letter, 0,
+          (Modifier_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Sub,
-           (Soft_Dotted
+           (Other_Lowercase
+              | Soft_Dotted
               | Alphabetic
               | Cased
+              | Case_Ignorable
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -1240,7 +1242,25 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#F2# .. 16#F8# =>  --  2CF2 .. 2CF8
+         16#F3#           =>  --  2CF3
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F4# .. 16#F8# =>  --  2CF4 .. 2CF8
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

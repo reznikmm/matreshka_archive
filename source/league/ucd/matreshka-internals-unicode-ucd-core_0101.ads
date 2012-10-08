@@ -51,14 +51,8 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
    pragma Preelaborate;
 
    Group_0101 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#01# =>  --  010100 .. 010101
+     := (16#00# .. 16#02# =>  --  010100 .. 010102
           (Other_Punctuation, 0,
-           Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#02#           =>  --  010102
-          (Other_Symbol, 0,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

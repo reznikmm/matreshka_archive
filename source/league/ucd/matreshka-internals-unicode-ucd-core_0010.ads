@@ -66,7 +66,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#2B# .. 16#2C# =>  --  102B .. 102C
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -140,7 +140,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#38#           =>  --  1038
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -236,7 +236,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#62#           =>  --  1062
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -246,7 +246,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#63# .. 16#64# =>  --  1063 .. 1064
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
               | ID_Continue
@@ -254,7 +254,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#67# .. 16#68# =>  --  1067 .. 1068
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -264,7 +264,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#69# .. 16#6D# =>  --  1069 .. 106D
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
               | ID_Continue
@@ -292,7 +292,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#83# .. 16#84# =>  --  1083 .. 1084
+         16#83#           =>  --  1083
+          (Spacing_Mark, 0,
+           Other, Extend, Extend, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#84#           =>  --  1084
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
@@ -315,7 +325,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#87# .. 16#8C# =>  --  1087 .. 108C
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Grapheme_Base
@@ -334,7 +344,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#8F#           =>  --  108F
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Grapheme_Base
@@ -351,7 +361,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#9A# .. 16#9B# =>  --  109A .. 109B
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Grapheme_Base
@@ -360,7 +370,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
             others => False)),
          16#9C#           =>  --  109C
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
@@ -404,7 +414,55 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
               | Has_Lowercase_Mapping
               | Has_Case_Folding => True,
             others => False)),
-         16#C6# .. 16#CF# =>  --  10C6 .. 10CF
+         16#C6#           =>  --  10C6
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#C7#           =>  --  10C7
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#C8# .. 16#CC# =>  --  10C8 .. 10CC
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#CD#           =>  --  10CD
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#CE# .. 16#CF# =>  --  10CE .. 10CF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -440,10 +498,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FD# .. 16#FF# =>  --  10FD .. 10FF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          others           =>
           (Other_Letter, 0,
            Other, Other, O_Letter, Complex_Context,

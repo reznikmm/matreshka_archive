@@ -133,7 +133,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000F is
            (Grapheme_Base => True,
             others => False)),
          16#14#           =>  --  0F14
-          (Other_Symbol, 0,
+          (Other_Punctuation, 0,
            Other, Other, Other, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

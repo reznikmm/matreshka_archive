@@ -304,7 +304,36 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#32# .. 16#7F# =>  --  2E32 .. 2E7F
+         16#32#           =>  --  2E32
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#33# .. 16#34# =>  --  2E33 .. 2E34
+          (Other_Punctuation, 0,
+           Other, Other, Other, Break_After,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#35# .. 16#39# =>  --  2E35 .. 2E39
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#3A# .. 16#3B# =>  --  2E3A .. 2E3B
+          (Dash_Punctuation, 0,
+           Other, Other, Other, Break_Both,
+           (Yes, Yes, Yes, Yes), None,
+           (Dash
+              | Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#3C# .. 16#7F# =>  --  2E3C .. 2E7F
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

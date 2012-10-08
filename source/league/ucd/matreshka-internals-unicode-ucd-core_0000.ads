@@ -493,7 +493,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
               | Grapheme_Base => True,
             others => False)),
          16#A7#           =>  --  00A7
-          (Other_Symbol, 0,
+          (Other_Punctuation, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
@@ -517,10 +517,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
               | Grapheme_Base => True,
             others => False)),
          16#AA#           =>  --  00AA
-          (Lowercase_Letter, 0,
+          (Other_Letter, 0,
            Other, A_Letter, Lower, Ambiguous,
            (Yes, Yes, No, No), Super,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Cased
               | Grapheme_Base
               | ID_Continue
@@ -626,7 +627,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
               | Has_Case_Folding => True,
             others => False)),
          16#B6#           =>  --  00B6
-          (Other_Symbol, 0,
+          (Other_Punctuation, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
@@ -662,10 +663,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#BA#           =>  --  00BA
-          (Lowercase_Letter, 0,
+          (Other_Letter, 0,
            Other, A_Letter, Lower, Ambiguous,
            (Yes, Yes, No, No), Super,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Cased
               | Grapheme_Base
               | ID_Continue

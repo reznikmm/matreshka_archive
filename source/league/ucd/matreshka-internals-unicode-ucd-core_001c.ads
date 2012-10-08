@@ -215,6 +215,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001C is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
+         16#C0# .. 16#C7# =>  --  1CC0 .. 1CC7
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          16#D0# .. 16#D2# =>  --  1CD0 .. 1CD2
           (Nonspacing_Mark, 230,
            Extend, Extend, Extend, Combining_Mark,
@@ -333,7 +339,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001C is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#F2#           =>  --  1CF2
+         16#F2# .. 16#F3# =>  --  1CF2 .. 1CF3
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
@@ -342,6 +348,27 @@ package Matreshka.Internals.Unicode.Ucd.Core_001C is
               | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
+            others => False)),
+         16#F4#           =>  --  1CF4
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F5# .. 16#F6# =>  --  1CF5 .. 1CF6
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
             others => False)),
          others           =>
           (Unassigned, 0,

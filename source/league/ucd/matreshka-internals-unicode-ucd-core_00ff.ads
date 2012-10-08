@@ -453,7 +453,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
             others => False)),
          16#67# .. 16#6F# =>  --  FF67 .. FF6F
           (Other_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, No, No), Narrow,
            (Alphabetic
               | Grapheme_Base
@@ -465,7 +465,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
             others => False)),
          16#70#           =>  --  FF70
           (Modifier_Letter, 0,
-           Other, Katakana, O_Letter, Nonstarter,
+           Other, Katakana, O_Letter, Conditional_Japanese_Starter,
            (Yes, Yes, No, No), Narrow,
            (Diacritic
               | Extender
@@ -623,7 +623,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
            (others => False)),
          16#F0# .. 16#F8# =>  --  FFF0 .. FFF8
           (Unassigned, 0,
-           Other, Other, Other, Unknown,
+           Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
               | Default_Ignorable_Code_Point

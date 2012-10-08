@@ -72,7 +72,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#48# .. 16#4F# =>  --  3248 .. 324F
-          (Other_Symbol, 0,
+          (Other_Number, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

@@ -51,62 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F6 is
    pragma Preelaborate;
 
    Group_01F6 : aliased constant Core_Second_Stage
-     := (16#00#           =>  --  01F600
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#11#           =>  --  01F611
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#15#           =>  --  01F615
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#17#           =>  --  01F617
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#19#           =>  --  01F619
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#1B#           =>  --  01F61B
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#1F#           =>  --  01F61F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#26# .. 16#27# =>  --  01F626 .. 01F627
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#2C#           =>  --  01F62C
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#2E# .. 16#2F# =>  --  01F62E .. 01F62F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#34#           =>  --  01F634
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#41# .. 16#44# =>  --  01F641 .. 01F644
+     := (16#41# .. 16#44# =>  --  01F641 .. 01F644
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

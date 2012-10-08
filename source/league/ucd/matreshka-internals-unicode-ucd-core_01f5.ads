@@ -57,6 +57,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F5 is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
+         16#40# .. 16#43# =>  --  01F540 .. 01F543
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          16#50# .. 16#67# =>  --  01F550 .. 01F567
           (Other_Symbol, 0,
            Other, Other, Other, Alphabetic,

@@ -222,7 +222,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#B0# .. 16#C0# =>  --  19B0 .. 19C0
+         16#B0# .. 16#B4# =>  --  19B0 .. 19B4
+          (Spacing_Mark, 0,
+           Other, Extend, Extend, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B5# .. 16#B7# =>  --  19B5 .. 19B7
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
@@ -232,9 +242,39 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#C8# .. 16#C9# =>  --  19C8 .. 19C9
+         16#B8# .. 16#B9# =>  --  19B8 .. 19B9
+          (Spacing_Mark, 0,
+           Other, Extend, Extend, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#BA#           =>  --  19BA
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#BB# .. 16#C0# =>  --  19BB .. 19C0
+          (Spacing_Mark, 0,
+           Other, Extend, Extend, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#C8# .. 16#C9# =>  --  19C8 .. 19C9
+          (Spacing_Mark, 0,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic

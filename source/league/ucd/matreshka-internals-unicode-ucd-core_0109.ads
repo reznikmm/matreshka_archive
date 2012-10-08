@@ -92,6 +92,28 @@ package Matreshka.Internals.Unicode.Ucd.Core_0109 is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
+         16#80# .. 16#B7# =>  --  010980 .. 0109B7
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#BE# .. 16#BF# =>  --  0109BE .. 0109BF
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          others           =>
           (Unassigned, 0,
            Other, Other, Other, Unknown,

@@ -112,7 +112,8 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
           (Other_Punctuation, 0,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
+           (Extender
+              | Grapheme_Base => True,
             others => False)),
          16#0B# .. 16#0D# =>  --  180B .. 180D
           (Nonspacing_Mark, 0,

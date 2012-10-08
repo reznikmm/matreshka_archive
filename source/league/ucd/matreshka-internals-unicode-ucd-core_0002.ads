@@ -1470,7 +1470,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#65#           =>  --  0265
+         16#65# .. 16#66# =>  --  0265 .. 0266
           (Lowercase_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, Yes, Yes), None,

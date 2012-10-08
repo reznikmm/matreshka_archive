@@ -439,11 +439,27 @@ package Matreshka.Internals.Unicode.Ucd.Core_001B is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#AB# .. 16#AD# =>  --  1BAB .. 1BAD
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+         16#AB#           =>  --  1BAB
+          (Nonspacing_Mark, 9,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#AC# .. 16#AD# =>  --  1BAC .. 1BAD
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#B0# .. 16#B9# =>  --  1BB0 .. 1BB9
           (Decimal_Number, 0,
            Other, Numeric, Numeric, Numeric,
@@ -452,11 +468,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_001B is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#BA# .. 16#BF# =>  --  1BBA .. 1BBF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
          16#E6#           =>  --  1BE6
           (Nonspacing_Mark, 7,
            Extend, Extend, Extend, Combining_Mark,

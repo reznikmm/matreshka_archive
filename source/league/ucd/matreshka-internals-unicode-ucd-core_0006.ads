@@ -51,13 +51,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0006 is
    pragma Preelaborate;
 
    Group_0006 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#03# =>  --  0600 .. 0603
+     := (16#00# .. 16#04# =>  --  0600 .. 0604
           (Format, 0,
            Control, Format, Format, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable => True,
             others => False)),
-         16#04# .. 16#05# =>  --  0604 .. 0605
+         16#05#           =>  --  0605
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

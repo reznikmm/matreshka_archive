@@ -504,10 +504,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
               | XID_Continue => True,
             others => False)),
          16#F0#           =>  --  0AF0
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Grapheme_Base => True,
+            others => False)),
          16#F1#           =>  --  0AF1
           (Currency_Symbol, 0,
            Other, Other, Other, Prefix_Numeric,

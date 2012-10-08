@@ -51,7 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_009F is
    pragma Preelaborate;
 
    Group_009F : aliased constant Core_Second_Stage
-     := (16#CC# .. 16#FF# =>  --  9FCC .. 9FFF
+     := (16#CD# .. 16#FF# =>  --  9FCD .. 9FFF
           (Unassigned, 0,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,

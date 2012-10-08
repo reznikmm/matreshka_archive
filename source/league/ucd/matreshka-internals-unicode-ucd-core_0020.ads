@@ -574,7 +574,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
             others => False)),
          16#65# .. 16#69# =>  --  2065 .. 2069
           (Unassigned, 0,
-           Other, Other, Other, Unknown,
+           Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
               | Default_Ignorable_Code_Point
@@ -598,14 +598,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
             others => False)),
          16#71#           =>  --  2071
           (Modifier_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
+           Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Super,
-           (Soft_Dotted
+           (Other_Lowercase
+              | Soft_Dotted
               | Alphabetic
+              | Cased
               | Case_Ignorable
               | Grapheme_Base
               | ID_Continue
               | ID_Start
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
@@ -669,13 +672,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
             others => False)),
          16#7F#           =>  --  207F
           (Modifier_Letter, 0,
-           Other, A_Letter, O_Letter, Ambiguous,
+           Other, A_Letter, Lower, Ambiguous,
            (Yes, Yes, No, No), Super,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
+              | Cased
               | Case_Ignorable
               | Grapheme_Base
               | ID_Continue
               | ID_Start
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
@@ -744,7 +750,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Math
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#90# .. 16#94# =>  --  2090 .. 2094
+         16#90# .. 16#9C# =>  --  2090 .. 209C
           (Modifier_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Sub,
@@ -756,19 +762,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | ID_Continue
               | ID_Start
               | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#95# .. 16#9C# =>  --  2095 .. 209C
-          (Modifier_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Sub,
-           (Alphabetic
-              | Case_Ignorable
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
               | XID_Continue
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,

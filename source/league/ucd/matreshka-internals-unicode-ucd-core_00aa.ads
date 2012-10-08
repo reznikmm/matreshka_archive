@@ -227,7 +227,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
             others => False)),
          16#7B#           =>  --  AA7B
           (Spacing_Mark, 0,
-           Spacing_Mark, Extend, Extend, Complex_Context,
+           Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Grapheme_Base
@@ -274,7 +274,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
             others => False)),
          16#B5# .. 16#B6# =>  --  AAB5 .. AAB6
           (Other_Letter, 0,
-           Prepend, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Logical_Order_Exception
               | Alphabetic
@@ -297,7 +297,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
             others => False)),
          16#B9#           =>  --  AAB9
           (Other_Letter, 0,
-           Prepend, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Logical_Order_Exception
               | Alphabetic
@@ -309,7 +309,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
             others => False)),
          16#BB# .. 16#BC# =>  --  AABB .. AABC
           (Other_Letter, 0,
-           Prepend, Other, O_Letter, Complex_Context,
+           Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Logical_Order_Exception
               | Alphabetic
@@ -405,7 +405,102 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#E0# .. 16#FF# =>  --  AAE0 .. AAFF
+         16#E0# .. 16#EA# =>  --  AAE0 .. AAEA
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#EB#           =>  --  AAEB
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EC# .. 16#ED# =>  --  AAEC .. AAED
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EE# .. 16#EF# =>  --  AAEE .. AAEF
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F0# .. 16#F1# =>  --  AAF0 .. AAF1
+          (Other_Punctuation, 0,
+           Other, Other, S_Term, Break_After,
+           (Yes, Yes, Yes, Yes), None,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#F2#           =>  --  AAF2
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#F3# .. 16#F4# =>  --  AAF3 .. AAF4
+          (Modifier_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Extender
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#F5#           =>  --  AAF5
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F6#           =>  --  AAF6
+          (Nonspacing_Mark, 9,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F7# .. 16#FF# =>  --  AAF7 .. AAFF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

@@ -140,12 +140,15 @@ with Matreshka.Internals.Unicode.Ucd.Core_010B;
 with Matreshka.Internals.Unicode.Ucd.Core_010C;
 with Matreshka.Internals.Unicode.Ucd.Core_010E;
 with Matreshka.Internals.Unicode.Ucd.Core_0110;
+with Matreshka.Internals.Unicode.Ucd.Core_0111;
+with Matreshka.Internals.Unicode.Ucd.Core_0116;
 with Matreshka.Internals.Unicode.Ucd.Core_0123;
 with Matreshka.Internals.Unicode.Ucd.Core_0124;
 with Matreshka.Internals.Unicode.Ucd.Core_0132;
 with Matreshka.Internals.Unicode.Ucd.Core_0133;
 with Matreshka.Internals.Unicode.Ucd.Core_0134;
 with Matreshka.Internals.Unicode.Ucd.Core_016A;
+with Matreshka.Internals.Unicode.Ucd.Core_016F;
 with Matreshka.Internals.Unicode.Ucd.Core_01B0;
 with Matreshka.Internals.Unicode.Ucd.Core_01D0;
 with Matreshka.Internals.Unicode.Ucd.Core_01D1;
@@ -155,6 +158,7 @@ with Matreshka.Internals.Unicode.Ucd.Core_01D4;
 with Matreshka.Internals.Unicode.Ucd.Core_01D5;
 with Matreshka.Internals.Unicode.Ucd.Core_01D6;
 with Matreshka.Internals.Unicode.Ucd.Core_01D7;
+with Matreshka.Internals.Unicode.Ucd.Core_01EE;
 with Matreshka.Internals.Unicode.Ucd.Core_01F0;
 with Matreshka.Internals.Unicode.Ucd.Core_01F1;
 with Matreshka.Internals.Unicode.Ucd.Core_01F2;
@@ -273,12 +277,15 @@ package Matreshka.Internals.Unicode.Ucd.Core is
    use Matreshka.Internals.Unicode.Ucd.Core_010C;
    use Matreshka.Internals.Unicode.Ucd.Core_010E;
    use Matreshka.Internals.Unicode.Ucd.Core_0110;
+   use Matreshka.Internals.Unicode.Ucd.Core_0111;
+   use Matreshka.Internals.Unicode.Ucd.Core_0116;
    use Matreshka.Internals.Unicode.Ucd.Core_0123;
    use Matreshka.Internals.Unicode.Ucd.Core_0124;
    use Matreshka.Internals.Unicode.Ucd.Core_0132;
    use Matreshka.Internals.Unicode.Ucd.Core_0133;
    use Matreshka.Internals.Unicode.Ucd.Core_0134;
    use Matreshka.Internals.Unicode.Ucd.Core_016A;
+   use Matreshka.Internals.Unicode.Ucd.Core_016F;
    use Matreshka.Internals.Unicode.Ucd.Core_01B0;
    use Matreshka.Internals.Unicode.Ucd.Core_01D0;
    use Matreshka.Internals.Unicode.Ucd.Core_01D1;
@@ -288,6 +295,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
    use Matreshka.Internals.Unicode.Ucd.Core_01D5;
    use Matreshka.Internals.Unicode.Ucd.Core_01D6;
    use Matreshka.Internals.Unicode.Ucd.Core_01D7;
+   use Matreshka.Internals.Unicode.Ucd.Core_01EE;
    use Matreshka.Internals.Unicode.Ucd.Core_01F0;
    use Matreshka.Internals.Unicode.Ucd.Core_01F1;
    use Matreshka.Internals.Unicode.Ucd.Core_01F2;
@@ -443,17 +451,19 @@ package Matreshka.Internals.Unicode.Ucd.Core is
          16#0109# => Group_0109'Access, 16#010A# => Group_010A'Access,
          16#010B# => Group_010B'Access, 16#010C# => Group_010C'Access,
          16#010E# => Group_010E'Access, 16#0110# => Group_0110'Access,
+         16#0111# => Group_0111'Access, 16#0116# => Group_0116'Access,
          16#0120# => Group_0015'Access, 16#0121# => Group_0015'Access,
          16#0122# => Group_0015'Access, 16#0123# => Group_0123'Access,
          16#0124# => Group_0124'Access, 16#0130# => Group_0015'Access,
          16#0131# => Group_0015'Access, 16#0132# => Group_0132'Access,
          16#0133# => Group_0133'Access, 16#0134# => Group_0134'Access,
          16#0168# => Group_0015'Access, 16#0169# => Group_0015'Access,
-         16#016A# => Group_016A'Access, 16#01B0# => Group_01B0'Access,
-         16#01D0# => Group_01D0'Access, 16#01D1# => Group_01D1'Access,
-         16#01D2# => Group_01D2'Access, 16#01D3# => Group_01D3'Access,
-         16#01D4# => Group_01D4'Access, 16#01D5# => Group_01D5'Access,
-         16#01D6# => Group_01D6'Access, 16#01D7# => Group_01D7'Access,
+         16#016A# => Group_016A'Access, 16#016F# => Group_016F'Access,
+         16#01B0# => Group_01B0'Access, 16#01D0# => Group_01D0'Access,
+         16#01D1# => Group_01D1'Access, 16#01D2# => Group_01D2'Access,
+         16#01D3# => Group_01D3'Access, 16#01D4# => Group_01D4'Access,
+         16#01D5# => Group_01D5'Access, 16#01D6# => Group_01D6'Access,
+         16#01D7# => Group_01D7'Access, 16#01EE# => Group_01EE'Access,
          16#01F0# => Group_01F0'Access, 16#01F1# => Group_01F1'Access,
          16#01F2# => Group_01F2'Access, 16#01F3# => Group_01F3'Access,
          16#01F4# => Group_01F4'Access, 16#01F5# => Group_01F5'Access,
