@@ -230,9 +230,7 @@ package body XMLConf.Testsuite_Handlers is
                      --  fail.
 
                      if Self.Validating then
-                        if not Writer.Has_Fatal_Errors
-                          and not Writer.Has_Errors
-                        then
+                        if not Writer.Has_Errors then
                            Put_Line (Id & ": doesn't have errors");
                            Failed := True;
                         end if;
@@ -367,11 +365,9 @@ package body XMLConf.Testsuite_Handlers is
 
    overriding procedure Fatal_Error
     (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean)
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception)
    is
       pragma Unreferenced (Self);
-      pragma Unreferenced (Success);
 
    begin
       Put_Line ("FATAL ERROR: " & Occurrence.Message);

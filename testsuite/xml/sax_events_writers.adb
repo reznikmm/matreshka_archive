@@ -321,8 +321,10 @@ package body SAX_Events_Writers is
 
    overriding procedure Fatal_Error
     (Self       : in out SAX_Events_Writer;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean) is
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception)
+   is
+      pragma Unrefernced (Self);
+
    begin
       Self.Fatal_Errors := True;
       Self.Add_Line

@@ -112,7 +112,6 @@ package XMLConf.Testsuite_Handlers is
 
    overriding procedure Fatal_Error
     (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception);
 
 end XMLConf.Testsuite_Handlers;
