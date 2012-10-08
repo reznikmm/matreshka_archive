@@ -1,6 +1,6 @@
 
-UNIDATA = unicode/6.0.0/ucd
-UCADATA = unicode/UCA/6.0.0
+UNIDATA = unicode/6.1.0/ucd
+UCADATA = unicode/UCA/6.1.0
 CLDR = unicode/cldr/1.9.0
 
 override SMP_MFLAGS ?= -j0
