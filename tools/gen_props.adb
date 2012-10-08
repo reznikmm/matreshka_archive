@@ -232,6 +232,8 @@ procedure Gen_Props is
    LB_Break_Before_Image      : aliased constant String := "Break_Before";
    LB_Mandatory_Break_Image   : aliased constant String := "Mandatory_Break";
    LB_Contingent_Break_Image  : aliased constant String := "Contingent_Break";
+   LB_Conditional_Japanese_Starter_Image :
+     aliased constant String := "Conditional_Japanese_Starter";
    LB_Close_Punctuation_Image : aliased constant String := "Close_Punctuation";
    LB_Combining_Mark_Image    : aliased constant String := "Combining_Mark";
    LB_Close_Parenthesis_Image : aliased constant String := "Close_Parenthesis";
@@ -240,6 +242,7 @@ procedure Gen_Props is
    LB_Glue_Image              : aliased constant String := "Glue";
    LB_H2_Image                : aliased constant String := "H2";
    LB_H3_Image                : aliased constant String := "H3";
+   LB_Hebrew_Letter_Image     : aliased constant String := "Hebrew_Letter";
    LB_Hyphen_Image            : aliased constant String := "Hyphen";
    LB_Ideographic_Image       : aliased constant String := "Ideographic";
    LB_Inseparable_Image       : aliased constant String := "Inseparable";
@@ -271,6 +274,8 @@ procedure Gen_Props is
          Break_Before      => LB_Break_Before_Image'Access,
          Mandatory_Break   => LB_Mandatory_Break_Image'Access,
          Contingent_Break  => LB_Contingent_Break_Image'Access,
+         Conditional_Japanese_Starter =>
+           LB_Conditional_Japanese_Starter_Image'Access,
          Close_Punctuation => LB_Close_Punctuation_Image'Access,
          Combining_Mark    => LB_Combining_Mark_Image'Access,
          Close_Parenthesis => LB_Close_Parenthesis_Image'Access,
@@ -279,6 +284,7 @@ procedure Gen_Props is
          Glue              => LB_Glue_Image'Access,
          H2                => LB_H2_Image'Access,
          H3                => LB_H3_Image'Access,
+         Hebrew_Letter     => LB_Hebrew_Letter_Image'Access,
          Hyphen            => LB_Hyphen_Image'Access,
          Ideographic       => LB_Ideographic_Image'Access,
          Inseparable       => LB_Inseparable_Image'Access,
