@@ -258,22 +258,10 @@ package body XML.SAX.Simple_Readers.Callbacks is
           System_Id => League.Strings.Empty_Universal_String,
           Line      => 0,
           Column    => 0,
-          Message   => Message),
-        Self.Continue);
+          Message   => Message));
 
-      if not Self.Continue then
-         --  When error handler ask to terminate processing use its error
-         --  message to report.
-
-         Self.Error_Message := Self.Content_Handler.Error_String;
-
-      else
-         --  Otherwise, use reader's message and terminate processing.
-
-         Self.Error_Message := Message;
-         Self.Continue      := False;
-      end if;
-
+      Self.Error_Message  := Message;
+      Self.Continue       := False;
       Self.Error_Reported := True;
 
    exception

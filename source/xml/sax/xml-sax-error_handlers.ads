@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,6 +55,17 @@ package XML.SAX.Error_Handlers is
     (Self       : in out SAX_Error_Handler;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is null;
+   --  A reader might use this subprogram to report a recoverable error. A
+   --  recoverable error corresponds to the definiton of "error" in section 1.2
+   --  of the XML 1.0 specification. Details of the error are stored in
+   --  Occurrence.
+   --
+   --  The reader must continue to provide normal parsing events after invoking
+   --  this subprogram.
+   --
+   --  If this subprogram sets Success to False the reader stops parsing and
+   --  reports an fatal error. The reader uses the function Error_String to get
+   --  the error message.
 
    not overriding function Error_String
     (Self : SAX_Error_Handler)
@@ -62,12 +73,20 @@ package XML.SAX.Error_Handlers is
 
    not overriding procedure Fatal_Error
     (Self       : in out SAX_Error_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean) is null;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception) is null;
+   --  A reader must use this subprogram to report a non-recoverable error.
+   --  Details of the error are stored in Occurrence.
 
    not overriding procedure Warning
     (Self       : in out SAX_Error_Handler;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is null;
+   --  A reader might use this subprogram to report a warning. Warnings are
+   --  conditions that are not errors or fatal errors as defined by the XML 1.0
+   --  specification. Details of the warning are stored in Occurrence.
+   --
+   --  If this subprogram sets Success to False the reader stops parsing and
+   --  reports an fatal error. The reader uses the function Error_String to get
+   --  the error message.
 
 end XML.SAX.Error_Handlers;
