@@ -122,13 +122,13 @@ package body Parser_Generator is
                begin
                   if not Element.Is_Empty then
                      New_Line (Output);
-                     Put (Output, "            when ");
+                     Put (Output, "               when ");
                      Put (Output, Element.Choice, 0);
                      Put_Line (Output, " =>");
 
                      for J in 1 .. Natural (Element.Text.Length) loop
                         if Length (Element.Text.Element (J)) /= 0 then
-                           Put (Output, "         ");
+                           Put (Output, "            ");
                            Put_Line (Output, Element.Text.Element (J));
 
                         else
