@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -274,6 +274,7 @@ package Matreshka.Internals.Unicode.Ucd is
      Break_Before,
      Mandatory_Break,
      Contingent_Break,
+     Conditional_Japanese_Starter,
      Close_Punctuation,
      Combining_Mark,
      Close_Parenthesis,
@@ -282,6 +283,7 @@ package Matreshka.Internals.Unicode.Ucd is
      Glue,
      H2,
      H3,
+     Hebrew_Letter,
      Hyphen,
      Ideographic,
      Inseparable,
