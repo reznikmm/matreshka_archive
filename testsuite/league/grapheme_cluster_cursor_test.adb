@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,7 @@ with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Application;
+with League.Characters;
 with League.Strings.Cursors.Grapheme_Clusters;
 
 procedure Grapheme_Cluster_Cursor_Test is
@@ -318,6 +319,8 @@ procedure Grapheme_Cluster_Cursor_Test is
                   end loop;
                end Skip_Spaces;
 
+               OK : Boolean := True;
+
             begin
                Parse_Break_Indicator;
 
@@ -326,8 +329,25 @@ procedure Grapheme_Cluster_Cursor_Test is
                   Parse_Break_Indicator;
                end loop;
 
-               X := To_Universal_String (Source.all);
-               Process (X, Data.all);
+               --  Check whether all source characters are valid Unicode
+               --  characters. Unicode 6.1.0 introduce use of surrogate code
+               --  points in test data, these tests can't be used to check
+               --  Matreshka, because such data is invalid.
+
+               for J in Source'Range loop
+                  if not League.Characters.To_Universal_Character
+                          (Source (J)).Is_Valid
+                  then
+                     OK := False;
+
+                     exit;
+                  end if;
+               end loop;
+
+               if OK then
+                  X := To_Universal_String (Source.all);
+                  Process (X, Data.all);
+               end if;
 
                Deep_Free (Data);
                Free (Source);
