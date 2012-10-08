@@ -320,16 +320,21 @@ package body XML.SAX.Simple_Readers.Parser is
 
             --  Execute User Action.
 
-            case YY_Rule_Id is
-               pragma Style_Checks ("M127");
-%%
-               pragma Style_Checks ("M79");
+            if Self.Continue then
+               --  When scanner reports fatal error it sets Self.Continue to
+               --  False. Thus, parser action must not be executed at all.
 
-               when others =>
-                  raise Program_Error
-                    with "Unhandled state"
-                           & Integer'Image (YY_Rule_Id) & " in parser";
-            end case;
+               case YY_Rule_Id is
+                  pragma Style_Checks ("M127");
+%%
+                  pragma Style_Checks ("M79");
+
+                  when others =>
+                     raise Program_Error
+                       with "Unhandled state"
+                              & Integer'Image (YY_Rule_Id) & " in parser";
+               end case;
+            end if;
 
             --  Pop RHS states and goto next state.
 

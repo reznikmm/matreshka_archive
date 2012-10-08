@@ -320,686 +320,691 @@ package body XML.SAX.Simple_Readers.Parser is
 
             --  Execute User Action.
 
-            case YY_Rule_Id is
-               pragma Style_Checks ("M127");
-
-            when 1 =>
-               Actions.On_Start_Of_Document (Self);
-
-            when 2 =>
-               null;
-
-            when 3 =>
-               null;
-
-            when 4 =>
-               null;
-
-            when 5 =>
-               null;
-
-            when 6 =>
-               Actions.On_XML_Declaration
-                (Self, YY.Value_Stack (YY.TOS -  5).String, YY.Value_Stack (YY.TOS -  2).String);
-
-            when 7 =>
-               Actions.On_XML_Declaration
-                (Self, YY.Value_Stack (YY.TOS -  2).String, Matreshka.Internals.Strings.Shared_Empty'Access);
-
-            when 8 =>
-               --  [XML1.0 2.8]
-               --
-               --  "Note: When an XML 1.0 processor encounters a document that
-               --  specifies a 1.x version number other than '1.0', it will process
-               --  it as a 1.0 document. This means that an XML 1.0 processor will
-               --  accept 1.x documents provided they do not use any non-1.0
-               --  features."
-               --
-               --  [XML1.1 4.3.4]
-               --
-               --  "Each entity, including the document entity, can be separately
-               --  declared as XML 1.0 or XML 1.1. The version declaration appearing
-               --  in the document entity determines the version of the document as a
-               --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
-               --  so that otherwise duplicated versions of external entities,
-               --  particularly DTD external subsets, need not be maintained.
-               --  However, in such a case the rules of XML 1.1 are applied to the
-               --  entire document."
-
-               Actions.On_Text_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  4).String,
-                 YY.Value_Stack (YY.TOS -  1).String);
-
-            when 9 =>
-               Actions.On_Text_Declaration
-                (Self,
-                 Matreshka.Internals.Strings.Shared_Empty'Access,
-                 YY.Value_Stack (YY.TOS -  1).String);
-
-            when 10 =>
-               Actions.On_Standalone (Self, YY.Value_Stack (YY.TOS).String);
-
-            when 11 =>
-               null;
-
-            when 12 =>
-               null;
-
-            when 13 =>
-               null;
-
-            when 14 =>
-               null;
-
-            when 15 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
-
-            when 16 =>
-               null;
-
-            when 17 =>
-               Actions.On_Processing_Instruction
-                (Self,
-                 YY.Value_Stack (YY.TOS -  1).Symbol,
-                 YY.Value_Stack (YY.TOS).String);
-
-            when 18 =>
-               --  Document type declaration, rule [28]. Once external identifier are
-               --  recognized external document type declaration subset need to be parsed
-               --  after processing of internal subset. External subset is inserted
-               --  immediately after the internal subset. Thus original rule [28] is
-               --  rewritten and extended to reflect this inclusion.
-
-               Actions.On_Start_Of_Document_Type_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  1).Symbol,
-                 True);
-
-            when 19 =>
-               Actions.On_End_Of_Document_Type_Declaration (Self);
+            if Self.Continue then
+               --  When scanner reports fatal error it sets Self.Continue to
+               --  False. Thus, parser action must not be executed at all.
+
+               case YY_Rule_Id is
+                  pragma Style_Checks ("M127");
+
+               when 1 =>
+                  Actions.On_Start_Of_Document (Self);
+
+               when 2 =>
+                  null;
+
+               when 3 =>
+                  null;
+
+               when 4 =>
+                  null;
+
+               when 5 =>
+                  null;
+
+               when 6 =>
+                  Actions.On_XML_Declaration
+                   (Self, YY.Value_Stack (YY.TOS -  5).String, YY.Value_Stack (YY.TOS -  2).String);
+
+               when 7 =>
+                  Actions.On_XML_Declaration
+                   (Self, YY.Value_Stack (YY.TOS -  2).String, Matreshka.Internals.Strings.Shared_Empty'Access);
+
+               when 8 =>
+                  --  [XML1.0 2.8]
+                  --
+                  --  "Note: When an XML 1.0 processor encounters a document that
+                  --  specifies a 1.x version number other than '1.0', it will process
+                  --  it as a 1.0 document. This means that an XML 1.0 processor will
+                  --  accept 1.x documents provided they do not use any non-1.0
+                  --  features."
+                  --
+                  --  [XML1.1 4.3.4]
+                  --
+                  --  "Each entity, including the document entity, can be separately
+                  --  declared as XML 1.0 or XML 1.1. The version declaration appearing
+                  --  in the document entity determines the version of the document as a
+                  --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
+                  --  so that otherwise duplicated versions of external entities,
+                  --  particularly DTD external subsets, need not be maintained.
+                  --  However, in such a case the rules of XML 1.1 are applied to the
+                  --  entire document."
+
+                  Actions.On_Text_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  4).String,
+                    YY.Value_Stack (YY.TOS -  1).String);
+
+               when 9 =>
+                  Actions.On_Text_Declaration
+                   (Self,
+                    Matreshka.Internals.Strings.Shared_Empty'Access,
+                    YY.Value_Stack (YY.TOS -  1).String);
+
+               when 10 =>
+                  Actions.On_Standalone (Self, YY.Value_Stack (YY.TOS).String);
+
+               when 11 =>
+                  null;
+
+               when 12 =>
+                  null;
+
+               when 13 =>
+                  null;
+
+               when 14 =>
+                  null;
+
+               when 15 =>
+                  Process_Comment
+                   (Self,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS).String));
+
+               when 16 =>
+                  null;
+
+               when 17 =>
+                  Actions.On_Processing_Instruction
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  1).Symbol,
+                    YY.Value_Stack (YY.TOS).String);
+
+               when 18 =>
+                  --  Document type declaration, rule [28]. Once external identifier are
+                  --  recognized external document type declaration subset need to be parsed
+                  --  after processing of internal subset. External subset is inserted
+                  --  immediately after the internal subset. Thus original rule [28] is
+                  --  rewritten and extended to reflect this inclusion.
+
+                  Actions.On_Start_Of_Document_Type_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  1).Symbol,
+                    True);
 
-            when 20 =>
-               null;
+               when 19 =>
+                  Actions.On_End_Of_Document_Type_Declaration (Self);
 
-            when 21 =>
-               Actions.On_Start_Of_Document_Type_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol,
-                 False);
+               when 20 =>
+                  null;
 
-            when 22 =>
-               --  Document type declaration, rule [28].
+               when 21 =>
+                  Actions.On_Start_Of_Document_Type_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS).Symbol,
+                    False);
 
-               Actions.On_End_Of_Document_Type_Declaration (Self);
+               when 22 =>
+                  --  Document type declaration, rule [28].
 
-            when 23 =>
-               null;
+                  Actions.On_End_Of_Document_Type_Declaration (Self);
 
-            when 24 =>
-               Actions.On_No_Document_Type_Declaration (Self);
+               when 23 =>
+                  null;
 
-            when 25 =>
-               --  ExternalID specified by SYSTEM, rule [75].
+               when 24 =>
+                  Actions.On_No_Document_Type_Declaration (Self);
 
-               Process_External_Id
-                (Self,
-                 League.Strings.Empty_Universal_String,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
-
-            when 26 =>
-               --  ExternalID specified by PUBLIC, rule [75].
-
-               Process_External_Id
-                (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS -  1).String),
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
-
-            when 27 =>
-               null;
-
-            when 28 =>
-               null;
-
-            when 29 =>
-               null;
-
-            when 30 =>
-               null;
-
-            when 31 =>
-               null;
-
-            when 32 =>
-               null;
-
-            when 33 =>
-               null;
-
-            when 34 =>
-               null;
-
-            when 35 =>
-               null;
-
-            when 36 =>
-               null;
-
-            when 37 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
-
-            when 38 =>
-               null;
-
-            when 39 =>
-               --  Text declaration comes from external subset or external entity.
-
-               null;
-
-            when 40 =>
-               --  Conditional sections can be used in external entities only, but
-               --  external paramete entity reference can insert conditional sections
-               --  from external entity into the internal subset. This situation is
-               --  handled by the scanner.
-
-               null;
-
-            when 41 =>
-               --  [XML [WFC: PE Between Declarations]]
-               --
-               --  "The replacement text of a parameter entity reference in a DeclSep
-               --  MUST match the production extSubsetDecl."
-               --
-               --  This production is used to enforce this check.
-
-               null;
-
-            when 42 =>
-               Actions.On_Notation_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  3).Symbol,
-                 Matreshka.Internals.Strings.Shared_Empty'Access,
-                 YY.Value_Stack (YY.TOS -  1).String);
-
-            when 43 =>
-               Actions.On_Notation_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  3).Symbol,
-                 YY.Value_Stack (YY.TOS -  1).String,
-                 Matreshka.Internals.Strings.Shared_Empty'Access);
-
-            when 44 =>
-               Actions.On_Notation_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  4).Symbol,
-                 YY.Value_Stack (YY.TOS -  2).String,
-                 YY.Value_Stack (YY.TOS -  1).String);
-
-            when 45 =>
-               Actions.On_General_Entity_Declaration
-                (Self        => Self,
-                 Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
-                 Is_External => False,
-                 Value       =>
-                  League.Strings.Internals.Create
-                   (YY.Value_Stack (YY.TOS -  1).String),
-                 Notation    => Matreshka.Internals.XML.No_Symbol);
-
-            when 46 =>
-               Actions.On_General_Entity_Declaration
-                (Self        => Self,
-                 Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
-                 Is_External => True,
-                 Value       => League.Strings.Empty_Universal_String,
-                 Notation    => Matreshka.Internals.XML.No_Symbol);
-
-            when 47 =>
-               Actions.On_General_Entity_Declaration
-                (Self        => Self,
-                 Symbol      => YY.Value_Stack (YY.TOS -  4).Symbol,
-                 Is_External => True,
-                 Value       => League.Strings.Empty_Universal_String,
-                 Notation    => YY.Value_Stack (YY.TOS -  1).Symbol);
-
-            when 48 =>
-               Actions.On_Parameter_Entity_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  2).Symbol,
-                 False,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS -  1).String));
-
-            when 49 =>
-               Actions.On_Parameter_Entity_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS -  2).Symbol,
-                 True,
-                 League.Strings.Empty_Universal_String);
+               when 25 =>
+                  --  ExternalID specified by SYSTEM, rule [75].
 
-            when 50 =>
-               --  Entity value including surrounding delimiters.
+                  Process_External_Id
+                   (Self,
+                    League.Strings.Empty_Universal_String,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS).String));
+
+               when 26 =>
+                  --  ExternalID specified by PUBLIC, rule [75].
+
+                  Process_External_Id
+                   (Self,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS -  1).String),
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS).String));
+
+               when 27 =>
+                  null;
+
+               when 28 =>
+                  null;
+
+               when 29 =>
+                  null;
+
+               when 30 =>
+                  null;
+
+               when 31 =>
+                  null;
+
+               when 32 =>
+                  null;
+
+               when 33 =>
+                  null;
+
+               when 34 =>
+                  null;
+
+               when 35 =>
+                  null;
+
+               when 36 =>
+                  null;
+
+               when 37 =>
+                  Process_Comment
+                   (Self,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS).String));
+
+               when 38 =>
+                  null;
+
+               when 39 =>
+                  --  Text declaration comes from external subset or external entity.
+
+                  null;
+
+               when 40 =>
+                  --  Conditional sections can be used in external entities only, but
+                  --  external paramete entity reference can insert conditional sections
+                  --  from external entity into the internal subset. This situation is
+                  --  handled by the scanner.
+
+                  null;
+
+               when 41 =>
+                  --  [XML [WFC: PE Between Declarations]]
+                  --
+                  --  "The replacement text of a parameter entity reference in a DeclSep
+                  --  MUST match the production extSubsetDecl."
+                  --
+                  --  This production is used to enforce this check.
+
+                  null;
+
+               when 42 =>
+                  Actions.On_Notation_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  3).Symbol,
+                    Matreshka.Internals.Strings.Shared_Empty'Access,
+                    YY.Value_Stack (YY.TOS -  1).String);
+
+               when 43 =>
+                  Actions.On_Notation_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  3).Symbol,
+                    YY.Value_Stack (YY.TOS -  1).String,
+                    Matreshka.Internals.Strings.Shared_Empty'Access);
+
+               when 44 =>
+                  Actions.On_Notation_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  4).Symbol,
+                    YY.Value_Stack (YY.TOS -  2).String,
+                    YY.Value_Stack (YY.TOS -  1).String);
+
+               when 45 =>
+                  Actions.On_General_Entity_Declaration
+                   (Self        => Self,
+                    Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
+                    Is_External => False,
+                    Value       =>
+                     League.Strings.Internals.Create
+                      (YY.Value_Stack (YY.TOS -  1).String),
+                    Notation    => Matreshka.Internals.XML.No_Symbol);
+
+               when 46 =>
+                  Actions.On_General_Entity_Declaration
+                   (Self        => Self,
+                    Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
+                    Is_External => True,
+                    Value       => League.Strings.Empty_Universal_String,
+                    Notation    => Matreshka.Internals.XML.No_Symbol);
+
+               when 47 =>
+                  Actions.On_General_Entity_Declaration
+                   (Self        => Self,
+                    Symbol      => YY.Value_Stack (YY.TOS -  4).Symbol,
+                    Is_External => True,
+                    Value       => League.Strings.Empty_Universal_String,
+                    Notation    => YY.Value_Stack (YY.TOS -  1).Symbol);
+
+               when 48 =>
+                  Actions.On_Parameter_Entity_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  2).Symbol,
+                    False,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS -  1).String));
+
+               when 49 =>
+                  Actions.On_Parameter_Entity_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  2).Symbol,
+                    True,
+                    League.Strings.Empty_Universal_String);
 
-               Move (YYVal, YY.Value_Stack (YY.TOS -  1));
+               when 50 =>
+                  --  Entity value including surrounding delimiters.
 
-            when 51 =>
-               --  Additional string segment in entity value.
+                  Move (YYVal, YY.Value_Stack (YY.TOS -  1));
 
-               Move
-                (YYVal,
-                 YY.Value_Stack (YY.TOS -  1));
-               Matreshka.Internals.Strings.Operations.Append
-                (YYVal.String,
-                 YY.Value_Stack (YY.TOS).String);
+               when 51 =>
+                  --  Additional string segment in entity value.
 
-            when 52 =>
-               --  Single string segment in entity value.
+                  Move
+                   (YYVal,
+                    YY.Value_Stack (YY.TOS -  1));
+                  Matreshka.Internals.Strings.Operations.Append
+                   (YYVal.String,
+                    YY.Value_Stack (YY.TOS).String);
 
-               Move
-                (YYVal,
-                 YY.Value_Stack (YY.TOS));
+               when 52 =>
+                  --  Single string segment in entity value.
 
-            when 53 =>
-               Set_String
-                (Item          => YYVal,
-                 String        => League.Strings.Empty_Universal_String,
-                 Is_Whitespace => False);
+                  Move
+                   (YYVal,
+                    YY.Value_Stack (YY.TOS));
 
-            when 54 =>
-               Actions.On_Start_Of_Element_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               when 53 =>
+                  Set_String
+                   (Item          => YYVal,
+                    String        => League.Strings.Empty_Universal_String,
+                    Is_Whitespace => False);
 
-            when 55 =>
-               null;
+               when 54 =>
+                  Actions.On_Start_Of_Element_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS).Symbol);
 
-            when 56 =>
-               Actions.On_Empty_Declaration (Self);
+               when 55 =>
+                  null;
 
-            when 57 =>
-               Actions.On_Any_Declaration (Self);
+               when 56 =>
+                  Actions.On_Empty_Declaration (Self);
 
-            when 58 =>
-               null;
+               when 57 =>
+                  Actions.On_Any_Declaration (Self);
 
-            when 59 =>
-               null;
+               when 58 =>
+                  null;
 
-            when 60 =>
-               null;
+               when 59 =>
+                  null;
 
-            when 61 =>
-               null;
+               when 60 =>
+                  null;
 
-            when 62 =>
-               null;
+               when 61 =>
+                  null;
 
-            when 63 =>
-               null;
+               when 62 =>
+                  null;
 
-            when 64 =>
-               null;
+               when 63 =>
+                  null;
 
-            when 65 =>
-               null;
+               when 64 =>
+                  null;
 
-            when 66 =>
-               null;
+               when 65 =>
+                  null;
 
-            when 67 =>
-               null;
+               when 66 =>
+                  null;
 
-            when 68 =>
-               null;
+               when 67 =>
+                  null;
 
-            when 69 =>
-               null;
+               when 68 =>
+                  null;
 
-            when 70 =>
-               null;
+               when 69 =>
+                  null;
 
-            when 71 =>
-               null;
+               when 70 =>
+                  null;
 
-            when 72 =>
-               null;
+               when 71 =>
+                  null;
 
-            when 73 =>
-               null;
+               when 72 =>
+                  null;
 
-            when 74 =>
-               null;
+               when 73 =>
+                  null;
 
-            when 75 =>
-               null;
+               when 74 =>
+                  null;
 
-            when 76 =>
-               null;
+               when 75 =>
+                  null;
 
-            when 77 =>
-               null;
+               when 76 =>
+                  null;
 
-            when 78 =>
-               null;
+               when 77 =>
+                  null;
 
-            when 79 =>
-               null;
+               when 78 =>
+                  null;
 
-            when 80 =>
-               null;
+               when 79 =>
+                  null;
 
-            when 81 =>
-               null;
+               when 80 =>
+                  null;
 
-            when 82 =>
-               null;
+               when 81 =>
+                  null;
 
-            when 83 =>
-               null;
+               when 82 =>
+                  null;
 
-            when 84 =>
-               null;
+               when 83 =>
+                  null;
 
-            when 85 =>
-               null;
+               when 84 =>
+                  null;
 
-            when 86 =>
-               Actions.On_Mixed_Content_Declaration (Self, True);
+               when 85 =>
+                  null;
 
-            when 87 =>
-               --  Mixed_content is added here to allow ayacc to generate usable code.
-               --  Asterisk can be omitted only when Mixed_content is empty, this check
-               --  is done in handling subprogram.
+               when 86 =>
+                  Actions.On_Mixed_Content_Declaration (Self, True);
 
-               Actions.On_Mixed_Content_Declaration (Self, False);
+               when 87 =>
+                  --  Mixed_content is added here to allow ayacc to generate usable code.
+                  --  Asterisk can be omitted only when Mixed_content is empty, this check
+                  --  is done in handling subprogram.
 
-            when 88 =>
-               null;
+                  Actions.On_Mixed_Content_Declaration (Self, False);
 
-            when 89 =>
-               Actions.On_Name_In_Mixed_Content_Declaration (Self);
+               when 88 =>
+                  null;
 
-            when 90 =>
-               null;
+               when 89 =>
+                  Actions.On_Name_In_Mixed_Content_Declaration (Self);
 
-            when 91 =>
-               Actions.On_Start_Of_Attribute_List_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               when 90 =>
+                  null;
 
-            when 92 =>
-               null;
+               when 91 =>
+                  Actions.On_Start_Of_Attribute_List_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS).Symbol);
 
-            when 93 =>
-               null;
+               when 92 =>
+                  null;
 
-            when 94 =>
-               null;
+               when 93 =>
+                  null;
 
-            when 95 =>
-               null;
+               when 94 =>
+                  null;
 
-            when 96 =>
-               Actions.On_CDATA_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 95 =>
+                  null;
 
-            when 97 =>
-               null;
+               when 96 =>
+                  Actions.On_CDATA_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 98 =>
-               Actions.On_Id_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 97 =>
+                  null;
 
-            when 99 =>
-               null;
+               when 98 =>
+                  Actions.On_Id_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 100 =>
-               Actions.On_IdRef_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 99 =>
+                  null;
 
-            when 101 =>
-               null;
+               when 100 =>
+                  Actions.On_IdRef_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 102 =>
-               Actions.On_IdRefs_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 101 =>
+                  null;
 
-            when 103 =>
-               null;
+               when 102 =>
+                  Actions.On_IdRefs_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 104 =>
-               Actions.On_Entity_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 103 =>
+                  null;
 
-            when 105 =>
-               null;
+               when 104 =>
+                  Actions.On_Entity_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 106 =>
-               Actions.On_Entities_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 105 =>
+                  null;
 
-            when 107 =>
-               null;
+               when 106 =>
+                  Actions.On_Entities_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 108 =>
-               Actions.On_NmToken_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 107 =>
+                  null;
 
-            when 109 =>
-               null;
+               when 108 =>
+                  Actions.On_NmToken_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 110 =>
-               Actions.On_NmTokens_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 109 =>
+                  null;
 
-            when 111 =>
-               null;
+               when 110 =>
+                  Actions.On_NmTokens_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 112 =>
-               Actions.On_Notation_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 111 =>
+                  null;
 
-            when 113 =>
-               null;
+               when 112 =>
+                  Actions.On_Notation_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 114 =>
-               Actions.On_Enumeration_Attribute_Declaration
-                (Self   => Self,
-                 Symbol => YY.Value_Stack (YY.TOS).Symbol);
+               when 113 =>
+                  null;
 
-            when 115 =>
-               null;
+               when 114 =>
+                  Actions.On_Enumeration_Attribute_Declaration
+                   (Self   => Self,
+                    Symbol => YY.Value_Stack (YY.TOS).Symbol);
 
-            when 116 =>
-               null;
+               when 115 =>
+                  null;
 
-            when 117 =>
-               null;
+               when 116 =>
+                  null;
 
-            when 118 =>
-               null;
+               when 117 =>
+                  null;
 
-            when 119 =>
-               null;
+               when 118 =>
+                  null;
 
-            when 120 =>
-               null;
+               when 119 =>
+                  null;
 
-            when 121 =>
-               null;
+               when 120 =>
+                  null;
 
-            when 122 =>
-               null;
+               when 121 =>
+                  null;
 
-            when 123 =>
-               null;
+               when 122 =>
+                  null;
 
-            when 124 =>
-               null;
+               when 123 =>
+                  null;
 
-            when 125 =>
-               null;
+               when 124 =>
+                  null;
 
-            when 126 =>
-               null;
+               when 125 =>
+                  null;
 
-            when 127 =>
-               null;
+               when 126 =>
+                  null;
 
-            when 128 =>
-               null;
+               when 127 =>
+                  null;
 
-            when 129 =>
-               null;
+               when 128 =>
+                  null;
 
-            when 130 =>
-               null;
+               when 129 =>
+                  null;
 
-            when 131 =>
-               null;
+               when 130 =>
+                  null;
 
-            when 132 =>
-               null;
+               when 131 =>
+                  null;
 
-            when 133 =>
-               null;
+               when 132 =>
+                  null;
 
-            when 134 =>
-               null;
+               when 133 =>
+                  null;
 
-            when 135 =>
-               null;
+               when 134 =>
+                  null;
 
-            when 136 =>
-               Actions.On_Required_Attribute_Default_Declaration (Self);
+               when 135 =>
+                  null;
 
-            when 137 =>
-               Actions.On_Implied_Attribute_Default_Declaration (Self);
+               when 136 =>
+                  Actions.On_Required_Attribute_Default_Declaration (Self);
 
-            when 138 =>
-               Actions.On_Fixed_Attribute_Default_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).String);
+               when 137 =>
+                  Actions.On_Implied_Attribute_Default_Declaration (Self);
 
-            when 139 =>
-               Actions.On_Attribute_Default_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).String);
+               when 138 =>
+                  Actions.On_Fixed_Attribute_Default_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS).String);
 
-            when 140 =>
-               Actions.On_Open_Of_Tag
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               when 139 =>
+                  Actions.On_Attribute_Default_Declaration
+                   (Self,
+                    YY.Value_Stack (YY.TOS).String);
 
-            when 141 =>
-               null;
+               when 140 =>
+                  Actions.On_Open_Of_Tag
+                   (Self,
+                    YY.Value_Stack (YY.TOS).Symbol);
 
-            when 142 =>
-               Actions.On_Start_Tag (Self);
+               when 141 =>
+                  null;
 
-            when 143 =>
-               Actions.On_End_Tag
-                (Self,
-                 YY.Value_Stack (YY.TOS -  1).Symbol);
+               when 142 =>
+                  Actions.On_Start_Tag (Self);
 
-            when 144 =>
-               Actions.On_Empty_Element_Tag (Self);
+               when 143 =>
+                  Actions.On_End_Tag
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 145 =>
-               null;
+               when 144 =>
+                  Actions.On_Empty_Element_Tag (Self);
 
-            when 146 =>
-               null;
+               when 145 =>
+                  null;
 
-            when 147 =>
-               null;
+               when 146 =>
+                  null;
 
-            when 148 =>
-               null;
+               when 147 =>
+                  null;
 
-            when 149 =>
-               Actions.On_Character_Data
-                (Self,
-                 YY.Value_Stack (YY.TOS).String,
-                 YY.Value_Stack (YY.TOS).Is_Whitespace);
+               when 148 =>
+                  null;
 
-            when 150 =>
-               Actions.On_Character_Data
-                (Self,
-                 YY.Value_Stack (YY.TOS).String,
-                 YY.Value_Stack (YY.TOS).Is_Whitespace);
+               when 149 =>
+                  Actions.On_Character_Data
+                   (Self,
+                    YY.Value_Stack (YY.TOS).String,
+                    YY.Value_Stack (YY.TOS).Is_Whitespace);
 
-            when 151 =>
-               null;
+               when 150 =>
+                  Actions.On_Character_Data
+                   (Self,
+                    YY.Value_Stack (YY.TOS).String,
+                    YY.Value_Stack (YY.TOS).Is_Whitespace);
 
-            when 152 =>
-               null;
+               when 151 =>
+                  null;
 
-            when 153 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
+               when 152 =>
+                  null;
 
-            when 154 =>
-               null;
+               when 153 =>
+                  Process_Comment
+                   (Self,
+                    League.Strings.Internals.Create
+                     (YY.Value_Stack (YY.TOS).String));
 
-            when 155 =>
-               --  TextDecl come from substitution of external parsed entities.
+               when 154 =>
+                  null;
 
-               null;
+               when 155 =>
+                  --  TextDecl come from substitution of external parsed entities.
 
-            when 156 =>
-               --  Synthetic rule to check validity of entity boundaries.
+                  null;
 
-               null;
+               when 156 =>
+                  --  Synthetic rule to check validity of entity boundaries.
 
-            when 157 =>
-               Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
+                  null;
 
-            when 158 =>
-               Actions.On_Element_Attribute
-                (Self,
-                 YY.Value_Stack (YY.TOS -  3).Symbol,
-                 YY.Value_Stack (YY.TOS).String);
+               when 157 =>
+                  Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
 
-            when 159 =>
-               Actions.On_Element_Attribute_Name
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               when 158 =>
+                  Actions.On_Element_Attribute
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  3).Symbol,
+                    YY.Value_Stack (YY.TOS).String);
 
-            when 160 =>
-               Actions.On_Element_Attribute
-                (Self,
-                 YY.Value_Stack (YY.TOS -  3).Symbol,
-                 YY.Value_Stack (YY.TOS).String);
+               when 159 =>
+                  Actions.On_Element_Attribute_Name
+                   (Self,
+                    YY.Value_Stack (YY.TOS).Symbol);
 
-            when 161 =>
-               null;
-               pragma Style_Checks ("M79");
+               when 160 =>
+                  Actions.On_Element_Attribute
+                   (Self,
+                    YY.Value_Stack (YY.TOS -  3).Symbol,
+                    YY.Value_Stack (YY.TOS).String);
 
-               when others =>
-                  raise Program_Error
-                    with "Unhandled state"
-                           & Integer'Image (YY_Rule_Id) & " in parser";
-            end case;
+               when 161 =>
+                  null;
+                  pragma Style_Checks ("M79");
+
+                  when others =>
+                     raise Program_Error
+                       with "Unhandled state"
+                              & Integer'Image (YY_Rule_Id) & " in parser";
+               end case;
+            end if;
 
             --  Pop RHS states and goto next state.
 
