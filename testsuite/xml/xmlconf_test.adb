@@ -53,7 +53,6 @@ with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with XMLConf.Testsuite_Handlers;
-with Put_Line;
 
 procedure XMLConf_Test is
 
@@ -99,8 +98,6 @@ begin
          end if;
       end loop;
    end if;
-
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
 
    --  Load set of suppressed tests.
 
