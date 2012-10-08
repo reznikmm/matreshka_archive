@@ -2579,7 +2579,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Callbacks.Call_Fatal_Error
        (Self,
         League.Strings.To_Universal_String ("unexpected character"));
-      Self.Error_Reported := True;
 
       return Error;
    end On_Unexpected_Character;
