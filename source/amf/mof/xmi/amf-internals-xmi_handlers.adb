@@ -515,12 +515,10 @@ package body AMF.Internals.XMI_Handlers is
 
    overriding procedure Fatal_Error
     (Self       : in out XMI_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean) is
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception) is
    begin
       if Self.Diagnosis.Is_Empty then
          Self.Diagnosis := "XML fatal error: " & Occurrence.Message;
-         Success := False;
       end if;
    end Fatal_Error;
 

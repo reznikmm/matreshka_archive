@@ -149,8 +149,7 @@ private
 
    overriding procedure Fatal_Error
     (Self       : in out XMI_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception);
 
    overriding procedure Set_Document_Locator
     (Self    : in out XMI_Handler;
