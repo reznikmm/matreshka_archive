@@ -62,15 +62,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
        (League.Strings.Internals.Create (Text), Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Characters;
 
    ------------------
@@ -84,15 +84,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
       Self.Lexical_Handler.Comment (Comment, Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Lexical_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Lexical_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Comment;
 
    -----------------------
@@ -104,15 +104,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
       Self.Content_Handler.End_Document (Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_End_Document;
 
    ------------------
@@ -124,15 +124,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
       Self.Lexical_Handler.End_DTD (Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Lexical_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Lexical_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_End_DTD;
 
    ----------------------
@@ -155,15 +155,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success        => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_End_Element;
 
    -----------------------------
@@ -179,15 +179,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_End_Prefix_Mapping;
 
    ----------------
@@ -208,15 +208,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Error_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Error;
 
    --------------------------------------
@@ -233,15 +233,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
        (Name, Public_Id, System_Id, Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Declaration_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Declaration_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_External_Entity_Declaration;
 
    ----------------------
@@ -260,16 +260,18 @@ package body XML.SAX.Simple_Readers.Callbacks is
           Column    => 0,
           Message   => Message));
 
-      Self.Error_Message  := Message;
       Self.Continue       := False;
       Self.Error_Reported := True;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+
+         --  Opposite to all other callbacks, where is no reason to call
+         --  Fatal_Error here again.
+
+         Self.Continue       := False;
+         Self.Error_Reported := True;
    end Call_Fatal_Error;
 
    -------------------------------
@@ -284,15 +286,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
        (League.Strings.Internals.Create (Text), Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Ignorable_Whitespace;
 
    --------------------------------------
@@ -308,15 +310,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
        (Name, Value, Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Declaration_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Declaration_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Internal_Entity_Declaration;
 
    -------------------------------
@@ -337,15 +339,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success   => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.DTD_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.DTD_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Notation_Declaration;
 
    ---------------------------------
@@ -364,15 +366,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Processing_Instruction;
 
    -------------------------
@@ -434,13 +436,13 @@ package body XML.SAX.Simple_Readers.Callbacks is
            Success   => Self.Continue);
 
          if not Self.Continue then
-            Self.Error_Message := Self.Content_Handler.Error_String;
+            Call_Fatal_Error (Self, Self.Entity_Resolver.Error_String);
 
             return;
          end if;
       end if;
 
-      --  Use built-in entity resolver when entity was nat resolved by user
+      --  Use built-in entity resolver when entity was not resolved by user
       --  defined entity resolver.
 
       if Source = null then
@@ -451,15 +453,21 @@ package body XML.SAX.Simple_Readers.Callbacks is
            Source        => Source,
            Success       => Self.Continue,
            Error_Message => Self.Error_Message);
+
+         if not Self.Continue then
+            Call_Fatal_Error (Self, Self.Error_Message);
+
+            return;
+         end if;
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String
-            ("exception come from entity resolver");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("exception come from entity resolver"));
    end Call_Resolve_Entity;
 
    -------------------------------
@@ -476,10 +484,10 @@ package body XML.SAX.Simple_Readers.Callbacks is
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Set_Document_Locator;
 
    -------------------------
@@ -491,15 +499,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
       Self.Content_Handler.Start_Document (Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Start_Document;
 
    --------------------
@@ -520,15 +528,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success   => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Lexical_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Lexical_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Start_DTD;
 
    ------------------------
@@ -553,15 +561,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success        => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Start_Element;
 
    -------------------------------
@@ -581,15 +589,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Success       => Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Start_Prefix_Mapping;
 
    --------------------------------------
@@ -607,15 +615,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
        (Name, Public_Id, System_Id, Notation_Name, Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.DTD_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.DTD_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Unparsed_Entity_Declaration;
 
    ------------------
@@ -636,15 +644,15 @@ package body XML.SAX.Simple_Readers.Callbacks is
         Self.Continue);
 
       if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
+         Call_Fatal_Error (Self, Self.Error_Handler.Error_String);
       end if;
 
    exception
       when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Warning;
 
 end XML.SAX.Simple_Readers.Callbacks;
