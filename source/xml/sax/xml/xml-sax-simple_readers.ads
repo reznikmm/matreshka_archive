@@ -92,8 +92,6 @@ package XML.SAX.Simple_Readers is
    --  Reads next chunk of data from the input source and parse it. Input
    --  source must be setted by call to procedure Set_Input_Source.
 
-   Put_Line : access procedure (Item : League.Strings.Universal_String);
-
 private
 
    type Token is
