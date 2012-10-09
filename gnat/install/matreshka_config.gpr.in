@@ -82,4 +82,14 @@ abstract project Matreshka_Config is
 
    Include_Dir := "@PREFIX@/include";
 
+   --  Linker options to link with external libraries.
+
+   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
+
+   PostgreSQL_Library_Options := (@POSTGRESQL_LIBRARY_OPTIONS@);
+
+   OCI_Library_Options := (@OCI_LIBRARY_OPTIONS@);
+
+   Firebird_Library_Options := (@FIREBIRD_LIBRARY_OPTIONS@);
+
 end Matreshka_Config;

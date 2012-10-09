@@ -74,4 +74,12 @@ library project Matreshka_SQL_Firebird is
 
    package Compiler renames Matreshka_Common.Compiler;
 
+   ------------
+   -- Linker --
+   ------------
+
+   package Linker is
+      for Linker_Options use Matreshka_Config.Firebird_Library_Options;
+   end Linker;
+
 end Matreshka_SQL_Firebird;
