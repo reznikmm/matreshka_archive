@@ -90,6 +90,18 @@ Requires: libleague%{PACKAGE_SUFFIX}
 %description -n libleague%{PACKAGE_SUFFIX}-devel
 Matreshka is a set of Ada components to develop information systems.
 
+%package -n libmatreshka-xml%{PACKAGE_SUFFIX}
+Summary: XML library of Matreshka components for Ada programmers
+%description -n libmatreshka-xml%{PACKAGE_SUFFIX}
+XML Processor component of Matreshka framework for Ada application developers
+
+%package -n libmatreshka-xml%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: XML library of Matreshka components for Ada programmers
+Requires: libmatreshka-xml%{PACKAGE_SUFFIX}
+%description -n libmatreshka-xml%{PACKAGE_SUFFIX}-devel
+XML Processor component of Matreshka framework for Ada application developers
+
 %package -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
 Summary: FastCGI library of Matreshka components for Ada programmers
 %description -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
@@ -217,6 +229,11 @@ component of Matreshka framework for Ada developers.
 %postun -n libleague%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libmatreshka-xml%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-xml%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %post -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
@@ -272,6 +289,12 @@ component of Matreshka framework for Ada developers.
 %dir %{_prefix}/lib/gnat
 %dir %{_prefix}/lib/gnat/matreshka
 %dir %{_libdir}/matreshka
+
+%files -n libmatreshka-xml%{PACKAGE_SUFFIX} -f .objs/xml-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-xml%{PACKAGE_SUFFIX}-devel -f .objs/xml-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/xml
 
 %files -n libmatreshka-fastcgi%{PACKAGE_SUFFIX} -f .objs/fastcgi-lib.files
 %defattr(-,root,root)
