@@ -51,7 +51,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
    pragma Preelaborate;
 
    Group_0026 : aliased constant Core_Second_Stage
-     := (16#05# .. 16#06# =>  --  2605 .. 2606
+     := (16#00# .. 16#03# =>  --  2600 .. 2603
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#05# .. 16#06# =>  --  2605 .. 2606
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
@@ -74,23 +81,37 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#14# .. 16#17# =>  --  2614 .. 2617
+         16#14# .. 16#15# =>  --  2614 .. 2615
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#16# .. 16#17# =>  --  2616 .. 2617
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#1C#           =>  --  261C
+         16#18#           =>  --  2618
           (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#1E#           =>  --  261E
+         16#1A# .. 16#1F# =>  --  261A .. 261F
           (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#39# .. 16#3B# =>  --  2639 .. 263B
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
@@ -147,7 +168,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#67# .. 16#6A# =>  --  2667 .. 266A
+         16#67#           =>  --  2667
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#68#           =>  --  2668
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#69# .. 16#6A# =>  --  2669 .. 266A
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
@@ -187,6 +222,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
               | Grapheme_Base
               | Math => True,
             others => False)),
+         16#7F#           =>  --  267F
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
          16#9E# .. 16#9F# =>  --  269E .. 269F
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
@@ -194,23 +236,86 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#BE# .. 16#BF# =>  --  26BE .. 26BF
+         16#BD# .. 16#C8# =>  --  26BD .. 26C8
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#C9# .. 16#CC# =>  --  26C9 .. 26CC
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#C4# .. 16#CD# =>  --  26C4 .. 26CD
+         16#CD#           =>  --  26CD
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#CF# .. 16#D1# =>  --  26CF .. 26D1
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#D2#           =>  --  26D2
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#CF# .. 16#E1# =>  --  26CF .. 26E1
+         16#D3# .. 16#D4# =>  --  26D3 .. 26D4
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#D5# .. 16#D7# =>  --  26D5 .. 26D7
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#D8# .. 16#D9# =>  --  26D8 .. 26D9
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#DA# .. 16#DB# =>  --  26DA .. 26DB
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#DC#           =>  --  26DC
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#DD# .. 16#DE# =>  --  26DD .. 26DE
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#DF# .. 16#E1# =>  --  26DF .. 26E1
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
@@ -222,9 +327,58 @@ package Matreshka.Internals.Unicode.Ucd.Core_0026 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#E8# .. 16#FF# =>  --  26E8 .. 26FF
+         16#E8# .. 16#E9# =>  --  26E8 .. 26E9
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#EA#           =>  --  26EA
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#EB# .. 16#F0# =>  --  26EB .. 26F0
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#F1# .. 16#F5# =>  --  26F1 .. 26F5
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#F6#           =>  --  26F6
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#F7# .. 16#FA# =>  --  26F7 .. 26FA
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#FB# .. 16#FC# =>  --  26FB .. 26FC
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#FD# .. 16#FF# =>  --  26FD .. 26FF
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,

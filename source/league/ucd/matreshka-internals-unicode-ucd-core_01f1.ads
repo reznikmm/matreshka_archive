@@ -141,7 +141,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
             others => False)),
          16#E6# .. 16#FF# =>  --  01F1E6 .. 01F1FF
           (Other_Symbol, 0,
-           Other, Other, Other, Alphabetic,
+           Regional_Indicator, Regional_Indicator, Other, Regional_Indicator,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),

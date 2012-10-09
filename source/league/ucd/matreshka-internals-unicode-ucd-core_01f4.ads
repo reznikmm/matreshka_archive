@@ -61,6 +61,36 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F4 is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#A0#           =>  --  01F4A0
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#A2#           =>  --  01F4A2
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#A4#           =>  --  01F4A4
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#AF#           =>  --  01F4AF
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#B1# .. 16#B2# =>  --  01F4B1 .. 01F4B2
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          16#F8#           =>  --  01F4F8
           (Unassigned, 0,
            Other, Other, Other, Unknown,
@@ -73,7 +103,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F4 is
            (others => False)),
          others           =>
           (Other_Symbol, 0,
-           Other, Other, Other, Alphabetic,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)));

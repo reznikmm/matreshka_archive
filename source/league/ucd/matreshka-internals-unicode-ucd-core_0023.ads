@@ -66,6 +66,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
+         16#1A# .. 16#1B# =>  --  231A .. 231B
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
          16#20# .. 16#21# =>  --  2320 .. 2321
           (Math_Symbol, 0,
            Other, Other, Other, Alphabetic,
@@ -153,6 +160,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
               | Pattern_Syntax
               | Grapheme_Base
               | Math => True,
+            others => False)),
+         16#F0# .. 16#F3# =>  --  23F0 .. 23F3
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#F4# .. 16#FF# =>  --  23F4 .. 23FF
           (Unassigned, 0,

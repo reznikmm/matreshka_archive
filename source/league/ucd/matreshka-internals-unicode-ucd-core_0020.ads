@@ -798,7 +798,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#B7# .. 16#B9# =>  --  20B7 .. 20B9
+         16#B7# .. 16#BA# =>  --  20B7 .. 20BA
           (Currency_Symbol, 0,
            Other, Other, Other, Prefix_Numeric,
            (Yes, Yes, Yes, Yes), None,

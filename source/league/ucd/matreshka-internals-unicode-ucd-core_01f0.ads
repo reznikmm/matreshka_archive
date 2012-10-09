@@ -83,7 +83,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F0 is
            (others => False)),
          others           =>
           (Other_Symbol, 0,
-           Other, Other, Other, Alphabetic,
+           Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)));

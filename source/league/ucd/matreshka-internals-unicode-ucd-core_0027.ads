@@ -57,6 +57,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
+         16#01# .. 16#04# =>  --  2701 .. 2704
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#08# .. 16#0D# =>  --  2708 .. 270D
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
          16#57#           =>  --  2757
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
