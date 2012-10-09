@@ -47,7 +47,7 @@ License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
-Source:         matreshka-0.3.0.tar.gz
+Source:         matreshka-0.4.0.tar.gz
 ##  Patch:
 BuildRequires:  gcc-ada postgresql-devel sqlite3-devel pkg-config
 ##  PreReq:
@@ -57,6 +57,8 @@ Matreshka is a set of Ada components to develop information systems.
 
 %global RTL_VERSION_SUFFIX %(gcc -v 2>&1 | sed -n -e 's/gcc \\w* \\([0-9]*\\.[0-9]*\\).*/-\\1/p')
 %global PACKAGE_SUFFIX %(echo "%{RTL_VERSION_SUFFIX}-%{version}" | tr '.' '_')
+
+%_gprdir %{_libdir}/lib/gnat
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -140,6 +142,76 @@ Requires: libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 %description -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel
 SQLite3 driver for SQL database access library of Matreshka components.
 
+%package -n libmatreshka-amf%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework (core library) of Matreshka components
+%description -n libmatreshka-amf%{PACKAGE_SUFFIX}
+Core library of Ada Modeling Framework component of Matreshka framework for Ada
+developers.
+
+%package -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (core library) of Matreshka components
+Requires: libmatreshka-amf%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel
+Core library of Ada Modeling Framework component of Matreshka framework for Ada
+developers.
+
+%package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework (UML module) of Matreshka components
+%description -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+Unified Modeling Language (UML) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (UML module) of Matreshka components
+Requires: libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel
+Unified Modeling Language (UML) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework (OCL module) of Matreshka components
+%description -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+Object Constraint Language (OCL) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (OCL module) of Matreshka components
+Requires: libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}-devel
+Object Constraint Language (OCL) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework (UTP module) of Matreshka components
+%description -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+UML Testing Profile (UTP) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (OCL module) of Matreshka components
+Requires: libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}-devel
+UML Testing Profile (UTP) module of Ada Modeling Framework component of
+Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
+Summary: Ada Modeling Framework (MOFEXT module) of Matreshka components
+%description -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
+Meta Object Facility extension for UML module of Ada Modeling Framework
+component of Matreshka framework for Ada developers.
+
+%package -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (MOFEXT module) of Matreshka components
+Requires: libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}-devel
+Meta Object Facility extension for UML module of Ada Modeling Framework
+component of Matreshka framework for Ada developers.
+
 %post -n libleague%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libleague%{PACKAGE_SUFFIX}
@@ -163,6 +235,31 @@ SQLite3 driver for SQL database access library of Matreshka components.
 %post -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
 %files -n libleague%{PACKAGE_SUFFIX} -f .objs/league-lib.files
@@ -199,5 +296,35 @@ SQLite3 driver for SQL database access library of Matreshka components.
 %files -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel -f .objs/sql_sqlite3-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/sql/sqlite3
+
+%files -n libmatreshka-amf%{PACKAGE_SUFFIX} -f .objs/amf-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel -f .objs/amf-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf
+
+%files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX} -f .objs/amf_uml-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel -f .objs/amf_uml-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/uml
+
+%files -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX} -f .objs/amf_ocl-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}-devel -f .objs/amf_ocl-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/ocl
+
+%files -n libmatreshka-amf-utp%{PACKAGE_SUFFIX} -f .objs/amf_utp-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}-devel -f .objs/amf_utp-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/utp
+
+%files -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX} -f .objs/amf_mofext-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}-devel -f .objs/amf_mofext-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/mofext
 
 %changelog
