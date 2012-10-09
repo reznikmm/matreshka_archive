@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "matreshka_common.gpr";
+with "matreshka_config.gpr";
 with "matreshka_league.gpr";
 with "matreshka_sql.gpr";
 with "matreshka_sql_sqlite3.gpr";
@@ -58,5 +59,9 @@ project Matreshka_SQL_SQLite3_Tests is
    package Compiler is
       for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
    end Compiler;
+
+   package Linker is
+      for Default_Switches ("Ada") use Matreshka_Config.SQLite3_Library_Options;
+   end Linker;
 
 end Matreshka_SQL_SQLite3_Tests;
