@@ -82,7 +82,9 @@ package body League.Strings.Cursors.Grapheme_Clusters is
             (Extend | Spacing_Mark | V | T => False, others => True),
            LVT           =>
             (Extend | Spacing_Mark | T => False, others => True),
-           Regional_Indicator => (others => False));
+           Regional_Indicator =>
+            (Extend | Spacing_Mark | Regional_Indicator => False,
+             others => True));
 
 --   overriding procedure On_Changed
 --    (Self          : not null access Character_Cursor;
