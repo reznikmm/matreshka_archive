@@ -472,6 +472,10 @@ package Matreshka.Internals.Unicode.Ucd is
 
    type Collation_Weight is mod 2**16;
    for Collation_Weight'Size use 16;
+   pragma Assert (Code_Unit_16'Size = Collation_Weight'Size);
+   --  Note: collation algoriphm in identical strength level adds copy of the
+   --  source string in NFD form at the end of produced sorting key, thus it is
+   --  important that Code_Unit_16 and Collation_Weight types have equal size.
 
    type Collation_Element is record
       Primary   : Collation_Weight;

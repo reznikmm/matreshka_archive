@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,8 @@
 --  validity of source data are added. So, developers can enable assertion
 --  checks to simplify debugging of their code.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Utf16 is
@@ -80,6 +82,10 @@ package Matreshka.Internals.Utf16 is
    pragma Inline (Is_Greater);
    --  Compare two Utf16 code units with fixup for surrogate characters for
    --  greater.
+
+   function Compare_Order (Item : Utf16_Code_Unit) return Utf16_Code_Unit
+     with Inline => True;
+   --  Returns fixed value for compare code unit of UTF16 in UCS4 binary order.
 
    ------------------
    -- Utf16_String --

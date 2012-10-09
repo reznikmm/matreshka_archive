@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -288,8 +288,11 @@ package body Matreshka.Internals.Unicode.Collation is
          end;
       end loop;
 
+      --  Compute sort key.
+
       return Result : constant Shared_Sort_Key_Access
-        := new Shared_Sort_Key (Collation_Array.Last * 3 + 2)
+        := new Shared_Sort_Key
+                (Collation_Array.Last * 3 + 3 + Integer (Source.Unused))
       do
          for J in 1 .. Collation_Array.Last loop
             if Collation_Array.Data (J).Primary /= 0 then
@@ -329,6 +332,21 @@ package body Matreshka.Internals.Unicode.Collation is
                Result.Data (Result.Last) := Collation_Array.Data (J).Trinary;
             end if;
          end loop;
+
+         Result.Last := Result.Last + 1;
+         Result.Data (Result.Last) := 0;
+
+         --  By convention, source string is in NFD encoding already, append it
+         --  to the end of sort key.
+
+         if Source.Unused /= 0 then
+            for J in 0 .. Source.Unused - 1 loop
+               Result.Last := Result.Last + 1;
+               Result.Data (Result.Last) :=
+                 Collation_Weight
+                  (Matreshka.Internals.Utf16.Compare_Order (Source.Value (J)));
+            end loop;
+         end if;
 
          Free (Collation_Array);
       end return;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -86,6 +86,15 @@ package body Matreshka.Internals.Utf16 is
    --  S (J)     := (HB - 0x10000 >> 10) + C >> 10
    --               ^^^^^^^^^^^^^^^^^^^^
    --  This constant represents constant part of the expression.
+
+   -------------------
+   -- Compare_Order --
+   -------------------
+
+   function Compare_Order (Item : Utf16_Code_Unit) return Utf16_Code_Unit is
+   begin
+      return Item + Utf16_Fixup (Item / 16#800#);
+   end Compare_Order;
 
    ----------------
    -- Is_Greater --
