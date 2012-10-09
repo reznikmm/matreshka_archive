@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,10 @@ with Ada.Command_Line;
 with Ada.Text_IO;
 
 with League.Application;
+pragma Unreferenced (League.Application);
+--  Package League.Application is included to allow selection of platform
+--  specific implementation of string handling subprograms.
+with League.Characters;
 with League.Strings.Debug;
 
 with Unicode_Data_File_Parsers;
@@ -87,16 +91,27 @@ procedure Collation_Test is
       Skip           : Boolean := False;
 
    begin
+      --  Data file includes several code point not treated by the
+      --  implementation as valid code points, surrogate characters for
+      --  example. These testcases are ignored.
+
+      declare
+         Aux : constant Wide_Wide_String := Parse (Fields.Element (1));
+
       begin
-         Current_String := To_Universal_String (Parse (Fields.Element (1)));
+         for J in Aux'Range loop
+            if not League.Characters.To_Universal_Character
+                    (Aux (J)).Is_Valid
+            then
+               Skip := True;
 
-      exception
-         when Constraint_Error =>
-            --  Data file includes several code point not treated by the
-            --  implementation as valid code points, surrogate characters for
-            --  example.
+               exit;
+            end if;
+         end loop;
 
-            Skip := True;
+         if not Skip then
+            Current_String := To_Universal_String (Parse (Fields.Element (1)));
+         end if;
       end;
 
       if not Skip then
