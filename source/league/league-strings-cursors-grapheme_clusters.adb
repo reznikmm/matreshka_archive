@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,25 +55,34 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    Break_Machine : constant
      array (Grapheme_Cluster_Break, Grapheme_Cluster_Break) of Boolean
-       := (Other         => (Extend | Spacing_Mark => False, others => True),
-           CR            => (LF => False, others => True),
-           LF            => (others => True),
-           Control       => (others => True),
-           Prepend       => (Other | Prepend | Extend | Spacing_Mark
-                               | L | V | T | LV | LVT => False,
-                             others => True),
-           Extend        => (Extend | Spacing_Mark => False, others => True),
-           Spacing_Mark  => (Extend | Spacing_Mark => False, others => True),
-           L             => (Extend | Spacing_Mark | L | V | LV | LVT => False,
-                             others => True),
-           V             => (Extend | Spacing_Mark | V | T => False,
-                             others => True),
-           T             => (Extend | Spacing_Mark | T => False,
-                             others => True),
-           LV            => (Extend | Spacing_Mark | V | T => False,
-                             others => True),
-           LVT           => (Extend | Spacing_Mark | T => False,
-                             others => True));
+       := (Other         =>
+            (Extend | Spacing_Mark => False, others => True),
+           CR            =>
+            (LF => False, others => True),
+           LF            =>
+            (others => True),
+           Control       =>
+            (others => True),
+           Prepend       =>
+            (Other | Prepend | Extend | Spacing_Mark | L | V | T | LV | LVT =>
+               False,
+             others => True),
+           Extend        =>
+            (Extend | Spacing_Mark => False, others => True),
+           Spacing_Mark  =>
+            (Extend | Spacing_Mark => False, others => True),
+           L             =>
+            (Extend | Spacing_Mark | L | V | LV | LVT => False,
+             others => True),
+           V             =>
+            (Extend | Spacing_Mark | V | T => False, others => True),
+           T             =>
+            (Extend | Spacing_Mark | T => False, others => True),
+           LV            =>
+            (Extend | Spacing_Mark | V | T => False, others => True),
+           LVT           =>
+            (Extend | Spacing_Mark | T => False, others => True),
+           Regional_Indicator => (others => False));
 
 --   overriding procedure On_Changed
 --    (Self          : not null access Character_Cursor;

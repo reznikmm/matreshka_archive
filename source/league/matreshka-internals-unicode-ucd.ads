@@ -218,34 +218,36 @@ package Matreshka.Internals.Unicode.Ucd is
    for Boolean_Values'Size use 64;  --  52 bits used for now
 
    type Grapheme_Cluster_Break is
-    (Other,
+    (Control,
      CR,
-     LF,
-     Control,
-     Prepend,
      Extend,
-     Spacing_Mark,
      L,
-     V,
-     T,
+     LF,
      LV,
-     LVT);
+     LVT,
+     Prepend,
+     Regional_Indicator,
+     Spacing_Mark,
+     T,
+     V,
+     Other);
    for Grapheme_Cluster_Break'Size use 8;
 
    type Word_Break is
-    (Other,
-     CR,
-     LF,
-     Newline,
+    (CR,
+     Extend_Num_Let,
+     Extend,
+     Format,
      Katakana,
      A_Letter,
+     LF,
+     Mid_Num_Let,
      Mid_Letter,
      Mid_Num,
-     Mid_Num_Let,
+     Newline,
      Numeric,
-     Extend_Num_Let,
-     Format,
-     Extend);
+     Regional_Indicator,
+     Other);
    for Word_Break'Size use 8;
 
    type Sentence_Break is
@@ -299,6 +301,7 @@ package Matreshka.Internals.Unicode.Ucd is
      Postfix_Numeric,
      Prefix_Numeric,
      Quotation,
+     Regional_Indicator,
      Complex_Context,
      Surrogate,
      Space,
