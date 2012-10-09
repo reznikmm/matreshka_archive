@@ -58,7 +58,7 @@ Matreshka is a set of Ada components to develop information systems.
 %global RTL_VERSION_SUFFIX %(gcc -v 2>&1 | sed -n -e 's/gcc \\w* \\([0-9]*\\.[0-9]*\\).*/-\\1/p')
 %global PACKAGE_SUFFIX %(echo "%{RTL_VERSION_SUFFIX}-%{version}" | tr '.' '_')
 
-%_gprdir %{_libdir}/lib/gnat
+%global _gprdir %{_prefix}/lib/gnat
 
 %prep
 %setup -q -n %{name}-%{version}
