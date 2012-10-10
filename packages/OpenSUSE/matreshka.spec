@@ -325,12 +325,18 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-amf%{PACKAGE_SUFFIX}-devel -f .objs/amf-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/amf
+%dir %{_datadir}/matreshka
+%dir %{_datadir}/matreshka/amf
+%dir %{_datadir}/matreshka/amf/metamodels
+%dir %{_datadir}/matreshka/amf/models
 
 %files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX} -f .objs/amf_uml-lib.files
 %defattr(-,root,root)
 %files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}-devel -f .objs/amf_uml-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/amf/uml
+%dir %{_datadir}/matreshka/amf/models/UML23
+%dir %{_datadir}/matreshka/amf/models/UML24
 
 %files -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX} -f .objs/amf_ocl-lib.files
 %defattr(-,root,root)
