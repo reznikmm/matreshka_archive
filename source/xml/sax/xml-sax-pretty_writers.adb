@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -561,7 +561,12 @@ package body XML.SAX.Pretty_Writers is
       pragma Unreferenced (Success);
 
    begin
-      Self.Text.Append ("<?xml version=""" & Image (Self.Version) & """?>");
+      Self.Text.Append
+       (League.Strings.To_Universal_String ("<?xml version=")
+          & Self.Delimiter
+          & Image (Self.Version)
+          & Self.Delimiter
+          & "?>");
       Self.Nesting := 0;
 
       --  Reset namespace mapping and initialize it by XML namespace URI mapped
