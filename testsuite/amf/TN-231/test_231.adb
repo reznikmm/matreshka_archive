@@ -72,7 +72,7 @@ procedure Test_231 is
      renames Ada.Characters.Wide_Wide_Latin_1.LF;
 
    Expected    : constant League.Strings.Universal_String
-     := +("<?xml version=""1.0""?>" & LF
+     := +("<?xml version='1.0'?>" & LF
             & "<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901'>" & LF
             & "  <uml:Package xmi:type='uml:Package' xmi:id='16777217'>" & LF
             & "    <packagedElement xmi:type='uml:Class' xmi:id='16777218'>" & LF
