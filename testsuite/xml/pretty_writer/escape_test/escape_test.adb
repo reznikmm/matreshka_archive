@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -59,7 +59,7 @@ procedure Escape_Test is
    Local_Name     : Universal_String := To_Universal_String ("");
    Qualified_Name : Universal_String := To_Universal_String ("A");
    Reference      : Universal_String
-     := To_Universal_String ("<?xml version=""1.1""?>"
+     := To_Universal_String ("<?xml version='1.1'?>"
                                & "<A>some_text</A>"
                                & "<A>alert('hello');</A>"
                                & "<A>aa&amp;bb'cc&lt;dd>ee</A>");
