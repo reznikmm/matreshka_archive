@@ -79,6 +79,7 @@ export NO_BRP_CHECK_RPATH=true
 ##  %%{?buildroot:%%__rm -rf "%%{buildroot}"}
 
 %package -n libleague%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Matreshka components for Ada programmers
 %description -n libleague%{PACKAGE_SUFFIX}
 Matreshka is a set of Ada components to develop information systems.
@@ -91,6 +92,7 @@ Requires: libleague%{PACKAGE_SUFFIX}
 Matreshka is a set of Ada components to develop information systems.
 
 %package -n libmatreshka-xml%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: XML library of Matreshka components for Ada programmers
 %description -n libmatreshka-xml%{PACKAGE_SUFFIX}
 XML Processor component of Matreshka framework for Ada application developers
@@ -103,6 +105,7 @@ Requires: libmatreshka-xml%{PACKAGE_SUFFIX}
 XML Processor component of Matreshka framework for Ada application developers
 
 %package -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: FastCGI library of Matreshka components for Ada programmers
 %description -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
 FastCGI library of Matreshka components allows to Ada applications to
@@ -117,6 +120,7 @@ FastCGI library of Matreshka components allows to Ada applications to
 communicate to web servers through FastCGI protocol.
 
 %package -n libmatreshka-sql%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: SQL database access library of Matreshka components for Ada programmers
 %description -n libmatreshka-sql%{PACKAGE_SUFFIX}
 SQL database access library of Matreshka components allows to use simple API to
@@ -131,6 +135,7 @@ SQL database access library of Matreshka components allows to use simple API to
 access to different SQL databases.
 
 %package -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: PostgreSQL driver for SQL database access library of Matreshka components
 %description -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
 PostgreSQL driver for SQL database access library of Matreshka components.
@@ -143,6 +148,7 @@ Requires: libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
 PostgreSQL driver for SQL database access library of Matreshka components.
 
 %package -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: SQLite3 driver for SQL database access library of Matreshka components
 %description -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 SQLite3 driver for SQL database access library of Matreshka components.
@@ -154,7 +160,23 @@ Requires: libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 %description -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel
 SQLite3 driver for SQL database access library of Matreshka components.
 
+## Oracle start
+#%package -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}
+#Group: Development/Libraries/Other
+#Summary: Oracle driver for SQL database access library of Matreshka components
+#%description -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}
+#Oracle driver for SQL database access library of Matreshka components.
+#
+#%package -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}-devel
+#Group: Development/Libraries/Other
+#Summary: Oracle driver for SQL database access library of Matreshka components
+#Requires: libmatreshka-sql-oracle%{PACKAGE_SUFFIX}
+#%description -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}-devel
+#Oracle driver for SQL database access library of Matreshka components.
+## Oracle end
+
 %package -n libmatreshka-amf%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (core library) of Matreshka components
 %description -n libmatreshka-amf%{PACKAGE_SUFFIX}
 Core library of Ada Modeling Framework component of Matreshka framework for Ada
@@ -169,6 +191,7 @@ Core library of Ada Modeling Framework component of Matreshka framework for Ada
 developers.
 
 %package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (UML module) of Matreshka components
 %description -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
 Unified Modeling Language (UML) module of Ada Modeling Framework component of
@@ -183,6 +206,7 @@ Unified Modeling Language (UML) module of Ada Modeling Framework component of
 Matreshka framework for Ada developers.
 
 %package -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (OCL module) of Matreshka components
 %description -n libmatreshka-amf-ocl%{PACKAGE_SUFFIX}
 Object Constraint Language (OCL) module of Ada Modeling Framework component of
@@ -197,6 +221,7 @@ Object Constraint Language (OCL) module of Ada Modeling Framework component of
 Matreshka framework for Ada developers.
 
 %package -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (UTP module) of Matreshka components
 %description -n libmatreshka-amf-utp%{PACKAGE_SUFFIX}
 UML Testing Profile (UTP) module of Ada Modeling Framework component of
@@ -211,6 +236,7 @@ UML Testing Profile (UTP) module of Ada Modeling Framework component of
 Matreshka framework for Ada developers.
 
 %package -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (MOFEXT module) of Matreshka components
 %description -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
 Meta Object Facility extension for UML module of Ada Modeling Framework
@@ -248,6 +274,13 @@ component of Matreshka framework for Ada developers.
 /sbin/ldconfig
 %postun -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
 /sbin/ldconfig
+
+## Oracle start
+#%post -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}
+#/sbin/ldconfig
+#%postun -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}
+#/sbin/ldconfig
+## Oracle end
 
 %post -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}
 /sbin/ldconfig
@@ -319,6 +352,14 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-sql-sqlite3%{PACKAGE_SUFFIX}-devel -f .objs/sql_sqlite3-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/sql/sqlite3
+
+## Oracle start
+#%files -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX} -f .objs/sql_oci-lib.files
+#%defattr(-,root,root)
+#%files -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}-devel -f .objs/sql_oci-devel.files
+#%defattr(-,root,root)
+#%dir %{_includedir}/matreshka/sql/oci
+## Oracle start
 
 %files -n libmatreshka-amf%{PACKAGE_SUFFIX} -f .objs/amf-lib.files
 %defattr(-,root,root)
