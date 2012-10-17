@@ -131,7 +131,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat sql_oci-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/oci/{}" > .objs/sql_oci-devel.files
 	cat sql_oci-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_oci-devel.files
-	echo "%attr(-,root,root) %{_gprdir}/sql_oci.gpr" >> .objs/sql_oci-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_oracle.gpr" >> .objs/sql_oci-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_oci-devel.files
 
 postgresql:
