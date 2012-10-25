@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,24 +41,99 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_sqlite3.gpr";
+--  Check whether string value returned by SQLite3 database driver is
+--  terminated properly.
+------------------------------------------------------------------------------
+with League.Holders.Integers;
+with League.Strings;
+with SQL.Databases;
+with SQL.Queries;
 
-project Matreshka_SQL_SQLite3_Tests is
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
+pragma Unreferenced (Matreshka.Internals.SQL_Drivers.SQLite3.Factory);
 
-   for Main use
-    ("test_138.adb", "test_142.adb", "test_147.adb", "test_249.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-138",
-     "../testsuite/sql/TN-142",
-     "../testsuite/sql/TN-147",
-     "../testsuite/sql/TN-249");
+procedure Main is
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   use type League.Strings.Universal_String;
 
-end Matreshka_SQL_SQLite3_Tests;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
+   DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
+   DB_Options : constant League.Strings.Universal_String := +":memory:";
+
+   S1 : constant League.Strings.Universal_String := +"01234567890123456789";
+   S2 : constant League.Strings.Universal_String := +"0123456789";
+
+   Database : aliased SQL.Databases.SQL_Database
+     := SQL.Databases.Create (DB_Driver, DB_Options);
+
+begin
+   Database.Open;
+
+   declare
+      Query : SQL.Queries.SQL_Query := Database.Query;
+
+   begin
+      Query.Prepare
+       (+"CREATE TABLE test_data (id INTEGER, text CHARACTER VARYING (255))");
+      Query.Execute;
+
+      Query.Prepare
+       (+"INSERT INTO test_data (id, text) VALUES (:id, :text)");
+      Query.Bind_Value (+":id", League.Holders.Integers.To_Holder (1));
+      Query.Bind_Value (+":text", League.Holders.To_Holder (S1));
+      Query.Execute;
+
+      Query.Prepare
+       (+"INSERT INTO test_data (id, text) VALUES (:id, :text)");
+      Query.Bind_Value (+":id", League.Holders.Integers.To_Holder (2));
+      Query.Bind_Value (+":text", League.Holders.To_Holder (S2));
+      Query.Execute;
+   end;
+
+   declare
+      Query : SQL.Queries.SQL_Query := Database.Query;
+      R1    : League.Strings.Universal_String;
+
+   begin
+      Query.Prepare
+       (+"SELECT text FROM test_data WHERE id = :id");
+      Query.Bind_Value (+":id", League.Holders.Integers.To_Holder (1));
+      Query.Execute;
+
+      if not Query.Next then
+         raise Program_Error;
+      end if;
+
+      R1 := League.Holders.Element (Query.Value (1));
+
+      if R1 /= S1 then
+         raise Program_Error;
+      end if;
+   end;
+
+   declare
+      Query : SQL.Queries.SQL_Query := Database.Query;
+      R2    : League.Strings.Universal_String;
+
+   begin
+      Query.Prepare
+       (+"SELECT text FROM test_data WHERE id = :id");
+      Query.Bind_Value (+":id", League.Holders.Integers.To_Holder (2));
+      Query.Execute;
+
+      if not Query.Next then
+         raise Program_Error;
+      end if;
+
+      R2 := League.Holders.Element (Query.Value (1));
+
+      if R2 /= S2 then
+         raise Program_Error;
+      end if;
+   end;
+
+   Database.Close;
+end Main;

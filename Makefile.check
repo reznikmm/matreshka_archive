@@ -67,9 +67,11 @@ sqlite3:
 	.objs/test_138
 	.objs/test_142
 	.objs/test_147
+	.objs/test_249
 
 sqlite3-valgrind: sqlite3
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
+	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_249
 
 amf: amf-setup
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
