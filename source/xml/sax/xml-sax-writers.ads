@@ -52,6 +52,8 @@ with XML.SAX.Output_Destinations;
 
 package XML.SAX.Writers is
 
+--   pragma Preelaborate;
+
    type SAX_Output_Destination_Access is
      access all XML.SAX.Output_Destinations.SAX_Output_Destination'Class;
 
