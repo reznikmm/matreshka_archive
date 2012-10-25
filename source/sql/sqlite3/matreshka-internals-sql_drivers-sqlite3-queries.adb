@@ -45,7 +45,6 @@ with Interfaces.C;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
-with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3;
 
@@ -58,13 +57,6 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self : not null access SQLite3_Query'Class;
      Code : Interfaces.C.int);
    --  Process return code, constructs error message when code is error.
-
-   function To_Universal_String
-    (Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
-     Length : Matreshka.Internals.Utf16.Utf16_String_Index)
-       return League.Strings.Universal_String;
-   --  Converts text starting at specified position with specified length into
-   --  Universal_String.
 
    Rewriter : SQL_Parameter_Rewriters.SQLite3.SQLite3_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
@@ -360,35 +352,6 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       return Self.Success;
    end Prepare;
 
-   -------------------------
-   -- To_Universal_String --
-   -------------------------
-
-   function To_Universal_String
-    (Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
-     Length : Matreshka.Internals.Utf16.Utf16_String_Index)
-       return League.Strings.Universal_String
-   is
-      Source   :
-        Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Length - 1);
-      for Source'Address use Text.all'Address;
-      pragma Import (Ada, Source);
-      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      Code     : Matreshka.Internals.Unicode.Code_Point;
-      Aux      : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Matreshka.Internals.Strings.Allocate (Length);
-
-   begin
-      while Position <= Source'Last loop
-         Matreshka.Internals.Utf16.Unchecked_Next (Source, Position, Code);
-         Matreshka.Internals.Utf16.Unchecked_Store
-          (Aux.Value, Aux.Unused, Code);
-         Aux.Length := Aux.Length + 1;
-      end loop;
-
-      return League.Strings.Internals.Wrap (Aux);
-   end To_Universal_String;
-
    -----------
    -- Value --
    -----------
@@ -443,7 +406,9 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
             else
                League.Holders.Replace_Element
-                (Value, To_Universal_String (Text, Length / 2));
+                (Value,
+                 Matreshka.Internals.Strings.C.To_Valid_Universal_String
+                  (Text, Length / 2));
             end if;
 
          when SQLITE_BLOB =>
