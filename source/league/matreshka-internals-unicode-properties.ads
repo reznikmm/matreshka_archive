@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
 
 package Matreshka.Internals.Unicode.Properties is
 
@@ -61,6 +62,14 @@ package Matreshka.Internals.Unicode.Properties is
    function Is_ID_Continue (Code : Code_Point) return Boolean;
    pragma Inline (Is_ID_Continue);
    --  Code points which continue identifier.
+
+   function Lowercase (Code : Code_Point) return Boolean
+     with Inline => True;
+   --  Code points which lowercase character.
+
+   function Uppercase (Code : Code_Point) return Boolean
+     with Inline => True;
+   --  Code points which lowercase character.
 
    function Simple_Lowercase_Mapping (Code : Code_Point) return Code_Point;
    --  Returns simple lowercase mapping for the specified code point.

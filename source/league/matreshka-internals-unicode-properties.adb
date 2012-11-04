@@ -110,6 +110,18 @@ package body Matreshka.Internals.Unicode.Properties is
            (Matreshka.Internals.Unicode.Ucd.Unified_Ideograph);
    end Is_Unified_Ideograph;
 
+   ---------------
+   -- Lowercase --
+   ---------------
+
+   function Lowercase (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.Lowercase);
+   end Lowercase;
+
    ------------------------------
    -- Simple_Lowercase_Mapping --
    ------------------------------
@@ -171,5 +183,17 @@ package body Matreshka.Internals.Unicode.Properties is
          return Code;
       end if;
    end Simple_Uppercase_Mapping;
+
+   ---------------
+   -- Uppercase --
+   ---------------
+
+   function Uppercase (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.Uppercase);
+   end Uppercase;
 
 end Matreshka.Internals.Unicode.Properties;

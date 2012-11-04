@@ -244,6 +244,18 @@ package body League.Characters is
       return Matreshka.Internals.Unicode.Is_Valid (Self.Code);
    end Is_Valid;
 
+   ---------------
+   -- Lowercase --
+   ---------------
+
+   function Lowercase (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then Matreshka.Internals.Unicode.Properties.Lowercase
+                    (Self.Code);
+   end Lowercase;
+
    ------------------------------
    -- Simple_Lowercase_Mapping --
    ------------------------------
@@ -302,5 +314,17 @@ package body League.Characters is
    begin
       return Wide_Wide_Character'Val (Self.Code);
    end To_Wide_Wide_Character;
+
+   ---------------
+   -- Uppercase --
+   ---------------
+
+   function Uppercase (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then Matreshka.Internals.Unicode.Properties.Uppercase
+                    (Self.Code);
+   end Uppercase;
 
 end League.Characters;

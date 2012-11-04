@@ -89,6 +89,12 @@ package League.Characters is
    --  plus stability extensions, minus Pattern_Syntax and Pattern_White_Space
    --  code points."
 
+   function Lowercase (Self : Universal_Character'Class) return Boolean;
+   --  Returns True when character is lowercase letter.
+
+   function Uppercase (Self : Universal_Character'Class) return Boolean;
+   --  Returns True when character is uppercase letter.
+
    function Simple_Uppercase_Mapping
     (Self : Universal_Character'Class) return Universal_Character;
    --  Returns simple uppercase mapping for the specified character.
