@@ -121,10 +121,14 @@ package body SQL.Databases is
    -- Open --
    ----------
 
-   function Open (Self : in SQL_Database'Class) return Boolean is
+   function Open (Self : in out SQL_Database'Class) return Boolean is
    begin
       return Self.Data.Open (Self.Options);
    end Open;
+
+   ----------
+   -- Open --
+   ----------
 
    procedure Open (Self : in out SQL_Database'Class) is
    begin

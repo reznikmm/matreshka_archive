@@ -59,7 +59,7 @@ package SQL.Databases is
 
    procedure Open (Self : in out SQL_Database'Class);
 
-   function Open (Self : in SQL_Database'Class) return Boolean;
+   function Open (Self : in out SQL_Database'Class) return Boolean;
 
    procedure Close (Self : in out SQL_Database'Class);
    --  Closes the database connection, freeing any resources acquired, and
