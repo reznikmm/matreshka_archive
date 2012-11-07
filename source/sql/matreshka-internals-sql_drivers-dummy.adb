@@ -64,7 +64,7 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
     (Self : not null access Dummy_Database)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return League.Strings.To_Universal_String ("Database driver not defined");
    end Error_Message;
 
    -------------------
@@ -75,7 +75,7 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
     (Self : not null access Dummy_Query)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return League.Strings.To_Universal_String ("Database driver not defined");
    end Error_Message;
 
    -------------
