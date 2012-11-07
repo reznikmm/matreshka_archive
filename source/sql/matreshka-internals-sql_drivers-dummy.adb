@@ -51,7 +51,11 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
    overriding function Bound_Value
     (Self : not null access Dummy_Query;
      Name : League.Strings.Universal_String)
-       return League.Holders.Holder is
+       return League.Holders.Holder
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Name);
+
    begin
       return League.Holders.Empty_Holder;
    end Bound_Value;
@@ -62,7 +66,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Error_Message
     (Self : not null access Dummy_Database)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.To_Universal_String ("Database driver not defined");
    end Error_Message;
@@ -73,7 +80,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Error_Message
     (Self : not null access Dummy_Query)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.To_Universal_String ("Database driver not defined");
    end Error_Message;
@@ -83,7 +93,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
    -------------
 
    overriding function Execute
-    (Self : not null access Dummy_Query) return Boolean is
+    (Self : not null access Dummy_Query) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Execute;
@@ -93,7 +106,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
    ---------------
 
    overriding function Is_Active
-    (Self : not null access Dummy_Query) return Boolean is
+    (Self : not null access Dummy_Query) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Active;
@@ -103,7 +119,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
    ----------
 
    overriding function Next
-    (Self : not null access Dummy_Query) return Boolean is
+    (Self : not null access Dummy_Query) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Next;
@@ -114,7 +133,11 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Open
     (Self    : not null access Dummy_Database;
-     Options : League.Strings.Universal_String) return Boolean is
+     Options : League.Strings.Universal_String) return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Options);
+
    begin
       return False;
    end Open;
@@ -125,7 +148,11 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Prepare
     (Self  : not null access Dummy_Query;
-     Query : League.Strings.Universal_String) return Boolean is
+     Query : League.Strings.Universal_String) return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Query);
+
    begin
       return False;
    end Prepare;
@@ -135,7 +162,10 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
    -----------
 
    overriding function Query
-    (Self : not null access Dummy_Database) return not null Query_Access is
+    (Self : not null access Dummy_Database) return not null Query_Access
+   is
+      pragma Unreferenced (Self);
+
    begin
       return Empty_Query'Access;
    end Query;
@@ -146,7 +176,11 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Value
     (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Holders.Holder is
+     Index : Positive) return League.Holders.Holder
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Index);
+
    begin
       return League.Holders.Empty_Holder;
    end Value;
