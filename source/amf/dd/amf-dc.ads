@@ -92,6 +92,11 @@ package AMF.DC is
 
    type Optional_DC_Bounds is null record;
 
+   type DC_Point is record
+      X : AMF.Real := 0.0;
+      Y : AMF.Real := 0.0;
+   end record;
+
    type Sequence_OF_DC_Point is null record;
 
 end AMF.DC;
