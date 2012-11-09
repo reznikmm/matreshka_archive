@@ -82,14 +82,14 @@ package AMF.Internals.Tables.CMOF_Types is
      M_Collection_Of_Element,
      M_Boolean,
      M_Integer,
-     M_Integer_Holder,
+     M_Holder_Of_Integer,
      M_Unlimited_Natural,
-     M_Unlimited_Natural_Holder,
+     M_Holder_Of_Unlimited_Natural,
      M_String,
      M_Collection_Of_String,
      M_Parameter_Direction_Kind,
      M_Visibility_Kind,
-     M_Visibility_Holder_Kind);
+     M_Holder_Of_Visibility_Kind);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
@@ -105,7 +105,7 @@ package AMF.Internals.Tables.CMOF_Types is
          when M_Boolean =>
             Boolean_Value : Boolean;
 
-         when M_Integer_Holder =>
+         when M_Holder_Of_Integer =>
             Integer_Holder_Value : AMF.Optional_Integer;
 
          when M_Integer =>
@@ -114,7 +114,7 @@ package AMF.Internals.Tables.CMOF_Types is
          when M_Unlimited_Natural =>
             Natural_Value : AMF.Unlimited_Natural;
 
-         when M_Unlimited_Natural_Holder =>
+         when M_Holder_Of_Unlimited_Natural =>
             Natural_Holder_Value : AMF.Optional_Unlimited_Natural;
 
          when M_String =>
@@ -129,7 +129,7 @@ package AMF.Internals.Tables.CMOF_Types is
          when M_Visibility_Kind =>
             Visibility_Value : AMF.CMOF.CMOF_Visibility_Kind;
 
-         when M_Visibility_Holder_Kind =>
+         when M_Holder_Of_Visibility_Kind =>
             Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
       end case;
    end record;
