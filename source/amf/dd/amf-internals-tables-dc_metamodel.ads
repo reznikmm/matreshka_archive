@@ -61,6 +61,18 @@ package AMF.Internals.Tables.DC_Metamodel is
    function MC_DC_Real return AMF.Internals.CMOF_Element;
    function MC_DC_String return AMF.Internals.CMOF_Element;
 
+   function MP_DC_Bounds_Height return AMF.Internals.CMOF_Element;
+   function MP_DC_Bounds_Width return AMF.Internals.CMOF_Element;
+   function MP_DC_Bounds_X return AMF.Internals.CMOF_Element;
+   function MP_DC_Bounds_Y return AMF.Internals.CMOF_Element;
+   function MP_DC_Color_Blue return AMF.Internals.CMOF_Element;
+   function MP_DC_Color_Green return AMF.Internals.CMOF_Element;
+   function MP_DC_Color_Red return AMF.Internals.CMOF_Element;
+   function MP_DC_Dimension_Height return AMF.Internals.CMOF_Element;
+   function MP_DC_Dimension_Width return AMF.Internals.CMOF_Element;
+   function MP_DC_Point_X return AMF.Internals.CMOF_Element;
+   function MP_DC_Point_Y return AMF.Internals.CMOF_Element;
+
    function MB_DC return AMF.Internals.AMF_Element;
 
    function ML_DC return AMF.Internals.AMF_Element;

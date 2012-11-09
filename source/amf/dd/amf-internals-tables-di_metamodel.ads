@@ -50,7 +50,6 @@ package AMF.Internals.Tables.DI_Metamodel is
 
    function MM_DI_DI return AMF.Internals.CMOF_Element;
 
-
    function MC_DI_Diagram return AMF.Internals.CMOF_Element;
    function MC_DI_Diagram_Element return AMF.Internals.CMOF_Element;
    function MC_DI_Edge return AMF.Internals.CMOF_Element;

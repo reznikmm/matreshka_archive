@@ -145,6 +145,105 @@ package body AMF.Internals.Tables.DC_Metamodel is
       return Base + 9;
    end MC_DC_String;
 
+   -------------------------
+   -- MP_DC_Bounds_Height --
+   -------------------------
+
+   function MP_DC_Bounds_Height return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 48;
+   end MP_DC_Bounds_Height;
+
+   ------------------------
+   -- MP_DC_Bounds_Width --
+   ------------------------
+
+   function MP_DC_Bounds_Width return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 46;
+   end MP_DC_Bounds_Width;
+
+   --------------------
+   -- MP_DC_Bounds_X --
+   --------------------
+
+   function MP_DC_Bounds_X return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 42;
+   end MP_DC_Bounds_X;
+
+   --------------------
+   -- MP_DC_Bounds_Y --
+   --------------------
+
+   function MP_DC_Bounds_Y return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 44;
+   end MP_DC_Bounds_Y;
+
+   ----------------------
+   -- MP_DC_Color_Blue --
+   ----------------------
+
+   function MP_DC_Color_Blue return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 20;
+   end MP_DC_Color_Blue;
+
+   -----------------------
+   -- MP_DC_Color_Green --
+   -----------------------
+
+   function MP_DC_Color_Green return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 18;
+   end MP_DC_Color_Green;
+
+   ---------------------
+   -- MP_DC_Color_Red --
+   ---------------------
+
+   function MP_DC_Color_Red return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 16;
+   end MP_DC_Color_Red;
+
+   ----------------------------
+   -- MP_DC_Dimension_Height --
+   ----------------------------
+
+   function MP_DC_Dimension_Height return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 35;
+   end MP_DC_Dimension_Height;
+
+   ---------------------------
+   -- MP_DC_Dimension_Width --
+   ---------------------------
+
+   function MP_DC_Dimension_Width return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 33;
+   end MP_DC_Dimension_Width;
+
+   -------------------
+   -- MP_DC_Point_X --
+   -------------------
+
+   function MP_DC_Point_X return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 24;
+   end MP_DC_Point_X;
+
+   -------------------
+   -- MP_DC_Point_Y --
+   -------------------
+
+   function MP_DC_Point_Y return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 26;
+   end MP_DC_Point_Y;
+
    -----------
    -- MB_DC --
    -----------
