@@ -202,7 +202,7 @@ package body AMF.Internals.Tables.DI_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 7,
-        Matreshka.Internals.Strings.Shared_Empty_String'Access);
+        Matreshka.Internals.Strings.Shared_Empty'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 7,
         AMF.Internals.Tables.DI_String_Data_00.MS_0030'Access);
@@ -217,7 +217,7 @@ package body AMF.Internals.Tables.DI_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 8,
-        Matreshka.Internals.Strings.Shared_Empty_String'Access);
+        Matreshka.Internals.Strings.Shared_Empty'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
         AMF.Internals.Tables.DI_String_Data_00.MS_0015'Access);
