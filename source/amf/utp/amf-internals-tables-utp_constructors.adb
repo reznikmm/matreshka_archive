@@ -453,13 +453,13 @@ package body AMF.Internals.Tables.UTP_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
           1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Element
-          5      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          5      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  criticality
-          3      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          3      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  description
-          2      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          2      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  owner
-          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  version
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=
@@ -635,7 +635,7 @@ package body AMF.Internals.Tables.UTP_Constructors is
                        --  compatibleSUTVariant
           2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVersion
-          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  priority
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=
@@ -703,7 +703,7 @@ package body AMF.Internals.Tables.UTP_Constructors is
                        --  compatibleSUTVariant
           2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVersion
-          5      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          5      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  testLevel
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=
@@ -733,17 +733,17 @@ package body AMF.Internals.Tables.UTP_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
           1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  duration
-          3      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          3      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  executedAt
-          7      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          7      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  sutVersion
           2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  tester
           5      => (AMF.Internals.Tables.UTP_Types.M_Verdict, AMF.Utp.None),
                        --  verdict
-          6      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          6      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  verdictReason
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=
@@ -801,7 +801,7 @@ package body AMF.Internals.Tables.UTP_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
           1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Dependency
-          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  priority
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=
@@ -831,7 +831,7 @@ package body AMF.Internals.Tables.UTP_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
           1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, null),
                        --  priority
           others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
       UTP_Element_Table.Table (Self).Member (0) :=

@@ -55,6 +55,7 @@ package AMF.Internals.Tables.Utp_Metamodel is
    function MC_Utp_Timezone return AMF.Internals.CMOF_Element;
    function MC_Utp_Verdict return AMF.Internals.CMOF_Element;
 
+
    function MC_Utp_Coding_Rule return AMF.Internals.CMOF_Element;
    function MC_Utp_Data_Partition return AMF.Internals.CMOF_Element;
    function MC_Utp_Data_Pool return AMF.Internals.CMOF_Element;
