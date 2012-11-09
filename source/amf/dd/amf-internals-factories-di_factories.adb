@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.DI_Metamodel;
