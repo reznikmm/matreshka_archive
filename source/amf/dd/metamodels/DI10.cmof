@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:id="_0" name="DI" uri="http://www.omg.org/spec/DD/20110901/DI">
+    <ownedComment xmi:type="cmof:Comment" xmi:id="_ownedComment.0" annotatedElement="_0">
+      <body>The Diagram Interchange (DI) package enables interchange of graphical information that language users have control over, such as position of nodes and line routing points. Language specifications specialize elements of DI to define diagram interchange elements for a language.</body>
+    </ownedComment>
+    <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0" importingNamespace="_0">
+      <importedPackage xmi:type="cmof:Package" href="DC.cmof#_0"/>
+    </packageImport>
+    <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.1" importingNamespace="_0">
+      <importedPackage xmi:type="cmof:Package" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#_0"/>
+    </packageImport>
+    <ownedMember xmi:type="cmof:Class" xmi:id="DiagramElement" name="DiagramElement" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-_ownedComment.0" annotatedElement="DiagramElement">
+        <body>DiagramElement is the abstract super type of all elements in diagrams, including diagrams themselves. When contained in a diagram, diagram elements are laid out relative to the diagram’s origin.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-modelElement" name="modelElement" visibility="public" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_modelElement_diagramElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-modelElement-_ownedComment.0" annotatedElement="DiagramElement-modelElement">
+          <body>a reference to a depicted model element, which can be any MOF-based element</body>
+        </ownedComment>
+        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-owningElement" name="owningElement" visibility="public" type="DiagramElement" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_ownedElement_owningElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-owningElement-_ownedComment.0" annotatedElement="DiagramElement-owningElement">
+          <body>a reference to the diagram element that directly owns this diagram element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-ownedElement" name="ownedElement" visibility="public" type="DiagramElement" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" isComposite="true" association="A_ownedElement_owningElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-ownedElement-_ownedComment.0" annotatedElement="DiagramElement-ownedElement">
+          <body>a collection of diagram elements that are directly owned by this diagram element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-localStyle" name="localStyle" visibility="public" type="Style" lower="0" isComposite="true" association="A_localStyle_styledElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-localStyle-_ownedComment.0" annotatedElement="DiagramElement-localStyle">
+          <body>a reference to an optional locally-owned style for this diagram element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-sharedStyle" name="sharedStyle" visibility="public" type="Style" lower="0" association="A_sharedStyle_styledElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-sharedStyle-_ownedComment.0" annotatedElement="DiagramElement-sharedStyle">
+          <body>a reference to an optional shared style element for this diagram element.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Edge" name="Edge" isAbstract="true" superClass="DiagramElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Edge-_ownedComment.0" annotatedElement="Edge">
+        <body>Edge is a diagram element that renders as a polyline, connecting a source diagram element to a target diagram element, and is positioned relative to the origin of the diagram.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Edge-source" name="source" visibility="public" type="DiagramElement" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_source_sourceEdge">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Edge-source-_ownedComment.0" annotatedElement="Edge-source">
+          <body>the edge's source diagram element, i.e. where the edge starts from.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Edge-target" name="target" visibility="public" type="DiagramElement" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_target_targetEdge">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Edge-target-_ownedComment.0" annotatedElement="Edge-target">
+          <body>the edge's target diagram element, i.e. where the edge ends at.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Edge-waypoint" name="waypoint" visibility="public" isOrdered="true" isUnique="false" upper="*" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Edge-waypoint-_ownedComment.0" annotatedElement="Edge-waypoint">
+          <body>an optional list of points relative to the origin of the nesting diagram that specifies the connected line segments of the edge</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Diagram" name="Diagram" isAbstract="true" superClass="Shape">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Diagram-_ownedComment.0" annotatedElement="Diagram">
+        <body>Diagram is an abstract container of a graph of diagram elements. Diagrams are diagram elements with an origin point in the x-y coordinate system. Their elements are laid out relative to their origin point.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Diagram-name" name="name" visibility="public" default="">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Diagram-name-_ownedComment.0" annotatedElement="Diagram-name">
+          <body>the name of the diagram.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Diagram-documentation" name="documentation" visibility="public" default="">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Diagram-documentation-_ownedComment.0" annotatedElement="Diagram-documentation">
+          <body>the documentation of the diagram.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Diagram-resolution" name="resolution" visibility="public" default="300">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Diagram-resolution-_ownedComment.0" annotatedElement="Diagram-resolution">
+          <body>the resolution of the diagram expressed in user units per inch.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Shape" name="Shape" isAbstract="true" superClass="DiagramElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Shape-_ownedComment.0" annotatedElement="Shape">
+        <body>Shape is a diagram element with given bounds that is laid out relative to the origin of the diagram</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Shape-bounds" name="bounds" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Shape-bounds-_ownedComment.0" annotatedElement="Shape-bounds">
+          <body>the optional bounds of the shape relative to the origin of its nesting plane.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Style" name="Style" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Style-_ownedComment.0" annotatedElement="Style">
+        <body>Style contains formatting properties that affect the appearance or style of diagram elements, including diagram themselves.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_target_targetEdge" name="A_target_targetEdge" visibility="private" memberEnd="Edge-target A_target_targetEdge-targetEdge">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_target_targetEdge-targetEdge" name="targetEdge" visibility="public" type="Edge" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_target_targetEdge" association="A_target_targetEdge">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="A_target_targetEdge-targetEdge-_ownedComment.0" annotatedElement="A_target_targetEdge-targetEdge">
+          <body>a collection of edges that reference this diagram element as a target.</body>
+        </ownedComment>
+      </ownedEnd>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_source_sourceEdge" name="A_source_sourceEdge" visibility="private" memberEnd="Edge-source A_source_sourceEdge-sourceEdge">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_source_sourceEdge-sourceEdge" name="sourceEdge" visibility="public" type="Edge" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_source_sourceEdge" association="A_source_sourceEdge">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="A_source_sourceEdge-sourceEdge-_ownedComment.0" annotatedElement="A_source_sourceEdge-sourceEdge">
+          <body>a collection of edges that reference this diagram element as a source.</body>
+        </ownedComment>
+      </ownedEnd>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_ownedElement_owningElement" name="A_ownedElement_owningElement" visibility="private" memberEnd="DiagramElement-ownedElement DiagramElement-owningElement"/>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_modelElement_diagramElement" name="A_modelElement_diagramElement" visibility="private" memberEnd="DiagramElement-modelElement A_modelElement_diagramElement-diagramElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_modelElement_diagramElement-diagramElement" name="diagramElement" visibility="public" type="DiagramElement" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_modelElement_diagramElement" association="A_modelElement_diagramElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="DiagramElement-sharedStyle A_sharedStyle_styledElement-styledElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_sharedStyle_styledElement-styledElement" name="styledElement" visibility="public" type="DiagramElement" upper="*" lower="0" owningAssociation="A_sharedStyle_styledElement" association="A_sharedStyle_styledElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="DiagramElement-localStyle A_localStyle_styledElement-styledElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_localStyle_styledElement-styledElement" name="styledElement" visibility="public" type="DiagramElement" lower="0" owningAssociation="A_localStyle_styledElement" association="A_localStyle_styledElement"/>
+    </ownedMember>
+  </cmof:Package>
+  <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="di" element="_0"/>
+  <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DI" element="_0"/>
+</xmi:XMI>

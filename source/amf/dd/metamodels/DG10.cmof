@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:id="_0" name="DG" uri="http://www.omg.org/spec/DD/20110901/DG">
+    <ownedComment xmi:type="cmof:Comment" xmi:id="_ownedComment.0" annotatedElement="_0">
+      <body>The Diagram Graphics (DG) package contains a model of graphical primitives that can be instantiated when mapping from a language abstract syntax models and diagram interchange (DI) models to visual presentations. The mapping effectively defines the concrete syntax of a language. This specification does not restrict how the mappings are done, or what languages are used to define them.</body>
+    </ownedComment>
+    <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0" importingNamespace="_0">
+      <importedPackage xmi:type="cmof:Package" href="DC.cmof#_0"/>
+    </packageImport>
+    <ownedMember xmi:type="cmof:Class" xmi:id="RadialGradient" name="RadialGradient" superClass="Gradient">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-_ownedComment.0" annotatedElement="RadialGradient">
+        <body>RadialGradient is a kind of gradient that fills a graphical element by smoothly changing color values in a circle.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="RadialGradient-valid_center_point" name="valid_center_point" constrainedElement="RadialGradient" namespace="RadialGradient">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-valid_center_point-_ownedComment.0" annotatedElement="RadialGradient-valid_center_point">
+          <body>the center point coordinates must be between 0 and 1</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="RadialGradient-valid_center_point-_specification">
+          <language>OCL</language>
+          <body>centerX>=0 and centerX&lt;=1 and centerY>=0 and centerY&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="RadialGradient-valid_focus_point" name="valid_focus_point" constrainedElement="RadialGradient" namespace="RadialGradient">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-valid_focus_point-_ownedComment.0" annotatedElement="RadialGradient-valid_focus_point">
+          <body>the focus point coordinates must be between 0 and 1</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="RadialGradient-valid_focus_point-_specification">
+          <language>OCL</language>
+          <body>focusX>=0 and focusX&lt;=1 and focusY>=0 and focusY&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="RadialGradient-valid_radius" name="valid_radius" constrainedElement="RadialGradient" namespace="RadialGradient">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-valid_radius-_ownedComment.0" annotatedElement="RadialGradient-valid_radius">
+          <body>the radius  must be between 0 and 1</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="RadialGradient-valid_radius-_specification">
+          <language>OCL</language>
+          <body>radius>=0 and radius&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="RadialGradient-centerX" name="centerX" visibility="public" default="0.5">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-centerX-_ownedComment.0" annotatedElement="RadialGradient-centerX">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x center point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="RadialGradient-centerY" name="centerY" visibility="public" default="0.5">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-centerY-_ownedComment.0" annotatedElement="RadialGradient-centerY">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the y center point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="RadialGradient-radius" name="radius" visibility="public" default="0.5">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-radius-_ownedComment.0" annotatedElement="RadialGradient-radius">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's size that is the radius of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="RadialGradient-focusX" name="focusX" visibility="public" default="0.5">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-focusX-_ownedComment.0" annotatedElement="RadialGradient-focusX">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x focus point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="RadialGradient-focusY" name="focusY" visibility="public" default="0.5">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-focusY-_ownedComment.0" annotatedElement="RadialGradient-focusY">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the y focus point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Pattern" name="Pattern" superClass="Fill">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Pattern-_ownedComment.0" annotatedElement="Pattern">
+        <body>Pattern is a kind of fill that paints a graphical element (a tile) repeatedly at fixed intervals in x and y axes to cover the areas to be filled.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Pattern-bounds" name="bounds" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Pattern-bounds-_ownedComment.0" annotatedElement="Pattern-bounds">
+          <body>the bounds of the pattern that define a private coordinate system for the pattern's tile.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Pattern-tile" name="tile" visibility="public" type="GraphicalElement" isComposite="true" association="A_tile_pattern">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Pattern-tile-_ownedComment.0" annotatedElement="Pattern-tile">
+          <body>a reference to a graphical element, owned by the pattern, that works as a tile to be painted repeatedly at a fixed interval to fill an closed area.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="LinearGradient" name="LinearGradient" superClass="Gradient">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-_ownedComment.0" annotatedElement="LinearGradient">
+        <body>LinearGradient is a kind of gradient that fills a graphical element by smoothly changing color values along a vector.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="LinearGradient-valid_gradient_vector" name="valid_gradient_vector" constrainedElement="LinearGradient" namespace="LinearGradient">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-valid_gradient_vector-_ownedComment.0" annotatedElement="LinearGradient-valid_gradient_vector">
+          <body>all the components of the gradient vector must be between 0 and 1.</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="LinearGradient-valid_gradient_vector-_specification">
+          <language>OCL</language>
+          <body>x1>=0 and x1&lt;=1 and x2>=0 and x2&lt;=1 and y1>=0 and y1&lt;=1 and y2>=0 and y2&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="LinearGradient-x1" name="x1" visibility="public" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-x1-_ownedComment.0" annotatedElement="LinearGradient-x1">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x start point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="LinearGradient-x2" name="x2" visibility="public" default="1">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-x2-_ownedComment.0" annotatedElement="LinearGradient-x2">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x end point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="LinearGradient-y1" name="y1" visibility="public" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-y1-_ownedComment.0" annotatedElement="LinearGradient-y1">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's height that is the y start point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="LinearGradient-y2" name="y2" visibility="public" default="1">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-y2-_ownedComment.0" annotatedElement="LinearGradient-y2">
+          <body>a real number (>=0 and >=1) representing a ratio of the graphical element's height that is the y end point of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="GradientStop" name="GradientStop">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-_ownedComment.0" annotatedElement="GradientStop">
+        <body>GradientStop defines a color transition along the distance from a gradient's start to its end offsets.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="GradientStop-valid_offset" name="valid_offset" constrainedElement="GradientStop" namespace="GradientStop">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-valid_offset-_ownedComment.0" annotatedElement="GradientStop-valid_offset">
+          <body>the offset must be between 0 and 1.</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="GradientStop-valid_offset-_specification">
+          <language>OCL</language>
+          <body>offset>=0 and offset&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="GradientStop-valid_opacity" name="valid_opacity" constrainedElement="GradientStop" namespace="GradientStop">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-valid_opacity-_ownedComment.0" annotatedElement="GradientStop-valid_opacity">
+          <body>the opacity must be between 0 and 1.</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="GradientStop-valid_opacity-_specification">
+          <language>OCL</language>
+          <body>opacity>=0 and opacity&lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GradientStop-color" name="color" visibility="public" datatype="GradientStop">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-color-_ownedComment.0" annotatedElement="GradientStop-color">
+          <body>the color to use at this gradient stop.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Color"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GradientStop-offset" name="offset" visibility="public" datatype="GradientStop">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-offset-_ownedComment.0" annotatedElement="GradientStop-offset">
+          <body>a real number (>=0 and&lt;=1) representing the offset of this gradient stop as a ratio of the distance between the start and end positions of the gradient.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GradientStop-opacity" name="opacity" visibility="public" datatype="GradientStop" default="1">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-opacity-_ownedComment.0" annotatedElement="GradientStop-opacity">
+          <body>a real number (>=0 and&lt;=1) representing the opacity of the color at the stop. A value of 0 means totally transparent, while a value of 1 means totally opaque.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Gradient" name="Gradient" isAbstract="true" superClass="Fill">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Gradient-_ownedComment.0" annotatedElement="Gradient">
+        <body>Gradient is a kind of fill that paints a continuously smooth color transition along the gradient range from one color to the next.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Gradient-stop" name="stop" visibility="public" type="GradientStop" upper="*" lower="2">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Gradient-stop-_ownedComment.0" annotatedElement="Gradient-stop">
+          <body>a list of two or more gradient stops defining the color transitions of the gradient.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Fill" name="Fill" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Fill-_ownedComment.0" annotatedElement="Fill">
+        <body>Fill is the abstract super class of all kinds of fills that are used to paint the interior of graphical elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Fill-canvas" name="canvas" visibility="public" type="Canvas" association="A_fill_canvas">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Fill-canvas-_ownedComment.0" annotatedElement="Fill-canvas">
+          <body>a reference to the canvas that owns this fill.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Fill-transform" name="transform" visibility="public" type="Transform" isOrdered="true" isUnique="false" upper="*" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Fill-transform-_ownedComment.0" annotatedElement="Fill-transform">
+          <body>a list of zero or more transforms to apply to this fill.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="GraphicalElement" name="GraphicalElement" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-_ownedComment.0" annotatedElement="GraphicalElement">
+        <body>GraphicalElement is the abstract superclass of all graphical elements that can be nested in a canvas.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GraphicalElement-group" name="group" visibility="public" type="Group" lower="0" association="A_member_group">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-group-_ownedComment.0" annotatedElement="GraphicalElement-group">
+          <body>the group element that owns this graphical element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GraphicalElement-localStyle" name="localStyle" visibility="public" type="Style" isOrdered="true" upper="*" lower="0" isComposite="true" association="A_localStyle_styledElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-localStyle-_ownedComment.0" annotatedElement="GraphicalElement-localStyle">
+          <body>a list of locally-owned styles for this graphical element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GraphicalElement-sharedStyle" name="sharedStyle" visibility="public" type="Style" isOrdered="true" upper="*" lower="0" association="A_sharedStyle_styledElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-sharedStyle-_ownedComment.0" annotatedElement="GraphicalElement-sharedStyle">
+          <body>a list of shared styles for this graphical element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GraphicalElement-transform" name="transform" visibility="public" type="Transform" isOrdered="true" isUnique="false" upper="*" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-transform-_ownedComment.0" annotatedElement="GraphicalElement-transform">
+          <body>a list of zero or more transforms to apply to this graphical element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="GraphicalElement-clipPath" name="clipPath" visibility="public" type="ClipPath" lower="0" isComposite="true" association="A_clipPath_clippedElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-clipPath-_ownedComment.0" annotatedElement="GraphicalElement-clipPath">
+          <body>an optional reference to a clip path element that masks the painting of this graphical element.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Group" name="Group" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Group-_ownedComment.0" annotatedElement="Group">
+        <body>Group defines a group of graphical elements that can be styled, clipped and/or transformed together.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Group-member" name="member" visibility="public" type="GraphicalElement" isOrdered="true" upper="*" lower="0" isComposite="true" association="A_member_group">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Group-member-_ownedComment.0" annotatedElement="Group-member">
+          <body>the list of graphical elements that are members of (owned by) this group.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Canvas" name="Canvas" superClass="Group">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-_ownedComment.0" annotatedElement="Canvas">
+        <body>Canvas is a kind of group that represents the root of containment for all graphical elements that render one diagram.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Canvas-backgroundFill" name="backgroundFill" visibility="public" type="Fill" lower="0" association="A_backgroundFill_canvas">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-backgroundFill-_ownedComment.0" annotatedElement="Canvas-backgroundFill">
+          <body>a reference to a fill that is used to paint the background of the canvas itself. A backgroundFill value is exclusive with a backgroundColor value. If both are specified, the backgroundFill value is used. If none is specified, no fill is applied (i.e. the canvas becomes see-through).</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Canvas-backgroundColor" name="backgroundColor" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-backgroundColor-_ownedComment.0" annotatedElement="Canvas-backgroundColor">
+          <body>a color that is used to paint the background of the canvas itself. A backgroundColor value is exclusive with a backgroundFill value. If both are specified, the backgroundFill value is used. If none is specified, no fill is applied (i.e. the canvas becomes see-through).</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Color"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Canvas-packagedFill" name="packagedFill" visibility="public" type="Fill" upper="*" lower="0" isComposite="true" association="A_fill_canvas">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-packagedFill-_ownedComment.0" annotatedElement="Canvas-packagedFill">
+          <body>a set of fills packaged by the canvas and referenced by graphical elements in the canvas.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Canvas-packagedMarker" name="packagedMarker" visibility="public" type="Marker" upper="*" lower="0" isComposite="true" association="A_marker_canvas">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-packagedMarker-_ownedComment.0" annotatedElement="Canvas-packagedMarker">
+          <body>A set of markers packaged by the canvas and referenced by marked elements in the canvas.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Canvas-packagedStyle" name="packagedStyle" visibility="public" type="Style" upper="*" lower="0" isComposite="true" association="_packagedElement.47">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-packagedStyle-_ownedComment.0" annotatedElement="Canvas-packagedStyle">
+          <body>a set of styles packaged by the canvas and referenced by graphical elements in the canvas as shared styles.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Marker" name="Marker" superClass="Group">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Marker-_ownedComment.0" annotatedElement="Marker">
+        <body>Marker is a kind of group that is used as a decoration (e.g. an arrowhead) for the vertices of a marked graphical element.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Marker-canvas" name="canvas" visibility="public" type="Canvas" association="A_marker_canvas">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Marker-canvas-_ownedComment.0" annotatedElement="Marker-canvas">
+          <body>a reference to the canvas that owns this marker.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Marker-size" name="size" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Marker-size-_ownedComment.0" annotatedElement="Marker-size">
+          <body>the size of the marker</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Dimension"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Marker-reference" name="reference" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Marker-reference-_ownedComment.0" annotatedElement="Marker-reference">
+          <body>a point within the bounds of the marker that aligns exactly with the marked element's vertex.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="MarkedElement" name="MarkedElement" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="MarkedElement-_ownedComment.0" annotatedElement="MarkedElement">
+        <body>MarkedElement is a graphic element that can be decorated at its vertices with markers (e.g. arrowheads).</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="MarkedElement-startMarker" name="startMarker" visibility="public" type="Marker" lower="0" association="A_startMarker_markedElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="MarkedElement-startMarker-_ownedComment.0" annotatedElement="MarkedElement-startMarker">
+          <body>an optional start marker that aligns with the first vertex of the marked element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="MarkedElement-endMarker" name="endMarker" visibility="public" type="Marker" lower="0" association="A_endMarker_markedElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="MarkedElement-endMarker-_ownedComment.0" annotatedElement="MarkedElement-endMarker">
+          <body>an optional end marker that aligns with the last vertex of the marked element.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="MarkedElement-midMarker" name="midMarker" visibility="public" type="Marker" lower="0" association="A_midMarker_markedElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="MarkedElement-midMarker-_ownedComment.0" annotatedElement="MarkedElement-midMarker">
+          <body>an optional mid marker that aligns with all vertices of the marked element except the first and the last.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Rectangle" name="Rectangle" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Rectangle-_ownedComment.0" annotatedElement="Rectangle">
+        <body>Rectangle is a graphical element that defines a rectangular shape with given bounds. A rectangle may be given rounded corners by setting its corner radius.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Rectangle-bounds" name="bounds" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Rectangle-bounds-_ownedComment.0" annotatedElement="Rectangle-bounds">
+          <body>the bounds of the rectangle in the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Rectangle-cornerRadius" name="cornerRadius" visibility="public" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Rectangle-cornerRadius-_ownedComment.0" annotatedElement="Rectangle-cornerRadius">
+          <body>a radius for the rectangle's rounded corners. When the radius is 0, the rectangle is drawn with sharp corners.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Ellipse" name="Ellipse" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Ellipse-_ownedComment.0" annotatedElement="Ellipse">
+        <body>Ellipse is a graphical element that defines an elliptical shape with a given center point and two radii on the x and y axes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Ellipse-center" name="center" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Ellipse-center-_ownedComment.0" annotatedElement="Ellipse-center">
+          <body>the center point of the ellipse in the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Ellipse-radii" name="radii" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Ellipse-radii-_ownedComment.0" annotatedElement="Ellipse-radii">
+          <body>a dimension that specifies the two radii of the ellipse (a width along the x-axis and a height along the y-axis)</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Dimension"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Text" name="Text" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Text-_ownedComment.0" annotatedElement="Text">
+        <body>Text is a graphical element that defines a shape that renders a character string within a bounding box.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Text-data" name="data" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Text-data-_ownedComment.0" annotatedElement="Text-data">
+          <body>the text as a string of characters.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Text-bounds" name="bounds" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Text-bounds-_ownedComment.0" annotatedElement="Text-bounds">
+          <body>the bounds inside which the text is rendered (possibly wrapped into multiple lines)</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Text-alignment" name="alignment" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Text-alignment-_ownedComment.0" annotatedElement="Text-alignment">
+          <body>the text alignment when wrapped into multiple lines.</body>
+        </ownedComment>
+        <type xmi:type="cmof:Enumeration" href="DC.cmof#AlignmentKind"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Line" name="Line" superClass="MarkedElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Line-_ownedComment.0" annotatedElement="Line">
+        <body>Line is a marked element that defines a shape consisting of one straight line between two points.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Line-start" name="start" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Line-start-_ownedComment.0" annotatedElement="Line-start">
+          <body>the starting point of the line in the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Line-end" name="end" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Line-end-_ownedComment.0" annotatedElement="Line-end">
+          <body>the ending point of the line in the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Polyline" name="Polyline" superClass="MarkedElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Polyline-_ownedComment.0" annotatedElement="Polyline">
+        <body>Polyline is a marked element that defines a shape consisting of a sequence of connected straight line segments.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Polyline-point" name="point" visibility="public" isOrdered="true" isUnique="false" upper="*" lower="2">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Polyline-point-_ownedComment.0" annotatedElement="Polyline-point">
+          <body>a list of 2 or more points making up the polyline.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Polygon" name="Polygon" superClass="MarkedElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Polygon-_ownedComment.0" annotatedElement="Polygon">
+        <body>Polygon is a marked element that defines a closed shape consisting of a sequence of connected straight line segments.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Polygon-point" name="point" visibility="public" isOrdered="true" isUnique="false" upper="*" lower="3">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Polygon-point-_ownedComment.0" annotatedElement="Polygon-point">
+          <body>a list of 3 or more points making up the polygon.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Path" name="Path" superClass="MarkedElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Path-_ownedComment.0" annotatedElement="Path">
+        <body>Path is a marked element that defines a custom shape whose geometry is specified with a sequence of path commands.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Path-command" name="command" visibility="public" type="PathCommand" isOrdered="true" isUnique="false" upper="*" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Path-command-_ownedComment.0" annotatedElement="Path-command">
+          <body>a list of path commands that define the geometry of the custom shape.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Transform" name="Transform" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Transform-_ownedComment.0" annotatedElement="Transform">
+        <body>Transform defines an operation that changes the geometry of a graphical element in a specific way.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Translate" name="Translate" general="Transform">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Translate-_ownedComment.0" annotatedElement="Translate">
+        <body>Translate is a kind of transform that translates (moves) a graphical element by a given delta along the x-y coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Translate-deltaX" name="deltaX" visibility="public" datatype="Translate">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Translate-deltaX-_ownedComment.0" annotatedElement="Translate-deltaX">
+          <body>a real number representing a translate delta along the x-axis. Both positive and negative values are allowed.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Translate-deltaY" name="deltaY" visibility="public" datatype="Translate">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Translate-deltaY-_ownedComment.0" annotatedElement="Translate-deltaY">
+          <body>a real number representing a translate delta along the y-axis. Both positive and negative values are allowed.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Scale" name="Scale" general="Transform">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Scale-_ownedComment.0" annotatedElement="Scale">
+        <body>Scale is a kind of transform that scales (resizes) a graphical element by a given factor in the x-y coordinate system.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Scale-non-negative-scale" name="non-negative-scale" constrainedElement="Scale" namespace="Scale">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Scale-non-negative-scale-_ownedComment.0" annotatedElement="Scale-non-negative-scale">
+          <body>scale factors cannot be negative.</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Scale-non-negative-scale-_specification">
+          <language>OCL</language>
+          <body>factorX>=0 and factorY>=0</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Scale-factorX" name="factorX" visibility="public" datatype="Scale">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Scale-factorX-_ownedComment.0" annotatedElement="Scale-factorX">
+          <body>a real number (>=0) representing a scale factor along the x-axis.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Scale-factorY" name="factorY" visibility="public" datatype="Scale">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Scale-factorY-_ownedComment.0" annotatedElement="Scale-factorY">
+          <body>a real number(>=0) representing a scale factor along the y-axis.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Rotate" name="Rotate" general="Transform">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Rotate-_ownedComment.0" annotatedElement="Rotate">
+        <body>Rotate is a kind of transform that rotates a graphical element by a given angle about a given center point in the x-y coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Rotate-angle" name="angle" visibility="public" datatype="Rotate">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Rotate-angle-_ownedComment.0" annotatedElement="Rotate-angle">
+          <body>a real number representing the angle (in degrees) of rotation. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Rotate-center" name="center" visibility="public" lower="0" datatype="Rotate">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Rotate-center-_ownedComment.0" annotatedElement="Rotate-center">
+          <body>a point in the x-y coordinate system about which the rotation is performed. If the point is not specified, it is assumed to be the origin of the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_startMarker_markedElement" name="A_startMarker_markedElement" visibility="private" memberEnd="MarkedElement-startMarker A_startMarker_markedElement-markedElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_startMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_startMarker_markedElement" association="A_startMarker_markedElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_endMarker_markedElement" name="A_endMarker_markedElement" visibility="private" memberEnd="MarkedElement-endMarker A_endMarker_markedElement-markedElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_endMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_endMarker_markedElement" association="A_endMarker_markedElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_member_group" name="A_member_group" visibility="private" memberEnd="Group-member GraphicalElement-group"/>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Skew" name="Skew" general="Transform">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Skew-_ownedComment.0" annotatedElement="Skew">
+        <body>Skew is a kind of transform that skews (deforms) a graphical element by given angles in the x-y coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Skew-angleX" name="angleX" visibility="public" datatype="Skew">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Skew-angleX-_ownedComment.0" annotatedElement="Skew-angleX">
+          <body>a real number representing the angle (in degrees) of skew along the x-axis. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Skew-angleY" name="angleY" visibility="public" datatype="Skew">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Skew-angleY-_ownedComment.0" annotatedElement="Skew-angleY">
+          <body>a real number representing the angle (in degrees) of skew along the y-axis. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_midMarker_markedElement" name="A_midMarker_markedElement" visibility="private" memberEnd="MarkedElement-midMarker A_midMarker_markedElement-markedElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_midMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_midMarker_markedElement" association="A_midMarker_markedElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Image" name="Image" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Image-_ownedComment.0" annotatedElement="Image">
+        <body>Image is a graphical element that defines a shape that paints an image with a given URL within given bounds.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-source" name="source" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Image-source-_ownedComment.0" annotatedElement="Image-source">
+          <body>the URL of a referenced image file.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-bounds" name="bounds" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Image-bounds-_ownedComment.0" annotatedElement="Image-bounds">
+          <body>the bounds within which the image is rendered.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-isAspectRatioPreserved" name="isAspectRatioPreserved" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Image-isAspectRatioPreserved-_ownedComment.0" annotatedElement="Image-isAspectRatioPreserved">
+          <body>wether to preserve the aspect ratio of the image upon scaling, i.e. the same scale factor for width and height.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="ClipPath" name="ClipPath" superClass="Group">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="ClipPath-_ownedComment.0" annotatedElement="ClipPath">
+        <body>ClipPath is a kind of group whose members collectively define a painting mask for its referencing graphical elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="ClipPath-clippedElement" name="clippedElement" visibility="public" type="GraphicalElement" association="A_clipPath_clippedElement">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="ClipPath-clippedElement-_ownedComment.0" annotatedElement="ClipPath-clippedElement">
+          <body>a reference to the owning element that is clipped by this clip path.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_marker_canvas" name="A_marker_canvas" visibility="private" memberEnd="Canvas-packagedMarker Marker-canvas"/>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_clipPath_clippedElement" name="A_clipPath_clippedElement" visibility="private" memberEnd="GraphicalElement-clipPath ClipPath-clippedElement"/>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Circle" name="Circle" superClass="GraphicalElement">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Circle-_ownedComment.0" annotatedElement="Circle">
+        <body>Circle is a graphical element that defines a circular shape with a given center point and a radius.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Circle-non_negative_radius" name="non_negative_radius" constrainedElement="Circle" namespace="Circle">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Circle-non_negative_radius-_ownedComment.0" annotatedElement="Circle-non_negative_radius">
+          <body>the radius cannot be negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Circle-non_negative_radius-_specification">
+          <language>OCL</language>
+          <body>radius >= 0</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Circle-center" name="center" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Circle-center-_ownedComment.0" annotatedElement="Circle-center">
+          <body>the center point of the circle in the x-y coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Circle-radius" name="radius" visibility="public">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Circle-radius-_ownedComment.0" annotatedElement="Circle-radius">
+          <body>a real number (>=0) that represents the radius of the circle.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Class" xmi:id="Style" name="Style">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Style-_ownedComment.0" annotatedElement="Style">
+        <body>Style contains formatting properties that affect the appearance or style of graphical elements.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Style-valid_font_size" name="valid_font_size" namespace="Style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-valid_font_size-_ownedComment.0" annotatedElement="Style-valid_font_size">
+          <body>the font size is non-negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Style-valid_font_size-_specification">
+          <language>OCL</language>
+          <body>fontSize >=  0</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Style-valid_fill_opacity" name="valid_fill_opacity" namespace="Style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-valid_fill_opacity-_ownedComment.0" annotatedElement="Style-valid_fill_opacity">
+          <body>the stroke width is non-negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Style-valid_fill_opacity-_specification">
+          <language>OCL</language>
+          <body>fillOpacity >=  0 and fillOpacity &lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Style-valid_stroke_width" name="valid_stroke_width" namespace="Style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-valid_stroke_width-_ownedComment.0" annotatedElement="Style-valid_stroke_width">
+          <body>the stroke width is non-negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Style-valid_stroke_width-_specification">
+          <language>OCL</language>
+          <body>strokeWidth >=  0</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Style-valid_dash_length_size" name="valid_dash_length_size" namespace="Style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-valid_dash_length_size-_ownedComment.0" annotatedElement="Style-valid_dash_length_size">
+          <body>the size of the stroke dash length list must be even.</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Style-valid_dash_length_size-_specification">
+          <language>OCL</language>
+          <body>strokeDashLength->size().mod(2) = 0</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Style-valid_stroke_opacity" name="valid_stroke_opacity" namespace="Style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-valid_stroke_opacity-_ownedComment.0" annotatedElement="Style-valid_stroke_opacity">
+          <body>the opacity of the fill is non-negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Style-valid_stroke_opacity-_specification">
+          <language>OCL</language>
+          <body>strokeOpacity >=  0 and strokeOpacity &lt;=1</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fill" name="fill" visibility="public" type="Fill" lower="0" association="A_fill_style">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fill-_ownedComment.0" annotatedElement="Style-fill">
+          <body>a reference to a fill that is used to paint the enclosed regions of a graphical element. A fill value is exclusive with a fillColor value. If both are specified, the fill value is used. If none is specified, no fill is applied (i.e. the element becomes see-through).</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fillColor" name="fillColor" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fillColor-_ownedComment.0" annotatedElement="Style-fillColor">
+          <body>a color that is used to paint the enclosed regions of graphical element. A fillColor value is exclusive with a fill value. If both are specified, the fill value is used. If none is specified, no fill is applied (i.e. the element becomes see-through).</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Color"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fillOpacity" name="fillOpacity" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fillOpacity-_ownedComment.0" annotatedElement="Style-fillOpacity">
+          <body>a real number (>=0 and &lt;=1) representing the opacity of the fill or fillColor used to paint a graphical element. A value of 0 means totally transparent, while a value of 1 means totally opaque. The default is 1.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-strokeWidth" name="strokeWidth" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-strokeWidth-_ownedComment.0" annotatedElement="Style-strokeWidth">
+          <body>a real number (>=0) representing the width of the stroke used to paint the outline of a graphical element. A value of 0 specifies no stroke is painted. The default is 1.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-strokeOpacity" name="strokeOpacity" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-strokeOpacity-_ownedComment.0" annotatedElement="Style-strokeOpacity">
+          <body>a real number (>=0 and &lt;=1) representing the opacity of the stroke used for a graphical element. A value of 0 means totally transparent, while a value of 1 means totally opaque. The default is 1.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-strokeColor" name="strokeColor" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-strokeColor-_ownedComment.0" annotatedElement="Style-strokeColor">
+          <body>the color of the stroke used to paint the outline of a graphical element. The default is black (red=0, green=0, blue=0).</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Color"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-strokeDashLength" name="strokeDashLength" visibility="public" isOrdered="true" isUnique="false" upper="*" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-strokeDashLength-_ownedComment.0" annotatedElement="Style-strokeDashLength">
+          <body>a list of real numbers specifying a pattern of alternating dash and gap lengths used in stroking the outline of a graphical element with the first one specifying a dash length. The size of the list is expected to be even. If the list is empty, the stroke is drawn solid. The default is empty list.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontSize" name="fontSize" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontSize-_ownedComment.0" annotatedElement="Style-fontSize">
+          <body>a real number (>=0) representing the size (in unit of length) of the font used to render a text element. The default is 10.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontName" name="fontName" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontName-_ownedComment.0" annotatedElement="Style-fontName">
+          <body>the name of the font used to render a text element (e.g. &quot;Times New Roman&quot;, &quot;Arial&quot; or &quot;Helvetica&quot;). The default is &quot;Arial&quot;.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontColor" name="fontColor" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontColor-_ownedComment.0" annotatedElement="Style-fontColor">
+          <body>the color of the font used to render a text element. The default is black (red=0, green=0, blue=0).</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Color"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontItalic" name="fontItalic" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontItalic-_ownedComment.0" annotatedElement="Style-fontItalic">
+          <body>whether the font used to render a text element has an &lt;i>italic&lt;/i> style. The default is false.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontBold" name="fontBold" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontBold-_ownedComment.0" annotatedElement="Style-fontBold">
+          <body>whether the font used to render a text element has a &lt;b>bold&lt;/b> style. The default is false.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontUnderline" name="fontUnderline" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontUnderline-_ownedComment.0" annotatedElement="Style-fontUnderline">
+          <body>whether the font used to render a text element has an &lt;b>underline&lt;/b> style. The default is false.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Style-fontStrikeThrough" name="fontStrikeThrough" visibility="public" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Style-fontStrikeThrough-_ownedComment.0" annotatedElement="Style-fontStrikeThrough">
+          <body>whether the font used to render a text element has a &lt;b>strike-through&lt;/b> style. The default is false.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="GraphicalElement-localStyle A_localStyle_styledElement-styledElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_localStyle_styledElement-styledElement" name="styledElement" visibility="public" type="GraphicalElement" lower="0" owningAssociation="A_localStyle_styledElement" association="A_localStyle_styledElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Matrix" name="Matrix" general="Transform">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-_ownedComment.0" annotatedElement="Matrix">
+        <body>Matrix is a kind of transform that represents any transform operation with a 3x3 transformation matrix.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-a" name="a" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-a-_ownedComment.0" annotatedElement="Matrix-a">
+          <body>the a value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-b" name="b" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-b-_ownedComment.0" annotatedElement="Matrix-b">
+          <body>the b value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-c" name="c" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-c-_ownedComment.0" annotatedElement="Matrix-c">
+          <body>the c value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-d" name="d" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-d-_ownedComment.0" annotatedElement="Matrix-d">
+          <body>the d value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-e" name="e" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-e-_ownedComment.0" annotatedElement="Matrix-e">
+          <body>the e value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Matrix-f" name="f" visibility="public" datatype="Matrix">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-f-_ownedComment.0" annotatedElement="Matrix-f">
+          <body>the f value of the transform matrix.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="PathCommand" name="PathCommand" isAbstract="true">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="PathCommand-_ownedComment.0" annotatedElement="PathCommand">
+        <body>PathCommand is the abstract super type of all commands that participate in specifying a path element.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="PathCommand-isRelative" name="isRelative" visibility="public" datatype="PathCommand" default="false">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="PathCommand-isRelative-_ownedComment.0" annotatedElement="PathCommand-isRelative">
+          <body>whether the coordinates specified by the command are relative to the current point (when true) or to the origin point of the coordinate system (when false).</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="MoveTo" name="MoveTo" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="MoveTo-_ownedComment.0" annotatedElement="MoveTo">
+        <body>MoveTo is a kind of path command that establishes a new current point in the coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="MoveTo-point" name="point" visibility="public" datatype="MoveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="MoveTo-point-_ownedComment.0" annotatedElement="MoveTo-point">
+          <body>a point to move to in the coordinate system</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="LineTo" name="LineTo" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="LineTo-_ownedComment.0" annotatedElement="LineTo">
+        <body>LineTo is a kind of path command that draw a straight line from the current point to a new point.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="LineTo-point" name="point" visibility="public" datatype="LineTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="LineTo-point-_ownedComment.0" annotatedElement="LineTo-point">
+          <body>a point to draw a straight line to from the current point in the coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="CubicCurveTo" name="CubicCurveTo" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="CubicCurveTo-_ownedComment.0" annotatedElement="CubicCurveTo">
+        <body>CubicCurveTo is a kind of path command that draws a cubic bézier curve from the current point to a new point using a start and an end control points.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="CubicCurveTo-point" name="point" visibility="public" datatype="CubicCurveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="CubicCurveTo-point-_ownedComment.0" annotatedElement="CubicCurveTo-point">
+          <body>a point to draw a cubic bézier curve to from the current point in the coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="CubicCurveTo-startControl" name="startControl" visibility="public" datatype="CubicCurveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="CubicCurveTo-startControl-_ownedComment.0" annotatedElement="CubicCurveTo-startControl">
+          <body>the start control point of the cubic bézier curve.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="CubicCurveTo-endControl" name="endControl" visibility="public" datatype="CubicCurveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="CubicCurveTo-endControl-_ownedComment.0" annotatedElement="CubicCurveTo-endControl">
+          <body>the end control point of the cubic bézier curve.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="QuadraticCurveTo" name="QuadraticCurveTo" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="QuadraticCurveTo-_ownedComment.0" annotatedElement="CubicCurveTo QuadraticCurveTo">
+        <body>QuadraticCurveTo is a kind of path command that draws a quadratic bézier curve from the current point to a new point using a single control point.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="QuadraticCurveTo-point" name="point" visibility="public" datatype="QuadraticCurveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="QuadraticCurveTo-point-_ownedComment.0" annotatedElement="QuadraticCurveTo-point">
+          <body>a point to draw a quadratic bézier curve to from the current point in the coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="QuadraticCurveTo-control" name="control" visibility="public" datatype="QuadraticCurveTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="QuadraticCurveTo-control-_ownedComment.0" annotatedElement="QuadraticCurveTo-control">
+          <body>the control point of the quadratic bézier curve.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="EllipticalArcTo" name="EllipticalArcTo" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-_ownedComment.0" annotatedElement="CubicCurveTo QuadraticCurveTo">
+        <body>EllipticalArcTo is a kind of path command that draws an elliptical arc from the current point to a new point in the coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="EllipticalArcTo-point" name="point" visibility="public" datatype="EllipticalArcTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-point-_ownedComment.0" annotatedElement="EllipticalArcTo-point">
+          <body>a point to draw an elliptical arc to from the current point in the coordinate system.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="EllipticalArcTo-radii" name="radii" visibility="public" datatype="EllipticalArcTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-radii-_ownedComment.0" annotatedElement="EllipticalArcTo-radii">
+          <body>the two radii of the ellipse from which the arc is created.</body>
+        </ownedComment>
+        <type xmi:type="cmof:DataType" href="DC.cmof#Dimension"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="EllipticalArcTo-rotation" name="rotation" visibility="public" datatype="EllipticalArcTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-rotation-_ownedComment.0" annotatedElement="EllipticalArcTo-rotation">
+          <body>a real number representing a rotation (in degrees) of the ellipse from which the arc is created.</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="EllipticalArcTo-isLargeArc" name="isLargeArc" visibility="public" datatype="EllipticalArcTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-isLargeArc-_ownedComment.0" annotatedElement="EllipticalArcTo-isLargeArc">
+          <body>whether the arc sweep is equal to or greater than 180 degrees (the large arc).</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="EllipticalArcTo-isSweep" name="isSweep" visibility="public" datatype="EllipticalArcTo">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-isSweep-_ownedComment.0" annotatedElement="EllipticalArcTo-isSweep">
+          <body>whether the arc is drawn in a positive-angle direction</body>
+        </ownedComment>
+        <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="ClosePath" name="ClosePath" general="PathCommand">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="ClosePath-_ownedComment.0" annotatedElement="ClosePath">
+        <body>ClosePath is a kind of path command that ends the current subpath and causes an automatic straight line to be drawn from the current point to the initial point of the current subpath.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_fill_canvas" name="A_fill_canvas" visibility="private" memberEnd="Canvas-packagedFill Fill-canvas"/>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_fill_style" name="A_fill_style" visibility="private" memberEnd="Style-fill A_fill_style-style">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_fill_style-style" name="style" visibility="public" type="Style" upper="*" lower="0" owningAssociation="A_fill_style" association="A_fill_style"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="GraphicalElement-sharedStyle A_sharedStyle_styledElement-styledElement">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_sharedStyle_styledElement-styledElement" name="styledElement" visibility="public" type="GraphicalElement" upper="*" lower="0" owningAssociation="A_sharedStyle_styledElement" association="A_sharedStyle_styledElement"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_backgroundFill_canvas" name="A_backgroundFill_canvas" visibility="private" memberEnd="Canvas-backgroundFill A_backgroundFill_canvas-canvas">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_backgroundFill_canvas-canvas" name="canvas" visibility="public" type="Canvas" upper="*" lower="0" owningAssociation="A_backgroundFill_canvas" association="A_backgroundFill_canvas"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="A_tile_pattern" name="A_tile_pattern" visibility="private" memberEnd="Pattern-tile A_tile_pattern-pattern">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="A_tile_pattern-pattern" name="pattern" visibility="public" type="Pattern" lower="0" owningAssociation="A_tile_pattern" association="A_tile_pattern"/>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Association" xmi:id="_packagedElement.47" visibility="private" memberEnd="Canvas-packagedStyle _packagedElement.47-canvas">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="_packagedElement.47-canvas" name="canvas" visibility="public" type="Canvas" owningAssociation="_packagedElement.47" association="_packagedElement.47"/>
+    </ownedMember>
+  </cmof:Package>
+  <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="dg" element="_0"/>
+  <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DG" element="_0"/>
+</xmi:XMI>

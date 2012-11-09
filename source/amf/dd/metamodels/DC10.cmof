@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+  <cmof:Package xmi:id="_0" name="DC" uri="http://www.omg.org/spec/DD/20110901/DC">
+    <ownedComment xmi:type="cmof:Comment" xmi:id="_ownedComment.0" annotatedElement="_0">
+      <body>The Diagram Common (DC) package contains abstractions shared by the Diagram Interchange and the Diagram Graphics packages.</body>
+    </ownedComment>
+    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Boolean" name="Boolean">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Boolean-_ownedComment.0" annotatedElement="Boolean">
+        <body>Boolean is a primitive data type having one of two values: &lt;i>true&lt;/i> or &lt;i>false&lt;/i>, intended to represent the truth value of logical expressions.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Integer" name="Integer">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Integer-_ownedComment.0" annotatedElement="Integer">
+        <body>Integer is a primitive data type used to represent the mathematical concept of integer.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Real" name="Real">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Real-_ownedComment.0" annotatedElement="Real">
+        <body>Real is a primitive data type used to represent the mathematical concept of real.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="String" name="String">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="String-_ownedComment.0" annotatedElement="String">
+        <body>String is a primitive data type used to represent a sequence of characters in some suitable character set.</body>
+      </ownedComment>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Color" name="Color">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Color-_ownedComment.0" annotatedElement="Color">
+        <body>Color is a data type that represents a color value in the RGB format.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Color-valid_rgb" name="valid_rgb" constrainedElement="Color" namespace="Color">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Color-valid_rgb-_ownedComment.0" annotatedElement="Color-valid_rgb">
+          <body>the red, green and blue components of the color must be in the range (0...255).</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Color-valid_rgb-_specification">
+          <language>OCL</language>
+          <body>red >= 0 and red &lt;=255 and green >= 0 and green &lt;=255 and blue >= 0 and blue &lt;=255</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Color-red" name="red" visibility="public" type="Integer" datatype="Color">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Color-red-_ownedComment.0" annotatedElement="Color-red">
+          <body>the red component of the color in the range (0..255).</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Color-green" name="green" visibility="public" type="Integer" datatype="Color">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Color-green-_ownedComment.0" annotatedElement="Color-green">
+          <body>the red component of the color in the range (0..255).</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Color-blue" name="blue" visibility="public" type="Integer" datatype="Color">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Color-blue-_ownedComment.0" annotatedElement="Color-blue">
+          <body>the red component of the color in the range (0..255).</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Point" name="Point">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Point-_ownedComment.0" annotatedElement="Point">
+        <body>A Point specifies an location in some x-y coordinate system.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Point-x" name="x" visibility="public" type="Real" datatype="Point" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Point-x-_ownedComment.0" annotatedElement="Point-x">
+          <body>a real number (&lt;= 0 or >= 0) that represents the x-coordinate of the point.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Point-y" name="y" visibility="public" type="Real" datatype="Point" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Point-y-_ownedComment.0" annotatedElement="Point-y">
+          <body>a real number (&lt;= 0 or >= 0)  that represents the y-coordinate of the point.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Dimension" name="Dimension">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Dimension-_ownedComment.0" annotatedElement="Dimension">
+        <body>Dimension specifies two lengths (width and height) along the x and y axes in some x-y coordinate system.</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Dimension-non_negative_dimension" name="non_negative_dimension" constrainedElement="Bounds" namespace="Dimension">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Dimension-non_negative_dimension-_ownedComment.0" annotatedElement="Dimension-non_negative_dimension">
+          <body>the width and height of a dimension cannot be negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Dimension-non_negative_dimension-_specification">
+          <language>OCL</language>
+          <body>width >= 0 and height >=0</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Dimension-width" name="width" visibility="public" type="Real" datatype="Dimension">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Dimension-width-_ownedComment.0" annotatedElement="Dimension-width">
+          <body>a real number (>=0) that represents a length along the x-axis.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Dimension-height" name="height" visibility="public" type="Real" datatype="Dimension">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Dimension-height-_ownedComment.0" annotatedElement="Dimension-height">
+          <body>a real number (>=0) that represents a length along the y-axis.</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:DataType" xmi:id="Bounds" name="Bounds">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-_ownedComment.0" annotatedElement="Bounds">
+        <body>Bounds specifies a rectangular area in some x-y coordinate system that is defined by a location (x and y) and a size (width and height).</body>
+      </ownedComment>
+      <ownedRule xmi:type="cmof:Constraint" xmi:id="Bounds-non_negative_size" name="non_negative_size" constrainedElement="Bounds" namespace="Bounds">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-non_negative_size-_ownedComment.0" annotatedElement="Bounds-non_negative_size">
+          <body>the width and height of bounds cannot be negative</body>
+        </ownedComment>
+        <specification xmi:type="cmof:OpaqueExpression" xmi:id="Bounds-non_negative_size-_specification">
+          <language>OCL</language>
+          <body>width >= 0 and height >=0</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Bounds-x" name="x" visibility="public" type="Real" datatype="Bounds" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-x-_ownedComment.0" annotatedElement="Bounds-x">
+          <body>a real number (>=0 or &lt;=0) that represents the x-coordinate of the bounds</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Bounds-y" name="y" visibility="public" type="Real" datatype="Bounds" default="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-y-_ownedComment.0" annotatedElement="Bounds-y">
+          <body>a real number (>=0 or &lt;=0) that represents the y-coordinate of the bounds</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Bounds-width" name="width" visibility="public" type="Real" datatype="Bounds">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-width-_ownedComment.0" annotatedElement="Bounds-width">
+          <body>a real number (>=0) that represents the width of the bounds</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Bounds-height" name="height" visibility="public" type="Real" datatype="Bounds">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-height-_ownedComment.0" annotatedElement="Bounds-height">
+          <body>a real number (>=0) that represents the height of the bounds</body>
+        </ownedComment>
+      </ownedAttribute>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Enumeration" xmi:id="AlignmentKind" name="AlignmentKind">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="AlignmentKind-_ownedComment.0" annotatedElement="AlignmentKind">
+        <body>AlignmentKind enumerates the possible options for alignment for layout purposes.</body>
+      </ownedComment>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AlignmentKind-start" name="start" classifier="AlignmentKind" enumeration="AlignmentKind">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="AlignmentKind-start-_ownedComment.0" annotatedElement="AlignmentKind-start">
+          <body>an alignment to the start of a given length.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AlignmentKind-end" name="end" classifier="AlignmentKind" enumeration="AlignmentKind">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="AlignmentKind-end-_ownedComment.0" annotatedElement="AlignmentKind-end">
+          <body>an alignment to the end of a given length</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AlignmentKind-center" name="center" classifier="AlignmentKind" enumeration="AlignmentKind">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="AlignmentKind-center-_ownedComment.0" annotatedElement="AlignmentKind-center">
+          <body>an alignment to the center of a given length</body>
+        </ownedComment>
+      </ownedLiteral>
+    </ownedMember>
+    <ownedMember xmi:type="cmof:Enumeration" xmi:id="KnownColor" name="KnownColor">
+      <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-_ownedComment.0" annotatedElement="KnownColor">
+        <body>KnownColor is an enumeration of 17 known colors.</body>
+      </ownedComment>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-maroon" name="maroon" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-maroon-_ownedComment.0" annotatedElement="KnownColor-maroon">
+          <body>a color with a value of #800000</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-red" name="red" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-red-_ownedComment.0" annotatedElement="KnownColor-red">
+          <body>a color with a value of #FF0000</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-orange" name="orange" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-orange-_ownedComment.0" annotatedElement="KnownColor-orange">
+          <body>a color with a value of #FFA500</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-yellow" name="yellow" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-yellow-_ownedComment.0" annotatedElement="KnownColor-yellow">
+          <body>a color with a value of #FFFF00</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-olive" name="olive" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-olive-_ownedComment.0" annotatedElement="KnownColor-olive">
+          <body>a color with a value of #808000</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-purple" name="purple" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-purple-_ownedComment.0" annotatedElement="KnownColor-purple">
+          <body>a color with a value of #800080</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-fuchsia" name="fuchsia" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-fuchsia-_ownedComment.0" annotatedElement="KnownColor-fuchsia">
+          <body>a color with a value of #FF00FF</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-white" name="white" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-white-_ownedComment.0" annotatedElement="KnownColor-white">
+          <body>a color with a value of #FFFFFF</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-lime" name="lime" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-lime-_ownedComment.0" annotatedElement="KnownColor-lime">
+          <body>a color with a value of #00FF00</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-green" name="green" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-green-_ownedComment.0" annotatedElement="KnownColor-green">
+          <body>a color with a value of #008000</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-navy" name="navy" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-navy-_ownedComment.0" annotatedElement="KnownColor-navy">
+          <body>a color with a value of #000080</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-blue" name="blue" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-blue-_ownedComment.0" annotatedElement="KnownColor-blue">
+          <body>a color with a value of #0000FF</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-aqua" name="aqua" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-aqua-_ownedComment.0" annotatedElement="KnownColor-aqua">
+          <body>a color with a value of #00FFFF</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-teal" name="teal" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-teal-_ownedComment.0" annotatedElement="KnownColor-teal">
+          <body>a color with a value of #008080</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-black" name="black" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-black-_ownedComment.0" annotatedElement="KnownColor-black">
+          <body>a color with a value of #000000</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-silver" name="silver" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-silver-_ownedComment.0" annotatedElement="KnownColor-silver">
+          <body>a color with a value of #C0C0C0</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="KnownColor-gray" name="gray" classifier="KnownColor" enumeration="KnownColor">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-gray-_ownedComment.0" annotatedElement="KnownColor-gray">
+          <body>a color with a value of #808080</body>
+        </ownedComment>
+      </ownedLiteral>
+    </ownedMember>
+  </cmof:Package>
+  <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="dc" element="_0"/>
+  <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DC" element="_0"/>
+  <cmof:Tag xmi:id="_3" name="org.omg.xmi.schemaType" value="http://www.w3.org/2001/XMLSchema#boolean" element="Boolean"/>
+  <cmof:Tag xmi:id="_4" name="org.omg.xmi.schemaType" value="http://www.w3.org/2001/XMLSchema#integer" element="Integer"/>
+  <cmof:Tag xmi:id="_5" name="org.omg.xmi.schemaType" value="http://www.w3.org/2001/XMLSchema#double" element="Real"/>
+</xmi:XMI>
