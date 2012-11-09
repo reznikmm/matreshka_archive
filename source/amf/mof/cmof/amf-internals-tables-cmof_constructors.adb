@@ -105,7 +105,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -266,7 +266,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -455,7 +455,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  specification
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -516,7 +516,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -725,7 +725,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -868,7 +868,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  owner
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -920,7 +920,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -983,7 +983,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1039,7 +1039,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isQuery
           8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
@@ -1051,9 +1051,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1205,7 +1205,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           7      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  uri
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1461,7 +1461,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isOrdered
           8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
@@ -1475,9 +1475,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1531,7 +1531,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  qualifiedName
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1679,7 +1679,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isReadOnly
           8      => (AMF.Internals.Tables.CMOF_Types.M_Boolean, True),
                        --  isUnique
-          9      => (AMF.Internals.Tables.CMOF_Types.M_Integer_Holder, (False, 1)),
+          9      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.CMOF_Types.M_String, null),
                        --  name
@@ -1695,9 +1695,9 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  qualifiedName
           6      => (AMF.Internals.Tables.CMOF_Types.M_Element, No_AMF_Link),
                        --  type
-          10     => (AMF.Internals.Tables.CMOF_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          10     => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
-          3      => (AMF.Internals.Tables.CMOF_Types.M_Visibility_Holder_Kind, (Is_Empty => True)),
+          3      => (AMF.Internals.Tables.CMOF_Types.M_Holder_Of_Visibility_Kind, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.CMOF_Types.M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=

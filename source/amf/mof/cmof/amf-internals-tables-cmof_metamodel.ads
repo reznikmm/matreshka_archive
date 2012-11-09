@@ -57,6 +57,7 @@ package AMF.Internals.Tables.CMOF_Metamodel is
    function MC_CMOF_Unlimited_Natural return AMF.Internals.CMOF_Element;
    function MC_CMOF_Visibility_Kind return AMF.Internals.CMOF_Element;
 
+
    function MC_CMOF_Association return AMF.Internals.CMOF_Element;
    function MC_CMOF_Behavioral_Feature return AMF.Internals.CMOF_Element;
    function MC_CMOF_Class return AMF.Internals.CMOF_Element;
