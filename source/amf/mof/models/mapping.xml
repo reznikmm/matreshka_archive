@@ -55,6 +55,14 @@
 
   <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="../metamodels/CMOF24.cmof"/>
 
+  <!--==========-->
+  <!--  DD 1.0  -->
+  <!--==========-->
+
+  <uri name="http://www.omg.org/spec/DD/20110901/DC.cmof" uri="../DD10/DC.cmof"/>
+  <uri name="http://www.omg.org/spec/DD/20110901/DI.cmof" uri="../DD10/DI.cmof"/>
+  <uri name="http://www.omg.org/spec/DD/20110901/DG.cmof" uri="../DD10/DG.cmof"/>
+
   <!--===========================-->
   <!--  UML Testing Profile 1.1  -->
   <!--===========================-->
