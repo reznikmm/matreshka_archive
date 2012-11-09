@@ -102,43 +102,11 @@ package body AMF.Internals.Factories.DC_Factories is
     (Image : League.Strings.Universal_String) return League.Holders.Holder
        is separate;
 
-   function Convert_Bounds_To_String
-    (Value : League.Holders.Holder) return League.Strings.Universal_String
-       is separate;
-
-   function Create_Bounds_From_String
-    (Image : League.Strings.Universal_String) return League.Holders.Holder
-       is separate;
-
-   function Convert_Color_To_String
-    (Value : League.Holders.Holder) return League.Strings.Universal_String
-       is separate;
-
-   function Create_Color_From_String
-    (Image : League.Strings.Universal_String) return League.Holders.Holder
-       is separate;
-
-   function Convert_Dimension_To_String
-    (Value : League.Holders.Holder) return League.Strings.Universal_String
-       is separate;
-
-   function Create_Dimension_From_String
-    (Image : League.Strings.Universal_String) return League.Holders.Holder
-       is separate;
-
    function Convert_Integer_To_String
     (Value : League.Holders.Holder) return League.Strings.Universal_String
        is separate;
 
    function Create_Integer_From_String
-    (Image : League.Strings.Universal_String) return League.Holders.Holder
-       is separate;
-
-   function Convert_Point_To_String
-    (Value : League.Holders.Holder) return League.Strings.Universal_String
-       is separate;
-
-   function Create_Point_From_String
     (Image : League.Strings.Universal_String) return League.Holders.Holder
        is separate;
 
@@ -205,15 +173,6 @@ package body AMF.Internals.Factories.DC_Factories is
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Boolean then
          return Convert_Boolean_To_String (Value);
 
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Bounds then
-         return Convert_Bounds_To_String (Value);
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Color then
-         return Convert_Color_To_String (Value);
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Dimension then
-         return Convert_Dimension_To_String (Value);
-
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Integer then
          return Convert_Integer_To_String (Value);
 
@@ -276,9 +235,6 @@ package body AMF.Internals.Factories.DC_Factories is
                   return Gray_Img;
             end case;
          end;
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Point then
-         return Convert_Point_To_String (Value);
 
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Real then
          return Convert_Real_To_String (Value);
@@ -343,15 +299,6 @@ package body AMF.Internals.Factories.DC_Factories is
 
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Boolean then
          return Create_Boolean_From_String (Image);
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Bounds then
-         return Create_Bounds_From_String (Image);
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Color then
-         return Create_Color_From_String (Image);
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Dimension then
-         return Create_Dimension_From_String (Image);
 
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Integer then
          return Create_Integer_From_String (Image);
@@ -445,9 +392,6 @@ package body AMF.Internals.Factories.DC_Factories is
          else
             raise Constraint_Error;
          end if;
-
-      elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Point then
-         return Create_Point_From_String (Image);
 
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Real then
          return Create_Real_From_String (Image);
