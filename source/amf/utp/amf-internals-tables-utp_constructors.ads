@@ -44,7 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.Utp_Constructors is
+package AMF.Internals.Tables.UTP_Constructors is
 
    function Create_Utp_Coding_Rule return AMF.Internals.AMF_Element;
 
@@ -106,4 +106,4 @@ package AMF.Internals.Tables.Utp_Constructors is
 
    function Create_Utp_Validation_Action return AMF.Internals.AMF_Element;
 
-end AMF.Internals.Tables.Utp_Constructors;
+end AMF.Internals.Tables.UTP_Constructors;

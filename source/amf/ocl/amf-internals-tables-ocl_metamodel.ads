@@ -52,6 +52,7 @@ package AMF.Internals.Tables.OCL_Metamodel is
 
    function MC_OCL_Collection_Kind return AMF.Internals.CMOF_Element;
 
+
    function MC_OCL_Any_Type return AMF.Internals.CMOF_Element;
    function MC_OCL_Association_Class_Call_Exp return AMF.Internals.CMOF_Element;
    function MC_OCL_Bag_Type return AMF.Internals.CMOF_Element;

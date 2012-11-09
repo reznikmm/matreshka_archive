@@ -46,7 +46,7 @@
 with AMF.Utp;
 with Matreshka.Internals.Strings;
 
-package AMF.Internals.Tables.Utp_Attributes is
+package AMF.Internals.Tables.UTP_Attributes is
 
    function Internal_Get_Base_Accept_Event_Action
     (Self : AMF.Internals.AMF_Element)
@@ -361,4 +361,4 @@ package AMF.Internals.Tables.Utp_Attributes is
      To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ManagedElement => ManagedElement::version
 
-end AMF.Internals.Tables.Utp_Attributes;
+end AMF.Internals.Tables.UTP_Attributes;

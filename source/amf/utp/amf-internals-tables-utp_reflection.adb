@@ -47,9 +47,9 @@ with AMF.Holders.Elements;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders.UML_Holders;
-with AMF.Internals.Tables.Utp_Element_Table;
+with AMF.Internals.Tables.UTP_Element_Table;
+with AMF.Internals.Tables.UTP_Types;
 with AMF.Internals.Tables.Utp_Metamodel;
-with AMF.Internals.Tables.Utp_Types;
 with AMF.String_Collections.Internals;
 with AMF.UML.Accept_Event_Actions;
 with AMF.UML.Behaviored_Classifiers;
@@ -105,7 +105,7 @@ with AMF.Utp.Timer_Running_Actions;
 with AMF.Utp.Validation_Actions;
 with League.Holders;
 
-package body AMF.Internals.Tables.Utp_Reflection is
+package body AMF.Internals.Tables.UTP_Reflection is
 
    ---------
    -- Get --
@@ -1045,98 +1045,98 @@ package body AMF.Internals.Tables.Utp_Reflection is
       end Utp_Validation_Action_Get;
 
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_None =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             return Utp_Coding_Rule_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
             return Utp_Data_Partition_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             return Utp_Data_Pool_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
             return Utp_Data_Selector_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
             return Utp_Default_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application =>
             return Utp_Default_Application_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt =>
             return Utp_Determ_Alt_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             return Utp_Finish_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action =>
             return Utp_Get_Timezone_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any =>
             return Utp_Literal_Any_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null =>
             return Utp_Literal_Any_Or_Null_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action =>
             return Utp_Log_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element =>
             return Utp_Managed_Element_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action =>
             return Utp_Read_Timer_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_SUT =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_SUT =>
             return Utp_SUT_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action =>
             return Utp_Set_Timezone_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action =>
             return Utp_Start_Timer_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action =>
             return Utp_Stop_Timer_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             return Utp_Test_Case_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
             return Utp_Test_Component_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             return Utp_Test_Context_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
             return Utp_Test_Log_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application =>
             return Utp_Test_Log_Application_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
             return Utp_Test_Objective_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
             return Utp_Test_Suite_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
             return Utp_Time_Out_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action =>
             return Utp_Time_Out_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message =>
             return Utp_Time_Out_Message_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action =>
             return Utp_Timer_Running_Action_Get;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action =>
             return Utp_Validation_Action_Get;
       end case;
    end Get;
@@ -1148,98 +1148,98 @@ package body AMF.Internals.Tables.Utp_Reflection is
    function Get_Meta_Class
     (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
-      case Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_None =>
+      case UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Coding_Rule;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Data_Partition;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Data_Pool;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Data_Selector;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Default;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Default_Application;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Determ_Alt;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Finish_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Get_Timezone_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Literal_Any;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Literal_Any_Or_Null;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Log_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Managed_Element;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Read_Timer_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_SUT =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_SUT =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_SUT;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Set_Timezone_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Start_Timer_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Stop_Timer_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Case;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Component;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Context;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Log;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Log_Application;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Objective;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Test_Suite;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Time_Out;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Time_Out_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Time_Out_Message;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Timer_Running_Action;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action =>
             return AMF.Internals.Tables.Utp_Metamodel.MC_Utp_Validation_Action;
       end case;
    end Get_Meta_Class;
@@ -2031,100 +2031,100 @@ package body AMF.Internals.Tables.Utp_Reflection is
          end if;
       end Utp_Validation_Action_Set;
    begin
-      case Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_None =>
+      case UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             Utp_Coding_Rule_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
             Utp_Data_Partition_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             Utp_Data_Pool_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
             Utp_Data_Selector_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
             Utp_Default_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application =>
             Utp_Default_Application_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt =>
             Utp_Determ_Alt_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             Utp_Finish_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action =>
             Utp_Get_Timezone_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any =>
             Utp_Literal_Any_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null =>
             Utp_Literal_Any_Or_Null_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action =>
             Utp_Log_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element =>
             Utp_Managed_Element_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action =>
             Utp_Read_Timer_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_SUT =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_SUT =>
             Utp_SUT_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action =>
             Utp_Set_Timezone_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action =>
             Utp_Start_Timer_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action =>
             Utp_Stop_Timer_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             Utp_Test_Case_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
             Utp_Test_Component_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             Utp_Test_Context_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
             Utp_Test_Log_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application =>
             Utp_Test_Log_Application_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
             Utp_Test_Objective_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
             Utp_Test_Suite_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
             Utp_Time_Out_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action =>
             Utp_Time_Out_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message =>
             Utp_Time_Out_Message_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action =>
             Utp_Timer_Running_Action_Set;
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action =>
             Utp_Validation_Action_Set;
       end case;
    end Set;
 
-end AMF.Internals.Tables.Utp_Reflection;
+end AMF.Internals.Tables.UTP_Reflection;

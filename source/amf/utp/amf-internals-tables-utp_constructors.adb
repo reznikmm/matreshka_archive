@@ -44,9 +44,9 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
-with AMF.Internals.Tables.Utp_Element_Table;
+with AMF.Internals.Tables.UTP_Element_Table;
+with AMF.Internals.Tables.UTP_Types;
 with AMF.Internals.Tables.Utp_Metamodel;
-with AMF.Internals.Tables.Utp_Types;
 with AMF.Internals.Utp_Coding_Rules;
 with AMF.Internals.Utp_Data_Partitions;
 with AMF.Internals.Utp_Data_Pools;
@@ -80,7 +80,7 @@ with AMF.Internals.Utp_Validation_Actions;
 with AMF.Utp;
 with Matreshka.Internals.Strings;
 
-package body AMF.Internals.Tables.Utp_Constructors is
+package body AMF.Internals.Tables.UTP_Constructors is
 
    use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Collection_Of_Element;
@@ -93,27 +93,27 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Coding_Rules.Utp_Coding_Rule_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          3      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Namespace
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Property
-          2      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_ValueSpecification
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          4      => (AMF.Internals.Tables.UTP_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  coding
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -127,21 +127,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Data_Partitions.Utp_Data_Partition_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          2      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Classifier
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -155,23 +155,23 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Data_Pools.Utp_Data_Pool_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          2      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Classifier
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Property
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -185,21 +185,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Data_Selectors.Utp_Data_Selector_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          5      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          5      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Operation
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -213,21 +213,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Default,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Default,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Defaults.Utp_Default_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -241,23 +241,23 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Default_Applications.Utp_Default_Application_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Dependency
-          2      => (AMF.Internals.Tables.Utp_Types.M_Unlimited_Natural, (False, 0)),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Unlimited_Natural, (False, 0)),
                        --  repetition
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -271,21 +271,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Determ_Alts.Utp_Determ_Alt_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_CombinedFragment
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -299,23 +299,23 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Finish_Actions.Utp_Finish_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          2      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_InvocationAction
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_OpaqueAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -329,21 +329,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Get_Timezone_Actions.Utp_Get_Timezone_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_ReadStructuralFeatureAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -357,21 +357,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Literal_Anies.Utp_Literal_Any_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_LiteralSpecification
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -385,21 +385,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Literal_Any_Or_Nulls.Utp_Literal_Any_Or_Null_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_LiteralSpecification
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -413,21 +413,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Log_Actions.Utp_Log_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_SendObjectAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -441,29 +441,29 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Managed_Elements.Utp_Managed_Element_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Element
-          5      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          5      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  criticality
-          3      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  description
-          2      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  owner
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  version
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -477,21 +477,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Read_Timer_Actions.Utp_Read_Timer_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_CallOperationAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -505,21 +505,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_SUT,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_SUT,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_SUTs.Utp_SUT_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Property
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -533,21 +533,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Set_Timezone_Actions.Utp_Set_Timezone_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_WriteStructuralFeatureAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -561,21 +561,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Start_Timer_Actions.Utp_Start_Timer_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_CallOperationAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -589,21 +589,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Stop_Timer_Actions.Utp_Stop_Timer_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_CallOperationAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -617,29 +617,29 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Cases.Utp_Test_Case_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          5      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          5      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Operation
-          3      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVariant
-          2      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVersion
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  priority
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -653,25 +653,25 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Components.Utp_Test_Component_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_StructuredClassifier
-          3      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVariant
-          2      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVersion
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -685,29 +685,29 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Contexts.Utp_Test_Context_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          4      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_BehavioredClassifier
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_StructuredClassifier
-          3      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVariant
-          2      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  compatibleSUTVersion
-          5      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          5      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  testLevel
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -721,33 +721,33 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Logs.Utp_Test_Log_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  duration
-          3      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          3      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  executedAt
-          7      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          7      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  sutVersion
-          2      => (AMF.Internals.Tables.Utp_Types.M_Collection_Of_String, 0),
+          2      => (AMF.Internals.Tables.UTP_Types.M_Collection_Of_String, 0),
                        --  tester
-          5      => (AMF.Internals.Tables.Utp_Types.M_Verdict, AMF.Utp.None),
+          5      => (AMF.Internals.Tables.UTP_Types.M_Verdict, AMF.Utp.None),
                        --  verdict
-          6      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          6      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  verdictReason
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -761,21 +761,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Log_Applications.Utp_Test_Log_Application_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Dependency
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -789,23 +789,23 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Objectives.Utp_Test_Objective_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Dependency
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  priority
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -819,23 +819,23 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Test_Suites.Utp_Test_Suite_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Behavior
-          4      => (AMF.Internals.Tables.Utp_Types.M_String, null),
+          4      => (AMF.Internals.Tables.UTP_Types.M_Holder_Of_String, null),
                        --  priority
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       --  testCase
@@ -843,7 +843,7 @@ package body AMF.Internals.Tables.Utp_Constructors is
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
         AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Suite_Test_Case,
-        Utp_Element_Table.Table (Self).Member (0).Collection + 1);
+        UTP_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
    end Create_Utp_Test_Suite;
@@ -856,21 +856,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Time_Outs.Utp_Time_Out_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_TimeEvent
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -884,21 +884,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Time_Out_Actions.Utp_Time_Out_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_AcceptEventAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -912,21 +912,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Time_Out_Messages.Utp_Time_Out_Message_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_Message
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -940,21 +940,21 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Timer_Running_Actions.Utp_Timer_Running_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_ReadStructuralFeatureAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
@@ -968,24 +968,24 @@ package body AMF.Internals.Tables.Utp_Constructors is
       Self : AMF.Internals.AMF_Element;
 
    begin
-      Utp_Element_Table.Increment_Last;
-      Self := Utp_Element_Table.Last;
+      UTP_Element_Table.Increment_Last;
+      Self := UTP_Element_Table.Last;
 
-      Utp_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action,
+      UTP_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action,
         Extent   => 0,
         Proxy    =>
           new AMF.Internals.Utp_Validation_Actions.Utp_Validation_Action_Proxy'(Element => Self),
         Member   =>
-         (0      => (Kind => AMF.Internals.Tables.Utp_Types.M_None),
-          1      => (AMF.Internals.Tables.Utp_Types.M_Element, No_AMF_Link),
+         (0      => (Kind => AMF.Internals.Tables.UTP_Types.M_None),
+          1      => (AMF.Internals.Tables.UTP_Types.M_Element, No_AMF_Link),
                        --  base_CallOperationAction
-          others => (Kind => AMF.Internals.Tables.Utp_Types.M_None)));
-      Utp_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.Utp_Types.M_Collection_Of_Element,
+          others => (Kind => AMF.Internals.Tables.UTP_Types.M_None)));
+      UTP_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.UTP_Types.M_Collection_Of_Element,
         AMF.Internals.Element_Collections.Allocate_Collections (1));
 
       return Self;
    end Create_Utp_Validation_Action;
 
-end AMF.Internals.Tables.Utp_Constructors;
+end AMF.Internals.Tables.UTP_Constructors;

@@ -45,12 +45,12 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
 with AMF.Internals.Tables.Primitive_Types_Notification;
-with AMF.Internals.Tables.Utp_Element_Table;
+with AMF.Internals.Tables.UTP_Element_Table;
+with AMF.Internals.Tables.UTP_Types;
 with AMF.Internals.Tables.Utp_Metamodel;
 with AMF.Internals.Tables.Utp_Notification;
-with AMF.Internals.Tables.Utp_Types;
 
-package body AMF.Internals.Tables.Utp_Attributes is
+package body AMF.Internals.Tables.UTP_Attributes is
 
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
@@ -243,7 +243,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Accept_Event_Action;
 
    --------------------------------
@@ -256,7 +256,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Behavior;
 
    ---------------------------------------------
@@ -269,7 +269,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Base_Behaviored_Classifier;
 
    ---------------------------------------------
@@ -282,7 +282,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Call_Operation_Action;
 
    ----------------------------------
@@ -295,7 +295,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Base_Classifier;
 
    -----------------------------------------
@@ -308,7 +308,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Combined_Fragment;
 
    ----------------------------------
@@ -321,7 +321,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Dependency;
 
    -------------------------------
@@ -334,7 +334,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Element;
 
    -----------------------------------------
@@ -347,7 +347,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Base_Invocation_Action;
 
    ---------------------------------------------
@@ -360,7 +360,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Literal_Specification;
 
    -------------------------------
@@ -373,7 +373,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Message;
 
    ---------------------------------
@@ -386,7 +386,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Base_Namespace;
 
    -------------------------------------
@@ -399,7 +399,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Opaque_Action;
 
    ---------------------------------
@@ -412,7 +412,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).Link, Self);
    end Internal_Get_Base_Operation;
 
    --------------------------------
@@ -425,7 +425,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Property;
 
    ------------------------------------------------------
@@ -438,7 +438,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Read_Structural_Feature_Action;
 
    ------------------------------------------
@@ -451,7 +451,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Send_Object_Action;
 
    ---------------------------------------------
@@ -464,7 +464,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Structured_Classifier;
 
    ----------------------------------
@@ -477,7 +477,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Time_Event;
 
    -------------------------------------------
@@ -490,7 +490,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Base_Value_Specification;
 
    -------------------------------------------------------
@@ -503,7 +503,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Base_Write_Structural_Feature_Action;
 
    -------------------------
@@ -515,7 +515,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Coding;
 
    -----------------------------------------
@@ -526,7 +526,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).String_Collection_Value;   end Internal_Get_Compatible_SUT_Variant;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Collection_Value;   end Internal_Get_Compatible_SUT_Variant;
 
    -----------------------------------------
    -- Internal_Get_Compatible_SUT_Version --
@@ -536,7 +536,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Compatible_SUT_Version;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Compatible_SUT_Version;
 
    ------------------------------
    -- Internal_Get_Criticality --
@@ -547,7 +547,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Criticality;
 
    ------------------------------
@@ -559,7 +559,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Description;
 
    ---------------------------
@@ -571,7 +571,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Duration;
 
    ------------------------------
@@ -583,7 +583,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Executed_At;
 
    ------------------------
@@ -595,7 +595,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Owner;
 
    ---------------------------
@@ -607,7 +607,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Priority;
 
    -----------------------------
@@ -618,7 +618,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Unlimited_Natural is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value;
    end Internal_Get_Repetition;
 
    ------------------------------
@@ -630,7 +630,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (7).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (7).String_Value;
    end Internal_Get_Sut_Version;
 
    ----------------------------
@@ -641,7 +641,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (0).Collection + 1;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (0).Collection + 1;
    end Internal_Get_Test_Case;
 
    -----------------------------
@@ -653,7 +653,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Test_Level;
 
    -------------------------
@@ -664,7 +664,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Tester;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Tester;
 
    --------------------------
    -- Internal_Get_Verdict --
@@ -674,7 +674,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Utp.Utp_Verdict is
    begin
-      return AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).Verdict_Value;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).Verdict_Value;
    end Internal_Get_Verdict;
 
    ---------------------------------
@@ -686,7 +686,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (6).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (6).String_Value;
    end Internal_Get_Verdict_Reason;
 
    --------------------------
@@ -698,7 +698,7 @@ package body AMF.Internals.Tables.Utp_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Version;
 
    -------------------------------------------
@@ -709,8 +709,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action,
               Self,
@@ -729,26 +729,26 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Default,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Case,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Log,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Suite =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite,
               Self,
@@ -767,8 +767,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context,
               Self,
@@ -787,26 +787,26 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Read_Timer_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Start_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Stop_Timer_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Validation_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action,
               Self,
@@ -825,14 +825,14 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Partition =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool,
               Self,
@@ -851,8 +851,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Determ_Alt =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt,
               Self,
@@ -871,20 +871,20 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Default_Application =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Default_Application,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Log_Application =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Objective =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective,
               Self,
@@ -903,8 +903,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Managed_Element =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Element_Base_Element_Extension_Managed_Element,
               Self,
@@ -923,8 +923,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action,
               Self,
@@ -943,14 +943,14 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Literal_Any_Or_Null =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null,
               Self,
@@ -969,8 +969,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out_Message =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Message_Base_Message_Extension_Time_Out_Message,
               Self,
@@ -989,8 +989,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule,
               Self,
@@ -1009,8 +1009,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Finish_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action,
               Self,
@@ -1029,14 +1029,14 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Selector =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Data_Selector,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Case =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Test_Case,
               Self,
@@ -1055,20 +1055,20 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Coding_Rule,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Data_Pool =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Data_Pool,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_SUT =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_SUT =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_SUT,
               Self,
@@ -1087,14 +1087,14 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Get_Timezone_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Timer_Running_Action =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action,
               Self,
@@ -1113,8 +1113,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Log_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action,
               Self,
@@ -1133,14 +1133,14 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Component =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component,
               Self,
               To);
 
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Test_Context =>
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context,
               Self,
@@ -1159,8 +1159,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Time_Out =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out,
               Self,
@@ -1179,8 +1179,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Coding_Rule =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule,
               Self,
@@ -1199,8 +1199,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.Utp_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.Utp_Types.E_Utp_Set_Timezone_Action =>
+      case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action,
               Self,
@@ -1223,11 +1223,11 @@ package body AMF.Internals.Tables.Utp_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (4).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (4).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (Utp_Element_Table.Table (Self).Member (4).String_Value);
+       (UTP_Element_Table.Table (Self).Member (4).String_Value);
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Coding, Old, To);
@@ -1245,13 +1245,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (5).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (5).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (5).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (5).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (5).String_Value);
+          (UTP_Element_Table.Table (Self).Member (5).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1273,13 +1273,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (3).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (3).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (3).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (3).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (3).String_Value);
+          (UTP_Element_Table.Table (Self).Member (3).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1301,13 +1301,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (4).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (4).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (4).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (4).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (4).String_Value);
+          (UTP_Element_Table.Table (Self).Member (4).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1329,13 +1329,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (3).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (3).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (3).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (3).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (3).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (3).String_Value);
+          (UTP_Element_Table.Table (Self).Member (3).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1357,13 +1357,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (2).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (2).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (2).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (2).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (2).String_Value);
+          (UTP_Element_Table.Table (Self).Member (2).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1385,13 +1385,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (4).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (4).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (4).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (4).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (4).String_Value);
+          (UTP_Element_Table.Table (Self).Member (4).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1413,8 +1413,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : AMF.Unlimited_Natural;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value;
-      AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value := To;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value;
+      AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).Unlimited_Natural_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Application_Repetition, Old, To);
@@ -1431,13 +1431,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (7).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (7).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (7).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (7).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (7).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (7).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (7).String_Value);
+          (UTP_Element_Table.Table (Self).Member (7).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1459,13 +1459,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (5).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (5).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (5).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (5).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (5).String_Value);
+          (UTP_Element_Table.Table (Self).Member (5).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1487,8 +1487,8 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : AMF.Utp.Utp_Verdict;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).Verdict_Value;
-      AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (5).Verdict_Value := To;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).Verdict_Value;
+      AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (5).Verdict_Value := To;
 
       AMF.Internals.Tables.Utp_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Verdict, Old, To);
@@ -1505,13 +1505,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (6).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (6).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (6).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (6).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (6).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (6).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (6).String_Value);
+          (UTP_Element_Table.Table (Self).Member (6).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1533,13 +1533,13 @@ package body AMF.Internals.Tables.Utp_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.Utp_Element_Table.Table (Self).Member (4).String_Value;
+      Old := AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (4).String_Value;
 
-      Utp_Element_Table.Table (Self).Member (4).String_Value := To;
+      UTP_Element_Table.Table (Self).Member (4).String_Value := To;
 
-      if Utp_Element_Table.Table (Self).Member (4).String_Value /= null then
+      if UTP_Element_Table.Table (Self).Member (4).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (Utp_Element_Table.Table (Self).Member (4).String_Value);
+          (UTP_Element_Table.Table (Self).Member (4).String_Value);
       end if;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
@@ -1550,4 +1550,4 @@ package body AMF.Internals.Tables.Utp_Attributes is
       end if;
    end Internal_Set_Version;
 
-end AMF.Internals.Tables.Utp_Attributes;
+end AMF.Internals.Tables.UTP_Attributes;
