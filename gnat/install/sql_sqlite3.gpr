@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with "matreshka/matreshka_config.gpr";
 with "league.gpr";
+with "sql.gpr";
 
 library project SQL_SQLite3 is
 
