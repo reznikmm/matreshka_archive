@@ -44,17 +44,17 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
-with AMF.Internals.Tables.DC_Element_Table;
-with AMF.Internals.Tables.DC_Types;
+with AMF.Internals.Tables.DD_Element_Table;
+with AMF.Internals.Tables.DD_Types;
 
-separate (AMF.Internals.Factories.DC_Module_Factory)
+separate (AMF.Internals.Factories.DD_Module_Factory)
 procedure Construct_Union
  (Element  : AMF.Internals.AMF_Element;
   Property : AMF.Internals.CMOF_Element;
   Link     : AMF.Internals.AMF_Link)
 is
-   Element_Kind : constant AMF.Internals.Tables.DC_Types.Element_Kinds
-     := AMF.Internals.Tables.DC_Element_Table.Table (Element).Kind;
+   Element_Kind : constant AMF.Internals.Tables.DD_Types.Element_Kinds
+     := AMF.Internals.Tables.DD_Element_Table.Table (Element).Kind;
    Opposite     : constant AMF.Internals.AMF_Element
      := AMF.Internals.Links.Opposite_Element (Link, Element);
 

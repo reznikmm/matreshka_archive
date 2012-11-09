@@ -43,9 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.Tables.DC_Element_Table;
+with AMF.Internals.Tables.DD_Element_Table;
 
-package body AMF.Internals.Tables.DC_Reflection is
+package body AMF.Internals.Tables.DD_Reflection is
 
    ---------
    -- Get --
@@ -57,8 +57,8 @@ package body AMF.Internals.Tables.DC_Reflection is
    is
 
    begin
-      case AMF.Internals.Tables.DC_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.DC_Types.E_None =>
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_None =>
             raise Program_Error;
       end case;
    end Get;
@@ -70,8 +70,8 @@ package body AMF.Internals.Tables.DC_Reflection is
    function Get_Meta_Class
     (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
-      case DC_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.DC_Types.E_None =>
+      case DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_None =>
             return 0;
       end case;
    end Get_Meta_Class;
@@ -86,10 +86,10 @@ package body AMF.Internals.Tables.DC_Reflection is
      Value    : League.Holders.Holder)
    is
    begin
-      case DC_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.DC_Types.E_None =>
+      case DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_None =>
             raise Program_Error;
       end case;
    end Set;
 
-end AMF.Internals.Tables.DC_Reflection;
+end AMF.Internals.Tables.DD_Reflection;

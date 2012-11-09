@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,8 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.DC_Constructors is
+package body AMF.Internals.Tables.DD_Attributes is
 
-end AMF.Internals.Tables.DC_Constructors;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
+
+end AMF.Internals.Tables.DD_Attributes;

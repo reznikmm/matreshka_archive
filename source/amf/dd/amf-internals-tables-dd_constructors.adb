@@ -44,6 +44,9 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.DC_Attributes is
+package body AMF.Internals.Tables.DD_Constructors is
 
-end AMF.Internals.Tables.DC_Attributes;
+   use AMF.Internals.Tables;
+   use type AMF.Internals.AMF_Collection_Of_Element;
+
+end AMF.Internals.Tables.DD_Constructors;

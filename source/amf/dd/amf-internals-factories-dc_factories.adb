@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.DC.Holders.Alignment_Kinds;
-with AMF.DC.Holders.Known_Colors;
+with AMF.DD.Holders.Alignment_Kinds;
+with AMF.DD.Holders.Known_Colors;
 with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
@@ -187,7 +187,7 @@ package body AMF.Internals.Factories.DC_Factories is
       if DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Alignment_Kind then
          declare
             Item : constant AMF.DC.DC_Alignment_Kind
-              := AMF.DC.Holders.Alignment_Kinds.Element (Value);
+              := AMF.DD.Holders.Alignment_Kinds.Element (Value);
 
          begin
             case Item is
@@ -220,7 +220,7 @@ package body AMF.Internals.Factories.DC_Factories is
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Known_Color then
          declare
             Item : constant AMF.DC.DC_Known_Color
-              := AMF.DC.Holders.Known_Colors.Element (Value);
+              := AMF.DD.Holders.Known_Colors.Element (Value);
 
          begin
             case Item is
@@ -324,17 +324,17 @@ package body AMF.Internals.Factories.DC_Factories is
       if DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Alignment_Kind then
          if Image = Start_Img then
             return
-              AMF.DC.Holders.Alignment_Kinds.To_Holder
+              AMF.DD.Holders.Alignment_Kinds.To_Holder
                (AMF.DC.Align_Start);
 
          elsif Image = End_Img then
             return
-              AMF.DC.Holders.Alignment_Kinds.To_Holder
+              AMF.DD.Holders.Alignment_Kinds.To_Holder
                (AMF.DC.Align_End);
 
          elsif Image = Center_Img then
             return
-              AMF.DC.Holders.Alignment_Kinds.To_Holder
+              AMF.DD.Holders.Alignment_Kinds.To_Holder
                (AMF.DC.Align_Center);
 
          else
@@ -359,87 +359,87 @@ package body AMF.Internals.Factories.DC_Factories is
       elsif DT = AMF.Internals.Tables.DC_Metamodel.MC_DC_Known_Color then
          if Image = Maroon_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Maroon);
 
          elsif Image = Red_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Red);
 
          elsif Image = Orange_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Orange);
 
          elsif Image = Yellow_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Yellow);
 
          elsif Image = Olive_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Olive);
 
          elsif Image = Purple_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Purple);
 
          elsif Image = Fuchsia_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Fuchsia);
 
          elsif Image = White_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.White);
 
          elsif Image = Lime_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Lime);
 
          elsif Image = Green_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Green);
 
          elsif Image = Navy_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Navy);
 
          elsif Image = Blue_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Blue);
 
          elsif Image = Aqua_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Aqua);
 
          elsif Image = Teal_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Teal);
 
          elsif Image = Black_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Black);
 
          elsif Image = Silver_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Silver);
 
          elsif Image = Gray_Img then
             return
-              AMF.DC.Holders.Known_Colors.To_Holder
+              AMF.DD.Holders.Known_Colors.To_Holder
                (AMF.DC.Gray);
 
          else
