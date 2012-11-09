@@ -113,6 +113,16 @@ package AMF.DC is
       Blue  : Integer;
    end record;
 
+   type Optional_DC_Color (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : DC_Color;
+      end case;
+   end record;
+
    type DC_Dimension is record
       Width  : AMF.Real := 0.0;
       Height : AMF.Real := 0.0;
