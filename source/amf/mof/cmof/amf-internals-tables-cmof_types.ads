@@ -103,22 +103,22 @@ package AMF.Internals.Tables.CMOF_Types is
             Link : AMF.Internals.AMF_Link;
 
          when M_Holder_Of_Integer =>
-            Integer_Holder_Value : AMF.Optional_Integer;
+            Integer_Holder : AMF.Optional_Integer;
 
          when M_Holder_Of_Unlimited_Natural =>
-            Natural_Holder_Value : AMF.Optional_Unlimited_Natural;
+            Unlimited_Natural_Holder : AMF.Optional_Unlimited_Natural;
 
          when M_Holder_Of_Visibility_Kind =>
-            Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
+            Visibility_Kind_Holder : AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
          when M_Parameter_Direction_Kind =>
-            Parameter_Direction_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
+            Parameter_Direction_Kind_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
          when M_Visibility_Kind =>
-            Visibility_Value : AMF.CMOF.CMOF_Visibility_Kind;
+            Visibility_Kind_Value : AMF.CMOF.CMOF_Visibility_Kind;
       end case;
    end record;
 

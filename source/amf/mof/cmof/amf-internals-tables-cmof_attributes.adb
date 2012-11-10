@@ -561,7 +561,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.CMOF.CMOF_Parameter_Direction_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Kind_Value;
    end Internal_Get_Direction;
 
    --------------------------
@@ -833,7 +833,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Integer is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder;
    end Internal_Get_Lower;
 
    -------------------------
@@ -1354,7 +1354,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Optional_Unlimited_Natural is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Natural_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Unlimited_Natural_Holder;
    end Internal_Get_Upper;
 
    ----------------------
@@ -1389,7 +1389,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.CMOF.CMOF_Visibility_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Kind_Value;
    end Internal_Get_Visibility;
 
    -----------------------------
@@ -1400,7 +1400,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Kind_Holder;
    end Internal_Get_Visibility;
 
    ------------------------
@@ -1610,8 +1610,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Kind_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (11).Parameter_Direction_Kind_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Parameter_Direction, Old, To);
@@ -1894,8 +1894,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.Optional_Integer;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (9).Integer_Holder := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Lower, Old, To);
@@ -2188,8 +2188,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.Optional_Unlimited_Natural;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Natural_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Natural_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Unlimited_Natural_Holder;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (10).Unlimited_Natural_Holder := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Upper, Old, To);
@@ -2257,8 +2257,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.CMOF_Visibility_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Kind_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Visibility_Kind_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Visibility, Old, To);
@@ -2275,8 +2275,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Holder_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Kind_Holder;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Visibility_Kind_Holder := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Named_Element_Visibility, Old, To);
