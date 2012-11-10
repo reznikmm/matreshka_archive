@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.OCL.Primitive_Literal_Exps;
+with League.Strings;
 
 package AMF.OCL.String_Literal_Exps is
 
