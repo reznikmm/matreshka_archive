@@ -463,7 +463,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).String_Collection_Value;   end Internal_Get_Body;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).String_Collection;
+   end Internal_Get_Body;
 
    -----------------------
    -- Internal_Get_Body --
@@ -821,7 +822,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).String_Collection_Value;   end Internal_Get_Language;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (8).String_Collection;
+   end Internal_Get_Language;
 
    ------------------------
    -- Internal_Get_Lower --

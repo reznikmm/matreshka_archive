@@ -41,112 +41,94 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Datatypes to use in internal representation of the models.
+--  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-
 with AMF.CMOF;
 with AMF.Elements;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.CMOF_Types is
 
    pragma Preelaborate;
 
-   --  Node kinds enumeration is constructed on the base of Class_Kinds by
-   --  excluding all abstract classes and adding N_None.
-
    type Element_Kinds is
-     (E_None,
-      E_CMOF_Association,
-      E_CMOF_Class,
-      E_CMOF_Comment,
-      E_CMOF_Constraint,
-      E_CMOF_Data_Type,
-      E_CMOF_Element_Import,
-      E_CMOF_Enumeration,
-      E_CMOF_Enumeration_Literal,
-      E_CMOF_Expression,
-      E_CMOF_Opaque_Expression,
-      E_CMOF_Operation,
-      E_CMOF_Package,
-      E_CMOF_Package_Import,
-      E_CMOF_Package_Merge,
-      E_CMOF_Parameter,
-      E_CMOF_Primitive_Type,
-      E_CMOF_Property,
-      E_CMOF_Tag);
+    (E_None,
+     E_CMOF_Association,
+     E_CMOF_Class,
+     E_CMOF_Comment,
+     E_CMOF_Constraint,
+     E_CMOF_Data_Type,
+     E_CMOF_Element_Import,
+     E_CMOF_Enumeration,
+     E_CMOF_Enumeration_Literal,
+     E_CMOF_Expression,
+     E_CMOF_Opaque_Expression,
+     E_CMOF_Operation,
+     E_CMOF_Package,
+     E_CMOF_Package_Import,
+     E_CMOF_Package_Merge,
+     E_CMOF_Parameter,
+     E_CMOF_Primitive_Type,
+     E_CMOF_Property,
+     E_CMOF_Tag);
 
    type Member_Kinds is
     (M_None,
-     M_Element,
-     M_Collection_Of_Element,
      M_Boolean,
-     M_Integer,
-     M_Holder_Of_Integer,
-     M_Unlimited_Natural,
-     M_Holder_Of_Unlimited_Natural,
-     M_String,
+     M_Collection_Of_Element,
      M_Collection_Of_String,
+     M_Element,
+     M_Holder_Of_Integer,
+     M_Holder_Of_Unlimited_Natural,
+     M_Holder_Of_Visibility_Kind,
      M_Parameter_Direction_Kind,
-     M_Visibility_Kind,
-     M_Holder_Of_Visibility_Kind);
+     M_String,
+     M_Visibility_Kind);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
          when M_None =>
             null;
 
-         when M_Element =>
-            Link : AMF.Internals.AMF_Link;
+         when M_Boolean =>
+            Boolean_Value : Boolean;
 
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
 
-         when M_Boolean =>
-            Boolean_Value : Boolean;
+         when M_Collection_Of_String =>
+            String_Collection : AMF.Internals.AMF_Collection_Of_String;
+
+         when M_Element =>
+            Link : AMF.Internals.AMF_Link;
 
          when M_Holder_Of_Integer =>
             Integer_Holder_Value : AMF.Optional_Integer;
 
-         when M_Integer =>
-            Integer_Value : Integer;
-
-         when M_Unlimited_Natural =>
-            Natural_Value : AMF.Unlimited_Natural;
-
          when M_Holder_Of_Unlimited_Natural =>
             Natural_Holder_Value : AMF.Optional_Unlimited_Natural;
 
-         when M_String =>
-            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
-
-         when M_Collection_Of_String =>
-            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
+         when M_Holder_Of_Visibility_Kind =>
+            Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
          when M_Parameter_Direction_Kind =>
             Parameter_Direction_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
+         when M_String =>
+            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
+
          when M_Visibility_Kind =>
             Visibility_Value : AMF.CMOF.CMOF_Visibility_Kind;
-
-         when M_Holder_Of_Visibility_Kind =>
-            Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
       end case;
    end record;
 
    type Member_Array is array (Natural range 0 .. 21) of Member_Record;
-   --  XXX Size of this array must be generated.
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
-      Extent : AMF_Extent;
+      Extent : AMF.Internals.AMF_Extent;
       Proxy  : AMF.Elements.Element_Access;
       Member : Member_Array;
-      --  First element (with index 0) contains index of first collection of
-      --  class instance. To save space all class's collections have sequential
-      --  numbers, thus we need to store only first one. This first collection
-      --  is used to establish links with other classes when correspondig
-      --  association end is not owned by the class.
    end record;
 
 end AMF.Internals.Tables.CMOF_Types;
