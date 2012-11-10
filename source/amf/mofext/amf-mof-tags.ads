@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
 limited with AMF.UML.Elements.Collections;
+with League.Strings;
 
 package AMF.MOF.Tags is
 
