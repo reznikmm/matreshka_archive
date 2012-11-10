@@ -49,6 +49,7 @@
 with AMF.UML.Directed_Relationships;
 limited with AMF.UML.Namespaces;
 limited with AMF.UML.Packageable_Elements;
+with League.Strings;
 
 package AMF.UML.Element_Imports is
 

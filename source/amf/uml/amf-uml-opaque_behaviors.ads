@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 --  An behavior with implementation-specific semantics.
 ------------------------------------------------------------------------------
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 with AMF.UML.Behaviors;
 
 package AMF.UML.Opaque_Behaviors is

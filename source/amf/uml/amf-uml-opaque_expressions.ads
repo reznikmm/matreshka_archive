@@ -50,7 +50,7 @@
 --  expression. An opaque expression is defined by a behavior restricted to 
 --  return one result.
 ------------------------------------------------------------------------------
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 limited with AMF.UML.Behaviors;
 limited with AMF.UML.Parameters;
 with AMF.UML.Value_Specifications;

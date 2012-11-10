@@ -47,7 +47,7 @@
 --  It points out the element(s) in the model to observe and whether the 
 --  observations are when this model element is entered or when it is exited.
 ------------------------------------------------------------------------------
-limited with AMF.Boolean_Collections;
+with AMF.Boolean_Collections;
 limited with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Observations;
 

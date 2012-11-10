@@ -55,6 +55,7 @@ with AMF.UML.Elements;
 limited with AMF.UML.Namespaces.Collections;
 limited with AMF.UML.Packages.Collections;
 limited with AMF.UML.String_Expressions;
+with League.Strings;
 
 package AMF.UML.Named_Elements is
 

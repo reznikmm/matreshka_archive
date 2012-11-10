@@ -46,6 +46,7 @@
 --  A literal string is a specification of a string value.
 ------------------------------------------------------------------------------
 with AMF.UML.Literal_Specifications;
+with League.Strings;
 
 package AMF.UML.Literal_Strings is
 

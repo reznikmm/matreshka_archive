@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 --  An action with implementation-specific semantics.
 ------------------------------------------------------------------------------
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 with AMF.UML.Actions;
 limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Output_Pins.Collections;

@@ -50,6 +50,7 @@
 with AMF.UML.Expressions;
 limited with AMF.UML.String_Expressions.Collections;
 with AMF.UML.Templateable_Elements;
+with League.Strings;
 
 package AMF.UML.String_Expressions is
 
