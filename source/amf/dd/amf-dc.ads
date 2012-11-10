@@ -128,9 +128,29 @@ package AMF.DC is
       Height : AMF.Real := 0.0;
    end record;
 
+   type Optional_DC_Dimension (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : DC_Dimension;
+      end case;
+   end record;
+
    type DC_Point is record
       X : AMF.Real := 0.0;
       Y : AMF.Real := 0.0;
+   end record;
+
+   type Optional_DC_Point (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : DC_Point;
+      end case;
    end record;
 
    type Sequence_OF_DC_Point is new Integer;
