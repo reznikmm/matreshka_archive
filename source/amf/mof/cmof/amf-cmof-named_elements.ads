@@ -47,6 +47,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 limited with AMF.CMOF.Namespaces.Collections;
+with League.Strings;
 
 package AMF.CMOF.Named_Elements is
 

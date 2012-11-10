@@ -48,6 +48,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Packageable_Elements;
 with AMF.CMOF.Typed_Elements;
+with League.Strings;
 
 package AMF.CMOF.Value_Specifications is
 

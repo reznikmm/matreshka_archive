@@ -49,6 +49,7 @@
 with AMF.CMOF.Directed_Relationships;
 limited with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Packageable_Elements;
+with League.Strings;
 
 package AMF.CMOF.Element_Imports is
 

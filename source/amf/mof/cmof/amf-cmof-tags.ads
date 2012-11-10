@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 limited with AMF.CMOF.Elements.Collections;
+with League.Strings;
 
 package AMF.CMOF.Tags is
 
