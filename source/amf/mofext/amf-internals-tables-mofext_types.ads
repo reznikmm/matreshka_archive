@@ -41,11 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
 with Matreshka.Internals.Strings;
 
-with AMF.Elements;
-
-package AMF.Internals.Tables.MOF_Types is
+package AMF.Internals.Tables.MOFEXT_Types is
 
    pragma Preelaborate;
 
@@ -55,8 +56,8 @@ package AMF.Internals.Tables.MOF_Types is
 
    type Member_Kinds is
     (M_None,
-     M_Element,
      M_Collection_Of_Element,
+     M_Element,
      M_String);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
@@ -64,11 +65,11 @@ package AMF.Internals.Tables.MOF_Types is
          when M_None =>
             null;
 
-         when M_Element =>
-            Link : AMF.Internals.AMF_Link;
-
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
+
+         when M_Element =>
+            Link : AMF.Internals.AMF_Link;
 
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
@@ -79,9 +80,9 @@ package AMF.Internals.Tables.MOF_Types is
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
-      Extent : AMF_Extent;
+      Extent : AMF.Internals.AMF_Extent;
       Proxy  : AMF.Elements.Element_Access;
       Member : Member_Array;
    end record;
 
-end AMF.Internals.Tables.MOF_Types;
+end AMF.Internals.Tables.MOFEXT_Types;

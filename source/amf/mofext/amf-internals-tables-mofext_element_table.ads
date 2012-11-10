@@ -41,53 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
-with AMF.Internals.Tables.MOF_Types;
+with AMF.Internals.Generic_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Types;
 
-package AMF.Internals.Tables.MOF_Attribute_Mappings is
-
-   pragma Preelaborate;
-
-   MOF_Collection_Offset : constant
-     array (AMF.Internals.Tables.MOF_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 2 .. 2)
-       of AMF.Internals.AMF_Collection_Of_Element :=
-        (AMF.Internals.Tables.MOF_Types.E_None =>
-          (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
-          (2      => 3,     --  Tag::element
-           others => 0));
-
-   MOF_Member_Offset : constant
-     array (AMF.Internals.Tables.MOF_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 3 .. 5) of Natural :=
-        (AMF.Internals.Tables.MOF_Types.E_None =>
-          (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
-          (3      => 2,     --  Tag::name
-           4      => 4,     --  Tag::tagOwner
-           5      => 3,     --  Tag::value
-           others => 0));
-
-   UML_Collection_Offset : constant
-     array (AMF.Internals.Tables.MOF_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 243 .. 490)
-       of AMF.Internals.AMF_Collection_Of_Element :=
-        (AMF.Internals.Tables.MOF_Types.E_None =>
-          (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
-          (347    => 1,     --  Element::ownedComment
-           348    => 2,     --  Element::ownedElement
-           others => 0));
-
-   UML_Member_Offset : constant
-     array (AMF.Internals.Tables.MOF_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 491 .. 866) of Natural :=
-        (AMF.Internals.Tables.MOF_Types.E_None =>
-          (others => 0),
-         AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
-          (585    => 1,     --  Element::owner
-           others => 0));
-
-end AMF.Internals.Tables.MOF_Attribute_Mappings;
+package AMF.Internals.Tables.MOFEXT_Element_Table is
+  new AMF.Internals.Generic_Element_Table
+       (AMF.Internals.Tables.MOFEXT_Types.Element_Record);

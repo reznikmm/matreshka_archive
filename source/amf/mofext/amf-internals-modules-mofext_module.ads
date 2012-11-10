@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Generic_Element_Table;
-with AMF.Internals.Tables.MOF_Types;
+--  AMF module for MOFEXT metamodel.
+------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.MOF_Element_Table is
-  new AMF.Internals.Generic_Element_Table
-       (AMF.Internals.Tables.MOF_Types.Element_Record);
+package AMF.Internals.Modules.MOFEXT_Module is
+
+   pragma Elaborate_Body;
+
+end AMF.Internals.Modules.MOFEXT_Module;

@@ -46,16 +46,16 @@
 with AMF.Holders.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders.UML_Holders;
-with AMF.Internals.Tables.MOF_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Types;
 with AMF.Internals.Tables.MOF_Metamodel;
-with AMF.Internals.Tables.MOF_Types;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.MOF.Tags;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with League.Holders;
 
-package body AMF.Internals.Tables.MOF_Reflection is
+package body AMF.Internals.Tables.MOFEXT_Reflection is
 
    ---------
    -- Get --
@@ -139,11 +139,11 @@ package body AMF.Internals.Tables.MOF_Reflection is
       end MOF_Tag_Get;
 
    begin
-      case AMF.Internals.Tables.MOF_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.MOF_Types.E_None =>
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
             return MOF_Tag_Get;
       end case;
    end Get;
@@ -155,11 +155,11 @@ package body AMF.Internals.Tables.MOF_Reflection is
    function Get_Meta_Class
     (Self : AMF.Internals.AMF_Element) return CMOF_Element is
    begin
-      case MOF_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.MOF_Types.E_None =>
+      case MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_None =>
             return 0;
 
-         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
             return AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag;
       end case;
    end Get_Meta_Class;
@@ -209,13 +209,13 @@ package body AMF.Internals.Tables.MOF_Reflection is
          end if;
       end MOF_Tag_Set;
    begin
-      case MOF_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.MOF_Types.E_None =>
+      case MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_None =>
             raise Program_Error;
 
-         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
             MOF_Tag_Set;
       end case;
    end Set;
 
-end AMF.Internals.Tables.MOF_Reflection;
+end AMF.Internals.Tables.MOFEXT_Reflection;

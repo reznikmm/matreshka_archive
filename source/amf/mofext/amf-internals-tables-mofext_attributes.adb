@@ -44,12 +44,12 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
-with AMF.Internals.Tables.MOF_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Types;
 with AMF.Internals.Tables.MOF_Metamodel;
-with AMF.Internals.Tables.MOF_Types;
 with AMF.Internals.Tables.Primitive_Types_Notification;
 
-package body AMF.Internals.Tables.MOF_Attributes is
+package body AMF.Internals.Tables.MOFEXT_Attributes is
 
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
@@ -72,7 +72,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 3;
    end Internal_Get_Element;
 
    -----------------------
@@ -84,7 +84,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (2).String_Value;
+        AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Name;
 
    --------------------------------
@@ -95,7 +95,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 1;
+      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 1;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -106,7 +106,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (0).Collection + 2;
+      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 2;
    end Internal_Get_Owned_Element;
 
    ------------------------
@@ -119,7 +119,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (1).Link, Self);
+         (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (1).Link, Self);
    end Internal_Get_Owner;
 
    ----------------------------
@@ -132,7 +132,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (4).Link, Self);
+         (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Tag_Owner;
 
    ------------------------
@@ -144,7 +144,7 @@ package body AMF.Internals.Tables.MOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (3).String_Value;
+        AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Value;
 
    -----------------------
@@ -159,11 +159,11 @@ package body AMF.Internals.Tables.MOF_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (2).String_Value;
+        AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (2).String_Value;
 
-      MOF_Element_Table.Table (Self).Member (2).String_Value := To;
+      MOFEXT_Element_Table.Table (Self).Member (2).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (MOF_Element_Table.Table (Self).Member (2).String_Value);
+       (MOFEXT_Element_Table.Table (Self).Member (2).String_Value);
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Name, Old, To);
@@ -178,8 +178,8 @@ package body AMF.Internals.Tables.MOF_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element) is
    begin
-      case AMF.Internals.Tables.MOF_Element_Table.Table (Self).Kind is
-         when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.MOF_Metamodel.MA_MOF_Element_Tag_Owner_Owned_Tag,
               Self,
@@ -202,15 +202,15 @@ package body AMF.Internals.Tables.MOF_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.MOF_Element_Table.Table (Self).Member (3).String_Value;
+        AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (3).String_Value;
 
-      MOF_Element_Table.Table (Self).Member (3).String_Value := To;
+      MOFEXT_Element_Table.Table (Self).Member (3).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (MOF_Element_Table.Table (Self).Member (3).String_Value);
+       (MOFEXT_Element_Table.Table (Self).Member (3).String_Value);
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Value, Old, To);
       Matreshka.Internals.Strings.Dereference (Old);
    end Internal_Set_Value;
 
-end AMF.Internals.Tables.MOF_Attributes;
+end AMF.Internals.Tables.MOFEXT_Attributes;

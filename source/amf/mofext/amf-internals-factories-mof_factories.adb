@@ -48,7 +48,7 @@ with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
-with AMF.Internals.Tables.MOF_Constructors;
+with AMF.Internals.Tables.MOFEXT_Constructors;
 with AMF.Internals.Tables.MOF_Metamodel;
 
 package body AMF.Internals.Factories.MOF_Factories is
@@ -92,7 +92,7 @@ package body AMF.Internals.Factories.MOF_Factories is
 
    begin
       if MC = AMF.Internals.Tables.MOF_Metamodel.MC_MOF_Tag then
-         Element := AMF.Internals.Tables.MOF_Constructors.Create_MOF_Tag;
+         Element := AMF.Internals.Tables.MOFEXT_Constructors.Create_MOF_Tag;
 
       else
          raise Program_Error;

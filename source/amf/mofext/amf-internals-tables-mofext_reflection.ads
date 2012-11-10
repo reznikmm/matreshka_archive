@@ -41,39 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for MOF module.
+--  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with League.Holders;
 
-package AMF.Internals.Factories.MOF_Module_Factory is
+package AMF.Internals.Tables.MOFEXT_Reflection is
 
-   type MOF_Module_Factory is
-     limited new AMF.Internals.Factories.Abstract_Module_Factory
-       with null record;
+   function Get
+    (Self     : AMF.Internals.AMF_Element;
+     Property : CMOF_Element) return League.Holders.Holder;
 
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element;
 
-   overriding procedure Connect_Extent
-    (Self    : not null access constant MOF_Module_Factory;
-     Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent);
+   procedure Set
+    (Self     : AMF.Internals.AMF_Element;
+     Property : CMOF_Element;
+     Value    : League.Holders.Holder);
 
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant MOF_Module_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element);
-
-   overriding procedure Synchronize_Link_Set
-    (Self     : not null access constant MOF_Module_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link);
-
-   overriding function To_Element
-    (Self     : not null access constant MOF_Module_Factory;
-     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
-
-end AMF.Internals.Factories.MOF_Module_Factory;
+end AMF.Internals.Tables.MOFEXT_Reflection;

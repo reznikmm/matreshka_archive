@@ -41,45 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Factories.MOF_Factories;
-with AMF.Internals.Factories.MOF_Module_Factory;
-with AMF.Internals.Tables.MOF_Element_Table;
-with AMF.Internals.Tables.MOF_Metamodel.Links;
-with AMF.Internals.Tables.MOF_Metamodel.Objects;
-with AMF.Internals.Tables.MOF_Metamodel.Properties;
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.Links;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Types;
+with AMF.Internals.Tables.MOF_Metamodel;
+with AMF.Internals.Tables.UML_Metamodel;
 
-with AMF.Internals.Modules.UML_Module;
-pragma Unreferenced (AMF.Internals.Modules.UML_Module);
-pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
---  UML nodule package and all its dependencies must be elaborated before
---  elaboration of this package.
-
-package body AMF.Internals.Modules.MOF_Module is
-
-   --  Global object of factory for supported metamodel.
-
-   MOF_Module_Factory : aliased
-     AMF.Internals.Factories.MOF_Module_Factory.MOF_Module_Factory;
-   Module             : AMF_Metamodel;
+separate (AMF.Internals.Factories.MOFEXT_Module_Factory)
+procedure Construct_Union
+ (Element  : AMF.Internals.AMF_Element;
+  Property : AMF.Internals.CMOF_Element;
+  Link     : AMF.Internals.AMF_Link)
+is
+   Element_Kind : constant AMF.Internals.Tables.MOFEXT_Types.Element_Kinds
+     := AMF.Internals.Tables.MOFEXT_Element_Table.Table (Element).Kind;
+   Opposite     : constant AMF.Internals.AMF_Element
+     := AMF.Internals.Links.Opposite_Element (Link, Element);
 
 begin
-   --  Register module's factory.
+   case Element_Kind is
+      when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
 
-   AMF.Internals.Factories.Register (MOF_Module_Factory'Access, Module);
+         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+         end if;
 
-   --  Initialize metamodels.
-
-   AMF.Internals.Tables.MOF_Metamodel.Objects.Initialize;
-   AMF.Internals.Tables.MOF_Metamodel.Properties.Initialize;
-   AMF.Internals.Tables.MOF_Metamodel.Links.Initialize;
-
-   --  Initialize element table of MOF metamodel.
-
-   AMF.Internals.Tables.MOF_Element_Table.Initialize (Module);
-
-   --  Register factories.
-
-   AMF.Internals.Factories.Register
-    (AMF.Internals.Factories.MOF_Factories.Get_Package,
-     AMF.Internals.Factories.MOF_Factories.Constructor'Access);
-end AMF.Internals.Modules.MOF_Module;
+      when others =>
+         null;
+   end case;
+end Construct_Union;

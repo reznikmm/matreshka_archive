@@ -43,42 +43,72 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.Links;
-with AMF.Internals.Tables.MOF_Element_Table;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.MOF_Tags;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Types;
 with AMF.Internals.Tables.MOF_Metamodel;
-with AMF.Internals.Tables.MOF_Types;
 with AMF.Internals.Tables.UML_Metamodel;
+with Matreshka.Internals.Strings;
 
-separate (AMF.Internals.Factories.MOF_Module_Factory)
-procedure Construct_Union
- (Element  : AMF.Internals.AMF_Element;
-  Property : AMF.Internals.CMOF_Element;
-  Link     : AMF.Internals.AMF_Link)
-is
-   Element_Kind : constant AMF.Internals.Tables.MOF_Types.Element_Kinds
-     := AMF.Internals.Tables.MOF_Element_Table.Table (Element).Kind;
-   Opposite     : constant AMF.Internals.AMF_Element
-     := AMF.Internals.Links.Opposite_Element (Link, Element);
+package body AMF.Internals.Tables.MOFEXT_Constructors is
 
-begin
-   case Element_Kind is
-      when AMF.Internals.Tables.MOF_Types.E_MOF_Tag =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
-              Element,
-              Opposite,
-              Link);
+   use AMF.Internals.Tables;
+   use type AMF.Internals.AMF_Collection_Of_Element;
 
-         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner then
-            AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
-              Opposite,
-              Element,
-              Link);
-         end if;
+   --------------------
+   -- Create_MOF_Tag --
+   --------------------
 
-      when others =>
-         null;
-   end case;
-end Construct_Union;
+   function Create_MOF_Tag return AMF.Internals.AMF_Element is
+      Self : AMF.Internals.AMF_Element;
+
+   begin
+      MOFEXT_Element_Table.Increment_Last;
+      Self := MOFEXT_Element_Table.Last;
+
+      MOFEXT_Element_Table.Table (Self).all :=
+       (Kind     => AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag,
+        Extent   => 0,
+        Proxy    =>
+          new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Element => Self),
+        Member   =>
+         (0      => (Kind => AMF.Internals.Tables.MOFEXT_Types.M_None),
+          2      => (AMF.Internals.Tables.MOFEXT_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                       --  name
+          1      => (AMF.Internals.Tables.MOFEXT_Types.M_Element, No_AMF_Link),
+                       --  owner
+          4      => (AMF.Internals.Tables.MOFEXT_Types.M_Element, No_AMF_Link),
+                       --  tagOwner
+          3      => (AMF.Internals.Tables.MOFEXT_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                       --  value
+          others => (Kind => AMF.Internals.Tables.MOFEXT_Types.M_None)));
+      MOFEXT_Element_Table.Table (Self).Member (0) :=
+       (AMF.Internals.Tables.MOFEXT_Types.M_Collection_Of_Element,
+        AMF.Internals.Element_Collections.Allocate_Collections (3));
+
+      --  element
+
+      AMF.Internals.Element_Collections.Initialize_Set_Collection
+       (Self,
+        AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element,
+        MOFEXT_Element_Table.Table (Self).Member (0).Collection + 3);
+
+      --  ownedComment
+
+      AMF.Internals.Element_Collections.Initialize_Set_Collection
+       (Self,
+        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
+        MOFEXT_Element_Table.Table (Self).Member (0).Collection + 1);
+
+      --  ownedElement
+
+      AMF.Internals.Element_Collections.Initialize_Set_Collection
+       (Self,
+        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
+        MOFEXT_Element_Table.Table (Self).Member (0).Collection + 2);
+
+      return Self;
+   end Create_MOF_Tag;
+
+end AMF.Internals.Tables.MOFEXT_Constructors;

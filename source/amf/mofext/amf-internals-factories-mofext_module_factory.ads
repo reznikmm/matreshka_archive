@@ -41,74 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
+--  Factory for MOFEXT module.
 ------------------------------------------------------------------------------
-with AMF.Internals.Element_Collections;
-with AMF.Internals.MOF_Tags;
-with AMF.Internals.Tables.MOF_Element_Table;
-with AMF.Internals.Tables.MOF_Metamodel;
-with AMF.Internals.Tables.MOF_Types;
-with AMF.Internals.Tables.UML_Metamodel;
-with Matreshka.Internals.Strings;
 
-package body AMF.Internals.Tables.MOF_Constructors is
+package AMF.Internals.Factories.MOFEXT_Module_Factory is
 
-   use AMF.Internals.Tables;
-   use type AMF.Internals.AMF_Collection_Of_Element;
+   type MOF_Module_Factory is
+     limited new AMF.Internals.Factories.Abstract_Module_Factory
+       with null record;
 
-   --------------------
-   -- Create_MOF_Tag --
-   --------------------
+   ------------------------------
+   -- AMF_Factory's operations --
+   ------------------------------
 
-   function Create_MOF_Tag return AMF.Internals.AMF_Element is
-      Self : AMF.Internals.AMF_Element;
+   overriding procedure Connect_Extent
+    (Self    : not null access constant MOF_Module_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent);
 
-   begin
-      MOF_Element_Table.Increment_Last;
-      Self := MOF_Element_Table.Last;
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant MOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element);
 
-      MOF_Element_Table.Table (Self).all :=
-       (Kind     => AMF.Internals.Tables.MOF_Types.E_MOF_Tag,
-        Extent   => 0,
-        Proxy    =>
-          new AMF.Internals.MOF_Tags.MOF_Tag_Proxy'(Element => Self),
-        Member   =>
-         (0      => (Kind => AMF.Internals.Tables.MOF_Types.M_None),
-          2      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                       --  name
-          1      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
-                       --  owner
-          4      => (AMF.Internals.Tables.MOF_Types.M_Element, No_AMF_Link),
-                       --  tagOwner
-          3      => (AMF.Internals.Tables.MOF_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                       --  value
-          others => (Kind => AMF.Internals.Tables.MOF_Types.M_None)));
-      MOF_Element_Table.Table (Self).Member (0) :=
-       (AMF.Internals.Tables.MOF_Types.M_Collection_Of_Element,
-        AMF.Internals.Element_Collections.Allocate_Collections (3));
+   overriding procedure Synchronize_Link_Set
+    (Self     : not null access constant MOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link);
 
-      --  element
+   overriding function To_Element
+    (Self     : not null access constant MOF_Module_Factory;
+     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
 
-      AMF.Internals.Element_Collections.Initialize_Set_Collection
-       (Self,
-        AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 3);
-
-      --  ownedComment
-
-      AMF.Internals.Element_Collections.Initialize_Set_Collection
-       (Self,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 1);
-
-      --  ownedElement
-
-      AMF.Internals.Element_Collections.Initialize_Set_Collection
-       (Self,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
-        MOF_Element_Table.Table (Self).Member (0).Collection + 2);
-
-      return Self;
-   end Create_MOF_Tag;
-
-end AMF.Internals.Tables.MOF_Constructors;
+end AMF.Internals.Factories.MOFEXT_Module_Factory;

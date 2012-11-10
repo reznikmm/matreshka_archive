@@ -41,54 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with AMF.Internals.Factories.MOF_Factories;
+with AMF.Internals.Factories.MOFEXT_Module_Factory;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOF_Metamodel.Links;
+with AMF.Internals.Tables.MOF_Metamodel.Objects;
+with AMF.Internals.Tables.MOF_Metamodel.Properties;
 
-package AMF.Internals.Tables.MOF_Attributes is
+with AMF.Internals.Modules.UML_Module;
+pragma Unreferenced (AMF.Internals.Modules.UML_Module);
+pragma Elaborate_All (AMF.Internals.Modules.UML_Module);
+--  UML nodule package and all its dependencies must be elaborated before
+--  elaboration of this package.
 
-   function Internal_Get_Element
-    (Self : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Collection_Of_Element;
-   --  Tag => Tag::element
+package body AMF.Internals.Modules.MOFEXT_Module is
 
-   function Internal_Get_Name
-    (Self : AMF.Internals.AMF_Element)
-       return Matreshka.Internals.Strings.Shared_String_Access;
-   procedure Internal_Set_Name
-    (Self : AMF.Internals.AMF_Element;
-     To   : Matreshka.Internals.Strings.Shared_String_Access);
-   --  Tag => Tag::name
+   --  Global object of factory for supported metamodel.
 
-   function Internal_Get_Owned_Comment
-    (Self : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Collection_Of_Element;
-   --  Tag => Element::ownedComment
+   MOF_Module_Factory : aliased
+     AMF.Internals.Factories.MOFEXT_Module_Factory.MOF_Module_Factory;
+   Module             : AMF_Metamodel;
 
-   function Internal_Get_Owned_Element
-    (Self : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Collection_Of_Element;
-   --  Tag => Element::ownedElement
+begin
+   --  Register module's factory.
 
-   function Internal_Get_Owner
-    (Self : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Element;
-   --  Tag => Element::owner
+   AMF.Internals.Factories.Register (MOF_Module_Factory'Access, Module);
 
-   function Internal_Get_Tag_Owner
-    (Self : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Element;
-   procedure Internal_Set_Tag_Owner
-    (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element);
-   --  Tag => Tag::tagOwner
+   --  Initialize metamodels.
 
-   function Internal_Get_Value
-    (Self : AMF.Internals.AMF_Element)
-       return Matreshka.Internals.Strings.Shared_String_Access;
-   procedure Internal_Set_Value
-    (Self : AMF.Internals.AMF_Element;
-     To   : Matreshka.Internals.Strings.Shared_String_Access);
-   --  Tag => Tag::value
+   AMF.Internals.Tables.MOF_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.MOF_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.MOF_Metamodel.Links.Initialize;
 
-end AMF.Internals.Tables.MOF_Attributes;
+   --  Initialize element table of MOF metamodel.
+
+   AMF.Internals.Tables.MOFEXT_Element_Table.Initialize (Module);
+
+   --  Register factories.
+
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.MOF_Factories.Get_Package,
+     AMF.Internals.Factories.MOF_Factories.Constructor'Access);
+end AMF.Internals.Modules.MOFEXT_Module;

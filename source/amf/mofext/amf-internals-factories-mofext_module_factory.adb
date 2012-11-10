@@ -42,12 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
-with AMF.Internals.Tables.MOF_Attribute_Mappings;
-with AMF.Internals.Tables.MOF_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Attribute_Mappings;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
 with AMF.Internals.Tables.MOF_Metamodel;
 with AMF.Internals.Tables.UML_Metamodel;
 
-package body AMF.Internals.Factories.MOF_Module_Factory is
+package body AMF.Internals.Factories.MOFEXT_Module_Factory is
 
    procedure Construct_Union
     (Element  : AMF.Internals.AMF_Element;
@@ -66,7 +66,8 @@ package body AMF.Internals.Factories.MOF_Module_Factory is
       pragma Unreferenced (Self);
 
    begin
-      AMF.Internals.Tables.MOF_Element_Table.Table (Element).Extent := Extent;
+      AMF.Internals.Tables.MOFEXT_Element_Table.Table (Element).Extent :=
+        Extent;
    end Connect_Extent;
 
    ----------------------
@@ -83,7 +84,7 @@ package body AMF.Internals.Factories.MOF_Module_Factory is
       pragma Unreferenced (Self);
 
       use AMF.Internals.Tables;
-      use AMF.Internals.Tables.MOF_Attribute_Mappings;
+      use AMF.Internals.Tables.MOFEXT_Attribute_Mappings;
       use AMF.Internals.Tables.MOF_Metamodel;
       use AMF.Internals.Tables.UML_Metamodel;
 
@@ -97,23 +98,23 @@ package body AMF.Internals.Factories.MOF_Module_Factory is
          begin
             if PO in UML_Collection_Offset'Range (2) then
                AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection
+                (MOFEXT_Element_Table.Table (Element).Member (0).Collection
                    + UML_Collection_Offset
-                      (MOF_Element_Table.Table (Element).Kind, PO),
+                      (MOFEXT_Element_Table.Table (Element).Kind, PO),
                  Other,
                  Link);
 
             elsif PO in UML_Member_Offset'Range (2)
               and then UML_Member_Offset
-                        (MOF_Element_Table.Table (Element).Kind, PO) /= 0
+                        (MOFEXT_Element_Table.Table (Element).Kind, PO) /= 0
             then
-               MOF_Element_Table.Table (Element).Member
+               MOFEXT_Element_Table.Table (Element).Member
                 (UML_Member_Offset
-                  (MOF_Element_Table.Table (Element).Kind, PO)).Link := Link;
+                  (MOFEXT_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
             else
                AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection,
+                (MOFEXT_Element_Table.Table (Element).Member (0).Collection,
                  Other,
                  Link);
             end if;
@@ -126,23 +127,23 @@ package body AMF.Internals.Factories.MOF_Module_Factory is
          begin
             if PO in MOF_Collection_Offset'Range (2) then
                AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection
+                (MOFEXT_Element_Table.Table (Element).Member (0).Collection
                    + MOF_Collection_Offset
-                      (MOF_Element_Table.Table (Element).Kind, PO),
+                      (MOFEXT_Element_Table.Table (Element).Kind, PO),
                  Other,
                  Link);
 
             elsif PO in MOF_Member_Offset'Range (2)
               and then MOF_Member_Offset
-                        (MOF_Element_Table.Table (Element).Kind, PO) /= 0
+                        (MOFEXT_Element_Table.Table (Element).Kind, PO) /= 0
             then
-               MOF_Element_Table.Table (Element).Member
+               MOFEXT_Element_Table.Table (Element).Member
                 (MOF_Member_Offset
-                  (MOF_Element_Table.Table (Element).Kind, PO)).Link := Link;
+                  (MOFEXT_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
             else
                AMF.Internals.Element_Collections.Internal_Append
-                (MOF_Element_Table.Table (Element).Member (0).Collection,
+                (MOFEXT_Element_Table.Table (Element).Member (0).Collection,
                  Other,
                  Link);
             end if;
@@ -188,7 +189,7 @@ package body AMF.Internals.Factories.MOF_Module_Factory is
       pragma Unreferenced (Self);
 
    begin
-      return AMF.Internals.Tables.MOF_Element_Table.Table (Element).Proxy;
+      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Element).Proxy;
    end To_Element;
 
-end AMF.Internals.Factories.MOF_Module_Factory;
+end AMF.Internals.Factories.MOFEXT_Module_Factory;

@@ -44,8 +44,8 @@
 with AMF.Elements;
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
-with AMF.Internals.Tables.MOF_Element_Table;
-with AMF.Internals.Tables.MOF_Reflection;
+with AMF.Internals.Tables.MOFEXT_Element_Table;
+with AMF.Internals.Tables.MOFEXT_Reflection;
 
 package body AMF.Internals.MOF_Elements is
 
@@ -59,7 +59,7 @@ package body AMF.Internals.MOF_Elements is
    begin
       return
         AMF.Internals.Extents.Proxy
-         (AMF.Internals.Tables.MOF_Element_Table.Table (Self.Element).Extent);
+         (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self.Element).Extent);
    end Extent;
 
    ---------
@@ -72,7 +72,7 @@ package body AMF.Internals.MOF_Elements is
        return League.Holders.Holder is
    begin
       return
-        AMF.Internals.Tables.MOF_Reflection.Get
+        AMF.Internals.Tables.MOFEXT_Reflection.Get
          (Self.Element,
           AMF.Internals.Helpers.To_Element
            (AMF.Elements.Element_Access (Property)));
@@ -89,7 +89,7 @@ package body AMF.Internals.MOF_Elements is
       return
         AMF.CMOF.Classes.CMOF_Class_Access
          (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.MOF_Reflection.Get_Meta_Class (Self.Element)));
+           (AMF.Internals.Tables.MOFEXT_Reflection.Get_Meta_Class (Self.Element)));
    end Get_Meta_Class;
 
 --   -------------------
@@ -123,7 +123,7 @@ package body AMF.Internals.MOF_Elements is
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder) is
    begin
-      AMF.Internals.Tables.MOF_Reflection.Set
+      AMF.Internals.Tables.MOFEXT_Reflection.Set
        (Self.Element,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (Property)),

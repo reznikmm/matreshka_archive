@@ -50,7 +50,6 @@ package AMF.Internals.Tables.MOF_Metamodel is
 
    function MM_MOF_MOF return AMF.Internals.CMOF_Element;
 
-
    function MC_MOF_Tag return AMF.Internals.CMOF_Element;
 
    function MP_MOF_Tag_Element return AMF.Internals.CMOF_Element;
