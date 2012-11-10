@@ -48,6 +48,7 @@
 --  Their elements are laid out relative to their origin point.
 ------------------------------------------------------------------------------
 with AMF.DI.Shapes;
+with League.Strings;
 
 package AMF.DI.Diagrams is
 

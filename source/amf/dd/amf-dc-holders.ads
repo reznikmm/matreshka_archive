@@ -58,6 +58,33 @@ package AMF.DC.Holders is
     (Element : AMF.DC.Optional_DC_Alignment_Kind)
        return League.Holders.Holder;
 
+   --  Bounds [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Bounds;
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Bounds)
+       return League.Holders.Holder;
+
+   --  Color [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Color;
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Color)
+       return League.Holders.Holder;
+
+   --  Dimension [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Dimension;
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Dimension)
+       return League.Holders.Holder;
+
    --  KnownColor [0..1]
 
    function Element
@@ -65,6 +92,15 @@ package AMF.DC.Holders is
        return AMF.DC.Optional_DC_Known_Color;
    function To_Holder
     (Element : AMF.DC.Optional_DC_Known_Color)
+       return League.Holders.Holder;
+
+   --  Point [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Point;
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Point)
        return League.Holders.Holder;
 
 end AMF.DC.Holders;

@@ -44,7 +44,11 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.DC.Holders.Alignment_Kinds;
+with AMF.DC.Holders.Bounds;
+with AMF.DC.Holders.Colors;
+with AMF.DC.Holders.Dimensions;
 with AMF.DC.Holders.Known_Colors;
+with AMF.DC.Holders.Points;
 
 package body AMF.DC.Holders is
 
@@ -76,6 +80,72 @@ package body AMF.DC.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Bounds is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.DC.Holders.Bounds.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.DC.Holders.Bounds.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Color is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.DC.Holders.Colors.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.DC.Holders.Colors.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Dimension is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.DC.Holders.Dimensions.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.DC.Holders.Dimensions.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder)
        return AMF.DC.Optional_DC_Known_Color is
    begin
       if not League.Holders.Has_Tag
@@ -89,6 +159,28 @@ package body AMF.DC.Holders is
 
       else
          return (False, AMF.DC.Holders.Known_Colors.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Point is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.DC.Holders.Points.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.DC.Holders.Points.Element (Holder));
       end if;
    end Element;
 
@@ -116,6 +208,63 @@ package body AMF.DC.Holders is
    ---------------
 
    function To_Holder
+    (Element : AMF.DC.Optional_DC_Bounds)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.DC.Holders.Bounds.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.DC.Holders.Bounds.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Color)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.DC.Holders.Colors.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.DC.Holders.Colors.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Dimension)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.DC.Holders.Dimensions.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.DC.Holders.Dimensions.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
     (Element : AMF.DC.Optional_DC_Known_Color)
        return League.Holders.Holder is
    begin
@@ -125,6 +274,25 @@ package body AMF.DC.Holders is
 
          if not Element.Is_Empty then
             AMF.DC.Holders.Known_Colors.Replace_Element
+             (Result, Element.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Element : AMF.DC.Optional_DC_Point)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.DC.Holders.Points.Value_Tag);
+
+         if not Element.Is_Empty then
+            AMF.DC.Holders.Points.Replace_Element
              (Result, Element.Value);
          end if;
       end return;

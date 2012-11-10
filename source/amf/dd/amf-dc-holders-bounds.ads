@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Holders;
 
 package AMF.DC.Holders.Bounds is
-  new League.Holders.Generic_Holders (AMF.DC.DC_Bounds);
+  new League.Holders.Generic_Holders
+       (AMF.DC.DC_Bounds);
 pragma Preelaborate (AMF.DC.Holders.Bounds);

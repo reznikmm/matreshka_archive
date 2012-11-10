@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Holders;
 
 package AMF.DC.Holders.Colors is
-  new League.Holders.Generic_Holders (AMF.DC.DC_Color);
+  new League.Holders.Generic_Holders
+       (AMF.DC.DC_Color);
 pragma Preelaborate (AMF.DC.Holders.Colors);

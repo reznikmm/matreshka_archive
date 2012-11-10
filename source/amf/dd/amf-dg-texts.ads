@@ -48,6 +48,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.DC;
 with AMF.DG.Graphical_Elements;
+with League.Strings;
 
 package AMF.DG.Texts is
 

@@ -43,9 +43,137 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with League.Holders.Generic_Holders;
+with AMF.DC;
+with League.Holders;
 
-package AMF.DC.Holders.Dimensions is
-  new League.Holders.Generic_Holders
-       (AMF.DC.DC_Dimension);
-pragma Preelaborate (AMF.DC.Holders.Dimensions);
+package AMF.DG.Holders is
+
+   pragma Preelaborate;
+
+   --  ClosePath [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Close_Path;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Close_Path)
+       return League.Holders.Holder;
+
+   --  CubicCurveTo [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Cubic_Curve_To;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Cubic_Curve_To)
+       return League.Holders.Holder;
+
+   --  EllipticalArcTo [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Elliptical_Arc_To;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Elliptical_Arc_To)
+       return League.Holders.Holder;
+
+   --  GradientStop [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Gradient_Stop;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Gradient_Stop)
+       return League.Holders.Holder;
+
+   --  LineTo [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Line_To;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Line_To)
+       return League.Holders.Holder;
+
+   --  Matrix [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Matrix;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Matrix)
+       return League.Holders.Holder;
+
+   --  MoveTo [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Move_To;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Move_To)
+       return League.Holders.Holder;
+
+   --  PathCommand [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Path_Command;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Path_Command)
+       return League.Holders.Holder;
+
+   --  QuadraticCurveTo [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Quadratic_Curve_To;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Quadratic_Curve_To)
+       return League.Holders.Holder;
+
+   --  Rotate [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Rotate;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Rotate)
+       return League.Holders.Holder;
+
+   --  Scale [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Scale;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Scale)
+       return League.Holders.Holder;
+
+   --  Skew [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Skew;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Skew)
+       return League.Holders.Holder;
+
+   --  Transform [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Transform;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Transform)
+       return League.Holders.Holder;
+
+   --  Translate [0..1]
+
+   function Element
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DG_Translate;
+   function To_Holder
+    (Element : AMF.DC.Optional_DG_Translate)
+       return League.Holders.Holder;
+
+end AMF.DG.Holders;

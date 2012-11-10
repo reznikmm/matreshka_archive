@@ -48,7 +48,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.DC;
 limited with AMF.DG.Fills;
-limited with AMF.Real_Collections;
+with AMF.Real_Collections;
 
 package AMF.DG.Styles is
 

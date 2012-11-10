@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with League.Holders.Generic_Holders;
 
-package AMF.DC.Holders.Dimensions is
+package AMF.DG.Holders.Transforms is
   new League.Holders.Generic_Holders
-       (AMF.DC.DC_Dimension);
-pragma Preelaborate (AMF.DC.Holders.Dimensions);
+       (AMF.DC.DG_Transform);
+pragma Preelaborate (AMF.DG.Holders.Transforms);

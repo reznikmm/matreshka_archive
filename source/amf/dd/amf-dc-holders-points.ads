@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders.Generic_Holders;
 
 package AMF.DC.Holders.Points is
-  new League.Holders.Generic_Holders (AMF.DC.DC_Point);
+  new League.Holders.Generic_Holders
+       (AMF.DC.DC_Point);
 pragma Preelaborate (AMF.DC.Holders.Points);

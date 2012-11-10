@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with League.Holders.Generic_Holders;
 
-package AMF.DC.Holders.Dimensions is
+package AMF.DG.Holders.Skews is
   new League.Holders.Generic_Holders
-       (AMF.DC.DC_Dimension);
-pragma Preelaborate (AMF.DC.Holders.Dimensions);
+       (AMF.DC.DG_Skew);
+pragma Preelaborate (AMF.DG.Holders.Skews);
