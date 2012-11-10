@@ -1064,7 +1064,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).String_Collection_Value;   end Internal_Get_Body;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (12).String_Collection;
+   end Internal_Get_Body;
 
    ----------------------------------
    -- Internal_Get_Body_Expression --
@@ -1382,7 +1383,8 @@ package body AMF.Internals.Tables.OCL_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).String_Collection_Value;   end Internal_Get_Language;
+      return AMF.Internals.Tables.OCL_Element_Table.Table (Self).Member (13).String_Collection;
+   end Internal_Get_Language;
 
    -----------------------
    -- Internal_Get_Last --

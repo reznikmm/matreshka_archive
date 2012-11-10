@@ -41,16 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with League.Holders;
 
 package AMF.Internals.Tables.OCL_Reflection is
 
-   function Get_Meta_Class
-    (Self : AMF.Internals.AMF_Element) return CMOF_Element;
-
    function Get
     (Self     : AMF.Internals.AMF_Element;
      Property : CMOF_Element) return League.Holders.Holder;
+
+   function Get_Meta_Class
+    (Self : AMF.Internals.AMF_Element) return CMOF_Element;
 
    procedure Set
     (Self     : AMF.Internals.AMF_Element;

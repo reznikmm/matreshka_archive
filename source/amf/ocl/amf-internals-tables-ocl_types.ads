@@ -41,11 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.OCL;
 with AMF.UML;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.OCL_Types is
 
@@ -94,15 +95,16 @@ package AMF.Internals.Tables.OCL_Types is
 
    type Member_Kinds is
     (M_None,
-     M_Element,
-     M_Collection_Of_Element,
      M_Boolean,
-     M_String,
-     M_Collection_Of_String,
-     M_Integer,
-     M_Unlimited_Natural,
-     M_Real,
      M_Collection_Kind,
+     M_Collection_Of_Element,
+     M_Collection_Of_String,
+     M_Element,
+     M_Integer,
+     M_Real,
+     M_String,
+     M_Unlimited_Natural,
+     M_Visibility_Kind,
      M_Visibility_Kind_Holder);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
@@ -110,32 +112,35 @@ package AMF.Internals.Tables.OCL_Types is
          when M_None =>
             null;
 
-         when M_Element =>
-            Link : AMF.Internals.AMF_Link;
+         when M_Boolean =>
+            Boolean_Value : Boolean;
+
+         when M_Collection_Kind =>
+            Collection_Kind_Value : AMF.OCL.OCL_Collection_Kind;
 
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
 
-         when M_Boolean =>
-            Boolean_Value : Boolean;
-
-         when M_String =>
-            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
-
          when M_Collection_Of_String =>
-            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
+            String_Collection : AMF.Internals.AMF_Collection_Of_String;
+
+         when M_Element =>
+            Link : AMF.Internals.AMF_Link;
 
          when M_Integer =>
             Integer_Value : Integer;
 
-         when M_Unlimited_Natural =>
-            Unlimited_Natural_Value : AMF.Unlimited_Natural;
-
          when M_Real =>
             Real_Value : AMF.Real;
 
-         when M_Collection_Kind =>
-            Collection_Kind_Value : AMF.OCL.OCL_Collection_Kind;
+         when M_String =>
+            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
+
+         when M_Unlimited_Natural =>
+            Unlimited_Natural_Value : AMF.Unlimited_Natural;
+
+         when M_Visibility_Kind =>
+            Visibility_Kind_Value : AMF.UML.UML_Visibility_Kind;
 
          when M_Visibility_Kind_Holder =>
             Visibility_Kind_Holder : AMF.UML.Optional_UML_Visibility_Kind;
@@ -146,7 +151,7 @@ package AMF.Internals.Tables.OCL_Types is
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
-      Extent : AMF_Extent;
+      Extent : AMF.Internals.AMF_Extent;
       Proxy  : AMF.Elements.Element_Access;
       Member : Member_Array;
    end record;
