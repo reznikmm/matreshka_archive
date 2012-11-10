@@ -52,22 +52,19 @@ package AMF.DC.Holders is
    --  AlignmentKind [0..1]
 
    function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Alignment_Kind;
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Alignment_Kind;
    function To_Holder
-    (Element : AMF.DC.Optional_DC_Alignment_Kind) return League.Holders.Holder;
-
-   --  Color [0..1]
-
-   function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Color;
-   function To_Holder
-    (Element : AMF.DC.Optional_DC_Color) return League.Holders.Holder;
+    (Element : AMF.DC.Optional_DC_Alignment_Kind)
+       return League.Holders.Holder;
 
    --  KnownColor [0..1]
 
    function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Known_Color;
+    (Holder : League.Holders.Holder)
+       return AMF.DC.Optional_DC_Known_Color;
    function To_Holder
-    (Element : AMF.DC.Optional_DC_Known_Color) return League.Holders.Holder;
+    (Element : AMF.DC.Optional_DC_Known_Color)
+       return League.Holders.Holder;
 
 end AMF.DC.Holders;

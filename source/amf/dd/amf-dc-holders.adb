@@ -44,7 +44,6 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.DC.Holders.Alignment_Kinds;
-with AMF.DC.Holders.Colors;
 with AMF.DC.Holders.Known_Colors;
 
 package body AMF.DC.Holders is
@@ -68,27 +67,6 @@ package body AMF.DC.Holders is
 
       else
          return (False, AMF.DC.Holders.Alignment_Kinds.Element (Holder));
-      end if;
-   end Element;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Color is
-   begin
-      if not League.Holders.Has_Tag
-              (Holder, AMF.DC.Holders.Colors.Value_Tag)
-      then
-         raise Constraint_Error;
-      end if;
-
-      if League.Holders.Is_Empty (Holder) then
-         return (Is_Empty => True);
-
-      else
-         return (False, AMF.DC.Holders.Colors.Element (Holder));
       end if;
    end Element;
 
@@ -129,22 +107,6 @@ package body AMF.DC.Holders is
          if not Element.Is_Empty then
             AMF.DC.Holders.Alignment_Kinds.Replace_Element
              (Result, Element.Value);
-         end if;
-      end return;
-   end To_Holder;
-
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   function To_Holder
-    (Element : AMF.DC.Optional_DC_Color) return League.Holders.Holder is
-   begin
-      return Result : League.Holders.Holder do
-         League.Holders.Set_Tag (Result, AMF.DC.Holders.Colors.Value_Tag);
-
-         if not Element.Is_Empty then
-            AMF.DC.Holders.Colors.Replace_Element (Result, Element.Value);
          end if;
       end return;
    end To_Holder;
