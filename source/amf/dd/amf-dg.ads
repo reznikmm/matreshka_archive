@@ -46,4 +46,12 @@ package AMF.DG is
 
    pragma Preelaborate;
 
+--   type DG_Trasform is abstract tagged null record;
+
+   type Set_Of_DG_Gradient_Stop is new Integer;
+
+   type Sequence_Of_DG_Transform is new Integer;
+
+   type Sequence_Of_Path_Command is new Integer;
+
 end AMF.DG;
