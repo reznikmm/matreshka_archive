@@ -377,7 +377,7 @@ package AMF.Internals.Tables.UML_Types is
             Real_Value : AMF.Real;
 
          when M_String =>
-            String_Holder : Matreshka.Internals.Strings.Shared_String_Access;
+            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
          when M_Transition_Kind =>
             Transition_Kind_Value : AMF.UML.UML_Transition_Kind;

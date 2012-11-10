@@ -6046,7 +6046,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Value;
    end Internal_Get_URI;
 
    ------------------------------
@@ -6182,7 +6182,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Alias;
 
    --------------------------------------
@@ -6444,7 +6444,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Body;
 
    -----------------------
@@ -6819,7 +6819,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Content;
 
    --------------------------
@@ -6966,7 +6966,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).String_Value;
    end Internal_Get_Default;
 
    --------------------------
@@ -7087,7 +7087,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).String_Value;
    end Internal_Get_Deployment_Location;
 
    -----------------------------
@@ -7376,7 +7376,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).String_Value;
    end Internal_Get_Execution_Location;
 
    -----------------------
@@ -7552,7 +7552,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).String_Value;
    end Internal_Get_File_Name;
 
    -------------------------
@@ -7647,7 +7647,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Format;
 
    ---------------------------
@@ -8810,7 +8810,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).String_Value;
    end Internal_Get_Location;
 
    --------------------------------
@@ -9093,7 +9093,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).String_Value;
    end Internal_Get_Name;
 
    ----------------------------------
@@ -9960,7 +9960,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Qualified_Name;
 
    ----------------------------
@@ -10972,7 +10972,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Value;
    end Internal_Get_Symbol;
 
    -------------------------
@@ -11259,7 +11259,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Value;
    end Internal_Get_Value;
 
    ------------------------
@@ -11330,7 +11330,7 @@ package body AMF.Internals.Tables.UML_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).String_Holder;
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).String_Value;
    end Internal_Get_Viewpoint;
 
    -----------------------------
