@@ -73,4 +73,9 @@ package AMF.Holders is
    function Element
     (Holder : League.Holders.Holder) return Optional_Unlimited_Natural;
 
+   --  Real [0..1]
+
+   function To_Holder (Item : Optional_Real) return League.Holders.Holder;
+   function Element (Holder : League.Holders.Holder) return Optional_Real;
+
 end AMF.Holders;

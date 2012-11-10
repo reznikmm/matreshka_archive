@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with League.Holders.Booleans;
 with League.Holders.Integers;
@@ -84,6 +85,26 @@ package body AMF.Holders is
 
       else
          return (False, League.Holders.Integers.Element (Holder));
+      end if;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Holder : League.Holders.Holder) return Optional_Real is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.Holders.Reals.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.Holders.Reals.Element (Holder));
       end if;
    end Element;
 
@@ -153,6 +174,21 @@ package body AMF.Holders is
 
          if not Item.Is_Empty then
             League.Holders.Integers.Replace_Element (Result, Item.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder (Item : Optional_Real) return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag (Result, AMF.Holders.Reals.Value_Tag);
+
+         if not Item.Is_Empty then
+            AMF.Holders.Reals.Replace_Element (Result, Item.Value);
          end if;
       end return;
    end To_Holder;
