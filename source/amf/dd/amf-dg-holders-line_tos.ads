@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Line_Tos is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Line_To);
+       (AMF.DG.DG_Line_To);
 pragma Preelaborate (AMF.DG.Holders.Line_Tos);

@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Rotates is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Rotate);
+       (AMF.DG.DG_Rotate);
 pragma Preelaborate (AMF.DG.Holders.Rotates);

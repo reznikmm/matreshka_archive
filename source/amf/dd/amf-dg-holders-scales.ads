@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Scales is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Scale);
+       (AMF.DG.DG_Scale);
 pragma Preelaborate (AMF.DG.Holders.Scales);

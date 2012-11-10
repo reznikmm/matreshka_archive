@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Matrixs is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Matrix);
+       (AMF.DG.DG_Matrix);
 pragma Preelaborate (AMF.DG.Holders.Matrixs);

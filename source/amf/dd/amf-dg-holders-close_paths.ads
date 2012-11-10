@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Close_Paths is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Close_Path);
+       (AMF.DG.DG_Close_Path);
 pragma Preelaborate (AMF.DG.Holders.Close_Paths);

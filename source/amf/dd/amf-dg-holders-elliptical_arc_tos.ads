@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Elliptical_Arc_Tos is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Elliptical_Arc_To);
+       (AMF.DG.DG_Elliptical_Arc_To);
 pragma Preelaborate (AMF.DG.Holders.Elliptical_Arc_Tos);

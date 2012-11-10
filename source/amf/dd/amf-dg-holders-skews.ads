@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Skews is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Skew);
+       (AMF.DG.DG_Skew);
 pragma Preelaborate (AMF.DG.Holders.Skews);

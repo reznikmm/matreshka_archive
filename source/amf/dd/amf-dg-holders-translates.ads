@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Translates is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Translate);
+       (AMF.DG.DG_Translate);
 pragma Preelaborate (AMF.DG.Holders.Translates);

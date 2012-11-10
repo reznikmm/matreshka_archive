@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Move_Tos is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Move_To);
+       (AMF.DG.DG_Move_To);
 pragma Preelaborate (AMF.DG.Holders.Move_Tos);

@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Quadratic_Curve_Tos is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Quadratic_Curve_To);
+       (AMF.DG.DG_Quadratic_Curve_To);
 pragma Preelaborate (AMF.DG.Holders.Quadratic_Curve_Tos);

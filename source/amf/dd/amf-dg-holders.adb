@@ -66,7 +66,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Close_Path is
+       return AMF.DG.Optional_DG_Close_Path is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Close_Paths.Value_Tag)
@@ -88,7 +88,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Cubic_Curve_To is
+       return AMF.DG.Optional_DG_Cubic_Curve_To is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Cubic_Curve_Tos.Value_Tag)
@@ -110,7 +110,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Elliptical_Arc_To is
+       return AMF.DG.Optional_DG_Elliptical_Arc_To is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Elliptical_Arc_Tos.Value_Tag)
@@ -154,7 +154,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Line_To is
+       return AMF.DG.Optional_DG_Line_To is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Line_Tos.Value_Tag)
@@ -176,7 +176,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Matrix is
+       return AMF.DG.Optional_DG_Matrix is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Matrixs.Value_Tag)
@@ -198,7 +198,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Move_To is
+       return AMF.DG.Optional_DG_Move_To is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Move_Tos.Value_Tag)
@@ -242,7 +242,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Quadratic_Curve_To is
+       return AMF.DG.Optional_DG_Quadratic_Curve_To is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Quadratic_Curve_Tos.Value_Tag)
@@ -264,7 +264,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Rotate is
+       return AMF.DG.Optional_DG_Rotate is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Rotates.Value_Tag)
@@ -286,7 +286,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Scale is
+       return AMF.DG.Optional_DG_Scale is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Scales.Value_Tag)
@@ -308,7 +308,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Skew is
+       return AMF.DG.Optional_DG_Skew is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Skews.Value_Tag)
@@ -352,7 +352,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Translate is
+       return AMF.DG.Optional_DG_Translate is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Translates.Value_Tag)
@@ -373,7 +373,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Close_Path)
+    (Element : AMF.DG.Optional_DG_Close_Path)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -392,7 +392,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Cubic_Curve_To)
+    (Element : AMF.DG.Optional_DG_Cubic_Curve_To)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -411,7 +411,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Elliptical_Arc_To)
+    (Element : AMF.DG.Optional_DG_Elliptical_Arc_To)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -449,7 +449,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Line_To)
+    (Element : AMF.DG.Optional_DG_Line_To)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -468,7 +468,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Matrix)
+    (Element : AMF.DG.Optional_DG_Matrix)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -487,7 +487,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Move_To)
+    (Element : AMF.DG.Optional_DG_Move_To)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -525,7 +525,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Quadratic_Curve_To)
+    (Element : AMF.DG.Optional_DG_Quadratic_Curve_To)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -544,7 +544,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Rotate)
+    (Element : AMF.DG.Optional_DG_Rotate)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -563,7 +563,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Scale)
+    (Element : AMF.DG.Optional_DG_Scale)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -582,7 +582,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Skew)
+    (Element : AMF.DG.Optional_DG_Skew)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -620,7 +620,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Translate)
+    (Element : AMF.DG.Optional_DG_Translate)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
