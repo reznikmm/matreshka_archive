@@ -41,9 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.Internals.Generic_Element_Table;
 with AMF.Internals.Tables.UTP_Types;
 
 package AMF.Internals.Tables.UTP_Element_Table is
   new AMF.Internals.Generic_Element_Table
        (AMF.Internals.Tables.UTP_Types.Element_Record);
+pragma Preelaborate (AMF.Internals.Tables.UTP_Element_Table);

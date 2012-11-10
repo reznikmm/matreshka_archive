@@ -46,6 +46,7 @@
 limited with AMF.UML.Namespaces;
 limited with AMF.UML.Properties;
 limited with AMF.UML.Value_Specifications;
+with League.Strings;
 
 package AMF.Utp.Coding_Rules is
 

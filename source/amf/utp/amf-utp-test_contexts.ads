@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-limited with AMF.String_Collections;
+with AMF.String_Collections;
 limited with AMF.UML.Behaviored_Classifiers;
 limited with AMF.UML.Structured_Classifiers;
 
