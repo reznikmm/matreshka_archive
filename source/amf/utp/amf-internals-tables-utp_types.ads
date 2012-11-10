@@ -41,10 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Utp;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.UTP_Types is
 
@@ -85,10 +86,10 @@ package AMF.Internals.Tables.UTP_Types is
 
    type Member_Kinds is
     (M_None,
-     M_Element,
      M_Collection_Of_Element,
-     M_String,
      M_Collection_Of_String,
+     M_Element,
+     M_String,
      M_Unlimited_Natural,
      M_Verdict);
 
@@ -97,17 +98,17 @@ package AMF.Internals.Tables.UTP_Types is
          when M_None =>
             null;
 
-         when M_Element =>
-            Link : AMF.Internals.AMF_Link;
-
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
 
+         when M_Collection_Of_String =>
+            String_Collection : AMF.Internals.AMF_Collection_Of_String;
+
+         when M_Element =>
+            Link : AMF.Internals.AMF_Link;
+
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
-
-         when M_Collection_Of_String =>
-            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
 
          when M_Unlimited_Natural =>
             Unlimited_Natural_Value : AMF.Unlimited_Natural;
@@ -121,7 +122,7 @@ package AMF.Internals.Tables.UTP_Types is
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
-      Extent : AMF_Extent;
+      Extent : AMF.Internals.AMF_Extent;
       Proxy  : AMF.Elements.Element_Access;
       Member : Member_Array;
    end record;

@@ -44,14 +44,13 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.UTP_Types;
-with AMF.Internals.Tables.Utp_Types;
 
-package AMF.Internals.Tables.Utp_Attribute_Mappings is
+package AMF.Internals.Tables.UTP_Attribute_Mappings is
 
    pragma Preelaborate;
 
    Utp_Collection_Offset : constant
-     array (AMF.Internals.Tables.Utp_Types.Element_Kinds,
+     array (AMF.Internals.Tables.UTP_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 31 .. 31)
        of AMF.Internals.AMF_Collection_Of_Element :=
         (AMF.Internals.Tables.UTP_Types.E_None =>
@@ -119,7 +118,7 @@ package AMF.Internals.Tables.Utp_Attribute_Mappings is
           (others => 0));
 
    Utp_Member_Offset : constant
-     array (AMF.Internals.Tables.Utp_Types.Element_Kinds,
+     array (AMF.Internals.Tables.UTP_Types.Element_Kinds,
             AMF.Internals.CMOF_Element range 32 .. 89) of Natural :=
         (AMF.Internals.Tables.UTP_Types.E_None =>
           (others => 0),
@@ -242,4 +241,4 @@ package AMF.Internals.Tables.Utp_Attribute_Mappings is
           (89     => 1,     --  ValidationAction::base_CallOperationAction
            others => 0));
 
-end AMF.Internals.Tables.Utp_Attribute_Mappings;
+end AMF.Internals.Tables.UTP_Attribute_Mappings;

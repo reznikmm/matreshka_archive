@@ -526,7 +526,8 @@ package body AMF.Internals.Tables.UTP_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Collection_Value;   end Internal_Get_Compatible_SUT_Variant;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (3).String_Collection;
+   end Internal_Get_Compatible_SUT_Variant;
 
    -----------------------------------------
    -- Internal_Get_Compatible_SUT_Version --
@@ -536,7 +537,8 @@ package body AMF.Internals.Tables.UTP_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Compatible_SUT_Version;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection;
+   end Internal_Get_Compatible_SUT_Version;
 
    ------------------------------
    -- Internal_Get_Criticality --
@@ -664,7 +666,8 @@ package body AMF.Internals.Tables.UTP_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_String is
    begin
-      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection_Value;   end Internal_Get_Tester;
+      return AMF.Internals.Tables.UTP_Element_Table.Table (Self).Member (2).String_Collection;
+   end Internal_Get_Tester;
 
    --------------------------
    -- Internal_Get_Verdict --
