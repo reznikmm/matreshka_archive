@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Gradient_Stops is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Gradient_Stop);
+       (AMF.DG.DG_Gradient_Stop);
 pragma Preelaborate (AMF.DG.Holders.Gradient_Stops);

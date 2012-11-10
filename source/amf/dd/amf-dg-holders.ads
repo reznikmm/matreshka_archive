@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.DC;
 with League.Holders;
 
 package AMF.DG.Holders is
@@ -81,9 +80,9 @@ package AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Gradient_Stop;
+       return AMF.DG.Optional_DG_Gradient_Stop;
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Gradient_Stop)
+    (Element : AMF.DG.Optional_DG_Gradient_Stop)
        return League.Holders.Holder;
 
    --  LineTo [0..1]
@@ -117,9 +116,9 @@ package AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Path_Command;
+       return AMF.DG.Optional_DG_Path_Command;
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Path_Command)
+    (Element : AMF.DG.Optional_DG_Path_Command)
        return League.Holders.Holder;
 
    --  QuadraticCurveTo [0..1]
@@ -162,9 +161,9 @@ package AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Transform;
+       return AMF.DG.Optional_DG_Transform;
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Transform)
+    (Element : AMF.DG.Optional_DG_Transform)
        return League.Holders.Holder;
 
    --  Translate [0..1]

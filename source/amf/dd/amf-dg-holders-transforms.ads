@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Transforms is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Transform);
+       (AMF.DG.DG_Transform);
 pragma Preelaborate (AMF.DG.Holders.Transforms);

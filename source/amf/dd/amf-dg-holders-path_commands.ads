@@ -47,5 +47,5 @@ with League.Holders.Generic_Holders;
 
 package AMF.DG.Holders.Path_Commands is
   new League.Holders.Generic_Holders
-       (AMF.DC.DG_Path_Command);
+       (AMF.DG.DG_Path_Command);
 pragma Preelaborate (AMF.DG.Holders.Path_Commands);

@@ -132,7 +132,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Gradient_Stop is
+       return AMF.DG.Optional_DG_Gradient_Stop is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Gradient_Stops.Value_Tag)
@@ -220,7 +220,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Path_Command is
+       return AMF.DG.Optional_DG_Path_Command is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Path_Commands.Value_Tag)
@@ -330,7 +330,7 @@ package body AMF.DG.Holders is
 
    function Element
     (Holder : League.Holders.Holder)
-       return AMF.DC.Optional_DG_Transform is
+       return AMF.DG.Optional_DG_Transform is
    begin
       if not League.Holders.Has_Tag
               (Holder, AMF.DG.Holders.Transforms.Value_Tag)
@@ -430,7 +430,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Gradient_Stop)
+    (Element : AMF.DG.Optional_DG_Gradient_Stop)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -506,7 +506,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Path_Command)
+    (Element : AMF.DG.Optional_DG_Path_Command)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
@@ -601,7 +601,7 @@ package body AMF.DG.Holders is
    ---------------
 
    function To_Holder
-    (Element : AMF.DC.Optional_DG_Transform)
+    (Element : AMF.DG.Optional_DG_Transform)
        return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
