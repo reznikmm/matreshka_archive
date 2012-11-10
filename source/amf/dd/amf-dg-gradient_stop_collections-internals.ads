@@ -41,9 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
 
 package AMF.DG.Gradient_Stop_Collections.Internals is
 
    pragma Preelaborate;
+
+   function To_Holder
+    (Item : AMF.DG.Set_Of_DG_Gradient_Stop) return League.Holders.Holder;
 
 end AMF.DG.Gradient_Stop_Collections.Internals;

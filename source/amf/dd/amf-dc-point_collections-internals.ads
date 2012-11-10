@@ -41,9 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
 
 package AMF.DC.Point_Collections.Internals is
 
    pragma Preelaborate;
+
+   function To_Holder
+    (Item : AMF.DC.Sequence_OF_DC_Point) return League.Holders.Holder;
 
 end AMF.DC.Point_Collections.Internals;

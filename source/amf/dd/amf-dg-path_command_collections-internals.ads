@@ -41,9 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
 
 package AMF.DG.Path_Command_Collections.Internals is
 
    pragma Preelaborate;
+
+   function To_Holder
+    (Item : AMF.DG.Sequence_Of_Path_Command) return League.Holders.Holder;
 
 end AMF.DG.Path_Command_Collections.Internals;
