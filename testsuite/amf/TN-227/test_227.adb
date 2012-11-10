@@ -54,8 +54,8 @@ with AMF.Visitors.UML_Visitors;
 with AMF.Visitors.UML_Containment;
 with XMI.Reader;
 
-with AMF.Internals.Modules.MOF_Module;
-pragma Unreferenced (AMF.Internals.Modules.MOF_Module);
+with AMF.Internals.Modules.MOFEXT_Module;
+pragma Unreferenced (AMF.Internals.Modules.MOFEXT_Module);
 with AMF.Internals.Modules.UML_Module;
 pragma Unreferenced (AMF.Internals.Modules.UML_Module);
 
