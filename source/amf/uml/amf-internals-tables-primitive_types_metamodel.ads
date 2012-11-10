@@ -56,6 +56,7 @@ package AMF.Internals.Tables.Primitive_Types_Metamodel is
    function MC_Primitive_Types_String return AMF.Internals.CMOF_Element;
    function MC_Primitive_Types_Unlimited_Natural return AMF.Internals.CMOF_Element;
 
+
    function MB_Primitive_Types return AMF.Internals.AMF_Element;
 
    function ML_Primitive_Types return AMF.Internals.AMF_Element;

@@ -50,7 +50,6 @@ package AMF.Internals.Tables.Standard_Profile_L2_Metamodel is
 
    function MM_Standard_Profile_L2_Standard_Profile_L2 return AMF.Internals.CMOF_Element;
 
-
    function MC_Standard_Profile_L2_Auxiliary return AMF.Internals.CMOF_Element;
    function MC_Standard_Profile_L2_Call return AMF.Internals.CMOF_Element;
    function MC_Standard_Profile_L2_Create return AMF.Internals.CMOF_Element;

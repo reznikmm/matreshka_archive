@@ -1750,7 +1750,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -1770,7 +1770,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
@@ -7619,7 +7619,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -7629,7 +7629,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  partWithPort
           4      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  role
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
@@ -12292,7 +12292,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 0)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 0)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -12316,7 +12316,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
@@ -13399,7 +13399,7 @@ package body AMF.Internals.Tables.UML_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           2      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  general
-          3      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (False, True)),
+          3      => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Boolean, (False, True)),
                        --  isSubstitutable
           1      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  owner
@@ -14171,7 +14171,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -14191,7 +14191,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
@@ -18526,7 +18526,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
@@ -18546,7 +18546,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
@@ -18782,7 +18782,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -18802,7 +18802,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
@@ -19232,7 +19232,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStream
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -19254,7 +19254,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
@@ -19531,7 +19531,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -19557,7 +19557,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
@@ -20200,7 +20200,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -20224,7 +20224,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue
@@ -26976,7 +26976,7 @@ package body AMF.Internals.Tables.UML_Constructors is
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
-          7      => (AMF.Internals.Tables.UML_Types.M_Boolean_Holder, (False, True)),
+          7      => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Boolean, (False, True)),
                        --  firstEvent
           2      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  name
@@ -28075,7 +28075,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -28095,7 +28095,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  selection
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           21     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperBound
@@ -28385,7 +28385,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isOrdered
           14     => (AMF.Internals.Tables.UML_Types.M_Boolean, True),
                        --  isUnique
-          15     => (AMF.Internals.Tables.UML_Types.M_Integer_Holder, (False, 1)),
+          15     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Integer, (False, 1)),
                        --  lower
           11     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  lowerValue
@@ -28407,7 +28407,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  type
-          16     => (AMF.Internals.Tables.UML_Types.M_Unlimited_Natural_Holder, (False, (False, 1))),
+          16     => (AMF.Internals.Tables.UML_Types.M_Holder_Of_Unlimited_Natural, (False, (False, 1))),
                        --  upper
           12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  upperValue

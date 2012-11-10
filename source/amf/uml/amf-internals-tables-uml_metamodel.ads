@@ -64,6 +64,7 @@ package AMF.Internals.Tables.UML_Metamodel is
    function MC_UML_Transition_Kind return AMF.Internals.CMOF_Element;
    function MC_UML_Visibility_Kind return AMF.Internals.CMOF_Element;
 
+
    function MC_UML_Abstraction return AMF.Internals.CMOF_Element;
    function MC_UML_Accept_Call_Action return AMF.Internals.CMOF_Element;
    function MC_UML_Accept_Event_Action return AMF.Internals.CMOF_Element;

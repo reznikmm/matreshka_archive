@@ -41,10 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.UML;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.UML_Types is
 
@@ -280,22 +281,19 @@ package AMF.Internals.Tables.UML_Types is
 
    type Member_Kinds is
     (M_None,
-     M_Element,
-     M_Collection_Of_Element,
-     M_Boolean,
-     M_Boolean_Holder,
-     M_Collection_Of_Boolean,
-     M_String,
-     M_Collection_Of_String,
-     M_Integer,
-     M_Integer_Holder,
-     M_Unlimited_Natural,
-     M_Unlimited_Natural_Holder,
-     M_Real,
      M_Aggregation_Kind,
+     M_Boolean,
      M_Call_Concurrency_Kind,
+     M_Collection_Of_Boolean,
+     M_Collection_Of_Element,
+     M_Collection_Of_String,
      M_Connector_Kind,
+     M_Element,
      M_Expansion_Kind,
+     M_Holder_Of_Boolean,
+     M_Holder_Of_Integer,
+     M_Holder_Of_Unlimited_Natural,
+     M_Integer,
      M_Interaction_Operator_Kind,
      M_Message_Kind,
      M_Message_Sort,
@@ -303,7 +301,10 @@ package AMF.Internals.Tables.UML_Types is
      M_Parameter_Direction_Kind,
      M_Parameter_Effect_Kind_Holder,
      M_Pseudostate_Kind,
+     M_Real,
+     M_String,
      M_Transition_Kind,
+     M_Unlimited_Natural,
      M_Visibility_Kind,
      M_Visibility_Kind_Holder);
 
@@ -312,53 +313,44 @@ package AMF.Internals.Tables.UML_Types is
          when M_None =>
             null;
 
-         when M_Element =>
-            Link : AMF.Internals.AMF_Link;
-
-         when M_Collection_Of_Element =>
-            Collection : AMF.Internals.AMF_Collection_Of_Element;
+         when M_Aggregation_Kind =>
+            Aggregation_Kind_Value : AMF.UML.UML_Aggregation_Kind;
 
          when M_Boolean =>
             Boolean_Value : Boolean;
 
-         when M_Boolean_Holder =>
-            Boolean_Holder : AMF.Optional_Boolean;
+         when M_Call_Concurrency_Kind =>
+            Call_Concurrency_Kind_Value : AMF.UML.UML_Call_Concurrency_Kind;
 
          when M_Collection_Of_Boolean =>
             Boolean_Collection : AMF.Internals.AMF_Collection_Of_Boolean;
 
-         when M_String =>
-            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
+         when M_Collection_Of_Element =>
+            Collection : AMF.Internals.AMF_Collection_Of_Element;
 
          when M_Collection_Of_String =>
-            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
-
-         when M_Integer =>
-            Integer_Value : Integer;
-
-         when M_Integer_Holder =>
-            Integer_Holder : AMF.Optional_Integer;
-
-         when M_Unlimited_Natural =>
-            Unlimited_Natural_Value : AMF.Unlimited_Natural;
-
-         when M_Unlimited_Natural_Holder =>
-            Unlimited_Natural_Holder : AMF.Optional_Unlimited_Natural;
-
-         when M_Real =>
-            Real_Value : AMF.Real;
-
-         when M_Aggregation_Kind =>
-            Aggregation_Kind_Value : AMF.UML.UML_Aggregation_Kind;
-
-         when M_Call_Concurrency_Kind =>
-            Call_Concurrency_Kind_Value : AMF.UML.UML_Call_Concurrency_Kind;
+            String_Collection : AMF.Internals.AMF_Collection_Of_String;
 
          when M_Connector_Kind =>
             Connector_Kind_Value : AMF.UML.UML_Connector_Kind;
 
+         when M_Element =>
+            Link : AMF.Internals.AMF_Link;
+
          when M_Expansion_Kind =>
             Expansion_Kind_Value : AMF.UML.UML_Expansion_Kind;
+
+         when M_Holder_Of_Boolean =>
+            Boolean_Holder : AMF.Optional_Boolean;
+
+         when M_Holder_Of_Integer =>
+            Integer_Holder : AMF.Optional_Integer;
+
+         when M_Holder_Of_Unlimited_Natural =>
+            Unlimited_Natural_Holder : AMF.Optional_Unlimited_Natural;
+
+         when M_Integer =>
+            Integer_Value : Integer;
 
          when M_Interaction_Operator_Kind =>
             Interaction_Operator_Kind_Value : AMF.UML.UML_Interaction_Operator_Kind;
@@ -381,8 +373,17 @@ package AMF.Internals.Tables.UML_Types is
          when M_Pseudostate_Kind =>
             Pseudostate_Kind_Value : AMF.UML.UML_Pseudostate_Kind;
 
+         when M_Real =>
+            Real_Value : AMF.Real;
+
+         when M_String =>
+            String_Holder : Matreshka.Internals.Strings.Shared_String_Access;
+
          when M_Transition_Kind =>
             Transition_Kind_Value : AMF.UML.UML_Transition_Kind;
+
+         when M_Unlimited_Natural =>
+            Unlimited_Natural_Value : AMF.Unlimited_Natural;
 
          when M_Visibility_Kind =>
             Visibility_Kind_Value : AMF.UML.UML_Visibility_Kind;
@@ -396,7 +397,7 @@ package AMF.Internals.Tables.UML_Types is
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
-      Extent : AMF_Extent;
+      Extent : AMF.Internals.AMF_Extent;
       Proxy  : AMF.Elements.Element_Access;
       Member : Member_Array;
    end record;

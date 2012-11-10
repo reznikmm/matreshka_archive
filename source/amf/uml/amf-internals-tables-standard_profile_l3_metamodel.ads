@@ -50,7 +50,6 @@ package AMF.Internals.Tables.Standard_Profile_L3_Metamodel is
 
    function MM_Standard_Profile_L3_Standard_Profile_L3 return AMF.Internals.CMOF_Element;
 
-
    function MC_Standard_Profile_L3_Build_Component return AMF.Internals.CMOF_Element;
    function MC_Standard_Profile_L3_Metamodel return AMF.Internals.CMOF_Element;
    function MC_Standard_Profile_L3_System_Model return AMF.Internals.CMOF_Element;
