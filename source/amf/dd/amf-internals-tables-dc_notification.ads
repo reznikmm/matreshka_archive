@@ -41,33 +41,72 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
+--  Helper subprograms for element modification notification.
 ------------------------------------------------------------------------------
-with League.Holders;
+with Matreshka.Internals.Strings;
 
-package AMF.DC.Holders is
+with AMF.DC;
 
-   pragma Preelaborate;
+package AMF.Internals.Tables.DC_Notification is
 
-   --  AlignmentKind [0..1]
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : Boolean;
+     New_Value : Boolean);
 
-   function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Alignment_Kind;
-   function To_Holder
-    (Element : AMF.DC.Optional_DC_Alignment_Kind) return League.Holders.Holder;
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Boolean;
+     New_Value : AMF.Optional_Boolean);
 
-   --  Color [0..1]
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Real;
+     New_Value : AMF.Real);
 
-   function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Color;
-   function To_Holder
-    (Element : AMF.DC.Optional_DC_Color) return League.Holders.Holder;
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Real;
+     New_Value : AMF.Optional_Real);
 
-   --  KnownColor [0..1]
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
+     New_Value : Matreshka.Internals.Strings.Shared_String_Access);
 
-   function Element
-    (Holder : League.Holders.Holder) return AMF.DC.Optional_DC_Known_Color;
-   function To_Holder
-    (Element : AMF.DC.Optional_DC_Known_Color) return League.Holders.Holder;
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.DC_Alignment_Kind;
+     New_Value : AMF.DC.DC_Alignment_Kind);
 
-end AMF.DC.Holders;
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.Optional_DC_Color;
+     New_Value : AMF.DC.Optional_DC_Color);
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.DC_Bounds;
+     New_Value : AMF.DC.DC_Bounds);
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.DC_Point;
+     New_Value : AMF.DC.DC_Point);
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.DC_Dimension;
+     New_Value : AMF.DC.DC_Dimension);
+
+end AMF.Internals.Tables.DC_Notification;
