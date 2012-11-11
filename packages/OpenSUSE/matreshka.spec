@@ -190,6 +190,21 @@ Requires: libmatreshka-amf%{PACKAGE_SUFFIX}
 Core library of Ada Modeling Framework component of Matreshka framework for Ada
 developers.
 
+%package -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (DD module) of Matreshka components
+%description -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}
+Diagram Definition (DD) module of Ada Modeling Framework component of Matreshka
+framework for Ada developers.
+
+%package -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: Ada Modeling Framework (DD module) of Matreshka components
+Requires: libmatreshka-amf-dd%{PACKAGE_SUFFIX}
+%description -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}-devel
+Diagram Definition (DD) module of Ada Modeling Framework component of Matreshka
+framework for Ada developers.
+
 %package -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other
 Summary: Ada Modeling Framework (UML module) of Matreshka components
@@ -292,6 +307,11 @@ component of Matreshka framework for Ada developers.
 %postun -n libmatreshka-amf%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %post -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-amf-uml%{PACKAGE_SUFFIX}
@@ -370,6 +390,12 @@ component of Matreshka framework for Ada developers.
 %dir %{_datadir}/matreshka/amf
 %dir %{_datadir}/matreshka/amf/metamodels
 %dir %{_datadir}/matreshka/amf/models
+
+%files -n libmatreshka-amf-dd%{PACKAGE_SUFFIX} -f .objs/amf_dd-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-amf-dd%{PACKAGE_SUFFIX}-devel -f .objs/amf_dd-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/amf/dd
 
 %files -n libmatreshka-amf-uml%{PACKAGE_SUFFIX} -f .objs/amf_uml-lib.files
 %defattr(-,root,root)
