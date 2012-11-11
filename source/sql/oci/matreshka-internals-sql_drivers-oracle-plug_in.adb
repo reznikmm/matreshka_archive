@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,47 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Oracle database.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-with Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;
 
-package Matreshka.Internals.SQL_Drivers.Oracle.Databases is
+with SQL.Databases.Internals;
+with Matreshka.Internals.SQL_Drivers.Oracle.Databases;
 
-   type OCI_Database is new Abstract_Database with record
-      Error      : aliased Error_Handle;
-      Service    : aliased Service_Handle;
-      Error_Text : Matreshka.Internals.Strings.Shared_String_Access;
-      Plugins    : access Oracle.Plug_In.Abstract_Plug_In'Class;
-   end record;
+package body Matreshka.Internals.SQL_Drivers.Oracle.Plug_In is
 
-   overriding procedure Close (Self : not null access OCI_Database);
+   ----------
+   -- Next --
+   ----------
 
-   overriding procedure Commit (Self : not null access OCI_Database);
+   function Next
+     (Self : Abstract_Plug_In'Class)
+      return access Abstract_Plug_In'Class is
+   begin
+      return Self.Next;
+   end Next;
 
-   overriding function Error_Message
-    (Self : not null access OCI_Database)
-       return League.Strings.Universal_String;
+   --------------
+   -- Register --
+   --------------
 
-   overriding function Query
-    (Self : not null access OCI_Database) return not null Query_Access;
+   procedure Register
+     (Database : in out SQL.Databases.SQL_Database;
+      Plug_In  : access Abstract_Plug_In'Class)
+   is
+      Driver : Databases.OCI_Database renames Databases.OCI_Database
+        (SQL.Databases.Internals.Internal (Database).all);
+   begin
+      Plug_In.Next := Driver.Plugins;
+      Driver.Plugins := Plug_In;
+   end Register;
 
-   overriding procedure Finalize (Self : not null access OCI_Database);
-
-   overriding function Open
-    (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean;
-
-   function Check_Error
-     (Self : not null access OCI_Database;
-      Code : Error_Code) return Boolean;
-
-   Env : aliased Environment;
-   --  This is an OCI environment shared between all connections.
-   --  Because the environment initialized in thread mode, all threads
-   --  can safely use it.
-
-   --  XXX Reasons of use of global object must be here, as well as all kind of
-   --  considerations of its use.
-
-end Matreshka.Internals.SQL_Drivers.Oracle.Databases;
+end Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;

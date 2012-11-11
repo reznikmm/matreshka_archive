@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,7 @@ with Ada.Unchecked_Deallocation;
 with League.Strings.Internals;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Strings.C;
+with Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;
 
 package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
@@ -53,6 +54,9 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
    use type Interfaces.Unsigned_16;
    use type Interfaces.Integer_8;
    use type Sb2;
+   use type SQL.Parameter_Directions;
+   use type Plug_In.Control_Side;
+   use type System.Storage_Elements.Storage_Count;
 
    procedure Free is
      new Ada.Unchecked_Deallocation (Bound_Value_Node, Bound_Value_Access);
@@ -60,6 +64,10 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Defined_Value_Array, Defined_Value_Array_Access);
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (System.Storage_Elements.Storage_Array, Storage_Array_Access);
 
    type Utf16_Code_Unit_Access is
      access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
@@ -118,8 +126,6 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
      Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions)
    is
-      use type SQL.Parameter_Directions;
-
       Code : Error_Code;
       Pos  : Parameter_Maps.Cursor;
       Ok   : Boolean;
@@ -136,16 +142,60 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
        (Name : League.Strings.Universal_String;
         Item : in out Bound_Value_Access)
       is
-         Length : Ub4;
-
+         Length     : Ub4;
+         Plugin     : Plug_In_Access := Plug_In_Access (Self.DB.Plugins);
+         Control    : Plug_In.Control_Side := Plug_In.Driver;
+         Extra_Type : Data_Type;
+         Extra_Size : System.Storage_Elements.Storage_Count;
       begin
+         while Plugin /= null loop
+            Plugin.Check_Parameter
+              (Value,
+               Control,
+               Extra_Type,
+               Extra_Size);
+
+            exit when Control = Plug_In.Plug_In;
+
+            Plugin := Plugin.Next;
+         end loop;
+
+         if Item /= null and then Item.Length < Extra_Size then
+            Free (Item);
+         end if;
+
          if Item = null then
-            Item := new Bound_Value_Node;
+            Item := new Bound_Value_Node (Extra_Size);
          end if;
 
          Item.Value := Value;
+         Item.Direction := Direction;
+         Item.Plugin := Plugin;
+         Item.Extra_Type := Extra_Type;
+         Item.Extra_Size := Extra_Size;
 
-         if League.Holders.Is_Universal_String (Value) then
+         if Item.Plugin /= null then
+            Code :=
+              OCIBindByName
+               (Self.Handle,
+                Item.Bind'Access,
+                Self.DB.Error,
+                League.Strings.Internals.Internal (Name).Value,
+                Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
+                Item.Extra (1)'Address,
+                Ub4 (Item.Extra_Size),
+                Item.Extra_Type,
+                Item.Is_Null'Access);
+
+            if Databases.Check_Error (Self.DB, Code) then
+               Free (Item);
+
+               return;  --  How to report errors?
+            end if;
+
+            Item.Plugin.Encode (Value, Item.Extra (1 .. Item.Extra_Size));
+
+         elsif League.Holders.Is_Universal_String (Value) then
             Length := 64 * 1024;  --  64kbyte max length of out string param
 
             if Direction = SQL.In_Parameter then
@@ -162,7 +212,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
             Code :=
               OCIBindByName
-                (Self.Handle,
+               (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
                 League.Strings.Internals.Internal (Name).Value,
@@ -314,7 +364,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
          Item : constant Bound_Value_Access :=
            Parameter_Maps.Element (Position);
       begin
-         if Item = null then
+         if Item = null or else Item.Direction = SQL.In_Parameter then
             return;
          elsif Item.String /= null then
             Item.String.Unused := Item.String.Unused + Item.String_Size;
@@ -401,11 +451,10 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
          for J in 1 .. Natural (Count) loop
             declare
-               Param       : aliased Parameter;
-               Column_Type : aliased Data_Type;
-               Size        : aliased Ub2;
-               Scale       : aliased Sb1;
-
+               Param      : aliased Parameter;
+               Column     : Plug_In.Column_Description;
+               Plugin     : Plug_In_Access := Plug_In_Access (Self.DB.Plugins);
+               Control    : Plug_In.Control_Side := Plug_In.Driver;
             begin
                Code :=
                  OCIParamGet
@@ -423,7 +472,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
                  OCIAttrGet
                   (Param,
                    OCI_DTYPE_PARAM,
-                   Column_Type'Address,
+                   Column.Column_Type'Address,
                    null,
                    OCI_ATTR_DATA_TYPE,
                    Self.DB.Error);
@@ -432,22 +481,95 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
                   return False;
                end if;
 
-               if Column_Type = SQLT_CHR or Column_Type = SQLT_AFC then
+               Code :=
+                 OCIAttrGet
+                   (Param,
+                    OCI_DTYPE_PARAM,
+                    Column.Size'Address,
+                    null,
+                    OCI_ATTR_DATA_SIZE,
+                    Self.DB.Error);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               Code :=
+                 OCIAttrGet
+                   (Param,
+                    OCI_DTYPE_PARAM,
+                    Column.Precision'Address,
+                    null,
+                    OCI_ATTR_PRECISION,
+                    Self.DB.Error);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               Code :=
+                 OCIAttrGet
+                   (Param,
+                    OCI_DTYPE_PARAM,
+                    Column.Scale'Address,
+                    null,
+                    OCI_ATTR_SCALE,
+                    Self.DB.Error);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               --  Look for plugin
+               while Plugin /= null loop
+                  Plugin.Check_Column
+                    (Column,
+                     Control,
+                     Self.Columns (J).Extra_Type,
+                     Self.Columns (J).Extra_Size);
+
+                  exit when Control = Plug_In.Plug_In;
+
+                  Plugin := Plugin.Next;
+               end loop;
+
+               Self.Columns (J).Plugin := Plugin;
+
+               if Plugin /= null then
+                  --  Drop insufficient Extra space
+                  if Self.Columns (J).Extra /= null and then
+                    Self.Columns (J).Extra'Length < Self.Columns (J).Extra_Size
+                  then
+                     Free (Self.Columns (J).Extra);
+                  end if;
+
+                  --  Allocate Extra space
+                  if Self.Columns (J).Extra = null then
+                     Self.Columns (J).Extra := new
+                       System.Storage_Elements.Storage_Array
+                         (1 .. Self.Columns (J).Extra_Size);
+                  end if;
+
                   Code :=
-                    OCIAttrGet
-                     (Param,
-                      OCI_DTYPE_PARAM,
-                      Size'Address,
-                      null,
-                      OCI_ATTR_DATA_SIZE,
-                      Self.DB.Error);
+                    OCIDefineByPos
+                      (Stmt         => Self.Handle,
+                       Target       => Self.Columns (J).Define'Access,
+                       Error        => Self.DB.Error,
+                       Position     => Ub4 (J),
+                       Value        => Self.Columns (J).Extra (1)'Address,
+                       Value_Length => Ub4 (Self.Columns (J).Extra_Size),
+                       Value_Type   => Self.Columns (J).Extra_Type,
+                       Indicator    => Self.Columns (J).Is_Null'Access);
 
                   if Databases.Check_Error (Self.DB, Code) then
                      return False;
                   end if;
 
+               elsif Column.Column_Type in SQLT_CHR | SQLT_AFC then
+
                   Self.Columns (J).Column_Type := String_Column;
-                  Self.Columns (J).Size := Utf16.Utf16_String_Index (Size + 1);
+                  Self.Columns (J).Size :=
+                    Utf16.Utf16_String_Index (Column.Size + 1);
 
                   declare
                      use Matreshka.Internals.Strings;
@@ -480,24 +602,10 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
                      end if;
                   end;
 
-               elsif Column_Type = SQLT_NUM
-                 or Column_Type = SQLT_IBFLOAT
-                 or Column_Type = SQLT_IBDOUBLE
+               elsif Column.Column_Type in
+                 SQLT_NUM | SQLT_IBFLOAT | SQLT_IBDOUBLE
                then
-                  Code :=
-                    OCIAttrGet
-                     (Param,
-                      OCI_DTYPE_PARAM,
-                      Scale'Address,
-                      null,
-                      OCI_ATTR_SCALE,
-                      Self.DB.Error);
-
-                  if Databases.Check_Error (Self.DB, Code) then
-                     return False;
-                  end if;
-
-                  if Column_Type = SQLT_NUM and Scale = 0 then
+                  if Column.Column_Type = SQLT_NUM and Column.Scale = 0 then
                      Self.Columns (J).Column_Type := Integer_Column;
                      Code :=
                        OCIDefineByPos
@@ -662,7 +770,8 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
       --  Rebind used strings columns
 
       for J in 1 .. Self.Column_Count loop
-         if Self.Columns (J).Column_Type = String_Column
+         if Self.Columns (J).Plugin = null
+           and then Self.Columns (J).Column_Type = String_Column
            and then not Can_Be_Reused
                          (Self.Columns (J).String, Self.Columns (J).Size)
          then
@@ -881,6 +990,13 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
    begin
       if Self.State /= Has_Row or else Index > Self.Column_Count then
          return Value;
+
+      elsif Self.Columns (Index).Plugin /= null then
+         if Self.Columns (Index).Is_Null = 0 then
+            Self.Columns (Index).Plugin.Decode
+              (Value, Self.Columns (Index).Extra
+                        (1 .. Self.Columns (Index).Extra_Size));
+         end if;
 
       elsif Self.Columns (Index).Column_Type = String_Column then
          League.Holders.Set_Tag (Value, League.Holders.Universal_String_Tag);

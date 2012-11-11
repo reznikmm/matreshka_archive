@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,47 +41,69 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Oracle database.
+--  Plugin interface for Oracle database.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-with Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;
+with System.Storage_Elements;
+with SQL.Databases;
 
-package Matreshka.Internals.SQL_Drivers.Oracle.Databases is
+package Matreshka.Internals.SQL_Drivers.Oracle.Plug_In is
 
-   type OCI_Database is new Abstract_Database with record
-      Error      : aliased Error_Handle;
-      Service    : aliased Service_Handle;
-      Error_Text : Matreshka.Internals.Strings.Shared_String_Access;
-      Plugins    : access Oracle.Plug_In.Abstract_Plug_In'Class;
+   type Control_Side is (Driver, Plug_In);
+
+   type Column_Description is record
+      Column_Type : aliased Data_Type;  --  OCI_ATTR_DATA_TYPE
+      Size        : aliased Ub2;        --  OCI_ATTR_DATA_SIZE
+      Precision   : aliased Sb2;        --  OCI_ATTR_PRECISION
+      Scale       : aliased Sb1;        --  OCI_ATTR_SCALE
    end record;
 
-   overriding procedure Close (Self : not null access OCI_Database);
+   type Abstract_Plug_In is abstract tagged private;
 
-   overriding procedure Commit (Self : not null access OCI_Database);
+   not overriding procedure Check_Parameter
+     (Self       : Abstract_Plug_In;
+      Holder     : League.Holders.Holder;
+      Control    : in out Control_Side;
+      SQLT_Type  : out Data_Type;
+      Extra_Size : out System.Storage_Elements.Storage_Count) is abstract;
+   --  If given plugin supports given Holder as statement parameter
+   --  set Control to Plug_In, SQLT_Type to expected data type and Extra_Size
+   --  to size of binding area
 
-   overriding function Error_Message
-    (Self : not null access OCI_Database)
-       return League.Strings.Universal_String;
+   not overriding procedure Check_Column
+     (Self       : Abstract_Plug_In;
+      Column     : Column_Description;
+      Control    : in out Control_Side;
+      SQLT_Type  : out Data_Type;
+      Extra_Size : out System.Storage_Elements.Storage_Count) is abstract;
+   --  If given plugin supports Column set Control to Plug_In and Extra_Size
+   --  to size of define area
 
-   overriding function Query
-    (Self : not null access OCI_Database) return not null Query_Access;
+   not overriding procedure Encode
+     (Self   : Abstract_Plug_In;
+      Holder : League.Holders.Holder;
+      Buffer : in out System.Storage_Elements.Storage_Array) is abstract;
+   --  Convert Holder to Storage_Array
 
-   overriding procedure Finalize (Self : not null access OCI_Database);
+   not overriding procedure Decode
+     (Self   : Abstract_Plug_In;
+      Holder : in out League.Holders.Holder;
+      Buffer : System.Storage_Elements.Storage_Array) is abstract;
+   --  Convert Storage_Array to Holder
 
-   overriding function Open
-    (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+   procedure Register
+     (Database : in out SQL.Databases.SQL_Database;
+      Plug_In  : access Abstract_Plug_In'Class);
+   --  register plugin in given Database
 
-   function Check_Error
-     (Self : not null access OCI_Database;
-      Code : Error_Code) return Boolean;
+   function Next
+     (Self : Abstract_Plug_In'Class)
+      return access Abstract_Plug_In'Class;
+   --  To iterate over registered plugins
 
-   Env : aliased Environment;
-   --  This is an OCI environment shared between all connections.
-   --  Because the environment initialized in thread mode, all threads
-   --  can safely use it.
+private
 
-   --  XXX Reasons of use of global object must be here, as well as all kind of
-   --  considerations of its use.
+   type Abstract_Plug_In is abstract tagged record
+      Next : access Abstract_Plug_In'Class;
+   end record;
 
-end Matreshka.Internals.SQL_Drivers.Oracle.Databases;
+end Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;

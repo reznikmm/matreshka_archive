@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,10 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Containers.Hashed_Maps;
+private with System.Storage_Elements;
 
 private with League.Strings.Hash;
 with Matreshka.Internals.SQL_Drivers.Oracle.Databases;
 private with Matreshka.Internals.Strings;
+limited with Matreshka.Internals.SQL_Drivers.Oracle.Plug_In;
 
 package Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
@@ -56,7 +58,11 @@ package Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
 private
 
-   type Bound_Value_Node is limited record
+   type Plug_In_Access is access all
+     Matreshka.Internals.SQL_Drivers.Oracle.Plug_In.Abstract_Plug_In'Class;
+
+   type Bound_Value_Node (Length : System.Storage_Elements.Storage_Count)
+   is limited record
       Value       : League.Holders.Holder;
       Bind        : aliased Oracle.Bind;
       Is_Null     : aliased Sb2;
@@ -64,6 +70,11 @@ private
       String      : Matreshka.Internals.Strings.Shared_String_Access;
       Int         : aliased League.Holders.Universal_Integer;
       Float       : aliased League.Holders.Universal_Float;
+      Direction   : SQL.Parameter_Directions;
+      Plugin      : Plug_In_Access;
+      Extra_Type  : Data_Type;
+      Extra_Size  : System.Storage_Elements.Storage_Count;
+      Extra       : System.Storage_Elements.Storage_Array (1 .. Length);
    end record;
 
    type Bound_Value_Access is access Bound_Value_Node;
@@ -79,6 +90,9 @@ private
 
    type Column_Types is (String_Column, Integer_Column, Float_Column);
 
+   type Storage_Array_Access is
+     access all System.Storage_Elements.Storage_Array;
+
    type Defined_Value is limited record
       Column_Type : Column_Types;
       Define      : aliased Oracle.Define;
@@ -87,6 +101,10 @@ private
       String      : Matreshka.Internals.Strings.Shared_String_Access;
       Int         : aliased League.Holders.Universal_Integer;
       Float       : aliased League.Holders.Universal_Float;
+      Plugin      : Plug_In_Access;
+      Extra_Type  : Data_Type;
+      Extra_Size  : System.Storage_Elements.Storage_Count;
+      Extra       : Storage_Array_Access;
    end record;
 
    type Defined_Value_Array is array (Positive range <>) of Defined_Value;
