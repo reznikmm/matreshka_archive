@@ -7,7 +7,7 @@
     <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0" importingNamespace="_0">
       <importedPackage xmi:type="cmof:Package" href="DC.cmof#_0"/>
     </packageImport>
-    <ownedMember xmi:type="cmof:Class" xmi:id="RadialGradient" name="RadialGradient" superClass="Gradient">
+    <packagedElement xmi:type="cmof:Class" xmi:id="RadialGradient" name="RadialGradient" superClass="Gradient">
       <ownedComment xmi:type="cmof:Comment" xmi:id="RadialGradient-_ownedComment.0" annotatedElement="RadialGradient">
         <body>RadialGradient is a kind of gradient that fills a graphical element by smoothly changing color values in a circle.</body>
       </ownedComment>
@@ -68,8 +68,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Pattern" name="Pattern" superClass="Fill">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Pattern" name="Pattern" superClass="Fill">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Pattern-_ownedComment.0" annotatedElement="Pattern">
         <body>Pattern is a kind of fill that paints a graphical element (a tile) repeatedly at fixed intervals in x and y axes to cover the areas to be filled.</body>
       </ownedComment>
@@ -84,8 +84,8 @@
           <body>a reference to a graphical element, owned by the pattern, that works as a tile to be painted repeatedly at a fixed interval to fill an closed area.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="LinearGradient" name="LinearGradient" superClass="Gradient">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="LinearGradient" name="LinearGradient" superClass="Gradient">
       <ownedComment xmi:type="cmof:Comment" xmi:id="LinearGradient-_ownedComment.0" annotatedElement="LinearGradient">
         <body>LinearGradient is a kind of gradient that fills a graphical element by smoothly changing color values along a vector.</body>
       </ownedComment>
@@ -122,8 +122,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="GradientStop" name="GradientStop">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="GradientStop" name="GradientStop">
       <ownedComment xmi:type="cmof:Comment" xmi:id="GradientStop-_ownedComment.0" annotatedElement="GradientStop">
         <body>GradientStop defines a color transition along the distance from a gradient's start to its end offsets.</body>
       </ownedComment>
@@ -163,8 +163,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Gradient" name="Gradient" isAbstract="true" superClass="Fill">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Gradient" name="Gradient" isAbstract="true" superClass="Fill">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Gradient-_ownedComment.0" annotatedElement="Gradient">
         <body>Gradient is a kind of fill that paints a continuously smooth color transition along the gradient range from one color to the next.</body>
       </ownedComment>
@@ -173,8 +173,8 @@
           <body>a list of two or more gradient stops defining the color transitions of the gradient.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Fill" name="Fill" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Fill" name="Fill" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Fill-_ownedComment.0" annotatedElement="Fill">
         <body>Fill is the abstract super class of all kinds of fills that are used to paint the interior of graphical elements.</body>
       </ownedComment>
@@ -188,8 +188,8 @@
           <body>a list of zero or more transforms to apply to this fill.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="GraphicalElement" name="GraphicalElement" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="GraphicalElement" name="GraphicalElement" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="GraphicalElement-_ownedComment.0" annotatedElement="GraphicalElement">
         <body>GraphicalElement is the abstract superclass of all graphical elements that can be nested in a canvas.</body>
       </ownedComment>
@@ -218,8 +218,8 @@
           <body>an optional reference to a clip path element that masks the painting of this graphical element.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Group" name="Group" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Group" name="Group" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Group-_ownedComment.0" annotatedElement="Group">
         <body>Group defines a group of graphical elements that can be styled, clipped and/or transformed together.</body>
       </ownedComment>
@@ -228,8 +228,8 @@
           <body>the list of graphical elements that are members of (owned by) this group.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Canvas" name="Canvas" superClass="Group">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Canvas" name="Canvas" superClass="Group">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Canvas-_ownedComment.0" annotatedElement="Canvas">
         <body>Canvas is a kind of group that represents the root of containment for all graphical elements that render one diagram.</body>
       </ownedComment>
@@ -259,8 +259,8 @@
           <body>a set of styles packaged by the canvas and referenced by graphical elements in the canvas as shared styles.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Marker" name="Marker" superClass="Group">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Marker" name="Marker" superClass="Group">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Marker-_ownedComment.0" annotatedElement="Marker">
         <body>Marker is a kind of group that is used as a decoration (e.g. an arrowhead) for the vertices of a marked graphical element.</body>
       </ownedComment>
@@ -281,8 +281,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="MarkedElement" name="MarkedElement" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="MarkedElement" name="MarkedElement" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="MarkedElement-_ownedComment.0" annotatedElement="MarkedElement">
         <body>MarkedElement is a graphic element that can be decorated at its vertices with markers (e.g. arrowheads).</body>
       </ownedComment>
@@ -301,8 +301,8 @@
           <body>an optional mid marker that aligns with all vertices of the marked element except the first and the last.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Rectangle" name="Rectangle" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Rectangle" name="Rectangle" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Rectangle-_ownedComment.0" annotatedElement="Rectangle">
         <body>Rectangle is a graphical element that defines a rectangular shape with given bounds. A rectangle may be given rounded corners by setting its corner radius.</body>
       </ownedComment>
@@ -318,8 +318,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Ellipse" name="Ellipse" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Ellipse" name="Ellipse" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Ellipse-_ownedComment.0" annotatedElement="Ellipse">
         <body>Ellipse is a graphical element that defines an elliptical shape with a given center point and two radii on the x and y axes.</body>
       </ownedComment>
@@ -335,8 +335,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Dimension"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Text" name="Text" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Text" name="Text" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Text-_ownedComment.0" annotatedElement="Text">
         <body>Text is a graphical element that defines a shape that renders a character string within a bounding box.</body>
       </ownedComment>
@@ -358,8 +358,8 @@
         </ownedComment>
         <type xmi:type="cmof:Enumeration" href="DC.cmof#AlignmentKind"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Line" name="Line" superClass="MarkedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Line" name="Line" superClass="MarkedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Line-_ownedComment.0" annotatedElement="Line">
         <body>Line is a marked element that defines a shape consisting of one straight line between two points.</body>
       </ownedComment>
@@ -375,8 +375,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Polyline" name="Polyline" superClass="MarkedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Polyline" name="Polyline" superClass="MarkedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Polyline-_ownedComment.0" annotatedElement="Polyline">
         <body>Polyline is a marked element that defines a shape consisting of a sequence of connected straight line segments.</body>
       </ownedComment>
@@ -386,8 +386,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Polygon" name="Polygon" superClass="MarkedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Polygon" name="Polygon" superClass="MarkedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Polygon-_ownedComment.0" annotatedElement="Polygon">
         <body>Polygon is a marked element that defines a closed shape consisting of a sequence of connected straight line segments.</body>
       </ownedComment>
@@ -397,8 +397,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Path" name="Path" superClass="MarkedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Path" name="Path" superClass="MarkedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Path-_ownedComment.0" annotatedElement="Path">
         <body>Path is a marked element that defines a custom shape whose geometry is specified with a sequence of path commands.</body>
       </ownedComment>
@@ -407,13 +407,13 @@
           <body>a list of path commands that define the geometry of the custom shape.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Transform" name="Transform" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Transform" name="Transform" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Transform-_ownedComment.0" annotatedElement="Transform">
         <body>Transform defines an operation that changes the geometry of a graphical element in a specific way.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Translate" name="Translate" general="Transform">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Translate" name="Translate" general="Transform">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Translate-_ownedComment.0" annotatedElement="Translate">
         <body>Translate is a kind of transform that translates (moves) a graphical element by a given delta along the x-y coordinate system.</body>
       </ownedComment>
@@ -429,8 +429,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Scale" name="Scale" general="Transform">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Scale" name="Scale" general="Transform">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Scale-_ownedComment.0" annotatedElement="Scale">
         <body>Scale is a kind of transform that scales (resizes) a graphical element by a given factor in the x-y coordinate system.</body>
       </ownedComment>
@@ -455,8 +455,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Rotate" name="Rotate" general="Transform">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Rotate" name="Rotate" general="Transform">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Rotate-_ownedComment.0" annotatedElement="Rotate">
         <body>Rotate is a kind of transform that rotates a graphical element by a given angle about a given center point in the x-y coordinate system.</body>
       </ownedComment>
@@ -472,15 +472,15 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_startMarker_markedElement" name="A_startMarker_markedElement" visibility="private" memberEnd="MarkedElement-startMarker A_startMarker_markedElement-markedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_startMarker_markedElement" name="A_startMarker_markedElement" visibility="private" memberEnd="MarkedElement-startMarker A_startMarker_markedElement-markedElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_startMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_startMarker_markedElement" association="A_startMarker_markedElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_endMarker_markedElement" name="A_endMarker_markedElement" visibility="private" memberEnd="MarkedElement-endMarker A_endMarker_markedElement-markedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_endMarker_markedElement" name="A_endMarker_markedElement" visibility="private" memberEnd="MarkedElement-endMarker A_endMarker_markedElement-markedElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_endMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_endMarker_markedElement" association="A_endMarker_markedElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_member_group" name="A_member_group" visibility="private" memberEnd="Group-member GraphicalElement-group"/>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Skew" name="Skew" general="Transform">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_member_group" name="A_member_group" visibility="private" memberEnd="Group-member GraphicalElement-group"/>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Skew" name="Skew" general="Transform">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Skew-_ownedComment.0" annotatedElement="Skew">
         <body>Skew is a kind of transform that skews (deforms) a graphical element by given angles in the x-y coordinate system.</body>
       </ownedComment>
@@ -496,11 +496,11 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_midMarker_markedElement" name="A_midMarker_markedElement" visibility="private" memberEnd="MarkedElement-midMarker A_midMarker_markedElement-markedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_midMarker_markedElement" name="A_midMarker_markedElement" visibility="private" memberEnd="MarkedElement-midMarker A_midMarker_markedElement-markedElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_midMarker_markedElement-markedElement" name="markedElement" visibility="public" type="MarkedElement" upper="*" lower="0" owningAssociation="A_midMarker_markedElement" association="A_midMarker_markedElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Image" name="Image" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Image" name="Image" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Image-_ownedComment.0" annotatedElement="Image">
         <body>Image is a graphical element that defines a shape that paints an image with a given URL within given bounds.</body>
       </ownedComment>
@@ -522,8 +522,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="ClipPath" name="ClipPath" superClass="Group">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="ClipPath" name="ClipPath" superClass="Group">
       <ownedComment xmi:type="cmof:Comment" xmi:id="ClipPath-_ownedComment.0" annotatedElement="ClipPath">
         <body>ClipPath is a kind of group whose members collectively define a painting mask for its referencing graphical elements.</body>
       </ownedComment>
@@ -532,10 +532,10 @@
           <body>a reference to the owning element that is clipped by this clip path.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_marker_canvas" name="A_marker_canvas" visibility="private" memberEnd="Canvas-packagedMarker Marker-canvas"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_clipPath_clippedElement" name="A_clipPath_clippedElement" visibility="private" memberEnd="GraphicalElement-clipPath ClipPath-clippedElement"/>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Circle" name="Circle" superClass="GraphicalElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_marker_canvas" name="A_marker_canvas" visibility="private" memberEnd="Canvas-packagedMarker Marker-canvas"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_clipPath_clippedElement" name="A_clipPath_clippedElement" visibility="private" memberEnd="GraphicalElement-clipPath ClipPath-clippedElement"/>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Circle" name="Circle" superClass="GraphicalElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Circle-_ownedComment.0" annotatedElement="Circle">
         <body>Circle is a graphical element that defines a circular shape with a given center point and a radius.</body>
       </ownedComment>
@@ -560,8 +560,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Style" name="Style">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Style" name="Style">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Style-_ownedComment.0" annotatedElement="Style">
         <body>Style contains formatting properties that affect the appearance or style of graphical elements.</body>
       </ownedComment>
@@ -693,11 +693,11 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="GraphicalElement-localStyle A_localStyle_styledElement-styledElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="GraphicalElement-localStyle A_localStyle_styledElement-styledElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_localStyle_styledElement-styledElement" name="styledElement" visibility="public" type="GraphicalElement" lower="0" owningAssociation="A_localStyle_styledElement" association="A_localStyle_styledElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Matrix" name="Matrix" general="Transform">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Matrix" name="Matrix" general="Transform">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Matrix-_ownedComment.0" annotatedElement="Matrix">
         <body>Matrix is a kind of transform that represents any transform operation with a 3x3 transformation matrix.</body>
       </ownedComment>
@@ -737,8 +737,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="PathCommand" name="PathCommand" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="PathCommand" name="PathCommand" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="PathCommand-_ownedComment.0" annotatedElement="PathCommand">
         <body>PathCommand is the abstract super type of all commands that participate in specifying a path element.</body>
       </ownedComment>
@@ -748,8 +748,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="MoveTo" name="MoveTo" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="MoveTo" name="MoveTo" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="MoveTo-_ownedComment.0" annotatedElement="MoveTo">
         <body>MoveTo is a kind of path command that establishes a new current point in the coordinate system.</body>
       </ownedComment>
@@ -759,8 +759,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="LineTo" name="LineTo" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="LineTo" name="LineTo" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="LineTo-_ownedComment.0" annotatedElement="LineTo">
         <body>LineTo is a kind of path command that draw a straight line from the current point to a new point.</body>
       </ownedComment>
@@ -770,8 +770,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="CubicCurveTo" name="CubicCurveTo" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="CubicCurveTo" name="CubicCurveTo" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="CubicCurveTo-_ownedComment.0" annotatedElement="CubicCurveTo">
         <body>CubicCurveTo is a kind of path command that draws a cubic bézier curve from the current point to a new point using a start and an end control points.</body>
       </ownedComment>
@@ -793,8 +793,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="QuadraticCurveTo" name="QuadraticCurveTo" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="QuadraticCurveTo" name="QuadraticCurveTo" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="QuadraticCurveTo-_ownedComment.0" annotatedElement="CubicCurveTo QuadraticCurveTo">
         <body>QuadraticCurveTo is a kind of path command that draws a quadratic bézier curve from the current point to a new point using a single control point.</body>
       </ownedComment>
@@ -810,8 +810,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="EllipticalArcTo" name="EllipticalArcTo" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="EllipticalArcTo" name="EllipticalArcTo" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="EllipticalArcTo-_ownedComment.0" annotatedElement="CubicCurveTo QuadraticCurveTo">
         <body>EllipticalArcTo is a kind of path command that draws an elliptical arc from the current point to a new point in the coordinate system.</body>
       </ownedComment>
@@ -845,28 +845,28 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Boolean"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="ClosePath" name="ClosePath" general="PathCommand">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="ClosePath" name="ClosePath" general="PathCommand">
       <ownedComment xmi:type="cmof:Comment" xmi:id="ClosePath-_ownedComment.0" annotatedElement="ClosePath">
         <body>ClosePath is a kind of path command that ends the current subpath and causes an automatic straight line to be drawn from the current point to the initial point of the current subpath.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_fill_canvas" name="A_fill_canvas" visibility="private" memberEnd="Canvas-packagedFill Fill-canvas"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_fill_style" name="A_fill_style" visibility="private" memberEnd="Style-fill A_fill_style-style">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_fill_canvas" name="A_fill_canvas" visibility="private" memberEnd="Canvas-packagedFill Fill-canvas"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_fill_style" name="A_fill_style" visibility="private" memberEnd="Style-fill A_fill_style-style">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_fill_style-style" name="style" visibility="public" type="Style" upper="*" lower="0" owningAssociation="A_fill_style" association="A_fill_style"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="GraphicalElement-sharedStyle A_sharedStyle_styledElement-styledElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="GraphicalElement-sharedStyle A_sharedStyle_styledElement-styledElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_sharedStyle_styledElement-styledElement" name="styledElement" visibility="public" type="GraphicalElement" upper="*" lower="0" owningAssociation="A_sharedStyle_styledElement" association="A_sharedStyle_styledElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_backgroundFill_canvas" name="A_backgroundFill_canvas" visibility="private" memberEnd="Canvas-backgroundFill A_backgroundFill_canvas-canvas">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_backgroundFill_canvas" name="A_backgroundFill_canvas" visibility="private" memberEnd="Canvas-backgroundFill A_backgroundFill_canvas-canvas">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_backgroundFill_canvas-canvas" name="canvas" visibility="public" type="Canvas" upper="*" lower="0" owningAssociation="A_backgroundFill_canvas" association="A_backgroundFill_canvas"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_tile_pattern" name="A_tile_pattern" visibility="private" memberEnd="Pattern-tile A_tile_pattern-pattern">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_tile_pattern" name="A_tile_pattern" visibility="private" memberEnd="Pattern-tile A_tile_pattern-pattern">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_tile_pattern-pattern" name="pattern" visibility="public" type="Pattern" lower="0" owningAssociation="A_tile_pattern" association="A_tile_pattern"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="_packagedElement.47" visibility="private" memberEnd="Canvas-packagedStyle _packagedElement.47-canvas">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="_packagedElement.47" visibility="private" memberEnd="Canvas-packagedStyle _packagedElement.47-canvas">
       <ownedEnd xmi:type="cmof:Property" xmi:id="_packagedElement.47-canvas" name="canvas" visibility="public" type="Canvas" owningAssociation="_packagedElement.47" association="_packagedElement.47"/>
-    </ownedMember>
+    </packagedElement>
   </cmof:Package>
   <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="dg" element="_0"/>
   <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DG" element="_0"/>

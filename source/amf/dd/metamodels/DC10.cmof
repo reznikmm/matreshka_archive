@@ -4,27 +4,27 @@
     <ownedComment xmi:type="cmof:Comment" xmi:id="_ownedComment.0" annotatedElement="_0">
       <body>The Diagram Common (DC) package contains abstractions shared by the Diagram Interchange and the Diagram Graphics packages.</body>
     </ownedComment>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Boolean" name="Boolean">
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Boolean" name="Boolean">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Boolean-_ownedComment.0" annotatedElement="Boolean">
         <body>Boolean is a primitive data type having one of two values: &lt;i>true&lt;/i> or &lt;i>false&lt;/i>, intended to represent the truth value of logical expressions.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Integer" name="Integer">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Integer" name="Integer">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Integer-_ownedComment.0" annotatedElement="Integer">
         <body>Integer is a primitive data type used to represent the mathematical concept of integer.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Real" name="Real">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Real" name="Real">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Real-_ownedComment.0" annotatedElement="Real">
         <body>Real is a primitive data type used to represent the mathematical concept of real.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="String" name="String">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="String" name="String">
       <ownedComment xmi:type="cmof:Comment" xmi:id="String-_ownedComment.0" annotatedElement="String">
         <body>String is a primitive data type used to represent a sequence of characters in some suitable character set.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Color" name="Color">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Color" name="Color">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Color-_ownedComment.0" annotatedElement="Color">
         <body>Color is a data type that represents a color value in the RGB format.</body>
       </ownedComment>
@@ -52,8 +52,8 @@
           <body>the red component of the color in the range (0..255).</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Point" name="Point">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Point" name="Point">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Point-_ownedComment.0" annotatedElement="Point">
         <body>A Point specifies an location in some x-y coordinate system.</body>
       </ownedComment>
@@ -67,8 +67,8 @@
           <body>a real number (&lt;= 0 or >= 0)  that represents the y-coordinate of the point.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Dimension" name="Dimension">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Dimension" name="Dimension">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Dimension-_ownedComment.0" annotatedElement="Dimension">
         <body>Dimension specifies two lengths (width and height) along the x and y axes in some x-y coordinate system.</body>
       </ownedComment>
@@ -91,8 +91,8 @@
           <body>a real number (>=0) that represents a length along the y-axis.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:DataType" xmi:id="Bounds" name="Bounds">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:DataType" xmi:id="Bounds" name="Bounds">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Bounds-_ownedComment.0" annotatedElement="Bounds">
         <body>Bounds specifies a rectangular area in some x-y coordinate system that is defined by a location (x and y) and a size (width and height).</body>
       </ownedComment>
@@ -125,8 +125,8 @@
           <body>a real number (>=0) that represents the height of the bounds</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Enumeration" xmi:id="AlignmentKind" name="AlignmentKind">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Enumeration" xmi:id="AlignmentKind" name="AlignmentKind">
       <ownedComment xmi:type="cmof:Comment" xmi:id="AlignmentKind-_ownedComment.0" annotatedElement="AlignmentKind">
         <body>AlignmentKind enumerates the possible options for alignment for layout purposes.</body>
       </ownedComment>
@@ -145,8 +145,8 @@
           <body>an alignment to the center of a given length</body>
         </ownedComment>
       </ownedLiteral>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Enumeration" xmi:id="KnownColor" name="KnownColor">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Enumeration" xmi:id="KnownColor" name="KnownColor">
       <ownedComment xmi:type="cmof:Comment" xmi:id="KnownColor-_ownedComment.0" annotatedElement="KnownColor">
         <body>KnownColor is an enumeration of 17 known colors.</body>
       </ownedComment>
@@ -235,7 +235,7 @@
           <body>a color with a value of #808080</body>
         </ownedComment>
       </ownedLiteral>
-    </ownedMember>
+    </packagedElement>
   </cmof:Package>
   <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="dc" element="_0"/>
   <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DC" element="_0"/>

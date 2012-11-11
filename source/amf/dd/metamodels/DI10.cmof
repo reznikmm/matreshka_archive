@@ -10,7 +10,7 @@
     <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.1" importingNamespace="_0">
       <importedPackage xmi:type="cmof:Package" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#_0"/>
     </packageImport>
-    <ownedMember xmi:type="cmof:Class" xmi:id="DiagramElement" name="DiagramElement" isAbstract="true">
+    <packagedElement xmi:type="cmof:Class" xmi:id="DiagramElement" name="DiagramElement" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="DiagramElement-_ownedComment.0" annotatedElement="DiagramElement">
         <body>DiagramElement is the abstract super type of all elements in diagrams, including diagrams themselves. When contained in a diagram, diagram elements are laid out relative to the diagram’s origin.</body>
       </ownedComment>
@@ -40,8 +40,8 @@
           <body>a reference to an optional shared style element for this diagram element.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Edge" name="Edge" isAbstract="true" superClass="DiagramElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Edge" name="Edge" isAbstract="true" superClass="DiagramElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Edge-_ownedComment.0" annotatedElement="Edge">
         <body>Edge is a diagram element that renders as a polyline, connecting a source diagram element to a target diagram element, and is positioned relative to the origin of the diagram.</body>
       </ownedComment>
@@ -61,8 +61,8 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Point"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Diagram" name="Diagram" isAbstract="true" superClass="Shape">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Diagram" name="Diagram" isAbstract="true" superClass="Shape">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Diagram-_ownedComment.0" annotatedElement="Diagram">
         <body>Diagram is an abstract container of a graph of diagram elements. Diagrams are diagram elements with an origin point in the x-y coordinate system. Their elements are laid out relative to their origin point.</body>
       </ownedComment>
@@ -84,8 +84,8 @@
         </ownedComment>
         <type xmi:type="cmof:PrimitiveType" href="DC.cmof#Real"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Shape" name="Shape" isAbstract="true" superClass="DiagramElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Shape" name="Shape" isAbstract="true" superClass="DiagramElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Shape-_ownedComment.0" annotatedElement="Shape">
         <body>Shape is a diagram element with given bounds that is laid out relative to the origin of the diagram</body>
       </ownedComment>
@@ -95,36 +95,36 @@
         </ownedComment>
         <type xmi:type="cmof:DataType" href="DC.cmof#Bounds"/>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Style" name="Style" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Style" name="Style" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Style-_ownedComment.0" annotatedElement="Style">
         <body>Style contains formatting properties that affect the appearance or style of diagram elements, including diagram themselves.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_target_targetEdge" name="A_target_targetEdge" visibility="private" memberEnd="Edge-target A_target_targetEdge-targetEdge">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_target_targetEdge" name="A_target_targetEdge" visibility="private" memberEnd="Edge-target A_target_targetEdge-targetEdge">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_target_targetEdge-targetEdge" name="targetEdge" visibility="public" type="Edge" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_target_targetEdge" association="A_target_targetEdge">
         <ownedComment xmi:type="cmof:Comment" xmi:id="A_target_targetEdge-targetEdge-_ownedComment.0" annotatedElement="A_target_targetEdge-targetEdge">
           <body>a collection of edges that reference this diagram element as a target.</body>
         </ownedComment>
       </ownedEnd>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_source_sourceEdge" name="A_source_sourceEdge" visibility="private" memberEnd="Edge-source A_source_sourceEdge-sourceEdge">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_source_sourceEdge" name="A_source_sourceEdge" visibility="private" memberEnd="Edge-source A_source_sourceEdge-sourceEdge">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_source_sourceEdge-sourceEdge" name="sourceEdge" visibility="public" type="Edge" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_source_sourceEdge" association="A_source_sourceEdge">
         <ownedComment xmi:type="cmof:Comment" xmi:id="A_source_sourceEdge-sourceEdge-_ownedComment.0" annotatedElement="A_source_sourceEdge-sourceEdge">
           <body>a collection of edges that reference this diagram element as a source.</body>
         </ownedComment>
       </ownedEnd>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_ownedElement_owningElement" name="A_ownedElement_owningElement" visibility="private" memberEnd="DiagramElement-ownedElement DiagramElement-owningElement"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_modelElement_diagramElement" name="A_modelElement_diagramElement" visibility="private" memberEnd="DiagramElement-modelElement A_modelElement_diagramElement-diagramElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_ownedElement_owningElement" name="A_ownedElement_owningElement" visibility="private" memberEnd="DiagramElement-ownedElement DiagramElement-owningElement"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_modelElement_diagramElement" name="A_modelElement_diagramElement" visibility="private" memberEnd="DiagramElement-modelElement A_modelElement_diagramElement-diagramElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_modelElement_diagramElement-diagramElement" name="diagramElement" visibility="public" type="DiagramElement" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" owningAssociation="A_modelElement_diagramElement" association="A_modelElement_diagramElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="DiagramElement-sharedStyle A_sharedStyle_styledElement-styledElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_sharedStyle_styledElement" name="A_sharedStyle_styledElement" visibility="private" memberEnd="DiagramElement-sharedStyle A_sharedStyle_styledElement-styledElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_sharedStyle_styledElement-styledElement" name="styledElement" visibility="public" type="DiagramElement" upper="*" lower="0" owningAssociation="A_sharedStyle_styledElement" association="A_sharedStyle_styledElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="DiagramElement-localStyle A_localStyle_styledElement-styledElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="A_localStyle_styledElement" name="A_localStyle_styledElement" visibility="private" memberEnd="DiagramElement-localStyle A_localStyle_styledElement-styledElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_localStyle_styledElement-styledElement" name="styledElement" visibility="public" type="DiagramElement" lower="0" owningAssociation="A_localStyle_styledElement" association="A_localStyle_styledElement"/>
-    </ownedMember>
+    </packagedElement>
   </cmof:Package>
   <cmof:Tag xmi:id="_1" name="org.omg.xmi.nsPrefix" value="di" element="_0"/>
   <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/DD/20110901/DI" element="_0"/>
