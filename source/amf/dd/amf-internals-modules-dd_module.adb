@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Factories.DC_Datatypes;
 with AMF.Internals.Factories.DC_Factories;
 with AMF.Internals.Factories.DG_Factories;
 with AMF.Internals.Factories.DI_Factories;
