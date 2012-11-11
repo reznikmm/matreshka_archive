@@ -73,16 +73,19 @@ procedure Test_231 is
 
    Expected    : constant League.Strings.Universal_String
      := +("<?xml version='1.0'?>" & LF
-            & "<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901'>" & LF
-            & "  <uml:Package xmi:type='uml:Package' xmi:id='16777217'>" & LF
-            & "    <packagedElement xmi:type='uml:Class' xmi:id='16777218'>" & LF
-            & "      <ownedOperation xmi:type='uml:Operation' xmi:id='16777220' bodyCondition='16777219'>" & LF
-            & "        <ownedRule xmi:type='uml:Constraint' xmi:id='16777219'/>" & LF
+            & "<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>" & LF
+            & "  <uml:Package xmi:type='uml:Package' xmi:id='16777217' name='Package'>" & LF
+            & "    <packagedElement xmi:type='uml:Class' xmi:id='16777218' name='Class'>" & LF
+            & "      <ownedOperation xmi:type='uml:Operation' xmi:id='16777220' bodyCondition='16777219' name='operation'>" & LF
+            & "        <ownedRule xmi:type='uml:Constraint' xmi:id='16777219'>" & LF
+            & "          <name xsi:nil='true'/>" & LF
+            & "        </ownedRule>" & LF
+            & "        <visibility xsi:nil='true'/>" & LF
             & "      </ownedOperation>" & LF
             & "    </packagedElement>" & LF
+            & "    <URI xsi:nil='true'/>" & LF
             & "  </uml:Package>" & LF
             & "</xmi:XMI>");
-
    UML_URI     : constant League.Strings.Universal_String
      := +"http://www.omg.org/spec/UML/20100901";
    UML_Factory : AMF.Factories.UML_Factories.UML_Factory_Access;
@@ -123,6 +126,12 @@ begin
         AMF.UML.Constraints.Collections.Set_Of_UML_Constraint;
 
    begin
+      --  Set some attributes.
+
+      The_Package.Set_Name ((False, +"Package"));
+      The_Class.Set_Name ((False, +"Class"));
+      The_Operation.Set_Name ((False, +"operation"));
+
       --  Connect elements.
 
       Packaged_Element := The_Package.Get_Packaged_Element;
