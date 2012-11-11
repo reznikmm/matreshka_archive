@@ -54,7 +54,10 @@ with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Elements.Hash;
+with AMF.CMOF.Enumerations;
+with AMF.Objects;
 with AMF.CMOF.Packages;
+with AMF.CMOF.Primitive_Types;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.CMOF.Tags;
@@ -478,9 +481,15 @@ is
                end if;
 
             else
-               if Meta_Attribute.Is_Multivalued then
-                  --  For multivalued properties serialization method
-                  --  2b:XMIValueElement is used.
+               if Meta_Attribute.Is_Multivalued
+                 or (Meta_Type.all
+                       not in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
+                       and Meta_Type.all
+                         not in AMF.CMOF.Enumerations.CMOF_Enumeration'Class)
+               then
+                  --  For multivalued properties or properties of
+                  --  CMOF::DataType serialization method 2b:XMIValueElement is
+                  --  used.
 
                   Meta_Attributes.Insert (Meta_Attribute);
 
@@ -597,16 +606,52 @@ is
             else
                --  XXX Serialization of null values should be implemented.
 
-               null;
---               Writer.Start_Element
---                (League.Strings.Empty_Universal_String,
---                 League.Strings.Empty_Universal_String,
---                 Meta_Attribute.Get_Name.Value,
---                 XML.SAX.Attributes.Empty_SAX_Attributes);
---               Writer.End_Element
---                (League.Strings.Empty_Universal_String,
---                 League.Strings.Empty_Universal_String,
---                 Meta_Attribute.Get_Name.Value);
+               --  XXX Simplified method of serialization of CMOF::DataType is
+               --  used here. It must be extended to support inheritance of
+               --  CMOF::DataTypes.
+               --
+               --  XXX Inheritance is not supported for generation of xmi:type
+               --  attribute.
+
+               declare
+                  Owned_Attributes : constant
+                    AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+                      := AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                          (Meta_Type).Get_Owned_Attribute;
+                    Member_Type    : AMF.CMOF.Types.CMOF_Type_Access;
+
+               begin
+                  Attributes.Clear;
+
+                  --  Add xmi:type attribute, it is required always.
+
+                  Attributes.Set_Value
+                   (XMI_Namespace,
+                    Type_Attribute,
+                    Namespace_Prefix (Meta_Type.Get_Package)
+                      & ':' & Meta_Type.Get_Name.Value);
+
+                  for J in 1 .. Owned_Attributes.Length loop
+                     Member_Type := Owned_Attributes.Element (J).Get_Type;
+                     Attributes.Set_Value
+                      (Owned_Attributes.Element (J).Get_Name.Value,
+                       Store.Convert_To_String
+                        (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                          (Member_Type),
+                         AMF.Objects.Get
+                          (Value, Owned_Attributes.Element (J))));
+                  end loop;
+
+                  Writer.Start_Element
+                   (League.Strings.Empty_Universal_String,
+                    League.Strings.Empty_Universal_String,
+                    Meta_Attribute.Get_Name.Value,
+                    Attributes);
+                  Writer.End_Element
+                   (League.Strings.Empty_Universal_String,
+                    League.Strings.Empty_Universal_String,
+                    Meta_Attribute.Get_Name.Value);
+               end;
             end if;
          end if;
 
