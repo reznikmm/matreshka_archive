@@ -73,6 +73,7 @@ function XMI.Writer
     return League.Strings.Universal_String
 is
    use type AMF.CMOF.Properties.CMOF_Property_Access;
+   use type AMF.CMOF.Tags.CMOF_Tag_Access;
    use type AMF.Elements.Element_Access;
    use type League.Strings.Universal_String;
 
@@ -105,6 +106,12 @@ is
            Hash,
            AMF.CMOF.Properties."=",
            AMF.CMOF.Properties."=");
+
+   function Lookup_Tag
+    (Name        : League.Strings.Universal_String;
+     The_Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return AMF.CMOF.Tags.CMOF_Tag_Access;
+   --  Returns instance of CMOF::Tag which is applied to given element.
 
    function Namespace_Prefix
     (The_Package : not null AMF.CMOF.Packages.CMOF_Package_Access)
@@ -171,6 +178,42 @@ is
       return URI.Slice (Separator + 1, URI.Length);
    end Identifier;
 
+   ----------------
+   -- Lookup_Tag --
+   ----------------
+
+   function Lookup_Tag
+    (Name        : League.Strings.Universal_String;
+     The_Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return AMF.CMOF.Tags.CMOF_Tag_Access
+   is
+      Extent       : constant AMF.Extents.Extent_Access
+        := AMF.Elements.Element_Access (The_Element).Extent;
+      Elements     : constant AMF.Elements.Collections.Set_Of_Element
+        := Extent.Elements;
+      Element      : AMF.Elements.Element_Access;
+      Tag          : AMF.CMOF.Tags.CMOF_Tag_Access;
+      Tag_Elements : AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   begin
+      for J in 1 .. Elements.Length loop
+         Element := Elements.Element (J);
+
+         if Element.all in AMF.CMOF.Tags.CMOF_Tag'Class then
+            Tag := AMF.CMOF.Tags.CMOF_Tag_Access (Element);
+            Tag_Elements := Tag.Get_Element;
+
+            if Tag.Get_Name = Name
+              and then Tag_Elements.Includes (The_Element)
+            then
+               return Tag;
+            end if;
+         end if;
+      end loop;
+
+      return null;
+   end Lookup_Tag;
+
    ----------------------
    -- Namespace_Prefix --
    ----------------------
@@ -179,32 +222,17 @@ is
     (The_Package : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String
    is
-      Extent      : constant AMF.Extents.Extent_Access
-        := AMF.Elements.Element_Access (The_Package).Extent;
-      Elements    : constant AMF.Elements.Collections.Set_Of_Element
-        := Extent.Elements;
-      Element     : AMF.Elements.Element_Access;
-      Tag         : AMF.CMOF.Tags.CMOF_Tag_Access;
-      Tag_Element : AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+      Tag : constant AMF.CMOF.Tags.CMOF_Tag_Access
+        := Lookup_Tag (NS_Prefix_Tag, The_Package);
 
    begin
-      for J in 1 .. Elements.Length loop
-         Element := Elements.Element (J);
+      if Tag /= null then
+         return Tag.Get_Value;
 
-         if Element.all in AMF.CMOF.Tags.CMOF_Tag'Class then
-            Tag := AMF.CMOF.Tags.CMOF_Tag_Access (Element);
-            Tag_Element := Tag.Get_Element;
-
-            if Tag.Get_Name = NS_Prefix_Tag
-              and then Tag_Element.Includes (The_Package)
-            then
-               return Tag.Get_Value;
-            end if;
-         end if;
-      end loop;
-
-      raise Program_Error;
-      --  XXX Assigning of unique prefix is not implemented.
+      else
+         raise Program_Error;
+         --  XXX Assigning of unique prefix is not implemented.
+      end if;
    end Namespace_Prefix;
 
    -------------------
@@ -215,31 +243,16 @@ is
     (The_Package : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String
    is
-      Extent      : constant AMF.Extents.Extent_Access
-        := AMF.Elements.Element_Access (The_Package).Extent;
-      Elements    : constant AMF.Elements.Collections.Set_Of_Element
-        := Extent.Elements;
-      Element     : AMF.Elements.Element_Access;
-      Tag         : AMF.CMOF.Tags.CMOF_Tag_Access;
-      Tag_Element : AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+      Tag : constant AMF.CMOF.Tags.CMOF_Tag_Access
+        := Lookup_Tag (NS_URI_Tag, The_Package);
 
    begin
-      for J in 1 .. Elements.Length loop
-         Element := Elements.Element (J);
+      if Tag /= null then
+         return Tag.Get_Value;
 
-         if Element.all in AMF.CMOF.Tags.CMOF_Tag'Class then
-            Tag := AMF.CMOF.Tags.CMOF_Tag_Access (Element);
-            Tag_Element := Tag.Get_Element;
-
-            if Tag.Get_Name = NS_URI_Tag
-              and then Tag_Element.Includes (The_Package)
-            then
-               return Tag.Get_Value;
-            end if;
-         end if;
-      end loop;
-
-      return The_Package.Get_URI.Value;
+      else
+         return The_Package.Get_URI.Value;
+      end if;
    end Namespace_URI;
 
    -----------------------------
