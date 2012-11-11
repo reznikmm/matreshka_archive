@@ -618,17 +618,20 @@ is
                     AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
                       := AMF.CMOF.Data_Types.CMOF_Data_Type_Access
                           (Meta_Type).Get_Owned_Attribute;
-                    Member_Type    : AMF.CMOF.Types.CMOF_Type_Access;
+                  Aux_Package      : AMF.CMOF.Packages.CMOF_Package_Access;
+                  Member_Type      : AMF.CMOF.Types.CMOF_Type_Access;
 
                begin
                   Attributes.Clear;
 
                   --  Add xmi:type attribute, it is required always.
 
+                  Aux_Package :=Meta_Type.Get_Package;
+
                   Attributes.Set_Value
                    (XMI_Namespace,
                     Type_Attribute,
-                    Namespace_Prefix (Meta_Type.Get_Package)
+                    Namespace_Prefix (Aux_Package)
                       & ':' & Meta_Type.Get_Name.Value);
 
                   for J in 1 .. Owned_Attributes.Length loop
