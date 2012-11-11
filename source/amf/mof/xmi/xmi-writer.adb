@@ -77,23 +77,37 @@ is
    use type AMF.Elements.Element_Access;
    use type League.Strings.Universal_String;
 
-   XMI_Prefix     : constant League.Strings.Universal_String
+   XSI_Prefix        : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("xsi");
+   XSI_Namespace_URI : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.w3.org/2001/XMLSchema-instance");
+   XMI_Prefix        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("xmi");
-   XMI_Namespace  : constant League.Strings.Universal_String
+   XMI_Namespace_URI : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/XMI/20100901");
+
    XMI_Element    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("XMI");
+
    Id_Attribute   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
+   Nil_Attribute  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("nil");
    Type_Attribute : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
    Href_Attribute : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("href");
 
-   NS_Prefix_Tag  : constant League.Strings.Universal_String
+   True_Literal : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("true");
+
+   Include_Nils_Tag : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("org.omg.xmi.includeNils");
+   NS_Prefix_Tag    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("org.omg.xmi.nsPrefix");
-   NS_URI_Tag     : constant League.Strings.Universal_String
+   NS_URI_Tag       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("org.omg.xmi.nsURI");
 
    function Hash
@@ -122,6 +136,11 @@ is
     (The_Package : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String;
    --  Returns namespace URI for the package.
+
+   function Include_Nils
+    (The_Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean;
+   --  Returns value of includeNuls tag for the property.
 
    function Identifier
     (Element : not null AMF.Elements.Element_Access)
@@ -177,6 +196,26 @@ is
    begin
       return URI.Slice (Separator + 1, URI.Length);
    end Identifier;
+
+   ------------------
+   -- Include_Nils --
+   ------------------
+
+   function Include_Nils
+    (The_Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean
+   is
+      Tag : constant AMF.CMOF.Tags.CMOF_Tag_Access
+        := Lookup_Tag (Include_Nils_Tag, The_Property);
+
+   begin
+      if Tag /= null then
+         return Boolean'Wide_Wide_Value (Tag.Get_Value.To_Wide_Wide_String);
+
+      else
+         return True;
+      end if;
+   end Include_Nils;
 
    ----------------
    -- Lookup_Tag --
@@ -374,7 +413,7 @@ is
       --  Add xmi:type attribute, it is required always.
 
       Attributes.Set_Value
-       (XMI_Namespace,
+       (XMI_Namespace_URI,
         Type_Attribute,
         Namespace_Prefix (Meta_Package) & ':' & Meta_Class.Get_Name.Value);
 
@@ -383,7 +422,7 @@ is
          --  serialize element's attributes as XML attributes.
 
          Attributes.Set_Value
-          (XMI_Namespace, Id_Attribute, Identifier (Element));
+          (XMI_Namespace_URI, Id_Attribute, Identifier (Element));
 
          --  Prepare for serialization of element's attributes which should be
          --  serialized as XML attributes and compute set of attributes which
@@ -516,7 +555,9 @@ is
                      --  Attributes with null value are serialized as empty
                      --  2b:XMIValueElement.
 
-                     Meta_Attributes.Insert (Meta_Attribute);
+                     if Include_Nils (Meta_Attribute) then
+                        Meta_Attributes.Insert (Meta_Attribute);
+                     end if;
 
                   else
                      Value_String :=
@@ -616,9 +657,23 @@ is
                     Meta_Attribute.Get_Name.Value);
                end loop;
 
-            else
-               --  XXX Serialization of null values should be implemented.
+            elsif League.Holders.Is_Empty (Value) then
+               --  Serialization of null values.
 
+               Attributes.Clear;
+               Attributes.Set_Value
+                (XSI_Namespace_URI, Nil_Attribute, True_Literal);
+               Writer.Start_Element
+                (League.Strings.Empty_Universal_String,
+                 League.Strings.Empty_Universal_String,
+                 Meta_Attribute.Get_Name.Value,
+                 Attributes);
+               Writer.End_Element
+                (League.Strings.Empty_Universal_String,
+                 League.Strings.Empty_Universal_String,
+                 Meta_Attribute.Get_Name.Value);
+
+            else
                --  XXX Simplified method of serialization of CMOF::DataType is
                --  used here. It must be extended to support inheritance of
                --  CMOF::DataTypes.
@@ -642,7 +697,7 @@ is
                   Aux_Package :=Meta_Type.Get_Package;
 
                   Attributes.Set_Value
-                   (XMI_Namespace,
+                   (XMI_Namespace_URI,
                     Type_Attribute,
                     Namespace_Prefix (Aux_Package)
                       & ':' & Meta_Type.Get_Name.Value);
@@ -732,7 +787,8 @@ begin
 
    --  Register used namespaces.
 
-   Writer.Start_Prefix_Mapping (XMI_Prefix, XMI_Namespace);
+   Writer.Start_Prefix_Mapping (XMI_Prefix, XMI_Namespace_URI);
+   Writer.Start_Prefix_Mapping (XSI_Prefix, XSI_Namespace_URI);
 
    for J in 1 .. Elements.Length loop
       The_Package := Elements.Element (J).Get_Meta_Class.Get_Package;
@@ -743,7 +799,7 @@ begin
    --  Open root element of XMI document.
 
    Writer.Start_Element
-    (XMI_Namespace,
+    (XMI_Namespace_URI,
      XMI_Element,
      League.Strings.Empty_Universal_String,
      XML.SAX.Attributes.Empty_SAX_Attributes);
@@ -761,7 +817,7 @@ begin
    --  Close root element of XMI document.
 
    Writer.End_Element
-    (XMI_Namespace, XMI_Element, League.Strings.Empty_Universal_String);
+    (XMI_Namespace_URI, XMI_Element, League.Strings.Empty_Universal_String);
 
    Writer.End_Document;
 
