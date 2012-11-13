@@ -99,6 +99,7 @@ with AMF.UML.Literal_Specifications;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
 with AMF.UML.Models;
+with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces;
 with AMF.UML.Object_Flows;
@@ -119,6 +120,7 @@ with AMF.UML.Profiles;
 with AMF.UML.Properties;
 with AMF.UML.Protocol_State_Machines;
 with AMF.UML.Read_Structural_Feature_Actions;
+with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.Regions;
 with AMF.UML.Send_Object_Actions;
@@ -363,6 +365,10 @@ package AMF.Internals.Holders.UML_Holders is
        return League.Holders.Holder;
 
    function To_Holder
+    (Item : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
     (Item : AMF.UML.Named_Elements.UML_Named_Element_Access)
        return League.Holders.Holder;
 
@@ -440,6 +446,10 @@ package AMF.Internals.Holders.UML_Holders is
 
    function To_Holder
     (Item : AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return League.Holders.Holder;
 
    function To_Holder
