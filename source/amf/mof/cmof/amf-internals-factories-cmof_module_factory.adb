@@ -160,7 +160,7 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
       --  CMOF::Type when add it to CMOF::Package::ownedType attribute also.
 
       if Element_Kind = E_CMOF_Package
-        and then Property = MP_CMOF_Package_Packaged_Element
+        and then Property = MP_CMOF_Package_Packaged_Element_A_Owning_Package
         and then (Opposite_Kind = E_CMOF_Class
                     or Opposite_Kind = E_CMOF_Enumeration
                     or Opposite_Kind = E_CMOF_Data_Type
