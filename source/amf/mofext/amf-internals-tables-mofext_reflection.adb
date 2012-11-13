@@ -75,7 +75,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
 
       function MOF_Tag_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element then
+         if Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element_A_Tag then
             --  Tag::element : Element
 
             return
@@ -91,7 +91,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
                (AMF.MOF.Tags.MOF_Tag_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -99,7 +99,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
                (AMF.MOF.Tags.MOF_Tag_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -107,7 +107,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
                (AMF.MOF.Tags.MOF_Tag_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -116,7 +116,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
                  (AMF.MOF.Tags.MOF_Tag_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner then
+         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner_A_Owned_Tag then
             --  Tag::tagOwner : Element
 
             return
@@ -190,7 +190,7 @@ package body AMF.Internals.Tables.MOFEXT_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (League.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner then
+         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner_A_Owned_Tag then
             --  Tag::tagOwner : Element
 
             AMF.MOF.Tags.MOF_Tag_Access

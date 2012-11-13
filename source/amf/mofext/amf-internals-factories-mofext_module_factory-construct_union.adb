@@ -63,14 +63,14 @@ is
 begin
    case Element_Kind is
       when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
               Link);
 
-         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner then
+         elsif Property = AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Tag_Owner_A_Owned_Tag then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,

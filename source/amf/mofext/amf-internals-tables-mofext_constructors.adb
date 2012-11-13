@@ -91,21 +91,21 @@ package body AMF.Internals.Tables.MOFEXT_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element,
+        AMF.Internals.Tables.MOF_Metamodel.MP_MOF_Tag_Element_A_Tag,
         MOFEXT_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment,
+        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element,
         MOFEXT_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element,
+        AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner,
         MOFEXT_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
