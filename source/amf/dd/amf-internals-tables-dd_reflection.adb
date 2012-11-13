@@ -160,7 +160,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Background_Color);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Background_Fill then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Background_Fill_A_Canvas then
             --  Canvas::backgroundFill : Fill
 
             return
@@ -169,7 +169,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Canvases.DG_Canvas_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Background_Fill));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -178,7 +178,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Canvases.DG_Canvas_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -187,7 +187,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Canvases.DG_Canvas_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -195,7 +195,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group then
             --  Group::member : GraphicalElement
 
             return
@@ -203,7 +203,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Fill then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Fill_Fill_Canvas then
             --  Canvas::packagedFill : Fill
 
             return
@@ -211,7 +211,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Packaged_Fill);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Marker_Marker_Canvas then
             --  Canvas::packagedMarker : Marker
 
             return
@@ -219,7 +219,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Packaged_Marker);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Style_A_Canvas then
             --  Canvas::packagedStyle : Style
 
             return
@@ -227,7 +227,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Canvases.DG_Canvas_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Packaged_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -262,7 +262,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Circles.DG_Circle_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Center);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -271,7 +271,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Circles.DG_Circle_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -280,7 +280,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Circles.DG_Circle_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -296,7 +296,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Circles.DG_Circle_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Radius);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -323,7 +323,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Clip_Path_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -332,7 +332,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Clip_Paths.DG_Clip_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Clip_Path_Clipped_Element then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Clip_Path_Clipped_Element_Graphical_Element_Clip_Path then
             --  ClipPath::clippedElement : GraphicalElement
 
             return
@@ -341,7 +341,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Clip_Paths.DG_Clip_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clipped_Element));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -350,7 +350,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Clip_Paths.DG_Clip_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -358,7 +358,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group then
             --  Group::member : GraphicalElement
 
             return
@@ -366,7 +366,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -401,7 +401,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Ellipses.DG_Ellipse_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Center);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -410,7 +410,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Ellipses.DG_Ellipse_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -419,7 +419,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Ellipses.DG_Ellipse_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -435,7 +435,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Ellipses.DG_Ellipse_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Radii);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -462,7 +462,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Group_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -471,7 +471,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Groups.DG_Group_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -480,7 +480,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Groups.DG_Group_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -488,7 +488,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Groups.DG_Group_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group then
             --  Group::member : GraphicalElement
 
             return
@@ -496,7 +496,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Groups.DG_Group_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -531,7 +531,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Images.DG_Image_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -540,7 +540,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Images.DG_Image_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -557,7 +557,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Images.DG_Image_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Aspect_Ratio_Preserved);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -565,7 +565,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Images.DG_Image_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -600,7 +600,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Line_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -617,7 +617,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Lines.DG_Line_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_End);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             return
@@ -626,7 +626,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Lines.DG_Line_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_End_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -635,7 +635,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Lines.DG_Line_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -643,7 +643,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Lines.DG_Line_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             return
@@ -652,7 +652,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Lines.DG_Line_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Mid_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -668,7 +668,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Lines.DG_Line_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Start);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             return
@@ -696,7 +696,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Linear_Gradient_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             return
@@ -764,7 +764,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Marked_Element_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -773,7 +773,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             return
@@ -782,7 +782,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_End_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -791,7 +791,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -799,7 +799,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             return
@@ -808,7 +808,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Mid_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -816,7 +816,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Marked_Elements.DG_Marked_Element_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             return
@@ -844,7 +844,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Marker_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marker_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marker_Canvas_Canvas_Packaged_Marker then
             --  Marker::canvas : Canvas
 
             return
@@ -853,7 +853,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Markers.DG_Marker_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Canvas));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -862,7 +862,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Markers.DG_Marker_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -871,7 +871,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Markers.DG_Marker_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -879,7 +879,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Markers.DG_Marker_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group then
             --  Group::member : GraphicalElement
 
             return
@@ -895,7 +895,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Markers.DG_Marker_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Reference);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -930,7 +930,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Path_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -947,7 +947,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Paths.DG_Path_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Command);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             return
@@ -956,7 +956,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Paths.DG_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_End_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -965,7 +965,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Paths.DG_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -973,7 +973,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Paths.DG_Path_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             return
@@ -982,7 +982,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Paths.DG_Path_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Mid_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -990,7 +990,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Paths.DG_Path_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             return
@@ -1026,7 +1026,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Patterns.DG_Pattern_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             return
@@ -1035,7 +1035,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Patterns.DG_Pattern_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Canvas));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Pattern_Tile then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Pattern_Tile_A_Pattern then
             --  Pattern::tile : GraphicalElement
 
             return
@@ -1063,7 +1063,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Polygon_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -1072,7 +1072,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polygons.DG_Polygon_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             return
@@ -1081,7 +1081,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polygons.DG_Polygon_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_End_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -1090,7 +1090,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polygons.DG_Polygon_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -1098,7 +1098,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polygons.DG_Polygon_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             return
@@ -1115,7 +1115,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polygons.DG_Polygon_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Point);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -1123,7 +1123,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polygons.DG_Polygon_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             return
@@ -1151,7 +1151,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Polyline_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -1160,7 +1160,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polylines.DG_Polyline_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Clip_Path));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             return
@@ -1169,7 +1169,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polylines.DG_Polyline_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_End_Marker));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -1178,7 +1178,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Polylines.DG_Polyline_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -1186,7 +1186,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polylines.DG_Polyline_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             return
@@ -1203,7 +1203,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polylines.DG_Polyline_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Point);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -1211,7 +1211,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Polylines.DG_Polyline_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             return
@@ -1239,7 +1239,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Radial_Gradient_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             return
@@ -1323,7 +1323,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Rectangles.DG_Rectangle_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -1340,7 +1340,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Rectangles.DG_Rectangle_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Corner_Radius);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -1349,7 +1349,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Rectangles.DG_Rectangle_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -1357,7 +1357,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Rectangles.DG_Rectangle_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -1384,7 +1384,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       function DG_Style_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Style_Fill then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Style_Fill_A_Style then
             --  Style::fill : Fill
 
             return
@@ -1524,7 +1524,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Texts.DG_Text_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             return
@@ -1541,7 +1541,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Texts.DG_Text_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Data);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             return
@@ -1550,7 +1550,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                  (AMF.DG.Texts.DG_Text_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Group));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element then
             --  GraphicalElement::localStyle : Style
 
             return
@@ -1558,7 +1558,7 @@ package body AMF.Internals.Tables.DD_Reflection is
                (AMF.DG.Texts.DG_Text_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style);
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element then
             --  GraphicalElement::sharedStyle : Style
 
             return
@@ -1784,21 +1784,21 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Background_Color
                (AMF.DC.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Background_Fill then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Background_Fill_A_Canvas then
             --  Canvas::backgroundFill : Fill
 
             AMF.DG.Canvases.DG_Canvas_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Background_Fill
                (AMF.DG.Fills.DG_Fill_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Canvases.DG_Canvas_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Canvases.DG_Canvas_Access
@@ -1823,14 +1823,14 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Center
                (AMF.DC.Holders.Points.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Circles.DG_Circle_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Circles.DG_Circle_Access
@@ -1855,21 +1855,21 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Clip_Path_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Clip_Paths.DG_Clip_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Clip_Path_Clipped_Element then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Clip_Path_Clipped_Element_Graphical_Element_Clip_Path then
             --  ClipPath::clippedElement : GraphicalElement
 
             AMF.DG.Clip_Paths.DG_Clip_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clipped_Element
                (AMF.DG.Graphical_Elements.DG_Graphical_Element_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Clip_Paths.DG_Clip_Path_Access
@@ -1894,14 +1894,14 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Center
                (AMF.DC.Holders.Points.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Ellipses.DG_Ellipse_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Ellipses.DG_Ellipse_Access
@@ -1926,14 +1926,14 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Group_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Groups.DG_Group_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Groups.DG_Group_Access
@@ -1958,14 +1958,14 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
                (AMF.DC.Holders.Bounds.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Images.DG_Image_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Images.DG_Image_Access
@@ -1997,7 +1997,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Line_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Lines.DG_Line_Access
@@ -2011,21 +2011,21 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_End
                (AMF.DC.Holders.Points.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             AMF.DG.Lines.DG_Line_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_End_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Lines.DG_Line_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Group
                (AMF.DG.Groups.DG_Group_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             AMF.DG.Lines.DG_Line_Access
@@ -2039,7 +2039,7 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Start
                (AMF.DC.Holders.Points.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             AMF.DG.Lines.DG_Line_Access
@@ -2057,7 +2057,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Linear_Gradient_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             AMF.DG.Linear_Gradients.DG_Linear_Gradient_Access
@@ -2103,35 +2103,35 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Marked_Element_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Marked_Elements.DG_Marked_Element_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             AMF.DG.Marked_Elements.DG_Marked_Element_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_End_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Marked_Elements.DG_Marked_Element_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Group
                (AMF.DG.Groups.DG_Group_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             AMF.DG.Marked_Elements.DG_Marked_Element_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Mid_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             AMF.DG.Marked_Elements.DG_Marked_Element_Access
@@ -2149,21 +2149,21 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Marker_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marker_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marker_Canvas_Canvas_Packaged_Marker then
             --  Marker::canvas : Canvas
 
             AMF.DG.Markers.DG_Marker_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Canvas
                (AMF.DG.Canvases.DG_Canvas_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Markers.DG_Marker_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Markers.DG_Marker_Access
@@ -2195,35 +2195,35 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Path_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Paths.DG_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             AMF.DG.Paths.DG_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_End_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Paths.DG_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Group
                (AMF.DG.Groups.DG_Group_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             AMF.DG.Paths.DG_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Mid_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             AMF.DG.Paths.DG_Path_Access
@@ -2248,14 +2248,14 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
                (AMF.DC.Holders.Bounds.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             AMF.DG.Patterns.DG_Pattern_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Canvas
                (AMF.DG.Canvases.DG_Canvas_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Pattern_Tile then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Pattern_Tile_A_Pattern then
             --  Pattern::tile : GraphicalElement
 
             AMF.DG.Patterns.DG_Pattern_Access
@@ -2273,35 +2273,35 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Polygon_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Polygons.DG_Polygon_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             AMF.DG.Polygons.DG_Polygon_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_End_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Polygons.DG_Polygon_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Group
                (AMF.DG.Groups.DG_Group_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             AMF.DG.Polygons.DG_Polygon_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Mid_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             AMF.DG.Polygons.DG_Polygon_Access
@@ -2319,35 +2319,35 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Polyline_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Polylines.DG_Polyline_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Clip_Path
                (AMF.DG.Clip_Paths.DG_Clip_Path_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_End_Marker_A_Marked_Element then
             --  MarkedElement::endMarker : Marker
 
             AMF.DG.Polylines.DG_Polyline_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_End_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Polylines.DG_Polyline_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Group
                (AMF.DG.Groups.DG_Group_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Mid_Marker_A_Marked_Element then
             --  MarkedElement::midMarker : Marker
 
             AMF.DG.Polylines.DG_Polyline_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Mid_Marker
                (AMF.DG.Markers.DG_Marker_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Marked_Element_Start_Marker_A_Marked_Element then
             --  MarkedElement::startMarker : Marker
 
             AMF.DG.Polylines.DG_Polyline_Access
@@ -2365,7 +2365,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Radial_Gradient_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Fill_Canvas_Canvas_Packaged_Fill then
             --  Fill::canvas : Canvas
 
             AMF.DG.Radial_Gradients.DG_Radial_Gradient_Access
@@ -2425,7 +2425,7 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
                (AMF.DC.Holders.Bounds.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Rectangles.DG_Rectangle_Access
@@ -2439,7 +2439,7 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Corner_Radius
                (AMF.Holders.Reals.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Rectangles.DG_Rectangle_Access
@@ -2457,7 +2457,7 @@ package body AMF.Internals.Tables.DD_Reflection is
 
       procedure DG_Style_Set is
       begin
-         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Style_Fill then
+         if Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Style_Fill_A_Style then
             --  Style::fill : Fill
 
             AMF.DG.Styles.DG_Style_Access
@@ -2573,7 +2573,7 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
                (AMF.DC.Holders.Bounds.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element then
             --  GraphicalElement::clipPath : ClipPath
 
             AMF.DG.Texts.DG_Text_Access
@@ -2587,7 +2587,7 @@ package body AMF.Internals.Tables.DD_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Data
                (League.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group then
+         elsif Property = AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Group_Group_Member then
             --  GraphicalElement::group : Group
 
             AMF.DG.Texts.DG_Text_Access

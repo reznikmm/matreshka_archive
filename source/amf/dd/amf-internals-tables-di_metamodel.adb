@@ -127,68 +127,68 @@ package body AMF.Internals.Tables.DI_Metamodel is
       return Base + 9;
    end MP_DI_Diagram_Resolution;
 
-   ---------------------------------------
-   -- MP_DI_Diagram_Element_Local_Style --
-   ---------------------------------------
+   --------------------------------------------------------
+   -- MP_DI_Diagram_Element_Local_Style_A_Styled_Element --
+   --------------------------------------------------------
 
-   function MP_DI_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element is
+   function MP_DI_Diagram_Element_Local_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 10;
-   end MP_DI_Diagram_Element_Local_Style;
+   end MP_DI_Diagram_Element_Local_Style_A_Styled_Element;
 
-   -----------------------------------------
-   -- MP_DI_Diagram_Element_Model_Element --
-   -----------------------------------------
+   -----------------------------------------------------------
+   -- MP_DI_Diagram_Element_Model_Element_A_Diagram_Element --
+   -----------------------------------------------------------
 
-   function MP_DI_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_DI_Diagram_Element_Model_Element_A_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 11;
-   end MP_DI_Diagram_Element_Model_Element;
+   end MP_DI_Diagram_Element_Model_Element_A_Diagram_Element;
 
-   -----------------------------------------
-   -- MP_DI_Diagram_Element_Owned_Element --
-   -----------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_DI_Diagram_Element_Owned_Element_Diagram_Element_Owning_Element --
+   ------------------------------------------------------------------------
 
-   function MP_DI_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element is
+   function MP_DI_Diagram_Element_Owned_Element_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 6;
-   end MP_DI_Diagram_Element_Owned_Element;
+   end MP_DI_Diagram_Element_Owned_Element_Diagram_Element_Owning_Element;
 
-   ------------------------------------------
-   -- MP_DI_Diagram_Element_Owning_Element --
-   ------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_DI_Diagram_Element_Owning_Element_Diagram_Element_Owned_Element --
+   ------------------------------------------------------------------------
 
-   function MP_DI_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element is
+   function MP_DI_Diagram_Element_Owning_Element_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 12;
-   end MP_DI_Diagram_Element_Owning_Element;
+   end MP_DI_Diagram_Element_Owning_Element_Diagram_Element_Owned_Element;
 
-   ----------------------------------------
-   -- MP_DI_Diagram_Element_Shared_Style --
-   ----------------------------------------
+   ---------------------------------------------------------
+   -- MP_DI_Diagram_Element_Shared_Style_A_Styled_Element --
+   ---------------------------------------------------------
 
-   function MP_DI_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   function MP_DI_Diagram_Element_Shared_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 13;
-   end MP_DI_Diagram_Element_Shared_Style;
+   end MP_DI_Diagram_Element_Shared_Style_A_Styled_Element;
 
-   -----------------------
-   -- MP_DI_Edge_Source --
-   -----------------------
+   -------------------------------------
+   -- MP_DI_Edge_Source_A_Source_Edge --
+   -------------------------------------
 
-   function MP_DI_Edge_Source return AMF.Internals.CMOF_Element is
+   function MP_DI_Edge_Source_A_Source_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 14;
-   end MP_DI_Edge_Source;
+   end MP_DI_Edge_Source_A_Source_Edge;
 
-   -----------------------
-   -- MP_DI_Edge_Target --
-   -----------------------
+   -------------------------------------
+   -- MP_DI_Edge_Target_A_Target_Edge --
+   -------------------------------------
 
-   function MP_DI_Edge_Target return AMF.Internals.CMOF_Element is
+   function MP_DI_Edge_Target_A_Target_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 15;
-   end MP_DI_Edge_Target;
+   end MP_DI_Edge_Target_A_Target_Edge;
 
    -------------------------
    -- MP_DI_Edge_Waypoint --
@@ -207,6 +207,51 @@ package body AMF.Internals.Tables.DI_Metamodel is
    begin
       return Base + 17;
    end MP_DI_Shape_Bounds;
+
+   -------------------------------------
+   -- MP_DI_A_Target_Edge_Edge_Target --
+   -------------------------------------
+
+   function MP_DI_A_Target_Edge_Edge_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 45;
+   end MP_DI_A_Target_Edge_Edge_Target;
+
+   -------------------------------------
+   -- MP_DI_A_Source_Edge_Edge_Source --
+   -------------------------------------
+
+   function MP_DI_A_Source_Edge_Edge_Source return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 47;
+   end MP_DI_A_Source_Edge_Edge_Source;
+
+   -----------------------------------------------------------
+   -- MP_DI_A_Diagram_Element_Diagram_Element_Model_Element --
+   -----------------------------------------------------------
+
+   function MP_DI_A_Diagram_Element_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 49;
+   end MP_DI_A_Diagram_Element_Diagram_Element_Model_Element;
+
+   ---------------------------------------------------------
+   -- MP_DI_A_Styled_Element_Diagram_Element_Shared_Style --
+   ---------------------------------------------------------
+
+   function MP_DI_A_Styled_Element_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 50;
+   end MP_DI_A_Styled_Element_Diagram_Element_Shared_Style;
+
+   --------------------------------------------------------
+   -- MP_DI_A_Styled_Element_Diagram_Element_Local_Style --
+   --------------------------------------------------------
+
+   function MP_DI_A_Styled_Element_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 51;
+   end MP_DI_A_Styled_Element_Diagram_Element_Local_Style;
 
    -----------------------------------
    -- MA_DI_Edge_Target_Target_Edge --

@@ -59,15 +59,20 @@ package AMF.Internals.Tables.DI_Metamodel is
    function MP_DI_Diagram_Documentation return AMF.Internals.CMOF_Element;
    function MP_DI_Diagram_Name return AMF.Internals.CMOF_Element;
    function MP_DI_Diagram_Resolution return AMF.Internals.CMOF_Element;
-   function MP_DI_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element;
-   function MP_DI_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element;
-   function MP_DI_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element;
-   function MP_DI_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element;
-   function MP_DI_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element;
-   function MP_DI_Edge_Source return AMF.Internals.CMOF_Element;
-   function MP_DI_Edge_Target return AMF.Internals.CMOF_Element;
+   function MP_DI_Diagram_Element_Local_Style_A_Styled_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_Diagram_Element_Model_Element_A_Diagram_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_Diagram_Element_Owned_Element_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_Diagram_Element_Owning_Element_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_Diagram_Element_Shared_Style_A_Styled_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_Edge_Source_A_Source_Edge return AMF.Internals.CMOF_Element;
+   function MP_DI_Edge_Target_A_Target_Edge return AMF.Internals.CMOF_Element;
    function MP_DI_Edge_Waypoint return AMF.Internals.CMOF_Element;
    function MP_DI_Shape_Bounds return AMF.Internals.CMOF_Element;
+   function MP_DI_A_Target_Edge_Edge_Target return AMF.Internals.CMOF_Element;
+   function MP_DI_A_Source_Edge_Edge_Source return AMF.Internals.CMOF_Element;
+   function MP_DI_A_Diagram_Element_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element;
+   function MP_DI_A_Styled_Element_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element;
+   function MP_DI_A_Styled_Element_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element;
 
    function MA_DI_Edge_Target_Target_Edge return AMF.Internals.CMOF_Element;
    function MA_DI_Edge_Source_Source_Edge return AMF.Internals.CMOF_Element;

@@ -379,41 +379,41 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 28;
    end MP_DG_Canvas_Background_Color;
 
-   ----------------------------------
-   -- MP_DG_Canvas_Background_Fill --
-   ----------------------------------
+   -------------------------------------------
+   -- MP_DG_Canvas_Background_Fill_A_Canvas --
+   -------------------------------------------
 
-   function MP_DG_Canvas_Background_Fill return AMF.Internals.CMOF_Element is
+   function MP_DG_Canvas_Background_Fill_A_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 29;
-   end MP_DG_Canvas_Background_Fill;
+   end MP_DG_Canvas_Background_Fill_A_Canvas;
 
-   --------------------------------
-   -- MP_DG_Canvas_Packaged_Fill --
-   --------------------------------
+   --------------------------------------------
+   -- MP_DG_Canvas_Packaged_Fill_Fill_Canvas --
+   --------------------------------------------
 
-   function MP_DG_Canvas_Packaged_Fill return AMF.Internals.CMOF_Element is
+   function MP_DG_Canvas_Packaged_Fill_Fill_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 22;
-   end MP_DG_Canvas_Packaged_Fill;
+   end MP_DG_Canvas_Packaged_Fill_Fill_Canvas;
 
-   ----------------------------------
-   -- MP_DG_Canvas_Packaged_Marker --
-   ----------------------------------
+   ------------------------------------------------
+   -- MP_DG_Canvas_Packaged_Marker_Marker_Canvas --
+   ------------------------------------------------
 
-   function MP_DG_Canvas_Packaged_Marker return AMF.Internals.CMOF_Element is
+   function MP_DG_Canvas_Packaged_Marker_Marker_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 23;
-   end MP_DG_Canvas_Packaged_Marker;
+   end MP_DG_Canvas_Packaged_Marker_Marker_Canvas;
 
-   ---------------------------------
-   -- MP_DG_Canvas_Packaged_Style --
-   ---------------------------------
+   ------------------------------------------
+   -- MP_DG_Canvas_Packaged_Style_A_Canvas --
+   ------------------------------------------
 
-   function MP_DG_Canvas_Packaged_Style return AMF.Internals.CMOF_Element is
+   function MP_DG_Canvas_Packaged_Style_A_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 24;
-   end MP_DG_Canvas_Packaged_Style;
+   end MP_DG_Canvas_Packaged_Style_A_Canvas;
 
    -------------------------
    -- MP_DG_Circle_Center --
@@ -433,14 +433,14 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 31;
    end MP_DG_Circle_Radius;
 
-   -------------------------------------
-   -- MP_DG_Clip_Path_Clipped_Element --
-   -------------------------------------
+   -----------------------------------------------------------------
+   -- MP_DG_Clip_Path_Clipped_Element_Graphical_Element_Clip_Path --
+   -----------------------------------------------------------------
 
-   function MP_DG_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element is
+   function MP_DG_Clip_Path_Clipped_Element_Graphical_Element_Clip_Path return AMF.Internals.CMOF_Element is
    begin
       return Base + 32;
-   end MP_DG_Clip_Path_Clipped_Element;
+   end MP_DG_Clip_Path_Clipped_Element_Graphical_Element_Clip_Path;
 
    --------------------------
    -- MP_DG_Ellipse_Center --
@@ -460,14 +460,14 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 34;
    end MP_DG_Ellipse_Radii;
 
-   -----------------------
-   -- MP_DG_Fill_Canvas --
-   -----------------------
+   --------------------------------------------
+   -- MP_DG_Fill_Canvas_Canvas_Packaged_Fill --
+   --------------------------------------------
 
-   function MP_DG_Fill_Canvas return AMF.Internals.CMOF_Element is
+   function MP_DG_Fill_Canvas_Canvas_Packaged_Fill return AMF.Internals.CMOF_Element is
    begin
       return Base + 35;
-   end MP_DG_Fill_Canvas;
+   end MP_DG_Fill_Canvas_Canvas_Packaged_Fill;
 
    --------------------------
    -- MP_DG_Fill_Transform --
@@ -487,41 +487,41 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 37;
    end MP_DG_Gradient_Stop;
 
-   ---------------------------------------
-   -- MP_DG_Graphical_Element_Clip_Path --
-   ---------------------------------------
+   -----------------------------------------------------------------
+   -- MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element --
+   -----------------------------------------------------------------
 
-   function MP_DG_Graphical_Element_Clip_Path return AMF.Internals.CMOF_Element is
+   function MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 38;
-   end MP_DG_Graphical_Element_Clip_Path;
+   end MP_DG_Graphical_Element_Clip_Path_Clip_Path_Clipped_Element;
 
-   -----------------------------------
-   -- MP_DG_Graphical_Element_Group --
-   -----------------------------------
+   ------------------------------------------------
+   -- MP_DG_Graphical_Element_Group_Group_Member --
+   ------------------------------------------------
 
-   function MP_DG_Graphical_Element_Group return AMF.Internals.CMOF_Element is
+   function MP_DG_Graphical_Element_Group_Group_Member return AMF.Internals.CMOF_Element is
    begin
       return Base + 39;
-   end MP_DG_Graphical_Element_Group;
+   end MP_DG_Graphical_Element_Group_Group_Member;
 
-   -----------------------------------------
-   -- MP_DG_Graphical_Element_Local_Style --
-   -----------------------------------------
+   ----------------------------------------------------------
+   -- MP_DG_Graphical_Element_Local_Style_A_Styled_Element --
+   ----------------------------------------------------------
 
-   function MP_DG_Graphical_Element_Local_Style return AMF.Internals.CMOF_Element is
+   function MP_DG_Graphical_Element_Local_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 25;
-   end MP_DG_Graphical_Element_Local_Style;
+   end MP_DG_Graphical_Element_Local_Style_A_Styled_Element;
 
-   ------------------------------------------
-   -- MP_DG_Graphical_Element_Shared_Style --
-   ------------------------------------------
+   -----------------------------------------------------------
+   -- MP_DG_Graphical_Element_Shared_Style_A_Styled_Element --
+   -----------------------------------------------------------
 
-   function MP_DG_Graphical_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   function MP_DG_Graphical_Element_Shared_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 26;
-   end MP_DG_Graphical_Element_Shared_Style;
+   end MP_DG_Graphical_Element_Shared_Style_A_Styled_Element;
 
    ---------------------------------------
    -- MP_DG_Graphical_Element_Transform --
@@ -532,14 +532,14 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 40;
    end MP_DG_Graphical_Element_Transform;
 
-   ------------------------
-   -- MP_DG_Group_Member --
-   ------------------------
+   ------------------------------------------------
+   -- MP_DG_Group_Member_Graphical_Element_Group --
+   ------------------------------------------------
 
-   function MP_DG_Group_Member return AMF.Internals.CMOF_Element is
+   function MP_DG_Group_Member_Graphical_Element_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 27;
-   end MP_DG_Group_Member;
+   end MP_DG_Group_Member_Graphical_Element_Group;
 
    ------------------------
    -- MP_DG_Image_Bounds --
@@ -622,41 +622,41 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 49;
    end MP_DG_Linear_Gradient_Y2;
 
-   -------------------------------------
-   -- MP_DG_Marked_Element_End_Marker --
-   -------------------------------------
+   ------------------------------------------------------
+   -- MP_DG_Marked_Element_End_Marker_A_Marked_Element --
+   ------------------------------------------------------
 
-   function MP_DG_Marked_Element_End_Marker return AMF.Internals.CMOF_Element is
+   function MP_DG_Marked_Element_End_Marker_A_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 50;
-   end MP_DG_Marked_Element_End_Marker;
+   end MP_DG_Marked_Element_End_Marker_A_Marked_Element;
 
-   -------------------------------------
-   -- MP_DG_Marked_Element_Mid_Marker --
-   -------------------------------------
+   ------------------------------------------------------
+   -- MP_DG_Marked_Element_Mid_Marker_A_Marked_Element --
+   ------------------------------------------------------
 
-   function MP_DG_Marked_Element_Mid_Marker return AMF.Internals.CMOF_Element is
+   function MP_DG_Marked_Element_Mid_Marker_A_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 51;
-   end MP_DG_Marked_Element_Mid_Marker;
+   end MP_DG_Marked_Element_Mid_Marker_A_Marked_Element;
 
-   ---------------------------------------
-   -- MP_DG_Marked_Element_Start_Marker --
-   ---------------------------------------
+   --------------------------------------------------------
+   -- MP_DG_Marked_Element_Start_Marker_A_Marked_Element --
+   --------------------------------------------------------
 
-   function MP_DG_Marked_Element_Start_Marker return AMF.Internals.CMOF_Element is
+   function MP_DG_Marked_Element_Start_Marker_A_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 52;
-   end MP_DG_Marked_Element_Start_Marker;
+   end MP_DG_Marked_Element_Start_Marker_A_Marked_Element;
 
-   -------------------------
-   -- MP_DG_Marker_Canvas --
-   -------------------------
+   ------------------------------------------------
+   -- MP_DG_Marker_Canvas_Canvas_Packaged_Marker --
+   ------------------------------------------------
 
-   function MP_DG_Marker_Canvas return AMF.Internals.CMOF_Element is
+   function MP_DG_Marker_Canvas_Canvas_Packaged_Marker return AMF.Internals.CMOF_Element is
    begin
       return Base + 53;
-   end MP_DG_Marker_Canvas;
+   end MP_DG_Marker_Canvas_Canvas_Packaged_Marker;
 
    ----------------------------
    -- MP_DG_Marker_Reference --
@@ -694,14 +694,14 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 57;
    end MP_DG_Pattern_Bounds;
 
-   ------------------------
-   -- MP_DG_Pattern_Tile --
-   ------------------------
+   ----------------------------------
+   -- MP_DG_Pattern_Tile_A_Pattern --
+   ----------------------------------
 
-   function MP_DG_Pattern_Tile return AMF.Internals.CMOF_Element is
+   function MP_DG_Pattern_Tile_A_Pattern return AMF.Internals.CMOF_Element is
    begin
       return Base + 58;
-   end MP_DG_Pattern_Tile;
+   end MP_DG_Pattern_Tile_A_Pattern;
 
    -------------------------
    -- MP_DG_Polygon_Point --
@@ -784,14 +784,14 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 67;
    end MP_DG_Rectangle_Corner_Radius;
 
-   ----------------------
-   -- MP_DG_Style_Fill --
-   ----------------------
+   ------------------------------
+   -- MP_DG_Style_Fill_A_Style --
+   ------------------------------
 
-   function MP_DG_Style_Fill return AMF.Internals.CMOF_Element is
+   function MP_DG_Style_Fill_A_Style return AMF.Internals.CMOF_Element is
    begin
       return Base + 68;
-   end MP_DG_Style_Fill;
+   end MP_DG_Style_Fill_A_Style;
 
    ----------------------------
    -- MP_DG_Style_Fill_Color --
@@ -1206,6 +1206,87 @@ package body AMF.Internals.Tables.DG_Metamodel is
    begin
       return Base + 193;
    end MP_DG_Translate_Delta_Y;
+
+   ----------------------------------
+   -- MP_DG_A_Pattern_Pattern_Tile --
+   ----------------------------------
+
+   function MP_DG_A_Pattern_Pattern_Tile return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 319;
+   end MP_DG_A_Pattern_Pattern_Tile;
+
+   ------------------------------------------
+   -- MP_DG_A_Canvas_Canvas_Packaged_Style --
+   ------------------------------------------
+
+   function MP_DG_A_Canvas_Canvas_Packaged_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 320;
+   end MP_DG_A_Canvas_Canvas_Packaged_Style;
+
+   --------------------------------------------------------
+   -- MP_DG_A_Marked_Element_Marked_Element_Start_Marker --
+   --------------------------------------------------------
+
+   function MP_DG_A_Marked_Element_Marked_Element_Start_Marker return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 210;
+   end MP_DG_A_Marked_Element_Marked_Element_Start_Marker;
+
+   ------------------------------------------------------
+   -- MP_DG_A_Marked_Element_Marked_Element_End_Marker --
+   ------------------------------------------------------
+
+   function MP_DG_A_Marked_Element_Marked_Element_End_Marker return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 211;
+   end MP_DG_A_Marked_Element_Marked_Element_End_Marker;
+
+   ------------------------------------------------------
+   -- MP_DG_A_Marked_Element_Marked_Element_Mid_Marker --
+   ------------------------------------------------------
+
+   function MP_DG_A_Marked_Element_Marked_Element_Mid_Marker return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 218;
+   end MP_DG_A_Marked_Element_Marked_Element_Mid_Marker;
+
+   ----------------------------------------------------------
+   -- MP_DG_A_Styled_Element_Graphical_Element_Local_Style --
+   ----------------------------------------------------------
+
+   function MP_DG_A_Styled_Element_Graphical_Element_Local_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 261;
+   end MP_DG_A_Styled_Element_Graphical_Element_Local_Style;
+
+   ------------------------------
+   -- MP_DG_A_Style_Style_Fill --
+   ------------------------------
+
+   function MP_DG_A_Style_Style_Fill return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 316;
+   end MP_DG_A_Style_Style_Fill;
+
+   -----------------------------------------------------------
+   -- MP_DG_A_Styled_Element_Graphical_Element_Shared_Style --
+   -----------------------------------------------------------
+
+   function MP_DG_A_Styled_Element_Graphical_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 317;
+   end MP_DG_A_Styled_Element_Graphical_Element_Shared_Style;
+
+   -------------------------------------------
+   -- MP_DG_A_Canvas_Canvas_Background_Fill --
+   -------------------------------------------
+
+   function MP_DG_A_Canvas_Canvas_Background_Fill return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 318;
+   end MP_DG_A_Canvas_Canvas_Background_Fill;
 
    --------------------------------
    -- MA_DG_Pattern_Tile_Pattern --

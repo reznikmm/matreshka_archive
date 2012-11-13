@@ -110,42 +110,42 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group,
         DD_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  packagedFill
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Fill,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Fill_Fill_Canvas,
         DD_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  packagedMarker
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Marker,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Marker_Marker_Canvas,
         DD_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  packagedStyle
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Canvas_Packaged_Style_A_Canvas,
         DD_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -188,14 +188,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -236,21 +236,21 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group,
         DD_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -293,14 +293,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -339,21 +339,21 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group,
         DD_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -398,14 +398,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -454,14 +454,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -546,14 +546,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -598,21 +598,21 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Group_Member_Graphical_Element_Group,
         DD_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -659,14 +659,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -747,14 +747,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -801,14 +801,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -893,14 +893,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
@@ -999,14 +999,14 @@ package body AMF.Internals.Tables.DD_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Local_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  sharedStyle
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style,
+        AMF.Internals.Tables.DG_Metamodel.MP_DG_Graphical_Element_Shared_Style_A_Styled_Element,
         DD_Element_Table.Table (Self).Member (0).Collection + 2);
 
       return Self;
