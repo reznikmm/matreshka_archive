@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 with AMF.DC;
-with AMF.DI.Diagram_Elements.Collections;
 with AMF.DI.Styles;
 with AMF.Internals.UMLDI_UML_Diagrams;
 with AMF.UML.Behaviors;
@@ -56,7 +55,6 @@ with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
-with AMF.UMLDI.UML_Diagram_Elements.Collections;
 with AMF.UMLDI.UML_Labels;
 with AMF.UMLDI.UML_Styles.Collections;
 with AMF.UMLDI.UML_Use_Case_Diagrams;
@@ -169,27 +167,6 @@ package AMF.Internals.UMLDI_UML_Use_Case_Diagrams is
    --  Restricts UMLDiagramElements to show UML Elements, rather than other 
    --  language elements. 
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
-       return AMF.UMLDI.UML_Diagram_Elements.Collections.Ordered_Set_Of_UMLDI_UML_Diagram_Element;
-   --  Getter of UMLDiagramElement::ownedElement.
-   --
-   --  Restricts UMLDiagramElements to own only UMLDiagramElements.
-
-   overriding function Get_Owning_Element
-    (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
-       return AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access;
-   --  Getter of UMLDiagramElement::owningElement.
-   --
-   --  Restricts UMLDiagramElements to be owned by only UMLDiagramElements.
-
-   overriding procedure Set_Owning_Element
-    (Self : not null access UMLDI_UML_Use_Case_Diagram_Proxy;
-     To   : AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access);
-   --  Setter of UMLDiagramElement::owningElement.
-   --
-   --  Restricts UMLDiagramElements to be owned by only UMLDiagramElements.
-
    overriding function Get_Shared_Style
     (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
        return AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style;
@@ -204,22 +181,6 @@ package AMF.Internals.UMLDI_UML_Use_Case_Diagrams is
    --
    --  a reference to a depicted model element, which can be any MOF-based 
    --  element
-
-   overriding function Get_Owning_Element
-    (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
-       return AMF.DI.Diagram_Elements.DI_Diagram_Element_Access;
-   --  Getter of DiagramElement::owningElement.
-   --
-   --  a reference to the diagram element that directly owns this diagram 
-   --  element.
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
-       return AMF.DI.Diagram_Elements.Collections.Set_Of_DI_Diagram_Element;
-   --  Getter of DiagramElement::ownedElement.
-   --
-   --  a collection of diagram elements that are directly owned by this 
-   --  diagram element.
 
    overriding function Get_Local_Style
     (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
