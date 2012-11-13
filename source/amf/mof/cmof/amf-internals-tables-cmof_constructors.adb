@@ -116,119 +116,119 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  endType
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_End_Type,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_End_Type_A_Association,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature_Feature_Featuring_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  memberEnd
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Member_End,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Member_End_Property_Association,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  navigableOwnedEnd
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Navigable_Owned_End,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Navigable_Owned_End_A_Association,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 17);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedEnd
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Owned_End,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Owned_End_Property_Owning_Association,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  relatedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element_A_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       return Self;
@@ -277,98 +277,98 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature_Feature_Featuring_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Attribute_Property_Class,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Operation,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Operation_Operation_Class,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
@@ -405,21 +405,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element_A_Comment,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -466,21 +466,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Constraint_Constrained_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Constraint_Constrained_Element_A_Constraint,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -527,98 +527,98 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature_Feature_Featuring_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute_Property_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation_Operation_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
@@ -661,35 +661,35 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  relatedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element_A_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  source
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  target
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
@@ -736,105 +736,105 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature_Feature_Featuring_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute_Property_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedLiteral
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Owned_Literal,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Owned_Literal_Enumeration_Literal_Enumeration,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation_Operation_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
@@ -879,14 +879,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -931,21 +931,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Expression_Operand,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Expression_Operand_A_Expression,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -994,14 +994,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -1064,112 +1064,112 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  featuringClassifier
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier_Classifier_Feature,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedParameter
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Owned_Parameter,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Owned_Parameter_A_Owner_Formal_Param,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  postcondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Postcondition,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Postcondition_A_Post_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
 
       --  precondition
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Precondition,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Precondition_A_Pre_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
 
       --  raisedException
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Raised_Exception,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Raised_Exception_A_Behavioral_Feature,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefined_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefined_Element_A_Redefinable_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  redefinedOperation
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Redefined_Operation,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Redefined_Operation_A_Operation,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefinition_Context,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefinition_Context_A_Redefinable_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       return Self;
@@ -1216,84 +1216,84 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  nestedPackage
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Nested_Package,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Nested_Package_Package_Nesting_Package,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  ownedType
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Owned_Type_Type_Package,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       --  packageMerge
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Package_Merge,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Package_Merge_Package_Merge_Receiving_Package,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  packagedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element_A_Owning_Package,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       return Self;
@@ -1334,35 +1334,35 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  relatedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element_A_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  source
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  target
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
@@ -1401,35 +1401,35 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  relatedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Relationship_Related_Element_A_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  source
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  target
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target_A_Directed_Relationship,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
@@ -1488,14 +1488,14 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
@@ -1542,98 +1542,98 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  elementImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Element_Import_Element_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       --  feature
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature_Feature_Featuring_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  general
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_General_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  importedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  inheritedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member_A_Classifier,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
 
       --  member
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Member_A_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
 
       --  ownedAttribute
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute_Property_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 13);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  ownedMember
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Member_Named_Element_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 6);
 
       --  ownedOperation
 
       AMF.Internals.Element_Collections.Initialize_Ordered_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation_Operation_Datatype,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
 
       --  ownedRule
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule_Constraint_Context,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 8);
 
       --  packageImport
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
 
       return Self;
@@ -1708,49 +1708,49 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Feature_Featuring_Classifier_Classifier_Feature,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 11);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       --  redefinedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefined_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefined_Element_A_Redefinable_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 10);
 
       --  redefinedProperty
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Redefined_Property,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Redefined_Property_A_Property,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  redefinitionContext
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefinition_Context,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Redefinable_Element_Redefinition_Context_A_Redefinable_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 9);
 
       --  subsettedProperty
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Subsetted_Property_A_Property,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 4);
 
       return Self;
@@ -1791,21 +1791,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element_A_Tag,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
 
       --  ownedComment
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment_A_Owning_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
 
       --  ownedElement
 
       AMF.Internals.Element_Collections.Initialize_Set_Collection
        (Self,
-        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Element_Element_Owner,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 1);
 
       return Self;
