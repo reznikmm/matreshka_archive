@@ -69,7 +69,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330542091_939472_2273' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329330542092_663750_2274'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329330542092_249743_2275'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330542092_249743_2275' visibility='public' type='LetExp' association='_17_0_1_bc902f8_1329330542091_939472_2273' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330542092_249743_2275' visibility='public' type='LetExp' name='exp4' association='_17_0_1_bc902f8_1329330542091_939472_2273' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='Variable' name='Variable' visibility='public'>
       <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#TypedElement'/>
@@ -81,7 +81,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330628344_778300_2312' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329330628344_193783_2313'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329330628344_438276_2314'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330628344_438276_2314' visibility='public' type='LetExp' association='_17_0_1_bc902f8_1329330628344_778300_2312' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329330628344_438276_2314' visibility='public' type='LetExp' name='exp5' association='_17_0_1_bc902f8_1329330628344_778300_2312' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329330755121_385907_2338' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329330755121_115084_2339'/>
@@ -125,7 +125,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329331473746_233354_2583' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329331473746_980760_2584'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329331473746_403020_2585'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331473746_403020_2585' visibility='public' type='TypeExp' association='_17_0_1_bc902f8_1329331473746_233354_2583' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331473746_403020_2585' visibility='public' type='TypeExp' name='exp11' association='_17_0_1_bc902f8_1329331473746_233354_2583' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='LoopExp' name='LoopExp' visibility='public' isAbstract='true' superClass='CallExp'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329331614788_414593_2630' name='body' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329331614788_971981_2629'/>
@@ -192,7 +192,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385496594_543748_2214' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329385496594_104439_2215'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329385496594_491995_2216'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385496594_491995_2216' visibility='public' type='CollectionLiteralExp' association='_17_0_1_bc902f8_1329385496594_543748_2214'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385496594_491995_2216' visibility='public' type='CollectionLiteralExp' name='exp1' association='_17_0_1_bc902f8_1329385496594_543748_2214'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='CollectionItem' name='CollectionItem' visibility='public' superClass='CollectionLiteralPart'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385702981_665538_2266' name='item' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329385702981_235667_2265'/>
@@ -200,7 +200,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329385702981_235667_2265' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329385702981_665538_2266'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329385702981_627848_2267'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385702981_627848_2267' visibility='private' type='CollectionItem' association='_17_0_1_bc902f8_1329385702981_235667_2265' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385702981_627848_2267' visibility='private' type='CollectionItem' name='item1' association='_17_0_1_bc902f8_1329385702981_235667_2265' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='CollectionRange' name='CollectionRange' visibility='public' superClass='CollectionLiteralPart'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329385837497_11235_2312' name='first' visibility='public' isComposite='true' type='OclExpression' association='_17_0_1_bc902f8_1329385837497_392515_2311'/>
@@ -228,7 +228,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329386122987_104839_2404' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329386122987_393570_2405'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329386122987_938273_2406'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386122987_938273_2406' visibility='public' type='TupleLiteralExp' association='_17_0_1_bc902f8_1329386122987_104839_2404' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329386122987_938273_2406' visibility='public' type='TupleLiteralExp' name='exp3' association='_17_0_1_bc902f8_1329386122987_104839_2404' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='NullLiteralExp' name='NullLiteralExp' visibility='public' superClass='LiteralExp'/>
     <packagedElement xmi:type='cmof:Class' xmi:id='ExpressionInOcl' name='ExpressionInOcl' visibility='public'>
@@ -270,7 +270,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387378680_444101_2741' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329387378680_940179_2742'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329387378681_456621_2743'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387378681_456621_2743' visibility='public' type='TupleLiteralPart' association='_17_0_1_bc902f8_1329387378680_444101_2741' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387378681_456621_2743' visibility='public' type='TupleLiteralPart' name='part2' association='_17_0_1_bc902f8_1329387378680_444101_2741' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387615017_128823_2769' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329387615018_88120_2770'/>
@@ -280,7 +280,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329387751743_52752_2800' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329387751744_745437_2801'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329387751744_688137_2802'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387751744_688137_2802' visibility='public' type='NavigationCallExp' association='_17_0_1_bc902f8_1329387751743_52752_2800' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329387751744_688137_2802' visibility='public' type='NavigationCallExp' name='exp9' association='_17_0_1_bc902f8_1329387751743_52752_2800' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='AssociationClassCallExp' name='AssociationClassCallExp' visibility='public' superClass='NavigationCallExp'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388071523_168053_2867' name='referredAssociationClass' visibility='public' association='_17_0_1_bc902f8_1329388071523_71652_2866' lower='0'>
@@ -306,22 +306,22 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388507739_935880_3049' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388507739_894523_3050'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388507740_303182_3051'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388507740_303182_3051' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388507739_935880_3049' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388507740_303182_3051' visibility='public' type='MessageExp' name='exp8' association='_17_0_1_bc902f8_1329388507739_935880_3049' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388539650_28787_3072' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388539651_539050_3073'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388539651_832618_3074'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388539651_832618_3074' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388539650_28787_3072' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388539651_832618_3074' visibility='public' type='MessageExp' name='exp2' association='_17_0_1_bc902f8_1329388539650_28787_3072' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388653495_136789_3133' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388653495_596070_3134'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388653495_420715_3135'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388653495_420715_3135' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388653495_136789_3133' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388653495_420715_3135' visibility='public' type='MessageExp' name='exp6' association='_17_0_1_bc902f8_1329388653495_136789_3133' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388703292_3327_3158' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388703293_419332_3159'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388703293_513080_3160'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388703293_513080_3160' visibility='public' type='MessageExp' association='_17_0_1_bc902f8_1329388703292_3327_3158' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388703293_513080_3160' visibility='public' type='MessageExp' name='exp7' association='_17_0_1_bc902f8_1329388703292_3327_3158' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='StateExp' name='StateExp' visibility='public' superClass='OclExpression'>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388870620_862808_3223' name='referredState' visibility='public' association='_17_0_1_bc902f8_1329388870620_847327_3222' lower='0'>
@@ -331,7 +331,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329388870620_847327_3222' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388870620_862808_3223'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329388870620_22402_3224'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388870620_22402_3224' visibility='public' type='StateExp' association='_17_0_1_bc902f8_1329388870620_847327_3222' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329388870620_22402_3224' visibility='public' type='StateExp' name='exp9' association='_17_0_1_bc902f8_1329388870620_847327_3222' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='CollectionType' name='CollectionType' visibility='public'>
       <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#DataType'/>
@@ -343,7 +343,7 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389014853_720384_3349' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389014854_837761_3350'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389014854_635929_3351'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389014854_635929_3351' visibility='public' type='CollectionType' association='_17_0_1_bc902f8_1329389014853_720384_3349' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389014854_635929_3351' visibility='public' type='CollectionType' name='type1' association='_17_0_1_bc902f8_1329389014853_720384_3349' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='VoidType' name='VoidType' visibility='public'>
       <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
@@ -378,12 +378,12 @@
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389513855_801652_3657' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389513855_352728_3658'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389513855_890154_3659'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389513855_890154_3659' visibility='public' type='MessageType' association='_17_0_1_bc902f8_1329389513855_801652_3657' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389513855_890154_3659' visibility='public' type='MessageType' name='type3' association='_17_0_1_bc902f8_1329389513855_801652_3657' upper='*' lower='0'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Association' xmi:id='_17_0_1_bc902f8_1329389558396_402182_3680' visibility='public'>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389558396_920889_3681'/>
       <memberEnd xmi:idref='_17_0_1_bc902f8_1329389558396_961979_3682'/>
-      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389558396_961979_3682' visibility='public' type='MessageType' association='_17_0_1_bc902f8_1329389558396_402182_3680' upper='*' lower='0'/>
+      <ownedEnd xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389558396_961979_3682' visibility='public' type='MessageType' name='type2' association='_17_0_1_bc902f8_1329389558396_402182_3680' upper='*' lower='0'/>
     </packagedElement>
   </cmof:Package>
 </xmi:XMI>
