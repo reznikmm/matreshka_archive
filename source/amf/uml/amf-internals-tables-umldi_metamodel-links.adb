@@ -12148,7 +12148,12 @@ package body AMF.Internals.Tables.UMLDI_Metamodel.Links is
 
    procedure Initialize_319 is
    begin
-      null;
+      AMF.Internals.Links.Internal_Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Tag_Element_Tag,
+        Base + 319,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element_A_Tag,
+        Base + 96,
+        AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_A_Tag_Tag_Element);
    end Initialize_319;
 
 end AMF.Internals.Tables.UMLDI_Metamodel.Links;
