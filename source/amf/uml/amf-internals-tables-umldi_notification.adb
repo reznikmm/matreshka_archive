@@ -41,64 +41,109 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Helper subprograms for element modification notification.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with AMF.CMOF.Properties;
+with AMF.Internals.Helpers;
+with AMF.Internals.Listener_Registry;
+with AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds;
+with AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds;
+with AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds;
+with AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds;
 
-package AMF.Internals.Tables.Primitive_Types_Notification is
+package body AMF.Internals.Tables.UMLDI_Notification is
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Boolean;
-     New_Value : Boolean);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Boolean;
-     New_Value : AMF.Optional_Boolean);
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
-     New_Value : Matreshka.Internals.Strings.Shared_String_Access);
+     Old_Value : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
+     New_Value : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds.To_Holder (Old_Value),
+        AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : Integer;
-     New_Value : Integer);
+     Old_Value : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind;
+     New_Value : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.UMLDI.Holders.To_Holder (Old_Value),
+        AMF.UMLDI.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Integer;
-     New_Value : AMF.Optional_Integer);
+     Old_Value : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind;
+     New_Value : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds.To_Holder (Old_Value),
+        AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Unlimited_Natural;
-     New_Value : AMF.Unlimited_Natural);
+     Old_Value : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind;
+     New_Value : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds.To_Holder (Old_Value),
+        AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
 
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Unlimited_Natural;
-     New_Value : AMF.Optional_Unlimited_Natural);
+     Old_Value : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
+     New_Value : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder (Old_Value),
+        AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder (New_Value));
+   end Notify_Attribute_Set;
 
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Real;
-     New_Value : AMF.Real);
-
-   procedure Notify_Attribute_Set
-    (Element   : AMF.Internals.AMF_Element;
-     Property  : AMF.Internals.CMOF_Element;
-     Old_Value : AMF.Optional_Real;
-     New_Value : AMF.Optional_Real);
-
-end AMF.Internals.Tables.Primitive_Types_Notification;
+end AMF.Internals.Tables.UMLDI_Notification;

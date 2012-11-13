@@ -224,4 +224,23 @@ package body AMF.Internals.Tables.Primitive_Types_Notification is
         AMF.Holders.Reals.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Optional_Real;
+     New_Value : AMF.Optional_Real) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.Holders.To_Holder (Old_Value),
+        AMF.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
 end AMF.Internals.Tables.Primitive_Types_Notification;
