@@ -58,9 +58,9 @@ package AMF.Internals.Tables.Standard_Profile_L3_Metamodel is
    function MP_Standard_Profile_L3_Metamodel_Base_Model return AMF.Internals.CMOF_Element;
    function MP_Standard_Profile_L3_System_Model_Base_Model return AMF.Internals.CMOF_Element;
 
-   function MA_Standard_Profile_L3_System_Model_Extension_System_Model_Base_Model return AMF.Internals.CMOF_Element;
-   function MA_Standard_Profile_L3_Build_Component_Extension_Build_Component_Base_Component return AMF.Internals.CMOF_Element;
-   function MA_Standard_Profile_L3_Metamodel_Extension_Metamodel_Base_Model return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L3_A_Extension_System_Model_Base_Model return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L3_A_Extension_Build_Component_Base_Component return AMF.Internals.CMOF_Element;
+   function MA_Standard_Profile_L3_A_Extension_Metamodel_Base_Model return AMF.Internals.CMOF_Element;
 
    function MB_Standard_Profile_L3 return AMF.Internals.AMF_Element;
 
