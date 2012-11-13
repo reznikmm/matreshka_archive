@@ -1,0 +1,1800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701"
+         xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
+   <cmof:Package uri="http://www.omg.org/spec/UML/20120801/UMLDI"
+                 xmi:id="_0"
+                 name="UMLDI">
+      <packagedElement xmi:id="A_UMLActivityDiagram_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLActivityDiagram-modelElement A_UMLActivityDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLActivityDiagram_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLActivityDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLActivityDiagram_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLBehaviorDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLActivityDiagram"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLAssociationEndLabel_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLAssociationEndLabel-modelElement A_UMLAssociationEndLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLAssociationEndLabel_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLAssociationEndLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLAssociationEndLabel_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLAssociationEndLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLBehaviorDiagram_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLBehaviorDiagram-modelElement A_UMLBehaviorDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLBehaviorDiagram_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLBehaviorDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLBehaviorDiagram_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLBehaviorDiagram"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLClassifierShape_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLClassifierShape-modelElement A_UMLClassifierShape_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLClassifierShape_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLClassifierShape_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLClassifierShape_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLClassifierShape"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLCompartment_elementInCompartment_owningCompartment"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLCompartment-elementInCompartment A_UMLCompartment_elementInCompartment_owningCompartment-owningCompartment"
+                       name="A_UMLCompartment_elementInCompartment_owningCompartment">
+         <ownedEnd xmi:id="A_UMLCompartment_elementInCompartment_owningCompartment-owningCompartment"
+                   xmi:type="cmof:Property"
+                   association="A_UMLCompartment_elementInCompartment_owningCompartment"
+                   name="owningCompartment"
+                   type="UMLCompartment"
+                   visibility="public"
+                   lower="0"
+                   upper="1">
+            <subsettedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-owningElement"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLCompartmentableShape_compartmentedShape_shape"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLCompartmentableShape-compartment A_UMLCompartmentableShape_compartmentedShape_shape-compartmentedShape"
+                       name="A_UMLCompartmentableShape_compartmentedShape_shape">
+         <ownedComment xmi:id="A_UMLCompartmentableShape_compartmentedShape_shape-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="A_UMLCompartmentableShape_compartmentedShape_shape">
+            <body>Contents of compartments in the same shape are of different types.&amp;nbsp; See constraint on compartment contents.</body>
+         </ownedComment>
+         <ownedEnd xmi:id="A_UMLCompartmentableShape_compartmentedShape_shape-compartmentedShape"
+                   xmi:type="cmof:Property"
+                   association="A_UMLCompartmentableShape_compartmentedShape_shape"
+                   name="compartmentedShape"
+                   type="UMLCompartmentableShape"
+                   visibility="public"
+                   lower="1"
+                   upper="1">
+            <subsettedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-owningElement"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLDiagramElement_localStyle_styledElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLDiagramElement-localStyle A_UMLDiagramElement_localStyle_styledElement-styledElement"
+                       name="A_UMLDiagramElement_localStyle_styledElement">
+         <ownedEnd xmi:id="A_UMLDiagramElement_localStyle_styledElement-styledElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLDiagramElement_localStyle_styledElement"
+                   name="styledElement"
+                   type="UMLDiagramElement"
+                   visibility="public"
+                   lower="1"
+                   upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#A_sharedStyle_styledElement-styledElement"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLDiagramElement_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLDiagramElement-modelElement A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLDiagramElement_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLDiagramElement_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   type="UMLDiagramElement"
+                   visibility="public"
+                   lower="0"
+                   upper="*">
+            <subsettedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#A_modelElement_diagramElement-diagramElement"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLDiagramElement_ownedElement_owningElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLDiagramElement-ownedElement UMLDiagramElement-owningElement"
+                       name="A_UMLDiagramElement_ownedElement_owningElement"/>
+      <packagedElement xmi:id="A_UMLDiagramElement_sharedStyle_styledElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLDiagramElement-sharedStyle A_UMLDiagramElement_sharedStyle_styledElement-styledElement"
+                       name="A_UMLDiagramElement_sharedStyle_styledElement">
+         <ownedEnd xmi:id="A_UMLDiagramElement_sharedStyle_styledElement-styledElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLDiagramElement_sharedStyle_styledElement"
+                   name="styledElement"
+                   type="UMLDiagramElement"
+                   visibility="public"
+                   lower="0"
+                   upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#A_sharedStyle_styledElement-styledElement"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLDiagram_heading_headedDiagram"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLDiagram-heading A_UMLDiagram_heading_headedDiagram-headedDiagram"
+                       name="A_UMLDiagram_heading_headedDiagram">
+         <ownedEnd xmi:id="A_UMLDiagram_heading_headedDiagram-headedDiagram"
+                   xmi:type="cmof:Property"
+                   association="A_UMLDiagram_heading_headedDiagram"
+                   name="headedDiagram"
+                   type="UMLDiagram"
+                   visibility="public"
+                   lower="0"
+                   upper="*">
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLEdge_source_sourceEdge"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLEdge-source A_UMLEdge_source_sourceEdge-sourceEdge"
+                       name="A_UMLEdge_source_sourceEdge">
+         <ownedEnd xmi:id="A_UMLEdge_source_sourceEdge-sourceEdge"
+                   xmi:type="cmof:Property"
+                   association="A_UMLEdge_source_sourceEdge"
+                   name="sourceEdge"
+                   type="UMLEdge"
+                   visibility="public"
+                   lower="0"
+                   upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#A_source_sourceEdge-sourceEdge"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLEdge_target_targetEdge"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLEdge-target A_UMLEdge_target_targetEdge-targetEdge"
+                       name="A_UMLEdge_target_targetEdge">
+         <ownedEnd xmi:id="A_UMLEdge_target_targetEdge-targetEdge"
+                   xmi:type="cmof:Property"
+                   association="A_UMLEdge_target_targetEdge"
+                   name="targetEdge"
+                   type="UMLEdge"
+                   visibility="public"
+                   lower="0"
+                   upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#A_target_targetEdge-targetEdge"/>
+         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLInteractionDiagram_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLInteractionDiagram-modelElement A_UMLInteractionDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLInteractionDiagram_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLInteractionDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLInteractionDiagram_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLBehaviorDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLInteractionDiagram"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLMultiplicityElement_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLMultiplicityLabel-modelElement A_UMLMultiplicityElement_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLMultiplicityElement_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLMultiplicityElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLMultiplicityElement_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLMultiplicityLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLNameLabel_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLNameLabel-modeElement A_UMLNameLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLNameLabel_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLNameLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLNameLabel_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLNameLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLRedefines_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLRedefinesLabel-modelElement A_UMLRedefines_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLRedefines_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLRedefines_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLRedefines_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLRedefinesLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLStateMachine_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLStateMachineDiagram-modelElement A_UMLStateMachine_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLStateMachine_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLStateMachine_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLStateMachine_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLBehaviorDiagram_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLStateMachineDiagram"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLStateShape_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLStateShape-modelElement A_UMLStateShape_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLStateShape_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLStateShape_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLStateShape_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLStateShape"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLStereotypePropertyValueLabel-modelElement A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                       name="A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement">
+         <ownedEnd xmi:id="A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement-umlDiagramElement"
+                   xmi:type="cmof:Property"
+                   association="A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement"
+                   name="umlDiagramElement"
+                   redefinedProperty="A_UMLDiagramElement_modelElement_umlDiagramElement-umlDiagramElement"
+                   type="UMLStereotypePropertyValueLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="1"/>
+      </packagedElement>
+      <packagedElement xmi:id="A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue"
+                       xmi:type="cmof:Association"
+                       memberEnd="UMLStereotypePropertyValueLabel-stereotypedElement.1 A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue-labelShowingStereotypeValue"
+                       name="A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue">
+         <ownedEnd xmi:id="A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue-labelShowingStereotypeValue"
+                   xmi:type="cmof:Property"
+                   association="A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue"
+                   name="labelShowingStereotypeValue"
+                   type="UMLStereotypePropertyValueLabel"
+                   visibility="public"
+                   lower="0"
+                   upper="*"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLActivityDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLActivityDiagram"
+                       superClass="UMLBehaviorDiagram">
+         <ownedComment xmi:id="UMLActivityDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLActivityDiagram">
+            <body>Shows an Activity and its elements.  Also see Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLActivityDiagram-frame"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLActivityDiagram"
+                    name="frame">
+            <ownedComment xmi:id="UMLActivityDiagram-frame-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLActivityDiagram-frame">
+               <body>isFrame and isActivityFrame must not be true at the same time.</body>
+            </ownedComment>
+            <specification xmi:id="UMLActivityDiagram-frame-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>not (isActivityFrame and isFrame)</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLActivityDiagram-isActivityFrame"
+                         xmi:type="cmof:Property"
+                         name="isActivityFrame"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLActivityDiagram-isActivityFrame-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLActivityDiagram-isActivityFrame">
+               <body>Indicates whether the UMLActivityDiagram shall be shown with a frame that is a round-cornered rectangle without a pentagonal header.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLActivityDiagram-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLActivityDiagram_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLBehaviorDiagram-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Activity"/>
+            <ownedComment xmi:id="UMLActivityDiagram-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLActivityDiagram-modelElement">
+               <body>Restricts UMLActivityDiagrams to show Activities.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLAssociationEndLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLAssociationEndLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLAssociationEndLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLAssociationEndLabel">
+            <body>Shows text about Properties that are Association ends.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLAssociationEndLabel-modelElement_type"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationEndLabel"
+                    name="modelElement_type">
+            <ownedComment xmi:id="UMLAssociationEndLabel-modelElement_type-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationEndLabel-modelElement_type">
+               <body>modelElement must be an Association end.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationEndLabel-modelElement_type-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>not modelElement-&gt;forAll(association-&gt;isEmpty())</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLAssociationEndLabel-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLAssociationEndLabel_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+            <ownedComment xmi:id="UMLAssociationEndLabel-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationEndLabel-modelElement">
+               <body>Restricts UMLAssociationEndLabels to show only Properties (that are AssociationEnds, see constraint).</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLAssociationOrConnectorOrLinkShape"
+                       xmi:type="cmof:Class"
+                       name="UMLAssociationOrConnectorOrLinkShape"
+                       superClass="UMLShape">
+         <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLAssociationOrConnectorOrLinkShape">
+            <body>Shows shapes for binary relationships.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_association"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationOrConnectorOrLinkShape"
+                    name="edge_association">
+            <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_association-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationOrConnectorOrLinkShape-edge_association">
+               <body>For diamond kind and an Association modelElement, the Association has exactly two memberEnds, and exactly two of the UMLEdges linked to the shape have those memberEnds as modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_association-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(kind=UMLAssociationOrConnectorOrLinkShapeKind::diamond and modelElement-&gt;forAll(oclIsKindOf(Association))) implies&#xD;
+let association : Association = modelElement-&gt;any(true).oclAsType(Association) in&#xD;
+   ((association.memberEnd-&gt;size() = 2) and&#xD;
+      (sourceEdge.modelElement-&gt;union(targetEdge.modelElement)-&gt;select(em |  association.memberEnd-&gt;includes(em))-&gt;size()=2))</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_connector"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationOrConnectorOrLinkShape"
+                    name="edge_connector">
+            <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_connector-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationOrConnectorOrLinkShape-edge_connector">
+               <body>For diamond kind and a Connector modelElement, the Connector has exactly two ends, and exactly two of the UMLEdges linked to the shape have definingEnds of those ends as modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_connector-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(kind=UMLAssociationOrConnectorOrLinkShapeKind::diamond and modelElement-&gt;forAll(oclIsKindOf(Connector))) implies&#xD;
+let connector : Connector = modelElement-&gt;any(true).oclAsType(Connector) in&#xD;
+   ((connector.end-&gt;size() = 2) and&#xD;
+      (sourceEdge.modelElement-&gt;union(targetEdge.modelElement)-&gt;select(em |  connector.end.definingEnd-&gt;includes(em))-&gt;size()=2))&#xD;
+</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_instancespec"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationOrConnectorOrLinkShape"
+                    name="edge_instancespec">
+            <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_instancespec-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationOrConnectorOrLinkShape-edge_instancespec">
+               <body>For diamond kind and an InstanceSpecification modelElement, exactly one Association classifier of the InstanceSpecification has exactly two memberEnds and exactly two of the UMLEdges linked to the shape have those memberEnds as modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationOrConnectorOrLinkShape-edge_instancespec-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(kind=UMLAssociationOrConnectorOrLinkShapeKind::diamond and modelElement-&gt;forAll(oclIsKindOf(InstanceSpecification))) implies&#xD;
+let instanceSpecification : InstanceSpecification = modelElement-&gt;any(true).oclAsType(InstanceSpecification) in&#xD;
+  (instanceSpecification.classifier-&gt;select(a | a.oclIsKindOf(Association) and &#xD;
+                                                            (a.oclAsType(Association).memberEnd-&gt;size() = 2) and&#xD;
+                                                             (sourceEdge.modelElement-&gt;union(targetEdge.modelElement)&#xD;
+                                                              -&gt;select(e |  a.oclAsType(Association).memberEnd-&gt;includes(e.modelElement))&#xD;
+                                                                -&gt;size()=2))&#xD;
+                                                      -&gt;size()=1)&#xD;
+&#xD;
+</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationOrConnectorOrLinkShape"
+                    name="modelElement_mult">
+            <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationOrConnectorOrLinkShape-modelElement_mult">
+               <body>UMLAssociationOrConnectorOrLinkShapes must have exactly one modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;size()=1</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_type"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLAssociationOrConnectorOrLinkShape"
+                    name="modelElement_type">
+            <ownedComment xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_type-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLAssociationOrConnectorOrLinkShape-modelElement_type">
+               <body>modelElement must be an Association, Connector, or InstanceSpecification with an Association classifier.</body>
+            </ownedComment>
+            <specification xmi:id="UMLAssociationOrConnectorOrLinkShape-modelElement_type-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(Association) or modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(Connector)&#xD;
+or (       modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(InstanceSpecification)&#xD;
+      and (modelElement-&gt;asSequence()-&gt;first().oclAsType(InstanceSpecification).classifier-&gt;select(oclIsKindOf(Association))-&gt;size() &gt; 0))</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLAssociationOrConnectorOrLinkShape-kind"
+                         xmi:type="cmof:Property"
+                         name="kind"
+                         type="UMLAssociationOrConnectorOrLinkShapeKind"
+                         visibility="private"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLBehaviorDiagram"
+                       xmi:type="cmof:Class"
+                       isAbstract="true"
+                       name="UMLBehaviorDiagram"
+                       superClass="UMLDiagram">
+         <ownedComment xmi:id="UMLBehaviorDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLBehaviorDiagram">
+            <body>The most general class for UMLDiagrams depicting behavioral elements.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLBehaviorDiagram-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLBehaviorDiagram_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Behavior"/>
+            <ownedComment xmi:id="UMLBehaviorDiagram-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLBehaviorDiagram-modelElement">
+               <body>Restricts UMLBehaviorDiagrams to showing Behaviors.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLClassDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLClassDiagram"
+                       superClass="UMLClassOrCompositeStructureDiagram">
+         <ownedComment xmi:id="UMLClassDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLClassDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLClassDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLClassDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLClassDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassDiagram-no_modelElement">
+               <body>UMLClassDiagrams must have no modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLClassDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLClassOrCompositeStructureDiagram"
+                       xmi:type="cmof:Class"
+                       isAbstract="true"
+                       name="UMLClassOrCompositeStructureDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLClassOrCompositeStructureDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLClassOrCompositeStructureDiagram">
+            <body>Specifies the common aspects of UMLClassDiagrams and UMLCompositeStructureDiagrams.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLClassOrCompositeStructureDiagram-isAssociationDotShown"
+                         xmi:type="cmof:Property"
+                         name="isAssociationDotShown"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLClassOrCompositeStructureDiagram-isAssociationDotShown-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassOrCompositeStructureDiagram-isAssociationDotShown">
+               <body>Indicates whether dot notation for associations shall be used.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLClassOrCompositeStructureDiagram-navigabilityNotation"
+                         xmi:type="cmof:Property"
+                         name="navigabilityNotation"
+                         type="UMLNavigabilityNotationKind"
+                         visibility="public"
+                         defaulr="oneWay">
+            <ownedComment xmi:id="UMLClassOrCompositeStructureDiagram-navigabilityNotation-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassOrCompositeStructureDiagram-navigabilityNotation">
+               <body>Indicates when to show navigability of associations or connectors typed by associations.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLClassOrCompositeStructureDiagram-nonNavigabilityNotation"
+                         xmi:type="cmof:Property"
+                         name="nonNavigabilityNotation"
+                         type="UMLNavigabilityNotationKind"
+                         visibility="public"
+                         default="never">
+            <ownedComment xmi:id="UMLClassOrCompositeStructureDiagram-nonNavigabilityNotation-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassOrCompositeStructureDiagram-nonNavigabilityNotation">
+               <body>Indicates when to show non-navigability of associations or connectors typed by associations.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLClassifierShape"
+                       xmi:type="cmof:Class"
+                       name="UMLClassifierShape"
+                       superClass="UMLCompartmentableShape">
+         <ownedComment xmi:id="UMLClassifierShape-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLClassifierShape">
+            <body>Shows Classifiers with shapes that may have compartments.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLClassifierShape-doubleSided_isActive"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLClassifierShape"
+                    name="doubleSided_isActive">
+            <ownedComment xmi:id="UMLClassifierShape-doubleSided_isActive-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassifierShape-doubleSided_isActive">
+               <body>isDoubleSided may be true only when modelElement is an active Class.</body>
+            </ownedComment>
+            <specification xmi:id="UMLClassifierShape-doubleSided_isActive-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>isDoubleSided implies (modelElement-&gt;forAll(oclIsKindOf(Class)) and modelElement.oclAsType(Class)-&gt;forAll(isActive))</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLClassifierShape-isDoubleSided"
+                         xmi:type="cmof:Property"
+                         name="isDoubleSided"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLClassifierShape-isDoubleSided-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassifierShape-isDoubleSided">
+               <body>For modelElements that are Classes with true as a value for isActive that are shown as rectangles, indicates whether the vertical sides shall be rendered as double lines.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLClassifierShape-isIndentForVisibility"
+                         xmi:type="cmof:Property"
+                         name="isIndentForVisibility"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLClassifierShape-isIndentForVisibility-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassifierShape-isIndentForVisibility">
+               <body>For modelElements that are shown with feature compartments, indicates whether features are shown indented under visibility headings.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLClassifierShape-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLClassifierShape_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier"/>
+            <ownedComment xmi:id="UMLClassifierShape-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLClassifierShape-modelElement">
+               <body>Restricts UMLClassifierShapes to showing exactly one Classifier.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLCompartment" xmi:type="cmof:Class" name="UMLCompartment" superClass="UMLDiagramElement">
+         <ownedComment xmi:id="UMLCompartment-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLCompartment">
+            <body>A separated portion of a UMLCompartmentableShape.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLCompartment-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLCompartment"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLCompartment-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLCompartment-no_modelElement">
+               <body>UMLCompartments have no modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLCompartment-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLCompartment-elementInCompartment"
+                         xmi:type="cmof:Property"
+                         isComposite="true"
+                         association="A_UMLCompartment_elementInCompartment_owningCompartment"
+                         isOrdered="true"
+                         name="elementInCompartment"
+                         type="UMLDiagramElement"
+                         visibility="public"
+                         lower="0"
+                         upper="*">
+            <subsettedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-ownedElement"/>
+            <ownedComment xmi:id="UMLCompartment-elementInCompartment-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLCompartment-elementInCompartment">
+               <body>Contents of the compartment.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLCompartmentableShape"
+                       xmi:type="cmof:Class"
+                       name="UMLCompartmentableShape"
+                       superClass="UMLShape">
+         <ownedComment xmi:id="UMLCompartmentableShape-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLCompartmentableShape">
+            <body>The most general class for UML elements that may have contents shown in separated portions inside the shape.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLCompartmentableShape-compartment"
+                         xmi:type="cmof:Property"
+                         isComposite="true"
+                         association="A_UMLCompartmentableShape_compartmentedShape_shape"
+                         isOrdered="true"
+                         name="compartment"
+                         type="UMLCompartment"
+                         visibility="public"
+                         lower="0"
+                         upper="*">
+            <subsettedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-ownedElement"/>
+            <ownedComment xmi:id="UMLCompartmentableShape-compartment-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLCompartmentableShape-compartment">
+               <body>Separated portions of the shape.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLComponentDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLComponentDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLComponentDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLComponentDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLComponentDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLComponentDiagram"
+                    name="no_modelElement">
+            <specification xmi:id="UMLComponentDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLCompositeStructureDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLCompositeStructureDiagram"
+                       superClass="UMLClassOrCompositeStructureDiagram">
+         <ownedComment xmi:id="UMLCompositeStructureDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLCompositeStructureDiagram">
+            <body>Shows the internal structure of a StructuredClassifier.  Also see Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLCompositeStructureDiagram-modelElement_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLCompositeStructureDiagram"
+                    name="modelElement_mult">
+            <ownedComment xmi:id="UMLCompositeStructureDiagram-modelElement_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLCompositeStructureDiagram-modelElement_mult">
+               <body>UMLCompositeStructureDiagrams must have exactly one modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLCompositeStructureDiagram-modelElement_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;size() = 1</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLCompositeStructureDiagram-modelElement_type"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLCompositeStructureDiagram"
+                    name="modelElement_type">
+            <ownedComment xmi:id="UMLCompositeStructureDiagram-modelElement_type-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLCompositeStructureDiagram-modelElement_type">
+               <body>modelElement must be a StructuredClassifier or an InstanceSpecification with a classifier that is a StructuredClassifier.</body>
+            </ownedComment>
+            <specification xmi:id="UMLCompositeStructureDiagram-modelElement_type-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(StructuredClassifier)&#xD;
+or (       modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(InstanceSpecification)&#xD;
+      and (modelElement-&gt;asSequence()-&gt;first().oclAsType(InstanceSpecification).classifier-&gt;select(c | c.oclIsKindOf(StructuredClassifier))-&gt;size() &gt; 0))</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLDeploymentDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLDeploymentDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLDeploymentDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLDeploymentDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLDeploymentDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLDeploymentDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLDeploymentDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDeploymentDiagram-no_modelElement">
+               <body>UMLDeploymentDiagrams must have no modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLDeploymentDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language/>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLDiagram"
+                       xmi:type="cmof:Class"
+                       isAbstract="true"
+                       name="UMLDiagram">
+         <ownedComment xmi:id="UMLDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLDiagram">
+            <body>The most general class for UML diagrams.</body>
+         </ownedComment>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/DD/20110901/DI.cmof#Diagram"/>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#PackageableElement"/>
+         <superClass xmi:type="cmof:Class" xmi:idref="UMLDiagramElement"/>
+         <ownedRule xmi:id="UMLDiagram-heading_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLDiagram"
+                    name="heading_modelElement">
+            <ownedComment xmi:id="UMLDiagram-heading_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagram-heading_modelElement">
+               <body>The modelElement of the heading is the same as the modelElement of the diagram it heads.</body>
+            </ownedComment>
+            <specification xmi:id="UMLDiagram-heading_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(heading-&gt;isEmpty()) or (heading.modelElement = modelElement)</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLDiagram-no-frame-no-heading"
+                    xmi:type="cmof:Constraint"
+                    name="no-frame-no-heading">
+            <ownedComment xmi:id="UMLDiagram-no-frame-no-heading-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagram-no-frame-no-heading">
+               <body>UMLDiagrams cannot have headings without frames, or vice-versa.</body>
+            </ownedComment>
+            <specification xmi:id="UMLDiagram-no-frame-no-heading-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(isFrame = false) = (heading-&gt;isEmpty())</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLDiagram-heading"
+                         xmi:type="cmof:Property"
+                         isComposite="true"
+                         association="A_UMLDiagram_heading_headedDiagram"
+                         name="heading"
+                         type="UMLLabel"
+                         visibility="public"
+                         lower="0"
+                         upper="1"/>
+         <ownedAttribute xmi:id="UMLDiagram-isFrame"
+                         xmi:type="cmof:Property"
+                         name="isFrame"
+                         visibility="public"
+                         default="true">
+            <ownedComment xmi:id="UMLDiagram-isFrame-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagram-isFrame">
+               <body>Indicates when diagram frames shall be shown.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagram-isIso"
+                         xmi:type="cmof:Property"
+                         name="isIso"
+                         visibility="public"
+                         default="true">
+            <ownedComment xmi:id="UMLDiagram-isIso-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagram-isIso">
+               <body>Indicate when ISO notation rules shall be followed.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLDiagramElement"
+                       xmi:type="cmof:Class"
+                       isAbstract="true"
+                       name="UMLDiagramElement">
+         <ownedComment xmi:id="UMLDiagramElement-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLDiagramElement">
+            <body>The most general class for UML diagram interchange.</body>
+         </ownedComment>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement"/>
+         <ownedAttribute xmi:id="UMLDiagramElement-isIcon"
+                         xmi:type="cmof:Property"
+                         name="isIcon"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLDiagramElement-isIcon-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-isIcon">
+               <body>For modelElements that have an option to be shown with shapes other than rectangles, such as Actors, or with other identifying shapes inside them, such as arrows distinguishing InputPins and OutputPins, or edges that have an option to be shown with lines other than solid with open arrow heads, such as Realization.  A value of true for isIcon indicates the alternative notation shall be shown.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagramElement-localStyle"
+                         xmi:type="cmof:Property"
+                         isComposite="true"
+                         association="A_UMLDiagramElement_localStyle_styledElement"
+                         name="localStyle"
+                         type="UMLStyle"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-localStyle"/>
+            <ownedComment xmi:id="UMLDiagramElement-localStyle-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-localStyle">
+               <body>Restricts owned styles to UMLStyles.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagramElement-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLDiagramElement_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         visibility="public"
+                         lower="0"
+                         upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-modelElement"/>
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element"/>
+            <ownedComment xmi:id="UMLDiagramElement-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-modelElement">
+               <body>Restricts UMLDiagramElements to show UML Elements, rather than other language elements. </body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagramElement-ownedElement"
+                         xmi:type="cmof:Property"
+                         isComposite="true"
+                         association="A_UMLDiagramElement_ownedElement_owningElement"
+                         isOrdered="true"
+                         name="ownedElement"
+                         type="UMLDiagramElement"
+                         visibility="public"
+                         lower="0"
+                         upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-ownedElement"/>
+            <ownedComment xmi:id="UMLDiagramElement-ownedElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-ownedElement">
+               <body>Restricts UMLDiagramElements to own only UMLDiagramElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagramElement-owningElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLDiagramElement_ownedElement_owningElement"
+                         name="owningElement"
+                         type="UMLDiagramElement"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-owningElement"/>
+            <ownedComment xmi:id="UMLDiagramElement-owningElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-owningElement">
+               <body>Restricts UMLDiagramElements to be owned by only UMLDiagramElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLDiagramElement-sharedStyle"
+                         xmi:type="cmof:Property"
+                         association="A_UMLDiagramElement_sharedStyle_styledElement"
+                         name="sharedStyle"
+                         type="UMLStyle"
+                         visibility="public"
+                         loer="0"
+                         upper="*">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-sharedStyle"/>
+            <ownedComment xmi:id="UMLDiagramElement-sharedStyle-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLDiagramElement-sharedStyle">
+               <body>Restricts shared styles to UMLStyles.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLEdge" xmi:type="cmof:Class" name="UMLEdge">
+         <ownedComment xmi:id="UMLEdge-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLEdge">
+            <body>The most general class for UML diagram elements that are rendered as lines.</body>
+         </ownedComment>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/DD/20110901/DI.cmof#Edge"/>
+         <superClass xmi:type="cmof:Class" xmi:idref="UMLDiagramElement"/>
+         <ownedAttribute xmi:id="UMLEdge-source"
+                         xmi:type="cmof:Property"
+                         association="A_UMLEdge_source_sourceEdge"
+                         name="source"
+                         type="UMLDiagramElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#Edge-source"/>
+            <ownedComment xmi:id="UMLEdge-source-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLEdge-source">
+               <body>Restricts the sources of UMLEdges to UMLDiagramElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLEdge-target"
+                         xmi:type="cmof:Property"
+                         association="A_UMLEdge_target_targetEdge"
+                         name="target"
+                         type="UMLDiagramElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#Edge-target"/>
+            <ownedComment xmi:id="UMLEdge-target-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLEdge-target">
+               <body>Restricts the targets of UMLEdges to UMLDiagramElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLInteractionDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLInteractionDiagram"
+                       superClass="UMLBehaviorDiagram">
+         <ownedComment xmi:id="UMLInteractionDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLInteractionDiagram">
+            <body>Shows an Interaction and its elements.  Also see Annex A.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLInteractionDiagram-kind"
+                         xmi:type="cmof:Property"
+                         name="kind"
+                         type="UMLInteractionDiagramKind"
+                         visibility="public"
+                         default="sequence">
+            <ownedComment xmi:id="UMLInteractionDiagram-kind-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagram-kind">
+               <body>Indicates how an Interaction shall be shown.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLInteractionDiagram-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLInteractionDiagram_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLBehaviorDiagram-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Interaction"/>
+            <ownedComment xmi:id="UMLInteractionDiagram-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagram-modelElement">
+               <body>Restricts UMLInteractionDiagrams to showing Interactions.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLInteractionTableLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLInteractionTableLabel"
+                       superClass="UMLLabel">
+         <ownedAttribute xmi:id="UMLInteractionTableLabel-kind"
+                         xmi:type="cmof:Property"
+                         name="kind"
+                         type="UMLInteractionTableLabelKind"
+                         visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLKeywordLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLKeywordLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLKeywordLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLKeywordLabel">
+            <body>For showing the keywords of the modelElement.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLKeywordLabel-modeElement_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLKeywordLabel"
+                    name="modeElement_mult">
+            <ownedComment xmi:id="UMLKeywordLabel-modeElement_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLKeywordLabel-modeElement_mult">
+               <body>UMLKeywords must have exactly one modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLKeywordLabel-modeElement_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;size() = 1</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLLabel" xmi:type="cmof:Class" name="UMLLabel" superClass="UMLShape">
+         <ownedComment xmi:id="UMLLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLLabel">
+            <body>The most general class for UML shapes that are rendered only as text.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLLabel-modelElement_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLLabel"
+                    name="modelElement_mult">
+            <ownedComment xmi:id="UMLLabel-modelElement_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLLabel-modelElement_mult">
+               <body>UMLLabels must have no more than one modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLLabel-modelElement_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;size() &lt;= 1</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLLabel-no_icon"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLLabel"
+                    name="no_icon">
+            <ownedComment xmi:id="UMLLabel-no_icon-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLLabel-no_icon">
+               <body>UMLLabels must have the value of false for isIcon.</body>
+            </ownedComment>
+            <specification xmi:id="UMLLabel-no_icon-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>isIcon=false</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLLabel-text"
+                         xmi:type="cmof:Property"
+                         name="text"
+                         visibility="public">
+            <ownedComment xmi:id="UMLLabel-text-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLLabel-text">
+               <body>String to be rendered.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLMultiplicityLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLMultiplicityLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLMultiplicityLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLMultiplicityLabel">
+            <body>Shows text about MultiplicityElements.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLMultiplicityLabel-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLMultiplicityElement_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#MultiplicityElement"/>
+            <ownedComment xmi:id="UMLMultiplicityLabel-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLMultiplicityLabel-modelElement">
+               <body>Restricts UMLMultiplicityLabels to show only MultiplicityElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLNameLabel" xmi:type="cmof:Class" name="UMLNameLabel" superClass="UMLLabel">
+         <ownedComment xmi:id="UMLNameLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLNameLabel">
+            <body>For showing text about NamedElements.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLNameLabel-modeElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLNameLabel_modelElement_umlDiagramElement"
+                         name="modeElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#NamedElement"/>
+            <ownedComment xmi:id="UMLNameLabel-modeElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLNameLabel-modeElement">
+               <body>Restricts UMLNameLabels to be notation for NamedElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLObjectDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLObjectDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLObjectDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLObjectDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLObjectDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLObjectDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLObjectDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLObjectDiagram-no_modelElement">
+               <body>UMLObjectDiagrams must have no modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLObjectDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLPackageDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLPackageDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLPackageDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLPackageDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLPackageDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLPackageDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLPackageDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLPackageDiagram-no_modelElement">
+               <body>UMLPackageDiagrams must have no modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLPackageDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLProfileDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLProfileDiagram"
+                       superClass="UMLStructureDiagram">
+         <ownedComment xmi:id="UMLProfileDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLProfileDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLProfileDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLProfileDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLProfileDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLProfileDiagram-no_modelElement">
+               <body>UMLProfileDiagrams must have no modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLProfileDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLRedefinesLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLRedefinesLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLRedefinesLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLRedefinesLabel">
+            <body>For showing redefinition.</body>
+         </ownedComment>
+         <ownedAttribute xmi:id="UMLRedefinesLabel-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLRedefines_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#RedefinableElement"/>
+            <ownedComment xmi:id="UMLRedefinesLabel-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLRedefinesLabel-modelElement">
+               <body>Restricts UMLRedefinesLabels to be notation for RedefinableElements.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLShape" xmi:type="cmof:Class" name="UMLShape">
+         <ownedComment xmi:id="UMLShape-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLShape">
+            <body>The most general class for UML diagram elements that are not rendered as lines.</body>
+         </ownedComment>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/DD/20110901/DI.cmof#Shape"/>
+         <superClass xmi:type="cmof:Class" xmi:idref="UMLDiagramElement"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLStateMachineDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLStateMachineDiagram"
+                       superClass="UMLBehaviorDiagram">
+         <ownedComment xmi:id="UMLStateMachineDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLStateMachineDiagram">
+            <body>Shows an StateMachine and its elements.  Also see Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLStateMachineDiagram-isb_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLStateMachineDiagram"
+                    name="isb_mult">
+            <ownedComment xmi:id="UMLStateMachineDiagram-isb_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStateMachineDiagram-isb_mult">
+               <body>inheritedStateBorder must have a value if the diagram shows any inherited states.</body>
+            </ownedComment>
+            <specification xmi:id="UMLStateMachineDiagram-isb_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body/>
+               <language/>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLStateMachineDiagram-inheritedStateBorder"
+                         xmi:type="cmof:Property"
+                         name="inheritedStateBorder"
+                         type="UMLInheritedStateBorderKind"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <ownedComment xmi:id="UMLStateMachineDiagram-inheritedStateBorder-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStateMachineDiagram-inheritedStateBorder">
+               <body>Indicates how borders shall be rendered on UMLShapes that have an inherited State as modelElement.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStateMachineDiagram-isCollapseStateIcon"
+                         xmi:type="cmof:Property"
+                         name="isCollapseStateIcon"
+                         visibility="public"
+                         default="true">
+            <ownedComment xmi:id="UMLStateMachineDiagram-isCollapseStateIcon-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStateMachineDiagram-isCollapseStateIcon">
+               <body>Indicates whether UMLShapes for composite States shall contain a small icon distinguishing them from non-composite States.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStateMachineDiagram-isTransitionOriented"
+                         xmi:type="cmof:Property"
+                         name="isTransitionOriented"
+                         visibility="public"
+                         default="false">
+            <ownedComment xmi:id="UMLStateMachineDiagram-isTransitionOriented-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStateMachineDiagram-isTransitionOriented">
+               <body>Indicates whether properties of Transitions shall be shown graphically.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStateMachineDiagram-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLStateMachine_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLBehaviorDiagram-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#StateMachine"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLStateShape" xmi:type="cmof:Class" name="UMLStateShape" superClass="UMLCompartmentableShape">
+         <ownedRule xmi:id="UMLStateShape-state_list"
+                    xmi:type="cmof:Constraint"
+                    name="state_list">
+            <ownedComment xmi:id="UMLStateShape-state_list-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStateShape-state_list">
+               <body>UMLStateShapes may have multiple modelElements only when their outgoing Transitions have no triggers or effects, and target the same junction State that has one outgoing Transition.</body>
+            </ownedComment>
+            <specification xmi:id="UMLStateShape-state_list-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>(modelElement-&gt;size() &gt; 1) implies&#xD;
+(         modelElement-&gt;forAll(outgoing-&gt;forAll(trigger-&gt;isEmpty() and&#xD;
+                                                                         effect-&gt;isEmpty() and&#xD;
+                                                                         target.oclIsKindOf(Pseudostate) and&#xD;
+                                                                         target.oclAsType(Pseudostate).kind = PseudostateKind::junction and&#xD;
+                                                                         target.outgoing-&gt;size() = 1))&#xD;
+  and  modelElement.outgoing.target-&gt;asSet()-&gt;size()=1)</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLStateShape-isTabbed"
+                         xmi:type="cmof:Property"
+                         name="isTabbed"
+                         visibility="public"
+                         default="false">
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Boolean"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStateShape-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLStateShape_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="*">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#State"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLStereotypePropertyValueLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLStereotypePropertyValueLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLStereotypePropertyValueLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLStereotypePropertyValueLabel">
+            <body>For showing Property values of Stereotypes applied to UML abstract syntax elements.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLStereotypePropertyValueLabel-prop_on_stereotype"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLStereotypePropertyValueLabel"
+                    name="prop_on_stereotype">
+            <ownedComment xmi:id="UMLStereotypePropertyValueLabel-prop_on_stereotype-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStereotypePropertyValueLabel-prop_on_stereotype">
+               <body>modelElement is a Property of a Stereotype.</body>
+            </ownedComment>
+            <specification xmi:id="UMLStereotypePropertyValueLabel-prop_on_stereotype-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;forAll(classifier.oclIsKindOf(Stereotype))</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLStereotypePropertyValueLabel-stereotypedElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLStereotypePropertyValueLabel"
+                    name="stereotypedElement">
+            <ownedComment xmi:id="UMLStereotypePropertyValueLabel-stereotypedElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStereotypePropertyValueLabel-stereotypedElement">
+               <body>Property must be on Stereotype applied to stereotypedElement.</body>
+            </ownedComment>
+<!--  XXX This part can't be loaded.
+            <specification xmi:id="UMLStereotypePropertyValueLabel-stereotypedElement-_specification"
+                           xmi:type="cmof:OpaqueExpression"
+                           language="">
+               <body/>
+            </specification>
+-->
+         </ownedRule>
+         <ownedAttribute xmi:id="UMLStereotypePropertyValueLabel-modelElement"
+                         xmi:type="cmof:Property"
+                         association="A_UMLStereotypePropertyValueLabel_modelElement_umlDiagramElement"
+                         name="modelElement"
+                         redefinedProperty="UMLDiagramElement-modelElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Property"/>
+            <ownedComment xmi:id="UMLStereotypePropertyValueLabel-modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStereotypePropertyValueLabel-modelElement">
+               <body>A Property of a Stereotype applied to the stereotypedElement.</body>
+            </ownedComment>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStereotypePropertyValueLabel-stereotypedElement.1"
+                         xmi:type="cmof:Property"
+                         association="A_UMLStereotypePropertyValueLabel_stereotypedElement_labelShowingStereotypeValue"
+                         name="stereotypedElement"
+                         visibility="public"
+                         lower="1"
+                         upper="1">
+            <type xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#Element"/>
+            <ownedComment xmi:id="UMLStereotypePropertyValueLabel-stereotypedElement.1-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStereotypePropertyValueLabel-stereotypedElement.1">
+               <body>Element to which a Stereotype having the modelElement (Property) is applied.</body>
+            </ownedComment>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLStructureDiagram"
+                       xmi:type="cmof:Class"
+                       isAbstract="true"
+                       name="UMLStructureDiagram"
+                       superClass="UMLDiagram">
+         <ownedComment xmi:id="UMLStructureDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLStructureDiagram">
+            <body>The most general class for UMLDiagrams depicting structural elements.</body>
+         </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:id="UMLStyle" xmi:type="cmof:Class" name="UMLStyle">
+         <ownedComment xmi:id="UMLStyle-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLStyle">
+            <body>The most general class for Styles in UML.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLStyle-fontsize_positive"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLStyle"
+                    name="fontsize_positive">
+            <ownedComment xmi:id="UMLStyle-fontsize_positive-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStyle-fontsize_positive">
+               <body>fontSize must be greater than zero.</body>
+            </ownedComment>
+            <specification xmi:id="UMLStyle-fontsize_positive-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>fontSize &gt; 0</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/DD/20110901/DI.cmof#Style"/>
+         <superClass xmi:type="cmof:Class" href="http://www.omg.org/spec/UML/20100901/UML.cmof#PackageableElement"/>
+         <ownedAttribute xmi:id="UMLStyle-fontName"
+                         xmi:type="cmof:Property"
+                         name="fontName"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <ownedComment xmi:id="UMLStyle-fontName-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStyle-fontName">
+               <body>Name of a font used to render strings.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="UMLStyle-fontSize"
+                         xmi:type="cmof:Property"
+                         name="fontSize"
+                         visibility="public"
+                         lower="0"
+                         upper="1">
+            <ownedComment xmi:id="UMLStyle-fontSize-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLStyle-fontSize">
+               <body>Size of a font for rendering strings, given in typographical points.</body>
+            </ownedComment>
+            <type xmi:type="cmof:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof#Real"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="UMLTypedElementLabel"
+                       xmi:type="cmof:Class"
+                       name="UMLTypedElementLabel"
+                       superClass="UMLLabel">
+         <ownedComment xmi:id="UMLTypedElementLabel-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLTypedElementLabel">
+            <body>For showing text about Slots, InstanceSpecifications, InstanceValues, or elements with a type, such as TypedElements or Connectors.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLTypedElementLabel-modelElement_mult"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLTypedElementLabel"
+                    name="modelElement_mult">
+            <ownedComment xmi:id="UMLTypedElementLabel-modelElement_mult-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLTypedElementLabel-modelElement_mult">
+               <body>UMLTypedElementLabels must have exactly one modelElement.</body>
+            </ownedComment>
+            <specification xmi:id="UMLTypedElementLabel-modelElement_mult-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;size() = 1</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+         <ownedRule xmi:id="UMLTypedElementLabel-modelElement_type"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLTypedElementLabel"
+                    name="modelElement_type">
+            <ownedComment xmi:id="UMLTypedElementLabel-modelElement_type-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLTypedElementLabel-modelElement_type">
+               <body>modelElement must be a Slot, InstanceSpecification, InstanceValue, or an element with a type, such as a TypedElement or Connector.</body>
+            </ownedComment>
+            <specification xmi:id="UMLTypedElementLabel-modelElement_type-_specification"
+                           xmi:type="cmof:OpaqueExpression"/>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLUseCaseDiagram"
+                       xmi:type="cmof:Class"
+                       name="UMLUseCaseDiagram"
+                       superClass="UMLBehaviorDiagram">
+         <ownedComment xmi:id="UMLUseCaseDiagram-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLUseCaseDiagram">
+            <body>See Annex A.</body>
+         </ownedComment>
+         <ownedRule xmi:id="UMLUseCaseDiagram-no_modelElement"
+                    xmi:type="cmof:Constraint"
+                    constrainedElement="UMLUseCaseDiagram"
+                    name="no_modelElement">
+            <ownedComment xmi:id="UMLUseCaseDiagram-no_modelElement-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLUseCaseDiagram-no_modelElement">
+               <body>UMLUseCaseDiagrams must have no modelElements.</body>
+            </ownedComment>
+            <specification xmi:id="UMLUseCaseDiagram-no_modelElement-_specification"
+                           xmi:type="cmof:OpaqueExpression">
+               <body>modelElement-&gt;isEmpty()</body>
+               <language>OCL</language>
+            </specification>
+         </ownedRule>
+      </packagedElement>
+      <packagedElement xmi:id="UMLAssociationOrConnectorOrLinkShapeKind"
+                       xmi:type="cmof:Enumeration"
+                       name="UMLAssociationOrConnectorOrLinkShapeKind">
+         <ownedLiteral xmi:id="UMLAssociationOrConnectorOrLinkShapeKind-diamond"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="diamond"/>
+         <ownedLiteral xmi:id="UMLAssociationOrConnectorOrLinkShapeKind-triangle"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="triangle"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLInheritedStateBorderKind"
+                       xmi:type="cmof:Enumeration"
+                       name="UMLInheritedStateBorderKind">
+         <ownedComment xmi:id="UMLInheritedStateBorderKind-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLInheritedStateBorderKind">
+            <body>Alternatives for rendering borders on UMLShapes that have an inherited State as modelElement.</body>
+         </ownedComment>
+         <ownedLiteral xmi:id="UMLInheritedStateBorderKind-dashed"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="dashed">
+            <ownedComment xmi:id="UMLInheritedStateBorderKind-dashed-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInheritedStateBorderKind-dashed">
+               <body>Dashed borders.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLInheritedStateBorderKind-gray"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="gray">
+            <ownedComment xmi:id="UMLInheritedStateBorderKind-gray-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInheritedStateBorderKind-gray">
+               <body>Grey borders.</body>
+            </ownedComment>
+         </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:id="UMLInteractionDiagramKind"
+                       xmi:type="cmof:Enumeration"
+                       name="UMLInteractionDiagramKind">
+         <ownedComment xmi:id="UMLInteractionDiagramKind-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLInteractionDiagramKind">
+            <body>Alternatives for diagramming Interactions.</body>
+         </ownedComment>
+         <ownedLiteral xmi:id="UMLInteractionDiagramKind-communication"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="communication">
+            <ownedComment xmi:id="UMLInteractionDiagramKind-communication-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagramKind-communication">
+               <body>See Subclause 17.9.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLInteractionDiagramKind-overview"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="overview">
+            <ownedComment xmi:id="UMLInteractionDiagramKind-overview-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagramKind-overview">
+               <body>See Subclause 17.10.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLInteractionDiagramKind-sequence"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="sequence">
+            <ownedComment xmi:id="UMLInteractionDiagramKind-sequence-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagramKind-sequence">
+               <body>See Subclause 17.8.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLInteractionDiagramKind-table"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="table">
+            <ownedComment xmi:id="UMLInteractionDiagramKind-table-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagramKind-table">
+               <body>See Annex D.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLInteractionDiagramKind-timing"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="timing">
+            <ownedComment xmi:id="UMLInteractionDiagramKind-timing-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLInteractionDiagramKind-timing">
+               <body>See Subclause 17.11.</body>
+            </ownedComment>
+         </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:id="UMLInteractionTableLabelKind"
+                       xmi:type="cmof:Enumeration"
+                       name="UMLInteractionTableLabelKind">
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-constraint"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="constraint"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-diagramIdentifier"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="diagramIdentifier"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-generatedInstanceName"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="generatedInstanceName"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-lifelineClass"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="lifelineClass"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-lifelineInstance"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="lifelineInstance"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-messageName"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="messageName"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-messageReceivingClass"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="messageReceivingClass"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-messageReceivingInstance"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="messageReceivingInstance"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-messageSendingClass"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="messageSendingClass"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-messageSendingInstance"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="messageSendingInstance"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-otherEnd"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="otherEnd"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-parameter"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="parameter"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-returnValue"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="returnValue"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-sequenceNumber"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="sequenceNumber"/>
+         <ownedLiteral xmi:id="UMLInteractionTableLabelKind-weakOrder"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="weakOrder"/>
+      </packagedElement>
+      <packagedElement xmi:id="UMLNavigabilityNotationKind"
+                       xmi:type="cmof:Enumeration"
+                       name="UMLNavigabilityNotationKind">
+         <ownedComment xmi:id="UMLNavigabilityNotationKind-_ownedComment.0"
+                       xmi:type="cmof:Comment"
+                       annotatedElement="UMLNavigabilityNotationKind">
+            <body>Alternatives for showing navigibility or non-navigability of associations and connectors typed associations.</body>
+         </ownedComment>
+         <ownedLiteral xmi:id="UMLNavigabilityNotationKind-always"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="always">
+            <ownedComment xmi:id="UMLNavigabilityNotationKind-always-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLNavigabilityNotationKind-always">
+               <body>Always show navigibility or non-navigability.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLNavigabilityNotationKind-never"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="never">
+            <ownedComment xmi:id="UMLNavigabilityNotationKind-never-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLNavigabilityNotationKind-never">
+               <body>Never show navigibility or non-navigability.</body>
+            </ownedComment>
+         </ownedLiteral>
+         <ownedLiteral xmi:id="UMLNavigabilityNotationKind-oneWay"
+                       xmi:type="cmof:EnumerationLiteral"
+                       name="oneWay">
+            <ownedComment xmi:id="UMLNavigabilityNotationKind-oneWay-_ownedComment.0"
+                          xmi:type="cmof:Comment"
+                          annotatedElement="UMLNavigabilityNotationKind-oneWay">
+               <body>Show navigibility or non-navigability only for unidirectional associations and connectors typed by unidirectional associations.</body>
+            </ownedComment>
+         </ownedLiteral>
+      </packagedElement>
+      <packageImport xmi:id="_packageImport.0" xmi:type="cmof:PackageImport">
+         <importedPackage xmi:type="cmof:Package" href="http://www.omg.org/spec/DD/20110901/DI.cmof#_0"/>
+      </packageImport>
+      <packageImport xmi:id="_packageImport.1" xmi:type="cmof:PackageImport">
+         <importedPackage href="http://www.omg.org/spec/UML/20100901/UML.cmof#_0"/>
+      </packageImport>
+   </cmof:Package>
+   <cmof:Tag xmi:type="cmof:Tag"
+             xmi:id="_100"
+             name="org.omg.xmi.nsPrefix"
+             value="umldi"/>
+</xmi:XMI>
