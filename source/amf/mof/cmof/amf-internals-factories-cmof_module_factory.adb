@@ -167,7 +167,7 @@ package body AMF.Internals.Factories.CMOF_Module_Factory is
                     or Opposite_Kind = E_CMOF_Primitive_Type)
       then
          AMF.Internals.Links.Create_Link
-          (MA_CMOF_Type_Owned_Type_Package,
+          (MA_CMOF_Package_Owned_Type_Package,
            Element,
            Opposite,
            Link);
