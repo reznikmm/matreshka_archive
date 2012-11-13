@@ -206,6 +206,62 @@ package AMF.Internals.Tables.UML_Constructors is
 
    function Create_UML_Create_Object_Action return AMF.Internals.AMF_Element;
 
+   function Create_UMLDI_UML_Activity_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Association_End_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Association_Or_Connector_Or_Link_Shape return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Class_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Classifier_Shape return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Compartment return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Compartmentable_Shape return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Component_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Composite_Structure_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Deployment_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Edge return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Interaction_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Interaction_Table_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Keyword_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Multiplicity_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Name_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Object_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Package_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Profile_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Redefines_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Shape return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_State_Machine_Diagram return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_State_Shape return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Stereotype_Property_Value_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Style return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Typed_Element_Label return AMF.Internals.AMF_Element;
+
+   function Create_UMLDI_UML_Use_Case_Diagram return AMF.Internals.AMF_Element;
+
    function Create_UML_Data_Store_Node return AMF.Internals.AMF_Element;
 
    function Create_UML_Data_Type return AMF.Internals.AMF_Element;

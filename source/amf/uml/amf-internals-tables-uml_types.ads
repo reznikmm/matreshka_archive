@@ -43,8 +43,10 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.DC;
 with AMF.Elements;
 with AMF.UML;
+with AMF.UMLDI;
 with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.UML_Types is
@@ -133,6 +135,34 @@ package AMF.Internals.Tables.UML_Types is
      E_UML_Create_Link_Action,
      E_UML_Create_Link_Object_Action,
      E_UML_Create_Object_Action,
+     E_UMLDI_UML_Activity_Diagram,
+     E_UMLDI_UML_Association_End_Label,
+     E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape,
+     E_UMLDI_UML_Class_Diagram,
+     E_UMLDI_UML_Classifier_Shape,
+     E_UMLDI_UML_Compartment,
+     E_UMLDI_UML_Compartmentable_Shape,
+     E_UMLDI_UML_Component_Diagram,
+     E_UMLDI_UML_Composite_Structure_Diagram,
+     E_UMLDI_UML_Deployment_Diagram,
+     E_UMLDI_UML_Edge,
+     E_UMLDI_UML_Interaction_Diagram,
+     E_UMLDI_UML_Interaction_Table_Label,
+     E_UMLDI_UML_Keyword_Label,
+     E_UMLDI_UML_Label,
+     E_UMLDI_UML_Multiplicity_Label,
+     E_UMLDI_UML_Name_Label,
+     E_UMLDI_UML_Object_Diagram,
+     E_UMLDI_UML_Package_Diagram,
+     E_UMLDI_UML_Profile_Diagram,
+     E_UMLDI_UML_Redefines_Label,
+     E_UMLDI_UML_Shape,
+     E_UMLDI_UML_State_Machine_Diagram,
+     E_UMLDI_UML_State_Shape,
+     E_UMLDI_UML_Stereotype_Property_Value_Label,
+     E_UMLDI_UML_Style,
+     E_UMLDI_UML_Typed_Element_Label,
+     E_UMLDI_UML_Use_Case_Diagram,
      E_UML_Data_Store_Node,
      E_UML_Data_Type,
      E_UML_Decision_Node,
@@ -286,12 +316,16 @@ package AMF.Internals.Tables.UML_Types is
      M_Call_Concurrency_Kind,
      M_Collection_Of_Boolean,
      M_Collection_Of_Element,
+     M_Collection_Of_Point,
      M_Collection_Of_String,
      M_Connector_Kind,
      M_Element,
      M_Expansion_Kind,
      M_Holder_Of_Boolean,
+     M_Holder_Of_Bounds,
      M_Holder_Of_Integer,
+     M_Holder_Of_Real,
+     M_Holder_Of_UML_Inherited_State_Border_Kind,
      M_Holder_Of_Unlimited_Natural,
      M_Integer,
      M_Interaction_Operator_Kind,
@@ -304,6 +338,10 @@ package AMF.Internals.Tables.UML_Types is
      M_Real,
      M_String,
      M_Transition_Kind,
+     M_UML_Association_Or_Connector_Or_Link_Shape_Kind,
+     M_UML_Interaction_Diagram_Kind,
+     M_UML_Interaction_Table_Label_Kind,
+     M_UML_Navigability_Notation_Kind,
      M_Unlimited_Natural,
      M_Visibility_Kind,
      M_Visibility_Kind_Holder);
@@ -328,6 +366,9 @@ package AMF.Internals.Tables.UML_Types is
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
 
+         when M_Collection_Of_Point =>
+            Point_Collection : AMF.DC.Sequence_Of_DC_Point;
+
          when M_Collection_Of_String =>
             String_Collection : AMF.Internals.AMF_Collection_Of_String;
 
@@ -343,8 +384,17 @@ package AMF.Internals.Tables.UML_Types is
          when M_Holder_Of_Boolean =>
             Boolean_Holder : AMF.Optional_Boolean;
 
+         when M_Holder_Of_Bounds =>
+            Bounds_Holder : AMF.DC.Optional_DC_Bounds;
+
          when M_Holder_Of_Integer =>
             Integer_Holder : AMF.Optional_Integer;
+
+         when M_Holder_Of_Real =>
+            Real_Holder : AMF.Optional_Real;
+
+         when M_Holder_Of_UML_Inherited_State_Border_Kind =>
+            UML_Inherited_State_Border_Kind_Holder : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind;
 
          when M_Holder_Of_Unlimited_Natural =>
             Unlimited_Natural_Holder : AMF.Optional_Unlimited_Natural;
@@ -381,6 +431,18 @@ package AMF.Internals.Tables.UML_Types is
 
          when M_Transition_Kind =>
             Transition_Kind_Value : AMF.UML.UML_Transition_Kind;
+
+         when M_UML_Association_Or_Connector_Or_Link_Shape_Kind =>
+            UML_Association_Or_Connector_Or_Link_Shape_Kind_Value : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
+
+         when M_UML_Interaction_Diagram_Kind =>
+            UML_Interaction_Diagram_Kind_Value : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind;
+
+         when M_UML_Interaction_Table_Label_Kind =>
+            UML_Interaction_Table_Label_Kind_Value : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind;
+
+         when M_UML_Navigability_Notation_Kind =>
+            UML_Navigability_Notation_Kind_Value : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
 
          when M_Unlimited_Natural =>
             Unlimited_Natural_Value : AMF.Unlimited_Natural;

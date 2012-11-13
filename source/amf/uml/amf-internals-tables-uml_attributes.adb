@@ -44,9 +44,13 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
+with AMF.Internals.Tables.DC_Notification;
+with AMF.Internals.Tables.DI_Metamodel;
 with AMF.Internals.Tables.Primitive_Types_Notification;
 with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
+with AMF.Internals.Tables.UMLDI_Metamodel;
+with AMF.Internals.Tables.UMLDI_Notification;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
@@ -238,8 +242,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -272,8 +276,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -306,8 +310,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -331,8 +335,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ActionInputPin
    --
@@ -366,8 +370,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -419,9 +423,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -466,8 +470,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -497,8 +501,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -523,8 +527,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     26  ActivityGroup::containedNode
    --     29  ActivityPartition::edge
    --     24  ActivityPartition::node
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     27  ActivityGroup::subgroup
    --     4  ActivityPartition::subpartition
 
@@ -561,8 +565,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     27  BehavioredClassifier::interfaceRealization
    --     14  Namespace::member
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     19  Classifier::ownedUseCase
@@ -606,8 +610,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -641,8 +645,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -660,8 +664,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Artifact
    --
@@ -697,8 +701,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     27  Artifact::nestedArtifact
    --     25  Artifact::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Artifact::ownedOperation
    --     16  Namespace::ownedRule
@@ -746,8 +750,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     37  Association::memberEnd
    --     38  Association::navigableOwnedEnd
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     39  Association::ownedEnd
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
@@ -805,9 +809,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     39  Association::ownedEnd
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
@@ -845,8 +849,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  BroadcastSignalAction
    --
@@ -858,7 +862,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     13  BroadcastSignalAction::signal
@@ -876,8 +880,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -894,7 +898,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  NamedElement::visibility
@@ -911,8 +915,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -932,8 +936,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  CallOperationAction
    --
@@ -946,11 +950,11 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     17  CallOperationAction::operation
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     12  CallOperationAction::target
+   --     14  CallOperationAction::target
    --     6  NamedElement::visibility
    --
    --     12  InvocationAction::argument
@@ -965,8 +969,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -996,8 +1000,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1016,8 +1020,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Class
    --
@@ -1058,9 +1062,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -1091,8 +1095,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     7  TemplateParameter::signature
    --
    --     3  ClassifierTemplateParameter::constrainingClassifier
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Clause
    --
@@ -1101,8 +1105,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  Clause::body
    --     30  Clause::bodyOutput
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  Clause::predecessorClause
    --     5  Clause::successorClause
    --     31  Clause::test
@@ -1134,8 +1138,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1168,8 +1172,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1200,8 +1204,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1241,9 +1245,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     19  Classifier::ownedUseCase
@@ -1269,8 +1273,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  CollaborationUse::roleBinding
 
    --  CombinedFragment
@@ -1290,8 +1294,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
    --     4  CombinedFragment::operand
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Comment
    --
@@ -1299,8 +1303,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --
    --     3  Comment::annotatedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  CommunicationPath
    --
@@ -1336,8 +1340,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     37  Association::memberEnd
    --     38  Association::navigableOwnedEnd
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     39  Association::ownedEnd
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
@@ -1392,9 +1396,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -1433,8 +1437,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  ComponentRealization::realizingClassifier
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
@@ -1480,8 +1484,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  StructuredActivityNode::node
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -1504,8 +1508,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     5  TemplateParameter::parameteredElement
    --     7  TemplateParameter::signature
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ConnectionPointReference
    --
@@ -1523,8 +1527,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     5  ConnectionPointReference::exit
    --     6  Vertex::incoming
    --     7  Vertex::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Connector
    --
@@ -1543,8 +1547,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     8  Connector::contract
    --     6  Connector::end
    --     7  Feature::featuringClassifier
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     9  Connector::redefinedConnector
    --     4  RedefinableElement::redefinedElement
    --     5  RedefinableElement::redefinitionContext
@@ -1562,8 +1566,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     16  MultiplicityElement::upper
    --     12  MultiplicityElement::upperValue
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ConsiderIgnoreFragment
    --
@@ -1583,8 +1587,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     29  InteractionFragment::generalOrdering
    --     43  ConsiderIgnoreFragment::message
    --     4  CombinedFragment::operand
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Constraint
    --
@@ -1602,8 +1606,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Constraint::constrainedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Continuation
    --
@@ -1620,31 +1624,31 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ControlFlow
    --
    --     8  ActivityEdge::activity
    --     10  ActivityEdge::guard
    --     9  ActivityEdge::inStructuredNode
-   --     13  ActivityEdge::interrupts
+   --     11  ActivityEdge::interrupts
    --     7  RedefinableElement::isLeaf
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     11  ActivityEdge::source
-   --     12  ActivityEdge::target
+   --     15  ActivityEdge::source
+   --     14  ActivityEdge::target
    --     6  NamedElement::visibility
-   --     14  ActivityEdge::weight
+   --     12  ActivityEdge::weight
    --
    --     3  NamedElement::clientDependency
    --     8  ActivityEdge::inGroup
    --     9  ActivityEdge::inPartition
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     6  ActivityEdge::redefinedEdge
    --     4  RedefinableElement::redefinedElement
    --     5  RedefinableElement::redefinitionContext
@@ -1677,8 +1681,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1712,8 +1716,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1745,11 +1749,706 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
+
+   --  UMLActivityDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     20  UMLActivityDiagram::isActivityFrame
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLActivityDiagram::modelElement
+   --     7  UMLBehaviorDiagram::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLAssociationEndLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLAssociationEndLabel::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLAssociationOrConnectorOrLinkShape
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     1  UMLAssociationOrConnectorOrLinkShape::kind
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLClassDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     20  UMLClassOrCompositeStructureDiagram::isAssociationDotShown
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     21  UMLClassOrCompositeStructureDiagram::navigabilityNotation
+   --     22  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLClassifierShape
+   --
+   --     14  Shape::bounds
+   --     1  UMLClassifierShape::isDoubleSided
+   --     13  UMLDiagramElement::isIcon
+   --     2  UMLClassifierShape::isIndentForVisibility
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLClassifierShape::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     2  UMLCompartmentableShape::compartment
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLCompartment
+   --
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     2  UMLCompartment::elementInCompartment
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLCompartmentableShape
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     2  UMLCompartmentableShape::compartment
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLComponentDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLCompositeStructureDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     20  UMLClassOrCompositeStructureDiagram::isAssociationDotShown
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     21  UMLClassOrCompositeStructureDiagram::navigabilityNotation
+   --     22  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLDeploymentDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLEdge
+   --
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     15  UMLEdge::source
+   --     15  Edge::source
+   --     14  UMLEdge::target
+   --     14  Edge::target
+   --     1  Edge::waypoint
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLInteractionDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     20  UMLInteractionDiagram::kind
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLBehaviorDiagram::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLInteractionDiagram::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLInteractionTableLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     2  UMLInteractionTableLabel::kind
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLKeywordLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLMultiplicityLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLMultiplicityLabel::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLNameLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLNameLabel::modeElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLObjectDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLPackageDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLProfileDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLRedefinesLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLRedefinesLabel::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLShape
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLStateMachineDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     20  UMLStateMachineDiagram::inheritedStateBorder
+   --     21  UMLStateMachineDiagram::isCollapseStateIcon
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     22  UMLStateMachineDiagram::isTransitionOriented
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLBehaviorDiagram::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLStateMachineDiagram::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLStateShape
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     1  UMLStateShape::isTabbed
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLStateShape::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --
+   --     2  UMLCompartmentableShape::compartment
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLStereotypePropertyValueLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  UMLStereotypePropertyValueLabel::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     2  UMLStereotypePropertyValueLabel::stereotypedElement
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLStyle
+   --
+   --     7  UMLStyle::fontName
+   --     10  UMLStyle::fontSize
+   --     2  NamedElement::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  UMLTypedElementLabel
+   --
+   --     14  Shape::bounds
+   --     13  UMLDiagramElement::isIcon
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     1  UMLLabel::text
+   --
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
+
+   --  UMLUseCaseDiagram
+   --
+   --     14  Shape::bounds
+   --     15  Diagram::documentation
+   --     17  UMLDiagram::heading
+   --     18  UMLDiagram::isFrame
+   --     13  UMLDiagramElement::isIcon
+   --     19  UMLDiagram::isIso
+   --     11  UMLDiagramElement::localStyle
+   --     11  DiagramElement::localStyle
+   --     7  UMLBehaviorDiagram::modelElement
+   --     7  UMLDiagramElement::modelElement
+   --     7  DiagramElement::modelElement
+   --     2  NamedElement::name
+   --     2  Diagram::name
+   --     3  NamedElement::nameExpression
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     10  UMLDiagramElement::owningElement
+   --     10  DiagramElement::owningElement
+   --     8  ParameterableElement::owningTemplateParameter
+   --     5  NamedElement::qualifiedName
+   --     16  Diagram::resolution
+   --     12  UMLDiagramElement::sharedStyle
+   --     12  DiagramElement::sharedStyle
+   --     9  ParameterableElement::templateParameter
+   --     6  NamedElement::visibility
+   --     6  PackageableElement::visibility
+   --
+   --     3  NamedElement::clientDependency
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     1  UMLDiagramElement::ownedElement
+   --     1  DiagramElement::ownedElement
 
    --  DataStoreNode
    --
@@ -1775,8 +2474,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1812,8 +2511,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     18  Classifier::inheritedMember
    --     14  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  DataType::ownedOperation
    --     16  Namespace::ownedRule
@@ -1847,8 +2546,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1867,8 +2566,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -1891,8 +2590,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     8  Deployment::configuration
    --     9  Deployment::deployedArtifact
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -1935,8 +2634,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     27  Artifact::nestedArtifact
    --     25  Artifact::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Artifact::ownedOperation
    --     16  Namespace::ownedRule
@@ -1978,8 +2677,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -1989,8 +2688,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     8  ActivityNode::activity
    --     10  Action::context
    --     9  ActivityNode::inStructuredNode
-   --     13  DestroyObjectAction::isDestroyLinks
-   --     14  DestroyObjectAction::isDestroyOwnedObjects
+   --     12  DestroyObjectAction::isDestroyLinks
+   --     13  DestroyObjectAction::isDestroyOwnedObjects
    --     7  RedefinableElement::isLeaf
    --     11  Action::isLocallyReentrant
    --     2  NamedElement::name
@@ -1998,7 +2697,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     12  DestroyObjectAction::target
+   --     14  DestroyObjectAction::target
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
@@ -2012,8 +2711,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -2034,8 +2733,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     24  OccurrenceSpecification::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  OccurrenceSpecification::toAfter
    --     5  OccurrenceSpecification::toBefore
 
@@ -2081,9 +2780,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -2118,8 +2817,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Duration::observation
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  DurationConstraint
    --
@@ -2140,8 +2839,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Constraint::constrainedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  DurationInterval
    --
@@ -2161,8 +2860,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  DurationObservation
    --
@@ -2179,8 +2878,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  DurationObservation::event
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ElementImport
    --
@@ -2190,8 +2889,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     3  ElementImport::visibility
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -2227,8 +2926,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     18  Classifier::inheritedMember
    --     14  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Enumeration::ownedLiteral
    --     15  Namespace::ownedMember
    --     26  DataType::ownedOperation
@@ -2262,8 +2961,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  DeploymentTarget::deployedElement
    --     29  DeploymentTarget::deployment
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     5  InstanceSpecification::slot
 
    --  ExceptionHandler
@@ -2274,8 +2973,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     4  ExceptionHandler::protectedNode
    --
    --     3  ExceptionHandler::exceptionType
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  ExecutionEnvironment
    --
@@ -2319,9 +3018,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -2356,8 +3055,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     24  OccurrenceSpecification::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  OccurrenceSpecification::toAfter
    --     5  OccurrenceSpecification::toBefore
 
@@ -2387,8 +3086,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -2432,8 +3131,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     7  ActivityNode::outgoing
    --     22  Action::output
    --     31  ExpansionRegion::outputElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -2461,8 +3160,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Expression::operand
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Extend
    --
@@ -2478,8 +3177,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     6  Extend::extensionLocation
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -2520,8 +3219,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     37  Association::memberEnd
    --     38  Association::navigableOwnedEnd
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     39  Association::ownedEnd
    --     39  Extension::ownedEnd
    --     15  Namespace::ownedMember
@@ -2581,8 +3280,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     29  DeploymentTarget::deployment
    --     6  ConnectableElement::end
    --     7  Feature::featuringClassifier
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  Property::qualifier
    --     4  RedefinableElement::redefinedElement
    --     9  Property::redefinedProperty
@@ -2601,8 +3300,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     5  RedefinableElement::redefinitionContext
 
@@ -2636,8 +3335,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  Vertex::incoming
    --     14  Namespace::member
    --     7  Vertex::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -2664,8 +3363,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -2688,8 +3387,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -2738,9 +3437,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -2775,8 +3474,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  GeneralOrdering
    --
@@ -2790,8 +3489,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Generalization
    --
@@ -2801,8 +3500,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     4  Generalization::specific
    --
    --     3  Generalization::generalizationSet
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -2824,8 +3523,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     7  GeneralizationSet::generalization
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Image
    --
@@ -2834,8 +3533,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     4  Image::location
    --     1  Element::owner
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Include
    --
@@ -2849,8 +3548,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -2871,8 +3570,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  InformationFlow::conveyed
    --     7  InformationFlow::informationSource
    --     8  InformationFlow::informationTarget
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     29  InformationFlow::realization
    --     9  InformationFlow::realizingActivityEdge
    --     10  InformationFlow::realizingConnector
@@ -2911,8 +3610,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  Namespace::importedMember
    --     18  Classifier::inheritedMember
    --     14  Namespace::member
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     19  Classifier::ownedUseCase
@@ -2944,8 +3643,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -2981,8 +3680,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -3004,8 +3703,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  DeploymentTarget::deployedElement
    --     29  DeploymentTarget::deployment
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     5  InstanceSpecification::slot
 
    --  InstanceValue
@@ -3023,8 +3722,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Interaction
    --
@@ -3077,9 +3776,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -3121,8 +3820,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Constraint::constrainedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  InteractionOperand
    --
@@ -3143,8 +3842,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     29  InteractionFragment::generalOrdering
    --     13  Namespace::importedMember
    --     14  Namespace::member
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -3168,8 +3867,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Interface
    --
@@ -3204,8 +3903,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  Namespace::member
    --     33  Interface::nestedClassifier
    --     25  Interface::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Interface::ownedOperation
    --     34  Interface::ownedReception
@@ -3238,8 +3937,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -3261,8 +3960,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     26  ActivityGroup::containedNode
    --     4  InterruptibleActivityRegion::interruptingEdge
    --     24  InterruptibleActivityRegion::node
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     27  ActivityGroup::subgroup
 
    --  Interval
@@ -3281,8 +3980,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  IntervalConstraint
    --
@@ -3301,8 +4000,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Constraint::constrainedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  JoinNode
    --
@@ -3324,8 +4023,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -3345,8 +4044,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Lifeline::coveredBy
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LinkEndCreationData
    --
@@ -3356,8 +4055,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     17  LinkEndData::value
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  LinkEndData::qualifier
 
    --  LinkEndData
@@ -3366,8 +4065,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     17  LinkEndData::value
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  LinkEndData::qualifier
 
    --  LinkEndDestructionData
@@ -3378,8 +4077,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     17  LinkEndData::value
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  LinkEndData::qualifier
 
    --  LiteralBoolean
@@ -3397,8 +4096,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LiteralInteger
    --
@@ -3415,8 +4114,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LiteralNull
    --
@@ -3432,8 +4131,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LiteralReal
    --
@@ -3450,8 +4149,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LiteralString
    --
@@ -3468,8 +4167,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LiteralUnlimitedNatural
    --
@@ -3486,8 +4185,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  LoopNode
    --
@@ -3531,8 +4230,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  StructuredActivityNode::node
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -3563,8 +4262,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -3588,8 +4287,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  ActivityNode::inPartition
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -3612,8 +4311,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     12  Message::argument
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  MessageOccurrenceSpecification
    --
@@ -3631,8 +4330,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     24  OccurrenceSpecification::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  OccurrenceSpecification::toAfter
    --     5  OccurrenceSpecification::toBefore
 
@@ -3657,8 +4356,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  Namespace::importedMember
    --     14  Namespace::member
    --     4  Package::nestedPackage
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     5  Package::ownedStereotype
@@ -3711,9 +4410,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -3737,9 +4436,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     8  ActivityEdge::activity
    --     10  ActivityEdge::guard
    --     9  ActivityEdge::inStructuredNode
-   --     13  ActivityEdge::interrupts
+   --     11  ActivityEdge::interrupts
    --     7  RedefinableElement::isLeaf
-   --     15  ObjectFlow::isMulticast
+   --     13  ObjectFlow::isMulticast
    --     16  ObjectFlow::isMultireceive
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
@@ -3747,17 +4446,17 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     18  ObjectFlow::selection
-   --     11  ActivityEdge::source
-   --     12  ActivityEdge::target
+   --     15  ActivityEdge::source
+   --     14  ActivityEdge::target
    --     17  ObjectFlow::transformation
    --     6  NamedElement::visibility
-   --     14  ActivityEdge::weight
+   --     12  ActivityEdge::weight
    --
    --     3  NamedElement::clientDependency
    --     8  ActivityEdge::inGroup
    --     9  ActivityEdge::inPartition
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     6  ActivityEdge::redefinedEdge
    --     4  RedefinableElement::redefinedElement
    --     5  RedefinableElement::redefinitionContext
@@ -3777,8 +4476,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     24  OccurrenceSpecification::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  OccurrenceSpecification::toAfter
    --     5  OccurrenceSpecification::toBefore
 
@@ -3811,8 +4510,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     7  ActivityNode::outgoing
    --     22  Action::output
    --     13  OpaqueAction::outputValue
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -3861,9 +4560,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -3905,8 +4604,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Operation
    --
@@ -3941,8 +4640,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  Namespace::importedMember
    --     14  Namespace::member
    --     8  BehavioralFeature::method
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     37  BehavioralFeature::ownedParameter
    --     37  Operation::ownedParameter
@@ -3968,8 +4667,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     5  TemplateParameter::parameteredElement
    --     7  TemplateParameter::signature
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  OutputPin
    --
@@ -4002,8 +4701,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4028,8 +4727,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  Namespace::importedMember
    --     14  Namespace::member
    --     4  Package::nestedPackage
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     5  Package::ownedStereotype
@@ -4047,8 +4746,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     3  PackageImport::visibility
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -4059,8 +4758,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     3  PackageMerge::receivingPackage
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -4093,8 +4792,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     6  ConnectableElement::end
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  Parameter::parameterSet
 
    --  ParameterSet
@@ -4108,8 +4807,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  ParameterSet::condition
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     6  ParameterSet::parameter
 
    --  PartDecomposition
@@ -4131,8 +4830,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     24  InteractionFragment::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Port
    --
@@ -4180,8 +4879,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     29  DeploymentTarget::deployment
    --     6  ConnectableElement::end
    --     7  Feature::featuringClassifier
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     37  Port::provided
    --     8  Property::qualifier
    --     4  RedefinableElement::redefinedElement
@@ -4222,8 +4921,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     18  Classifier::inheritedMember
    --     14  Namespace::member
    --     25  DataType::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  DataType::ownedOperation
    --     16  Namespace::ownedRule
@@ -4259,8 +4958,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     10  Profile::metaclassReference
    --     11  Profile::metamodelReference
    --     4  Package::nestedPackage
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     5  Package::ownedStereotype
@@ -4278,8 +4977,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     4  ProfileApplication::isStrict
    --     1  Element::owner
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -4326,8 +5025,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     29  DeploymentTarget::deployment
    --     6  ConnectableElement::end
    --     7  Feature::featuringClassifier
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     8  Property::qualifier
    --     4  RedefinableElement::redefinedElement
    --     9  Property::redefinedProperty
@@ -4340,8 +5039,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     3  ProtocolConformance::specificMachine
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     5  DirectedRelationship::target
@@ -4391,9 +5090,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -4425,25 +5124,25 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  Transition::effect
    --     10  Transition::guard
    --     7  RedefinableElement::isLeaf
-   --     13  Transition::kind
+   --     11  Transition::kind
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
    --     1  Element::owner
-   --     15  ProtocolTransition::postCondition
+   --     13  ProtocolTransition::postCondition
    --     16  ProtocolTransition::preCondition
    --     5  NamedElement::qualifiedName
-   --     14  Transition::redefinedTransition
-   --     11  Transition::source
-   --     12  Transition::target
+   --     12  Transition::redefinedTransition
+   --     15  Transition::source
+   --     14  Transition::target
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
    --     12  Namespace::elementImport
    --     13  Namespace::importedMember
    --     14  Namespace::member
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -4469,8 +5168,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     6  Vertex::incoming
    --     7  Vertex::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  QualifierValue
    --
@@ -4478,8 +5177,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     14  QualifierValue::qualifier
    --     17  QualifierValue::value
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  RaiseExceptionAction
    --
@@ -4507,8 +5206,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4540,8 +5239,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4575,8 +5274,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4609,8 +5308,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4643,8 +5342,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4677,8 +5376,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4709,8 +5408,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4743,8 +5442,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4776,8 +5475,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4797,8 +5496,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -4824,8 +5523,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  Namespace::importedMember
    --     14  Namespace::member
    --     8  BehavioralFeature::method
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     37  BehavioralFeature::ownedParameter
    --     38  BehavioralFeature::ownedParameterSet
@@ -4864,8 +5563,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     13  ReclassifyObjectAction::oldClassifier
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4885,8 +5584,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::clientDependency
    --     7  RedefinableTemplateSignature::extendedSignature
    --     8  RedefinableTemplateSignature::inheritedParameter
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     37  TemplateSignature::ownedParameter
    --     6  TemplateSignature::parameter
    --     4  RedefinableElement::redefinedElement
@@ -4921,8 +5620,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -4944,8 +5643,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  Namespace::elementImport
    --     13  Namespace::importedMember
    --     14  Namespace::member
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -4986,8 +5685,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5021,8 +5720,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5054,8 +5753,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5071,10 +5770,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     12  SendObjectAction::target
+   --     14  SendObjectAction::target
    --     6  NamedElement::visibility
    --
    --     12  InvocationAction::argument
@@ -5089,8 +5788,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5106,11 +5805,11 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     13  SendSignalAction::signal
-   --     12  SendSignalAction::target
+   --     14  SendSignalAction::target
    --     6  NamedElement::visibility
    --
    --     12  InvocationAction::argument
@@ -5125,8 +5824,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5168,8 +5867,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  StructuredActivityNode::node
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -5212,8 +5911,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     18  Classifier::inheritedMember
    --     14  Namespace::member
    --     25  Signal::ownedAttribute
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     19  Classifier::ownedUseCase
@@ -5240,8 +5939,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Slot
    --
@@ -5249,8 +5948,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     3  Slot::owningInstance
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     3  Slot::value
 
    --  StartClassifierBehaviorAction
@@ -5279,8 +5978,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5297,7 +5996,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
    --     13  StartObjectBehaviorAction::object
-   --     14  InvocationAction::onPort
+   --     12  InvocationAction::onPort
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
    --     6  NamedElement::visibility
@@ -5314,8 +6013,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5351,8 +6050,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  Vertex::incoming
    --     14  Namespace::member
    --     7  Vertex::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -5377,8 +6076,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  InteractionFragment::covered
    --     24  StateInvariant::covered
    --     29  InteractionFragment::generalOrdering
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  StateMachine
    --
@@ -5424,9 +6123,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     37  Behavior::ownedParameter
@@ -5493,9 +6192,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     25  Class::ownedAttribute
    --     25  StructuredClassifier::ownedAttribute
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
+   --     2  Element::ownedComment
    --     30  StructuredClassifier::ownedConnector
-   --     2  Element::ownedElement
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     26  Class::ownedOperation
    --     35  EncapsulatedClassifier::ownedPort
@@ -5532,8 +6231,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Expression::operand
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     5  StringExpression::subExpression
    --     6  TemplateableElement::templateBinding
 
@@ -5573,8 +6272,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     24  StructuredActivityNode::node
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -5603,8 +6302,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -5616,8 +6315,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     7  TemplateBinding::signature
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     3  TemplateBinding::parameterSubstitution
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
@@ -5632,8 +6331,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     5  TemplateParameter::parameteredElement
    --     7  TemplateParameter::signature
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TemplateParameterSubstitution
    --
@@ -5643,16 +6342,16 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::owner
    --     5  TemplateParameterSubstitution::templateBinding
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TemplateSignature
    --
    --     1  Element::owner
    --     8  TemplateSignature::template
    --
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     37  TemplateSignature::ownedParameter
    --     6  TemplateSignature::parameter
 
@@ -5684,8 +6383,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5709,8 +6408,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  Constraint::constrainedElement
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TimeEvent
    --
@@ -5727,8 +6426,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     10  TimeEvent::when
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TimeExpression
    --
@@ -5746,8 +6445,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     4  TimeExpression::observation
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TimeInterval
    --
@@ -5767,8 +6466,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  TimeObservation
    --
@@ -5785,8 +6484,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  PackageableElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    --  Transition
    --
@@ -5794,23 +6493,23 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     9  Transition::effect
    --     10  Transition::guard
    --     7  RedefinableElement::isLeaf
-   --     13  Transition::kind
+   --     11  Transition::kind
    --     2  NamedElement::name
    --     3  NamedElement::nameExpression
    --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     14  Transition::redefinedTransition
-   --     11  Transition::source
-   --     12  Transition::target
+   --     12  Transition::redefinedTransition
+   --     15  Transition::source
+   --     14  Transition::target
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
    --     12  Namespace::elementImport
    --     13  Namespace::importedMember
    --     14  Namespace::member
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     17  Namespace::packageImport
@@ -5830,8 +6529,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     6  NamedElement::visibility
    --
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  Trigger::port
 
    --  UnmarshallAction
@@ -5861,8 +6560,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -5882,8 +6581,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     6  Dependency::client
    --     3  NamedElement::clientDependency
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     24  Relationship::relatedElement
    --     4  DirectedRelationship::source
    --     7  Dependency::supplier
@@ -5925,8 +6624,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     27  BehavioredClassifier::interfaceRealization
    --     14  Namespace::member
    --     28  BehavioredClassifier::ownedBehavior
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     15  Namespace::ownedMember
    --     16  Namespace::ownedRule
    --     19  Classifier::ownedUseCase
@@ -5972,8 +6671,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     12  ObjectNode::inState
    --     6  ActivityNode::incoming
    --     7  ActivityNode::outgoing
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -6005,8 +6704,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     21  Action::localPrecondition
    --     7  ActivityNode::outgoing
    --     22  Action::output
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
    --     4  RedefinableElement::redefinedElement
    --     11  ActivityNode::redefinedNode
    --     5  RedefinableElement::redefinitionContext
@@ -6034,8 +6733,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    --
    --     3  NamedElement::clientDependency
    --     6  ConnectableElement::end
-   --     1  Element::ownedComment
-   --     2  Element::ownedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    ----------------------
    -- Internal_Get_URI --
@@ -6506,6 +7205,17 @@ package body AMF.Internals.Tables.UML_Attributes is
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
    end Internal_Get_Bound_Element;
 
+   -------------------------
+   -- Internal_Get_Bounds --
+   -------------------------
+
+   function Internal_Get_Bounds
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.DC.Optional_DC_Bounds is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Bounds_Holder;
+   end Internal_Get_Bounds;
+
    ---------------------------------
    -- Internal_Get_Cfragment_Gate --
    ---------------------------------
@@ -6647,6 +7357,17 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Collection;
+
+   ------------------------------
+   -- Internal_Get_Compartment --
+   ------------------------------
+
+   function Internal_Get_Compartment
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Collection_Of_Element is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 2;
+   end Internal_Get_Compartment;
 
    ------------------------------
    -- Internal_Get_Computation --
@@ -7127,6 +7848,18 @@ package body AMF.Internals.Tables.UML_Attributes is
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (9).Link, Self);
    end Internal_Get_Do_Activity;
 
+   --------------------------------
+   -- Internal_Get_Documentation --
+   --------------------------------
+
+   function Internal_Get_Documentation
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).String_Value;
+   end Internal_Get_Documentation;
+
    -----------------------
    -- Internal_Get_Edge --
    -----------------------
@@ -7172,6 +7905,17 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 12;
    end Internal_Get_Element_Import;
+
+   -----------------------------------------
+   -- Internal_Get_Element_In_Compartment --
+   -----------------------------------------
+
+   function Internal_Get_Element_In_Compartment
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Collection_Of_Element is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 2;
+   end Internal_Get_Element_In_Compartment;
 
    ----------------------------------------
    -- Internal_Get_Enclosing_Interaction --
@@ -7614,6 +8358,29 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
    end Internal_Get_First_Event;
 
+   ----------------------------
+   -- Internal_Get_Font_Name --
+   ----------------------------
+
+   function Internal_Get_Font_Name
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Value;
+   end Internal_Get_Font_Name;
+
+   ----------------------------
+   -- Internal_Get_Font_Size --
+   ----------------------------
+
+   function Internal_Get_Font_Size
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Optional_Real is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Real_Holder;
+   end Internal_Get_Font_Size;
+
    -------------------------
    -- Internal_Get_Formal --
    -------------------------
@@ -7791,6 +8558,19 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (3).Link, Self);
    end Internal_Get_Handler_Body;
+
+   --------------------------
+   -- Internal_Get_Heading --
+   --------------------------
+
+   function Internal_Get_Heading
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (17).Link, Self);
+   end Internal_Get_Heading;
 
    -----------------------
    -- Internal_Get_Icon --
@@ -8015,6 +8795,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 8;
    end Internal_Get_Inherited_Parameter;
 
+   -----------------------------------------
+   -- Internal_Get_Inherited_State_Border --
+   -----------------------------------------
+
+   function Internal_Get_Inherited_State_Border
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Inherited_State_Border_Kind_Holder;
+   end Internal_Get_Inherited_State_Border;
+
    ------------------------
    -- Internal_Get_Input --
    ------------------------
@@ -8143,7 +8934,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
    end Internal_Get_Interrupts;
 
    ----------------------------
@@ -8181,6 +8972,28 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
    end Internal_Get_Is_Active;
 
+   ------------------------------------
+   -- Internal_Get_Is_Activity_Frame --
+   ------------------------------------
+
+   function Internal_Get_Is_Activity_Frame
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value;
+   end Internal_Get_Is_Activity_Frame;
+
+   -------------------------------------------
+   -- Internal_Get_Is_Association_Dot_Shown --
+   -------------------------------------------
+
+   function Internal_Get_Is_Association_Dot_Shown
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value;
+   end Internal_Get_Is_Association_Dot_Shown;
+
    -----------------------------
    -- Internal_Get_Is_Assured --
    -----------------------------
@@ -8202,6 +9015,17 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (34).Boolean_Value;
    end Internal_Get_Is_Behavior;
+
+   -----------------------------------------
+   -- Internal_Get_Is_Collapse_State_Icon --
+   -----------------------------------------
+
+   function Internal_Get_Is_Collapse_State_Icon
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Boolean_Value;
+   end Internal_Get_Is_Collapse_State_Icon;
 
    ---------------------------------------
    -- Internal_Get_Is_Combine_Duplicate --
@@ -8310,7 +9134,7 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value;
    end Internal_Get_Is_Destroy_Links;
 
    -------------------------------------------
@@ -8321,7 +9145,7 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
    end Internal_Get_Is_Destroy_Owned_Objects;
 
    ---------------------------------
@@ -8368,6 +9192,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
    end Internal_Get_Is_Disjoint;
 
+   ----------------------------------
+   -- Internal_Get_Is_Double_Sided --
+   ----------------------------------
+
+   function Internal_Get_Is_Double_Sided
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value;
+   end Internal_Get_Is_Double_Sided;
+
    -------------------------------
    -- Internal_Get_Is_Exception --
    -------------------------------
@@ -8401,6 +9236,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
    end Internal_Get_Is_Final_Specialization;
 
+   ---------------------------
+   -- Internal_Get_Is_Frame --
+   ---------------------------
+
+   function Internal_Get_Is_Frame
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Boolean_Value;
+   end Internal_Get_Is_Frame;
+
    ------------------------
    -- Internal_Get_Is_ID --
    ------------------------
@@ -8412,6 +9258,28 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (30).Boolean_Value;
    end Internal_Get_Is_ID;
 
+   --------------------------
+   -- Internal_Get_Is_Icon --
+   --------------------------
+
+   function Internal_Get_Is_Icon
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
+   end Internal_Get_Is_Icon;
+
+   -------------------------------------------
+   -- Internal_Get_Is_Indent_For_Visibility --
+   -------------------------------------------
+
+   function Internal_Get_Is_Indent_For_Visibility
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Boolean_Value;
+   end Internal_Get_Is_Indent_For_Visibility;
+
    ---------------------------------------------
    -- Internal_Get_Is_Indirectly_Instantiated --
    ---------------------------------------------
@@ -8422,6 +9290,17 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Boolean_Value;
    end Internal_Get_Is_Indirectly_Instantiated;
+
+   -------------------------
+   -- Internal_Get_Is_Iso --
+   -------------------------
+
+   function Internal_Get_Is_Iso
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
+   end Internal_Get_Is_Iso;
 
    --------------------------
    -- Internal_Get_Is_Leaf --
@@ -8453,7 +9332,7 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
    end Internal_Get_Is_Multicast;
 
    ----------------------------------
@@ -8665,6 +9544,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
    end Internal_Get_Is_Synchronous;
 
+   ----------------------------
+   -- Internal_Get_Is_Tabbed --
+   ----------------------------
+
+   function Internal_Get_Is_Tabbed
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value;
+   end Internal_Get_Is_Tabbed;
+
    ----------------------------------
    -- Internal_Get_Is_Tested_First --
    ----------------------------------
@@ -8675,6 +9565,17 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Boolean_Value;
    end Internal_Get_Is_Tested_First;
+
+   -----------------------------------------
+   -- Internal_Get_Is_Transition_Oriented --
+   -----------------------------------------
+
+   function Internal_Get_Is_Transition_Oriented
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value;
+   end Internal_Get_Is_Transition_Oriented;
 
    ----------------------------
    -- Internal_Get_Is_Unique --
@@ -8741,7 +9642,40 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.UML.UML_Transition_Kind is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Transition_Kind_Value;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Transition_Kind_Value;
+   end Internal_Get_Kind;
+
+   -----------------------
+   -- Internal_Get_Kind --
+   -----------------------
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).UML_Association_Or_Connector_Or_Link_Shape_Kind_Value;
+   end Internal_Get_Kind;
+
+   -----------------------
+   -- Internal_Get_Kind --
+   -----------------------
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Interaction_Diagram_Kind_Value;
+   end Internal_Get_Kind;
+
+   -----------------------
+   -- Internal_Get_Kind --
+   -----------------------
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).UML_Interaction_Table_Label_Kind_Value;
    end Internal_Get_Kind;
 
    ---------------------------
@@ -8787,6 +9721,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 21;
    end Internal_Get_Local_Precondition;
+
+   ------------------------------
+   -- Internal_Get_Local_Style --
+   ------------------------------
+
+   function Internal_Get_Local_Style
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
+   end Internal_Get_Local_Style;
 
    ---------------------------
    -- Internal_Get_Location --
@@ -9074,6 +10021,32 @@ package body AMF.Internals.Tables.UML_Attributes is
    end Internal_Get_Mode;
 
    -------------------------------
+   -- Internal_Get_Mode_Element --
+   -------------------------------
+
+   function Internal_Get_Mode_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
+   end Internal_Get_Mode_Element;
+
+   --------------------------------
+   -- Internal_Get_Model_Element --
+   --------------------------------
+
+   function Internal_Get_Model_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).Link, Self);
+   end Internal_Get_Model_Element;
+
+   -------------------------------
    -- Internal_Get_Must_Isolate --
    -------------------------------
 
@@ -9121,6 +10094,17 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (4).Link, Self);
    end Internal_Get_Namespace;
+
+   ----------------------------------------
+   -- Internal_Get_Navigability_Notation --
+   ----------------------------------------
+
+   function Internal_Get_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).UML_Navigability_Notation_Kind_Value;
+   end Internal_Get_Navigability_Notation;
 
    --------------------------------------
    -- Internal_Get_Navigable_Owned_End --
@@ -9212,6 +10196,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 24;
    end Internal_Get_Node;
 
+   --------------------------------------------
+   -- Internal_Get_Non_Navigability_Notation --
+   --------------------------------------------
+
+   function Internal_Get_Non_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).UML_Navigability_Notation_Kind_Value;
+   end Internal_Get_Non_Navigability_Notation;
+
    -------------------------
    -- Internal_Get_Object --
    -------------------------
@@ -9257,7 +10252,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_On_Port;
 
    --------------------------
@@ -9395,7 +10390,7 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 1;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 2;
    end Internal_Get_Owned_Comment;
 
    ----------------------------------
@@ -9430,7 +10425,7 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 2;
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 1;
    end Internal_Get_Owned_Element;
 
    ----------------------------
@@ -9616,6 +10611,19 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (32).Link, Self);
    end Internal_Get_Owning_Association;
+
+   ---------------------------------
+   -- Internal_Get_Owning_Element --
+   ---------------------------------
+
+   function Internal_Get_Owning_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
+   end Internal_Get_Owning_Element;
 
    ------------------------------------
    -- Internal_Get_Owning_Expression --
@@ -9817,7 +10825,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Link, Self);
    end Internal_Get_Post_Condition;
 
    --------------------------------
@@ -10212,7 +11220,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Redefined_Transition;
 
    ---------------------------------------
@@ -10407,6 +11415,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 38;
    end Internal_Get_Required;
 
+   -----------------------------
+   -- Internal_Get_Resolution --
+   -----------------------------
+
+   function Internal_Get_Resolution
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Real is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Real_Value;
+   end Internal_Get_Resolution;
+
    -------------------------
    -- Internal_Get_Result --
    -------------------------
@@ -10592,6 +11611,19 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 34;
    end Internal_Get_Setup_Part;
 
+   -------------------------------
+   -- Internal_Get_Shared_Style --
+   -------------------------------
+
+   function Internal_Get_Shared_Style
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Collection, Self);
+   end Internal_Get_Shared_Style;
+
    -------------------------
    -- Internal_Get_Signal --
    -------------------------
@@ -10639,7 +11671,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Link, Self);
    end Internal_Get_Source;
 
    -------------------------
@@ -10743,6 +11775,19 @@ package body AMF.Internals.Tables.UML_Attributes is
         AMF.Internals.Links.Opposite_Element
          (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Link, Self);
    end Internal_Get_State_Machine;
+
+   --------------------------------------
+   -- Internal_Get_Stereotyped_Element --
+   --------------------------------------
+
+   function Internal_Get_Stereotyped_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element is
+   begin
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Link, Self);
+   end Internal_Get_Stereotyped_Element;
 
    -------------------------------------
    -- Internal_Get_Structural_Feature --
@@ -10985,7 +12030,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
    end Internal_Get_Target;
 
    -------------------------
@@ -11059,6 +12104,18 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (0).Collection + 31;
    end Internal_Get_Test;
+
+   -----------------------
+   -- Internal_Get_Text --
+   -----------------------
+
+   function Internal_Get_Text
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).String_Value;
+   end Internal_Get_Text;
 
    ---------------------------
    -- Internal_Get_To_After --
@@ -11355,6 +12412,17 @@ package body AMF.Internals.Tables.UML_Attributes is
       return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
    end Internal_Get_Visibility;
 
+   ---------------------------
+   -- Internal_Get_Waypoint --
+   ---------------------------
+
+   function Internal_Get_Waypoint
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.DC.Sequence_Of_DC_Point is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Point_Collection;
+   end Internal_Get_Waypoint;
+
    -------------------------
    -- Internal_Get_Weight --
    -------------------------
@@ -11365,7 +12433,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       return
         AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Link, Self);
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Weight;
 
    -----------------------
@@ -12515,6 +13583,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Bound_Element;
 
+   -------------------------
+   -- Internal_Set_Bounds --
+   -------------------------
+
+   procedure Internal_Set_Bounds
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.DC.Optional_DC_Bounds)
+   is
+      Old : AMF.DC.Optional_DC_Bounds;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Bounds_Holder;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Bounds_Holder := To;
+
+      AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds, Old, To);
+   end Internal_Set_Bounds;
+
    ------------------------------------
    -- Internal_Set_Change_Expression --
    ------------------------------------
@@ -13283,6 +14369,29 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Do_Activity;
 
+   --------------------------------
+   -- Internal_Set_Documentation --
+   --------------------------------
+
+   procedure Internal_Set_Documentation
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
+
+   begin
+      Old :=
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).String_Value;
+
+      UML_Element_Table.Table (Self).Member (15).String_Value := To;
+      Matreshka.Internals.Strings.Reference
+       (UML_Element_Table.Table (Self).Member (15).String_Value);
+
+      AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation, Old, To);
+      Matreshka.Internals.Strings.Dereference (Old);
+   end Internal_Set_Documentation;
+
    -------------------------
    -- Internal_Set_Effect --
    -------------------------
@@ -13943,6 +15052,52 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Observation_First_Event, Old, To);
    end Internal_Set_First_Event;
 
+   ----------------------------
+   -- Internal_Set_Font_Name --
+   ----------------------------
+
+   procedure Internal_Set_Font_Name
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (7).String_Value;
+
+      UML_Element_Table.Table (Self).Member (7).String_Value := To;
+
+      if UML_Element_Table.Table (Self).Member (7).String_Value /= null then
+         Matreshka.Internals.Strings.Reference
+          (UML_Element_Table.Table (Self).Member (7).String_Value);
+      end if;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Name, Old, To);
+
+      if Old /= null then
+         Matreshka.Internals.Strings.Reference (Old);
+      end if;
+   end Internal_Set_Font_Name;
+
+   ----------------------------
+   -- Internal_Set_Font_Size --
+   ----------------------------
+
+   procedure Internal_Set_Font_Size
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Optional_Real)
+   is
+      Old : AMF.Optional_Real;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Real_Holder;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (10).Real_Holder := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Size, Old, To);
+   end Internal_Set_Font_Size;
+
    -------------------------
    -- Internal_Set_Formal --
    -------------------------
@@ -14114,6 +15269,86 @@ package body AMF.Internals.Tables.UML_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Handler_Body;
+
+   --------------------------
+   -- Internal_Set_Heading --
+   --------------------------
+
+   procedure Internal_Set_Heading
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Heading_Headed_Diagram,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Heading;
 
    ------------------------------------------
    -- Internal_Set_Implementing_Classifier --
@@ -14645,6 +15880,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Including_Case;
 
+   -----------------------------------------
+   -- Internal_Set_Inherited_State_Border --
+   -----------------------------------------
+
+   procedure Internal_Set_Inherited_State_Border
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind)
+   is
+      Old : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Inherited_State_Border_Kind_Holder;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Inherited_State_Border_Kind_Holder := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border, Old, To);
+   end Internal_Set_Inherited_State_Border;
+
    ----------------------------
    -- Internal_Set_Insert_At --
    ----------------------------
@@ -14861,6 +16114,42 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Is_Active, Old, To);
    end Internal_Set_Is_Active;
 
+   ------------------------------------
+   -- Internal_Set_Is_Activity_Frame --
+   ------------------------------------
+
+   procedure Internal_Set_Is_Activity_Frame
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame, Old, To);
+   end Internal_Set_Is_Activity_Frame;
+
+   -------------------------------------------
+   -- Internal_Set_Is_Association_Dot_Shown --
+   -------------------------------------------
+
+   procedure Internal_Set_Is_Association_Dot_Shown
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown, Old, To);
+   end Internal_Set_Is_Association_Dot_Shown;
+
    -----------------------------
    -- Internal_Set_Is_Assured --
    -----------------------------
@@ -14896,6 +16185,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Port_Is_Behavior, Old, To);
    end Internal_Set_Is_Behavior;
+
+   -----------------------------------------
+   -- Internal_Set_Is_Collapse_State_Icon --
+   -----------------------------------------
+
+   procedure Internal_Set_Is_Collapse_State_Icon
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Collapse_State_Icon, Old, To);
+   end Internal_Set_Is_Collapse_State_Icon;
 
    ---------------------------------------
    -- Internal_Set_Is_Combine_Duplicate --
@@ -15070,8 +16377,8 @@ package body AMF.Internals.Tables.UML_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
-      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Destroy_Object_Action_Is_Destroy_Links, Old, To);
@@ -15088,8 +16395,8 @@ package body AMF.Internals.Tables.UML_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value;
-      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects, Old, To);
@@ -15167,6 +16474,24 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Generalization_Set_Is_Disjoint, Old, To);
    end Internal_Set_Is_Disjoint;
 
+   ----------------------------------
+   -- Internal_Set_Is_Double_Sided --
+   ----------------------------------
+
+   procedure Internal_Set_Is_Double_Sided
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Double_Sided, Old, To);
+   end Internal_Set_Is_Double_Sided;
+
    -------------------------------
    -- Internal_Set_Is_Exception --
    -------------------------------
@@ -15221,6 +16546,24 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Is_Final_Specialization, Old, To);
    end Internal_Set_Is_Final_Specialization;
 
+   ---------------------------
+   -- Internal_Set_Is_Frame --
+   ---------------------------
+
+   procedure Internal_Set_Is_Frame
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame, Old, To);
+   end Internal_Set_Is_Frame;
+
    ------------------------
    -- Internal_Set_Is_ID --
    ------------------------
@@ -15239,6 +16582,42 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Property_Is_ID, Old, To);
    end Internal_Set_Is_ID;
 
+   --------------------------
+   -- Internal_Set_Is_Icon --
+   --------------------------
+
+   procedure Internal_Set_Is_Icon
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon, Old, To);
+   end Internal_Set_Is_Icon;
+
+   -------------------------------------------
+   -- Internal_Set_Is_Indent_For_Visibility --
+   -------------------------------------------
+
+   procedure Internal_Set_Is_Indent_For_Visibility
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility, Old, To);
+   end Internal_Set_Is_Indent_For_Visibility;
+
    ---------------------------------------------
    -- Internal_Set_Is_Indirectly_Instantiated --
    ---------------------------------------------
@@ -15256,6 +16635,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Component_Is_Indirectly_Instantiated, Old, To);
    end Internal_Set_Is_Indirectly_Instantiated;
+
+   -------------------------
+   -- Internal_Set_Is_Iso --
+   -------------------------
+
+   procedure Internal_Set_Is_Iso
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (19).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso, Old, To);
+   end Internal_Set_Is_Iso;
 
    --------------------------
    -- Internal_Set_Is_Leaf --
@@ -15304,8 +16701,8 @@ package body AMF.Internals.Tables.UML_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value;
-      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Object_Flow_Is_Multicast, Old, To);
@@ -15581,6 +16978,24 @@ package body AMF.Internals.Tables.UML_Attributes is
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Call_Action_Is_Synchronous, Old, To);
    end Internal_Set_Is_Synchronous;
 
+   ----------------------------
+   -- Internal_Set_Is_Tabbed --
+   ----------------------------
+
+   procedure Internal_Set_Is_Tabbed
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Shape_Is_Tabbed, Old, To);
+   end Internal_Set_Is_Tabbed;
+
    ----------------------------------
    -- Internal_Set_Is_Tested_First --
    ----------------------------------
@@ -15598,6 +17013,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Is_Tested_First, Old, To);
    end Internal_Set_Is_Tested_First;
+
+   -----------------------------------------
+   -- Internal_Set_Is_Transition_Oriented --
+   -----------------------------------------
+
+   procedure Internal_Set_Is_Transition_Oriented
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean)
+   is
+      Old : Boolean;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).Boolean_Value := To;
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented, Old, To);
+   end Internal_Set_Is_Transition_Oriented;
 
    ----------------------------
    -- Internal_Set_Is_Unique --
@@ -15684,12 +17117,242 @@ package body AMF.Internals.Tables.UML_Attributes is
       Old : AMF.UML.UML_Transition_Kind;
 
    begin
-      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Transition_Kind_Value;
-      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (13).Transition_Kind_Value := To;
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Transition_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (11).Transition_Kind_Value := To;
 
       AMF.Internals.Tables.UML_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Kind, Old, To);
    end Internal_Set_Kind;
+
+   -----------------------
+   -- Internal_Set_Kind --
+   -----------------------
+
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind)
+   is
+      Old : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).UML_Association_Or_Connector_Or_Link_Shape_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).UML_Association_Or_Connector_Or_Link_Shape_Kind_Value := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind, Old, To);
+   end Internal_Set_Kind;
+
+   -----------------------
+   -- Internal_Set_Kind --
+   -----------------------
+
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind)
+   is
+      Old : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Interaction_Diagram_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (20).UML_Interaction_Diagram_Kind_Value := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Kind, Old, To);
+   end Internal_Set_Kind;
+
+   -----------------------
+   -- Internal_Set_Kind --
+   -----------------------
+
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind)
+   is
+      Old : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).UML_Interaction_Table_Label_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (2).UML_Interaction_Table_Label_Kind_Value := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Table_Label_Kind, Old, To);
+   end Internal_Set_Kind;
+
+   ------------------------------
+   -- Internal_Set_Local_Style --
+   ------------------------------
+
+   procedure Internal_Set_Local_Style
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Local_Style_Styled_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Local_Style;
 
    ---------------------------
    -- Internal_Set_Location --
@@ -16074,6 +17737,202 @@ package body AMF.Internals.Tables.UML_Attributes is
    end Internal_Set_Mode;
 
    -------------------------------
+   -- Internal_Set_Mode_Element --
+   -------------------------------
+
+   procedure Internal_Set_Mode_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Name_Label_Mode_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Mode_Element;
+
+   --------------------------------
+   -- Internal_Set_Model_Element --
+   --------------------------------
+
+   procedure Internal_Set_Model_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Activity_Diagram_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Association_End_Label_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Classifier_Shape_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Model_Element;
+
+   -------------------------------
    -- Internal_Set_Must_Isolate --
    -------------------------------
 
@@ -16381,6 +18240,78 @@ package body AMF.Internals.Tables.UML_Attributes is
               To);
 
          when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Name_Expression_Named_Element,
               Self,
@@ -17153,6 +19084,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Name_Expression;
 
+   ----------------------------------------
+   -- Internal_Set_Navigability_Notation --
+   ----------------------------------------
+
+   procedure Internal_Set_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind)
+   is
+      Old : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).UML_Navigability_Notation_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (21).UML_Navigability_Notation_Kind_Value := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation, Old, To);
+   end Internal_Set_Navigability_Notation;
+
    ----------------------------------
    -- Internal_Set_Nesting_Package --
    ----------------------------------
@@ -17184,6 +19133,24 @@ package body AMF.Internals.Tables.UML_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Nesting_Package;
+
+   --------------------------------------------
+   -- Internal_Set_Non_Navigability_Notation --
+   --------------------------------------------
+
+   procedure Internal_Set_Non_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind)
+   is
+      Old : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).UML_Navigability_Notation_Kind_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (22).UML_Navigability_Notation_Kind_Value := To;
+
+      AMF.Internals.Tables.UMLDI_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation, Old, To);
+   end Internal_Set_Non_Navigability_Notation;
 
    -------------------------
    -- Internal_Set_Object --
@@ -17737,6 +19704,182 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Owning_Association;
 
+   ---------------------------------
+   -- Internal_Set_Owning_Element --
+   ---------------------------------
+
+   procedure Internal_Set_Owning_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Owned_Element_Owning_Element,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Owning_Element;
+
    ------------------------------------
    -- Internal_Set_Owning_Expression --
    ------------------------------------
@@ -17871,6 +20014,78 @@ package body AMF.Internals.Tables.UML_Attributes is
               Self);
 
          when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Owned_Parametered_Element_Owning_Template_Parameter,
               To,
@@ -19059,6 +21274,24 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Represents;
 
+   -----------------------------
+   -- Internal_Set_Resolution --
+   -----------------------------
+
+   procedure Internal_Set_Resolution
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Real)
+   is
+      Old : AMF.Real;
+
+   begin
+      Old := AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Real_Value;
+      AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (16).Real_Value := To;
+
+      AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution, Old, To);
+   end Internal_Set_Resolution;
+
    -------------------------
    -- Internal_Set_Result --
    -------------------------
@@ -19542,6 +21775,12 @@ package body AMF.Internals.Tables.UML_Attributes is
               To,
               Self);
 
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Edge_Source_Source_Edge,
+              Self,
+              To);
+
          when AMF.Internals.Tables.UML_Types.E_UML_Object_Flow =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Outgoing_Source,
@@ -19807,6 +22046,26 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_State_Machine;
 
+   --------------------------------------
+   -- Internal_Set_Stereotyped_Element --
+   --------------------------------------
+
+   procedure Internal_Set_Stereotyped_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element_Label_Showing_Stereotype_Value,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Stereotyped_Element;
+
    -------------------------------------
    -- Internal_Set_Structural_Feature --
    -------------------------------------
@@ -19959,6 +22218,12 @@ package body AMF.Internals.Tables.UML_Attributes is
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Incoming_Target,
               To,
               Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Edge_Target_Target_Edge,
+              Self,
+              To);
 
          when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Object_Action =>
             AMF.Internals.Links.Create_Link
@@ -20141,6 +22406,78 @@ package body AMF.Internals.Tables.UML_Attributes is
               Self);
 
          when AMF.Internals.Tables.UML_Types.E_UML_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              To,
+              Self);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
               To,
@@ -20516,6 +22853,29 @@ package body AMF.Internals.Tables.UML_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Template_Parameter;
+
+   -----------------------
+   -- Internal_Set_Text --
+   -----------------------
+
+   procedure Internal_Set_Text
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
+
+   begin
+      Old :=
+        AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (1).String_Value;
+
+      UML_Element_Table.Table (Self).Member (1).String_Value := To;
+      Matreshka.Internals.Strings.Reference
+       (UML_Element_Table.Table (Self).Member (1).String_Value);
+
+      AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
+       (Self, AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text, Old, To);
+      Matreshka.Internals.Strings.Dereference (Old);
+   end Internal_Set_Text;
 
    ---------------------------------
    -- Internal_Set_Transformation --

@@ -44,13 +44,23 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Boolean_Collections.Internals;
+with AMF.CMOF.Elements;
+with AMF.DC.Holders;
+with AMF.DC.Point_Collections.Internals;
+with AMF.DI.Diagram_Elements.Collections;
+with AMF.DI.Styles;
 with AMF.Holders.Elements;
 with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
+with AMF.Internals.Holders.CMOF_Holders;
+with AMF.Internals.Holders.DI_Holders;
+with AMF.Internals.Holders.UMLDI_Holders;
 with AMF.Internals.Holders.UML_Holders;
+with AMF.Internals.Tables.DI_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
+with AMF.Internals.Tables.UMLDI_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Types;
@@ -234,6 +244,7 @@ with AMF.UML.Message_Ends;
 with AMF.UML.Message_Occurrence_Specifications;
 with AMF.UML.Messages.Collections;
 with AMF.UML.Models;
+with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Namespaces;
 with AMF.UML.Nodes.Collections;
@@ -323,6 +334,39 @@ with AMF.UML.Value_Specification_Actions;
 with AMF.UML.Value_Specifications.Collections;
 with AMF.UML.Variables.Collections;
 with AMF.UML.Vertexs.Collections;
+with AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds;
+with AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds;
+with AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds;
+with AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds;
+with AMF.UMLDI.UML_Activity_Diagrams;
+with AMF.UMLDI.UML_Association_End_Labels;
+with AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes;
+with AMF.UMLDI.UML_Class_Diagrams;
+with AMF.UMLDI.UML_Classifier_Shapes;
+with AMF.UMLDI.UML_Compartmentable_Shapes;
+with AMF.UMLDI.UML_Compartments.Collections;
+with AMF.UMLDI.UML_Component_Diagrams;
+with AMF.UMLDI.UML_Composite_Structure_Diagrams;
+with AMF.UMLDI.UML_Deployment_Diagrams;
+with AMF.UMLDI.UML_Diagram_Elements.Collections;
+with AMF.UMLDI.UML_Edges;
+with AMF.UMLDI.UML_Interaction_Diagrams;
+with AMF.UMLDI.UML_Interaction_Table_Labels;
+with AMF.UMLDI.UML_Keyword_Labels;
+with AMF.UMLDI.UML_Labels;
+with AMF.UMLDI.UML_Multiplicity_Labels;
+with AMF.UMLDI.UML_Name_Labels;
+with AMF.UMLDI.UML_Object_Diagrams;
+with AMF.UMLDI.UML_Package_Diagrams;
+with AMF.UMLDI.UML_Profile_Diagrams;
+with AMF.UMLDI.UML_Redefines_Labels;
+with AMF.UMLDI.UML_Shapes;
+with AMF.UMLDI.UML_State_Machine_Diagrams;
+with AMF.UMLDI.UML_State_Shapes;
+with AMF.UMLDI.UML_Stereotype_Property_Value_Labels;
+with AMF.UMLDI.UML_Styles.Collections;
+with AMF.UMLDI.UML_Typed_Element_Labels;
+with AMF.UMLDI.UML_Use_Case_Diagrams;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 
@@ -576,6 +620,90 @@ package body AMF.Internals.Tables.UML_Reflection is
 
       function UML_Create_Object_Action_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of CreateObjectAction class.
+
+      function UMLDI_UML_Activity_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLActivityDiagram class.
+
+      function UMLDI_UML_Association_End_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLAssociationEndLabel class.
+
+      function UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLAssociationOrConnectorOrLinkShape class.
+
+      function UMLDI_UML_Class_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLClassDiagram class.
+
+      function UMLDI_UML_Classifier_Shape_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLClassifierShape class.
+
+      function UMLDI_UML_Compartment_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLCompartment class.
+
+      function UMLDI_UML_Compartmentable_Shape_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLCompartmentableShape class.
+
+      function UMLDI_UML_Component_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLComponentDiagram class.
+
+      function UMLDI_UML_Composite_Structure_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLCompositeStructureDiagram class.
+
+      function UMLDI_UML_Deployment_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLDeploymentDiagram class.
+
+      function UMLDI_UML_Edge_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLEdge class.
+
+      function UMLDI_UML_Interaction_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLInteractionDiagram class.
+
+      function UMLDI_UML_Interaction_Table_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLInteractionTableLabel class.
+
+      function UMLDI_UML_Keyword_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLKeywordLabel class.
+
+      function UMLDI_UML_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLLabel class.
+
+      function UMLDI_UML_Multiplicity_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLMultiplicityLabel class.
+
+      function UMLDI_UML_Name_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLNameLabel class.
+
+      function UMLDI_UML_Object_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLObjectDiagram class.
+
+      function UMLDI_UML_Package_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLPackageDiagram class.
+
+      function UMLDI_UML_Profile_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLProfileDiagram class.
+
+      function UMLDI_UML_Redefines_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLRedefinesLabel class.
+
+      function UMLDI_UML_Shape_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLShape class.
+
+      function UMLDI_UML_State_Machine_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLStateMachineDiagram class.
+
+      function UMLDI_UML_State_Shape_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLStateShape class.
+
+      function UMLDI_UML_Stereotype_Property_Value_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLStereotypePropertyValueLabel class.
+
+      function UMLDI_UML_Style_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLStyle class.
+
+      function UMLDI_UML_Typed_Element_Label_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLTypedElementLabel class.
+
+      function UMLDI_UML_Use_Case_Diagram_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of UMLUseCaseDiagram class.
 
       function UML_Data_Store_Node_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of DataStoreNode class.
@@ -13294,6 +13422,5229 @@ package body AMF.Internals.Tables.UML_Reflection is
             raise Program_Error;
          end if;
       end UML_Create_Object_Action_Get;
+
+      ------------------------------------
+      -- UMLDI_UML_Activity_Diagram_Get --
+      ------------------------------------
+
+      function UMLDI_UML_Activity_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame then
+            --  UMLActivityDiagram::isActivityFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Activity_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Model_Element then
+            --  UMLActivityDiagram::modelElement : Activity
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Activities.UML_Activity_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behaviors.UML_Behavior_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Activity_Diagram_Get;
+
+      -----------------------------------------
+      -- UMLDI_UML_Association_End_Label_Get --
+      -----------------------------------------
+
+      function UMLDI_UML_Association_End_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_End_Label_Model_Element then
+            --  UMLAssociationEndLabel::modelElement : Property
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Properties.UML_Property_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Association_End_Label_Get;
+
+      ----------------------------------------------------------
+      -- UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Get --
+      ----------------------------------------------------------
+
+      function UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind then
+            --  UMLAssociationOrConnectorOrLinkShape::kind : UMLAssociationOrConnectorOrLinkShapeKind
+
+            return
+              AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Get;
+
+      ---------------------------------
+      -- UMLDI_UML_Class_Diagram_Get --
+      ---------------------------------
+
+      function UMLDI_UML_Class_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown then
+            --  UMLClassOrCompositeStructureDiagram::isAssociationDotShown : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Association_Dot_Shown);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::navigabilityNotation : UMLNavigabilityNotationKind
+
+            return
+              AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Navigability_Notation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation : UMLNavigabilityNotationKind
+
+            return
+              AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Non_Navigability_Notation);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Class_Diagram_Get;
+
+      ------------------------------------
+      -- UMLDI_UML_Classifier_Shape_Get --
+      ------------------------------------
+
+      function UMLDI_UML_Classifier_Shape_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment then
+            --  UMLCompartmentableShape::compartment : UMLCompartment
+
+            return
+              AMF.UMLDI.UML_Compartments.Collections.UMLDI_UML_Compartment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Compartment);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Double_Sided then
+            --  UMLClassifierShape::isDoubleSided : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Double_Sided);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility then
+            --  UMLClassifierShape::isIndentForVisibility : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Indent_For_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Model_Element then
+            --  UMLClassifierShape::modelElement : Classifier
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Classifiers.UML_Classifier_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Classifier_Shape_Get;
+
+      -------------------------------
+      -- UMLDI_UML_Compartment_Get --
+      -------------------------------
+
+      function UMLDI_UML_Compartment_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartment_Element_In_Compartment then
+            --  UMLCompartment::elementInCompartment : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_In_Compartment);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Compartment_Get;
+
+      -----------------------------------------
+      -- UMLDI_UML_Compartmentable_Shape_Get --
+      -----------------------------------------
+
+      function UMLDI_UML_Compartmentable_Shape_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment then
+            --  UMLCompartmentableShape::compartment : UMLCompartment
+
+            return
+              AMF.UMLDI.UML_Compartments.Collections.UMLDI_UML_Compartment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Compartment);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Compartmentable_Shape_Get;
+
+      -------------------------------------
+      -- UMLDI_UML_Component_Diagram_Get --
+      -------------------------------------
+
+      function UMLDI_UML_Component_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Component_Diagram_Get;
+
+      -----------------------------------------------
+      -- UMLDI_UML_Composite_Structure_Diagram_Get --
+      -----------------------------------------------
+
+      function UMLDI_UML_Composite_Structure_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown then
+            --  UMLClassOrCompositeStructureDiagram::isAssociationDotShown : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Association_Dot_Shown);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::navigabilityNotation : UMLNavigabilityNotationKind
+
+            return
+              AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Navigability_Notation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation : UMLNavigabilityNotationKind
+
+            return
+              AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Non_Navigability_Notation);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Composite_Structure_Diagram_Get;
+
+      --------------------------------------
+      -- UMLDI_UML_Deployment_Diagram_Get --
+      --------------------------------------
+
+      function UMLDI_UML_Deployment_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Deployment_Diagram_Get;
+
+      ------------------------
+      -- UMLDI_UML_Edge_Get --
+      ------------------------
+
+      function UMLDI_UML_Edge_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Source then
+            --  UMLEdge::source : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Edge_Source then
+            --  Edge::source : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Target then
+            --  UMLEdge::target : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Target));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Edge_Target then
+            --  Edge::target : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Target));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Edge_Waypoint then
+            --  Edge::waypoint : Point
+
+            return
+              AMF.DC.Point_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Waypoint);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Edge_Get;
+
+      ---------------------------------------
+      -- UMLDI_UML_Interaction_Diagram_Get --
+      ---------------------------------------
+
+      function UMLDI_UML_Interaction_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Kind then
+            --  UMLInteractionDiagram::kind : UMLInteractionDiagramKind
+
+            return
+              AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behaviors.UML_Behavior_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Model_Element then
+            --  UMLInteractionDiagram::modelElement : Interaction
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Interactions.UML_Interaction_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Interaction_Diagram_Get;
+
+      -------------------------------------------
+      -- UMLDI_UML_Interaction_Table_Label_Get --
+      -------------------------------------------
+
+      function UMLDI_UML_Interaction_Table_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Table_Label_Kind then
+            --  UMLInteractionTableLabel::kind : UMLInteractionTableLabelKind
+
+            return
+              AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Interaction_Table_Label_Get;
+
+      ---------------------------------
+      -- UMLDI_UML_Keyword_Label_Get --
+      ---------------------------------
+
+      function UMLDI_UML_Keyword_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Keyword_Label_Get;
+
+      -------------------------
+      -- UMLDI_UML_Label_Get --
+      -------------------------
+
+      function UMLDI_UML_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Label_Get;
+
+      --------------------------------------
+      -- UMLDI_UML_Multiplicity_Label_Get --
+      --------------------------------------
+
+      function UMLDI_UML_Multiplicity_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Multiplicity_Label_Model_Element then
+            --  UMLMultiplicityLabel::modelElement : MultiplicityElement
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Multiplicity_Label_Get;
+
+      ------------------------------
+      -- UMLDI_UML_Name_Label_Get --
+      ------------------------------
+
+      function UMLDI_UML_Name_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Name_Label_Mode_Element then
+            --  UMLNameLabel::modeElement : NamedElement
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Named_Elements.UML_Named_Element_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Mode_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Name_Label_Get;
+
+      ----------------------------------
+      -- UMLDI_UML_Object_Diagram_Get --
+      ----------------------------------
+
+      function UMLDI_UML_Object_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Object_Diagram_Get;
+
+      -----------------------------------
+      -- UMLDI_UML_Package_Diagram_Get --
+      -----------------------------------
+
+      function UMLDI_UML_Package_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Package_Diagram_Get;
+
+      -----------------------------------
+      -- UMLDI_UML_Profile_Diagram_Get --
+      -----------------------------------
+
+      function UMLDI_UML_Profile_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Profile_Diagram_Get;
+
+      -----------------------------------
+      -- UMLDI_UML_Redefines_Label_Get --
+      -----------------------------------
+
+      function UMLDI_UML_Redefines_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Redefines_Label_Model_Element then
+            --  UMLRedefinesLabel::modelElement : RedefinableElement
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Redefines_Label_Get;
+
+      -------------------------
+      -- UMLDI_UML_Shape_Get --
+      -------------------------
+
+      function UMLDI_UML_Shape_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Shape_Get;
+
+      -----------------------------------------
+      -- UMLDI_UML_State_Machine_Diagram_Get --
+      -----------------------------------------
+
+      function UMLDI_UML_State_Machine_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border then
+            --  UMLStateMachineDiagram::inheritedStateBorder : UMLInheritedStateBorderKind
+
+            return
+              AMF.UMLDI.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_State_Border);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Collapse_State_Icon then
+            --  UMLStateMachineDiagram::isCollapseStateIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Collapse_State_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented then
+            --  UMLStateMachineDiagram::isTransitionOriented : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Transition_Oriented);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behaviors.UML_Behavior_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Model_Element then
+            --  UMLStateMachineDiagram::modelElement : StateMachine
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.State_Machines.UML_State_Machine_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_State_Machine_Diagram_Get;
+
+      -------------------------------
+      -- UMLDI_UML_State_Shape_Get --
+      -------------------------------
+
+      function UMLDI_UML_State_Shape_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment then
+            --  UMLCompartmentableShape::compartment : UMLCompartment
+
+            return
+              AMF.UMLDI.UML_Compartments.Collections.UMLDI_UML_Compartment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Compartment);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Shape_Is_Tabbed then
+            --  UMLStateShape::isTabbed : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Tabbed);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Shape_Model_Element then
+            --  UMLStateShape::modelElement : State
+
+            return
+              AMF.UML.States.Collections.UML_State_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_State_Shape_Get;
+
+      ---------------------------------------------------
+      -- UMLDI_UML_Stereotype_Property_Value_Label_Get --
+      ---------------------------------------------------
+
+      function UMLDI_UML_Stereotype_Property_Value_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element then
+            --  UMLStereotypePropertyValueLabel::modelElement : Property
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Properties.UML_Property_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element then
+            --  UMLStereotypePropertyValueLabel::stereotypedElement : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Stereotyped_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Stereotype_Property_Value_Label_Get;
+
+      -------------------------
+      -- UMLDI_UML_Style_Get --
+      -------------------------
+
+      function UMLDI_UML_Style_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Name then
+            --  UMLStyle::fontName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Font_Name);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Size then
+            --  UMLStyle::fontSize : Real
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Font_Size);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Style_Get;
+
+      ---------------------------------------
+      -- UMLDI_UML_Typed_Element_Label_Get --
+      ---------------------------------------
+
+      function UMLDI_UML_Typed_Element_Label_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Text);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Typed_Element_Label_Get;
+
+      ------------------------------------
+      -- UMLDI_UML_Use_Case_Diagram_Get --
+      ------------------------------------
+
+      function UMLDI_UML_Use_Case_Diagram_Get return League.Holders.Holder is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            return
+              AMF.DC.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Bounds);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+            --  NamedElement::clientDependency : Dependency
+
+            return
+              AMF.UML.Dependencies.Collections.UML_Dependency_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Documentation);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Heading));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Frame);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Icon);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            return
+              League.Holders.Booleans.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Iso);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Local_Style));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Behaviors.UML_Behavior_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element then
+            --  UMLDiagramElement::modelElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Model_Element then
+            --  DiagramElement::modelElement : Element
+
+            return
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Model_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            return
+              League.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Namespaces.UML_Namespace_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.UML.Comments.Collections.UML_Comment_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.UML.Elements.Collections.UML_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element then
+            --  UMLDiagramElement::ownedElement : UMLDiagramElement
+
+            return
+              AMF.UMLDI.UML_Diagram_Elements.Collections.UMLDI_UML_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owned_Element then
+            --  DiagramElement::ownedElement : DiagramElement
+
+            return
+              AMF.DI.Diagram_Elements.Collections.DI_Diagram_Element_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Elements.UML_Element_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            return
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Owning_Element then
+            --  DiagramElement::owningElement : DiagramElement
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Diagram_Elements.DI_Diagram_Element_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Element));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
+            return
+              AMF.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            return
+              AMF.Holders.Reals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Resolution);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            return
+              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            return
+              AMF.Internals.Holders.DI_Holders.To_Holder
+               (AMF.DI.Styles.DI_Style_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            return
+              AMF.Internals.Holders.UML_Holders.To_Holder
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            return
+              AMF.UML.Holders.Visibility_Kinds.To_Holder
+               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Use_Case_Diagram_Get;
 
       -----------------------------
       -- UML_Data_Store_Node_Get --
@@ -45894,6 +51245,90 @@ package body AMF.Internals.Tables.UML_Reflection is
          when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
             return UML_Create_Object_Action_Get;
 
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            return UMLDI_UML_Activity_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            return UMLDI_UML_Association_End_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            return UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            return UMLDI_UML_Class_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            return UMLDI_UML_Classifier_Shape_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            return UMLDI_UML_Compartment_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            return UMLDI_UML_Compartmentable_Shape_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            return UMLDI_UML_Component_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            return UMLDI_UML_Composite_Structure_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            return UMLDI_UML_Deployment_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            return UMLDI_UML_Edge_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            return UMLDI_UML_Interaction_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            return UMLDI_UML_Interaction_Table_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            return UMLDI_UML_Keyword_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            return UMLDI_UML_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            return UMLDI_UML_Multiplicity_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            return UMLDI_UML_Name_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            return UMLDI_UML_Object_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            return UMLDI_UML_Package_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            return UMLDI_UML_Profile_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            return UMLDI_UML_Redefines_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            return UMLDI_UML_Shape_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            return UMLDI_UML_State_Machine_Diagram_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            return UMLDI_UML_State_Shape_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            return UMLDI_UML_Stereotype_Property_Value_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            return UMLDI_UML_Style_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            return UMLDI_UML_Typed_Element_Label_Get;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            return UMLDI_UML_Use_Case_Diagram_Get;
+
          when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
             return UML_Data_Store_Node_Get;
 
@@ -46582,6 +52017,90 @@ package body AMF.Internals.Tables.UML_Reflection is
          when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Create_Object_Action;
 
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Activity_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Association_End_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Association_Or_Connector_Or_Link_Shape;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Class_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Classifier_Shape;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Compartment;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Compartmentable_Shape;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Component_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Composite_Structure_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Deployment_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Edge;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Interaction_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Interaction_Table_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Keyword_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Multiplicity_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Name_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Object_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Package_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Profile_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Redefines_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Shape;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_State_Machine_Diagram;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_State_Shape;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Stereotype_Property_Value_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Style;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Typed_Element_Label;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            return AMF.Internals.Tables.UMLDI_Metamodel.MC_UMLDI_UML_Use_Case_Diagram;
+
          when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
             return AMF.Internals.Tables.UML_Metamodel.MC_UML_Data_Store_Node;
 
@@ -47268,6 +52787,90 @@ package body AMF.Internals.Tables.UML_Reflection is
 
       procedure UML_Create_Object_Action_Set;
       --  Sets attribute's value of instance of CreateObjectAction class.
+
+      procedure UMLDI_UML_Activity_Diagram_Set;
+      --  Sets attribute's value of instance of UMLActivityDiagram class.
+
+      procedure UMLDI_UML_Association_End_Label_Set;
+      --  Sets attribute's value of instance of UMLAssociationEndLabel class.
+
+      procedure UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Set;
+      --  Sets attribute's value of instance of UMLAssociationOrConnectorOrLinkShape class.
+
+      procedure UMLDI_UML_Class_Diagram_Set;
+      --  Sets attribute's value of instance of UMLClassDiagram class.
+
+      procedure UMLDI_UML_Classifier_Shape_Set;
+      --  Sets attribute's value of instance of UMLClassifierShape class.
+
+      procedure UMLDI_UML_Compartment_Set;
+      --  Sets attribute's value of instance of UMLCompartment class.
+
+      procedure UMLDI_UML_Compartmentable_Shape_Set;
+      --  Sets attribute's value of instance of UMLCompartmentableShape class.
+
+      procedure UMLDI_UML_Component_Diagram_Set;
+      --  Sets attribute's value of instance of UMLComponentDiagram class.
+
+      procedure UMLDI_UML_Composite_Structure_Diagram_Set;
+      --  Sets attribute's value of instance of UMLCompositeStructureDiagram class.
+
+      procedure UMLDI_UML_Deployment_Diagram_Set;
+      --  Sets attribute's value of instance of UMLDeploymentDiagram class.
+
+      procedure UMLDI_UML_Edge_Set;
+      --  Sets attribute's value of instance of UMLEdge class.
+
+      procedure UMLDI_UML_Interaction_Diagram_Set;
+      --  Sets attribute's value of instance of UMLInteractionDiagram class.
+
+      procedure UMLDI_UML_Interaction_Table_Label_Set;
+      --  Sets attribute's value of instance of UMLInteractionTableLabel class.
+
+      procedure UMLDI_UML_Keyword_Label_Set;
+      --  Sets attribute's value of instance of UMLKeywordLabel class.
+
+      procedure UMLDI_UML_Label_Set;
+      --  Sets attribute's value of instance of UMLLabel class.
+
+      procedure UMLDI_UML_Multiplicity_Label_Set;
+      --  Sets attribute's value of instance of UMLMultiplicityLabel class.
+
+      procedure UMLDI_UML_Name_Label_Set;
+      --  Sets attribute's value of instance of UMLNameLabel class.
+
+      procedure UMLDI_UML_Object_Diagram_Set;
+      --  Sets attribute's value of instance of UMLObjectDiagram class.
+
+      procedure UMLDI_UML_Package_Diagram_Set;
+      --  Sets attribute's value of instance of UMLPackageDiagram class.
+
+      procedure UMLDI_UML_Profile_Diagram_Set;
+      --  Sets attribute's value of instance of UMLProfileDiagram class.
+
+      procedure UMLDI_UML_Redefines_Label_Set;
+      --  Sets attribute's value of instance of UMLRedefinesLabel class.
+
+      procedure UMLDI_UML_Shape_Set;
+      --  Sets attribute's value of instance of UMLShape class.
+
+      procedure UMLDI_UML_State_Machine_Diagram_Set;
+      --  Sets attribute's value of instance of UMLStateMachineDiagram class.
+
+      procedure UMLDI_UML_State_Shape_Set;
+      --  Sets attribute's value of instance of UMLStateShape class.
+
+      procedure UMLDI_UML_Stereotype_Property_Value_Label_Set;
+      --  Sets attribute's value of instance of UMLStereotypePropertyValueLabel class.
+
+      procedure UMLDI_UML_Style_Set;
+      --  Sets attribute's value of instance of UMLStyle class.
+
+      procedure UMLDI_UML_Typed_Element_Label_Set;
+      --  Sets attribute's value of instance of UMLTypedElementLabel class.
+
+      procedure UMLDI_UML_Use_Case_Diagram_Set;
+      --  Sets attribute's value of instance of UMLUseCaseDiagram class.
 
       procedure UML_Data_Store_Node_Set;
       --  Sets attribute's value of instance of DataStoreNode class.
@@ -52083,6 +57686,2701 @@ package body AMF.Internals.Tables.UML_Reflection is
             raise Program_Error;
          end if;
       end UML_Create_Object_Action_Set;
+
+      ------------------------------------
+      -- UMLDI_UML_Activity_Diagram_Set --
+      ------------------------------------
+
+      procedure UMLDI_UML_Activity_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame then
+            --  UMLActivityDiagram::isActivityFrame : Boolean
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Activity_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Model_Element then
+            --  UMLActivityDiagram::modelElement : Activity
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Activities.UML_Activity_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Activity_Diagram_Set;
+
+      -----------------------------------------
+      -- UMLDI_UML_Association_End_Label_Set --
+      -----------------------------------------
+
+      procedure UMLDI_UML_Association_End_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_End_Label_Model_Element then
+            --  UMLAssociationEndLabel::modelElement : Property
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Association_End_Label_Set;
+
+      ----------------------------------------------------------
+      -- UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Set --
+      ----------------------------------------------------------
+
+      procedure UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind then
+            --  UMLAssociationOrConnectorOrLinkShape::kind : UMLAssociationOrConnectorOrLinkShapeKind
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Kind
+               (AMF.UMLDI.Holders.UML_Association_Or_Connector_Or_Link_Shape_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Set;
+
+      ---------------------------------
+      -- UMLDI_UML_Class_Diagram_Set --
+      ---------------------------------
+
+      procedure UMLDI_UML_Class_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown then
+            --  UMLClassOrCompositeStructureDiagram::isAssociationDotShown : Boolean
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Association_Dot_Shown
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::navigabilityNotation : UMLNavigabilityNotationKind
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Navigability_Notation
+               (AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation : UMLNavigabilityNotationKind
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Non_Navigability_Notation
+               (AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Class_Diagram_Set;
+
+      ------------------------------------
+      -- UMLDI_UML_Classifier_Shape_Set --
+      ------------------------------------
+
+      procedure UMLDI_UML_Classifier_Shape_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Double_Sided then
+            --  UMLClassifierShape::isDoubleSided : Boolean
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Double_Sided
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility then
+            --  UMLClassifierShape::isIndentForVisibility : Boolean
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Indent_For_Visibility
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Model_Element then
+            --  UMLClassifierShape::modelElement : Classifier
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Classifiers.UML_Classifier_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Classifier_Shape_Set;
+
+      -------------------------------
+      -- UMLDI_UML_Compartment_Set --
+      -------------------------------
+
+      procedure UMLDI_UML_Compartment_Set is
+      begin
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Compartment_Set;
+
+      -----------------------------------------
+      -- UMLDI_UML_Compartmentable_Shape_Set --
+      -----------------------------------------
+
+      procedure UMLDI_UML_Compartmentable_Shape_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Compartmentable_Shape_Set;
+
+      -------------------------------------
+      -- UMLDI_UML_Component_Diagram_Set --
+      -------------------------------------
+
+      procedure UMLDI_UML_Component_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Component_Diagram_Set;
+
+      -----------------------------------------------
+      -- UMLDI_UML_Composite_Structure_Diagram_Set --
+      -----------------------------------------------
+
+      procedure UMLDI_UML_Composite_Structure_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown then
+            --  UMLClassOrCompositeStructureDiagram::isAssociationDotShown : Boolean
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Association_Dot_Shown
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::navigabilityNotation : UMLNavigabilityNotationKind
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Navigability_Notation
+               (AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation then
+            --  UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation : UMLNavigabilityNotationKind
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Non_Navigability_Notation
+               (AMF.UMLDI.Holders.UML_Navigability_Notation_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Composite_Structure_Diagram_Set;
+
+      --------------------------------------
+      -- UMLDI_UML_Deployment_Diagram_Set --
+      --------------------------------------
+
+      procedure UMLDI_UML_Deployment_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Deployment_Diagram_Set;
+
+      ------------------------
+      -- UMLDI_UML_Edge_Set --
+      ------------------------
+
+      procedure UMLDI_UML_Edge_Set is
+      begin
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Source then
+            --  UMLEdge::source : UMLDiagramElement
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Source
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Target then
+            --  UMLEdge::target : UMLDiagramElement
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Target
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Edge_Set;
+
+      ---------------------------------------
+      -- UMLDI_UML_Interaction_Diagram_Set --
+      ---------------------------------------
+
+      procedure UMLDI_UML_Interaction_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Kind then
+            --  UMLInteractionDiagram::kind : UMLInteractionDiagramKind
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Kind
+               (AMF.UMLDI.Holders.UML_Interaction_Diagram_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Model_Element then
+            --  UMLInteractionDiagram::modelElement : Interaction
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Interactions.UML_Interaction_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Interaction_Diagram_Set;
+
+      -------------------------------------------
+      -- UMLDI_UML_Interaction_Table_Label_Set --
+      -------------------------------------------
+
+      procedure UMLDI_UML_Interaction_Table_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Table_Label_Kind then
+            --  UMLInteractionTableLabel::kind : UMLInteractionTableLabelKind
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Kind
+               (AMF.UMLDI.Holders.UML_Interaction_Table_Label_Kinds.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Interaction_Table_Label_Set;
+
+      ---------------------------------
+      -- UMLDI_UML_Keyword_Label_Set --
+      ---------------------------------
+
+      procedure UMLDI_UML_Keyword_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Keyword_Label_Set;
+
+      -------------------------
+      -- UMLDI_UML_Label_Set --
+      -------------------------
+
+      procedure UMLDI_UML_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Label_Set;
+
+      --------------------------------------
+      -- UMLDI_UML_Multiplicity_Label_Set --
+      --------------------------------------
+
+      procedure UMLDI_UML_Multiplicity_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Multiplicity_Label_Model_Element then
+            --  UMLMultiplicityLabel::modelElement : MultiplicityElement
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Multiplicity_Label_Set;
+
+      ------------------------------
+      -- UMLDI_UML_Name_Label_Set --
+      ------------------------------
+
+      procedure UMLDI_UML_Name_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Name_Label_Mode_Element then
+            --  UMLNameLabel::modeElement : NamedElement
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Mode_Element
+               (AMF.UML.Named_Elements.UML_Named_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Name_Label_Set;
+
+      ----------------------------------
+      -- UMLDI_UML_Object_Diagram_Set --
+      ----------------------------------
+
+      procedure UMLDI_UML_Object_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Object_Diagram_Set;
+
+      -----------------------------------
+      -- UMLDI_UML_Package_Diagram_Set --
+      -----------------------------------
+
+      procedure UMLDI_UML_Package_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Package_Diagram_Set;
+
+      -----------------------------------
+      -- UMLDI_UML_Profile_Diagram_Set --
+      -----------------------------------
+
+      procedure UMLDI_UML_Profile_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Profile_Diagram_Set;
+
+      -----------------------------------
+      -- UMLDI_UML_Redefines_Label_Set --
+      -----------------------------------
+
+      procedure UMLDI_UML_Redefines_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Redefines_Label_Model_Element then
+            --  UMLRedefinesLabel::modelElement : RedefinableElement
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Redefines_Label_Set;
+
+      -------------------------
+      -- UMLDI_UML_Shape_Set --
+      -------------------------
+
+      procedure UMLDI_UML_Shape_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Shape_Set;
+
+      -----------------------------------------
+      -- UMLDI_UML_State_Machine_Diagram_Set --
+      -----------------------------------------
+
+      procedure UMLDI_UML_State_Machine_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border then
+            --  UMLStateMachineDiagram::inheritedStateBorder : UMLInheritedStateBorderKind
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Inherited_State_Border
+               (AMF.UMLDI.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Collapse_State_Icon then
+            --  UMLStateMachineDiagram::isCollapseStateIcon : Boolean
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Collapse_State_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented then
+            --  UMLStateMachineDiagram::isTransitionOriented : Boolean
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Transition_Oriented
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Model_Element then
+            --  UMLStateMachineDiagram::modelElement : StateMachine
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.State_Machines.UML_State_Machine_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_State_Machine_Diagram_Set;
+
+      -------------------------------
+      -- UMLDI_UML_State_Shape_Set --
+      -------------------------------
+
+      procedure UMLDI_UML_State_Shape_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Shape_Is_Tabbed then
+            --  UMLStateShape::isTabbed : Boolean
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Tabbed
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_State_Shape_Set;
+
+      ---------------------------------------------------
+      -- UMLDI_UML_Stereotype_Property_Value_Label_Set --
+      ---------------------------------------------------
+
+      procedure UMLDI_UML_Stereotype_Property_Value_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element then
+            --  UMLStereotypePropertyValueLabel::modelElement : Property
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element then
+            --  UMLStereotypePropertyValueLabel::stereotypedElement : Element
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Stereotyped_Element
+               (AMF.UML.Elements.UML_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Stereotype_Property_Value_Label_Set;
+
+      -------------------------
+      -- UMLDI_UML_Style_Set --
+      -------------------------
+
+      procedure UMLDI_UML_Style_Set is
+      begin
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Name then
+            --  UMLStyle::fontName : String
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Font_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Style_Font_Size then
+            --  UMLStyle::fontSize : Real
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Font_Size
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Style_Set;
+
+      ---------------------------------------
+      -- UMLDI_UML_Typed_Element_Label_Set --
+      ---------------------------------------
+
+      procedure UMLDI_UML_Typed_Element_Label_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Label_Text then
+            --  UMLLabel::text : String
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Text
+               (League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Typed_Element_Label_Set;
+
+      ------------------------------------
+      -- UMLDI_UML_Use_Case_Diagram_Set --
+      ------------------------------------
+
+      procedure UMLDI_UML_Use_Case_Diagram_Set is
+      begin
+         if Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Shape_Bounds then
+            --  Shape::bounds : Bounds
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Bounds
+               (AMF.DC.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Documentation then
+            --  Diagram::documentation : String
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Documentation
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Heading then
+            --  UMLDiagram::heading : UMLLabel
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Heading
+               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Frame then
+            --  UMLDiagram::isFrame : Boolean
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Frame
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Is_Icon then
+            --  UMLDiagramElement::isIcon : Boolean
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Icon
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Is_Iso then
+            --  UMLDiagram::isIso : Boolean
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Iso
+               (League.Holders.Booleans.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style then
+            --  UMLDiagramElement::localStyle : UMLStyle
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Local_Style then
+            --  DiagramElement::localStyle : Style
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Local_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element then
+            --  UMLBehaviorDiagram::modelElement : Behavior
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Model_Element
+               (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name then
+            --  NamedElement::name : String
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Name then
+            --  Diagram::name : String
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+            --  NamedElement::nameExpression : StringExpression
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
+               (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element then
+            --  UMLDiagramElement::owningElement : UMLDiagramElement
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
+               (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+            --  ParameterableElement::owningTemplateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Resolution then
+            --  Diagram::resolution : Real
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
+               (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style then
+            --  DiagramElement::sharedStyle : Style
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.DI.Styles.DI_Style_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+            --  ParameterableElement::templateParameter : TemplateParameter
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
+               (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Packageable_Element_Visibility then
+            --  PackageableElement::visibility : VisibilityKind
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end UMLDI_UML_Use_Case_Diagram_Set;
 
       -----------------------------
       -- UML_Data_Store_Node_Set --
@@ -63505,6 +71803,90 @@ package body AMF.Internals.Tables.UML_Reflection is
 
          when AMF.Internals.Tables.UML_Types.E_UML_Create_Object_Action =>
             UML_Create_Object_Action_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            UMLDI_UML_Activity_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            UMLDI_UML_Association_End_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            UMLDI_UML_Class_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            UMLDI_UML_Classifier_Shape_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            UMLDI_UML_Compartment_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            UMLDI_UML_Compartmentable_Shape_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            UMLDI_UML_Component_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            UMLDI_UML_Composite_Structure_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            UMLDI_UML_Deployment_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            UMLDI_UML_Edge_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            UMLDI_UML_Interaction_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            UMLDI_UML_Interaction_Table_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            UMLDI_UML_Keyword_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            UMLDI_UML_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            UMLDI_UML_Multiplicity_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            UMLDI_UML_Name_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            UMLDI_UML_Object_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            UMLDI_UML_Package_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            UMLDI_UML_Profile_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            UMLDI_UML_Redefines_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            UMLDI_UML_Shape_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            UMLDI_UML_State_Machine_Diagram_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            UMLDI_UML_State_Shape_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            UMLDI_UML_Stereotype_Property_Value_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Style =>
+            UMLDI_UML_Style_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            UMLDI_UML_Typed_Element_Label_Set;
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            UMLDI_UML_Use_Case_Diagram_Set;
 
          when AMF.Internals.Tables.UML_Types.E_UML_Data_Store_Node =>
             UML_Data_Store_Node_Set;

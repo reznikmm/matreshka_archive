@@ -43,7 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.DC;
 with AMF.UML;
+with AMF.UMLDI;
 with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.UML_Attributes is
@@ -457,6 +459,38 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : AMF.Internals.AMF_Element);
    --  TemplateBinding => TemplateBinding::boundElement
 
+   function Internal_Get_Bounds
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.DC.Optional_DC_Bounds;
+   procedure Internal_Set_Bounds
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.DC.Optional_DC_Bounds);
+   --  UMLActivityDiagram => Shape::bounds
+   --  UMLAssociationEndLabel => Shape::bounds
+   --  UMLAssociationOrConnectorOrLinkShape => Shape::bounds
+   --  UMLClassDiagram => Shape::bounds
+   --  UMLClassifierShape => Shape::bounds
+   --  UMLCompartmentableShape => Shape::bounds
+   --  UMLComponentDiagram => Shape::bounds
+   --  UMLCompositeStructureDiagram => Shape::bounds
+   --  UMLDeploymentDiagram => Shape::bounds
+   --  UMLInteractionDiagram => Shape::bounds
+   --  UMLInteractionTableLabel => Shape::bounds
+   --  UMLKeywordLabel => Shape::bounds
+   --  UMLLabel => Shape::bounds
+   --  UMLMultiplicityLabel => Shape::bounds
+   --  UMLNameLabel => Shape::bounds
+   --  UMLObjectDiagram => Shape::bounds
+   --  UMLPackageDiagram => Shape::bounds
+   --  UMLProfileDiagram => Shape::bounds
+   --  UMLRedefinesLabel => Shape::bounds
+   --  UMLShape => Shape::bounds
+   --  UMLStateMachineDiagram => Shape::bounds
+   --  UMLStateShape => Shape::bounds
+   --  UMLStereotypePropertyValueLabel => Shape::bounds
+   --  UMLTypedElementLabel => Shape::bounds
+   --  UMLUseCaseDiagram => Shape::bounds
+
    function Internal_Get_Cfragment_Gate
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
@@ -586,6 +620,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::clientDependency
    --  CreateLinkObjectAction => NamedElement::clientDependency
    --  CreateObjectAction => NamedElement::clientDependency
+   --  UMLActivityDiagram => NamedElement::clientDependency
+   --  UMLClassDiagram => NamedElement::clientDependency
+   --  UMLComponentDiagram => NamedElement::clientDependency
+   --  UMLCompositeStructureDiagram => NamedElement::clientDependency
+   --  UMLDeploymentDiagram => NamedElement::clientDependency
+   --  UMLInteractionDiagram => NamedElement::clientDependency
+   --  UMLObjectDiagram => NamedElement::clientDependency
+   --  UMLPackageDiagram => NamedElement::clientDependency
+   --  UMLProfileDiagram => NamedElement::clientDependency
+   --  UMLStateMachineDiagram => NamedElement::clientDependency
+   --  UMLStyle => NamedElement::clientDependency
+   --  UMLUseCaseDiagram => NamedElement::clientDependency
    --  DataStoreNode => NamedElement::clientDependency
    --  DataType => NamedElement::clientDependency
    --  DecisionNode => NamedElement::clientDependency
@@ -757,6 +803,13 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element);
    --  ReduceAction => ReduceAction::collection
+
+   function Internal_Get_Compartment
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Collection_Of_Element;
+   --  UMLClassifierShape => UMLCompartmentableShape::compartment
+   --  UMLCompartmentableShape => UMLCompartmentableShape::compartment
+   --  UMLStateShape => UMLCompartmentableShape::compartment
 
    function Internal_Get_Computation
     (Self : AMF.Internals.AMF_Element)
@@ -1142,6 +1195,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  FinalState => State::doActivity
    --  State => State::doActivity
 
+   function Internal_Get_Documentation
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access;
+   procedure Internal_Set_Documentation
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
+   --  UMLActivityDiagram => Diagram::documentation
+   --  UMLClassDiagram => Diagram::documentation
+   --  UMLComponentDiagram => Diagram::documentation
+   --  UMLCompositeStructureDiagram => Diagram::documentation
+   --  UMLDeploymentDiagram => Diagram::documentation
+   --  UMLInteractionDiagram => Diagram::documentation
+   --  UMLObjectDiagram => Diagram::documentation
+   --  UMLPackageDiagram => Diagram::documentation
+   --  UMLProfileDiagram => Diagram::documentation
+   --  UMLStateMachineDiagram => Diagram::documentation
+   --  UMLUseCaseDiagram => Diagram::documentation
+
    function Internal_Get_Edge
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
@@ -1216,6 +1287,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StructuredActivityNode => Namespace::elementImport
    --  Transition => Namespace::elementImport
    --  UseCase => Namespace::elementImport
+
+   function Internal_Get_Element_In_Compartment
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Collection_Of_Element;
+   --  UMLCompartment => UMLCompartment::elementInCompartment
 
    function Internal_Get_Enclosing_Interaction
     (Self : AMF.Internals.AMF_Element)
@@ -1553,6 +1629,22 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : Boolean);
    --  TimeObservation => TimeObservation::firstEvent
 
+   function Internal_Get_Font_Name
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access;
+   procedure Internal_Set_Font_Name
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
+   --  UMLStyle => UMLStyle::fontName
+
+   function Internal_Get_Font_Size
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Optional_Real;
+   procedure Internal_Set_Font_Size
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Optional_Real);
+   --  UMLStyle => UMLStyle::fontSize
+
    function Internal_Get_Formal
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
@@ -1760,6 +1852,24 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element);
    --  ExceptionHandler => ExceptionHandler::handlerBody
+
+   function Internal_Get_Heading
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Heading
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
+   --  UMLActivityDiagram => UMLDiagram::heading
+   --  UMLClassDiagram => UMLDiagram::heading
+   --  UMLComponentDiagram => UMLDiagram::heading
+   --  UMLCompositeStructureDiagram => UMLDiagram::heading
+   --  UMLDeploymentDiagram => UMLDiagram::heading
+   --  UMLInteractionDiagram => UMLDiagram::heading
+   --  UMLObjectDiagram => UMLDiagram::heading
+   --  UMLPackageDiagram => UMLDiagram::heading
+   --  UMLProfileDiagram => UMLDiagram::heading
+   --  UMLStateMachineDiagram => UMLDiagram::heading
+   --  UMLUseCaseDiagram => UMLDiagram::heading
 
    function Internal_Get_Icon
     (Self : AMF.Internals.AMF_Element)
@@ -2249,6 +2359,14 @@ package AMF.Internals.Tables.UML_Attributes is
        return AMF.Internals.AMF_Collection_Of_Element;
    --  RedefinableTemplateSignature => RedefinableTemplateSignature::inheritedParameter
 
+   function Internal_Get_Inherited_State_Border
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind;
+   procedure Internal_Set_Inherited_State_Border
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.Optional_UMLDI_UML_Inherited_State_Border_Kind);
+   --  UMLStateMachineDiagram => UMLStateMachineDiagram::inheritedStateBorder
+
    function Internal_Get_Input
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
@@ -2454,6 +2572,23 @@ package AMF.Internals.Tables.UML_Attributes is
    --  StateMachine => Class::isActive
    --  Stereotype => Class::isActive
 
+   function Internal_Get_Is_Activity_Frame
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Activity_Frame
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLActivityDiagram => UMLActivityDiagram::isActivityFrame
+
+   function Internal_Get_Is_Association_Dot_Shown
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Association_Dot_Shown
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLClassDiagram => UMLClassOrCompositeStructureDiagram::isAssociationDotShown
+   --  UMLCompositeStructureDiagram => UMLClassOrCompositeStructureDiagram::isAssociationDotShown
+
    function Internal_Get_Is_Assured
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -2469,6 +2604,14 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Port => Port::isBehavior
+
+   function Internal_Get_Is_Collapse_State_Icon
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Collapse_State_Icon
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLStateMachineDiagram => UMLStateMachineDiagram::isCollapseStateIcon
 
    function Internal_Get_Is_Combine_Duplicate
     (Self : AMF.Internals.AMF_Element)
@@ -2612,6 +2755,14 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : Boolean);
    --  GeneralizationSet => GeneralizationSet::isDisjoint
 
+   function Internal_Get_Is_Double_Sided
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Double_Sided
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLClassifierShape => UMLClassifierShape::isDoubleSided
+
    function Internal_Get_Is_Exception
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -2662,6 +2813,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Classifier::isFinalSpecialization
    --  UseCase => Classifier::isFinalSpecialization
 
+   function Internal_Get_Is_Frame
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Frame
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLActivityDiagram => UMLDiagram::isFrame
+   --  UMLClassDiagram => UMLDiagram::isFrame
+   --  UMLComponentDiagram => UMLDiagram::isFrame
+   --  UMLCompositeStructureDiagram => UMLDiagram::isFrame
+   --  UMLDeploymentDiagram => UMLDiagram::isFrame
+   --  UMLInteractionDiagram => UMLDiagram::isFrame
+   --  UMLObjectDiagram => UMLDiagram::isFrame
+   --  UMLPackageDiagram => UMLDiagram::isFrame
+   --  UMLProfileDiagram => UMLDiagram::isFrame
+   --  UMLStateMachineDiagram => UMLDiagram::isFrame
+   --  UMLUseCaseDiagram => UMLDiagram::isFrame
+
    function Internal_Get_Is_ID
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -2672,6 +2841,48 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Port => Property::isID
    --  Property => Property::isID
 
+   function Internal_Get_Is_Icon
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Icon
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLActivityDiagram => UMLDiagramElement::isIcon
+   --  UMLAssociationEndLabel => UMLDiagramElement::isIcon
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::isIcon
+   --  UMLClassDiagram => UMLDiagramElement::isIcon
+   --  UMLClassifierShape => UMLDiagramElement::isIcon
+   --  UMLCompartment => UMLDiagramElement::isIcon
+   --  UMLCompartmentableShape => UMLDiagramElement::isIcon
+   --  UMLComponentDiagram => UMLDiagramElement::isIcon
+   --  UMLCompositeStructureDiagram => UMLDiagramElement::isIcon
+   --  UMLDeploymentDiagram => UMLDiagramElement::isIcon
+   --  UMLEdge => UMLDiagramElement::isIcon
+   --  UMLInteractionDiagram => UMLDiagramElement::isIcon
+   --  UMLInteractionTableLabel => UMLDiagramElement::isIcon
+   --  UMLKeywordLabel => UMLDiagramElement::isIcon
+   --  UMLLabel => UMLDiagramElement::isIcon
+   --  UMLMultiplicityLabel => UMLDiagramElement::isIcon
+   --  UMLNameLabel => UMLDiagramElement::isIcon
+   --  UMLObjectDiagram => UMLDiagramElement::isIcon
+   --  UMLPackageDiagram => UMLDiagramElement::isIcon
+   --  UMLProfileDiagram => UMLDiagramElement::isIcon
+   --  UMLRedefinesLabel => UMLDiagramElement::isIcon
+   --  UMLShape => UMLDiagramElement::isIcon
+   --  UMLStateMachineDiagram => UMLDiagramElement::isIcon
+   --  UMLStateShape => UMLDiagramElement::isIcon
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::isIcon
+   --  UMLTypedElementLabel => UMLDiagramElement::isIcon
+   --  UMLUseCaseDiagram => UMLDiagramElement::isIcon
+
+   function Internal_Get_Is_Indent_For_Visibility
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Indent_For_Visibility
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLClassifierShape => UMLClassifierShape::isIndentForVisibility
+
    function Internal_Get_Is_Indirectly_Instantiated
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -2679,6 +2890,24 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  Component => Component::isIndirectlyInstantiated
+
+   function Internal_Get_Is_Iso
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Iso
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLActivityDiagram => UMLDiagram::isIso
+   --  UMLClassDiagram => UMLDiagram::isIso
+   --  UMLComponentDiagram => UMLDiagram::isIso
+   --  UMLCompositeStructureDiagram => UMLDiagram::isIso
+   --  UMLDeploymentDiagram => UMLDiagram::isIso
+   --  UMLInteractionDiagram => UMLDiagram::isIso
+   --  UMLObjectDiagram => UMLDiagram::isIso
+   --  UMLPackageDiagram => UMLDiagram::isIso
+   --  UMLProfileDiagram => UMLDiagram::isIso
+   --  UMLStateMachineDiagram => UMLDiagram::isIso
+   --  UMLUseCaseDiagram => UMLDiagram::isIso
 
    function Internal_Get_Is_Leaf
     (Self : AMF.Internals.AMF_Element)
@@ -3016,6 +3245,14 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CallOperationAction => CallAction::isSynchronous
    --  StartObjectBehaviorAction => CallAction::isSynchronous
 
+   function Internal_Get_Is_Tabbed
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Tabbed
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLStateShape => UMLStateShape::isTabbed
+
    function Internal_Get_Is_Tested_First
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -3023,6 +3260,14 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : Boolean);
    --  LoopNode => LoopNode::isTestedFirst
+
+   function Internal_Get_Is_Transition_Oriented
+    (Self : AMF.Internals.AMF_Element)
+       return Boolean;
+   procedure Internal_Set_Is_Transition_Oriented
+    (Self : AMF.Internals.AMF_Element;
+     To   : Boolean);
+   --  UMLStateMachineDiagram => UMLStateMachineDiagram::isTransitionOriented
 
    function Internal_Get_Is_Unique
     (Self : AMF.Internals.AMF_Element)
@@ -3080,6 +3325,30 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : AMF.UML.UML_Transition_Kind);
    --  ProtocolTransition => Transition::kind
    --  Transition => Transition::kind
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind);
+   --  UMLAssociationOrConnectorOrLinkShape => UMLAssociationOrConnectorOrLinkShape::kind
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind;
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Interaction_Diagram_Kind);
+   --  UMLInteractionDiagram => UMLInteractionDiagram::kind
+
+   function Internal_Get_Kind
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind;
+   procedure Internal_Set_Kind
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Interaction_Table_Label_Kind);
+   --  UMLInteractionTableLabel => UMLInteractionTableLabel::kind
 
    function Internal_Get_Language
     (Self : AMF.Internals.AMF_Element)
@@ -3185,6 +3454,40 @@ package AMF.Internals.Tables.UML_Attributes is
    --  TestIdentityAction => Action::localPrecondition
    --  UnmarshallAction => Action::localPrecondition
    --  ValueSpecificationAction => Action::localPrecondition
+
+   function Internal_Get_Local_Style
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Local_Style
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
+   --  UMLActivityDiagram => UMLDiagramElement::localStyle
+   --  UMLAssociationEndLabel => UMLDiagramElement::localStyle
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::localStyle
+   --  UMLClassDiagram => UMLDiagramElement::localStyle
+   --  UMLClassifierShape => UMLDiagramElement::localStyle
+   --  UMLCompartment => UMLDiagramElement::localStyle
+   --  UMLCompartmentableShape => UMLDiagramElement::localStyle
+   --  UMLComponentDiagram => UMLDiagramElement::localStyle
+   --  UMLCompositeStructureDiagram => UMLDiagramElement::localStyle
+   --  UMLDeploymentDiagram => UMLDiagramElement::localStyle
+   --  UMLEdge => UMLDiagramElement::localStyle
+   --  UMLInteractionDiagram => UMLDiagramElement::localStyle
+   --  UMLInteractionTableLabel => UMLDiagramElement::localStyle
+   --  UMLKeywordLabel => UMLDiagramElement::localStyle
+   --  UMLLabel => UMLDiagramElement::localStyle
+   --  UMLMultiplicityLabel => UMLDiagramElement::localStyle
+   --  UMLNameLabel => UMLDiagramElement::localStyle
+   --  UMLObjectDiagram => UMLDiagramElement::localStyle
+   --  UMLPackageDiagram => UMLDiagramElement::localStyle
+   --  UMLProfileDiagram => UMLDiagramElement::localStyle
+   --  UMLRedefinesLabel => UMLDiagramElement::localStyle
+   --  UMLShape => UMLDiagramElement::localStyle
+   --  UMLStateMachineDiagram => UMLDiagramElement::localStyle
+   --  UMLStateShape => UMLDiagramElement::localStyle
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::localStyle
+   --  UMLTypedElementLabel => UMLDiagramElement::localStyle
+   --  UMLUseCaseDiagram => UMLDiagramElement::localStyle
 
    function Internal_Get_Location
     (Self : AMF.Internals.AMF_Element)
@@ -3423,6 +3726,42 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : AMF.UML.UML_Expansion_Kind);
    --  ExpansionRegion => ExpansionRegion::mode
 
+   function Internal_Get_Mode_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   --  UMLNameLabel => UMLNameLabel::modeElement
+
+   function Internal_Get_Model_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   --  UMLActivityDiagram => UMLActivityDiagram::modelElement
+   --  UMLAssociationEndLabel => UMLAssociationEndLabel::modelElement
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::modelElement
+   --  UMLClassDiagram => UMLDiagramElement::modelElement
+   --  UMLClassifierShape => UMLClassifierShape::modelElement
+   --  UMLCompartment => UMLDiagramElement::modelElement
+   --  UMLCompartmentableShape => UMLDiagramElement::modelElement
+   --  UMLComponentDiagram => UMLDiagramElement::modelElement
+   --  UMLCompositeStructureDiagram => UMLDiagramElement::modelElement
+   --  UMLDeploymentDiagram => UMLDiagramElement::modelElement
+   --  UMLEdge => UMLDiagramElement::modelElement
+   --  UMLInteractionDiagram => UMLBehaviorDiagram::modelElement
+   --  UMLInteractionTableLabel => UMLDiagramElement::modelElement
+   --  UMLKeywordLabel => UMLDiagramElement::modelElement
+   --  UMLLabel => UMLDiagramElement::modelElement
+   --  UMLMultiplicityLabel => UMLDiagramElement::modelElement
+   --  UMLNameLabel => UMLDiagramElement::modelElement
+   --  UMLObjectDiagram => UMLDiagramElement::modelElement
+   --  UMLPackageDiagram => UMLDiagramElement::modelElement
+   --  UMLProfileDiagram => UMLDiagramElement::modelElement
+   --  UMLRedefinesLabel => UMLDiagramElement::modelElement
+   --  UMLShape => UMLDiagramElement::modelElement
+   --  UMLStateMachineDiagram => UMLBehaviorDiagram::modelElement
+   --  UMLStateShape => UMLDiagramElement::modelElement
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::modelElement
+   --  UMLTypedElementLabel => UMLDiagramElement::modelElement
+   --  UMLUseCaseDiagram => UMLBehaviorDiagram::modelElement
+
    function Internal_Get_Must_Isolate
     (Self : AMF.Internals.AMF_Element)
        return Boolean;
@@ -3484,6 +3823,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::name
    --  CreateLinkObjectAction => NamedElement::name
    --  CreateObjectAction => NamedElement::name
+   --  UMLActivityDiagram => NamedElement::name
+   --  UMLClassDiagram => NamedElement::name
+   --  UMLComponentDiagram => NamedElement::name
+   --  UMLCompositeStructureDiagram => NamedElement::name
+   --  UMLDeploymentDiagram => NamedElement::name
+   --  UMLInteractionDiagram => NamedElement::name
+   --  UMLObjectDiagram => NamedElement::name
+   --  UMLPackageDiagram => NamedElement::name
+   --  UMLProfileDiagram => NamedElement::name
+   --  UMLStateMachineDiagram => NamedElement::name
+   --  UMLStyle => NamedElement::name
+   --  UMLUseCaseDiagram => NamedElement::name
    --  DataStoreNode => NamedElement::name
    --  DataType => NamedElement::name
    --  DecisionNode => NamedElement::name
@@ -3661,6 +4012,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::nameExpression
    --  CreateLinkObjectAction => NamedElement::nameExpression
    --  CreateObjectAction => NamedElement::nameExpression
+   --  UMLActivityDiagram => NamedElement::nameExpression
+   --  UMLClassDiagram => NamedElement::nameExpression
+   --  UMLComponentDiagram => NamedElement::nameExpression
+   --  UMLCompositeStructureDiagram => NamedElement::nameExpression
+   --  UMLDeploymentDiagram => NamedElement::nameExpression
+   --  UMLInteractionDiagram => NamedElement::nameExpression
+   --  UMLObjectDiagram => NamedElement::nameExpression
+   --  UMLPackageDiagram => NamedElement::nameExpression
+   --  UMLProfileDiagram => NamedElement::nameExpression
+   --  UMLStateMachineDiagram => NamedElement::nameExpression
+   --  UMLStyle => NamedElement::nameExpression
+   --  UMLUseCaseDiagram => NamedElement::nameExpression
    --  DataStoreNode => NamedElement::nameExpression
    --  DataType => NamedElement::nameExpression
    --  DecisionNode => NamedElement::nameExpression
@@ -3835,6 +4198,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::namespace
    --  CreateLinkObjectAction => NamedElement::namespace
    --  CreateObjectAction => NamedElement::namespace
+   --  UMLActivityDiagram => NamedElement::namespace
+   --  UMLClassDiagram => NamedElement::namespace
+   --  UMLComponentDiagram => NamedElement::namespace
+   --  UMLCompositeStructureDiagram => NamedElement::namespace
+   --  UMLDeploymentDiagram => NamedElement::namespace
+   --  UMLInteractionDiagram => NamedElement::namespace
+   --  UMLObjectDiagram => NamedElement::namespace
+   --  UMLPackageDiagram => NamedElement::namespace
+   --  UMLProfileDiagram => NamedElement::namespace
+   --  UMLStateMachineDiagram => NamedElement::namespace
+   --  UMLStyle => NamedElement::namespace
+   --  UMLUseCaseDiagram => NamedElement::namespace
    --  DataStoreNode => NamedElement::namespace
    --  DataType => NamedElement::namespace
    --  DecisionNode => NamedElement::namespace
@@ -3963,6 +4338,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValueSpecificationAction => NamedElement::namespace
    --  Variable => NamedElement::namespace
 
+   function Internal_Get_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
+   procedure Internal_Set_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind);
+   --  UMLClassDiagram => UMLClassOrCompositeStructureDiagram::navigabilityNotation
+   --  UMLCompositeStructureDiagram => UMLClassOrCompositeStructureDiagram::navigabilityNotation
+
    function Internal_Get_Navigable_Owned_End
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
@@ -4035,6 +4419,15 @@ package AMF.Internals.Tables.UML_Attributes is
    --  LoopNode => StructuredActivityNode::node
    --  SequenceNode => StructuredActivityNode::node
    --  StructuredActivityNode => StructuredActivityNode::node
+
+   function Internal_Get_Non_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind;
+   procedure Internal_Set_Non_Navigability_Notation
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.UMLDI.UMLDI_UML_Navigability_Notation_Kind);
+   --  UMLClassDiagram => UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation
+   --  UMLCompositeStructureDiagram => UMLClassOrCompositeStructureDiagram::nonNavigabilityNotation
 
    function Internal_Get_Object
     (Self : AMF.Internals.AMF_Element)
@@ -4347,6 +4740,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => Element::ownedComment
    --  CreateLinkObjectAction => Element::ownedComment
    --  CreateObjectAction => Element::ownedComment
+   --  UMLActivityDiagram => Element::ownedComment
+   --  UMLClassDiagram => Element::ownedComment
+   --  UMLComponentDiagram => Element::ownedComment
+   --  UMLCompositeStructureDiagram => Element::ownedComment
+   --  UMLDeploymentDiagram => Element::ownedComment
+   --  UMLInteractionDiagram => Element::ownedComment
+   --  UMLObjectDiagram => Element::ownedComment
+   --  UMLPackageDiagram => Element::ownedComment
+   --  UMLProfileDiagram => Element::ownedComment
+   --  UMLStateMachineDiagram => Element::ownedComment
+   --  UMLStyle => Element::ownedComment
+   --  UMLUseCaseDiagram => Element::ownedComment
    --  DataStoreNode => Element::ownedComment
    --  DataType => Element::ownedComment
    --  DecisionNode => Element::ownedComment
@@ -4573,6 +4978,34 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => Element::ownedElement
    --  CreateLinkObjectAction => Element::ownedElement
    --  CreateObjectAction => Element::ownedElement
+   --  UMLActivityDiagram => Element::ownedElement
+   --  UMLAssociationEndLabel => UMLDiagramElement::ownedElement
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::ownedElement
+   --  UMLClassDiagram => Element::ownedElement
+   --  UMLClassifierShape => UMLDiagramElement::ownedElement
+   --  UMLCompartment => UMLDiagramElement::ownedElement
+   --  UMLCompartmentableShape => UMLDiagramElement::ownedElement
+   --  UMLComponentDiagram => Element::ownedElement
+   --  UMLCompositeStructureDiagram => Element::ownedElement
+   --  UMLDeploymentDiagram => Element::ownedElement
+   --  UMLEdge => UMLDiagramElement::ownedElement
+   --  UMLInteractionDiagram => Element::ownedElement
+   --  UMLInteractionTableLabel => UMLDiagramElement::ownedElement
+   --  UMLKeywordLabel => UMLDiagramElement::ownedElement
+   --  UMLLabel => UMLDiagramElement::ownedElement
+   --  UMLMultiplicityLabel => UMLDiagramElement::ownedElement
+   --  UMLNameLabel => UMLDiagramElement::ownedElement
+   --  UMLObjectDiagram => Element::ownedElement
+   --  UMLPackageDiagram => Element::ownedElement
+   --  UMLProfileDiagram => Element::ownedElement
+   --  UMLRedefinesLabel => UMLDiagramElement::ownedElement
+   --  UMLShape => UMLDiagramElement::ownedElement
+   --  UMLStateMachineDiagram => Element::ownedElement
+   --  UMLStateShape => UMLDiagramElement::ownedElement
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::ownedElement
+   --  UMLStyle => Element::ownedElement
+   --  UMLTypedElementLabel => UMLDiagramElement::ownedElement
+   --  UMLUseCaseDiagram => Element::ownedElement
    --  DataStoreNode => Element::ownedElement
    --  DataType => Element::ownedElement
    --  DecisionNode => Element::ownedElement
@@ -5056,6 +5489,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => Element::owner
    --  CreateLinkObjectAction => Element::owner
    --  CreateObjectAction => Element::owner
+   --  UMLActivityDiagram => Element::owner
+   --  UMLClassDiagram => Element::owner
+   --  UMLComponentDiagram => Element::owner
+   --  UMLCompositeStructureDiagram => Element::owner
+   --  UMLDeploymentDiagram => Element::owner
+   --  UMLInteractionDiagram => Element::owner
+   --  UMLObjectDiagram => Element::owner
+   --  UMLPackageDiagram => Element::owner
+   --  UMLProfileDiagram => Element::owner
+   --  UMLStateMachineDiagram => Element::owner
+   --  UMLStyle => Element::owner
+   --  UMLUseCaseDiagram => Element::owner
    --  DataStoreNode => Element::owner
    --  DataType => Element::owner
    --  DecisionNode => Element::owner
@@ -5212,6 +5657,37 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Port => Property::owningAssociation
    --  Property => Property::owningAssociation
 
+   function Internal_Get_Owning_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   --  UMLActivityDiagram => UMLDiagramElement::owningElement
+   --  UMLAssociationEndLabel => UMLDiagramElement::owningElement
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::owningElement
+   --  UMLClassDiagram => UMLDiagramElement::owningElement
+   --  UMLClassifierShape => UMLDiagramElement::owningElement
+   --  UMLCompartment => UMLDiagramElement::owningElement
+   --  UMLCompartmentableShape => UMLDiagramElement::owningElement
+   --  UMLComponentDiagram => UMLDiagramElement::owningElement
+   --  UMLCompositeStructureDiagram => UMLDiagramElement::owningElement
+   --  UMLDeploymentDiagram => UMLDiagramElement::owningElement
+   --  UMLEdge => UMLDiagramElement::owningElement
+   --  UMLInteractionDiagram => UMLDiagramElement::owningElement
+   --  UMLInteractionTableLabel => UMLDiagramElement::owningElement
+   --  UMLKeywordLabel => UMLDiagramElement::owningElement
+   --  UMLLabel => UMLDiagramElement::owningElement
+   --  UMLMultiplicityLabel => UMLDiagramElement::owningElement
+   --  UMLNameLabel => UMLDiagramElement::owningElement
+   --  UMLObjectDiagram => UMLDiagramElement::owningElement
+   --  UMLPackageDiagram => UMLDiagramElement::owningElement
+   --  UMLProfileDiagram => UMLDiagramElement::owningElement
+   --  UMLRedefinesLabel => UMLDiagramElement::owningElement
+   --  UMLShape => UMLDiagramElement::owningElement
+   --  UMLStateMachineDiagram => UMLDiagramElement::owningElement
+   --  UMLStateShape => UMLDiagramElement::owningElement
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::owningElement
+   --  UMLTypedElementLabel => UMLDiagramElement::owningElement
+   --  UMLUseCaseDiagram => UMLDiagramElement::owningElement
+
    function Internal_Get_Owning_Expression
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
@@ -5249,6 +5725,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Component => ParameterableElement::owningTemplateParameter
    --  ComponentRealization => ParameterableElement::owningTemplateParameter
    --  Constraint => ParameterableElement::owningTemplateParameter
+   --  UMLActivityDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLClassDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLComponentDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLCompositeStructureDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLDeploymentDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLInteractionDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLObjectDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLPackageDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLProfileDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLStateMachineDiagram => ParameterableElement::owningTemplateParameter
+   --  UMLStyle => ParameterableElement::owningTemplateParameter
+   --  UMLUseCaseDiagram => ParameterableElement::owningTemplateParameter
    --  DataType => ParameterableElement::owningTemplateParameter
    --  Dependency => ParameterableElement::owningTemplateParameter
    --  Deployment => ParameterableElement::owningTemplateParameter
@@ -5642,6 +6130,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::qualifiedName
    --  CreateLinkObjectAction => NamedElement::qualifiedName
    --  CreateObjectAction => NamedElement::qualifiedName
+   --  UMLActivityDiagram => NamedElement::qualifiedName
+   --  UMLClassDiagram => NamedElement::qualifiedName
+   --  UMLComponentDiagram => NamedElement::qualifiedName
+   --  UMLCompositeStructureDiagram => NamedElement::qualifiedName
+   --  UMLDeploymentDiagram => NamedElement::qualifiedName
+   --  UMLInteractionDiagram => NamedElement::qualifiedName
+   --  UMLObjectDiagram => NamedElement::qualifiedName
+   --  UMLPackageDiagram => NamedElement::qualifiedName
+   --  UMLProfileDiagram => NamedElement::qualifiedName
+   --  UMLStateMachineDiagram => NamedElement::qualifiedName
+   --  UMLStyle => NamedElement::qualifiedName
+   --  UMLUseCaseDiagram => NamedElement::qualifiedName
    --  DataStoreNode => NamedElement::qualifiedName
    --  DataType => NamedElement::qualifiedName
    --  DecisionNode => NamedElement::qualifiedName
@@ -6350,6 +6850,24 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Component => Component::required
    --  Port => Port::required
 
+   function Internal_Get_Resolution
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Real;
+   procedure Internal_Set_Resolution
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Real);
+   --  UMLActivityDiagram => Diagram::resolution
+   --  UMLClassDiagram => Diagram::resolution
+   --  UMLComponentDiagram => Diagram::resolution
+   --  UMLCompositeStructureDiagram => Diagram::resolution
+   --  UMLDeploymentDiagram => Diagram::resolution
+   --  UMLInteractionDiagram => Diagram::resolution
+   --  UMLObjectDiagram => Diagram::resolution
+   --  UMLPackageDiagram => Diagram::resolution
+   --  UMLProfileDiagram => Diagram::resolution
+   --  UMLStateMachineDiagram => Diagram::resolution
+   --  UMLUseCaseDiagram => Diagram::resolution
+
    function Internal_Get_Result
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element;
@@ -6505,6 +7023,40 @@ package AMF.Internals.Tables.UML_Attributes is
        return AMF.Internals.AMF_Collection_Of_Element;
    --  LoopNode => LoopNode::setupPart
 
+   function Internal_Get_Shared_Style
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Shared_Style
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
+   --  UMLActivityDiagram => UMLDiagramElement::sharedStyle
+   --  UMLAssociationEndLabel => UMLDiagramElement::sharedStyle
+   --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::sharedStyle
+   --  UMLClassDiagram => UMLDiagramElement::sharedStyle
+   --  UMLClassifierShape => UMLDiagramElement::sharedStyle
+   --  UMLCompartment => UMLDiagramElement::sharedStyle
+   --  UMLCompartmentableShape => UMLDiagramElement::sharedStyle
+   --  UMLComponentDiagram => UMLDiagramElement::sharedStyle
+   --  UMLCompositeStructureDiagram => UMLDiagramElement::sharedStyle
+   --  UMLDeploymentDiagram => UMLDiagramElement::sharedStyle
+   --  UMLEdge => UMLDiagramElement::sharedStyle
+   --  UMLInteractionDiagram => UMLDiagramElement::sharedStyle
+   --  UMLInteractionTableLabel => UMLDiagramElement::sharedStyle
+   --  UMLKeywordLabel => UMLDiagramElement::sharedStyle
+   --  UMLLabel => UMLDiagramElement::sharedStyle
+   --  UMLMultiplicityLabel => UMLDiagramElement::sharedStyle
+   --  UMLNameLabel => UMLDiagramElement::sharedStyle
+   --  UMLObjectDiagram => UMLDiagramElement::sharedStyle
+   --  UMLPackageDiagram => UMLDiagramElement::sharedStyle
+   --  UMLProfileDiagram => UMLDiagramElement::sharedStyle
+   --  UMLRedefinesLabel => UMLDiagramElement::sharedStyle
+   --  UMLShape => UMLDiagramElement::sharedStyle
+   --  UMLStateMachineDiagram => UMLDiagramElement::sharedStyle
+   --  UMLStateShape => UMLDiagramElement::sharedStyle
+   --  UMLStereotypePropertyValueLabel => UMLDiagramElement::sharedStyle
+   --  UMLTypedElementLabel => UMLDiagramElement::sharedStyle
+   --  UMLUseCaseDiagram => UMLDiagramElement::sharedStyle
+
    function Internal_Get_Signal
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
@@ -6542,6 +7094,7 @@ package AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element;
      To   : AMF.Internals.AMF_Element);
    --  ControlFlow => ActivityEdge::source
+   --  UMLEdge => UMLEdge::source
    --  ObjectFlow => ActivityEdge::source
    --  ProtocolTransition => Transition::source
    --  Transition => Transition::source
@@ -6641,6 +7194,14 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : AMF.Internals.AMF_Element);
    --  Pseudostate => Pseudostate::stateMachine
    --  Region => Region::stateMachine
+
+   function Internal_Get_Stereotyped_Element
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Stereotyped_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
+   --  UMLStereotypePropertyValueLabel => UMLStereotypePropertyValueLabel::stereotypedElement
 
    function Internal_Get_Structural_Feature
     (Self : AMF.Internals.AMF_Element)
@@ -6839,6 +7400,7 @@ package AMF.Internals.Tables.UML_Attributes is
      To   : AMF.Internals.AMF_Element);
    --  CallOperationAction => CallOperationAction::target
    --  ControlFlow => ActivityEdge::target
+   --  UMLEdge => UMLEdge::target
    --  DestroyObjectAction => DestroyObjectAction::target
    --  ObjectFlow => ActivityEdge::target
    --  ProtocolTransition => Transition::target
@@ -6943,6 +7505,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Component => Classifier::templateParameter
    --  ComponentRealization => ParameterableElement::templateParameter
    --  Constraint => ParameterableElement::templateParameter
+   --  UMLActivityDiagram => ParameterableElement::templateParameter
+   --  UMLClassDiagram => ParameterableElement::templateParameter
+   --  UMLComponentDiagram => ParameterableElement::templateParameter
+   --  UMLCompositeStructureDiagram => ParameterableElement::templateParameter
+   --  UMLDeploymentDiagram => ParameterableElement::templateParameter
+   --  UMLInteractionDiagram => ParameterableElement::templateParameter
+   --  UMLObjectDiagram => ParameterableElement::templateParameter
+   --  UMLPackageDiagram => ParameterableElement::templateParameter
+   --  UMLProfileDiagram => ParameterableElement::templateParameter
+   --  UMLStateMachineDiagram => ParameterableElement::templateParameter
+   --  UMLStyle => ParameterableElement::templateParameter
+   --  UMLUseCaseDiagram => ParameterableElement::templateParameter
    --  DataType => Classifier::templateParameter
    --  Dependency => ParameterableElement::templateParameter
    --  Deployment => ParameterableElement::templateParameter
@@ -7010,6 +7584,22 @@ package AMF.Internals.Tables.UML_Attributes is
        return AMF.Internals.AMF_Collection_Of_Element;
    --  Clause => Clause::test
    --  LoopNode => LoopNode::test
+
+   function Internal_Get_Text
+    (Self : AMF.Internals.AMF_Element)
+       return Matreshka.Internals.Strings.Shared_String_Access;
+   procedure Internal_Set_Text
+    (Self : AMF.Internals.AMF_Element;
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
+   --  UMLAssociationEndLabel => UMLLabel::text
+   --  UMLInteractionTableLabel => UMLLabel::text
+   --  UMLKeywordLabel => UMLLabel::text
+   --  UMLLabel => UMLLabel::text
+   --  UMLMultiplicityLabel => UMLLabel::text
+   --  UMLNameLabel => UMLLabel::text
+   --  UMLRedefinesLabel => UMLLabel::text
+   --  UMLStereotypePropertyValueLabel => UMLLabel::text
+   --  UMLTypedElementLabel => UMLLabel::text
 
    function Internal_Get_To_After
     (Self : AMF.Internals.AMF_Element)
@@ -7340,6 +7930,18 @@ package AMF.Internals.Tables.UML_Attributes is
    --  CreateLinkAction => NamedElement::visibility
    --  CreateLinkObjectAction => NamedElement::visibility
    --  CreateObjectAction => NamedElement::visibility
+   --  UMLActivityDiagram => NamedElement::visibility
+   --  UMLClassDiagram => NamedElement::visibility
+   --  UMLComponentDiagram => NamedElement::visibility
+   --  UMLCompositeStructureDiagram => NamedElement::visibility
+   --  UMLDeploymentDiagram => NamedElement::visibility
+   --  UMLInteractionDiagram => NamedElement::visibility
+   --  UMLObjectDiagram => NamedElement::visibility
+   --  UMLPackageDiagram => NamedElement::visibility
+   --  UMLProfileDiagram => NamedElement::visibility
+   --  UMLStateMachineDiagram => NamedElement::visibility
+   --  UMLStyle => NamedElement::visibility
+   --  UMLUseCaseDiagram => NamedElement::visibility
    --  DataStoreNode => NamedElement::visibility
    --  DataType => NamedElement::visibility
    --  DecisionNode => NamedElement::visibility
@@ -7467,6 +8069,11 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => NamedElement::visibility
    --  ValueSpecificationAction => NamedElement::visibility
    --  Variable => NamedElement::visibility
+
+   function Internal_Get_Waypoint
+    (Self : AMF.Internals.AMF_Element)
+       return AMF.DC.Sequence_Of_DC_Point;
+   --  UMLEdge => Edge::waypoint
 
    function Internal_Get_Weight
     (Self : AMF.Internals.AMF_Element)
