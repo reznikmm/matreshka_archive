@@ -981,7 +981,7 @@ or (       modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(InstanceSpecifi
                          type="UMLStyle"
                          visibility="public"
                          loer="0"
-                         upper="*">
+                         upper="1">
             <redefinedProperty href="http://www.omg.org/spec/DD/20110901/DI.cmof#DiagramElement-sharedStyle"/>
             <ownedComment xmi:id="UMLDiagramElement-sharedStyle-_ownedComment.0"
                           xmi:type="cmof:Comment"
