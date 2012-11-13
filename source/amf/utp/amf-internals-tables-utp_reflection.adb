@@ -212,7 +212,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Coding_Rule_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Namespace then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Namespace_A_Extension_Coding_Rule then
             --  CodingRule::base_Namespace : Namespace
 
             return
@@ -221,7 +221,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Namespace));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Property then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Property_A_Extension_Coding_Rule then
             --  CodingRule::base_Property : Property
 
             return
@@ -230,7 +230,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Property));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Value_Specification then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Value_Specification_A_Extension_Coding_Rule then
             --  CodingRule::base_ValueSpecification : ValueSpecification
 
             return
@@ -258,7 +258,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Data_Partition_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Partition_Base_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Partition_Base_Classifier_A_Extension_Data_Partition then
             --  DataPartition::base_Classifier : Classifier
 
             return
@@ -278,7 +278,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Data_Pool_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Classifier_A_Extension_Data_Pool then
             --  DataPool::base_Classifier : Classifier
 
             return
@@ -287,7 +287,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Data_Pools.Utp_Data_Pool_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Classifier));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Property then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Property_A_Extension_Data_Pool then
             --  DataPool::base_Property : Property
 
             return
@@ -307,7 +307,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Data_Selector_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Selector_Base_Operation then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Selector_Base_Operation_A_Extension_Data_Selector then
             --  DataSelector::base_Operation : Operation
 
             return
@@ -327,7 +327,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Default_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Base_Behavior_A_Extension_Default then
             --  Default::base_Behavior : Behavior
 
             return
@@ -347,7 +347,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Default_Application_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Application_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Application_Base_Dependency_A_Extension_Default_Application then
             --  DefaultApplication::base_Dependency : Dependency
 
             return
@@ -375,7 +375,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Determ_Alt_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Determ_Alt_Base_Combined_Fragment then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Determ_Alt_Base_Combined_Fragment_A_Extension_Determ_Alt then
             --  DetermAlt::base_CombinedFragment : CombinedFragment
 
             return
@@ -395,7 +395,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Finish_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Invocation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Invocation_Action_A_Extension_Finish_Action then
             --  FinishAction::base_InvocationAction : InvocationAction
 
             return
@@ -404,7 +404,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Finish_Actions.Utp_Finish_Action_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Invocation_Action));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Opaque_Action then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Opaque_Action_A_Extension_Finish_Action then
             --  FinishAction::base_OpaqueAction : OpaqueAction
 
             return
@@ -424,7 +424,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Get_Timezone_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_A_Extension_Get_Timezone_Action then
             --  GetTimezoneAction::base_ReadStructuralFeatureAction : ReadStructuralFeatureAction
 
             return
@@ -444,7 +444,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Literal_Any_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Base_Literal_Specification then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Base_Literal_Specification_A_Extension_Literal_Any then
             --  LiteralAny::base_LiteralSpecification : LiteralSpecification
 
             return
@@ -464,7 +464,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Literal_Any_Or_Null_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Or_Null_Base_Literal_Specification then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Or_Null_Base_Literal_Specification_A_Extension_Literal_Any_Or_Null then
             --  LiteralAnyOrNull::base_LiteralSpecification : LiteralSpecification
 
             return
@@ -484,7 +484,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Log_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Log_Action_Base_Send_Object_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Log_Action_Base_Send_Object_Action_A_Extension_Log_Action then
             --  LogAction::base_SendObjectAction : SendObjectAction
 
             return
@@ -504,7 +504,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Managed_Element_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Managed_Element_Base_Element then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Managed_Element_Base_Element_A_Extension_Managed_Element then
             --  ManagedElement::base_Element : Element
 
             return
@@ -556,7 +556,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Read_Timer_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Read_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Read_Timer_Action_Base_Call_Operation_Action_A_Extension_Read_Timer_Action then
             --  ReadTimerAction::base_CallOperationAction : CallOperationAction
 
             return
@@ -576,7 +576,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_SUT_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_SUT_Base_Property then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_SUT_Base_Property_A_Extension_SUT then
             --  SUT::base_Property : Property
 
             return
@@ -596,7 +596,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Set_Timezone_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_A_Extension_Set_Timezone_Action then
             --  SetTimezoneAction::base_WriteStructuralFeatureAction : WriteStructuralFeatureAction
 
             return
@@ -616,7 +616,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Start_Timer_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Start_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Start_Timer_Action_Base_Call_Operation_Action_A_Extension_Start_Timer_Action then
             --  StartTimerAction::base_CallOperationAction : CallOperationAction
 
             return
@@ -636,7 +636,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Stop_Timer_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Stop_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Stop_Timer_Action_Base_Call_Operation_Action_A_Extension_Stop_Timer_Action then
             --  StopTimerAction::base_CallOperationAction : CallOperationAction
 
             return
@@ -656,7 +656,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Case_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Behavior_A_Extension_Test_Case then
             --  TestCase::base_Behavior : Behavior
 
             return
@@ -665,7 +665,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Test_Cases.Utp_Test_Case_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Behavior));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Operation then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Operation_A_Extension_Test_Case then
             --  TestCase::base_Operation : Operation
 
             return
@@ -709,7 +709,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Component_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Component_Base_Structured_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Component_Base_Structured_Classifier_A_Extension_Test_Component then
             --  TestComponent::base_StructuredClassifier : StructuredClassifier
 
             return
@@ -745,7 +745,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Context_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Behaviored_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Behaviored_Classifier_A_Extension_Test_Context then
             --  TestContext::base_BehavioredClassifier : BehavioredClassifier
 
             return
@@ -754,7 +754,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
                  (AMF.Utp.Test_Contexts.Utp_Test_Context_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Base_Behaviored_Classifier));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Structured_Classifier then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Structured_Classifier_A_Extension_Test_Context then
             --  TestContext::base_StructuredClassifier : StructuredClassifier
 
             return
@@ -798,7 +798,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Log_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Base_Behavior_A_Extension_Test_Log then
             --  TestLog::base_Behavior : Behavior
 
             return
@@ -866,7 +866,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Log_Application_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Application_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Application_Base_Dependency_A_Extension_Test_Log_Application then
             --  TestLogApplication::base_Dependency : Dependency
 
             return
@@ -886,7 +886,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Objective_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Objective_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Objective_Base_Dependency_A_Extension_Test_Objective then
             --  TestObjective::base_Dependency : Dependency
 
             return
@@ -914,7 +914,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Test_Suite_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Suite_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Suite_Base_Behavior_A_Extension_Test_Suite then
             --  TestSuite::base_Behavior : Behavior
 
             return
@@ -950,7 +950,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Time_Out_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Base_Time_Event then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Base_Time_Event_A_Extension_Time_Out then
             --  TimeOut::base_TimeEvent : TimeEvent
 
             return
@@ -970,7 +970,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Time_Out_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Action_Base_Accept_Event_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Action_Base_Accept_Event_Action_A_Extension_Time_Out_Action then
             --  TimeOutAction::base_AcceptEventAction : AcceptEventAction
 
             return
@@ -990,7 +990,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Time_Out_Message_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Message_Base_Message then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Message_Base_Message_A_Extension_Time_Out_Message then
             --  TimeOutMessage::base_Message : Message
 
             return
@@ -1010,7 +1010,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Timer_Running_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_A_Extension_Timer_Running_Action then
             --  TimerRunningAction::base_ReadStructuralFeatureAction : ReadStructuralFeatureAction
 
             return
@@ -1030,7 +1030,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       function Utp_Validation_Action_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Validation_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Validation_Action_Base_Call_Operation_Action_A_Extension_Validation_Action then
             --  ValidationAction::base_CallOperationAction : CallOperationAction
 
             return
@@ -1350,21 +1350,21 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Coding_Rule_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Namespace then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Namespace_A_Extension_Coding_Rule then
             --  CodingRule::base_Namespace : Namespace
 
             AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Namespace
                (AMF.UML.Namespaces.UML_Namespace_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Property then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Property_A_Extension_Coding_Rule then
             --  CodingRule::base_Property : Property
 
             AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Property
                (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Value_Specification then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Coding_Rule_Base_Value_Specification_A_Extension_Coding_Rule then
             --  CodingRule::base_ValueSpecification : ValueSpecification
 
             AMF.Utp.Coding_Rules.Utp_Coding_Rule_Access
@@ -1389,7 +1389,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Data_Partition_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Partition_Base_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Partition_Base_Classifier_A_Extension_Data_Partition then
             --  DataPartition::base_Classifier : Classifier
 
             AMF.Utp.Data_Partitions.Utp_Data_Partition_Access
@@ -1407,14 +1407,14 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Data_Pool_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Classifier_A_Extension_Data_Pool then
             --  DataPool::base_Classifier : Classifier
 
             AMF.Utp.Data_Pools.Utp_Data_Pool_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Classifier
                (AMF.UML.Classifiers.UML_Classifier_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Property then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Pool_Base_Property_A_Extension_Data_Pool then
             --  DataPool::base_Property : Property
 
             AMF.Utp.Data_Pools.Utp_Data_Pool_Access
@@ -1432,7 +1432,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Data_Selector_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Selector_Base_Operation then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Data_Selector_Base_Operation_A_Extension_Data_Selector then
             --  DataSelector::base_Operation : Operation
 
             AMF.Utp.Data_Selectors.Utp_Data_Selector_Access
@@ -1450,7 +1450,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Default_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Base_Behavior_A_Extension_Default then
             --  Default::base_Behavior : Behavior
 
             AMF.Utp.Defaults.Utp_Default_Access
@@ -1468,7 +1468,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Default_Application_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Application_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Default_Application_Base_Dependency_A_Extension_Default_Application then
             --  DefaultApplication::base_Dependency : Dependency
 
             AMF.Utp.Default_Applications.Utp_Default_Application_Access
@@ -1493,7 +1493,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Determ_Alt_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Determ_Alt_Base_Combined_Fragment then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Determ_Alt_Base_Combined_Fragment_A_Extension_Determ_Alt then
             --  DetermAlt::base_CombinedFragment : CombinedFragment
 
             AMF.Utp.Determ_Alts.Utp_Determ_Alt_Access
@@ -1511,14 +1511,14 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Finish_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Invocation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Invocation_Action_A_Extension_Finish_Action then
             --  FinishAction::base_InvocationAction : InvocationAction
 
             AMF.Utp.Finish_Actions.Utp_Finish_Action_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Invocation_Action
                (AMF.UML.Invocation_Actions.UML_Invocation_Action_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Opaque_Action then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Finish_Action_Base_Opaque_Action_A_Extension_Finish_Action then
             --  FinishAction::base_OpaqueAction : OpaqueAction
 
             AMF.Utp.Finish_Actions.Utp_Finish_Action_Access
@@ -1536,7 +1536,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Get_Timezone_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_A_Extension_Get_Timezone_Action then
             --  GetTimezoneAction::base_ReadStructuralFeatureAction : ReadStructuralFeatureAction
 
             AMF.Utp.Get_Timezone_Actions.Utp_Get_Timezone_Action_Access
@@ -1554,7 +1554,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Literal_Any_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Base_Literal_Specification then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Base_Literal_Specification_A_Extension_Literal_Any then
             --  LiteralAny::base_LiteralSpecification : LiteralSpecification
 
             AMF.Utp.Literal_Anies.Utp_Literal_Any_Access
@@ -1572,7 +1572,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Literal_Any_Or_Null_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Or_Null_Base_Literal_Specification then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Literal_Any_Or_Null_Base_Literal_Specification_A_Extension_Literal_Any_Or_Null then
             --  LiteralAnyOrNull::base_LiteralSpecification : LiteralSpecification
 
             AMF.Utp.Literal_Any_Or_Nulls.Utp_Literal_Any_Or_Null_Access
@@ -1590,7 +1590,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Log_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Log_Action_Base_Send_Object_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Log_Action_Base_Send_Object_Action_A_Extension_Log_Action then
             --  LogAction::base_SendObjectAction : SendObjectAction
 
             AMF.Utp.Log_Actions.Utp_Log_Action_Access
@@ -1608,7 +1608,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Managed_Element_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Managed_Element_Base_Element then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Managed_Element_Base_Element_A_Extension_Managed_Element then
             --  ManagedElement::base_Element : Element
 
             AMF.Utp.Managed_Elements.Utp_Managed_Element_Access
@@ -1654,7 +1654,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Read_Timer_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Read_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Read_Timer_Action_Base_Call_Operation_Action_A_Extension_Read_Timer_Action then
             --  ReadTimerAction::base_CallOperationAction : CallOperationAction
 
             AMF.Utp.Read_Timer_Actions.Utp_Read_Timer_Action_Access
@@ -1672,7 +1672,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_SUT_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_SUT_Base_Property then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_SUT_Base_Property_A_Extension_SUT then
             --  SUT::base_Property : Property
 
             AMF.Utp.SUTs.Utp_SUT_Access
@@ -1690,7 +1690,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Set_Timezone_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_A_Extension_Set_Timezone_Action then
             --  SetTimezoneAction::base_WriteStructuralFeatureAction : WriteStructuralFeatureAction
 
             AMF.Utp.Set_Timezone_Actions.Utp_Set_Timezone_Action_Access
@@ -1708,7 +1708,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Start_Timer_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Start_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Start_Timer_Action_Base_Call_Operation_Action_A_Extension_Start_Timer_Action then
             --  StartTimerAction::base_CallOperationAction : CallOperationAction
 
             AMF.Utp.Start_Timer_Actions.Utp_Start_Timer_Action_Access
@@ -1726,7 +1726,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Stop_Timer_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Stop_Timer_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Stop_Timer_Action_Base_Call_Operation_Action_A_Extension_Stop_Timer_Action then
             --  StopTimerAction::base_CallOperationAction : CallOperationAction
 
             AMF.Utp.Stop_Timer_Actions.Utp_Stop_Timer_Action_Access
@@ -1744,14 +1744,14 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Case_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Behavior_A_Extension_Test_Case then
             --  TestCase::base_Behavior : Behavior
 
             AMF.Utp.Test_Cases.Utp_Test_Case_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Behavior
                (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Operation then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Case_Base_Operation_A_Extension_Test_Case then
             --  TestCase::base_Operation : Operation
 
             AMF.Utp.Test_Cases.Utp_Test_Case_Access
@@ -1776,7 +1776,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Component_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Component_Base_Structured_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Component_Base_Structured_Classifier_A_Extension_Test_Component then
             --  TestComponent::base_StructuredClassifier : StructuredClassifier
 
             AMF.Utp.Test_Components.Utp_Test_Component_Access
@@ -1794,14 +1794,14 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Context_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Behaviored_Classifier then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Behaviored_Classifier_A_Extension_Test_Context then
             --  TestContext::base_BehavioredClassifier : BehavioredClassifier
 
             AMF.Utp.Test_Contexts.Utp_Test_Context_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Base_Behaviored_Classifier
                (AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Structured_Classifier then
+         elsif Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Context_Base_Structured_Classifier_A_Extension_Test_Context then
             --  TestContext::base_StructuredClassifier : StructuredClassifier
 
             AMF.Utp.Test_Contexts.Utp_Test_Context_Access
@@ -1826,7 +1826,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Log_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Base_Behavior_A_Extension_Test_Log then
             --  TestLog::base_Behavior : Behavior
 
             AMF.Utp.Test_Logs.Utp_Test_Log_Access
@@ -1879,7 +1879,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Log_Application_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Application_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Log_Application_Base_Dependency_A_Extension_Test_Log_Application then
             --  TestLogApplication::base_Dependency : Dependency
 
             AMF.Utp.Test_Log_Applications.Utp_Test_Log_Application_Access
@@ -1897,7 +1897,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Objective_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Objective_Base_Dependency then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Objective_Base_Dependency_A_Extension_Test_Objective then
             --  TestObjective::base_Dependency : Dependency
 
             AMF.Utp.Test_Objectives.Utp_Test_Objective_Access
@@ -1922,7 +1922,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Test_Suite_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Suite_Base_Behavior then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Test_Suite_Base_Behavior_A_Extension_Test_Suite then
             --  TestSuite::base_Behavior : Behavior
 
             AMF.Utp.Test_Suites.Utp_Test_Suite_Access
@@ -1947,7 +1947,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Time_Out_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Base_Time_Event then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Base_Time_Event_A_Extension_Time_Out then
             --  TimeOut::base_TimeEvent : TimeEvent
 
             AMF.Utp.Time_Outs.Utp_Time_Out_Access
@@ -1965,7 +1965,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Time_Out_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Action_Base_Accept_Event_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Action_Base_Accept_Event_Action_A_Extension_Time_Out_Action then
             --  TimeOutAction::base_AcceptEventAction : AcceptEventAction
 
             AMF.Utp.Time_Out_Actions.Utp_Time_Out_Action_Access
@@ -1983,7 +1983,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Time_Out_Message_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Message_Base_Message then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Time_Out_Message_Base_Message_A_Extension_Time_Out_Message then
             --  TimeOutMessage::base_Message : Message
 
             AMF.Utp.Time_Out_Messages.Utp_Time_Out_Message_Access
@@ -2001,7 +2001,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Timer_Running_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_A_Extension_Timer_Running_Action then
             --  TimerRunningAction::base_ReadStructuralFeatureAction : ReadStructuralFeatureAction
 
             AMF.Utp.Timer_Running_Actions.Utp_Timer_Running_Action_Access
@@ -2019,7 +2019,7 @@ package body AMF.Internals.Tables.UTP_Reflection is
 
       procedure Utp_Validation_Action_Set is
       begin
-         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Validation_Action_Base_Call_Operation_Action then
+         if Property = AMF.Internals.Tables.Utp_Metamodel.MP_Utp_Validation_Action_Base_Call_Operation_Action_A_Extension_Validation_Action then
             --  ValidationAction::base_CallOperationAction : CallOperationAction
 
             AMF.Utp.Validation_Actions.Utp_Validation_Action_Access
