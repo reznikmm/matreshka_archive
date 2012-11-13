@@ -715,7 +715,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Out_Action_Base_Accept_Event_Action_Extension_Time_Out_Action,
               Self,
               To);
 
@@ -735,25 +735,25 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Default,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Default_Base_Behavior_Extension_Default,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Case,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Case_Base_Behavior_Extension_Test_Case,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Log,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Log_Base_Behavior_Extension_Test_Log,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Suite_Base_Behavior_Extension_Test_Suite,
               Self,
               To);
 
@@ -773,7 +773,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Context_Base_Behaviored_Classifier_Extension_Test_Context,
               Self,
               To);
 
@@ -793,25 +793,25 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Read_Timer_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Timer_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Start_Timer_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Start_Timer_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Stop_Timer_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Stop_Timer_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Validation_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Validation_Action_Base_Call_Operation_Action_Extension_Validation_Action,
               Self,
               To);
 
@@ -831,13 +831,13 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Data_Partition_Base_Classifier_Extension_Data_Partition,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Data_Pool_Base_Classifier_Extension_Data_Pool,
               Self,
               To);
 
@@ -857,7 +857,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Determ_Alt =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Determ_Alt_Base_Combined_Fragment_Extension_Determ_Alt,
               Self,
               To);
 
@@ -877,19 +877,19 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Default_Application =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Default_Application,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Default_Application_Base_Dependency_Extension_Default_Application,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log_Application =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Log_Application_Base_Dependency_Extension_Test_Log_Application,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Objective_Base_Dependency_Extension_Test_Objective,
               Self,
               To);
 
@@ -909,7 +909,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Managed_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Element_Base_Element_Extension_Managed_Element,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Managed_Element_Base_Element_Extension_Managed_Element,
               Self,
               To);
 
@@ -929,7 +929,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Finish_Action_Base_Invocation_Action_Extension_Finish_Action,
               Self,
               To);
 
@@ -949,13 +949,13 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Any_Base_Literal_Specification_Extension_Literal_Any,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Literal_Any_Or_Null =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Literal_Any_Or_Null_Base_Literal_Specification_Extension_Literal_Any_Or_Null,
               Self,
               To);
 
@@ -975,7 +975,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out_Message =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Message_Base_Message_Extension_Time_Out_Message,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Out_Message_Base_Message_Extension_Time_Out_Message,
               Self,
               To);
 
@@ -995,7 +995,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Coding_Rule_Base_Namespace_Extension_Coding_Rule,
               Self,
               To);
 
@@ -1015,7 +1015,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Finish_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Finish_Action_Base_Opaque_Action_Extension_Finish_Action,
               Self,
               To);
 
@@ -1035,13 +1035,13 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Data_Selector,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Data_Selector_Base_Operation_Extension_Data_Selector,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Operation_Base_Operation_Extension_Test_Case,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Case_Base_Operation_Extension_Test_Case,
               Self,
               To);
 
@@ -1061,19 +1061,19 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Coding_Rule,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Coding_Rule_Base_Property_Extension_Coding_Rule,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_Data_Pool,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Data_Pool_Base_Property_Extension_Data_Pool,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_SUT =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Property_Base_Property_Extension_SUT,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_SUT_Base_Property_Extension_SUT,
               Self,
               To);
 
@@ -1093,13 +1093,13 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Get_Timezone_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Timer_Running_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action,
               Self,
               To);
 
@@ -1119,7 +1119,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Log_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Log_Action_Base_Send_Object_Action_Extension_Log_Action,
               Self,
               To);
 
@@ -1139,13 +1139,13 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Component_Base_Structured_Classifier_Extension_Test_Component,
               Self,
               To);
 
          when AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Test_Context_Base_Structured_Classifier_Extension_Test_Context,
               Self,
               To);
 
@@ -1165,7 +1165,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Time_Out_Base_Time_Event_Extension_Time_Out,
               Self,
               To);
 
@@ -1185,7 +1185,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Coding_Rule_Base_Value_Specification_Extension_Coding_Rule,
               Self,
               To);
 
@@ -1205,7 +1205,7 @@ package body AMF.Internals.Tables.UTP_Attributes is
       case AMF.Internals.Tables.UTP_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.UTP_Types.E_Utp_Set_Timezone_Action =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action,
+             (AMF.Internals.Tables.Utp_Metamodel.MA_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action,
               Self,
               To);
 

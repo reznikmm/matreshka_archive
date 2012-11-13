@@ -892,329 +892,329 @@ package body AMF.Internals.Tables.Utp_Metamodel is
       return Base + 89;
    end MP_Utp_Validation_Action_Base_Call_Operation_Action;
 
-   -------------------------------------------------
-   -- MA_Utp_Property_Base_Property_Extension_SUT --
-   -------------------------------------------------
+   --------------------------------------------
+   -- MA_Utp_SUT_Base_Property_Extension_SUT --
+   --------------------------------------------
 
-   function MA_Utp_Property_Base_Property_Extension_SUT return AMF.Internals.CMOF_Element is
+   function MA_Utp_SUT_Base_Property_Extension_SUT return AMF.Internals.CMOF_Element is
    begin
       return Base + 90;
-   end MA_Utp_Property_Base_Property_Extension_SUT;
+   end MA_Utp_SUT_Base_Property_Extension_SUT;
 
-   ------------------------------------------------------------------------------------
-   -- MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context --
-   ------------------------------------------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MA_Utp_Test_Context_Base_Behaviored_Classifier_Extension_Test_Context --
+   ---------------------------------------------------------------------------
 
-   function MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Context_Base_Behaviored_Classifier_Extension_Test_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 91;
-   end MA_Utp_Behaviored_Classifier_Base_Behaviored_Classifier_Extension_Test_Context;
+   end MA_Utp_Test_Context_Base_Behaviored_Classifier_Extension_Test_Context;
 
-   -------------------------------------------------------------
-   -- MA_Utp_Operation_Base_Operation_Extension_Data_Selector --
-   -------------------------------------------------------------
+   -----------------------------------------------------------------
+   -- MA_Utp_Data_Selector_Base_Operation_Extension_Data_Selector --
+   -----------------------------------------------------------------
 
-   function MA_Utp_Operation_Base_Operation_Extension_Data_Selector return AMF.Internals.CMOF_Element is
+   function MA_Utp_Data_Selector_Base_Operation_Extension_Data_Selector return AMF.Internals.CMOF_Element is
    begin
       return Base + 92;
-   end MA_Utp_Operation_Base_Operation_Extension_Data_Selector;
+   end MA_Utp_Data_Selector_Base_Operation_Extension_Data_Selector;
 
-   -----------------------------------------------------------------------------------------
-   -- MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action --
-   -----------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MA_Utp_Validation_Action_Base_Call_Operation_Action_Extension_Validation_Action --
+   -------------------------------------------------------------------------------------
 
-   function MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Validation_Action_Base_Call_Operation_Action_Extension_Validation_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 93;
-   end MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Validation_Action;
+   end MA_Utp_Validation_Action_Base_Call_Operation_Action_Extension_Validation_Action;
 
-   ----------------------------------------------------------
-   -- MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out --
-   ----------------------------------------------------------
+   --------------------------------------------------------
+   -- MA_Utp_Time_Out_Base_Time_Event_Extension_Time_Out --
+   --------------------------------------------------------
 
-   function MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out return AMF.Internals.CMOF_Element is
+   function MA_Utp_Time_Out_Base_Time_Event_Extension_Time_Out return AMF.Internals.CMOF_Element is
    begin
       return Base + 94;
-   end MA_Utp_Time_Event_Base_Time_Event_Extension_Time_Out;
+   end MA_Utp_Time_Out_Base_Time_Event_Extension_Time_Out;
 
-   -----------------------------------------------------------
-   -- MA_Utp_Element_Base_Element_Extension_Managed_Element --
-   -----------------------------------------------------------
+   -------------------------------------------------------------------
+   -- MA_Utp_Managed_Element_Base_Element_Extension_Managed_Element --
+   -------------------------------------------------------------------
 
-   function MA_Utp_Element_Base_Element_Extension_Managed_Element return AMF.Internals.CMOF_Element is
+   function MA_Utp_Managed_Element_Base_Element_Extension_Managed_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 95;
-   end MA_Utp_Element_Base_Element_Extension_Managed_Element;
+   end MA_Utp_Managed_Element_Base_Element_Extension_Managed_Element;
 
-   ------------------------------------------------------------
-   -- MA_Utp_Message_Base_Message_Extension_Time_Out_Message --
-   ------------------------------------------------------------
+   ---------------------------------------------------------------------
+   -- MA_Utp_Time_Out_Message_Base_Message_Extension_Time_Out_Message --
+   ---------------------------------------------------------------------
 
-   function MA_Utp_Message_Base_Message_Extension_Time_Out_Message return AMF.Internals.CMOF_Element is
+   function MA_Utp_Time_Out_Message_Base_Message_Extension_Time_Out_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 96;
-   end MA_Utp_Message_Base_Message_Extension_Time_Out_Message;
+   end MA_Utp_Time_Out_Message_Base_Message_Extension_Time_Out_Message;
 
-   --------------------------------------------------------------------------------------
-   -- MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component --
-   --------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MA_Utp_Test_Component_Base_Structured_Classifier_Extension_Test_Component --
+   -------------------------------------------------------------------------------
 
-   function MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Component_Base_Structured_Classifier_Extension_Test_Component return AMF.Internals.CMOF_Element is
    begin
       return Base + 97;
-   end MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Component;
+   end MA_Utp_Test_Component_Base_Structured_Classifier_Extension_Test_Component;
 
-   -----------------------------------------------------------------------------------
-   -- MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action --
-   -----------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MA_Utp_Time_Out_Action_Base_Accept_Event_Action_Extension_Time_Out_Action --
+   -------------------------------------------------------------------------------
 
-   function MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Time_Out_Action_Base_Accept_Event_Action_Extension_Time_Out_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 98;
-   end MA_Utp_Accept_Event_Action_Base_Accept_Event_Action_Extension_Time_Out_Action;
+   end MA_Utp_Time_Out_Action_Base_Accept_Event_Action_Extension_Time_Out_Action;
 
-   --------------------------------------------------------
-   -- MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite --
-   --------------------------------------------------------
+   ----------------------------------------------------------
+   -- MA_Utp_Test_Suite_Base_Behavior_Extension_Test_Suite --
+   ----------------------------------------------------------
 
-   function MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Suite_Base_Behavior_Extension_Test_Suite return AMF.Internals.CMOF_Element is
    begin
       return Base + 99;
-   end MA_Utp_Behavior_Base_Behavior_Extension_Test_Suite;
+   end MA_Utp_Test_Suite_Base_Behavior_Extension_Test_Suite;
 
    ------------------------------------------------------
-   -- MA_Utp_Behavior_Base_Behavior_Extension_Test_Log --
+   -- MA_Utp_Test_Log_Base_Behavior_Extension_Test_Log --
    ------------------------------------------------------
 
-   function MA_Utp_Behavior_Base_Behavior_Extension_Test_Log return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Log_Base_Behavior_Extension_Test_Log return AMF.Internals.CMOF_Element is
    begin
       return Base + 100;
-   end MA_Utp_Behavior_Base_Behavior_Extension_Test_Log;
+   end MA_Utp_Test_Log_Base_Behavior_Extension_Test_Log;
 
-   ------------------------------------------------------------------------------------------
-   -- MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action --
-   ------------------------------------------------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MA_Utp_Start_Timer_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action --
+   ---------------------------------------------------------------------------------------
 
-   function MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Start_Timer_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 101;
-   end MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action;
+   end MA_Utp_Start_Timer_Action_Base_Call_Operation_Action_Extension_Start_Timer_Action;
 
-   ------------------------------------------------------------------------------------
-   -- MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context --
-   ------------------------------------------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MA_Utp_Test_Context_Base_Structured_Classifier_Extension_Test_Context --
+   ---------------------------------------------------------------------------
 
-   function MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Context_Base_Structured_Classifier_Extension_Test_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 102;
-   end MA_Utp_Structured_Classifier_Base_Structured_Classifier_Extension_Test_Context;
+   end MA_Utp_Test_Context_Base_Structured_Classifier_Extension_Test_Context;
 
-   ----------------------------------------------------------------------
-   -- MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application --
-   ----------------------------------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MA_Utp_Test_Log_Application_Base_Dependency_Extension_Test_Log_Application --
+   --------------------------------------------------------------------------------
 
-   function MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Log_Application_Base_Dependency_Extension_Test_Log_Application return AMF.Internals.CMOF_Element is
    begin
       return Base + 103;
-   end MA_Utp_Dependency_Base_Dependency_Extension_Test_Log_Application;
+   end MA_Utp_Test_Log_Application_Base_Dependency_Extension_Test_Log_Application;
 
-   -----------------------------------------------------------------------------------------
-   -- MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action --
-   -----------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MA_Utp_Stop_Timer_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action --
+   -------------------------------------------------------------------------------------
 
-   function MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Stop_Timer_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 104;
-   end MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action;
+   end MA_Utp_Stop_Timer_Action_Base_Call_Operation_Action_Extension_Stop_Timer_Action;
 
-   -----------------------------------------------------------------------------------------
-   -- MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action --
-   -----------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MA_Utp_Read_Timer_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action --
+   -------------------------------------------------------------------------------------
 
-   function MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Read_Timer_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 105;
-   end MA_Utp_Call_Operation_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action;
+   end MA_Utp_Read_Timer_Action_Base_Call_Operation_Action_Extension_Read_Timer_Action;
 
-   -------------------------------------------------------------------------------
-   -- MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule --
-   -------------------------------------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MA_Utp_Coding_Rule_Base_Value_Specification_Extension_Coding_Rule --
+   -----------------------------------------------------------------------
 
-   function MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
+   function MA_Utp_Coding_Rule_Base_Value_Specification_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
    begin
       return Base + 106;
-   end MA_Utp_Value_Specification_Base_Value_Specification_Extension_Coding_Rule;
+   end MA_Utp_Coding_Rule_Base_Value_Specification_Extension_Coding_Rule;
 
-   --------------------------------------------------------------------------------------------------------------
-   -- MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action --
-   --------------------------------------------------------------------------------------------------------------
+   ----------------------------------------------------------------------------------------------------
+   -- MA_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action --
+   ----------------------------------------------------------------------------------------------------
 
-   function MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 107;
-   end MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action;
+   end MA_Utp_Timer_Running_Action_Base_Read_Structural_Feature_Action_Extension_Timer_Running_Action;
 
-   -----------------------------------------------------------
-   -- MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule --
-   -----------------------------------------------------------
+   -------------------------------------------------------------
+   -- MA_Utp_Coding_Rule_Base_Namespace_Extension_Coding_Rule --
+   -------------------------------------------------------------
 
-   function MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
+   function MA_Utp_Coding_Rule_Base_Namespace_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
    begin
       return Base + 108;
-   end MA_Utp_Namespace_Base_Namespace_Extension_Coding_Rule;
+   end MA_Utp_Coding_Rule_Base_Namespace_Extension_Coding_Rule;
 
-   ---------------------------------------------------------
-   -- MA_Utp_Property_Base_Property_Extension_Coding_Rule --
-   ---------------------------------------------------------
+   ------------------------------------------------------------
+   -- MA_Utp_Coding_Rule_Base_Property_Extension_Coding_Rule --
+   ------------------------------------------------------------
 
-   function MA_Utp_Property_Base_Property_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
+   function MA_Utp_Coding_Rule_Base_Property_Extension_Coding_Rule return AMF.Internals.CMOF_Element is
    begin
       return Base + 109;
-   end MA_Utp_Property_Base_Property_Extension_Coding_Rule;
+   end MA_Utp_Coding_Rule_Base_Property_Extension_Coding_Rule;
 
-   -------------------------------------------------------------------------------------------------------------
-   -- MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action --
-   -------------------------------------------------------------------------------------------------------------
+   --------------------------------------------------------------------------------------------------
+   -- MA_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action --
+   --------------------------------------------------------------------------------------------------
 
-   function MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 110;
-   end MA_Utp_Read_Structural_Feature_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action;
+   end MA_Utp_Get_Timezone_Action_Base_Read_Structural_Feature_Action_Extension_Get_Timezone_Action;
 
-   -------------------------------------------------------
-   -- MA_Utp_Behavior_Base_Behavior_Extension_Test_Case --
-   -------------------------------------------------------
+   --------------------------------------------------------
+   -- MA_Utp_Test_Case_Base_Behavior_Extension_Test_Case --
+   --------------------------------------------------------
 
-   function MA_Utp_Behavior_Base_Behavior_Extension_Test_Case return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Case_Base_Behavior_Extension_Test_Case return AMF.Internals.CMOF_Element is
    begin
       return Base + 111;
-   end MA_Utp_Behavior_Base_Behavior_Extension_Test_Case;
+   end MA_Utp_Test_Case_Base_Behavior_Extension_Test_Case;
 
-   -----------------------------------------------------------------------------------
-   -- MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any --
-   -----------------------------------------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MA_Utp_Literal_Any_Base_Literal_Specification_Extension_Literal_Any --
+   -------------------------------------------------------------------------
 
-   function MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any return AMF.Internals.CMOF_Element is
+   function MA_Utp_Literal_Any_Base_Literal_Specification_Extension_Literal_Any return AMF.Internals.CMOF_Element is
    begin
       return Base + 112;
-   end MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any;
+   end MA_Utp_Literal_Any_Base_Literal_Specification_Extension_Literal_Any;
 
    ---------------------------------------------------------
-   -- MA_Utp_Operation_Base_Operation_Extension_Test_Case --
+   -- MA_Utp_Test_Case_Base_Operation_Extension_Test_Case --
    ---------------------------------------------------------
 
-   function MA_Utp_Operation_Base_Operation_Extension_Test_Case return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Case_Base_Operation_Extension_Test_Case return AMF.Internals.CMOF_Element is
    begin
       return Base + 113;
-   end MA_Utp_Operation_Base_Operation_Extension_Test_Case;
+   end MA_Utp_Test_Case_Base_Operation_Extension_Test_Case;
 
-   ---------------------------------------------------------------------------------------------------------------
-   -- MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action --
-   ---------------------------------------------------------------------------------------------------------------
+   ---------------------------------------------------------------------------------------------------
+   -- MA_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action --
+   ---------------------------------------------------------------------------------------------------
 
-   function MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 114;
-   end MA_Utp_Write_Structural_Feature_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action;
+   end MA_Utp_Set_Timezone_Action_Base_Write_Structural_Feature_Action_Extension_Set_Timezone_Action;
 
    ---------------------------------------------------------------------
-   -- MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action --
+   -- MA_Utp_Finish_Action_Base_Opaque_Action_Extension_Finish_Action --
    ---------------------------------------------------------------------
 
-   function MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Finish_Action_Base_Opaque_Action_Extension_Finish_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 115;
-   end MA_Utp_Opaque_Action_Base_Opaque_Action_Extension_Finish_Action;
+   end MA_Utp_Finish_Action_Base_Opaque_Action_Extension_Finish_Action;
 
-   -------------------------------------------------------------------------------------------
-   -- MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null --
-   -------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------
+   -- MA_Utp_Literal_Any_Or_Null_Base_Literal_Specification_Extension_Literal_Any_Or_Null --
+   -----------------------------------------------------------------------------------------
 
-   function MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null return AMF.Internals.CMOF_Element is
+   function MA_Utp_Literal_Any_Or_Null_Base_Literal_Specification_Extension_Literal_Any_Or_Null return AMF.Internals.CMOF_Element is
    begin
       return Base + 116;
-   end MA_Utp_Literal_Specification_Base_Literal_Specification_Extension_Literal_Any_Or_Null;
+   end MA_Utp_Literal_Any_Or_Null_Base_Literal_Specification_Extension_Literal_Any_Or_Null;
 
-   ----------------------------------------------------------------------------
-   -- MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action --
-   ----------------------------------------------------------------------------
+   --------------------------------------------------------------------
+   -- MA_Utp_Log_Action_Base_Send_Object_Action_Extension_Log_Action --
+   --------------------------------------------------------------------
 
-   function MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Log_Action_Base_Send_Object_Action_Extension_Log_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 117;
-   end MA_Utp_Send_Object_Action_Base_Send_Object_Action_Extension_Log_Action;
+   end MA_Utp_Log_Action_Base_Send_Object_Action_Extension_Log_Action;
 
-   ----------------------------------------------------------------
-   -- MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective --
-   ----------------------------------------------------------------
+   --------------------------------------------------------------------
+   -- MA_Utp_Test_Objective_Base_Dependency_Extension_Test_Objective --
+   --------------------------------------------------------------------
 
-   function MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective return AMF.Internals.CMOF_Element is
+   function MA_Utp_Test_Objective_Base_Dependency_Extension_Test_Objective return AMF.Internals.CMOF_Element is
    begin
       return Base + 118;
-   end MA_Utp_Dependency_Base_Dependency_Extension_Test_Objective;
+   end MA_Utp_Test_Objective_Base_Dependency_Extension_Test_Objective;
 
-   -----------------------------------------------------------------------------
-   -- MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action --
-   -----------------------------------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MA_Utp_Finish_Action_Base_Invocation_Action_Extension_Finish_Action --
+   -------------------------------------------------------------------------
 
-   function MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action return AMF.Internals.CMOF_Element is
+   function MA_Utp_Finish_Action_Base_Invocation_Action_Extension_Finish_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 119;
-   end MA_Utp_Invocation_Action_Base_Invocation_Action_Extension_Finish_Action;
+   end MA_Utp_Finish_Action_Base_Invocation_Action_Extension_Finish_Action;
 
-   -----------------------------------------------------------
-   -- MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool --
-   -----------------------------------------------------------
+   ----------------------------------------------------------
+   -- MA_Utp_Data_Pool_Base_Classifier_Extension_Data_Pool --
+   ----------------------------------------------------------
 
-   function MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool return AMF.Internals.CMOF_Element is
+   function MA_Utp_Data_Pool_Base_Classifier_Extension_Data_Pool return AMF.Internals.CMOF_Element is
    begin
       return Base + 120;
-   end MA_Utp_Classifier_Base_Classifier_Extension_Data_Pool;
+   end MA_Utp_Data_Pool_Base_Classifier_Extension_Data_Pool;
 
-   -----------------------------------------------------
-   -- MA_Utp_Behavior_Base_Behavior_Extension_Default --
-   -----------------------------------------------------
+   ----------------------------------------------------
+   -- MA_Utp_Default_Base_Behavior_Extension_Default --
+   ----------------------------------------------------
 
-   function MA_Utp_Behavior_Base_Behavior_Extension_Default return AMF.Internals.CMOF_Element is
+   function MA_Utp_Default_Base_Behavior_Extension_Default return AMF.Internals.CMOF_Element is
    begin
       return Base + 121;
-   end MA_Utp_Behavior_Base_Behavior_Extension_Default;
+   end MA_Utp_Default_Base_Behavior_Extension_Default;
 
-   -------------------------------------------------------
-   -- MA_Utp_Property_Base_Property_Extension_Data_Pool --
-   -------------------------------------------------------
+   --------------------------------------------------------
+   -- MA_Utp_Data_Pool_Base_Property_Extension_Data_Pool --
+   --------------------------------------------------------
 
-   function MA_Utp_Property_Base_Property_Extension_Data_Pool return AMF.Internals.CMOF_Element is
+   function MA_Utp_Data_Pool_Base_Property_Extension_Data_Pool return AMF.Internals.CMOF_Element is
    begin
       return Base + 122;
-   end MA_Utp_Property_Base_Property_Extension_Data_Pool;
+   end MA_Utp_Data_Pool_Base_Property_Extension_Data_Pool;
 
-   --------------------------------------------------------------------------
-   -- MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt --
-   --------------------------------------------------------------------------
+   -------------------------------------------------------------------
+   -- MA_Utp_Determ_Alt_Base_Combined_Fragment_Extension_Determ_Alt --
+   -------------------------------------------------------------------
 
-   function MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt return AMF.Internals.CMOF_Element is
+   function MA_Utp_Determ_Alt_Base_Combined_Fragment_Extension_Determ_Alt return AMF.Internals.CMOF_Element is
    begin
       return Base + 123;
-   end MA_Utp_Combined_Fragment_Base_Combined_Fragment_Extension_Determ_Alt;
+   end MA_Utp_Determ_Alt_Base_Combined_Fragment_Extension_Determ_Alt;
 
-   ----------------------------------------------------------------
-   -- MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition --
-   ----------------------------------------------------------------
+   --------------------------------------------------------------------
+   -- MA_Utp_Data_Partition_Base_Classifier_Extension_Data_Partition --
+   --------------------------------------------------------------------
 
-   function MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition return AMF.Internals.CMOF_Element is
+   function MA_Utp_Data_Partition_Base_Classifier_Extension_Data_Partition return AMF.Internals.CMOF_Element is
    begin
       return Base + 124;
-   end MA_Utp_Classifier_Base_Classifier_Extension_Data_Partition;
+   end MA_Utp_Data_Partition_Base_Classifier_Extension_Data_Partition;
 
-   ---------------------------------------------------------------------
-   -- MA_Utp_Dependency_Base_Dependency_Extension_Default_Application --
-   ---------------------------------------------------------------------
+   ------------------------------------------------------------------------------
+   -- MA_Utp_Default_Application_Base_Dependency_Extension_Default_Application --
+   ------------------------------------------------------------------------------
 
-   function MA_Utp_Dependency_Base_Dependency_Extension_Default_Application return AMF.Internals.CMOF_Element is
+   function MA_Utp_Default_Application_Base_Dependency_Extension_Default_Application return AMF.Internals.CMOF_Element is
    begin
       return Base + 125;
-   end MA_Utp_Dependency_Base_Dependency_Extension_Default_Application;
+   end MA_Utp_Default_Application_Base_Dependency_Extension_Default_Application;
 
    ------------
    -- MB_Utp --
