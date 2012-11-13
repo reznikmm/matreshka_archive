@@ -74,10 +74,10 @@ procedure Test_231 is
    Expected    : constant League.Strings.Universal_String
      := +("<?xml version='1.0'?>" & LF
             & "<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>" & LF
-            & "  <uml:Package xmi:type='uml:Package' xmi:id='16777217' name='Package'>" & LF
-            & "    <packagedElement xmi:type='uml:Class' xmi:id='16777218' name='Class'>" & LF
-            & "      <ownedOperation xmi:type='uml:Operation' xmi:id='16777220' bodyCondition='16777219' name='operation'>" & LF
-            & "        <ownedRule xmi:type='uml:Constraint' xmi:id='16777219'>" & LF
+            & "  <uml:Package xmi:type='uml:Package' xmi:id='33554433' name='Package'>" & LF
+            & "    <packagedElement xmi:type='uml:Class' xmi:id='33554434' name='Class'>" & LF
+            & "      <ownedOperation xmi:type='uml:Operation' xmi:id='33554436' bodyCondition='33554435' name='operation'>" & LF
+            & "        <ownedRule xmi:type='uml:Constraint' xmi:id='33554435'>" & LF
             & "          <name xsi:nil='true'/>" & LF
             & "        </ownedRule>" & LF
             & "        <visibility xsi:nil='true'/>" & LF
