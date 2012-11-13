@@ -178,23 +178,6 @@ package body AMF.Internals.UMLDI_UML_Name_Labels is
 --             (Self.Element)));
    end Get_Model_Element;
 
-   ----------------------
-   -- Get_Shared_Style --
-   ----------------------
-
-   overriding function Get_Shared_Style
-    (Self : not null access constant UMLDI_UML_Name_Label_Proxy)
-       return AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style is
-   begin
-      raise Program_Error;
-      return X : AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style;
---      return
---        AMF.UMLDI.UML_Styles.Collections.Wrap
---         (AMF.Internals.Element_Collections.Wrap
---           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Shared_Style
---             (Self.Element)));
-   end Get_Shared_Style;
-
    -----------------------
    -- Get_Model_Element --
    -----------------------
@@ -238,35 +221,6 @@ package body AMF.Internals.UMLDI_UML_Name_Labels is
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (To)));
    end Set_Local_Style;
-
-   ----------------------
-   -- Get_Shared_Style --
-   ----------------------
-
-   overriding function Get_Shared_Style
-    (Self : not null access constant UMLDI_UML_Name_Label_Proxy)
-       return AMF.DI.Styles.DI_Style_Access is
-   begin
-      return
-        AMF.DI.Styles.DI_Style_Access
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Shared_Style
-             (Self.Element)));
-   end Get_Shared_Style;
-
-   ----------------------
-   -- Set_Shared_Style --
-   ----------------------
-
-   overriding procedure Set_Shared_Style
-    (Self : not null access UMLDI_UML_Name_Label_Proxy;
-     To   : AMF.DI.Styles.DI_Style_Access) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Shared_Style
-       (Self.Element,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Shared_Style;
 
    ----------------
    -- Get_Bounds --

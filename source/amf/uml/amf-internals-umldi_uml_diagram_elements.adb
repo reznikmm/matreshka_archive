@@ -138,6 +138,36 @@ package body AMF.Internals.UMLDI_UML_Diagram_Elements is
              (Self.Element)));
    end Get_Owned_Element;
 
+   ----------------------
+   -- Get_Shared_Style --
+   ----------------------
+
+   overriding function Get_Shared_Style
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access is
+   begin
+      return
+        AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Shared_Style
+             (Self.Element)));
+   end Get_Shared_Style;
+
+   ----------------------
+   -- Get_Shared_Style --
+   ----------------------
+
+   overriding function Get_Shared_Style
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.DI.Styles.DI_Style_Access is
+   begin
+      return
+        AMF.DI.Styles.DI_Style_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Shared_Style
+             (Self.Element)));
+   end Get_Shared_Style;
+
    ------------------------
    -- Set_Owning_Element --
    ------------------------
@@ -152,5 +182,33 @@ package body AMF.Internals.UMLDI_UML_Diagram_Elements is
 --        AMF.Internals.Helpers.To_Element
 --         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Element;
+
+   ----------------------
+   -- Set_Shared_Style --
+   ----------------------
+
+   overriding procedure Set_Shared_Style
+    (Self : not null access UMLDI_UML_Diagram_Element_Proxy;
+     To   : AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Shared_Style
+       (Self.Element,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Shared_Style;
+
+   ----------------------
+   -- Set_Shared_Style --
+   ----------------------
+
+   overriding procedure Set_Shared_Style
+    (Self : not null access UMLDI_UML_Diagram_Element_Proxy;
+     To   : AMF.DI.Styles.DI_Style_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Shared_Style
+       (Self.Element,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Shared_Style;
 
 end AMF.Internals.UMLDI_UML_Diagram_Elements;

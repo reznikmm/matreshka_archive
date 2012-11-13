@@ -42,9 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.DI.Diagram_Elements.Collections;
+with AMF.DI.Styles;
 with AMF.Elements;
 with AMF.Internals.UML_Elements;
 with AMF.UMLDI.UML_Diagram_Elements.Collections;
+with AMF.UMLDI.UML_Styles;
 
 generic
    type Element_Proxy is
@@ -96,5 +98,35 @@ package AMF.Internals.UMLDI_UML_Diagram_Elements is
    --
    --  a collection of diagram elements that are directly owned by this 
    --  diagram element.
+ 
+   overriding function Get_Shared_Style
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access;
+   --  Getter of UMLDiagramElement::sharedStyle.
+   --
+   --  Restricts shared styles to UMLStyles.
+
+   overriding procedure Set_Shared_Style
+    (Self : not null access UMLDI_UML_Diagram_Element_Proxy;
+     To   : AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access);
+   --  Setter of UMLDiagramElement::sharedStyle.
+   --
+   --  Restricts shared styles to UMLStyles.
+
+   overriding function Get_Shared_Style
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.DI.Styles.DI_Style_Access;
+   --  Getter of DiagramElement::sharedStyle.
+   --
+   --  a reference to an optional shared style element for this diagram 
+   --  element.
+
+   overriding procedure Set_Shared_Style
+    (Self : not null access UMLDI_UML_Diagram_Element_Proxy;
+     To   : AMF.DI.Styles.DI_Style_Access);
+   --  Setter of DiagramElement::sharedStyle.
+   --
+   --  a reference to an optional shared style element for this diagram 
+   --  element.
 
 end AMF.Internals.UMLDI_UML_Diagram_Elements;

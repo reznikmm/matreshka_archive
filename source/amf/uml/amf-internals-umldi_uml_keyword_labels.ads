@@ -47,7 +47,7 @@ with AMF.DI.Styles;
 with AMF.Internals.UMLDI_UML_Labels;
 with AMF.UML.Elements.Collections;
 with AMF.UMLDI.UML_Keyword_Labels;
-with AMF.UMLDI.UML_Styles.Collections;
+with AMF.UMLDI.UML_Styles;
 with AMF.Visitors;
 with League.Strings;
 
@@ -117,13 +117,6 @@ package AMF.Internals.UMLDI_UML_Keyword_Labels is
    --  Restricts UMLDiagramElements to show UML Elements, rather than other 
    --  language elements. 
 
-   overriding function Get_Shared_Style
-    (Self : not null access constant UMLDI_UML_Keyword_Label_Proxy)
-       return AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style;
-   --  Getter of UMLDiagramElement::sharedStyle.
-   --
-   --  Restricts shared styles to UMLStyles.
-
    overriding function Get_Model_Element
     (Self : not null access constant UMLDI_UML_Keyword_Label_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
@@ -145,22 +138,6 @@ package AMF.Internals.UMLDI_UML_Keyword_Labels is
    --  Setter of DiagramElement::localStyle.
    --
    --  a reference to an optional locally-owned style for this diagram element.
-
-   overriding function Get_Shared_Style
-    (Self : not null access constant UMLDI_UML_Keyword_Label_Proxy)
-       return AMF.DI.Styles.DI_Style_Access;
-   --  Getter of DiagramElement::sharedStyle.
-   --
-   --  a reference to an optional shared style element for this diagram 
-   --  element.
-
-   overriding procedure Set_Shared_Style
-    (Self : not null access UMLDI_UML_Keyword_Label_Proxy;
-     To   : AMF.DI.Styles.DI_Style_Access);
-   --  Setter of DiagramElement::sharedStyle.
-   --
-   --  a reference to an optional shared style element for this diagram 
-   --  element.
 
    overriding function Get_Bounds
     (Self : not null access constant UMLDI_UML_Keyword_Label_Proxy)
