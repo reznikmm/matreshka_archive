@@ -57,8 +57,8 @@ package AMF.Internals.Tables.MOF_Metamodel is
    function MP_MOF_Tag_Tag_Owner return AMF.Internals.CMOF_Element;
    function MP_MOF_Tag_Value return AMF.Internals.CMOF_Element;
 
-   function MA_MOF_Element_Element_Tag return AMF.Internals.CMOF_Element;
-   function MA_MOF_Element_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element;
+   function MA_MOF_Tag_Element_Tag return AMF.Internals.CMOF_Element;
+   function MA_MOF_Tag_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element;
 
    function MB_MOF return AMF.Internals.AMF_Element;
 

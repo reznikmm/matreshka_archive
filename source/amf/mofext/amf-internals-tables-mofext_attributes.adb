@@ -181,7 +181,7 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
       case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.MOF_Metamodel.MA_MOF_Element_Tag_Owner_Owned_Tag,
+             (AMF.Internals.Tables.MOF_Metamodel.MA_MOF_Tag_Tag_Owner_Owned_Tag,
               Self,
               To);
 

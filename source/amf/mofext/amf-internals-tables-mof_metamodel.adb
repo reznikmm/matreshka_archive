@@ -100,23 +100,23 @@ package body AMF.Internals.Tables.MOF_Metamodel is
       return Base + 5;
    end MP_MOF_Tag_Value;
 
-   --------------------------------
-   -- MA_MOF_Element_Element_Tag --
-   --------------------------------
+   ----------------------------
+   -- MA_MOF_Tag_Element_Tag --
+   ----------------------------
 
-   function MA_MOF_Element_Element_Tag return AMF.Internals.CMOF_Element is
+   function MA_MOF_Tag_Element_Tag return AMF.Internals.CMOF_Element is
    begin
       return Base + 6;
-   end MA_MOF_Element_Element_Tag;
+   end MA_MOF_Tag_Element_Tag;
 
-   ----------------------------------------
-   -- MA_MOF_Element_Tag_Owner_Owned_Tag --
-   ----------------------------------------
+   ------------------------------------
+   -- MA_MOF_Tag_Tag_Owner_Owned_Tag --
+   ------------------------------------
 
-   function MA_MOF_Element_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element is
+   function MA_MOF_Tag_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element is
    begin
       return Base + 7;
-   end MA_MOF_Element_Tag_Owner_Owned_Tag;
+   end MA_MOF_Tag_Tag_Owner_Owned_Tag;
 
    ------------
    -- MB_MOF --
