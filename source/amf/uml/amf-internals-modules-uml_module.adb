@@ -45,6 +45,7 @@ with AMF.Internals.Factories.Primitive_Types_Factories;
 with AMF.Internals.Factories.Standard_Profile_L2_Factories;
 with AMF.Internals.Factories.Standard_Profile_L3_Factories;
 with AMF.Internals.Factories.UML_Factories;
+with AMF.Internals.Factories.UMLDI_Factories;
 with AMF.Internals.Factories.UML_Module_Factory;
 with AMF.Internals.Tables.Primitive_Types_Metamodel.Links;
 with AMF.Internals.Tables.Primitive_Types_Metamodel.Objects;
@@ -59,10 +60,19 @@ with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel.Links;
 with AMF.Internals.Tables.UML_Metamodel.Objects;
 with AMF.Internals.Tables.UML_Metamodel.Properties;
+with AMF.Internals.Tables.UMLDI_Metamodel.Links;
+with AMF.Internals.Tables.UMLDI_Metamodel.Objects;
+with AMF.Internals.Tables.UMLDI_Metamodel.Properties;
 
 with AMF.Internals.Modules.CMOF_Module;
 pragma Unreferenced (AMF.Internals.Modules.CMOF_Module);
 pragma Elaborate_All (AMF.Internals.Modules.CMOF_Module);
+--  CMOF module package and all its dependencies must be elaborated before
+--  elaboration of this package.
+
+with AMF.Internals.Modules.DD_Module;
+pragma Unreferenced (AMF.Internals.Modules.DD_Module);
+pragma Elaborate_All (AMF.Internals.Modules.DD_Module);
 --  CMOF module package and all its dependencies must be elaborated before
 --  elaboration of this package.
 
@@ -85,16 +95,19 @@ begin
    AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Objects.Initialize;
    AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Objects.Initialize;
    AMF.Internals.Tables.UML_Metamodel.Objects.Initialize;
+   AMF.Internals.Tables.UMLDI_Metamodel.Objects.Initialize;
 
    AMF.Internals.Tables.Primitive_Types_Metamodel.Properties.Initialize;
    AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Properties.Initialize;
    AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Properties.Initialize;
    AMF.Internals.Tables.UML_Metamodel.Properties.Initialize;
+   AMF.Internals.Tables.UMLDI_Metamodel.Properties.Initialize;
 
    AMF.Internals.Tables.Primitive_Types_Metamodel.Links.Initialize;
    AMF.Internals.Tables.Standard_Profile_L2_Metamodel.Links.Initialize;
    AMF.Internals.Tables.Standard_Profile_L3_Metamodel.Links.Initialize;
    AMF.Internals.Tables.UML_Metamodel.Links.Initialize;
+   AMF.Internals.Tables.UMLDI_Metamodel.Links.Initialize;
 
    --  Initialize element table of UML module.
 
@@ -114,4 +127,7 @@ begin
    AMF.Internals.Factories.Register
     (AMF.Internals.Factories.Standard_Profile_L3_Factories.Get_Package,
      AMF.Internals.Factories.Standard_Profile_L3_Factories.Constructor'Access);
+   AMF.Internals.Factories.Register
+    (AMF.Internals.Factories.UMLDI_Factories.Get_Package,
+     AMF.Internals.Factories.UMLDI_Factories.Constructor'Access);
 end AMF.Internals.Modules.UML_Module;
