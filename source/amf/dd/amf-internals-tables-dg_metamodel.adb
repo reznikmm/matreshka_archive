@@ -1207,122 +1207,122 @@ package body AMF.Internals.Tables.DG_Metamodel is
       return Base + 193;
    end MP_DG_Translate_Delta_Y;
 
-   ------------------------------------------
-   -- MA_DG_Graphical_Element_Tile_Pattern --
-   ------------------------------------------
+   --------------------------------
+   -- MA_DG_Pattern_Tile_Pattern --
+   --------------------------------
 
-   function MA_DG_Graphical_Element_Tile_Pattern return AMF.Internals.CMOF_Element is
+   function MA_DG_Pattern_Tile_Pattern return AMF.Internals.CMOF_Element is
    begin
       return Base + 85;
-   end MA_DG_Graphical_Element_Tile_Pattern;
+   end MA_DG_Pattern_Tile_Pattern;
 
-   ---------------------------------------
-   -- MA_DG_Style_Packaged_Style_Canvas --
-   ---------------------------------------
+   ----------------------------------------
+   -- MA_DG_Canvas_Packaged_Style_Canvas --
+   ----------------------------------------
 
-   function MA_DG_Style_Packaged_Style_Canvas return AMF.Internals.CMOF_Element is
+   function MA_DG_Canvas_Packaged_Style_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 86;
-   end MA_DG_Style_Packaged_Style_Canvas;
+   end MA_DG_Canvas_Packaged_Style_Canvas;
 
-   ----------------------------------------------
-   -- MA_DG_Marker_Start_Marker_Marked_Element --
-   ----------------------------------------------
+   ------------------------------------------------------
+   -- MA_DG_Marked_Element_Start_Marker_Marked_Element --
+   ------------------------------------------------------
 
-   function MA_DG_Marker_Start_Marker_Marked_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Marked_Element_Start_Marker_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 87;
-   end MA_DG_Marker_Start_Marker_Marked_Element;
+   end MA_DG_Marked_Element_Start_Marker_Marked_Element;
 
-   --------------------------------------------
-   -- MA_DG_Marker_End_Marker_Marked_Element --
-   --------------------------------------------
+   ----------------------------------------------------
+   -- MA_DG_Marked_Element_End_Marker_Marked_Element --
+   ----------------------------------------------------
 
-   function MA_DG_Marker_End_Marker_Marked_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Marked_Element_End_Marker_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 88;
-   end MA_DG_Marker_End_Marker_Marked_Element;
+   end MA_DG_Marked_Element_End_Marker_Marked_Element;
 
-   ------------------------------------------
-   -- MA_DG_Graphical_Element_Member_Group --
-   ------------------------------------------
+   ------------------------------
+   -- MA_DG_Group_Member_Group --
+   ------------------------------
 
-   function MA_DG_Graphical_Element_Member_Group return AMF.Internals.CMOF_Element is
+   function MA_DG_Group_Member_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 89;
-   end MA_DG_Graphical_Element_Member_Group;
+   end MA_DG_Group_Member_Group;
 
-   --------------------------------------------
-   -- MA_DG_Marker_Mid_Marker_Marked_Element --
-   --------------------------------------------
+   ----------------------------------------------------
+   -- MA_DG_Marked_Element_Mid_Marker_Marked_Element --
+   ----------------------------------------------------
 
-   function MA_DG_Marker_Mid_Marker_Marked_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Marked_Element_Mid_Marker_Marked_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 90;
-   end MA_DG_Marker_Mid_Marker_Marked_Element;
+   end MA_DG_Marked_Element_Mid_Marker_Marked_Element;
 
    -----------------------------------------
-   -- MA_DG_Marker_Packaged_Marker_Canvas --
+   -- MA_DG_Canvas_Packaged_Marker_Canvas --
    -----------------------------------------
 
-   function MA_DG_Marker_Packaged_Marker_Canvas return AMF.Internals.CMOF_Element is
+   function MA_DG_Canvas_Packaged_Marker_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 91;
-   end MA_DG_Marker_Packaged_Marker_Canvas;
+   end MA_DG_Canvas_Packaged_Marker_Canvas;
 
-   -----------------------------------------------
-   -- MA_DG_Clip_Path_Clip_Path_Clipped_Element --
-   -----------------------------------------------
+   -------------------------------------------------------
+   -- MA_DG_Graphical_Element_Clip_Path_Clipped_Element --
+   -------------------------------------------------------
 
-   function MA_DG_Clip_Path_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Graphical_Element_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 92;
-   end MA_DG_Clip_Path_Clip_Path_Clipped_Element;
+   end MA_DG_Graphical_Element_Clip_Path_Clipped_Element;
 
-   --------------------------------------------
-   -- MA_DG_Style_Local_Style_Styled_Element --
-   --------------------------------------------
+   --------------------------------------------------------
+   -- MA_DG_Graphical_Element_Local_Style_Styled_Element --
+   --------------------------------------------------------
 
-   function MA_DG_Style_Local_Style_Styled_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Graphical_Element_Local_Style_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 93;
-   end MA_DG_Style_Local_Style_Styled_Element;
+   end MA_DG_Graphical_Element_Local_Style_Styled_Element;
 
-   -------------------------------------
-   -- MA_DG_Fill_Packaged_Fill_Canvas --
-   -------------------------------------
+   ---------------------------------------
+   -- MA_DG_Canvas_Packaged_Fill_Canvas --
+   ---------------------------------------
 
-   function MA_DG_Fill_Packaged_Fill_Canvas return AMF.Internals.CMOF_Element is
+   function MA_DG_Canvas_Packaged_Fill_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 94;
-   end MA_DG_Fill_Packaged_Fill_Canvas;
+   end MA_DG_Canvas_Packaged_Fill_Canvas;
 
-   ---------------------------
-   -- MA_DG_Fill_Fill_Style --
-   ---------------------------
+   ----------------------------
+   -- MA_DG_Style_Fill_Style --
+   ----------------------------
 
-   function MA_DG_Fill_Fill_Style return AMF.Internals.CMOF_Element is
+   function MA_DG_Style_Fill_Style return AMF.Internals.CMOF_Element is
    begin
       return Base + 95;
-   end MA_DG_Fill_Fill_Style;
+   end MA_DG_Style_Fill_Style;
 
-   ---------------------------------------------
-   -- MA_DG_Style_Shared_Style_Styled_Element --
-   ---------------------------------------------
+   ---------------------------------------------------------
+   -- MA_DG_Graphical_Element_Shared_Style_Styled_Element --
+   ---------------------------------------------------------
 
-   function MA_DG_Style_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element is
+   function MA_DG_Graphical_Element_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 96;
-   end MA_DG_Style_Shared_Style_Styled_Element;
+   end MA_DG_Graphical_Element_Shared_Style_Styled_Element;
 
-   ---------------------------------------
-   -- MA_DG_Fill_Background_Fill_Canvas --
-   ---------------------------------------
+   -----------------------------------------
+   -- MA_DG_Canvas_Background_Fill_Canvas --
+   -----------------------------------------
 
-   function MA_DG_Fill_Background_Fill_Canvas return AMF.Internals.CMOF_Element is
+   function MA_DG_Canvas_Background_Fill_Canvas return AMF.Internals.CMOF_Element is
    begin
       return Base + 97;
-   end MA_DG_Fill_Background_Fill_Canvas;
+   end MA_DG_Canvas_Background_Fill_Canvas;
 
    -----------
    -- MB_DG --

@@ -69,12 +69,12 @@ package AMF.Internals.Tables.DI_Metamodel is
    function MP_DI_Edge_Waypoint return AMF.Internals.CMOF_Element;
    function MP_DI_Shape_Bounds return AMF.Internals.CMOF_Element;
 
-   function MA_DI_Diagram_Element_Target_Target_Edge return AMF.Internals.CMOF_Element;
-   function MA_DI_Diagram_Element_Source_Source_Edge return AMF.Internals.CMOF_Element;
+   function MA_DI_Edge_Target_Target_Edge return AMF.Internals.CMOF_Element;
+   function MA_DI_Edge_Source_Source_Edge return AMF.Internals.CMOF_Element;
    function MA_DI_Diagram_Element_Owned_Element_Owning_Element return AMF.Internals.CMOF_Element;
-   function MA_DI_Element_Model_Element_Diagram_Element return AMF.Internals.CMOF_Element;
-   function MA_DI_Style_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element;
-   function MA_DI_Style_Local_Style_Styled_Element return AMF.Internals.CMOF_Element;
+   function MA_DI_Diagram_Element_Model_Element_Diagram_Element return AMF.Internals.CMOF_Element;
+   function MA_DI_Diagram_Element_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element;
+   function MA_DI_Diagram_Element_Local_Style_Styled_Element return AMF.Internals.CMOF_Element;
 
    function MB_DI return AMF.Internals.AMF_Element;
 

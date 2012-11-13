@@ -182,19 +182,19 @@ package AMF.Internals.Tables.DG_Metamodel is
    function MP_DG_Text_Bounds return AMF.Internals.CMOF_Element;
    function MP_DG_Text_Data return AMF.Internals.CMOF_Element;
 
-   function MA_DG_Graphical_Element_Tile_Pattern return AMF.Internals.CMOF_Element;
-   function MA_DG_Style_Packaged_Style_Canvas return AMF.Internals.CMOF_Element;
-   function MA_DG_Marker_Start_Marker_Marked_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Marker_End_Marker_Marked_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Graphical_Element_Member_Group return AMF.Internals.CMOF_Element;
-   function MA_DG_Marker_Mid_Marker_Marked_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Marker_Packaged_Marker_Canvas return AMF.Internals.CMOF_Element;
-   function MA_DG_Clip_Path_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Style_Local_Style_Styled_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Fill_Packaged_Fill_Canvas return AMF.Internals.CMOF_Element;
-   function MA_DG_Fill_Fill_Style return AMF.Internals.CMOF_Element;
-   function MA_DG_Style_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element;
-   function MA_DG_Fill_Background_Fill_Canvas return AMF.Internals.CMOF_Element;
+   function MA_DG_Pattern_Tile_Pattern return AMF.Internals.CMOF_Element;
+   function MA_DG_Canvas_Packaged_Style_Canvas return AMF.Internals.CMOF_Element;
+   function MA_DG_Marked_Element_Start_Marker_Marked_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Marked_Element_End_Marker_Marked_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Group_Member_Group return AMF.Internals.CMOF_Element;
+   function MA_DG_Marked_Element_Mid_Marker_Marked_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Canvas_Packaged_Marker_Canvas return AMF.Internals.CMOF_Element;
+   function MA_DG_Graphical_Element_Clip_Path_Clipped_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Graphical_Element_Local_Style_Styled_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Canvas_Packaged_Fill_Canvas return AMF.Internals.CMOF_Element;
+   function MA_DG_Style_Fill_Style return AMF.Internals.CMOF_Element;
+   function MA_DG_Graphical_Element_Shared_Style_Styled_Element return AMF.Internals.CMOF_Element;
+   function MA_DG_Canvas_Background_Fill_Canvas return AMF.Internals.CMOF_Element;
 
    function MB_DG return AMF.Internals.AMF_Element;
 

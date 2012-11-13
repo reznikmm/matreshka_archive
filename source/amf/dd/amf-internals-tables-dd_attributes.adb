@@ -948,7 +948,7 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Fill_Background_Fill_Canvas,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Canvas_Background_Fill_Canvas,
               Self,
               To);
 
@@ -986,25 +986,25 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Linear_Gradient =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Fill_Packaged_Fill_Canvas,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Canvas_Packaged_Fill_Canvas,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Packaged_Marker_Canvas,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Canvas_Packaged_Marker_Canvas,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Pattern =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Fill_Packaged_Fill_Canvas,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Canvas_Packaged_Fill_Canvas,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Radial_Gradient =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Fill_Packaged_Fill_Canvas,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Canvas_Packaged_Fill_Canvas,
               To,
               Self);
 
@@ -1078,85 +1078,85 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Group =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Image =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Line =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Text =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               Self,
               To);
 
@@ -1176,7 +1176,7 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Clip_Path_Clip_Path_Clipped_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Clip_Path_Clipped_Element,
               To,
               Self);
 
@@ -1255,31 +1255,31 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Line =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_End_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_End_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_End_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_End_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_End_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_End_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_End_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_End_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_End_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_End_Marker_Marked_Element,
               Self,
               To);
 
@@ -1299,7 +1299,7 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Style =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Fill_Fill_Style,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Style_Fill_Style,
               Self,
               To);
 
@@ -1527,85 +1527,85 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Group =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Image =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Line =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Text =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Member_Group,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Group_Member_Group,
               To,
               Self);
 
@@ -1643,31 +1643,31 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Line =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Mid_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Mid_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Mid_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Mid_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Mid_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Mid_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Mid_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Mid_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Mid_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Mid_Marker_Marked_Element,
               Self,
               To);
 
@@ -1800,31 +1800,31 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Line =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Start_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Start_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Start_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Start_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Path =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Start_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Start_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Start_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Start_Marker_Marked_Element,
               Self,
               To);
 
          when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marker_Start_Marker_Marked_Element,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Marked_Element_Start_Marker_Marked_Element,
               Self,
               To);
 
@@ -1898,7 +1898,7 @@ package body AMF.Internals.Tables.DD_Attributes is
       case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.DD_Types.E_DG_Pattern =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Graphical_Element_Tile_Pattern,
+             (AMF.Internals.Tables.DG_Metamodel.MA_DG_Pattern_Tile_Pattern,
               Self,
               To);
 
