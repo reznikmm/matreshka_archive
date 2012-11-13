@@ -65,6 +65,19 @@ package body AMF.Internals.UML_Elements is
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
+   ---------------
+   -- Container --
+   ---------------
+
+   overriding function Container
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Elements.Element_Access is
+   begin
+      --  For UML elements Element::owner is container of the element.
+
+      return AMF.Elements.Element_Access (Self.Get_Owner);
+   end Container;
+
    ------------
    -- Extent --
    ------------

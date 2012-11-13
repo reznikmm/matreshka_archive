@@ -45,6 +45,7 @@ with League.Holders;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
+with AMF.Elements;
 with AMF.Extents;
 with AMF.Internals.Elements;
 with AMF.UML.Comments.Collections;
@@ -76,6 +77,10 @@ package AMF.Internals.UML_Elements is
    type UML_Element_Proxy is
      abstract limited new UML_Element_Base
        and AMF.UML.Elements.UML_Element with null record;
+
+   overriding function Container
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Elements.Element_Access;
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Element_Proxy)
